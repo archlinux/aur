@@ -1,8 +1,21 @@
+From 0035613ded03cadf66a6ee3211fbff17a9aafcb8 Mon Sep 17 00:00:00 2001
+From: lib32 <lib32@local>
+Date: Fri, 4 Sep 2026 19:37:07 +0200
+Subject: [PATCH] Allow disabling gstreamer
+
+Adds a 'gstreamer' feature option to the superproject so the core
+gstreamer subproject can be skipped in favour of the system 32-bit
+build, mirroring the existing base/good options.
+---
+ meson.build   | 4 ++--
+ meson.options | 1 +
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
 diff --git a/meson.build b/meson.build
-index db32a57fba..67a208d517 100644
+index 2daff78..d684a05 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -105,7 +105,7 @@ gst_python_option = get_option('python').disable_if(get_option('introspection').
+@@ -134,7 +134,7 @@ gst_python_option = get_option('python').disable_if(get_option('introspection').
  
  # Ordered list of subprojects (dict has no ordering guarantees)
  subprojects = [
@@ -11,7 +24,7 @@ index db32a57fba..67a208d517 100644
    ['gst-plugins-base', {'option': get_option('base'), 'build-hotdoc': true}],
    ['gst-plugins-good', {'option': get_option('good'), 'build-hotdoc': true}],
    ['libnice', { 'option': get_option('libnice'), 'match_gst_version': false, 'subproject_options': libnice_options}],
-@@ -192,7 +192,7 @@ foreach sp : subprojects
+@@ -221,7 +221,7 @@ foreach sp : subprojects
      subproj = subproject(project_name, required: is_required, default_options: default_options)
    endif
  
@@ -20,10 +33,10 @@ index db32a57fba..67a208d517 100644
      gst_base_orc_req = subproj.get_variable('orc_req', '')
      if gst_base_orc_req != orc_req
        error('orc_req is "@0@" but it should be "@1@" from subprojects/gst-plugins-base/meson.build'
-diff --git a/meson_options.txt b/meson_options.txt
-index 91b1449f18..39152be149 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
+diff --git a/meson.options b/meson.options
+index 5335c4a..291b54a 100644
+--- a/meson.options
++++ b/meson.options
 @@ -1,5 +1,6 @@
  # GStreamer subprojects
  option('base', type : 'feature', value : 'enabled')

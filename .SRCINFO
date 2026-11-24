@@ -1,165 +1,200 @@
 pkgbase = lib32-gst-bad-ugly
 	pkgdesc = Multimedia graph framework (32-bit)
-	pkgver = 1.26.10
-	pkgrel = 4
+	pkgver = 1.28.9
+	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	checkdepends = xorg-server-xvfb
+	checkdepends = lib32-libexif
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = meson
-	makedepends = lib32-gstreamer
+	makedepends = python-packaging
+	makedepends = wayland-protocols
 	makedepends = lib32-gst-plugins-base
 	makedepends = lib32-gst-plugins-good
-	makedepends = wayland-protocols
-	makedepends = lib32-gtk3
-	makedepends = python-packaging
-	makedepends = glib2-devel
-	makedepends = lib32-gst-plugins-base-libs>=1.26.10
+	makedepends = lib32-gst-plugins-base-libs>=1.28.9
+	makedepends = lib32-gstreamer>=1.28.9
 	makedepends = lib32-a52dec
-	makedepends = lib32-libcdio
+	makedepends = lib32-glib2
+	makedepends = lib32-glibc
 	makedepends = lib32-libdvdread
 	makedepends = lib32-libmpeg2
-	makedepends = lib32-opencore-amr
 	makedepends = lib32-x264
+	makedepends = lib32-gcc-libs
+	makedepends = lib32-glib2
+	makedepends = lib32-glibc
 	makedepends = lib32-libdrm
+	makedepends = lib32-libglvnd
 	makedepends = lib32-libgudev
 	makedepends = lib32-libusb
-	makedepends = lib32-orc
+	makedepends = lib32-libva
 	makedepends = lib32-libx11
+	makedepends = lib32-libxcb
+	makedepends = lib32-libxkbcommon
 	makedepends = lib32-libxkbcommon-x11
+	makedepends = lib32-mesa
+	makedepends = lib32-orc
+	makedepends = lib32-vmaf
+	makedepends = lib32-vulkan-icd-loader
+	makedepends = lib32-wayland
+	makedepends = lib32-zlib
 	makedepends = lib32-aom
 	makedepends = lib32-bzip2
+	makedepends = lib32-cairo
 	makedepends = lib32-curl
 	makedepends = lib32-faac
 	makedepends = lib32-faad2
 	makedepends = lib32-fluidsynth
+	makedepends = lib32-gcc-libs
+	makedepends = lib32-glib2
+	makedepends = lib32-glibc
+	makedepends = lib32-gsm
+	makedepends = lib32-gtk3
+	makedepends = lib32-json-glib
 	makedepends = lib32-lcms2
 	makedepends = lib32-libass
 	makedepends = lib32-libavtp
 	makedepends = lib32-libbs2b
 	makedepends = lib32-libdc1394
 	makedepends = lib32-libdca
-	makedepends = lib32-libde265
 	makedepends = lib32-libdvdnav
 	makedepends = lib32-libdvdread
 	makedepends = lib32-libfdk-aac
 	makedepends = lib32-liblrdf
 	makedepends = lib32-libmodplug
 	makedepends = lib32-libmpcdec
+	makedepends = lib32-libopenmpt
 	makedepends = lib32-librsvg
 	makedepends = lib32-libsndfile
-	makedepends = lib32-libsrtp
+	makedepends = lib32-libva
 	makedepends = lib32-libwebp
-	makedepends = lib32-libxcb
 	makedepends = lib32-libxml2
-	makedepends = lib32-lilv
-	makedepends = lib32-neon
 	makedepends = lib32-nettle
 	makedepends = lib32-openal
+	makedepends = lib32-openh264
+	makedepends = lib32-openjpeg2
 	makedepends = lib32-openssl
 	makedepends = lib32-opus
 	makedepends = lib32-pango
 	makedepends = lib32-rtmpdump
-	makedepends = lib32-sbc
 	makedepends = lib32-soundtouch
 	makedepends = lib32-srt
-	makedepends = lib32-vulkan-icd-loader
+	makedepends = lib32-svt-av1
 	makedepends = lib32-wayland
-	makedepends = lib32-wildmidi
 	makedepends = lib32-x265
-	makedepends = lib32-zvbi
-	makedepends = libltc
-	makedepends = lib32-libgme
-	makedepends = vulkan-headers
-	makedepends = lib32-vulkan-validation-layers
-	makedepends = lib32-shaderc
 	makedepends = lib32-bluez-libs
 	makedepends = lib32-ladspa
-	makedepends = lib32-lv2
-	makedepends = lib32-json-glib
+	makedepends = lib32-shaderc
+	makedepends = lib32-vulkan-validation-layers
+	makedepends = vulkan-headers
 	makedepends = lib32-ffmpeg
+	makedepends = lib32-glib2
+	makedepends = lib32-glibc
 	options = !debug
-	source = git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git#tag=1.26.10
-	source = 0001-Allow-disabling-gstreamer.patch
-	source = 0002-HACK-meson-Disable-broken-tests.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/gstreamer/-/raw/1.26.10-4/0001-HACK-meson-Disable-broken-tests.patch?ref_type=tags&inline=false
-	b2sums = 17a6826af9ed8ae50a215e6f831d8cb2b85b80f8899610febfcf8733000d185caf9c153cb3ed6197fffedcad4f7d4547e13baddc74018eca8a4b2c660c316376
-	b2sums = 66bb4f48207b442d6d598b8d32a5c3e9f0111a7f40bd48cbddd494f19834d3eafd64feda044ffa7aadc950c50a0f74152ac62591a940ae65078239c8f8d38f36
-	b2sums = 21d74423e44f4d9918ef477d7664b65d2848b14830f6d339c525f8de54aedfaae274ac772f157938f9a98bc9d1806210d807cab8ccf9dd95fcaf0547b587c36a
-
-pkgname = lib32-gst-plugins-ugly
-	pkgdesc = Multimedia graph framework (32-bit) - ugly plugins
-	depends = lib32-gst-plugins-base-libs>=1.26.10
-	depends = lib32-a52dec
-	depends = lib32-libcdio
-	depends = lib32-libdvdread
-	depends = lib32-libmpeg2
-	depends = lib32-opencore-amr
-	depends = lib32-x264
-	replaces = lib32-gst-plugins-ugly-latest
-
-pkgname = lib32-gst-libav
-	pkgdesc = Multimedia graph framework (32-bit) - libav plugin
-	depends = lib32-gst-plugins-base-libs>=1.26.10
-	depends = lib32-ffmpeg
-	provides = lib32-gst-ffmpeg=1.26.10
-	replaces = lib32-gst-libav-latest
+	source = git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git#tag=1.28.9
+	source = 0001-HACK-meson-Disable-broken-tests.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/gstreamer/-/raw/1.28.9-2/0001-HACK-meson-Disable-broken-tests.patch?ref_type=tags&inline=false
+	source = 0002-Allow-disabling-gstreamer.patch
+	source = 0003-HACK-meson-Disable-broken-tests-lib32.patch
+	b2sums = 515aff0af4cc758c52bcbf4604e1db7b15888b7e339c657ade0211384b579b03d9bfb6283287afe588ff5b571f5bdd9ee739623d4c79b30257607740b1e4aa44
+	b2sums = e72bc27b05782637affe803ae36648bded04587c945dfc129ae8d6d11bb8e402dc87266ad6ef57776ca6df0010871e01c6033811a7958468a536629fc813d2dc
+	b2sums = f8c9252c286339c92ae857b3d1f20448759cc8cf07bb7ac55a2aaa4207858cff5b26bea867f1ffd166f2f45f4faf9a3e1ec29a6db344017c15d3c3dd34adba8e
+	b2sums = 5fbe1068a3ea83be1e252cf946fb3ad7f66d56dfc4bdff04d543155801624b7d9e9cd54113a5403d1ba0f1812dc663094a105ddc86c43fcee9d269c58e0b307f
 
 pkgname = lib32-gst-plugins-bad-libs
 	pkgdesc = Multimedia graph framework (32-bit) - bad
-	depends = lib32-gst-plugins-base-libs>=1.26.10
+	depends = lib32-gst-plugins-base-libs>=1.28.9
+	depends = lib32-gstreamer>=1.28.9
+	depends = lib32-gcc-libs
+	depends = lib32-glib2
+	depends = lib32-glibc
 	depends = lib32-libdrm
+	depends = lib32-libglvnd
 	depends = lib32-libgudev
 	depends = lib32-libusb
-	depends = lib32-orc
+	depends = lib32-libva
 	depends = lib32-libx11
+	depends = lib32-libxcb
+	depends = lib32-libxkbcommon
 	depends = lib32-libxkbcommon-x11
+	depends = lib32-mesa
+	depends = lib32-orc
+	depends = lib32-vmaf
+	depends = lib32-vulkan-icd-loader
+	depends = lib32-wayland
+	depends = lib32-zlib
 	replaces = lib32-gst-plugins-bad-libs-latest
 
 pkgname = lib32-gst-plugins-bad
 	pkgdesc = Multimedia graph framework (32-bit) - bad plugins
-	depends = lib32-gst-plugins-bad-libs>=1.26.10
+	depends = lib32-gst-plugins-bad-libs=1.28.9-1
+	depends = lib32-gst-plugins-base-libs>=1.28.9
+	depends = lib32-gstreamer>=1.28.9
 	depends = lib32-aom
 	depends = lib32-bzip2
+	depends = lib32-cairo
 	depends = lib32-curl
 	depends = lib32-faac
 	depends = lib32-faad2
 	depends = lib32-fluidsynth
+	depends = lib32-gcc-libs
+	depends = lib32-glib2
+	depends = lib32-glibc
+	depends = lib32-gsm
+	depends = lib32-gtk3
+	depends = lib32-json-glib
 	depends = lib32-lcms2
 	depends = lib32-libass
 	depends = lib32-libavtp
 	depends = lib32-libbs2b
 	depends = lib32-libdc1394
 	depends = lib32-libdca
-	depends = lib32-libde265
 	depends = lib32-libdvdnav
 	depends = lib32-libdvdread
 	depends = lib32-libfdk-aac
 	depends = lib32-liblrdf
 	depends = lib32-libmodplug
 	depends = lib32-libmpcdec
+	depends = lib32-libopenmpt
 	depends = lib32-librsvg
 	depends = lib32-libsndfile
-	depends = lib32-libsrtp
+	depends = lib32-libva
 	depends = lib32-libwebp
-	depends = lib32-libxcb
 	depends = lib32-libxml2
-	depends = lib32-lilv
-	depends = lib32-neon
 	depends = lib32-nettle
 	depends = lib32-openal
+	depends = lib32-openh264
+	depends = lib32-openjpeg2
 	depends = lib32-openssl
 	depends = lib32-opus
 	depends = lib32-pango
 	depends = lib32-rtmpdump
-	depends = lib32-sbc
 	depends = lib32-soundtouch
 	depends = lib32-srt
-	depends = lib32-vulkan-icd-loader
+	depends = lib32-svt-av1
 	depends = lib32-wayland
-	depends = lib32-wildmidi
 	depends = lib32-x265
-	depends = lib32-zvbi
-	depends = libltc
-	depends = lib32-libgme
 	replaces = lib32-gst-plugins-bad-latest
+
+pkgname = lib32-gst-plugins-ugly
+	pkgdesc = Multimedia graph framework (32-bit) - ugly plugins
+	depends = lib32-gst-plugins-base-libs>=1.28.9
+	depends = lib32-gstreamer>=1.28.9
+	depends = lib32-a52dec
+	depends = lib32-glib2
+	depends = lib32-glibc
+	depends = lib32-libdvdread
+	depends = lib32-libmpeg2
+	depends = lib32-x264
+	replaces = lib32-gst-plugins-ugly-latest
+
+pkgname = lib32-gst-libav
+	pkgdesc = Multimedia graph framework (32-bit) - libav plugin
+	depends = lib32-gst-plugins-base-libs>=1.28.9
+	depends = lib32-gstreamer>=1.28.9
+	depends = lib32-ffmpeg
+	depends = lib32-glib2
+	depends = lib32-glibc
+	provides = lib32-gst-ffmpeg=1.28.9-1
+	replaces = lib32-gst-libav-latest
