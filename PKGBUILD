@@ -4,25 +4,23 @@
 # Contributor: piernov <piernov nospamat piernov nospamdot org>
 
 pkgname=flexbv6-free-bin
-pkgver=6.0407
+pkgver=6.0423
 pkgrel=1
 pkgdesc="Free version of the FlexBV6 boardview software"
 arch=("x86_64")
 url="https://pldaniels.com/flexbv/"
 license=("custom")
-depends=('glibc' 'zlib' 'fontconfig' 'freetype2' 'libc++' 'libgcc')
-makedepends=('patchelf')
+depends=('glibc' 'zlib')
 conflicts=("flexbv5-bin" "flexbv6-bin" "flexbv5-free-bin")
 
 source=("flexbv-free-${pkgver}-linux-x86_64.tar.gz::https://pldaniels.com/flexbv6/releases/flexbv-free-${pkgver}-linux-x86_64.tar.gz")
 
-sha512sums=('169d847b5a04842cb3830a0896b9c126fb091e7bbd44f2ad9564def556442e0271d0b85e060cbc5d41ec4fb777a9ce3b8bd261713115cc4152a61b9724f6bf48')
-b2sums=('c120f6b8776359a223f416659b82155f4496c04bd62c7b210819760595181d456b3a0bbd74fdeceecc28c6f2b12c5a10148d50fbe5deca048a3d32954d8b184d')
+sha512sums=('3d450c9818633671b62a8ac6f8a1cc0bafe42163d327fb5185e5fe7cffd477ca8d32d46b305d78f556aa6f8996dcb9feba262e292770ce7280492a7395f2f892')
+b2sums=('d907bf6926905df9f872dd91b1a79b768c094b6dcec1c145ede58c625a93b3088d4f1c49ef2837444d12995efa06a8fdb78e5e1f30095702c19becdfbe03380b')
 
 package() {
 	cd "flexbv-free-${pkgver}-linux-x86_64"
 	install -Dm755 "flexbv" "${pkgdir}/usr/bin/flexbv"
-	patchelf --replace-needed "libunwind.so.1" "libgcc_s.so.1" "$pkgdir/usr/bin/flexbv"
 	install -Dm644 "LICENCE.txt" "${pkgdir}/usr/share/licenses/flexbv/LICENCE.txt"
 
 	cd "share"
