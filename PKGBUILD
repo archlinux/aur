@@ -2,7 +2,7 @@
 
 pkgname=python-k3httpmultipart
 _name=${pkgname#python-}
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="HTTP multipart form data encoder"
 provides=(${pkgname})
@@ -28,7 +28,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('11fcd0d1a7d846f65156175e273fcac19116d9961131656ac65896d5ef437e77')
+sha256sums=('7066841696e2027d2e4f455f8ff8e0ad3c5b8d1562478e7e0fb03536976d8368')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
