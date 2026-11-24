@@ -1,0 +1,16 @@
+pkgbase = flowrs-bin
+	pkgdesc = TUI for Apache Airflow
+	pkgver = 0.16.7
+	pkgrel = 1
+	url = https://github.com/jvanbuel/flowrs
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = flowrs
+	conflicts = flowrs
+	options = !debug
+	source_x86_64 = flowrs-bin-0.16.7-x86_64.tar.xz::https://github.com/jvanbuel/flowrs/releases/download/flowrs-tui-v0.16.7/flowrs-tui-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = bf0ca89432685022fb2872d426dcceb4c615a3fb93e8b89dec246a94ac66bbb9
+
+pkgname = flowrs-bin
