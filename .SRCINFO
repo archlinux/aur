@@ -1,0 +1,22 @@
+pkgbase = passel-bin
+	pkgdesc = A pass-compatible password manager for GNOME (prebuilt binary)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Pierrotws/passel
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk4
+	depends = libadwaita
+	depends = gpgme
+	depends = libgit2
+	depends = libssh2
+	depends = gnupg
+	provides = passel=0.2.0
+	conflicts = passel
+	conflicts = gnome-vault
+	conflicts = gnome-vault-bin
+	replaces = gnome-vault-bin
+	source = passel-bin-0.2.0.tar.gz::https://github.com/Pierrotws/passel/releases/download/v0.2.0/passel-0.2.0-x86_64.tar.gz
+	sha256sums = 7e50a0622e434989a082e349e56a02dac392f3f22f98fdde7b788933c600cf59
+
+pkgname = passel-bin
