@@ -1,0 +1,20 @@
+pkgbase = hntui-bin
+	pkgdesc = Hacker News reader for the terminal
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/ahmd-sh/hntui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = hntui
+	conflicts = hntui
+	options = !debug
+	source = hntui-bin-0.5.1-LICENSE::https://raw.githubusercontent.com/ahmd-sh/hntui/v0.5.1/LICENSE
+	sha256sums = 567f2da3223d7b13f328b8b33b1106f477750ba9e6259ed80d35e376d03e9bc9
+	source_x86_64 = hntui-bin-0.5.1-x86_64.tar.gz::https://github.com/ahmd-sh/hntui/releases/download/v0.5.1/hntui-linux-x64.tar.gz
+	sha256sums_x86_64 = 3d996e08e3e34b7de437e518828c4b0aae9222bc70104c82e83535a9a4812b1e
+	source_aarch64 = hntui-bin-0.5.1-aarch64.tar.gz::https://github.com/ahmd-sh/hntui/releases/download/v0.5.1/hntui-linux-arm64.tar.gz
+	sha256sums_aarch64 = e35f3a8a949371bfd593ebdd97443503b882de3c7284a7dcec031c55bba52c6d
+
+pkgname = hntui-bin
