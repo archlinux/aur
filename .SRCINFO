@@ -1,0 +1,30 @@
+pkgbase = python-k3cgrouparch
+	pkgdesc = Set up cgroup directory tree and add pid to cgroup
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/pykit3/k3cgrouparch
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	checkdepends = python-k3fs
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gevent-websocket
+	depends = python-k3fs
+	depends = python-k3thread
+	depends = python-k3utfjson
+	depends = python-k3zkutil
+	depends = python-kazoo
+	depends = python-psutil
+	depends = python-redis
+	provides = python-k3cgrouparch
+	conflicts = python-k3cgrouparch
+	source = k3cgrouparch::git+https://github.com/pykit3/k3cgrouparch.git#tag=v0.1.6
+	sha256sums = 23bee78c3f8fe1c366d24ec9b755b0c09dddb9bca57278f53ed0e5c1522c7090
+
+pkgname = python-k3cgrouparch
