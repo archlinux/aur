@@ -1,0 +1,19 @@
+pkgbase = neosh-bin
+	pkgdesc = TUI agent orchestrator
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/neoswarm/neosh
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = neosh
+	conflicts = neosh
+	options = !debug
+	source_x86_64 = neosh-bin-0.7.0-x86_64.tar.gz::https://github.com/neoswarm/neosh/releases/download/v0.7.0/neosh-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9c95cb65d397e57c60c3b69a3985142f9ee69162cf55073694436f001fe06052
+	source_aarch64 = neosh-bin-0.7.0-aarch64.tar.gz::https://github.com/neoswarm/neosh/releases/download/v0.7.0/neosh-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d96c53a0936ecfac0a02d864573748a5225aa96dbea77dcf8a86c7f0b38a46bb
+
+pkgname = neosh-bin
