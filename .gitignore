@@ -1,0 +1,6 @@
+*.pkg.tar.xz
+*.pkg.tar.zst
+kei-cli-*.tar.gz
+pkg/
+src/
+*.part

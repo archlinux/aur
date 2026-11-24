@@ -1,0 +1,9 @@
+post_install() {
+    echo "kei and kei-proxy are managed by pacman."
+    echo "'kei upgrade' and upstream's install.sh replace the binaries in place; upgrade this package instead."
+}
+
+post_upgrade() {
+    echo "If the Kei runtime user service is installed, restart it to pick up the new binaries:"
+    echo "  systemctl --user restart kei"
+}

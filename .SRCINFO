@@ -1,0 +1,22 @@
+pkgbase = kei-cli-bin
+	pkgdesc = Haikei Labs CLI for signing in to Kei, running a runtime and governing coding agents, with kei-proxy (binary release)
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://haikeilabs.com
+	install = kei-cli-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kei-cli=0.5.2
+	provides = kei-proxy
+	conflicts = kei-cli
+	conflicts = kei-proxy
+	conflicts = kei
+	options = !strip
+	options = !debug
+	source_x86_64 = kei-cli-0.5.2-x86_64.tar.gz::https://kei-cli-releases.s3.us-east-1.amazonaws.com/kei-cli/0.5.2/kei-cli_0.5.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1214698aa1bf0342ed44b3c76badc05c8bb68ec679fe1937d7b26945a5e4ba2a
+	source_aarch64 = kei-cli-0.5.2-aarch64.tar.gz::https://kei-cli-releases.s3.us-east-1.amazonaws.com/kei-cli/0.5.2/kei-cli_0.5.2_Linux_arm64.tar.gz
+	sha256sums_aarch64 = bc8d431958ed99ebafaa08218a4fd0354812fa2c412240023d1f5421187aee25
+
+pkgname = kei-cli-bin
