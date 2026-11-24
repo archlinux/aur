@@ -1,0 +1,21 @@
+pkgbase = mddog-bin
+	pkgdesc = Real Markdown, right in your terminal
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/qu8n/mddog
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mdd
+	conflicts = mddog
+	options = !strip
+	source = README-1.4.0.md::https://raw.githubusercontent.com/qu8n/mddog/v1.4.0/README.md
+	source = LICENSE-1.4.0::https://raw.githubusercontent.com/qu8n/mddog/v1.4.0/LICENSE
+	sha256sums = b15ddd96556c96772b6689cac4c2c53f6424420f2d5264a61e087031a893ed99
+	sha256sums = 30c5c6791b321d00ab79f1acc16cf45e970f19ca47df93e90ac83dd09b5052bd
+	source_x86_64 = mdd-x86_64-1.4.0.tgz::https://github.com/qu8n/mddog/releases/download/v1.4.0/mdd-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 82b1e97a31e3275872f0fc1bca83f940aa6ef1392b4c6cc4defcb5882e9dfb75
+	source_aarch64 = mdd-aarch64-1.4.0.tgz::https://github.com/qu8n/mddog/releases/download/v1.4.0/mdd-linux-arm64.tar.gz
+	sha256sums_aarch64 = a4e6cfa31f22d5883b0a387958d18bc0141b072ec4ae86b309432cbb5f023c78
+
+pkgname = mddog-bin

@@ -1,0 +1,5 @@
+[mddog-bin]
+source = "github"
+github = "qu8n/mddog"
+use_latest_release = true
+prefix = "v"
