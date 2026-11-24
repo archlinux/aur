@@ -3,7 +3,7 @@
 : "${_aur_llamacpp_build_universal:=${aur_llamacpp_build_universal:-false}}"
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b11433.r0.50569eb87d
+pkgver=b12670.r9.af5c58347f
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=(x86_64 aarch64)
@@ -113,7 +113,7 @@ build() {
     -DGGML_RPC_RDMA=OFF
     -DGGML_CUDA=ON
     -DGGML_CUDA_NCCL=ON
-    -DGGML_CUDA_FA_ALL_QUANTS=ON
+    -DGGML_CUDA_FA_QUANTS=all
     -DGGML_CUDA_COMPRESSION_MODE=speed
     -DGGML_CUDA_GRAPHS=ON
     -DGGML_LLAMAFILE=ON
