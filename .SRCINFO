@@ -1,0 +1,17 @@
+pkgbase = keen-code-bin
+	pkgdesc = Context-aware terminal coding agent
+	pkgver = 0.72.0
+	pkgrel = 1
+	url = https://github.com/mochow13/keen-code
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = keen-code
+	conflicts = keen-code
+	options = !debug
+	source_x86_64 = keen-code-bin-0.72.0-x86_64.tar.gz::https://github.com/mochow13/keen-code/releases/download/v0.72.0/keen_0.72.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8864d3bb01e1d6fb12233f8ad839c73ac6f0efaadd8ba54a85358000af1ee972
+	source_aarch64 = keen-code-bin-0.72.0-aarch64.tar.gz::https://github.com/mochow13/keen-code/releases/download/v0.72.0/keen_0.72.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = debc6df573e999add3e54b98cca19b757ad0044a64b79d187b9fdafdad2a79ee
+
+pkgname = keen-code-bin
