@@ -1,6 +1,6 @@
 pkgbase = delta-backup
 	pkgdesc = Time travel for your files in GNOME, with BorgBackup
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://delta.sincorchetes.tech
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = delta-backup
 	optdepends = yelp: the help (F1)
 	optdepends = gst-plugins-base: the preview of a video or audio
 	optdepends = gst-plugins-good: the preview of a video or audio
-	source = delta-0.2.0.tar.gz::https://github.com/sincorchetes/delta/archive/v0.2.0.tar.gz
-	sha256sums = 4883aa59bedbf3190dfc1a0cdc0b2f0e240fc77c3465a6db943425d8dc93f780
+	source = delta-0.3.0.tar.gz::https://github.com/sincorchetes/delta/archive/v0.3.0.tar.gz
+	sha256sums = c346f1e629c00edfe049409917803a75533b9a2c2ef7dc3e16d474dfc41b7776
 
 pkgname = delta-backup
