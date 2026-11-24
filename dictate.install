@@ -1,0 +1,18 @@
+post_install() {
+  cat <<'EOF'
+==> dictate: to finish the setup, as your user:
+    systemctl --user enable --now dictate.service dictate-ui.service
+==> add to ~/.config/niri/config.kdl (shortcuts and window rules, updated with the package):
+    include "/usr/share/dictate/dictate-binds.kdl"
+==> download the speech models in the settings window (dictate-settings, page "Model").
+==> your user needs read access to /dev/input/event* (group input) to detect the release of the speak key.
+==> colors from Noctalia: see /usr/share/doc/dictate/README.md, section "Colors".
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> dictate: restart the services to use the new version:
+    systemctl --user restart dictate.service dictate-ui.service
+EOF
+}
