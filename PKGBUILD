@@ -1,7 +1,7 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 
 pkgname=onon
-pkgver=0.14.16
+pkgver=0.14.20
 pkgrel=2
 pkgdesc="A quiet reader for the keyboard, built on MuPDF and configured with Lua"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('sdl3' 'libmupdf' 'gtk3' 'glslang')
 makedepends=('go' 'pkgconf')
 conflicts=('onon-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('9b2263d4602526ba7d442b8a3758b84881109d800ae2c44381c1ed9dd5f66c89')
+sha256sums=('c999264ba5f4834466900fcefccead63d0cb54ccc96b7963d590251496fd8728')
 
 prepare() {
 	cd "$pkgname-$pkgver"
