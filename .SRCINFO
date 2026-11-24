@@ -1,0 +1,16 @@
+pkgbase = pitago-bin
+	pkgdesc = TUI for the pi coding agent
+	pkgver = 0.12.5
+	pkgrel = 1
+	url = https://github.com/cavaldos/pitago
+	arch = x86_64
+	license = MIT
+	provides = pitago
+	conflicts = pitago
+	options = !debug
+	source = pitago-bin-0.12.5-LICENSE::https://raw.githubusercontent.com/cavaldos/pitago/v0.12.5/LICENSE
+	sha256sums = aabedb047225837f53febe31a6f538aa6dd5f801c17dd7f966411e8c3a40b58d
+	source_x86_64 = pitago-bin-0.12.5-x86_64::https://github.com/cavaldos/pitago/releases/download/v0.12.5/pitago-v0.12.5-linux-amd64
+	sha256sums_x86_64 = 1e5aeb5e8df958c2a5b6b6e6e8f96a710b8f9aa7ca33fe46bf9d2980ece98cb9
+
+pkgname = pitago-bin
