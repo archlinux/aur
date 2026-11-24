@@ -2,7 +2,7 @@
 pkgname=wp-desktop-bin
 _appname=WordPress.com
 _pkgname=wpcom
-pkgver=8.2.5
+pkgver=8.2.6
 _electronversion=42
 pkgrel=1
 pkgdesc="WordPress.com for Desktop."
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('233b8d1e23b0523f5b1b239d027a6f0f54679460c2c6054648adc32ed24f3c7e'
+sha256sums=('02c87df6bb34d7d72f1a69368c5c58cf81a8f2ee26c486037445f84c566906b6'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {

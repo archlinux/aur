@@ -1,20 +1,20 @@
 pkgbase = wp-desktop-bin
 	pkgdesc = WordPress.com for Desktop.
-	pkgver = 8.2.5
+	pkgver = 8.2.6
 	pkgrel = 1
 	url = https://apps.wordpress.com/desktop/
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = electron42
 	depends = nodejs
-	provides = wp-desktop=8.2.5
+	provides = wp-desktop=8.2.6
 	conflicts = wp-desktop
 	options = !strip
 	options = !emptydirs
-	source = wp-desktop-8.2.5.deb::https://github.com/Automattic/wp-desktop/releases/download/v8.2.5/wordpress.com-linux-deb-8.2.5.deb
+	source = wp-desktop-8.2.6.deb::https://github.com/Automattic/wp-desktop/releases/download/v8.2.6/wordpress.com-linux-deb-8.2.6.deb
 	source = wp-desktop.js
 	source = wp-desktop.sh
-	sha256sums = 233b8d1e23b0523f5b1b239d027a6f0f54679460c2c6054648adc32ed24f3c7e
+	sha256sums = 02c87df6bb34d7d72f1a69368c5c58cf81a8f2ee26c486037445f84c566906b6
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
