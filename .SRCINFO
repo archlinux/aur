@@ -1,0 +1,36 @@
+pkgbase = teleagent-bin
+	pkgdesc = Star super intelligence TeleAgent, an agent product installed on a personal computer with one click, a capable and reliable AI office partner.星辰超级智能体TeleAgent，一键安装在个人电脑上的Agent产品，能干可靠的AI办公搭子。
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://ta.teleai.com.cn
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = electron43
+	depends = nodejs
+	depends = python
+	depends = python-cryptography
+	depends = python-keyring
+	depends = python-reportlab
+	depends = python-lxml
+	depends = python-requests
+	depends = python-httpx
+	depends = python-matplotlib
+	depends = python-pillow
+	depends = python-numpy
+	depends = python-six
+	depends = python-defusedxml
+	depends = python-yaml
+	depends = python-beautifulsoup4
+	depends = libxt
+	depends = ripgrep
+	provides = teleagent=3.1.1
+	conflicts = teleagent
+	source = LICENSE.html::https://www.teleai.com.cn/doc/xewi3C5y15p87wcRIKfH/GJet9K8NKJrIKnz1hYuK
+	sha256sums = 2308bad99fb7284f11da18d39a9b6183706833022e85df246a67e8d6b7c100ee
+	source_aarch64 = teleagent-3.1.1-aarch64.deb::https://agent.teleai.com.cn/superCowork/sapi/api/download/redirect/linux-arm64
+	sha256sums_aarch64 = 80b13bf2299e346ed460f773c52252bcdcee46961b6cec15c15bde9b19932895
+	source_x86_64 = teleagent-3.1.1-x86_64.deb::https://agent.teleai.com.cn/superCowork/sapi/api/download/redirect/linux-x64
+	sha256sums_x86_64 = ee43cd0b803c46b0e749025791452097354612e28c1cd314798b8c99b193498c
+
+pkgname = teleagent-bin
