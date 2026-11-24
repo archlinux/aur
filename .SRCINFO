@@ -1,0 +1,14 @@
+pkgbase = oddshub
+	pkgdesc = Terminal UI for analyzing sports betting odds
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/dos-2/oddshub
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = oddshub-0.0.4.tar.gz::https://github.com/dos-2/oddshub/archive/v0.0.4.tar.gz
+	sha256sums = b23348a40b3744373ca0bef47d21d63c41913b49c6a062630990eeb523709c3c
+
+pkgname = oddshub
