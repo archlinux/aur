@@ -1,6 +1,6 @@
 # Maintainer: totti786
 pkgname=mpris-bridge
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Publishes Firefox media tabs as MPRIS players (native-messaging helper for the MPRIS Bridge extension)"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 options=('!debug')
 optdepends=('firefox: the browser the extension runs in')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7fe71726ac98aad71db08d58af2ad4a6bdb60e2523aae10a92a154178ede52a5')
+sha256sums=('0793073e6f94d7e297d2f64dfc18c8c09f6889a7859344036cc0c812d591d8a7')
 
 build() {
   cd "$pkgname-$pkgver/host"
