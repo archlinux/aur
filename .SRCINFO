@@ -1,0 +1,18 @@
+pkgbase = 1667-bin
+	pkgdesc = Full-screen terminal environment for writing fiction with language models
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://github.com/1667-ai/1667
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = 1667
+	conflicts = 1667
+	options = !debug
+	source_x86_64 = 1667-bin-0.11.2-x86_64.tgz::https://github.com/1667-ai/1667/releases/download/v0.11.2/1667-ai-linux-x64-0.11.2.tgz
+	sha256sums_x86_64 = f09b5d6338dda841236e4d154b93228c3dba98b62285b9ead4e3b0dc14c1336f
+	source_aarch64 = 1667-bin-0.11.2-aarch64.tgz::https://github.com/1667-ai/1667/releases/download/v0.11.2/1667-ai-linux-arm64-0.11.2.tgz
+	sha256sums_aarch64 = 2aac2298a729c5cdad682e481bedc81100cfaa935885714a37e24fa7ca37cf53
+
+pkgname = 1667-bin
