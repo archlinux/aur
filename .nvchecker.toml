@@ -1,0 +1,3 @@
+[python-icalevents]
+source = "pypi"
+pypi = "icalevents"
