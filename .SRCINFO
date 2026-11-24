@@ -1,6 +1,6 @@
 pkgbase = maak
 	pkgdesc = Command runner à la Make using Guile Scheme
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/jjba23/maak
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = maak
 	depends = coreutils
 	depends = guile
 	depends = util-linux
-	source = maak-1.3.0.tar.gz::https://github.com/jjba23/maak/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = c0057ad17b6462f02ef205911f6fe72a3cc0f3eaf7893ec9fada06b3de787857
+	source = maak-1.4.0.tar.gz::https://github.com/jjba23/maak/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = b1ec25dff3fb65d4e31b6879764e72d607a0504069caeaec692dcfc62a6d1dab
 
 pkgname = maak
