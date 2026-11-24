@@ -11,8 +11,8 @@ source_x86_64=(
 	"${pkgbase}-en-x86_64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat18-premium-lite-en-x86_64.AppImage"
 	"${pkgbase}-cs-x86_64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat18-premium-lite-cs-x86_64.AppImage"
 )
-sha256sums_x86_64=('37116265c9ce389e1d804cbf9a35deb4c76221ebf134fcf015aa63f141e9f399'
-                   '97519ae417f4431756c28d46611fc191321874783b536395758c57b31062060d')
+sha256sums_x86_64=('5562ab8297c896ab97d0e392c8ce1599c9f2840b4bf23ea0d5ef4be7949cf62c'
+                   'bce833aec7b6b58b4dc381fd4e691d96946b8798d856f5288a3276655e4af8ec')
 
 _package() {
 	_lang=$1

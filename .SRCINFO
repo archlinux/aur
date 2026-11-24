@@ -7,8 +7,8 @@ pkgbase = navicat-premium-lite
 	license = proprietary
 	source_x86_64 = navicat-premium-lite-en-x86_64-18.0.3.AppImage::https://dn.navicat.com/download/navicat18-premium-lite-en-x86_64.AppImage
 	source_x86_64 = navicat-premium-lite-cs-x86_64-18.0.3.AppImage::https://dn.navicat.com/download/navicat18-premium-lite-cs-x86_64.AppImage
-	sha256sums_x86_64 = 37116265c9ce389e1d804cbf9a35deb4c76221ebf134fcf015aa63f141e9f399
-	sha256sums_x86_64 = 97519ae417f4431756c28d46611fc191321874783b536395758c57b31062060d
+	sha256sums_x86_64 = 5562ab8297c896ab97d0e392c8ce1599c9f2840b4bf23ea0d5ef4be7949cf62c
+	sha256sums_x86_64 = bce833aec7b6b58b4dc381fd4e691d96946b8798d856f5288a3276655e4af8ec
 
 pkgname = navicat-premium-lite-en
 	pkgdesc = Navicat Premium Lite is a compact version of Navicat
