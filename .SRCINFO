@@ -1,0 +1,17 @@
+pkgbase = pgterm-bin
+	pkgdesc = Modern Postgres terminal
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/pgrundev/pgterm
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = pgterm
+	conflicts = pgterm
+	options = !debug
+	source_x86_64 = pgterm-bin-0.4.0-x86_64.tar.gz::https://github.com/pgrundev/pgterm/releases/download/v0.4.0/pgterm_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d96a72173b3c382e378438bfb7c0b87c2d3ea63d8ffc9fc0eb89f4a3ec5b62ed
+	source_aarch64 = pgterm-bin-0.4.0-aarch64.tar.gz::https://github.com/pgrundev/pgterm/releases/download/v0.4.0/pgterm_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 678714a68b1b7bd80bfcb6c0fc3b517bb1d1170f128c219adf9e0ceb9cca9642
+
+pkgname = pgterm-bin
