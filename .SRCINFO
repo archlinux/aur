@@ -1,6 +1,6 @@
 pkgbase = omacal-bin
 	pkgdesc = Native desktop calendar for Google Calendar, iCloud and any CalDAV server
-	pkgver = 6.5.1
+	pkgver = 6.9.0
 	pkgrel = 1
 	url = https://omacal.app/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = omacal-bin
 	depends = libayatana-appindicator
 	provides = omacal
 	conflicts = omacal
-	source = omacal-bin-6.5.1.deb::https://github.com/x3me/omacal/releases/download/v6.5.1/omacal_6.5.1_amd64.deb
-	sha256sums = bc1e65084f26245d26bbbf6359dd806f984b25d96c6b2185f2c9092fe88fb370
+	source = omacal-bin-6.9.0.deb::https://github.com/x3me/omacal/releases/download/v6.9.0/omacal_6.9.0_amd64.deb
+	sha256sums = c49f0330e6cc5ca2da5d6d625b11205953f075304dc603e363a9f664bd4f0ae5
 
 pkgname = omacal-bin
