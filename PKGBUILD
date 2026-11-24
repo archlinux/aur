@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-zxing-cpp
 _name=${pkgname#python-}
-pkgver=3.1.1
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="Python bindings for zxing-cpp"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zxing-cpp/zxing-cpp"
@@ -20,7 +20,7 @@ makedepends=(
   'python-wheel'
 )
 source=("https://github.com/zxing-cpp/zxing-cpp/releases/download/v$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('c3c02c29c0b519de7bd4e25b376e606e87f0761befd1282815642a2246613d14')
+sha256sums=('eacc2495f452be751d9dd453f4d6cccd0e9a40131e002bcf54d2580ce5c19ad8')
 
 build() {
   cd "$_name-$pkgver/wrappers/python"
