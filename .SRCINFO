@@ -1,0 +1,19 @@
+pkgbase = imgcat-go-bin
+	pkgdesc = Display images and GIFs in the terminal
+	pkgver = 1.0.23
+	pkgrel = 1
+	url = https://github.com/danielgatis/imgcat
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = imgcat-go
+	conflicts = imgcat-go
+	conflicts = imgcat
+	conflicts = imgcat-bin
+	options = !debug
+	source_x86_64 = imgcat-go-bin-1.0.23-x86_64.tar.gz::https://github.com/danielgatis/imgcat/releases/download/v1.0.23/imgcat_1.0.23_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5617bb4b99b1bf8033c797dca49e7fc2378b35f4f2dda3dc3edaab96bc2861f0
+	source_aarch64 = imgcat-go-bin-1.0.23-aarch64.tar.gz::https://github.com/danielgatis/imgcat/releases/download/v1.0.23/imgcat_1.0.23_linux_arm64.tar.gz
+	sha256sums_aarch64 = 25069f5b0f673aaa1e55fc0872229993e0618b9801689345c99616e6def1c4f4
+
+pkgname = imgcat-go-bin
