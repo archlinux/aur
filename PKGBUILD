@@ -7,7 +7,7 @@ _execname=pw
 pkgname=${_appname}-bin
 pkgdesc="Local process monitor to get peak CPU/RAM over time"
 
-pkgver=0.4.0
+pkgver=0.6.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ conflicts=("${pkgname%-bin}")
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('d686b05000776207c128e38277799eb0bc33b6b4dcd7ad59396554ec61a14289')
+sha256sums_x86_64=('c3ca1eca685de437010e89fde8edf45f471e2dabbf45afb3a01983cf46a85331')
 
 
 case ${CARCH} in

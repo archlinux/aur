@@ -1,6 +1,6 @@
 pkgbase = process-watch-bin
 	pkgdesc = Local process monitor to get peak CPU/RAM over time
-	pkgver = 0.4.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/danpozmanter/process-watch
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = process-watch-bin
 	provides = pw
 	conflicts = process-watch
 	options = !strip
-	source_x86_64 = process-watch-x86_64-0.4.0.tgz::https://github.com/danpozmanter/process-watch/releases/download/v0.4.0/process-watch-0.4.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = d686b05000776207c128e38277799eb0bc33b6b4dcd7ad59396554ec61a14289
+	source_x86_64 = process-watch-x86_64-0.6.0.tgz::https://github.com/danpozmanter/process-watch/releases/download/v0.6.0/process-watch-0.6.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c3ca1eca685de437010e89fde8edf45f471e2dabbf45afb3a01983cf46a85331
 
 pkgname = process-watch-bin
