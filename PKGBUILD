@@ -1,6 +1,6 @@
 # Maintainer: Henrik Bernhardt <57109108+Henriklmao@users.noreply.github.com>
 pkgname=hegn-git
-pkgver=0.1.0.r171.g5584956
+pkgver=0.1.0.r172.g1f1b5a9
 pkgrel=1
 pkgdesc='Cloud Hypervisor sandbox manager and TUI for coding agents (git version)'
 arch=('x86_64' 'aarch64')
