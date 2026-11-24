@@ -1,0 +1,23 @@
+pkgbase = hike
+	pkgdesc = Markdown browser for the terminal
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/davep/hike
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-uv-build
+	depends = python
+	depends = python-httpx
+	depends = python-pyperclip
+	depends = python-textual
+	depends = python-textual-enhanced
+	depends = python-textual-fspicker
+	depends = python-typing_extensions
+	depends = python-xdg-base-dirs
+	source = https://files.pythonhosted.org/packages/source/h/hike/hike-1.4.0.tar.gz
+	sha256sums = e9acdadac5c439aa788a2fc4aae2f0ddb61047c7f2d3654bdd2d8040a92c33c2
+
+pkgname = hike
