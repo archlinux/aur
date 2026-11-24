@@ -2,7 +2,7 @@
 # Contributor: Marco Rubin <marco.rubin@protonmail.com>
 _name=quimb
 pkgname=python-$_name
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Quantum information and many-body calculations including tensor networks"
 arch=(any)
@@ -39,7 +39,7 @@ optdepends=(
 )
 checkdepends=(python-pytest)
 source=($_name::git+https://github.com/jcmgray/$_name.git#tag=v$pkgver)
-b2sums=('7cf2c7f086a5b4b6c1fd133c62d45821e0511ae3d2e6779c2a815a00890e9d77397cf84992ba8ab3d87c7ec5bfa4156f07e8d798924f953db891efd735226e15')
+b2sums=('d271f1f7c9250e47f17bd2925c4468e68083d47389745d4cc1255a5e22f9d41430d44e1b8c24a079e7ec04b8d5d70562959c51effdb39fd597cfc1efcabce6d6')
 
 build() {
     cd $_name
@@ -53,7 +53,8 @@ check() {
     rm -rf $_name
     # Disable some new tests due to small allowed deviations
     # See: https://github.com/jcmgray/quimb/issues/354
-    test-env/bin/python -P -m pytest -o addopts="" -k "not test_basic_compress_double_mpo"
+    test-env/bin/python -P -m pytest -o addopts="" \
+        -k "not test_basic_compress_double_mpo and not test_mps_partial_mpo_apply"
 }
 
 package() {

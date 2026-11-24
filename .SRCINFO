@@ -1,6 +1,6 @@
 pkgbase = python-quimb
 	pkgdesc = Quantum information and many-body calculations including tensor networks
-	pkgver = 1.15.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/jcmgray/quimb
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = python-quimb
 	optdepends = python-networkx: for computing distances between pairs of qubits
 	optdepends = pyton-plotly: for plotting
 	optdepends = python-pygraphviz: for plotting
-	source = quimb::git+https://github.com/jcmgray/quimb.git#tag=v1.15.0
-	b2sums = 7cf2c7f086a5b4b6c1fd133c62d45821e0511ae3d2e6779c2a815a00890e9d77397cf84992ba8ab3d87c7ec5bfa4156f07e8d798924f953db891efd735226e15
+	source = quimb::git+https://github.com/jcmgray/quimb.git#tag=v1.16.0
+	b2sums = d271f1f7c9250e47f17bd2925c4468e68083d47389745d4cc1255a5e22f9d41430d44e1b8c24a079e7ec04b8d5d70562959c51effdb39fd597cfc1efcabce6d6
 
 pkgname = python-quimb
