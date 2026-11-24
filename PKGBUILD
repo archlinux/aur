@@ -1,7 +1,7 @@
 # Maintainer: giosuel <me@giosuel.ch>
 pkgname=lituus-bin
 _pkgname=lituus
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Settings for Hyprland: network, Bluetooth, sound and displays (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ conflicts=("$_pkgname")
 options=('!debug') # the release binary is already stripped
 source_x86_64=("$url/releases/download/v$pkgver/Lituus-$pkgver-linux-x64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/Lituus-$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('ff275b1ba1b4a677871edefb53a54b53ef2b69ee9acce8b752075c55cea85bdf')
-sha256sums_aarch64=('3b4a11273eecc8ce65aadbd4f7c7eaeac9ac0c81ab8a7b8134cb9c70109f986d')
+sha256sums_x86_64=('59a8f59e685acb96d0c584ff9cad895535fb401a98f7a1275da04433c321a993')
+sha256sums_aarch64=('1a1c29186eeaf8437bff207df4fea60d64fb20d6009622814a8e760da8c88a3f')
 
 package() {
   case "$CARCH" in
