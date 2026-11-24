@@ -1,0 +1,7 @@
+.git
+.cache
+.codegraph
+.omo
+pkg
+src
+*.pkg.tar.*

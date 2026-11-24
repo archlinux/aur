@@ -41,6 +41,8 @@ usage() {
 环境变量:
   HTTPS_PROXY        下载走代理，例如 http://127.0.0.1:7890
   CACHE_DIR          源码缓存目录，默认 .cache（已缓存的文件不会重复下载）
+  REPO_DIR           仓库目录，默认脚本所在目录（容器里用来指定挂载的 AUR 仓库）
+  MAKEPKG_ARGS       追加给 makepkg 的参数，例如容器里可用 --nodeps 跳过依赖检查
 EOF
 }
 
@@ -73,7 +75,7 @@ while (($#)); do
 	shift
 done
 
-cd -- "$(dirname -- "$(readlink -f -- "$0")")"
+cd -- "${REPO_DIR:-$(dirname -- "$(readlink -f -- "$0")")}"
 CACHE_DIR=$(readlink -m -- "$CACHE_DIR")
 
 for cmd in curl sha256sum tar git makepkg awk sed; do
@@ -278,8 +280,10 @@ fi
 # ---------------------------------------------------------------- 构建验证
 
 if $do_build; then
-	log "构建验证: SRCDEST=${CACHE_DIR} makepkg -f"
-	SRCDEST="$CACHE_DIR" makepkg -f || die "构建失败，改动保留在本地，未提交"
+	makepkg_args=()
+	[[ -n ${MAKEPKG_ARGS:-} ]] && read -r -a makepkg_args <<<"$MAKEPKG_ARGS"
+	log "构建验证: SRCDEST=${CACHE_DIR} makepkg -f ${MAKEPKG_ARGS:-}"
+	SRCDEST="$CACHE_DIR" makepkg -f "${makepkg_args[@]}" || die "构建失败，改动保留在本地，未提交"
 	ok "构建通过"
 else
 	warn "已跳过构建验证（--no-build）"
