@@ -1,0 +1,22 @@
+pkgbase = tui-test-bin
+	pkgdesc = Control, record and test TUI apps in real terminals
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/microsoft/tui-test
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = tui-test
+	conflicts = tui-test
+	options = !debug
+	source = tui-test-bin-0.1.1-LICENSE::https://raw.githubusercontent.com/microsoft/tui-test/0.1.1/LICENSE
+	sha256sums = c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383
+	source_x86_64 = tui-test-bin-0.1.1-x86_64.tar.gz::https://github.com/microsoft/tui-test/releases/download/0.1.1/tui-test-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ae1f32afb34c713284b0637ea41d855124fe0ac298defb38a4018cd952c158ca
+	source_aarch64 = tui-test-bin-0.1.1-aarch64.tar.gz::https://github.com/microsoft/tui-test/releases/download/0.1.1/tui-test-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 99588dd2e296f9b2685d7fb71d68a3dde3b1fed8c0e8f1af4d215538e858bd09
+
+pkgname = tui-test-bin
