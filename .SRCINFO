@@ -1,0 +1,15 @@
+pkgbase = vercel-serve
+	pkgdesc = Static file serving and directory listing
+	pkgver = 14.2.8
+	pkgrel = 1
+	url = https://github.com/vercel/serve
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	conflicts = serve-bin
+	noextract = vercel-serve-14.2.8.tgz
+	source = vercel-serve-14.2.8.tgz::https://registry.npmjs.org/serve/-/serve-14.2.8.tgz
+	sha256sums = 0f2ae6020310e02a88a96d7a3593524c3cd36f90fbfa0887732a716041cc771d
+
+pkgname = vercel-serve
