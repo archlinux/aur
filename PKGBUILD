@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=jwt-cpp
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='A header only library for creating and validating JSON Web Tokens in C++'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(
 )
 options=(!debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Thalhammer/jwt-cpp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6e815d86c168eb521a27937d603747dec0ca3c39ffc12d6fa72e2cf78a5b02d2')
+sha256sums=('d24f49f05e18f283935f511af0f62f73a042d512123a1865a8ce929f56a52735')
 
 build() {
   cd "${pkgname}-${pkgver}"
