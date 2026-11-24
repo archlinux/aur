@@ -1,0 +1,27 @@
+pkgbase = homemesh
+	pkgdesc = Open the home folders of your other computers in any file manager; pair them with a code
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/MikolajQ/homemesh
+	install = homemesh.install
+	arch = any
+	license = MIT
+	makedepends = gettext
+	makedepends = make
+	depends = gtk4
+	depends = openssh
+	depends = polkit
+	depends = python
+	depends = python-gobject
+	optdepends = gvfs: open the computers in Nautilus, Nemo, Thunar and Caja
+	optdepends = kio-extras: open the computers in Dolphin
+	optdepends = avahi: name.local addresses on systems without systemd-resolved
+	optdepends = nss-mdns: name.local addresses together with avahi
+	optdepends = bubblewrap: share only chosen folders
+	optdepends = tailscale: reach the computers away from home (or another VPN)
+	options = !strip
+	options = !debug
+	source = homemesh-0.2.0.tar.gz::https://github.com/MikolajQ/homemesh/archive/v0.2.0.tar.gz
+	sha256sums = 879c0adc4b1c40fdfeaa71a937f2185bed7b6e7968709e63e51e971ab6dda850
+
+pkgname = homemesh

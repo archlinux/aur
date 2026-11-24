@@ -1,0 +1,11 @@
+post_install() {
+  echo ">>> HomeMesh: uruchom „HomeMesh” z menu aplikacji i kliknij „Włącz”."
+  echo ">>> W terminalu: homemesh enable, potem homemesh pair."
+}
+
+pre_remove() {
+  if [ -e /etc/ssh/sshd_config.d/10-homemesh.conf ]; then
+    echo ">>> HomeMesh: udostępnianie jest nadal włączone (sshd tylko z kluczami)."
+    echo ">>> Żeby wrócić do ustawień sprzed HomeMesh, przed usunięciem uruchom: homemesh disable"
+  fi
+}
