@@ -1,0 +1,9 @@
+# Ignore everything at the top level; allowlist what belongs in git
+/*
+!/.gitignore
+!/.SRCINFO
+!/.nvchecker.toml
+!/LICENSE
+!/LICENSES/
+!/PKGBUILD
+!/REUSE.toml

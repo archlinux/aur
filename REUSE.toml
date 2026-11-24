@@ -7,6 +7,7 @@ path = [
     "keys/**",
     ".SRCINFO",
     ".nvchecker.toml",
+    ".gitignore",
     "*.install",
     "*.sysusers",
     "*.tmpfiles",
