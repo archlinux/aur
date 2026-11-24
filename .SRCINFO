@@ -1,0 +1,16 @@
+pkgbase = gormt-bin
+	pkgdesc = Generate Go structs for GORM from a database schema, with a terminal UI
+	pkgver = 2.1.gorm
+	pkgrel = 1
+	url = https://github.com/xxjwxc/gormt
+	arch = x86_64
+	license = MIT
+	provides = gormt
+	conflicts = gormt
+	options = !debug
+	source = gormt-bin-2.1.gorm-LICENSE::https://raw.githubusercontent.com/xxjwxc/gormt/v2.1.gorm/LICENSE
+	sha256sums = 7c209b86e71eed2390cd806350ec2205b69c125204f60adde2b1c70ed80c8969
+	source_x86_64 = gormt-bin-2.1.gorm-x86_64.zip::https://github.com/xxjwxc/gormt/releases/download/v2.1.gorm/gormt_linux.zip
+	sha256sums_x86_64 = 96a6a2ff8f275ce1958aa010327211cc1a56f185c40435f00ec8f50dfe6bcfeb
+
+pkgname = gormt-bin
