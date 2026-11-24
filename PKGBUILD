@@ -1,6 +1,6 @@
 # Maintainer: Lemuel De Los Santos <aur@lemueldls.dev>
 pkgname=typbase
-pkgver=0.4.8
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Local-first knowledge base made for Typst and the Atmosphere."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 makedepends=('cargo' 'nodejs' 'pnpm' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'wasm-pack')
 options=('!strip' '!emptydirs')
 source=("typbase-v$pkgver.tar.gz::https://github.com/lemueldls/typbase/archive/refs/tags/typbase-v$pkgver.tar.gz")
-sha256sums=('e385cbd64458a9caeff8c5645a57e95de44b641a6e54f6ec231299df66f1806b')
+sha256sums=('120fce154ff0e72eb01ab901eddd6e436e1b098853ee59d379408f3fd31bf9f0')
 _builddir="$pkgname-typbase-v$pkgver"
 
 prepare() {
@@ -25,7 +25,7 @@ prepare() {
 build() {
     cd "$srcdir/$_builddir" || exit 1
     export RUSTUP_TOOLCHAIN=stable
-    # LTO flags from makepkg.conf break linking for some native deps; clear them.
+    # LTO flags from makepkg.conf break linking for some native deps. Clear them.
     export CFLAGS="${CFLAGS//-flto=auto//}"
     export NUXT_PUBLIC_APP_URL="https://typbase.at"
     cd apps/native || exit 1
