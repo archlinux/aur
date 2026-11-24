@@ -1,7 +1,7 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 pkgname=p4est
-pkgver=2.8.7
+pkgver=2.8.8
 pkgrel=1
 pkgdesc="Parallel adaptive mesh refinement on forests of octrees"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('glibc'
          'lapack'
          'zlib')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('0a1e912f3529999ca6d62fee335d51f24b5650b586e95a03ef39ebf73936d7f4')
+sha256sums=('1ac49b9ff6d73d4fe6a4bea3a90f01330b98115e7371f02b4620494c40757196')
 
 build() {
   cd "$pkgname-$pkgver"
