@@ -1,0 +1,17 @@
+pkgbase = futon-bin
+	pkgdesc = TUI manga reader
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://github.com/KabosuNeko/Futon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = futon
+	conflicts = futon
+	options = !debug
+	source_x86_64 = futon-bin-1.2.5-x86_64.tar.gz::https://github.com/KabosuNeko/Futon/releases/download/v1.2.5/futon_1.2.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = a999a66ae3dadc6a17f903ed067cf05aad10c9eb62ea8ff294762e2653a8175e
+	source_aarch64 = futon-bin-1.2.5-aarch64.tar.gz::https://github.com/KabosuNeko/Futon/releases/download/v1.2.5/futon_1.2.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = a6d0fae0238256db3d74263051d0d9d71895466c2417c266caf2a56b697788e2
+
+pkgname = futon-bin
