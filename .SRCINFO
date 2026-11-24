@@ -1,0 +1,21 @@
+pkgbase = tobaru-bin
+	pkgdesc = Port forwarding with IP and TLS SNI/ALPN rules
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://github.com/cfal/tobaru
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = tobaru
+	conflicts = tobaru
+	options = !debug
+	source = tobaru-bin-0.9.6-LICENSE::https://raw.githubusercontent.com/cfal/tobaru/v0.9.6/LICENSE
+	sha256sums = 1fb83b583e8604eff99cf01dfece917bb0ad56c3101d627516c7b59655375e19
+	source_x86_64 = tobaru-bin-0.9.6-x86_64.tar.gz::https://github.com/cfal/tobaru/releases/download/v0.9.6/tobaru-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 30ebb427517cd76f79e100f6b527af7f4efce34639fe1a59d1b405092157c725
+	source_aarch64 = tobaru-bin-0.9.6-aarch64.tar.gz::https://github.com/cfal/tobaru/releases/download/v0.9.6/tobaru-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 215043d83606b374f2260e9942bb19aea23088e6675a9ae39e1253ae52bb0c68
+
+pkgname = tobaru-bin
