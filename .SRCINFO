@@ -1,6 +1,6 @@
 pkgbase = modelstudio-cli-bin
 	pkgdesc = Official Model Studio CLI for AI agent frameworks, exposing models, search, multimodal, and workflows as tool calls
-	pkgver = 2.10.5
+	pkgver = 2.11.2
 	pkgrel = 1
 	url = https://github.com/modelstudioai/cli
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = modelstudio-cli-bin
 	conflicts = modelstudio-cli-git
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/modelstudioai/cli/releases/download/v2.10.5/bl-2.10.5-linux-x64.tar.gz
-	sha256sums_x86_64 = 1fa77826fb85a0d22daf07ddf04b425736d33fa3e53b8441ef0ae4184c6490da
+	source_x86_64 = https://github.com/modelstudioai/cli/releases/download/v2.11.2/bl-2.11.2-linux-x64.tar.gz
+	sha256sums_x86_64 = ae25f097ddf7311d47f39e4826a60a514d9cd9b719e7bcfb0541cf7e3e3edc97
 
 pkgname = modelstudio-cli-bin
