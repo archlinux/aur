@@ -1,0 +1,15 @@
+pkgbase = violet-tui-bin
+	pkgdesc = TUI frontend for Vagrant
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/braheezy/violet
+	arch = x86_64
+	license = MIT
+	provides = violet-tui
+	conflicts = violet-tui
+	conflicts = violet
+	options = !debug
+	source_x86_64 = violet-tui-bin-0.3.0-x86_64.tar.gz::https://github.com/braheezy/violet/releases/download/v0.3.0/violet_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 858a7639cb2cec447d1e6f7f3125fa8c7472b0ae843422396b8b65ada6402f9c
+
+pkgname = violet-tui-bin
