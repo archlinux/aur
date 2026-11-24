@@ -6,7 +6,7 @@ pkgdesc="A modular software toolkit for timestamped signal processing and storag
 arch=('any')
 license=('BSD')
 #makedepends=()
-depends=('fftw' 'alsa-lib' 'libvorbis' 'flac' 'libjpeg' 'xforms' 'libsamplerate' 'ncurses' 'libx11' 'libpng' 'libxpm' 'libshout' 'sox' 'gnuplot' 'texlive-core')
+depends=('fftw' 'alsa-lib' 'libvorbis' 'flac' 'libjpeg-turbo' 'xforms' 'libsamplerate' 'ncurses' 'libx11' 'libpng' 'libxpm' 'libshout' 'sox' 'gnuplot' 'texlive-core')
 url="https://abelian.vvsindia.com/vlfrx-tools/"
 source=("$url/$pkgname-$pkgver.tgz")
 
