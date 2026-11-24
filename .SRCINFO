@@ -1,6 +1,6 @@
 pkgbase = python-typio
 	pkgdesc = Make Your Terminal Type Like a Human
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/sepandhaghighi/typio
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-typio
 	makedepends = python-installer
 	depends = python
 	provides = typio
-	source = python-typio-1.4.tgz::https://github.com/sepandhaghighi/typio/archive/v1.4.tar.gz
-	sha256sums = ad36a614ce71bde68262a1df6d1e863b60a8edc028108386f28b6f255d5e8c6a
+	source = python-typio-1.5.tgz::https://github.com/sepandhaghighi/typio/archive/v1.5.tar.gz
+	sha256sums = d2f28bb6364c54e0fa08f4c642f75966e853c211411ba393a140657cfc8e8fb5
 
 pkgname = python-typio
