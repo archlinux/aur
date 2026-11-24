@@ -4,8 +4,8 @@
 pkgname=deskew-git
 _name=deskew
 _user=galfar
-pkgrel=1
-pkgver=1.30.r114.ge5967a0
+pkgrel=2
+pkgver=1.35.r0.g992b1d8
 pkgdesc="A command-line program for automatically straightening images"
 arch=("x86_64" "aarch64")
 url="http://jwilk.net/software/deskew"
@@ -23,7 +23,9 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_name/Scripts"
+  cd "$srcdir/$_name"
+  sed -i '21d' ImagingUserOptions.inc
+  cd Scripts
   ./compile.sh
 }
 
