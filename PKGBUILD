@@ -1,15 +1,15 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=tributary
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.7.4
+pkgrel=1
 pkgdesc="A high-performance, Rhythmbox-style media manager with unified local and remote backends"
 arch=('x86_64')
 url="https://github.com/jm2/tributary"
 license=('GPL-3.0-or-later')
 options=(!lto)
 depends=(
-  'gtk4'
-  'libadwaita'
+  'gtk4>=4.16'
+  'libadwaita>=1.6'
   'gstreamer'
   'gst-plugins-good'
   'gst-plugins-bad'
@@ -23,7 +23,7 @@ makedepends=(
   'pkg-config'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('458abad839df47e3da6f2ed9ec151d662252473c36d5ae4d39c7d358ecbc1c0b')
+sha256sums=('e2b9642295ec6576f749e51137bcf08b80b208d6158a3b82a1adfdf4937d20be')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -52,6 +52,9 @@ package() {
       "data/icons/hicolor/${size}x${size}/apps/io.github.jm2.tributary.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/io.github.jm2.tributary.png"
   done
+  install -Dm644 \
+    "data/icons/hicolor/scalable/actions/io.github.jm2.tributary-equalizer-symbolic.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/actions/io.github.jm2.tributary-equalizer-symbolic.svg"
 
   # License
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
