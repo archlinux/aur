@@ -1,0 +1,21 @@
+pkgbase = jimmy-bin
+	pkgdesc = Convert notes from many note apps to Markdown
+	pkgver = 1.1.31
+	pkgrel = 1
+	url = https://github.com/marph91/jimmy
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = zlib
+	depends = glibc
+	provides = jimmy
+	conflicts = jimmy
+	options = !debug
+	source = jimmy-bin-1.1.31-LICENSE::https://raw.githubusercontent.com/marph91/jimmy/v1.1.31/license
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = jimmy-bin-1.1.31-x86_64::https://github.com/marph91/jimmy/releases/download/v1.1.31/jimmy-linux
+	sha256sums_x86_64 = b586c09f634530d0bd3d346496870930d840901187dc97e7c01b7c3212963a03
+	source_aarch64 = jimmy-bin-1.1.31-aarch64::https://github.com/marph91/jimmy/releases/download/v1.1.31/jimmy-linux-aarch64
+	sha256sums_aarch64 = 6aaf1a13be9fe1839699ff427a9606a6d3c905d946f4f3547baf60eab57d9aaf
+
+pkgname = jimmy-bin
