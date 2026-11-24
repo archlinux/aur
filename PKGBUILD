@@ -1,6 +1,6 @@
 # Maintainer: Piliii <naifmohsenaziz@gmail.com>
 pkgname=librenotes-bin
-pkgver=1.6.6
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Private, self-hosted, end-to-end encrypted note-taking app"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('librenotes')
 conflicts=('librenotes')
 
 source_x86_64=("${pkgname}-${pkgver}-linux-x86_64.tar.gz::https://github.com/Piliii/LibreNotes/releases/download/v${pkgver}/LibreNotes-${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('bfe6993b6673be9f1916485226b99bfbb60c39b13f02ab804d4299fc2b18d771')
+sha256sums_x86_64=('82e83bf765a99da59476d15045ad219f3d3e8b998aa8d29ccc0dd9a6593dae5a')
 
 package() {
   # Flutter bundle — keep internal layout intact; binary uses $ORIGIN/lib and data/
