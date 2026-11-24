@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libz-rs-sys
-pkgver=0.6.8
-pkgrel=3
+pkgver=0.6.9
+pkgrel=1
 pkgdesc="A zlib implementation in Rust available as a C dynamic library"
 arch=('i686' 'x86_64')
 url="https://trifectatech.org/projects/zlib-rs/"
@@ -12,7 +12,7 @@ makedepends=('cargo' 'cargo-c')
 provides=('libz_rs.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/trifectatechfoundation/zlib-rs/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('10c2faddc8f0f150a4917c9641f49e350cb4c1ce187962bc88e7f7ce1411837e')
+sha256sums=('3e0ede4c8cb9d8a050d1ab9d22a1cac11c8576beb894b7d0c546585959480c6e')
 
 
 prepare() {
