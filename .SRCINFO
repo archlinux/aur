@@ -1,0 +1,17 @@
+pkgbase = chief-bin
+	pkgdesc = Break big projects into tasks and build them with Claude
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/minicodemonkey/chief
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = chief
+	conflicts = chief
+	options = !debug
+	source_x86_64 = chief-bin-0.8.0-x86_64.tar.gz::https://github.com/minicodemonkey/chief/releases/download/v0.8.0/chief_0.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = cf0b4b5b4cbd3b27de065bd32489938f46f40ad16ff08b8e354274986255f3dc
+	source_aarch64 = chief-bin-0.8.0-aarch64.tar.gz::https://github.com/minicodemonkey/chief/releases/download/v0.8.0/chief_0.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b0ea988385a3186e6c44cf96a35d3605899fc536551e173a74a36f5c36198e2c
+
+pkgname = chief-bin
