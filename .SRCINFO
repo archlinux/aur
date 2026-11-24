@@ -1,0 +1,29 @@
+pkgbase = python-k3redisutil
+	pkgdesc = Redis utilities for easier client management and proxy support
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/pykit3/k3redisutil
+	arch = any
+	license = MIT
+	checkdepends = python-mock
+	checkdepends = python-pytest
+	checkdepends = python-k3utdocker
+	checkdepends = python-k3thread
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-redis
+	depends = python-k3awssign
+	depends = python-k3confloader
+	depends = python-k3http
+	depends = python-k3utfjson
+	provides = python-k3redisutil
+	conflicts = python-k3redisutil
+	source = k3redisutil::git+https://github.com/pykit3/k3redisutil.git#tag=v0.1.8
+	sha256sums = 5ca02e3654d6cfe4d19eca18c88160a208ec3f007be35f58ed2ac6d827f652c4
+
+pkgname = python-k3redisutil
