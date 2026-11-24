@@ -1,71 +1,50 @@
 # Maintainer: Ethan Stokes <erstokes10@gmail.com>
+# Kept in packaging/aur/blockwork-git in Blockworked/Blockwork; .github/workflows/aur.yml
+# pushes it when it changes. pkgver is worked out at build time.
 
 pkgname=blockwork-git
-pkgver=0.5.0.r280.0aef58e
+pkgver=0.6.2.r0.g0000000
 pkgrel=1
-pkgdesc='A Tauri app to visually create and run automation.'
-url='https://github.com/EthanRStokes/Blockwork'
-arch=('x86_64')
+pkgdesc='Build keyboard and mouse macros by snapping blocks together (latest master)'
+url='https://blockworked.com'
+arch=('x86_64' 'aarch64')
 license=('GPL-3.0-only')
-makedepends=('rust' 'git' 'gcc' 'glibc' 'pnpm' 'cmake' 'ninja' 'curl' 'pkgconf'
-             'gtk3' 'webkit2gtk-4.1' 'libsoup3' 'libappindicator' 'dbus')
-depends=(
-    'gtk3' 'nss' 'alsa-lib' 'hicolor-icon-theme' 'libxss' 'webkit2gtk-4.1'
-    'libsoup3' 'libappindicator'
-    'libgcc' 'glibc'
-)
-conflicts=('blockwork')
-provides=('blockwork')
-source=("git+https://github.com/EthanRStokes/Blockwork")
-sha256sums=('SKIP')
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'hicolor-icon-theme' 'gcc-libs' 'glibc' 'dbus' 'libxkbcommon' 'wayland' 'gtk3')
+makedepends=('git' 'cargo' 'cmake' 'clang' 'lld' 'pkgconf')
+optdepends=('qt6-wayland: native Wayland window'
+            'tesseract: text recognition blocks'
+            'grim: screen blocks on wlroots desktops'
+            'kdotool: window blocks on KDE Plasma')
+provides=('blockwork' 'macros')
+conflicts=('blockwork' 'blockwork-bin' 'macros')
 options=('!lto')
+source=("git+https://github.com/Blockworked/Blockwork.git#branch=master")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/Blockwork"
-	printf "%s.r%s.%s" "$(git describe --tags --abbrev=0 | sed 's/^v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    cd Blockwork
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir/Blockwork"
-    git reset --hard HEAD
-    git_tag="$(git describe --tags --abbrev=0 | sed 's/^v//')"
-
-    cargo fetch
-    pnpm install --dir ui
+    cd Blockwork
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$srcdir/Blockwork"
-    export BLOCKWORK_PNPM_OFFLINE=1
-    cargo build --release --frozen
+    cd Blockwork
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    export QMAKE=/usr/bin/qmake6
+    # GNU ld with --as-needed drops Qt libraries only the cxx-qt archives use; rustup's Rust links with lld too.
+    export RUSTFLAGS="${RUSTFLAGS:-} -Clink-arg=-fuse-ld=lld"
+    # QWindowKit is fetched by CMake, at the commit blockwork-qt/native pins.
+    cargo build --release --locked --workspace --exclude blockwork-linux-bridge
 }
 
 package() {
-    cd "$srcdir/Blockwork"
-
-    local libdir="$pkgdir/usr/lib/blockwork"
-
-    # Binary's RUNPATH is $ORIGIN, so the CEF runtime payload (libcef.so,
-    # GL/Vulkan shims, *.pak, icudtl.dat, locales/, ...) has to live alongside
-    # it in a private libdir, not /usr/bin.
-    install -Dm755 "target/release/blockwork"                     "$libdir/blockwork"
-    install -Dm755 "target/release/libcef.so"                  "$libdir/libcef.so"
-    install -Dm755 "target/release/libEGL.so"                  "$libdir/libEGL.so"
-    install -Dm755 "target/release/libGLESv2.so"                "$libdir/libGLESv2.so"
-    install -Dm755 "target/release/libvk_swiftshader.so"       "$libdir/libvk_swiftshader.so"
-    install -Dm755 "target/release/libvulkan.so.1"              "$libdir/libvulkan.so.1"
-    install -Dm755 "target/release/chrome-sandbox"              "$libdir/chrome-sandbox"
-    install -Dm644 "target/release/vk_swiftshader_icd.json"    "$libdir/vk_swiftshader_icd.json"
-    install -Dm644 "target/release/icudtl.dat"                  "$libdir/icudtl.dat"
-    install -Dm644 "target/release/v8_context_snapshot.bin"    "$libdir/v8_context_snapshot.bin"
-    install -Dm644 "target/release/chrome_100_percent.pak"     "$libdir/chrome_100_percent.pak"
-    install -Dm644 "target/release/chrome_200_percent.pak"     "$libdir/chrome_200_percent.pak"
-    install -Dm644 "target/release/resources.pak"               "$libdir/resources.pak"
-    cp -r "target/release/locales" "$libdir/locales"
-
-    install -d "$pkgdir/usr/bin"
-    ln -sf /usr/lib/blockwork/blockwork "$pkgdir/usr/bin/blockwork"
-
-    install -Dm644 "res/icons/blockwork.png" "$pkgdir"/usr/share/icons/hicolor/256x256/apps/blockwork.png
-    install -Dm644 "res/blockwork.desktop" "$pkgdir"/usr/share/applications/blockwork.desktop
+    cd Blockwork
+    packaging/linux/install.sh "$pkgdir" /usr
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
