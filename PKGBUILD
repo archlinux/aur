@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawx
 _pkgname=ClawX
-pkgver=0.7.0
+pkgver=0.7.1
 _electronversion=41
 _nodeversion=24
 pkgrel=1
@@ -37,7 +37,7 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('fd5b43f93dee3fed2053e36a6e8ea6e5b571e58902eea755200d0b37d06252e4'
+sha256sums=('2d27ad053cc1a3625f73e04328159aba2ff4b265b4732988133e1b692b325ad4'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
@@ -121,6 +121,7 @@ prepare() {
     _set_pnpm_build_env
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     export NODE_ENV=development
+    export SHARP_IGNORE_GLOBAL_LIBVIPS=1
     pnpm install
 }
 build() {
@@ -129,6 +130,7 @@ build() {
     _set_electron_build_env
     _set_pnpm_build_env
     export NODE_ENV=production
+    export SHARP_IGNORE_GLOBAL_LIBVIPS=1
     pnpm exec node scripts/generate-ext-bridge.mjs
     pnpm run build:vite
     pnpm exec zx scripts/bundle-openclaw.mjs
