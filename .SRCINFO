@@ -1,6 +1,6 @@
 pkgbase = gutenprint-printer-app-git
 	pkgdesc = PostScript Printer Application
-	pkgver = 1.0+r79.20261112.a1d4eb2
+	pkgver = 1.0+r80.20261124.fbfce90
 	pkgrel = 1
 	url = https://github.com/OpenPrinting/gutenprint-printer-app
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = gutenprint-printer-app-git
 	depends = libppd
 	depends = pappl
 	depends = pappl-retrofit
-	provides = gutenprint-printer-app=1.0+r79.20261112.a1d4eb2
+	provides = gutenprint-printer-app=1.0+r80.20261124.fbfce90
 	conflicts = gutenprint-printer-app
 	options = emptydirs
 	source = git+https://github.com/OpenPrinting/gutenprint-printer-app.git
