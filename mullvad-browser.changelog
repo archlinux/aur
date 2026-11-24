@@ -1,3 +1,23 @@
+Mullvad Browser 16.0.3 - November 24 2026
+ * All Platforms
+   * Updated Firefox to 153.8.0esr
+   * Updated NoScript to 13.6.39.1984
+   * Updated uBlock Origin to 1.77.0
+   * Bug 596: Update Quad9 DoH notification to match UX Design [mullvad-browser]
+   * Bug 598: Rebase onto Stable 153.8 [mullvad-browser]
+   * Bug 45428: Apply worker patches before static imports [tor-browser]
+   * Bug 45429: (H1) Track SharedWorker load redirections [tor-browser]
+   * Bug 45432: (H1) Remote nested worker propagation issue from blob: parent context [tor-browser]
+   * Bug 45455: Remove console noise on some static imports. [tor-browser]
+   * Bug 45472: Protect against malicious environment tampering beyond xray wrappers [tor-browser]
+   * Bug 45499: Backport Security Fixes from Firefox 161 [tor-browser]
+ * Windows
+   * Bug 45473: Windows paths can bypass local file event-based oracles protection [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 41910: Update apt for security update (CVE-2026-109518) [tor-browser-build]
+     * Bug 41928: Improved management of Mullvad Browser build submission problems [tor-browser-build]
+
 Mullvad Browser 16.0.2 - November 16 2026
  * All Platforms
    * Updated Mullvad Browser Extension to 0.9.11
