@@ -5,7 +5,7 @@ _pkgname=par-term
 pkgname=${_pkgname}-bin
 pkgdesc="Cross-platform GPU-accelerated terminal emulator with inline graphics support (Sixel, iTerm2, Kitty)"
 
-pkgver=0.56.0
+pkgver=0.57.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -31,10 +31,10 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pk
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}")
 sha256sums=('42adb7bfc245f5365f0afb67730e67e6a74e9b2e976c86a3dfda4bd479962b95'
             '297de4c331d29fdf2de56264cefc498be9d7dcf9459b3b76f6794b60f3cb70f4'
-            'b23161e430103aada0ad5b9b795bc2d24c72ae2d735b460716e4e26831aaf8cf'
+            'db7aa18184efed0a188ba0cbfeb1a67af0112415871ecef31fd3bb6c1d69f589'
             '1605cdfa94fa4cbe47338cf5d7db9769fe4e795992594667f27ec4fa31a0558a')
-sha256sums_x86_64=('d8163c2b35ea60af9a6a8eb1e2aca3a6b3f02777cdd9fd78cbb7020160ffee40')
-sha256sums_aarch64=('6f9a91774b9df86690895ad595408f701cdffccabf221fd445264472f8687ae7')
+sha256sums_x86_64=('3194d1aa63f06baf9aad6041d406a26473c5650a17c327f5ed98250133f67443')
+sha256sums_aarch64=('04401979fe5f30ee6183544a56b0e5e35c73a7ea099372ea95ce16d39a1f4c0e')
 
 
 prepare() {
