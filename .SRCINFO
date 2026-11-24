@@ -1,0 +1,22 @@
+pkgbase = terraphim-ai-bin
+	pkgdesc = Deterministic AI assistant
+	pkgver = 1.21.3
+	pkgrel = 1
+	url = https://github.com/terraphim/terraphim-ai
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = zlib
+	provides = terraphim-ai
+	conflicts = terraphim-ai
+	options = !debug
+	source = terraphim-ai-bin-1.21.3-LICENSE::https://raw.githubusercontent.com/terraphim/terraphim-ai/v1.21.3/LICENSE-Apache-2.0
+	sha256sums = 47528e762efc05e17ae569ffeacf044b65cbe2c94bc9c58c576f267a5cd7d039
+	source_x86_64 = terraphim-ai-bin-1.21.3-x86_64.tar.gz::https://github.com/terraphim/terraphim-ai/releases/download/v1.21.3/terraphim-cli-1.21.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 892d28a6d6e9730b7e4a44fafb264f933e9c40336a498c643866f4b04e95aa55
+	source_aarch64 = terraphim-ai-bin-1.21.3-aarch64.tar.gz::https://github.com/terraphim/terraphim-ai/releases/download/v1.21.3/terraphim-cli-1.21.3-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 46e883010a0d7d91ea43a244b52a6ba2d6fea6cd0a6d3a4280258b15b83f605e
+
+pkgname = terraphim-ai-bin
