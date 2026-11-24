@@ -23,10 +23,10 @@ _build=ecace0f7
 _hostver=5.6.2.40046327
 _hostbuild=c7b525f3
 _electron=37.10.3
-_sandbox=5.11.4
+_sandbox=5.13.0
 _harness=0.2.0-beta.16
 pkgver=${_pkgver}_${_build}
-pkgrel=1
+pkgrel=2
 pkgdesc="腾讯云代码助手推出的 AI Agent 办公工具"
 arch=('x86_64' 'aarch64')
 url="https://www.workbuddy.cn/app"
@@ -108,13 +108,13 @@ sha256sums=(
 sha256sums_x86_64=(
   '3a691c7379a2245a60fa52b646d9dfaddc39fff6c0eaeeb90e41c0f10a1787e8'
   '12149ad8c0cd748fd5062d8f62c7827d688d8095427ada99b1ae9e7019897523'
-  '324e1e43ea2dffa711755ed5aebd7212e08561953b3e58255ff1fe59366a6b77'
+  '7d025751a9005a182d1c2a99f4362454df494340cab27c8ddb625d9f0dd85785'
   '834fe6f1a07cecc42ffbd8ef263cc9a1eb08c515457ab1ca0121917cbb88ebe9'
 )
 sha256sums_aarch64=(
   '3a691c7379a2245a60fa52b646d9dfaddc39fff6c0eaeeb90e41c0f10a1787e8'
   '561822578435d382a06d0a0b079a4b157f68b588c9fe72d589e2a88b2fd155fa'
-  'bab2dd39d01d74e07cf4148bdbfefc533491003787de4ed8267d4b77e0b87433'
+  'b6cde29df99abf3b082cc8f1e10801f279712423c9727fd7386b295c8cb2c50a'
   '6651fa80faac30d822a9ee3e44f342db26f381110c5da5ef3b931eb8c7d4e704'
 )
 
