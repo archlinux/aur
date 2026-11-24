@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
@@ -30,7 +30,7 @@ sha256sums=(f38c78f3d585f226fe4797284f41d5f7ad6f98c5e2338f2b978125424683d33e
             c416b4f392e6c2d86343572a826d963b64ce89c3f7348aa18036e8e96c4a53ed
             5264ed0c448868083a9f1bedc2846d744c9ea90e58f8555c50bbc155008512e5)
 install=install.sh
-depends=('rsync' 'fuse2')
+depends=('rsync' 'fuse3')
 makedepends=('git' 'go' 'protobuf' 'protoc-gen-go-grpc')
 # Those next makedepends are not *actually* needed but the build process tries to launch them anyway
 makedepends+=('lsb-release' 'inetutils')
