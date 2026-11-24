@@ -1,0 +1,19 @@
+pkgbase = san-bin
+	pkgdesc = Terminal agent runtime
+	pkgver = 1.25.5
+	pkgrel = 1
+	url = https://github.com/genai-io/san
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = san
+	conflicts = san
+	options = !debug
+	source = san-bin-1.25.5-LICENSE::https://raw.githubusercontent.com/genai-io/san/v1.25.5/LICENSE
+	sha256sums = 8752fcd1c04252a936db90c4285ec655d790c45f790ec6e5766927d052c9912b
+	source_x86_64 = san-bin-1.25.5-x86_64.tar.gz::https://github.com/genai-io/san/releases/download/v1.25.5/san_linux_amd64.tar.gz
+	sha256sums_x86_64 = 69922a9c6c6bd5a6587e7c24c22874b7c649217a81f4eb96aec46dd263f04743
+	source_aarch64 = san-bin-1.25.5-aarch64.tar.gz::https://github.com/genai-io/san/releases/download/v1.25.5/san_linux_arm64.tar.gz
+	sha256sums_aarch64 = f563bcc875f39246f21120a606dd2a5590716b3bedd6990cc15c46c26b4b6933
+
+pkgname = san-bin
