@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mimager
-_pkgver=1.30.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='mimager: The Microarray Imager'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4281bfe81e18cacbac723c3f483c0fbd6d8e4837b605007b093da19f939d3994')
+sha256sums=('4e314cff80d72e445cfbdcb70066a9834fb9a73cc14a8ca8813b9aac965703b3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
