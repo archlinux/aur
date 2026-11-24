@@ -1,0 +1,20 @@
+pkgbase = elevenlabs-cli-bin
+	pkgdesc = Command line interface for ElevenLabs voice agents
+	pkgver = 1.12.2
+	pkgrel = 1
+	url = https://github.com/elevenlabs/cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = elevenlabs-cli
+	conflicts = elevenlabs-cli
+	options = !debug
+	source_x86_64 = elevenlabs-cli-bin-1.12.2-x86_64.tar.gz::https://github.com/elevenlabs/cli/releases/download/v1.12.2/elevenlabs-cli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1b7a7d76058c28539c53c94f7d07b42648f270e4796f08a9bea98f6bfdde134b
+	source_aarch64 = elevenlabs-cli-bin-1.12.2-aarch64.tar.gz::https://github.com/elevenlabs/cli/releases/download/v1.12.2/elevenlabs-cli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b2275583c3ca3896ed12af5c4d7071ed431f0bd31b46996fc11dcecf8cec02da
+
+pkgname = elevenlabs-cli-bin
