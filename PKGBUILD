@@ -2,7 +2,7 @@
 # Contributor: Rudy Matela <rudy@matela.com.br>
 # Contributor: Joel Niemelä
 pkgname=kattis-problemtools
-pkgver=1.20260907
+pkgver=1.20261105
 pkgrel=1
 pkgdesc="Tools to manage problem packages using the Kattis problem package format"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('make' 'python-setuptools' 'python-setuptools-scm')
 checkdepends=('python-pytest')
 provides=('problem2html'  'problem2pdf'  'verifyproblem')
 source=("https://pypi.org/packages/source/p/problemtools/problemtools-${pkgver}.tar.gz")
-sha256sums=('55f19b6a72ef5cb07daf0a4e612be963a15e7972891a3afb0fff89244b6228c6')
+sha256sums=('c95d424c210ecbfb00154c841237eb3936c133bd8852716831c3b59188b8a1ad')
 
 build() {
 	cd "problemtools-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = kattis-problemtools
 	pkgdesc = Tools to manage problem packages using the Kattis problem package format
-	pkgver = 1.20260907
+	pkgver = 1.20261105
 	pkgrel = 1
 	url = https://github.com/Kattis/problemtools
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = kattis-problemtools
 	provides = problem2html
 	provides = problem2pdf
 	provides = verifyproblem
-	source = https://pypi.org/packages/source/p/problemtools/problemtools-1.20260907.tar.gz
-	sha256sums = 55f19b6a72ef5cb07daf0a4e612be963a15e7972891a3afb0fff89244b6228c6
+	source = https://pypi.org/packages/source/p/problemtools/problemtools-1.20261105.tar.gz
+	sha256sums = c95d424c210ecbfb00154c841237eb3936c133bd8852716831c3b59188b8a1ad
 
 pkgname = kattis-problemtools
