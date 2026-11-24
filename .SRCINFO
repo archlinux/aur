@@ -1,0 +1,19 @@
+pkgbase = holon-bin
+	pkgdesc = Local workbench for always-on AI agents
+	pkgver = 0.61.1
+	pkgrel = 1
+	url = https://github.com/holon-run/holon
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = holon
+	conflicts = holon
+	options = !debug
+	source = holon-bin-0.61.1-LICENSE::https://raw.githubusercontent.com/holon-run/holon/v0.61.1/LICENSE
+	sha256sums = f7f222f158ee8777294fb46434f69658fcec61cf116c7614d2aaa0e6fe1d14de
+	source_x86_64 = holon-bin-0.61.1-x86_64.tar.gz::https://github.com/holon-run/holon/releases/download/v0.61.1/holon-linux-amd64.tar.gz
+	sha256sums_x86_64 = 7a77cda152b3e7acad5c7faaa540a147a4cf1c415d173f902167272eec9923af
+
+pkgname = holon-bin
