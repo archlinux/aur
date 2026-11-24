@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=frost-d77
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Wayland desktop shell and session locker written in Rust"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   'swaync: notification control center (alternative to dunst)'
   'iproute2: network interface details in the dashboard'
   'procps-ng: CPU process details in the dashboard'
-  'libpulse: react to volume changes with pactl instead of polling'
+  'libpulse: react immediately to Pulse sink volume changes with pactl'
   'brightnessctl: brightness controls'
   'networkmanager: Wi-Fi status and nmtui'
   'power-profiles-daemon: power profile controls'
@@ -30,7 +30,7 @@ optdepends=(
   'curl: weather forecast'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a1633384cc9f493b274ad4a3faae7730d50c13741f379eff8caf13d6508a2021')
+sha256sums=('35580c802f5d636353ff434930644e0f8eb98793141ac88e7922e2c13bab4888')
 
 prepare() {
     cd "frost-$pkgver"

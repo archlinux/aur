@@ -1,6 +1,6 @@
 pkgbase = frost-d77
 	pkgdesc = Wayland desktop shell and session locker written in Rust
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/dani-77/frost
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = frost-d77
 	optdepends = swaync: notification control center (alternative to dunst)
 	optdepends = iproute2: network interface details in the dashboard
 	optdepends = procps-ng: CPU process details in the dashboard
-	optdepends = libpulse: react to volume changes with pactl instead of polling
+	optdepends = libpulse: react immediately to Pulse sink volume changes with pactl
 	optdepends = brightnessctl: brightness controls
 	optdepends = networkmanager: Wi-Fi status and nmtui
 	optdepends = power-profiles-daemon: power profile controls
@@ -38,7 +38,7 @@ pkgbase = frost-d77
 	optdepends = matugen: wallpaper-based color palette
 	optdepends = curl: weather forecast
 	backup = etc/pam.d/frost-locker
-	source = frost-d77-0.2.3.tar.gz::https://github.com/dani-77/frost/archive/refs/tags/v0.2.3.tar.gz
-	sha256sums = a1633384cc9f493b274ad4a3faae7730d50c13741f379eff8caf13d6508a2021
+	source = frost-d77-0.2.4.tar.gz::https://github.com/dani-77/frost/archive/refs/tags/v0.2.4.tar.gz
+	sha256sums = 35580c802f5d636353ff434930644e0f8eb98793141ac88e7922e2c13bab4888
 
 pkgname = frost-d77
