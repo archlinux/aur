@@ -2,7 +2,7 @@
 
 pkgname=python-k3net
 _name=${pkgname#python-}
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Network utilities for IP address detection and classification"
 provides=(${pkgname})
@@ -28,7 +28,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('a3ccfe55490713747328912e6c686e722858ffad0eed6db8d5b9a75ea846718c')
+sha256sums=('74a551be2a3824e1d03881690e7a880bb5772896486bd4e2f544298bf83d66cb')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
