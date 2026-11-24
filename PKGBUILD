@@ -1,7 +1,7 @@
 # Maintainer: MrHaku81 <haku81.kk@gmail.com>
 pkgname=disc-printer
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='A universal disc label editor for Linux — printer brand independent, supports CD/DVD/Blu-ray'
 arch=('any')
 url='https://github.com/MrHaku81/disc-printer'
@@ -24,7 +24,7 @@ makedepends=(
   'gettext'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MrHaku81/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d5b61ca48d2035e226fe0087ab582435e58782fdd711dadddba5ca23711d4def')
+sha256sums=('c3c1cc9d91f0b33abb2146a4789292e74cbab987161cfede4b8fa0b4a731037b')
 
 build() {
   cd "${pkgname}-${pkgver}"

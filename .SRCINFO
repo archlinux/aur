@@ -1,7 +1,7 @@
 pkgbase = disc-printer
 	pkgdesc = A universal disc label editor for Linux — printer brand independent, supports CD/DVD/Blu-ray
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/MrHaku81/disc-printer
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = disc-printer
 	depends = cups
 	depends = python-numpy
 	optdepends = python-pillow: sRGB colour profile in print output
-	source = disc-printer-0.2.0.tar.gz::https://github.com/MrHaku81/disc-printer/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = d5b61ca48d2035e226fe0087ab582435e58782fdd711dadddba5ca23711d4def
+	source = disc-printer-0.3.0.tar.gz::https://github.com/MrHaku81/disc-printer/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = c3c1cc9d91f0b33abb2146a4789292e74cbab987161cfede4b8fa0b4a731037b
 
 pkgname = disc-printer
