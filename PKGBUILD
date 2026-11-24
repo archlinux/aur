@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Persistent shell sessions — a small daemon that owns your PTYs, so shells outlive the terminal app"
 
-pkgver=0.6.10
+pkgver=0.6.11
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ conflicts=("${pkgname%-bin}")
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('694aaf768ba9feaa03822fc8647748a5daf60bbd12e481b3f66b73eb1d14a1c4')
+sha256sums_x86_64=('7bbd667368e5637f32fcb231daaa0ccbd33c8acc25b1d73f8a0c111c20e67725')
 
 
 case ${CARCH} in
