@@ -1,0 +1,19 @@
+pkgbase = hud-tokio-bin
+	pkgdesc = Find code blocking Tokio workers with eBPF
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/cong-or/hud
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = hud-tokio
+	conflicts = hud-tokio
+	conflicts = hud
+	options = !debug
+	source = hud-tokio-bin-0.5.3-LICENSE::https://raw.githubusercontent.com/cong-or/hud/v0.5.3/LICENSE
+	sha256sums = 23793655f604da85d3f846a79b0a786a160edc9deede2339ddaea5cb3aa7b1ba
+	source_x86_64 = hud-tokio-bin-0.5.3-x86_64.tar.gz::https://github.com/cong-or/hud/releases/download/v0.5.3/hud-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a3ab93ae67c6e4d6e5069f3d7b757b36d60509554040918966677880e76fbc1a
+
+pkgname = hud-tokio-bin
