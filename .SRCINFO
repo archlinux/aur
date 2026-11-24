@@ -1,6 +1,6 @@
 pkgbase = typeladder
 	pkgdesc = Adaptive typing test: builds your vocabulary from the commonest word to the rarest, for any keyboard, steno engine or text expander
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/noahlyk/typeladder
 	install = typeladder.install
@@ -12,13 +12,13 @@ pkgbase = typeladder
 	optdepends = keymux: a steno engine (the lyk theory exports its dictionary for typeladder)
 	options = !debug
 	options = !lto
-	source = LICENSE::https://raw.githubusercontent.com/noahlyk/typeladder/v0.1.2/LICENSE
-	source = NOTICE::https://raw.githubusercontent.com/noahlyk/typeladder/v0.1.2/NOTICE
+	source = LICENSE::https://raw.githubusercontent.com/noahlyk/typeladder/v0.1.3/LICENSE
+	source = NOTICE::https://raw.githubusercontent.com/noahlyk/typeladder/v0.1.3/NOTICE
 	sha256sums = e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052
 	sha256sums = 1de41a7f6a5cad0b46165052098e9aaf99ab5a447facb4b24cd853050f0696d2
-	source_x86_64 = https://github.com/noahlyk/typeladder/releases/download/v0.1.2/typeladder-0.1.2-x86_64.tar.gz
-	sha256sums_x86_64 = e2a9d6d255350eba1452b0793d40e1aa98ded0abff8166431030acc83482196f
-	source_aarch64 = https://github.com/noahlyk/typeladder/releases/download/v0.1.2/typeladder-0.1.2-aarch64.tar.gz
-	sha256sums_aarch64 = cd19e8dc2a4aa792c6570d70e230a34a1c41b781c50190d14e92854ed93e56f2
+	source_x86_64 = https://github.com/noahlyk/typeladder/releases/download/v0.1.3/typeladder-0.1.3-x86_64.tar.gz
+	sha256sums_x86_64 = ad5242543d662beb516dbcdc5d4a773d1a809748c315fac9a8726b8ee037790f
+	source_aarch64 = https://github.com/noahlyk/typeladder/releases/download/v0.1.3/typeladder-0.1.3-aarch64.tar.gz
+	sha256sums_aarch64 = ff773e2128abfd6a8061270996f463bb54360314c68c0a36994b2d6f35c9727b
 
 pkgname = typeladder
