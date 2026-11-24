@@ -3,7 +3,7 @@
 
 _pkgname=gpd-pocket-4-pipewire
 pkgname="${_pkgname}"
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Pipewire audio DSP for internal speakers of GPD Pocket 4"
 arch=('any')
