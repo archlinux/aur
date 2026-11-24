@@ -1,0 +1,19 @@
+pkgbase = docker-dash-bin
+	pkgdesc = TUI management tool for containers
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/gustavocaso/docker-dash
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = docker-dash
+	conflicts = docker-dash
+	options = !debug
+	source = docker-dash-bin-0.1.4-LICENSE::https://raw.githubusercontent.com/gustavocaso/docker-dash/v0.1.4/LICENSE
+	sha256sums = 70fc0618959704955d05c496a4472f9f7570bdc8ec60a29f5df01aa526dc7ecf
+	source_x86_64 = docker-dash-bin-0.1.4-x86_64::https://github.com/gustavocaso/docker-dash/releases/download/v0.1.4/docker-dash_v0.1.4_linux-amd64
+	sha256sums_x86_64 = e56888bb17ba4cdf5aa30b176106326d4014ff6db7637318b49226f133fcac80
+	source_aarch64 = docker-dash-bin-0.1.4-aarch64::https://github.com/gustavocaso/docker-dash/releases/download/v0.1.4/docker-dash_v0.1.4_linux-arm64
+	sha256sums_aarch64 = e3fc43efe19a75e9db85cd415acd571aaf8aa595d4f2fa6b1bd9689c9dfc57ac
+
+pkgname = docker-dash-bin
