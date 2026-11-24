@@ -1,0 +1,14 @@
+pkgbase = ls-horizons-bin
+	pkgdesc = Terminal UI for visualizing NASA's Deep Space Network in real time
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/litescript/ls-horizons
+	arch = x86_64
+	license = Apache-2.0
+	provides = ls-horizons
+	conflicts = ls-horizons
+	options = !debug
+	source_x86_64 = ls-horizons-bin-0.12.0-x86_64.tar.gz::https://github.com/litescript/ls-horizons/releases/download/v0.12.0/ls-horizons-v0.12.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = f554ca478657fdb9efbb0cdc8dfb85f3330a60897cf777cfef3e93be49a1c956
+
+pkgname = ls-horizons-bin
