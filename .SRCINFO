@@ -1,0 +1,25 @@
+pkgbase = rsadsb-radar-bin
+	pkgdesc = TUI radar display of ADS-B aircraft data from a demodulator
+	pkgver = 2025.05.03
+	pkgrel = 1
+	url = https://github.com/rsadsb/adsb_deku
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	optdepends = dump1090_rs: ADS-B demodulator for SDR devices
+	provides = rsadsb-radar
+	conflicts = rsadsb-radar
+	options = !debug
+	source = rsadsb-radar-bin-2025.05.03-LICENSE::https://raw.githubusercontent.com/rsadsb/adsb_deku/v2025.05.03/LICENSE
+	sha256sums = f7da773cec0de4be0124b7d81ca74856abb299c85f4fafc1315fba0be787d703
+	source_x86_64 = rsadsb-radar-bin-2025.05.03-x86_64.tar.gz::https://github.com/rsadsb/adsb_deku/releases/download/v2025.05.03/radar-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 33feafb8759e9fea7f42cc0c397911d353c1770ee9c783907f0989870af340b1
+	source_aarch64 = rsadsb-radar-bin-2025.05.03-aarch64.tar.gz::https://github.com/rsadsb/adsb_deku/releases/download/v2025.05.03/radar-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d81afe1e2b2972e2aec2cf13a38ec32ac5a0253e2ca18eae4cb7d78419b64b37
+	source_armv7h = rsadsb-radar-bin-2025.05.03-armv7h.tar.gz::https://github.com/rsadsb/adsb_deku/releases/download/v2025.05.03/radar-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = ddc36409fc6c413a3b31e3d99ceee3fb2df0633cb6492af8e95de956d74a53dd
+
+pkgname = rsadsb-radar-bin
