@@ -5,7 +5,7 @@
 pkgname=sharky-shell-bin
 pkgver=0.1.1_alpha
 _tag=0.1.1-alpha
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Unix-first interactive shell written in Rust (prebuilt binary, alpha)"
 arch=('x86_64')
@@ -15,8 +15,8 @@ provides=('sharky' 'sharky-shell')
 conflicts=('sharky' 'sharky-shell' 'sharky-shell-git')
 options=(!strip)
 source=(
-  "$url/releases/download/v$_tag/sharky-x86_64-unknown-linux-musl.tar.gz"
-  "LICENSE::$url/raw/v$_tag/LICENSE"
+  "$pkgname-$_tag-x86_64.tar.gz::$url/releases/download/v$_tag/sharky-x86_64-unknown-linux-musl.tar.gz"
+  "LICENSE-$_tag::$url/raw/v$_tag/LICENSE"
 )
 sha256sums=(
   '166d4dbfb160ec41fae4288460f3cc68dfd871512c2a3a27ed263d4d9bfcb0bd'
@@ -30,5 +30,5 @@ package() {
   gzip -n "$pkgdir/usr/share/man/man1/sharky.1"
   install -Dm644 config.sharky "$pkgdir/usr/share/sharky/config.sharky"
   install -Dm644 theme.sharky "$pkgdir/usr/share/sharky/theme.sharky"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE-$_tag" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
