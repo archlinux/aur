@@ -4,7 +4,7 @@
 
 _name="hwloc"
 pkgname="lib32-$_name"
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="Portable Hardware Locality is a portable abstraction of hierarchical architectures (32-bit)"
 arch=('x86_64')
@@ -22,8 +22,8 @@ optdepends=('lib32-libxml2: full XML import/export support')
 provides=("lib${_name}.so")
 _pkgsrc="${_name}-${pkgver}"
 source=("https://www.open-mpi.org/software/${_name}/v${pkgver%.*}/downloads/${_pkgsrc}.tar.bz2")
-sha512sums=('3eca90872686c5887c6430b9d0b1e7ad50942f2afe77d599a79677c55072183809ca3cef2a68f727e8fa12183b4d2da0a5dea06aee4a9ea416059d3df3e18126')
-b2sums=('ca80bd11f99af70860adcb95cc3c69292736f4eb230d990b3b8a5ed71302a6e6e7906b3c22480e2d45ee4e7cd83820c561877a1ca4aa8ace757dfd93083e2999')
+sha512sums=('05b1df51d792c6136744cba24119fe7f403b25825c4f5d1882cebb26da29f6b323905d5ed350cb91bec372ebd4b9d04b8858867419f0955fdda530c1626a67ed')
+b2sums=('3af45e8e894feeebfc6457e8da2107c3ee9791d6ad268a78d708e63aebd1a9832a6f9ddc201f498fdc1d335f9c1e3239f428fcfd560cd1328de6be1b38e6f8ec')
 
 build() {
   export CFLAGS+=" -m32"
