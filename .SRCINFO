@@ -1,6 +1,6 @@
 pkgbase = linnote
 	pkgdesc = A fast, keyboard-driven scratchpad for Linux with smart calculator, OCR, timers, and 14+ themes
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://linnote.app
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = linnote
 	optdepends = tesseract-data-deu: German OCR support
 	optdepends = tesseract-data-fra: French OCR support
 	optdepends = tesseract-data-rus: Russian OCR support
-	source = linnote-2.0.1.tar.gz::https://github.com/sfnemis/linnote/archive/refs/tags/v2.0.1.tar.gz
-	sha256sums = 335ae794d9a082f4510cf7619097e18b967a86f206cf1355d7d21444c3129fea
+	source = linnote-2.0.2.tar.gz::https://github.com/sfnemis/linnote/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = af9b5e2401fe6a4ad99c7116762aba8e659fc4e5722682e068d7b2e6d43940d2
 
 pkgname = linnote

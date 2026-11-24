@@ -1,6 +1,6 @@
 # Maintainer: sfnemis <sfnemis@linnote.app>
 pkgname=linnote
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A fast, keyboard-driven scratchpad for Linux with smart calculator, OCR, timers, and 14+ themes"
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ optdepends=(
     'tesseract-data-rus: Russian OCR support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sfnemis/linnote/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('335ae794d9a082f4510cf7619097e18b967a86f206cf1355d7d21444c3129fea')
+sha256sums=('af9b5e2401fe6a4ad99c7116762aba8e659fc4e5722682e068d7b2e6d43940d2')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
