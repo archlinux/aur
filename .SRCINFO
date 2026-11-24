@@ -1,0 +1,21 @@
+pkgbase = python-k3utfjson
+	pkgdesc = JSON dump and load with enforced UTF-8 encoding
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/pykit3/k3utfjson
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3utfjson
+	conflicts = python-k3utfjson
+	source = k3utfjson::git+https://github.com/pykit3/k3utfjson.git#tag=v0.1.8
+	sha256sums = a84def0089e143ff48e5de42c976fd1a0b52ed8508b6724ed8a39abdd4740013
+
+pkgname = python-k3utfjson
