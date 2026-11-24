@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=linger-bin
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Personal AI agent that runs a local model on your own machine, turning mail, chats and meetings into shared memory"
 arch=('x86_64')
@@ -21,7 +21,7 @@ _archive="Linger-${pkgver}-linux-x64.tar.gz"
 source=("${_archive}::https://github.com/simplexai-labs/linger/releases/download/${_tag}/${_archive}"
         "linger.svg::https://raw.githubusercontent.com/simplexai-labs/linger/${_tag}/assets/logo-horizontal.svg"
         "LICENSE::https://raw.githubusercontent.com/simplexai-labs/linger/${_tag}/LICENSE")
-sha256sums=('6cbfd2f15ccfeca796438e98446cb9abf14fdc68d037f5505ad8d8961a888073'
+sha256sums=('4a755131b2c0e7915805ad2528221413926a346f8e4ce3f8cfe177cf34337030'
             'a0aa9e9fc9f9ba51456486bdacbca16f24234b922a23fe9bedf5ec45dceaf86b'
             'c0885bd7ddca2e3a26648168725d358cd2dc7269e80968a9481dacebb4139e65')
 
