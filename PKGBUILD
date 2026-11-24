@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=kdeglance-bin
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
 # Upstream's own package release in the asset name, synced by pkg.sh. It moves
 # when upstream rebuilds a version that has already shipped.
@@ -18,7 +18,8 @@ license=('GPL-3.0-or-later')
 depends=('dolphin' 'glibc' 'hicolor-icon-theme' 'kcoreaddons' 'kimageformats'
          'kio' 'kio-fuse' 'kjobwidgets' 'kservice' 'kwindowsystem' 'libgcc'
          'libraw' 'libstdc++' 'poppler-qt6' 'procps-ng' 'qt6-5compat' 'qt6-base>=6.12.0'
-         'qt6-imageformats' 'qt6-multimedia' 'qt6-multimedia-ffmpeg' 'qt6-svg')
+         'qt6-imageformats' 'qt6-multimedia' 'qt6-multimedia-ffmpeg' 'qt6-svg'
+         'syntax-highlighting')
 optdepends=('libreoffice: Office document previews'
             'kio-extras: SMB and more network protocols'
             'libheif: HEIF/HEIC photos'
@@ -35,7 +36,7 @@ install=kdeglance.install
 # The release asset is a pacman package built by upstream on CachyOS from its
 # packaging/arch/PKGBUILD. makepkg extracts it, only its usr/ is taken.
 source=("${url}/releases/download/v${pkgver}/kdeglance-${pkgver}-${_relver}-x86_64.pkg.tar.zst")
-sha256sums=('ec446a49f0e4e37840982dc99894ef8a0ed96d11e29920a613b8059851f12232')
+sha256sums=('26fa7e751d2d7094e24bfc1bf83a842ae7e01e1c150e7676d32cc6758aeb0bbf')
 
 prepare() {
   # The viewer is built for x86-64-v3, and glibc refuses to start it on an

@@ -1,6 +1,6 @@
 pkgbase = kdeglance-bin
 	pkgdesc = Quick Look-style file preview for KDE Plasma and Dolphin (upstream binary, needs an x86-64-v3 CPU)
-	pkgver = 2.0.3
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/AlexGraveler/KDEGlance
 	install = kdeglance.install
@@ -27,6 +27,7 @@ pkgbase = kdeglance-bin
 	depends = qt6-multimedia
 	depends = qt6-multimedia-ffmpeg
 	depends = qt6-svg
+	depends = syntax-highlighting
 	optdepends = libreoffice: Office document previews
 	optdepends = kio-extras: SMB and more network protocols
 	optdepends = libheif: HEIF/HEIC photos
@@ -36,11 +37,11 @@ pkgbase = kdeglance-bin
 	optdepends = openjpeg2: JPEG 2000 images
 	optdepends = fluidsynth: MIDI playback
 	optdepends = soundfont-fluid: General MIDI SoundFont for fluidsynth
-	provides = kdeglance=2.0.3
+	provides = kdeglance=2.1.0
 	conflicts = kdeglance
 	options = !strip
 	options = !debug
-	source = https://github.com/AlexGraveler/KDEGlance/releases/download/v2.0.3/kdeglance-2.0.3-1-x86_64.pkg.tar.zst
-	sha256sums = ec446a49f0e4e37840982dc99894ef8a0ed96d11e29920a613b8059851f12232
+	source = https://github.com/AlexGraveler/KDEGlance/releases/download/v2.1.0/kdeglance-2.1.0-1-x86_64.pkg.tar.zst
+	sha256sums = 26fa7e751d2d7094e24bfc1bf83a842ae7e01e1c150e7676d32cc6758aeb0bbf
 
 pkgname = kdeglance-bin
