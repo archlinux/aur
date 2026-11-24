@@ -9,7 +9,7 @@ arch=(any)
 url=https://github.com/obijywk/grilops
 license=(MIT)
 depends=(python python-z3-solver)
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
   LICENSE)
 sha256sums=('ee0871b402cf7be43a40314e7e8f4280f930ca413e0cb9533188b024e240d2e7'
