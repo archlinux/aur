@@ -3,8 +3,8 @@
 # changes go there, not here.
 
 pkgname=connected-rails-nightly-bin
-_tag=nightly-20261123-c797a3d
-pkgver=0.1.0nightly202611231907
+_tag=nightly-20261124-f43834a
+pkgver=0.1.0nightly202611241839
 pkgrel=1
 pkgdesc="Train simulator with editors for lines, vehicles and signal kits (nightly builds of main, untested)"
 arch=('x86_64')
@@ -17,10 +17,10 @@ provides=('connected-rails')
 conflicts=('connected-rails')
 # The release's own binaries and libraries (Steam Audio, DLSS), as shipped.
 options=('!strip' '!debug')
-_cdn=https://connected-rails-mods.intercolocdn.com/releases
+_cdn=https://cdn.connected-rails.org/releases
 _archive="train-sim-${_tag}-x86_64-unknown-linux-gnu"
 source=("${_archive}.tar.gz::${_cdn}/${_tag}/${_archive}.tar.gz")
-sha256sums=('c0d6b91a55774282443c037c65ca74cd89345cda0d3657d57d4440d7d52b80f7')
+sha256sums=('ec845d2caa98f85b6ac870dea84f5d18dd6d0105cffa314aa21c1ba908b33588')
 
 package() {
   local opt="$pkgdir/opt/connected-rails"
