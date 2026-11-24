@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kettu-bin
 _pkgname=Kettu
-pkgver=0.1.18
+pkgver=0.1.19
 _electronversion=44
 pkgrel=1
 pkgdesc="All your coding agents, side by side in one window that looks good and feels right."
@@ -30,8 +30,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-x86_64.AppImage")
 sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
-sha256sums_aarch64=('fba61ab0ca7b884d6641af2566798d27df86539ac4bd0944b8a4b833ec28e2b0')
-sha256sums_x86_64=('ce85e079dbab04a55bd33832bac7f8231824e98c135af7783956e1cc05ce5fec')
+sha256sums_aarch64=('92a944eba7d6cea253e269c1b1f850b48dc508b6e0a70ee086d69323dae13af8')
+sha256sums_x86_64=('ae86c985f5af31ef9f245ba885d792fe775d2a7a139ad6c0b97603895fd499e2')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
