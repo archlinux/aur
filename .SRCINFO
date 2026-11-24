@@ -1,0 +1,21 @@
+pkgbase = agenttrace-bin
+	pkgdesc = Audit AI coding agent sessions: cost, tokens, latency and failures
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/luoyuctl/agenttrace
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = agenttrace
+	conflicts = agenttrace
+	options = !debug
+	source = agenttrace-bin-0.10.1-LICENSE::https://raw.githubusercontent.com/luoyuctl/agenttrace/v0.10.1/LICENSE
+	sha256sums = 8df27a8843a00ee6fb604cd381ffef57f5fda4698072d824f98112a9cf0e0439
+	source_x86_64 = agenttrace-bin-0.10.1-x86_64::https://github.com/luoyuctl/agenttrace/releases/download/v0.10.1/agenttrace-linux-amd64
+	sha256sums_x86_64 = 3f0159f2eca56717cc5e76a317e495b464fbdc5c9f2610665ef574c6a6d311b6
+	source_aarch64 = agenttrace-bin-0.10.1-aarch64::https://github.com/luoyuctl/agenttrace/releases/download/v0.10.1/agenttrace-linux-arm64
+	sha256sums_aarch64 = e111e5b0a0bde25572b5f2cf335aca1b4bceffc845acdca1f638186a24b6cc41
+
+pkgname = agenttrace-bin
