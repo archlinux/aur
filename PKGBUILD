@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=sql-tap
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Watch SQL traffic in real-time with a TUI"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1c30092d9d1442bff23e118352889990c73c6b8fb29109ceb8eecf34801a949e')
+sha256sums=('8cd794805d3c6816eba46393cfa9498393581f0519671bfefb27917ae92af650')
 
 prepare() {
   cd "$pkgname-$pkgver"
