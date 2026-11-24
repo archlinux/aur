@@ -3,7 +3,7 @@
 pkgname=routinator-bin
 provides=('routinator')
 conflicts=('routinator' 'routinator-git')
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 arch=('x86_64')
 options=('!debug')
@@ -17,7 +17,7 @@ source=(
 	'routinator-sysusers.conf'
 	'routinator-tmpfiles.conf'
 )
-sha256sums=('92cb18110dba89911ed72cee6dc38ccf4b4dfe30c6261a638030ff1042912c5a'
+sha256sums=('359e608579263be5445da152e742be7a79e40ce61906d097b02051cf7c3a660e'
             'ac2dd416119d1c526bdffe792d0e204bc9dc91a7cc198754cafb7fdde646c96a'
             'be4587d512bdf8ad98f3f93ac16b5cc1f5a423f4f16f088d66f960937b44c46f')
 
