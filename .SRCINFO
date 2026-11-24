@@ -8,6 +8,8 @@ license = GPL3
 makedepends = git
 makedepends = cmake
 depends = procps-ng
+depends = mosquitto
+depends = json-c
 source = git+https://github.com/spacefreak18/simapi.git
 sha256sums = SKIP
 

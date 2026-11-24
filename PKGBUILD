@@ -9,6 +9,8 @@ url="https://github.com/spacefreak18/simapi"
 license=('GPL3')
 depends=(
   procps-ng
+  mosquitto
+  json-c
 )
 makedepends=(
   git
