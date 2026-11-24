@@ -1,0 +1,14 @@
+pkgbase = ro-cei-cert
+	pkgdesc = Romanian electronic identity card root and sub-CA certificates
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://hub.mai.gov.ro/cei/info/descarca-cert
+	install = ro-cei-cert.install
+	arch = any
+	license = unknown
+	makedepends = unzip
+	depends = ca-certificates-utils
+	source = certificates.zip::https://hub.mai.gov.ro/cei/info/descarca-cert
+	sha256sums = b121c025d836fefadaf94c0dcfe0f24427c72b46b587de27ec2e77e0da115feb
+
+pkgname = ro-cei-cert
