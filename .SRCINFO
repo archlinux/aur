@@ -1,6 +1,6 @@
 pkgbase = ps-printer-app-git
 	pkgdesc = PostScript Printer Application
-	pkgver = 1.0+r274.20261111.5985255
+	pkgver = 1.0+r275.20261124.5ce06c5
 	pkgrel = 1
 	url = https://github.com/OpenPrinting/ps-printer-app
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ps-printer-app-git
 	depends = libppd
 	depends = pappl
 	depends = pappl-retrofit
-	provides = ps-printer-app=1.0+r274.20261111.5985255
+	provides = ps-printer-app=1.0+r275.20261124.5ce06c5
 	conflicts = ps-printer-app
 	options = emptydirs
 	source = git+https://github.com/OpenPrinting/ps-printer-app.git
