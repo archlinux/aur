@@ -1,0 +1,19 @@
+pkgbase = talos-pilot-bin
+	pkgdesc = TUI for Talos Linux node monitoring, logs and etcd health
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/handfish/talos-pilot
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = talos-pilot
+	conflicts = talos-pilot
+	options = !debug
+	source_x86_64 = talos-pilot-bin-0.1.11-x86_64.tar.xz::https://github.com/handfish/talos-pilot/releases/download/v0.1.11/talos-pilot-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 719a94cd237caa10fe08d150f87a913f4349ec536094828c614513bb6bd25252
+	source_aarch64 = talos-pilot-bin-0.1.11-aarch64.tar.xz::https://github.com/handfish/talos-pilot/releases/download/v0.1.11/talos-pilot-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 9d6a362a1cb24d735cb61bfe5fbb68f09dc5fa39951fc0411863cb4d8d1ee48e
+
+pkgname = talos-pilot-bin
