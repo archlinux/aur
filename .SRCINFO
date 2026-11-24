@@ -1,0 +1,20 @@
+pkgbase = agentpipe-bin
+	pkgdesc = Orchestrate conversations between different AI CLI tools
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/kevinelliott/agentpipe
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = agentpipe
+	conflicts = agentpipe
+	options = !debug
+	source = agentpipe-bin-0.7.0-LICENSE::https://raw.githubusercontent.com/kevinelliott/agentpipe/v0.7.0/LICENSE
+	sha256sums = 03b2d155ffc34e0e1eea7b39300ea79d6229bca4d42ffd448c12f2c588491ad5
+	source_x86_64 = agentpipe-bin-0.7.0-x86_64.tar.gz::https://github.com/kevinelliott/agentpipe/releases/download/v0.7.0/agentpipe_linux_amd64.tar.gz
+	sha256sums_x86_64 = de87ecac89d495c63550de8bb33399198258d1280d07c153c25c8e5f1fdcce79
+	source_aarch64 = agentpipe-bin-0.7.0-aarch64.tar.gz::https://github.com/kevinelliott/agentpipe/releases/download/v0.7.0/agentpipe_linux_arm64.tar.gz
+	sha256sums_aarch64 = 84e2b9a930367bab501efc87631f52874df9c55e91e6782e10a3f0f8d30675eb
+
+pkgname = agentpipe-bin
