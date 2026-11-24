@@ -2,7 +2,7 @@
 
 pkgname=python-k3utfjson
 _name=${pkgname#python-}
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="JSON dump and load with enforced UTF-8 encoding"
 provides=(${pkgname})
@@ -26,7 +26,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('a84def0089e143ff48e5de42c976fd1a0b52ed8508b6724ed8a39abdd4740013')
+sha256sums=('6c6a517d2db532d033e5ef544780756a12e06fdbe5ccec762b7a4a2bf427651e')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
