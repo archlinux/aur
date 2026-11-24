@@ -1,6 +1,6 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=balun-bin
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A lightweight cross-platform HDHomeRun live TV viewer (Pre-compiled Binary)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ provides=("balun=${pkgver}")
 conflicts=('balun')
 # Use the official Arch pre-compiled package as the source
 source=("${pkgname}-${pkgver}.pkg.tar.zst::${url}/releases/download/v${pkgver}/balun-${CARCH}.pkg.tar.zst")
-sha256sums=('00facdd70955ee2f68f999d2e3156c71fcb82abc6326946acbfb7910e828a6c8')
+sha256sums=('0d167e255419f61a7f30ab5418c853a8a7a0c69768785d4c8ded9f89570831b3')
 
 package() {
   # The source is a .pkg.tar.zst which makepkg extracts to $srcdir.
