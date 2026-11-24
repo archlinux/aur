@@ -1,0 +1,17 @@
+pkgbase = syscall-bin
+	pkgdesc = Look up Linux syscalls from your terminal
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/guitmz/syscall
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = syscall
+	conflicts = syscall
+	options = !strip
+	source_x86_64 = syscall-x86_64-0.2.1.tgz::https://github.com/guitmz/syscall/releases/download/v0.2.1/syscall_v0.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = d26f587f036c381a916506090aef59535d5bf0f9e5aa971d5b785b3fa198390b
+	source_aarch64 = syscall-aarch64-0.2.1.tgz::https://github.com/guitmz/syscall/releases/download/v0.2.1/syscall_v0.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = d69efc591750bf32ac65f32e2ae080c315a5ec1375780914b82cf2582e15691b
+
+pkgname = syscall-bin

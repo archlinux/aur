@@ -1,0 +1,5 @@
+[syscall-bin]
+source = "github"
+github = "guitmz/syscall"
+use_latest_release = true
+prefix = "v"
