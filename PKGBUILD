@@ -2,7 +2,7 @@
 _appname=flomo
 pkgname="${_appname}-pake"
 _pkgname=Flomo
-pkgver=3.20.0
+pkgver=3.21.0
 pkgrel=1
 pkgdesc="Use Pake to package Flomo.浮墨笔记,像发微博一样记笔记,记录你想法的川流.全平台覆盖,还支持微信服务号输入."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-pake}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
-sha256sums=('33278a42352e7b46b7b1f6450a5a7d33b1b87f1fea086989b38efb09725fdc9c'
+sha256sums=('d5719d42f14eba8b30b16415b3ebc0f2d3f62105352d251ee194e67ecda8760d'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
