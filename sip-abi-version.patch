@@ -1,0 +1,30 @@
+--- a/project.py
++++ b/project.py
+@@ -491,18 +491,17 @@
+         sub_dir = self.project.build_dir + "/sip"
+         os.makedirs(sub_dir, exist_ok=True)
+ 
+-        if sipbuild.SIP_VERSION >= 0x060A00:
+-            abi_ver = self.project.abi_version.split('.')
+-        elif sipbuild.SIP_VERSION >= 0x060200:
+-            abi_ver = self.project.abi_version.split('.')[0]
+-        else:
+-            abi_ver = self.project.abi_version
+-        if sipbuild.SIP_VERSION >= 0x060F00:
++        abi_version = self.project.abi_version
++        if isinstance(abi_version, str):
++            # older sip releases expose the ABI version as a string
++            abi_version = tuple(int(p) for p in abi_version.split('.'))
++        try:
++            # sip 6.17 and later take the sip module configuration as well
+             sources = sipbuild.module.copy_nonshared_sources(
+-                abi_ver, self.project.sip_module, sub_dir)
+-        else:
++                abi_version, self.project.sip_module, 0, sub_dir)
++        except TypeError:
+             sources = sipbuild.module.copy_nonshared_sources(
+-                abi_ver, sub_dir)
++                abi_version, self.project.sip_module, sub_dir)
+ 
+         # use copy_sip_h instead?
+         shutil.copy(self.project.build_dir + "/sip.h", sub_dir)

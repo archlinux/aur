@@ -1,16 +1,20 @@
 pkgbase = python-pywpsrpc
-	pkgdesc = Python bindings for WPS Office RPC
-	pkgver = 2.1.0
+	pkgdesc = Python bindings for WPS Office RPC (Linux only)
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/timxx/pywpsrpc
 	arch = x86_64
 	license = MIT
-	makedepends = sip5
+	makedepends = sip
 	makedepends = qt5-base
+	depends = python
 	depends = qt5-base
 	depends = wps-office
-	source = https://pypi.python.org/packages/source/p/pywpsrpc/pywpsrpc-2.1.0.tar.gz
-	sha256sums = be8d0cc6ffa275064d0acb9267a77afc21f9e693585305665797a8b620850a3e
+	source = pywpsrpc-2.4.0.tar.gz::https://github.com/timxx/pywpsrpc/archive/refs/tags/v2.4.0.tar.gz
+	source = wpsrpc-sdk-4c24464a9c0189443108be0996ee1cc4ad6545dd.tar.gz::https://github.com/timxx/wpsrpc-sdk/archive/4c24464a9c0189443108be0996ee1cc4ad6545dd.tar.gz
+	source = sip-abi-version.patch
+	sha256sums = 61ae3febdc171b937013de5fba2487bdcacd625634977272d077cd5f24b96cb1
+	sha256sums = 18051bb8be8d5d7d84f2da960a174b2cf2a18a00f9c5048cc49f1ce1b656d431
+	sha256sums = c18d9398030df1c47f068a99371eb34c24c2012a95d78e75e401a519797542e8
 
 pkgname = python-pywpsrpc
-
