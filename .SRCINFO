@@ -1,0 +1,26 @@
+pkgbase = hydra64
+	pkgdesc = Chess databases, engine analysis, play against an engine and engine tournaments
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://antidote1911.github.io/Hydra64/
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = rust
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-svg
+	depends = stockfish
+	depends = libxcb
+	depends = fuse3
+	depends = zlib
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = hydra64-bin
+	source = hydra64-1.0.0.tar.gz::https://github.com/Antidote1911/Hydra64/archive/refs/tags/v1.0.0.tar.gz
+	source = qt-advanced-docking-system-5.1.1.tar.gz::https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/refs/tags/v5.1.1.tar.gz
+	sha256sums = b82b1d14a8cbfa11466bde74fa01e371d53bca8b7ebc03f1454718f365ff2ec7
+	sha256sums = 9ce947acbb1984946f9145c976e42e6984f99b98fb414dd7354a290af6d4ff04
+
+pkgname = hydra64
