@@ -1,7 +1,7 @@
 # Maintainer: Joern <joernhofmann@web.de>
 pkgname=tessera-deck
 _pkgname=tessera
-pkgver=1.2.10
+pkgver=1.2.12
 pkgrel=1
 pkgdesc='Host application (tray, USB host and editor) for the Tessera deck panel'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=('libpulse: volume, mute and mixer actions'
 install=tessera-deck.install
 source=("tessera-host-v${pkgver}.zip::${url}/releases/download/v${pkgver}/tessera-host-v${pkgver}.zip"
         'tessera-deck.sh')
-sha256sums=('7e464536b8e051d501f3356f8a26f0bcf24032f667918416f34ceab21119b278'
+sha256sums=('3a95190a032dd5753cff7f8c673bfca8e213447647b32bfdc72702fb218f112c'
             'SKIP')
 
 package() {

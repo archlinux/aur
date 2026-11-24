@@ -16,6 +16,14 @@ if [ "${1:-}" = "--gnome-extension" ]; then
   mkdir -p "$(dirname "$EXTENSION")" && rm -rf "$EXTENSION"
   cp -r --no-preserve=mode,ownership "$SRC/host/linux/gnome-extension/tessera-windows@tessera" "$EXTENSION"
   echo "Installed $EXTENSION"
+  shell_major="$(gnome-shell --version 2>/dev/null | tr -dc '0-9.' | cut -d. -f1)"
+  if [ -n "$shell_major" ] && [ "$shell_major" -ne 51 ]; then  # metadata.json lists GNOME 51 only
+    echo "Warning: this extension is marked for GNOME 51 only and your GNOME Shell is $shell_major, so GNOME will not enable it as it is." >&2
+    echo "Without it keys and typing still work, but window actions and smart profiles do not. To try it anyway (it is not" >&2
+    echo "tested on GNOME $shell_major), turn off GNOME's version check for extensions first, then do the steps below:" >&2
+    echo "  gsettings set org.gnome.shell disable-extension-version-validation true" >&2
+    echo "  (gsettings reset org.gnome.shell disable-extension-version-validation turns the check back on)" >&2
+  fi
   echo "GNOME loads new extensions at sign-in. Sign out and in again, then run:"
   echo "  gnome-extensions enable tessera-windows@tessera"
   echo "While it is on, any program of your session can read window titles and focus, move or close windows. Turn it off with"
