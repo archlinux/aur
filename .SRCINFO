@@ -1,0 +1,18 @@
+pkgbase = wallfacer-bin
+	pkgdesc = Terminal session manager for Claude Code
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/pradipta/wallfacer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = wallfacer
+	conflicts = wallfacer
+	options = !debug
+	source_x86_64 = wallfacer-bin-1.2.3-x86_64.tar.gz::https://github.com/pradipta/wallfacer/releases/download/v1.2.3/wallfacer-linux-amd64.tar.gz
+	sha256sums_x86_64 = de93dc1a584a091a8ab560b812b55764b1aacf340cb7c4ec17be83e96a3a1ea9
+	source_aarch64 = wallfacer-bin-1.2.3-aarch64.tar.gz::https://github.com/pradipta/wallfacer/releases/download/v1.2.3/wallfacer-linux-arm64.tar.gz
+	sha256sums_aarch64 = ebae08b01042a548c8e772e9c8c116546e59b9df2efd639da5b776514d35c344
+
+pkgname = wallfacer-bin
