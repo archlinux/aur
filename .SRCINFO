@@ -1,0 +1,16 @@
+pkgbase = lini
+	pkgdesc = Small language for diagrams and figures from plain text
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/monfa-red/lini
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = lini-1.1.1.tar.gz::https://github.com/monfa-red/lini/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 7768fdf5b6f201d5978dba48d880cc56b87b45d46bd0467f747ba8b2d3947e45
+
+pkgname = lini
