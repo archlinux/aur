@@ -8,7 +8,6 @@ pkgbase = archey3
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	optdepends = imagemagick: for default screenshot command

@@ -12,7 +12,7 @@ arch=(any)
 url='https://lclarkmichalek.github.io/archey3/'
 license=(GPL-3.0-or-later)
 depends=(python)
-makedepends=(git python-build python-installer python-wheel python-setuptools)
+makedepends=(git python-build python-installer python-setuptools)
 optdepends=('imagemagick: for default screenshot command'
   'python-logbook: alternative logging system')
 source=('git+https://github.com/lclarkmichalek/archey3#commit=ac687529ec6208954f09c29f01760c66f73b1d10'
