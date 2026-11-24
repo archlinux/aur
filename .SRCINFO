@@ -1,7 +1,7 @@
 pkgbase = navicat-premium-lite
 	pkgdesc = Navicat Premium Lite
 	pkgver = 18.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.navicat.com/products/navicat-premium-lite
 	arch = x86_64
 	license = proprietary

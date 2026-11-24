@@ -1,7 +1,7 @@
 pkgbase=navicat-premium-lite
 pkgname=("${pkgbase}-en" "${pkgbase}-zh-cn")
 pkgver=18.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Navicat Premium Lite"
 arch=('x86_64')
 url="https://www.navicat.com/products/navicat-premium-lite"
@@ -25,7 +25,9 @@ _package() {
 	_pkgroot_path="${pkgdir}/${_pkgroot}"
 	install -d "${_pkgroot_path}" && cp -a "${srcdir}/squashfs-root/." "${_pkgroot_path}"
 	install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/navicat.desktop" "${pkgdir}/usr/share/applications/navicat.desktop"
-	install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/navicat-icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/navicat-icon.png"
+	# upstream renamed the icon to a generic "icon.png" since 18.0.3
+	sed -i 's/^Icon=.*/Icon=navicat-icon/' "${pkgdir}/usr/share/applications/navicat.desktop"
+	install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/navicat-icon.png"
 	install -dm755 "${pkgdir}/usr/bin" && ln -s "/${_pkgroot}/AppRun" "${pkgdir}/usr/bin/navicat"
 
 	# workaround for libsystemd.so.0: version `LIBSYSTEMD_251' not found
