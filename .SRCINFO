@@ -1,6 +1,6 @@
 pkgbase = pdfcraft-private-bin
 	pkgdesc = 自用维护：开源 clean-room 版 Adobe Acrobat 替代（PDF 阅读整理保护），上游 storytold/pdfcraft
-	pkgver = 0.21.1
+	pkgver = 0.22.0
 	pkgrel = 4
 	url = https://getartcraft.com/apps/pdfcraft
 	arch = x86_64
@@ -25,12 +25,12 @@ pkgbase = pdfcraft-private-bin
 	optdepends = vulkan-driver: GPU rendering through Vulkan
 	optdepends = xdg-desktop-portal: native desktop integration and file dialogs
 	optdepends = cups: printing support
-	provides = pdfcraft=0.21.1
+	provides = pdfcraft=0.22.0
 	conflicts = pdfcraft
 	conflicts = pdfcraft-bin
 	conflicts = pdfcraft-git
 	conflicts = ai.storyteller.pdfcraft
-	source = https://gh-proxy.com/https://github.com/storytold/pdfcraft/releases/download/v0.21.1/pdfcraft-0.21.1-linux-x86_64.pkg.tar.zst
-	sha256sums = 1fb565339968cb12947544ec3b74472ef4ea196c308ea3c0efdaf1ca566046e5
+	source = https://gh-proxy.cn/https://github.com/storytold/pdfcraft/releases/download/v0.22.0/pdfcraft-0.22.0-linux-x86_64.pkg.tar.zst
+	sha256sums = 865a70e73cbcc8d36b199ac466a625400ff58bba95e88879e3ed28f5e4e4c428
 
 pkgname = pdfcraft-private-bin
