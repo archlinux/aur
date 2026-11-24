@@ -2,7 +2,7 @@
 
 pkgname=sanalyer-bin
 _pkgname=sanalyer
-pkgver=2026.1107.110815
+pkgver=2026.1123.214955
 pkgrel=1
 pkgdesc="Instant messaging and VoIP application"
 arch=('x86_64')
@@ -53,7 +53,7 @@ makedepends=('python')
 options=('!strip' '!debug')
 source=("https://dl.sanalyer.com/desktop/stable/linux/x64/$_pkgname-$pkgver-linux-x64.tar.gz"
   "$_pkgname.desktop")
-sha256sums=('db487d8af510fc3f45e425e9f987f82e521d9b793d0dcf2e2952b5ce7d6b36d1'
+sha256sums=('2fbf06625f35d20c3f08b351b1b3607d969d5f5a9b7489cc9c8bdc669ce41af3'
   'e89aae6002e51bd9958e64d37f66a64659be19527af45440378e2e2185ae038b')
 
 prepare() {
