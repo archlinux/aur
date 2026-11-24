@@ -1,0 +1,13 @@
+pkgbase = rdappler
+	pkgdesc = Retrieve RDAP info and check domain registration status
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/dinofp/rdappler
+	arch = x86_64
+	license = ISC
+	depends = fuse2
+	options = !strip
+	source = https://codeberg.org/dinofp/rdappler/releases/download/1.0/rdappler-1.0-x86_64.AppImage
+	sha256sums = d2524cbfe86b5b41aeb41751dbe47b76edf9f16d80c336296dfec64c75715f4e
+
+pkgname = rdappler
