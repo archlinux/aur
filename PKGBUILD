@@ -7,8 +7,8 @@
 # (30-60 minutes, ~6 GB, once).
 pkgname=redalert2-recomp-git
 _pkgname=redalert2-recomp
-pkgver=0.1.3.r0.g0000000
-pkgrel=2
+pkgver=0.1.4
+pkgrel=3
 pkgdesc="Static recompilation of Red Alert 2 and Yuri's Revenge to native Linux (needs your own game copy)"
 arch=('x86_64')
 url="https://github.com/sp00nznet/redalert2-recomp"
@@ -26,7 +26,14 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "0.1.3.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # Follow upstream tags, so the package does not stay on the version that
+    # was current when it was packaged: v0.1.4-3-gabcdef0 -> 0.1.4.r3.gabcdef0.
+    local desc
+    if desc=$(git describe --long --tags --abbrev=7 2>/dev/null); then
+        printf '%s' "${desc#v}" | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
+    else
+        printf '0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    fi
 }
 
 package() {
