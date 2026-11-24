@@ -1,7 +1,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=pragmatapro-fonts
-pkgver=0.903
+pkgver=0.904
 pkgrel=1
 epoch=1
 pkgdesc="A condensed monospaced font optimized for screen, designed by Fabrizio Schiavi to be the ideal font for coding, math and engineering"
@@ -10,7 +10,7 @@ arch=(any)
 license=(custom)
 # Note: you need to buy the font at $url and place the zip file in the current or $SRCDEST directory.
 source=('local://PragmataPro-fialk8-6rjkhe.zip')
-sha256sums=('770400e9d4f3d40fe8893af9ae1f784f6ffad241fc4189128c4d3c4615fb7727')
+sha256sums=('2d52174c2a478a3176ac25693894496c89c8448ef745b71e4285c39d85f54ed8')
 
 
 package() {
