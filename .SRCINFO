@@ -1,0 +1,21 @@
+pkgbase = turm-bin
+	pkgdesc = TUI for the Slurm workload manager
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/karimknaebel/turm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = turm
+	conflicts = turm
+	options = !debug
+	source = turm-bin-0.17.0-LICENSE::https://raw.githubusercontent.com/karimknaebel/turm/v0.17.0/LICENSE
+	sha256sums = db50f163f6e3f85e9afaecf1ab47740cc82d3a335d1d00d2b38833a0b9b05600
+	source_x86_64 = turm-bin-0.17.0-x86_64.tar.gz::https://github.com/karimknaebel/turm/releases/download/v0.17.0/turm-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b3cc08bab97635e76a0c1f11c78eefdb7902ec38e803730e12471dd1eedfd340
+	source_aarch64 = turm-bin-0.17.0-aarch64.tar.gz::https://github.com/karimknaebel/turm/releases/download/v0.17.0/turm-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 456142cc18f80205bf9eecdfc138fc6c6e062409eebf5db6a42cb84bd1bf2313
+
+pkgname = turm-bin
