@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=capri-desktop-bin
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Unofficial Capri desktop companion: she sits on your windows, chats and does things for you (upstream binary)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/Capri-
         "capri-desktop-${pkgver}.desktop::${_raw}/cross/linux/capri-desktop.desktop"
         "capri-desktop-${pkgver}.png::${_raw}/cross/icon.png"
         "LICENSE-${pkgver}.md::${_raw}/LICENSE.md")
-sha256sums=('94958a7322145a9dc647fa31d067a18db2361b2112d435f29729a06b717bd8f7' 'ef76e759b9ff07156b3bffc636ebfd5a9130c89f9ebe52c1528926da831f2d07' '44b66c419fa47820a9af8a2a80324315f0621d1b3b3b13b322fe5c71975dd9ad' '0dfe0f5fd9fd5ea4bb2e43e228a340e2551a1734dcb646a2dabe211c26ed2d63')
+sha256sums=('674e8fc79838eddb39d9c4b15800dd251353ac3c656572a2310843f56c7a4d30' 'ef76e759b9ff07156b3bffc636ebfd5a9130c89f9ebe52c1528926da831f2d07' '44b66c419fa47820a9af8a2a80324315f0621d1b3b3b13b322fe5c71975dd9ad' '0dfe0f5fd9fd5ea4bb2e43e228a340e2551a1734dcb646a2dabe211c26ed2d63')
 
 package() {
   install -Dm755 Capri/Capri -t "$pkgdir/opt/capri-desktop"
