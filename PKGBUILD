@@ -2,7 +2,7 @@
 # Contributor: Wes Jackson <icebal dot 7 at gmail dot com>
 
 pkgname=nfs-ganesha
-pkgver=11.1
+pkgver=15.13
 pkgrel=1
 pkgdesc="NFS and 9P protocols in user mode."
 arch=(x86_64 i686 armv7h aarch64)
@@ -24,7 +24,7 @@ depends=(
     liburcu
     libwbclient
     nfsidmap
-    openssl
+    #openssl
     #rdma-core
     util-linux-libs
     xfsprogs
@@ -42,7 +42,7 @@ source=("git+https://github.com/nfs-ganesha/nfs-ganesha.git#tag=V${pkgver}"
         "git+https://github.com/nfs-ganesha/ntirpc.git"
         "git+https://github.com/biaks/prometheus-cpp-lite.git"
         )
-sha256sums=('b61a4516f25ebbabc6cc2b614aeb5905f144516b0976b0b449ca343fd3000f31'
+sha256sums=('6313c090433eef8acb370f4417af4c7f52730da878370fb069a1690f15561ae6'
             'SKIP'
             'SKIP')
 backup=(etc/ganesha/ganesha.conf) #etc/sysconfig/ganesha
@@ -75,7 +75,7 @@ build() {
     -DUSE_FSAL_RGW=OFF
   )
 
-  cmake -B build -S "nfs-ganesha/src" -Wno-dev \
+  cmake -B build -S "nfs-ganesha/src" -Wno-author \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
