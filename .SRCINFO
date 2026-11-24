@@ -1,0 +1,19 @@
+pkgbase = herdr-sidebar-bin
+	pkgdesc = File explorer and git sidebar pane for herdr
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/alexarthurs/herdr-sidebar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = herdr-sidebar
+	conflicts = herdr-sidebar
+	options = !debug
+	source = herdr-sidebar-bin-0.16.0-LICENSE::https://raw.githubusercontent.com/alexarthurs/herdr-sidebar/v0.16.0/LICENSE
+	sha256sums = e379659655b186af37842bf1df3e6c0e29a02a62f6cbf388a9607c440da9aea7
+	source_x86_64 = herdr-sidebar-bin-0.16.0-x86_64::https://github.com/alexarthurs/herdr-sidebar/releases/download/v0.16.0/herdr-sidebar-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 572f9e651930f8365b22332499648f2e4bfb09115235ae5610f0b259af529744
+	source_aarch64 = herdr-sidebar-bin-0.16.0-aarch64::https://github.com/alexarthurs/herdr-sidebar/releases/download/v0.16.0/herdr-sidebar-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 33722871d0ec22d5c85d653d3a9166e74f34309cc7ee6a94da4dd59b8db5b429
+
+pkgname = herdr-sidebar-bin
