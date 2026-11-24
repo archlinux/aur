@@ -1,0 +1,16 @@
+pkgbase = checkpwn-rs
+	pkgdesc = Check Have I Been Pwned for breached accounts and passwords
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/brycx/checkpwn
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = checkpwn-rs-0.6.3.tar.gz::https://github.com/brycx/checkpwn/archive/refs/tags/0.6.3.tar.gz
+	sha256sums = 77e1b33240919fe6a8f334e86b795c792029a3a1e16fbd37276445407be05f21
+
+pkgname = checkpwn-rs
