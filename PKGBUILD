@@ -7,14 +7,15 @@ pkgname=(
   bisq-cli
   bisq-daemon
 )
-pkgver=1.10.11
+pkgver=1.10.12
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
 url="https://bisq.network"
 license=('AGPL3')
-depends=('jdk21-openjdk')
-makedepends=('jdk21-openjdk' 'git')
+# 21.0.13.1 fixes CVE-2026-114938 (Java4Shell); upstream's minimum since 1.10.12.
+depends=('jdk21-openjdk>=21.0.13.1')
+makedepends=('jdk21-openjdk>=21.0.13.1' 'git')
 # The release tag is PGP-signed by the Bisq release manager; makepkg
 # verifies it against validpgpkeys (?signed). Import the key first:
 #   curl -fsSL https://bisq.network/pubkey/E222AA02.asc | gpg --import
@@ -41,6 +42,21 @@ prepare() {
     git config submodule.$sm.url "${srcdir}/$sm"
   done
   git -c protocol.file.allow=always submodule update --init bitcoind tor
+
+  # Upstream pins the toolchain vendor to Amazon Corretto for its
+  # reproducible installer builds. Arch's OpenJDK is built from the same
+  # jdk21u release tag, so drop the vendor pin but keep upstream's minimum
+  # Java version (releaseBuild.javaVersion) as a hard floor.
+  # The bisq and tor build-logic both pin it.
+  grep -rlZ 'JvmVendorSpec\.AMAZON' --include='*.gradle' --include='*.kts' . |
+    xargs -0r sed -i '/JvmVendorSpec\.AMAZON/d'
+  local min have
+  min=$(sed -n 's/^releaseBuild\.javaVersion=//p' gradle.properties)
+  have=$(sed -n 's/^JAVA_VERSION="\(.*\)"/\1/p' /usr/lib/jvm/java-21-openjdk/release)
+  if [ "$(vercmp "$have" "$min")" -lt 0 ]; then
+    error "jdk21-openjdk $have is older than upstream's minimum Java $min"
+    return 1
+  fi
 }
 
 build() {
