@@ -1,0 +1,23 @@
+pkgbase = hns
+	pkgdesc = Speech-to-text CLI that transcribes your microphone to the clipboard
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/primaprashant/hns
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-click
+	depends = python-faster-whisper
+	depends = python-numpy
+	depends = python-pyperclip
+	depends = python-requests
+	depends = python-rich
+	depends = python-sounddevice
+	source = https://files.pythonhosted.org/packages/source/h/hns/hns-1.1.0.tar.gz
+	sha256sums = bedd02ecbe0759fc947676a3f4945332920093ed0304237f082dced2c8c6b986
+
+pkgname = hns
