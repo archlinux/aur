@@ -11,7 +11,7 @@ pkgname=(
   nwjs-bin
   nwjs-sdk-bin
 )
-pkgver=0.119.1
+pkgver=0.120.0
 pkgrel=1
 pkgdesc="Runtime based on Chromium and node.js"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
   nwjs.png::https://raw.githubusercontent.com/nwjs/website/refs/heads/master/public/img/logo.png
   nwjs.desktop
 )
-sha256sums=('dc2d32234a1007a27875cd29901c7d9f327de78160f9dda44244f724da13ef0b'
+sha256sums=('97baefb1795dc17a3b8e45ebc0361767ddd52aa339a015c627a4381d6945fe9f'
             '0f1643f16302b2e7de66fdf91ae370a65c3811052e0c43a2908d49f60ee5a5e4'
             '161b2c1a8c429ef0773bd4a7e9a5befd52bf30575c17c7180e9701e77b48950b')
 
