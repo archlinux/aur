@@ -6,14 +6,15 @@ _name=talkey
 # A placeholder. makepkg runs pkgver() against the clone and rewrites this line
 # in place, so whatever is committed here is only what the AUR page shows until
 # the next build.
-pkgver=0.1.0.r25.g4a6d40f
+pkgver=0.2.0.r0.g724272f
 pkgrel=1
 pkgdesc="Push-to-talk voice input for X11/i3 - hold a key, speak, the text is typed. Offline, no API key."
 arch=('any')
 url="https://github.com/yogh-io/talkey"
-license=('MIT')
+license=('MIT' 'BSD-2-Clause' 'Apache-2.0')
 depends=(
   'bash'
+  'util-linux'
   'whisper-cpp'
   'ffmpeg'
   'xdotool'
@@ -35,10 +36,11 @@ depends=(
 )
 optdepends=(
   'whisper.cpp-model-large-v3-turbo: the default speech model (AUR) - talkey needs some model'
-  'whisper.cpp-model-small: translate-to-English support (AUR)'
-  'python: live word-by-word text in the HUD as you speak - dictation itself does not need it'
+  'python: automatic speech detection, voice commands, live text in the HUD and translate mode'
+  'python-numpy: optional Smart Turn feature extraction'
+  'python-onnxruntime: optional Smart Turn CPU inference'
   'libnotify: desktop notifications alongside the HUD, and the only feedback if you disable it'
-  'ollama: names archived recordings after what you said - needs a model pulled too (default qwen2.5:3b)'
+  'ollama: translate mode (translategemma:4b) and naming archived recordings (qwen2.5:3b)'
   'xclip: paste mode (TALKEY_PASTE=1) instead of typing'
   'sxhkd: key bindings without i3'
   'xbindkeys: key bindings without i3'
@@ -76,32 +78,44 @@ package() {
     bin/talkey-mic-check \
     bin/talkey-replay \
     bin/talkey-live-pump \
+    bin/talkey-auto-worker \
+    bin/talkey-translate-worker \
     bin/talkey-norepeat \
     bin/talkey-whisper-server \
-    integrations/eww/talkey-hud
+    bin/talkey-hud
 
   # Read-only data. The layout under this root matches a git checkout exactly,
   # so the scripts resolve it with one probe and behave identically either way.
   install -Dm644 -t "$pkgdir/usr/share/$_name" vocabulary.txt
-  install -Dm644 -t "$pkgdir/usr/share/$_name/lib" lib/common.sh
+  install -Dm644 -t "$pkgdir/usr/share/$_name/lib" lib/*.sh
+  install -Dm644 -t "$pkgdir/usr/share/$_name/lib" lib/smart_turn.py lib/speech.py lib/commands.py lib/vad.py
+  install -Dm644 -t "$pkgdir/usr/share/$_name/lib/vendor" \
+    lib/vendor/*.py lib/vendor/LICENSE.* lib/vendor/README.md
+  install -Dm644 -t "$pkgdir/usr/share/$_name/lib/setup" lib/setup/*.sh
   install -Dm644 -t "$pkgdir/usr/share/$_name/sounds" sounds/*.wav
   install -Dm644 -t "$pkgdir/usr/share/$_name/bindings" \
     bindings/i3.conf bindings/sxhkdrc bindings/xbindkeysrc bindings/README.md
   install -Dm644 -t "$pkgdir/usr/share/$_name/config" config/talkey.env.example
+  install -Dm644 -t "$pkgdir/usr/share/$_name/config" config/smart-turn-requirements.txt \
+    config/translate-requirements.txt
+  install -Dm644 -t "$pkgdir/usr/share/$_name/config/commands.d" config/commands.d/*.json
   install -Dm644 -t "$pkgdir/usr/share/$_name/integrations/eww" \
     integrations/eww/eww.yuck integrations/eww/eww.scss integrations/eww/blank.svg \
     integrations/eww/README.md
-  install -Dm755 -t "$pkgdir/usr/share/$_name/integrations/eww" integrations/eww/eww-feed
+  install -Dm755 -t "$pkgdir/usr/share/$_name/integrations/eww" integrations/eww/eww-feed integrations/eww/talkey-hud
 
   # User units, with the installed path baked in. talkey-hud and talkey-norepeat
   # are optional - a window manager can start them instead - but a service is the
   # only WM-independent way, so ship them.
+  . lib/install.sh
   local u
   for u in talkey-whisper talkey-hud talkey-norepeat; do
-    sed 's|@BINDIR@|/usr/bin|g' "systemd/$u.service.in" > "$srcdir/$u.service"
+    render_unit "systemd/$u.service.in" /usr/bin > "$srcdir/$u.service"
     install -Dm644 "$srcdir/$u.service" "$pkgdir/usr/lib/systemd/user/$u.service"
   done
 
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md CHANGELOG.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/docs" docs/architecture.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/docs/screenshots" docs/screenshots/*.png
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
