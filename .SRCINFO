@@ -1,0 +1,19 @@
+pkgbase = instantmenu-bin
+	pkgdesc = A dynamic menu for X11 and Wayland (prebuilt binary)
+	pkgver = 5.2.3
+	pkgrel = 1
+	url = https://github.com/instantOS/instantMENU
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = libxcb
+	depends = libxkbcommon-x11
+	provides = instantmenu=1:5.2.3
+	conflicts = instantmenu
+	source = https://github.com/instantOS/instantMENU/releases/download/v5.2.3/instantmenu-x86_64-unknown-linux-gnu-v5.2.3.tgz
+	sha256sums = c90bd0ace275b2c28d712bf79245c9d74e344c5581d1857994744b31f8a05649
+
+pkgname = instantmenu-bin
