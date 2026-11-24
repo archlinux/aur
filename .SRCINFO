@@ -1,0 +1,22 @@
+pkgbase = lazyclaude
+	pkgdesc = lazygit-style TUI for Claude Code customizations
+	pkgver = 0.12.15
+	pkgrel = 1
+	url = https://github.com/nikiforovall/lazyclaude
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	depends = python
+	depends = python-pathspec
+	depends = python-pyperclip
+	depends = python-rich
+	depends = python-textual
+	depends = python-yaml
+	source = https://files.pythonhosted.org/packages/source/l/lazyclaude/lazyclaude-0.12.15.tar.gz
+	sha256sums = c322e6bb24cb014459b5c8904dd7ae1e3568af95a44b2956a35a645c4aa1966b
+
+pkgname = lazyclaude
