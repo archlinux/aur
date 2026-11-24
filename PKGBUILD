@@ -2,7 +2,7 @@
 pkgname=veasel-code-bin
 pkgver=0.102.4.next.0
 pkgrel=1
-pkgdesc="V-native AI coding agent (official prebuilt Linux release)"
+pkgdesc="Veasel Code terminal CLI and TUI (not the Desktop app)"
 arch=('x86_64')
 url="https://veasel.dev"
 license=('MIT')

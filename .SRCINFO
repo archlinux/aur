@@ -1,5 +1,5 @@
 pkgbase = veasel-code-bin
-	pkgdesc = V-native AI coding agent (official prebuilt Linux release)
+	pkgdesc = Veasel Code terminal CLI and TUI (not the Desktop app)
 	pkgver = 0.102.4.next.0
 	pkgrel = 1
 	url = https://veasel.dev
