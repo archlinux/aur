@@ -2,7 +2,7 @@
 
 pkgname=homemesh-git
 _name=homemesh
-pkgver=0.1.0.r1.g84aabfe
+pkgver=0.2.0.r5.gf97018a
 pkgrel=1
 pkgdesc='Open the home folders of your other computers in any file manager; pair them with a code (development version)'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gtk4' 'openssh' 'polkit' 'python' 'python-gobject')
 # fakeroot and make are part of base-devel, which AUR packages usually take
 # for granted; listed so that an AUR helper installs them where it is missing.
-makedepends=('git' 'fakeroot' 'make')
+makedepends=('git' 'fakeroot' 'gettext' 'make')
 optdepends=('gvfs: open the computers in Nautilus, Nemo, Thunar and Caja'
             'kio-extras: open the computers in Dolphin'
             'bubblewrap: share only chosen folders'
