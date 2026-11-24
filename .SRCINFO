@@ -1,0 +1,17 @@
+pkgbase = lazylogcat-bin
+	pkgdesc = TUI to view Android logs from adb logcat
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/parfenovvs/lazylogcat
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lazylogcat
+	conflicts = lazylogcat
+	options = !debug
+	source_x86_64 = lazylogcat-bin-0.14.0-x86_64.tar.gz::https://github.com/parfenovvs/lazylogcat/releases/download/v0.14.0/lazylogcat_0.14.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 244b6be399828777ac40c64a02a8ebd792bb5144e8817e5c4dad5557e7ef24cd
+	source_aarch64 = lazylogcat-bin-0.14.0-aarch64.tar.gz::https://github.com/parfenovvs/lazylogcat/releases/download/v0.14.0/lazylogcat_0.14.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b1cee2397462c21e391a12524bb02223db39f8836812004f9f1283b517272c67
+
+pkgname = lazylogcat-bin
