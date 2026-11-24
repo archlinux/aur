@@ -1,0 +1,21 @@
+pkgbase = python-k3color
+	pkgdesc = Create colored text on terminal
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/pykit3/k3color
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3color
+	conflicts = python-k3color
+	source = k3color::git+https://github.com/pykit3/k3color.git#tag=v0.1.8
+	sha256sums = 0c6d2f0e66ea337cf2a73bf5da07cc6cfcde11432b5ba5dfceeeb6fc58ed5526
+
+pkgname = python-k3color
