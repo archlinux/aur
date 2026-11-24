@@ -1,6 +1,6 @@
 pkgbase = riptide-browser-bin
 	pkgdesc = Keyboard-driven web browser with vim-like bindings, built on CEF
-	pkgver = 0.25.0
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://joshzcold.github.io/riptide/
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = riptide-browser-bin
 	conflicts = riptide-bin
 	options = !strip
 	options = !debug
-	source = https://github.com/joshzcold/riptide/releases/download/v0.25.0/riptide-0.25.0-linux-x86_64.tar.gz
-	sha256sums = 9b564c5f6d4afce9f7d099eeea9c688c34aff460176118567903dc73302fca6c
+	source = https://github.com/joshzcold/riptide/releases/download/v0.25.1/riptide-0.25.1-linux-x86_64.tar.gz
+	sha256sums = 040c6b9b5c54334a958b65243ce94c511e19cdad685c6fa8e952199bd4d5a78c
 
 pkgname = riptide-browser-bin
