@@ -1,0 +1,18 @@
+pkgbase = dopogoto-bin
+	pkgdesc = Terminal music and video player with live chat
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/dangerous-person/dopogoto-terminal-player
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = glibc
+	provides = dopogoto
+	conflicts = dopogoto
+	options = !debug
+	source = dopogoto-bin-0.1.8-LICENSE::https://raw.githubusercontent.com/dangerous-person/dopogoto-terminal-player/v0.1.8/LICENSE
+	sha256sums = fe5d98ee5ead7753672a1ed4c6259f014bd7a083b1d6b57d0c61e4a60a02b971
+	source_x86_64 = dopogoto-bin-0.1.8-x86_64.tar.gz::https://github.com/dangerous-person/dopogoto-terminal-player/releases/download/v0.1.8/dopogoto_0.1.8_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2b637fa92a8d1606309adbb7f977f1555426e612ceb6973b50d227867f9ed674
+
+pkgname = dopogoto-bin
