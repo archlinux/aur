@@ -1,35 +1,29 @@
 # Maintainer: lzsnyy <710080675@qq.com>
 #
-# Repack of the official ZCode Linux deb (https://zcode.z.ai).
+# Global Z.ai edition of ZCode, repacked from the official Linux deb.
 #
-# ZCode ships one build for every region: the same app.asar carries the
-# built-in provider list for both Z.ai and BigModel / 智谱, and the UI lets the
-# user pick either. This package keeps upstream's defaults (Z.ai first) and the
-# system language. The domestic package (zcode-cn-bin) starts from the same
-# official deb but defaults to BigModel and Chinese; the two can be installed
-# side by side because each one owns its own /opt prefix, desktop file, icons
-# and user data directory.
+# Upstream ships one build with three OAuth login sources (BigModel, Z.ai CN,
+# Z.ai global) and picks one at runtime. This package rebuilds the asar with
+# only the global Z.ai factory left, so the login is locked to the global
+# account; zcode-cn-bin pins BigModel and zcode-zai-cn-bin pins Z.ai CN. UI
+# language follows the system locale.
 #
-# The canonical "zcode.desktop" id is owned by the domestic package: the app
-# looks for a system-level entry with that exact name and, when it is missing,
-# writes ~/.local/share/applications/zcode.desktop itself, pointing at the raw
-# binary with none of the wrapper environment. Keeping the name on the edition
-# that needs ZCODE_* isolation prevents that. This package registers
-# "zcode-intl.desktop" instead; installed alone, the app's auto-written entry
-# is functionally identical to the packaged launcher (same binary, upstream
-# default profile), so the only effect is an extra launcher icon.
+# The canonical "zcode.desktop" id is owned by zcode-cn-bin: the app looks for
+# a system-level entry with that exact name and, when it is missing, writes
+# ~/.local/share/applications/zcode.desktop itself, pointing at the raw binary
+# with none of the wrapper environment. Keeping the name on the domestic
+# package prevents that. This package registers "zcode-intl.desktop" instead.
 #
-# zcode:// is baked into the app and shared by both editions; whichever
-# package registers last owns the handler (the domestic entry when both are
-# installed).
+# zcode:// is baked into the app and shared by all editions; whichever package
+# registers last owns the handler.
 #
 # Upstream publishes x86_64 and aarch64 debs with identical naming, so every
 # architecture is pinned separately below.
 
 pkgname=zcode-intl-bin
 pkgver=4.0.0_10870
-pkgrel=1
-pkgdesc='ZCode — agentic development environment for GLM (official Linux build, Z.ai defaults)'
+pkgrel=2
+pkgdesc='ZCode — agentic development environment for GLM (official Linux build, Z.ai global login only)'
 arch=('x86_64' 'aarch64')
 url='https://zcode.z.ai/'
 license=('LicenseRef-Proprietary')
@@ -49,20 +43,22 @@ depends=(
   'xdg-utils'
 )
 optdepends=('libappindicator-gtk3: tray icon support')
-makedepends=('libarchive' 'imagemagick' 'ttf-dejavu')
+makedepends=('asar' 'libarchive' 'nodejs' 'imagemagick' 'ttf-dejavu')
 install="${pkgname}.install"
 conflicts=('zcode' 'z-code-bin' 'zcode-bin' 'zcode-desktop-bin')
 provides=('zcode')
 options=('!strip')
-source=("${pkgname}.sh")
+source=("${pkgname}.sh" 'patch.cjs')
 source_x86_64=("ZCode-4.0.0-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/4.0.0/linux-x64/ZCode-4.0.0-linux-x64.deb")
 source_aarch64=("ZCode-4.0.0-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/4.0.0/linux-arm64/ZCode-4.0.0-linux-arm64.deb")
 noextract=('ZCode-4.0.0-linux-x64.deb' 'ZCode-4.0.0-linux-arm64.deb')
-sha256sums=('ab210858bfe149fe257d70c1fb3d9690891c0d091aa0c43faf35dd61ff1c4453')
+sha256sums=('ab210858bfe149fe257d70c1fb3d9690891c0d091aa0c43faf35dd61ff1c4453'
+            'fce42a4e7a25700b43c8c4407ce3a205458dbe5f9c52f6de38c07b0c65579b43')
 sha256sums_x86_64=('402f0eea0e3dfa23e3176525ae08d0f4101ced64ddbbe77c88ade87c53ab256a')
 sha256sums_aarch64=('961a872c505473b03649faf5f4eff8055b214dd017d5a79da532fabbca17de25')
 
-# 国际版与国内版共用上游图标，右下角合成 INTL 角标以与国内版区分。
+# 三个版本共用上游图标，右下角合成角标区分：国际版 INTL、BigModel 版 CN、
+# Z.ai 中国版 ZCN。
 _badge_icon() {
   local src="$1" dst="$2" size="$3" label="${4:-CN}" bg="${5:-#C8102E}"
   local bw pad ring pointsize tmp
@@ -107,6 +103,15 @@ package() {
   # Electron bakes the X11 WM_CLASS as "zcode" and ignores --class there, so
   # StartupWMClass stays "zcode"; --class only sets the Wayland app_id.
   cp -a "${_extractdir}/opt/ZCode" "${pkgdir}/opt/zcode"
+
+  # Pin the OAuth login source to global Z.ai. The three upstream login
+  # sources live in the host bundle, so the asar is rebuilt with only the
+  # global Z.ai factory left in the provider list.
+  asar extract "${pkgdir}/opt/zcode/resources/app.asar" "${srcdir}/asar-${pkgname}"
+  node "${srcdir}/patch.cjs" "${pkgdir}/opt/zcode" intl "${srcdir}/asar-${pkgname}"
+  rm -rf "${pkgdir}/opt/zcode/resources/app.asar.unpacked"
+  asar pack "${srcdir}/asar-${pkgname}" "${pkgdir}/opt/zcode/resources/app.asar" --unpack '*.node'
+  rm -rf "${srcdir}/asar-${pkgname}"
 
   # Upstream ships the AppArmor profile with the Debian path baked in; point
   # it at this package's prefix. The profile itself is installed by the
