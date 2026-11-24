@@ -5,7 +5,7 @@
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=clementine
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
@@ -54,14 +54,13 @@ optdepends=(
     'gst-libav: FFmpeg plugin'
     'gvfs: Various devices support'
     )
-# NB commits are chosen corresponding a git tag https://github.com/clementine-player/Clementine/tags
-source=("git+https://github.com/clementine-player/Clementine.git#commit=ab26ea65cd45c47aa662490c343d44965ac124d8")
-sha256sums=('fbf5b3531e14c89a625a5445bfaef11cfd6924a47e9b5d5a5ee9f6d8c5b4bb40')
+source=("git+https://github.com/clementine-player/Clementine.git#tag=${pkgver}")
+sha256sums=('59c3d0aeba3cb97c876ccebdf2d69797f6b69bcaaca4a8c8664cef32fea5d615')
 
-pkgver() {
-  cd Clementine
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+#pkgver() {
+#  cd Clementine
+#  git describe --tags | sed 's/^v//;s/-/+/g'
+#}
 
 build() {
   # Disable warning Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
