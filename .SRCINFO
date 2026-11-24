@@ -1,0 +1,19 @@
+pkgbase = alter-zero-bin
+	pkgdesc = Memory-efficient terminal agent harness for coding and automation
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://github.com/linuztx/alter-zero
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = alter-zero
+	conflicts = alter-zero
+	options = !debug
+	source_x86_64 = alter-zero-bin-0.20.0-x86_64.tar.gz::https://github.com/linuztx/alter-zero/releases/download/v0.20.0/alter-zero-v0.20.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = deaf50adbef6db7c272fb27d886ceca4b8657e2b2d1292bc5186a350a718e1c4
+	source_aarch64 = alter-zero-bin-0.20.0-aarch64.tar.gz::https://github.com/linuztx/alter-zero/releases/download/v0.20.0/alter-zero-v0.20.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 254bd7d9bf09d4dbca4634e6158a9d2dfa7c5665014139024b18f3554e4edf32
+
+pkgname = alter-zero-bin
