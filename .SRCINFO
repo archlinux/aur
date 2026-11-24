@@ -1,0 +1,14 @@
+pkgbase = gocard
+	pkgdesc = File-based spaced repetition flashcards using Markdown files
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/davidmiserak/gocard
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = gocard-0.3.0.tar.gz::https://github.com/davidmiserak/gocard/archive/v0.3.0.tar.gz
+	sha256sums = ffb9b5eff8e8e42a5f96d8e541f4c266cd291535832503ce6d744d8aa43ffb04
+
+pkgname = gocard
