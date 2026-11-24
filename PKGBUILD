@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=finch-bin
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Finch: desktop client for the Finch agent platform, with cross-session memory, skills and mini tools"
 arch=('x86_64')
@@ -22,7 +22,7 @@ _deb="Finch-${pkgver}-amd64-linux.deb"
 
 source=("${_deb}::https://github.com/finchtoys/finch-releases/releases/download/v${pkgver}/${_deb}")
 noextract=("${_deb}")
-sha256sums=('55d698b0d254ca506662b66e183a081745f4a20e13b3de2f230cf2cccf970bc2')
+sha256sums=('8128691d178968b485248871a75151e3d5928ce077778d5c1804248b68f406c8')
 
 package() {
     local data_archive
