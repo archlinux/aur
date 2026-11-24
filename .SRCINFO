@@ -1,6 +1,6 @@
 pkgbase = augenblick-bin
 	pkgdesc = Fullscreen eye-blink overlay for X11 and Wayland (binary package)
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/x71c9/augenblick
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = augenblick-bin
 	depends = libxcb
 	provides = augenblick
 	conflicts = augenblick
-	source_x86_64 = augenblick-x86_64-0.5.5.tar.gz::https://github.com/x71c9/augenblick/releases/download/v0.5.5/augenblick-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 599a0ea20444727fa86c38845e35842bd6f04be0b280d36e4bb3953abbb664fd
-	source_aarch64 = augenblick-aarch64-0.5.5.tar.gz::https://github.com/x71c9/augenblick/releases/download/v0.5.5/augenblick-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 3bf38746c75e8b286a92ee12ccbcd05a8a3d1bd7e8d8465e826f9d6e7877c948
+	source_x86_64 = augenblick-x86_64-0.5.6.tar.gz::https://github.com/x71c9/augenblick/releases/download/v0.5.6/augenblick-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 38eb101e4a5f76a7fcc3a281c3d1e599148f14ee675880e34747aa6a8ab4d932
+	source_aarch64 = augenblick-aarch64-0.5.6.tar.gz::https://github.com/x71c9/augenblick/releases/download/v0.5.6/augenblick-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8e7a29173ea41f5767b98145cc097aecb4ffd75ee1a84a728ce42db5817a8d9e
 
 pkgname = augenblick-bin
