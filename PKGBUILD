@@ -1,6 +1,6 @@
 pkgname=songrec-git
 _pkgname=songrec
-pkgver=r977.f165d07
+pkgver=r1224.f5e4db1
 pkgrel=1
 provides=('songrec')
 conflicts=('songrec')
@@ -8,7 +8,7 @@ pkgdesc='An open-source, unofficial Shazam client for Linux, written in Rust.'
 url='https://songrec.fossplant.re/'
 arch=('x86_64')
 license=('GPL3')
-makedepends=('cargo' 'rust' 'pkgconf' 'blueprint-compiler' 'gettext' 'sed' 'git')
+makedepends=('cargo' 'rust' 'pkgconf' 'meson' 'ninja' 'git')
 depends=('gtk4' 'libadwaita' 'libsoup3' 'alsa-lib' 'libpulse' 'libpipewire' 'clang' 'openssl' 'ffmpeg')
 source=("$_pkgname::git+https://github.com/marin-m/songrec.git")
 sha256sums=('SKIP')
@@ -19,19 +19,15 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgname"
-  cargo build --release
+  meson setup --prefix /usr $_pkgname build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd "$_pkgname"
-  install -Dm755 "${CARGO_TARGET_DIR:-target}/release/songrec" "$pkgdir/usr/bin/songrec"
-  install -Dm644 "packaging/rootfs/usr/share/applications/re.fossplant.songrec.desktop" "$pkgdir/usr/share/applications/re.fossplant.songrec.desktop"
-  install -Dm644 "packaging/rootfs/usr/share/icons/hicolor/scalable/apps/re.fossplant.songrec.svg" \
-                    "$pkgdir/usr/share/icons/hicolor/scalable/apps/re.fossplant.songrec.svg"
-  install -Dm644 "packaging/rootfs/usr/share/metainfo/re.fossplant.songrec.metainfo.xml" \
-                    "$pkgdir/usr/share/metainfo/re.fossplant.songrec.metainfo.xml"
-  cp -ra "translations/locale" "$pkgdir/usr/share/"
-  cp -ra "packaging/rootfs/usr/share/man" "$pkgdir/usr/share/"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  meson install -C build --destdir "$pkgdir"
+  install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
