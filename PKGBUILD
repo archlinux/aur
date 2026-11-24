@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=nsh-cli-bin
 pkgver=0.6.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Build and run nsh apps (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/longbridge/nsh'
@@ -46,11 +46,13 @@ package() {
   bsdtar -xf "$srcdir/$gpui" --strip-components=2 -C "$pkgdir/usr/lib/nsh/runtime"
   bsdtar -xf "$srcdir/$tui" --strip-components=2 -C "$pkgdir/usr/lib/nsh/runtime"
 
-  # web archive has nsh/runtime/web/ structure
-  bsdtar -xf "$srcdir/nsh-web-$pkgver.tar.gz" --strip-components=2 -C "$pkgdir/usr/lib/nsh/runtime"
-  # also install to /usr/runtime/web where nsh binary expects it
+  # web archive has nsh/runtime/web/ structure - extract all components to /usr/runtime/
   install -dm755 "$pkgdir/usr/runtime"
   bsdtar -xf "$srcdir/nsh-web-$pkgver.tar.gz" --strip-components=2 -C "$pkgdir/usr/runtime"
+  install -dm755 "$pkgdir/usr/runtime"
+  bsdtar -xf "$srcdir/$gpui" --strip-components=2 -C "$pkgdir/usr/runtime"
+  install -dm755 "$pkgdir/usr/runtime"
+  bsdtar -xf "$srcdir/$tui" --strip-components=2 -C "$pkgdir/usr/runtime"
 
   # Install TUI host binary from extracted runtime
   install -Dm755 "$pkgdir/usr/lib/nsh/runtime/tui/nsh-tui-host" "$pkgdir/usr/bin/nsh-tui-host"
