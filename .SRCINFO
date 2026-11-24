@@ -1,0 +1,18 @@
+pkgbase = bigtext-bin
+	pkgdesc = Editor and log viewer for very large files
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/erkinbek/bigtext
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = bigtext
+	conflicts = bigtext
+	options = !debug
+	source = bigtext-bin-0.13.0-LICENSE::https://raw.githubusercontent.com/erkinbek/bigtext/v0.13.0/LICENSE
+	sha256sums = 1abe148c0be194a1fcdb711bc2668141a2db0fa6a03974698ff27905448966bf
+	source_x86_64 = bigtext-bin-0.13.0-x86_64.tar.gz::https://github.com/erkinbek/bigtext/releases/download/v0.13.0/bigtext-linux-x64.tar.gz
+	sha256sums_x86_64 = 3f6dba5a2d5600919c06b2171cb88d03de1852701f8aff2739e144903c789606
+
+pkgname = bigtext-bin
