@@ -1,0 +1,15 @@
+pkgbase = optimizt
+	pkgdesc = CLI image optimization tool
+	pkgver = 13.0.0
+	pkgrel = 1
+	url = https://github.com/343dev/optimizt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = optimizt-13.0.0.tgz
+	source = optimizt-13.0.0.tgz::https://registry.npmjs.org/@343dev/optimizt/-/optimizt-13.0.0.tgz
+	sha256sums = 6880d0574fa58a7601253771db919e624a68825d74714633e97fea9a36faf28d
+
+pkgname = optimizt
