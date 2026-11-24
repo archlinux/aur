@@ -1,0 +1,17 @@
+pkgbase = kplay-bin
+	pkgdesc = Inspect messages in a Kafka topic from the terminal
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/dhth/kplay
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kplay
+	conflicts = kplay
+	options = !debug
+	source_x86_64 = kplay-bin-3.1.0-x86_64.tar.gz::https://github.com/dhth/kplay/releases/download/v3.1.0/kplay_3.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 40b750f1dd2ebbfc887505e4394ee29e594488fb607c48c1910e2cddb79c4f11
+	source_aarch64 = kplay-bin-3.1.0-aarch64.tar.gz::https://github.com/dhth/kplay/releases/download/v3.1.0/kplay_3.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b754a0431056146a4dd0d5479caf3489121d7106460bde8a2904251cab5f7add
+
+pkgname = kplay-bin
