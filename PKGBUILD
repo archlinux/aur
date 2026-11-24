@@ -1,5 +1,5 @@
 pkgname=lightdeck
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Desktop remote for Hue lights: rooms, scenes and colors"
 arch=("any")
@@ -21,7 +21,7 @@ provides=("philips-hue-for-arch")
 conflicts=("philips-hue-for-arch")
 replaces=("philips-hue-for-arch")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("643aaf5d27d08c1a1b124bee5badeda90045189a0650cd9e195dd341500afa3d")
+sha256sums=("4619858e5a8d6cc6e70e91795955406e5fa0936df6f3228a400a253a4fa3d5d3")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

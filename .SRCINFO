@@ -1,6 +1,6 @@
 pkgbase = lightdeck
 	pkgdesc = Desktop remote for Hue lights: rooms, scenes and colors
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/MechNoxer/lightdeck
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = lightdeck
 	provides = philips-hue-for-arch
 	conflicts = philips-hue-for-arch
 	replaces = philips-hue-for-arch
-	source = lightdeck-0.3.0.tar.gz::https://github.com/MechNoxer/lightdeck/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 643aaf5d27d08c1a1b124bee5badeda90045189a0650cd9e195dd341500afa3d
+	source = lightdeck-0.3.1.tar.gz::https://github.com/MechNoxer/lightdeck/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 4619858e5a8d6cc6e70e91795955406e5fa0936df6f3228a400a253a4fa3d5d3
 
 pkgname = lightdeck
