@@ -1,6 +1,6 @@
 # Maintainer: novesce <120620395+novesce@users.noreply.github.com>
 pkgname=liney-bin
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Unofficial LINE desktop client for Linux, packaged from the upstream Liney release'
 arch=('x86_64')
@@ -22,7 +22,7 @@ _deb="Liney-${pkgver}-amd64.deb"
 _license="Liney-${pkgver}-LICENSE"
 source=("$url/releases/download/v$pkgver/$_deb"
         "$_license::https://raw.githubusercontent.com/Cytech-Team/Liney/v$pkgver/LICENSE")
-sha256sums=('d3486f689e995fc6bae996e26b324c806124a0597aa0749aee4a6be6dd86e96e' '9f0db73b7644a3628dcc9cf4728ce2a098b598a967a55a3988c750f78586fb0f')
+sha256sums=('1abcaec67bd198a913d747c5270eba46e1a4198f7c70287beaf246af57e53cef' '9f0db73b7644a3628dcc9cf4728ce2a098b598a967a55a3988c750f78586fb0f')
 noextract=("$_deb")
 
 package() {

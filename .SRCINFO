@@ -1,6 +1,6 @@
 pkgbase = liney-bin
 	pkgdesc = Unofficial LINE desktop client for Linux, packaged from the upstream Liney release
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/Cytech-Team/Liney
 	arch = x86_64
@@ -41,14 +41,14 @@ pkgbase = liney-bin
 	optdepends = kwallet: persist credentials using KDE Wallet
 	optdepends = libayatana-appindicator: tray integration on supported desktops
 	optdepends = xdg-desktop-portal: screen sharing on supported desktops
-	provides = liney=1.2.1
+	provides = liney=1.2.2
 	conflicts = liney
-	noextract = Liney-1.2.1-amd64.deb
+	noextract = Liney-1.2.2-amd64.deb
 	options = !strip
 	options = !debug
-	source = https://github.com/Cytech-Team/Liney/releases/download/v1.2.1/Liney-1.2.1-amd64.deb
-	source = Liney-1.2.1-LICENSE::https://raw.githubusercontent.com/Cytech-Team/Liney/v1.2.1/LICENSE
-	sha256sums = d3486f689e995fc6bae996e26b324c806124a0597aa0749aee4a6be6dd86e96e
+	source = https://github.com/Cytech-Team/Liney/releases/download/v1.2.2/Liney-1.2.2-amd64.deb
+	source = Liney-1.2.2-LICENSE::https://raw.githubusercontent.com/Cytech-Team/Liney/v1.2.2/LICENSE
+	sha256sums = 1abcaec67bd198a913d747c5270eba46e1a4198f7c70287beaf246af57e53cef
 	sha256sums = 9f0db73b7644a3628dcc9cf4728ce2a098b598a967a55a3988c750f78586fb0f
 
 pkgname = liney-bin
