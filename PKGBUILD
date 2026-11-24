@@ -2,9 +2,9 @@
 
 pkgname=yksresults-git
 # Placeholder only: pkgver() computes the real version on every build.
-pkgver=0.1.0.r20.gec6d576
+pkgver=0.1.0.r21.g0f6e799
 pkgrel=1
-pkgdesc='A TUI application to track the rehearsal results of TYT and AYT exams'
+pkgdesc='A TUI application to track TYT and AYT rehearsal results imported from Okulizyon HTML exports'
 arch=('x86_64' 'aarch64')
 url='https://github.com/chlorine3539/yksresults'
 license=('MIT')
