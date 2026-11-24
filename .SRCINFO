@@ -1,0 +1,27 @@
+pkgbase = scenefx-sysc
+	pkgdesc = SceneFX 0.5 with faster blur effect buffers, for sysc-compositor
+	pkgver = 0.5.sysc1
+	pkgrel = 1
+	url = https://github.com/Nomadcxx/scenefx
+	install = scenefx-sysc.install
+	arch = x86_64
+	license = MIT
+	makedepends = glslang
+	makedepends = meson
+	makedepends = wayland-protocols
+	depends = glibc
+	depends = lcms2
+	depends = libdrm
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = mesa
+	depends = pixman
+	depends = wayland
+	depends = wlroots0.20
+	provides = scenefx=0.5
+	provides = libscenefx-0.5.so
+	conflicts = scenefx
+	source = scenefx-0.5-sysc1.tar.gz::https://github.com/Nomadcxx/scenefx/archive/refs/tags/0.5-sysc1.tar.gz
+	sha256sums = d4fc187a6d0185f026d48309a1b2dc9d3d1570926a3deb33f83665e8f2db269e
+
+pkgname = scenefx-sysc
