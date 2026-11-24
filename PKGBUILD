@@ -4,7 +4,7 @@
 pkgname=echobird-bin
 _pkgname=echobird
 _appname=EchoBird
-pkgver=6.4.8
+pkgver=6.4.9
 pkgrel=1
 pkgdesc='Desktop hub to manage AI coding tools, accounts and quota with smart routing (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -33,8 +33,8 @@ noextract=(
   "EchoBird_${pkgver}_Linux_arm64.deb"
 )
 sha256sums=('80fe40d09a2f2c7a3b7a6a59b6d52f3e4b41d51642b279ad78de53a6d318fc64')
-sha256sums_x86_64=('ab16de3d18f837e708b3ad322061227f9f459960dab4cd0c097b20ba57c4f98f')
-sha256sums_aarch64=('710f1f91c1671426f6a7ad8ddbdb94c3632e9d2152cf1c4313684bb5e77355b9')
+sha256sums_x86_64=('5ae62a53c6cdd7bfcfc4a7013bb4060fbc1d07f4fa2517251920ff42f410e126')
+sha256sums_aarch64=('df9aca0bc63b5e94b5e1612b7577b54536a31fd417660f32a828d5e5723bfba9')
 
 package() {
   local deb
