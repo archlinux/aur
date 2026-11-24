@@ -1,0 +1,17 @@
+pkgbase = schemas-bin
+	pkgdesc = Inspect PostgreSQL schemas via a TUI
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/dhth/schemas
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = schemas
+	conflicts = schemas
+	options = !debug
+	source_x86_64 = schemas-bin-0.3.1-x86_64.tar.gz::https://github.com/dhth/schemas/releases/download/v0.3.1/schemas_0.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = b1cc90335c3d62e4d40d2577b81a4bffaec914452815ab55e59ee2f0ea08a66f
+	source_aarch64 = schemas-bin-0.3.1-aarch64.tar.gz::https://github.com/dhth/schemas/releases/download/v0.3.1/schemas_0.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = dfd5be1c672a28636959b2803ee6456d94937b791cd550f426e4507b377e2843
+
+pkgname = schemas-bin
