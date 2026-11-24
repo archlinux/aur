@@ -1,0 +1,20 @@
+pkgbase = keydex-bin
+	pkgdesc = Terminal password manager for KeePass databases
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/shikaan/keydex
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = keydex
+	conflicts = keydex
+	options = !debug
+	source = keydex-bin-0.13.0-LICENSE::https://raw.githubusercontent.com/shikaan/keydex/v0.13.0/LICENSE
+	sha256sums = 119ca7fd3be4f223fd58baec26f4b32886626180e8771f68f1db1d7be3caa8ad
+	source_x86_64 = keydex-bin-0.13.0-x86_64::https://github.com/shikaan/keydex/releases/download/v0.13.0/keydex-linux-amd64
+	sha256sums_x86_64 = 053a31d902560ec6bd7441446296174276d8893210fc3fc3eda0536a9df68457
+	source_aarch64 = keydex-bin-0.13.0-aarch64::https://github.com/shikaan/keydex/releases/download/v0.13.0/keydex-linux-arm64
+	sha256sums_aarch64 = 2ebbd27131ec3f8c12925dcdae49296b7aac15e7a52bbe65920055d57ef6ba1a
+
+pkgname = keydex-bin
