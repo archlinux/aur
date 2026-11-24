@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=minizinc-ide
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Integrated development environment for the high-level constraint modelling language MiniZinc"
 arch=(x86_64)
@@ -16,7 +16,11 @@ depends=(
     )
 makedepends=(git)
 source=("git+https://github.com/MiniZinc/MiniZincIDE.git#tag=${pkgver}")
-sha256sums=('dd1a6db6ec1fb2840b2e43e349922dfef0048846e7ef7fde2293bf2ff1043974')
+sha256sums=('eef0e8f592f170b4e3f294139aad7bd16415c16e046c040f808719ae4d39b304')
+
+  # Disable all warnings
+  export CFLAGS+=" -w"
+  export CXXFLAGS+=" -w"
 
 build() {
   cd MiniZincIDE
