@@ -45,7 +45,7 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
-  'SKIP' # Run updpkgsums to populate
+  'd2da7bceeb37803aee906d235943c3576ad3352e149cba4718259b7e3847ba1e'
 )
 
 pkgver() {
