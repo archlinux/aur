@@ -2,7 +2,7 @@
 # Published to the AUR by CI (packaging/ci/aur-publish.sh) after every release; pkgver and the checksums are
 # filled in there, the values below are only placeholders.
 pkgname=notes-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Self-hosted, end-to-end encrypted note taking (desktop app, prebuilt release binary)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("notes-$pkgver::$url/releases/download/v$pkgver/notes-linux-x86_64"
         "notes-$pkgver.svg::$url/raw/tag/v$pkgver/frontend/public/icon.svg"
         "notes-$pkgver.desktop::$url/raw/tag/v$pkgver/packaging/aur/notes.desktop")
 noextract=("notes-$pkgver")
-sha256sums=('11feecc136173b9879d6b52993fe6aa4d5b832e5eac5f296c419811325ee8055'
+sha256sums=('e7c8e304a145b04d4ece8be5a3cf54b6bb043fccdcf160980036f3ac28ad2aba'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '548c58e3c6ba6bafca147095ea0b21f62db5867eb81966a48c820b66a6a58a31'
             '3e2a9303f6cd30d52547cba4ed6ccd43a8b6581acd757c3c18a6bf9e55292505'
