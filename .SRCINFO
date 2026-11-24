@@ -1,6 +1,6 @@
 pkgbase = astrlink-bin
 	pkgdesc = A local privacy gateway for AI agents
-	pkgver = 0.3.6
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://astrlink.com
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = astrlink-bin
 	optdepends = gtk-layer-shell: for the window hints that some desktops use
 	provides = astrlink
 	conflicts = astrlink
-	noextract = astrlink_0.3.6_amd64.deb
+	noextract = astrlink_0.3.8_amd64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = astrlink_0.3.6_amd64.deb::https://github.com/Calcium-Ion/AstrLink/releases/download/v0.3.6/astrlink_0.3.6_amd64.deb
-	sha256sums_x86_64 = 95e1daf35ec6a87a79cbaf3cea43e7db3bb9711d4eba5ad2393956db4e4bf0be
+	source_x86_64 = astrlink_0.3.8_amd64.deb::https://github.com/Calcium-Ion/AstrLink/releases/download/v0.3.8/astrlink_0.3.8_amd64.deb
+	sha256sums_x86_64 = 27689c899c4fb7c85fde87b85ddfb183489da17dbb045f2cc584f735e184326e
 
 pkgname = astrlink-bin
