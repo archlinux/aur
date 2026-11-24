@@ -1,0 +1,24 @@
+pkgbase = python-k3logcollector
+	pkgdesc = Log collector for scanning and aggregating log files
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/pykit3/k3logcollector
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	checkdepends = python-k3log
+	checkdepends = python-k3time
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-k3cat
+	depends = python-k3thread
+	conflicts = python-k3logcollector
+	source = k3logcollector::git+https://github.com/pykit3/k3logcollector.git#tag=v0.1.7
+	sha256sums = 63fab85fdbdd85a2bcb4ccd9226a20281287030fe9e7e52dd617d890afe8ad26
+
+pkgname = python-k3logcollector
