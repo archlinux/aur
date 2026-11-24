@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ConsRank
-_pkgver=3.0
+_pkgver=3.1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,15 +14,14 @@ depends=(
   r-proxy
   r-rcpp
   r-rlist
-  r-tidyr
 )
 optdepends=(
   r-rgl
   r-plotly
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('579a83ccdd09138344ee5b3c2cbfd4b2')
-b2sums=('924ddefe4161fe2a0341fc43f87dd7a180c5b810b5642094c3ec958ac70121599f0fe57c1aac40916ae7b341e2b870136c67ed77336cf0ca4f370994457d0fd4')
+md5sums=('2b7ab67fa12a1e48ee366f4b129c4717')
+b2sums=('c8e64de01be4cc816e2a9109b99273d690f6e273e7476af51d34b6972a4745ead9c370bf7c95fddcc40ce63b346a906aa6c271bd69e37bbef83c5e0edc39ece3')
 
 build() {
   mkdir build
