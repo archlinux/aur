@@ -1,0 +1,13 @@
+pkgbase = git-branch-status-git
+	pkgdesc = Git command to give you an overview of your branches
+	pkgver = r14.7608705
+	pkgrel = 1
+	url = https://github.com/alexdavid/git-branch-status.git
+	arch = any
+	license = MIT
+	depends = bash
+	depends = git
+	source = git-branch-status::git+https://github.com/alexdavid/git-branch-status.git
+	sha256sums = SKIP
+
+pkgname = git-branch-status-git
