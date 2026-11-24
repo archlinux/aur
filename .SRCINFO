@@ -8,6 +8,7 @@ pkgbase = deveco-commandline-tools
 	depends = glibc
 	depends = java-runtime
 	depends = nodejs
+	depends = deveco-sdk
 	optdepends = deveco-clt-url: mint the signed download URL from a logged-in session
 	options = !strip
 

@@ -22,7 +22,7 @@ pkgdesc='HUAWEI Command Line Tools for HarmonyOS: hvigorw, ohpm, hstack, codelin
 arch=('x86_64')
 url='https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos'
 license=('LicenseRef-Huawei-EULA')
-depends=('glibc' 'java-runtime' 'nodejs')
+depends=('glibc' 'java-runtime' 'nodejs' 'deveco-sdk')
 optdepends=('deveco-clt-url: mint the signed download URL from a logged-in session')
 options=('!strip')
 source=()
@@ -103,6 +103,9 @@ package() {
 
   install -d "$pkgdir/opt/huawei/command-line-tools"
   cp -r --no-preserve=ownership "$_clt/." "$pkgdir/opt/huawei/command-line-tools/"
+  # The SDK subtree comes from the deveco-sdk package (pristine, shared with the IDE).
+  rm -rf "$pkgdir/opt/huawei/command-line-tools/sdk"
+  ln -s /opt/deveco-sdk "$pkgdir/opt/huawei/command-line-tools/sdk"
 
   # the upstream zip ships 0700/0750 modes meant for a root installer; make the
   # tree usable for normal users
