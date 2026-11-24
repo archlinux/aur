@@ -1,0 +1,27 @@
+pkgbase = notes-bin
+	pkgdesc = Self-hosted, end-to-end encrypted note taking (desktop app, prebuilt release binary)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://jonasled.dev/jonasled/notes
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = notes
+	conflicts = notes
+	conflicts = notes-src
+	noextract = notes-1.0.2
+	options = !strip
+	source = notes-1.0.2::https://jonasled.dev/jonasled/notes/releases/download/v1.0.2/notes-linux-x86_64
+	source = LICENSE-1.0.2::https://jonasled.dev/jonasled/notes/raw/tag/v1.0.2/LICENSE
+	source = notes-1.0.2.png::https://jonasled.dev/jonasled/notes/raw/tag/v1.0.2/frontend/src-tauri/icons/128x128.png
+	source = notes-1.0.2.svg::https://jonasled.dev/jonasled/notes/raw/tag/v1.0.2/frontend/public/icon.svg
+	source = notes-1.0.2.desktop::https://jonasled.dev/jonasled/notes/raw/tag/v1.0.2/packaging/aur/notes.desktop
+	sha256sums = 11feecc136173b9879d6b52993fe6aa4d5b832e5eac5f296c419811325ee8055
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 548c58e3c6ba6bafca147095ea0b21f62db5867eb81966a48c820b66a6a58a31
+	sha256sums = 3e2a9303f6cd30d52547cba4ed6ccd43a8b6581acd757c3c18a6bf9e55292505
+	sha256sums = 9691991e408d3b4ecffbebb2d36d94cd17498bcd6b3eea616d73762197743c78
+
+pkgname = notes-bin
