@@ -1,6 +1,6 @@
 pkgbase = azahar
 	pkgdesc = An open-source 3DS emulator project based on Citra.
-	pkgver = 2126.2
+	pkgver = 2127.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/azahar-emu/azahar
@@ -17,7 +17,6 @@ pkgbase = azahar
 	makedepends = spirv-headers
 	makedepends = catch2
 	makedepends = libinih
-	makedepends = ffmpeg4.4
 	makedepends = qt6-tools
 	makedepends = boost
 	depends = glibc
@@ -38,7 +37,7 @@ pkgbase = azahar
 	depends = libgcc
 	depends = boost-libs
 	depends = libbacktrace
-	source = https://github.com/azahar-emu/azahar/releases/download/2126.2/azahar-unified-source-2126.2.tar.xz
-	sha256sums = 85c8b56fac703df04720125044b8ff887997911858a6cde545dfb1107ba4cd26
+	source = https://github.com/azahar-emu/azahar/releases/download/2127.0/azahar-unified-source-2127.0.tar.xz
+	sha256sums = c817b4cd96169413165e87809cd5e7135a54f858e327abf60bfa1e55b36f71e7
 
 pkgname = azahar

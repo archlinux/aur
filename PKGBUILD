@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
-pkgver=2126.2
+pkgver=2127.0
 pkgrel=1
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
@@ -10,10 +10,19 @@ license=('GPL-2.0-or-later')
 depends=('glibc' 'libstdc++' 'qt6-base' 'crypto++' 'fmt' 'glslang' 'libusb' 'openal' 'openssl' 'sdl2' 'soundtouch'
 	 'qt6-multimedia' 'zydis' 'hicolor-icon-theme' 'enet' 'libgcc' 'boost-libs' 'libbacktrace')
 makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'graphviz' 'nlohmann-json' 'spirv-headers'
-	     'catch2' 'libinih' 'ffmpeg4.4' 'qt6-tools' 'boost')
+	     'catch2' 'libinih' 'qt6-tools' 'boost')
 source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$pkgver.tar.xz")
 install=${pkgname}.install
-sha256sums=('85c8b56fac703df04720125044b8ff887997911858a6cde545dfb1107ba4cd26')
+sha256sums=('c817b4cd96169413165e87809cd5e7135a54f858e327abf60bfa1e55b36f71e7')
+# Azahar 2127.0 now requires ffmpeg 7.1, and there is no submodule or CPM
+# For users who know they want ffmpeg 7.1 functionality, please set _ffmpeg to ON.
+_ffmpeg=OFF
+if [[ $_ffmpeg == ON ]]
+then
+	depends+=( 'ffmpeg7.1')
+	export PKG_CONFIG_PATH="/usr/lib/ffmpeg7.1/pkgconfig:$PKG_CONFIG_PATH"
+fi
+
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$pkgver"
@@ -38,7 +47,6 @@ build() {
 	-DUSE_SYSTEM_CATCH2=ON \
 	-DUSE_SYSTEM_CRYPTOPP=ON \
 	-DUSE_SYSTEM_ENET=ON \
-	-DUSE_SYSTEM_FFMPEG_HEADERS=ON \
 	-DUSE_SYSTEM_FMT=ON \
 	-DUSE_SYSTEM_GLSLANG=ON \
 	-DUSE_SYSTEM_INIH=ON \
@@ -51,8 +59,8 @@ build() {
 	-DUSE_SYSTEM_SOUNDTOUCH=ON \
 	-DUSE_SYSTEM_VULKAN_HEADERS=ON \
 	-DUSE_SYSTEM_ZSTD=OFF \
+	-DENABLE_FFMPEG="${_ffmpeg}" \
 	-DCITRA_USE_PRECOMPILED_HEADERS=OFF \
-	-DCMAKE_INCLUDE_PATH="/usr/include/ffmpeg4.4" \
 	-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
 	-DENABLE_QT_TRANSLATION=ON \
 	-DENABLE_SSE42=$_SSE \
@@ -69,6 +77,6 @@ package() {
 	DESTDIR="$pkgdir" cmake --install build
 	rm -rf "$pkgdir/usr/include"
 	rm -rf "$pkgdir/usr/lib"
-	install -Dm644 "$srcdir/$pkgname-unified-source-$pkgver/license.txt" "$pkgdir/usr/share/licenses/$pkgname/licenses.txt"
+	install -Dm644 "$srcdir/$pkgname-unified-source-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 	sed -i 's/Exec=azahar %f/Exec=env QT_QPA_PLATFORM=xcb azahar %f/g' "$pkgdir/usr/share/applications/org.azahar_emu.Azahar.desktop"
 }
