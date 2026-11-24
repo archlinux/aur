@@ -1,0 +1,19 @@
+pkgbase = container-canary-bin
+	pkgdesc = Test and validate container images against versioned requirement manifests
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/NVIDIA/container-canary
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = container-canary
+	conflicts = container-canary
+	options = !debug
+	source = container-canary-bin-0.5.0-LICENSE::https://raw.githubusercontent.com/NVIDIA/container-canary/v0.5.0/LICENSE
+	sha256sums = 558d6a5b7e197abed22fa40044fd4cf2fef70a1241b881383b446272a0fbbb1b
+	source_x86_64 = container-canary-bin-0.5.0-x86_64::https://github.com/NVIDIA/container-canary/releases/download/v0.5.0/canary_linux_amd64
+	sha256sums_x86_64 = 6af018033f2634f1b6abd7d521e20497d0028a47b8b405ee76a8d8177cbb5703
+	source_aarch64 = container-canary-bin-0.5.0-aarch64::https://github.com/NVIDIA/container-canary/releases/download/v0.5.0/canary_linux_arm64
+	sha256sums_aarch64 = 039d30789d764b75339ba299558b8de2531ebb70ec057d94b6cd3b206f51f023
+
+pkgname = container-canary-bin
