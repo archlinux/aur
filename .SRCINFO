@@ -1,0 +1,25 @@
+pkgbase = namiwork-desktop-bin
+	pkgdesc = Produced by 360 · Safe and reliable AI office platform.360出品·安全可靠 AI 办公平台
+	pkgver = 2.4.14
+	pkgrel = 1
+	url = https://work.n.cn
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = electron43
+	depends = nodejs
+	provides = namiwork-desktop=2.4.14
+	conflicts = namiwork-desktop
+	options = !strip
+	options = !debug
+	source = LICENSE.html::https://work.n.cn/agreement/aprotocol.html
+	source = namiwork-desktop.js
+	source = namiwork-desktop.sh
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = b728201bc9b6edc7627aa801bd875d802cffd85035406afe8eae44cca001611e
+	source_aarch64 = namiwork-desktop-2.4.14-aarch64.deb::https://gedown.360safe.com/gc/namiwork-desktop_2.4.14_arm64.deb
+	sha256sums_aarch64 = 7caf8f132ece5d372fe3998dd6687989cd39d7cfd6c2be1108b9a9c0265ef190
+	source_x86_64 = namiwork-desktop-2.4.14-x86_64.deb::https://gedown.360safe.com/gc/namiwork-desktop_2.4.14_amd64.deb
+	sha256sums_x86_64 = ac9f7a2dd20a783aa192ceb8dfb2cb6f7774a2bcfc31ab6f1f526a9f7a97f465
+
+pkgname = namiwork-desktop-bin
