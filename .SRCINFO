@@ -1,0 +1,21 @@
+pkgbase = python-k3math
+	pkgdesc = A toy math implementation with Vector, Matrix, and Polynomial
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/pykit3/k3math
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3math
+	conflicts = python-k3math
+	source = k3math::git+https://github.com/pykit3/k3math.git#tag=v0.1.9
+	sha256sums = cd6fc557e38432789eab273ddc8d4aeb11969c51666cfc4fbe38e259cbcc9cb5
+
+pkgname = python-k3math
