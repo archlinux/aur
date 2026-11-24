@@ -1,6 +1,6 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=ampscan-bin
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc='Audit IPv4/IPv6 networks for ports exploitable in DDoS amplification attacks'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/ampscan-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('8620bdc5ccec86cba760232184ca40de04021a4adf7bb8b75de0caf69eb1b4f9'
             'd5cd9fe0211b0b49b8d7cc139a513167d0f7158fab1a3873d7110d2e52d28218')
-sha256sums_x86_64=('01c5f31a4bc32faafc5d8a4351604ab0ef5c3887d44c19910a2329254105d731')
-sha256sums_aarch64=('31c85f2644c108ed817487f7762e78a36f722eb23bb576930eec8c5787b82084')
+sha256sums_x86_64=('07f866116a0ffeed2f9d7c351eb98a7eaac1b856ce353909d29e2ba1de617365')
+sha256sums_aarch64=('faf41e3a3494700d305b8339054758d6526cbf61d8d9d2328ee799b8f23c8c6f')
 
 package() {
     install -Dm755 ampscan -t "${pkgdir}/usr/bin/"
