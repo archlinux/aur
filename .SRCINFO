@@ -1,6 +1,6 @@
 pkgbase = bashlink
 	pkgdesc = A high reliable bash library.
-	pkgver = 1.0.298
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://tsickert.com/bashlink
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = bashlink
 	provides = bashlink
 	provides = bashlink-doctest
 	provides = bashlink-document
-	source = https://registry.npmjs.org/bashlink/-/bashlink-1.0.298.tgz
-	sha256sums = f1e3bf9c0cfc018edf964bfd64e41071b5c051dd5c111db521e6e16dbb39ad8a
+	source = https://registry.npmjs.org/bashlink/-/bashlink-2.0.0.tgz
+	sha256sums = 31da177290214c089c340f958fdf14c52babc413579a7f391e9fcfc9f382c2b8
 
 pkgname = bashlink
