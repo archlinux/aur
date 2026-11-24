@@ -5,7 +5,7 @@ _pkgname=pigo
 pkgname=${_pkgname}-bin
 pkgdesc="Fast face detection, pupil/eyes localization and facial landmark points detection"
 
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,7 +24,7 @@ conflicts=("${_pkgname}")
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}.tar.gz")
 sha256sums=('b33c6f418a5c2407c24250ea0ce13af06b9050c695bdeae81badcbbfe688a8c5')
-sha256sums_x86_64=('b6440c57939fa0ff3326f13287f20c0773b656498327cbf1d84cff42cf104093')
+sha256sums_x86_64=('3a114ad8fd2e09e70545503767ae73121336e25691e01c1a4720e1988724476e')
 
 case ${CARCH} in
   ${arch[0]})
