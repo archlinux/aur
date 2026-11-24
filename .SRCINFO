@@ -1,0 +1,18 @@
+pkgbase = agentmanager-bin
+	pkgdesc = Detect, install, manage and update AI agent CLI tools
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/kevinelliott/agentmanager
+	arch = x86_64
+	license = MIT
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = agentmanager
+	conflicts = agentmanager
+	options = !debug
+	source_x86_64 = agentmanager-bin-1.5.0-x86_64.tar.gz::https://github.com/kevinelliott/agentmanager/releases/download/v1.5.0/agentmanager_1.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 173e931715fc395f88d70123e95126c3c5b275b1906ec23ea20abd540b01d279
+
+pkgname = agentmanager-bin
