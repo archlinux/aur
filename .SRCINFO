@@ -1,0 +1,14 @@
+pkgbase = walle
+	pkgdesc = Terminal EVM wallet with WalletConnect v2 and ERC-20 transfers
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/pobepto/walle
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = walle-1.0.5.tgz
+	source = walle-1.0.5.tgz::https://registry.npmjs.org/@walleproject/cli/-/cli-1.0.5.tgz
+	sha256sums = 31b51247d1046f80caf072f3fa942c62466a1c0f5c7159f4026600e3c130767d
+
+pkgname = walle
