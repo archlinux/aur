@@ -1,0 +1,23 @@
+pkgbase = polyterm
+	pkgdesc = Polymarket prediction markets in the terminal
+	pkgver = 0.11.6
+	pkgrel = 1
+	url = https://github.com/nytemodeonly/polyterm
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-anyio
+	depends = python-click
+	depends = python-dateutil
+	depends = python-packaging
+	depends = python-requests
+	depends = python-rich
+	depends = python-websockets
+	source = polyterm-0.11.6.tar.gz::https://github.com/nytemodeonly/polyterm/archive/v0.11.6.tar.gz
+	sha256sums = 2b7d592560c02c6ffbb169380b98864b58fd1050a43971ea6a7f4d5eadcac362
+
+pkgname = polyterm
