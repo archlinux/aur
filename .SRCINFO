@@ -1,0 +1,22 @@
+pkgbase = python-k3txutil
+	pkgdesc = Compare-and-swap (CAS) loop utilities for transactional operations
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/pykit3/k3txutil
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3thread
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3txutil
+	conflicts = python-k3txutil
+	source = k3txutil::git+https://github.com/pykit3/k3txutil.git#tag=v0.1.7
+	sha256sums = 8114ad5dd7d5fcb27b99b89c65dadb252c8eda0641e6d16ab56acdcf0fa06934
+
+pkgname = python-k3txutil
