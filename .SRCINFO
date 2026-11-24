@@ -1,0 +1,22 @@
+pkgbase = prismriver-lyrics
+	pkgdesc = Search song lyrics across multiple sources, with a TUI that follows the playing track over MPRIS
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/anlar/prismriver-lyrics
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-curl_cffi
+	depends = python-dbus-next
+	depends = python-httpx
+	depends = python-mutagen
+	depends = python-textual
+	source = prismriver-lyrics-1.1.0.tar.gz::https://github.com/anlar/prismriver-lyrics/archive/v1.1.0.tar.gz
+	sha256sums = 1ad3b871a553ff6aea40fe94eaed4a097c8e116e46b0e858178b231cc9ec81ff
+
+pkgname = prismriver-lyrics
