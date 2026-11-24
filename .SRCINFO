@@ -1,6 +1,6 @@
 pkgbase = eddie
 	pkgdesc = The editor that watches the footage for you: a native Rust video editor that AI agents can drive
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/BurgessTG/eddie
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = eddie
 	conflicts = eddie-git
 	options = !lto
 	options = !debug
-	source = eddie-0.3.0.tar.gz::https://github.com/BurgessTG/eddie/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = fbc4c30f088a7c599609a4f2c3e93197e7d302c0cffa20aad86a4ee6b806798f
+	source = eddie-0.3.1.tar.gz::https://github.com/BurgessTG/eddie/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = f6f98b77646fd8677782dc18f4a2e775dacf517b2e0c85530d9d3ba07231217a
 
 pkgname = eddie

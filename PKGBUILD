@@ -1,10 +1,10 @@
 # Maintainer: Jacob Burgess
 pkgname=eddie
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 # Commits on master at the tag, so Eddie can tell a newer build from this
 # one. The release workflow sets it.
-_build=200
+_build=201
 pkgdesc="The editor that watches the footage for you: a native Rust video editor that AI agents can drive"
 arch=('x86_64')
 url="https://github.com/BurgessTG/eddie"
@@ -22,7 +22,7 @@ options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # v0.2.0 is not tagged yet. `updpkgsums` fills this in when it is
 # (packaging/README.md).
-sha256sums=('fbc4c30f088a7c599609a4f2c3e93197e7d302c0cffa20aad86a4ee6b806798f')
+sha256sums=('f6f98b77646fd8677782dc18f4a2e775dacf517b2e0c85530d9d3ba07231217a')
 
 prepare() {
   cd "$pkgname-$pkgver"
