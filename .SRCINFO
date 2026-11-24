@@ -1,0 +1,19 @@
+pkgbase = python-pyinspirehep
+	pkgdesc = Python wrapper for the INSPIRE-HEP API
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/javadebadi/pyinspirehep
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/p/pyinspirehep/pyinspirehep-1.1.1.tar.gz
+	source = python-pyinspirehep-1.1.1-LICENSE::https://raw.githubusercontent.com/javadebadi/pyinspirehep/7e20b0f274bd6a44425588896b50cc64f71a7248/LICENSE
+	sha256sums = 9d6e9db0d08f24626037322a648e4859da56159541623a35c15231564f0a2be0
+	sha256sums = 931f4fc11a021e7196894430d54cc521d1787615c20d793678f92c53c011bc62
+
+pkgname = python-pyinspirehep
