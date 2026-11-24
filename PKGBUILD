@@ -1,19 +1,18 @@
 # Maintainer: Jacob Burgess
 pkgname=eddie-git
 _pkgname=eddie
-pkgver=r165.e4585d4
+pkgver=r200.9775fff
 pkgrel=1
 pkgdesc="The editor that watches the footage for you: a native Rust video editor that AI agents can drive"
 arch=('x86_64')
 url="https://github.com/BurgessTG/eddie"
-license=('MIT OR Apache-2.0')
+license=('MIT OR Apache-2.0' 'OFL-1.1')
 depends=('ffmpeg' 'gtk3' 'glib2' 'alsa-lib' 'fontconfig' 'libgcc' 'libstdc++'
          'glibc' 'libxkbcommon' 'wayland' 'libx11' 'vulkan-icd-loader'
          'hicolor-icon-theme')
 makedepends=('git' 'cargo' 'clang' 'cmake' 'pkgconf'
              'vulkan-headers' 'shaderc')
 optdepends=('inter-font: the interface font Eddie is designed with'
-            'ttf-liberation: a font for titles when fontconfig finds no other'
             'libva-nvidia-driver: hardware decode on NVIDIA (Settings, off by default)'
             'xdg-utils: Open folder after an export')
 provides=('eddie')
@@ -64,4 +63,11 @@ package() {
   install -Dm644 docs/agents.md "$pkgdir/usr/share/doc/$pkgname/agents.md"
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+  # The built-in stickers are Microsoft's Fluent Emoji (MIT).
+  install -Dm644 crates/media/src/graphic/stickers/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE-fluent-emoji"
+  # The fonts titles are drawn in are under the SIL Open Font License.
+  for font in crates/media/src/fonts/licenses/*.txt; do
+    install -Dm644 "$font" "$pkgdir/usr/share/licenses/$pkgname/$(basename "$font")"
+  done
 }
