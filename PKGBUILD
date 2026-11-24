@@ -1,7 +1,7 @@
 # Maintainer: BNDays27 <brionical@proton.me>
 _pkgname=shadowrecomp
 pkgname=$_pkgname-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="An unofficial PC port of the Xbox version of Shadow the Hedgehog, created through the process of static recompilation."
 arch=(x86_64)
@@ -23,7 +23,7 @@ source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/ShadowRecom
 	"https://raw.githubusercontent.com/FoxWorkshop/ShadowRecomp/refs/heads/master/flatpak/io.github.foxworkshop.shadowrecomp.desktop"
 	"https://raw.githubusercontent.com/FoxWorkshop/ShadowRecompResources/refs/heads/master/images/game_icon.png"
 	${_pkgname})
-sha256sums=("8a1466c9636703deeb1976e6ca4ebe807813cbf8ebd7b336bf5067313850c3a4"
+sha256sums=("0f7d08392b8be32b7040ec77c3335cf73be4f43caa5c8fa04e2707c1c5a31322"
 	    "SKIP"
 	    "SKIP"
 	    "SKIP")
