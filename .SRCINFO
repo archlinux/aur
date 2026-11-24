@@ -29,7 +29,7 @@ pkgbase = oplus-connect-private-bin
 	provides = oplus-connect=1.0.0.r25.ga461e98
 	conflicts = oplus-connect
 	conflicts = oplus-connect-git
-	source = oplus-connect-private-bin-1.0.0.r25.ga461e98.pkg.tar.zst::https://gh-proxy.com/https://github.com/Become-ILLUSORY/aur-auto-update/releases/download/oplus-connect-latest/oplus-connect-1.0.0.r25.ga461e98-1-x86_64.pkg.tar.zst
+	source = oplus-connect-private-bin-1.0.0.r25.ga461e98.pkg.tar.zst::https://gh-proxy.cn/https://github.com/Become-ILLUSORY/aur-auto-update/releases/download/oplus-connect-latest/oplus-connect-1.0.0.r25.ga461e98-1-x86_64.pkg.tar.zst
 	sha256sums = e3dfe649aace947475ef1e686fb62d244aabbe1564cff80a4d13c0226df6d229
 
 pkgname = oplus-connect-private-bin
