@@ -1,6 +1,6 @@
 pkgbase = obs-studio-liberty
 	pkgdesc = Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc.
-	pkgver = 33.0.2
+	pkgver = 33.0.3
 	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
@@ -78,7 +78,7 @@ pkgbase = obs-studio-liberty
 	optdepends = libva-intel-driver: VAAPI encoder support (<= Haswell)
 	optdepends = libva-mesa-driver: VAAPI encoder support
 	optdepends = v4l2loopback-dkms: V4L2 virtual camera output
-	provides = obs-studio=33.0.2
+	provides = obs-studio=33.0.3
 	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
@@ -92,11 +92,11 @@ pkgbase = obs-studio-liberty
 	conflicts = obs-studio-browser
 	conflicts = obs-vst
 	conflicts = obs-studio-plugin-browser
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=33.0.2
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=33.0.3
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_x86_64_v2.tar.xz
-	sha512sums = 18409ab0410e8864dc35761702fffffb2812f0221580a96567d0fe20c5fb858578183c8b07ab6543edd2c71efef4c926a676cfe48906d26298b4baf6583b6b71
+	sha512sums = 67b3fd07ffdba9bbf0a208707f51114e775ffec5593436b5e5c0964e6a4b7b7d0fa7fc0eccb4bc0464531ed8955f8ff75c13425a723ed47f75ec3b302ec5a74d
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 0e87b98c0324de896e10c541ecec5d8468b4d9dc57a8ca0c425f5398ff8861876962c4b57ca288399a21021eb74e7a1053bfaa649811a001ed0f327780a2aa8b
