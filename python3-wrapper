@@ -1,0 +1,11 @@
+#!/bin/bash
+# Huawei's pip flow drops deps (wheel --no-deps, install --no-index); strip.
+# exec -a preserves argv[0] so Python keeps its venv/base identity.
+args=()
+for arg in "$@"; do
+  case "$arg" in
+    --no-deps|--no-index) ;;
+    *) args+=("$arg") ;;
+  esac
+done
+exec -a "$0" /opt/devecostudio/plugins/app-analyzer/lib/python/bin/python3.12 "${args[@]}"

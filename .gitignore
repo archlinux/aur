@@ -1,0 +1,11 @@
+pkg/
+src/
+*.pkg.tar.zst
+*.log
+*.zip
+idea-*.tar.gz
+cpython-*.tar.gz
+jbr_jcef-*.tar.gz
+*.tar.gz
+*.whl
+devecostudio-mac.zip

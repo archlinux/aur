@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DevEco Studio
+Comment=HarmonyOS Development IDE
+Exec=/opt/devecostudio/bin/devecostudio.sh
+Icon=/opt/devecostudio/bin/devecostudio.svg
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+StartupWMClass=deveco-studio

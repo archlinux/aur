@@ -1,0 +1,18 @@
+# Pacman hooks run as root, which is what re-applying the extra-SDK patches
+# needs (they write into /opt). Installing or upgrading the package restores
+# the pristine hvigor and hos-project-mgmt files, so a user who installed an
+# additional SDK (e.g. 6.1.1 Release via install-extra-sdk.sh) would
+# otherwise find their projects rejected until they re-ran it by hand.
+# --auto makes this a no-op unless an extra SDK is actually installed.
+_devecostudio_repatch() {
+  [ -x /opt/devecostudio/bin/patch-extra-sdk.sh ] || return 0
+  /opt/devecostudio/bin/patch-extra-sdk.sh --auto || true
+}
+
+post_install() {
+  _devecostudio_repatch
+}
+
+post_upgrade() {
+  _devecostudio_repatch
+}
