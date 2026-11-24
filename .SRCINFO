@@ -1,6 +1,6 @@
 pkgbase = homemesh
 	pkgdesc = Open the home folders of your other computers in any file manager; pair them with a code
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/MikolajQ/homemesh
 	install = homemesh.install
@@ -21,7 +21,7 @@ pkgbase = homemesh
 	optdepends = tailscale: reach the computers away from home (or another VPN)
 	options = !strip
 	options = !debug
-	source = homemesh-0.4.0.tar.gz::https://github.com/MikolajQ/homemesh/archive/v0.4.0.tar.gz
-	sha256sums = 43b2287ba5466f73298f64e1955ea947fff471b4e3cc540183168412835f5227
+	source = homemesh-0.5.0.tar.gz::https://github.com/MikolajQ/homemesh/archive/v0.5.0.tar.gz
+	sha256sums = add8fe84578fd6c7a08a6052aa520aa1bd3b55b298881d0e7645161c0144b56f
 
 pkgname = homemesh
