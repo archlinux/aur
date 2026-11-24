@@ -2,7 +2,7 @@
 
 pkgname=python-k3cgrouparch
 _name=${pkgname#python-}
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Set up cgroup directory tree and add pid to cgroup"
 provides=(${pkgname})
@@ -35,7 +35,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('23bee78c3f8fe1c366d24ec9b755b0c09dddb9bca57278f53ed0e5c1522c7090')
+sha256sums=('5f5b1409735516e36b776759f93d98e99e7527a0623f55a2eb55b186957f2734')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
