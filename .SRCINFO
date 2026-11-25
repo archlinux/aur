@@ -1,0 +1,19 @@
+pkgbase = macro-bin
+	pkgdesc = Macro is a unified workspace for teams: email, chat, docs, tasks, agents, calls, and CRM @-linked together with shared AI memory
+	pkgver = 2026.11.24.1
+	pkgrel = 1
+	url = https://github.com/macro-inc/macro
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = macro
+	conflicts = macro
+	options = !debug
+	source = macro-bin-2026.11.24.1-LICENSE::https://raw.githubusercontent.com/macro-inc/macro/v2026.11.24.1/LICENSE.txt
+	sha256sums = b1e2de6a24d704320f17b92555c0ee445f2b2af16dabfac6ec26d3fdb38588d5
+	source_x86_64 = macro-bin-2026.11.24.1-x86_64.tar.gz::https://github.com/macro-inc/macro/releases/download/v2026.11.24.1/macrod-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9defd28e244bd0eb0bf5602275c8d99f0cedfad9a8a281b8cf06507dd992ce52
+	source_aarch64 = macro-bin-2026.11.24.1-aarch64.tar.gz::https://github.com/macro-inc/macro/releases/download/v2026.11.24.1/macrod-linux-aarch64.tar.gz
+	sha256sums_aarch64 = e825bde2d58dc380ebcc8fbfd238202851cb9dd81bbd7b2123cdaf51138a771a
+
+pkgname = macro-bin
