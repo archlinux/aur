@@ -1,12 +1,12 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
 # Contributor: Dokja620 <revanamike620@gmail.com>
-# Created with assistance from Qwen3.8 Flash Next.
+# Created with assistance from Hy4 flash Free.
 # Based on upstream packaging/aur/PKGBUILD.
 # One build, three packages, as Transmission splits its apps: linksy-common (the service and
 # tools), linksy (the GTK app) and linksy-qt (the Qt app, for KDE Plasma).
 pkgbase=linksy
 pkgname=(linksy-common linksy linksy-qt)
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc='Your phone and your Linux computer, working as one: files, clipboard, screens, webcam'
 arch=('x86_64')
@@ -17,7 +17,7 @@ license=('AGPL-3.0-or-later')
 options=(!debug !lto)
 makedepends=('cargo' 'lld' 'gtk4' 'libadwaita' 'gstreamer' 'gst-plugins-base' 'qt6-base' 'qt6-declarative')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c08e7c119676975680bc615fac30a42116de04e11a6495c520e30a2ce98419ce')
+sha256sums=('c22b977397533f752b0f1f70464d0036effdbf3026404f5b82a0e7077fabba5a')
 
 prepare() {
   cd linksy-desktop-$pkgver
