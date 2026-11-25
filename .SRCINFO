@@ -1,0 +1,23 @@
+pkgbase = gogg-bin
+	pkgdesc = A multiplatform game file downloader for GOG
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/habedi/gogg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = alsa-lib
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	provides = gogg
+	conflicts = gogg
+	options = !debug
+	source = gogg-bin-0.5.1-LICENSE::https://raw.githubusercontent.com/habedi/gogg/v0.5.1/LICENSE
+	sha256sums = dc49155c3d9e9284a51a392dbb130a66d873fe2279c870cce3311c16a8b34330
+	source_x86_64 = gogg-bin-0.5.1-x86_64.zip::https://github.com/habedi/gogg/releases/download/v0.5.1/gogg-linux-amd64.zip
+	sha256sums_x86_64 = 5e288d3bada56bd40573230eb0d8c3cf0d6fc324e527f483824162959bf1a141
+	source_aarch64 = gogg-bin-0.5.1-aarch64.zip::https://github.com/habedi/gogg/releases/download/v0.5.1/gogg-linux-arm64.zip
+	sha256sums_aarch64 = eda7d96b818fcc9b23964fa39dfb9e84cbf0d0c722e855793e7bab0d037dae17
+
+pkgname = gogg-bin
