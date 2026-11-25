@@ -4,14 +4,14 @@
 pkgname=opentubex
 _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
-pkgver=0.38.1
+pkgver=0.38.2
 _pkgver="$pkgver-beta"
 pkgrel=1
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
 arch=('x86_64' 'aarch64')
 url="https://opentubex.org"
 license=('AGPL-3.0-or-later')
-depends=('electron44')
+depends=('electron45')
 optdepends=('ffmpeg: Use the system FFmpeg when installed before first launch; configurable later in Settings'
             'yt-dlp: Use the system yt-dlp when installed before first launch; configurable later in Settings')
 makedepends=('git' 'npm' 'pnpm' 'go')
@@ -19,12 +19,12 @@ changelog=opentubex.changelog
 source=("$pkgname-$pkgver.tar.gz::${_ghurl}/archive/refs/tags/v${_pkgver}.tar.gz"
         opentubex.desktop
         opentubex.sh)
-sha256sums=('4c5ccec709f77f14b5f0ffc766c187b594449e51d067f232fc0c80fb4cc19dd3'
+sha256sums=('03fe9d5090f5b171a10297423b51d1c188299f7dbd6f919ba95c4654624ad70c'
             '70ef7749ceb85a37945e69eef29933cc48114e420f795f682d0031e74455dba2'
-            '06c5938a8fa979bc0f5fc34c14b4cdd6d938b3fccb997651e9354393b6bb6b92')
+            '3a2c93778e402fdebea5f9791514d2fca2656c2942a8530e0a18881b150db4bb')
 
 prepare() {
-  sed -i "/^export default {/a\\  electronDist: '/usr/lib/electron44'," \
+  sed -i "/^export default {/a\\  electronDist: '/usr/lib/electron45'," \
     "$srcdir/$_pkgname-$_pkgver/_scripts/ebuilder.config.mjs"
   sed -i "/Platform\\.LINUX\\.createTarget/s/\\[[^]]*\\]/['dir']/" \
     "$srcdir/$_pkgname-$_pkgver/_scripts/build.mjs"

@@ -1,69 +1,232 @@
-opentubex (0.38.1) stable; urgency=medium
+opentubex (0.38.2) stable; urgency=medium
+
+  [ Highlights ]
+  * Profiles can now keep their data, their settings, or both separate. With
+    separate data, a profile has its own subscriptions, history, playlists, and
+    queue. With separate settings, changes only apply to it, so a car profile
+    can hide comments and live chat while sharing your subscriptions.
 
   [ New features ]
-  * Follow conferences on media.ccc.de, search its talks, and watch them like
-    media from the other supported platforms. Conference links open their page
-    in the app.
-  * Subscription imports can sort channels into groups, from group names after
-    the channel title in a .csv file or from the folders of an .opml file. The
-    group editor can also select or clear all channels matching a search.
-  * The player can take timestamp notes once you enable them in the player
-    settings: press N or use the player menu to write a note that links to the
-    current moment, then copy it as Markdown or add it to an Obsidian vault on
-    desktop.
-  * The app font setting now includes Libron, a serif font designed for
-    comfortable reading.
-  * Any video comment can now be watched for replies with the bell button next
-    to it, also without a YouTube account, and comments you post are watched
-    automatically. The comment settings list the watched comments, and selecting
-    one opens it highlighted.
-  * The extra thumbnail action button can now play a video next, add it to the
-    queue, open it in a background tab, or mark it as seen.
-  * Playlists that remove videos once watched can use their own removal
-    threshold instead of the watched percentage threshold from the Privacy
-    settings.
+  * Watched comments of yours now also notify you when the video's creator
+    hearts them.
+  * Typing @ in a comment or reply suggests people from the comments, and
+    mentions now link to their channels on YouTube, including the one a reply to
+    a reply starts with.
+  * Grayscale can now leave downloaded videos in color, while other videos and
+    images turn gray.
+  * RSS feed episodes and videos from other sites can now be added to the queue.
+    The queue also shows while they play and moves on to the next item when one
+    ends.
+  * RSS feeds now handle podcasts. Find shows in the Apple Podcasts directory,
+    import or export your feeds as OPML, and listen to episodes with their title
+    and cover. Feeds now show all their items, not only the latest 50.
+  * Twitch livestreams now play without Twitch's ads, and also play on iPhone
+    and iPad.
+  * A new Twitch page in the navigation lists the most watched categories and
+    live streams and searches Twitch. Category pages list live streams, videos,
+    and clips, which you can filter by language and sort. Twitch searches on the
+    Search page can now find categories too.
+  * The bottom navigation bar can now show only the current page's label,
+    besides showing all labels or none.
+  * A new Distraction Free option hides the video title in full window and full
+    screen, whether the video plays or is paused. The player menu then opens the
+    video information instead.
+  * Subscriptions now also show videos that your channels made together with
+    another channel that uploaded them. You can turn this off in the
+    subscription settings.
+  * When you're signed in to YouTube, the comment filters can show only the
+    loaded comments and replies written by your channels, along with the
+    comments your replies answer.
+  * A new UI Density setting makes lists, menus, the side bar, and Settings more
+    compact or more spacious. It replaces Compact Settings Categories.
+  * Incognito tabs keep the videos you watch and the searches you make out of
+    your history and recommendations, and they are never restored or synced.
+    Open one from the tab bar or from a video's menu.
+  * When you're signed in to YouTube, you can comment on posts and reply to and
+    rate their comments, vote in polls and see the results, answer quizzes, and
+    like or dislike posts.
+  * Right-clicking or long-pressing a channel name or avatar now lets you
+    subscribe to or unsubscribe from the channel.
+  * A new setting under Appearance lets you click the icon of a tab with a
+    playing or paused video to pause or resume it without switching to that tab.
+  * You can now pick subscription feeds, such as videos and live streams, that
+    refresh together when you refresh one of them.
+  * The player menu can now mirror the video, which makes dance, workout, and
+    instrument tutorials easier to follow. Turn on Mirror Video under Player
+    Controls in the Player Settings to add it.
+  * A new Distraction Free setting hides the reason and the feedback buttons
+    under each video in Recommended for you on Home.
+  * You can hide the refresh errors of a subscribed channel, for example one
+    that was terminated but might come back. It still refreshes, and its errors
+    can be shown again in its subscription settings.
+  * A new Distraction Free setting hides videos you have already watched from
+    search results and recommendations, and autoplay skips them.
+  * Choose the order of the tabs on the Subscriptions page, for example to put
+    the New feed first, in Customize interface.
+  * The player menu can now rotate videos that were recorded sideways or upside
+    down. Turn on Rotate Video under Player Controls in the Player Settings to
+    add it.
+  * Playlist downloads can skip videos: uncheck them under Videos in the
+    download dialog.
+  * Comments can be sorted by Timed, which shows comments about a moment in the
+    video as playback reaches it.
+  * Press and hold Subscriptions in the navigation to refresh your subscription
+    feed in the background without leaving the current page.
+  * Signing up for sync now gives you a random 12-word recovery phrase as your
+    privacy passphrase and asks you to confirm a few of its words, so your
+    encrypted sync data is protected by a passphrase nobody can guess. You can
+    still choose your own passphrase with Use custom passphrase instead.
+  * You can now pick an app icon from the same palettes as the tray icon. On
+    Windows, it also changes pinned taskbar shortcuts and your own Start menu
+    and desktop shortcuts.
+  * The Download entry in the menus of videos and playlists now lists your
+    download templates to start a download right away. Customize… opens the
+    download dialog.
+  * Video descriptions, channel descriptions, and community posts in other
+    languages can now be translated, like comments. The new Translation section
+    in General settings turns translations on or off for comments, descriptions,
+    and posts separately.
 
   [ Improvements ]
-  * With autoplay on, the next and previous buttons and media controls,
-    including Bluetooth and car controls, now skip between recommended videos
-    outside a playlist.
-  * Searching for the address of a Twitch, SoundCloud, Odysee, Rumble, or
-    PeerTube channel now opens its channel page instead of playing it. Links to
-    Twitch, SoundCloud, Odysee, and Rumble channels in About tabs and
-    descriptions open the channel page too.
-  * Number fields have − and + buttons that work the same in every browser when
-    you use a mouse. Firefox no longer treats letters typed into number fields
-    as an empty value.
-  * Long comment sections below a video no longer slow down each time you load
-    more comments.
-  * Tapping outside the open search on phones now just closes it, instead of
-    also opening whatever was underneath.
-  * yt-dlp now ignores its configuration files, so a file in the download folder
-    can no longer change what it does. Set download options in Additional yt-dlp
-    arguments instead.
-  * The mini player now has previous and next buttons and a progress bar you can
-    click or drag to seek.
-  * Channel pages from platforms other than YouTube open faster, and going back
-    to one shows it right away, where you left off. Refreshing followed PeerTube
-    channels no longer waits for slow instances.
+  * The player's options menu responds faster when you open it, move between its
+    views, and close it, especially on slower devices or while the app is busy.
+  * The Channels page now also lists the channels you follow on other platforms,
+    which moved there from the subscription settings, with a selector that can
+    show every platform together. Pasting a channel's address into its search
+    field follows the channel.
+  * Your YouTube sign-in, sync server credentials, and proxy, Yattee, and
+    Invidious passwords are now encrypted with your system's keychain when one
+    is available, and Invidious instances get username and password fields. On
+    another device or an older version, you enter them again.
+  * Live streams with live captions, such as news channels, now also play in up
+    to 4K with the built-in engine, and can be rewound with their captions.
+  * The app no longer downloads spellchecker dictionaries from Google. Text
+    fields no longer underline misspelled words.
+  * When Rumble asks you to verify that you're human, for example while you use
+    a VPN, you can now do that in the app instead of getting an error.
+  * Like in browsers, "Open in a New Tab" now opens the tab in the background,
+    so you can queue up several videos without leaving the current page.
+  * Opening a video no longer changes your watch history. It joins the history
+    once it has played for a few seconds or you seek in it, so checking back on
+    the comments leaves your history and saved position as they were.
+  * The player's pop-ups for volume, speed, seeking, and zoom have a new look,
+    and volume and brightness changes now show a level bar.
+  * With the local API, links in video descriptions now show the video title,
+    channel handle, or profile name after an icon instead of the full URL.
+    Descriptions also list the people mentioned and the podcast a video belongs
+    to.
+  * Settings has a new look, with colored icons for categories and sections and
+    a shorter category list without descriptions.
+  * The Stats page has a new design. The summary cards are neutral with an icon
+    each, the daily chart is a smooth curve that marks today, and the weekly
+    bars are rounded and highlight the current week.
+  * The fullscreen side panels now use your theme's colors instead of a fixed
+    palette. With a light theme, they stay dark so they remain readable over the
+    video. They animate again when you open, close or rearrange them, and resize
+    more smoothly.
+  * Notifications now open their video, post, or stream in a new tab, so the
+    page you were on stays open.
+  * The mini player's buttons have a new look, the play button changes shape
+    between playing and paused, and all buttons fade out together during
+    playback.
+  * The Zoom, Volume Boost, and Sleep Timer menus now have a slider like the
+    playback speed menu, so you can pick values between the presets, including
+    sleep timers of up to two hours.
+  * Full Width view no longer stretches each video across the whole window on
+    larger screens, and Thumbnail Size now changes how wide the videos get.
+  * The notification center now also keeps finished and failed downloads,
+    available updates, failed tool updates, blocked syncs, and YouTube sign-outs
+    and subscription changes, so they stay around after their pop-up is gone.
+  * New upload notifications skip videos that are already in your watch history,
+    including ones you watched on another device.
+  * Managing automatic downloads now opens right away with many subscriptions,
+    and loads more channels as you scroll.
+  * Video and channel links you paste into the search bar now appear in your
+    search history with the video title or channel name, and typing part of that
+    name finds them again.
+  * Create a subscription group straight from a channel's subscription settings,
+    with that channel already in it.
+  * Pinned channels and playlists can be dragged into a new order in the side
+    navigation, or by their grips in the More menu on phones. Pinned playlists
+    keep that order instead of following the Playlists page.
+  * The Local API browser extension for the web app is now a download on each
+    release, so you no longer need a copy of the source code to install it.
+    Without it, the web app's settings link to its install steps.
+  * The New Tab button now sits right after the last tab, like in a browser,
+    unless you turn off Show New Tab Button Next to Tabs in Appearance settings.
+    The page scrollbar no longer runs behind the header or a bottom tab bar.
+  * Notifications in the notification center can now be swiped away on touch
+    screens. Ones that no longer apply clear themselves, like a download once
+    you play it, and new videos and streams count as read once you watch them.
+  * The New feed and the Platforms tab now open in the tabbed view by default.
+    You can still switch to the combined view from the subscriptions header.
+  * Settings scroll more smoothly, and long lists such as History no longer keep
+    the app busy while they wait to load more.
+  * The Player Controls settings are now grouped into Audio, Video, Seek Bar and
+    Overlay, and Casting, with shorter names, icons, and a one-line description
+    for each switch.
+  * Scrolling down a video page now pins the player at the top when there's room
+    and shows the mini player otherwise. The "Keep player visible when
+    scrolling" switch replaces the "When scrolling down" setting.
+  * Several settings are simpler: block lists hide, blur, or show matches from
+    one menu, Tab Width sizes tabs automatically and Upcoming Videos to Preload
+    turns off at their lowest values, and menus choose casting protocols, what
+    the system tray does, and what yt-dlp uses your cookies for.
+  * Without the grid layout, the player menu shows switches for options that
+    turn on or off, instead of On and Off.
+  * Switching between Home, Subscriptions, History and Your Playlists is faster,
+    especially on phones.
+  * Transcripts of long videos open without freezing the page, and side panels
+    open and close more smoothly.
 
   [ Fixed bugs ]
-  * Importing a file of the wrong kind no longer freezes the app. Choosing
-    FreeTube's subscription cache as a subscriptions file now explains which
-    file to pick instead.
-  * The queue keeps playing the next video while the window is minimized.
-  * The Picture-in-Picture window now stays above other windows and shows on all
-    virtual desktops on KDE Plasma Wayland, without a window rule.
-  * High-quality videos no longer stop with a playback error after playing for a
-    while.
-  * Videos in background tabs, such as ones you open in the background or tabs
-    restored at startup, load about twice as fast again, and use much less CPU
-    while you watch something else.
-  * Clicking a tab switches to it again when the custom title bar is turned on.
-  * Subscription Shorts keep loading, in date order, while YouTube's RSS feeds
-    are down or rate limited, instead of listing channels that could not be
-    refreshed.
-  * The Share Video button next to a Short now opens the full share menu instead
-    of a cut-off panel.
+  * Seeking back in a live stream now plays from the chosen moment instead of
+    seconds or even minutes after it.
+  * Live streams that can't be rewound far no longer keep stalling with a
+    countdown over the video, or reload after a few minutes, also after
+    returning to live.
+  * The player controls no longer fade away while the pointer rests on the seek
+    bar, a button, or the fullscreen title and actions.
+  * Downloaded videos now play from the download when you open them from a link
+    or a tab synced from another device, instead of streaming them.
+  * Automatic sync pauses less often after you delete items on one of your
+    devices, and Sync settings now shows when it is paused and how to resume it.
+  * Twitch clips now start at your default quality when they offer it, instead
+    of the lowest one.
+  * Replies to replies now appear under the reply they answer instead of in one
+    list at the end of the thread. Your replies nest there on YouTube too.
+  * When replies fail to load from YouTube and Invidious fallback is on, they
+    now load from Invidious instead of adding the comments again.
+  * Going back to a long list, such as your watch history, now returns to the
+    videos you were looking at instead of further down.
+  * Playlist downloads follow the Concurrent Downloads setting and download
+    several videos at once, each with its own progress bar, instead of one after
+    another.
+  * 360° and VR videos play in VR mode again instead of failing with a player
+    error, and VR180 videos show their half sphere instead of a stretched flat
+    view that wraps around.
+  * Downloading a live stream now shows how much has been recorded, and Stop
+    recording saves the recording instead of losing it.
+  * Fixed a crash that closed the command palette and left the interface
+    unresponsive when searching items whose titles contain emojis.
+  * When queued videos play in the middle of a playlist, the playlist now
+    continues with its next video once the queue is done, instead of being left
+    behind.
+  * Videos no longer restart or switch to legacy formats in a loop when their
+    captions fail to load.
+  * Videos show a loading spinner until they start playing, instead of a play
+    button that made them look paused.
+  * Videos you open from notifications, links, or anywhere else now leave the
+    New feed, not only videos opened from the feed itself.
+  * Casting works with more receivers: Google Cast no longer stops right after a
+    video starts loading on Google TV, YouTube live streams play over Google
+    Cast, the FCast desktop receiver plays YouTube videos, and DLNA renderers
+    resume where you left off.
+  * Auto-translated captions load again without a signed-in account, instead of
+    failing because YouTube refuses the request.
+  * Playlists synced with your YouTube account now show their videos in the same
+    order as on YouTube, including videos you moved there.
+  * Turning autoplay on or off from the player no longer pauses or resumes the
+    video.
 
- -- OpenTubeX contributors <info@opentubex.org>  Sun, 15 Nov 2026 22:08:01 +0000
+ -- OpenTubeX contributors <info@opentubex.org>  Wed, 25 Nov 2026 23:11:20 +0000
