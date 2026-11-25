@@ -1,42 +1,57 @@
 # Maintainer: Julian Daube <joposter (at) gmail (dot) com>
 # Contributor: Julian Daube <joposter (at) gmail (dot) com>
+
 _pkgname=python-django-markdownify
 pkgname=$_pkgname-git
-pkgver=0.8.0.r5.gf5b7e2e
+pkgver=0.9.7.r16.g7747acc
 pkgrel=1
 pkgdesc="Markdown template filter for Django"
-
-provides=("$_pkgname")
-url="https://github.com/erwinmatijsen/django-markdownify"
 arch=("any")
+url="https://github.com/django-markdownify/django-markdownify"
 license=("MIT")
-
-source=("$pkgname::git+$url")
-depends=("python-django" "python-markdown" "python-bleach")
-makepepends=("python-setuptools")
-
+depends=(
+	"python"
+	"python-django"
+	"python-markdown"
+	"python-bleach"
+	"python-tinycss2"
+)
+makedepends=(
+	"git"
+	"python-build"
+	"python-installer"
+	"python-wheel"
+	"python-setuptools"
+	"python-setuptools-scm"
+)
+checkdepends=("python-pytest" "python-pytest-django")
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+sha256sums=("SKIP")
 
 pkgver() {
-	cd "$pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	# patch readme line
-	cd "$pkgname"
-	sed 's/README.rst/README.md/' -i setup.py
+	git -C "$srcdir/$_pkgname" clean -dfx
 }
 
-build() { 
-	cd "$pkgname"
-	python setup.py build 
+build() {
+	cd "$_pkgname"
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "$_pkgname"
+	python -m pytest
 }
 
 package() {
-	cd "$pkgname"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	
-	install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
-}
+	cd "$_pkgname"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
-md5sums=("SKIP")
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
