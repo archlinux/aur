@@ -1,0 +1,20 @@
+pkgbase = vaultdraw-bin
+	pkgdesc = Offline vault for Excalidraw drawings: your drawings in a folder you own
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://vaultdraw.vercel.app
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = poppler-glib
+	optdepends = xdg-utils: open links and reveal files in the file manager
+	provides = vaultdraw
+	conflicts = vaultdraw
+	noextract = vaultdraw-0.2.0-amd64.deb
+	options = !strip
+	options = !debug
+	source_x86_64 = vaultdraw-0.2.0-amd64.deb::https://github.com/Vaultdraw/vaultdraw/releases/download/v0.2.0/Vaultdraw_0.2.0_amd64.deb
+	sha256sums_x86_64 = 51e8a95bd33aa3a8128b047e6cf442a9283e88d65f333c3f88f6c59d753624d4
+
+pkgname = vaultdraw-bin
