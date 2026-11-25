@@ -1,6 +1,6 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=klayout-pex
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Parasitic Extraction (PEX) tool for KLayout"
 arch=("any")
@@ -42,19 +42,16 @@ optdepends=(
 )
 options=()
 source=("${pkgname}::git+${_git_url}#tag=v${pkgver}")
-b2sums=('25acfe35e6f0b12638301aaa3fe5c654993dc64d593f4d6d13e9349cd95cc02dd26ff6a517a72625eb70c79c2f5359435302703c730c3d7ef44cb1c90031d4c6')
+b2sums=('cd54c358e6c138c302eeac2c1580d35f15ea8597a9442d583f061b0e2d22587dbefc86298366dcc964e4d16c29a8184073849e311355234d4748982aa3917700')
 
 build() {
 	cd ${pkgname}
 
 	# Generate protobuf files
-	python -m grpc_tools.protoc \
-		--proto_path=protos \
-		--python_out=klayout_pex_protobuf \
-		$(find protos -name '*.proto')
+	python scripts/build/generate_protobuf.py
 
 	# Generate tech files
-	python scripts/gen_tech_pb  klayout_pex_protobuf
+	python scripts/gen_tech_pb kpex_protobuf
 
 	# Build package
 	python -m build --wheel --no-isolation
