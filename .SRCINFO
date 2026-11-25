@@ -1,0 +1,20 @@
+pkgbase = sharkord-bin
+	pkgdesc = Lightweight self-hosted chat server with voice, video, text and screen sharing
+	pkgver = 0.0.32
+	pkgrel = 1
+	url = https://github.com/Sharkord/sharkord
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = sharkord
+	conflicts = sharkord
+	options = !debug
+	source = sharkord-bin-0.0.32-LICENSE::https://raw.githubusercontent.com/Sharkord/sharkord/v0.0.32/LICENSE
+	sha256sums = 2e6d0651742cf8c9bde6aa7713e06f82db92143732c7a5b430f5a5ccbd6891f9
+	source_x86_64 = sharkord-bin-0.0.32-x86_64::https://github.com/Sharkord/sharkord/releases/download/v0.0.32/sharkord-linux-x64
+	sha256sums_x86_64 = 6cc6d2448b5eeeb23f459d2b4d80763652ea0520ef16019c26f9474bcace5e3c
+	source_aarch64 = sharkord-bin-0.0.32-aarch64::https://github.com/Sharkord/sharkord/releases/download/v0.0.32/sharkord-linux-arm64
+	sha256sums_aarch64 = d8d9dc08daafa64a3b5d0ec3401d882546e14a3acf14585bab232470e6407840
+
+pkgname = sharkord-bin
