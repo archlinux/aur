@@ -1,6 +1,6 @@
 pkgbase = deveco-clt-url
 	pkgdesc = Mint signed download URLs for HUAWEI DevEco Command Line Tools / Device Tool
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos
 	arch = any

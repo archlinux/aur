@@ -37,7 +37,7 @@ import time
 import urllib.error
 import urllib.request
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 API = "https://svc-drcn.developer.huawei.com/svc/community/common/v1/delegate"
 SVC_LIST = "PartnerCommunityService/v1/developer/downloadCenter/getToolVersionList"
@@ -138,43 +138,80 @@ def parse_cookie_header(text: str) -> list:
     return pairs
 
 
-def cookies_from_firefox() -> list:
-    base = os.path.join(HOME, ".mozilla", "firefox")
-    ini = os.path.join(base, "profiles.ini")
-    if not os.path.exists(ini):
-        die("找不到 %s：这台机器的 Firefox 没有 profile。" % ini)
-    prof = None
+def _firefox_roots() -> list:
+    """Firefox 的 profile 根目录，按优先级排列。
+
+    新版 Firefox 在 ~/.mozilla 不存在时改用 XDG 布局
+    (~/.config/mozilla/firefox)；flatpak / snap 各有自己的根。
+    """
+    xdg = os.environ.get("XDG_CONFIG_HOME") or os.path.join(HOME, ".config")
+    return [
+        os.path.join(xdg, "mozilla", "firefox"),
+        os.path.join(HOME, ".mozilla", "firefox"),
+        os.path.join(HOME, ".var/app/org.mozilla.firefox/.mozilla/firefox"),
+        os.path.join(HOME, "snap/firefox/common/.mozilla/firefox"),
+    ]
+
+
+def _firefox_profiles(ini: str) -> list:
+    """解析 profiles.ini，返回 [(path, is_default)]；IsRelative 相对该 ini 所在目录。"""
+    base = os.path.dirname(ini)
+    out = []
     cur = {}
-    default = None
+
+    def flush() -> None:
+        if not cur.get("Path"):
+            return
+        p = cur["Path"]
+        if cur.get("IsRelative", "1") == "1":
+            p = os.path.join(base, p)
+        out.append((p, cur.get("Default") == "1"))
+
     for line in open(ini, encoding="utf-8", errors="replace"):
         line = line.strip()
         if line.startswith("[Profile"):
-            if cur.get("Path") and (cur.get("Default") == "1" or default is None):
-                default = dict(cur)
+            flush()
             cur = {}
         elif "=" in line:
             k, v = line.split("=", 1)
             cur[k.strip()] = v.strip()
-    if cur.get("Path") and default is None:
-        default = dict(cur)
-    if not default:
-        die("%s 里没有可用 profile。" % ini)
-    path = default["Path"]
-    if default.get("IsRelative", "1") == "1":
-        path = os.path.join(base, path)
-    db = os.path.join(path, "cookies.sqlite")
-    if not os.path.exists(db):
-        die("找不到 %s。" % db)
-    tmp = tempfile.NamedTemporaryFile(prefix="ffcookies-", suffix=".sqlite", delete=False)
-    tmp.close()
+    flush()
+    return out
+
+
+def _firefox_cookie_db() -> str:
+    """在四个候选根里找第一个带 cookies.sqlite 的 profile。"""
+    probed = []
+    for root in _firefox_roots():
+        ini = os.path.join(root, "profiles.ini")
+        probed.append(ini)
+        if not os.path.isfile(ini):
+            continue
+        for prof, is_default in sorted(_firefox_profiles(ini), key=lambda x: not x[1]):
+            db = os.path.join(prof, "cookies.sqlite")
+            if os.path.isfile(db):
+                return db
+    die("找不到 Firefox 的 cookies.sqlite。已探测：\n  " + "\n  ".join(probed) +
+        "\n请确认 Firefox 启动过并已登录 %s；或用 --login-cookie 从剪贴板取 Cookie 头。" % PAGE)
+
+
+def cookies_from_firefox() -> list:
+    db = _firefox_cookie_db()
+    # Firefox 常驻时会给 cookies.sqlite 加锁，直接用 backup API 仍可能被卡住；
+    # 改为把 db(+wal/shm) 拷到临时目录再读副本，完全不触碰原库的锁。
+    tmpdir = tempfile.mkdtemp(prefix="ffcookies-")
+    copy = os.path.join(tmpdir, "cookies.sqlite")
     try:
-        subprocess.run(["sqlite3", "file:%s?mode=ro" % db, ".backup %s" % tmp.name], check=True)
-        con = sqlite3.connect(tmp.name)
+        for suffix in ("", "-wal", "-shm"):
+            src = db + suffix
+            if os.path.exists(src):
+                shutil.copy2(src, copy + suffix)
+        con = sqlite3.connect(copy)
         rows = con.execute(
             "SELECT name, value FROM moz_cookies WHERE host LIKE '%huawei.com' ORDER BY name").fetchall()
         con.close()
     finally:
-        os.unlink(tmp.name)
+        shutil.rmtree(tmpdir, ignore_errors=True)
     if not rows:
         die("Firefox 里没有 huawei.com 的 cookie：请先在 Firefox 登录 %s。" % PAGE)
     return rows
