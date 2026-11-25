@@ -1,6 +1,6 @@
 pkgbase = oynix-bin
 	pkgdesc = Fast, private web browser (Rust + QML, Qt 6.12) with Chrome/Firefox extension support (prebuilt)
-	pkgver = 5.4.2
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://github.com/trail-b1az3r/OyNIx
 	arch = x86_64
@@ -29,10 +29,10 @@ pkgbase = oynix-bin
 	optdepends = nvidia-utils: Vulkan on NVIDIA
 	provides = oynix
 	conflicts = oynix
-	noextract = oynix-5.4.2-1-x86_64.pkg.tar.zst
+	noextract = oynix-5.5.0-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = oynix-5.4.2-1-x86_64.pkg.tar.zst::https://github.com/trail-b1az3r/OyNIx/releases/download/v5.4.2/oynix-5.4.2-1-x86_64.pkg.tar.zst
-	sha256sums = 740bb8890c24f0d81a1694f0c75e0c946c66b62bc93dd5afe3b15ad57fc7274d
+	source = oynix-5.5.0-1-x86_64.pkg.tar.zst::https://github.com/trail-b1az3r/OyNIx/releases/download/v5.5.0/oynix-5.5.0-1-x86_64.pkg.tar.zst
+	sha256sums = b606944b77bdee989895a3d5d51b46d222b939fe4c3e9b995d737c1c53d42d5b
 
 pkgname = oynix-bin
