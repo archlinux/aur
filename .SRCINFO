@@ -1,6 +1,6 @@
 pkgbase = steamrip-desktop-bin
 	pkgdesc = Tray app that keeps a steamrip.com game library synced, installed, launched (Proton via umu) and updated
-	pkgver = 2026.11.25
+	pkgver = 2026.11.25.1
 	pkgrel = 1
 	url = https://github.com/JochemKuipers/steamrip-desktop
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = steamrip-desktop-bin
 	provides = steamrip-desktop
 	conflicts = steamrip-desktop
 	options = !strip
-	source = steamrip-desktop-2026.11.25.deb::https://github.com/JochemKuipers/steamrip-desktop/releases/download/v2026.11.25/steamrip-desktop_2026.11.25-1_amd64.deb
-	sha256sums = f6e6bb8ae05734224bc51696de664f99f01fdc5ad1a91c797fd68bdcf8bcea6d
+	source = steamrip-desktop-2026.11.25.1.deb::https://github.com/JochemKuipers/steamrip-desktop/releases/download/v2026.11.25.1/steamrip-desktop_2026.11.25.1-1_amd64.deb
+	sha256sums = b304024e6fa3f753198625fb3ee2de5f5c4d8137cbd0c32e5b921f50ce2ea4ca
 
 pkgname = steamrip-desktop-bin
