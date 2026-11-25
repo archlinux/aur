@@ -1,6 +1,6 @@
 pkgbase = veasel-code-bin
 	pkgdesc = Veasel Code terminal CLI and TUI (not the Desktop app)
-	pkgver = 0.105.0.next.0
+	pkgver = 0.106.0.next.0
 	pkgrel = 1
 	url = https://veasel.dev
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = veasel-code-bin
 	noextract = veasel-Linux.tar.gz
 	options = !debug
 	options = !strip
-	source = veasel-Linux.tar.gz::https://github.com/veasel-labs/veasel/releases/download/v0.105.0-next.0/veasel-Linux.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/veasel-labs/veasel/v0.105.0-next.0/LICENSE
-	sha256sums = d531d17ba8481921ec7c345632da089fbbc5883aded24eecb71a6d29973e632f
+	source = veasel-Linux.tar.gz::https://github.com/veasel-labs/veasel/releases/download/v0.106.0-next.0/veasel-Linux.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/veasel-labs/veasel/v0.106.0-next.0/LICENSE
+	sha256sums = 6e723ac751b2e09a74ab78b0daa5537320ea416d59d11e9aac95c548f526bbe1
 	sha256sums = e150ff1e9cd21b388ec966f3d77ed4731e86e4731b17f127e879f72ff5b2e3d5
 
 pkgname = veasel-code-bin
