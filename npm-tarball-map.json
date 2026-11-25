@@ -1,0 +1,19 @@
+{
+  "node_modules/@babel/helper-string-parser": "npm-babel-helper-string-parser-7.29.15.tgz",
+  "node_modules/@babel/helper-validator-identifier": "npm-babel-helper-validator-identifier-7.29.7.tgz",
+  "node_modules/@babel/parser": "npm-babel-parser-7.29.15.tgz",
+  "node_modules/@babel/types": "npm-babel-types-7.29.15.tgz",
+  "node_modules/@protobufjs/aspromise": "npm-protobufjs-aspromise-1.1.2.tgz",
+  "node_modules/@protobufjs/base64": "npm-protobufjs-base64-1.1.2.tgz",
+  "node_modules/@protobufjs/codegen": "npm-protobufjs-codegen-2.0.5.tgz",
+  "node_modules/@protobufjs/eventemitter": "npm-protobufjs-eventemitter-1.1.1.tgz",
+  "node_modules/@protobufjs/fetch": "npm-protobufjs-fetch-1.1.1.tgz",
+  "node_modules/@protobufjs/float": "npm-protobufjs-float-1.0.2.tgz",
+  "node_modules/@protobufjs/path": "npm-protobufjs-path-1.1.2.tgz",
+  "node_modules/@protobufjs/pool": "npm-protobufjs-pool-1.1.0.tgz",
+  "node_modules/@protobufjs/utf8": "npm-protobufjs-utf8-1.1.2.tgz",
+  "node_modules/@types/node": "npm-types-node-26.6.10.tgz",
+  "node_modules/long": "npm-long-5.3.2.tgz",
+  "node_modules/protobufjs": "npm-protobufjs-7.6.6.tgz",
+  "node_modules/undici-types": "npm-undici-types-8.9.0.tgz"
+}

@@ -1,0 +1,11 @@
+pkg/
+src/
+*.pkg.tar*
+*.src.tar*
+/fuzzilli/
+/swift-protobuf/
+/swift-collections/
+/swift-algorithms/
+/swift-protobuf-protobuf/
+/swift-protobuf-abseil/
+/npm-protobufjs-7.6.6.tgz
