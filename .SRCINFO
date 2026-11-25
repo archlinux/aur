@@ -1,6 +1,6 @@
 pkgbase = ledger-live
 	pkgdesc = Maintain your Ledger devices
-	pkgver = 4.28.0
+	pkgver = 4.30.0
 	pkgrel = 1
 	url = https://shop.ledger.com/pages/ledger-wallet-download
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = ledger-live
 	makedepends = desktop-file-utils
 	depends = ledger-udev
 	depends = electron45
-	source = ledger-live-desktop-4.28.0.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/@ledgerhq/live-desktop@4.28.0.tar.gz
+	source = ledger-live-desktop-4.30.0.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/@ledgerhq/live-desktop@4.30.0.tar.gz
 	source = ledger-live-desktop.sh
-	sha512sums = 3ceddc077f8946b583a1f5d491bc814ac67102511837b0c67c5f926a029c13889710d9fb0466d70734bb3ca1f3dc4b9d047d8a23b3df52a0785f3028eb091dd7
+	sha512sums = d07b0e2ce7327c0a55c5d740d0759b0b766dbdcd3dec27f3da88801f060573cbea2dcf79480a0b2f0726da214a77d66a883c13d061620ee93f3e7b7fa71c7ac5
 	sha512sums = 70effe952d7007e79e43523f5e8d868228eedb5049465c2ebea017f9c8b0b25f82e0c6f56cef59e40479d29149969cde8e7098edf8a0cad7b23a9a123e5f0755
 
 pkgname = ledger-live
