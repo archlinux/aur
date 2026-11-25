@@ -1,6 +1,6 @@
 pkgbase = t3-code-bin
 	pkgdesc = Desktop GUI for coding agents
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://t3.codes
 	arch = x86_64
@@ -42,13 +42,13 @@ pkgbase = t3-code-bin
 	provides = t3code
 	conflicts = t3code
 	conflicts = t3code-bin
-	noextract = T3-Code-0.1.11-amd64.deb
-	noextract = T3-Code-0.1.11-arm64.deb
+	noextract = T3-Code-0.1.12-amd64.deb
+	noextract = T3-Code-0.1.12-arm64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = T3-Code-0.1.11-amd64.deb::https://github.com/pingdotgg/t3code/releases/download/v0.1.11/T3-Code-0.1.11-amd64.deb
-	sha256sums_x86_64 = ccd43f67f95ff416ddf76f31a876b8cb0ca64e7df7343deb5b5941936384e1d0
-	source_aarch64 = T3-Code-0.1.11-arm64.deb::https://github.com/pingdotgg/t3code/releases/download/v0.1.11/T3-Code-0.1.11-arm64.deb
-	sha256sums_aarch64 = 3b02c131ec122f02e65cc901beb7d644e7160a1763b2fb4ac12f1b296ed1870f
+	source_x86_64 = T3-Code-0.1.12-amd64.deb::https://github.com/pingdotgg/t3code/releases/download/v0.1.12/T3-Code-0.1.12-amd64.deb
+	sha256sums_x86_64 = c1ca3e656e12ba10377513e9bbe20a5112540cda9601e21c70b85ba7c53f1b29
+	source_aarch64 = T3-Code-0.1.12-arm64.deb::https://github.com/pingdotgg/t3code/releases/download/v0.1.12/T3-Code-0.1.12-arm64.deb
+	sha256sums_aarch64 = 3ca1a4e548794e39fa11027d39f5e6a3510154c49bd771756b1744a1d5a804e0
 
 pkgname = t3-code-bin
