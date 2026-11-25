@@ -15,24 +15,21 @@
 # CachyOS alike.
 
 pkgname=radiopittray
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="System tray radio player for your RadioPit.fm library"
 arch=(x86_64)
 url="https://github.com/idovitz/radiopittray"
 license=(GPL-3.0)
 depends=(
-    # gtk::init() and the GLib main context the tray menu is pumped on
+    # linked transitively via the gstreamer crate (glib-sys)
     glib2
-    gtk3
     # audio: core + standard elements + mp3/aac decoders + ffmpeg (libav)
     # for anything else the streams might throw at the player
     gstreamer
     gst-plugins-base
     gst-plugins-good
     gst-libav
-    # system tray (StatusNotifierItem, dlopened by the tray-icon crate)
-    libayatana-appindicator
     # xdg-open for the "Open radiopit.fm" menu item
     xdg-utils
 )
@@ -72,5 +69,5 @@ package() {
     install -Dm644 "$srcdir/$pkgname.desktop" \
         -D "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
-sha256sums=('c13fbd8442b01ad5ba349c3a2a7acb5ee6e30e607a1685b61fc2cd4b752379d0'
+sha256sums=('eebd8138db02cc7640b53912773a73b3c8b4dcd17b92c33dee549e5fdcd23bd9'
             '7df4446a7f7059ed1403440d7af0087f82e481b5189fca7cfa1f600d7042843f')

@@ -1,6 +1,6 @@
 pkgbase = radiopittray
 	pkgdesc = System tray radio player for your RadioPit.fm library
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/idovitz/radiopittray
 	arch = x86_64
@@ -9,16 +9,14 @@ pkgbase = radiopittray
 	makedepends = rust
 	makedepends = pkgconf
 	depends = glib2
-	depends = gtk3
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = gst-libav
-	depends = libayatana-appindicator
 	depends = xdg-utils
-	source = radiopittray-0.1.2.tar.gz::https://github.com/idovitz/radiopittray/archive/refs/tags/v0.1.2.tar.gz
+	source = radiopittray-0.2.0.tar.gz::https://github.com/idovitz/radiopittray/archive/refs/tags/v0.2.0.tar.gz
 	source = radiopittray.desktop
-	sha256sums = c13fbd8442b01ad5ba349c3a2a7acb5ee6e30e607a1685b61fc2cd4b752379d0
+	sha256sums = eebd8138db02cc7640b53912773a73b3c8b4dcd17b92c33dee549e5fdcd23bd9
 	sha256sums = 7df4446a7f7059ed1403440d7af0087f82e481b5189fca7cfa1f600d7042843f
 
 pkgname = radiopittray
