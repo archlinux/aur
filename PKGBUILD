@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=flowrs-bin
-pkgver=0.16.7
+pkgver=0.17.0
 pkgrel=1
 _tag="flowrs-tui-v${pkgver}"
 pkgdesc="TUI for Apache Airflow"
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-bin}")
 options=('!debug')
 _dl="${url}/releases/download/${_tag}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.xz::${_dl}/flowrs-tui-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('bf0ca89432685022fb2872d426dcceb4c615a3fb93e8b89dec246a94ac66bbb9')
+sha256sums_x86_64=('05a087e22de8a821593f820bc6eda5979f9190e32f7d1990afe885fb03dcdc2f')
 
 package() {
   install -Dm755 "flowrs-tui-x86_64-unknown-linux-gnu/flowrs" "${pkgdir}/usr/bin/flowrs"
