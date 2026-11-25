@@ -1,0 +1,19 @@
+pkgbase = sslip.io-bin
+	pkgdesc = DNS server that resolves hostnames with embedded IP addresses to those addresses
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://github.com/cunnie/sslip.io
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = sslip.io
+	conflicts = sslip.io
+	options = !debug
+	source = sslip.io-bin-6.2.0-LICENSE::https://raw.githubusercontent.com/cunnie/sslip.io/6.2.0/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = sslip.io-bin-6.2.0-x86_64::https://github.com/cunnie/sslip.io/releases/download/6.2.0/sslip.io-dns-server-linux-amd64
+	sha256sums_x86_64 = 9eab2bd93844d640362db8d4a434a993ff54e4170d30c5da08c99bd457a86f0a
+	source_aarch64 = sslip.io-bin-6.2.0-aarch64::https://github.com/cunnie/sslip.io/releases/download/6.2.0/sslip.io-dns-server-linux-arm64
+	sha256sums_aarch64 = bbd0750428b40e6778b10303629fcf5c26f185891376729b10ac46dacb238f33
+
+pkgname = sslip.io-bin
