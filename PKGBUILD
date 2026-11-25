@@ -2,7 +2,7 @@
 # Maintainer: coolapso <c4s@coolapso.sh>
 
 pkgname='notekpr-desktop-bin'
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc='notekpr, the desktop app for end-to-end encrypted Markdown notes'
 url='https://notekpr.md'
@@ -13,10 +13,10 @@ conflicts=('notekpr-desktop')
 depends=('glibc' 'webkit2gtk-4.1' 'libayatana-appindicator' 'xdg-utils')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v${pkgver}/notekpr-desktop_linux_arm64.tar.gz")
-sha256sums_aarch64=('a71949a54cef7663bb763a3e9a686fedd4dbd3af6d1b8f2ef0da3c5b2015e555')
+sha256sums_aarch64=('d1a3a5a25481ab29979dd16cd6e56fba03e402c0c46ac45be3d855452b0510e5')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v${pkgver}/notekpr-desktop_linux_amd64.tar.gz")
-sha256sums_x86_64=('481ef48686207c1e41dca6bb745cc156c84da1d819427f8956871fc3971a9c3e')
+sha256sums_x86_64=('04fdd37703e282d7c28cce4a81336cd68407ae44b56f845b1153cfd1c2705c1d')
 
 package() {
   install -Dm755 notekpr-desktop "$pkgdir/usr/bin/notekpr-desktop"

@@ -1,6 +1,6 @@
 pkgbase = notekpr-desktop-bin
 	pkgdesc = notekpr, the desktop app for end-to-end encrypted Markdown notes
-	pkgver = 0.21.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://notekpr.md
 	license = AGPL-3.0-or-later
@@ -11,10 +11,10 @@ pkgbase = notekpr-desktop-bin
 	conflicts = notekpr-desktop
 	provides = notekpr-desktop
 	arch = aarch64
-	source_aarch64 = notekpr-desktop-bin_0.21.0_aarch64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v0.21.0/notekpr-desktop_linux_arm64.tar.gz
-	sha256sums_aarch64 = a71949a54cef7663bb763a3e9a686fedd4dbd3af6d1b8f2ef0da3c5b2015e555
+	source_aarch64 = notekpr-desktop-bin_0.22.0_aarch64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v0.22.0/notekpr-desktop_linux_arm64.tar.gz
+	sha256sums_aarch64 = d1a3a5a25481ab29979dd16cd6e56fba03e402c0c46ac45be3d855452b0510e5
 	arch = x86_64
-	source_x86_64 = notekpr-desktop-bin_0.21.0_x86_64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v0.21.0/notekpr-desktop_linux_amd64.tar.gz
-	sha256sums_x86_64 = 481ef48686207c1e41dca6bb745cc156c84da1d819427f8956871fc3971a9c3e
+	source_x86_64 = notekpr-desktop-bin_0.22.0_x86_64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v0.22.0/notekpr-desktop_linux_amd64.tar.gz
+	sha256sums_x86_64 = 04fdd37703e282d7c28cce4a81336cd68407ae44b56f845b1153cfd1c2705c1d
 	
 pkgname = notekpr-desktop-bin
