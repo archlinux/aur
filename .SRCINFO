@@ -1,6 +1,6 @@
 pkgbase = agentcore-cli-bin
 	pkgdesc = Create, develop and deploy agents to Amazon Bedrock AgentCore from the terminal
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/aws/agentcore-cli
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = agentcore-cli-bin
 	conflicts = agentcore
 	options = !strip
 	options = !debug
-	source = LICENSE-1.2.0::https://raw.githubusercontent.com/aws/agentcore-cli/v1.2.0/LICENSE
+	source = LICENSE-1.3.0::https://raw.githubusercontent.com/aws/agentcore-cli/v1.3.0/LICENSE
 	sha256sums = 09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b
-	source_x86_64 = agentcore-1.2.0-x86_64::https://github.com/aws/agentcore-cli/releases/download/v1.2.0/agentcore-linux-x64
-	sha256sums_x86_64 = a720ddc005ace3b33e80efbcc140e84b517d04870521d8512c28563d445dac82
-	source_aarch64 = agentcore-1.2.0-aarch64::https://github.com/aws/agentcore-cli/releases/download/v1.2.0/agentcore-linux-arm64
-	sha256sums_aarch64 = 306556788df90a970bea38c1eb184c025a850b76fc53a0fa8bd8f8fbc5a1d674
+	source_x86_64 = agentcore-1.3.0-x86_64::https://github.com/aws/agentcore-cli/releases/download/v1.3.0/agentcore-linux-x64
+	sha256sums_x86_64 = 9a185cf65404aa788793ca05003ffbc15a426fca33e4f86f478c021122be6e0a
+	source_aarch64 = agentcore-1.3.0-aarch64::https://github.com/aws/agentcore-cli/releases/download/v1.3.0/agentcore-linux-arm64
+	sha256sums_aarch64 = d355978c582549ac5396ed2e00b7f3e73fcb1d9b49af10db3b8411e6a1c73077
 
 pkgname = agentcore-cli-bin
