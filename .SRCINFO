@@ -1,0 +1,27 @@
+pkgbase = cryptyrust
+	pkgdesc = Post-quantum file encryption: drag-and-drop GUI and command line (X25519 + ML-KEM, Argon2id)
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/Antidote1911/cryptyrust
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libx11
+	depends = libxcb
+	depends = libxcursor
+	depends = libxi
+	depends = libglvnd
+	depends = xdg-desktop-portal
+	depends = hicolor-icon-theme
+	optdepends = wayland: run on Wayland when no X server is available
+	conflicts = cryptyrust-bin
+	options = !lto
+	source = cryptyrust-3.1.0.tar.gz::https://github.com/Antidote1911/cryptyrust/archive/refs/tags/v3.1.0.tar.gz
+	sha256sums = 76fb21ac732c36ae44adb067a4425f3aac4ba04a2ecd6327a35674f5484004de
+
+pkgname = cryptyrust
