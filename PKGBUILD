@@ -1,6 +1,6 @@
 # Maintainer: Valentin Baron <30471676+valentin-baron@users.noreply.github.com>
 pkgname=m913ctl
-pkgver=0.0.1
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Configure the Redragon M913 (Impact Elite) mouse: buttons, macros, DPI, lighting, polling rate"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 # the binary is stripped by Cargo already, so a debug package would be empty
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('33bc2aadd5e1f6d2fca56dcbd1928551ba7dc4bf5a09d7b9773bdbd0904b4e8a')
+sha256sums=('5f47d86efea8204f37eb8450053d514252b77ff35d73f5f8199226b0d93c0f4f')
 
 prepare() {
   cd "$pkgname-$pkgver"
