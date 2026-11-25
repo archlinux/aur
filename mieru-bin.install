@@ -1,0 +1,22 @@
+_mieru_bin_hint() {
+  cat <<'EOF'
+==> Mieru needs a configuration before it can be used. Write a JSON file
+==> with your user name, password, the address of the server and the ports,
+==> then run:
+==>
+==>   mieru apply config <FILE>
+==>
+==> and check the result with `mieru describe config`. Start the client with
+==> `mieru start` and stop it with `mieru stop`; it does not start on boot.
+==> The guide of upstream:
+==> https://github.com/enfein/mieru/blob/main/docs/client-install.md
+EOF
+}
+
+post_install() {
+  _mieru_bin_hint
+}
+
+post_upgrade() {
+  _mieru_bin_hint
+}
