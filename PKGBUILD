@@ -2,7 +2,7 @@
 
 pkgname=python-sphinx-toolbox
 _name=${pkgname#python-}
-pkgver=4.3.1
+pkgver=4.4.0
 pkgrel=1
 pkgdesc='Box of handy tools for Sphinx 🧰 📔'
 arch=('any')
@@ -43,7 +43,7 @@ makedepends=(
 )
 optdepends=()
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha512sums=('aa1aa289c2b86218f902bc67f388a717339e50e6062d2a1425fe6835cde856c34629ab3a9afaff3a45d2001224093e750b3088ea2925c686e4d2b4e678a36fb1')
+sha512sums=('818bbf28bc2594031bb916bdce821d01702cef682f453c4523925e87223c729279887c6c7a14a43f4b2032da37a766a20ef20be3f83884fdc2fb0f3e7f1f9d9e')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
