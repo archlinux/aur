@@ -1,7 +1,7 @@
 pkgbase = zxc-full
 	pkgdesc = Asymmetric lossless compression library for ultra-fast decode (development: CLI + C library + headers + CMake — source build)
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hellobertrand/zxc
 	arch = x86_64
 	arch = aarch64
