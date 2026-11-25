@@ -1,0 +1,27 @@
+post_install() {
+  cat <<'MSG'
+==> protondrive is ALPHA software, provided as is, without warranty. It is unofficial and not
+    affiliated with Proton AG. Keep backups of anything important.
+==> Each user sets it up as themselves (not with sudo):
+      protondrive login
+      protondrive sync add ~/Proton /Some/Remote/Folder
+      protondrive service enable     # background sync, also after logging out
+    Documentation: /usr/share/doc/protondrive/README.md
+MSG
+}
+
+post_upgrade() {
+  cat <<'MSG'
+==> Users running background sync should restart it to use the new version:
+      systemctl --user restart protondrive-sync-watch.service
+    (or run 'protondrive service enable' again)
+MSG
+}
+
+pre_remove() {
+  cat <<'MSG'
+==> Users who enabled background sync should run 'protondrive service disable' first.
+    Settings and sync state in users' home folders (~/.config/protondrive, ~/.local/state/protondrive)
+    are not removed.
+MSG
+}
