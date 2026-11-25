@@ -1,0 +1,19 @@
+pkgbase = tidyrs-bin
+	pkgdesc = Fast, Prettier-style code formatter written in Rust
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = https://github.com/lukeed/tidy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tidyrs=2.0.0
+	conflicts = tidyrs
+	options = !debug
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/lukeed/tidy/v2.0.0/license
+	sha256sums = ba573393f24555ac0528612ad39665fab5bdcc80330a61096024bbf5f736526d
+	source_x86_64 = tidy-2.0.0-x86_64.tar.gz::https://github.com/lukeed/tidy/releases/download/v2.0.0/tidy-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 4b8166b1cdde610fd783f2d59511b0fb35d15ef96069ef20642b948ab90907ea
+	source_aarch64 = tidy-2.0.0-aarch64.tar.gz::https://github.com/lukeed/tidy/releases/download/v2.0.0/tidy-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 3428f45a00a7a60d11213a4b5c85ca5d4fbb7f982c84925161a375b45e9bc114
+
+pkgname = tidyrs-bin
