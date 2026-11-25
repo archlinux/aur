@@ -1,7 +1,7 @@
 # Maintainer: DawnMagnet <DawnMagnet@users.noreply.github.com>
 pkgname=memprocfs
-pkgver=5.19.4
-pkgrel=20261114
+pkgver=5.19.5
+pkgrel=20261123
 pkgdesc="MemProcFS is an easy and convenient way of viewing physical memory as files in a virtual file system."
 arch=('x86_64' 'aarch64')
 url="https://github.com/ufrisk/MemProcFS"
@@ -21,10 +21,10 @@ options=('!strip')
 # and 5.16.14-20260211 > 5.16-9.20260104. A newer build number bumps pkgver.
 # A rebuilt asset of the same build number bumps pkgrel via the date.
 # The release tag (v5.16, v5.19, ...) stays in the download URL path.
-source_x86_64=("https://github.com/ufrisk/MemProcFS/releases/download/v5.19/MemProcFS_files_and_binaries_v5.19.4-linux_x64-20261114.tar.gz")
-source_aarch64=("https://github.com/ufrisk/MemProcFS/releases/download/v5.19/MemProcFS_files_and_binaries_v5.19.4-linux_aarch64-20261114.tar.gz")
-sha256sums_x86_64=('8e1dab767b553a197169c85bf41864e7e552b82e69624ba63cf7a83b3e211470')
-sha256sums_aarch64=('e58e4b57eda9309bb18fe64d6a3abafb092a50ea39561a4be2d5ae1b613ae702')
+source_x86_64=("https://github.com/ufrisk/MemProcFS/releases/download/v5.19/MemProcFS_files_and_binaries_v5.19.5-linux_x64-20261123.tar.gz")
+source_aarch64=("https://github.com/ufrisk/MemProcFS/releases/download/v5.19/MemProcFS_files_and_binaries_v5.19.5-linux_aarch64-20261123.tar.gz")
+sha256sums_x86_64=('6683b0c0548b8fb8352477da7e03d821f128e45d3f5c6836b605961eca4e07ed')
+sha256sums_aarch64=('109e7cee5846d50c3a79e334486764a75c9419657528e96bc79445fc1b6f85c7')
 
 package() {
     cd "$srcdir"
