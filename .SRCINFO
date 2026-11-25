@@ -1,0 +1,19 @@
+pkgbase = picobot-bin
+	pkgdesc = Lightweight self-hosted AI bot in a single binary
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/louisho5/picobot
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = picobot
+	conflicts = picobot
+	options = !debug
+	source = picobot-bin-0.3.0-LICENSE::https://raw.githubusercontent.com/louisho5/picobot/v0.3.0/LICENSE
+	sha256sums = 885b410c7c0fe0b4071ff10d75a40a8c28b94d06a2223dc294496a3e6d84b1ec
+	source_x86_64 = picobot-bin-0.3.0-x86_64::https://github.com/louisho5/picobot/releases/download/v0.3.0/picobot_linux_amd64
+	sha256sums_x86_64 = d2c0378b99073f4391432ea75380ff66a0715cb2c871ae451775216c312f6938
+	source_aarch64 = picobot-bin-0.3.0-aarch64::https://github.com/louisho5/picobot/releases/download/v0.3.0/picobot_linux_arm64
+	sha256sums_aarch64 = 3338d55ac7b592c61c2b2d53ca687d7ae260eff07787f4231cba68dd9e5e3683
+
+pkgname = picobot-bin
