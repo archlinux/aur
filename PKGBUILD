@@ -1,30 +1,36 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=nodenv-node-build-git
-pkgver=5.4.9.r0.gfa2a30f8
+pkgver=5.4.63.r0.gd319138e
 pkgrel=1
 pkgdesc='Install NodeJS versions'
 arch=('any')
 url='https://github.com/nodenv/node-build'
 license=('MIT')
-makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" 'node-build')
 depends=('bash')
-source=('git+https://github.com/nodenv/node-build.git')
-md5sums=('SKIP')
+makedepends=('git')
+optdepends=(
+  'aria2: alternative download client'
+  'curl: default download client'
+  'wget: alternative download client'
+)
+provides=("${pkgname%-git}")
+conflicts=(
+  "${pkgname%-git}"
+)
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}"/node-build
-
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "${srcdir}/${pkgname}" describe --long \
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "${srcdir}"/node-build
+  PREFIX="${pkgdir}/usr" "${srcdir}/${pkgname}/install.sh"
+  rmdir "${pkgdir}/usr/etc"
 
-  PREFIX="${pkgdir}"/usr ./install.sh
-
-  # License
-  install -Dm644 "${srcdir}"/node-build/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -D --mode=644 \
+    "${srcdir}/${pkgname}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

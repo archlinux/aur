@@ -1,4 +1,4 @@
-node-build/
+nodenv-node-build-git/
 /pkg
 /src
 *.zst

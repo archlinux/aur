@@ -1,16 +1,18 @@
 pkgbase = nodenv-node-build-git
 	pkgdesc = Install NodeJS versions
-	pkgver = 5.4.9.r0.gfa2a30f8
+	pkgver = 5.4.63.r0.gd319138e
 	pkgrel = 1
 	url = https://github.com/nodenv/node-build
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = bash
+	optdepends = aria2: alternative download client
+	optdepends = curl: default download client
+	optdepends = wget: alternative download client
 	provides = nodenv-node-build
 	conflicts = nodenv-node-build
-	conflicts = node-build
-	source = git+https://github.com/nodenv/node-build.git
-	md5sums = SKIP
+	source = nodenv-node-build-git::git+https://github.com/nodenv/node-build.git
+	sha256sums = SKIP
 
 pkgname = nodenv-node-build-git
