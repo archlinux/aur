@@ -1,35 +1,55 @@
 # Maintainer: Julian Daube <joposter (at) gmail (dot) com>
 # Contributor: Julian Daube <joposter (at) gmail (dot) com>
-pkgname=python-django-qr-code-git
-pkgver=1.2.0.r0.g8837861
+
+_pkgname=python-django-qr-code
+pkgname=$_pkgname-git
+pkgver=5.0.0.r0.g2803a18
 pkgrel=1
-pkgdesc="An application that provides tools for displaying QR codes on your Django site."
-
-provides=("python-django-qr-code")
-url="https://github.com/dprog-philippe-docourt/django-qr-code"
+pkgdesc="An application that provides tools for displaying QR codes on your Django site"
 arch=("any")
-license=("BSD")
-
-source=("$pkgname::git+https://github.com/dprog-philippe-docourt/django-qr-code")
-depends=("python-django>=2.2" "python-qrcode>=6.1" "python-pillow")
-makepepends=("python-setuptools")
-
+url="https://github.com/dprog-philippe-docourt/django-qr-code"
+license=("BSD-3-Clause")
+depends=(
+	"python"
+	"python-django>=5.2"
+	"python-segno>=1.6"
+	"python-pydantic>=2.7"
+	"python-pillow"
+)
+makedepends=(
+	"git"
+	"python-build"
+	"python-installer"
+	"python-wheel"
+	"python-setuptools"
+)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+sha256sums=("SKIP")
 
 pkgver() {
-	cd "$pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() { 
-	cd "$pkgname"
-	python setup.py build 
+prepare() {
+	git -C "$srcdir/$_pkgname" clean -dfx
+}
+
+build() {
+	cd "$_pkgname"
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "$_pkgname"
+	python manage.py test qr_code
 }
 
 package() {
-	cd "$pkgname"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	
-	install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/python-django-qr-code/LICENSE
-}
+	cd "$_pkgname"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
-md5sums=("SKIP")
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
