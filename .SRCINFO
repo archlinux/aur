@@ -1,0 +1,17 @@
+pkgbase = vulcain-bin
+	pkgdesc = Fast and idiomatic client-driven REST APIs
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://github.com/dunglas/vulcain
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = vulcain
+	conflicts = vulcain
+	options = !debug
+	source_x86_64 = vulcain-bin-1.4.5-x86_64.tar.gz::https://github.com/dunglas/vulcain/releases/download/v1.4.5/vulcain_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5d91ab1e67b392c1e102c3f1962f4252971e5f1e894f83fabed0a3aa45d4451c
+	source_aarch64 = vulcain-bin-1.4.5-aarch64.tar.gz::https://github.com/dunglas/vulcain/releases/download/v1.4.5/vulcain_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 757731625738581018a56975ce9a97364ff51180ad014e143b300172ae690603
+
+pkgname = vulcain-bin
