@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=quil-bin
-pkgver=1.101.1
+pkgver=1.101.2
 pkgrel=1
 pkgdesc="Terminal multiplexer that restores your workspace across reboots"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/quil_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/quil_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('459d8f98d1d53ddfc5aa6f63058af0b66c6d635e6798702125da0839d885e505')
-sha256sums_aarch64=('23aecbd2ba74a56ed261b88b218b4a8f4533e8be8cacb3f770aafebf0480ef62')
+sha256sums_x86_64=('715c5d57e05d9168239ff2ffaa936c5a80a69881b3a78069b096aa393f5195e6')
+sha256sums_aarch64=('7e851e9fb044eb7b961aec9750fbaa0cd42a3df5417a3f3aad704e0a30907df9')
 
 package() {
   install -Dm755 "quil" "${pkgdir}/usr/bin/quil"
