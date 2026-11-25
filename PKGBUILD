@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=pi-bin
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI (pi-mono)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("pi-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://github.com/eare
 source_aarch64=("pi-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://github.com/earendil-works/pi/releases/download/v${pkgver}/pi-linux-arm64.tar.gz")
 
 sha256sums=('0457f5bcec3b3b211605dfb5d1a49042fd638f3686a410fe099c24a25af13c48')
-sha256sums_x86_64=('ef77dbe4379b3bdeb425a1e1b862fa3c915c255000dfe4965c98eee96a5765d1')
-sha256sums_aarch64=('5404547b9739be596d50ae7142c52535899e8e7dd37a7bace9be593e0355b468')
+sha256sums_x86_64=('3c7f00715eb512e165c0da8cad314d73c83b54d5bf7748be4adc618fc8357b68')
+sha256sums_aarch64=('afde641d6c5904d26960ddb4223bf563b0860cf1a0ebc443b85deff67d048753')
 
 package() {
     install -d "${pkgdir}/usr/lib/pi" "${pkgdir}/usr/bin"
