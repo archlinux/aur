@@ -1,6 +1,6 @@
 pkgbase = oasdiff
 	pkgdesc = Diff and breaking changes for OpenAPI specifications
-	pkgver = 1.40.0
+	pkgver = 1.41.0
 	pkgrel = 1
 	url = https://github.com/oasdiff/oasdiff
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = oasdiff
 	checkdepends = git
 	makedepends = go
 	depends = glibc
-	source = oasdiff-1.40.0.tar.gz::https://github.com/oasdiff/oasdiff/archive/refs/tags/v1.40.0.tar.gz
-	sha256sums = 976969fc84c972d15a12f9a9abe3ddb173b6735d89f1283a8c83a69eead2f62f
+	source = oasdiff-1.41.0.tar.gz::https://github.com/oasdiff/oasdiff/archive/refs/tags/v1.41.0.tar.gz
+	sha256sums = 8ec2614d47e5a37a701ea18d7161cb3f7fdfc0717f21bfe71ec7dbdd6d065952
 
 pkgname = oasdiff
