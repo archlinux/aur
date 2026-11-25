@@ -1,0 +1,17 @@
+pkgbase = nginx-build-bin
+	pkgdesc = Seamless nginx builder
+	pkgver = 0.16.34
+	pkgrel = 1
+	url = https://github.com/cubicdaiya/nginx-build
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = nginx-build
+	conflicts = nginx-build
+	options = !debug
+	source_x86_64 = nginx-build-bin-0.16.34-x86_64.tar.gz::https://github.com/cubicdaiya/nginx-build/releases/download/v0.16.34/nginx-build-linux-amd64-0.16.34.tar.gz
+	sha256sums_x86_64 = bfd7f3aa477886f26b27a68d9243d436ce6d1552dfa797ccb17c2da0a188234a
+	source_aarch64 = nginx-build-bin-0.16.34-aarch64.tar.gz::https://github.com/cubicdaiya/nginx-build/releases/download/v0.16.34/nginx-build-linux-arm64-0.16.34.tar.gz
+	sha256sums_aarch64 = 2397a20f5192a74ea1d4e6c9f039310283972e5bf384e30347d747225e7443a1
+
+pkgname = nginx-build-bin
