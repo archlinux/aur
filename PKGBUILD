@@ -1,6 +1,6 @@
 # Maintainer: Ron Brand <ronb1964@gmail.com>
 pkgname=tuxtalk
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Voice dictation for Linux: hold a key, talk, and your words are typed for you"
 arch=('any')
@@ -34,7 +34,7 @@ install=tuxtalk.install
 source=("tuxtalk-${pkgver}.tar.gz::https://github.com/ronb1964/TuxTalk/archive/refs/tags/v${pkgver}.tar.gz")
 # Set from the tagged archive once the release's tag exists (makepkg -g);
 # the tag doesn't exist when pkgver is bumped.
-sha256sums=('77e8223e3e0d825e5fec6a9141e8439baef5ce4cee2573f3b07b807e55cd25a3')
+sha256sums=('e6e54e5188a2012b6d55d827a1332670ccf4064342cab4943dba3ddfe7404234')
 
 build() {
     cd "TuxTalk-${pkgver}"
