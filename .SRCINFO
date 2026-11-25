@@ -1,0 +1,17 @@
+pkgbase = chanify-bin
+	pkgdesc = Simple and safe push notification service
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/chanify/chanify
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = chanify
+	conflicts = chanify
+	options = !debug
+	source_x86_64 = chanify-bin-1.5.2-x86_64.tar.gz::https://github.com/chanify/chanify/releases/download/v1.5.2/chanify_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 03304f710cf2683b72bfaf8112a3907ed6335e4dd56bb85cc9d2c211dd1b21fd
+	source_aarch64 = chanify-bin-1.5.2-aarch64.tar.gz::https://github.com/chanify/chanify/releases/download/v1.5.2/chanify_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8dece746cb74d50242f5d469c66762ec4aa6106c28a9f9de530f1b7e35ca2e72
+
+pkgname = chanify-bin
