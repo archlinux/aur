@@ -1,0 +1,8 @@
+# Administrator overrides. Unset options remain configurable in the web wizard.
+# Relative paths resolve from /var/lib/prusa-connect under the system service.
+# See /usr/share/doc/prusa-connect-bin/config.example.yaml for all options.
+core:
+  # Application updates are managed by pacman, not the built-in updater.
+  # This also hides web backups; the upstream backup CLI remains available.
+  upgrade:
+    enabled: false

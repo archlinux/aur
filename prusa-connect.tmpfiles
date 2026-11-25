@@ -1,0 +1,3 @@
+d /var/lib/prusa-connect 0700 prusa-connect prusa-connect -
+d /var/lib/prusa-connect/config 0700 prusa-connect prusa-connect -
+d /var/lib/prusa-connect/config/config.d 0700 prusa-connect prusa-connect -
