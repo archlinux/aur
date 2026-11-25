@@ -1,0 +1,19 @@
+pkgbase = grpc-health-probe-bin
+	pkgdesc = Command-line tool to health-check gRPC applications
+	pkgver = 0.4.63
+	pkgrel = 1
+	url = https://github.com/grpc-ecosystem/grpc-health-probe
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = grpc-health-probe
+	conflicts = grpc-health-probe
+	options = !debug
+	source = grpc-health-probe-bin-0.4.63-LICENSE::https://raw.githubusercontent.com/grpc-ecosystem/grpc-health-probe/v0.4.63/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = grpc-health-probe-bin-0.4.63-x86_64::https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/v0.4.63/grpc_health_probe-linux-amd64
+	sha256sums_x86_64 = d5edc8957224e986350751dee39ea408d9333a31337bce2e4f1678f41d950fe6
+	source_aarch64 = grpc-health-probe-bin-0.4.63-aarch64::https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/v0.4.63/grpc_health_probe-linux-arm64
+	sha256sums_aarch64 = 5f7a2b6fecc33fedbfde1b37eff0420ae9163fdac55cce79f1e363ff79c22af3
+
+pkgname = grpc-health-probe-bin
