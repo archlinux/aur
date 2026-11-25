@@ -10,6 +10,7 @@ license=('MIT')
 depends=('nodejs>=22')
 makedepends=('npm')
 optdepends=(
+  'npm: for installing and managing npm-based Pi packages'
   'tmux: for background bash capabilities'
   'fd: system-provided backend for the find tool'
   'ripgrep: system-provided backend for the grep tool'
