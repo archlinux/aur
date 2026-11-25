@@ -1,0 +1,17 @@
+pkgbase = apk-medit-bin
+	pkgdesc = memory search and patch tool on debuggable apk without root & ndk
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/sterrasec/apk-medit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = apk-medit
+	conflicts = apk-medit
+	options = !debug
+	source_x86_64 = apk-medit-bin-0.2.7-x86_64.tar.gz::https://github.com/sterrasec/apk-medit/releases/download/v0.2.7/medit_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7c023c82061010da3cdc4597c38d8c5609bf54cd55b0b526c058b00fedec4f68
+	source_aarch64 = apk-medit-bin-0.2.7-aarch64.tar.gz::https://github.com/sterrasec/apk-medit/releases/download/v0.2.7/medit_linux_arm64.tar.gz
+	sha256sums_aarch64 = f48c26863f83fec917339fd09a68e9b9075b312d92dfbd6de22bcee3ea80cc6c
+
+pkgname = apk-medit-bin
