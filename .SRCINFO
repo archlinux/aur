@@ -1,0 +1,17 @@
+pkgbase = armada-bin
+	pkgdesc = CLI for Armada, a multi-cluster batch queuing system for Kubernetes
+	pkgver = 0.22.19
+	pkgrel = 1
+	url = https://github.com/armadaproject/armada
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = armada
+	conflicts = armada
+	options = !debug
+	source_x86_64 = armada-bin-0.22.19-x86_64.tar.gz::https://github.com/armadaproject/armada/releases/download/v0.22.19/armadactl_0.22.19_linux_amd64.tar.gz
+	sha256sums_x86_64 = 54360c7d2313816972915e285baff4a32627b6eed8d7cf5679e701bae51a560e
+	source_aarch64 = armada-bin-0.22.19-aarch64.tar.gz::https://github.com/armadaproject/armada/releases/download/v0.22.19/armadactl_0.22.19_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9293257b5dd3f3338f262a8bab1efbe6a7660022b209d0a2ad9ba6a3f448f07c
+
+pkgname = armada-bin
