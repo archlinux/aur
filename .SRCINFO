@@ -1,0 +1,17 @@
+pkgbase = toxiproxy-bin
+	pkgdesc = alarm_clock: :fire: A TCP proxy to simulate network and system conditions for chaos and resiliency testing
+	pkgver = 2.13.0
+	pkgrel = 1
+	url = https://github.com/Shopify/toxiproxy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = toxiproxy
+	conflicts = toxiproxy
+	options = !debug
+	source_x86_64 = toxiproxy-bin-2.13.0-x86_64.tar.gz::https://github.com/Shopify/toxiproxy/releases/download/v2.13.0/toxiproxy_2.13.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 08fd7b3d677bd11358d16a5ce8fd9e1a08f69aa24984bc16781c84200d6b3b4d
+	source_aarch64 = toxiproxy-bin-2.13.0-aarch64.tar.gz::https://github.com/Shopify/toxiproxy/releases/download/v2.13.0/toxiproxy_2.13.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 57f19b56ce146aa4e65e5363e42d8fd61bd01f586f710b9b4f75dbf27eeb99f0
+
+pkgname = toxiproxy-bin
