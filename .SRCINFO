@@ -1,0 +1,17 @@
+pkgbase = devvm-bin
+	pkgdesc = One development VM for every project
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/devvmhq/devvm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = devvm
+	conflicts = devvm
+	options = !debug
+	source_x86_64 = devvm-bin-0.1.0-x86_64.tar.gz::https://github.com/devvmhq/devvm/releases/download/v0.1.0/devvm-0.1.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = fc939a651614917404766c8bf1c7f64aed8c136605e133e0602c55101a82284c
+	source_aarch64 = devvm-bin-0.1.0-aarch64.tar.gz::https://github.com/devvmhq/devvm/releases/download/v0.1.0/devvm-0.1.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7f5c4c5c43b2d9a24bc2c394b54d31659ad1782ff0067e5a46fd918883c41440
+
+pkgname = devvm-bin
