@@ -1,6 +1,6 @@
 pkgbase = python-quantities
 	pkgdesc = Support for physical quantities with units, based on NumPy
-	pkgver = 0.16.4
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/python-quantities/python-quantities
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = python-quantities
 	makedepends = python-wheel
 	depends = python-numpy
 	optdepends = python-scipy: integrate using SciPy's trapezoid implementation
-	source = quantities::git+https://github.com/python-quantities/python-quantities#tag=v0.16.4
+	source = quantities::git+https://github.com/python-quantities/python-quantities#tag=v0.17.0
 	source = fix-tests.patch
-	b2sums = 10d9724e7128e7c01e7b7537908f2f1595112ab7a5e9745b30249107d6eff4cbf32a65c04278aa963f528e1f0f9e4580c71912ed6dda8a44b09ea4877f126fdf
-	b2sums = dba5b5a95edb249d8d430500724e34eafe4a87a935eb6147c019797c437bba38bcbf3ffd6ca131cebec03e09674579add64d6ed63383308ce341049bb688ff70
+	b2sums = ca9919b78b2fd22ba3095e7c57219e8534c4a7990fc394d7ed4fa7af2fbde01faa3c325d2cf30a0ca44c7ae0230520cb985a9f0923b49126d72f4610c82de381
+	b2sums = 106495846afcedd9522ef251dcc717cf23d2fb9f8285d7c780eb8cac1efc1898c33bbadef4ba604d0ae4e7327cd4a0e2241da3b549223683d67de7eecf9bcbc8
 
 pkgname = python-quantities

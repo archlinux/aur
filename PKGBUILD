@@ -2,7 +2,7 @@
 # Contributor: Sergio Davies <newsletter dot sergio at gmail dot com>
 _name=quantities
 pkgname=python-$_name
-pkgver=0.16.4
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Support for physical quantities with units, based on NumPy"
 arch=(any)
@@ -23,8 +23,8 @@ source=(
     $_name::git+https://github.com/python-quantities/python-quantities#tag=v$pkgver
     fix-tests.patch
 )
-b2sums=('10d9724e7128e7c01e7b7537908f2f1595112ab7a5e9745b30249107d6eff4cbf32a65c04278aa963f528e1f0f9e4580c71912ed6dda8a44b09ea4877f126fdf'
-        'dba5b5a95edb249d8d430500724e34eafe4a87a935eb6147c019797c437bba38bcbf3ffd6ca131cebec03e09674579add64d6ed63383308ce341049bb688ff70')
+b2sums=('ca9919b78b2fd22ba3095e7c57219e8534c4a7990fc394d7ed4fa7af2fbde01faa3c325d2cf30a0ca44c7ae0230520cb985a9f0923b49126d72f4610c82de381'
+        '106495846afcedd9522ef251dcc717cf23d2fb9f8285d7c780eb8cac1efc1898c33bbadef4ba604d0ae4e7327cd4a0e2241da3b549223683d67de7eecf9bcbc8')
 
 prepare() {
     # Modify imports to test from the installed wheel package
@@ -38,11 +38,11 @@ build() {
 
 check() {
     cd $_name
-    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-    python -m installer --destdir=../test_dir dist/*.whl
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
     mv $_name/tests .
     rm -rf $_name
-    PYTHONPATH="$PWD/../test_dir/usr/lib/python$python_version/site-packages" pytest tests
+    test-env/bin/python -P -m pytest -o addopts="" tests
 }
 
 package() {
