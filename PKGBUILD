@@ -2,7 +2,7 @@
 
 pkgname=pdfatlas-git
 _pkgname=pdfatlas
-pkgver=r85.9a606ed
+pkgver=r261.d94e565
 pkgrel=1
 pkgdesc="PDF Reader with Search Portals and Auto-Crop"
 arch=('any')
@@ -13,9 +13,11 @@ depends=(
   'python-gobject'
   'gtk4'
   'libadwaita'
+  'webkitgtk-6.0'
   'python-pymupdf'
   'python-pillow'
   'python-opengl'
+  'python-pydantic'
   'python-rapidfuzz'
   'python-tqdm'
   'python-numpy'
