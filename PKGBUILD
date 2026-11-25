@@ -1,6 +1,6 @@
 pkgname=ibus-areca-git
 _pkgname=ibus-areca
-pkgver=r59.15a0f7b
+pkgver=r84.b510ad8
 pkgrel=1
 pkgdesc='Areca Vietnamese input method for IBus using the Bamboo engine'
 arch=('x86_64')
@@ -19,8 +19,6 @@ depends=(
   'libportal'
   'systemd-libs'
   'dbus'
-  'libx11'
-  'libxtst'
 )
 makedepends=(
   'cmake'
