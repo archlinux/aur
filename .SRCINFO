@@ -1,0 +1,19 @@
+pkgbase = easeprobe-bin
+	pkgdesc = A simple, standalone, and lightweight tool that can do health/status checking, written in Go
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/megaease/easeprobe
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = easeprobe
+	conflicts = easeprobe
+	options = !debug
+	source = easeprobe-bin-2.3.0-LICENSE::https://raw.githubusercontent.com/megaease/easeprobe/v2.3.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = easeprobe-bin-2.3.0-x86_64.tar.gz::https://github.com/megaease/easeprobe/releases/download/v2.3.0/easeprobe-v2.3.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 75304e336ae5e7b6a0002b2076d2c77acdd08be599246df8d28666621e95698d
+	source_aarch64 = easeprobe-bin-2.3.0-aarch64.tar.gz::https://github.com/megaease/easeprobe/releases/download/v2.3.0/easeprobe-v2.3.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 85f4a8a154c703737fd603906b6a5c5408a2dbd917814cdeab79784f091ba149
+
+pkgname = easeprobe-bin
