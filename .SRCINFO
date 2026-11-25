@@ -1,6 +1,6 @@
 pkgbase = voicenux-bin
 	pkgdesc = VoiceMod for Linux. Real-time voice changer and soundboard for PipeWire (upstream binary)
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/voicenux/voicenux
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = voicenux-bin
 	conflicts = voicenux
 	options = !strip
 	options = !debug
-	source = voicenux-bin-0.4.0.tar.zst::https://github.com/voicenux/voicenux/releases/download/v0.4.0/voicenux-0.4.0-arch-x86_64.tar.zst
-	source = LICENSE.emoji-0.4.0::https://raw.githubusercontent.com/voicenux/voicenux/v0.4.0/data/icons/LICENSE
-	sha256sums = cb37409d7b4c5c46fbb427f4e61cb66e7b4555633899a3b87961bb5c6e527e0d
+	source = voicenux-bin-0.5.0.tar.zst::https://github.com/voicenux/voicenux/releases/download/v0.5.0/voicenux-0.5.0-arch-x86_64.tar.zst
+	source = LICENSE.emoji-0.5.0::https://raw.githubusercontent.com/voicenux/voicenux/v0.5.0/data/icons/LICENSE
+	sha256sums = 92c9f863dc7503209c36831fac5161ce23d14601af5d3ab34c6dac736e333033
 	sha256sums = a4cf5895899b9910cf9ffaaf35fb8592f2808acf5b4cebe42164eadc5aa26910
 
 pkgname = voicenux-bin
