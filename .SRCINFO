@@ -1,0 +1,19 @@
+pkgbase = pentest-swarm-ai-bin
+	pkgdesc = Open-source autonomous AI pentester (the open-source XBOW alternative)
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/Armur-Ai/Pentest-Swarm-AI
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = pentest-swarm-ai
+	conflicts = pentest-swarm-ai
+	options = !debug
+	source = pentest-swarm-ai-bin-0.3.7-LICENSE::https://raw.githubusercontent.com/Armur-Ai/Pentest-Swarm-AI/v0.3.7/LICENSE
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = pentest-swarm-ai-bin-0.3.7-x86_64::https://github.com/Armur-Ai/Pentest-Swarm-AI/releases/download/v0.3.7/pentestswarm-linux-amd64
+	sha256sums_x86_64 = 658c169f08c229bae47a228aa87a912f942422c684f164db9b5083f61eb328fa
+	source_aarch64 = pentest-swarm-ai-bin-0.3.7-aarch64::https://github.com/Armur-Ai/Pentest-Swarm-AI/releases/download/v0.3.7/pentestswarm-linux-arm64
+	sha256sums_aarch64 = a6082df732c31d1c9466793ec3ec5b77bd13c6df5f6cbc3a89e57c5441d55f6b
+
+pkgname = pentest-swarm-ai-bin
