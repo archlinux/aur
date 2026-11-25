@@ -1,0 +1,18 @@
+pkgbase = bank-vaults-bin
+	pkgdesc = A Vault swiss-army knife: A CLI tool to init, unseal and configure Vault (auth methods, secret engines)
+	pkgver = 1.33.2
+	pkgrel = 1
+	url = https://github.com/bank-vaults/bank-vaults
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = bank-vaults
+	conflicts = bank-vaults
+	options = !debug
+	source_x86_64 = bank-vaults-bin-1.33.2-x86_64.tar.gz::https://github.com/bank-vaults/bank-vaults/releases/download/v1.33.2/bank-vaults_1.33.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = f3096393512b278a1c8dcd64aa77543a798fee94a0954b48649a5d12a9f5e25b
+	source_aarch64 = bank-vaults-bin-1.33.2-aarch64.tar.gz::https://github.com/bank-vaults/bank-vaults/releases/download/v1.33.2/bank-vaults_1.33.2_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 88e9d0deef0185ab0efaabe90c2569533221663c7f03112e4ad5a8d1e16e515c
+
+pkgname = bank-vaults-bin
