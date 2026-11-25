@@ -1,0 +1,19 @@
+pkgbase = gorse-bin
+	pkgdesc = AI powered open source recommender system engine supports classical/LLM rankers and multimodal content via embedding
+	pkgver = 0.5.11
+	pkgrel = 1
+	url = https://github.com/gorse-io/gorse
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = gorse
+	conflicts = gorse
+	options = !debug
+	source = gorse-bin-0.5.11-LICENSE::https://raw.githubusercontent.com/gorse-io/gorse/v0.5.11/LICENSE
+	sha256sums = 43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1
+	source_x86_64 = gorse-bin-0.5.11-x86_64::https://github.com/gorse-io/gorse/releases/download/v0.5.11/gorse-cli_linux_amd64
+	sha256sums_x86_64 = a43c75ecb6f136ea9b982950a0f18224ed11528421602730a17b85d6ab0b9e49
+	source_aarch64 = gorse-bin-0.5.11-aarch64::https://github.com/gorse-io/gorse/releases/download/v0.5.11/gorse-cli_linux_arm64
+	sha256sums_aarch64 = de29e1e9ebeabee1b80791587198fe1c298dabf0127c939f1947a25c680d768d
+
+pkgname = gorse-bin
