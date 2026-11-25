@@ -1,6 +1,6 @@
 # Maintainer: Iván Zaera Avellón <ivan.zaera@posteo.net>
 pkgname=my-sway
-pkgver=0.0.29
+pkgver=0.0.30
 pkgrel=1
 pkgdesc='A lightweight desktop environment based on Sway'
 arch=('pentium4' 'x86_64')
@@ -51,7 +51,7 @@ install='install.sh'
 source=(
 	"$pkgname-$pkgver.tar.gz::https://codeberg.org/ivan-zaera/$pkgname/archive/$pkgver.tar.gz"
 )
-sha256sums=("da4554e0e400c3106a55b0b842664f21ecd4182f606b8eebabbde772bc226dc4")
+sha256sums=("f6070d779fda6c551c8eb85e74867915e7ca55edb3e3039b5ac09ad649a538a0")
 
 build() {
 	cd $srcdir/$pkgname
