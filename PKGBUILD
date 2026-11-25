@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=solidcraft
-pkgver=0.48.1
+pkgver=0.49.0
 pkgrel=1
 url="https://$pkgname.io"
 _url="https://github.com/tangency-labs/$pkgname"
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('3be13a27f5250a3a6b17cfacba0a16a4b9ff6a5642ed441f183a661a269beac2')
+sha256sums=('ee36d685d42660d04f79a8d826613f1f6fc4a1aa70f67c28057e6d8bf20309ed')
 
 _srcenv() {
 	cd "$_archive"
