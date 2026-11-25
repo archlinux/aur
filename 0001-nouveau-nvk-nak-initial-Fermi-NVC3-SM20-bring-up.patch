@@ -1,0 +1,261 @@
+From 880b3e4c03a731c94fae0018bdf6395a8d386451 Mon Sep 17 00:00:00 2001
+From: Twilight0 <twilight0@vivaldi.net>
+Date: Tue, 24 Nov 2026 21:17:58 +0200
+Subject: [PATCH 1/2] nouveau,nvk,nak: initial Fermi (NVC3/SM20) bring-up
+
+- Lower nvk_physical_device.c gate from KEPLER_A to FERMI_A
+- Pass fb/tt_ctxdma_handle = 0 in nouveau_ws_3d_context_init for chipset < 0xe0
+- Emit explicit SET_OBJECT on copy (NV90B5) and 2D (NV902D) subchannels on Fermi
+- Guard M2MF SET_OBJECT behind NVKMD_ENGINE_M2MF and Kepler+ sampler/align asserts
+- Use NV9097_INVALIDATE_SHADER_CACHES instead of NVA097_INVALIDATE_SHADER_CACHES_NO_WFI on Fermi
+- Enable sm >= 20 in nak_nir_lower_tex.c
+
+Verified vulkaninfo enumeration and headless 0x9097 triangle draw + readback
+(Pixel(32,32) = (64, 191, 128, 255)) on GeForce GT 555M (NVC3).
+
+Generated-by: LLM
+---
+ src/nouveau/compiler/nak_nir_lower_tex.c |  2 +-
+ src/nouveau/vulkan/nvk_cmd_buffer.c      | 17 +++++++++++-----
+ src/nouveau/vulkan/nvk_cmd_draw.c        | 12 ++++++++---
+ src/nouveau/vulkan/nvk_physical_device.c |  5 +++--
+ src/nouveau/vulkan/nvk_queue.c           | 16 ++++++++++++++-
+ src/nouveau/vulkan/nvk_sampler.c         | 26 +++++++++++++-----------
+ src/nouveau/vulkan/nvk_shader.c          |  3 ++-
+ src/nouveau/vulkan/nvk_upload_queue.c    |  7 +++++++
+ src/nouveau/winsys/nouveau_context.c     | 13 ++++++++----
+ 9 files changed, 72 insertions(+), 29 deletions(-)
+
+diff --git a/src/nouveau/compiler/nak_nir_lower_tex.c b/src/nouveau/compiler/nak_nir_lower_tex.c
+index 3b674698..524f88b8 100644
+--- a/src/nouveau/compiler/nak_nir_lower_tex.c
++++ b/src/nouveau/compiler/nak_nir_lower_tex.c
+@@ -387,7 +387,7 @@ lower_tex(nir_builder *b, nir_tex_instr *tex, const struct nak_compiler *nak)
+          nir_tex_instr_add_src(tex, nir_tex_src_backend2,
+                                nir_vec(b, src1, src1_comps));
+       }
+-   } else if (nak->sm >= 30) {
++   } else if (nak->sm >= 20) {
+       nir_def *src[8] = { NULL, };
+       unsigned src_comps = 0;
+ 
+diff --git a/src/nouveau/vulkan/nvk_cmd_buffer.c b/src/nouveau/vulkan/nvk_cmd_buffer.c
+index d656491a..d40984b0 100644
+--- a/src/nouveau/vulkan/nvk_cmd_buffer.c
++++ b/src/nouveau/vulkan/nvk_cmd_buffer.c
+@@ -816,11 +816,18 @@ nvk_cmd_invalidate_deps(struct nvk_cmd_buffer *cmd,
+    if (barriers & (NVK_BARRIER_INVALIDATE_SHADER_DATA |
+                    NVK_BARRIER_INVALIDATE_CONSTANT)) {
+       if (nvk_cmd_buffer_last_subchannel(cmd) == SUBC_NVA097) {
+-         P_IMMD(p, NVA097, INVALIDATE_SHADER_CACHES_NO_WFI, {
+-            .global_data = (barriers & NVK_BARRIER_INVALIDATE_SHADER_DATA) != 0,
+-            .constant = (barriers & NVK_BARRIER_INVALIDATE_CONSTANT) != 0,
+-         });
+-      } else {
++         if (pdev->info.cls_eng3d < KEPLER_A) {
++            P_IMMD(p, NV9097, INVALIDATE_SHADER_CACHES, {
++               .data = (barriers & NVK_BARRIER_INVALIDATE_SHADER_DATA) != 0,
++               .constant = (barriers & NVK_BARRIER_INVALIDATE_CONSTANT) != 0,
++            });
++         } else {
++            P_IMMD(p, NVA097, INVALIDATE_SHADER_CACHES_NO_WFI, {
++               .global_data = (barriers & NVK_BARRIER_INVALIDATE_SHADER_DATA) != 0,
++               .constant = (barriers & NVK_BARRIER_INVALIDATE_CONSTANT) != 0,
++            });
++         }
++      } else if (pdev->info.cls_eng3d >= KEPLER_A) {
+          P_IMMD(p, NVA0C0, INVALIDATE_SHADER_CACHES_NO_WFI, {
+             .global_data = (barriers & NVK_BARRIER_INVALIDATE_SHADER_DATA) != 0,
+             .constant = (barriers & NVK_BARRIER_INVALIDATE_CONSTANT) != 0,
+diff --git a/src/nouveau/vulkan/nvk_cmd_draw.c b/src/nouveau/vulkan/nvk_cmd_draw.c
+index 7c97b4d3..d15412ae 100644
+--- a/src/nouveau/vulkan/nvk_cmd_draw.c
++++ b/src/nouveau/vulkan/nvk_cmd_draw.c
+@@ -799,9 +799,15 @@ nvk_cmd_buffer_begin_graphics(struct nvk_cmd_buffer *cmd,
+          .lines = LINES_ALL,
+       });
+ 
+-      P_IMMD(p, NVA097, INVALIDATE_SHADER_CACHES_NO_WFI, {
+-         .constant = CONSTANT_TRUE,
+-      });
++      if (nvk_device_physical(dev)->info.cls_eng3d < KEPLER_A) {
++         P_IMMD(p, NV9097, INVALIDATE_SHADER_CACHES, {
++            .constant = CONSTANT_TRUE,
++         });
++      } else {
++         P_IMMD(p, NVA097, INVALIDATE_SHADER_CACHES_NO_WFI, {
++            .constant = CONSTANT_TRUE,
++         });
++      }
+       if (dev->vk.enabled_extensions.EXT_discard_rectangles) {
+          P_IMMD(p, NV9097,
+                 SET_MME_SHADOW_SCRATCH(NVK_MME_SCRATCH_WINDOW_CLIP_ENABLED),
+diff --git a/src/nouveau/vulkan/nvk_physical_device.c b/src/nouveau/vulkan/nvk_physical_device.c
+index 5beba4ec..69b173fb 100644
+--- a/src/nouveau/vulkan/nvk_physical_device.c
++++ b/src/nouveau/vulkan/nvk_physical_device.c
+@@ -33,6 +33,7 @@
+ #include <sys/sysmacros.h>
+ 
+ #include "nv_push.h"
++#include "cl9097.h"
+ #include "cl90c0.h"
+ #include "cl91c0.h"
+ #include "cla097.h"
+@@ -1557,8 +1558,8 @@ nvk_create_drm_physical_device(struct vk_instance *_instance,
+    if (result != VK_SUCCESS)
+       return result;
+ 
+-   /* We don't support anything pre-Kepler */
+-   if (nvkmd->dev_info.cls_eng3d < KEPLER_A) {
++   /* We don't support anything pre-Fermi */
++   if (nvkmd->dev_info.cls_eng3d < FERMI_A) {
+       result = VK_ERROR_INCOMPATIBLE_DRIVER;
+       goto fail_nvkmd;
+    }
+diff --git a/src/nouveau/vulkan/nvk_queue.c b/src/nouveau/vulkan/nvk_queue.c
+index 743558bb..8f4192fe 100644
+--- a/src/nouveau/vulkan/nvk_queue.c
++++ b/src/nouveau/vulkan/nvk_queue.c
+@@ -14,6 +14,7 @@
+ 
+ #include "nv_push_cl9039.h"
+ #include "nv_push_cl9097.h"
++#include "cla097.h"
+ #include "nv_push_cl90b5.h"
+ #include "nv_push_cla0c0.h"
+ #include "cla1c0.h"
+@@ -503,8 +504,21 @@ nvk_queue_init_context_state(struct nvk_queue *queue)
+                 nvk_queue_subchannels_from_engines(queue->engines));
+    struct nv_push *p = &push;
+ 
++   /* Fermi requires explicit SET_OBJECT on copy/2d subchannels */
++   if (pdev->info.cls_eng3d < KEPLER_A) {
++      if (queue->engines & NVKMD_ENGINE_COPY) {
++         __push_mthd(p, SUBC_NV90B5, 0x0000);
++         P_INLINE_DATA(p, pdev->info.cls_copy);
++      }
++      if (queue->engines & NVKMD_ENGINE_2D) {
++         __push_mthd(p, SUBC_NV902D, 0x0000);
++         P_INLINE_DATA(p, pdev->info.cls_eng2d);
++      }
++   }
++
+    /* M2MF state */
+-   if (pdev->info.cls_m2mf <= FERMI_MEMORY_TO_MEMORY_FORMAT_A) {
++   if ((queue->engines & NVKMD_ENGINE_M2MF) &&
++       pdev->info.cls_m2mf <= FERMI_MEMORY_TO_MEMORY_FORMAT_A) {
+       /* we absolutely do not support Fermi, but if somebody wants to toy
+        * around with it, this is a must
+        */
+diff --git a/src/nouveau/vulkan/nvk_sampler.c b/src/nouveau/vulkan/nvk_sampler.c
+index 32f7f9bc..3b0cd985 100644
+--- a/src/nouveau/vulkan/nvk_sampler.c
++++ b/src/nouveau/vulkan/nvk_sampler.c
+@@ -208,11 +208,12 @@ nvk_sampler_get_header(const struct nvk_physical_device *pdev,
+       UNREACHABLE("Invalid mipmap mode");
+    }
+ 
+-   assert(pdev->info.cls_eng3d >= KEPLER_A);
+-   if (state->flags & VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT) {
+-      SAMP_SET_E(samp, NVA097, 1, CUBEMAP_INTERFACE_FILTERING, USE_WRAP);
+-   } else {
+-      SAMP_SET_E(samp, NVA097, 1, CUBEMAP_INTERFACE_FILTERING, AUTO_SPAN_SEAM);
++   if (pdev->info.cls_eng3d >= KEPLER_A) {
++      if (state->flags & VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT) {
++         SAMP_SET_E(samp, NVA097, 1, CUBEMAP_INTERFACE_FILTERING, USE_WRAP);
++      } else {
++         SAMP_SET_E(samp, NVA097, 1, CUBEMAP_INTERFACE_FILTERING, AUTO_SPAN_SEAM);
++      }
+    }
+ 
+    if (pdev->info.cls_eng3d >= MAXWELL_B) {
+@@ -233,13 +234,14 @@ nvk_sampler_get_header(const struct nvk_physical_device *pdev,
+ 
+    SAMP_SET_SF(samp, NV9097, 1, MIP_LOD_BIAS, state->mip_lod_bias);
+ 
+-   assert(pdev->info.cls_eng3d >= KEPLER_A);
+-   if (state->unnormalized_coordinates) {
+-      SAMP_SET_E(samp, NVA097, 1, FLOAT_COORD_NORMALIZATION,
+-                                  FORCE_UNNORMALIZED_COORDS);
+-   } else {
+-      SAMP_SET_E(samp, NVA097, 1, FLOAT_COORD_NORMALIZATION,
+-                                  USE_HEADER_SETTING);
++   if (pdev->info.cls_eng3d >= KEPLER_A) {
++      if (state->unnormalized_coordinates) {
++         SAMP_SET_E(samp, NVA097, 1, FLOAT_COORD_NORMALIZATION,
++                                     FORCE_UNNORMALIZED_COORDS);
++      } else {
++         SAMP_SET_E(samp, NVA097, 1, FLOAT_COORD_NORMALIZATION,
++                                     USE_HEADER_SETTING);
++      }
+    }
+    SAMP_SET_U(samp, NV9097, 1, TRILIN_OPT,
+               vk_to_9097_trilin_opt(state->max_anisotropy));
+diff --git a/src/nouveau/vulkan/nvk_shader.c b/src/nouveau/vulkan/nvk_shader.c
+index da3af057..35356906 100644
+--- a/src/nouveau/vulkan/nvk_shader.c
++++ b/src/nouveau/vulkan/nvk_shader.c
+@@ -662,7 +662,8 @@ nvk_shader_get_shader_size(struct nvk_device *dev, struct nvk_shader *shader,
+ 
+    if (out_code_offset) {
+       *out_code_offset = total_size;
+-      assert(*out_code_offset % alignment == 0);
++      if (pdev->info.cls_eng3d >= KEPLER_A)
++         assert(*out_code_offset % alignment == 0);
+    }
+ 
+    total_size += shader->code_size;
+diff --git a/src/nouveau/vulkan/nvk_upload_queue.c b/src/nouveau/vulkan/nvk_upload_queue.c
+index 6602cd9b..2835e4ca 100644
+--- a/src/nouveau/vulkan/nvk_upload_queue.c
++++ b/src/nouveau/vulkan/nvk_upload_queue.c
+@@ -11,6 +11,7 @@
+ #include "vk_alloc.h"
+ 
+ #include "nv_push.h"
++#include "cla097.h"
+ #include "nv_push_cl90b5.h"
+ 
+ VkResult
+@@ -35,6 +36,12 @@ nvk_upload_queue_init(struct nvk_device *dev,
+    nv_push_init(&queue->push, queue->push_data, ARRAY_SIZE(queue->push_data),
+                 nvk_queue_subchannels_from_engines(NVKMD_ENGINE_COPY));
+ 
++   const struct nvk_physical_device *pdev = nvk_device_physical(dev);
++   if (pdev->info.cls_eng3d < KEPLER_A) {
++      __push_mthd(&queue->push, SUBC_NV90B5, 0x0000);
++      P_INLINE_DATA(&queue->push, pdev->info.cls_copy);
++   }
++
+    return VK_SUCCESS;
+ 
+ fail_ctx:
+diff --git a/src/nouveau/winsys/nouveau_context.c b/src/nouveau/winsys/nouveau_context.c
+index 00551d9f..b77872fb 100644
+--- a/src/nouveau/winsys/nouveau_context.c
++++ b/src/nouveau/winsys/nouveau_context.c
+@@ -134,11 +134,16 @@ nouveau_ws_3d_context_init(struct nouveau_ws_device *dev,
+ 
+    assert(!(engines & ~NOUVEAU_WS_ALL_3D_ENGINES));
+ 
+-   req.fb_ctxdma_handle = 0xffffffff;
+-   if (engines == NOUVEAU_WS_ENGINE_COPY && dev->info.has_transfer_queue) {
+-      req.tt_ctxdma_handle = NOUVEAU_FIFO_ENGINE_CE;
++   if (dev->info.chipset < 0xe0) {
++      req.fb_ctxdma_handle = 0;
++      req.tt_ctxdma_handle = 0;
+    } else {
+-      req.tt_ctxdma_handle = NOUVEAU_FIFO_ENGINE_GR;
++      req.fb_ctxdma_handle = 0xffffffff;
++      if (engines == NOUVEAU_WS_ENGINE_COPY && dev->info.has_transfer_queue) {
++         req.tt_ctxdma_handle = NOUVEAU_FIFO_ENGINE_CE;
++      } else {
++         req.tt_ctxdma_handle = NOUVEAU_FIFO_ENGINE_GR;
++      }
+    }
+ 
+    int ret = drmCommandWriteRead(dev->fd, DRM_NOUVEAU_CHANNEL_ALLOC, &req, sizeof(req));
+-- 
+2.56.1
+

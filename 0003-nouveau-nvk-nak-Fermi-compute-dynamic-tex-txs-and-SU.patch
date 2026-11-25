@@ -1,0 +1,1405 @@
+--- a/src/nouveau/compiler/nak/from_nir.rs	2026-11-18 17:56:09.000000000 +0200
++++ b/src/nouveau/compiler/nak/from_nir.rs	2026-11-25 01:38:31.358712964 +0200
+@@ -2859,10 +2859,51 @@
+                 });
+                 self.set_dst(&intrin.def, dst);
+             }
+-            nir_intrinsic_bindless_image_load => {
+-                let handle = self.get_src(&srcs[0]);
++            nir_intrinsic_image_load | nir_intrinsic_bindless_image_load => {
++                let su_slot = if b.sm() < 30 {
++                    srcs[0].as_uint().expect("SM20 image handle must be constant slot") as u8
++                } else {
++                    0
++                };
++                let handle = if b.sm() < 30 {
++                    Src::new_imm_u32(0)
++                } else {
++                    self.get_src(&srcs[0])
++                };
+                 let dim = self.get_image_dim(intrin);
+-                let coord = self.get_image_coord(intrin, dim);
++                let mut coord = self.get_image_coord(intrin, dim);
++                let (sm20_mt, sm20_shift) = match intrin.format() {
++                    PIPE_FORMAT_R8_UINT
++                    | PIPE_FORMAT_R8_SINT
++                    | PIPE_FORMAT_R8_UNORM
++                    | PIPE_FORMAT_R8_SNORM => (MemType::U8, 0_u32),
++                    PIPE_FORMAT_R16_UINT
++                    | PIPE_FORMAT_R16_SINT
++                    | PIPE_FORMAT_R16_FLOAT
++                    | PIPE_FORMAT_R16_UNORM
++                    | PIPE_FORMAT_R16_SNORM
++                    | PIPE_FORMAT_R8G8_UINT
++                    | PIPE_FORMAT_R8G8_SINT
++                    | PIPE_FORMAT_R8G8_UNORM
++                    | PIPE_FORMAT_R8G8_SNORM => (MemType::U16, 1_u32),
++                    PIPE_FORMAT_R32G32_UINT
++                    | PIPE_FORMAT_R32G32_SINT
++                    | PIPE_FORMAT_R32G32_FLOAT
++                    | PIPE_FORMAT_R16G16B16A16_UINT
++                    | PIPE_FORMAT_R16G16B16A16_SINT
++                    | PIPE_FORMAT_R16G16B16A16_FLOAT
++                    | PIPE_FORMAT_R16G16B16A16_UNORM
++                    | PIPE_FORMAT_R16G16B16A16_SNORM => (MemType::B64, 3_u32),
++                    PIPE_FORMAT_R32G32B32A32_UINT
++                    | PIPE_FORMAT_R32G32B32A32_SINT
++                    | PIPE_FORMAT_R32G32B32A32_FLOAT => (MemType::B128, 4_u32),
++                    _ => (MemType::B32, 2_u32),
++                };
++                if b.sm() < 30 && sm20_shift > 0 {
++                    let mut c: Vec<SSAValue> = coord.as_ssa().unwrap().to_vec();
++                    c[0] = b.shl(c[0].into(), sm20_shift.into());
++                    coord = SSARef::try_from(c).unwrap().into();
++                }
+                 // let sample = self.get_src(&srcs[2]);
+ 
+                 let mem_order = if (intrin.access() & ACCESS_CAN_REORDER) != 0 {
+@@ -2874,8 +2915,11 @@
+                 let comps = intrin.num_components;
+                 assert!(intrin.def.bit_size() == 32);
+                 assert!(comps == 1 || comps == 2 || comps == 4);
+-                let image_access =
+-                    ImageAccess::Formatted(ChannelMask::for_comps(comps));
++                let image_access = if b.sm() < 30 {
++                    ImageAccess::Binary(sm20_mt)
++                } else {
++                    ImageAccess::Formatted(ChannelMask::for_comps(comps))
++                };
+ 
+                 let dst = b.alloc_ssa_vec(RegFile::GPR, comps);
+ 
+@@ -2887,13 +2931,23 @@
+                     mem_order,
+                     mem_eviction_priority: self
+                         .get_eviction_priority(intrin.access()),
++                    su_slot,
+                     handle: handle,
+                     coord: coord,
+                 });
+                 self.set_dst(&intrin.def, dst);
+             }
+             nir_intrinsic_bindless_image_sparse_load => {
+-                let handle = self.get_src(&srcs[0]);
++                let su_slot = if b.sm() < 30 {
++                    srcs[0].as_uint().expect("SM20 image handle must be constant slot") as u8
++                } else {
++                    0
++                };
++                let handle = if b.sm() < 30 {
++                    Src::new_imm_u32(0)
++                } else {
++                    self.get_src(&srcs[0])
++                };
+                 let dim = self.get_image_dim(intrin);
+                 let coord = self.get_image_coord(intrin, dim);
+                 // let sample = self.get_src(&srcs[2]);
+@@ -2921,6 +2975,7 @@
+                     mem_order,
+                     mem_eviction_priority: self
+                         .get_eviction_priority(intrin.access()),
++                    su_slot,
+                     handle: handle,
+                     coord: coord,
+                 });
+@@ -2968,8 +3023,17 @@
+                     cache_op,
+                 });
+             }
+-            nir_intrinsic_bindless_image_store => {
+-                let handle = self.get_src(&srcs[0]);
++            nir_intrinsic_image_store | nir_intrinsic_bindless_image_store => {
++                let su_slot = if b.sm() < 30 {
++                    srcs[0].as_uint().expect("SM20 image handle must be constant slot") as u8
++                } else {
++                    0
++                };
++                let handle = if b.sm() < 30 {
++                    Src::new_imm_u32(0)
++                } else {
++                    self.get_src(&srcs[0])
++                };
+                 let dim = self.get_image_dim(intrin);
+                 let coord = self.get_image_coord(intrin, dim);
+                 // let sample = self.get_src(&srcs[2]);
+@@ -2987,6 +3051,7 @@
+                     mem_order: MemOrder::Strong(MemScope::GPU),
+                     mem_eviction_priority: self
+                         .get_eviction_priority(intrin.access()),
++                    su_slot,
+                     handle: handle,
+                     coord: coord,
+                     data: data,
+--- a/src/nouveau/compiler/nak/ir.rs	2026-11-18 17:56:09.000000000 +0200
++++ b/src/nouveau/compiler/nak/ir.rs	2026-11-25 01:09:45.256474457 +0200
+@@ -5670,6 +5670,7 @@
+     pub image_dim: ImageDim,
+     pub mem_order: MemOrder,
+     pub mem_eviction_priority: MemEvictionPriority,
++    pub su_slot: u8,
+ 
+     #[src_type(SSA)]
+     pub handle: Src,
+@@ -5701,6 +5702,7 @@
+     pub image_dim: ImageDim,
+     pub mem_order: MemOrder,
+     pub mem_eviction_priority: MemEvictionPriority,
++    pub su_slot: u8,
+ 
+     #[src_type(SSA)]
+     pub handle: Src,
+--- a/src/nouveau/compiler/nak/sm20.rs	2026-11-18 17:56:09.000000000 +0200
++++ b/src/nouveau/compiler/nak/sm20.rs	2026-11-25 01:08:09.779464880 +0200
+@@ -2282,6 +2282,81 @@
+     }
+ }
+ 
++impl SM20Op for OpSuLd {
++    fn legalize(&mut self, b: &mut LegalizeBuilder) {
++        use RegFile::GPR;
++        b.copy_alu_src_if_not_reg(&mut self.coord, GPR, SrcType::GPR);
++    }
++
++    fn encode(&self, e: &mut SM20Encoder<'_>) {
++        assert!(e.sm.sm() < 30);
++        let slot = self.su_slot as u32;
++        assert!(slot < 8);
++
++        e.set_opcode(SM20Unit::Mem, 0x35);
++        let mem_type = match self.image_access {
++            ImageAccess::Binary(mt) => mt,
++            ImageAccess::Formatted(mask) => match mask.to_bits() {
++                0x1 => MemType::B32,
++                0x3 => MemType::B64,
++                0xf => MemType::B128,
++                _ => MemType::B32,
++            },
++        };
++        e.set_mem_type(5..8, mem_type);
++        e.set_ld_cache_op(8..10, LdCacheOp::CacheAll);
++        e.set_dst(14..20, &self.dst);
++        e.set_reg_src(20..26, &self.coord);
++        e.set_field(26..32, slot);
++        let dim_bits: u8 = match self.image_dim {
++            ImageDim::_1D | ImageDim::_1DBuffer => 0,
++            ImageDim::_2D => 1,
++            ImageDim::_3D => 2,
++            ImageDim::_1DArray | ImageDim::_2DArray => 3,
++        };
++        e.set_field(44..46, dim_bits);
++        e.set_bit(46, true);
++        e.set_field(47..49, 0_u8);
++    }
++}
++
++impl SM20Op for OpSuSt {
++    fn legalize(&mut self, b: &mut LegalizeBuilder) {
++        use RegFile::GPR;
++        b.copy_alu_src_if_not_reg(&mut self.coord, GPR, SrcType::GPR);
++        b.copy_alu_src_if_not_reg(&mut self.data, GPR, SrcType::GPR);
++    }
++
++    fn encode(&self, e: &mut SM20Encoder<'_>) {
++        assert!(e.sm.sm() < 30);
++        let slot = self.su_slot as u32;
++        assert!(slot < 8);
++
++        e.set_opcode(SM20Unit::Mem, 0x37);
++        match self.image_access {
++            ImageAccess::Binary(mt) => {
++                e.set_mem_type(5..8, mt);
++            }
++            ImageAccess::Formatted(mask) => {
++                e.set_field(49..53, mask.to_bits());
++            }
++        }
++        e.set_st_cache_op(8..10, StCacheOp::WriteBack);
++        e.set_reg_src(14..20, &self.data);
++        e.set_reg_src(20..26, &self.coord);
++        e.set_field(26..32, slot);
++        let dim_bits: u8 = match self.image_dim {
++            ImageDim::_1D | ImageDim::_1DBuffer => 0,
++            ImageDim::_2D => 1,
++            ImageDim::_3D => 2,
++            ImageDim::_1DArray | ImageDim::_2DArray => 3,
++        };
++        e.set_field(44..46, dim_bits);
++        e.set_bit(46, true);
++        e.set_field(47..49, 0_u8);
++    }
++}
++
+ impl SM20Op for OpSuStGa {
+     fn legalize(&mut self, b: &mut LegalizeBuilder) {
+         legalize_ext_instr(self, b);
+@@ -3042,6 +3117,8 @@
+             Op::SuBfm($x) => $y,
+             Op::SuEau($x) => $y,
+             Op::IMadSp($x) => $y,
++            Op::SuLd($x) => $y,
++            Op::SuSt($x) => $y,
+             Op::SuLdGa($x) => $y,
+             Op::SuStGa($x) => $y,
+             Op::Ld($x) => $y,
+--- a/src/nouveau/compiler/nak_nir_lower_tex.c	2026-11-25 16:08:54.767521571 +0200
++++ b/src/nouveau/compiler/nak_nir_lower_tex.c	2026-11-25 00:40:10.404895262 +0200
+@@ -44,11 +44,15 @@
+ 
+ static nir_def *
+ build_txq(nir_builder *b, nir_texop op, nir_def *img_h, nir_def *lod_idx,
+-          bool can_speculate, const struct nak_compiler *nak)
++          uint32_t bound_tex_idx, bool can_speculate,
++          const struct nak_compiler *nak)
+ {
+    uint32_t texture_index = 0;
+    enum nak_nir_tex_ref_type ref_type = NAK_NIR_TEX_REF_TYPE_BINDLESS;
+-   if (has_cbuf_tex(nak) && tex_handle_as_cbuf(img_h, &texture_index)) {
++   if (nak->sm < 30 && img_h == NULL) {
++      ref_type = NAK_NIR_TEX_REF_TYPE_BOUND;
++      texture_index = bound_tex_idx;
++   } else if (has_cbuf_tex(nak) && tex_handle_as_cbuf(img_h, &texture_index)) {
+       ref_type = NAK_NIR_TEX_REF_TYPE_CBUF;
+       img_h = NULL;
+    }
+@@ -72,6 +76,8 @@
+       src[src_comps++] = img_h;
+    if (lod_idx != NULL)
+       src[src_comps++] = lod_idx;
++   if (src_comps == 0)
++      src[src_comps++] = nir_imm_int(b, 0);
+ 
+    if (src_comps == 0)
+       src[src_comps++] = nir_imm_int(b, 0);
+@@ -95,23 +101,24 @@
+ }
+ 
+ static nir_def *
+-build_txq_levels(nir_builder *b, nir_def *img_h, bool can_speculate,
+-                 const struct nak_compiler *nak)
++build_txq_levels(nir_builder *b, nir_def *img_h, uint32_t bound_tex_idx,
++                 bool can_speculate, const struct nak_compiler *nak)
+ {
+    nir_def *res = build_txq(b, nir_texop_hdr_dim_nv, img_h, nir_imm_int(b, 0),
+-                            can_speculate, nak);
++                            bound_tex_idx, can_speculate, nak);
+    return nir_channel(b, res, 3);
+ }
+ 
+ static nir_def *
+-build_img_is_null(nir_builder *b, nir_def *img_h, bool can_speculate,
+-                  const struct nak_compiler *nak)
++build_img_is_null(nir_builder *b, nir_def *img_h, uint32_t bound_tex_idx,
++                  bool can_speculate, const struct nak_compiler *nak)
+ {
+    /* Prior to Volta, we don't have real NULL descriptors but we can figure
+     * out if it's null based on the number of levels returned by
+     * txq.dimension.
+     */
+-   return nir_ieq_imm(b, build_txq_levels(b, img_h, can_speculate, nak), 0);
++   return nir_ieq_imm(b, build_txq_levels(b, img_h, bound_tex_idx,
++                                          can_speculate, nak), 0);
+ }
+ 
+ static enum glsl_sampler_dim
+@@ -486,7 +493,8 @@
+ 
+       if (!has_null_descriptors(nak)) {
+          nir_def *img_is_null =
+-            build_img_is_null(b, tex_h, tex->can_speculate, nak);
++            build_img_is_null(b, tex_h, tex->texture_index,
++                              tex->can_speculate, nak);
+          res = nir_bcsel(b, img_is_null, nir_imm_int(b, 0), res);
+       }
+ 
+@@ -497,22 +505,24 @@
+ }
+ 
+ static nir_def *
+-build_txq_samples_raw(nir_builder *b, nir_def *img_h, bool can_speculate,
+-                      const struct nak_compiler *nak)
++build_txq_samples_raw(nir_builder *b, nir_def *img_h, uint32_t bound_tex_idx,
++                      bool can_speculate, const struct nak_compiler *nak)
+ {
+    nir_def *res = build_txq(b, nir_texop_tex_type_nv, img_h, NULL,
+-                            can_speculate, nak);
++                            bound_tex_idx, can_speculate, nak);
+    return nir_channel(b, res, 2);
+ }
+ 
+ static nir_def *
+-build_txq_samples(nir_builder *b, nir_def *img_h, bool can_speculate,
+-                  const struct nak_compiler *nak)
++build_txq_samples(nir_builder *b, nir_def *img_h, uint32_t bound_tex_idx,
++                  bool can_speculate, const struct nak_compiler *nak)
+ {
+-   nir_def *res = build_txq_samples_raw(b, img_h, can_speculate, nak);
++   nir_def *res = build_txq_samples_raw(b, img_h, bound_tex_idx,
++                                        can_speculate, nak);
+ 
+    if (!has_null_descriptors(nak)) {
+-      res = nir_bcsel(b, build_img_is_null(b, img_h, can_speculate, nak),
++      res = nir_bcsel(b, build_img_is_null(b, img_h, bound_tex_idx,
++                                           can_speculate, nak),
+                       nir_imm_int(b, 0), res);
+    }
+ 
+@@ -521,18 +531,19 @@
+ 
+ static nir_def *
+ build_txq_size(nir_builder *b, unsigned num_components,
+-               nir_def *img_h, nir_def *lod, bool can_speculate,
+-               const struct nak_compiler *nak)
++               nir_def *img_h, nir_def *lod, uint32_t bound_tex_idx,
++               bool can_speculate, const struct nak_compiler *nak)
+ {
+    if (lod == NULL)
+       lod = nir_imm_int(b, 0);
+ 
+    nir_def *res = build_txq(b, nir_texop_hdr_dim_nv, img_h, lod,
+-                            can_speculate, nak);
++                            bound_tex_idx, can_speculate, nak);
+    res = nir_trim_vector(b, res, num_components);
+ 
+    if (!has_null_descriptors(nak)) {
+-      res = nir_bcsel(b, build_img_is_null(b, img_h, can_speculate, nak),
++      res = nir_bcsel(b, build_img_is_null(b, img_h, bound_tex_idx,
++                                           can_speculate, nak),
+                       nir_imm_int(b, 0), res);
+    }
+ 
+@@ -561,13 +572,15 @@
+    switch (tex->op) {
+    case nir_texop_txs:
+       res = build_txq_size(b, tex->def.num_components, tex_h, lod,
+-                           tex->can_speculate, nak);
++                           tex->texture_index, tex->can_speculate, nak);
+       break;
+    case nir_texop_query_levels:
+-      res = build_txq_levels(b, tex_h, tex->can_speculate, nak);
++      res = build_txq_levels(b, tex_h, tex->texture_index,
++                             tex->can_speculate, nak);
+       break;
+    case nir_texop_texture_samples:
+-      res = build_txq_samples(b, tex_h, tex->can_speculate, nak);
++      res = build_txq_samples(b, tex_h, tex->texture_index,
++                              tex->can_speculate, nak);
+       break;
+    default:
+       UNREACHABLE("Invalid texture query op");
+@@ -780,7 +793,7 @@
+    nir_def *w = nir_channel(b, intrin->src[1].ssa, 3);
+    nir_def *s = intrin->src[2].ssa;
+ 
+-   nir_def *samples = build_txq_samples_raw(b, img_h, can_speculate, nak);
++   nir_def *samples = build_txq_samples_raw(b, img_h, 0, can_speculate, nak);
+ 
+    nir_def *px_size_sa_log2 = build_px_size_sa_log2(b, samples);
+    nir_def *px_w_log2 = nir_channel(b, px_size_sa_log2, 0);
+@@ -792,7 +805,7 @@
+     * point with x in the bottom 16 bits and y in the top 16 bits.
+     */
+    nir_def *spos_sf = build_txq(b, nir_texop_sample_pos_nv, img_h, s,
+-                                can_speculate, nak);
++                                0, can_speculate, nak);
+    spos_sf = nir_trim_vector(b, spos_sf, 2);
+ 
+    /* Fortunately, the samples are laid out in the supersampled image the same
+@@ -839,7 +852,7 @@
+    switch (intrin->intrinsic) {
+    case nir_intrinsic_bindless_image_size:
+       res = build_txq_size(b, intrin->def.num_components, img_h,
+-                           intrin->src[1].ssa /* lod */, can_speculate, nak);
++                           intrin->src[1].ssa /* lod */, 0, can_speculate, nak);
+ 
+       if (nir_intrinsic_image_dim(intrin) == GLSL_SAMPLER_DIM_MS) {
+          /* When NIL sets up the MSAA image descriptor, it uses a width and
+@@ -848,7 +861,7 @@
+           * they're given.  This means we need to divide back out the pixel
+           * size in order to get the size in pixels.
+           */
+-         nir_def *samples = build_txq_samples_raw(b, img_h, can_speculate, nak);
++         nir_def *samples = build_txq_samples_raw(b, img_h, 0, can_speculate, nak);
+          nir_def *px_size_sa_log2 = build_px_size_sa_log2(b, samples);
+          /* The first two coordinates are X/Y. If we have more than that,
+           * it’s the array index and that isn’t scaled.
+@@ -859,7 +872,7 @@
+       }
+       break;
+    case nir_intrinsic_bindless_image_samples:
+-      res = build_txq_samples(b, img_h, can_speculate, nak);
++      res = build_txq_samples(b, img_h, 0, can_speculate, nak);
+       break;
+    default:
+       UNREACHABLE("Invalid image query op");
+--- a/src/nouveau/vulkan/nvk_buffer_view.c	2026-11-18 17:56:09.000000000 +0200
++++ b/src/nouveau/vulkan/nvk_buffer_view.c	2026-11-25 16:06:19.974111018 +0200
+@@ -13,6 +13,7 @@
+ 
+ #include "vk_format.h"
+ 
++#include "cla097.h"
+ #include "clb097.h"
+ 
+ VkFormatFeatureFlags2
+@@ -89,11 +90,22 @@
+       }
+       if (pdev->info.cls_eng3d < MAXWELL_A &&
+           (buffer->vk.usage & VK_BUFFER_USAGE_2_STORAGE_TEXEL_BUFFER_BIT_KHR)) {
+-         // Kepler
+-         view->su_info = nil_buffer_fill_su_info(&pdev->info,
+-                                                   addr,
+-                                                   nil_format(format),
+-                                                   view->vk.elements);
++         if (pdev->info.cls_eng3d >= KEPLER_A) {
++            view->su_info = nil_buffer_fill_su_info(&pdev->info,
++                                                      addr,
++                                                      nil_format(format),
++                                                      view->vk.elements);
++         } else {
++            uint8_t rt_fmt = nil_format_to_color_target(format);
++            view->fermi_su = (struct nvk_fermi_su_descriptor) {
++               .addr_hi = addr >> 32,
++               .addr_lo = (uint32_t)addr,
++               .width = view->vk.elements,
++               .height = 1u | (1u << 20),
++               .format = ((uint32_t)rt_fmt << 4) | (0x14u << 12),
++               .tile_mode = 0,
++            };
++         }
+       }
+    }
+ 
+--- a/src/nouveau/vulkan/nvk_buffer_view.h	2026-11-18 17:56:09.000000000 +0200
++++ b/src/nouveau/vulkan/nvk_buffer_view.h	2026-11-25 16:05:09.637476393 +0200
+@@ -25,8 +25,11 @@
+    /* Used for uniform texel buffers on Kepler and everything on Maxwell+ */
+    struct nvk_edb_buffer_view_descriptor edb_desc;
+ 
+-   /* Used for storage texel buffers on Kepler */
+-   struct nil_su_info su_info;
++   /* Used for storage texel buffers on Kepler/Fermi */
++   union {
++      struct nil_su_info su_info;
++      struct nvk_fermi_su_descriptor fermi_su;
++   };
+ };
+ 
+ VK_DEFINE_NONDISP_HANDLE_CASTS(nvk_buffer_view, vk.base, VkBufferView,
+--- a/src/nouveau/vulkan/nvk_cmd_buffer.c	2026-11-25 16:08:54.768739315 +0200
++++ b/src/nouveau/vulkan/nvk_cmd_buffer.c	2026-11-25 00:57:43.687918168 +0200
+@@ -1515,3 +1515,57 @@
+       P_INLINE_DATA(p, (tic_idx << 9) | (slot << 1) | 1);
+    }
+ }
++
++static struct nvk_fermi_su_descriptor
++nvk_cmd_buffer_read_fermi_su_desc(const struct nvk_descriptor_state *desc,
++                                  uint8_t set_idx, uint32_t offset)
++{
++   struct nvk_fermi_su_descriptor su_desc = { .format = 0x14000 };
++
++   if (set_idx >= NVK_MAX_SETS)
++      return su_desc;
++
++   switch (desc->sets[set_idx].type) {
++   case NVK_DESCRIPTOR_SET_TYPE_SET: {
++      struct nvk_descriptor_set *set = desc->sets[set_idx].set;
++      if (set != NULL && set->map != NULL)
++         memcpy(&su_desc, (const uint8_t *)set->map + offset, sizeof(su_desc));
++      break;
++   }
++   case NVK_DESCRIPTOR_SET_TYPE_PUSH: {
++      struct nvk_push_descriptor_set *push = desc->sets[set_idx].push;
++      if (push != NULL)
++         memcpy(&su_desc, &push->data[offset], sizeof(su_desc));
++      break;
++   }
++   default:
++      break;
++   }
++
++   return su_desc;
++}
++
++void
++nvk_cmd_buffer_emit_bound_su(struct nvk_cmd_buffer *cmd,
++                             const struct nvk_descriptor_state *desc,
++                             const struct nvk_bound_su_map *map,
++                             uint8_t subc)
++{
++   if (map->su_count == 0)
++      return;
++
++   struct nv_push *p = nvk_cmd_buffer_push(cmd, 7 * map->su_count);
++   for (uint32_t slot = 0; slot < map->su_count; slot++) {
++      const struct nvk_bound_su *bs = &map->sus[slot];
++      struct nvk_fermi_su_descriptor su =
++         nvk_cmd_buffer_read_fermi_su_desc(desc, bs->set, bs->desc_offset);
++
++      __push_mthd(p, subc, 0x2700 + 0x20 * slot);
++      P_INLINE_DATA(p, su.addr_hi);
++      P_INLINE_DATA(p, su.addr_lo);
++      P_INLINE_DATA(p, su.width);
++      P_INLINE_DATA(p, su.height);
++      P_INLINE_DATA(p, su.format);
++      P_INLINE_DATA(p, su.tile_mode);
++   }
++}
+--- a/src/nouveau/vulkan/nvk_cmd_buffer.h	2026-11-25 16:08:54.768985797 +0200
++++ b/src/nouveau/vulkan/nvk_cmd_buffer.h	2026-11-25 00:57:41.755905787 +0200
+@@ -456,6 +456,11 @@
+                                    uint32_t bind_tsc_mthd,
+                                    uint32_t bind_tic_mthd);
+ 
++void nvk_cmd_buffer_emit_bound_su(struct nvk_cmd_buffer *cmd,
++                                  const struct nvk_descriptor_state *desc,
++                                  const struct nvk_bound_su_map *map,
++                                  uint8_t subc);
++
+ void nvk_cmd_dispatch_shader(struct nvk_cmd_buffer *cmd,
+                              struct nvk_shader *shader,
+                              const void *push_data, size_t push_size,
+--- a/src/nouveau/vulkan/nvk_cmd_dispatch.c	2026-11-25 16:08:54.769468381 +0200
++++ b/src/nouveau/vulkan/nvk_cmd_dispatch.c	2026-11-25 01:34:50.720083395 +0200
+@@ -43,14 +43,13 @@
+    if (pdev->info.cls_compute == MAXWELL_COMPUTE_A)
+       P_IMMD(p, NVB0C0, SET_SELECT_MAXWELL_TEXTURE_HEADERS, V_TRUE);
+ 
+-   if (pdev->info.cls_compute >= KEPLER_COMPUTE_A &&
+-       pdev->info.cls_compute < VOLTA_COMPUTE_A) {
++   if (pdev->info.cls_compute < VOLTA_COMPUTE_A) {
+       uint64_t shader_base_addr =
+          nvk_heap_contiguous_base_address(&dev->shader_heap);
+ 
+-      P_MTHD(p, NVA0C0, SET_PROGRAM_REGION_A);
+-      P_NVA0C0_SET_PROGRAM_REGION_A(p, shader_base_addr >> 32);
+-      P_NVA0C0_SET_PROGRAM_REGION_B(p, shader_base_addr);
++      P_MTHD(p, NV90C0, SET_PROGRAM_REGION_A);
++      P_NV90C0_SET_PROGRAM_REGION_A(p, shader_base_addr >> 32);
++      P_NV90C0_SET_PROGRAM_REGION_B(p, shader_base_addr);
+    }
+ 
+    if (pdev->info.cls_compute >= VOLTA_COMPUTE_A) {
+@@ -84,6 +83,37 @@
+ 
+       P_MTHD(p, NVA0C0, SET_SHADER_SHARED_MEMORY_WINDOW);
+       P_NVA0C0_SET_SHADER_SHARED_MEMORY_WINDOW(p, 0xfeu << 24);
++   } else {
++      P_MTHD(p, NV90C0, SET_MAX_SM_COUNT);
++      P_NV90C0_SET_MAX_SM_COUNT(p, pdev->info.mp_per_tpc * pdev->info.tpc_count);
++
++      P_IMMD(p, NV90C0, SET_API_VISIBLE_CALL_LIMIT, CTA_NO_CHECK);
++      P_MTHD(p, NV90C0, SET_WORK_DISTRIBUTION);
++      P_INLINE_DATA(p, 0x8000);
++
++      P_IMMD(p, NV90C0, SET_GA_TO_VA_MAPPING_MODE, V_DISABLE);
++      P_0INC(p, NV90C0, LOAD_GA_TO_VA_MAPPING_ENTRY);
++      for (uint32_t i = 0; i < 256; i++) {
++         P_NV90C0_LOAD_GA_TO_VA_MAPPING_ENTRY(p, {
++            .virtual_address_upper = i,
++            .generic_address_upper = i,
++            .read_enable = 1,
++            .write_enable = 1,
++         });
++      }
++      P_IMMD(p, NV90C0, SET_GA_TO_VA_MAPPING_MODE, V_ENABLE);
++
++      P_MTHD(p, NV90C0, SET_SHADER_LOCAL_MEMORY_WINDOW);
++      P_NV90C0_SET_SHADER_LOCAL_MEMORY_WINDOW(p, 0xffu << 24);
++
++      P_IMMD(p, NV90C0, SET_L1_CONFIGURATION,
++             DIRECTLY_ADDRESSABLE_MEMORY_SIZE_48KB);
++
++      P_MTHD(p, NV90C0, SET_SHADER_SHARED_MEMORY_WINDOW);
++      P_NV90C0_SET_SHADER_SHARED_MEMORY_WINDOW(p, 0xfeu << 24);
++
++      P_MTHD(p, NV90C0, SET_SHADER_SHARED_MEMORY_SIZE);
++      P_NV90C0_SET_SHADER_SHARED_MEMORY_SIZE(p, 0);
+    }
+ 
+    return VK_SUCCESS;
+@@ -159,6 +189,9 @@
+       nvk_cmd_buffer_emit_bound_tex(cmd, desc,
+                                     &cmd->state.cs.shader->bound_tex_map,
+                                     SUBC_NV90C0, 0x0228, 0x022c);
++      nvk_cmd_buffer_emit_bound_su(cmd, desc,
++                                   &cmd->state.cs.shader->bound_su_map,
++                                   SUBC_NV90C0);
+    }
+ 
+    if (NAK_CAN_PRINTF)
+@@ -307,6 +340,150 @@
+    mme_free_reg64(b, accum);
+ }
+ 
++static VkResult
++nvk_cmd_dispatch_fermi(struct nvk_cmd_buffer *cmd,
++                       struct nvk_shader *shader,
++                       const struct nvk_descriptor_state *desc,
++                       const void *root,
++                       size_t root_size,
++                       const uint32_t group_count[3])
++{
++   struct nvk_device *dev = nvk_cmd_buffer_device(cmd);
++   const struct nvk_physical_device *pdev = nvk_device_physical(dev);
++   const uint32_t min_cbuf_alignment = nvk_min_cbuf_alignment(&pdev->info);
++
++   uint64_t root_desc_addr = 0;
++   if (root_size > 0) {
++      VkResult result = nvk_cmd_buffer_upload_data(cmd, root, root_size,
++                                                   min_cbuf_alignment,
++                                                   &root_desc_addr);
++      if (result != VK_SUCCESS)
++         return result;
++   }
++
++   if (shader != NULL) {
++      nvk_device_ensure_slm(dev, shader->info.slm_size,
++                                 shader->info.crs_size);
++   }
++
++   if (group_count[0] == 0 || group_count[1] == 0 || group_count[2] == 0)
++      return VK_SUCCESS;
++
++   struct nv_push *p =
++      nvk_cmd_buffer_push(cmd, 8 * shader->cbuf_map.cbuf_count + 40);
++
++   for (uint32_t c = 0; c < shader->cbuf_map.cbuf_count; c++) {
++      const struct nvk_cbuf *cbuf = &shader->cbuf_map.cbufs[c];
++      struct nvk_buffer_address ba = { .size = 0 };
++
++      switch (cbuf->type) {
++      case NVK_CBUF_TYPE_ROOT_DESC:
++         ba.base_addr = root_desc_addr;
++         ba.size = align(root_size, min_cbuf_alignment);
++         break;
++
++      case NVK_CBUF_TYPE_SHADER_DATA:
++         ba.base_addr = shader->data_addr;
++         ba.size = shader->data_size;
++         break;
++
++      default:
++         if (!nvk_cmd_buffer_get_cbuf_addr(cmd, desc, shader, cbuf, &ba))
++            ba.size = 0;
++         break;
++      }
++
++      if (ba.size > 0) {
++         assert(ba.base_addr % min_cbuf_alignment == 0);
++         ba.size = align(ba.size, min_cbuf_alignment);
++         ba.size = MIN2(ba.size, NVK_MAX_CBUF_SIZE);
++
++         P_MTHD(p, NV90C0, SET_CONSTANT_BUFFER_SELECTOR_A);
++         P_NV90C0_SET_CONSTANT_BUFFER_SELECTOR_A(p, ba.size);
++         P_NV90C0_SET_CONSTANT_BUFFER_SELECTOR_B(p, ba.base_addr >> 32);
++         P_NV90C0_SET_CONSTANT_BUFFER_SELECTOR_C(p, ba.base_addr);
++      }
++
++      P_IMMD(p, NV90C0, BIND_CONSTANT_BUFFER, {
++         .valid = ba.size > 0,
++         .shader_slot = c,
++      });
++   }
++
++   P_MTHD(p, NV90C0, SET_CTA_PROGRAM_START);
++   P_NV90C0_SET_CTA_PROGRAM_START(p, shader->hdr_addr);
++
++   P_MTHD(p, NV90C0, SET_SHADER_LOCAL_MEMORY_LOW_SIZE);
++   P_NV90C0_SET_SHADER_LOCAL_MEMORY_LOW_SIZE(p, align(shader->info.slm_size, 0x10));
++   P_NV90C0_SET_SHADER_LOCAL_MEMORY_HIGH_SIZE(p, 0);
++   P_NV90C0_SET_SHADER_LOCAL_MEMORY_CRS_SIZE(p,
++      shader->info.crs_size ? align(shader->info.crs_size, 0x800) : 0);
++
++   P_MTHD(p, NV90C0, SET_SHADER_SHARED_MEMORY_SIZE);
++   P_NV90C0_SET_SHADER_SHARED_MEMORY_SIZE(p,
++      align(shader->info.cs.smem_size, 0x100));
++
++   const uint16_t *local_size = shader->info.cs.local_size;
++   P_MTHD(p, NV90C0, SET_CTA_THREAD_COUNT);
++   P_NV90C0_SET_CTA_THREAD_COUNT(p, local_size[0] * local_size[1] * local_size[2]);
++
++   P_MTHD(p, NV90C0, SET_CTA_BARRIER_COUNT);
++   P_NV90C0_SET_CTA_BARRIER_COUNT(p, shader->info.num_control_barriers);
++
++   P_MTHD(p, NV90C0, SET_CTA_REGISTER_COUNT);
++   P_NV90C0_SET_CTA_REGISTER_COUNT(p, shader->info.num_gprs);
++
++   P_IMMD(p, NV90C0, SET_GRID_PARAM, 1);
++   P_IMMD(p, NV90C0, SET_LAUNCH_ID, 0);
++
++   P_IMMD(p, NV90C0, INVALIDATE_SHADER_CACHES_NO_WFI, {
++      .instruction = INSTRUCTION_TRUE,
++      .global_data = GLOBAL_DATA_TRUE,
++      .uniform = UNIFORM_TRUE,
++      .constant = CONSTANT_TRUE,
++   });
++
++   P_MTHD(p, NV90C0, SET_CTA_THREAD_DIMENSION_A);
++   P_NV90C0_SET_CTA_THREAD_DIMENSION_A(p, {
++      .d0 = local_size[0],
++      .d1 = local_size[1],
++   });
++   P_NV90C0_SET_CTA_THREAD_DIMENSION_B(p, local_size[2]);
++
++   P_MTHD(p, NV90C0, SET_CTA_RASTER_SIZE_A);
++   P_NV90C0_SET_CTA_RASTER_SIZE_A(p, {
++      .width = group_count[0],
++      .height = group_count[1],
++   });
++   P_NV90C0_SET_CTA_RASTER_SIZE_B(p, group_count[2]);
++
++   P_IMMD(p, NV90C0, BEGIN_GRID, 0);
++   P_IMMD(p, NV90C0, SET_LAUNCH_SIZE, 0);
++   P_MTHD(p, NV90C0, LAUNCH);
++   P_INLINE_DATA(p, 0x1000);
++   P_IMMD(p, NV90C0, END_GRID, 0);
++   P_MTHD(p, NV90C0, WAIT_REF_COUNT);
++   P_INLINE_DATA(p, 1);
++
++   /* Restore CONSTANT_BUFFER_SELECTOR and 3D CB0 bindings */
++   if (nvk_cmd_buffer_queue_flags(cmd) & VK_QUEUE_GRAPHICS_BIT) {
++      P_1INC(p, NV9097, CALL_MME_MACRO(NVK_MME_SELECT_CB0));
++      P_INLINE_DATA(p, 0);
++      for (uint32_t g = 0; g < 5; g++) {
++         P_IMMD(p, NV9097, BIND_GROUP_CONSTANT_BUFFER(g), {
++            .valid = VALID_TRUE,
++            .shader_slot = 0,
++         });
++      }
++      P_IMMD(p, NV9097, INVALIDATE_SHADER_CACHES, {
++         .data = DATA_TRUE,
++         .constant = CONSTANT_TRUE,
++      });
++   }
++
++   return VK_SUCCESS;
++}
++
+ VKAPI_ATTR void VKAPI_CALL
+ nvk_CmdDispatchBase(VkCommandBuffer commandBuffer,
+                     uint32_t baseGroupX,
+@@ -322,6 +499,16 @@
+    uint32_t global_size[3] = { groupCountX, groupCountY, groupCountZ };
+    nvk_flush_compute_state(cmd, base_workgroup, global_size);
+ 
++   if (nvk_cmd_buffer_compute_cls(cmd) < KEPLER_COMPUTE_A) {
++      const struct nvk_descriptor_state *desc = &cmd->state.cs.descriptors;
++      VkResult result = nvk_cmd_dispatch_fermi(cmd, cmd->state.cs.shader, desc,
++                                               desc->root, sizeof(desc->root),
++                                               global_size);
++      if (result != VK_SUCCESS)
++         vk_command_buffer_set_error(&cmd->vk, result);
++      return;
++   }
++
+    uint64_t qmd_addr = 0;
+    VkResult result = nvk_cmd_flush_cs_qmd(cmd, &cmd->state, global_size,
+                                           &qmd_addr, NULL);
+@@ -375,6 +562,14 @@
+ 
+    uint32_t group_count[3] = { groupCountX, groupCountY, groupCountZ };
+ 
++   if (nvk_cmd_buffer_compute_cls(cmd) < KEPLER_COMPUTE_A) {
++      VkResult result = nvk_cmd_dispatch_fermi(cmd, shader, NULL,
++                                               root, root_size, group_count);
++      if (result != VK_SUCCESS)
++         vk_command_buffer_set_error(&cmd->vk, result);
++      return;
++   }
++
+    uint64_t qmd_addr;
+    VkResult result = nvk_cmd_upload_qmd(cmd, shader, NULL,
+                                         root, root_size,
+--- a/src/nouveau/vulkan/nvk_cmd_draw.c	2026-11-25 16:08:54.770000021 +0200
++++ b/src/nouveau/vulkan/nvk_cmd_draw.c	2026-11-25 00:57:48.815950969 +0200
+@@ -4413,14 +4413,20 @@
+ 
+    for (mesa_shader_stage stage = 0; stage < MESA_SHADER_MESH_STAGES; stage++) {
+       const struct nvk_shader *shader = cmd->state.gfx.shaders[stage];
+-      if (shader == NULL || shader->bound_tex_map.tex_count == 0)
++      if (shader == NULL)
+          continue;
+ 
+-      uint32_t group = nvk_cbuf_binding_for_stage(stage, false);
+-      nvk_cmd_buffer_emit_bound_tex(cmd, desc, &shader->bound_tex_map,
+-                                    SUBC_NV9097,
+-                                    0x2400 + 0x20 * group,
+-                                    0x2404 + 0x20 * group);
++      if (shader->bound_tex_map.tex_count > 0) {
++         uint32_t group = nvk_cbuf_binding_for_stage(stage, false);
++         nvk_cmd_buffer_emit_bound_tex(cmd, desc, &shader->bound_tex_map,
++                                       SUBC_NV9097,
++                                       0x2400 + 0x20 * group,
++                                       0x2404 + 0x20 * group);
++      }
++
++      if (shader->bound_su_map.su_count > 0)
++         nvk_cmd_buffer_emit_bound_su(cmd, desc, &shader->bound_su_map,
++                                      SUBC_NV9097);
+    }
+ }
+ 
+--- a/src/nouveau/vulkan/nvk_descriptor_set.c	2026-11-18 17:56:09.000000000 +0200
++++ b/src/nouveau/vulkan/nvk_descriptor_set.c	2026-11-25 16:05:14.477519919 +0200
+@@ -18,6 +18,7 @@
+ 
+ #include "util/format/u_format.h"
+ 
++#include "cla097.h"
+ #include "clb097.h"
+ 
+ static inline uint32_t
+@@ -234,8 +235,10 @@
+       const uint8_t plane = 0;
+ 
+       desc.su_info = view->planes[plane].storage.desc.su_info;
+-   } else {
++   } else if (pdev->info.cls_eng3d >= KEPLER_A) {
+       desc.su_info = nil_fill_null_su_info(&pdev->info);
++   } else {
++      desc.fermi_su.format = 0x14000;
+    }
+ 
+    return desc;
+@@ -347,14 +350,21 @@
+       if (view != NULL)
+          desc = view->desc;
+       write_desc(w, binding, elem, &desc, sizeof(desc));
+-   } else {// Kepler
++   } else {// Kepler / Fermi
+       struct nvk_kepler_storage_buffer_view_descriptor desc = { };
+       assert(descType == VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER);
+ 
+-      if (view != NULL)
+-         desc.su_info = view->su_info;
+-      else
+-         desc.su_info = nil_fill_null_su_info(&w->pdev->info);
++      if (w->pdev->info.cls_eng3d >= KEPLER_A) {
++         if (view != NULL)
++            desc.su_info = view->su_info;
++         else
++            desc.su_info = nil_fill_null_su_info(&w->pdev->info);
++      } else {
++         if (view != NULL)
++            desc.fermi_su = view->fermi_su;
++         else
++            desc.fermi_su.format = 0x14000;
++      }
+ 
+       write_desc(w, binding, elem, &desc, sizeof(desc));
+    }
+--- a/src/nouveau/vulkan/nvk_descriptor_types.h	2026-11-18 17:56:09.000000000 +0200
++++ b/src/nouveau/vulkan/nvk_descriptor_types.h	2026-11-25 16:05:07.177454280 +0200
+@@ -26,9 +26,20 @@
+  * only exception is that, on Kepler, we can put the su_info directly in the
+  * descriptor set because it's all software anyway.
+  */
++struct nvk_fermi_su_descriptor {
++   uint32_t addr_hi;
++   uint32_t addr_lo;
++   uint32_t width;
++   uint32_t height;
++   uint32_t format;
++   uint32_t tile_mode;
++   uint32_t _pad[2];
++};
++
+ union nvk_image_descriptor {
+    struct nil_descriptor desc;
+    struct nil_su_info su_info;
++   struct nvk_fermi_su_descriptor fermi_su;
+ };
+ static_assert(sizeof(struct nil_descriptor) == NVK_TEXTURE_HEADER_SIZE,
+               "All image heap descriptors are 32 bytes");
+@@ -58,11 +69,17 @@
+               "nvk_storage_image_descriptor has no holes");
+ 
+ struct nvk_kepler_storage_image_descriptor {
+-   struct nil_su_info su_info;
++   union {
++      struct nil_su_info su_info;
++      struct nvk_fermi_su_descriptor fermi_su;
++   };
+ };
+ 
+ struct nvk_kepler_storage_buffer_view_descriptor {
+-   struct nil_su_info su_info;
++   union {
++      struct nil_su_info su_info;
++      struct nvk_fermi_su_descriptor fermi_su;
++   };
+ };
+ 
+ PRAGMA_DIAGNOSTIC_PUSH
+--- a/src/nouveau/vulkan/nvk_image_view.c	2026-11-18 17:56:09.000000000 +0200
++++ b/src/nouveau/vulkan/nvk_image_view.c	2026-11-25 01:11:44.054002890 +0200
+@@ -13,6 +13,7 @@
+ 
+ #include "vk_format.h"
+ 
++#include "cla097.h"
+ #include "clb097.h"
+ 
+ static enum nil_view_type
+@@ -221,10 +222,27 @@
+             view->planes[view_plane].storage.desc.desc =
+                nil_image_view_descriptor(&pdev->info, &nil_image,
+                                          &nil_view, base_addr);
+-         } else {
++         } else if (pdev->info.cls_eng3d >= KEPLER_A) {
+             assert(view_plane == 0);
+             view->planes[view_plane].storage.desc.su_info =
+                nil_fill_su_info(&pdev->info, &nil_image, &nil_view, base_addr);
++         } else {
++            assert(view_plane == 0);
++            const struct nil_image_level *lvl = &nil_image.levels[nil_view.base_level];
++            const bool is_tiled = lvl->tiling.gob_type != NIL_GOB_TYPE_LINEAR;
++            uint64_t addr = base_addr + lvl->offset_B +
++               (uint64_t)nil_view.base_array_layer * nil_image.array_stride_B;
++            uint32_t w = u_minify(nil_image.extent_px.width, nil_view.base_level);
++            uint32_t h = u_minify(nil_image.extent_px.height, nil_view.base_level);
++            uint8_t rt_fmt = nil_format_to_color_target(nil_view.format.p_format);
++            view->planes[view_plane].storage.desc.fermi_su = (struct nvk_fermi_su_descriptor) {
++               .addr_hi = addr >> 32,
++               .addr_lo = (uint32_t)addr,
++               .width = w,
++               .height = h | (is_tiled ? 0 : (1u << 20)),
++               .format = ((uint32_t)rt_fmt << 4) | (0x14u << 12),
++               .tile_mode = is_tiled ? ((uint32_t)lvl->tiling.y_log2 << 4) : 0,
++            };
+          }
+       }
+    }
+--- a/src/nouveau/vulkan/nvk_nir_lower_descriptors.c	2026-11-25 16:08:54.770737057 +0200
++++ b/src/nouveau/vulkan/nvk_nir_lower_descriptors.c	2026-11-25 01:01:59.101459044 +0200
+@@ -68,6 +68,7 @@
+    struct hash_table *cbufs;
+    struct nvk_cbuf_map *cbuf_map;
+    struct nvk_bound_tex_map *bound_tex_map;
++   struct nvk_bound_su_map *bound_su_map;
+ };
+ 
+ static bool
+@@ -1046,6 +1047,26 @@
+ }
+ 
+ static bool
++try_add_bound_su(struct nvk_bound_su_map *map,
++                 const struct nvk_bound_su *entry,
++                 uint32_t *slot_out)
++{
++   for (uint32_t i = 0; i < map->su_count; i++) {
++      if (memcmp(&map->sus[i], entry, sizeof(*entry)) == 0) {
++         *slot_out = i;
++         return true;
++      }
++   }
++
++   if (map->su_count >= NVK_MAX_BOUND_SU)
++      return false;
++
++   *slot_out = map->su_count;
++   map->sus[map->su_count++] = *entry;
++   return true;
++}
++
++static bool
+ lower_image_intrin(nir_builder *b, nir_intrinsic_instr *intrin,
+                    const struct lower_descriptors_ctx *ctx)
+ {
+@@ -1057,6 +1078,35 @@
+    }
+ 
+    b->cursor = nir_before_instr(&intrin->instr);
++
++   if (ctx->dev_info->cls_eng3d < KEPLER_A && ctx->bound_su_map != NULL &&
++       (intrin->intrinsic == nir_intrinsic_image_deref_load ||
++        intrin->intrinsic == nir_intrinsic_image_deref_store)) {
++      uint32_t set, binding;
++      nir_def *index;
++      get_resource_deref_binding(b, deref, &set, &binding, &index);
++      const struct nvk_descriptor_set_binding_layout *layout =
++         get_binding_layout(set, binding, ctx);
++
++      if (nir_src_is_const(nir_src_for_ssa(index))) {
++         uint32_t idx = nir_src_as_uint(nir_src_for_ssa(index));
++         if (ctx->clamp_desc_array_bounds)
++            idx = MIN2(idx, layout->array_size - 1);
++
++         struct nvk_bound_su entry = {
++            .set = set,
++            .desc_offset = layout->offset + idx * layout->stride,
++         };
++
++         uint32_t slot;
++         if (try_add_bound_su(ctx->bound_su_map, &entry, &slot)) {
++            nir_rewrite_image_intrinsic(intrin, nir_imm_int(b, slot),
++                                        nir_image_intrinsic_type_default);
++            return true;
++         }
++      }
++   }
++
+    nir_def *desc = load_resource_deref_desc(b, 1, 32, deref, 0, ctx);
+    nir_rewrite_image_intrinsic(intrin, desc, nir_image_intrinsic_type_bindless);
+ 
+@@ -1278,6 +1328,41 @@
+    return true;
+ }
+ 
++static void
++emit_fermi_tex_waterfall(nir_builder *b, nir_tex_instr *tex, nir_def *idx,
++                         const uint32_t *slots, uint32_t count)
++{
++   assert(count >= 1);
++   if (count == 1) {
++      tex->texture_index = slots[0];
++      return;
++   }
++
++   nir_def *results[NVK_MAX_BOUND_TEX];
++   for (uint32_t i = 0; i < count - 1; i++) {
++      nir_push_if(b, nir_ieq_imm(b, idx, i));
++      nir_tex_instr *clone =
++         nir_instr_as_tex(nir_instr_clone(b->shader, &tex->instr));
++      clone->texture_index = slots[i];
++      nir_builder_instr_insert(b, &clone->instr);
++      results[i] = &clone->def;
++      nir_push_else(b, NULL);
++   }
++
++   nir_tex_instr *last =
++      nir_instr_as_tex(nir_instr_clone(b->shader, &tex->instr));
++   last->texture_index = slots[count - 1];
++   nir_builder_instr_insert(b, &last->instr);
++   nir_def *res = &last->def;
++
++   for (int i = (int)count - 2; i >= 0; i--) {
++      nir_pop_if(b, NULL);
++      res = nir_if_phi(b, results[i], res);
++   }
++
++   nir_def_replace(&tex->def, res);
++}
++
+ static bool
+ lower_tex(nir_builder *b, nir_tex_instr *tex,
+           const struct lower_descriptors_ctx *ctx)
+@@ -1310,10 +1395,24 @@
+       uint32_t tex_set, tex_binding;
+       nir_def *tex_index;
+       get_resource_deref_binding(b, texture, &tex_set, &tex_binding, &tex_index);
++      const struct nvk_descriptor_set_binding_layout *tex_layout =
++         get_binding_layout(tex_set, tex_binding, ctx);
++      const bool tex_const = nir_src_is_const(nir_src_for_ssa(tex_index));
++
++      uint32_t samp_set = 0, samp_binding = 0;
++      nir_def *samp_index = NULL;
++      const struct nvk_descriptor_set_binding_layout *samp_layout = NULL;
++      bool need_samp = nir_tex_instr_need_sampler(tex);
++      bool same_samp = need_samp && (sampler == NULL || sampler == texture);
++      bool samp_const = true;
++      if (need_samp && !same_samp) {
++         get_resource_deref_binding(b, sampler, &samp_set, &samp_binding,
++                                    &samp_index);
++         samp_layout = get_binding_layout(samp_set, samp_binding, ctx);
++         samp_const = nir_src_is_const(nir_src_for_ssa(samp_index));
++      }
+ 
+-      if (nir_src_is_const(nir_src_for_ssa(tex_index))) {
+-         const struct nvk_descriptor_set_binding_layout *tex_layout =
+-            get_binding_layout(tex_set, tex_binding, ctx);
++      if (tex_const && samp_const) {
+          uint32_t tex_idx = nir_src_as_uint(nir_src_for_ssa(tex_index));
+          if (ctx->clamp_desc_array_bounds)
+             tex_idx = MIN2(tex_idx, tex_layout->array_size - 1);
+@@ -1324,38 +1423,77 @@
+                                tex_idx * tex_layout->stride + plane_offset_B,
+          };
+ 
+-         bool ok = true;
+-         if (!nir_tex_instr_need_sampler(tex)) {
++         if (!need_samp) {
+             entry.has_sampler = 0;
+-         } else if (sampler == NULL || sampler == texture) {
++         } else if (same_samp) {
+             entry.has_sampler = 1;
+             entry.samp_set = entry.tex_set;
+             entry.samp_desc_offset = entry.tex_desc_offset;
+          } else {
+-            uint32_t samp_set, samp_binding;
+-            nir_def *samp_index;
+-            get_resource_deref_binding(b, sampler, &samp_set, &samp_binding, &samp_index);
+-            if (nir_src_is_const(nir_src_for_ssa(samp_index))) {
+-               const struct nvk_descriptor_set_binding_layout *samp_layout =
+-                  get_binding_layout(samp_set, samp_binding, ctx);
+-               uint32_t samp_idx = nir_src_as_uint(nir_src_for_ssa(samp_index));
+-               if (ctx->clamp_desc_array_bounds)
+-                  samp_idx = MIN2(samp_idx, samp_layout->array_size - 1);
++            uint32_t samp_idx = nir_src_as_uint(nir_src_for_ssa(samp_index));
++            if (ctx->clamp_desc_array_bounds)
++               samp_idx = MIN2(samp_idx, samp_layout->array_size - 1);
+ 
+-               entry.has_sampler = 1;
+-               entry.samp_set = samp_set;
+-               entry.samp_desc_offset = samp_layout->offset +
+-                                        samp_idx * samp_layout->stride + plane_offset_B;
+-            } else {
+-               ok = false;
+-            }
++            entry.has_sampler = 1;
++            entry.samp_set = samp_set;
++            entry.samp_desc_offset = samp_layout->offset +
++                                     samp_idx * samp_layout->stride + plane_offset_B;
+          }
+ 
+          uint32_t slot;
+-         if (ok && try_add_bound_tex(ctx->bound_tex_map, &entry, &slot)) {
++         if (try_add_bound_tex(ctx->bound_tex_map, &entry, &slot)) {
+             tex->texture_index = slot;
+             return true;
+          }
++      } else if ((!tex_const && (same_samp || !need_samp || samp_const ||
++                                 (tex_index == samp_index &&
++                                  tex_layout->array_size == samp_layout->array_size))) ||
++                 (tex_const && !samp_const)) {
++         nir_def *dyn_idx = tex_const ? samp_index : tex_index;
++         uint32_t count = tex_const ? samp_layout->array_size : tex_layout->array_size;
++
++         if (count > 0 && count <= NVK_MAX_BOUND_TEX) {
++            uint32_t slots[NVK_MAX_BOUND_TEX];
++            bool ok = true;
++            for (uint32_t i = 0; i < count; i++) {
++               uint32_t ti = tex_const ? nir_src_as_uint(nir_src_for_ssa(tex_index)) : i;
++               if (ctx->clamp_desc_array_bounds)
++                  ti = MIN2(ti, tex_layout->array_size - 1);
++
++               struct nvk_bound_tex entry = {
++                  .tex_set = tex_set,
++                  .tex_desc_offset = tex_layout->offset +
++                                     ti * tex_layout->stride + plane_offset_B,
++               };
++
++               if (!need_samp) {
++                  entry.has_sampler = 0;
++               } else if (same_samp) {
++                  entry.has_sampler = 1;
++                  entry.samp_set = entry.tex_set;
++                  entry.samp_desc_offset = entry.tex_desc_offset;
++               } else {
++                  uint32_t si = samp_const ? nir_src_as_uint(nir_src_for_ssa(samp_index)) : i;
++                  if (ctx->clamp_desc_array_bounds)
++                     si = MIN2(si, samp_layout->array_size - 1);
++
++                  entry.has_sampler = 1;
++                  entry.samp_set = samp_set;
++                  entry.samp_desc_offset = samp_layout->offset +
++                                           si * samp_layout->stride + plane_offset_B;
++               }
++
++               if (!try_add_bound_tex(ctx->bound_tex_map, &entry, &slots[i])) {
++                  ok = false;
++                  break;
++               }
++            }
++
++            if (ok) {
++               emit_fermi_tex_waterfall(b, tex, dyn_idx, slots, count);
++               return true;
++            }
++         }
+       }
+    }
+ 
+@@ -1626,14 +1764,18 @@
+                           uint32_t set_layout_count,
+                           struct vk_descriptor_set_layout * const *set_layouts,
+                           struct nvk_cbuf_map *cbuf_map_out,
+-                          struct nvk_bound_tex_map *bound_tex_map_out)
++                          struct nvk_bound_tex_map *bound_tex_map_out,
++                          struct nvk_bound_su_map *bound_su_map_out)
+ {
+    if (bound_tex_map_out != NULL)
+       memset(bound_tex_map_out, 0, sizeof(*bound_tex_map_out));
++   if (bound_su_map_out != NULL)
++      memset(bound_su_map_out, 0, sizeof(*bound_su_map_out));
+ 
+    struct lower_descriptors_ctx ctx = {
+       .dev_info = &pdev->info,
+       .bound_tex_map = bound_tex_map_out,
++      .bound_su_map = bound_su_map_out,
+       .use_bindless_cbuf = nvk_use_bindless_cbuf(&pdev->info),
+       .use_bindless_cbuf_2 = nvk_use_bindless_cbuf_2(&pdev->info),
+       .use_edb_buffer_views = nvk_use_edb_buffer_views(pdev),
+--- a/src/nouveau/vulkan/nvk_queue.c	2026-11-25 16:08:54.770971951 +0200
++++ b/src/nouveau/vulkan/nvk_queue.c	2026-11-25 01:17:09.925402081 +0200
+@@ -231,6 +231,7 @@
+          P_NV90C0_SET_SHADER_LOCAL_MEMORY_B(p, slm_addr);
+          P_NV90C0_SET_SHADER_LOCAL_MEMORY_C(p, slm_size >> 32);
+          P_NV90C0_SET_SHADER_LOCAL_MEMORY_D(p, slm_size);
++         P_NV90C0_SET_SHADER_LOCAL_MEMORY_E(p, slm_per_warp);
+       } else if (queue->engines & NVKMD_ENGINE_COMPUTE) {
+          P_MTHD(p, NVA0C0, SET_SHADER_LOCAL_MEMORY_A);
+          P_NVA0C0_SET_SHADER_LOCAL_MEMORY_A(p, slm_addr >> 32);
+--- a/src/nouveau/vulkan/nvk_shader.c	2026-11-25 16:08:54.771176859 +0200
++++ b/src/nouveau/vulkan/nvk_shader.c	2026-11-25 01:04:01.870146531 +0200
+@@ -380,7 +380,8 @@
+               uint32_t set_layout_count,
+               struct vk_descriptor_set_layout * const *set_layouts,
+               struct nvk_cbuf_map *cbuf_map_out,
+-              struct nvk_bound_tex_map *bound_tex_map_out)
++              struct nvk_bound_tex_map *bound_tex_map_out,
++              struct nvk_bound_su_map *bound_su_map_out)
+ {
+    struct nvk_physical_device *pdev = nvk_device_physical_mut(dev);
+ 
+@@ -432,11 +433,12 @@
+    NIR_PASS(_, nir, nir_opt_access, &opt_access_options);
+ 
+    /* On Kepler, we have to lower images to addresses */
+-   if (pdev->info.cls_eng3d < MAXWELL_A)
++   if (pdev->info.cls_eng3d >= KEPLER_A && pdev->info.cls_eng3d < MAXWELL_A)
+       NIR_PASS(_, nir, nak_nir_lower_image_addrs, pdev->nak);
+ 
+    NIR_PASS(_, nir, nvk_nir_lower_descriptors, pdev, shader_flags, rs,
+-            set_layout_count, set_layouts, cbuf_map, bound_tex_map_out);
++            set_layout_count, set_layouts, cbuf_map,
++            bound_tex_map_out, bound_su_map_out);
+ 
+    if (nvk_use_bindless_cbuf(&pdev->info)) {
+       /* On Turing+ where we have bindless cbufs, we use ACCESS_NON_UNIFORM to
+@@ -1131,7 +1133,8 @@
+                    const VkAllocationCallbacks* pAllocator,
+                    struct vk_shader **shader_out,
+                    struct nvk_cbuf_map *cbuf_map,
+-                   struct nvk_bound_tex_map *bound_tex_map)
++                   struct nvk_bound_tex_map *bound_tex_map,
++                   struct nvk_bound_su_map *bound_su_map)
+ {
+    struct nvk_shader *shader;
+    VkResult result;
+@@ -1149,12 +1152,13 @@
+    if (!nir->info.io_lowered) {
+       nvk_lower_nir(dev, nir, info->flags, info->robustness,
+                   info->set_layout_count, info->set_layouts,
+-                  cbuf_map, bound_tex_map);
++                  cbuf_map, bound_tex_map, bound_su_map);
+    }
+ 
+    nvk_lower_nir_late(nir, info->flags);
+    shader->cbuf_map = *cbuf_map;
+    shader->bound_tex_map = *bound_tex_map;
++   shader->bound_su_map = *bound_su_map;
+ 
+    struct nak_fs_key fs_key_tmp, *fs_key = NULL;
+    if (nir->info.stage == MESA_SHADER_FRAGMENT) {
+@@ -1226,8 +1230,10 @@
+    struct vk_shader *shader = NULL;
+    struct nvk_cbuf_map cbuf_map = {0};
+    struct nvk_bound_tex_map bound_tex_map = {0};
++   struct nvk_bound_su_map bound_su_map = {0};
+    VkResult result = nvk_compile_shader(dev, &info, NULL, alloc, &shader,
+-                                        &cbuf_map, &bound_tex_map);
++                                        &cbuf_map, &bound_tex_map,
++                                        &bound_su_map);
+    if (result != VK_SUCCESS)
+       return result;
+ 
+@@ -1285,6 +1291,8 @@
+    memset(cbuf_maps, 0, sizeof(cbuf_maps));
+    struct nvk_bound_tex_map bound_tex_maps[shader_count];
+    memset(bound_tex_maps, 0, sizeof(bound_tex_maps));
++   struct nvk_bound_su_map bound_su_maps[shader_count];
++   memset(bound_su_maps, 0, sizeof(bound_su_maps));
+ 
+    /* Lower shaders, notably lowering I/O. This is a prerequisite for
+     * intershader optimization.
+@@ -1313,7 +1321,7 @@
+ 
+       nvk_lower_nir(dev, nir, info->flags, info->robustness,
+                     info->set_layout_count, info->set_layouts,
+-                    &cbuf_maps[i], &bound_tex_maps[i]);
++                    &cbuf_maps[i], &bound_tex_maps[i], &bound_su_maps[i]);
+ 
+       if (nir->xfb_info) {
+          /* Fold constant offset srcs for IO. */
+@@ -1331,7 +1339,8 @@
+    for (uint32_t i = 0; i < shader_count; i++) {
+       VkResult result = nvk_compile_shader(dev, &infos[i], state,
+                                            pAllocator, &shaders_out[i],
+-                                           &cbuf_maps[i], &bound_tex_maps[i]);
++                                           &cbuf_maps[i], &bound_tex_maps[i],
++                                           &bound_su_maps[i]);
+       if (result != VK_SUCCESS) {
+          /* Clean up all the shaders before this point */
+          for (uint32_t j = 0; j < i; j++)
+@@ -1384,6 +1393,8 @@
+ 
+    struct nvk_bound_tex_map bound_tex_map;
+    blob_copy_bytes(blob, &bound_tex_map, sizeof(bound_tex_map));
++   struct nvk_bound_su_map bound_su_map;
++   blob_copy_bytes(blob, &bound_su_map, sizeof(bound_su_map));
+ 
+    bool sample_shading_enable;
+    blob_copy_bytes(blob, &sample_shading_enable, sizeof(sample_shading_enable));
+@@ -1411,6 +1422,7 @@
+    shader->info = info;
+    shader->cbuf_map = cbuf_map;
+    shader->bound_tex_map = bound_tex_map;
++   shader->bound_su_map = bound_su_map;
+    shader->sample_shading_enable = sample_shading_enable;
+    shader->min_sample_shading = min_sample_shading;
+    shader->code_size = code_size;
+@@ -1473,6 +1485,7 @@
+    blob_write_bytes(blob, &shader->info, sizeof(shader->info));
+    blob_write_bytes(blob, &shader->cbuf_map, sizeof(shader->cbuf_map));
+    blob_write_bytes(blob, &shader->bound_tex_map, sizeof(shader->bound_tex_map));
++   blob_write_bytes(blob, &shader->bound_su_map, sizeof(shader->bound_su_map));
+    blob_write_bytes(blob, &shader->sample_shading_enable,
+                     sizeof(shader->sample_shading_enable));
+    blob_write_bytes(blob, &shader->min_sample_shading,
+--- a/src/nouveau/vulkan/nvk_shader.h	2026-11-25 16:08:54.771436151 +0200
++++ b/src/nouveau/vulkan/nvk_shader.h	2026-11-25 00:55:03.802845453 +0200
+@@ -108,6 +108,23 @@
+    struct nvk_bound_tex texs[NVK_MAX_BOUND_TEX];
+ };
+ 
++#define NVK_MAX_BOUND_SU 8
++
++PRAGMA_DIAGNOSTIC_PUSH
++PRAGMA_DIAGNOSTIC_ERROR(-Wpadded)
++struct nvk_bound_su {
++   uint8_t set;
++   uint8_t _pad[3];
++   uint32_t desc_offset;
++};
++PRAGMA_DIAGNOSTIC_POP
++static_assert(sizeof(struct nvk_bound_su) == 8, "This struct has no holes");
++
++struct nvk_bound_su_map {
++   uint32_t su_count;
++   struct nvk_bound_su sus[NVK_MAX_BOUND_SU];
++};
++
+ uint16_t
+ nvk_max_shader_push_dw(const struct nvk_physical_device *pdev,
+                        mesa_shader_stage stage, bool last_vtgm);
+@@ -118,6 +135,7 @@
+    struct nak_shader_info info;
+    struct nvk_cbuf_map cbuf_map;
+    struct nvk_bound_tex_map bound_tex_map;
++   struct nvk_bound_su_map bound_su_map;
+ 
+    /* Only relevant for fragment shaders */
+    bool sample_shading_enable;
+@@ -179,7 +197,8 @@
+                           uint32_t set_layout_count,
+                           struct vk_descriptor_set_layout * const *set_layouts,
+                           struct nvk_cbuf_map *cbuf_map_out,
+-                          struct nvk_bound_tex_map *bound_tex_map_out);
++                          struct nvk_bound_tex_map *bound_tex_map_out,
++                          struct nvk_bound_su_map *bound_su_map_out);
+ 
+ bool nvk_nir_lower_mesh_shader(nir_shader *nir, VkShaderCreateFlagsEXT shader_flags);
+ bool nvk_nir_lower_task_shader(nir_shader *nir);

@@ -1,0 +1,885 @@
+From ef2f949402e3763d0149cd3394338ca4298d9e7a Mon Sep 17 00:00:00 2001
+From: Twilight0 <twilight0@vivaldi.net>
+Date: Tue, 24 Nov 2026 23:36:47 +0200
+Subject: [PATCH 2/2] nouveau,nvk,nak: Fermi bound textures and NV9039 M2MF
+ copy/upload support
+
+- Lower constant-index Fermi (< KEPLER_A) sampled textures to
+  NAK_NIR_TEX_REF_TYPE_BOUND via nvk_bound_tex_map and emit BIND_TSC /
+  BIND_TIC before graphics draws and compute dispatches.
+- Use NV9039 (M2MF) with NVKMD_ENGINE_3D for Fermi upload_queue and
+  nouveau_copy_rect_m2mf() for identity-remap Fermi image/buffer copies.
+- Guard Kepler-only NVA0C0 compute init/SLM/cache-invalidate methods and
+  compute-QMD meta image copies behind >= KEPLER_COMPUTE_A.
+
+Verified on GeForce GT 555M (NVC3/GF106): offscreen linear/optimal
+untextured & textured draws and vkcube --wsi wayland (101.8 FPS) pass
+with zero kernel faults.
+
+Assisted-by: LLM
+---
+ src/nouveau/compiler/nak_nir_lower_tex.c      |   4 +-
+ src/nouveau/vulkan/nvk_cmd_buffer.c           |  69 ++++++++++
+ src/nouveau/vulkan/nvk_cmd_buffer.h           |   6 +
+ src/nouveau/vulkan/nvk_cmd_copy.c             | 126 ++++++++++++++++++
+ src/nouveau/vulkan/nvk_cmd_dispatch.c         |  26 ++--
+ src/nouveau/vulkan/nvk_cmd_draw.c             |  22 +++
+ src/nouveau/vulkan/nvk_cmd_meta.c             |   6 +
+ .../vulkan/nvk_nir_lower_descriptors.c        |  82 +++++++++++-
+ src/nouveau/vulkan/nvk_queue.c                |  16 ++-
+ src/nouveau/vulkan/nvk_shader.c               |  27 +++-
+ src/nouveau/vulkan/nvk_shader.h               |  24 +++-
+ src/nouveau/vulkan/nvk_upload_queue.c         |  83 ++++++++----
+ 12 files changed, 447 insertions(+), 44 deletions(-)
+
+diff --git a/src/nouveau/compiler/nak_nir_lower_tex.c b/src/nouveau/compiler/nak_nir_lower_tex.c
+index 524f88b8..992dac9d 100644
+--- a/src/nouveau/compiler/nak_nir_lower_tex.c
++++ b/src/nouveau/compiler/nak_nir_lower_tex.c
+@@ -225,7 +225,9 @@ lower_tex(nir_builder *b, nir_tex_instr *tex, const struct nak_compiler *nak)
+    }
+ 
+    enum nak_nir_tex_ref_type ref_type = NAK_NIR_TEX_REF_TYPE_BINDLESS;
+-   if (has_cbuf_tex(nak) && tex_handle_as_cbuf(tex_h, &tex->texture_index)) {
++   if (nak->sm < 30 && tex_h == NULL) {
++      ref_type = NAK_NIR_TEX_REF_TYPE_BOUND;
++   } else if (has_cbuf_tex(nak) && tex_handle_as_cbuf(tex_h, &tex->texture_index)) {
+       ref_type = NAK_NIR_TEX_REF_TYPE_CBUF;
+       tex_h = NULL;
+    }
+diff --git a/src/nouveau/vulkan/nvk_cmd_buffer.c b/src/nouveau/vulkan/nvk_cmd_buffer.c
+index d40984b0..0a7afa79 100644
+--- a/src/nouveau/vulkan/nvk_cmd_buffer.c
++++ b/src/nouveau/vulkan/nvk_cmd_buffer.c
+@@ -153,9 +153,13 @@ nvk_cmd_buffer_queue_flags(struct nvk_cmd_buffer *cmd)
+ static uint8_t
+ nvk_cmd_buffer_subchannel_mask(struct nvk_cmd_buffer *cmd)
+ {
++   const struct nvk_physical_device *pdev =
++      nvk_device_physical(nvk_cmd_buffer_device(cmd));
+    VkQueueFlags queue_flags = nvk_cmd_buffer_queue_flags(cmd);
+    enum nvkmd_engines engines =
+       nvk_queue_engines_from_queue_flags(queue_flags);
++   if (pdev->info.cls_eng3d < KEPLER_A && (engines & NVKMD_ENGINE_COPY))
++      engines |= NVKMD_ENGINE_M2MF;
+    return nvk_queue_subchannels_from_engines(engines);
+ }
+ 
+@@ -1585,3 +1589,68 @@ nvk_CmdPushDescriptorSetWithTemplate2KHR(
+                                             VK_SHADER_STAGE_COMPUTE_BIT,
+                                        set, set + 1);
+ }
++
++static struct nvk_sampled_image_descriptor
++nvk_cmd_buffer_read_sampled_image_desc(const struct nvk_descriptor_state *desc,
++                                       uint8_t set_idx, uint32_t offset)
++{
++   struct nvk_sampled_image_descriptor img_desc = {0};
++
++   if (set_idx >= NVK_MAX_SETS)
++      return img_desc;
++
++   switch (desc->sets[set_idx].type) {
++   case NVK_DESCRIPTOR_SET_TYPE_SET: {
++      struct nvk_descriptor_set *set = desc->sets[set_idx].set;
++      if (set != NULL && set->map != NULL)
++         memcpy(&img_desc, (const uint8_t *)set->map + offset, sizeof(img_desc));
++      break;
++   }
++   case NVK_DESCRIPTOR_SET_TYPE_PUSH: {
++      struct nvk_push_descriptor_set *push = desc->sets[set_idx].push;
++      if (push != NULL)
++         memcpy(&img_desc, &push->data[offset], sizeof(img_desc));
++      break;
++   }
++   default:
++      break;
++   }
++
++   return img_desc;
++}
++
++void
++nvk_cmd_buffer_emit_bound_tex(struct nvk_cmd_buffer *cmd,
++                              const struct nvk_descriptor_state *desc,
++                              const struct nvk_bound_tex_map *map,
++                              uint8_t subc,
++                              uint32_t bind_tsc_mthd,
++                              uint32_t bind_tic_mthd)
++{
++   if (map->tex_count == 0)
++      return;
++
++   struct nv_push *p = nvk_cmd_buffer_push(cmd, 4 * map->tex_count);
++   for (uint32_t slot = 0; slot < map->tex_count; slot++) {
++      const struct nvk_bound_tex *bt = &map->texs[slot];
++      struct nvk_sampled_image_descriptor tex_desc =
++         nvk_cmd_buffer_read_sampled_image_desc(desc, bt->tex_set,
++                                                bt->tex_desc_offset);
++      uint32_t tic_idx = tex_desc.image_index;
++      uint32_t tsc_idx = 0;
++      if (bt->has_sampler) {
++         struct nvk_sampled_image_descriptor samp_desc =
++            (bt->samp_set == bt->tex_set &&
++             bt->samp_desc_offset == bt->tex_desc_offset)
++            ? tex_desc
++            : nvk_cmd_buffer_read_sampled_image_desc(desc, bt->samp_set,
++                                                     bt->samp_desc_offset);
++         tsc_idx = samp_desc.sampler_index;
++      }
++
++      __push_mthd(p, subc, bind_tsc_mthd);
++      P_INLINE_DATA(p, (tsc_idx << 12) | (slot << 4) | 1);
++      __push_mthd(p, subc, bind_tic_mthd);
++      P_INLINE_DATA(p, (tic_idx << 9) | (slot << 1) | 1);
++   }
++}
+diff --git a/src/nouveau/vulkan/nvk_cmd_buffer.h b/src/nouveau/vulkan/nvk_cmd_buffer.h
+index aa0c3a52..dd31224c 100644
+--- a/src/nouveau/vulkan/nvk_cmd_buffer.h
++++ b/src/nouveau/vulkan/nvk_cmd_buffer.h
+@@ -499,6 +499,12 @@ VkResult nvk_cmd_flush_cs_qmd(struct nvk_cmd_buffer *cmd,
+ void nvk_cmd_flush_gfx_dynamic_state(struct nvk_cmd_buffer *cmd);
+ void nvk_cmd_flush_gfx_shaders(struct nvk_cmd_buffer *cmd);
+ void nvk_cmd_flush_gfx_cbufs(struct nvk_cmd_buffer *cmd);
++void nvk_cmd_buffer_emit_bound_tex(struct nvk_cmd_buffer *cmd,
++                                   const struct nvk_descriptor_state *desc,
++                                   const struct nvk_bound_tex_map *map,
++                                   uint8_t subc,
++                                   uint32_t bind_tsc_mthd,
++                                   uint32_t bind_tic_mthd);
+ 
+ void nvk_cmd_flush_image_heap(struct nvk_cmd_buffer *cmd,
+                               VkPipelineBindPoint bind_point);
+diff --git a/src/nouveau/vulkan/nvk_cmd_copy.c b/src/nouveau/vulkan/nvk_cmd_copy.c
+index 8c57b2a7..7eaa031d 100644
+--- a/src/nouveau/vulkan/nvk_cmd_copy.c
++++ b/src/nouveau/vulkan/nvk_cmd_copy.c
+@@ -16,7 +16,9 @@
+ #include "vk_format.h"
+ 
+ #include "nvtypes.h"
++#include "cla097.h"
+ #include "nv_push_cl902d.h"
++#include "nv_push_cl9039.h"
+ #include "nv_push_cl90b5.h"
+ #include "nv_push_cla040.h"
+ #include "nv_push_clc1b5.h"
+@@ -185,11 +187,135 @@ nil_to_nvcab5_gob_type(enum nil_gob_type gob_type)
+ #undef NVCAB5_GOB_KIND
+ }
+ 
++static void
++nouveau_copy_rect_m2mf(struct nvk_cmd_buffer *cmd,
++                       struct nouveau_copy *copy)
++{
++   assert(copy->src.bpp == copy->dst.bpp);
++   assert(copy->extent_el.depth == 1 || copy->extent_el.array_len == 1);
++
++   uint32_t layers = MAX2(copy->extent_el.depth, copy->extent_el.array_len);
++   for (unsigned z = 0; z < layers; z++) {
++      VkDeviceSize src_addr = copy->src.base_addr;
++      VkDeviceSize dst_addr = copy->dst.base_addr;
++
++      if (copy->src.image_type != VK_IMAGE_TYPE_3D)
++         src_addr += (z + copy->src.offset_el.a) * copy->src.array_stride;
++
++      if (copy->dst.image_type != VK_IMAGE_TYPE_3D)
++         dst_addr += (z + copy->dst.offset_el.a) * copy->dst.array_stride;
++
++      if (copy->src.tiling.gob_type == NIL_GOB_TYPE_LINEAR) {
++         src_addr += copy->src.offset_el.x * copy->src.bpp +
++                     copy->src.offset_el.y * copy->src.row_stride;
++      }
++
++      if (copy->dst.tiling.gob_type == NIL_GOB_TYPE_LINEAR) {
++         dst_addr += copy->dst.offset_el.x * copy->dst.bpp +
++                     copy->dst.offset_el.y * copy->dst.row_stride;
++      }
++
++      struct nv_push *p = nvk_cmd_buffer_push(cmd, 32);
++
++      P_MTHD(p, NV9039, OFFSET_OUT_UPPER);
++      P_NV9039_OFFSET_OUT_UPPER(p, dst_addr >> 32);
++      P_NV9039_OFFSET_OUT(p, dst_addr & 0xffffffff);
++
++      P_MTHD(p, NV9039, OFFSET_IN_UPPER);
++      P_NV9039_OFFSET_IN_UPPER(p, src_addr >> 32);
++      P_NV9039_OFFSET_IN(p, src_addr & 0xffffffff);
++      P_NV9039_PITCH_IN(p, copy->src.row_stride);
++      P_NV9039_PITCH_OUT(p, copy->dst.row_stride);
++      P_NV9039_LINE_LENGTH_IN(p, copy->extent_el.width * copy->src.bpp);
++      P_NV9039_LINE_COUNT(p, copy->extent_el.height);
++
++      uint32_t src_layout, dst_layout;
++      if (copy->src.tiling.gob_type != NIL_GOB_TYPE_LINEAR) {
++         assert(nil_gob_type_height(copy->src.tiling.gob_type) == 8);
++         P_MTHD(p, NV9039, SET_SRC_BLOCK_SIZE);
++         P_NV9039_SET_SRC_BLOCK_SIZE(p, {
++            .width = 0,
++            .height = copy->src.tiling.y_log2,
++            .depth = copy->src.tiling.z_log2,
++         });
++         P_NV9039_SET_SRC_WIDTH(p, copy->src.row_stride);
++         P_NV9039_SET_SRC_HEIGHT(p, copy->src.extent_el.height);
++         P_NV9039_SET_SRC_DEPTH(p, copy->src.extent_el.depth);
++         P_NV9039_SET_SRC_LAYER(p, copy->src.image_type == VK_IMAGE_TYPE_3D
++                                      ? (z + copy->src.offset_el.z) : 0);
++
++         P_MTHD(p, NV9039, SET_SRC_ORIGIN_BYTES_X);
++         P_NV9039_SET_SRC_ORIGIN_BYTES_X(p, copy->src.offset_el.x * copy->src.bpp);
++         P_NV9039_SET_SRC_ORIGIN_SAMPLES_Y(p, copy->src.offset_el.y);
++         src_layout = NV9039_LAUNCH_DMA_SRC_MEMORY_LAYOUT_BLOCKLINEAR;
++      } else {
++         src_layout = NV9039_LAUNCH_DMA_SRC_MEMORY_LAYOUT_PITCH;
++      }
++
++      if (copy->dst.tiling.gob_type != NIL_GOB_TYPE_LINEAR) {
++         assert(nil_gob_type_height(copy->dst.tiling.gob_type) == 8);
++         P_MTHD(p, NV9039, SET_DST_BLOCK_SIZE);
++         P_NV9039_SET_DST_BLOCK_SIZE(p, {
++            .width = 0,
++            .height = copy->dst.tiling.y_log2,
++            .depth = copy->dst.tiling.z_log2,
++         });
++         P_NV9039_SET_DST_WIDTH(p, copy->dst.row_stride);
++         P_NV9039_SET_DST_HEIGHT(p, copy->dst.extent_el.height);
++         P_NV9039_SET_DST_DEPTH(p, copy->dst.extent_el.depth);
++         P_NV9039_SET_DST_LAYER(p, copy->dst.image_type == VK_IMAGE_TYPE_3D
++                                      ? (z + copy->dst.offset_el.z) : 0);
++
++         P_MTHD(p, NV9039, SET_DST_ORIGIN_BYTES_X);
++         P_NV9039_SET_DST_ORIGIN_BYTES_X(p, copy->dst.offset_el.x * copy->dst.bpp);
++         P_NV9039_SET_DST_ORIGIN_SAMPLES_Y(p, copy->dst.offset_el.y);
++         dst_layout = NV9039_LAUNCH_DMA_DST_MEMORY_LAYOUT_BLOCKLINEAR;
++      } else {
++         dst_layout = NV9039_LAUNCH_DMA_DST_MEMORY_LAYOUT_PITCH;
++      }
++
++      P_IMMD(p, NV9039, LAUNCH_DMA, {
++         .src_inline = SRC_INLINE_FALSE,
++         .src_memory_layout = src_layout,
++         .dst_memory_layout = dst_layout,
++         .completion_type = COMPLETION_TYPE_FLUSH_ONLY,
++         .interrupt_type = INTERRUPT_TYPE_NONE,
++         .semaphore_struct_size = SEMAPHORE_STRUCT_SIZE_FOUR_WORDS,
++      });
++   }
++}
++
++static bool
++nouveau_copy_remap_is_identity(const struct nouveau_copy *copy)
++{
++   if (copy->remap.comp_size == 0)
++      return true;
++   if (copy->src.bpp != copy->dst.bpp)
++      return false;
++   uint32_t comps = copy->src.bpp / copy->remap.comp_size;
++   static const uint8_t identity[4] = {
++      NV90B5_SET_REMAP_COMPONENTS_DST_X_SRC_X,
++      NV90B5_SET_REMAP_COMPONENTS_DST_Y_SRC_Y,
++      NV90B5_SET_REMAP_COMPONENTS_DST_Z_SRC_Z,
++      NV90B5_SET_REMAP_COMPONENTS_DST_W_SRC_W,
++   };
++   for (uint32_t i = 0; i < comps && i < 4; i++) {
++      if (copy->remap.dst[i] != identity[i])
++         return false;
++   }
++   return true;
++}
++
+ static void
+ nouveau_copy_rect(struct nvk_cmd_buffer *cmd,
+                   struct nouveau_copy *copy,
+                   uint8_t data_transfer_type)
+ {
++   if (nvk_device_physical(nvk_cmd_buffer_device(cmd))->info.cls_eng3d < KEPLER_A &&
++       nouveau_copy_remap_is_identity(copy)) {
++      nouveau_copy_rect_m2mf(cmd, copy);
++      return;
++   }
+    uint32_t src_bw, dst_bw;
+    if (copy->remap.comp_size > 0) {
+       struct nv_push *p = nvk_cmd_buffer_push(cmd, 2);
+diff --git a/src/nouveau/vulkan/nvk_cmd_dispatch.c b/src/nouveau/vulkan/nvk_cmd_dispatch.c
+index c9b20ceb..fc4fd84f 100644
+--- a/src/nouveau/vulkan/nvk_cmd_dispatch.c
++++ b/src/nouveau/vulkan/nvk_cmd_dispatch.c
+@@ -43,7 +43,8 @@ nvk_push_dispatch_state_init(struct nvk_queue *queue, struct nv_push *p)
+    if (pdev->info.cls_compute == MAXWELL_COMPUTE_A)
+       P_IMMD(p, NVB0C0, SET_SELECT_MAXWELL_TEXTURE_HEADERS, V_TRUE);
+ 
+-   if (pdev->info.cls_compute < VOLTA_COMPUTE_A) {
++   if (pdev->info.cls_compute >= KEPLER_COMPUTE_A &&
++       pdev->info.cls_compute < VOLTA_COMPUTE_A) {
+       uint64_t shader_base_addr =
+          nvk_heap_contiguous_base_address(&dev->shader_heap);
+ 
+@@ -77,7 +78,7 @@ nvk_push_dispatch_state_init(struct nvk_queue *queue, struct nv_push *p)
+       P_MTHD(p, NVC3C0, SET_SHADER_LOCAL_MEMORY_WINDOW_A);
+       P_NVC3C0_SET_SHADER_LOCAL_MEMORY_WINDOW_A(p, temp >> 32);
+       P_NVC3C0_SET_SHADER_LOCAL_MEMORY_WINDOW_B(p, temp & 0xffffffff);
+-   } else {
++   } else if (pdev->info.cls_compute >= KEPLER_COMPUTE_A) {
+       P_MTHD(p, NVA0C0, SET_SHADER_LOCAL_MEMORY_WINDOW);
+       P_NVA0C0_SET_SHADER_LOCAL_MEMORY_WINDOW(p, 0xffu << 24);
+ 
+@@ -105,12 +106,14 @@ nvk_cmd_buffer_begin_compute(struct nvk_cmd_buffer *cmd,
+       if (nvk_cmd_buffer_compute_cls(cmd) >= MAXWELL_COMPUTE_B) {
+          P_IMMD(p, NVB1C0, INVALIDATE_SKED_CACHES, 0);
+       }
+-      P_IMMD(p, NVA0C0, INVALIDATE_SAMPLER_CACHE_NO_WFI, {
+-         .lines = LINES_ALL,
+-      });
+-      P_IMMD(p, NVA0C0, INVALIDATE_TEXTURE_HEADER_CACHE_NO_WFI, {
+-         .lines = LINES_ALL,
+-      });
++      if (nvk_cmd_buffer_compute_cls(cmd) >= KEPLER_COMPUTE_A) {
++         P_IMMD(p, NVA0C0, INVALIDATE_SAMPLER_CACHE_NO_WFI, {
++            .lines = LINES_ALL,
++         });
++         P_IMMD(p, NVA0C0, INVALIDATE_TEXTURE_HEADER_CACHE_NO_WFI, {
++            .lines = LINES_ALL,
++         });
++      }
+    }
+ }
+ 
+@@ -153,6 +156,13 @@ nvk_flush_compute_state(struct nvk_cmd_buffer *cmd,
+    nvk_descriptor_state_set_root_array(cmd, desc, cs.group_count,
+                                        0, 3, global_size);
+ 
++   if (nvk_cmd_buffer_compute_cls(cmd) < KEPLER_COMPUTE_A &&
++       cmd->state.cs.shader != NULL) {
++      nvk_cmd_buffer_emit_bound_tex(cmd, desc,
++                                    &cmd->state.cs.shader->bound_tex_map,
++                                    SUBC_NV90C0, 0x0228, 0x022c);
++   }
++
+    if (NAK_CAN_PRINTF)
+       nvk_cmd_buffer_flush_printf_buffer(cmd, desc);
+ }
+diff --git a/src/nouveau/vulkan/nvk_cmd_draw.c b/src/nouveau/vulkan/nvk_cmd_draw.c
+index d15412ae..125771a9 100644
+--- a/src/nouveau/vulkan/nvk_cmd_draw.c
++++ b/src/nouveau/vulkan/nvk_cmd_draw.c
+@@ -4447,6 +4447,27 @@ nvk_cmd_flush_gfx_cbufs(struct nvk_cmd_buffer *cmd)
+    }
+ }
+ 
++static void
++nvk_cmd_flush_gfx_bound_tex(struct nvk_cmd_buffer *cmd)
++{
++   if (nvk_cmd_buffer_3d_cls(cmd) >= KEPLER_A)
++      return;
++
++   struct nvk_descriptor_state *desc = &cmd->state.gfx.descriptors;
++
++   for (mesa_shader_stage stage = 0; stage < MESA_SHADER_MESH_STAGES; stage++) {
++      const struct nvk_shader *shader = cmd->state.gfx.shaders[stage];
++      if (shader == NULL || shader->bound_tex_map.tex_count == 0)
++         continue;
++
++      uint32_t group = nvk_cbuf_binding_for_stage(stage, false);
++      nvk_cmd_buffer_emit_bound_tex(cmd, desc, &shader->bound_tex_map,
++                                    SUBC_NV9097,
++                                    0x2400 + 0x20 * group,
++                                    0x2404 + 0x20 * group);
++   }
++}
++
+ static void
+ nvk_cmd_flush_gfx_state(struct nvk_cmd_buffer *cmd)
+ {
+@@ -4456,6 +4477,7 @@ nvk_cmd_flush_gfx_state(struct nvk_cmd_buffer *cmd)
+    nvk_cmd_flush_gfx_dynamic_state(cmd);
+    nvk_cmd_flush_gfx_shaders(cmd);
+    nvk_cmd_flush_gfx_cbufs(cmd);
++   nvk_cmd_flush_gfx_bound_tex(cmd);
+ 
+    if (NAK_CAN_PRINTF)
+       nvk_cmd_buffer_flush_printf_buffer(cmd, &cmd->state.gfx.descriptors);
+diff --git a/src/nouveau/vulkan/nvk_cmd_meta.c b/src/nouveau/vulkan/nvk_cmd_meta.c
+index 42d444cf..f533e75f 100644
+--- a/src/nouveau/vulkan/nvk_cmd_meta.c
++++ b/src/nouveau/vulkan/nvk_cmd_meta.c
+@@ -14,6 +14,7 @@
+ 
+ #include "nv_push_cl9097.h"
+ #include "nv_push_cl90c0.h"
++#include "cla0c0.h"
+ #include "nv_push_clb197.h"
+ 
+ static VkResult
+@@ -335,6 +336,11 @@ nvk_meta_image_copy_gfx_supported(struct nvk_image *img)
+ static bool
+ nvk_meta_image_copy_compute_supported(struct nvk_image *img)
+ {
++   const struct nvk_device *dev =
++      container_of(img->vk.base.device, struct nvk_device, vk);
++   if (nvk_device_physical(dev)->info.cls_compute < KEPLER_COMPUTE_A)
++      return false;
++
+    if (vk_format_is_depth_or_stencil(img->vk.format))
+       return false;
+    if (vk_format_is_compressed(img->vk.format))
+diff --git a/src/nouveau/vulkan/nvk_nir_lower_descriptors.c b/src/nouveau/vulkan/nvk_nir_lower_descriptors.c
+index 00b1f30f..a4acee8c 100644
+--- a/src/nouveau/vulkan/nvk_nir_lower_descriptors.c
++++ b/src/nouveau/vulkan/nvk_nir_lower_descriptors.c
+@@ -12,6 +12,7 @@
+ #include "nir_builder.h"
+ #include "nir_deref.h"
+ 
++#include "cla097.h"
+ #include "clb097.h"
+ #include "clc397.h"
+ #include "clc597.h"
+@@ -66,6 +67,7 @@ struct lower_descriptors_ctx {
+ 
+    struct hash_table *cbufs;
+    struct nvk_cbuf_map *cbuf_map;
++   struct nvk_bound_tex_map *bound_tex_map;
+ };
+ 
+ static bool
+@@ -1256,6 +1258,26 @@ lower_edb_buffer_tex_instr(nir_builder *b, nir_tex_instr *tex,
+    }
+ }
+ 
++static bool
++try_add_bound_tex(struct nvk_bound_tex_map *map,
++                  const struct nvk_bound_tex *entry,
++                  uint32_t *slot_out)
++{
++   for (uint32_t i = 0; i < map->tex_count; i++) {
++      if (memcmp(&map->texs[i], entry, sizeof(*entry)) == 0) {
++         *slot_out = i;
++         return true;
++      }
++   }
++
++   if (map->tex_count >= NVK_MAX_BOUND_TEX)
++      return false;
++
++   *slot_out = map->tex_count;
++   map->texs[map->tex_count++] = *entry;
++   return true;
++}
++
+ static bool
+ lower_tex(nir_builder *b, nir_tex_instr *tex,
+           const struct lower_descriptors_ctx *ctx)
+@@ -1284,6 +1306,59 @@ lower_tex(nir_builder *b, nir_tex_instr *tex,
+    const uint64_t plane_offset_B =
+       plane * sizeof(struct nvk_sampled_image_descriptor);
+ 
++   if (ctx->dev_info->cls_eng3d < KEPLER_A && ctx->bound_tex_map != NULL) {
++      uint32_t tex_set, tex_binding;
++      nir_def *tex_index;
++      get_resource_deref_binding(b, texture, &tex_set, &tex_binding, &tex_index);
++
++      if (nir_src_is_const(nir_src_for_ssa(tex_index))) {
++         const struct nvk_descriptor_set_binding_layout *tex_layout =
++            get_binding_layout(tex_set, tex_binding, ctx);
++         uint32_t tex_idx = nir_src_as_uint(nir_src_for_ssa(tex_index));
++         if (ctx->clamp_desc_array_bounds)
++            tex_idx = MIN2(tex_idx, tex_layout->array_size - 1);
++
++         struct nvk_bound_tex entry = {
++            .tex_set = tex_set,
++            .tex_desc_offset = tex_layout->offset +
++                               tex_idx * tex_layout->stride + plane_offset_B,
++         };
++
++         bool ok = true;
++         if (!nir_tex_instr_need_sampler(tex)) {
++            entry.has_sampler = 0;
++         } else if (sampler == NULL || sampler == texture) {
++            entry.has_sampler = 1;
++            entry.samp_set = entry.tex_set;
++            entry.samp_desc_offset = entry.tex_desc_offset;
++         } else {
++            uint32_t samp_set, samp_binding;
++            nir_def *samp_index;
++            get_resource_deref_binding(b, sampler, &samp_set, &samp_binding, &samp_index);
++            if (nir_src_is_const(nir_src_for_ssa(samp_index))) {
++               const struct nvk_descriptor_set_binding_layout *samp_layout =
++                  get_binding_layout(samp_set, samp_binding, ctx);
++               uint32_t samp_idx = nir_src_as_uint(nir_src_for_ssa(samp_index));
++               if (ctx->clamp_desc_array_bounds)
++                  samp_idx = MIN2(samp_idx, samp_layout->array_size - 1);
++
++               entry.has_sampler = 1;
++               entry.samp_set = samp_set;
++               entry.samp_desc_offset = samp_layout->offset +
++                                        samp_idx * samp_layout->stride + plane_offset_B;
++            } else {
++               ok = false;
++            }
++         }
++
++         uint32_t slot;
++         if (ok && try_add_bound_tex(ctx->bound_tex_map, &entry, &slot)) {
++            tex->texture_index = slot;
++            return true;
++         }
++      }
++   }
++
+    nir_def *texture_desc =
+          load_resource_deref_desc(b, 1, 32, texture, plane_offset_B, ctx);
+ 
+@@ -1550,10 +1625,15 @@ nvk_nir_lower_descriptors(nir_shader *nir,
+                           const struct vk_pipeline_robustness_state *rs,
+                           uint32_t set_layout_count,
+                           struct vk_descriptor_set_layout * const *set_layouts,
+-                          struct nvk_cbuf_map *cbuf_map_out)
++                          struct nvk_cbuf_map *cbuf_map_out,
++                          struct nvk_bound_tex_map *bound_tex_map_out)
+ {
++   if (bound_tex_map_out != NULL)
++      memset(bound_tex_map_out, 0, sizeof(*bound_tex_map_out));
++
+    struct lower_descriptors_ctx ctx = {
+       .dev_info = &pdev->info,
++      .bound_tex_map = bound_tex_map_out,
+       .use_bindless_cbuf = nvk_use_bindless_cbuf(&pdev->info),
+       .use_bindless_cbuf_2 = nvk_use_bindless_cbuf_2(&pdev->info),
+       .use_edb_buffer_views = nvk_use_edb_buffer_views(pdev),
+diff --git a/src/nouveau/vulkan/nvk_queue.c b/src/nouveau/vulkan/nvk_queue.c
+index 8f4192fe..b8db5f57 100644
+--- a/src/nouveau/vulkan/nvk_queue.c
++++ b/src/nouveau/vulkan/nvk_queue.c
+@@ -16,6 +16,7 @@
+ #include "nv_push_cl9097.h"
+ #include "cla097.h"
+ #include "nv_push_cl90b5.h"
++#include "nv_push_cl90c0.h"
+ #include "nv_push_cla0c0.h"
+ #include "cla1c0.h"
+ #include "nv_push_clc3c0.h"
+@@ -254,7 +255,15 @@ nvk_queue_slm_state_update(struct nvk_queue *queue,
+       const uint64_t slm_per_tpc = qss->bytes_per_tpc;
+       assert(!(slm_per_tpc & 0x7fff));
+ 
+-      if (queue->engines & NVKMD_ENGINE_COMPUTE) {
++      if ((queue->engines & NVKMD_ENGINE_COMPUTE) &&
++          pdev->info.cls_compute < KEPLER_COMPUTE_A) {
++         /* Fermi (0x90c0) uses A/B = address, C/D = size at 0x790..0x79c */
++         P_MTHD(p, NV90C0, SET_SHADER_LOCAL_MEMORY_A);
++         P_NV90C0_SET_SHADER_LOCAL_MEMORY_A(p, slm_addr >> 32);
++         P_NV90C0_SET_SHADER_LOCAL_MEMORY_B(p, slm_addr);
++         P_NV90C0_SET_SHADER_LOCAL_MEMORY_C(p, slm_size >> 32);
++         P_NV90C0_SET_SHADER_LOCAL_MEMORY_D(p, slm_size);
++      } else if (queue->engines & NVKMD_ENGINE_COMPUTE) {
+          P_MTHD(p, NVA0C0, SET_SHADER_LOCAL_MEMORY_A);
+          P_NVA0C0_SET_SHADER_LOCAL_MEMORY_A(p, slm_addr >> 32);
+          P_NVA0C0_SET_SHADER_LOCAL_MEMORY_B(p, slm_addr);
+@@ -508,7 +517,7 @@ nvk_queue_init_context_state(struct nvk_queue *queue)
+    if (pdev->info.cls_eng3d < KEPLER_A) {
+       if (queue->engines & NVKMD_ENGINE_COPY) {
+          __push_mthd(p, SUBC_NV90B5, 0x0000);
+-         P_INLINE_DATA(p, pdev->info.cls_copy);
++         P_INLINE_DATA(p, (4 << 16) | pdev->info.cls_copy);
+       }
+       if (queue->engines & NVKMD_ENGINE_2D) {
+          __push_mthd(p, SUBC_NV902D, 0x0000);
+@@ -607,6 +616,9 @@ nvk_queue_create(struct nvk_device *dev,
+    queue->engines =
+       nvk_queue_engines_from_queue_flags(queue_family->queue_flags);
+ 
++   if (pdev->info.cls_eng3d < KEPLER_A && (queue->engines & NVKMD_ENGINE_COPY))
++      queue->engines |= NVKMD_ENGINE_M2MF;
++
+    if (queue_family->queue_flags & VK_QUEUE_VIDEO_DECODE_BIT_KHR)
+       queue->engines |= NVKMD_ENGINE_VDEC;
+ 
+diff --git a/src/nouveau/vulkan/nvk_shader.c b/src/nouveau/vulkan/nvk_shader.c
+index 35356906..332f1cff 100644
+--- a/src/nouveau/vulkan/nvk_shader.c
++++ b/src/nouveau/vulkan/nvk_shader.c
+@@ -379,7 +379,8 @@ nvk_lower_nir(struct nvk_device *dev, nir_shader *nir,
+               const struct vk_pipeline_robustness_state *rs,
+               uint32_t set_layout_count,
+               struct vk_descriptor_set_layout * const *set_layouts,
+-              struct nvk_cbuf_map *cbuf_map_out)
++              struct nvk_cbuf_map *cbuf_map_out,
++              struct nvk_bound_tex_map *bound_tex_map_out)
+ {
+    struct nvk_physical_device *pdev = nvk_device_physical_mut(dev);
+ 
+@@ -435,7 +436,7 @@ nvk_lower_nir(struct nvk_device *dev, nir_shader *nir,
+       NIR_PASS(_, nir, nak_nir_lower_image_addrs, pdev->nak);
+ 
+    NIR_PASS(_, nir, nvk_nir_lower_descriptors, pdev, shader_flags, rs,
+-            set_layout_count, set_layouts, cbuf_map);
++            set_layout_count, set_layouts, cbuf_map, bound_tex_map_out);
+ 
+    if (nvk_use_bindless_cbuf(&pdev->info)) {
+       /* On Turing+ where we have bindless cbufs, we use ACCESS_NON_UNIFORM to
+@@ -1131,7 +1132,8 @@ nvk_compile_shader(struct nvk_device *dev,
+                    const struct vk_graphics_pipeline_state *state,
+                    const VkAllocationCallbacks* pAllocator,
+                    struct vk_shader **shader_out,
+-                   struct nvk_cbuf_map *cbuf_map)
++                   struct nvk_cbuf_map *cbuf_map,
++                   struct nvk_bound_tex_map *bound_tex_map)
+ {
+    struct nvk_shader *shader;
+    VkResult result;
+@@ -1149,11 +1151,12 @@ nvk_compile_shader(struct nvk_device *dev,
+    if (!nir->info.io_lowered) {
+       nvk_lower_nir(dev, nir, info->flags, info->robustness,
+                   info->set_layout_count, info->set_layouts,
+-                  cbuf_map);
++                  cbuf_map, bound_tex_map);
+    }
+ 
+    nvk_lower_nir_late(nir, info->flags);
+    shader->cbuf_map = *cbuf_map;
++   shader->bound_tex_map = *bound_tex_map;
+ 
+    struct nak_fs_key fs_key_tmp, *fs_key = NULL;
+    if (nir->info.stage == MESA_SHADER_FRAGMENT) {
+@@ -1224,7 +1227,9 @@ nvk_compile_nir_shader(struct nvk_device *dev, nir_shader *nir,
+ 
+    struct vk_shader *shader = NULL;
+    struct nvk_cbuf_map cbuf_map = {0};
+-   VkResult result = nvk_compile_shader(dev, &info, NULL, alloc, &shader, &cbuf_map);
++   struct nvk_bound_tex_map bound_tex_map = {0};
++   VkResult result = nvk_compile_shader(dev, &info, NULL, alloc, &shader,
++                                        &cbuf_map, &bound_tex_map);
+    if (result != VK_SUCCESS)
+       return result;
+ 
+@@ -1280,6 +1285,8 @@ nvk_compile_shaders(struct vk_device *vk_dev,
+    nir_shader *shaders[shader_count];
+    struct nvk_cbuf_map cbuf_maps[shader_count];
+    memset(cbuf_maps, 0, sizeof(cbuf_maps));
++   struct nvk_bound_tex_map bound_tex_maps[shader_count];
++   memset(bound_tex_maps, 0, sizeof(bound_tex_maps));
+ 
+    /* Lower shaders, notably lowering I/O. This is a prerequisite for
+     * intershader optimization.
+@@ -1308,7 +1315,7 @@ nvk_compile_shaders(struct vk_device *vk_dev,
+ 
+       nvk_lower_nir(dev, nir, info->flags, info->robustness,
+                     info->set_layout_count, info->set_layouts,
+-                    &cbuf_maps[i]);
++                    &cbuf_maps[i], &bound_tex_maps[i]);
+ 
+       if (nir->xfb_info) {
+          /* Fold constant offset srcs for IO. */
+@@ -1325,7 +1332,8 @@ nvk_compile_shaders(struct vk_device *vk_dev,
+ 
+    for (uint32_t i = 0; i < shader_count; i++) {
+       VkResult result = nvk_compile_shader(dev, &infos[i], state,
+-                                           pAllocator, &shaders_out[i], &cbuf_maps[i]);
++                                           pAllocator, &shaders_out[i],
++                                           &cbuf_maps[i], &bound_tex_maps[i]);
+       if (result != VK_SUCCESS) {
+          /* Clean up all the shaders before this point */
+          for (uint32_t j = 0; j < i; j++)
+@@ -1376,6 +1384,9 @@ nvk_deserialize_shader(struct vk_device *vk_dev,
+    struct nvk_cbuf_map cbuf_map;
+    blob_copy_bytes(blob, &cbuf_map, sizeof(cbuf_map));
+ 
++   struct nvk_bound_tex_map bound_tex_map;
++   blob_copy_bytes(blob, &bound_tex_map, sizeof(bound_tex_map));
++
+    bool sample_shading_enable;
+    blob_copy_bytes(blob, &sample_shading_enable, sizeof(sample_shading_enable));
+ 
+@@ -1401,6 +1412,7 @@ nvk_deserialize_shader(struct vk_device *vk_dev,
+ 
+    shader->info = info;
+    shader->cbuf_map = cbuf_map;
++   shader->bound_tex_map = bound_tex_map;
+    shader->sample_shading_enable = sample_shading_enable;
+    shader->min_sample_shading = min_sample_shading;
+    shader->code_size = code_size;
+@@ -1462,6 +1474,7 @@ nvk_shader_serialize(struct vk_device *vk_dev,
+ 
+    blob_write_bytes(blob, &shader->info, sizeof(shader->info));
+    blob_write_bytes(blob, &shader->cbuf_map, sizeof(shader->cbuf_map));
++   blob_write_bytes(blob, &shader->bound_tex_map, sizeof(shader->bound_tex_map));
+    blob_write_bytes(blob, &shader->sample_shading_enable,
+                     sizeof(shader->sample_shading_enable));
+    blob_write_bytes(blob, &shader->min_sample_shading,
+diff --git a/src/nouveau/vulkan/nvk_shader.h b/src/nouveau/vulkan/nvk_shader.h
+index 782a7885..217ff624 100644
+--- a/src/nouveau/vulkan/nvk_shader.h
++++ b/src/nouveau/vulkan/nvk_shader.h
+@@ -88,6 +88,26 @@ struct nvk_cbuf_map {
+    struct nvk_cbuf cbufs[16];
+ };
+ 
++#define NVK_MAX_BOUND_TEX 32
++
++PRAGMA_DIAGNOSTIC_PUSH
++PRAGMA_DIAGNOSTIC_ERROR(-Wpadded)
++struct nvk_bound_tex {
++   uint8_t tex_set;
++   uint8_t samp_set;
++   uint8_t has_sampler;
++   uint8_t _pad;
++   uint32_t tex_desc_offset;
++   uint32_t samp_desc_offset;
++};
++PRAGMA_DIAGNOSTIC_POP
++static_assert(sizeof(struct nvk_bound_tex) == 12, "This struct has no holes");
++
++struct nvk_bound_tex_map {
++   uint32_t tex_count;
++   struct nvk_bound_tex texs[NVK_MAX_BOUND_TEX];
++};
++
+ uint16_t
+ nvk_max_shader_push_dw(const struct nvk_physical_device *pdev,
+                        mesa_shader_stage stage, bool last_vtgm);
+@@ -97,6 +117,7 @@ struct nvk_shader {
+ 
+    struct nak_shader_info info;
+    struct nvk_cbuf_map cbuf_map;
++   struct nvk_bound_tex_map bound_tex_map;
+ 
+    /* Only relevant for fragment shaders */
+    bool sample_shading_enable;
+@@ -157,7 +178,8 @@ nvk_nir_lower_descriptors(nir_shader *nir,
+                           const struct vk_pipeline_robustness_state *rs,
+                           uint32_t set_layout_count,
+                           struct vk_descriptor_set_layout * const *set_layouts,
+-                          struct nvk_cbuf_map *cbuf_map_out);
++                          struct nvk_cbuf_map *cbuf_map_out,
++                          struct nvk_bound_tex_map *bound_tex_map_out);
+ 
+ bool nvk_nir_lower_mesh_shader(nir_shader *nir, VkShaderCreateFlagsEXT shader_flags);
+ bool nvk_nir_lower_task_shader(nir_shader *nir);
+diff --git a/src/nouveau/vulkan/nvk_upload_queue.c b/src/nouveau/vulkan/nvk_upload_queue.c
+index 2835e4ca..726a3b3f 100644
+--- a/src/nouveau/vulkan/nvk_upload_queue.c
++++ b/src/nouveau/vulkan/nvk_upload_queue.c
+@@ -12,6 +12,7 @@
+ 
+ #include "nv_push.h"
+ #include "cla097.h"
++#include "nv_push_cl9039.h"
+ #include "nv_push_cl90b5.h"
+ 
+ VkResult
+@@ -24,8 +25,13 @@ nvk_upload_queue_init(struct nvk_device *dev,
+ 
+    simple_mtx_init(&queue->mutex, mtx_plain);
+ 
++   const struct nvk_physical_device *pdev = nvk_device_physical(dev);
++   const bool use_m2mf = pdev->info.cls_eng3d < KEPLER_A;
++   enum nvkmd_engines engines = use_m2mf ? (NVKMD_ENGINE_M2MF | NVKMD_ENGINE_3D)
++                                         : NVKMD_ENGINE_COPY;
++
+    result = nvkmd_dev_create_ctx(dev->nvkmd, &dev->vk.base,
+-                                 NVKMD_ENGINE_COPY, &queue->ctx);
++                                 engines, &queue->ctx);
+    if (result != VK_SUCCESS)
+       goto fail_mutex;
+ 
+@@ -34,12 +40,14 @@ nvk_upload_queue_init(struct nvk_device *dev,
+       goto fail_ctx;
+ 
+    nv_push_init(&queue->push, queue->push_data, ARRAY_SIZE(queue->push_data),
+-                nvk_queue_subchannels_from_engines(NVKMD_ENGINE_COPY));
++                nvk_queue_subchannels_from_engines(engines));
+ 
+-   const struct nvk_physical_device *pdev = nvk_device_physical(dev);
+-   if (pdev->info.cls_eng3d < KEPLER_A) {
+-      __push_mthd(&queue->push, SUBC_NV90B5, 0x0000);
+-      P_INLINE_DATA(&queue->push, pdev->info.cls_copy);
++   if (use_m2mf) {
++      P_MTHD(&queue->push, NV9039, SET_OBJECT);
++      P_NV9039_SET_OBJECT(&queue->push, {
++         .class_id = pdev->info.cls_m2mf,
++         .engine_id = 0,
++      });
+    }
+ 
+    return VK_SUCCESS;
+@@ -86,7 +94,10 @@ nvk_upload_queue_flush_locked(struct nvk_device *dev,
+       return result;
+ 
+    nv_push_init(&queue->push, queue->push_data, ARRAY_SIZE(queue->push_data),
+-                nvk_queue_subchannels_from_engines(NVKMD_ENGINE_COPY));
++                nvk_queue_subchannels_from_engines(
++                   nvk_device_physical(dev)->info.cls_eng3d < KEPLER_A
++                      ? (NVKMD_ENGINE_M2MF | NVKMD_ENGINE_3D)
++                      : NVKMD_ENGINE_COPY));
+ 
+    if (time_point_out != NULL)
+       *time_point_out = queue->last_time_point;
+@@ -171,23 +182,47 @@ nvk_upload_queue_upload_locked(struct nvk_device *dev,
+ 
+       assert(data_size <= (1 << 17));
+ 
+-      P_MTHD(p, NV90B5, OFFSET_IN_UPPER);
+-      P_NV90B5_OFFSET_IN_UPPER(p, data_addr >> 32);
+-      P_NV90B5_OFFSET_IN_LOWER(p, data_addr & 0xffffffff);
+-      P_NV90B5_OFFSET_OUT_UPPER(p, dst_addr >> 32);
+-      P_NV90B5_OFFSET_OUT_LOWER(p, dst_addr & 0xffffffff);
+-      P_NV90B5_PITCH_IN(p, data_size);
+-      P_NV90B5_PITCH_OUT(p, data_size);
+-      P_NV90B5_LINE_LENGTH_IN(p, data_size);
+-      P_NV90B5_LINE_COUNT(p, 1);
+-
+-      P_IMMD(p, NV90B5, LAUNCH_DMA, {
+-         .data_transfer_type = DATA_TRANSFER_TYPE_NON_PIPELINED,
+-         .multi_line_enable = MULTI_LINE_ENABLE_FALSE,
+-         .flush_enable = FLUSH_ENABLE_TRUE,
+-         .src_memory_layout = SRC_MEMORY_LAYOUT_PITCH,
+-         .dst_memory_layout = DST_MEMORY_LAYOUT_PITCH,
+-      });
++      const struct nvk_physical_device *pdev = nvk_device_physical(dev);
++      if (pdev->info.cls_eng3d < KEPLER_A) {
++         P_MTHD(p, NV9039, OFFSET_OUT_UPPER);
++         P_NV9039_OFFSET_OUT_UPPER(p, dst_addr >> 32);
++         P_NV9039_OFFSET_OUT(p, dst_addr & 0xffffffff);
++
++         P_MTHD(p, NV9039, OFFSET_IN_UPPER);
++         P_NV9039_OFFSET_IN_UPPER(p, data_addr >> 32);
++         P_NV9039_OFFSET_IN(p, data_addr & 0xffffffff);
++         P_NV9039_PITCH_IN(p, data_size);
++         P_NV9039_PITCH_OUT(p, data_size);
++         P_NV9039_LINE_LENGTH_IN(p, data_size);
++         P_NV9039_LINE_COUNT(p, 1);
++
++         P_IMMD(p, NV9039, LAUNCH_DMA, {
++            .src_inline = SRC_INLINE_FALSE,
++            .src_memory_layout = SRC_MEMORY_LAYOUT_PITCH,
++            .dst_memory_layout = DST_MEMORY_LAYOUT_PITCH,
++            .completion_type = COMPLETION_TYPE_FLUSH_ONLY,
++            .interrupt_type = INTERRUPT_TYPE_NONE,
++            .semaphore_struct_size = SEMAPHORE_STRUCT_SIZE_FOUR_WORDS,
++         });
++      } else {
++         P_MTHD(p, NV90B5, OFFSET_IN_UPPER);
++         P_NV90B5_OFFSET_IN_UPPER(p, data_addr >> 32);
++         P_NV90B5_OFFSET_IN_LOWER(p, data_addr & 0xffffffff);
++         P_NV90B5_OFFSET_OUT_UPPER(p, dst_addr >> 32);
++         P_NV90B5_OFFSET_OUT_LOWER(p, dst_addr & 0xffffffff);
++         P_NV90B5_PITCH_IN(p, data_size);
++         P_NV90B5_PITCH_OUT(p, data_size);
++         P_NV90B5_LINE_LENGTH_IN(p, data_size);
++         P_NV90B5_LINE_COUNT(p, 1);
++
++         P_IMMD(p, NV90B5, LAUNCH_DMA, {
++            .data_transfer_type = DATA_TRANSFER_TYPE_NON_PIPELINED,
++            .multi_line_enable = MULTI_LINE_ENABLE_FALSE,
++            .flush_enable = FLUSH_ENABLE_TRUE,
++            .src_memory_layout = SRC_MEMORY_LAYOUT_PITCH,
++            .dst_memory_layout = DST_MEMORY_LAYOUT_PITCH,
++         });
++      }
+ 
+       dst_addr += data_size;
+       src += data_size;
+-- 
+2.56.1
+
