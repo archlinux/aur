@@ -2,7 +2,7 @@
 # Upstream publishes ready Arch packages (nfpm): /opt/ely-office/ely-show plus
 # /usr/bin symlink, desktop entry and icon. Repack them verbatim.
 pkgname=ely-show-bin
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc='ElyShow, part of Ely Office - presentation editor (prebuilt upstream package)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 source=("LICENSE::$url/raw/v$pkgver/LICENSE")
 sha256sums=('6f90eb4b2f3d6354ac31cdf330a711d9e43d8c95b968dc046f49443db956b2c1')
 source_x86_64=("ely-show-$pkgver-1-x86_64.pkg.tar.zst::$url/releases/download/v$pkgver/ely-show-$pkgver-1-x86_64.pkg.tar.zst")
-sha256sums_x86_64=('ec79d7a1f19f670aa2912bcc1127703a01ddfae16e5b57d08735a4a8d3a871cd')
+sha256sums_x86_64=('f898450c3f10fc0899634253d1e2d7f4b13745357de701a7d7ac08170299f434')
 
 package() {
 	cp -a "$srcdir/opt" "$srcdir/usr" "$pkgdir/"
