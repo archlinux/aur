@@ -1,0 +1,19 @@
+pkgbase = getspecstory-bin
+	pkgdesc = Save and search AI coding agent conversations locally
+	pkgver = 2.17.0
+	pkgrel = 1
+	url = https://github.com/specstoryai/getspecstory
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = getspecstory
+	conflicts = getspecstory
+	options = !debug
+	source = getspecstory-bin-2.17.0-LICENSE::https://raw.githubusercontent.com/specstoryai/getspecstory/v2.17.0/LICENSE.txt
+	sha256sums = 43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1
+	source_x86_64 = getspecstory-bin-2.17.0-x86_64.zip::https://github.com/specstoryai/getspecstory/releases/download/v2.17.0/SpecStoryCLI_Linux_x86_64.zip
+	sha256sums_x86_64 = a21b5d52637468b96b1a99faff4e6ea0102803c76cdaf34af5c747ecda7e68ef
+	source_aarch64 = getspecstory-bin-2.17.0-aarch64.zip::https://github.com/specstoryai/getspecstory/releases/download/v2.17.0/SpecStoryCLI_Linux_arm64.zip
+	sha256sums_aarch64 = ce1241fc2f3e5ae80a6fc0bf2ec5a91f85641aafc7cbb1d73cbed0a9f8898763
+
+pkgname = getspecstory-bin
