@@ -1,0 +1,18 @@
+pkgbase = agent-purge-bin
+	pkgdesc = One persona, many coding agents
+	pkgver = 0.2.39
+	pkgrel = 1
+	url = https://github.com/ZiChuanLan/agent-purge
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = agent-purge
+	conflicts = agent-purge
+	options = !debug
+	source_x86_64 = agent-purge-bin-0.2.39-x86_64.tar.gz::https://github.com/ZiChuanLan/agent-purge/releases/download/v0.2.39/agent-purge-0.2.39-linux-x64.tar.gz
+	sha256sums_x86_64 = db8fb16dd9579d52dd4da1a9c71b9e2d544e3ded44d1e2030dcc7dbe86f8df68
+	source_aarch64 = agent-purge-bin-0.2.39-aarch64.tar.gz::https://github.com/ZiChuanLan/agent-purge/releases/download/v0.2.39/agent-purge-0.2.39-linux-arm64.tar.gz
+	sha256sums_aarch64 = 291e72b92cc583c1b92f008b8fc66a94c78c83f4a766311c0dd97e50eba00e84
+
+pkgname = agent-purge-bin
