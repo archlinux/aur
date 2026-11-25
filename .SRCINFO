@@ -1,6 +1,6 @@
 pkgbase = python-fenics-ufl
 	pkgdesc = UFL - Unified Form Language
-	pkgver = 2026.2.0
+	pkgver = 2026.2.1
 	pkgrel = 1
 	url = https://github.com/FEniCS/ufl
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-fenics-ufl
 	provides = python-ufl
 	conflicts = python-ufl
 	conflicts = python-ufl-git
-	source = ufl-2026.2.0.tar.gz::https://github.com/FEniCS/ufl/archive/2026.2.0.tar.gz
-	sha512sums = 999bb458e6a5f22b440eaaff3cdb93f89846f5629ae5b5e2721b41ab6fe3cf65270a07ec7224b54977c932e5b32c8f0f7d3e3cd19a3f207893ac3f364b1204a2
+	source = ufl-2026.2.1.tar.gz::https://github.com/FEniCS/ufl/archive/2026.2.1.tar.gz
+	sha512sums = f71c80eda640091dc65bbee43a48d4e0c428af729b4edccb617bfc277696cfd7edd4c67b9bf81ad22052d7740a61f93434dbeec56ed8353195f062eea86cf607
 
 pkgname = python-fenics-ufl
