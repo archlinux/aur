@@ -1,6 +1,6 @@
 pkgbase = anyshift-annie-bin
 	pkgdesc = AI-powered infrastructure observability CLI
-	pkgver = 0.9.34
+	pkgver = 0.9.35
 	pkgrel = 1
 	url = https://anyshift.io
 	license = Proprietary
@@ -8,10 +8,10 @@ pkgbase = anyshift-annie-bin
 	conflicts = annie
 	provides = annie
 	arch = aarch64
-	source_aarch64 = anyshift-annie-bin_0.9.34_aarch64.tar.gz::https://annie-cli.anyshift.io/releases/0.9.34/annie-0.9.34-linux-arm64.tar.gz
-	sha256sums_aarch64 = 782d2c8d82fa173ac99eca35f8b70b2a68e4e9bf5dd42ec46d8a78e69b0d3f07
+	source_aarch64 = anyshift-annie-bin_0.9.35_aarch64.tar.gz::https://annie-cli.anyshift.io/releases/0.9.35/annie-0.9.35-linux-arm64.tar.gz
+	sha256sums_aarch64 = bdb8fd713a013c13b19a0847211a65f3b71080afdf4639246f3ac5e24c353525
 	arch = x86_64
-	source_x86_64 = anyshift-annie-bin_0.9.34_x86_64.tar.gz::https://annie-cli.anyshift.io/releases/0.9.34/annie-0.9.34-linux-amd64.tar.gz
-	sha256sums_x86_64 = 1babd7a73ba644c0cf409604c489812342964d8c97ea8297059f45caa53da922
+	source_x86_64 = anyshift-annie-bin_0.9.35_x86_64.tar.gz::https://annie-cli.anyshift.io/releases/0.9.35/annie-0.9.35-linux-amd64.tar.gz
+	sha256sums_x86_64 = 21a6ebdb7d7706132d2fd82b85750daa57776925cd2ac14836b5c96a484d9438
 	
 pkgname = anyshift-annie-bin
