@@ -1,0 +1,20 @@
+pkgbase = soci-snapshotter-bin
+	pkgdesc = containerd snapshotter that lazily loads standard OCI images
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://github.com/awslabs/soci-snapshotter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = soci-snapshotter
+	conflicts = soci-snapshotter
+	options = !debug
+	source = soci-snapshotter-bin-0.16.1-LICENSE::https://raw.githubusercontent.com/awslabs/soci-snapshotter/v0.16.1/LICENSE
+	sha256sums = 09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b
+	source_x86_64 = soci-snapshotter-bin-0.16.1-x86_64.tar.gz::https://github.com/awslabs/soci-snapshotter/releases/download/v0.16.1/soci-snapshotter-0.16.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 2be9f26ad853455515da69885f8906e6aecc65684cc302f8689c25cad8417bc8
+	source_aarch64 = soci-snapshotter-bin-0.16.1-aarch64.tar.gz::https://github.com/awslabs/soci-snapshotter/releases/download/v0.16.1/soci-snapshotter-0.16.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = ad96f7ff1babfdb089a7cb481b7362aced9caaa73c91604d11b04b1066c47cca
+
+pkgname = soci-snapshotter-bin
