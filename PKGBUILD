@@ -8,7 +8,7 @@
 
 pkgname=localsend-bin
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source cross-platform alternative to AirDrop'
 url=https://github.com/localsend/localsend
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ source_x86_64=("${url}/releases/download/v${pkgver}/LocalSend-${pkgver}-linux-x8
 source_aarch64=("${url}/releases/download/v${pkgver}/LocalSend-${pkgver}-linux-arm-64.deb")
 sha256sums_x86_64=('f2cc2d1f8a2542799576e4c1cc61ed1f35c6a7dba2f375870e8500eab6fbfe66')
 sha256sums_aarch64=('8a54f1dc0f70ef4d9fa3037a29e8713d5580c461675fae9a5ba59b39010513c3')
-_pkgdesktop="localsend_app.desktop"
+_pkgdesktop="org.localsend.localsend_app.desktop"
 
 
 prepare() {
@@ -36,8 +36,6 @@ build() {
 	# Adjust .desktop to have it point to the correct icon
 	sed -i -E 's/^Icon=.+/Icon=localsend/' "${srcdir}/usr/share/applications/${_pkgdesktop}"
 
-	# Add StartupWMClass so app can be pinned to taskbar
-	sed -i -E '/^Exec=localsend/a StartupWMClass=org.localsend.localsend_app' "${srcdir}/usr/share/applications/${_pkgdesktop}"
 }
 
 package() {
