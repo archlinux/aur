@@ -1,0 +1,23 @@
+pkgbase = textus-bin
+	pkgdesc = Writing environment with documents, AI and plugins side by side
+	pkgver = 1.4.7
+	pkgrel = 1
+	url = https://github.com/CatVinci-Studio/Textus
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgcc
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = textus
+	conflicts = textus
+	options = !debug
+	source_x86_64 = textus-bin-1.4.7-x86_64.tar.gz::https://github.com/CatVinci-Studio/Textus/releases/download/v1.4.7/Textus_1.4.7_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5f3f4444a6e7e169f9c42bb28af57ee70a83c72d96bf52a1eeb3a9c671f5bc83
+
+pkgname = textus-bin
