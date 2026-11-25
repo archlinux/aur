@@ -1,6 +1,6 @@
 pkgbase = litellm
 	pkgdesc = Library to easily interface with LLM API providers.
-	pkgver = 1.110.3
+	pkgver = 1.111.0
 	pkgrel = 1
 	url = https://github.com/BerriAI/litellm
 	arch = x86_64
@@ -128,7 +128,7 @@ pkgbase = litellm
 	provides = python-litellm
 	options = !lto
 	options = !strip
-	source = litellm-1.110.3.tar.gz::https://github.com/BerriAI/litellm/archive/refs/tags/v1.110.3.tar.gz
-	sha256sums = 735c55f306da42b86b18f17eba7fc34d839f4e90bd84d7226d66b19933b15c33
+	source = litellm-1.111.0.tar.gz::https://github.com/BerriAI/litellm/archive/refs/tags/v1.111.0.tar.gz
+	sha256sums = b1e684e9fefb5b4218a96dcd0ff3efed9a6f62663a2c8e3a2ff134d9734acf44
 
 pkgname = litellm

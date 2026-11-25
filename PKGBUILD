@@ -5,7 +5,7 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.110.3
+pkgver=1.111.0
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=('x86_64' 'aarch64')
@@ -147,7 +147,7 @@ optdepends=('python-nemo-switchyard: switchyard'
 provides=("python-${pkgname}")
 options=(!lto !strip)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('735c55f306da42b86b18f17eba7fc34d839f4e90bd84d7226d66b19933b15c33')
+sha256sums=('b1e684e9fefb5b4218a96dcd0ff3efed9a6f62663a2c8e3a2ff134d9734acf44')
 
 prepare() {
   cd "$pkgname-$pkgver"
