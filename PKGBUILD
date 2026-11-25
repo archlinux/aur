@@ -1,9 +1,9 @@
 # Maintainer: Leo LI <i@hardrain980.com>
-_raw_pkgver=02.09.01.70
+_raw_pkgver=02.09.02.62
 
 pkgname=bambu-studio
-pkgver=2.9.1
-pkgrel=4
+pkgver=2.9.2
+pkgrel=1
 pkgdesc="PC Software for BambuLab and other 3D printers"
 arch=('x86_64')
 url="https://github.com/bambulab/BambuStudio"
@@ -29,11 +29,10 @@ source=(
 	'0012-use-blosc-provided-by-package-manager-explicitly-lin.patch'
 	'0013-patch-boost-locale-source-group-to-fix-failed-deps-b.patch'
 	'FindBlosc.cmake::https://raw.githubusercontent.com/AcademySoftwareFoundation/openvdb/v8.2.0/cmake/FindBlosc.cmake'
-	'https://github.com/bambulab/BambuStudio/pull/12925.patch'
 	'cgal-fix-boost-mpl-include.patch'
 )
 sha256sums=(
-	'39175631bcd01e942e0936fd3610a9c4bd43b5920768eda0bb365b00985537b0'
+	'0c6b27d302ddb70fb34d3bd7e81aca001952a859945392978527672b82e12112'
 	SKIP
 	SKIP
 	SKIP
@@ -41,7 +40,6 @@ sha256sums=(
 	SKIP
 	SKIP
 	'ccba05deae648ae608d6c089cb25af4674083ce83ddbd18cecde2107f43e3364'
-	'824a8f709f04a353d017362526b56db3c9cdd073a0b58d080f1e6e6095a186fe'
 	SKIP
 )
 
@@ -51,7 +49,6 @@ prepare() {
 	patch -Np1 -d $srcdir/BambuStudio-$_raw_pkgver < $srcdir/0011-use-libharu-provided-by-package-manager-revert-bambu.patch
 	patch -Np1 -d $srcdir/BambuStudio-$_raw_pkgver < $srcdir/0012-use-blosc-provided-by-package-manager-explicitly-lin.patch
 	patch -Np1 -d $srcdir/BambuStudio-$_raw_pkgver < $srcdir/0013-patch-boost-locale-source-group-to-fix-failed-deps-b.patch
-	patch -Np1 -d $srcdir/BambuStudio-$_raw_pkgver < $srcdir/12925.patch
 	install -Dm644 \
 		"$srcdir/FindBlosc.cmake" \
 		"$srcdir/BambuStudio-$_raw_pkgver/cmake/modules/FindBlosc.cmake"
