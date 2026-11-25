@@ -1,0 +1,242 @@
+diff --git a/viewer/WebViewer/VulkanBlitter.cpp b/viewer/WebViewer/VulkanBlitter.cpp
+index d1d3296..3e7f718 100644
+--- a/viewer/WebViewer/VulkanBlitter.cpp
++++ b/viewer/WebViewer/VulkanBlitter.cpp
+@@ -2,6 +2,7 @@ module;
+ 
+ #include <cstdio>
+ #include <cstring>
++#include <sys/stat.h>
+ #include <unistd.h>
+ 
+ module viewer.web;
+@@ -817,19 +818,45 @@ bool VulkanBlitter::AcceptDmaBuf(const DmaBufFrame& frame) {
+     rstd::uint64_t           modifier =
+         (frame.modifier == DRM_FORMAT_MOD_INVALID) ? DRM_FORMAT_MOD_LINEAR : frame.modifier;
+ 
++    // Compressed/tiled modifiers (e.g. AMD DCC) carry extra metadata memory
++    // planes. Vulkan requires one layout per memory plane of the modifier.
++    // Only non-disjoint imports are supported: all planes must live in the
++    // same DMA-BUF (CEF allocates a single buffer object per frame).
++    const int plane_count = frame.plane_count > 4 ? 4 : frame.plane_count;
++    {
++        struct stat st0 {};
++        if (::fstat(frame.planes[0].fd, &st0) != 0) {
++            eprint("weweb: fstat(dmabuf plane 0) failed\n");
++            ::close(dup_fd);
++            return false;
++        }
++        for (int i = 1; i < plane_count; ++i) {
++            struct stat sti {};
++            if (::fstat(frame.planes[i].fd, &sti) != 0 || sti.st_dev != st0.st_dev ||
++                sti.st_ino != st0.st_ino) {
++                eprint("weweb: disjoint multi-plane DMA-BUF import is not supported "
++                       "(modifier 0x{:x}, {} planes)\n",
++                       modifier,
++                       plane_count);
++                ::close(dup_fd);
++                return false;
++            }
++        }
++    }
++
+     // VUID-VkImageDrmFormatModifierExplicitCreateInfoEXT-size-02267:
+     // size must be 0; driver derives it from rowPitch + extent + format.
+-    VkSubresourceLayout plane_layout {};
+-    plane_layout.offset     = frame.planes[0].offset;
+-    plane_layout.rowPitch   = frame.planes[0].stride;
+-    plane_layout.arrayPitch = 0;
+-    plane_layout.depthPitch = 0;
++    VkSubresourceLayout plane_layouts[4] {};
++    for (int i = 0; i < plane_count; ++i) {
++        plane_layouts[i].offset   = frame.planes[i].offset;
++        plane_layouts[i].rowPitch = frame.planes[i].stride;
++    }
+ 
+     VkImageDrmFormatModifierExplicitCreateInfoEXT mod_info {};
+     mod_info.sType = VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT;
+     mod_info.drmFormatModifier           = modifier;
+-    mod_info.drmFormatModifierPlaneCount = 1;
+-    mod_info.pPlaneLayouts               = &plane_layout;
++    mod_info.drmFormatModifierPlaneCount = static_cast<rstd::uint32_t>(plane_count);
++    mod_info.pPlaneLayouts               = plane_layouts;
+ 
+     VkExternalMemoryImageCreateInfo ext_img {};
+     ext_img.sType       = VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO;
+@@ -853,8 +880,12 @@ bool VulkanBlitter::AcceptDmaBuf(const DmaBufFrame& frame) {
+     ii.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+ 
+     VkImage temp_img = VK_NULL_HANDLE;
+-    if (device_dispatch_.vkCreateImage(device_, &ii, nullptr, &temp_img) != VK_SUCCESS) {
+-        eprint("weweb: vkCreateImage(temp dma-buf) failed\n");
++    if (VkResult cr = device_dispatch_.vkCreateImage(device_, &ii, nullptr, &temp_img);
++        cr != VK_SUCCESS) {
++        eprint("weweb: vkCreateImage(temp dma-buf)={} (modifier 0x{:x}, {} planes)\n",
++               static_cast<int>(cr),
++               modifier,
++               plane_count);
+         ::close(dup_fd);
+         return false;
+     }
+@@ -893,9 +924,12 @@ bool VulkanBlitter::AcceptDmaBuf(const DmaBufFrame& frame) {
+     VkMemoryAllocateInfo mi {};
+     mi.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
+     mi.pNext = &import;
+-    // Use the size CEF reported for the plane — Mesa ignores the
+-    // allocationSize for imports but the spec wants a valid-looking value.
+-    mi.allocationSize  = frame.planes[0].size > 0 ? frame.planes[0].size : mr.size;
++    // The import covers the whole DMA-BUF (all planes), not just plane 0.
++    // Mesa ignores allocationSize for imports but the spec wants a
++    // valid-looking value.
++    off_t dmabuf_size = ::lseek(dup_fd, 0, SEEK_END);
++    ::lseek(dup_fd, 0, SEEK_SET);
++    mi.allocationSize = dmabuf_size > 0 ? static_cast<VkDeviceSize>(dmabuf_size) : mr.size;
+     mi.memoryTypeIndex = mtype;
+ 
+     VkDeviceMemory imported_mem = VK_NULL_HANDLE;
+@@ -908,8 +942,8 @@ bool VulkanBlitter::AcceptDmaBuf(const DmaBufFrame& frame) {
+     }
+     // From here on Vulkan owns the FD; we MUST NOT close dup_fd.
+ 
+-    if (device_dispatch_.vkBindImageMemory(
+-            device_, temp_img, imported_mem, frame.planes[0].offset) != VK_SUCCESS) {
++    // Plane offsets are already part of the explicit layout, so bind at 0.
++    if (device_dispatch_.vkBindImageMemory(device_, temp_img, imported_mem, 0) != VK_SUCCESS) {
+         eprint("weweb: vkBindImageMemory(temp) failed\n");
+         device_dispatch_.vkFreeMemory(device_, imported_mem, nullptr);
+         device_dispatch_.vkDestroyImage(device_, temp_img, nullptr);
+@@ -929,13 +963,16 @@ bool VulkanBlitter::AcceptDmaBuf(const DmaBufFrame& frame) {
+         return false;
+     }
+ 
+-    // temp_img: UNDEFINED → TRANSFER_SRC_OPTIMAL.
++    // temp_img: acquire from the external producer (CEF) → TRANSFER_SRC.
++    // oldLayout must not be UNDEFINED: for compressed modifiers (AMD DCC)
++    // the driver may reinitialize the metadata and discard the contents.
++    // The queue-family acquire lets the driver handle the external layout.
+     VkImageMemoryBarrier b_src {};
+     b_src.sType                       = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
+-    b_src.oldLayout                   = VK_IMAGE_LAYOUT_UNDEFINED;
++    b_src.oldLayout                   = VK_IMAGE_LAYOUT_GENERAL;
+     b_src.newLayout                   = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;
+-    b_src.srcQueueFamilyIndex         = VK_QUEUE_FAMILY_IGNORED;
+-    b_src.dstQueueFamilyIndex         = VK_QUEUE_FAMILY_IGNORED;
++    b_src.srcQueueFamilyIndex         = VK_QUEUE_FAMILY_EXTERNAL;
++    b_src.dstQueueFamilyIndex         = queue_family_;
+     b_src.image                       = temp_img;
+     b_src.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+     b_src.subresourceRange.levelCount = 1;
+diff --git a/waywallen/WebRenderer/WebProducerDevice.cpp b/waywallen/WebRenderer/WebProducerDevice.cpp
+index 2948ab8..c2ffdb6 100644
+--- a/waywallen/WebRenderer/WebProducerDevice.cpp
++++ b/waywallen/WebRenderer/WebProducerDevice.cpp
+@@ -530,17 +530,45 @@ WebProducerDevice::ImportedFrame WebProducerDevice::Import(const ::weweb::DmaBuf
+     uint64_t           modifier =
+         (frame.modifier == DRM_FORMAT_MOD_INVALID) ? DRM_FORMAT_MOD_LINEAR : frame.modifier;
+ 
++    // Compressed/tiled modifiers (e.g. AMD DCC) carry extra metadata memory
++    // planes. Vulkan requires one layout per memory plane of the modifier.
++    // Only non-disjoint imports are supported: all planes must live in the
++    // same DMA-BUF (CEF allocates a single buffer object per frame).
++    const int plane_count = frame.plane_count > 4 ? 4 : frame.plane_count;
++    {
++        struct stat st0 {};
++        if (::fstat(frame.planes[0].fd, &st0) != 0) {
++            eprint("WebProducerDevice: fstat(dmabuf plane 0) failed\n");
++            ::close(dup_fd);
++            return imp;
++        }
++        for (int i = 1; i < plane_count; ++i) {
++            struct stat sti {};
++            if (::fstat(frame.planes[i].fd, &sti) != 0 || sti.st_dev != st0.st_dev ||
++                sti.st_ino != st0.st_ino) {
++                eprint("WebProducerDevice: disjoint multi-plane DMA-BUF import is not "
++                       "supported (modifier 0x{:x}, {} planes)\n",
++                       modifier,
++                       plane_count);
++                ::close(dup_fd);
++                return imp;
++            }
++        }
++    }
++
+     // VUID-VkImageDrmFormatModifierExplicitCreateInfoEXT-size-02267:
+     // size must be 0; driver derives it from rowPitch + extent + format.
+-    VkSubresourceLayout plane_layout {};
+-    plane_layout.offset   = frame.planes[0].offset;
+-    plane_layout.rowPitch = frame.planes[0].stride;
++    VkSubresourceLayout plane_layouts[4] {};
++    for (int i = 0; i < plane_count; ++i) {
++        plane_layouts[i].offset   = frame.planes[i].offset;
++        plane_layouts[i].rowPitch = frame.planes[i].stride;
++    }
+ 
+     VkImageDrmFormatModifierExplicitCreateInfoEXT mod_info {};
+     mod_info.sType = VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT;
+     mod_info.drmFormatModifier           = modifier;
+-    mod_info.drmFormatModifierPlaneCount = 1;
+-    mod_info.pPlaneLayouts               = &plane_layout;
++    mod_info.drmFormatModifierPlaneCount = static_cast<uint32_t>(plane_count);
++    mod_info.pPlaneLayouts               = plane_layouts;
+ 
+     VkExternalMemoryImageCreateInfo ext_img {};
+     ext_img.sType       = VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO;
+@@ -564,8 +592,12 @@ WebProducerDevice::ImportedFrame WebProducerDevice::Import(const ::weweb::DmaBuf
+     ii.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+ 
+     VkImage img = VK_NULL_HANDLE;
+-    if (device_dispatch_.vkCreateImage(device_, &ii, nullptr, &img) != VK_SUCCESS) {
+-        eprint("WebProducerDevice: vkCreateImage(import) failed\n");
++    if (VkResult cr = device_dispatch_.vkCreateImage(device_, &ii, nullptr, &img);
++        cr != VK_SUCCESS) {
++        eprint("WebProducerDevice: vkCreateImage(import)={} (modifier 0x{:x}, {} planes)\n",
++               static_cast<int>(cr),
++               modifier,
++               plane_count);
+         ::close(dup_fd);
+         return imp;
+     }
+@@ -601,7 +633,10 @@ WebProducerDevice::ImportedFrame WebProducerDevice::Import(const ::weweb::DmaBuf
+     VkMemoryAllocateInfo mi {};
+     mi.sType           = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
+     mi.pNext           = &import_fd;
+-    mi.allocationSize  = frame.planes[0].size > 0 ? frame.planes[0].size : mr.size;
++    // The import covers the whole DMA-BUF (all planes), not just plane 0.
++    off_t dmabuf_size  = ::lseek(dup_fd, 0, SEEK_END);
++    ::lseek(dup_fd, 0, SEEK_SET);
++    mi.allocationSize  = dmabuf_size > 0 ? static_cast<VkDeviceSize>(dmabuf_size) : mr.size;
+     mi.memoryTypeIndex = mtype;
+ 
+     VkDeviceMemory mem = VK_NULL_HANDLE;
+@@ -614,8 +649,8 @@ WebProducerDevice::ImportedFrame WebProducerDevice::Import(const ::weweb::DmaBuf
+     }
+     // From here Vulkan owns dup_fd; no manual close.
+ 
+-    if (device_dispatch_.vkBindImageMemory(device_, img, mem, frame.planes[0].offset) !=
+-        VK_SUCCESS) {
++    // Plane offsets are already part of the explicit layout, so bind at 0.
++    if (device_dispatch_.vkBindImageMemory(device_, img, mem, 0) != VK_SUCCESS) {
+         eprint("WebProducerDevice: vkBindImageMemory(import) failed\n");
+         device_dispatch_.vkFreeMemory(device_, mem, nullptr);
+         device_dispatch_.vkDestroyImage(device_, img, nullptr);
+@@ -748,13 +783,16 @@ int WebProducerDevice::BlitToSlot(const ImportedFrame& imp, VkImage slot_image,
+     bi.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
+     if (device_dispatch_.vkBeginCommandBuffer(blit_cmd_, &bi) != VK_SUCCESS) return -1;
+ 
+-    // imp.image: UNDEFINED → TRANSFER_SRC.
++    // imp.image: acquire from the external producer (CEF) → TRANSFER_SRC.
++    // oldLayout must not be UNDEFINED: for compressed modifiers (AMD DCC)
++    // the driver may reinitialize the metadata and discard the contents.
++    // The FOREIGN acquire lets the driver handle the external layout.
+     VkImageMemoryBarrier b_src {};
+     b_src.sType                       = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
+-    b_src.oldLayout                   = VK_IMAGE_LAYOUT_UNDEFINED;
++    b_src.oldLayout                   = VK_IMAGE_LAYOUT_GENERAL;
+     b_src.newLayout                   = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;
+-    b_src.srcQueueFamilyIndex         = VK_QUEUE_FAMILY_IGNORED;
+-    b_src.dstQueueFamilyIndex         = VK_QUEUE_FAMILY_IGNORED;
++    b_src.srcQueueFamilyIndex         = VK_QUEUE_FAMILY_FOREIGN_EXT;
++    b_src.dstQueueFamilyIndex         = queue_family_;
+     b_src.image                       = imp.image;
+     b_src.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+     b_src.subresourceRange.levelCount = 1;

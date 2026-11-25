@@ -1,6 +1,7 @@
 *
 !PKGBUILD
 !0001-lito-Use-system-cef.patch
+!0002-weweb-multiplane-dmabuf-import.patch
 !.SRCINFO
 !.nvchecker.toml
 !.gitignore

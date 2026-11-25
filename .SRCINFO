@@ -1,7 +1,7 @@
 pkgbase = open-wallpaper-engine
 	pkgdesc = Open source scene renderer, mostly for linux.
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/waywallen/open-wallpaper-engine
 	arch = x86_64
 	license = GPL-2.0-only
@@ -36,10 +36,12 @@ pkgbase = open-wallpaper-engine
 	source = git+https://github.com/vecren/vrento.git#commit=02101d93c5fd76d8d4892910ba16765892d197c0
 	source = git+https://github.com/vecren/vectext.git#commit=36fc965d8cb418f9dc17d31683dc268dabb52cb2
 	source = 0001-lito-Use-system-cef.patch
+	source = 0002-weweb-multiplane-dmabuf-import.patch
 	sha256sums = 9637b2ec6b6265745a2fe9ad31a04b37208487508c2c7e840267e22944375538
 	sha256sums = e64fd2498d75a21749a71c8f82dbe534b59acb3a462b73c1e2d330538588e5c0
 	sha256sums = 80614f5810186112c4680d77b6535e89da162e8b17e3e302bc86e1a9d9ae3ace
 	sha256sums = d710ad4ce7b565c8a07042f5e054545ffe732013919637fa824603d86eaad293
 	sha256sums = 3629af4ae0b17d055fa869f3613f9dc975e4c5e084fa9fc0e993f2f27d812212
+	sha256sums = 1c728792ff31c0f5394ef6b125413eff040f4f49c083b3be159b71465708ccd8
 
 pkgname = open-wallpaper-engine
