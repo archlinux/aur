@@ -1,0 +1,22 @@
+pkgbase = decypharr-bin
+	pkgdesc = Media gateway for Debrid and Usenet services
+	pkgver = 2.7.2
+	pkgrel = 1
+	url = https://github.com/sirrobot01/decypharr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = decypharr
+	conflicts = decypharr
+	options = !debug
+	source = decypharr-bin-2.7.2-LICENSE::https://raw.githubusercontent.com/sirrobot01/decypharr/v2.7.2/LICENSE
+	sha256sums = e1847a2555d252d676309ea472eedb5b1fa4cadd93a55c7409cd2a3568011fb6
+	source_x86_64 = decypharr-bin-2.7.2-x86_64.tar.gz::https://github.com/sirrobot01/decypharr/releases/download/v2.7.2/decypharr_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 142a1828701ee2cfa2653436776a9ac4de2d63660bd456f857b84f209284d93e
+	source_aarch64 = decypharr-bin-2.7.2-aarch64.tar.gz::https://github.com/sirrobot01/decypharr/releases/download/v2.7.2/decypharr_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 3f28168d26e10505d0074f760c7a831bf7309b277650fad7ddef8b2405e2a41c
+
+pkgname = decypharr-bin
