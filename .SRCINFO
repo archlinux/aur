@@ -1,0 +1,14 @@
+pkgbase = kubectl-cost-bin
+	pkgdesc = kubectl plugin that shows the cost of Kubernetes workloads
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = https://github.com/kubecost/kubectl-cost
+	arch = x86_64
+	license = Apache-2.0
+	provides = kubectl-cost
+	conflicts = kubectl-cost
+	options = !debug
+	source_x86_64 = kubectl-cost-bin-0.6.6-x86_64.tar.gz::https://github.com/kubecost/kubectl-cost/releases/download/v0.6.6/kubectl-cost-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1b9a768763b3a0dbcd8570935ad60c376542f137550abe049dd63fcec68a0eaf
+
+pkgname = kubectl-cost-bin
