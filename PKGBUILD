@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=fernflower-bin
-pkgver=263.7307.200
+pkgver=263.7307.353
 pkgrel=1
 pkgdesc="Analytical decompiler for Java bytecode by JetBrains"
 arch=('any')
