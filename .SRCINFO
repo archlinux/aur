@@ -1,7 +1,7 @@
 pkgbase = mewline-qs
 	pkgdesc = Quickshell shell for Hyprland, niri and bspwm — bar, widgets and menus (successor of mewline)
-	pkgver = 2.4.0
-	pkgrel = 2
+	pkgver = 2.5.0
+	pkgrel = 1
 	url = https://github.com/meowrch/mewline-qs
 	install = mewline-qs.install
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = mewline-qs
 	optdepends = wf-recorder: Wayland screen recording
 	optdepends = ffmpeg: screen recording (x11grab on X11)
 	optdepends = pawlette: palette/theme engine the shell follows live
-	source = https://github.com/meowrch/mewline-qs/archive/refs/tags/v2.4.0.tar.gz
-	sha256sums = dc712dfb65dc88f6080be007aa1620bae7c4e2afd0f3494e594a2c31270bf6e4
+	source = https://github.com/meowrch/mewline-qs/archive/refs/tags/v2.5.0.tar.gz
+	sha256sums = 530daa3bd6d33107bc98fe95ce0bddd3c15c6eb361b1200733dc4953390793ed
 
 pkgname = mewline-qs

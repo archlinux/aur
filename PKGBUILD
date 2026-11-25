@@ -1,7 +1,7 @@
 # Maintainer: dimflix <dimflix.official@gmail.com>
 pkgname=mewline-qs
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Quickshell shell for Hyprland, niri and bspwm — bar, widgets and menus (successor of mewline)"
 arch=('any')
 url="https://github.com/meowrch/mewline-qs"
@@ -33,7 +33,7 @@ optdepends=(
 )
 install=mewline-qs.install
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dc712dfb65dc88f6080be007aa1620bae7c4e2afd0f3494e594a2c31270bf6e4')
+sha256sums=('530daa3bd6d33107bc98fe95ce0bddd3c15c6eb361b1200733dc4953390793ed')
 
 package() {
   cd "$srcdir/mewline-qs-$pkgver"
