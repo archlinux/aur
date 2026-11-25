@@ -1,0 +1,17 @@
+pkgbase = vuls-bin
+	pkgdesc = Agent-less vulnerability scanner for Linux, FreeBSD, Container, WordPress, Programming language libraries, Network devices
+	pkgver = 0.43.0
+	pkgrel = 1
+	url = https://github.com/future-architect/vuls
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = vuls
+	conflicts = vuls
+	options = !debug
+	source_x86_64 = vuls-bin-0.43.0-x86_64.tar.gz::https://github.com/future-architect/vuls/releases/download/v0.43.0/vuls_0.43.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4160fd5d09afc33bba37e728b26e3e2f9c2a612d5f1c1195eacfa3e495aad937
+	source_aarch64 = vuls-bin-0.43.0-aarch64.tar.gz::https://github.com/future-architect/vuls/releases/download/v0.43.0/vuls_0.43.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = f83a735b4e91a1d98a5c6b638f75d6b180681b0d3c3593c47828f1fbd9292b73
+
+pkgname = vuls-bin
