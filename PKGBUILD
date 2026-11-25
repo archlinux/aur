@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=daintree-bin
 _pkgname=Daintree
-pkgver=0.51.0
+pkgver=0.52.0
 _electronversion=45
 pkgrel=1
 pkgdesc="A review-first desktop habitat for running AI coding agents in parallel."
@@ -23,7 +23,7 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('13e658e7b2871ab04d6166bb397c1cdd34f32aa5f53e015e821636e7315b7b96'
+sha256sums=('d04d1ffb3995e2071f3be047f14e9a1592439f714e04521153081a1e55830ce6'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
@@ -39,24 +39,36 @@ _check_electron_version() {
 	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
 }
 _install_icons() {
-	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
-	while IFS= read -r -d '' _icon; do
-		_ext="${_icon##*.}"
-		_size=$(echo "${_icon%/*}" | grep -oE '[0-9]+x[0-9]+|scalable' | head -1)
-		[[ -z "${_size}" ]] && _size=$([[ "${_ext}" == svg ]] && echo scalable || od -An -tu1 -j16 -N8 "${_icon}" 2>/dev/null | awk '{printf "%dx%d",$1*16777216+$2*65536+$3*256+$4,$5*16777216+$6*65536+$7*256+$8}')
-		[[ "${_size}" =~ ^[0-9]+x[0-9]+$ ]] || _size=scalable
-		_dest=$([[ "${_icon}" == */share/pixmaps/* ]] && echo pixmaps || echo "icons/hicolor/${_size}/apps")
-		install -Dm644 "${_icon}" "${pkgdir}/usr/share/${_dest}/${_name}.${_ext}"
-	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
+	local _s="${1:-$srcdir}" _n="${pkgname%-bin}" _i _e _z
+	while IFS= read -r -d '' _i; do
+		_e=${_i##*.}
+		_z=$(printf %s "${_i%/*}"|grep -oE '[0-9]+x[0-9]+(@[0-9]+x?)?|scalable'|tail -n1)
+		[[ $_z ]] || _z=$([[ $_e == svg ]]&&echo scalable||od -An -tx1 -j16 -N8 "$_i"| \
+		{ read a b c d e f g h; printf %dx%d 0x$a$b$c$d 0x$e$f$g$h; })
+		[[ $_z =~ ^[0-9]+x[0-9]+(@[0-9]+x?)?$ || $_z == scalable ]]||_z=scalable
+		install -Dm644 "$_i" "$pkgdir/usr/share/icons/hicolor/$_z/apps/$_n.$_e"
+	done < <(find "$_s" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' \
+		-o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
+}
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 prepare() {
 	sed -i -e "
 		s/@electronversion@/${_electronversion}/g
 		s/@appname@/${pkgname%-bin}/g
-	" "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
+	" "${srcdir}/${pkgname%-bin}.sh"
 	bsdtar -xf "${srcdir}/data."*
 	_check_electron_version
 	sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+	_delete_other_arch_files
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
