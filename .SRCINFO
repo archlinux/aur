@@ -1,7 +1,7 @@
 pkgbase = vulkan-nouveau-aliveos
 	pkgdesc = Open-source Vulkan driver for NVIDIA GPUs (AliveOS NVK / Fermi research fork)
 	pkgver = 26.3.1
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/Twilight0/vulkan-nouveau-aliveos
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = vulkan-nouveau-aliveos
 	depends = zlib
 	depends = zstd
 	optdepends = vulkan-mesa-layers: additional vulkan layers
-	provides = vulkan-nouveau=1:26.3.1-3
+	provides = vulkan-nouveau=1:26.3.1-4
 	provides = vulkan-driver
 	conflicts = vulkan-nouveau
 	options = !lto
@@ -52,6 +52,7 @@ pkgbase = vulkan-nouveau-aliveos
 	source = 0001-nouveau-nvk-nak-initial-Fermi-NVC3-SM20-bring-up.patch
 	source = 0002-nouveau-nvk-nak-Fermi-bound-textures-and-NV9039-M2MF.patch
 	source = 0003-nouveau-nvk-nak-Fermi-compute-dynamic-tex-txs-and-SU.patch
+	source = 0004-nouveau-nvk-Fermi-NV9039-M2MF-fill-update-and-subcha.patch
 	source = xml-1.2.1.tar.gz::https://static.crates.io/crates/xml/1.2.1/download
 	source = zerocopy-0.8.13.tar.gz::https://static.crates.io/crates/zerocopy/0.8.13/download
 	source = ucd-trie-0.1.6.tar.gz::https://static.crates.io/crates/ucd-trie/0.1.6/download
@@ -87,6 +88,7 @@ pkgbase = vulkan-nouveau-aliveos
 	sha256sums = b9e5b0bdc73935e3fc61b544e3ede92eff7c9f522fb85764caad643300cc0a23
 	sha256sums = 0eaebc44a5603fdc186f6452c763f774a59fdeeb1869b1af95bff1f284d27808
 	sha256sums = 71ff270d149adf8f3bae0274dab1b724ac66e3518f5e04d72dc815e02a8ee379
+	sha256sums = 32428468db2154d892a473931d359265cf2d2dd08a9d1f4e715092440b13dafd
 	sha256sums = b8aa498d22c9bbaf482329839bc5620c46be275a19a812e9a22a2b07529a642a
 	sha256sums = 67914ab451f3bfd2e69e5e9d2ef3858484e7074d63f204fd166ec391b54de21d
 	sha256sums = ed646292ffc8188ef8ea4d1e0e0150fb15a5c2e12ad9b8fc191ae7a8a7f3c4b9

@@ -1,0 +1,149 @@
+--- a/src/nouveau/vulkan/nvk_cmd_buffer.c	2026-11-25 18:56:05.341959288 +0200
++++ b/src/nouveau/vulkan/nvk_cmd_buffer.c	2026-11-25 18:30:28.330010742 +0200
+@@ -21,6 +21,7 @@
+ #include "vk_synchronization.h"
+ #include "util/compiler.h"
+ 
++#include "nv_push_cl9039.h"
+ #include "clb097.h"
+ #include "clb197.h"
+ #include "clcb97.h"
+@@ -658,6 +659,11 @@
+          P_IMMD(p, NVA0C0, WAIT_FOR_IDLE, 0);
+          break;
+       }
++      case SUBC_NV9039: {
++         struct nv_push *p = nvk_cmd_buffer_push(cmd, 2);
++         P_IMMD(p, NV9039, WAIT_FOR_IDLE, 0);
++         break;
++      }
+       default:
+          assert(!"Unknown subc");
+          FALLTHROUGH;
+--- a/src/nouveau/vulkan/nvk_cmd_copy.c	2026-11-25 18:56:05.335186255 +0200
++++ b/src/nouveau/vulkan/nvk_cmd_copy.c	2026-11-25 17:50:51.030475416 +0200
+@@ -1012,11 +1012,54 @@
+    }
+ }
+ 
++static void
++nvk_cmd_m2mf_linear_copy(struct nvk_cmd_buffer *cmd,
++                         uint64_t dst_addr, uint64_t src_addr, uint32_t size)
++{
++   struct nv_push *p = nvk_cmd_buffer_push(cmd, 14);
++   P_MTHD(p, NV9039, OFFSET_OUT_UPPER);
++   P_NV9039_OFFSET_OUT_UPPER(p, dst_addr >> 32);
++   P_NV9039_OFFSET_OUT(p, dst_addr & 0xffffffff);
++   P_MTHD(p, NV9039, OFFSET_IN_UPPER);
++   P_NV9039_OFFSET_IN_UPPER(p, src_addr >> 32);
++   P_NV9039_OFFSET_IN(p, src_addr & 0xffffffff);
++   P_NV9039_PITCH_IN(p, size);
++   P_NV9039_PITCH_OUT(p, size);
++   P_NV9039_LINE_LENGTH_IN(p, size);
++   P_NV9039_LINE_COUNT(p, 1);
++   P_IMMD(p, NV9039, LAUNCH_DMA, {
++      .src_memory_layout = SRC_MEMORY_LAYOUT_PITCH,
++      .dst_memory_layout = DST_MEMORY_LAYOUT_PITCH,
++      .completion_type = COMPLETION_TYPE_FLUSH_DISABLE,
++      .interrupt_type = INTERRUPT_TYPE_NONE,
++      .semaphore_struct_size = SEMAPHORE_STRUCT_SIZE_ONE_WORD,
++   });
++}
++
+ void
+ nvk_cmd_fill_memory_ce(struct nvk_cmd_buffer *cmd,
+                        uint64_t dst_addr, uint64_t size,
+                        uint32_t data)
+ {
++   const struct nvk_physical_device *pdev =
++      nvk_device_physical(nvk_cmd_buffer_device(cmd));
++   if (pdev->info.cls_eng3d < KEPLER_A) {
++      uint32_t pat[1024];
++      uint32_t pat_bytes = MIN2(size, sizeof(pat)) & ~3u;
++      for (uint32_t i = 0; i < pat_bytes / 4; i++)
++         pat[i] = data;
++      uint64_t pat_addr = 0;
++      if (pat_bytes > 0)
++         nvk_cmd_buffer_upload_data(cmd, pat, pat_bytes, 64, &pat_addr);
++      while (size >= 4) {
++         uint32_t chunk = MIN2(size, pat_bytes) & ~3u;
++         nvk_cmd_m2mf_linear_copy(cmd, dst_addr, pat_addr, chunk);
++         dst_addr += chunk;
++         size -= chunk;
++      }
++      return;
++   }
++
+    uint32_t max_dim = 1 << 15;
+ 
+    struct nv_push *p = nvk_cmd_buffer_push(cmd, 7);
+@@ -1085,6 +1128,15 @@
+    VK_FROM_HANDLE(nvk_cmd_buffer, cmd, commandBuffer);
+ 
+    uint64_t dst_addr = pDstRange->address;
++   const struct nvk_physical_device *pdev =
++      nvk_device_physical(nvk_cmd_buffer_device(cmd));
++   if (pdev->info.cls_eng3d < KEPLER_A) {
++      uint64_t data_addr;
++      nvk_cmd_buffer_upload_data(cmd, pData, dataSize, 64, &data_addr);
++      nvk_cmd_m2mf_linear_copy(cmd, dst_addr, data_addr, dataSize);
++      return;
++   }
++
+    uint8_t subc = nvk_cmd_buffer_last_subchannel(cmd);
+ 
+    /* From the Vulkan 1.4.354 spec:
+--- a/src/nouveau/vulkan/nvk_cmd_dispatch.c	2026-11-25 18:56:05.342243840 +0200
++++ b/src/nouveau/vulkan/nvk_cmd_dispatch.c	2026-11-25 18:01:29.655829135 +0200
+@@ -467,6 +467,7 @@
+ 
+    /* Restore CONSTANT_BUFFER_SELECTOR and 3D CB0 bindings */
+    if (nvk_cmd_buffer_queue_flags(cmd) & VK_QUEUE_GRAPHICS_BIT) {
++      __push_immd(p, SUBC_NV9097, 0x0110, 0); /* WFI before 3D state restore */
+       P_1INC(p, NV9097, CALL_MME_MACRO(NVK_MME_SELECT_CB0));
+       P_INLINE_DATA(p, 0);
+       for (uint32_t g = 0; g < 5; g++) {
+--- a/src/nouveau/vulkan/nvk_event.c	2026-11-18 17:56:09.000000000 +0200
++++ b/src/nouveau/vulkan/nvk_event.c	2026-11-25 18:30:33.529990404 +0200
+@@ -12,6 +12,7 @@
+ 
+ #include "vk_synchronization.h"
+ 
++#include "nv_push_cl9039.h"
+ #include "nv_push_cl906f.h"
+ #include "nv_push_cl9097.h"
+ #include "nv_push_cl90b5.h"
+@@ -167,6 +168,11 @@
+                            uint64_t addr, uint32_t value)
+ {
+    uint8_t subc = nvk_cmd_buffer_last_subchannel(cmd);
++   if (subc == SUBC_NV9039) {
++      struct nv_push *p = nvk_cmd_buffer_push(cmd, 2);
++      P_IMMD(p, NV9039, WAIT_FOR_IDLE, 0);
++      subc = SUBC_NV9097;
++   }
+    if (subc == SUBC_NV9097) {
+       struct nv_push *p = nvk_cmd_buffer_push(cmd, 7);
+       P_IMMD(p, NV9097, FLUSH_PENDING_WRITES, 0);
+--- a/src/nouveau/vulkan/nvk_query_pool.c	2026-11-18 17:56:09.000000000 +0200
++++ b/src/nouveau/vulkan/nvk_query_pool.c	2026-11-25 18:30:48.245936746 +0200
+@@ -22,6 +22,7 @@
+ #include "compiler/nir/nir.h"
+ #include "compiler/nir/nir_builder.h"
+ #include "nvkcl.h"
++#include "nv_push_cl9039.h"
+ 
+ #include "util/os_time.h"
+ 
+@@ -409,6 +410,11 @@
+ 
+    uint64_t report_addr = nvk_query_report_addr(pool, query);
+    uint8_t subc = nvk_cmd_buffer_last_subchannel(cmd);
++   if (subc == SUBC_NV9039) {
++      struct nv_push *p = nvk_cmd_buffer_push(cmd, 2);
++      P_IMMD(p, NV9039, WAIT_FOR_IDLE, 0);
++      subc = SUBC_NV9097;
++   }
+    if (subc == SUBC_NV9097) {
+       struct nv_push *p = nvk_cmd_buffer_push(cmd, 7);
+       P_IMMD(p, NV9097, FLUSH_PENDING_WRITES, 0);

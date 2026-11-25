@@ -3,7 +3,7 @@
 pkgname=vulkan-nouveau-aliveos
 epoch=1
 pkgver=26.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Open-source Vulkan driver for NVIDIA GPUs (AliveOS NVK / Fermi research fork)"
 url="https://github.com/Twilight0/vulkan-nouveau-aliveos"
 arch=('x86_64')
@@ -63,6 +63,7 @@ source=(
   "0001-nouveau-nvk-nak-initial-Fermi-NVC3-SM20-bring-up.patch"
   "0002-nouveau-nvk-nak-Fermi-bound-textures-and-NV9039-M2MF.patch"
   "0003-nouveau-nvk-nak-Fermi-compute-dynamic-tex-txs-and-SU.patch"
+  "0004-nouveau-nvk-Fermi-NV9039-M2MF-fill-update-and-subcha.patch"
 )
 
 # Rust crates required by Mesa NVK / NAK subprojects (Mesa 26.3.1)
@@ -111,6 +112,7 @@ sha256sums=('4e4e438eac7b840a9383988cbb7c08dad8041da544b9319fc26d319fa7348961'
             'b9e5b0bdc73935e3fc61b544e3ede92eff7c9f522fb85764caad643300cc0a23'
             '0eaebc44a5603fdc186f6452c763f774a59fdeeb1869b1af95bff1f284d27808'
             '71ff270d149adf8f3bae0274dab1b724ac66e3518f5e04d72dc815e02a8ee379'
+            '32428468db2154d892a473931d359265cf2d2dd08a9d1f4e715092440b13dafd'
             'b8aa498d22c9bbaf482329839bc5620c46be275a19a812e9a22a2b07529a642a'
             '67914ab451f3bfd2e69e5e9d2ef3858484e7074d63f204fd166ec391b54de21d'
             'ed646292ffc8188ef8ea4d1e0e0150fb15a5c2e12ad9b8fc191ae7a8a7f3c4b9'
