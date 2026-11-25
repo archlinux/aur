@@ -1,33 +1,47 @@
 # Maintainer: Julian Daube <joposter at gmail dot com>
 # Contributor: Julian Daube <joposter at gmail dot com>
 
-pkgname="python-pybars3-git"
-pkgver=0.9.7.r1.g2edd2fa
+_pkgname=python-pybars3
+pkgname=$_pkgname-git
+pkgver=0.9.7.r6.gbd2ce03
 pkgrel=1
-pkgdesc="A general object-oriented pattern matcher for Python, based on Alessandro Warth's OMeta."
-
-url="https://github.com/wbond/pybars3"
-license=("LGLP3")
+pkgdesc="Handlebars.js templating for Python"
 arch=("any")
-provides=("python-pybars3")
-depends=('python-pymeta3')
-makedepends=("python-setuptools")
-
-source=("$pkgname::git+https://github.com/wbond/pybars3.git")
-md5sums=("SKIP")
+url="https://github.com/wbond/pybars3"
+license=("LGPL-3.0-only")
+depends=("python" "python-pymeta3")
+makedepends=(
+	"git"
+	"python-build"
+	"python-installer"
+	"python-wheel"
+	"python-setuptools"
+)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+sha256sums=("SKIP")
 
 pkgver() {
-	cd "$pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	git -C "$srcdir/$_pkgname" clean -dfx
+}
+
+build() {
+	cd "$_pkgname"
+	python -m build --wheel --no-isolation
 }
 
 check() {
-	# run tests
-	cd "$pkgname"
-	PYTHONPATH="$srcdir/$pkgname" python tests.py
+	cd "$_pkgname"
+	PYTHONPATH="$PWD" python tests.py
 }
 
 package() {
-	cd "$pkgname"
-	python setup.py install --root="$pkgdir/" --optimize=1
+	cd "$_pkgname"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
