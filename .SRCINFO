@@ -1,0 +1,18 @@
+pkgbase = testfixtures-bin
+	pkgdesc = Rails-style test fixtures for Go
+	pkgver = 3.19.0
+	pkgrel = 1
+	url = https://github.com/go-testfixtures/testfixtures
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = testfixtures
+	conflicts = testfixtures
+	options = !debug
+	source_x86_64 = testfixtures-bin-3.19.0-x86_64.tar.gz::https://github.com/go-testfixtures/testfixtures/releases/download/v3.19.0/testfixtures_linux_amd64.tar.gz
+	sha256sums_x86_64 = d78f3dc57bcc0b2570a419dcef13f3914a4a0db3217ae28712f8ad0426b5a7a7
+	source_aarch64 = testfixtures-bin-3.19.0-aarch64.tar.gz::https://github.com/go-testfixtures/testfixtures/releases/download/v3.19.0/testfixtures_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5906f13bcd303d8434b5dffc4ac671969fad3a4ea2d36f2cfec89a45d00e7575
+
+pkgname = testfixtures-bin
