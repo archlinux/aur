@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altus-bin
 _pkgname=Altus
-pkgver=5.8.3
+pkgver=5.8.4
 _electronversion=45
-pkgrel=2
+pkgrel=1
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support."
 arch=('x86_64')
 url="https://github.com/amanharwara/altus"
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'nodejs'
 )
 options=(
     '!strip'
@@ -27,9 +26,9 @@ options=(
     '!strip'
     '!emptydirs'
 )
-sha256sums=('cf4bb24383792b1d625bf97200e982d1f94559a44f3ecb1e2a8511b36b29f328'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+sha256sums=('65a00ce325c161932dd1a9b3f530b8b0539f919c172c86d1b71824d1281d855c'
+            '03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86'
+            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
