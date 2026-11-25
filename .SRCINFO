@@ -1,0 +1,19 @@
+pkgbase = fisco-bcos-bin
+	pkgdesc = FISCO BCOS/fskl bi:kz/5000400FISCO BCOS (pronounced /fskl bi:kz/) is a stable, efficient, and secure permissioned blockchain platform that has been widely used in real-world industry applications
+	pkgver = 3.16.4
+	pkgrel = 1
+	url = https://github.com/FISCO-BCOS/FISCO-BCOS
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = fisco-bcos
+	conflicts = fisco-bcos
+	options = !debug
+	source = fisco-bcos-bin-3.16.4-LICENSE::https://raw.githubusercontent.com/FISCO-BCOS/FISCO-BCOS/v3.16.4/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = fisco-bcos-bin-3.16.4-x86_64.tar.gz::https://github.com/FISCO-BCOS/FISCO-BCOS/releases/download/v3.16.4/fisco-bcos-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 7015851c8e7eab3b05a882cfdd71d18567f69bb2b7b79f68205c0b77d8b9d18c
+	source_aarch64 = fisco-bcos-bin-3.16.4-aarch64.tar.gz::https://github.com/FISCO-BCOS/FISCO-BCOS/releases/download/v3.16.4/fisco-bcos-linux-aarch64.tar.gz
+	sha256sums_aarch64 = b9dc00534589bca579bf18b8dbbb5fea5bb96d066fe18ee87619beffc2a6baa3
+
+pkgname = fisco-bcos-bin
