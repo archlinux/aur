@@ -1,19 +1,23 @@
 pkgbase = necta-wifi-mouse
-	pkgdesc = wifi mouse for android (server part)
-	pkgver = 1.0.2
+	pkgdesc = Server for the WiFi Mouse smartphone app
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = http://wifimouse.necta.us/
+	url = https://wifimouse.necta.us/
 	arch = x86_64
-	arch = i686
-	license = unknown
-	makedepends = sed
-	makedepends = tar
-	source = icon.png
-	md5sums = 671cbe35275357e3a42aa118a7e35a8f
-	source_x86_64 = mouseserver.deb::http://wifimouse.necta.us/apk/mouseserver-64.deb
-	md5sums_x86_64 = 2db5e825e61be4c3d8f391e978b75cd3
-	source_i686 = mouseserver.deb::http://wifimouse.necta.us/apk/mouseserver-32.deb
-	md5sums_i686 = 125a616a9af78a9a6552ec49e8f32571
+	license = GPL-2.0-only
+	depends = avahi
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgcc
+	depends = libstdc++
+	depends = libx11
+	depends = libxtst
+	noextract = necta-wifi-mouse-1.2.0.deb
+	options = !strip
+	options = !debug
+	source = necta-wifi-mouse-1.2.0.deb::https://wifimouse.necta.us/download/mouseserver-64.deb
+	sha256sums = 398cffa603da0bc3f94c984d549c362f01985e896de1d37f4ddcd9845345dc49
 
 pkgname = necta-wifi-mouse
-
