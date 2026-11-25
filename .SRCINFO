@@ -1,0 +1,14 @@
+pkgbase = polymc-appimage
+	pkgdesc = Minecraft launcher compatible with MultiMC (AppImage release)
+	pkgver = 8.1
+	pkgrel = 1
+	url = https://polymc.org/
+	arch = x86_64
+	license = GPL3
+	depends = fuse2
+	depends = zlib
+	options = !strip
+	source = PolyMC-Linux-amd64-8.1.AppImage::https://github.com/PolyMC/PolyMC/releases/download/8.1/PolyMC-Linux-amd64-8.1.AppImage
+	sha256sums = 1b52b12b2998ecf0b67be15c3d551229200d8bef0bb957b7a4f05b755977d1a4
+
+pkgname = polymc-appimage
