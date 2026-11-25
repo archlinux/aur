@@ -1,9 +1,12 @@
 # Maintainer: Lone_Wolf <Lone_Wolf@klaas-de-kat.nl>
 # Contributor: Evert Vorster <superchief@evertvorster.com>
 
+# this package uses typtst and a (MIT licensed) binary plugin to create pdf documentation.
+# the plugin files are located in "$srcdir"/$pkgname/src/oolite-git/Documentation/docs/typst/vendor/cmarker folder
+
 pkgname=oolite-git
-pkgver=1.93.1.r7966.7ccbff5e
-pkgrel=2
+pkgver=1.93.1.r8019.dcbd027e
+pkgrel=1
 epoch=1
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
@@ -12,7 +15,7 @@ license=('GPL-2.0-or-later')
 groups=('game')
 depends=(bash libglvnd glibc zlib gnustep-base hicolor-icon-theme libstdc++ libobjc libgcc 
           espeak-ng glu nspr openal sdl3 libvorbis libpng)
-makedepends=(gcc-objc git mozillajs-linux-bin meson ninja gnustep-make procps-ng gitversion)
+makedepends=(gcc-objc git mozillajs-linux-bin meson ninja gnustep-make procps-ng gitversion typst)
 source=(oolite-git::git+https://github.com/OoliteProject/oolite
         oolite-git.sh
 )
@@ -33,15 +36,20 @@ pkgver() {
 }
 
 build() {
-  meson setup $pkgname _build \
-    --backend=ninja \
-    --wrap-mode=nofallback \
-    -D debug=false \
-    -D strip_bin=true \
-    -D b_lto=true \
-    -D prefix=/usr \
-    -D bindir=bin \
+  local meson_options=(
+    --backend=ninja
+    --wrap-mode=nofallback
+    --optimization 2
+    -D buildtype=plain
+    -D debug=false
+    -D strip_bin=true
+    -D b_lto=true
+    -D prefix=/usr
+    -D bindir=bin
     -D datadir=share
+  )
+
+  meson setup $pkgname _build "${meson_options[@]}"
   meson configure --no-pager _build
   meson compile -C _build
 }
@@ -50,7 +58,7 @@ package() {
   meson install -C _build --destdir "$pkgdir"
   
   # Manually create needed folders
-  mkdir -p "$pkgdir"/usr/share/{oolite-git,applications,icons/hicolor/256x256/apps}
+  mkdir -p "$pkgdir"/usr/share/{$pkgname,applications,icons/hicolor/256x256/apps,doc/$pkgname}
 
   #folders are created under /usr/share/oolite and some of the sourcecode (OBJ-C) will break if another path is used 
   # move it to stay closer to archlinux package guidelines and create symlink to prevent breakage
@@ -70,4 +78,8 @@ package() {
     <$pkgname/installers/FreeDesktop/space.oolite.Oolite.desktop \
     >"$pkgdir"/usr/share/applications/space.oolite.Oolite-git.desktop
   chmod 644 "$pkgdir"/usr/share/applications/space.oolite.Oolite-git.desktop
+  
+  # move documentation pdfs
+  mv "$pkgdir"/usr/share/$pkgname/*.pdf "$pkgdir"/usr/share/doc/$pkgname/
+  
 }
