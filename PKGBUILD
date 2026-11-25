@@ -1,13 +1,13 @@
 pkgname=bloodyad
-pkgver=2.5.4
-pkgrel=2
+pkgver=2.5.7
+pkgrel=1
 pkgdesc="Active Directory privilege escalation swiss army knife"
 arch=('x86_64')
 url="https://github.com/CravateRouge/bloodyAD"
 license=('MIT')
 
 depends=('python')
-makedepends=('python-build' 'python-pip')
+makedepends=('python-build' 'python-pip' 'python-hatchling')
 
 optdepends=('krb5: For Kerberos authentication')
 
@@ -15,7 +15,7 @@ provides=('bloodyad')
 conflicts=('bloodyad')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CravateRouge/bloodyAD/archive/v${pkgver}.tar.gz")
-sha256sums=('2c04f013963a616ef21bee964b7c5c641b0d2c3ae51be6d65a7485bc4b5e4513')
+sha256sums=('3d33e20ce3e21002709ccbf33d007af359a7eb6bf9c6d1c516eaf877ee97f319')
 
 _pyver=$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
 _pkgroot="/opt/bloodyad"
@@ -24,10 +24,10 @@ _pylib="${_pkgroot}/lib/python${_pyver}/site-packages"
 # Explicit dependency list from pyproject.toml
 _deps=(
   "cryptography==44.0.2"
-  "badldap>=0.7.5"
+  "badldap>=0.7.7"
   "winacl==0.1.9"
   "asn1crypto==1.5.1"
-  "kerbad>=0.5.10"
+  "kerbad>=0.5.12"
 )
 
 build() {
@@ -52,6 +52,9 @@ package() {
         --no-deps \
         --no-compile \
         dist/*.whl
+
+    # Remove build-location metadata embedded by pip for the local wheel
+    rm -f "${pkgdir}${_pylib}/bloodyad-${pkgver}.dist-info/direct_url.json"
 
     # Wrapper using real entrypoint
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/bloodyad" << EOF

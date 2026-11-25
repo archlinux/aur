@@ -1,17 +1,18 @@
 pkgbase = bloodyad
 	pkgdesc = Active Directory privilege escalation swiss army knife
-	pkgver = 2.5.4
-	pkgrel = 2
+	pkgver = 2.5.7
+	pkgrel = 1
 	url = https://github.com/CravateRouge/bloodyAD
 	arch = x86_64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-pip
+	makedepends = python-hatchling
 	depends = python
 	optdepends = krb5: For Kerberos authentication
 	provides = bloodyad
 	conflicts = bloodyad
-	source = bloodyad-2.5.4.tar.gz::https://github.com/CravateRouge/bloodyAD/archive/v2.5.4.tar.gz
-	sha256sums = 2c04f013963a616ef21bee964b7c5c641b0d2c3ae51be6d65a7485bc4b5e4513
+	source = bloodyad-2.5.7.tar.gz::https://github.com/CravateRouge/bloodyAD/archive/v2.5.7.tar.gz
+	sha256sums = 3d33e20ce3e21002709ccbf33d007af359a7eb6bf9c6d1c516eaf877ee97f319
 
 pkgname = bloodyad
