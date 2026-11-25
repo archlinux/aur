@@ -3,7 +3,7 @@
 # Contributor: Tom Krizek <tkrizek@isc.org>
 
 pkgname=python-dnspython-git
-pkgver=2.1.0.r883.f517fbfc
+pkgver=2.1.0.r1103.095a30ee
 pkgrel=1
 pkgdesc="A DNS toolkit for Python"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
     'python-uv-build'
     'python-wheel'
 )
-checkdepends=('python-idna' 'python-cryptography' 'python-trio' 'python-pytest')
+checkdepends=('python-idna' 'python-cryptography' 'python-trio' 'python-pytest' 'python-jwcrypto')
 optdepends=(
     'python-aioquic: DoQ support'	
     'python-anyio: DoH support (asyncio)'
@@ -27,6 +27,7 @@ optdepends=(
     'python-httpcore: DoH support'
     'python-httpx: DoH support'
     'python-idna: support for updated IDNA 2008'
+    'python-jwcrypto: support for JSON Web Keys'
     'python-trio: async support'
     'python-sniffio: async support'
 )
