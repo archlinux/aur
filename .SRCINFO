@@ -1,0 +1,20 @@
+pkgbase = sine-bin
+	pkgdesc = Theme manager for Firefox-based browsers
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://github.com/CosmoCreeper/Sine
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	depends = glibc
+	provides = sine
+	conflicts = sine
+	options = !debug
+	source = sine-bin-2.3.3-LICENSE::https://raw.githubusercontent.com/CosmoCreeper/Sine/v2.3.3/LICENSE
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = sine-bin-2.3.3-x86_64::https://github.com/CosmoCreeper/Sine/releases/download/v2.3.3/sine-linux-x64
+	sha256sums_x86_64 = b4d3af1eaf744adbfdbd7e0cc931fd73ce7a21a21a8f6874b6fd4f533ccd6d5b
+	source_aarch64 = sine-bin-2.3.3-aarch64::https://github.com/CosmoCreeper/Sine/releases/download/v2.3.3/sine-linux-arm64
+	sha256sums_aarch64 = ece9b771d0d7c7dacc3830559847a4a95fd60aabe1032a8dc2ec2557757a1211
+
+pkgname = sine-bin
