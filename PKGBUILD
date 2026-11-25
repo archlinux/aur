@@ -1,6 +1,6 @@
 # Maintainer: Gemini CLI Agent
 pkgname=cockpit-tools-bin
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Universal AI IDE account manager for Antigravity / Codex / GitHub Copilot / Windsurf / Kiro / Cursor / Gemini-cli / CodeBuddy"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'webkit2gtk-4.1' 'libnm' 'libayatana-appindicator')
 provides=('cockpit-tools')
 conflicts=('cockpit-tools')
 source=("${pkgname}-${pkgver}.deb::https://github.com/jlcodes99/cockpit-tools/releases/download/v${pkgver}/Cockpit.Tools_${pkgver}_amd64.deb")
-sha256sums=('33967132ef863e5fe96411014dd641981827e186136deb3c28186db8072202f6')
+sha256sums=('2c6a62c3dde1ecd532be1347891ecb1c1651f8b2ba009ccf92930fb9a37da9f0')
 
 package() {
   # Extract data.tar.gz which contains the filesystem structure
