@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=graph-tui-bin
-pkgver=0.19.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="A terminal graph editor with an infinite canvas, orthogonal edge routing and vim-like keys"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/graph-tui-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('819a7bd5097d21caed6ac17b0cdfd1b38d6df9b7b736aaa9992a0be290e75b32')
+sha256sums_x86_64=('af04adc9646d49070eab593cbd1b8508b681ad4a2add2d9dcc8ffc7deeb1c736')
 
 package() {
   install -Dm755 "graph-tui" "${pkgdir}/usr/bin/graph-tui"
