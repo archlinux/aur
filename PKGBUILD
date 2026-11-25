@@ -1,17 +1,11 @@
-# Maintainer: <你的名字> <你的邮箱>
-#
-# VCS package: builds the current `main` branch, which already contains the
-# post-1.4.0 fixes that the v1.4.0 tag lacks, and applies the Linux fixes patch
-# (system CA install via pkexec, tray/quit behaviour, code_forge FFI loading).
-#
-# Build needs the Flutter SDK from the AUR (`flutter-bin`).
+# Maintainer: BysevenOffical <38542005+Fansirsqi@users.noreply.github.com>
 
 pkgname=proxypin-git
-pkgver=1.4.0.r41.g866ffad
+pkgver=1.4.0.r746.gb10b4fe
 pkgrel=1
-pkgdesc='HTTP/HTTPS packet capture and manipulation tool with an in-process MITM proxy (git)'
+pkgdesc='HTTP/HTTPS packet capture tool with Linux desktop improvements from the Fansirsqi fork (git)'
 arch=('x86_64')
-url='https://github.com/wanghongenpin/proxypin'
+url='https://github.com/Fansirsqi/proxypin'
 license=('Apache-2.0')
 depends=(
   'gtk3'
@@ -20,13 +14,15 @@ depends=(
   'ca-certificates'
   'ca-certificates-utils'
   'hicolor-icon-theme'
+  'mpv'
+  'polkit'
 )
 makedepends=(
   'clang'
   'cmake'
   'ninja'
   'pkgconf'
-  'rust'
+  'rustup'
   'patchelf'
   'flutter-bin'
   'git'
@@ -34,18 +30,17 @@ makedepends=(
 optdepends=(
   'xdg-desktop-portal: native file dialogs (file_picker)'
   'libappindicator-gtk3: alternative tray backend'
+  'nss: browser certificate database management'
 )
 conflicts=('proxypin' 'proxypin-bin')
 provides=('proxypin')
 options=('!strip' '!debug')
 
 source=(
-  "${pkgname}::git+${url}.git"
-  'proxypin-linux-fixes.patch'
+  "${pkgname}::git+${url}.git#branch=feat/ui-settings-and-fonts"
   'proxypin.desktop'
 )
 sha256sums=('SKIP'
-            'ef6e1ddad8520baa515b74f84201fad64e0554472fe78cefe3bc395bf1e41a5f'
             '354e22fa87a7720a39890234c36975dd2fab989e2531b22b60a432b033cf4c7e')
 
 pkgver() {
@@ -53,11 +48,6 @@ pkgver() {
   local ver
   ver=$(grep '^version:' pubspec.yaml | sed 's/version: //; s/+.*//')
   printf '%s.r%s.g%s' "${ver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  patch -Np1 -p1 -i "${srcdir}/proxypin-linux-fixes.patch"
 }
 
 build() {
@@ -74,7 +64,7 @@ build() {
       [[ -x $d/cargo ]] && export PATH="$d:$PATH" && break
     done
   fi
-  command -v cargo >/dev/null || { error 'cargo not found: install rust.'; return 1; }
+  command -v cargo >/dev/null || { error 'cargo not found: configure a toolchain with rustup.'; return 1; }
 
   export PROXYPIN_DART_API_DL_C="$(dirname "$(dirname "$(command -v flutter)")")/bin/cache/dart-sdk/include/dart_api_dl.c"
 
@@ -90,7 +80,7 @@ package() {
   local _libdir="${pkgdir}/usr/lib/proxypin"
 
   install -dm755 "${_libdir}"
-  cp -a "${_bundle}/." "${_libdir}/"
+  cp -a --no-preserve=ownership "${_bundle}/." "${_libdir}/"
 
   install -Dm644 'build/linux/x64/release/plugins/zstandard_linux/zstd_build/libzstandard_linux.so' \
     "${_libdir}/lib/libzstandard_linux.so"
