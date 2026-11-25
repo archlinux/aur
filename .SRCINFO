@@ -1,6 +1,6 @@
 pkgbase = proton-stream-bin
 	pkgdesc = Unofficial media library for Proton Drive: browse and stream public links and your own Drive folders (binaries)
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/narrrl/proton-stream
 	arch = x86_64
@@ -17,17 +17,17 @@ pkgbase = proton-stream-bin
 	depends = glibc
 	optdepends = gnome-keyring: credential storage over the Secret Service API
 	optdepends = kwallet: credential storage over the Secret Service API
-	provides = proton-stream=2.5.0
+	provides = proton-stream=2.5.1
 	provides = pstr
 	conflicts = proton-stream
 	conflicts = proton-stream-git
 	options = !strip
 	options = !debug
-	source = proton-stream-2.5.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/narrrl/proton-stream/releases/download/v2.5.0/proton-stream-2.5.0-x86_64-unknown-linux-gnu.tar.gz
-	source = io.narl.proton-stream-2.5.0.desktop::https://raw.githubusercontent.com/narrrl/proton-stream/v2.5.0/packaging/io.narl.proton-stream.desktop
-	source = io.narl.proton-stream-2.5.0.metainfo.xml::https://raw.githubusercontent.com/narrrl/proton-stream/v2.5.0/packaging/io.narl.proton-stream.metainfo.xml
-	sha256sums = 1101a9074d2817d5fa156c0dd8daee3398b4be95bc914046eb2066b4cfe9c5e9
+	source = proton-stream-2.5.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/narrrl/proton-stream/releases/download/v2.5.1/proton-stream-2.5.1-x86_64-unknown-linux-gnu.tar.gz
+	source = io.narl.proton-stream-2.5.1.desktop::https://raw.githubusercontent.com/narrrl/proton-stream/v2.5.1/packaging/io.narl.proton-stream.desktop
+	source = io.narl.proton-stream-2.5.1.metainfo.xml::https://raw.githubusercontent.com/narrrl/proton-stream/v2.5.1/packaging/io.narl.proton-stream.metainfo.xml
+	sha256sums = cbeca89f88a6f09d007191531c9fa11d4570cbea3b4fec21e3a011e5b57a9dea
 	sha256sums = 5e0a6db50a728dbf3872fd022677d7a14683a20585e565c616d18bce3a3f0718
-	sha256sums = a25ca13e723fa7f4ebd7b4645aec52708f1351e4b05b71f16ff97dfd1a6feb5b
+	sha256sums = 1699dac8658a72c2af46c2d08cb52a9b22209d924db2f3afe4fc84e98f236ee6
 
 pkgname = proton-stream-bin
