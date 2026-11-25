@@ -13,7 +13,7 @@ pkgver=6.4.1
 # tags. For a prerelease tag v4.13.0-rc.1 use pkgver=4.13.0_rc.1 and _version=4.13.0-rc.1
 # (Arch forbids '-' in pkgver; upstream's generator maps '-' <-> '_').
 _version=6.4.1
-pkgrel=2
+pkgrel=1
 pkgdesc='Moonlight-protocol game-streaming client'
 arch=('x86_64' 'aarch64')
 url='https://github.com/RamazanKara/nightjar'

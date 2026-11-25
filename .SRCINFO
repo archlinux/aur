@@ -1,7 +1,7 @@
 pkgbase = nightjar-desktop-bin
 	pkgdesc = Moonlight-protocol game-streaming client
 	pkgver = 6.4.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/RamazanKara/nightjar
 	install = nightjar-desktop-bin.install
 	arch = x86_64
