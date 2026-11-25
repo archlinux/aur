@@ -1,24 +1,29 @@
 pkgbase = python-django-dbbackup-git
-	pkgdesc = Management commands to help backup and restore your project database and media files
-	pkgver = 2.5.0.r194.ge0d3eaf
+	pkgdesc = Django management commands to back up and restore database and media files
+	pkgver = 5.4.2.r0.gcf79a53
 	pkgrel = 1
-	url = https://django-dbbackup.readthedocs.io/en/stable/
+	url = https://github.com/Archmonger/django-dbbackup
 	arch = any
-	makedepends = python-setuptools
-	makedepends = python-mock
-	makedepends = python-pep8
-	makedepends = python-pylint
-	makedepends = python-coverage
-	makedepends = python-gnupg
-	makedepends = python-django-storages
-	makedepends = python-testfixtures
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-dotenv
+	checkdepends = python-gnupg
+	checkdepends = python-testfixtures
+	checkdepends = python-psycopg2
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python
-	depends = python-django>=1.5
-	depends = python-six
-	depends = python-pytz
-	provides = python-django-dbbackup
-	source = python-django-dbbackup-git::git+https://github.com/django-dbbackup/django-dbbackup
-	md5sums = SKIP
+	depends = python-django>=5.0
+	optdepends = python-gnupg: encrypted backups
+	optdepends = python-django-storages: remote storage backends
+	optdepends = python-psycopg2: PostgreSQL support
+	optdepends = python-mysqlclient: MySQL support
+	provides = python-django-dbbackup=5.4.2.r0.gcf79a53
+	conflicts = python-django-dbbackup
+	source = python-django-dbbackup::git+https://github.com/Archmonger/django-dbbackup.git
+	sha256sums = SKIP
 
 pkgname = python-django-dbbackup-git
-
