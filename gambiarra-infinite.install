@@ -1,0 +1,22 @@
+post_install() {
+  cat <<'EOM'
+GambiarraInfinite V4 (Linux port) installed.
+
+  Launcher : gambiarra-infinite
+  Menu     : "GambiarraInfinite V4"
+
+The app drives the OpenCode v2 CLI over a local service; it is bundled with
+this package, so nothing else needs to be installed.
+EOM
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  cat <<'EOM'
+GambiarraInfinite V4 removed.
+Config/data stays in ~/.config/ai.larpcode.desktop.dev if you want to clean it.
+EOM
+}

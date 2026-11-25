@@ -1,0 +1,22 @@
+pkgbase = gambiarra-infinite-bin
+	pkgdesc = GambiarraInfinite V4 - AI coding desktop app (LarpCode/OpenCode rebrand)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/ArthurSimin/GambiarraInfinite
+	arch = x86_64
+	license = MIT
+	depends = electron44
+	depends = ripgrep
+	optdepends = libappindicator-gtk3: tray icon support
+	provides = gambiarra-infinite
+	conflicts = gambiarra-infinite
+	options = !strip
+	options = !debug
+	source = LICENSE::https://github.com/ArthurSimin/GambiarraInfinite/raw/v1.0.2/LICENSE
+	source = gambiarra-infinite-desktop-1.0.2.tar.zst::https://github.com/ArthurSimin/GambiarraInfinite/releases/download/v1.0.2/gambiarra-infinite-desktop-1.0.2.tar.zst
+	source = cli-linux-x64-baseline-2.4.1.tgz::https://registry.npmjs.org/@opencode/cli-linux-x64-baseline/-/cli-linux-x64-baseline-2.4.1.tgz
+	sha256sums = SKIP
+	sha256sums = fc5640965ef6693b9dadd39f7c579856966e5c8922f25ecbd78cd902c7e83b22
+	sha256sums = fd9714fb1a982f51f6185b5fb242706c31faf8b1d0cd633613df9156f565f7fa
+
+pkgname = gambiarra-infinite-bin
