@@ -1,0 +1,21 @@
+pkgbase = cargo-tree-tui
+	pkgdesc = Display an interactive tree visualization of your Rust dependency graph
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/orhun/cargo-tree-tui
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	depends = libgit2
+	depends = curl
+	provides = cargo-tree-tui
+	options = !lto
+	options = !strip
+	source = cargo-tree-tui-0.1.0.tgz::https://github.com/orhun/cargo-tree-tui/archive/v0.1.0.tar.gz
+	sha256sums = 1b24cbcbd2d0ed03194993f82c3ac09c5caf7e19c79ae89a5044729b0ab69a08
+
+pkgname = cargo-tree-tui
