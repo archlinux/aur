@@ -6,15 +6,14 @@
 pkgname=redasm-beta
 _pkgver=4.0.0-beta4
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=3
 url="https://redasm.dev"
 arch=("x86_64")
 pkgdesc="The Open Source Disassembler (beta version)"
 license=("GPL-3.0-or-later")
-makedepends=("git" "cmake")
-depends=("qt6-base" "sqlite" "miniz" "zydis")
-optdepends=("curl: networking support")
-conflicts=("redasm" "redasm-beta")
+makedepends=("cmake")
+depends=("qt6-base" "sqlite" "miniz" "zydis" "curl" "hicolor-icon-theme")
+conflicts=("redasm" "redasm-git")
 provides=("redasm")
 
 # Depots versions
@@ -95,5 +94,5 @@ build() {
 
 package() {
     cd "${srcdir}/workspace-${_pkgver}"
-    cmake --install build --prefix "${pkgdir}/usr"
+    DESTDIR="${pkgdir}" cmake --install build
 }
