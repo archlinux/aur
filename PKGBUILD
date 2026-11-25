@@ -1,10 +1,10 @@
-# Maintainer: qdesjardin <qdesjardin gmail com>
+# Maintainer: qdesjardin <dairy queendairy com>
 
 _pkgname=rtorrent
 pkgname=rtorrent-ps-ch
 _pkgver=0.9.8
-pkgver=1.8.3
-pkgrel=4
+pkgver=1.8.4
+pkgrel=1
 pkgdesc='Extended rTorrent-ps with additional UI patches, general fixes and enhancements'
 license=('GPL2')
 arch=('x86_64')
@@ -93,6 +93,8 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname-$_pkgver"
+
+  export CXXFLAGS="$CXXFLAGS -std=gnu++14"
 
   ./configure \
     --prefix=/usr \
