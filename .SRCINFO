@@ -15,6 +15,7 @@ pkgbase = network-sandbox-engine
 	depends = python-typing_extensions
 	depends = python-pydantic
 	depends = python-yaml
+	depends = python-scapy
 	provides = nse-runner
 	source = git+https://github.com/onyks-os/NetworkSandboxEngine.git#tag=v2.5.1
 	sha256sums = e9b54c19abc962978107ab62e5b7f455c374d5015ff8b377aae1f941477dc715

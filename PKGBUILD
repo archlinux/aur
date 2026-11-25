@@ -24,7 +24,7 @@ url="${_url_github}"
 provides=("${_execname}")
 
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
-depends=('nftables' 'python' 'python-typing_extensions' 'python-pydantic' 'python-yaml')
+depends=('nftables' 'python' 'python-typing_extensions' 'python-pydantic' 'python-yaml' 'python-scapy')
 optdepends=()
 
 source=("git+${_url_github}.git#tag=${_git_version}")
