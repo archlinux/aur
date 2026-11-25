@@ -1,0 +1,19 @@
+pkgbase = pgwatch-bin
+	pkgdesc = PostgreSQL metrics monitor and dashboard
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://github.com/cybertec-postgresql/pgwatch
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	provides = pgwatch
+	conflicts = pgwatch
+	options = !debug
+	source = pgwatch-bin-6.2.0-LICENSE::https://raw.githubusercontent.com/cybertec-postgresql/pgwatch/v6.2.0/LICENSE
+	sha256sums = 99af76c98e5a4bd5420840a4edc369dc02c99cafb99cb4bf2f5feddd076617e7
+	source_x86_64 = pgwatch-bin-6.2.0-x86_64.tar.gz::https://github.com/cybertec-postgresql/pgwatch/releases/download/v6.2.0/pgwatch_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8c61a80eb7a68023896029c339b83c1938c557e94ce9aba6140e86b3788c1e51
+	source_aarch64 = pgwatch-bin-6.2.0-aarch64.tar.gz::https://github.com/cybertec-postgresql/pgwatch/releases/download/v6.2.0/pgwatch_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9f79e5addf89c89f417c2af3e8463ac81fba6da60f735601d1f7528fbed4e256
+
+pkgname = pgwatch-bin
