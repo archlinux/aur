@@ -1,0 +1,21 @@
+pkgbase = browser-control-bin
+	pkgdesc = A tiny, fast Rust CLI that drives a real browser over the Chrome DevTools Protocol built for coding agents
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/keon/browser-control
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = browser-control
+	conflicts = browser-control
+	options = !debug
+	source = browser-control-bin-0.1.1-LICENSE::https://raw.githubusercontent.com/keon/browser-control/v0.1.1/LICENSE
+	sha256sums = 29a7ea052d6d2b2080a2c221786557a2c7cdade4826148cbba9a910d72d8e998
+	source_x86_64 = browser-control-bin-0.1.1-x86_64.tar.gz::https://github.com/keon/browser-control/releases/download/v0.1.1/browser-control-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 40c9823488527ce56f358257d4644f8c616d6f10dd1f407f3a6d48482cc169d3
+	source_aarch64 = browser-control-bin-0.1.1-aarch64.tar.gz::https://github.com/keon/browser-control/releases/download/v0.1.1/browser-control-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d4c690b6ea2b87980310f0713cd2815f672bdb7705b8d12044b332e947117939
+
+pkgname = browser-control-bin
