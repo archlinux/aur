@@ -1,0 +1,19 @@
+pkgbase = kubectl-view-allocations-bin
+	pkgdesc = kubectl plugin to list resource allocations and utilization
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/davidB/kubectl-view-allocations
+	arch = x86_64
+	arch = aarch64
+	license = CC0-1.0
+	depends = glibc
+	depends = libgcc
+	provides = kubectl-view-allocations
+	conflicts = kubectl-view-allocations
+	options = !debug
+	source_x86_64 = kubectl-view-allocations-bin-3.2.0-x86_64.tar.gz::https://github.com/davidB/kubectl-view-allocations/releases/download/3.2.0/kubectl-view-allocations_3.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 95e977b4c61eb9a22da1544c0e42a70085ad1377399ad578fa65dd06916dbcfd
+	source_aarch64 = kubectl-view-allocations-bin-3.2.0-aarch64.tar.gz::https://github.com/davidB/kubectl-view-allocations/releases/download/3.2.0/kubectl-view-allocations_3.2.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 557f7118d7e34fe966a9935b0bec20b3beeb012b3839e0bbe965debda88aab45
+
+pkgname = kubectl-view-allocations-bin
