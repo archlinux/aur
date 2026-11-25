@@ -23,7 +23,7 @@ install="$pkgname.install"
 options=('!strip' '!debug')
 
 _asset="alasraa-$pkgver-x86_64-linux.tar.gz"
-source=("$_asset::$_upstream/releases/download/$pkgver/$_asset")
+source=("$_asset::$_upstream/releases/download/v$pkgver/$_asset")
 sha256sums=('cc87d01855840e9c94298ee6d74745bd6143d073433d401b620ee146d3ad0156')
 
 package() {

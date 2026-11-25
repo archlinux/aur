@@ -24,7 +24,7 @@ pkgbase = alasraa-bin
 	conflicts = alasraa
 	options = !strip
 	options = !debug
-	source = alasraa-0.1.4-x86_64-linux.tar.gz::https://codeberg.org/samibr/alasraa/releases/download/0.1.4/alasraa-0.1.4-x86_64-linux.tar.gz
+	source = alasraa-0.1.4-x86_64-linux.tar.gz::https://codeberg.org/samibr/alasraa/releases/download/v0.1.4/alasraa-0.1.4-x86_64-linux.tar.gz
 	sha256sums = cc87d01855840e9c94298ee6d74745bd6143d073433d401b620ee146d3ad0156
 
 pkgname = alasraa-bin
