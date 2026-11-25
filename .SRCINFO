@@ -1,0 +1,19 @@
+pkgbase = switchres
+	pkgdesc = Modeline generation library and tool for CRT monitors and emulation
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/antonioginer/switchres
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	depends = sdl2
+	depends = libdrm
+	depends = libx11
+	depends = libxrandr
+	provides = libswitchres.so
+	source = switchres-2.2.2.tar.gz::https://github.com/antonioginer/switchres/archive/refs/tags/v2.2.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = switchres
