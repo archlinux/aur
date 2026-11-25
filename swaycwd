@@ -1,60 +1,94 @@
 #!/usr/bin/env bash
+# SPDX-FileCopyrightText: Julian Daube
+# SPDX-License-Identifier: 0BSD
+#
+# Print the working directory of whatever runs in the focused sway window.
 
-fallback="$HOME"
+usage="Usage: ${0##*/} [-h] [-f DIRECTORY]
 
-# taken from https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
-! PARSED=$(getopt --options="h?f:" --longoptions="fallback:,help" --name "$0" -- "$@")
-if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
-    # e.g. return value is 1
-    #  then getopt has complained about wrong arguments to stdout
-    exit 2
-fi
+Print the working directory of the program in the focused sway window.
 
-# helptext 
-usage="$(basename $0) [-h] [-f=/fallback/directory] 
+For terminals this is the directory of the foreground program, for other
+windows the directory of the window's own process.
 
-Get Current Working Directory for program under cursor in sway. 
+Options:
+  -h, --help                 print this help text
+  -f, --fallback DIRECTORY   print this if no directory was found
+                             (default: \$HOME)"
 
-Options: 
- -h, --help     Print this help text
- -f, --fallback Set directory to print when error occured (defaults to $HOME)"
+fallback=$HOME
 
-# parse args
-eval set -- "$PARSED"
-
-while true; do
-	case "$1" in 
-	-f|--fallback) 
-		fallback="$2"
-		shift 2
-		;;
-	-h|--help)
-		echo "$usage"
-		exit 0
-		;;
-	--)
-		break
-		;;
-	*) 
-		echo "argparse error"
-		exit 1
-		;;
+while (( $# )); do
+	case $1 in
+		-h|-\?|--help) printf '%s\n' "$usage"; exit 0 ;;
+		-f|--fallback)
+			(( $# > 1 )) || { printf '%s: %s needs a directory\n' "${0##*/}" "$1" >&2; exit 2; }
+			fallback=$2; shift ;;
+		--fallback=*) fallback=${1#*=} ;;
+		-f?*) fallback=${1#-f} ;;
+		*) printf '%s: unknown argument: %s\n\n%s\n' "${0##*/}" "$1" "$usage" >&2; exit 2 ;;
 	esac
+	shift
 done
 
-# get parent pid of program under cursor
-pid=$(swaymsg -t get_tree | jq '.. | select(.type?) | select(.type=="con") | select(.focused==true).pid')
-ppid=$(pgrep --newest --parent ${pid})
+# print directory of process $1, fails if it is unreadable or was deleted
+cwd_of() {
+	local dir
+	dir=$(readlink "/proc/$1/cwd" 2>/dev/null) && [[ -d $dir && $dir != /proc/* ]] &&
+		printf '%s\n' "$dir"
+}
 
-# get cwd from proc dir
-location=$(readlink /proc/${ppid}/cwd)
+# set ppid, tty (device number, 0 if none) and tpgid (foreground group) of process $1
+read_stat() {
+	local line
+	{ line=$(< "/proc/$1/stat"); } 2>/dev/null || return 1
+	# the command name may contain anything, even spaces and parentheses
+	read -r _ ppid _ _ tty tpgid _ <<< "${line##*) }"
+}
 
-if [ "$?" -ne 0 ]; then 
-	# just print out fallback dir on error
-	echo $fallback
-	exit 0
-fi 
+# print foreground process of the most recently used terminal below process $1
+foreground_of() {
+	local -a queue=("$1") children
+	local pid used best='' best_used=-1 ppid tty tpgid own_tty
 
-# find out if the path points to /proc dir
-# use fallback in that case
-echo $location | grep -q /proc && echo $fallback || echo $location
+	read_stat "$1" || return 1
+	own_tty=$tty # terminal the window was started from, not one it displays
+
+	while (( ${#queue[@]} )); do
+		pid=${queue[0]}
+		queue=("${queue[@]:1}")
+
+		if read_stat "$pid" && (( tty != 0 && tty != own_tty && tpgid > 0 )); then
+			# reading input updates the access time of a terminal
+			used=$(stat -c %X "/dev/pts/$(( (tty & 0xff) | (tty >> 12 & 0xfff00) ))" 2>/dev/null)
+			if (( ${used:-0} > best_used )); then
+				best=$tpgid best_used=${used:-0}
+			fi
+		fi
+
+		# children are listed per thread
+		read -r -d '' -a children < <(cat "/proc/$pid/task/"*/children 2>/dev/null)
+		queue+=("${children[@]}")
+	done
+
+	[[ $best ]] && printf '%s\n' "$best"
+}
+
+window=$(swaymsg -t get_tree 2>/dev/null |
+	jq -r 'first(.. | objects | select(.focused == true) | .pid // empty)' 2>/dev/null)
+
+if [[ $window =~ ^[0-9]+$ ]]; then
+	if pid=$(foreground_of "$window"); then
+		# The foreground program may be unreadable (e.g. sudo) or already gone,
+		# so go up to the shell until there is a usable directory.
+		while (( pid > 1 && pid != window )); do
+			cwd_of "$pid" && exit 0
+			read_stat "$pid" || break
+			pid=$ppid
+		done
+	else
+		cwd_of "$window" && exit 0
+	fi
+fi
+
+printf '%s\n' "$fallback"

@@ -1,15 +1,17 @@
 pkgbase = swaycwd
-	pkgdesc = alternative to xcwd for swayvm
-	pkgver = 1.1
+	pkgdesc = Print the working directory of the focused sway window
+	pkgver = 2.0
 	pkgrel = 1
-	url = https://webcache.googleusercontent.com/search?q=cache:fXlJ80wnYwgJ:https://www.reddit.com/r/swaywm/comments/ayedi1/opening_terminals_at_the_same_directory/+&cd=1&hl=de&ct=clnk&gl=de&client=firefox-b-d
+	url = https://aur.archlinux.org/packages/swaycwd
 	arch = any
-	depends = sway
+	license = 0BSD
 	depends = bash
+	depends = coreutils
 	depends = jq
-	depends = procps
+	depends = sway
 	source = swaycwd
-	md5sums = b26f324308016ded12e36d54540d6bd2
+	source = LICENSE
+	sha256sums = 6a996b23162eeedc52cee93f539653913443ae50a6da5e19789e625e11aa9287
+	sha256sums = 7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3
 
 pkgname = swaycwd
-

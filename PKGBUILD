@@ -1,20 +1,19 @@
 # Maintainer: Julian Daube <joposter at gmail dot com>
-# Contributer: Julian Daube <joposter at gmail dot com>
-
+# Contributor: Julian Daube <joposter at gmail dot com>
 
 pkgname=swaycwd
-pkgdesc="alternative to xcwd for swayvm"
+pkgver=2.0
 pkgrel=1
-pkgver=1.1
-url="https://webcache.googleusercontent.com/search?q=cache:fXlJ80wnYwgJ:https://www.reddit.com/r/swaywm/comments/ayedi1/opening_terminals_at_the_same_directory/+&cd=1&hl=de&ct=clnk&gl=de&client=firefox-b-d"
+pkgdesc="Print the working directory of the focused sway window"
 arch=("any")
-
-source=("swaycwd")
-depends=("sway" "bash" "jq" "procps")
+url="https://aur.archlinux.org/packages/swaycwd"
+license=("0BSD")
+depends=("bash" "coreutils" "jq" "sway")
+source=("swaycwd" "LICENSE")
+sha256sums=("6a996b23162eeedc52cee93f539653913443ae50a6da5e19789e625e11aa9287"
+	"7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3")
 
 package() {
-	mkdir -p "$pkgdir/usr/bin"
-	install -m 755 "$srcdir/swaycwd" "$pkgdir/usr/bin/swaycwd"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 755 swaycwd -t "$pkgdir/usr/bin/"
 }
-md5sums=('fad6fddc15abd75e7ca7760553dd2a28')
-md5sums=('b26f324308016ded12e36d54540d6bd2')
