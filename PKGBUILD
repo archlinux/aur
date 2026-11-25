@@ -1,6 +1,6 @@
 # Maintainer: Christopher Brown <cjbrown102@gmail.com>
 pkgname=pelagos
-pkgver=0.65.114
+pkgver=0.65.115
 pkgrel=1
 pkgdesc="Fast Linux container runtime — OCI-compatible, namespaces, cgroups v2, seccomp, networking, image management"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=(
 makedepends=('rust' 'cargo')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pelagos-containers/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('85079ca7fc6bd4f516667b586883d86855e7691288c5186eaaa79863c4c0a908')
+sha256sums=('8b82a40ab02278e832aa1ae5cf25f75abf4e61a4fd6800e2fb85de8821fc3f0b')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -27,7 +27,7 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --release --frozen
+    cargo build --release --frozen -p pelagos -p pelagos-cri
 }
 
 check() {
@@ -43,6 +43,15 @@ package() {
     install -Dm755 target/release/pelagos-dns       "$pkgdir/usr/bin/pelagos-dns"
     install -Dm755 target/release/pelagos-shim-wasm "$pkgdir/usr/bin/pelagos-shim-wasm"
     install -Dm755 target/release/pelagos-shim-wasm "$pkgdir/usr/bin/containerd-shim-pelagos-wasm-v1"
+
+    # CRI server + shim-handler (Kata/gVisor) support; see SHIM_HANDLERS_GUIDE.md
+    install -Dm755 target/release/pelagos-cri "$pkgdir/usr/bin/pelagos-cri"
+    install -Dm755 "scripts/pelagos-cri-shim-handlers.sh" "$pkgdir/usr/bin/pelagos-cri-shim-handlers"
+    install -Dm644 "pkg/nfpm/pelagos-cri.service" "$pkgdir/usr/lib/systemd/system/pelagos-cri.service"
+    install -Dm644 "pkg/nfpm/cri.env.example" "$pkgdir/usr/share/pelagos/cri.env.example"
+    install -Dm644 "pkg/runtimeclass/kata.yaml" "$pkgdir/usr/share/pelagos/runtimeclass/kata.yaml"
+    install -Dm644 "pkg/runtimeclass/gvisor.yaml" "$pkgdir/usr/share/pelagos/runtimeclass/gvisor.yaml"
+    install -Dm644 "docs/SHIM_HANDLERS_GUIDE.md" "$pkgdir/usr/share/doc/$pkgname/SHIM_HANDLERS_GUIDE.md"
 
     # License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
