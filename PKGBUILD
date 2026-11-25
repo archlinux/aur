@@ -56,3 +56,23 @@ EOF
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+_post_msg() {
+  cat <<EOF
+==> How to open PhoneBox:
+==>   1. Run "phonebox" (or launch "PhoneBox" from your application menu).
+==>   2. Open http://127.0.0.1:8765 in your browser - panel editor and settings
+==>      live there (running "phonebox" again also opens it).
+==>   3. Connect your Android phone: over USB (android-tools, USB debugging on)
+==>      or Wi-Fi pairing (Settings -> General -> Wi-Fi & Tailscale -> Pair).
+==> Optional helpers: playerctl (media controls), xprintidle (idle detection).
+EOF
+}
+
+post_install() {
+  _post_msg
+}
+
+post_upgrade() {
+  _post_msg
+}
