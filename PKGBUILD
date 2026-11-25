@@ -9,7 +9,7 @@
 # When a new version is released, update pkgver and run updpkgsums.
 
 pkgname=tuxmix-bin
-pkgver=0.3.7
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="Open-source TotalMix replacement for RME audio interfaces on Linux (prebuilt)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ provides=("tuxmix=${pkgver}")
 conflicts=('tuxmix')
 options=('!strip' '!debug')
 source=("${url}/releases/download/v${pkgver}/tuxmix-${pkgver}-x86_64.tar.gz")
-sha256sums=('730856a096965d1f31780f3db236ee550018e601b3c43d0c2e46b325910f60f6')
+sha256sums=('e3a8db55bba5d220a1bcaf289216ef0bb3036945c50c093bd10a64ecd45a3f9e')
 
 package() {
     # The tarball is the installed tree (tools/release/package.sh).
