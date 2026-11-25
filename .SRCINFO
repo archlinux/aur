@@ -1,6 +1,6 @@
 pkgbase = onair
 	pkgdesc = SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR
-	pkgver = 4.5.0
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://github.com/adswill/OnAir
 	arch = x86_64
@@ -50,7 +50,7 @@ pkgbase = onair
 	optdepends = airspyhf-git: native Airspy HF+ driver (dlopened at run time; AUR only, no stable package)
 	optdepends = libsecret: store credentials for the plugin store (dlopened at run time)
 	conflicts = onair-bin
-	source = onair-4.5.0.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v4.5.0.tar.gz
-	sha256sums = 84ba5b03d1669a658331c1c030200628a488b3af3713d7886d59ddafac906e70
+	source = onair-4.6.0.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v4.6.0.tar.gz
+	sha256sums = 6e00357600a024e9623894fb8dfc4eec2e9156edfd11718612771e0440c4f743
 
 pkgname = onair
