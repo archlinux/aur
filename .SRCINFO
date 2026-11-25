@@ -1,0 +1,19 @@
+pkgbase = semantix-bin
+	pkgdesc = Cross-session memory and work reuse for AI coding agents
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/Gnosil/semantix
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = semantix
+	conflicts = semantix
+	options = !debug
+	source = semantix-bin-0.8.0-LICENSE::https://raw.githubusercontent.com/Gnosil/semantix/v0.8.0/LICENSE
+	sha256sums = 68aa0433e6ab8a725df1f89fae138de316f46241bc854415b46ae2d05e5183b6
+	source_x86_64 = semantix-bin-0.8.0-x86_64.tar.gz::https://github.com/Gnosil/semantix/releases/download/v0.8.0/semantix-agent-linux-amd64.tar.gz
+	sha256sums_x86_64 = fc09a2c122a88b70f6b2c3d4fdc88e87820b6cd7a107d22e0d7d9079ff534107
+	source_aarch64 = semantix-bin-0.8.0-aarch64.tar.gz::https://github.com/Gnosil/semantix/releases/download/v0.8.0/semantix-agent-linux-arm64.tar.gz
+	sha256sums_aarch64 = ec85a8600fb04907c95806645c852c6bb24ac092c9e44b92b69faeacede021d8
+
+pkgname = semantix-bin
