@@ -1,0 +1,20 @@
+pkgbase = openscience-bin
+	pkgdesc = The open-source AI workbench for scientific research
+	pkgver = 2.0.153
+	pkgrel = 1
+	url = https://github.com/synthetic-sciences/openscience
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = openscience
+	conflicts = openscience
+	options = !debug
+	source = openscience-bin-2.0.153-LICENSE::https://raw.githubusercontent.com/synthetic-sciences/openscience/v2.0.153/LICENSE
+	sha256sums = d8ac5e917b2099e5cbe2999f297b56e2cc946e545f39aebc1e1aa91dd5cb0e9f
+	source_x86_64 = openscience-bin-2.0.153-x86_64.tar.gz::https://github.com/synthetic-sciences/openscience/releases/download/v2.0.153/openscience-linux-x64.tar.gz
+	sha256sums_x86_64 = 747281fbc856e5597be8e187f005d8a12fbffe10f970f9a656ccba1846205422
+	source_aarch64 = openscience-bin-2.0.153-aarch64.tar.gz::https://github.com/synthetic-sciences/openscience/releases/download/v2.0.153/openscience-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4838b9ac9132b4a1c60df5e1b13901eadd79ba3617daf5234f2a84dd0204f435
+
+pkgname = openscience-bin
