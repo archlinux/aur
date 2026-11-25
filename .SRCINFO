@@ -1,0 +1,18 @@
+pkgbase = nakama-bin
+	pkgdesc = Scalable open-source game backend server: multiplayer, matchmaking, leaderboards, chat, and social features for games
+	pkgver = 3.42.0
+	pkgrel = 1
+	url = https://github.com/heroiclabs/nakama
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = nakama
+	conflicts = nakama
+	options = !debug
+	source_x86_64 = nakama-bin-3.42.0-x86_64.tar.gz::https://github.com/heroiclabs/nakama/releases/download/v3.42.0/nakama-3.42.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1c074baeb0a57bee0a89369b8acaf0cca32ae010924817c9a3dbc05a664a59c8
+	source_aarch64 = nakama-bin-3.42.0-aarch64.tar.gz::https://github.com/heroiclabs/nakama/releases/download/v3.42.0/nakama-3.42.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 5718a66fc2e21393c0df689629bd2374067c002e89161f76defea5de036cb8be
+
+pkgname = nakama-bin
