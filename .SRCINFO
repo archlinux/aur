@@ -1,0 +1,17 @@
+pkgbase = skill-up-bin
+	pkgdesc = Evaluate AI agent skills and environments
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/alibaba/skill-up
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = skill-up
+	conflicts = skill-up
+	options = !debug
+	source_x86_64 = skill-up-bin-0.16.0-x86_64.tar.gz::https://github.com/alibaba/skill-up/releases/download/v0.16.0/skill-up_0.16.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 792f74a59f9c5aeafbefab292009aa1602b21b14610d92369cf4649078fd234b
+	source_aarch64 = skill-up-bin-0.16.0-aarch64.tar.gz::https://github.com/alibaba/skill-up/releases/download/v0.16.0/skill-up_0.16.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6d36fac9c35dcdec28fc8c1843da2e31955061c995da98ac9305ff6d7fa5f384
+
+pkgname = skill-up-bin
