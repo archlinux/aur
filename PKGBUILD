@@ -35,6 +35,7 @@ optdepends=(
 )
 makedepends=(
     'gendesk'
+    'imagemagick'
 )
 noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.tar.xz")
 source=("${pkgname%-bin}.sh")
