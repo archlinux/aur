@@ -1,6 +1,6 @@
 pkgbase = t3code-nightly-bin
 	pkgdesc = Nightly desktop control surface for local coding agents
-	pkgver = 0.1.13_nightly.20261125.5245
+	pkgver = 0.1.13_nightly.20261125.5258
 	pkgrel = 1
 	url = https://github.com/pingdotgg/t3code
 	arch = x86_64
@@ -36,16 +36,16 @@ pkgbase = t3code-nightly-bin
 	depends = xdg-utils
 	depends = zlib
 	optdepends = openai-codex: use the system-installed Codex CLI
-	provides = t3code-nightly=0.1.13_nightly.20261125.5245
+	provides = t3code-nightly=0.1.13_nightly.20261125.5258
 	conflicts = t3code-nightly
 	conflicts = t3code
 	options = !debug
 	options = !strip
-	source = t3code-nightly-bin-0.1.13_nightly.20261125.5245-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v0.1.13-nightly.20261125.5245/LICENSE
+	source = t3code-nightly-bin-0.1.13_nightly.20261125.5258-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v0.1.13-nightly.20261125.5258/LICENSE
 	sha256sums = 935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43
-	source_x86_64 = T3-Code-0.1.13-nightly.20261125.5245-x86_64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v0.1.13-nightly.20261125.5245/T3-Code-Nightly-x86_64.AppImage
-	sha256sums_x86_64 = 5d8a5a0027b943f929b0589677a75552945e430843c11f3552e15225b8111d48
-	source_aarch64 = T3-Code-0.1.13-nightly.20261125.5245-arm64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v0.1.13-nightly.20261125.5245/T3-Code-Nightly-arm64.AppImage
-	sha256sums_aarch64 = b228cca0fb1d315d5929f300d05f70172a37acd1b4c67ce5e144c341ec5bab71
+	source_x86_64 = T3-Code-0.1.13-nightly.20261125.5258-x86_64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v0.1.13-nightly.20261125.5258/T3-Code-Nightly-x86_64.AppImage
+	sha256sums_x86_64 = 49c57140651b236f601e8bc3358aa65cf8db444f670b38e19e6fca36e0a7bca0
+	source_aarch64 = T3-Code-0.1.13-nightly.20261125.5258-arm64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v0.1.13-nightly.20261125.5258/T3-Code-Nightly-arm64.AppImage
+	sha256sums_aarch64 = 78d03bfa387066417e2a9af2cafd987e8b2ff3762c73d80848a2a57c690d3e00
 
 pkgname = t3code-nightly-bin
