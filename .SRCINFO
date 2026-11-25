@@ -1,0 +1,17 @@
+pkgbase = mongodb_exporter-bin
+	pkgdesc = Prometheus exporter for MongoDB
+	pkgver = 0.54.0
+	pkgrel = 1
+	url = https://github.com/percona/mongodb_exporter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = mongodb_exporter
+	conflicts = mongodb_exporter
+	options = !debug
+	source_x86_64 = mongodb_exporter-bin-0.54.0-x86_64.tar.gz::https://github.com/percona/mongodb_exporter/releases/download/v0.54.0/mongodb_exporter-0.54.0.linux-amd64.tar.gz
+	sha256sums_x86_64 = 84e5c8145f4e78df2915f5aa8f3ccddbfd1b817d6a29db5a27525bb68b4095b4
+	source_aarch64 = mongodb_exporter-bin-0.54.0-aarch64.tar.gz::https://github.com/percona/mongodb_exporter/releases/download/v0.54.0/mongodb_exporter-0.54.0.linux-arm64.tar.gz
+	sha256sums_aarch64 = 79cb0d5137cc439d9ad385fe23667273d4f9c5a960c33141ed99b85e28172552
+
+pkgname = mongodb_exporter-bin
