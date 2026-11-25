@@ -1,0 +1,19 @@
+pkgbase = clawhip-bin
+	pkgdesc = Event-to-channel notification router for AI agents
+	pkgver = 0.6.18
+	pkgrel = 1
+	url = https://github.com/Yeachan-Heo/clawhip
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = clawhip
+	conflicts = clawhip
+	options = !debug
+	source_x86_64 = clawhip-bin-0.6.18-x86_64.tar.xz::https://github.com/Yeachan-Heo/clawhip/releases/download/v0.6.18/clawhip-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = df5e567ecbeec9aa00917fdb83b98cf71c9bfd0e11e3d74ab839e0464b3d6b5d
+	source_aarch64 = clawhip-bin-0.6.18-aarch64.tar.xz::https://github.com/Yeachan-Heo/clawhip/releases/download/v0.6.18/clawhip-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 6f9193864527ecf20d5ed1c6055b4240cf8bc32852e898cecd4eb14dd5f6d541
+
+pkgname = clawhip-bin
