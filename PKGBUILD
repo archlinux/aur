@@ -2,7 +2,7 @@
 
 pkgname=oh-my-pi
 pkgver=19.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Coding agent with the IDE wired in"
 arch=('x86_64')
 url="https://omp.sh/"
@@ -50,7 +50,7 @@ source=(
     "stable-rust-const.patch"
     "relative-json-assets.patch"
 )
-sha256sums=('c497be9e4d465cf3f1327bda56138783b9ba3b5ce7ad6ff6c8449bd3b8ae02a9'
+sha256sums=('5d5c49644c289a96a3883562b2d6ae22729ffd541cecbf17e52f0436debfcacc'
             '33718946cc77d4032911d4efe03a66dbcbfbd2bb16c3da06aaeadcc637c32216'
             '0f4c3a662fac5dc6420d260c7439ab0399061a1501dbbc1692e8fdf3e8db1785'
             '64e7ad5941b4578c59529ba30ffc8b18a5e2c21c333c52007aa20060096127b8'
