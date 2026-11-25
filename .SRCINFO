@@ -1,0 +1,18 @@
+pkgbase = zen-object-viewer
+	pkgdesc = STL object viewer for the Zen 3D compositor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zwin-project/zen-object-viewer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	makedepends = glm
+	makedepends = libglvnd
+	depends = zukou
+	depends = gcc-libs
+	depends = glibc
+	source = zen-object-viewer-0.1.0.tar.gz::https://github.com/zwin-project/zen-object-viewer/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 0b1c091d81c2783c1df8028ee646b4d6dc96b472d24069df858756d97816a918
+
+pkgname = zen-object-viewer
