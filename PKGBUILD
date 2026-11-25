@@ -3,7 +3,7 @@ _prams=(fr_FR 7884 'Logiciel de création CEWE' 8.1.3 "CEWE France")
 
 pkgname="cewe-france"
 pkgver=8.1.3
-pkgrel=2
+pkgrel=3
 
 ## Begin shared code ##
 pkgdesc="un client hors ligne pour créer des livres photo et d'autres produits photo et les commander auprès de CEWE ou de partenaires"
@@ -33,7 +33,7 @@ depends=('libx11' 'libjpeg-turbo' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
 makedepends=('p7zip' 'xdg-utils')
 arch=('i686' 'x86_64')
 source=($source)
-md5sums=(961d685e80339f884fb3dc1dae025780)
+sha256sums=('f0790b826a9d61e01fe406cf4b6643117ddff76a0973d93efa8ea0701b680fea')
 install="$pkgname.install"
 
 _installDir=/usr/share/$pkgname
@@ -60,6 +60,10 @@ package() {
 	# install -m644 -b updater.pl $_installDir/updater.pl
 	# sed -i "s/APPLICATION NAME/$_productRename/" $_installDir/updater.pl
 	rm $_installDir/uninstall.pl
+
+	# install.pl chmods "QtWebEngineProcess" but the shipped binary is "CWQtWebEngineProcess":
+	# without +x no web page loads (home page, login…)
+	chmod 755 $_installDir/*QtWebEngineProcess
 
 	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/licenses/$pkgname/EULA.txt
 
