@@ -1,0 +1,20 @@
+pkgbase = nmap-formatter-bin
+	pkgdesc = Convert Nmap results to HTML, CSV, JSON, Markdown, Graphviz, SQLite and Excel
+	pkgver = 3.1.5
+	pkgrel = 1
+	url = https://github.com/vdjagilev/nmap-formatter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = nmap-formatter
+	conflicts = nmap-formatter
+	options = !debug
+	source = nmap-formatter-bin-3.1.5-LICENSE::https://raw.githubusercontent.com/vdjagilev/nmap-formatter/v3.1.5/LICENSE
+	sha256sums = f8a018f34b0d5173568c8a2d4225c4842b5f382cb2a86852d6f85f798b24b187
+	source_x86_64 = nmap-formatter-bin-3.1.5-x86_64.tar.gz::https://github.com/vdjagilev/nmap-formatter/releases/download/v3.1.5/nmap-formatter-linux-amd64.tar.gz
+	sha256sums_x86_64 = e4b54f41ad6ced457910cfaba6a6e19948904bee56ecde2512a266f63153c638
+	source_aarch64 = nmap-formatter-bin-3.1.5-aarch64.tar.gz::https://github.com/vdjagilev/nmap-formatter/releases/download/v3.1.5/nmap-formatter-linux-arm64.tar.gz
+	sha256sums_aarch64 = ebd1ab908c926e12767d69714f6ef0686e2285adaff8f236b8d376f8d58f69b8
+
+pkgname = nmap-formatter-bin
