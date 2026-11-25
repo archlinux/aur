@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="TUI explorer application for Amazon S3 (AWS S3)"
 
-pkgver=0.7.6
+pkgver=0.8.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,8 +32,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
 sha256sums=('7b059989fdf7e40d48d0382f5cdf25c5b1af0bdae6fdf8c441b5b50700343953'
             'a175842e633d7fadbaeda6163e4bd9907af3fa9e3b240f9de82540e7882751db')
-sha256sums_x86_64=('78aa850772f068b44eefa91732e345b30bcd17476ac23cb808f6b285a8162126')
-sha256sums_aarch64=('d2bd884ede4ad05483847719daa4343de792f242c711df9ac8e35112caae1965')
+sha256sums_x86_64=('f8a4459568eb07645b1d85d8e35b10ac9c220f057a5e7c886e465aad5fc75be6')
+sha256sums_aarch64=('7263f87620e7148f2b2b8b4225f2bfcc3bf31268ce6acf30322644968c07eb59')
 
 
 package() {
