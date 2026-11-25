@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=meh-git
-pkgver=0.3.58.g8a89769
-pkgrel=2
+pkgver=0.3.66.g8bfae40
+pkgrel=1
 pkgdesc="A minimal image viewer using raw XLib."
 arch=('i686' 'x86_64' 'pentium4')
 url="http://www.johnhawthorn.com/meh/"
@@ -12,7 +12,7 @@ depends=('libxext' 'libjpeg-turbo' 'giflib' 'libpng')
 makedepends=('git')
 optdepends=('imagemagick')
 conflicts=('meh')
-_commit=8a897699a709bc1c8febbc5d936fb720fc04726d
+_commit=8bfae4006223d570947c0dd52fe0d9fc04e934fc
 source=("git+https://github.com/andreasbaumann/meh.git#commit=$_commit")
 md5sums=('SKIP')
 _gitname=meh
