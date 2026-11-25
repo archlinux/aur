@@ -1,13 +1,13 @@
 pkgbase = npq
 	pkgdesc = Safely install npm packages by auditing them before the install stage
-	pkgver = 3.27.4
+	pkgver = 3.27.5
 	pkgrel = 1
 	url = https://github.com/lirantal/npq
 	arch = any
 	license = Apache-2.0
 	depends = nodejs>=24
 	depends = npm>=11.10
-	source = npq-3.27.4.tar.gz::https://github.com/lirantal/npq/archive/refs/tags/v3.27.4.tar.gz
-	sha256sums = 36b40bfd52491ab7ea719e2ba890b5e247815a805acfa86e6cf7f0a719919a64
+	source = npq-3.27.5.tar.gz::https://github.com/lirantal/npq/archive/refs/tags/v3.27.5.tar.gz
+	sha256sums = c6c16f76e4603b68cf721a38552f9fd1021647203e1206f713a6e6665cad1f6a
 
 pkgname = npq

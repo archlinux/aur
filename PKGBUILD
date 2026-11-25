@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=npq
-pkgver=3.27.4
+pkgver=3.27.5
 pkgrel=1
 pkgdesc='Safely install npm packages by auditing them before the install stage'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/lirantal/npq'
 license=('Apache-2.0')
 depends=('nodejs>=24' 'npm>=11.10')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('36b40bfd52491ab7ea719e2ba890b5e247815a805acfa86e6cf7f0a719919a64')
+sha256sums=('c6c16f76e4603b68cf721a38552f9fd1021647203e1206f713a6e6665cad1f6a')
 
 _npm_env() {
   export HOME="${srcdir}/home"
