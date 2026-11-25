@@ -1,7 +1,7 @@
 pkgbase = honk-core-bin
 	pkgdesc = Experimental eBPF transparent proxy engine (prebuilt release binary)
-	pkgver = 0.1.0beta.6
-	pkgrel = 2
+	pkgver = 0.1.0beta.7
+	pkgrel = 1
 	url = https://github.com/daeuniverse/honk
 	install = honk-core-bin.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = honk-core-bin
 	depends = v2ray-geoip
 	depends = v2ray-domain-list-community
 	optdepends = nftables: remove the leftover NFQUEUE table after a crash
-	provides = honk-core=0.1.0beta.6
+	provides = honk-core=0.1.0beta.7
 	conflicts = honk-core
 	options = !debug
 	backup = etc/honk/config.dae
@@ -20,9 +20,9 @@ pkgbase = honk-core-bin
 	sha256sums = cf31d4e43dc156b9c41d2f932f59e17eeaf1c160f95d1d430412b8978942b361
 	sha256sums = 3e396b1d043503717d661fb143b5537d9d5d4ae8ddb80dd3b7c37fde74ad89ea
 	sha256sums = bd5c05369d485b9f8b18750fd3977d7c03a120909f06e203b4f911d89c64efed
-	source_x86_64 = honk-core-v0.1.0-beta.6-x86_64-unknown-linux-gnu-full.tar.gz::https://github.com/daeuniverse/honk/releases/download/v0.1.0-beta.6/honk-core-v0.1.0-beta.6-x86_64-unknown-linux-gnu-full.tar.gz
+	source_x86_64 = honk-core-v0.1.0-beta.7-x86_64-unknown-linux-gnu-full.tar.gz::https://github.com/daeuniverse/honk/releases/download/v0.1.0-beta.7/honk-core-v0.1.0-beta.7-x86_64-unknown-linux-gnu-full.tar.gz
 	depends_x86_64 = libgcc
 	depends_x86_64 = libstdc++
-	sha256sums_x86_64 = 7d52080e18b3ad172d9a41a4ea38a84ff09f3a48cd7daff9d0872c6d87ba4ca7
+	sha256sums_x86_64 = 4237eab753613c741d0f77b571a95fd35573d35dc2e9ee3caf5ba1933b7e85a1
 
 pkgname = honk-core-bin

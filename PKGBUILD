@@ -1,8 +1,8 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 
 pkgname=honk-core-bin
-pkgver=0.1.0beta.6
-pkgrel=2
+pkgver=0.1.0beta.7
+pkgrel=1
 pkgdesc='Experimental eBPF transparent proxy engine (prebuilt release binary)'
 arch=('x86_64')
 url='https://github.com/daeuniverse/honk'
@@ -18,7 +18,7 @@ install="${pkgname}.install"
 # Upstream strips the binary before release, so a debug package would be empty.
 options=('!debug')
 
-_upver='0.1.0-beta.6'
+_upver='0.1.0-beta.7'
 _dir="honk-core-v${_upver}-${CARCH}-unknown-linux-gnu-full"
 _dir_x86_64="honk-core-v${_upver}-x86_64-unknown-linux-gnu-full"
 
@@ -29,7 +29,7 @@ source_x86_64=("${_dir_x86_64}.tar.gz::${url}/releases/download/v${_upver}/${_di
 sha256sums=('cf31d4e43dc156b9c41d2f932f59e17eeaf1c160f95d1d430412b8978942b361'
             '3e396b1d043503717d661fb143b5537d9d5d4ae8ddb80dd3b7c37fde74ad89ea'
             'bd5c05369d485b9f8b18750fd3977d7c03a120909f06e203b4f911d89c64efed')
-sha256sums_x86_64=('7d52080e18b3ad172d9a41a4ea38a84ff09f3a48cd7daff9d0872c6d87ba4ca7')
+sha256sums_x86_64=('4237eab753613c741d0f77b571a95fd35573d35dc2e9ee3caf5ba1933b7e85a1')
 
 package() {
   cd "${_dir}"
