@@ -1,0 +1,19 @@
+pkgbase = duckle-bin
+	pkgdesc = Open-source ETL/ELT platform for your own servers or cloud
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/slothflowlabs/duckle
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = duckle
+	conflicts = duckle
+	options = !debug
+	source = duckle-bin-0.9.1-LICENSE::https://raw.githubusercontent.com/slothflowlabs/duckle/v0.9.1/LICENSE-APACHE
+	sha256sums = 1e7e1bc923e0f439d5aefb15b19be5082079f2929f86da51ae1339d1db5bce2b
+	source_x86_64 = duckle-bin-0.9.1-x86_64::https://github.com/slothflowlabs/duckle/releases/download/v0.9.1/duckle-runner-linux-x64
+	sha256sums_x86_64 = cf024deb51a16c53a82ecbd5913f77d68d64af8f380a2fe0cefb55f1756888b1
+	source_aarch64 = duckle-bin-0.9.1-aarch64::https://github.com/slothflowlabs/duckle/releases/download/v0.9.1/Duckle-linux-arm64
+	sha256sums_aarch64 = cfca4a4e55e837a5d185e7628c3c5bf4a752047f589995edbfe26378922ed81e
+
+pkgname = duckle-bin
