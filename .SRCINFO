@@ -1,0 +1,17 @@
+pkgbase = holyarrs-bin
+	pkgdesc = One self-hosted app for your shows, movies and music
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/HolyArrs/HolyArrs
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = holyarrs
+	conflicts = holyarrs
+	options = !debug
+	source_x86_64 = holyarrs-bin-1.3.1-x86_64.tar.gz::https://github.com/HolyArrs/HolyArrs/releases/download/1.3.1/holyarrs_1.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 896bc8a982296f00de7c36c5bfe0aba2becec68cb21c715cd30984cf15851792
+	source_aarch64 = holyarrs-bin-1.3.1-aarch64.tar.gz::https://github.com/HolyArrs/HolyArrs/releases/download/1.3.1/holyarrs_1.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3166ba468bc4a77583b0e87dfcaa8de06316405ffc4b4498ab957e0ea7be876c
+
+pkgname = holyarrs-bin
