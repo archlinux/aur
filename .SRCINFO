@@ -1,0 +1,17 @@
+pkgbase = onedump-bin
+	pkgdesc = Database dump and administration tool
+	pkgver = 1.11.1
+	pkgrel = 1
+	url = https://github.com/liweiyi88/onedump
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = onedump
+	conflicts = onedump
+	options = !debug
+	source_x86_64 = onedump-bin-1.11.1-x86_64.tar.gz::https://github.com/liweiyi88/onedump/releases/download/v1.11.1/onedump_1.11.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = e179ec3394d14f6d6f798ef3bdb89618237ba6099d2f381aaa8cadbd23ff5eee
+	source_aarch64 = onedump-bin-1.11.1-aarch64.tar.gz::https://github.com/liweiyi88/onedump/releases/download/v1.11.1/onedump_1.11.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5eded9acb3027f05594fc6564f3483c322854da0b79ee81997c548cb3a03993f
+
+pkgname = onedump-bin
