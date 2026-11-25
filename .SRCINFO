@@ -1,6 +1,6 @@
 pkgbase = invoiceninja
 	pkgdesc = Invoices, Expenses and Tasks built with Laravel and Flutter
-	pkgver = 5.13.56
+	pkgver = 5.14.0
 	pkgrel = 1
 	url = https://www.invoiceninja.com/
 	install = invoiceninja.install
@@ -24,7 +24,7 @@ pkgbase = invoiceninja
 	options = !strip
 	backup = etc/webapps/invoiceninja/config.env
 	backup = var/lib/invoiceninja/config.env
-	source = invoiceninja::git+https://github.com/invoiceninja/invoiceninja.git#tag=v5.13.56
+	source = invoiceninja::git+https://github.com/invoiceninja/invoiceninja.git#tag=v5.14.0
 	source = invoiceninja-queue.service
 	source = invoiceninja-queue.timer
 	source = invoiceninja-scheduler.service
