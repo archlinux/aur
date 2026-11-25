@@ -1,0 +1,20 @@
+pkgbase = unbrowse-bin
+	pkgdesc = Let AI agents use websites through learned HTTP requests instead of a browser
+	pkgver = 13.1.0
+	pkgrel = 1
+	url = https://github.com/unbrowse-ai/unbrowse
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = unbrowse
+	conflicts = unbrowse
+	options = !debug
+	source_x86_64 = unbrowse-bin-13.1.0-x86_64.tgz::https://github.com/unbrowse-ai/unbrowse/releases/download/v13.1.0/unbrowse-linux-x64-13.1.0.tgz
+	sha256sums_x86_64 = 97974f61284e10bfc8fa1c8bcc28a5d497d92ff7f2d6ff262238852ba1b1db66
+	source_aarch64 = unbrowse-bin-13.1.0-aarch64.tgz::https://github.com/unbrowse-ai/unbrowse/releases/download/v13.1.0/unbrowse-linux-arm64-13.1.0.tgz
+	sha256sums_aarch64 = 0cc812541c1f009edd6855a2d514169594cecaadd6ce8cc39eac613f0b42efb4
+
+pkgname = unbrowse-bin
