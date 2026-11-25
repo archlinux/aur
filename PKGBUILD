@@ -2,7 +2,7 @@
 # Contributor: Cybafunk Monkey <cybafunk-monkey@posteo.eu>
 
 pkgname=sparrow-wallet
-pkgver=2.5.6
+pkgver=2.5.7
 pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy. Free and open source"
 arch=('x86_64')
@@ -50,8 +50,8 @@ source=(
     "https://raw.githubusercontent.com/sparrowwallet/sparrow/refs/tags/${pkgver}/src/main/deploy/package/linux/Sparrow.desktop"
 )
 validpgpkeys=('D4D0D3202FC06849A257B38DE94618334C674B40')
-sha256sums=('6085a16a86feb48a637fa69f0ec4a92e1b0c1f0edb4ba76d677a0a158984ef15'
-            'e84be869580ae3fb60a3d05fbe84c703608d483ad8889df0d8e89e34c446c19b'
+sha256sums=('8a2a4820100e1553f6d1df45dac1a3b7ff353903918057d0796374efa621738b'
+            '874d1f95ac0fa57ddf8b36997a3506280a3f3ba3ac3163fe93b3ffbb082c4010'
             'SKIP'
             '71c5d812d7f84faff1898c2407454f230308e148052cde950ccf4ab9a0b2848c')
 
