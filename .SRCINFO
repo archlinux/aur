@@ -1,0 +1,19 @@
+pkgbase = dotenvx-bin
+	pkgdesc = a secure dotenvfrom the creator of
+	pkgver = 2.38.2
+	pkgrel = 1
+	url = https://github.com/dotenvx/dotenvx
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	provides = dotenvx
+	conflicts = dotenvx
+	options = !debug
+	source = dotenvx-bin-2.38.2-LICENSE::https://raw.githubusercontent.com/dotenvx/dotenvx/v2.38.2/LICENSE
+	sha256sums = 2edeb009148c36c249712564871d8297d92094b88e417228e4f3ce7db59ee9ed
+	source_x86_64 = dotenvx-bin-2.38.2-x86_64.tar.gz::https://github.com/dotenvx/dotenvx/releases/download/v2.38.2/dotenvx-linux-amd64.tar.gz
+	sha256sums_x86_64 = 37d8e26600b707e4ec450b1ab57571159f6ac39be736b04886a0fcc66527a1bb
+	source_aarch64 = dotenvx-bin-2.38.2-aarch64.tar.gz::https://github.com/dotenvx/dotenvx/releases/download/v2.38.2/dotenvx-linux-arm64.tar.gz
+	sha256sums_aarch64 = cb0bb6e4cf3ff5ae7be8489d91ee14d1db302be20c531bfc4e18e5ff9207be3b
+
+pkgname = dotenvx-bin
