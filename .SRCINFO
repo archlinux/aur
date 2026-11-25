@@ -1,0 +1,19 @@
+pkgbase = typeid-bin
+	pkgdesc = Type-safe, K-sortable, globally unique identifier inspired by Stripe IDs
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/jetify-com/typeid
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = typeid
+	conflicts = typeid
+	options = !debug
+	source = typeid-bin-0.1.1-LICENSE::https://raw.githubusercontent.com/jetify-com/typeid/v0.1.1/LICENSE
+	sha256sums = 43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1
+	source_x86_64 = typeid-bin-0.1.1-x86_64.tar.gz::https://github.com/jetify-com/typeid/releases/download/v0.1.1/typeid_v0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 42c0f811d7bd9ddd643929b567082a41d39f0bab4d37553dc77f32bf9e4defa3
+	source_aarch64 = typeid-bin-0.1.1-aarch64.tar.gz::https://github.com/jetify-com/typeid/releases/download/v0.1.1/typeid_v0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 10c6c8d9f5abf8c1e7b6ba181dc5de64a9156945a617bac30e7be33c22018bc3
+
+pkgname = typeid-bin
