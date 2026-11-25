@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=xad
 pkgname=python-${_base}
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Python bindings for the XAD automatic differentiation library"
 arch=(x86_64)
@@ -13,7 +13,7 @@ checkdepends=(python-pytest)
 source=(${_base}-py-${pkgver}::git+${url}.git#tag=v${pkgver}
   github.com-src-xad::git+https://github.com/auto-differentiation/xad.git
   github.com-src-pybind11::git+https://github.com/pybind/pybind11.git)
-sha512sums=('c0dbeee2a9578a8ac8542cc56900aec97b7f52dfdd1f9ccfb5936c7240b7bfa05aa88830916345a75497c8e822cb5f11b5dcc8ad337fbd78717f17082983510c'
+sha512sums=('9168e90c3e9c61f1e3b72bc10c3e675adf7619358579e4ca717b0dc0dbc620fa7801883d75723c97af7df33dde6947ff72b7ac62eaa7da048cae8c1d19b082e3'
             'SKIP'
             'SKIP')
 

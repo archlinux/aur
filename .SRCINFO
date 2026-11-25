@@ -1,6 +1,6 @@
 pkgbase = python-xad
 	pkgdesc = Python bindings for the XAD automatic differentiation library
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/auto-differentiation/xad-py
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = python-xad
 	makedepends = cmake
 	makedepends = git
 	depends = python
-	source = xad-py-2.1.0::git+https://github.com/auto-differentiation/xad-py.git#tag=v2.1.0
+	source = xad-py-2.2.0::git+https://github.com/auto-differentiation/xad-py.git#tag=v2.2.0
 	source = github.com-src-xad::git+https://github.com/auto-differentiation/xad.git
 	source = github.com-src-pybind11::git+https://github.com/pybind/pybind11.git
-	sha512sums = c0dbeee2a9578a8ac8542cc56900aec97b7f52dfdd1f9ccfb5936c7240b7bfa05aa88830916345a75497c8e822cb5f11b5dcc8ad337fbd78717f17082983510c
+	sha512sums = 9168e90c3e9c61f1e3b72bc10c3e675adf7619358579e4ca717b0dc0dbc620fa7801883d75723c97af7df33dde6947ff72b7ac62eaa7da048cae8c1d19b082e3
 	sha512sums = SKIP
 	sha512sums = SKIP
 
