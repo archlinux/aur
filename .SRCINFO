@@ -1,0 +1,18 @@
+pkgbase = gptme-bin
+	pkgdesc = Your agent in your terminal, equipped with local tools: writes code, uses the terminal, browses the web
+	pkgver = 0.37.0
+	pkgrel = 1
+	url = https://github.com/gptme/gptme
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	provides = gptme
+	conflicts = gptme
+	options = !debug
+	source = gptme-bin-0.37.0-LICENSE::https://raw.githubusercontent.com/gptme/gptme/v0.37.0/LICENSE
+	sha256sums = 57efff501c55fb6466314bab6b07318d27d99d5f5ab0fe4d39a689631cb0c2ac
+	source_x86_64 = gptme-bin-0.37.0-x86_64.tar.gz::https://github.com/gptme/gptme/releases/download/v0.37.0/gptme-server-bin-0.37.0-linux-x64.tar.gz
+	sha256sums_x86_64 = c61fa4583ec47fff6bc7847b8ecdb06bf9e512a5da300b96fdf4176f50dce47b
+
+pkgname = gptme-bin
