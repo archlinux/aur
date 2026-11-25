@@ -1,0 +1,17 @@
+pkgbase = smokescreen-bin
+	pkgdesc = HTTP proxy that blocks requests to disallowed URLs
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/stripe/smokescreen
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = smokescreen
+	conflicts = smokescreen
+	options = !debug
+	source_x86_64 = smokescreen-bin-1.0.1-x86_64.tar.gz::https://github.com/stripe/smokescreen/releases/download/v1.0.1/smokescreen_v1.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6021eda5f2c95e37c7fc1966debccf3714f8740e2784ed9e9d0087b21a0ccf06
+	source_aarch64 = smokescreen-bin-1.0.1-aarch64.tar.gz::https://github.com/stripe/smokescreen/releases/download/v1.0.1/smokescreen_v1.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7ed3439acf77522a052b042defc0efd4dbf854a3aa3795dcdd864f1560a990fe
+
+pkgname = smokescreen-bin
