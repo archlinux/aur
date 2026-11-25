@@ -1,6 +1,6 @@
 pkgbase = python-vastai
 	pkgdesc = Vast.ai Python and CLI API client .
-	pkgver = 1.11.2
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/vast-ai/vast-cli
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-vastai
 	depends = python-toml
 	depends = python-setuptools
 	depends = python-cryptography
-	source = vastai-1.11.2.tar.gz::https://pypi.io/packages/source/v/vastai/vastai-1.11.2.tar.gz
-	sha256sums = 311c10655805766be76552426ceee0f6b30e79159d18f0e247f63a707621613b
+	source = vastai-1.12.0.tar.gz::https://pypi.io/packages/source/v/vastai/vastai-1.12.0.tar.gz
+	sha256sums = 7b385e4096999d043932e22791236472114868d635b821b4c497b673c26a670b
 
 pkgname = python-vastai
