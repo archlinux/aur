@@ -1,0 +1,17 @@
+pkgbase = iron-proxy-bin
+	pkgdesc = Egress firewall for untrusted workloads
+	pkgver = 0.61.0
+	pkgrel = 1
+	url = https://github.com/paradigmxyz/iron-proxy
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = iron-proxy
+	conflicts = iron-proxy
+	options = !debug
+	source_x86_64 = iron-proxy-bin-0.61.0-x86_64.tar.gz::https://github.com/paradigmxyz/iron-proxy/releases/download/v0.61.0/iron-proxy_0.61.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 30820ba357b19a41ca6eda77caf7c7105cbd0444343d804711c57b8ae7a3c6a9
+	source_aarch64 = iron-proxy-bin-0.61.0-aarch64.tar.gz::https://github.com/paradigmxyz/iron-proxy/releases/download/v0.61.0/iron-proxy_0.61.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 824441e4982f2ddbd14afa26dfb72a3e61259ab277cdab586e24e1ecd54cca52
+
+pkgname = iron-proxy-bin
