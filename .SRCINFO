@@ -1,0 +1,17 @@
+pkgbase = timber
+	pkgdesc = Decode tree text output to files; also encode dirs to JSON
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/skorotkiewicz/timber
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	options = !strip
+	source_x86_64 = timber-0.1.2-x86_64.tar.gz::https://github.com/skorotkiewicz/timber/releases/download/v0.1.2/timber-v0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e6c82d2308b95d2131bc0e091ed3614bfff04f6202c8caac26df40417af41b08
+	source_aarch64 = timber-0.1.2-aarch64.tar.gz::https://github.com/skorotkiewicz/timber/releases/download/v0.1.2/timber-v0.1.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9a099e3e26555e64d6dcdaecdb4ea9cb2d302c87fe8907e28425a0316ea00ca4
+
+pkgname = timber
