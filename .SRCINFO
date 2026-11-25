@@ -1,6 +1,6 @@
 pkgbase = kohl
 	pkgdesc = RoboKohl: a model playing Kohl, files included. Personality loose, judgment stone-cold sober.
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/KohlJary/kohl
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = kohl
 	provides = more-hands
 	provides = robokohl
 	conflicts = greg
-	source = git+https://github.com/KohlJary/kohl.git#tag=v0.1.6
+	source = git+https://github.com/KohlJary/kohl.git#tag=v0.1.7
 	sha256sums = SKIP
 
 pkgname = kohl
