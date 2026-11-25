@@ -1,8 +1,8 @@
 # Maintainer: BlackCherry <blackcherry at danwin1210 dot de>
 
 pkgname=mangowm-wlonly
-stablecommit=d878ec0e9a1e7f20ebe2f1005b14707dd7afba54
-pkgver=0.18.6
+stablecommit=56949d54ec888f1d02618effbcff5b6c235a36f9
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="mangowm without scenefx"
 url="https://github.com/mangowm/mango/tree/wl-only"
@@ -21,6 +21,7 @@ depends=(
   libxcb
   xorg-xwayland
   'libwlroots-0.20.so'
+  libglvnd
 )
 
 makedepends=(
