@@ -1,14 +1,14 @@
 pkgbase = prusa-connect-bin
 	pkgdesc = Self-hosted Prusa 3D printer management server with web UI (upstream binary)
 	pkgver = 0.1.0beta.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/prusa3d/prusa-connect
 	arch = x86_64
 	arch = aarch64
 	license = LicenseRef-OCL-1.1-Micro-1-NoSaaS-1-SWAtt-1
 	depends = ca-certificates
 	depends = systemd
-	provides = prusa-connect-local=0.1.0beta.2
+	provides = prusa-connect=0.1.0beta.2
 	conflicts = prusa-connect-local
 	conflicts = prusa-connect
 	options = !strip
