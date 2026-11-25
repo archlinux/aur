@@ -1,6 +1,6 @@
 pkgbase = iv-cli-bin
 	pkgdesc = A command-line image viewer using terminal graphics (Sixel, iTerm, Kitty)
-	pkgver = 0.23.0
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://github.com/kenshaw/iv
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = iv-cli-bin
 	optdepends = openslide: whole-slide image support
 	provides = iv-cli
 	conflicts = iv-cli
-	source = iv-cli-bin-0.23.0-README.md::https://raw.githubusercontent.com/kenshaw/iv/refs/tags/v0.23.0/README.md
-	sha256sums = e927055dfb1876b6abb5aaef5f5a14616195a2f97c2cababe7d40f991c37057b
-	source_x86_64 = https://github.com/kenshaw/iv/releases/download/v0.23.0/iv-0.23.0-linux-amd64.tar.bz2
-	sha256sums_x86_64 = ec29fe5aebeb8c70f8174d5fe603cee3b58b3d8a9ec106a01b5b269a1c05de66
-	source_aarch64 = https://github.com/kenshaw/iv/releases/download/v0.23.0/iv-0.23.0-linux-arm64.tar.bz2
-	sha256sums_aarch64 = 5636144294890c9681e43c406ecae65dfa5711374305c03206ee5d635dc4940f
+	source = iv-cli-bin-0.24.0-README.md::https://raw.githubusercontent.com/kenshaw/iv/refs/tags/v0.24.0/README.md
+	sha256sums = 23043e9ee2bed2b6cf26516ee92b55d8824f6a04df57cdaf71496f280f2139f6
+	source_x86_64 = https://github.com/kenshaw/iv/releases/download/v0.24.0/iv-0.24.0-linux-amd64.tar.bz2
+	sha256sums_x86_64 = b20975fd79419ab81126360e2c3313fa0632eecf64a977524e49380a86b5a3b3
+	source_aarch64 = https://github.com/kenshaw/iv/releases/download/v0.24.0/iv-0.24.0-linux-arm64.tar.bz2
+	sha256sums_aarch64 = bc9bc2d69ac56d7c00b88d526738af43140cf904e58100336f08eb79b3bbe541
 
 pkgname = iv-cli-bin
