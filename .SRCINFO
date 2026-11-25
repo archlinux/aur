@@ -1,0 +1,17 @@
+pkgbase = mnemon-bin
+	pkgdesc = Persistent graph-based memory for AI agents
+	pkgver = 0.2.15
+	pkgrel = 1
+	url = https://github.com/mnemon-dev/mnemon
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = mnemon
+	conflicts = mnemon
+	options = !debug
+	source_x86_64 = mnemon-bin-0.2.15-x86_64.tar.gz::https://github.com/mnemon-dev/mnemon/releases/download/v0.2.15/mnemon_0.2.15_linux_amd64.tar.gz
+	sha256sums_x86_64 = 443828b35fa7ecd083446dedf3574e271ad917c4f23e172b7bda6c09bfc0bb0f
+	source_aarch64 = mnemon-bin-0.2.15-aarch64.tar.gz::https://github.com/mnemon-dev/mnemon/releases/download/v0.2.15/mnemon_0.2.15_linux_arm64.tar.gz
+	sha256sums_aarch64 = f9d60ff6fd11af65f8defbe8bd514a94cbd49496bfe13819a81f3156199fe49e
+
+pkgname = mnemon-bin
