@@ -1,7 +1,7 @@
 # Maintainer: Lucasion <lucasion@hotmail.com>
 pkgname=cinemion-bin
 # The release name, which may hold a dash (2.0.0-alpha.0); pacman versions can't, so pkgver swaps it for an underscore
-_version=0.7.2
+_version=0.7.3
 pkgver=${_version//-/_}
 pkgrel=1
 pkgdesc="Self-hosted media server and player for movies, shows and home videos"
@@ -29,8 +29,8 @@ source_aarch64=("cinemion-$_version-linux_arm64.tar.gz::$url/releases/download/v
 sha256sums=('a2d5d91910dc5cf6e4bc458b1d5c1ea5ffb75d6e58a3f9949bf5e009f99c4191'
             '50583e653975c3d49f6d5fa3524318789eba9e6889d74520345fb2aae40c4d6b'
             '62d15bd61e114e83c21bbd54d30b7bc48a0c68a52ed33c7a1353adfa44c5a634')
-sha256sums_x86_64=('a9502f1d2fc01298f60765faec48df22cab7e10874830ed2505d0fcc2226ce30')
-sha256sums_aarch64=('b623cd2464b2a2ed568b1cb6b8f843fcc799138fe0ddeb4c5aa4175924dc0caa')
+sha256sums_x86_64=('47b82583d80120caabfb00cd9116ef7d143e2f29d3b7d14b186ceed12f3414e0')
+sha256sums_aarch64=('941186b93d1ec0ec269e51cd18a77cfccec4db79a33566e8b2b78c4ab412ef57')
 
 check() {
   [[ "$("$srcdir/cinemion" version)" == "$_version" ]]
