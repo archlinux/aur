@@ -7,7 +7,7 @@ pkgrel=1
 _tag=v1.0.0
 pkgdesc='Desktop coding assistant with private screen capture and bring-your-own-key AI'
 arch=('x86_64')
-url='https://wavecode.hr'
+url='https://coderview.app'
 license=('LicenseRef-Proprietary')
 depends=(
   'alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2' 'glibc' 'gtk3' 'libcups' 'libgcc'
