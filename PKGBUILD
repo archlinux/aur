@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-git
 pkgdesc="A cli tool to clean command shell history files"
 
-pkgver=0.4.0r1.gb3e98ad
+pkgver=0.4.1.r0.gb173c8c
 pkgrel=1
 
 arch=('x86_64')
@@ -38,7 +38,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_appname}/" || exit
 
-	zig build -Doptimize=ReleaseSafe --prefix "outputs" --cache-dir "zig-cache" --global-cache-dir "zig-global-cache"
+	zig build -Doptimize=ReleaseSafe --prefix "outputs" --cache-dir "zig-cache"
 }
 
 check() {
