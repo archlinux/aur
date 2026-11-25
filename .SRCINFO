@@ -1,0 +1,14 @@
+pkgbase = dungbeetle-bin
+	pkgdesc = Distributed job server for queuing and running heavy SQL read jobs asynchronously
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/zerodha/dungbeetle
+	arch = x86_64
+	license = MIT
+	provides = dungbeetle
+	conflicts = dungbeetle
+	options = !debug
+	source_x86_64 = dungbeetle-bin-2.1.0-x86_64.tar.gz::https://github.com/zerodha/dungbeetle/releases/download/v2.1.0/dungbeetle_2.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5e48dc79871399bef2553ce134608a4161a676f24a645adf154b8b00a4de7d33
+
+pkgname = dungbeetle-bin
