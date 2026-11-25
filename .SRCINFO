@@ -1,0 +1,17 @@
+pkgbase = goldilocks-bin
+	pkgdesc = Get your resource requests 'Just Right'
+	pkgver = 4.16.5
+	pkgrel = 1
+	url = https://github.com/FairwindsOps/goldilocks
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = goldilocks
+	conflicts = goldilocks
+	options = !debug
+	source_x86_64 = goldilocks-bin-4.16.5-x86_64.tar.gz::https://github.com/FairwindsOps/goldilocks/releases/download/v4.16.5/goldilocks_4.16.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2e57b7c5cbfaa1e913ae016542debe56e0e6193825366c068c1704727d80fff2
+	source_aarch64 = goldilocks-bin-4.16.5-aarch64.tar.gz::https://github.com/FairwindsOps/goldilocks/releases/download/v4.16.5/goldilocks_4.16.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3a617065316374836306c162ae194ff8f928caf31b0f8008d23585be92dd8293
+
+pkgname = goldilocks-bin
