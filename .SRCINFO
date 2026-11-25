@@ -1,17 +1,17 @@
 pkgbase = pluto-bin
 	pkgdesc = Pluto is a utility to help users find deprecated Kubernetes apiVersions in their code repositories and their helm releases.
-	pkgver = 5.24.4
+	pkgver = 5.24.5
 	pkgrel = 2
 	url = https://github.com/FairwindsOps/pluto
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = Apache
-	source_x86_64 = pluto-bin-5.24.4-x86_64.tar.gz::https://github.com/FairwindsOps/pluto/releases/download/v5.24.4/pluto_5.24.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1e5077ce1016fb0bb8ce0103c12b7ca8666eb3959d787ecfc95d9b8acd507147
-	source_armv7h = pluto-bin-5.24.4-armv7h.tar.gz::https://github.com/FairwindsOps/pluto/releases/download/v5.24.4/pluto_5.24.4_linux_armv7.tar.gz
-	sha256sums_armv7h = 7ccadc0409a68ed2ce39d09b444951ed53e5736d41827066bddfe8acae89a2d1
-	source_aarch64 = pluto-bin-5.24.4-aarch64.tar.gz::https://github.com/FairwindsOps/pluto/releases/download/v5.24.4/pluto_5.24.4_linux_arm64.tar.gz
-	sha256sums_aarch64 = 46afed19dec949bd9f7c1da0422ce9d1bdb22c15ae8441552374642ac72f0882
+	source_x86_64 = pluto-bin-5.24.5-x86_64.tar.gz::https://github.com/FairwindsOps/pluto/releases/download/v5.24.5/pluto_5.24.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 80076e01a320e1f4db30f5dbc927d204e61cd8abed66fa0b4644ca61cd86b39e
+	source_armv7h = pluto-bin-5.24.5-armv7h.tar.gz::https://github.com/FairwindsOps/pluto/releases/download/v5.24.5/pluto_5.24.5_linux_armv7.tar.gz
+	sha256sums_armv7h = b9bd8df055ba9c9628389c07a41935a0cc9352021e9576989b314e706b107ffd
+	source_aarch64 = pluto-bin-5.24.5-aarch64.tar.gz::https://github.com/FairwindsOps/pluto/releases/download/v5.24.5/pluto_5.24.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2b00f52285f0298ae7cec55d34e2387ed725584d072e67c8fa88bee662169f10
 
 pkgname = pluto-bin
