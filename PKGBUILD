@@ -4,11 +4,43 @@
 # Contributor: Rojikku <RojikkuNoKami at gmail dot com>
 # Contributor: Tech <technetium1337 at gmail dot com>
 
+# Clean Chroot ccm Xeon(R) E-2146G 6c12t: ----> Total build time for 1.4.1-hwcodec was 00:21:24
+# Clean chroot build is smaller than the system build
+
 # rm -rf ~/.cache/vcpkg ~/.cargo ~/.pub-cache
 
 # 0 for PKGBUILD commands which may go out of date
 # 1 for build.py which should stay current
 _opt_BUILD_PY=0
+
+#_opt_CLANG='+22'
+_opt_CLANG=''
+#_opt_CLANG='21'
+_fn_setclang() {
+  local -
+  if [ ! -z "${_opt_CLANG}" ]; then
+    local _opt_CLANG="${_opt_CLANG#+}"
+    local _f
+    for _f in "/usr/lib/llvm${_opt_CLANG}" "/usr/lib/clang/${_opt_CLANG}"; do
+      if [ -d "${_f}" ]; then
+        export CLANG_RESOURCE_DIR="${_f}"
+        _f=''
+        break
+      fi
+    done
+    if [ ! -z "${_f}" ]; then
+      printf 'Unable to find clang%s\n' "${_opt_CLANG}"
+      return 1
+    fi
+    _f=("/usr/lib/libclang.so.${_opt_CLANG}".*)
+    if [ "${#_f[@]}" -ne 1 ]; then
+      printf 'Unable to find libclang%s\n' "${_opt_CLANG}"
+      return 1
+    fi
+    export LIBCLANG_PATH="${_f[0]}"
+    set +u; msg2 "Using clang${_opt_CLANG}"; set -u
+  fi
+}
 
 #vercmp --help > /dev/null 2>&1 || vercmp() { echo '0'; } # compatible with namcap sandbox
 # namcap sandbox won't let us run pacman /usr/bin/vercmp so we'll rewrite it
@@ -119,38 +151,47 @@ _fn_hwcodec() {
 
 true "${QUIET:=}" "${logpipe:=}"
 
+DLAGENTS="${DLAGENTS[@]/curl /curl -L}"
+
 set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
 pkgname+="-git"
-pkgver=1.4.9.r11328.gb0008ed
+pkgver=1.5.3.r11720.ga0c0963
 pkgrel=1
+_pkgver="${pkgver%.r*}"
 _sfx=''
 #_sfx='-pr1-998b758'
-_HBB=( # dates are retrieved from git fetch; tig. Every version gets a specific hbb.
-  '1.3.7:20250120-49c6b24a7a8c39d4448e07b743007ef1a3febd43'
-  '1.3.8:20250223-7cf11f7b771e27ecbd14fd1dd0ced55a64f40eb5'
-  '1.3.9:20250328-81b932b7bfa2ff8bc60189625fd6538db2fa9ea1'
-  '1.4.0:20250509-6e556f7e1751a3a709cd5cca0df7268ba3cb1c48'
-  '1.4.1:20250718-f91459c4ab80fc3cfdef0882b2af51f984bc914c'
-  '1.4.2:20250904-9e7696c7d4e346508ba68e801a53c6d1f1748fb5'
-  '1.4.3:20251008-5ed0afde0841659e2fb37ae7acaddc005fa1a8d3'
-  '1.4.4:20251117-a86eda749e6fa33c282bab680e6b504d3ad87539'
-  '1.4.5:20251117-073403edbf1fffcb3acfe8cbe7582ee873b23398'
-  '1.4.6:20260302-48c37de3e6c4e399af6f51ca20e8e3e1fd037976'
-  '1.4.7:20260601-df6badca5bf81b4e9836256cf8e31c993ad70dd1'
-  '1.4.8:20260604-387603f47cbb15c0d3dc3d67ae3396d3eb707daf'
-  '1.4.9:20260702-7e1c392c62d39c364127307cd408421dd5f8cfb0'
-)
-_pkgver="${pkgver%.r*}"
-_pkgverhbb="$(_fn_VCL "${_pkgver}" -eq "${_HBB[@]}")"; unset _HBB; test "$(_vercmp "${_pkgver}" '1.3.7')" -lt 0 -o ! -z "${_pkgverhbb}" || exit 1
+if [[ "${pkgname}" != *'-git' ]]; then
+  _HBB=( # dates are retrieved from git fetch; tig. Every version gets a specific hbb.
+    '1.3.7:20250120-49c6b24a7a8c39d4448e07b743007ef1a3febd43'
+    '1.3.8:20250223-7cf11f7b771e27ecbd14fd1dd0ced55a64f40eb5'
+    '1.3.9:20250328-81b932b7bfa2ff8bc60189625fd6538db2fa9ea1'
+    '1.4.0:20250509-6e556f7e1751a3a709cd5cca0df7268ba3cb1c48'
+    '1.4.1:20250718-f91459c4ab80fc3cfdef0882b2af51f984bc914c'
+    '1.4.2:20250904-9e7696c7d4e346508ba68e801a53c6d1f1748fb5'
+    '1.4.3:20251008-5ed0afde0841659e2fb37ae7acaddc005fa1a8d3'
+    '1.4.4:20251117-a86eda749e6fa33c282bab680e6b504d3ad87539'
+    '1.4.5:20251117-073403edbf1fffcb3acfe8cbe7582ee873b23398'
+    '1.4.6:20260302-48c37de3e6c4e399af6f51ca20e8e3e1fd037976'
+    '1.4.7:20260601-df6badca5bf81b4e9836256cf8e31c993ad70dd1'
+    '1.4.8:20260604-387603f47cbb15c0d3dc3d67ae3396d3eb707daf'
+    '1.4.9:20260702-7e1c392c62d39c364127307cd408421dd5f8cfb0'
+    '1.5.0:20260925-94ec710894ecd548b4fe174ef781eca5c1a318c0'
+    '1.5.1:20261028-fae47e024dd83cef6aaecde0aa7d11731df11649'
+    '1.5.3:20261110-bb416bc94e48fa73046017f8ce4214324146cebe'
+  )
+  _pkgverhbb="$(_fn_VCL "${_pkgver}" -eq "${_HBB[@]}")"; unset _HBB; test "$(_vercmp "${_pkgver}" '1.3.7')" -lt 0 -o ! -z "${_pkgverhbb}" -o "${pkgname%-git}" != "${pkgname}" || exit 1
+fi
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
 url='https://rustdesk.com/'
 _giturl='https://github.com/rustdesk/rustdesk'
 _giturlhbb='https://github.com/rustdesk/hbb_common'
 license=('AGPL-3.0-only')
-_dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libappindicator-gtk3' 'gst-plugins-base' 'gst-plugin-pipewire') # from res/PKGBUILD/depends
+#_dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libappindicator-gtk3' 'pam' 'gst-plugins-base' 'gst-plugin-pipewire') # from res/PKGBUILD/depends
+#_dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libvdpau' 'libappindicator-gtk3' 'pam' 'gst-plugins-base' 'gst-plugin-pipewire') # from res/PKGBUILD/depends
+_dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libappindicator-gtk3' 'gst-plugins-base' 'gst-plugin-pipewire')
 depends=("${_dpr[@]}" 'pulse-native-provider' 'gst-plugins-base-libs')
 depends+=('hicolor-icon-theme' 'xdg-utils')
 depends+=('xdg-user-dirs')
@@ -158,6 +199,9 @@ depends+=('glibc' 'gcc-libs' 'glib2' 'libxtst' 'libepoxy' 'gdk-pixbuf2' 'cairo' 
 _mdp=('unzip' 'git' 'cmake' 'gcc' 'curl' 'wget' 'yasm' 'nasm' 'zip' 'make' 'pkg-config' 'clang') # from Readme.MD
 makedepends=("${_mdp[@]}" 'rust' 'python' 'python-yaml' 'python-toml')
 makedepends+=('ninja' 'patchelf') # 'meson' 'pkgconf' # vcpkg makedepends are found in clean chroot. Some tools cmake always uses its own.
+if [ ! -z "${_opt_CLANG}" ] && [[ "${_opt_CLANG}" != '+'* ]]; then
+  makedepends+=("clang${_opt_CLANG}")
+fi
 _fn_hwcodec "${_pkgver}" # makedepends
 if [ "${#_opt_hwcodec_py[@]}" -gt 0 ]; then
   optdepends=( # lifted from libva::PKGBUILD
@@ -167,20 +211,23 @@ if [ "${#_opt_hwcodec_py[@]}" -gt 0 ]; then
     'libva-utils: vainfo query codec support'
   )
 fi
-options=('!lto')
+options=('!lto' '!debug')
 _patches=(
-  '0000-disable-update-check@rustdesk.patch'
   #'0001-extended_text-drop-version-for-flutter.3.22.3@rustdesk.patch' # https://github.com/rustdesk/rustdesk/blob/master/.github/workflows/bridge.yml#L77
   '0002-screen_retriever@rustdesk.patch'
+  #'0004-bindgen@rustdesk.patch' # kevinlpowell eliminated in 1.5.0
 )
-install="${pkgname}.install"
+if [[ "${pkgname}" != *'-git' ]]; then
+  _patches+=('0000-disable-update-check@rustdesk.patch') # leave update check in -git version as we won't get notifications from the distro
+fi
+install="${pkgname%-git}.install"
 _srcdir="${pkgname}-${_pkgver}"
 source=(
   "${_srcdir}${_sfx}.tar.gz::${_giturl}/archive/refs/tags/${_pkgver}.tar.gz"
   "${_patches[@]}"
   '0003-mkvparser.cc-cstdint.patch'
 )
-if [ ! -z "${_pkgverhbb}" ]; then
+if [ ! -z "${_pkgverhbb:-}" ]; then
   _srcdirhb="hbb_common-${_pkgverhbb##*-}"
   source=("${source[0]}" "hbb_common-${_pkgverhbb}.tgz::${_giturlhbb}/archive/${_pkgverhbb##*-}.tar.gz" "${source[@]:1}")
 fi
@@ -195,15 +242,16 @@ if :; then
     '1.3.6:#commit=20241115-b2cb0da531c2f1f740045bfe7c4dac59f0b2b69c'
     '1.3.8:#commit=20250113-6f29f12e82a8293156836ad81cc9bf5af41fe836'
     '1.4.2:#commit=20250827-120deac3062162151622ca4860575a33844ba10b' # date comes from commit (tig)
+    '1.5.0:#commit=20260729-9e593bb18ea69cc5095e012465dcd675a822ed0d'
   )
   _opt_VCPKG_COMMIT_ID="$(_fn_VCL "${_pkgver}" -ge "${_VCL[@]}")"; unset _VCL
   #source+=("git+https://github.com/microsoft/vcpkg${_opt_VCPKG_COMMIT_ID}")
   _srcdirvc="vcpkg-${_opt_VCPKG_COMMIT_ID##*-}"
   source+=("vcpkg-${_opt_VCPKG_COMMIT_ID##*=}.tgz::https://github.com/microsoft/vcpkg/archive/${_opt_VCPKG_COMMIT_ID##*-}.tar.gz")
-  _meaver='1.8.2'
-  _pcfver='2.5.1'
-  _aomver='10aece4157eb79315da205f39e19bf6ab3ee30d0'
-  _jpgver='3.1.1'
+  _meaver='1.9.0'
+  _pcfver='3.0.3'
+  _aomver='03087864cf4bea6abb0d28f95cf7843511413d8f'
+  _jpgver='3.2.0'
   _yuvver='0faf8dd0e004520a61a603a4d2996d5ecc80dc3f'
   _wbmver='1.15.2'
   _xipver='1.5.2'
@@ -220,7 +268,7 @@ if :; then
   )
   unset _meaver _pcfver _aomver _jpgver _yuvver _wbmver _xipver
   if [ "${#_opt_hwcodec_vc[@]}" -ne 0 ]; then
-    _ffmver='7.1'
+    _ffmver='7.1.1'
     _vcs+=("ffmpeg-ffmpeg-n${_ffmver}.tar.gz::https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n${_ffmver}.tar.gz")
     unset _ffmver
   fi
@@ -251,51 +299,49 @@ else
   fi
 fi
 ####
-md5sums=('a9a69bc93c29e1aeb38c77839c025661'
-         '030607b35c8d70d62f42e3a82b68b1da'
-         '6acc4b5b14befec55ef84006b60c7ff5'
+md5sums=('SKIP'
+         'SKIP'
          'a77a4586f30f77de2eed63e160b3a051'
          '379cfba8479c2a92e05e3b855d1e6901'
-         '56b134202b1ea88389d24d1c99635f6a'
-         '7887064dc9ce1cf7ae1c869bacd8e27e'
-         '7745ca9bd6d05af8af0afd209375e209'
-         '9b056bb94ba70d6ec3f5901544239268'
-         '4cc83d985db61e64bfa352388bb447ec'
+         'f40cae9f445b22a00901678b72b320c0'
+         '31921523e3f3c70c9c06666d65676a1a'
+         '1efa96e6c35d1715dc6a7f83fd473953'
+         '03abc354d05b1310f811eb45432b2a6d'
+         '47d465f8ba76031a6717afc70c91eaf3'
          'f2f3868524b82915da3700267d116cdf'
          '4c7a93808c12b359733430c8377b7fcf'
          '557a08d88aa605ee6cf4156686ce4cc2'
-         '03485098fb64a000a4f7cd97e468dfff'
+         '5f8157e206bc430cbed92fb62144f30b'
          'a3efc04e00cede00296f1a0dc323e8d1'
          'cc8e5418ff0c163228aabbe385ba2596')
-sha256sums=('8c7575780e44d3503e1d753b431a239135309e71ffbdf96eaaae1ba2986f2724'
-            'b064a3796aa6284190a73489eb4a997f3ecfd7e9b1fc176fc4c08b576fc3c8c6'
-            '8f7f1019404ce47dc012ba7c546ad634b973452fc2c57ac64b62cdc7c1f54ea3'
+sha256sums=('SKIP'
+            'SKIP'
             '82757ee1ab6b956a3c601f7db82e2d9ad80dbbcf2ba68c63059f0b529426ccd0'
             '359046f24f8a81b96a198000a1cfd7934c1f4870b2a1306e13f65694cefef68f'
-            'f3b1ec711fa1ba291efd75e27983898a37be15760dfe129a406448fa7377b31d'
-            '6b878fb0f6f0318cbd54e13539f89a1a8305791668e8e93ffd59d82722888dac'
-            '79721badcad1987dead9c3609eb4877ab9b58821c06bdacb824f2c8897c11f2a'
-            '2399c0f128ef148a785c139d631a204458b1715bb2cfb54acc65613c22d89d5c'
-            '304165ae11e64ab752e9cfc07c37bfdc87abd0bfe4bc699e59f34036d9c84f72'
+            'e9255b62719c659f224fcc639b1bf4a6226e4996ad3fb006e18e1533cad77725'
+            '12ca5979a3a625c8944e093c17c32c4c2bd03a48c8877354d88a7077860ef740'
+            '90bb12369d296f2e0bea14832b421c4ba40d442e1519758e6e1e7855afab3149'
+            'e747d8c96a3b0719c13205979236d219bcbef6ced09792d77fce72e1eb0976f0'
+            '980dd81f425082aa6d7c9e47fef27554ce7a9ffc8e2f6e863b97d263c5c50858'
             '73a4ecb598cd6824cb7a0a0d934d81b866e2762acd8eb465e1510063b4649659'
             '26fcd3db88045dee380e581862a6ef106f49b74b6396ee95c2993a260b4636aa'
             '9480e329e989f70d69886ded470c7f8cfe6c0667cc4196d4837ac9e668fb7404'
-            '7ddad2d992bd250a6c56053c26029f7e728bebf0f37f80cf3f8a0e6ec706431a'
+            'f117507dc501f2a6c11f9241d8d0c3213846cfad91764361af37befd6b6c523d'
             'a7c82f551a9eae018e078f6bb186171e5a77920d35a3d75a61d9a593d0a9e4ae'
             '5c1494e79024de228a9f383c8e52e45b042cd0cf24f4b0f47ee4d5448938b336')
 _vcs=("${_vcs[@]%%::*}")
 _vcs=("${_vcs[@]##*/}")
 noextract=("${_vcs[@]}")
 
-if [ "${pkgname%-git}" != "${pkgname}" ]; then
+if [[ "${pkgname}" = *'-git' ]]; then
   provides=("${_pkgname}=${pkgver%.r*}")
   conflicts=("${_pkgname}")
   _srcdir="${_pkgname}"
   source[0]="git+${_giturl}.git"
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
-  _srcdirhb="${_srcdirhb%%-*}"
-  source[1]="git+${_giturlhbb}.git"
+  _srcdirhb='hbb_common'
+  source=("${source[0]}" "git+${_giturlhbb}.git" "${source[@]:1}")
   md5sums[1]='SKIP'
   sha256sums[1]='SKIP'
 
@@ -314,6 +360,12 @@ print(new_toml_string.get('package').get('version'))
   #local _ver2
   #_ver2="$(git describe --long --tags | sed -E -e 's/([^-]*-g)/r&/' -e 's/^.+r/r/g' -e 's/-/./g')"
   printf '%s.r%s.g%s\n' "${_ver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)" # sometimes they reset the release counter
+  set +u
+}
+elif [ "${pkgver%.r*}" != "${pkgver}" ]; then
+pkgver() {
+  set -u
+  printf '%s\n' "${pkgver%.r*}"
   set +u
 }
 fi
@@ -564,6 +616,8 @@ EOF
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cp -pr "${_srcdirfrb}" 'fa'; ln -s "${_srcdirfrb}" 'fb'; false
   #cd '..'; cp -pr "${_srcdirvc}" 'va'; ln -s "${_srcdirvc}" 'vb'; false
   #diff -pNaru5 'a' 'b' > "0000-$RANDOM@domain.patch"
+  cargo update -p 'openssl-sys' # Google AI "rustdesk compile with openssl 4"
+  cargo update -p 'openssl'
 }
 
 build() {
@@ -592,7 +646,9 @@ build() {
       ${_opt_NICE} ./build.py --hwcodec
     else
       set -x
-      git checkout src/ui/common.tis
+      if [[ "${pkgname}" = *'-git' ]]; then
+        git checkout src/ui/common.tis
+      fi
       python3 res/inline-sciter.py
       # RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
       ${_opt_NICE} cargo build --release --features 'inline,hwcodec'
@@ -600,6 +656,7 @@ build() {
     fi
   else
     set +u; msg2 'Build rustdesk Flutter'; set -u
+    _fn_setclang
     set -x
     export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation: " | cut -d' ' -f4-)/include"
     export CARGO_INCREMENTAL=0
@@ -620,7 +677,9 @@ build() {
     if [ "${_opt_BUILD_PY}" -ne 0 ]; then
       ${_opt_NICE} ./build.py --flutter "${_opt_hwcodec_py[@]}"
     else
-      git checkout src/ui/common.tis
+      if [[ "${pkgname}" = *'-git' ]]; then
+        git checkout src/ui/common.tis
+      fi
       #if ! \
       ${_opt_NICE} cargo build --features flutter${_opt_hwcodec_fe} --lib --release
       #then
