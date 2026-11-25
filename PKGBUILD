@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=apkscope-bin
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Android APK decompiler, xrefs, API recon and MCP server, with native viewer"
 arch=('x86_64' 'aarch64')
@@ -33,8 +33,8 @@ options=('!strip' '!debug')
 # unversioned alias would hand a bumped PKGBUILD the previous release's binary.
 source=("NOTICE::$url/raw/v$pkgver/NOTICE")
 sha256sums=('4a44da57791f5b44965c0eb0af6ac43e65a643af7a44afdc6cca28bdb17d687c')
-sha256sums_x86_64=('15db5f6ac67734b02b55c257c440bed17e5b9c540aa611fc332575f614ad91d3')
-sha256sums_aarch64=('6e811464bbdf6b4d801f9cec96bcc7186e684f2c185601e760c0436d353246dc')
+sha256sums_x86_64=('3e09e41a69478023986e56c9ce79f99e246468976635129060cd2f4105fd5c78')
+sha256sums_aarch64=('c7dc7927398f14bc07743228569748b1bd36c348ef9fd8a8bdc950b1636280d4')
 
 source_x86_64=("apkscope_linux_x86_64-$pkgver::$url/releases/download/v$pkgver/apkscope_linux_x86_64")
 
