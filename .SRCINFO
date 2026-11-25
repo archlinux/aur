@@ -1,0 +1,19 @@
+pkgbase = tparse-bin
+	pkgdesc = Summarize go test output
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/mfridman/tparse
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tparse
+	conflicts = tparse
+	options = !debug
+	source = tparse-bin-0.18.0-LICENSE::https://raw.githubusercontent.com/mfridman/tparse/v0.18.0/LICENSE
+	sha256sums = 285c7b2eb9b0db7c6dfa5a1910ade5beede8338583adb7f6506d69d5e3920b64
+	source_x86_64 = tparse-bin-0.18.0-x86_64::https://github.com/mfridman/tparse/releases/download/v0.18.0/tparse_linux_x86_64
+	sha256sums_x86_64 = d042b0dfdd43dfe5340b9b1cedfcab3018cdd4cfceedcf9cb242bcff9b534b70
+	source_aarch64 = tparse-bin-0.18.0-aarch64::https://github.com/mfridman/tparse/releases/download/v0.18.0/tparse_linux_arm64
+	sha256sums_aarch64 = 96ce6434fbf58f9fbfd5fb7429f77ed4eedac51a528d2314b52b1793d52851b3
+
+pkgname = tparse-bin
