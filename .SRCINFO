@@ -1,6 +1,6 @@
 pkgbase = solco-bin
 	pkgdesc = Prep studio for DJs: grids, keys, tags, smart playlists and USB exports for CDJs (private beta, needs a licence key)
-	pkgver = 1.0.0beta.13
+	pkgver = 1.0.0beta.14
 	pkgrel = 1
 	url = https://getsolco.com
 	arch = x86_64
@@ -29,9 +29,9 @@ pkgbase = solco-bin
 	conflicts = solco
 	options = !debug
 	options = !strip
-	source_x86_64 = solco-v1.0.0-beta.13-amd64.deb::https://github.com/crmne/solco-releases/releases/download/v1.0.0-beta.13/solco_1.0.0.beta.13_amd64.deb
-	sha256sums_x86_64 = 6716e0a12f0b6041bc5698212554f7a8f5058893b063a30c90e6c42c6dadeeb1
-	source_aarch64 = solco-v1.0.0-beta.13-arm64.deb::https://github.com/crmne/solco-releases/releases/download/v1.0.0-beta.13/solco_1.0.0.beta.13_arm64.deb
-	sha256sums_aarch64 = 2ef606a38f4e446db523fb639fe06ef483909c95daa710781cc828f9263096be
+	source_x86_64 = solco-v1.0.0-beta.14-amd64.deb::https://github.com/crmne/solco-releases/releases/download/v1.0.0-beta.14/solco_1.0.0.beta.14_amd64.deb
+	sha256sums_x86_64 = 1b259c1bc6fe1b641865883794027754e52755407f7da310e0e0308efd350b5c
+	source_aarch64 = solco-v1.0.0-beta.14-arm64.deb::https://github.com/crmne/solco-releases/releases/download/v1.0.0-beta.14/solco_1.0.0.beta.14_arm64.deb
+	sha256sums_aarch64 = 0e02e28b31d6d0c2f905386f13002637f0fee90e573ac91fcbbb6914da44a5e7
 
 pkgname = solco-bin
