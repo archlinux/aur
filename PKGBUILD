@@ -1,6 +1,6 @@
 # Maintainer: Marcel W. Wysocki <maci.stgn@gmail.com>
 pkgname=paseo-bun-bin
-pkgver=0.17.4
+pkgver=0.17.4.bun.3
 pkgrel=1
 pkgdesc='Paseo native Bun AOT desktop and daemon with Elysia, Tauri v2 and UI performance patches (release binaries)'
 arch=('x86_64')
@@ -11,13 +11,14 @@ optdepends=('openssh: SSH connections and Git remotes')
 provides=("paseo-bun=$pkgver")
 conflicts=('paseo-bun')
 options=('!strip' '!debug')
-_upstreamver=0.17.4
-_release=bun-aot-v0.17.4
+_upstreamver=0.17.4-bun.3
+_release=bun-aot-v${_upstreamver}
 source=("paseo-bun-desktop-${_upstreamver}-linux-x64-aot.tar.gz::${url}/releases/download/${_release}/paseo-bun-desktop-${_upstreamver}-linux-x64-aot.tar.gz")
-sha256sums=('f1c45e29405cbfcedd1ca2eb2befdc15ffad628b54434e385827ea4dde557571')
+sha256sums=('5f997767c5e2be7e401476150e6426a86e6cd69fa2c4c42f36a904a22424060f')
 
 check() {
-  [[ $("$srcdir/paseo-bun/paseo-bun" --version) == "$_upstreamver" ]]
+  # The daemon reports the base Paseo version; the desktop reports the full Bun distribution version.
+  [[ $("$srcdir/paseo-bun/paseo-bun" --version) == "${_upstreamver%%-bun.*}" ]]
   [[ $("$srcdir/paseo-bun/paseo-bun-desktop" --version) == "Paseo Bun Desktop $_upstreamver" ]]
 }
 
