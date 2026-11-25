@@ -1,6 +1,6 @@
 pkgbase = terrio
 	pkgdesc = Pure-Rust geospatial raster and vector data I/O: the terrio command
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://terrio.dev
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = terrio
 	depends = glibc
 	conflicts = terrio-bin
 	options = !lto
-	source = terrio-0.9.0.tar.gz::https://github.com/opengeos/terrio/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = 9b7aef562f86095b5145be73e00e1747d3bb4c2f3052fefb7eff2041fcd64256
+	source = terrio-0.10.0.tar.gz::https://github.com/opengeos/terrio/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = 344b7b57e7a854f0a4ba9f99b6e993684ce3ec04d7c056e80a7e12d8325f3abd
 
 pkgname = terrio
