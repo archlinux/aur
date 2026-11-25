@@ -1,6 +1,6 @@
 pkgbase = kitty-nightly-bin
 	pkgdesc = A modern, hackable, featureful, OpenGL-based terminal emulator (official nightly build)
-	pkgver = 0.51.1.r202611240718.g1f5b945
+	pkgver = 0.51.1.r202611251059.g121ef18
 	pkgrel = 1
 	url = https://sw.kovidgoyal.net/kitty/
 	arch = x86_64
@@ -17,22 +17,22 @@ pkgbase = kitty-nightly-bin
 	depends = libxcursor
 	depends = ncurses
 	depends = util-linux-libs
-	provides = kitty=0.51.1.r202611240718.g1f5b945
-	provides = kitty-terminfo=0.51.1.r202611240718.g1f5b945
-	provides = kitty-shell-integration=0.51.1.r202611240718.g1f5b945
+	provides = kitty=0.51.1.r202611251059.g121ef18
+	provides = kitty-terminfo=0.51.1.r202611251059.g121ef18
+	provides = kitty-shell-integration=0.51.1.r202611251059.g121ef18
 	conflicts = kitty
 	conflicts = kitty-terminfo
 	conflicts = kitty-shell-integration
-	noextract = kitty-nightly-bin-0.51.1.r202611240718.g1f5b945-x86_64.txz
+	noextract = kitty-nightly-bin-0.51.1.r202611251059.g121ef18-x86_64.txz
 	options = !strip
 	options = !debug
 	validpgpkeys = 3CE1780F78DD88DF45194FD706BC317B515ACE7C
-	source_x86_64 = kitty-nightly-bin-0.51.1.r202611240718.g1f5b945-x86_64.txz::https://github.com/kovidgoyal/kitty/releases/download/nightly/kitty-nightly-x86_64.txz
-	source_x86_64 = kitty-nightly-bin-0.51.1.r202611240718.g1f5b945-x86_64.txz.sig::https://github.com/kovidgoyal/kitty/releases/download/nightly/kitty-nightly-x86_64.txz.sig
+	source_x86_64 = kitty-nightly-bin-0.51.1.r202611251059.g121ef18-x86_64.txz::https://github.com/kovidgoyal/kitty/releases/download/nightly/kitty-nightly-x86_64.txz
+	source_x86_64 = kitty-nightly-bin-0.51.1.r202611251059.g121ef18-x86_64.txz.sig::https://github.com/kovidgoyal/kitty/releases/download/nightly/kitty-nightly-x86_64.txz.sig
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = kitty-nightly-bin-0.51.1.r202611240718.g1f5b945-aarch64.txz::https://github.com/kovidgoyal/kitty/releases/download/nightly/kitty-nightly-arm64.txz
-	source_aarch64 = kitty-nightly-bin-0.51.1.r202611240718.g1f5b945-aarch64.txz.sig::https://github.com/kovidgoyal/kitty/releases/download/nightly/kitty-nightly-arm64.txz.sig
+	source_aarch64 = kitty-nightly-bin-0.51.1.r202611251059.g121ef18-aarch64.txz::https://github.com/kovidgoyal/kitty/releases/download/nightly/kitty-nightly-arm64.txz
+	source_aarch64 = kitty-nightly-bin-0.51.1.r202611251059.g121ef18-aarch64.txz.sig::https://github.com/kovidgoyal/kitty/releases/download/nightly/kitty-nightly-arm64.txz.sig
 	sha256sums_aarch64 = SKIP
 	sha256sums_aarch64 = SKIP
 
