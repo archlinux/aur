@@ -11,7 +11,7 @@ EOF
 }
 
 post_upgrade() {
-  echo "==> Lumen updated: log out and back in to load the new KWin plugins."
+  echo "==> Lumen updated: running sessions apply it again; log out and back in to load the new KWin plugins."
 }
 
 pre_remove() {

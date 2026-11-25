@@ -2,7 +2,7 @@
 
 pkgname=lumen-kde-git
 _repo=kdewin
-pkgver=1.0.0.r0.gb9d6961
+pkgver=1.1.0.r0.g3a605b9
 pkgrel=1
 pkgdesc='Windows 11 style desktop for KDE Plasma 6: widget style, window decoration, Mica and Acrylic, taskbar, Start, Quick Settings, File Explorer'
 arch=('x86_64' 'aarch64')
