@@ -1,6 +1,6 @@
 pkgbase = extension-bitwarden-git
 	pkgdesc = Bitwarden browser extensions
-	pkgver = 2026.6.1.r22239.gc375461
+	pkgver = 2026.11.0.r23994.g5912919
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients
 	arch = any
@@ -8,47 +8,53 @@ pkgbase = extension-bitwarden-git
 	makedepends = git
 	makedepends = nodejs
 	makedepends = npm
-	makedepends = p7zip
-	source = git+https://github.com/bitwarden/clients.git
+	makedepends = zip
+	source = extension-bitwarden-git::git+https://github.com/bitwarden/clients.git
 	sha256sums = SKIP
 
 pkgname = brave-extension-bitwarden-git
 	pkgdesc = Bitwarden browser extension for Brave
 	install = brave-extension-bitwarden-git.install
-	optdepends = brave
+	optdepends = brave: Web browser to use the extension with
 	provides = brave-extension-bitwarden
 	conflicts = brave-extension-bitwarden
 
 pkgname = chrome-extension-bitwarden-git
-	pkgdesc = Bitwarden browser extension for Chrome
+	pkgdesc = Bitwarden browser extension for Google Chrome
 	install = chrome-extension-bitwarden-git.install
-	optdepends = google-chrome
+	optdepends = google-chrome: Web browser to use the extension with
 	provides = chrome-extension-bitwarden
 	conflicts = chrome-extension-bitwarden
 
 pkgname = chromium-extension-bitwarden-git
 	pkgdesc = Bitwarden browser extension for Chromium
 	install = chromium-extension-bitwarden-git.install
-	optdepends = chromium
+	optdepends = chromium: Web browser to use the extension with
 	provides = chromium-extension-bitwarden
 	conflicts = chromium-extension-bitwarden
+
+pkgname = firefox-developer-edition-extension-bitwarden-git
+	pkgdesc = Bitwarden browser extension for Firefox Developer Edition
+	optdepends = firefox-developer-edition: Web browser to use the extension with
+	provides = firefox-developer-edition-extension-bitwarden
+	conflicts = firefox-developer-edition-extension-bitwarden
 
 pkgname = firefox-extension-bitwarden-git
 	pkgdesc = Bitwarden browser extension for Firefox
 	groups = firefox-addons
-	optdepends = firefox
+	optdepends = firefox: Web browser to use the extension with
 	provides = firefox-extension-bitwarden
 	conflicts = firefox-extension-bitwarden
 
 pkgname = librewolf-extension-bitwarden-git
 	pkgdesc = Bitwarden browser extension for LibreWolf
-	optdepends = librewolf
+	optdepends = librewolf: Web browser to use the extension with
 	provides = librewolf-extension-bitwarden
 	conflicts = librewolf-extension-bitwarden
 
 pkgname = opera-extension-bitwarden-git
 	pkgdesc = Bitwarden browser extension for Opera
 	install = opera-extension-bitwarden-git.install
-	optdepends = opera
+	optdepends = opera: Web browser to use the extension with
 	provides = opera-extension-bitwarden
 	conflicts = opera-extension-bitwarden
