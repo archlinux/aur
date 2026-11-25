@@ -1,6 +1,6 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
-# Based on dosemu-git:
+# Based on dosemu-git
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 # Based on the Arch Linux PKGBUILD by:
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
@@ -34,11 +34,12 @@ _opt_altcommand=0
 # 0 = use command. from freedos
 # 1 = use alternate version of command.com, ignored when using fdpp
 
-#_commit='#commit=b63949630d5409ed9fa3039b1cc050d13b707bf3'; # SOURCE_DATE_EPOCH="$(date +%s -d '2021-03-06 04:16')"
+#_commit='#commit=8f703617c7b270e4eaa3ccf5ffb73015b3868147'; # SOURCE_DATE_EPOCH="$(date +%s -d '2021-03-06 04:16')"
+#_commit='#commit=1b773ce504c90459b5c871f07012cb04e658782a'
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.2.0pre9.2.r1579.ge22fbc4a3
+pkgver=2.2.0pre9.2.r3391.g7e7f3da95
 pkgrel=1
 _pkgver="${pkgver%%[a-z]*}"
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
@@ -48,11 +49,15 @@ url='https://github.com/dosemu2/dosemu2'
 license=('GPL-2.0-only')
 depends=('glibc' 'alsa-lib' 'libsearpc')
 depends+=('gcc-libs' 'glib2' 'bash' 'libb64' 'libieee1284' 'libslirp' 'fontconfig' 'acl' 'json-c' 'libx11' 'jansson' 'readline' 'libcap' 'libxext' 'dj64')
+depends+=('sdl2_ttf' 'libseccomp')
 if [ "${_opt_Debug}" -ne 0 ]; then
   depends+=('gdb' 'binutils' 'sudo')
 fi
 if [ "${_opt_fdpp}" -ne 0 ]; then
   depends+=('fdpp>=1.7')
+fi
+if [ "${_opt_fdpp}" -eq 1 ]; then
+  depends+=('comcom64')
 fi
 optdepends=(
   'libao: audio output'
@@ -84,7 +89,7 @@ backup=(
 # 'etc/dosemu/dosemu.users'
 # 'etc/dosemu/global.conf'
 )
-options=('!strip')
+options=('!strip' '!buildflags' '!lto')
 _github='stsp/dosemu2'
 _verwatch=("https://github.com/${_github}/releases.atom" "\s\+<title>${_pkgname}-\([^<]\+\)</title>" 'f')
 _freedos='none'
@@ -156,10 +161,9 @@ sha256sums=('SKIP'
             'b473fd55457c87c067f2a307eca6dd4fbbfc7f9bfe79c7d653b3fc94add9e90a')
 
 pkgver() {
-  set -u
+  local -; set -u
   cd 'dosemu2'
   git describe --tag --long | sed -e 's/\([^-][0-9]\+-g\)/r\1/' -e 's/-/./g' -e 's:^dosemu::g'
-  set +u
 }
 
 _fd10='fd10_https://www.ibiblio.org//pub/micro/pc-stuff/freedos/files/distributions/1.0/pkgs'
@@ -290,7 +294,7 @@ _fn_procextra() {
 # $2: unique folder version in case you want to build more than one version at a time
 # $3: output file name
 _gen_fd11() {
-  set -u
+  local -; set -u
   local _pw="${PWD}"
   local _iso='fd11src'
 
@@ -399,11 +403,10 @@ _gen_fd11() {
   cd ..
   md5sum "$3"
   rm -rf "tmp-freedos$2" "tmp-${_iso}"
-  set +u
 }
 
 prepare() {
-  set -u
+  local -; set -u
 
   mkdir -p 'sed16'
   unzip -d 'sed16' -q -o -LL 'sed16bin.zip'
@@ -447,11 +450,10 @@ config {
 EOF
     rm -f 'debian/rules' # We don't use this file so I'm using it as a flag.
   fi
-  set +u
 }
 
 _configure() { # makepkg -e compatible
-  set -u
+  local -; set -u
   cd 'dosemu2'
   if [ ! -s 'configure' ]; then
     ./autogen.sh
@@ -478,11 +480,11 @@ _configure() { # makepkg -e compatible
     "${PWD}"/default-configure "${_opts[@]}" --prefix='/usr'
     set +x
   fi
-  set +u
   cd "${srcdir}"
 }
 
 build() {
+  local -
   if [ "${_freedos}" != 'none' ] && [ ! -s 'dosemu-freedos-1.1-bin.tgz' ]; then
     _gen_fd11 'en' '11' 'dosemu-freedos-1.1-bin.tgz'
   fi
@@ -494,11 +496,10 @@ build() {
   else
     nice make -s
   fi
-  set +u
 }
 
 package() {
-  set -u
+  local -; set -u
   cd 'dosemu2'
   make DESTDIR="${pkgdir}" install
   test -d "${pkgdir}/usr/local" && echo "${}"
@@ -560,7 +561,6 @@ fi
   popd > /dev/null
 
   upx -d $(grep -lare 'UPX' --include '*.exe' "${pkgdir}")
-  set +u
 }
 
 set +u

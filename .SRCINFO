@@ -1,6 +1,6 @@
 pkgbase = dosemu2-git
 	pkgdesc = Virtual machine that allows you to run DOS programs under Linux
-	pkgver = 2.2.0pre9.2.r1579.ge22fbc4a3
+	pkgver = 2.2.0pre9.2.r3391.g7e7f3da95
 	pkgrel = 1
 	url = https://github.com/dosemu2/dosemu2
 	arch = i686
@@ -36,7 +36,10 @@ pkgbase = dosemu2-git
 	depends = libcap
 	depends = libxext
 	depends = dj64
+	depends = sdl2_ttf
+	depends = libseccomp
 	depends = fdpp>=1.7
+	depends = comcom64
 	optdepends = libao: audio output
 	optdepends = gpm: mouse support in console
 	optdepends = slang: console display
@@ -63,6 +66,8 @@ pkgbase = dosemu2-git
 	noextract = gnu_gzip124x.zip
 	noextract = fd10_vim16x.zip
 	options = !strip
+	options = !buildflags
+	options = !lto
 	backup = etc/dosemu/dosemu.conf
 	source = git+https://github.com/stsp/dosemu2.git
 	source = https://www.pement.org/sed/sed16bin.zip
