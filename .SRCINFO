@@ -1,0 +1,39 @@
+pkgbase = arenahub-bin
+	pkgdesc = Installer and launcher for Quake III Arena, Team Arena and classic mods
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Evilchuck666/ArenaHub
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc>=2.39
+	depends = gcc-libs
+	depends = zlib
+	depends = fontconfig
+	depends = freetype2
+	depends = libglvnd
+	depends = libx11
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = xcb-util-cursor
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = xcb-util-renderutil
+	depends = xcb-util-wm
+	depends = wayland
+	depends = dbus
+	depends = sdl2
+	depends = hicolor-icon-theme
+	optdepends = vulkan-icd-loader: Vulkan renderer
+	provides = arenahub=0.4.0
+	conflicts = arenahub
+	options = !strip
+	options = !debug
+	source = ArenaHub-0.4.0-linux-x64.tar.gz::https://github.com/Evilchuck666/ArenaHub/releases/download/v0.4.0/ArenaHub-linux-x64.tar.gz
+	source = arenahub-0.4.0.svg::https://raw.githubusercontent.com/Evilchuck666/ArenaHub/v0.4.0/assets/icons/arenahub.svg
+	source = arenahub.desktop
+	sha256sums = 25e1e229e4efe8a2d6e8a42463c536cef7b6dd2e71329cab61f5c829f1ee8c50
+	sha256sums = 442267b4dcc8fda76ade20e912d8563da4c811e864ba197ea171f097ebb21da5
+	sha256sums = 05e21ea59cedf7d789557cad4b83251056896495bb0159b082b115776929eab8
+
+pkgname = arenahub-bin

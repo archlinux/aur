@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ArenaHub
+GenericName=Quake III Arena launcher
+Comment=Install and play Quake III Arena, Team Arena and classic mods
+Exec=arenahub
+Icon=arenahub
+Terminal=false
+Categories=Game;ActionGame;
+Keywords=quake;quake3;quake3e;arena;cpma;osp;steam;
