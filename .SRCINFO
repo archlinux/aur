@@ -1,6 +1,6 @@
 pkgbase = stikk
 	pkgdesc = A terminal UI for the prikk version control system
-	pkgver = 0.22.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/prikk-vcs/stikk
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = stikk
 	depends = libgcc
 	options = !lto
 	options = !debug
-	source = stikk-0.22.0.tar.gz::https://static.crates.io/crates/stikk/stikk-0.22.0.crate
-	sha256sums = 4449598971a250cb8c22077a16954d550d14523e84fe8c9200144e66c02695aa
+	source = stikk-0.22.1.tar.gz::https://static.crates.io/crates/stikk/stikk-0.22.1.crate
+	sha256sums = 2fc23eba36584b3f635cc86d93bfeff867bbcf77c07c17b167f14be295179fe7
 
 pkgname = stikk
