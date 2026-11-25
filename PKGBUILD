@@ -1,6 +1,6 @@
 # Maintainer: Álvaro Castillo <sincorchetes@gmail.com>
 pkgname=delta-backup
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Time travel for your files in GNOME, with BorgBackup'
 arch=(any)
@@ -16,7 +16,7 @@ optdepends=(
   'gst-plugins-good: the preview of a video or audio'
 )
 source=("delta-$pkgver.tar.gz::https://github.com/sincorchetes/delta/archive/v$pkgver.tar.gz")
-sha256sums=('c346f1e629c00edfe049409917803a75533b9a2c2ef7dc3e16d474dfc41b7776')
+sha256sums=('28ba0a4a9c81b015a9f8601c19384d2fc967969b80fa85e9a6d79b6cf0cf492c')
 
 build() {
   arch-meson "delta-$pkgver" build
