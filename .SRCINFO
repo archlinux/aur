@@ -1,6 +1,6 @@
 pkgbase = proton-stream-git
 	pkgdesc = Unofficial media library for Proton Drive: browse and stream public links and your own Drive folders (git main)
-	pkgver = 2.5.0.r0.ga14151a
+	pkgver = 2.5.1.r0.gcf367e2
 	pkgrel = 1
 	url = https://github.com/narrrl/proton-stream
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = proton-stream-git
 	depends = glibc
 	optdepends = gnome-keyring: credential storage over the Secret Service API
 	optdepends = kwallet: credential storage over the Secret Service API
-	provides = proton-stream=2.5.0.r0.ga14151a
+	provides = proton-stream=2.5.1.r0.gcf367e2
 	provides = pstr
 	conflicts = proton-stream
 	conflicts = proton-stream-bin
