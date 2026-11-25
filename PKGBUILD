@@ -17,7 +17,7 @@ provides=('nordpass')
 source=('LICENSE'
         "${_snapdownloadurl}")
 sha256sums=('88798af2f6f88ea827870c47cc7bdcac61a4a39a32cd7ed0b2682a6150369e4c'
-            'SKIP')
+            'a196d04bd6daca0b029485102aadeb309a6b52d41260a8e97fb5bf5e60af1f90')
 
 prepare ()
 {
