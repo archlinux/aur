@@ -1,0 +1,21 @@
+pkgbase = mailcrab-bin
+	pkgdesc = Email test server for development
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/tweedegolf/mailcrab
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = mailcrab
+	conflicts = mailcrab
+	options = !debug
+	source = mailcrab-bin-1.9.0-LICENSE::https://raw.githubusercontent.com/tweedegolf/mailcrab/v1.9.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = mailcrab-bin-1.9.0-x86_64::https://github.com/tweedegolf/mailcrab/releases/download/v1.9.0/mailcrab-linux-x86-64-gnu-v1.9.0
+	sha256sums_x86_64 = e0429c28c89ec7920153dfc0828009c8a0d090834e6c1a47640ad22dd1dd8b26
+	source_aarch64 = mailcrab-bin-1.9.0-aarch64::https://github.com/tweedegolf/mailcrab/releases/download/v1.9.0/mailcrab-linux-arm64-gnu-v1.9.0
+	sha256sums_aarch64 = 80186bbbfe821d3ac313864c40e1f1e9a6d685f49f7e150dba0d1909e7d3f491
+
+pkgname = mailcrab-bin
