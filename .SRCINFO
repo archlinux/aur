@@ -1,0 +1,19 @@
+pkgbase = stratus-red-team-bin
+	pkgdesc = cloud: :zap: Granular, Actionable Adversary Emulation for the Cloud
+	pkgver = 2.38.2
+	pkgrel = 1
+	url = https://github.com/DataDog/stratus-red-team
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = stratus-red-team
+	conflicts = stratus-red-team
+	options = !debug
+	source = stratus-red-team-bin-2.38.2-LICENSE::https://raw.githubusercontent.com/DataDog/stratus-red-team/v2.38.2/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = stratus-red-team-bin-2.38.2-x86_64.tar.gz::https://github.com/DataDog/stratus-red-team/releases/download/v2.38.2/stratus-red-team_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 2e2448f42dc5ab44aaef602ed2a8d9b7220a82f987d2a06620cf341a192873b4
+	source_aarch64 = stratus-red-team-bin-2.38.2-aarch64.tar.gz::https://github.com/DataDog/stratus-red-team/releases/download/v2.38.2/stratus-red-team_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 20cd30efdbe1e1e6335bbb31dd0e17ba8395e9951693eb91b1fa4d2a8430c252
+
+pkgname = stratus-red-team-bin
