@@ -1,0 +1,12 @@
+[Unit]
+Description=Prepare personal application launchers for Oneleet
+
+[Service]
+Type=oneshot
+TimeoutStartSec=30s
+User=root
+Group=oneleet
+RuntimeDirectory=oneleet-apps
+RuntimeDirectoryMode=0750
+RuntimeDirectoryPreserve=yes
+ExecStart=/usr/lib/oneleet-agent/oneleet-user-applications-scan.sh

@@ -4,6 +4,9 @@ Documentation=https://docs.oneleet.com/oneleet-agent/setup/
 ConditionFileIsExecutable=/opt/Oneleet/oneleet-daemon
 StartLimitIntervalSec=5
 StartLimitBurst=10
+# Prepare personal launchers at startup and refresh them every five minutes.
+Wants=oneleet-user-applications-scan.service oneleet-user-applications-scan.timer
+After=oneleet-user-applications-scan.service
 
 [Service]
 Type=simple
@@ -11,8 +14,10 @@ User=oneleet
 Group=oneleet
 AmbientCapabilities=CAP_NET_ADMIN
 CapabilityBoundingSet=CAP_NET_ADMIN
-# Keep personal user data outside the daemon's mount namespace.
-ProtectHome=true
+# Hide the real homes. Oneleet skips absent launchers but aborts on EACCES.
+# The read-only mirror exposes just the copied launchers at their usual paths.
+ProtectHome=tmpfs
+BindReadOnlyPaths=-/run/oneleet-apps:/home
 # Hide Docker's private mount paths from osquery's mount inventory.
 InaccessiblePaths=-/run/docker
 InaccessiblePaths=-/var/lib/docker

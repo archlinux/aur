@@ -1,13 +1,16 @@
+_show_next_steps() {
+  printf '\n%s\n' '==> Manual action required:'
+  printf '    sudo systemctl %s oneleet-daemon.service\n\n' "$1"
+  printf '%s\n' '==> Personal application launchers refresh every five minutes.' \
+    '    To disable personal inventory (system apps are unaffected):' \
+    '    sudo touch /etc/oneleet-agent/disable-user-applications-scan' \
+    '    Remove that file to reenable it.' ''
+}
+
 post_install() {
-  printf '\n'
-  printf '%s\n' '==> Manual action required: enable and start the Oneleet background service:'
-  printf '%s\n' '    sudo systemctl enable --now oneleet-daemon.service'
-  printf '\n'
+  _show_next_steps 'enable --now'
 }
 
 post_upgrade() {
-  printf '\n'
-  printf '%s\n' '==> Manual action required: restart the Oneleet background service:'
-  printf '%s\n' '    sudo systemctl restart oneleet-daemon.service'
-  printf '\n'
+  _show_next_steps restart
 }

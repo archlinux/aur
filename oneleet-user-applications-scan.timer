@@ -1,0 +1,6 @@
+[Unit]
+Description=Refresh personal application launchers for Oneleet
+PartOf=oneleet-daemon.service
+
+[Timer]
+OnUnitActiveSec=5min
