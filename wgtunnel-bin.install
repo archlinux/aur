@@ -44,6 +44,9 @@ pre_remove() {
   if [ -d /run/systemd/system ]; then
     systemctl disable --now wgtunnel-daemon.service 2>/dev/null || true
   fi
+  # A stopped daemon leaves the kill switch enforced on purpose. Nothing will take it over
+  # once the app is gone, so remove it.
+  /opt/wgtunnel/bin/wgtunnel-daemon --purge-firewall >/dev/null 2>&1 || true
 }
 
 post_remove() {

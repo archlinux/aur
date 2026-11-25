@@ -2,14 +2,14 @@
 # pkgver is a placeholder: publish-aur.yml rewrites it (and regenerates checksums via
 # updpkgsums) from the release tag before every AUR push.
 pkgname=wgtunnel-bin
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 install=wgtunnel-bin.install
 pkgdesc="An advanced, open-source client for WireGuard and AmneziaWG."
 arch=('x86_64')
 url="https://wgtunnel.com"
 license=('MIT')
-depends=('gtk3' 'gcc-libs' 'freetype2' 'fontconfig')
+depends=('gtk3' 'gcc-libs' 'freetype2' 'fontconfig' 'xdg-desktop-portal-gtk')
 optdepends=('systemd: enables automatic daemon startup and management')
 provides=("wgtunnel=${pkgver}")
 conflicts=('wgtunnel' 'wgtunnel-git')
@@ -17,9 +17,9 @@ options=(!strip !emptydirs)
 
 # Nucleus artifact: ${name}-${version}-${os}-${arch}.pacman
 _src="wgtunnel-${pkgver}-linux-x64.pacman"
-_tag="v2.4.1"
+_tag="v2.5.0"
 source=("${_src}::https://github.com/wgtunnel/desktop/releases/download/${_tag}/${_src}")
-sha256sums=('60a6fd06ecbef4d9711f17eea93595525dbf67aacb342b67d5ced5c8b7146884')
+sha256sums=('542660992bde81a2affec27c043fe125f20083f6ea2e90144ce2bf894f83cb4b')
 
 package() {
   bsdtar -x -C "$pkgdir" -f "$srcdir/$_src"
@@ -35,6 +35,15 @@ package() {
     "$pkgdir/usr/lib/systemd/system/wgtunnel-daemon.service"
   sed -i 's|^WorkingDirectory=.*|WorkingDirectory=/opt/wgtunnel|' \
     "$pkgdir/usr/lib/systemd/system/wgtunnel-daemon.service"
+
+  # Pulled in by the daemon unit, so it needs no enabling.
+  local early="$pkgdir/opt/wgtunnel/wgtunnel-early-boot.service"
+  [[ -f "$early" ]] || early="$pkgdir/opt/wgtunnel/lib/wgtunnel-early-boot.service"
+  if [[ -f "$early" ]]; then
+    install -Dm644 "$early" "$pkgdir/usr/lib/systemd/system/wgtunnel-early-boot.service"
+    sed -i 's|^ExecStart=.*|ExecStart=/opt/wgtunnel/bin/wgtunnel-daemon --early-boot-firewall|' \
+      "$pkgdir/usr/lib/systemd/system/wgtunnel-early-boot.service"
+  fi
 
   if ! compgen -G "$pkgdir/usr/share/applications/*.desktop" >/dev/null; then
     install -d "$pkgdir/usr/share/applications"
