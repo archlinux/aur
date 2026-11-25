@@ -5,7 +5,7 @@
 pkgbase=qt6-base-hifps
 pkgname=(qt6-base-hifps
          qt6-xcb-private-headers-hifps)
-_pkgver=6.12.0
+_pkgver=6.12.1
 pkgver=${_pkgver/-/}
 pkgrel=2
 arch=(x86_64)
@@ -92,7 +92,7 @@ source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$_pkgver
         qt6-base-cflags.patch
         qt6-base-nostrip.patch
         qt6-base-lowtimer.patch)
-sha256sums=('d97ef157dc50bdf0425337e9adede8135ab508a4ab2f1abae7e9cfc42c5f86db'
+sha256sums=('57fc6f9184ada8a5b635f5c7d6bd481dcb302b20fc2f60629f75ef66c9b0e7fc'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094'
     	    '12d836fdfafc221a93c2877d0537651e4cf8c200e4b2fdc1390165e2f3587109')
