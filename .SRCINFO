@@ -1,0 +1,23 @@
+pkgbase = ethrex-bin
+	pkgdesc = Minimal, modular Ethereum protocol implementation in Rust
+	pkgver = 32.0.0
+	pkgrel = 1
+	url = https://github.com/lambdaclass/ethrex
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openssl-3
+	provides = ethrex
+	conflicts = ethrex
+	options = !debug
+	source = ethrex-bin-32.0.0-LICENSE::https://raw.githubusercontent.com/lambdaclass/ethrex/v32.0.0/LICENSE-APACHE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = ethrex-bin-32.0.0-x86_64::https://github.com/lambdaclass/ethrex/releases/download/v32.0.0/ethrex-linux-x86_64
+	sha256sums_x86_64 = dbb0b97eaa81b06e8ba9bb3071c8e95d3e7796d980990ae035c89ff44b3cba2e
+	source_aarch64 = ethrex-bin-32.0.0-aarch64::https://github.com/lambdaclass/ethrex/releases/download/v32.0.0/ethrex-linux-aarch64
+	sha256sums_aarch64 = e411af302ec50664d5fe372775286419d66413814506ee535e1191f587e38ed0
+
+pkgname = ethrex-bin
