@@ -1,0 +1,18 @@
+pkgbase = ontology-bin
+	pkgdesc = Go implementation of the Ontology blockchain protocol
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = https://github.com/ontio/ontology
+	arch = x86_64
+	license = LGPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = ontology
+	conflicts = ontology
+	options = !debug
+	source = ontology-bin-3.3.1-LICENSE::https://raw.githubusercontent.com/ontio/ontology/v3.3.1/LICENSE
+	sha256sums = da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768
+	source_x86_64 = ontology-bin-3.3.1-x86_64::https://github.com/ontio/ontology/releases/download/v3.3.1/ontology-linux-amd64
+	sha256sums_x86_64 = a8491cbbe0efbe0f51e7982c58fa921ebfdc9cf1c81757b44c282c009a65ad03
+
+pkgname = ontology-bin
