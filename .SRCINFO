@@ -1,7 +1,7 @@
 pkgbase = processing-bin
 	pkgdesc = A flexible software sketchbook and a programming language designed for learning how to code.
-	pkgver = 4.5.7
-	pkgrel = 2
+	pkgver = 4.5.8
+	pkgrel = 1
 	url = https://processing.org/
 	arch = aarch64
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = processing-bin
 	depends = libglvnd
 	depends = libxtst
 	depends = libxrender
-	provides = processing=4.5.7
+	provides = processing=4.5.8
 	conflicts = processing
 	options = !strip
-	source_aarch64 = processing-4.5.7-aarch64.deb::https://github.com/processing/processing4/releases/download/processing-1435-4.5.7/processing-4.5.7-linux-aarch64.deb
-	sha256sums_aarch64 = 74326f20d143f1fe9ff04742e24d1cc6a26ad1ac445b6555859d21287e797cae
-	source_x86_64 = processing-4.5.7-x86_64.deb::https://github.com/processing/processing4/releases/download/processing-1435-4.5.7/processing-4.5.7-linux-x64.deb
-	sha256sums_x86_64 = 761a74c266b27aabc44a640ba1102ced49d476c8eea31a1eee4bf0ceb802bf83
+	source_aarch64 = processing-4.5.8-aarch64.deb::https://github.com/processing/processing4/releases/download/processing-1436-4.5.8/processing-4.5.8-linux-aarch64.deb
+	sha256sums_aarch64 = de5ce1e4d0ea9f54558cb59bc04b282eb5f1548f535638ce0b21d1ffd8656467
+	source_x86_64 = processing-4.5.8-x86_64.deb::https://github.com/processing/processing4/releases/download/processing-1436-4.5.8/processing-4.5.8-linux-x64.deb
+	sha256sums_x86_64 = 78f84a0e474f726da57813c465af05ee08c402256eea2615cc3b3da62b593032
 
 pkgname = processing-bin
