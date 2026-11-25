@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yogurt-bin
 _pkgname=Yogurt
-pkgver=0.3.75
+pkgver=0.3.76
 _electronversion=44
 pkgrel=1
 pkgdesc="Private AI meeting notes that stay on your computer."
@@ -27,10 +27,10 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('784fb1d02c5c2243170c85b2f1bb9bb79299399e20be8d5bd71a93ae42ff7395'
+sha256sums=('c435d93dcd57b729059eec6ad07c79082730bb98e735c67fd54d726cd5ddb2b6'
             '5c7f0de8bbe8ee8a29540939bfdd83adf000e8c2817587d618c9637347dd34ec'
-            'd0f201d4e9b0690ccfbe9034779bf95a7a92996cef63a957bf15ea11c7d83236'
-            '6295de105284c8d173a862217d76eee1610dad92dd5543f3f9e6a08a6a77929a')
+            'b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b'
+            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
