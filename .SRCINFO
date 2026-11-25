@@ -1,0 +1,19 @@
+pkgbase = horusec-bin
+	pkgdesc = Security analysis tool that finds vulnerabilities in a project with one command
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://github.com/ZupIT/horusec
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = horusec
+	conflicts = horusec
+	options = !debug
+	source = horusec-bin-2.8.0-LICENSE::https://raw.githubusercontent.com/ZupIT/horusec/v2.8.0/LICENSE
+	sha256sums = eb7b8d9bb48af4a22c743ab9645d4767361889bf7e4af19c0d06219e99b48667
+	source_x86_64 = horusec-bin-2.8.0-x86_64::https://github.com/ZupIT/horusec/releases/download/v2.8.0/horusec_linux_amd64
+	sha256sums_x86_64 = 93c001a0b1efea27c74bfc3e9b57d4bc55ec2d7ffc9015674a19844d8677d9c8
+	source_aarch64 = horusec-bin-2.8.0-aarch64::https://github.com/ZupIT/horusec/releases/download/v2.8.0/horusec_linux_arm64
+	sha256sums_aarch64 = 92ea630d69c3a47d18f73e0521f1592c1fb07c6008b8b6f79d9798d7c62a608d
+
+pkgname = horusec-bin
