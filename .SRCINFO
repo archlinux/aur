@@ -1,15 +1,15 @@
 pkgbase = jgit
 	pkgdesc = A 100% pure java implementation of git
-	pkgver = 7.8.1.202611041320_r
+	pkgver = 8.0.0.202611241458_rc1
 	pkgrel = 1
 	url = http://www.eclipse.org/jgit/
 	arch = any
 	license = custom:EDL
 	depends = java-runtime-common
-	noextract = org.eclipse.jgit.pgm-7.8.1.202611041320-r.sh
-	source = jgit-7.8.1.202611041320_r.sh::https://repo.eclipse.org/content/groups/releases//org/eclipse/jgit/org.eclipse.jgit.pgm/7.8.1.202611041320-r/org.eclipse.jgit.pgm-7.8.1.202611041320-r.sh
+	noextract = org.eclipse.jgit.pgm-8.0.0.202611241458-rc1.sh
+	source = jgit-8.0.0.202611241458_rc1.sh::https://repo.eclipse.org/content/groups/releases//org/eclipse/jgit/org.eclipse.jgit.pgm/8.0.0.202611241458-rc1/org.eclipse.jgit.pgm-8.0.0.202611241458-rc1.sh
 	source = license.txt
-	sha512sums = 7e35a16b15aa5a6ddf1dfaceb833174dd2bbe701ea57e2dae0addbec1c7ec2589d07d47136f49393af20a0aa71b4e20bbf281dfe97e2fad05db078338ab4577f
+	sha512sums = 8ea4f503787b32351d6e858e285aab6c03b693147fffeb5fa6116eeca6cfa758b07bb0c3676f48aed941e3dc31e0b080b3d7cf8811eb4154910833a773f06389
 	sha512sums = 289185bead9328258444210c1bfc1867f54ebb3cd6112b7b8e05da8e1aee32ceab0a8da3c99aaf5615cb00fe0bd174a0dca43922baa53775688bbef0b86ceadb
 
 pkgname = jgit
