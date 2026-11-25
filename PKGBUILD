@@ -3,8 +3,8 @@
 # changes go there, not here.
 
 pkgname=connected-rails-nightly-bin
-_tag=nightly-20261124-f43834a
-pkgver=0.1.0nightly202611241839
+_tag=nightly-20261125-ac8d15a
+pkgver=0.1.0nightly202611251845
 pkgrel=1
 pkgdesc="Train simulator with editors for lines, vehicles and signal kits (nightly builds of main, untested)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=('!strip' '!debug')
 _cdn=https://cdn.connected-rails.org/releases
 _archive="train-sim-${_tag}-x86_64-unknown-linux-gnu"
 source=("${_archive}.tar.gz::${_cdn}/${_tag}/${_archive}.tar.gz")
-sha256sums=('ec845d2caa98f85b6ac870dea84f5d18dd6d0105cffa314aa21c1ba908b33588')
+sha256sums=('4c47bdcdda49d834f4686dbdf025b5aab2e8e6a39003661f0ca266f21edc6bbf')
 
 package() {
   local opt="$pkgdir/opt/connected-rails"
