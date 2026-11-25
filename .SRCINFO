@@ -1,0 +1,17 @@
+pkgbase = clickvisual-bin
+	pkgdesc = Lightweight log analytics and data visualization platform built on ClickHouse
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/clickvisual/clickvisual
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = clickvisual
+	conflicts = clickvisual
+	options = !debug
+	source_x86_64 = clickvisual-bin-1.1.2-x86_64.tar.gz::https://github.com/clickvisual/clickvisual/releases/download/v1.1.2/clickvisual-v1.1.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = 97939eb37aa5a7a2f25a1886e98ebcd733657a872c7c7bac4555129ab16c5711
+	source_aarch64 = clickvisual-bin-1.1.2-aarch64.tar.gz::https://github.com/clickvisual/clickvisual/releases/download/v1.1.2/clickvisual-v1.1.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 614cd6d5c540b510ae7859512e5d083c3664f027dce213950511ea67b76008e5
+
+pkgname = clickvisual-bin
