@@ -1,0 +1,16 @@
+pkgbase = skwird
+	pkgdesc = An index of file names kept current, answered over a local socket
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://skwir.org
+	install = skwird.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = skwird-0.2.0.tar.gz::https://github.com/skwir-org/skwird/archive/v0.2.0.tar.gz
+	sha256sums = 78a33d216159469757505f186a4c9e68532662183723bbd331b22f2f145f2b0c
+
+pkgname = skwird
