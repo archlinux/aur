@@ -1,0 +1,65 @@
+pkgbase = extension-adnauseam-dist
+	pkgdesc = AdNauseam: ad blocker that also clicks every blocked ad, to obfuscate tracking (official release builds)
+	pkgver = 3.29.4
+	pkgrel = 1
+	url = https://adnauseam.io
+	arch = any
+	license = GPL-3.0-only
+	noextract = adnauseam-3.29.4.chromium.zip
+	noextract = adnauseam-3.29.4.edge.zip
+	noextract = adnauseam-3.29.4.opera.crx
+	noextract = adnauseam-3.29.4.xpi
+	source = adnauseam-3.29.4.chromium.zip::https://github.com/dhowe/AdNauseam/releases/download/v3.29.4/adnauseam-3.29.4.chromium.zip
+	source = adnauseam-3.29.4.edge.zip::https://github.com/dhowe/AdNauseam/releases/download/v3.29.4/adnauseam-3.29.4.edge.zip
+	source = adnauseam-3.29.4.opera.crx::https://github.com/dhowe/AdNauseam/releases/download/v3.29.4/adnauseam-3.29.4.opera.crx
+	source = adnauseam-3.29.4.xpi::https://addons.mozilla.org/firefox/downloads/file/5248814/adnauseam-3.29.4.xpi
+	source = LICENSE-3.29.4.txt::https://raw.githubusercontent.com/dhowe/AdNauseam/v3.29.4/LICENSE.txt
+	sha256sums = 03bf3529f133311d86edc03af6efb61f2d3393a529216d9cba756c5f3fcb50f6
+	sha256sums = dbeae3650cf85b08ab56b7ce709ad9c4ea7f8533a4ce0219e5d15af205c5afe5
+	sha256sums = a92b5ce7273ca5acdf982ed66e0a13fae34d97274249f4d06edaae82bb22cc98
+	sha256sums = dfd9f2f5e81abf89907d5ddb5038fe5c0972bf24c520b5fd58d8109a50b18804
+	sha256sums = e73d33841f942fa73aa5a63d4a6399cc39a29564db1dbca0915485842fcb236d
+
+pkgname = brave-extension-adnauseam-dist
+	pkgdesc = AdNauseam browser extension for Brave (official release build, loaded unpacked)
+	install = brave-extension-adnauseam-dist.install
+	optdepends = brave: the browser this extension is for
+	provides = brave-extension-adnauseam
+	conflicts = brave-extension-adnauseam
+
+pkgname = chromium-extension-adnauseam-dist
+	pkgdesc = AdNauseam browser extension for Chromium (official release build, loaded unpacked)
+	install = chromium-extension-adnauseam-dist.install
+	optdepends = chromium: the browser this extension is for
+	provides = chromium-extension-adnauseam
+	conflicts = chromium-extension-adnauseam
+
+pkgname = edge-extension-adnauseam-dist
+	pkgdesc = AdNauseam browser extension for Microsoft Edge (official release build, loaded unpacked)
+	install = edge-extension-adnauseam-dist.install
+	optdepends = microsoft-edge-stable-bin: the browser this extension is for
+	provides = edge-extension-adnauseam
+	conflicts = edge-extension-adnauseam
+
+pkgname = opera-extension-adnauseam-dist
+	pkgdesc = AdNauseam browser extension for Opera (official release build, loaded unpacked)
+	install = opera-extension-adnauseam-dist.install
+	optdepends = opera: the browser this extension is for
+	provides = opera-extension-adnauseam
+	conflicts = opera-extension-adnauseam
+
+pkgname = firefox-extension-adnauseam-dist
+	pkgdesc = AdNauseam browser extension for Firefox, LibreWolf, Floorp and Firefox Nightly (Mozilla-signed release)
+	install = firefox-extension-adnauseam-dist.install
+	groups = firefox-addons
+	optdepends = firefox: installed for the system Firefox
+	optdepends = librewolf: installed for LibreWolf
+	optdepends = floorp: installed for Floorp
+	optdepends = firefox-nightly: installed for Firefox Nightly
+	provides = firefox-extension-adnauseam
+	provides = librewolf-extension-adnauseam
+	provides = floorp-extension-adnauseam
+	conflicts = firefox-extension-adnauseam
+	conflicts = firefox-extension-adnauseam-bin-amo
+	conflicts = librewolf-extension-adnauseam
+	conflicts = floorp-extension-adnauseam

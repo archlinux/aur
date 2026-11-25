@@ -1,0 +1,13 @@
+_notes() {
+  cat <<MSG
+==> AdNauseam is an unpacked extension and must be loaded by hand:
+      1. open chrome://extensions and turn on "Developer mode"
+      2. "Load unpacked" and pick  /usr/share/chromium-extension-adnauseam-dist
+    It is a Manifest V2 extension: it only works while the browser still loads MV2.
+MSG
+}
+
+post_install() { _notes; }
+post_upgrade() {
+  echo "==> AdNauseam updated: press reload on its card in chrome://extensions."
+}
