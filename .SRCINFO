@@ -1,0 +1,20 @@
+pkgbase = primo-bin
+	pkgdesc = Build client-editable sites with Claude, Codex, Cursor, or whatever comes next
+	pkgver = 3.3.2
+	pkgrel = 1
+	url = https://github.com/primocms/primo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = primo
+	conflicts = primo
+	options = !debug
+	source = primo-bin-3.3.2-LICENSE::https://raw.githubusercontent.com/primocms/primo/v3.3.2/LICENSE
+	sha256sums = f4e837ad631806887c27dc45b672abf1f01946b1d8767b2a02b935b31fe3bdfb
+	source_x86_64 = primo-bin-3.3.2-x86_64::https://github.com/primocms/primo/releases/download/v3.3.2/primo_linux_amd64
+	sha256sums_x86_64 = 33f67c301695b60516b81ffa8d6982c602887e3a4ad389b6d642be7dc460d002
+	source_aarch64 = primo-bin-3.3.2-aarch64::https://github.com/primocms/primo/releases/download/v3.3.2/primo_linux_arm64
+	sha256sums_aarch64 = f2e9ae38a725190caea552e737080ca0b4ca775cda03f1a72c5630b875fb655a
+
+pkgname = primo-bin
