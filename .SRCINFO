@@ -1,20 +1,22 @@
 pkgbase = dj64-git
 	pkgdesc = djgpp 64 bit compiler
-	pkgver = 0.0.r4268.8652119
+	pkgver = 0.0.r4688.g70de4aa
 	pkgrel = 1
 	url = https://github.com/stsp/dj64dev
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = djstub
 	makedepends = git
 	makedepends = thunk_gen
 	makedepends = ctags
 	makedepends = autoconf-archive
+	makedepends = djdev64
 	depends = glibc
 	depends = libelf
 	depends = bash
 	provides = dj64=0.0
 	conflicts = dj64
+	options = !buildflags
+	options = !lto
 	source = git+https://github.com/stsp/dj64dev.git
 	md5sums = SKIP
 	sha256sums = SKIP

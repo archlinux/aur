@@ -2,29 +2,32 @@
 
 set -u
 pkgname='dj64-git'
-pkgver=0.0.r4268.8652119
+pkgver=0.0.r4688.g70de4aa
 pkgrel=1
 pkgdesc='djgpp 64 bit compiler'
 arch=('x86_64')
 url='https://github.com/stsp/dj64dev'
 license=('GPL-3.0-or-later')
 depends=('glibc' 'libelf' 'bash')
-makedepends=('djstub' 'git' 'thunk_gen' 'ctags')
-makedepends+=('autoconf-archive')
+makedepends=('git' 'thunk_gen' 'ctags')
+conflicts=('djstub')
+makedepends+=('autoconf-archive' 'djdev64')
 provides=("${pkgname%-git}=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
+options=('!buildflags' '!lto')
 _srcdir='dj64dev'
 source=(
   "git+${url}.git"
   #'0001-src-makefile-misc-exe.patch'
 )
+#source[0]+='#commit=dbd5de94586092e4fb6628570bd9d86e5c934eeb'
 md5sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
   set -u
   cd "${_srcdir}"
-  printf '0.0.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  printf '0.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   set +u
 }
 
@@ -43,11 +46,13 @@ prepare() {
   #cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cd "${_srcdir}"; false
   #diff -pNaru5 'a' 'b' > '0000-new.patch'
 
-  local _seds=(
-    -e '/^PREFIX \?=/ s:/usr/local:/usr:g'
-    -e '/^prefix \?=/ s:/usr/local:/usr:g'
-  )
-  sed -E "${_seds[@]}" -i $(grep --include 'makefile' -rle '/usr/local')
+  #local _seds=(
+  #  -e '/^PREFIX \?=/ s:/usr/local:/usr:g'
+  #  -e '/^prefix \?=/ s:/usr/local:/usr:g'
+  #)
+  #sed -E "${_seds[@]}" -i $(grep --include 'makefile' -rle '/usr/local')
+
+  #sed -E -e 's:\b(djelfextract|djlink|djstrip|djstubify)\b:false:g' -i $(grep -lrFe $'djelfextract\ndjlink\ndjstrip\ndjstubify')
 
   set +u
 }
@@ -59,7 +64,11 @@ build() {
     autoreconf -v -i
   fi
   if [ ! -s 'Makefile.conf' ]; then
-    ./configure --prefix='/usr'
+    local _conf=(
+      --prefix='/usr'
+      #CC='gcc-15' CXX='g++-15'
+    )
+    ./configure "${_conf[@]}"
   fi
   nice -n1 make
   set +u
