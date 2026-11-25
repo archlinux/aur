@@ -1,0 +1,21 @@
+pkgbase = webcodex-bin
+	pkgdesc = Give cloud AI agents a real development environment on your own machines
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/yyjeqhc/webcodex
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = webcodex
+	conflicts = webcodex
+	options = !debug
+	source = webcodex-bin-0.5.1-LICENSE::https://raw.githubusercontent.com/yyjeqhc/webcodex/v0.5.1/LICENSE
+	sha256sums = c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c
+	source_x86_64 = webcodex-bin-0.5.1-x86_64.tar.gz::https://github.com/yyjeqhc/webcodex/releases/download/v0.5.1/webcodex-v0.5.1-linux-x64.tar.gz
+	sha256sums_x86_64 = 6aabd89ddd38e9ef5e47db78e861317c4df792b5e1a27206c80c9563dd7efffd
+	source_aarch64 = webcodex-bin-0.5.1-aarch64.tar.gz::https://github.com/yyjeqhc/webcodex/releases/download/v0.5.1/webcodex-v0.5.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = c31fe3aa4510b51380c6c195ab8a5f55381a5468b2f9e26a7d0f268c9711f68e
+
+pkgname = webcodex-bin
