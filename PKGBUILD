@@ -3,7 +3,7 @@
 pkgname=python-kikuchipy
 pkgshort=kikuchipy
 pkgver=0.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Processing and analysis of electron backscatter diffraction (EBSD) patterns."
 arch=('any')
 url="https://kikuchipy.org/"
@@ -33,6 +33,7 @@ makedepends=('python-setuptools>=64'
              'python-setuptools-scm>=8'
              'python-wheel'
              'python-build'
+             'python-hatchling'
              'python-installer'
              )
 
