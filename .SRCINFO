@@ -1,0 +1,21 @@
+pkgbase = install-nothing-bin
+	pkgdesc = Terminal app that pretends to install things but installs nothing
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/buyukakyuz/install-nothing
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = install-nothing
+	conflicts = install-nothing
+	options = !debug
+	source = install-nothing-bin-0.5.0-LICENSE::https://raw.githubusercontent.com/buyukakyuz/install-nothing/v0.5.0/LICENSE
+	sha256sums = b0d67e90f1226bcf8de6f491acc31c6b8aca1555edfde60afb520ab824ff342e
+	source_x86_64 = install-nothing-bin-0.5.0-x86_64::https://github.com/buyukakyuz/install-nothing/releases/download/v0.5.0/install-nothing-linux-x86_64
+	sha256sums_x86_64 = c1ced173780b69d41614871295131f726d9afcf4e60e58a113b730950010adfb
+	source_aarch64 = install-nothing-bin-0.5.0-aarch64::https://github.com/buyukakyuz/install-nothing/releases/download/v0.5.0/install-nothing-linux-aarch64
+	sha256sums_aarch64 = 1cadf27548da970957fe96ede3c711422df138b4dc12eb56435582ef5aac4826
+
+pkgname = install-nothing-bin
