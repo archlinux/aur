@@ -1,0 +1,22 @@
+pkgbase = spiceai-bin
+	pkgdesc = Add a real-time analytics node to your operational database
+	pkgver = 2.4.3
+	pkgrel = 1
+	url = https://github.com/spiceai/spiceai
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = zlib
+	provides = spiceai
+	conflicts = spiceai
+	options = !debug
+	source = spiceai-bin-2.4.3-LICENSE::https://raw.githubusercontent.com/spiceai/spiceai/v2.4.3/LICENSE
+	sha256sums = 84f1b133d14b3604a6d864653b12c4c7cc31bf2cbe96ad27cb6b05cd021dca4a
+	source_x86_64 = spiceai-bin-2.4.3-x86_64.tar.gz::https://github.com/spiceai/spiceai/releases/download/v2.4.3/spice_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 53a032cc78d49225940f7cfca30cc66df745a5c698550581c3a7143e7f477772
+	source_aarch64 = spiceai-bin-2.4.3-aarch64.tar.gz::https://github.com/spiceai/spiceai/releases/download/v2.4.3/spice_linux_aarch64.tar.gz
+	sha256sums_aarch64 = 1a465e5e7b06862f70d897896e13cf539c87bf4132f1ac483999a07567b44698
+
+pkgname = spiceai-bin
