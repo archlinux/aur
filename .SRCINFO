@@ -1,6 +1,6 @@
 pkgbase = mashhad-metro-bin
 	pkgdesc = Guide to the Mashhad Metro: stations, lines, facilities and route finding
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/shahriaarrr/mashhad-metro
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = mashhad-metro-bin
 	conflicts = mashhad-metro
 	options = !strip
 	options = !debug
-	source = mashhad-metro-bin-0.7.0-LICENSE::https://raw.githubusercontent.com/shahriaarrr/mashhad-metro/V0.7.0/LICENSE
+	source = mashhad-metro-bin-0.7.1-LICENSE::https://raw.githubusercontent.com/shahriaarrr/mashhad-metro/V0.7.1/LICENSE
 	source = mashhad-metro.desktop
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = 985b7798d002b2686788924571672efab656d98569c8bb5b736e9a1debb3c355
-	source_x86_64 = mashhad-metro-bin-0.7.0-x86_64.zip::https://github.com/shahriaarrr/mashhad-metro/releases/download/V0.7.0/mashhad_metro_linux_V0.7.0.zip
-	sha256sums_x86_64 = 84f413e352b81124d542a6b5f463fedcecbdf9500f4dd045d81dbe07bfd35500
+	source_x86_64 = mashhad-metro-bin-0.7.1-x86_64.zip::https://github.com/shahriaarrr/mashhad-metro/releases/download/V0.7.1/mashhad_metro_linux_V0.7.1.zip
+	sha256sums_x86_64 = dd59e2959b0396ab611e4fc4c7d0f0e9cc0ec16f5ac3d4162b792eebe605ea58
 
 pkgname = mashhad-metro-bin
