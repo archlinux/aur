@@ -52,6 +52,32 @@ sha256sums_x86_64=('5d9152648418e24964e93bff3e2641f9c9d4b2bb30b3f2e7a7b18526062e
 sha256sums_aarch64=('9cbf9bb1c8073c73a4179d094c2079f9ec1f7fc076a3bb2084788dd15bbf2165'
                     '3260d7cc13944fa940d13e9fae131c7e6dd4e797c13abd0b91621ebf0ad1816a')
 
+_generate() {
+  local exe=$1
+  local out=$2
+  mkdir -p "$out/man"
+  "$exe" generate completions bash > "$out/kuizer.bash"
+  "$exe" generate completions zsh > "$out/_kuizer"
+  "$exe" generate completions fish > "$out/kuizer.fish"
+  "$exe" generate man --out "$out/man"
+}
+
+_install_generated() {
+  local dir=$1
+  [[ -d $dir ]] || return 0
+  install -Dm644 "$dir/kuizer.bash" "$pkgdir/usr/share/bash-completion/completions/kuizer"
+  install -Dm644 "$dir/_kuizer" "$pkgdir/usr/share/zsh/site-functions/_kuizer"
+  install -Dm644 "$dir/kuizer.fish" "$pkgdir/usr/share/fish/vendor_completions.d/kuizer.fish"
+  install -Dm644 -t "$pkgdir/usr/share/man/man1" "$dir"/man/*.1
+}
+
+build() {
+  # 0.1.3 and older read `kuizer generate` as a folder to scan.
+  if (( $(vercmp "$pkgver" 0.1.3) > 0 )); then
+    _generate "$_pkgname-$CARCH-unknown-linux-gnu/kuizer" generated
+  fi
+}
+
 package() {
   local cli="$_pkgname-$CARCH-unknown-linux-gnu"
   local gui="$_pkgname-gui-$CARCH-unknown-linux-gnu"
@@ -64,6 +90,7 @@ package() {
     install -Dm644 "$_pkgname-gui-${size}x${size}-$pkgver.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/kuizer-gui.png"
   done
+  _install_generated generated
   install -Dm644 "$cli/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$cli/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
