@@ -1,6 +1,6 @@
 # Maintainer: Flacier <https://github.com/Fldicoahkiin>
 pkgname=steam-cloud-file-manager-bin
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="Steam Cloud File Manager - 管理和查看 Steam 云存档文件的实用工具"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('steam-cloud-file-manager')
 conflicts=('steam-cloud-file-manager')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Fldicoahkiin/SteamCloudFileManager/releases/download/v${pkgver}/SteamCloudFileManager-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('29a21576fa3c02e938ba9dde76ab7c0a3a73891304038e02e44050b93ebddac2')
+sha256sums=('e845658974dbd36e76e60af7e34d119be0b235db1e1f4f4f67c4b2744bc154c6')
 
 package() {
     cd "$srcdir"
