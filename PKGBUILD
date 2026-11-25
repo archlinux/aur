@@ -6,7 +6,7 @@
 # fills in the checksums with updpkgsums.
 pkgname=arenahub-bin
 _pkgname=ArenaHub
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Installer and launcher for Quake III Arena, Team Arena and classic mods"
 arch=('x86_64')
@@ -26,7 +26,7 @@ options=('!strip' '!debug')
 source=("$_pkgname-$pkgver-linux-x64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x64.tar.gz"
         "arenahub-$pkgver.svg::https://raw.githubusercontent.com/Evilchuck666/$_pkgname/v$pkgver/assets/icons/arenahub.svg"
         'arenahub.desktop')
-sha256sums=('25e1e229e4efe8a2d6e8a42463c536cef7b6dd2e71329cab61f5c829f1ee8c50'
+sha256sums=('43c951ada8bd0afdfe6567e2a4e2ac67dd1a0fb3f8c64efedaaeac7828b20818'
             '442267b4dcc8fda76ade20e912d8563da4c811e864ba197ea171f097ebb21da5'
             '05e21ea59cedf7d789557cad4b83251056896495bb0159b082b115776929eab8')
 
