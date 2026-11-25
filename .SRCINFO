@@ -1,0 +1,17 @@
+pkgbase = perses-bin
+	pkgdesc = The CNCF sandbox for observability visualisation
+	pkgver = 0.55.1
+	pkgrel = 1
+	url = https://github.com/perses/perses
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = perses
+	conflicts = perses
+	options = !debug
+	source_x86_64 = perses-bin-0.55.1-x86_64.tar.gz::https://github.com/perses/perses/releases/download/v0.55.1/perses_0.55.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7c38ace5ce665e22d7d4f823b8bc0c8e91f9bcef381f218d8c564e0fe62ba750
+	source_aarch64 = perses-bin-0.55.1-aarch64.tar.gz::https://github.com/perses/perses/releases/download/v0.55.1/perses_0.55.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = bd777b183622e2eaeda6645748be47d65afb67eb91aa8d8d726a7c10efd8a1c5
+
+pkgname = perses-bin
