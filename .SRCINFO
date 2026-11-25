@@ -1,0 +1,17 @@
+pkgbase = frps-onekey-bin
+	pkgdesc = Frp server one-click configuration script
+	pkgver = 0.72.0
+	pkgrel = 1
+	url = https://github.com/mvscode/frps-onekey
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = frps-onekey
+	conflicts = frps-onekey
+	options = !debug
+	source_x86_64 = frps-onekey-bin-0.72.0-x86_64.tar.gz::https://github.com/mvscode/frps-onekey/releases/download/v0.72.0/frp_0.72.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = daf719b32ca2778770bb92955e231a07414d754378b9af328aa2642862479804
+	source_aarch64 = frps-onekey-bin-0.72.0-aarch64.tar.gz::https://github.com/mvscode/frps-onekey/releases/download/v0.72.0/frp_0.72.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 02180b857480302fd934e9ddbd50fe2f73229f99062f88756abc6de9df5e95cf
+
+pkgname = frps-onekey-bin
