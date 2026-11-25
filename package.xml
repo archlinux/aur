@@ -146,7 +146,7 @@ January 16, 2019</license>
         <revision>
             <major>37</major>
             <minor>0</minor>
-            <micro>1</micro>
+            <micro>3</micro>
         </revision>
         <display-name>Android SDK Platform-Tools</display-name>
         <uses-license ref="android-sdk-license"/>
