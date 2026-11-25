@@ -1,0 +1,17 @@
+pkgbase = betteralign-bin
+	pkgdesc = Detect and fix suboptimal struct field layout in Go
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://github.com/dkorunic/betteralign
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	provides = betteralign
+	conflicts = betteralign
+	options = !debug
+	source_x86_64 = betteralign-bin-0.16.1-x86_64.tar.gz::https://github.com/dkorunic/betteralign/releases/download/v0.16.1/betteralign_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1dbfa421f388d381f173e9b99aec84fd5eaeeaa445fc0c506802c388aa6b785f
+	source_aarch64 = betteralign-bin-0.16.1-aarch64.tar.gz::https://github.com/dkorunic/betteralign/releases/download/v0.16.1/betteralign_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 1e7f38095a47292173fbe94e2b05e863fe977fc27ab4ea3a452a8309032d8e47
+
+pkgname = betteralign-bin
