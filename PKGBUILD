@@ -19,14 +19,17 @@ sha256sums=('c42ef4fb40a94c9c17db187ed9def88a4c934afeba36d3173a68abf18349b57d'
 
 prepare() {
   cd "$pkgname-$pkgver"
-  pnpm install --frozen-lockfile --store-dir "$srcdir/pnpm-store"
+  export RUSTUP_TOOLCHAIN=stable
+  pnpm install --frozen-lockfile
   cargo fetch --locked --target host-tuple \
     --manifest-path apps/todo/src-tauri/Cargo.toml
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  CARGO_TARGET_DIR="$srcdir/target" pnpm --dir apps/todo app:build --no-bundle -- --frozen
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR="$srcdir/target"
+  pnpm --dir apps/todo app:build --no-bundle -- --frozen
 }
 
 package() {
@@ -44,4 +47,3 @@ package() {
   install -Dm644 "$icons/128x128@2x.png" \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
 }
-
