@@ -1,6 +1,6 @@
 pkgbase = zenith-bar-bin
 	pkgdesc = The lightest beautiful status bar for Wayland: GTK4 glass themes at zero idle CPU, for Hyprland, Sway, niri and river (prebuilt binary)
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/CPT-Dawn/Zenith
 	install = zenith-bar.install
@@ -16,11 +16,11 @@ pkgbase = zenith-bar-bin
 	depends = pango
 	optdepends = ttf-inter: the recommended UI font
 	optdepends = hoarder: clipboard history for the clipboard module
-	provides = zenith-bar=2.4.0
+	provides = zenith-bar=2.5.0
 	conflicts = zenith-bar
 	options = !strip
 	options = !debug
-	source_x86_64 = zenith-bar-2.4.0-x86_64.tar.gz::https://github.com/CPT-Dawn/Zenith/releases/download/v2.4.0/zenith-bar-2.4.0-x86_64.tar.gz
-	sha256sums_x86_64 = b5e77139a9403adeef41f8be4614b185bdcd57c22758dc06109e97c7c25420ee
+	source_x86_64 = zenith-bar-2.5.0-x86_64.tar.gz::https://github.com/CPT-Dawn/Zenith/releases/download/v2.5.0/zenith-bar-2.5.0-x86_64.tar.gz
+	sha256sums_x86_64 = cc80289a10fb20ccd4943d730efcdec453067fbfb1dd9af5ec85a7c19662fb43
 
 pkgname = zenith-bar-bin
