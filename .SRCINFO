@@ -1,0 +1,14 @@
+pkgbase = freno-bin
+	pkgdesc = Cooperative, highly available throttler service
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/github/freno
+	arch = x86_64
+	license = MIT
+	provides = freno
+	conflicts = freno
+	options = !debug
+	source_x86_64 = freno-bin-1.3.1-x86_64.tar.gz::https://github.com/github/freno/releases/download/v1.3.1/freno_1.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = f13be1a16400772990b8645ab3274fe1e980a7f05e1a35299d9590c245c08a90
+
+pkgname = freno-bin
