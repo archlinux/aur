@@ -1,0 +1,17 @@
+pkgbase = liqo-bin
+	pkgdesc = CLI for Liqo, dynamic and seamless Kubernetes multi-cluster topologies
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/liqotech/liqo
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = liqo
+	conflicts = liqo
+	options = !debug
+	source_x86_64 = liqo-bin-1.3.0-x86_64.tar.gz::https://github.com/liqotech/liqo/releases/download/v1.3.0/liqoctl-linux-amd64.tar.gz
+	sha256sums_x86_64 = f1f7930bce2c4bb7316a9ab9b3451d4969e7c333dcd5d34b797110f76a20cb21
+	source_aarch64 = liqo-bin-1.3.0-aarch64.tar.gz::https://github.com/liqotech/liqo/releases/download/v1.3.0/liqoctl-linux-arm64.tar.gz
+	sha256sums_aarch64 = ea2c632ef3d025bda14bee550f231a6d150c9f4f7a9c29ece1e2c3658e3e4028
+
+pkgname = liqo-bin
