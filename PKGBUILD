@@ -1,7 +1,8 @@
 # Maintainer: Panda <sato.du@gmail.com>
+# Template: 1.3.4 is filled in by packaging/aur/publish.sh and by the release workflow.
 _pkgname=kde-webapp-manager
 pkgname=${_pkgname}-git
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="A native Qt6 utility to easily generate and manage custom browser webapps on KDE Plasma"
 arch=('any')
@@ -11,32 +12,24 @@ depends=('python' 'python-pyqt6')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/satodu/kde-webapp-gen.git#tag=1.3.3")
+source=("${_pkgname}::git+https://github.com/satodu/kde-webapp-gen.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  
-  # Install the executable script wrapper
+
   install -Dm755 main.py "${pkgdir}/usr/bin/${_pkgname}"
-  
-  # Install Python modules package and assets (recursive copy to include widgets subfolder)
+
   install -d "${pkgdir}/usr/share/${_pkgname}"
   cp -r webapp_manager "${pkgdir}/usr/share/${_pkgname}/"
-  
-  # Fix directory and file permissions in the share directory
   find "${pkgdir}/usr/share/${_pkgname}/webapp_manager" -type d -exec chmod 755 {} +
   find "${pkgdir}/usr/share/${_pkgname}/webapp_manager" -type f -exec chmod 644 {} +
-  
-  # Install custom logo icon to pixmaps (standard for standalone icons)
+
   install -Dm644 images/kde-webapp-gen-icon-logo.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  
-  # Install custom logo icon to hicolor icons theme
   install -Dm644 images/kde-webapp-gen-icon-logo.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
-  
-  # Install desktop entry shortcut
+
   install -d "${pkgdir}/usr/share/applications"
-  cat <<EOF > "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  cat <<EOF2 > "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -47,5 +40,5 @@ Icon=/usr/share/pixmaps/${_pkgname}.png
 Terminal=false
 Categories=Utility;Settings;Qt;
 StartupNotify=true
-EOF
+EOF2
 }
