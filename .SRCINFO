@@ -1,0 +1,17 @@
+pkgbase = karmada-bin
+	pkgdesc = Open, Multi-Cloud, Multi-Cluster Kubernetes Orchestration
+	pkgver = 1.19.1
+	pkgrel = 1
+	url = https://github.com/karmada-io/karmada
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = karmada
+	conflicts = karmada
+	options = !debug
+	source_x86_64 = karmada-bin-1.19.1-x86_64.tgz::https://github.com/karmada-io/karmada/releases/download/v1.19.1/karmadactl-linux-amd64.tgz
+	sha256sums_x86_64 = 718df9bc8be26f071dc0420fe8a26f22bf1259b69470abe87e44b964e9aeea4e
+	source_aarch64 = karmada-bin-1.19.1-aarch64.tgz::https://github.com/karmada-io/karmada/releases/download/v1.19.1/karmadactl-linux-arm64.tgz
+	sha256sums_aarch64 = 698fa16df83d32606defd8a7c5f3a2eb94dc0bdfd5c3a793415b58c0bae62190
+
+pkgname = karmada-bin
