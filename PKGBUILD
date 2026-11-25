@@ -52,7 +52,6 @@ build() {
     -D FIX_BUGS:BOOL=ON
     -D FREETYPE_FONTS:BOOL=ON
     -D LANCZOS_RESAMPLER:BOOL=ON
-    -W no-dev
   )
 
   # English
