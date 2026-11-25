@@ -1,0 +1,19 @@
+pkgbase = vibium-bin
+	pkgdesc = The verification layer for coding agents
+	pkgver = 26.11.16
+	pkgrel = 1
+	url = https://github.com/VibiumDev/vibium
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = vibium
+	conflicts = vibium
+	options = !debug
+	source = vibium-bin-26.11.16-LICENSE::https://raw.githubusercontent.com/VibiumDev/vibium/v26.11.16/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = vibium-bin-26.11.16-x86_64::https://github.com/VibiumDev/vibium/releases/download/v26.11.16/vibium-linux-amd64
+	sha256sums_x86_64 = 7eee3628055f94bb1613ac9c65d3f31690e4195d72f4ea3314d5f91fc7c9f7f0
+	source_aarch64 = vibium-bin-26.11.16-aarch64::https://github.com/VibiumDev/vibium/releases/download/v26.11.16/vibium-linux-arm64
+	sha256sums_aarch64 = de4c963e7580c3b9b4bed534ca15bec811e0cd06a84c0781156c95f5c912d835
+
+pkgname = vibium-bin
