@@ -1,0 +1,18 @@
+pkgbase = tutor-bin
+	pkgdesc = Docker-based Open edX distribution
+	pkgver = 22.0.4
+	pkgrel = 1
+	url = https://github.com/overhangio/tutor
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = glibc
+	depends = zlib
+	provides = tutor
+	conflicts = tutor
+	options = !debug
+	source = tutor-bin-22.0.4-LICENSE::https://raw.githubusercontent.com/overhangio/tutor/v22.0.4/LICENSE.txt
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = tutor-bin-22.0.4-x86_64::https://github.com/overhangio/tutor/releases/download/v22.0.4/tutor-Linux_x86_64
+	sha256sums_x86_64 = 325025e9b134f8c31c659138be4488c628b6250a15fdc237c622b0edf6b47472
+
+pkgname = tutor-bin
