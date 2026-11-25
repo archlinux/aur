@@ -13,22 +13,26 @@ pkgver=6.4.1
 # tags. For a prerelease tag v4.13.0-rc.1 use pkgver=4.13.0_rc.1 and _version=4.13.0-rc.1
 # (Arch forbids '-' in pkgver; upstream's generator maps '-' <-> '_').
 _version=6.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Moonlight-protocol game-streaming client'
 arch=('x86_64' 'aarch64')
 url='https://github.com/RamazanKara/nightjar'
 license=('GPL-3.0-only')
 install=nightjar-desktop-bin.install
 
-# Directly linked libraries. The release tarball bundles FFmpeg (libavcodec/libavutil) and dav1d
-# in lib/, found through the executable's $ORIGIN/lib RUNPATH, so the system FFmpeg is irrelevant.
-# SDL3 is linked statically and dlopen()s the display/audio/input libraries at run time; X11 and
-# ALSA are required for SDL to start at all. systemd-libs provides libudev.so.1.
-depends=('glibc' 'gcc-libs' 'opus' 'libva' 'alsa-lib' 'libx11' 'libxext'
-         'systemd-libs' 'hicolor-icon-theme')
-optdepends=('vulkan-icd-loader: PyroWave GPU decoding'
+# Only what the shipped ELFs actually link (readelf -d on both arch tarballs; the archive's own
+# system-libraries.txt lists the same sonames). libc/libm and libgcc_s/libstdc++ come from base,
+# so they need no entry here. libdrm.so.2 (libavutil) and libwayland/libGL arrive with libva,
+# which the bundled libavcodec links directly; libva also pulls in libx11/libxext, but those stay
+# declared because SDL3 needs a video backend present to start at all, whereas it degrades
+# gracefully without one of its audio backends -- hence the audio libraries are optdepends.
+# The release tarball bundles FFmpeg (libavcodec/libavutil) and dav1d in lib/, found through the
+# executable's $ORIGIN/lib RUNPATH, so the system FFmpeg is irrelevant. systemd-libs = libudev.so.1.
+depends=('opus' 'libva' 'libx11' 'libxext' 'systemd-libs' 'hicolor-icon-theme')
+optdepends=('vulkan-icd-loader: PyroWave GPU decoding (also needs a vulkan-*-driver)'
             'libva-mesa-driver: hardware decoding on AMD and Intel GPUs (provided by mesa)'
             'libpulse: PulseAudio and PipeWire audio'
+            'alsa-lib: plain ALSA audio (SDL3 opens it at run time)'
             'libdecor: window decorations on Wayland'
             'usbip: USB forwarding (USB/IP userspace tools)'
             'polkit: USB forwarding (pkexec for the root helper)')
