@@ -1,0 +1,18 @@
+pkgbase = code-graph-rag-bin
+	pkgdesc = The ultimate RAG for your monorepo
+	pkgver = 0.7.79
+	pkgrel = 1
+	url = https://github.com/vitali87/code-graph-rag
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	provides = code-graph-rag
+	conflicts = code-graph-rag
+	options = !debug
+	source = code-graph-rag-bin-0.7.79-LICENSE::https://raw.githubusercontent.com/vitali87/code-graph-rag/v0.7.79/LICENSE
+	sha256sums = b0c4bc8ac9df66d9d0a9d204af48b5cba2e7d469c2ff6ab51512de5e31319963
+	source_x86_64 = code-graph-rag-bin-0.7.79-x86_64::https://github.com/vitali87/code-graph-rag/releases/download/v0.7.79/code-graph-rag-linux-amd64
+	sha256sums_x86_64 = 10e4a8f1f7241bc1176eafac43259880a2b77af4c2f65e312eccc46eb3dec34d
+
+pkgname = code-graph-rag-bin
