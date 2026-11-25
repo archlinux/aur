@@ -9,7 +9,7 @@ pkgname=(
     "${_pkgname}-x86-git"
 )
 _Pkgname="Millennium"
-pkgver=v3.6.3.beta.1.r35.gdee8e60f
+pkgver=v3.6.3.r4.g3b3702aa
 pkgrel=1
 pkgdesc="${_Pkgname} is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead. (git-version, next branch)"
 arch=('x86_64')

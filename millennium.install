@@ -61,3 +61,22 @@ post_upgrade() {
 post_remove() {
     for_each_steam_user unlink_millennium
 }
+cef-enable-remote-debugging"
+}
+
+post_install() {
+    printf '%s\n' \
+        '==> Millennium defaults to the 64-bit Steam client.' \
+        '==> Legacy 32-bit Steam users must install millennium-x86 explicitly.' \
+        '==> Upgrading millennium alone removes the formerly bundled x86 files; the add-on is not installed automatically.'
+    remove_deprecated_patches
+    for_each_steam_user link_millennium
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    for_each_steam_user unlink_millennium
+}
