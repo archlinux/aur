@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=vtui-bin
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="Explore vSphere in style, with vCenter and ESXi both included"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.xz::${_dl}/vtui-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.xz::${_dl}/vtui-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('9d7b482ac4e67d597754e8123904a184b9dccea0ab0f47bbb07156afc848284f')
-sha256sums_aarch64=('35ecdcd5edef722fdf587a50d085d39210a06ad4f6f980b725a30fbcb00b998e')
+sha256sums_x86_64=('111c0b77c6f80432ce5df89c09718935b1a2aff923cc18c7ad22479dfbea9fa5')
+sha256sums_aarch64=('d9912f6ac667d21ab24699e2533a0273af5243e21ea65a330b5825bd704a1708')
 
 package() {
   local _dir
