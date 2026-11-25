@@ -1,8 +1,8 @@
 pkgbase = noirpass
 	pkgdesc = Minimal on-demand GPG-backed freedesktop Secret Service
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
-	url = https://codeberg.org/koharu/noirpass
+	url = https://github.com/nathawatc/noirpass
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
@@ -16,7 +16,7 @@ pkgbase = noirpass
 	depends = gnupg
 	depends = openssl
 	provides = org.freedesktop.secrets
-	source = noirpass-1.0.1.tar.gz::https://codeberg.org/koharu/noirpass/archive/refs/tags/v1.0.1.tar.gz
-	b2sums = 6bbad0874fdbeff8b90eb978a5c006637dc105c7df70f86e0810fad202596427e303155903f0024b2d3e9d2f314a8197490e677e02c541db06fe7a251fcb0895
+	source = noirpass-1.0.2.tar.gz::https://github.com/nathawatc/noirpass/archive/refs/tags/v1.0.2.tar.gz
+	b2sums = cff8418724e973d0799d3264e60e4ef54574e6f4693fa0f7b8639d7cb2c9d4a8f2d74b1b76b50d66d3a3ba8a85224a7a61e4792fe12eead10827bcff0b33bdc4
 
 pkgname = noirpass
