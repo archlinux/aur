@@ -1,0 +1,17 @@
+pkgbase = allinssl-bin
+	pkgdesc = AllinSSL SSLAllinSSL is an all-in-one SSL certificate lifecycle management tool that integrates certificate application, management, deployment, and monitoring
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/allinssl/allinssl
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = allinssl
+	conflicts = allinssl
+	options = !debug
+	source_x86_64 = allinssl-bin-1.1.4-x86_64.tar.gz::https://github.com/allinssl/allinssl/releases/download/v1.1.4/allinssl_1.1.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = e5cf94d3f615cc1c0adecfcad99339fb2ca6908e7a06cfb04945274e9b9f404e
+	source_aarch64 = allinssl-bin-1.1.4-aarch64.tar.gz::https://github.com/allinssl/allinssl/releases/download/v1.1.4/allinssl_1.1.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1aa5b8f582838459deb835d143f1d53713721890f33202a09c99a5b296977e11
+
+pkgname = allinssl-bin
