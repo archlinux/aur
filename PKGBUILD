@@ -2,8 +2,8 @@
 # Contributor: Václav Kubernát <sir.venceslas@gmail.com> (maintainer of qt5 version)
 
 pkgname=qt6-opcua
-pkgver=6.12.0
-pkgrel=2
+pkgver=6.12.1
+pkgrel=1
 pkgdesc='Qt 6 wrapper for existing OPC UA stacks'
 arch=('x86_64' 'aarch64')
 url='https://www.qt.io'
@@ -22,7 +22,7 @@ groups=('qt6')
 _pkgfqn=qtopcua
 source=("https://github.com/qt/$_pkgfqn/archive/refs/tags/v$pkgver.tar.gz"
         'openssl-4-compat.patch')
-sha256sums=('c4eefbe575f9d8ae6402749d45c3a534c7cc3a5c4c7bf4d76dbcd78ed19891f4'
+sha256sums=('4fcd23dc6c7dcceee06f1ef40d3ea79d9f85fde8b489279c8b4ef393c4b9f8e2'
             '0a244ab47551ac75de85378fa5887b49fd89e4bb51be6758eb40e17e79ca1579')
 
 prepare() {
