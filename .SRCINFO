@@ -1,18 +1,16 @@
 pkgbase = mut
-	pkgdesc = A terminal-based LaTeX editor (μt): Micro-like editing, latexmk build, Zathura preview
-	pkgver = 2.0.0
+	pkgdesc = Terminal-based LaTeX editor with pdflatex build and Zathura preview
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://github.com/faris0x/mut
+	url = https://github.com/faris0x/muT
 	arch = x86_64
-	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	depends = texlive-latex
-	depends = texlive-binextra
+	makedepends = gcc
+	depends = texlive-core
 	depends = zathura
 	depends = zathura-pdf-poppler
-	optdepends = biber: for biblatex documents
-	source = mut-2.0.0.tar.gz::https://github.com/faris0x/mut/archive/v2.0.0.tar.gz
-	sha256sums = SKIP
+	source = muT-1.1.0.tar.gz::https://github.com/faris0x/muT/archive/v1.1.0.tar.gz
+	sha256sums = 2f294cd39f9dc00eb06c9532f8cc41f9f488a051128ee5f1d1e1e91b88a7de11
 
 pkgname = mut
