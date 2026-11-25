@@ -1,6 +1,6 @@
 # Maintainer: Kristofers Solo <aur at kristofers dot xyz>
 pkgname=mekle-git
-pkgver=0.2.0.r138.g8103ffe
+pkgver=0.2.0.r139.g62f78b7
 pkgrel=1
 pkgdesc='Fast project discovery tool for developers (Git version)'
 arch=('x86_64' 'aarch64')
