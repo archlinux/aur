@@ -1,6 +1,6 @@
 pkgbase = my-sway
 	pkgdesc = A lightweight desktop environment based on Sway
-	pkgver = 0.0.33
+	pkgver = 0.0.34
 	pkgrel = 1
 	url = https://codeberg.com/ivan-zaera/my-sway
 	install = install.sh
@@ -39,7 +39,7 @@ pkgbase = my-sway
 	optdepends = foot: Default terminal
 	optdepends = librewolf: Default browser
 	optdepends = thunar: Default file manager
-	source = my-sway-0.0.33.tar.gz::https://codeberg.org/ivan-zaera/my-sway/archive/0.0.33.tar.gz
-	sha256sums = de2fe40676f33bfdc098b904e0078164263186443277686f1dcc652963f14ef0
+	source = my-sway-0.0.34.tar.gz::https://codeberg.org/ivan-zaera/my-sway/archive/0.0.34.tar.gz
+	sha256sums = 994f9d0526b341a09e5d6ff430ccdfa1916dd872b7ed67e9d6ccd1c052e5162f
 
 pkgname = my-sway
