@@ -6,7 +6,7 @@
 pkgname=redasm-beta
 _pkgver=4.0.0-beta4
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 url="https://redasm.dev"
 arch=("x86_64")
 pkgdesc="The Open Source Disassembler (beta version)"
@@ -49,7 +49,7 @@ sha256sums=(
     "34e0f62a2bc11ab20d601e8ca1cc2b2079503aa45119a19133d89d19b94a0fae"
 
     '686a94ee31feeb4dee71e1d9841d2b9bb5e3d003cae67245f497c7f3cb63c79c'
-    '50edd094b9dcb180646bad8785cff0cb8abe4e7e9b779132599b8163468636b4'
+    '3f7cc3e73e4200e3410cbfa46e3f4641b0d697a8ecf75f7cfbe0bb5acdd417f2'
     'ba5d206ff0dbb56690d94fc943369c55fdd7520751230f8a0324202685a59f7a'
     'ff916b22374cf12f8afd4ca210566fd85106770ea30fa7019b77421e3ec08a21'
     '4c488cf4dc13c896541d7d8dcf6b14c09cf391a220235c831097270df914345a'
