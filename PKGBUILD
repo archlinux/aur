@@ -2,8 +2,8 @@
 
 pkgname=sparrow-wallet-reproducible
 _pkgname=sparrow-wallet
-pkgver=2.5.6
-_jdkver=25.0.5_8
+pkgver=2.5.7
+_jdkver=25.0.5.1_2
 _jdkmajor="${_jdkver%%[^0-9]*}"
 pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (reproducible build)"
@@ -50,16 +50,16 @@ conflicts=('sparrow-wallet' 'sparrow-wallet-git')
 options=(!debug !strip)
 source=(
     "sparrow::git+https://github.com/sparrowwallet/sparrow.git#tag=${pkgver}"
-    "sparrow-bin.tar.gz::https://github.com/sparrowwallet/sparrow/releases/download/${pkgver}/sparrowwallet-${pkgver}-x86_64.tar.gz"
+    "https://github.com/sparrowwallet/sparrow/releases/download/${pkgver}/sparrowwallet-${pkgver}-x86_64.tar.gz"
     "drongo::git+https://github.com/sparrowwallet/drongo.git"
     "lark::git+https://github.com/sparrowwallet/lark.git"
     "https://github.com/adoptium/temurin${_jdkmajor}-binaries/releases/download/jdk-${_jdkver/_/%2B}/OpenJDK${_jdkmajor}U-jdk_x64_linux_hotspot_${_jdkver}.tar.gz"
 )
-sha256sums=('9edc1a7be6d67ba5c2391b44ad2791468fa74ebe028484b551a4d8de3dcf83e6'
-            '6085a16a86feb48a637fa69f0ec4a92e1b0c1f0edb4ba76d677a0a158984ef15'
+sha256sums=('83775e7619c882708bf72a2617f223c45d5b47013d285fd481cb01658034a619'
+            '8a2a4820100e1553f6d1df45dac1a3b7ff353903918057d0796374efa621738b'
             'SKIP'
             'SKIP'
-            '68982529869257d0ee6b824ec5aa270ff8b118bb438670da0b97ebdab178d7fb')
+            '760f91b22c3efc9bd1b64ff950598231be82928cc807e30691a0e7a2995a62c0')
 
 prepare() {
     cd "$srcdir/sparrow"
