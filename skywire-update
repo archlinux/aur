@@ -139,17 +139,22 @@ post_install() {
     # a failed restart is logged but does not fail the update. Independent of
     # the skywire-service gate above, so it works when the visor is supervised
     # outside systemd but the dependent service is a systemd unit.
-    if [ "${#RESTART_SERVICES[@]}" -gt 0 ] 2>/dev/null; then
-        for _svc in "${RESTART_SERVICES[@]}"; do
-            [ -z "$_svc" ] && continue
-            if systemctl is-active --quiet "$_svc" 2>/dev/null; then
-                echo "Restarting dependent service: $_svc"
-                systemctl restart "$_svc" 2>/dev/null || echo "  warning: failed to restart $_svc"
-            else
-                echo "Skipping $_svc (not active or not installed)"
-            fi
-        done
-    fi
+    # The package's own long-running units run the same binary, so active ones
+    # are restarted too, before the RESTART_SERVICES entries and only once each.
+    local _pkg_services=(skywire-skycoin.service skywire-skycoin-explorer.service
+        skywire-ar.service skywire-dmsg.service skywire-dmsgd.service
+        skywire-rf.service skywire-sd.service skywire-sn.service
+        skywire-tpd.service skywire-monitor.service skywire-user.service)
+    local _done=" " _svc
+    for _svc in "${_pkg_services[@]}" "${RESTART_SERVICES[@]}"; do
+        [ -z "$_svc" ] && continue
+        case "$_done" in *" $_svc "*) continue ;; esac
+        _done="$_done$_svc "
+        if systemctl is-active --quiet "$_svc" 2>/dev/null; then
+            echo "Restarting dependent service: $_svc"
+            systemctl restart "$_svc" 2>/dev/null || echo "  warning: failed to restart $_svc"
+        fi
+    done
 }
 
 # Binary channel: download a prebuilt binary from the rolling CI pre-release
