@@ -1,0 +1,23 @@
+pkgbase = monoscope-bin
+	pkgdesc = Monoscope lets you ingest and explore your logs, traces and metrics
+	pkgver = 0.6.32
+	pkgrel = 1
+	url = https://github.com/monoscope-tech/monoscope
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	depends = gmp
+	depends = ncurses
+	depends = zlib
+	provides = monoscope
+	conflicts = monoscope
+	options = !debug
+	source = monoscope-bin-0.6.32-LICENSE::https://raw.githubusercontent.com/monoscope-tech/monoscope/v0.6.32/LICENSE
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	source_x86_64 = monoscope-bin-0.6.32-x86_64.tar.gz::https://github.com/monoscope-tech/monoscope/releases/download/v0.6.32/monoscope-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 4eacffadafc3c95566964b45d4d944a5403ddfe86cd27596ab0ac980ccd47265
+	source_aarch64 = monoscope-bin-0.6.32-aarch64.tar.gz::https://github.com/monoscope-tech/monoscope/releases/download/v0.6.32/monoscope-linux-arm64.tar.gz
+	sha256sums_aarch64 = 2d19d04a631f2dcb28ac8a2e11058375228b4a9bbf1438fdb4601292280788ba
+
+pkgname = monoscope-bin
