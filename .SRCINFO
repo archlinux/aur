@@ -1,0 +1,17 @@
+pkgbase = metabigor-bin
+	pkgdesc = OSINT tool that needs no API keys
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/j3ssie/metabigor
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = metabigor
+	conflicts = metabigor
+	options = !debug
+	source_x86_64 = metabigor-bin-2.2.0-x86_64.tar.gz::https://github.com/j3ssie/metabigor/releases/download/v2.2.0/metabigor_v2.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 60e4098a58bf0d1f37886ebc5951e660b31860a98c1da69596af3c4c60ab54bb
+	source_aarch64 = metabigor-bin-2.2.0-aarch64.tar.gz::https://github.com/j3ssie/metabigor/releases/download/v2.2.0/metabigor_v2.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3912144bd1d00a089468784012dddff99ea1d9ab5e991039b4edbfb78923db64
+
+pkgname = metabigor-bin
