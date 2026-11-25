@@ -1,0 +1,20 @@
+pkgbase = cloudfox-bin
+	pkgdesc = Automating situational awareness for cloud penetration tests
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/BishopFox/cloudfox
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = cloudfox
+	conflicts = cloudfox
+	options = !debug
+	source = cloudfox-bin-2.0.5-LICENSE::https://raw.githubusercontent.com/BishopFox/cloudfox/v2.0.5/LICENSE
+	sha256sums = 186a8f88fbc2a785c8d1640d206c05e3b9bf2ca87e893bc8873ee12dbe659a42
+	source_x86_64 = cloudfox-bin-2.0.5-x86_64.zip::https://github.com/BishopFox/cloudfox/releases/download/v2.0.5/cloudfox-linux-amd64.zip
+	sha256sums_x86_64 = 3cdc5a1a94ff14eb8df04d3dc8f9eca7db232a1315ceb8a7de26e4cb13e32fd5
+	source_aarch64 = cloudfox-bin-2.0.5-aarch64.zip::https://github.com/BishopFox/cloudfox/releases/download/v2.0.5/cloudfox-linux-arm64.zip
+	sha256sums_aarch64 = fcebd90329a8bb2f61c00cfb131572a44483251da532f1363a0ceb56541cd4ca
+
+pkgname = cloudfox-bin
