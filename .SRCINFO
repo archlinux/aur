@@ -1,6 +1,6 @@
 pkgbase = chaski-bin
 	pkgdesc = A content aggregator that helps you focus on what matters.
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://chaski.a-chacon.com
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = chaski-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = chaski=0.9.1
+	provides = chaski=0.9.2
 	conflicts = chaski
-	source = chaski-0.9.1.deb::https://github.com/a-chacon/chaski-app/releases/download/app-v0.9.1/Chaski_0.9.1_amd64.deb
-	sha256sums = 6d1aab0ff762ddad8a5c84e66eb39f75add2444f37322da3721eb6f1148190da
+	source = chaski-0.9.2.deb::https://github.com/a-chacon/chaski-app/releases/download/app-v0.9.2/Chaski_0.9.2_amd64.deb
+	sha256sums = 02a60a04359803570ef2270a1a5a6958e90b12069da8b5c28e78090ec1892c9c
 
 pkgname = chaski-bin
