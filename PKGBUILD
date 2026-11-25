@@ -1,6 +1,6 @@
 # Maintainer: Ahmet Diler <ahmet.diler@hotmail.de>
 pkgname=md-viewer-bin
-pkgver=0.3.12
+pkgver=0.3.13
 pkgrel=1
 pkgdesc="Fast, lightweight markdown viewer with LaTeX math, mermaid diagrams, tabs, file explorer and live reload (prebuilt binary)"
 arch=('x86_64')
@@ -37,7 +37,7 @@ source=(
     "THIRD_PARTY_NOTICES-${pkgver}::https://raw.githubusercontent.com/aydiler/md-viewer/v${pkgver}/THIRD_PARTY_NOTICES"
 )
 sha256sums=(
-    '522aa0bf5bcc662acb4f383e045bb4ae636225a7c49e4b3ec12a72639597df0c'
+    '2eaef9dc29cd5feeeddb1d576c473d4495cdb3eb901d99410ce7d8a3f56ab20f'
     '7d786706389bf20531f1e2ace18bc1d2057b1745c059df6e804695cbbc8fe69c'
     '46d7a5b2a50e845d8c63146441914d37df5c411036a22d5412f1844126330b1b'
     '1a12042bdcb8eb609fd272b10a1dac618aec3aebdae90f5dd49af264a358444e'
