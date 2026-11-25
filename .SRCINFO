@@ -12,6 +12,7 @@ pkgbase = mod_tile
 	checkdepends = procps-ng
 	makedepends = apache
 	makedepends = apr
+	makedepends = boost
 	makedepends = cmake
 	makedepends = glib2
 	makedepends = iniparser
