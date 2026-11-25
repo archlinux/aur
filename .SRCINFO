@@ -1,0 +1,17 @@
+pkgbase = kumo-bin
+	pkgdesc = Lightweight AWS service emulator
+	pkgver = 0.33.1
+	pkgrel = 1
+	url = https://github.com/sivchari/kumo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kumo
+	conflicts = kumo
+	options = !debug
+	source_x86_64 = kumo-bin-0.33.1-x86_64.tar.gz::https://github.com/sivchari/kumo/releases/download/v0.33.1/kumo_0.33.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9a24c473f642c9a657b183f8c21f9e07eda1035fca565f504c2e9548482cc18d
+	source_aarch64 = kumo-bin-0.33.1-aarch64.tar.gz::https://github.com/sivchari/kumo/releases/download/v0.33.1/kumo_0.33.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 354239b998502f680e071f37cfed80fb506573fd3bb4e9fc39028abd22d79d43
+
+pkgname = kumo-bin
