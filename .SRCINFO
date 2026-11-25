@@ -1,6 +1,6 @@
 pkgbase = bladebro
 	pkgdesc = Agentic browser driver for AI: five MCP tools over a real Chromium session
-	pkgver = 4.8.3
+	pkgver = 4.8.4
 	pkgrel = 1
 	url = https://github.com/dondai44423/bladebro
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = bladebro
 	optdepends = xvfb: virtual display for hosts without one
 	optdepends = xfwm4: window manager, so a headful Xvfb session has frame extents
 	conflicts = bladebro-bin
-	source = bladebro-4.8.3.tar.gz::https://github.com/dondai44423/bladebro/archive/refs/tags/v4.8.3.tar.gz
-	sha256sums = 0a3368dd343c440c9a98d1ac26554b0557da49ef512fd6ff267196bbbe4a1416
+	source = bladebro-4.8.4.tar.gz::https://github.com/dondai44423/bladebro/archive/refs/tags/v4.8.4.tar.gz
+	sha256sums = facf404284656eb455dd561d115936f73292c6caefeffce6edb105dd65998ed6
 
 pkgname = bladebro
