@@ -1,7 +1,7 @@
 # Maintainer: Alex Indigo <iam@alexindigo.com>
 
 pkgname=aerial-lock
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Wayland video session lock with idle integration and automatic content service'
 arch=('x86_64')
@@ -21,7 +21,7 @@ conflicts=('aerial-lock-git')
 backup=('etc/pam.d/aerial-lock')
 install=aerial-lock.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d645bc7681893f8dd7684f0d9f15678ac815b3317191561b787fce62c18b3a68')
+sha256sums=('3e981adf97cbafc0a0646b6a34513b47a13d06272bf4764eab861829b4434bd8')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

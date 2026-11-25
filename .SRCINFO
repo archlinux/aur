@@ -1,6 +1,6 @@
 pkgbase = aerial-lock
 	pkgdesc = Wayland video session lock with idle integration and automatic content service
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/atmosphera-dev/aerial-lock
 	install = aerial-lock.install
@@ -34,7 +34,7 @@ pkgbase = aerial-lock
 	optdepends = elogind: logind integration without systemd (unverified)
 	conflicts = aerial-lock-git
 	backup = etc/pam.d/aerial-lock
-	source = aerial-lock-0.4.0.tar.gz::https://github.com/atmosphera-dev/aerial-lock/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = d645bc7681893f8dd7684f0d9f15678ac815b3317191561b787fce62c18b3a68
+	source = aerial-lock-0.4.1.tar.gz::https://github.com/atmosphera-dev/aerial-lock/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 3e981adf97cbafc0a0646b6a34513b47a13d06272bf4764eab861829b4434bd8
 
 pkgname = aerial-lock
