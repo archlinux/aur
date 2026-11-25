@@ -1,0 +1,12 @@
+diff --git a/build.zig b/build.zig
+index 7da51cd..d11fe98 100644
+--- a/build.zig
++++ b/build.zig
+@@ -157,6 +157,7 @@ pub fn build(b: *Build) !void {
+     });
+     translate_c.linkSystemLibrary("libevdev", .{});
+     translate_c.linkSystemLibrary("libinput", .{});
++    translate_c.addCFlags(&[_][]const u8{"-L", "/usr/lib"});
+ 
+     {
+         const river = b.addExecutable(.{
