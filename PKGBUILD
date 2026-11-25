@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=delta-app-bin
-pkgver=0.28.4
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="Delta - AI-native code editor"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!strip' '!debug')
 # Upstream serves a small JSON manifest that points at the versioned tarball.
 source_x86_64=("delta-linux-x86_64.tar.gz::https://releases.delta.dev/releases/stable/${pkgver}/delta-linux-x86_64.tar.gz")
 source_aarch64=("delta-linux-aarch64.tar.gz::https://releases.delta.dev/releases/stable/${pkgver}/delta-linux-aarch64.tar.gz")
-sha256sums_x86_64=('9f8a1043b517ceae505eb12770755f7a0423bbe97b56baee3c29013017bbca03')
-sha256sums_aarch64=('d5b7db028a6c7768d56acdf4c56d0655823b4b1cd4dcc2cafe34b8ee2cb9303d')
+sha256sums_x86_64=('eb2e8431188e02be27722c04eba2b8f0e58ba9adecb9308b2bdbfead0d4b85e9')
+sha256sums_aarch64=('4b2e7a52775c8d08d745875cc0a6dd751c0662eae5c2a587f9fd5c9706bc287e')
 
 package() {
     local _arch="x86_64"
