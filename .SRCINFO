@@ -1,0 +1,17 @@
+pkgbase = obsidianarc-bin
+	pkgdesc = Self-hosted AI platform with multi-provider routing, usage tracking and admin console
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/OnyxAxisOwO/ObsidianArc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = obsidianarc
+	conflicts = obsidianarc
+	options = !debug
+	source_x86_64 = obsidianarc-bin-0.13.0-x86_64.tar.gz::https://github.com/OnyxAxisOwO/ObsidianArc/releases/download/v0.13.0/obsidian-arc_v0.13.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 922f479d3ad7e6c4987cc6399dc5810eb4ef73790721fde290dae2b5ce35bdbc
+	source_aarch64 = obsidianarc-bin-0.13.0-aarch64.tar.gz::https://github.com/OnyxAxisOwO/ObsidianArc/releases/download/v0.13.0/obsidian-arc_v0.13.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6733cf7e6c8636acd3ded7bf4d5a177e3bf121ec11dd2ea52674b71b20782973
+
+pkgname = obsidianarc-bin
