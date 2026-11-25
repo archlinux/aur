@@ -3,7 +3,7 @@
 pkgname="litellm-bin"
 _name="${pkgname%-bin}"
 _py=cp310
-pkgver=1.110.2
+pkgver=1.111.0
 pkgrel=1
 pkgdesc="Library to easily interface with LLM API providers (prebuilt wheel)"
 arch=("x86_64" "aarch64")
@@ -144,8 +144,8 @@ conflicts=("$_name")
 source_x86_64=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name//-/_}-$pkgver-$_py-abi3-manylinux_2_28_x86_64.whl")
 source_aarch64=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name//-/_}-$pkgver-$_py-abi3-manylinux_2_28_aarch64.whl")
 noextract=("${_name//-/_}-$pkgver-$_py-abi3-manylinux_2_28_$CARCH.whl")
-sha256sums_x86_64=('9d94d1c7d524b6fd10c14f9c8c6c4f0ac31705f9964ac59dcfd8337c046d8917')
-sha256sums_aarch64=('4e877371f0bb90623f112731c55a2d71acc3fbccbc57bfc7ef9346bd1af0f214')
+sha256sums_x86_64=('f6f23a70ea524c7ee6ba497c714c99247d7cd02782b54fdb0c2b8663fed6c351')
+sha256sums_aarch64=('7917ffae9bc2f1d3082698fbb2400d64e49651b58a811f8787421d84c8bc6cf2')
 
 package(){
  python -m installer --destdir="$pkgdir" ./*.whl
