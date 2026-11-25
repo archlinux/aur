@@ -1,7 +1,7 @@
 # Maintainer: Kenneth Shaw <kenshaw at gmail dot com>
 
 pkgname=iv-cli
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='A command-line image viewer using terminal graphics (Sixel, iTerm, Kitty)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('libreoffice-fresh: preview office documents'
             'openslide: whole-slide image support')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('72293038407d9e751e401af52bfedb1042294463b99dc7a481045c0217e5dba6')
+sha256sums=('616e837f042de8a0e6762aaa435e365e7850b69a1826ee5512917999c746a54e')
 
 build() {
     cd iv-$pkgver
