@@ -3,7 +3,7 @@
 pkgname=python-k3confloader
 _name=${pkgname#python-}
 pkgver=0.1.9
-pkgrel=1
+pkgrel=3
 pkgdesc="Load configuration for pykit3 modules"
 provides=(${pkgname})
 conflicts=(${pkgname})
@@ -41,13 +41,6 @@ build() {
 
 check() {
 	cd "${srcdir}/${_name}"
-
-	# Build chroot has no MAC: uuid.getnode() falls back to a per-process
-	# random node, so pin it for the pytest parent and k3proc children.
-	cat > "${srcdir}/sitecustomize.py" <<'PY'
-import uuid
-uuid.getnode = lambda: 0x001122334455
-PY
 
 	export PYTHONPATH="${srcdir}${PYTHONPATH:+:${PYTHONPATH}}"
 	pytest -x
