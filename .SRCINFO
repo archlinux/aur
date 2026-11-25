@@ -1,24 +1,24 @@
 pkgbase = postybirb-bin
 	pkgdesc = An application that helps artists post art and other multimedia to multiple websites more quickly.
-	pkgver = 4.1.7
+	pkgver = 4.1.8
 	pkgrel = 1
 	url = https://www.postybirb.com/
 	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = electron42
-	provides = postybirb=4.1.7
+	provides = postybirb=4.1.8
 	conflicts = postybirb
 	conflicts = postybirb-plus
-	source = LICENSE-4.1.7::https://raw.githubusercontent.com/mvdicarlo/postybirb/v4.1.7/LICENSE
+	source = LICENSE-4.1.8::https://raw.githubusercontent.com/mvdicarlo/postybirb/v4.1.8/LICENSE
 	source = postybirb.js
 	source = postybirb.sh
 	sha256sums = f549ac630b1a4e0e8a80ae21c37d1c7d63f00e1cd155d5f747a5315b54ae2e31
-	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
-	source_aarch64 = postybirb-4.1.7-aarch64.deb::https://github.com/mvdicarlo/postybirb/releases/download/v4.1.7/PostyBirb-4.1.7-linux-deb-arm64.deb
-	sha256sums_aarch64 = bf886f269da28ae81ee1dc14d4b6ee9ce8aea0ca6c532d58b48ce3adb1a87449
-	source_x86_64 = postybirb-4.1.7-x86_64.deb::https://github.com/mvdicarlo/postybirb/releases/download/v4.1.7/PostyBirb-4.1.7-linux-deb-amd64.deb
-	sha256sums_x86_64 = 5493c18dbcf53949a53cf1dfb9c5979d4ac26ecb1c9e6afc0fd24306e74cff7f
+	sha256sums = b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b
+	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
+	source_aarch64 = postybirb-4.1.8-aarch64.deb::https://github.com/mvdicarlo/postybirb/releases/download/v4.1.8/PostyBirb-4.1.8-linux-deb-arm64.deb
+	sha256sums_aarch64 = 2194d76f3779118649c9d7553482921d49a2c4e08131edbf570d48447e32e19b
+	source_x86_64 = postybirb-4.1.8-x86_64.deb::https://github.com/mvdicarlo/postybirb/releases/download/v4.1.8/PostyBirb-4.1.8-linux-deb-amd64.deb
+	sha256sums_x86_64 = 612173f367d2f5123b09ba985628fc6602fee8874f978756a8a1b452b79333d6
 
 pkgname = postybirb-bin
