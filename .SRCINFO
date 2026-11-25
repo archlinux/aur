@@ -1,0 +1,19 @@
+pkgbase = litefs-bin
+	pkgdesc = FUSE-based file system for replicating SQLite databases across a cluster of machines
+	pkgver = 0.5.14
+	pkgrel = 1
+	url = https://github.com/superfly/litefs
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = litefs
+	conflicts = litefs
+	options = !debug
+	source = litefs-bin-0.5.14-LICENSE::https://raw.githubusercontent.com/superfly/litefs/v0.5.14/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = litefs-bin-0.5.14-x86_64.tar.gz::https://github.com/superfly/litefs/releases/download/v0.5.14/litefs-v0.5.14-linux-amd64.tar.gz
+	sha256sums_x86_64 = 231190010850c57ab43e278a0b521e50a9fc63a7c571d683dd7febd4ab2cdf30
+	source_aarch64 = litefs-bin-0.5.14-aarch64.tar.gz::https://github.com/superfly/litefs/releases/download/v0.5.14/litefs-v0.5.14-linux-arm64.tar.gz
+	sha256sums_aarch64 = c783d1b32ede08e03fbdb8c638861c6496f9401df7d8102aac7cac4c61d6a0ec
+
+pkgname = litefs-bin
