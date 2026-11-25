@@ -1,6 +1,6 @@
 pkgbase = layrics-git
 	pkgdesc = Desktop lyrics overlay for Wayland — auto-synced with MPRIS players, rendered via libass on wlr-layer-shell
-	pkgver = r121.181cdce
+	pkgver = r124.83205fd
 	pkgrel = 1
 	url = https://github.com/sitiyou/layrics
 	arch = x86_64

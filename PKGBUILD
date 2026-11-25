@@ -3,7 +3,7 @@
 
 pkgname=layrics-git
 _pkgname=layrics
-pkgver=r121.181cdce
+pkgver=r124.83205fd
 pkgrel=1
 pkgdesc="Desktop lyrics overlay for Wayland — auto-synced with MPRIS players, rendered via libass on wlr-layer-shell"
 arch=('x86_64')
