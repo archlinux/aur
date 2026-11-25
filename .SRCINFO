@@ -1,0 +1,19 @@
+pkgbase = suo5-bin
+	pkgdesc = High-performance HTTP tunneling tool
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/zema1/suo5
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = suo5
+	conflicts = suo5
+	options = !debug
+	source = suo5-bin-2.2.0-LICENSE::https://raw.githubusercontent.com/zema1/suo5/v2.2.0/LICENSE
+	sha256sums = 5b7811ea5434fa0d6af9cd9e40d54f91d28bf52cb208a3c553695439722a736d
+	source_x86_64 = suo5-bin-2.2.0-x86_64::https://github.com/zema1/suo5/releases/download/v2.2.0/suo5-linux-amd64
+	sha256sums_x86_64 = 629dc3e537d611e2da7e5e0274900213e817d4057b344e6cb82bd95dee937d3b
+	source_aarch64 = suo5-bin-2.2.0-aarch64::https://github.com/zema1/suo5/releases/download/v2.2.0/suo5-linux-arm64
+	sha256sums_aarch64 = 06ce70daa0b33a2abfbac790a8923df732dcd2b524a107763b8ac77df4fc6842
+
+pkgname = suo5-bin
