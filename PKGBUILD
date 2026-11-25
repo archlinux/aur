@@ -3,7 +3,7 @@
 pkgname=python-kicad
 _name=${pkgname#python-}
 pkgver=0.9.0
-pkgrel=1
+pkgrel=3
 pkgdesc="KiCad API Python Bindings"
 provides=(${pkgname} kicad-python)
 conflicts=(${pkgname} kicad-python)
@@ -13,6 +13,7 @@ _pydeps=(
     jsonschema
     protobuf
     typing_extensions
+    zstandard
 # AUR
     pynng
 )
@@ -30,6 +31,9 @@ makedepends=(
 # AUR
     'python-protoletariat'
     'python-mypy-protobuf'
+)
+checkdepends=(
+    python-pytest
 )
 optdepends=('kicad')
 license=('MIT')
@@ -52,6 +56,13 @@ build() {
     cd "${srcdir}/${pkgname}"
     # python -m build --wheel --no-isolation
     ./dist.sh
+}
+
+check() {
+	cd "${srcdir}/${pkgname}"
+
+	export PYTHONPATH="${srcdir}/${pkgname}${PYTHONPATH:+:${PYTHONPATH}}"
+	pytest -x
 }
 
 package() {
