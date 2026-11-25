@@ -1,6 +1,6 @@
 pkgbase = rustconn-bin
 	pkgdesc = Modern GTK4 connection manager for SSH, RDP, VNC and SPICE (prebuilt)
-	pkgver = 0.26.0
+	pkgver = 0.26.3
 	pkgrel = 1
 	url = https://github.com/totoshko88/RustConn
 	arch = x86_64
@@ -49,16 +49,16 @@ pkgbase = rustconn-bin
 	optdepends = tigervnc: External VNC client fallback
 	optdepends = virt-viewer: External SPICE client
 	optdepends = waypipe: Wayland application forwarding over SSH
-	provides = rustconn=0.26.0
+	provides = rustconn=0.26.3
 	conflicts = rustconn
 	conflicts = rustconn-appimage
-	noextract = rustconn_0.26.0_amd64.deb
+	noextract = rustconn_0.26.3_amd64.deb
 	options = !strip
 	options = !debug
-	source = https://github.com/totoshko88/RustConn/releases/download/v0.26.0/rustconn_0.26.0_amd64.deb
+	source = https://github.com/totoshko88/RustConn/releases/download/v0.26.3/rustconn_0.26.3_amd64.deb
 	source = io.github.totoshko88.RustConn-rdp.xml
 	source = io.github.totoshko88.RustConn-vv.xml
-	sha256sums = 1fb950e76631e7c98c095049a50448a5f40a8fce1c8de43d3eeceb7c626256f9
+	sha256sums = f9c70772d94ea07bf23e114b22979ddbb9ee1ddc6f20707b583983ef3f0c5f1f
 	sha256sums = 6752641f8272fae15901cc4de4052514e846821fbeba797baa8d81850d508cda
 	sha256sums = e833e539337e3a348f21a6757f015bfc7994df0789771880550350f0d04c45f0
 
