@@ -1,6 +1,6 @@
 pkgbase = octoprint-venv
 	pkgdesc = Web interface for 3D printers (venv installation type)
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/OctoPrint/OctoPrint
 	install = octoprint.install
@@ -14,11 +14,11 @@ pkgbase = octoprint-venv
 	depends = python
 	optdepends = ffmpeg: timelapse support
 	optdepends = mjpg-streamer: stream images from webcam
-	provides = octoprint=2.0.1
+	provides = octoprint=2.0.2
 	conflicts = octoprint
 	options = !debug
 	options = !strip
-	source = octoprint-2.0.1.tar.gz::https://github.com/OctoPrint/OctoPrint/releases/download/2.0.1/OctoPrint-2.0.1.source.tar.gz
-	sha256sums = 09db4a0b37f8d93fa48c877e4f4eab5c5f9679ff6b00f6bb64f2afaec86a564e
+	source = octoprint-2.0.2.tar.gz::https://github.com/OctoPrint/OctoPrint/releases/download/2.0.2/OctoPrint-2.0.2.source.tar.gz
+	sha256sums = 2f83a69ee44f33104d9bb2a0e326ad391a2eda28072d963d55215f95b4dce1f0
 
 pkgname = octoprint-venv
