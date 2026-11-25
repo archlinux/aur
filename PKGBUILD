@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=lichii-bin
-pkgver=386
+pkgver=410
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch and Switch 2 emulator, fork of Eden (upstream AppImage)"
 arch=('x86_64' 'aarch64')
@@ -22,12 +22,12 @@ conflicts=('lichii')
 options=('!strip' '!debug')
 # the PGO build, which upstream recommends. Some releases have none: then
 # _flavor is empty and the standard build is used. Synced by pkg.sh.
-_flavor="-pgo"
+_flavor=""
 source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/build-${pkgver}/lichii-linux-x86_64${_flavor}.AppImage")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/build-${pkgver}/lichii-linux-aarch64${_flavor}.AppImage")
 noextract=("${pkgname}-${pkgver}-x86_64.AppImage" "${pkgname}-${pkgver}-aarch64.AppImage")
-sha256sums_x86_64=('0b68c8353d4fe27badbe2c741b4469c675eb913776f249efc74d1c8a4db20222')
-sha256sums_aarch64=('5c8b9447af43efc98a080c59d7544b4f992ef3cd387ccba425bc639729f2908c')
+sha256sums_x86_64=('90cf654a17d2faa07e4898383cc7c63d01d551973f11b49e8e6a3c7ffe8533bd')
+sha256sums_aarch64=('2a128d5509a729590ffc6ca0d738a6843a7bb7f675307cf0ba9047be7030350f')
 
 prepare() {
   chmod +x "$srcdir/${pkgname}-${pkgver}-${CARCH}.AppImage"
