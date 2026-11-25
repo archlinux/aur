@@ -1,7 +1,7 @@
 # Maintainer: Manish Khadka <manish.khadka@tutanota.com>
 
 pkgname=ctfkit
-pkgver=0.10.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='Run the same Terraform and OpenTofu compliance checks across your pipelines'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('go')
 optdepends=('terraform: gate plan, verdict verify and apply'
             'opentofu: gate plan, verdict verify and apply with OpenTofu')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1f79aca11c43cf95e26aef7dc493f27fe983c1e947c0cf85e0d7d3e01ec6b843')
+sha256sums=('ad13aa0a22c5037752da3a0e38a4e5e3710c22645c049ad733517174caf9be77')
 
 prepare() {
     cd "$pkgname-$pkgver"
