@@ -1,18 +1,18 @@
 pkgbase = litemiyu-bin
 	pkgdesc = Distilled Miyu: under 5 MB of RAM, yet capable enough for everyday work and for rescue
-	pkgver = 2026.11.2
+	pkgver = 2026.11.3
 	pkgrel = 1
 	url = https://github.com/miyu-agent/litemiyu
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-or-later
-	provides = litemiyu=2026.11.2
+	provides = litemiyu=2026.11.3
 	conflicts = litemiyu
 	options = !strip
 	options = !debug
-	source_x86_64 = litemiyu-2026.11.2-linux-x86_64.tar.gz::https://github.com/miyu-agent/litemiyu/releases/download/v2026.11.2/litemiyu-2026.11.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = e5f203e7957a0d74cd1a7667ed304fe5fd760218bdf1a8d0114d1ca893c4bc3e
-	source_aarch64 = litemiyu-2026.11.2-linux-aarch64.tar.gz::https://github.com/miyu-agent/litemiyu/releases/download/v2026.11.2/litemiyu-2026.11.2-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 60187df9c72c4f3abd965044fea85263efd5d298b66456aff77cf053ea03f1bd
+	source_x86_64 = litemiyu-2026.11.3-linux-x86_64.tar.gz::https://github.com/miyu-agent/litemiyu/releases/download/v2026.11.3/litemiyu-2026.11.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 203b597b0452c60355c4546473a265b7470d5dc5658d18402c6b5912bba48c17
+	source_aarch64 = litemiyu-2026.11.3-linux-aarch64.tar.gz::https://github.com/miyu-agent/litemiyu/releases/download/v2026.11.3/litemiyu-2026.11.3-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 011f9b1f7d74dad570507dfb06999a27651ed00f738bedcc2e9ae4d88747ddb8
 
 pkgname = litemiyu-bin
