@@ -1,5 +1,5 @@
 pkgname=stealth-mission-89
-pkgver=0.12.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='A Rust/Bevy remake of DOS-era 3D flight simulations with multiplayer, dynamic realtime campaign and VR support'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 optdepends=('openxr: VR headset support (--vr)')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('590a67753551b2eda0512b79d244764962b8b9cb98831cccd78730082fdd4012')
+sha256sums=('6e4381918a047ccfd98e212598760399adeb5dc1b02f96ddd45b497134909f90')
 
 prepare() {
   cd "$pkgname-$pkgver"
