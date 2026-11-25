@@ -1,0 +1,17 @@
+pkgbase = kafka_exporter-bin
+	pkgdesc = Kafka exporter for Prometheus
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/danielqsj/kafka_exporter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = kafka_exporter
+	conflicts = kafka_exporter
+	options = !debug
+	source_x86_64 = kafka_exporter-bin-1.11.0-x86_64.tar.gz::https://github.com/danielqsj/kafka_exporter/releases/download/v1.11.0/kafka_exporter-1.11.0.linux-amd64.tar.gz
+	sha256sums_x86_64 = 6a14dd10709d627d7be29a4b98fae8bb888761c7da54410e72bef8cdaf906e86
+	source_aarch64 = kafka_exporter-bin-1.11.0-aarch64.tar.gz::https://github.com/danielqsj/kafka_exporter/releases/download/v1.11.0/kafka_exporter-1.11.0.linux-arm64.tar.gz
+	sha256sums_aarch64 = 4f5f0341cd5345d863b3017eb9bc143f653c43a7b37cd2bc5a6a4b028ef61c45
+
+pkgname = kafka_exporter-bin
