@@ -2,7 +2,7 @@
 # Rendered from packaging/aur/blockwork/PKGBUILD.in in Blockworked/Blockwork by .github/workflows/aur.yml.
 
 pkgname=blockwork
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='Build keyboard and mouse macros by snapping blocks together'
 url='https://blockworked.com'
@@ -20,7 +20,7 @@ options=('!lto')
 _qwk=2072958b04820e9e7629f6c40068dee0ce0e9915
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Blockworked/Blockwork/archive/refs/tags/$pkgver.tar.gz"
         "qwindowkit-$_qwk.tar.gz::https://codeload.github.com/stdware/qwindowkit/tar.gz/$_qwk")
-sha256sums=('d8f7e141f4b9746f4cf33eff8d5473048049f0b96420d6fac3896d8ca8731b77'
+sha256sums=('c9da8468e3293a4d7bfd7b5eb202b4362eed66754d587be7145ce95c07d0bba0'
             '82cf5292b7f39729f2d40f63cee340dd77aea3c402d04df735c23b76f98c822c')
 
 prepare() {
