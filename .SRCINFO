@@ -1,12 +1,12 @@
 pkgbase = zeptofetch
 	pkgdesc = Blazingly fast, ultra-minimal system information tool for Linux
-	pkgver = 2.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/gurov/zeptofetch
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = glibc
-	source = zeptofetch-2.2.tar.gz::https://gitlab.archlinux.org/gurov/zeptofetch/-/archive/v2.2/zeptofetch-v2.2.tar.gz
-	sha256sums = 5c934445fd8793c7aeb1360993e8d2043c66d52a4ae2240530bb04ef084e2c2f
+	source = zeptofetch-2.3.3.tar.gz::https://gitlab.archlinux.org/gurov/zeptofetch/-/archive/v2.3.3/zeptofetch-v2.3.3.tar.gz
+	sha256sums = b4c902ddcce975ea56579dbf1ee0f814fa44ee151849f04d32d074bec594b836
 
 pkgname = zeptofetch
