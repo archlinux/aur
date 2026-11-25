@@ -3,8 +3,8 @@
 _pkgname=libtorrent
 pkgname=libtorrent-ps-ch
 _pkgver=0.13.8
-pkgver=1.8.3
-pkgrel=3
+pkgver=1.8.4
+pkgrel=1
 pkgdesc='BitTorrent library written in C++ for use with rtorrent-ps-ch'
 license=('GPL2')
 arch=('x86_64')
@@ -38,6 +38,7 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname-$_pkgver"
 
+  export CXXFLAGS="$CXXFLAGS -std=gnu++14"
   ./configure \
     --prefix=/usr \
     --disable-debug
