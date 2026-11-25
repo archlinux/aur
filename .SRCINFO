@@ -1,0 +1,19 @@
+pkgbase = gauge-bin
+	pkgdesc = Light weight cross-platform test automation
+	pkgver = 1.6.44
+	pkgrel = 1
+	url = https://github.com/getgauge/gauge
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = gauge
+	conflicts = gauge
+	options = !debug
+	source = gauge-bin-1.6.44-LICENSE::https://raw.githubusercontent.com/getgauge/gauge/v1.6.44/LICENSE
+	sha256sums = b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1
+	source_x86_64 = gauge-bin-1.6.44-x86_64.zip::https://github.com/getgauge/gauge/releases/download/v1.6.44/gauge-1.6.44-linux.x86_64.zip
+	sha256sums_x86_64 = c7713fb30d77299970333a39aed1ae4d044ddbd2cfd8b3628f28020dff2a0e57
+	source_aarch64 = gauge-bin-1.6.44-aarch64.zip::https://github.com/getgauge/gauge/releases/download/v1.6.44/gauge-1.6.44-linux.arm64.zip
+	sha256sums_aarch64 = 91fdc83d80faa97611763c37022033ae4b8131d3d746e3bfc7bd6d8fa46b651b
+
+pkgname = gauge-bin
