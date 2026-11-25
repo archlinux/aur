@@ -1,0 +1,20 @@
+pkgbase = bruin-bin
+	pkgdesc = Build data pipelines with SQL and Python, ingest data from different sources, add quality checks, and build end-to-end flows
+	pkgver = 0.11.836
+	pkgrel = 1
+	url = https://github.com/bruin-data/bruin
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = bruin
+	conflicts = bruin
+	options = !debug
+	source_x86_64 = bruin-bin-0.11.836-x86_64.tar.gz::https://github.com/bruin-data/bruin/releases/download/v0.11.836/bruin_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = fc2e0638487dad86eea996b45466ed41d7beb0b873220b088ea4182a89d98c3c
+	source_aarch64 = bruin-bin-0.11.836-aarch64.tar.gz::https://github.com/bruin-data/bruin/releases/download/v0.11.836/bruin_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ab5b2df5bcd312681e0c7db566303013dd82a90d24a0430f69b7a1d20070e126
+
+pkgname = bruin-bin
