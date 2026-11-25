@@ -1,8 +1,8 @@
 pkgbase = metar-display-bin
 	pkgdesc = Retrieve and parse METAR weather for display. Packaged upstream binaries.
-	pkgver = 1.0
+	pkgver = 1.2
 	pkgrel = 1
-	url = https://github.com/dino-/metar-display
+	url = https://codeberg.org/dinofp/metar-display
 	arch = x86_64
 	license = ISC
 	depends = fuse2
@@ -10,7 +10,7 @@ pkgbase = metar-display-bin
 	provides = metar-display
 	conflicts = metar-display
 	options = !strip
-	source = https://github.com/dino-/metar-display/releases/download/1.0/metar-display-1.0-x86_64.AppImage
-	sha256sums = 3566e9ab0e7f6cb7782f87f6aa6c8179eb0d8dd288d2f317863d5257d375e0d4
+	source = https://codeberg.org/dinofp/metar-display/releases/download/1.2/metar-display-1.2-x86_64.AppImage
+	sha256sums = a622a9af789ec6e6daa549bedf7ec16b81f1b46353d0ff0b5c82fce51cc778a6
 
 pkgname = metar-display-bin
