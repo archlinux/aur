@@ -1,0 +1,19 @@
+pkgbase = souin-bin
+	pkgdesc = RFC-compliant HTTP cache server
+	pkgver = 1.7.10
+	pkgrel = 1
+	url = https://github.com/darkweak/souin
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = souin
+	conflicts = souin
+	options = !debug
+	source = souin-bin-1.7.10-LICENSE::https://raw.githubusercontent.com/darkweak/souin/v1.7.10/LICENSE
+	sha256sums = 645c5f444195957ad4d97d74125205f9c57de47df3d0b67eae42108bb44ee276
+	source_x86_64 = souin-bin-1.7.10-x86_64.tar.gz::https://github.com/darkweak/souin/releases/download/v1.7.10/souin_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 13cfcede154298984dbef59f07433fa1ed72e08e9710cf189b531f1005061d33
+	source_aarch64 = souin-bin-1.7.10-aarch64.tar.gz::https://github.com/darkweak/souin/releases/download/v1.7.10/souin_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 03ecf2e56c6a576a31e9074bb0fb64fc1a541c54488fd951b403a1fc90ef18ee
+
+pkgname = souin-bin
