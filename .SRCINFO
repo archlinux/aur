@@ -1,0 +1,19 @@
+pkgbase = cf-vps-monitor-bin
+	pkgdesc = Server metrics agent for the CF VPS Monitor dashboard
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/kadidalax/cf-vps-monitor
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cf-vps-monitor
+	conflicts = cf-vps-monitor
+	options = !debug
+	source = cf-vps-monitor-bin-2.0.3-LICENSE::https://raw.githubusercontent.com/kadidalax/cf-vps-monitor/v2.0.3/LICENSE
+	sha256sums = e0fce3ad32b0de12548a464c2cc4f338ad65a29f941eca7853a54a5605bb6f51
+	source_x86_64 = cf-vps-monitor-bin-2.0.3-x86_64::https://github.com/kadidalax/cf-vps-monitor/releases/download/v2.0.3/cf-vps-monitor-agent-linux-amd64
+	sha256sums_x86_64 = b6b5c1d6f1df2fe0471b140102ca6991a242a001195bfcfcdc1d036a3dbb9e2a
+	source_aarch64 = cf-vps-monitor-bin-2.0.3-aarch64::https://github.com/kadidalax/cf-vps-monitor/releases/download/v2.0.3/cf-vps-monitor-agent-linux-arm64
+	sha256sums_aarch64 = d47714c1e114f61882dbebce3d66f00544729fe1e60cb1fe801f1e8e18ef6f62
+
+pkgname = cf-vps-monitor-bin
