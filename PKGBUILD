@@ -46,37 +46,17 @@ prepare() {
 }
 
 build() {
-  local browser_dir="${srcdir}/${pkgbase}/apps/browser"
-
   export NODE_OPTIONS="${NODE_OPTIONS:-} --max-old-space-size=8192"
 
-  rm --recursive --force "${browser_dir}/dist"
-  mkdir --parents "${browser_dir}/dist"
+  rm --recursive --force "${srcdir}/${pkgbase}/apps/browser/dist"
 
-  npm --prefix "${srcdir}/${pkgbase}" \
-    --cache "${srcdir}/npm-cache" \
-    --prefer-offline \
-    --workspace=apps/browser \
-    run build:prod:chrome
-  mv --verbose "${browser_dir}/build" "${browser_dir}/dist/chrome"
-
-  npm --prefix "${srcdir}/${pkgbase}" \
-    --cache "${srcdir}/npm-cache" \
-    --prefer-offline \
-    --workspace=apps/browser \
-    run build:prod:firefox
-  mv --verbose "${browser_dir}/build" "${browser_dir}/dist/firefox"
-  (
-    cd "${browser_dir}/dist/firefox"
-    zip -r -q ../dist-firefox.zip .
-  )
-
-  npm --prefix "${srcdir}/${pkgbase}" \
-    --cache "${srcdir}/npm-cache" \
-    --prefer-offline \
-    --workspace=apps/browser \
-    run build:prod:opera
-  mv --verbose "${browser_dir}/build" "${browser_dir}/dist/opera"
+  for target in chrome firefox opera; do
+    npm --prefix "${srcdir}/${pkgbase}" \
+      --cache "${srcdir}/npm-cache" \
+      --prefer-offline \
+      --workspace=apps/browser \
+      run "dist:${target}"
+  done
 }
 
 check() {
@@ -96,8 +76,10 @@ package_brave-extension-bitwarden-git() {
   conflicts=('brave-extension-bitwarden')
   install="${pkgname}.install"
 
-  install -d --mode=755 "${pkgdir}/usr/share"
-  cp --recursive --no-preserve=ownership "${srcdir}/${pkgbase}/apps/browser/dist/chrome" "${pkgdir}/usr/share/${pkgname}"
+  install --directory --mode=755 "${pkgdir}/usr/share/${pkgname}"
+  bsdtar --extract \
+    --file "${srcdir}/${pkgbase}/apps/browser/dist/oss-dist-chrome.zip" \
+    --directory "${pkgdir}/usr/share/${pkgname}"
 }
 
 package_chrome-extension-bitwarden-git() {
@@ -107,8 +89,10 @@ package_chrome-extension-bitwarden-git() {
   conflicts=('chrome-extension-bitwarden')
   install="${pkgname}.install"
 
-  install -d --mode=755 "${pkgdir}/usr/share"
-  cp --recursive --no-preserve=ownership "${srcdir}/${pkgbase}/apps/browser/dist/chrome" "${pkgdir}/usr/share/${pkgname}"
+  install --directory --mode=755 "${pkgdir}/usr/share/${pkgname}"
+  bsdtar --extract \
+    --file "${srcdir}/${pkgbase}/apps/browser/dist/oss-dist-chrome.zip" \
+    --directory "${pkgdir}/usr/share/${pkgname}"
 }
 
 package_chromium-extension-bitwarden-git() {
@@ -118,8 +102,10 @@ package_chromium-extension-bitwarden-git() {
   conflicts=('chromium-extension-bitwarden')
   install="${pkgname}.install"
 
-  install -d --mode=755 "${pkgdir}/usr/share"
-  cp --recursive --no-preserve=ownership "${srcdir}/${pkgbase}/apps/browser/dist/chrome" "${pkgdir}/usr/share/${pkgname}"
+  install --directory --mode=755 "${pkgdir}/usr/share/${pkgname}"
+  bsdtar --extract \
+    --file "${srcdir}/${pkgbase}/apps/browser/dist/oss-dist-chrome.zip" \
+    --directory "${pkgdir}/usr/share/${pkgname}"
 }
 
 package_firefox-developer-edition-extension-bitwarden-git() {
@@ -128,7 +114,8 @@ package_firefox-developer-edition-extension-bitwarden-git() {
   provides=('firefox-developer-edition-extension-bitwarden')
   conflicts=('firefox-developer-edition-extension-bitwarden')
 
-  install -D --mode=644 "${srcdir}/${pkgbase}/apps/browser/dist/dist-firefox.zip" \
+  install --directory --mode=755 "${pkgdir}/usr/lib/firefox-developer-edition/browser/extensions"
+  install --mode=644 "${srcdir}/${pkgbase}/apps/browser/dist/oss-dist-firefox.zip" \
     "${pkgdir}/usr/lib/firefox-developer-edition/browser/extensions/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi"
 }
 
@@ -139,7 +126,8 @@ package_firefox-extension-bitwarden-git() {
   provides=('firefox-extension-bitwarden')
   conflicts=('firefox-extension-bitwarden')
 
-  install -D --mode=644 "${srcdir}/${pkgbase}/apps/browser/dist/dist-firefox.zip" \
+  install --directory --mode=755 "${pkgdir}/usr/lib/firefox/browser/extensions"
+  install --mode=644 "${srcdir}/${pkgbase}/apps/browser/dist/oss-dist-firefox.zip" \
     "${pkgdir}/usr/lib/firefox/browser/extensions/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi"
 }
 
@@ -149,7 +137,8 @@ package_librewolf-extension-bitwarden-git() {
   provides=('librewolf-extension-bitwarden')
   conflicts=('librewolf-extension-bitwarden')
 
-  install -D --mode=644 "${srcdir}/${pkgbase}/apps/browser/dist/dist-firefox.zip" \
+  install --directory --mode=755 "${pkgdir}/usr/lib/librewolf/browser/extensions"
+  install --mode=644 "${srcdir}/${pkgbase}/apps/browser/dist/oss-dist-firefox.zip" \
     "${pkgdir}/usr/lib/librewolf/browser/extensions/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi"
 }
 
@@ -160,6 +149,8 @@ package_opera-extension-bitwarden-git() {
   conflicts=('opera-extension-bitwarden')
   install="${pkgname}.install"
 
-  install -d --mode=755 "${pkgdir}/usr/share"
-  cp --recursive --no-preserve=ownership "${srcdir}/${pkgbase}/apps/browser/dist/opera" "${pkgdir}/usr/share/${pkgname}"
+  install --directory --mode=755 "${pkgdir}/usr/share/${pkgname}"
+  bsdtar --extract \
+    --file "${srcdir}/${pkgbase}/apps/browser/dist/oss-dist-opera.zip" \
+    --directory "${pkgdir}/usr/share/${pkgname}"
 }
