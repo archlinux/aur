@@ -1,0 +1,19 @@
+pkgbase = gonc-bin
+	pkgdesc = Netcat with automated NAT traversal, secure P2P, file transfer and proxying
+	pkgver = 2.6.13
+	pkgrel = 1
+	url = https://github.com/threatexpert/gonc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gonc
+	conflicts = gonc
+	options = !debug
+	source = gonc-bin-2.6.13-LICENSE::https://raw.githubusercontent.com/threatexpert/gonc/v2.6.13/LICENSE
+	sha256sums = 83c3d1731419402c8aebb8ffd26ce9e7f6bccb5faedd86c9bbe2336bc203f775
+	source_x86_64 = gonc-bin-2.6.13-x86_64::https://github.com/threatexpert/gonc/releases/download/v2.6.13/gonc_linux_amd64
+	sha256sums_x86_64 = 6f32be2fa207ded0a80417e731f6605c85662687db3bb2358ae4e87943996f40
+	source_aarch64 = gonc-bin-2.6.13-aarch64::https://github.com/threatexpert/gonc/releases/download/v2.6.13/gonc_linux_arm64
+	sha256sums_aarch64 = c5068297a004217f0fb3f98a9a0e5ae6072943c2f7daedf5b199a4ec43f5ecb3
+
+pkgname = gonc-bin
