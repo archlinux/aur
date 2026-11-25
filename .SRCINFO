@@ -1,6 +1,6 @@
 pkgbase = outdated-snake-git
 	pkgdesc = Outdated Snake Game Using Electron.
-	pkgver = 3.0.0.r18.gd16f022
+	pkgver = 4.0.0.r0.g60d56d3
 	pkgrel = 1
 	url = https://github.com/OutdatedGuy/Outdated-Snake-Desktop
 	arch = any
@@ -11,12 +11,14 @@ pkgbase = outdated-snake-git
 	makedepends = gendesk
 	makedepends = icoutils
 	makedepends = jq
-	depends = electron31
-	provides = outdated-snake=3.0.0
+	depends = electron45
+	provides = outdated-snake=4.0.0
 	conflicts = outdated-snake
 	source = outdated-snake.git::git+https://github.com/OutdatedGuy/Outdated-Snake-Desktop.git
+	source = outdated-snake.js
 	source = outdated-snake.sh
 	sha256sums = SKIP
-	sha256sums = 5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e
+	sha256sums = b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b
+	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
 
 pkgname = outdated-snake-git
