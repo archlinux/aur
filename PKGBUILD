@@ -1,7 +1,7 @@
 # Maintainer: Thomas L <zobi8225 at gmail dot com>
 pkgname=orgamnesia-bin
 _pkgname=orgamnesia
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Lightweight Obsidian: second brain and personal wiki in Rust. Markdown and/or Emacs Org-mode notes. (prebuilt)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 # Nothing is compiled: the package that the release workflow builds from
 # packaging/arch-release (so with ORGAMNESIA_PACKAGE=aur) is only unpacked.
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-1-x86_64.pkg.tar.zst")
-sha256sums_x86_64=('e77200bb7ce33805d0c90a0f793d43cc0aa6019e493a15d45c2fe74b5cecebb0')
+sha256sums_x86_64=('5f9fe26629c0b6885c38ef84466d9d5b6167b92694aa9c61da1519f6c0120409')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/"

@@ -1,6 +1,6 @@
 pkgbase = orgamnesia-bin
 	pkgdesc = Lightweight Obsidian: second brain and personal wiki in Rust. Markdown and/or Emacs Org-mode notes. (prebuilt)
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/thomas-louvigne/orgamnesia
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = orgamnesia-bin
 	conflicts = orgamnesia
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/thomas-louvigne/orgamnesia/releases/download/v1.9.0/orgamnesia-1.9.0-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = e77200bb7ce33805d0c90a0f793d43cc0aa6019e493a15d45c2fe74b5cecebb0
+	source_x86_64 = https://github.com/thomas-louvigne/orgamnesia/releases/download/v1.10.0/orgamnesia-1.10.0-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 5f9fe26629c0b6885c38ef84466d9d5b6167b92694aa9c61da1519f6c0120409
 
 pkgname = orgamnesia-bin
