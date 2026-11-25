@@ -1,6 +1,6 @@
 pkgbase = telegram-drive
 	pkgdesc = Turn your Telegram account into an unlimited, secure cloud storage drive
-	pkgver = 4.1.7
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/caamer20/Telegram-Drive
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = telegram-drive
 	conflicts = telegram-drive-appimage
 	options = !debug
 	options = !lto
-	source = telegram-drive-4.1.7.tar.gz::https://github.com/caamer20/Telegram-Drive/archive/refs/tags/v4.1.7.tar.gz
-	sha256sums = 1ea49a6c057d4f85e2b45a4c9c616ee335c4119650453c3a0dd7dae31f2a0b5b
+	source = telegram-drive-4.2.0.tar.gz::https://github.com/caamer20/Telegram-Drive/archive/refs/tags/v4.2.0.tar.gz
+	sha256sums = b7da1f29a847f091bacbdd6a87e98ca05fbcd2ceb6f0da2666c0fde77326774d
 
 pkgname = telegram-drive
