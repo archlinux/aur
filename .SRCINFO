@@ -1,0 +1,19 @@
+pkgbase = sympozium-bin
+	pkgdesc = Coordination layer for multi-agent AI
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/sympozium-ai/sympozium
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sympozium
+	conflicts = sympozium
+	options = !debug
+	source = sympozium-bin-0.13.0-LICENSE::https://raw.githubusercontent.com/sympozium-ai/sympozium/v0.13.0/LICENSE
+	sha256sums = b52696dc0457bf58616f5017e5146b2932611b9357bb9824c7c91183fc36471f
+	source_x86_64 = sympozium-bin-0.13.0-x86_64.tar.gz::https://github.com/sympozium-ai/sympozium/releases/download/v0.13.0/sympozium-linux-amd64.tar.gz
+	sha256sums_x86_64 = 84eb839a0eba247f496e25deaadbd290155759597607ad883f3b84663da4b72e
+	source_aarch64 = sympozium-bin-0.13.0-aarch64.tar.gz::https://github.com/sympozium-ai/sympozium/releases/download/v0.13.0/sympozium-linux-arm64.tar.gz
+	sha256sums_aarch64 = 68312e25c00d71e9b9b71d9769ee17e71c6b1feaf7afa9e0b50d9edd65c8e42e
+
+pkgname = sympozium-bin
