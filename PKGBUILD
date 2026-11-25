@@ -8,11 +8,11 @@
 # USB-forwarding integration. See README.md for the design and verification notes.
 
 pkgname=nightjar-desktop-bin
-pkgver=6.3.2
+pkgver=6.4.1
 # Version string as it appears in GitHub tags and release asset names. Equals $pkgver for stable
 # tags. For a prerelease tag v4.13.0-rc.1 use pkgver=4.13.0_rc.1 and _version=4.13.0-rc.1
 # (Arch forbids '-' in pkgver; upstream's generator maps '-' <-> '_').
-_version=6.3.2
+_version=6.4.1
 pkgrel=1
 pkgdesc='Moonlight-protocol game-streaming client'
 arch=('x86_64' 'aarch64')
@@ -43,8 +43,8 @@ source=("https://raw.githubusercontent.com/RamazanKara/nightjar/v$_version/LICEN
 source_x86_64=("https://github.com/RamazanKara/nightjar/releases/download/v$_version/nightjar-desktop-$_version-linux-x86_64.tar.gz")
 source_aarch64=("https://github.com/RamazanKara/nightjar/releases/download/v$_version/nightjar-desktop-$_version-linux-aarch64.tar.gz")
 sha256sums=('8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
-sha256sums_x86_64=('f76c4d1971092f8dcb37fe1e6191608a5d48d3ec32c9568c92f5c109e320cb68')
-sha256sums_aarch64=('cdbec45c6b4c6c96008d930d9f5b93e3e74e6f134e8acc6b563b952aacfb2088')
+sha256sums_x86_64=('617886d33f86b92cfc4bf525a3a6f174fadd410a2d756f64ddab06f5e2bc58fd')
+sha256sums_aarch64=('576606e909849701ce623181d107d2a3e4be5e5f615d9e4f89049046c7107843')
 
 package() {
   # Whole prebuilt tree under /opt: binary, bundled FFmpeg/dav1d/PyroWave libs in lib/, the
