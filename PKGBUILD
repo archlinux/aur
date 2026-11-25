@@ -2,9 +2,9 @@
 
 pkgname=stably-orca-bin
 pkgver=1.4.274
-pkgrel=1
+pkgrel=2
 pkgdesc="Stably AI Orca - Electron-based agentic coding IDE (prebuilt AppImage)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/stablyai/orca"
 license=('MIT')
 depends=(
@@ -21,20 +21,27 @@ depends=(
 provides=('stably-orca')
 conflicts=('stably-orca' 'stably-orca-git')
 options=('!strip' '!debug')
+# Upstream publishes one AppImage per architecture. Both are named after
+# CARCH so prepare() picks the right one without a case statement.
 source=(
-  "${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/orca-linux.AppImage"
   'stably-orca.sh'
   'stably-orca.desktop'
 )
-sha256sums=('4c79c1fdc5f3dd4579b5a41a935a59403d751c601f295cda878bc06e66b7d260'
-            '99a4d39e313a217f68cae6eb5e5437f2522da037b99de989291e34524484795c'
+source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/orca-linux.AppImage")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/orca-linux-arm64.AppImage")
+sha256sums=('99a4d39e313a217f68cae6eb5e5437f2522da037b99de989291e34524484795c'
             '05728d7dfad97b6b8d6b10dc3859fff566334500e480df4c5c8372491cf4f172')
-noextract=("${pkgname}-${pkgver}.AppImage")
+sha256sums_x86_64=('4c79c1fdc5f3dd4579b5a41a935a59403d751c601f295cda878bc06e66b7d260')
+sha256sums_aarch64=('f4ed62d133b14eb5ab96b37de873c92cb7fff559e237d8f661e04dbf7189c7a2')
+noextract=("${pkgname}-${pkgver}-x86_64.AppImage" "${pkgname}-${pkgver}-aarch64.AppImage")
 
 prepare() {
-  chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
+  local appimage="${pkgname}-${pkgver}-${CARCH}.AppImage"
   cd "${srcdir}"
-  "./${pkgname}-${pkgver}.AppImage" --appimage-extract >/dev/null
+  chmod +x "${appimage}"
+  # The AppImage runtime is native code for CARCH, so extraction only works
+  # on a matching host. --appimage-extract needs no FUSE.
+  "./${appimage}" --appimage-extract >/dev/null
 }
 
 package() {
