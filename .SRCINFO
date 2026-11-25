@@ -1,6 +1,6 @@
 pkgbase = anymex-bin
 	pkgdesc = An Open Source app for Tracking Multi Service (AL, MAL, SIMKL)
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/RyanYuuki/AnymeX
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = anymex-bin
 	depends = zlib-ng-compat
 	depends = gtk3
 	depends = at-spi2-core
-	provides = anymex=3.2.0
+	provides = anymex=3.2.1
 	conflicts = anymex
-	noextract = AnymeX-3.2.0.AppImage
-	source = AnymeX-3.2.0.AppImage::https://github.com/RyanYuuki/AnymeX/releases/download/v3.2.0/AnymeX-Linux.AppImage
-	source = LICENSE-3.2.0.md::https://raw.githubusercontent.com/RyanYuuki/AnymeX/refs/tags/v3.2.0/LICENSE.md
-	sha256sums = 3d4d9e0406172ecc5d09122f7903c709457cdfcfe25fad05430896d929644cd6
+	noextract = AnymeX-3.2.1.AppImage
+	source = AnymeX-3.2.1.AppImage::https://github.com/RyanYuuki/AnymeX/releases/download/v3.2.1/AnymeX-Linux.AppImage
+	source = LICENSE-3.2.1.md::https://raw.githubusercontent.com/RyanYuuki/AnymeX/refs/tags/v3.2.1/LICENSE.md
+	sha256sums = 43dcdf748d54ff6d9fc3000ae774dc2f77f3ce61553de542cc3ec0d225e665fb
 	sha256sums = SKIP
 
 pkgname = anymex-bin
