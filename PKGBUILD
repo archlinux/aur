@@ -2,7 +2,7 @@
 _pkggroupname="HBuilderX"
 _pkgname="hbuilderx-alpha"
 pkgname="hbuilderx-alpha-bin"
-pkgver=5.37.2026112003
+pkgver=5.38.2026112503
 pkgrel=1
 epoch=1
 provides=('HBuilderX-alpha')
@@ -14,7 +14,7 @@ source=(
 "https://download1.dcloud.net.cn/download/$_pkggroupname.$pkgver-alpha.linux_x64.full.tar.gz"
 "${_pkgname}.service"
 )
-sha256sums=('fd6013fe0b6114a1dc60cb27de1cc173efe86c9794cbe27839dd616a176c4d1e'
+sha256sums=('95c142ef46b1dcf621c10c4cfd3b45bf6e8631c7febc588a2f30d2bd9b180155'
             'f7aff3457c19ee0b27a864d9147b64c53b43ab2186a96f29ede685fdbcca57df')
 options=(!strip !debug)
 
