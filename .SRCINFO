@@ -1,0 +1,19 @@
+pkgbase = python-aiohttp-asyncmdnsresolver
+	pkgdesc = Async mDNS resolver for aiohttp
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/aio-libs/aiohttp-asyncmdnsresolver
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-aiodns>=3.2.0
+	depends = python-aiohttp>=3.10.0
+	depends = python-zeroconf>=0.142.0
+	source = https://files.pythonhosted.org/packages/source/a/aiohttp-asyncmdnsresolver/aiohttp_asyncmdnsresolver-0.2.0.tar.gz
+	sha256sums = aab2cef7ef8ae45b94abf1fc92aa9f4d70cbef7ac0a3d495a86fb96fce357262
+
+pkgname = python-aiohttp-asyncmdnsresolver
