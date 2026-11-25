@@ -1,47 +1,59 @@
 # Maintainer: Julian Daube <joposter (at) gmail (dot) com>
 # Contributor: Julian Daube <joposter (at) gmail (dot) com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Sin Kim
 
 pkgname=newmat-shared
-_pkgname=newmat
 pkgver=10E
-_pkgver=10
-pkgrel=1
-pkgdesc="C++ matrix library"
+pkgrel=2
+pkgdesc="C++ matrix library (shared library)"
+arch=("x86_64")
 url="http://www.robertnz.net"
-arch=('i686' 'x86_64')
-license=('custom')
-source=("http://www.robertnz.net/ftp/$_pkgname$_pkgver.tar.gz" filelist makefile.patch)
-sha256sums=('637d18c0363b8bb99c48eb04cce8c182ccbff771df0bf1e2d541e95f6eb34e7b'
-            'b707dfdf6f64c7bcea1f288845b967349aaa76b6b8fb43559138a9f70307ceee'
-            '57a4875047ea1a4a71d70509cc1e7018c13e0a71bde8f0d7d16ba1cabbec30aa')
-
-provides=("newmat")
+license=("LicenseRef-newmat")
+depends=("glibc" "libgcc" "libstdc++")
+provides=("newmat=$pkgver" "libnewmat.so")
 conflicts=("newmat")
+# keep exporting inline functions, like previous builds
+options=("!lto")
+source=("https://www.robertnz.net/ftp/newmat10.tar.gz")
+noextract=("newmat10.tar.gz")
+sha256sums=("637d18c0363b8bb99c48eb04cce8c182ccbff771df0bf1e2d541e95f6eb34e7b")
 
 prepare() {
-  sed -i 's+//#define use_namespace+#define use_namespace+' include.h 
+	# the archive has no top level directory
+	mkdir -p newmat
+	bsdtar -xf newmat10.tar.gz -C newmat
+	# only change to the original sources: put everything into namespaces
+	sed -i 's|^//#define use_namespace|#define use_namespace|' newmat/include.h
 }
 
 build() {
-  patch nm_gnu.mak < makefile.patch
-  make -f nm_gnu.mak
+	cd newmat
+	local objects=(newmat{1..9}.o newmat{ex,nl,rm}.o bandmat.o cholesky.o evalue.o fft.o hholder.o
+		jacobi.o myexcept.o newfft.o solution.o sort.o submat.o svd.o)
+
+	make -f nm_gnu.mak CXXFLAGS="$CPPFLAGS $CXXFLAGS -fPIC" "${objects[@]}"
+	g++ $CXXFLAGS $LDFLAGS -shared -Wl,-soname,libnewmat.so.10 -o libnewmat.so.10 "${objects[@]}"
+	ln -sf libnewmat.so.10 libnewmat.so
+}
+
+check() {
+	cd newmat
+	local objects=(tmt.o tmt{1..9}.o tmt{a..m}.o)
+
+	make -f nm_gnu.mak CXXFLAGS="$CPPFLAGS $CXXFLAGS" "${objects[@]}"
+	g++ $LDFLAGS -o tmt "${objects[@]}" -L. -lnewmat
+	LD_LIBRARY_PATH="$PWD" ./tmt | tee tmt.log
+	# one test matrix is non-zero on purpose
+	grep -q "Number of non-zero matrices (should be 1) = 1" tmt.log
 }
 
 package() {
-  for _i in `cat filelist | awk '{print $1}'`
-  do
-    install -Dm644 ${_i} "$pkgdir"/usr/include/$_pkgname/${_i}
-  done
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$_pkgname/COPYING
-  install -Dm644 README "$pkgdir"/usr/share/licenses/$_pkgname/README
-  install -Dm644 libnewmat.so "$pkgdir"/usr/lib/libnewmat.so
-  ln -s "/usr/lib/libnewmat.so" "$pkgdir"/usr/lib/libnewmat.so.10
- 
-  for _i in `cat filelist | awk '{print $1}'|sed s+.cpp+.o+|grep -v .h`
-  do 
-    install -Dm755 ${_i} "$pkgdir"/usr/lib/$_pkgname/${_i}
-  done  
-
-  install -Dm644 nm10.htm "$pkgdir"/usr/share/doc/$_pkgname/nm10.htm
+	cd newmat
+	install -Dm 755 libnewmat.so.10 -t "$pkgdir/usr/lib/"
+	ln -s libnewmat.so.10 "$pkgdir/usr/lib/libnewmat.so"
+	install -Dm 644 {boolean,controlw,include,myexcept,newmat,newmatap,newmatio,newmatnl}.h \
+		{newmatrc,newmatrm,precisio,solution}.h -t "$pkgdir/usr/include/newmat/"
+	install -Dm 644 nm10.htm README -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
