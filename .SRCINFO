@@ -1,6 +1,6 @@
 pkgbase = sable-web
 	pkgdesc = A Matrix client built to enhance user experience
-	pkgver = 26.11.2
+	pkgver = 26.11.4
 	pkgrel = 1
 	url = https://git.sable.moe/SableClient/sable-next
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = sable-web
 	makedepends = pnpm
 	makedepends = rust-wasm
 	makedepends = binaryen
-	source = sable-26.11.2.tar.gz::https://git.sable.moe/SableClient/sable-next/archive/v26.11.2.tar.gz
-	sha512sums = 93cf13e23d6ac4b91b83d39e5c9c2e11b41ce226a76e0cade660c2efc0e65a2490acb2a75e7ed7daf05d685064ba343466db3f637adfab206a620f28119c3f60
+	source = sable-26.11.4.tar.gz::https://git.sable.moe/SableClient/sable-next/archive/v26.11.4.tar.gz
+	sha512sums = 109c2043fb148a50becc6c945af045d44677a50a9ef8cd6485d75ea6b55270650fed485e68fdab3dd58ec50a230d9e8d62bf206a42e33e3f937f2179197198c6
 
 pkgname = sable-web
 	backup = etc/webapps/sable/config.json
