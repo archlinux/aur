@@ -3,7 +3,7 @@
 
 _name=telepresence
 pkgname=${_name}2
-pkgver=2.33.4 # renovate: datasource=github-releases depName=telepresenceio/telepresence
+pkgver=2.34.0 # renovate: datasource=github-releases depName=telepresenceio/telepresence
 pkgrel=1
 url="https://github.com/telepresenceio/$_name"
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster"
@@ -12,7 +12,7 @@ arch=(any)
 depends=(sshfs)
 makedepends=('go' 'git' 'make' 'jq' 'fuse2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/telepresenceio/telepresence/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('b61dfd2f3efd7f567d1b959853eca7736160a5ba40de429a77781c2d4e88a51e1bbb14b8ab84e96518ff2c73374c55840aaecdfdf48bbb856b2df8b53676db77')
+sha512sums=('1902eb07c5951d90749eaa557e3fb61c0ceb7eac98f3d6d91bf3f7d0c5b28e9e584db87869bb6ef2a9b7e24e1d13c3c8a76274a438627ddf21f503cc2259df7c')
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
