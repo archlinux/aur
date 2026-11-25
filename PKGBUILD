@@ -1,7 +1,7 @@
 # Maintainer: D Basso <dbas.so@poul.org>
 
 pkgname=strata-files
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='A fast, keyboard-first file manager for Linux'
 url='https://stratafiles.io/ '
@@ -35,7 +35,7 @@ optdepends=(
 )
 arch=('i686' 'x86_64')
 source=("https://github.com/lgse/strata/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('007dfa3e8185206a2da45b509626ec9205fce9629c93c243485a383c54c36b19')
+sha256sums=('857b784edd448b72857cc27f0b8ee28811070cfbb45ed5f898387942a8a28269')
 
 options=(!lto)
 
