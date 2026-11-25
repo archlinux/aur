@@ -1,0 +1,17 @@
+pkgbase = helm-dashboard-bin
+	pkgdesc = The missing UI for Helm - visualize your releases
+	pkgver = 2.1.4
+	pkgrel = 1
+	url = https://github.com/komodorio/helm-dashboard
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = helm-dashboard
+	conflicts = helm-dashboard
+	options = !debug
+	source_x86_64 = helm-dashboard-bin-2.1.4-x86_64.tar.gz::https://github.com/komodorio/helm-dashboard/releases/download/v2.1.4/helm-dashboard_2.1.4_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = f501875282d419a3bb09415b6d059d1c86b89936ad1feb8c30dfd27f6c82e05d
+	source_aarch64 = helm-dashboard-bin-2.1.4-aarch64.tar.gz::https://github.com/komodorio/helm-dashboard/releases/download/v2.1.4/helm-dashboard_2.1.4_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 2421bdf8754db3033a825ca268c30c1b9276a12b3648b2668da5b0a23dc4cf66
+
+pkgname = helm-dashboard-bin
