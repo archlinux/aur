@@ -1,0 +1,19 @@
+pkgbase = resin-bin
+	pkgdesc = A high-performance proxy pool gateway
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/Resinat/Resin
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = resin
+	conflicts = resin
+	options = !debug
+	source = resin-bin-1.4.1-LICENSE::https://raw.githubusercontent.com/Resinat/Resin/v1.4.1/LICENSE
+	sha256sums = 61e67a400433b82fa97610fc5d6252ca49287c6037475a250733f541d3e6131e
+	source_x86_64 = resin-bin-1.4.1-x86_64.tar.gz::https://github.com/Resinat/Resin/releases/download/v1.4.1/resin-linux-amd64.tar.gz
+	sha256sums_x86_64 = 93510eb7d5abbaa49d964092555d0cb27badcad70bf366ea79f763e118300661
+	source_aarch64 = resin-bin-1.4.1-aarch64.tar.gz::https://github.com/Resinat/Resin/releases/download/v1.4.1/resin-linux-arm64.tar.gz
+	sha256sums_aarch64 = 04de30521da0b263ae526db92789e264b1b39a4ab2fca7ba6208b7a4ac4b1e38
+
+pkgname = resin-bin
