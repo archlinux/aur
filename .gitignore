@@ -1,5 +1,4 @@
 src/
 pkg/
 yquake2remaster/
-*.tar.gz
-*.tar.zst
+*.tar.*
