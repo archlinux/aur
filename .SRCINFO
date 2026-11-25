@@ -1,0 +1,19 @@
+pkgbase = newt-bin
+	pkgdesc = Tunneled network connector for Pangolin
+	pkgver = 1.20.1
+	pkgrel = 1
+	url = https://github.com/fosrl/newt
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = newt
+	conflicts = newt
+	options = !debug
+	source = newt-bin-1.20.1-LICENSE::https://raw.githubusercontent.com/fosrl/newt/1.20.1/LICENSE
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	source_x86_64 = newt-bin-1.20.1-x86_64::https://github.com/fosrl/newt/releases/download/1.20.1/newt_linux_amd64
+	sha256sums_x86_64 = ac5556844efa38308b54c474c2bb9c512ea13a1c584d0ee1fc9d7b6fee01ddbb
+	source_aarch64 = newt-bin-1.20.1-aarch64::https://github.com/fosrl/newt/releases/download/1.20.1/newt_linux_arm64
+	sha256sums_aarch64 = 6a0e7c5775e4cfa1668e554ef2137722533fd7046c2be5495e7d01055c61f6b5
+
+pkgname = newt-bin
