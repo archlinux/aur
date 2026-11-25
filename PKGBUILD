@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=llmtrim-bin
-pkgver=0.13.8
+pkgver=0.13.9
 pkgrel=1
 pkgdesc="A local proxy that compresses large-language-model API requests to reduce token costs"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/llmtrim-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/llmtrim-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('812d092460dbf880910b46b7ebac686ef0bfdae201006391cb8d8b1144731ca8')
-sha256sums_aarch64=('4f421db37334afd57f0b5b46fddef47a69724ec446de14621b0528a39ae0a713')
+sha256sums_x86_64=('09be431f703fceb822907d367780a1d899445366bbc2c2ab848a94b07a97ece5')
+sha256sums_aarch64=('3a9da53b66042314662863dbc90fec67355345d8f2b8e0d8fd28857fb1a98f30')
 
 package() {
   install -Dm755 "llmtrim" "${pkgdir}/usr/bin/llmtrim"
