@@ -1,6 +1,6 @@
 pkgbase = python-openqasm3
 	pkgdesc = Reference OpenQASM AST in Python
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/openqasm/openqasm
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-openqasm3
 	makedepends = python-wheel
 	depends = python-antlr4
 	depends = python-importlib-metadata
-	source = openqasm::git+https://github.com/openqasm/openqasm#tag=ast-py/v1.0.1
-	b2sums = d7cdda4ae732ec0e35cd167780a5f36f0bf61ee598c66524e83decb2650841ad12c4ef77417a8a8b529bbd85bda213563d9eb0b7e9001c5c90f689b3d920b4c1
+	source = openqasm::git+https://github.com/openqasm/openqasm#tag=ast-py/v1.0.2
+	b2sums = 1853d71dd862dc2c1b83b2221b65b82f03e47d0bb6bdd6943af0c514c6878d60ec5a0af28b09c4b9805983099382d3de529dbfce9255661746c5ba4f3bc59794
 
 pkgname = python-openqasm3
