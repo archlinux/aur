@@ -1,0 +1,14 @@
+pkgbase = fireworq-bin
+	pkgdesc = Fireworq is a lightweight, high-performance, language-independent job queue system
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/fireworq/fireworq
+	arch = x86_64
+	license = Apache-2.0
+	provides = fireworq
+	conflicts = fireworq
+	options = !debug
+	source_x86_64 = fireworq-bin-1.5.0-x86_64.zip::https://github.com/fireworq/fireworq/releases/download/v1.5.0/fireworq_linux_amd64.zip
+	sha256sums_x86_64 = e5975cd7d0d40ba92b761592417c7b51f8d78f082d4949bede9ac72d311dd85c
+
+pkgname = fireworq-bin
