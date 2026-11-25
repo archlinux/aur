@@ -6,7 +6,7 @@
 
 pkgname=t3-code-libre-bin
 _pkgname=t3code
-pkgver=0.1.11
+pkgver=0.1.12
 _rel=1
 pkgrel=1
 pkgdesc='Desktop control surface for local coding agents (no telemetry, accounts, or cloud relay)'
@@ -53,7 +53,7 @@ options=('!strip' '!debug')
 install=t3-code-libre-bin.install
 source=("$_pkgname-$pkgver-$_rel-x86_64.pkg.tar.zst::$url/releases/download/v$pkgver-$_rel/$_pkgname-$pkgver-$_rel-x86_64.pkg.tar.zst")
 noextract=("$_pkgname-$pkgver-$_rel-x86_64.pkg.tar.zst")
-sha256sums=('bca4b026af7b6393be9c5d09ad10023e6e1e9e5d29d0e6970a2007c53cf1119f')
+sha256sums=('41e724c410c1024e7a1722615e934bd3187e70fdde034ab52af486b728db14e7')
 
 package() {
   bsdtar -xf "$_pkgname-$pkgver-$_rel-x86_64.pkg.tar.zst" -C "$pkgdir" --exclude '.*'

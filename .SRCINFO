@@ -1,6 +1,6 @@
 pkgbase = t3-code-libre-bin
 	pkgdesc = Desktop control surface for local coding agents (no telemetry, accounts, or cloud relay)
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/realazizk/t3code-libre
 	install = t3-code-libre-bin.install
@@ -44,10 +44,10 @@ pkgbase = t3-code-libre-bin
 	conflicts = t3code-bin
 	conflicts = t3code-git
 	conflicts = t3code-nightly-bin
-	noextract = t3code-0.1.11-1-x86_64.pkg.tar.zst
+	noextract = t3code-0.1.12-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = t3code-0.1.11-1-x86_64.pkg.tar.zst::https://github.com/realazizk/t3code-libre/releases/download/v0.1.11-1/t3code-0.1.11-1-x86_64.pkg.tar.zst
-	sha256sums = bca4b026af7b6393be9c5d09ad10023e6e1e9e5d29d0e6970a2007c53cf1119f
+	source = t3code-0.1.12-1-x86_64.pkg.tar.zst::https://github.com/realazizk/t3code-libre/releases/download/v0.1.12-1/t3code-0.1.12-1-x86_64.pkg.tar.zst
+	sha256sums = 41e724c410c1024e7a1722615e934bd3187e70fdde034ab52af486b728db14e7
 
 pkgname = t3-code-libre-bin
