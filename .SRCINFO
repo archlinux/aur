@@ -1,6 +1,6 @@
 pkgbase = rawline-bin
 	pkgdesc = Cross-platform GUI proxy utility (binary release)
-	pkgver = 1.2
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/ttrroyy/Rawline
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = rawline-bin
 	replaces = qthrone-bin
 	options = !strip
 	options = !debug
-	source = https://github.com/ttrroyy/Rawline/releases/download/rawline-1.2/Rawline-1.2-arch-x86_64.pkg.tar.zst
-	sha256sums = b97b2f550ef95d784c59d6c344bc770e451c0cb0e31e8b4687c024286d0d939f
+	source = https://github.com/ttrroyy/Rawline/releases/download/rawline-1.2.1/Rawline-1.2.1-arch-x86_64.pkg.tar.zst
+	sha256sums = 22d2161876f35c558d5ab36617e761138c4734e964668541d7e7de951675dd54
 
 pkgname = rawline-bin
