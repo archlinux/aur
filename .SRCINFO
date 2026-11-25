@@ -1,0 +1,17 @@
+pkgbase = swarm-cronjob-bin
+	pkgdesc = Time-based job scheduling for Docker Swarm
+	pkgver = 1.16.1
+	pkgrel = 1
+	url = https://github.com/crazy-max/swarm-cronjob
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = swarm-cronjob
+	conflicts = swarm-cronjob
+	options = !debug
+	source_x86_64 = swarm-cronjob-bin-1.16.1-x86_64.tar.gz::https://github.com/crazy-max/swarm-cronjob/releases/download/v1.16.1/swarm-cronjob_1.16.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 086a461599ddbd38296ffc8f97ee2568e8e97cf7756dd3bf85cebd02ad71301f
+	source_aarch64 = swarm-cronjob-bin-1.16.1-aarch64.tar.gz::https://github.com/crazy-max/swarm-cronjob/releases/download/v1.16.1/swarm-cronjob_1.16.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 631e517794a52e592e1f5cae44337876601a71a52c7797f436f0e62ebd6af75d
+
+pkgname = swarm-cronjob-bin
