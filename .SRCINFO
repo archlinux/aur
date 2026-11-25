@@ -1,0 +1,20 @@
+pkgbase = bild-bin
+	pkgdesc = Image processing algorithms in pure Go
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = https://github.com/anthonynsimon/bild
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = bild
+	conflicts = bild
+	options = !debug
+	source = bild-bin-0.17.1-LICENSE::https://raw.githubusercontent.com/anthonynsimon/bild/v0.17.1/LICENSE
+	sha256sums = 0c5184b0a2ce22abc964669a76795398a9f34f234a09975621113f5fc9db05a5
+	source_x86_64 = bild-bin-0.17.1-x86_64.tar.gz::https://github.com/anthonynsimon/bild/releases/download/v0.17.1/bild_linux_amd64.tar.gz
+	sha256sums_x86_64 = f9dc84535b11a7ddc1fdd0b6f585c865de04d6b813149c8e3b2cfbfeda4fe331
+	source_aarch64 = bild-bin-0.17.1-aarch64.tar.gz::https://github.com/anthonynsimon/bild/releases/download/v0.17.1/bild_linux_arm64.tar.gz
+	sha256sums_aarch64 = c57ed643e10bf418022715f0dd89e508aa911c5ea99c800f8d41564fca8e19f7
+
+pkgname = bild-bin
