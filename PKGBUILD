@@ -1,14 +1,14 @@
 # Maintainer: Audrius <aur@kaud.eu>
 pkgname=prusa-connect-bin
 pkgver=0.1.0beta.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Self-hosted Prusa 3D printer management server with web UI (upstream binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/prusa3d/prusa-connect'
 license=('LicenseRef-OCL-1.1-Micro-1-NoSaaS-1-SWAtt-1')
 depends=('ca-certificates' 'systemd')
 provides=("prusa-connect-local=${pkgver}")
-conflicts=('prusa-connect-local')
+conflicts=('prusa-connect-local' 'prusa-connect')
 backup=('var/lib/prusa-connect/config/config.yaml')
 options=('!strip' '!debug')
 _upstream_version=0.1.0-beta.2
