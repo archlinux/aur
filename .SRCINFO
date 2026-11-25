@@ -1,6 +1,6 @@
 pkgbase = doubao-cli
 	pkgdesc = Doubao CLI: terminal AI agent for Doubao, usable from scripts and automation workflows
-	pkgver = 2.37.2
+	pkgver = 2.38.2
 	pkgrel = 1
 	url = https://www.doubao.com/work/docs/zh-cn/doubao-cli
 	arch = x86_64
@@ -17,12 +17,12 @@ pkgbase = doubao-cli
 	optdepends = curl: download the browser-use runtime
 	optdepends = dpkg: unpack the Chromium bundle used by browser-use
 	optdepends = python: create the browser-use virtual environment
-	noextract = doubao-cli-2.37.2-linux-x64.tar.gz
+	noextract = doubao-cli-2.38.2-linux-x64.tar.gz
 	options = !strip
 	options = !debug
-	source = doubao-cli-2.37.2-linux-x64.tar.gz::https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao_cli/2.37.2/doubao-cli-2.37.2-linux-x64-signed.tar.gz
+	source = doubao-cli-2.38.2-linux-x64.tar.gz::https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao_cli/2.38.2/doubao-cli-2.38.2-linux-x64-signed.tar.gz
 	source = LICENSE
-	sha256sums = f49aebaea880cb24e44ca4eaacd45efb789d32387b9d197cfd8c01a703715091
+	sha256sums = 1d1133ba70e4911b4ee5e37baf8896443b9fc0503fd82c8a053554b3a69795ec
 	sha256sums = 28a013f498cab8e33069387e2c08eb82a4c378a3dc03e94c04443861437ca54a
 
 pkgname = doubao-cli

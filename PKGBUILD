@@ -11,7 +11,7 @@
 # /usr/bin/doubao 指向 /opt 下真身的软链接即可正常工作。
 
 pkgname=doubao-cli
-pkgver=2.37.2
+pkgver=2.38.2
 pkgrel=1
 pkgdesc='Doubao CLI: terminal AI agent for Doubao, usable from scripts and automation workflows'
 arch=('x86_64')
@@ -35,10 +35,10 @@ optdepends=(
 )
 options=('!strip' '!debug')
 source=(
-  "doubao-cli-${pkgver}-linux-x64.tar.gz::https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao_cli/2.37.2/doubao-cli-2.37.2-linux-x64-signed.tar.gz"
+  "doubao-cli-${pkgver}-linux-x64.tar.gz::https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao_cli/2.38.2/doubao-cli-2.38.2-linux-x64-signed.tar.gz"
   'LICENSE'
 )
-sha256sums=('f49aebaea880cb24e44ca4eaacd45efb789d32387b9d197cfd8c01a703715091'
+sha256sums=('1d1133ba70e4911b4ee5e37baf8896443b9fc0503fd82c8a053554b3a69795ec'
             '28a013f498cab8e33069387e2c08eb82a4c378a3dc03e94c04443861437ca54a')
 noextract=("doubao-cli-${pkgver}-linux-x64.tar.gz")
 
