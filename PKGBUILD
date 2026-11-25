@@ -1,12 +1,12 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 
-# Co-Maintainer: Harsh Vyapari <harshvy5094@proton.me>
+# Co-Maintainer: Harsh Vyapari <harshv5094@gmail.com>
 # https://github.com/harshv5094
 
 _pkgname=linutil
 pkgname="$_pkgname-git"
-pkgver=2026.05.14+r9f13a8f
+pkgver=2026.11.14+rc20db8be
 pkgrel=1
 pkgdesc="Distro-agnostic toolbox designed to simplify everyday Linux tasks"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,9 @@ license=('MIT')
 source=("git+$url")
 sha256sums=('SKIP')
 makedepends=('cargo')
-depends=('git' 'pacman' 'tree-sitter' 'tree-sitter-bash' 'gcc-libs' 'glibc')
+depends=('git' 'pacman' 'gcc-libs' 'glibc')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
+options=('!lto')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 
@@ -33,7 +34,6 @@ prepare() {
 
 build() {
   export CARGO_TARGET_DIR=target
-  export RUSTFLAGS="-C link-arg=/usr/lib/libtree-sitter.so -C link-arg=/usr/lib/libtree-sitter-bash.so"
   cd "$_pkgname"
   cargo build --frozen --release --all-features
 }
