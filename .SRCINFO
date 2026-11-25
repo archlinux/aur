@@ -1,0 +1,19 @@
+pkgbase = siteone-crawler-bin
+	pkgdesc = Website crawler and analyzer for SEO, security, accessibility and performance
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/janreges/siteone-crawler
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = siteone-crawler
+	conflicts = siteone-crawler
+	options = !debug
+	source_x86_64 = siteone-crawler-bin-2.5.1-x86_64.tar.gz::https://github.com/janreges/siteone-crawler/releases/download/v2.5.1/siteone-crawler-v2.5.1-linux-x64.tar.gz
+	sha256sums_x86_64 = 09278d958d4a087fa46093805cd33b085b96618001dd31d45c448ad724c9024e
+	source_aarch64 = siteone-crawler-bin-2.5.1-aarch64.tar.gz::https://github.com/janreges/siteone-crawler/releases/download/v2.5.1/siteone-crawler-v2.5.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = aa0bc9b2d7c7da5b871d2326d91183ef7c3107e005ef16dba69c78c5e406f83e
+
+pkgname = siteone-crawler-bin
