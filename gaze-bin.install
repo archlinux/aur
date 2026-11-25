@@ -186,7 +186,6 @@ fi
 if [ -d /run/systemd/system ]; then
 	systemctl daemon-reload >/dev/null 2>&1 || true
 	dbus-send --system --type=method_call --dest=org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus.ReloadConfig >/dev/null 2>&1 || true
-	systemctl restart polkit >/dev/null 2>&1 || true
 	if ! cpu_lacks_avx2; then
 		systemctl try-restart gazed >/dev/null 2>&1 || true
 	fi
@@ -382,7 +381,6 @@ fi
 if [ -d /run/systemd/system ]; then
 	systemctl daemon-reload >/dev/null 2>&1 || true
 	dbus-send --system --type=method_call --dest=org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus.ReloadConfig >/dev/null 2>&1 || true
-	systemctl restart polkit >/dev/null 2>&1 || true
 	if ! cpu_lacks_avx2; then
 		systemctl try-restart gazed >/dev/null 2>&1 || true
 	fi
@@ -418,10 +416,6 @@ fi
 
 rm -f /etc/gaze/polkit-1.pam.bak || true
 rm -f /etc/gaze/pam-sudo.optout || true
-
-if [ -d /run/systemd/system ]; then
-    systemctl restart polkit >/dev/null 2>&1 || true
-fi
 
 }
 
