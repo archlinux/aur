@@ -2,7 +2,7 @@
 # Maintainer: nickheyer
 
 pkgname='nebu'
-pkgver=1.1.10
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Model storage, inference runtime management, and API gateway'
 url='https://github.com/nickheyer/nebu'
@@ -15,7 +15,7 @@ makedepends=('go>=1.27' 'nodejs>=24' 'npm' 'buf' 'make')
 optdepends=('git: git model sources' 'cmake: building llama.cpp and stable-diffusion.cpp' 'gcc: compiling inference runtimes' 'python: Python inference runtimes' 'python-pip: installing Python inference runtimes' 'cuda: building CUDA inference runtimes' 'nvidia-utils: NVIDIA device probing' 'hip-runtime-amd: AMD inference runtimes' 'rocm-smi-lib: AMD device probing' 'docker: optional container build sandbox')
 backup=('etc/nebu/config.yaml')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/nickheyer/nebu/releases/download/v${pkgver}/nebu_${pkgver}_source.tar.gz")
-sha256sums=('52c38d487eefc5e57a4970606e3187dd5a8206f078ef88c225e80212348621b1')
+sha256sums=('9a2794421e765561ece75b99212949caa138b08c4781c1db67c98cd840c1fa37')
 prepare() {
   export GOTOOLCHAIN=local
   go mod download
