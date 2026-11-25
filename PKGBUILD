@@ -1,12 +1,12 @@
 # Maintainer: Kazoku <k4zoku@pm.me>
 
 _pkgbase=dearsql
-_tag=c18588c6b40d322e990bdcf8e79eb2396cc8c8cf
+_tag=22dc848fdea6e15b42b6a76a94597fe85b9ae5cf
 _vcpkg_commit=77df67cfff9c12ccfdb52284e07c87c75092f723
 _mongo_patch_commit=bd93b56711a393a3c498991e023f94b7542832bb
 pkgname=${_pkgbase}
-pkgver=0.7.7
-pkgrel=4
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Cross-platform SQL database client"
 arch=('x86_64')
 url="https://github.com/dunkbing/dearsql"
@@ -36,7 +36,7 @@ source=(
     "vcpkg-${_vcpkg_commit}.tar.gz::https://github.com/microsoft/vcpkg/archive/${_vcpkg_commit}.tar.gz"
     "mongo-cmake-4.4.patch::https://raw.githubusercontent.com/microsoft/vcpkg/${_mongo_patch_commit}/ports/mongo-c-driver/cmake-4.4.patch"
 )
-sha256sums=('29d7fb7ab771bfd7adc93483d1128b5234bcbf2a7f05252535e464c60fb16fd9'
+sha256sums=('e685ec8956f3e0b9a5e8005e5295c1269afc0ad57f14ce2356261d4f22a8d60b'
             '0edebdc4f04b88ec608b1a35bff67132d4686e4059bb06a528c2664a5436937e'
             '138092b6f9a01ea46325fa55813350578719cf901c56e69166d7466ef2d03d84')
 
@@ -47,6 +47,7 @@ prepare() {
         mv "vcpkg-${_vcpkg_commit}" vcpkg
     fi
     sed -i '/"builtin-baseline":/d' "${_pkgbase}/vcpkg.json"
+    sed -i 's/"dependencies": \[/"dependencies": ["miniz",/' "${_pkgbase}/vcpkg.json"
     rm -rf vcpkg-overlay
     mkdir -p vcpkg-overlay/mongo-c-driver
     cp -a vcpkg/ports/mongo-c-driver/. vcpkg-overlay/mongo-c-driver/
@@ -57,6 +58,7 @@ prepare() {
     sed -i \
         '/remove_abs_patch.cmake/a\        mongo-cmake-4.4.patch' \
         vcpkg-overlay/mongo-c-driver/portfile.cmake
+    cp -a vcpkg-overlay/mongo-c-driver "${_pkgbase}/cmake/ports-linux/"
     sed -i \
         '/-DOPENSSL_USE_STATIC_LIBS=ON/a\            -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.so\
             -DZLIB_LIBRARY_DEBUG=/usr/lib/libz.so\
