@@ -1,6 +1,6 @@
 pkgbase = absotui-bin
 	pkgdesc = A fast, keyboard-driven TUI client for Audiobookshelf (self-hosted audiobook/podcast server)
-	pkgver = 0.12.0
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/pdwaldrop/absotui
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = absotui-bin
 	provides = absotui
 	conflicts = absotui
 	options = !debug
-	source = absotui-bin-0.12.0-LICENSE::https://raw.githubusercontent.com/pdwaldrop/absotui/v0.12.0/LICENSE
+	source = absotui-bin-0.12.2-LICENSE::https://raw.githubusercontent.com/pdwaldrop/absotui/v0.12.2/LICENSE
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	source_x86_64 = absotui-bin-0.12.0-x86_64.tar.gz::https://github.com/pdwaldrop/absotui/releases/download/v0.12.0/absotui-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 8d1073dc743de693f8ea01b335ccfc0abd3cd6c8a51dbff42a992b2f33baa0c8
-	source_aarch64 = absotui-bin-0.12.0-aarch64.tar.gz::https://github.com/pdwaldrop/absotui/releases/download/v0.12.0/absotui-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 2e2b4e8ebd82f4a1c29041f2e77501165c785e8a1ff13792c04573fd90196081
+	source_x86_64 = absotui-bin-0.12.2-x86_64.tar.gz::https://github.com/pdwaldrop/absotui/releases/download/v0.12.2/absotui-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 441b2be2de7bcfb1f4f55386c03f1556bcbbd3f704c2c26e58e6112fab6c2426
+	source_aarch64 = absotui-bin-0.12.2-aarch64.tar.gz::https://github.com/pdwaldrop/absotui/releases/download/v0.12.2/absotui-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 67a5e3a6cf249532effb8f0dccf3a6f44562699e97a28cec1556392858df7985
 
 pkgname = absotui-bin
