@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=melia-appimage
-pkgver=1.1.433
+pkgver=1.1.434
 pkgrel=1
 pkgdesc="A privacy-first desktop email client (AppImage)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=(melia)
 conflicts=(melia)
 options=(!strip !debug)
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/buxjr311/melia-app/releases/download/v${pkgver}/melia_${pkgver}_x64.AppImage")
-sha256sums=('33accfb59afbb21f1139d8422ec85d15475bb1b0714bbc0c5e28177005188618')
+sha256sums=('6406681ec1ba2f76b6ac6dd48dee6914c9aa25d4e5f0b2eda45253d6585e5251')
 
 prepare() {
   chmod +x "${pkgname}-${pkgver}.AppImage"

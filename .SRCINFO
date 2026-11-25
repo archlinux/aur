@@ -1,6 +1,6 @@
 pkgbase = melia-appimage
 	pkgdesc = A privacy-first desktop email client (AppImage)
-	pkgver = 1.1.433
+	pkgver = 1.1.434
 	pkgrel = 1
 	url = https://melia.buxjr.com
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = melia-appimage
 	conflicts = melia
 	options = !strip
 	options = !debug
-	source = melia-appimage-1.1.433.AppImage::https://github.com/buxjr311/melia-app/releases/download/v1.1.433/melia_1.1.433_x64.AppImage
-	sha256sums = 33accfb59afbb21f1139d8422ec85d15475bb1b0714bbc0c5e28177005188618
+	source = melia-appimage-1.1.434.AppImage::https://github.com/buxjr311/melia-app/releases/download/v1.1.434/melia_1.1.434_x64.AppImage
+	sha256sums = 6406681ec1ba2f76b6ac6dd48dee6914c9aa25d4e5f0b2eda45253d6585e5251
 
 pkgname = melia-appimage
