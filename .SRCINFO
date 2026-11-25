@@ -1,0 +1,17 @@
+pkgbase = go-httpbin-bin
+	pkgdesc = Go port of httpbin, the HTTP request and response testing service
+	pkgver = 2.26.0
+	pkgrel = 1
+	url = https://github.com/mccutchen/go-httpbin
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = go-httpbin
+	conflicts = go-httpbin
+	options = !debug
+	source_x86_64 = go-httpbin-bin-2.26.0-x86_64.tar.gz::https://github.com/mccutchen/go-httpbin/releases/download/v2.26.0/go-httpbin-linux-amd64.tar.gz
+	sha256sums_x86_64 = b5160d5ac6c873a859bcfe608d724acf000152dec2783ac0dfbdf655609327d4
+	source_aarch64 = go-httpbin-bin-2.26.0-aarch64.tar.gz::https://github.com/mccutchen/go-httpbin/releases/download/v2.26.0/go-httpbin-linux-arm64.tar.gz
+	sha256sums_aarch64 = 27260ee3c2d39b50d7217abc6db420e167baeccd80d4c20146e53046e1b543c8
+
+pkgname = go-httpbin-bin
