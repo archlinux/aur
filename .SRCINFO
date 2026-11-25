@@ -1,0 +1,16 @@
+pkgbase = dezoomify-bin
+	pkgdesc = Download full-resolution images from zoomable image viewers
+	pkgver = 26.11.25
+	pkgrel = 1
+	url = https://github.com/dezoomify/dezoomify
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = dezoomify
+	conflicts = dezoomify
+	options = !debug
+	source_x86_64 = dezoomify-bin-26.11.25-x86_64.tar.gz::https://github.com/dezoomify/dezoomify/releases/download/26.11.25/dezoomify-cli-v26.11.25-linux-x86_64.tar.gz
+	sha256sums_x86_64 = fe849deaba5ec1db5fc65dacba981f7458b1ba16439c6c1b5f3b9b324d470b48
+
+pkgname = dezoomify-bin
