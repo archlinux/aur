@@ -2,6 +2,7 @@ pkgbase = nijiexpose-bin
 	pkgdesc = Application that allows streaming with nijilive puppets (VTuber, fork of Inochi2D which is like Live2D)
 	pkgver = v1.0.0beta2
 	pkgrel = 1
+	url = https://github.com/nijigenerate/nijiexpose
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = unzip
