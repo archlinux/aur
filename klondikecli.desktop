@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=KlondikeCLI
+GenericName=Solitaire
+Comment=Klondike solitaire in your terminal
+TryExec=KlondikeCLI
+Exec=sh -c "KlondikeCLI; echo; echo 'Press Enter to close.'; read line"
+Icon=klondikecli
+Terminal=true
+Categories=Game;CardGame;
+Keywords=klondike;cards;patience;card game;
