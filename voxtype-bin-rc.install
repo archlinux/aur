@@ -294,6 +294,17 @@ _detect_gpu() {
         fi
     fi
 
+    # The Vulkan build needs AVX2 like every build but baseline, and
+    # setup gpu --enable refuses it on a CPU without AVX2.
+    if [ -n "$GPU_DETECTED" ] && ! _cpu_has avx2; then
+        echo ""
+        echo "    GPU detected: $GPU_DETECTED"
+        echo "    This CPU has no AVX2, which the Vulkan build needs, so voxtype"
+        echo "    runs on the CPU (baseline build)."
+        echo ""
+        return
+    fi
+
     if [ -n "$GPU_DETECTED" ]; then
         echo ""
         echo "    GPU detected: $GPU_DETECTED"
@@ -400,7 +411,7 @@ post_upgrade() {
     echo "    This is a release candidate. To go back to stable:"
     echo "      yay -R voxtype-bin-rc && yay -S voxtype-bin"
     echo ""
-    echo "    What's new in 1.3.2-rc3:"
+    echo "    What's new in 1.3.2-rc4:"
     echo "      * Soniox sends its key in the WebSocket handshake. Soniox"
     echo "        requires this from January 15, 2027, so upgrade before then"
     echo "        if you use Soniox."
@@ -417,6 +428,8 @@ post_upgrade() {
     echo "        restarted copy, and history works on atomic Fedora."
     echo "      * rc3: a model that fails to load no longer takes the daemon"
     echo "        down, and CPUs without AVX2 are offered the baseline build."
+    echo "      * rc4: setup gpu --enable refuses Vulkan on a CPU without AVX2"
+    echo "        on this package too."
     echo ""
     _print_omarchy_hint
     echo "    Restart the daemon to apply updates:"
