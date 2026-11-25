@@ -1,14 +1,14 @@
 pkgbase = firefox-extension-xbrowsersync
-	pkgdesc = xBrowserSync: free, open-source, anonymous and secure bookmark sync (Firefox extension)
-	pkgver = 1.5.2
+	pkgdesc = xBrowserSync: free, open-source, anonymous and secure bookmark sync (Firefox extension, nightly build)
+	pkgver = 1.8.0beta.261
 	pkgrel = 1
 	url = https://www.xbrowsersync.org
 	arch = any
 	groups = firefox-addons
 	license = GPL-3.0-only
 	optdepends = firefox: the extension is installed for the system Firefox
-	noextract = xbrowsersync-1.5.2.xpi
-	source = xbrowsersync-1.5.2.xpi::https://github.com/xbrowsersync/app/releases/download/v1.5.2/xbrowsersync_1.5.2_firefox.xpi
-	sha256sums = 8b58ad5498273e121b1ba5abaf108d2bc9f4fb4795bd5c7e6a3778196f7a0221
+	noextract = xbrowsersync-1.8.0beta.261.xpi
+	source = xbrowsersync-1.8.0beta.261.xpi::https://github.com/xbrowsersync/app/releases/download/nightly/xbrowsersync_1.8.0-beta.261_firefox.xpi
+	sha256sums = f416b19970ae303c9c3727c23ee76e3627bd0a6667f94bc02780b3bdf59027a2
 
 pkgname = firefox-extension-xbrowsersync
