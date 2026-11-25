@@ -1,0 +1,17 @@
+pkgbase = pixivbiu-bin
+	pkgdesc = Pixiv browsing and download client with a web UI
+	pkgver = 3.1.6
+	pkgrel = 1
+	url = https://github.com/txperl/PixivBiu
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pixivbiu
+	conflicts = pixivbiu
+	options = !debug
+	source_x86_64 = pixivbiu-bin-3.1.6-x86_64.tar.gz::https://github.com/txperl/PixivBiu/releases/download/v3.1.6/PixivBiu_3.1.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = d4811da7792580a44136d3883b2b2d8158b63de791463e731caf73f873500bdd
+	source_aarch64 = pixivbiu-bin-3.1.6-aarch64.tar.gz::https://github.com/txperl/PixivBiu/releases/download/v3.1.6/PixivBiu_3.1.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1f438d5ec7a38a772cf841a22f2414177c5ef3f2c845e25ef15032889760fe49
+
+pkgname = pixivbiu-bin
