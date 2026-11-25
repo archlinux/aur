@@ -1,0 +1,18 @@
+pkgbase = yoyo-evolve-bin
+	pkgdesc = A coding agent that evolves its own source, in public 200 lines of Rust on day one, every commit since agent-written and tests-gated
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/yologdev/yoyo-evolve
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = yoyo-evolve
+	conflicts = yoyo-evolve
+	options = !debug
+	source = yoyo-evolve-bin-0.5.0-LICENSE::https://raw.githubusercontent.com/yologdev/yoyo-evolve/v0.5.0/LICENSE
+	sha256sums = 3c5eb0f910afe903dbba909331ae756aaa76517da3df8609786ef660c994afe1
+	source_x86_64 = yoyo-evolve-bin-0.5.0-x86_64.tar.gz::https://github.com/yologdev/yoyo-evolve/releases/download/v0.5.0/yoyo-v0.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f8cb71135e6ad065cb3d62e19c71b966cac42ba5d2a09ee8980bacc1e8699b92
+
+pkgname = yoyo-evolve-bin
