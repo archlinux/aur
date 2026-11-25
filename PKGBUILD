@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=tinyetl-bin
-pkgver=0.11.1 # renovate: datasource=github-releases depName=alrpal/TinyETL
+pkgver=0.12.0 # renovate: datasource=github-releases depName=alrpal/TinyETL
 pkgrel=1
 pkgdesc="Fast, zero-config ETL in a single binary"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!debug')
 provides_x86_64=("tinyetl=${pkgver}")
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/alrpal/TinyETL/releases/download/v${pkgver}/tinyetl-linux-x86_64.tar.gz"
                 "https://raw.githubusercontent.com/alrpal/TinyETL/refs/tags/v${pkgver}/LICENSE")
-sha256sums_x86_64=('bc03bdf996da7c7e3e34cc418e2721457343cb4cce5f4c512bf9b0f85fd98a68'
+sha256sums_x86_64=('0cdfb81ae0a371b7c8d19d3568bb588a276be78e3690abc00b4d1539421ef9c4'
                    '3c14c6403d4565757f7ee93cec91d8895d82cac5a9bf1cb44abd343e4c639886')
 
 package() {
