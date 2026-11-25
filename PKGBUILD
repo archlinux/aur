@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-downloader-git
 _pkgname=Ghost-Downloader
-pkgver=4.5.2.r4.g45a60ba
+pkgver=4.6.r1.g67940f7
 pkgrel=1
 pkgdesc="A multi-threading async downloader with QThread based on PyQt/PySide.多线程下载器 协程下载器."
 arch=('any')
@@ -18,8 +18,10 @@ depends=(
     'xcb-util-image'
     'gtk3'
     'qt6-base'
+    'qt6-declarative'
     'libxkbcommon-x11'
     'python'
+    'python-certifi'
     'python-loguru'
     'ffmpeg'
     'libtorrent-rasterbar'
@@ -29,6 +31,7 @@ makedepends=(
     'gendesk'
     'patchelf'
     'uv'
+    'imagemagick'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}"
@@ -61,6 +64,15 @@ _set_python_uv_build_env() {
 	export PYTHONHASHSEED=0
 	mkdir -p "${HOME}" "${UV_CACHE_DIR}"
 }
+_generate_icons() {
+	local _sizes=(16 24 32 48 64 96 128 256 512 1024) _src="$(_get_project_dir)/app/assets/logo.png" _s
+	for _s in "${_sizes[@]}"; do
+		install -d "${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps"
+		magick "${_src}" -background none -filter Lanczos -resize "${_s}x${_s}" \
+			-strip -define png:compression-level=9 \
+			"${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps/${pkgname%-git}.png"
+	done
+}
 prepare() {
     cd "$(_get_project_dir)"
     _set_python_uv_build_env
@@ -88,6 +100,6 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}/plugins"
     cp -a "$(_get_project_dir)/dist/${_pkgname}-3.dist/." "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "$(_get_project_dir)/app/assets/logo.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-git}.png"
+    _generate_icons
     install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
