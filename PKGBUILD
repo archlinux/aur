@@ -1,6 +1,6 @@
 # Maintainer: slatkin@woims.net
 pkgname=mbv
-pkgver=0.28.3
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="mpv/Emby and Audiobookshelf front-end"
 arch=('x86_64')
@@ -9,13 +9,14 @@ license=('MIT')
 depends=('mpv' 'pipewire' 'wayland' 'libxkbcommon' 'libxkbcommon-x11' 'libxcb' 'libx11' 'fontconfig' 'vulkan-icd-loader')
 optdepends=('pinwin>=0.4.1: pinned panel support')
 source=("${pkgname}-${pkgver}-linux-x86_64.tar.gz::https://github.com/slatkin/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('6215ed73b9d731be553277a2fd8538d83737e023586487e0a14c9862542d7aff')
+sha256sums=('59c3cced23950bf0c2feccbcd5fa79d4131feefc751a47634797c137521b3ab5')
 
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 "mbvd" "${pkgdir}/usr/bin/mbvd"
-    install -Dm755 "mbv-gui" "${pkgdir}/usr/bin/mbv-gui"
+    install -Dm755 "mbv-tui" "${pkgdir}/usr/bin/mbv-tui"
+    install -Dm755 "mbv-owner" "${pkgdir}/usr/bin/mbv-owner"
     install -Dm644 "mbv.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
     install -Dm644 "mbv.lua" "${pkgdir}/usr/share/${pkgname}/scripts/mbv.lua"
