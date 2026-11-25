@@ -1,0 +1,17 @@
+pkgbase = git-koi-bin
+	pkgdesc = Draw a pixel-art koi GIF from a GitHub account's public activity
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/yalongwastaken/git-koi
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = git-koi
+	conflicts = git-koi
+	options = !debug
+	source_x86_64 = git-koi-bin-1.0.2-x86_64.tar.gz::https://github.com/yalongwastaken/git-koi/releases/download/v1.0.2/git-koi-1.0.2-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 2e5ea416ff3667685516b47a8091037ca3c1878267f19b26446a2c41431a776d
+	source_aarch64 = git-koi-bin-1.0.2-aarch64.tar.gz::https://github.com/yalongwastaken/git-koi/releases/download/v1.0.2/git-koi-1.0.2-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = e312e80f1efbb60a5a027a0303a8332b9c908845cf05c2d652d3d48e7252d38c
+
+pkgname = git-koi-bin
