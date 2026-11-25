@@ -1,6 +1,6 @@
 # Maintainer: tsaitang404 <tsaitang.agent@gmail.com>
 pkgname=openunivpn
-pkgver=1.1.12
+pkgver=1.1.13
 pkgrel=1
 pkgdesc="H3C SecPath SSLVPN 开源替代客户端"
 arch=('any')
@@ -32,9 +32,11 @@ package() {
 [auth]
 username =
 password =
+# 可选：网关要求固定客户端 MAC 时填写 AA-BB-CC-DD-EE-FF；留空则使用本机 MAC
+mac_address =
 
 [gateway]
-# 格式: host:ip 或 host:port（缺省 443）
+# 格式: host:port（端口可省略，缺省 443）
 list =
 # 默认校验 VPN 网关证书；仅在明确需要时设为 false。
 # tls_verify = true
@@ -46,6 +48,8 @@ extra_routes =
 
 [dns]
 backend = resolvconf
+# resolvconf 的独立标签，不是 TUN 接口名；避免与其他 VPN 共用 vpn0
+resolvconf_iface = vpn-openunivpn
 EOF
 
     # 会话目录

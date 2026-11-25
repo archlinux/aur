@@ -8,6 +8,7 @@ UniVPN 开源客户端 — 自动选最优网关 + TUN 模式
 """
 import socket, ssl, struct, sys, os, time, threading, select, random, fcntl, subprocess, ipaddress, logging, signal, shutil, errno, json
 import re
+from urllib.parse import urlencode
 from contextlib import closing, contextmanager
 from configparser import Error as ConfigError
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -324,17 +325,18 @@ def check_route_conflicts(address, routes):
 
 
 # ── 系统 DNS 管理（通过 openresolv/resolvconf 协调，与 NetworkManager 共存）──
-# 依赖 openresolv 包（PKGBUILD depends）。用接口名 vpn0（在 resolvconf 默认
-# dynamic_order 中，DNS 自动排最前）。NetworkManager 需配置 rc-manager=resolvconf
-# （两者都走 resolvconf，互不覆盖）。
-RESOLVCONF_IFACE = 'vpn0'
+# 依赖 openresolv 包（PKGBUILD depends）。使用独立的 VPN 标签（在 resolvconf 默认
+# dynamic_order 中，VPN 标签通常自动排最前）。NetworkManager 需配置
+# rc-manager=resolvconf（两者都走 resolvconf，互不覆盖）。
+RESOLVCONF_IFACE = 'vpn-openunivpn'
 
 def _resolvconf_available():
     """resolvconf 是否可用（依赖 openresolv）。缺失时跳过 DNS 注入，避免破坏网络。"""
     return shutil.which("resolvconf") is not None
 
 
-def setup_dns(vpn_dns_list, backend='resolvconf', tun_name=None, *, before_change=None):
+def setup_dns(vpn_dns_list, backend='resolvconf', tun_name=None,
+              resolvconf_iface=RESOLVCONF_IFACE, *, before_change=None):
     """将经隧道可达的 DNS 交给所选后端。"""
     if backend == 'dnsmasq':
         if dns_backend.activate(vpn_dns_list, tun_name, before_change=before_change):
@@ -354,23 +356,23 @@ def setup_dns(vpn_dns_list, backend='resolvconf', tun_name=None, *, before_chang
     content = "\n".join(f"nameserver {d}" for d in servers) + "\n"
     if before_change is not None:
         before_change()
-    subprocess.run(["resolvconf", "-a", RESOLVCONF_IFACE], input=content,
+    subprocess.run(["resolvconf", "-a", resolvconf_iface], input=content,
                    capture_output=True, text=True).check_returncode()
     logger.info("VPN DNS 已通过 resolvconf 添加: %s", ', '.join(map(str, servers)))
 
 
-def restore_dns(backend='resolvconf'):
+def restore_dns(backend='resolvconf', resolvconf_iface=RESOLVCONF_IFACE):
     """Restore a backend whose state may have changed; propagate failures."""
     if backend == 'dnsmasq':
         dns_backend.restore()
         return
-    subprocess.run(["resolvconf", "-d", RESOLVCONF_IFACE],
+    subprocess.run(["resolvconf", "-d", resolvconf_iface],
                    capture_output=True, text=True).check_returncode()
     logger.info("VPN DNS 已从 resolvconf 移除")
 
 
 @contextmanager
-def session_dns(addresses, backend, tun_name):
+def session_dns(addresses, backend, tun_name, resolvconf_iface=RESOLVCONF_IFACE):
     changed = False
     failure = None
 
@@ -380,7 +382,8 @@ def session_dns(addresses, backend, tun_name):
 
     try:
         try:
-            setup_dns(addresses, backend, tun_name, before_change=before_change)
+            setup_dns(addresses, backend, tun_name, resolvconf_iface,
+                      before_change=before_change)
         except dns_backend.OwnershipConflict as exc:
             raise SessionFailure("DNS 配置", "dnsmasq 所有权冲突；请确认离线上游已恢复后再启动") from exc
         except (OSError, subprocess.SubprocessError, ValueError) as exc:
@@ -394,7 +397,7 @@ def session_dns(addresses, backend, tun_name):
     finally:
         if changed:
             try:
-                restore_dns(backend)
+                restore_dns(backend, resolvconf_iface)
             except Exception as exc:
                 reason = f"恢复 {backend} DNS 失败（{type(exc).__name__}）"
                 if failure is None or (isinstance(failure, SessionFailure) and failure.retryable):
@@ -611,10 +614,14 @@ def authenticate(config, context, gw):
     # unchanged; the only fields this client consumes are the magic and UID.
     with session_socket(open_gateway_tls(context, gw, 10, "认证连接")) as sock:
         username = config['username']
-        pwd_enc = config['password'].replace("%", "%25")
-        path = (f"/netextension/netextensionlogin.html?"
-                f"SelectLanguage=0&UserName={username}&Password={pwd_enc}"
-                f"&MacAddress=F04B-B3B9-EBE5&SVN_Seco_AaA=1&")
+        query = urlencode([
+            ('SelectLanguage', '0'),
+            ('UserName', username),
+            ('Password', config['password']),
+            ('MacAddress', config.get('mac_address', '')),
+            ('SVN_Seco_AaA', '1'),
+        ])
+        path = f"/netextension/netextensionlogin.html?{query}&"
         http_req = (f"GET {path} HTTP/1.1\r\n"
                     "Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, */*\r\n"
                     "Accept-Language: zh-cn\r\n"
@@ -787,7 +794,7 @@ def _run_session(config, context, stop_event, gw, on_ready):
             if stop_event.is_set():
                 return
             dns = select_session_dns(config, vip['dns'])
-            with session_dns(dns, backend, tun_name):
+            with session_dns(dns, backend, tun_name, config.get('resolvconf_iface', RESOLVCONF_IFACE)):
                 on_ready()
                 logger.info("已连接 %s:%s (%.0fms)，TUN=%s VIP=%s", gw['host'], gw['port'],
                             gw['latency'], tun_name, vip['vip_ip'])

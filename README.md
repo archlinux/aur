@@ -4,6 +4,16 @@
 
 仅供研究学习用途（见 [LICENSE](LICENSE)）。
 
+## 兼容范围与限制
+
+本项目不是通用 VPN 客户端，只针对实现相同 **H3C SecPath / UniVPN CNEM + NetExtension** 协议的网关。认证路径、CNEM 控制帧和 `REQVIP` 网络配置报文的字段偏移来自已验证的网关固件；其他厂商、其他 VPN 协议或固件升级后，必须先用实际报文验证兼容性。
+
+- 网关配置使用 `host[:port]`，默认端口为 `443`；域名只解析 IPv4，TLS SNI 使用 `host`。
+- 客户端只支持 IPv4 TUN、IPv4 网关和 IPv4 DNS；不支持 IPv6-only 网关。
+- 网关下发的 DNS 和路由不是固定值；客户端会拒绝默认路由、覆盖网关的路由以及与现有路由冲突的前缀。
+- 运行需要 Linux、root、`/dev/net/tun` 和 `ip` 命令。systemd/AUR 安装路径还需要 systemd；DNS 接管需要 `openresolv`，`dnsmasq` 后端需要额外的管理员配置。
+- 网关若要求固定客户端 MAC，可在 `[auth] mac_address` 配置；留空时使用本机 MAC。该字段只用于兼容网关认证，不是安全凭据。
+
 ## 安装
 
 ### Arch Linux（AUR）
@@ -25,7 +35,7 @@ cd /opt/openunivpn
 
 ### 升级前检查
 
-1. **在旧版程序和停止钩子仍在磁盘上时**，若由 systemd 管理，先执行 `sudo systemctl stop openunivpn.service`，等待旧版停止钩子执行完毕；若为手动启动，则正常退出旧客户端。暂停任何自动拉起方式，并确认所有旧客户端都已退出。不要先覆盖文件再停服务。
+1. **在旧版程序和停止钩子仍在磁盘上时**，若由 systemd 管理，先执行 `sudo systemctl stop openunivpn.service`，等待旧版停止钩子执行完毕；若为手动启动，则正常退出旧客户端。暂停任何自动拉起方式，并确认所有旧客户端都已退出。不要先覆盖文件再停服务。旧版使用过 `vpn0` resolvconf 标签时，也应确认旧标签已被移除，再启动新版。
 2. 若 v1.1.11 使用了 `dnsmasq` 接管，确认 `/run/openunivpn-dns.servers` 是指向 `/etc/openunivpn/dnsmasq-offline.servers` 的软链接，而不是仍含 VPN 上游的普通文件；确认目标文件存在且 dnsmasq 可读。确认旧版恢复时成功重载了 dnsmasq；若无法确认，在核对离线软链接和上游后执行 `sudo systemctl reload dnsmasq.service`。再用系统解析器验证已知离线域名可解析（例如用 `getent ahostsv4` 查询一个已知在离线时可解析的域名）。**软链接恢复不等于重载或解析成功**；任一项异常就先排查并恢复，不要继续安装。
 3. 确认上述检查通过后再升级。v1.1.11 的在线文件没有新版所有权标记；如果先升级，旧进程退出时调用的新版钩子不会恢复这份未知状态。若已经发生这种情况，先确认客户端均已停止且不会重启，再由管理员核实该运行时文件的来历，按本机配置恢复离线软链接、重载 dnsmasq 并验证解析。不要仅凭标记缺失就覆盖文件或伪造所有权。安装包不会代为停服或修改 DNS 运行时状态。
 
@@ -43,10 +53,12 @@ cd /opt/openunivpn
 [auth]
 username = <用户名>
 password = <密码>
+# 可选：网关要求固定客户端 MAC 时填写 AA-BB-CC-DD-EE-FF；留空则使用本机 MAC
+mac_address =
 
 [gateway]
-# 格式: host:ip,host:ip  —— host 用于 TLS SNI，ip 用于实际连接
-list = vpn.example.com:1.2.3.4,bjvpn.example.com:5.6.7.8
+# 格式: host[:port],host[:port] —— host 用于 TLS SNI 和 DNS 解析，端口缺省为 443
+list = vpn.example.com:443,bjvpn.example.com:8443
 
 [tun]
 name = cnem0
@@ -149,7 +161,7 @@ extra_routes =
 
 ## 本机使用 dnsmasq 时的 DNS 接管
 
-默认继续使用 openresolv。若系统通过本机 dnsmasq 解析，并且 dnsmasq 不使用 openresolv 写入的上游，可选用 `[dns]` 下的 `backend = dnsmasq`。此模式只更换 dnsmasq 上游，不更改网页流量路由。连接期间，公网域名也由 VPN DNS 解析。
+默认继续使用 openresolv。`resolvconf_iface` 是独立的 resolvconf 标签，不是 TUN 接口名，默认值为 `vpn-openunivpn`；如本机已有同名标签，可在 `[dns]` 中修改。若系统通过本机 dnsmasq 解析，并且 dnsmasq 不使用 openresolv 写入的上游，可选用 `[dns]` 下的 `backend = dnsmasq`。此模式只更换 dnsmasq 上游，不更改网页流量路由。连接期间，公网域名也由 VPN DNS 解析。
 
 启用前，由管理员一次性配置 dnsmasq：
 

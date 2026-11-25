@@ -9,9 +9,11 @@
 """
 
 import os
+import re
 import sys
 import configparser
 import ipaddress
+import uuid
 
 USER_CONFIG = os.path.expanduser('~/.config/openunivpn/config.conf')
 SYSTEM_CONFIG = '/etc/openunivpn/config.conf'
@@ -42,6 +44,17 @@ def parse_extra_route(route):
     except ValueError:
         raise ValueError('[tun] extra_routes requires non-default IPv4 network CIDRs') from None
     return network
+
+
+def parse_mac_address(value):
+    """Return a gateway-compatible MAC string, deriving one when omitted."""
+    raw = value.strip()
+    if not raw:
+        raw = f'{uuid.getnode():012x}'
+    compact = re.sub(r'[:-]', '', raw)
+    if not re.fullmatch(r'[0-9A-Fa-f]{12}', compact):
+        raise ValueError('[auth] mac_address requires six hexadecimal octets')
+    return '-'.join(compact[index:index + 2].upper() for index in range(0, 12, 2))
 
 
 def _parse_config(path):
@@ -87,11 +100,13 @@ def _parse_config(path):
     return {
         'username': c.get('auth', 'username', fallback=''),
         'password': c.get('auth', 'password', fallback=''),
+        'mac_address': parse_mac_address(c.get('auth', 'mac_address', fallback='')),
         'gateways': gateways,
         'tun_name': c.get('tun', 'name', fallback='cnem0'),
         'extra_routes': extra_routes,
         'dns_backend': dns_backend,
         'dns_servers': dns_servers,
+        'resolvconf_iface': c.get('dns', 'resolvconf_iface', fallback='vpn-openunivpn').strip(),
         'tls_verify': tls_verify,
         'gateway_ca': c.get('gateway', 'ca_file', fallback='').strip(),
     }
@@ -101,7 +116,9 @@ def load_config():
     path = _find_config()
     if path:
         return _parse_config(path)
-    return {'username': '', 'password': '', 'gateways': [], 'tun_name': 'cnem0', 'extra_routes': []}
+    return {'username': '', 'password': '', 'mac_address': parse_mac_address(''),
+            'gateways': [], 'tun_name': 'cnem0', 'extra_routes': [],
+            'resolvconf_iface': 'vpn-openunivpn'}
 
 
 def setup_wizard():
@@ -124,16 +141,13 @@ def setup_wizard():
     password = input("密码: ").strip()
     print()
 
-    print("网关列表 (每行一个, 格式: host:ip, 空行结束)")
-    print("  例: vpn.example.com:1.2.3.4")
+    print("网关列表 (每行一个, 格式: host[:port], 空行结束)")
+    print("  例: vpn.example.com:443（端口可省略，默认 443）")
     gateways = []
     while True:
         line = input(f"  网关 #{len(gateways)+1}: ").strip()
         if not line:
             break
-        if ':' not in line:
-            print(f"  [!] 格式错误，应为 host:ip（缺少冒号），已跳过: {line}")
-            continue
         gateways.append(line)
 
     if not gateways:
