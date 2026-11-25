@@ -1,14 +1,14 @@
 pkgbase = sjasmplus-z00m128
 	pkgdesc = SjASMplus is a Z80 cross-assembler
-	pkgver = 1.24.0
+	pkgver = 1.24.1
 	pkgrel = 1
 	url = https://github.com/z00m128/sjasmplus
 	arch = x86_64
 	license = BSD
 	makedepends = lua
 	makedepends = cmake
-	source = https://github.com/z00m128/sjasmplus/releases/download/v1.24.0/sjasmplus-1.24.0-src.tar.xz
-	sha256sums = 0b5013f07e8d8505f9e296529655668b6fdf0268625c19e883b0fff484e209f1
+	source = https://github.com/z00m128/sjasmplus/releases/download/v1.24.1/sjasmplus-1.24.1-src.tar.xz
+	sha256sums = d7788d5cfc53170813c0639c68951cba73348209d36ca993e3a6f38be61d356d
 
 pkgname = sjasmplus-z00m128
 	depends = lua
