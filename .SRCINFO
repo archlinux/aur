@@ -1,0 +1,23 @@
+pkgbase = sockudo-bin
+	pkgdesc = Fast Pusher-compatible WebSocket server
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = https://github.com/sockudo/sockudo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	depends = zlib
+	provides = sockudo
+	conflicts = sockudo
+	options = !debug
+	source = sockudo-bin-5.2.0-LICENSE::https://raw.githubusercontent.com/sockudo/sockudo/v5.2.0/LICENSE
+	sha256sums = 45fbb4f517d9620757e1dbd9c3398556ddb07c5607f3b0ca86f472f3ce83f0eb
+	source_x86_64 = sockudo-bin-5.2.0-x86_64.tgz::https://github.com/sockudo/sockudo/releases/download/v5.2.0/sockudo-v5.2.0-x86_64-unknown-linux-gnu.tgz
+	sha256sums_x86_64 = b52cbdca5eb60a38847ee56eb85eb6e7098c90f8af01a400a05d511cb31a0573
+	source_aarch64 = sockudo-bin-5.2.0-aarch64.tgz::https://github.com/sockudo/sockudo/releases/download/v5.2.0/sockudo-v5.2.0-aarch64-unknown-linux-gnu.tgz
+	sha256sums_aarch64 = 0d45719e46c6756cd54726c1b5c1ae3aaf1398500111bf149c3338e8e78e7639
+
+pkgname = sockudo-bin
