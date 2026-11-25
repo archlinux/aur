@@ -3,8 +3,8 @@
 pkgname=dux-qt-base-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.4.73
-pkgrel=2
-# the prebuilt library links private Qt headers, so each arch only runs against the Qt it was built with
+pkgrel=3
+# no qt version pins: they deadlock pacman -Syu against makepkg on every qt bump
 _qtver_x86_64=6.12.1
 _qtver_aarch64=6.12.0
 pkgdesc='Quickshell QML runtime as a shared library with a C entry point (prebuilt)'
@@ -23,13 +23,10 @@ depends=(gcc-libs
          mesa
          pam
          polkit
+         qt6-base
+         qt6-declarative
+         qt6-wayland
          wayland)
-depends_x86_64=("qt6-base=$_qtver_x86_64"
-                "qt6-declarative=$_qtver_x86_64"
-                "qt6-wayland=$_qtver_x86_64")
-depends_aarch64=("qt6-base=$_qtver_aarch64"
-                 "qt6-declarative=$_qtver_aarch64"
-                 "qt6-wayland=$_qtver_aarch64")
 optdepends=('qt6-svg: svg images and icons')
 provides=("$_pkgname=$pkgver" libdux-qt-base.so)
 conflicts=("$_pkgname" "$_pkgname-git")
