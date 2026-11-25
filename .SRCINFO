@@ -1,0 +1,19 @@
+pkgbase = donetick-bin
+	pkgdesc = Donetick an open-source, user-friendly app for managing tasks and chores, featuring customizable options to help you and others stay organized
+	pkgver = 0.1.89
+	pkgrel = 1
+	url = https://github.com/donetick/donetick
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = donetick
+	conflicts = donetick
+	options = !debug
+	source = donetick-bin-0.1.89-LICENSE::https://raw.githubusercontent.com/donetick/donetick/v0.1.89/LICENSE.md
+	sha256sums = 20b067f86de375aae6db0f283ab2e65de24d537733b89bd58432c101259d84cf
+	source_x86_64 = donetick-bin-0.1.89-x86_64.tar.gz::https://github.com/donetick/donetick/releases/download/v0.1.89/donetick_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = fea117709f29fd354c37fea09c707a9b134b58eff15825cbcf66acc02c42f90b
+	source_aarch64 = donetick-bin-0.1.89-aarch64.tar.gz::https://github.com/donetick/donetick/releases/download/v0.1.89/donetick_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 32bb87130af5cc4982b0c5b71de77ff8b1914b7bd6b8fdde3a7c3c68c57846e9
+
+pkgname = donetick-bin
