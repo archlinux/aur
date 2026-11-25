@@ -3,13 +3,14 @@
 _pkgbase=python-scurses
 _gitname=Scurses
 pkgname=${_pkgbase}-git
-pkgver=2.r4.ged0c6ea
+pkgver=2.r5.g4c216d3
 pkgrel=1
-pkgdesc="Python curses-based TUI framework"
+pkgdesc="Python curses-based TUI framework (git version)"
 arch=('any')
 url="https://apps.sdore.me/${_gitname}"
 license=('LGPL3')
 depends=('python-sutils')
+makedepends=('git' 'python-build')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 source=("git+${url}.git")
@@ -32,5 +33,5 @@ build() {
 package() {
 	cd "${srcdir}"
 
-	python -m installer --destdir="${pkgdir}" "dist/${_gitname}-"*.whl
+	python -m installer --destdir="${pkgdir}" "dist/${_gitname,,}-"*.whl
 }
