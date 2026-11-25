@@ -1,6 +1,6 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=gitmaster
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="GUI git client written in Qt."
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ makedepends=('cmake' 'ninja')
 options=(!debug strip)
 
 source=($pkgname-$pkgver.tar.gz::"https://github.com/bokic/gitmaster/archive/${pkgver}.tar.gz")
-sha512sums=("831af438dfcdc86756ce1966aaaef4b3d9b95cb133c1a012433ce2d8879701f65ef8084e97273e75873abba5934741772e08d0bd75ecb549566e13140f846de3")
+sha512sums=("6052cb5e487479ae00e0d83ab7fa09727f33fc29c6a8efa77c69065dab04344ab4f07b7b752f24b9f31a2b84515b364cbcf7569ba3fb985b6819ecbd46f9f084")
 
 build() {
   cmake -G Ninja -S "${srcdir}/${pkgname}-${pkgver}" -B "build" -DCMAKE_BUILD_TYPE=Release -DGITMASTER_VERSION_TAG="${pkgver}"
