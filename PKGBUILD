@@ -13,7 +13,7 @@
 #   ENABLE_AVX=1 makepkg -si
 
 pkgname=lightpanda
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Headless browser designed for AI and automation - 11x faster than Chrome, 9x less memory"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ _v8=15.5.35.13
 _v8_from_source=${LIGHTPANDA_V8_FROM_SOURCE:-0}
 
 source=("lightpanda_${pkgver}.tar.gz::https://github.com/lightpanda-io/browser/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('1a6012705a755b76eade6836f0af628256384685af5adbb124dd2af21508077d')
+sha256sums=('fa7994eafae74335e73699870f67156feefa0a4f19d612baccaff24cf5a4c9d1')
 sha256sums_x86_64=('a1e14e88d8b81619d1ee589683a853c4bde061f79959aed1fc1bd0620a26c370')
 sha256sums_aarch64=('ae51df8bb52d9911808cac8fc1169d58f340f5e776f98aaf1cbcae5d27226c67')
 
