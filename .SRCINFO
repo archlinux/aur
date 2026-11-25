@@ -1,0 +1,17 @@
+pkgbase = moai-adk-bin
+	pkgdesc = Spec-driven agentic development harness for Claude Code
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://github.com/modu-ai/moai-adk
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = moai-adk
+	conflicts = moai-adk
+	options = !debug
+	source_x86_64 = moai-adk-bin-3.1.2-x86_64.tar.gz::https://github.com/modu-ai/moai-adk/releases/download/v3.1.2/moai-adk_3.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 78dbae0da51c2966eaef7d952c20ed4c025d71a0e3ccb023df4e0d16bd78d82d
+	source_aarch64 = moai-adk-bin-3.1.2-aarch64.tar.gz::https://github.com/modu-ai/moai-adk/releases/download/v3.1.2/moai-adk_3.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8887d28cbcd11c4bd66938a319246f0cf4fa1877a08945c704a47ddfbefc429e
+
+pkgname = moai-adk-bin
