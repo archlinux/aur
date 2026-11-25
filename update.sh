@@ -83,6 +83,61 @@ for cmd in curl sha256sum tar git makepkg awk sed; do
 done
 [[ -f PKGBUILD ]] || die "当前目录没有 PKGBUILD: $PWD"
 
+# ---------------------------------------------------------------- git 辅助
+
+# 本地是否还有尚未推送到 AUR 的提交（典型场景：上次 git push 因网络/密钥失败）
+has_unpushed_commits() {
+	git rev-parse --git-dir >/dev/null 2>&1 || return 1
+	git rev-parse --verify -q HEAD >/dev/null || return 1
+	git remote get-url origin >/dev/null 2>&1 || return 0
+	git fetch -q origin "$AUR_BRANCH" 2>/dev/null || true
+	if git rev-parse --verify -q "origin/${AUR_BRANCH}" >/dev/null; then
+		(($(git rev-list --count "origin/${AUR_BRANCH}..HEAD") > 0))
+	else
+		return 0
+	fi
+}
+
+# 提交并推送当前工作区（正常发布与“补推送”两条路径共用）
+commit_and_push() {
+	if ! git rev-parse --git-dir >/dev/null 2>&1; then
+		log "初始化 git 仓库"
+		git init -q -b "$AUR_BRANCH"
+	fi
+	if ! git remote get-url origin >/dev/null 2>&1; then
+		git remote add origin "$AUR_REMOTE"
+	fi
+
+	git add -A PKGBUILD .SRCINFO LICENSE
+	if git diff --cached --quiet; then
+		warn "没有可提交的改动"
+	else
+		subject="feat: 升级 motty-bin 到 ${ver}"
+		[[ $ver == "$current_ver" ]] && subject="fix: 更新 motty-bin ${ver} 的发布包校验值"
+		git commit -q -m "$subject"
+		ok "已提交: $subject"
+	fi
+
+	if ! $do_push; then
+		warn "已按 --no-push 跳过推送，可手动 git push"
+		return 0
+	fi
+
+	git fetch -q origin "$AUR_BRANCH" 2>/dev/null || true
+	if git rev-parse --verify -q "origin/${AUR_BRANCH}" >/dev/null; then
+		if ! git merge-base --is-ancestor "origin/${AUR_BRANCH}" HEAD; then
+			log "远端有新提交，先 rebase"
+			git rebase "origin/${AUR_BRANCH}" || die "rebase 失败，请手工处理"
+		fi
+	fi
+
+	git push origin "HEAD:${AUR_BRANCH}" || die "推送到 AUR 失败（检查 ssh 密钥 / 网络）"
+
+	ok "已发布: motty-bin ${ver}-${new_rel}"
+	echo "    https://aur.archlinux.org/packages/motty-bin"
+	echo "    （AUR 页面与 RPC 索引需数秒到数分钟生效）"
+}
+
 # ---------------------------------------------------------------- 读取本地状态
 
 pkgbuild_var() { # 变量名 → 值（数组取其第一个元素）
@@ -188,7 +243,18 @@ if [[ $ver == "$current_ver" && ${want_hash[x86_64]} == "$cur_sums_x86" &&
 fi
 
 if $up_to_date && ! $force; then
+	if $do_push && ! $check && ! $dry_run && has_unpushed_commits; then
+		log "上游无新版本，但本地有未推送的提交（上次推送可能失败），补推送"
+		new_rel=$current_rel
+		commit_and_push
+		exit 0
+	fi
 	ok "已是最新：motty-bin ${current_ver}-${current_rel}（上游无新版本，校验值一致）"
+	if $check || $dry_run; then
+		if has_unpushed_commits; then
+			warn "本地有未推送的提交（上次推送可能失败），正常运行时会自动补推送"
+		fi
+	fi
 	exit 0
 fi
 
@@ -318,39 +384,4 @@ fi
 
 # ---------------------------------------------------------------- 提交并推送
 
-if ! git rev-parse --git-dir >/dev/null 2>&1; then
-	log "初始化 git 仓库"
-	git init -q -b "$AUR_BRANCH"
-fi
-if ! git remote get-url origin >/dev/null 2>&1; then
-	git remote add origin "$AUR_REMOTE"
-fi
-
-git add -A PKGBUILD .SRCINFO LICENSE
-if git diff --cached --quiet; then
-	warn "没有可提交的改动"
-else
-	subject="feat: 升级 motty-bin 到 ${ver}"
-	[[ $ver == "$current_ver" ]] && subject="fix: 更新 motty-bin ${ver} 的发布包校验值"
-	git commit -q -m "$subject"
-	ok "已提交: $subject"
-fi
-
-if ! $do_push; then
-	warn "已按 --no-push 跳过推送，可手动 git push"
-	exit 0
-fi
-
-git fetch -q origin "$AUR_BRANCH" 2>/dev/null || true
-if git rev-parse --verify -q "origin/${AUR_BRANCH}" >/dev/null; then
-	if ! git merge-base --is-ancestor "origin/${AUR_BRANCH}" HEAD; then
-		log "远端有新提交，先 rebase"
-		git rebase "origin/${AUR_BRANCH}" || die "rebase 失败，请手工处理"
-	fi
-fi
-
-git push origin "HEAD:${AUR_BRANCH}" || die "推送到 AUR 失败（检查 ssh 密钥 / 网络）"
-
-ok "已发布: motty-bin ${ver}-${new_rel}"
-echo "    https://aur.archlinux.org/packages/motty-bin"
-echo "    （AUR 页面与 RPC 索引需数秒到数分钟生效）"
+commit_and_push
