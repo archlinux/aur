@@ -1,0 +1,20 @@
+pkgbase = zerolang-bin
+	pkgdesc = The Programming Language for Agents
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/vercel-labs/zerolang
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = zerolang
+	conflicts = zerolang
+	options = !debug
+	source = zerolang-bin-0.3.4-LICENSE::https://raw.githubusercontent.com/vercel-labs/zerolang/v0.3.4/LICENSE
+	sha256sums = 6bbf26264f5a7a1cc2c15a85a1c99ce50322c5a270cfaaaba548987f07f1ae04
+	source_x86_64 = zerolang-bin-0.3.4-x86_64::https://github.com/vercel-labs/zerolang/releases/download/v0.3.4/zero-linux-x64
+	sha256sums_x86_64 = 84a3c79d482260ee15660a49fc6b904afc927a230d05a4263039dd4dd1360e87
+	source_aarch64 = zerolang-bin-0.3.4-aarch64::https://github.com/vercel-labs/zerolang/releases/download/v0.3.4/zero-linux-arm64
+	sha256sums_aarch64 = ba7a1e4292dcbf84aec4c2a80919a7313bcf6182afcdc6cc9d9b7bb5946440d1
+
+pkgname = zerolang-bin
