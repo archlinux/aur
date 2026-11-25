@@ -1,6 +1,6 @@
 # Maintainer: engineering <engineering@egdaemon.com>
 pkgname=egd
-pkgver=v0.0.1795533755000
+pkgver=v0.0.1795567772000
 pkgrel=1
 pkgdesc='egd ci/cd/batch processing tooling'
 url='https://github.com/egdaemon/eg'
