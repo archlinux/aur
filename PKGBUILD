@@ -10,7 +10,7 @@
 # that is the only shape the .SRCINFO generator accepts.
 
 pkgname=ghostex-bin
-pkgver=12.1.0
+pkgver=12.1.1
 pkgrel=1
 pkgdesc="Ghostty-based desktop workspace for AI agent CLIs, with persistent terminals, browser panes, and a built-in IDE"
 arch=('x86_64')
@@ -71,7 +71,7 @@ source=(
 )
 sha256sums=(
   '50c3e6ee30c68e93ebed3e549770999eaee10b88618588d57c9d5355d0996509'
-  '31520e51e4ecf4b323021d66e6ef3b11fe0cfbbd046c5cc2587eb6689e1a7a41'
+  '3c801b1f4b9608a33d2ca4f37e79cd9ffae92650ee55f8e14809b937edff85ce'
 )
 
 package() {
