@@ -1,0 +1,17 @@
+pkgbase = edgevpn-bin
+	pkgdesc = sailboat: The immutable, decentralized, statically built p2p VPN without any central server and automatic discovery! Create decentralized introspectable tunnels over p2p with shared tokens
+	pkgver = 0.37.2
+	pkgrel = 1
+	url = https://github.com/mudler/edgevpn
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = edgevpn
+	conflicts = edgevpn
+	options = !debug
+	source_x86_64 = edgevpn-bin-0.37.2-x86_64.tar.gz::https://github.com/mudler/edgevpn/releases/download/v0.37.2/edgevpn-v0.37.2-Linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5992866671468e4134c4a4c6a1ddb4d1fcad33748d6cbd2324a9b8e3f08f2c4f
+	source_aarch64 = edgevpn-bin-0.37.2-aarch64.tar.gz::https://github.com/mudler/edgevpn/releases/download/v0.37.2/edgevpn-v0.37.2-Linux-arm64.tar.gz
+	sha256sums_aarch64 = ab53f1e49b7e06f087de619b24072ee73bad2d9a65bf800095414431094988c8
+
+pkgname = edgevpn-bin
