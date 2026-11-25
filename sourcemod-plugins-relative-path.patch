@@ -1,0 +1,13 @@
+--- a/plugins/AMBuilder
++++ b/plugins/AMBuilder
+@@ -47,7 +47,9 @@
+   outputs = [
+     smx_file
+   ]
+-  argv = spcomp_argv + [script_path]
++  # The script relative to the build folder, like the include folders: spcomp records its name in
++  # the plugin's debug info (.dbg.files), which shouldn't depend on where SourceMod was built
++  argv = spcomp_argv + [os.path.relpath(script_path, os.path.join(builder.buildPath, builder.buildFolder))]
+   (smx_entry,) = builder.AddCommand(
+     inputs = inputs,
+     argv = argv,

@@ -37,6 +37,7 @@ path = [
   "webternet-curl.patch",
   "sqlite-system.patch",
   "geoip-libmaxminddb.patch",
+  "sourcemod-plugins-relative-path.patch",
   "sourcemod-delete-noexcept.patch",
   "sourcemod-gamebin-executable-path.patch",
   "sourcemod-kv-delete-root.patch",
