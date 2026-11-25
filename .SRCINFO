@@ -16,10 +16,8 @@ pkgbase = stm32cubeprog
 	options = !strip
 	options = !debug
 	source = STM32CubeProgrammer2.24.0_linux64.zip::https://sw-center.st.com/packs/cubeprog_test/Updater/Linux/STM32CubeProgrammer2.24.0_linux64.zip
-	source = STM32CubeProgrammer_Wayland
-	source = pathfix.c
+	source = stm32cubeprogrammer.sh
 	sha256sums = 273975212fcf80f71a31ed091559f9289b589d5eb3cbbd090b6068abe80f317c
-	sha256sums = dde835c8c11db23fee8b35c84fa37d17e4a093ff5eb1128b8c2178c08134e096
-	sha256sums = 652c2a57b83e6b25a273fbaad804c63fee32aa9cc61d48a42c84727ef28b5723
+	sha256sums = 7928062dccba8415a9110424bd828d4ae19616311f4584c644835f939d817dec
 
 pkgname = stm32cubeprog

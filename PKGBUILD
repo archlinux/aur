@@ -34,12 +34,10 @@ options=('!strip' '!debug')
 _installer="STM32CubeProgrammer${pkgver}_linux64.zip"
 source=(
   "${_installer}::https://sw-center.st.com/packs/cubeprog_test/Updater/Linux/${_installer}"
-  'STM32CubeProgrammer_Wayland'
-  'pathfix.c')
+  'stm32cubeprogrammer.sh')
 
 sha256sums=('273975212fcf80f71a31ed091559f9289b589d5eb3cbbd090b6068abe80f317c'
-            'dde835c8c11db23fee8b35c84fa37d17e4a093ff5eb1128b8c2178c08134e096'
-            '652c2a57b83e6b25a273fbaad804c63fee32aa9cc61d48a42c84727ef28b5723')
+  '7928062dccba8415a9110424bd828d4ae19616311f4584c644835f939d817dec')
 
 prepare() {
   cd "${srcdir}"
@@ -49,16 +47,7 @@ prepare() {
     --pkgdesc "${pkgdesc}" \
     --path "/opt/${pkgname}/bin" \
     --name "STM32CubeProgrammer" \
-    --exec "/opt/${pkgname}/bin/STM32CubeProgrammer" \
-    --icon "${pkgname}" \
-    --categories "Development"
-
-  gendesk -f -n \
-    --pkgname "${pkgname}_wayland" \
-    --pkgdesc "${pkgdesc}" \
-    --path "/opt/${pkgname}/bin" \
-    --name "STM32CubeProgrammer (Wayland)" \
-    --exec "/opt/${pkgname}/bin/STM32CubeProgrammer_Wayland" \
+    --exec "/opt/${pkgname}/bin/stm32cubeprogrammer.sh" \
     --icon "${pkgname}" \
     --categories "Development"
 
@@ -81,15 +70,11 @@ build() {
   mkdir -p "desktop-icons"
   icotool -x "util/Programmer.ico" -o "desktop-icons"
   icotool -x "util/STM32TrustedPackageCreator.ico" -o "desktop-icons"
-
-  gcc -shared -fPIC "${srcdir}/pathfix.c" -o "${srcdir}/libstm32-pathfix.so" -ldl
 }
 
 package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"
   cp -a --no-preserve=ownership "${srcdir}"/{api,bin,doc,lib,util,Data_Base,Drivers,SVD} "${pkgdir}/opt/${pkgname}/"
-
-  install -Dm644 "${srcdir}/libstm32-pathfix.so" "${pkgdir}/opt/${pkgname}/lib/libstm32-pathfix.so"
 
   # util/rights*.sh
   chmod a+x "${pkgdir}/opt/${pkgname}/bin/"{STM32CubeProgrammer,STM32CubeProgrammerLauncher,STM32_Programmer.sh,STM32_Programmer_CLI} \
@@ -119,16 +104,14 @@ package() {
 
   # desktop entries
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "${srcdir}/${pkgname}_wayland.desktop" "${pkgdir}/usr/share/applications/${pkgname}_wayland.desktop"
   install -Dm644 "${srcdir}/${pkgname}-trusted-package-creator.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}-trusted-package-creator.desktop"
 
-  install -Dm755 "${srcdir}/STM32CubeProgrammer_Wayland" "${pkgdir}/opt/${pkgname}/bin/STM32CubeProgrammer_Wayland"
+  install -Dm755 "${srcdir}/stm32cubeprogrammer.sh" "${pkgdir}/opt/${pkgname}/bin/stm32cubeprogrammer.sh"
 
   # command wrappers
   for entry in \
-    'stm32cubeprogrammer:STM32CubeProgrammer' \
-    'stm32cubeprogrammer_wayland:STM32CubeProgrammer_Wayland' \
+    'stm32cubeprogrammer:stm32cubeprogrammer.sh' \
     'stm32_programmer_cli:STM32_Programmer.sh' \
     'stm32_keygen_cli:STM32_KeyGen_CLI' \
     'stm32_signingtool_cli:STM32_SigningTool_CLI' \
