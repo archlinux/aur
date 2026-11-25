@@ -14,7 +14,7 @@
 # you live; check them first (as upstream notes).
 
 pkgname=onair-dra
-pkgver=4.5.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="DRA/DRA+ audio decoder add-on for OnAir (CDR sound)"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ _patchcommit=eb94ceb887b47b6ecfbda9da43273dd65246df1e
 source=("OnAir-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz"
         "ffmpeg-7.1.2_cavs_dra.patch::https://raw.githubusercontent.com/maliwen2015/ffmpeg_cavs_dra/$_patchcommit/ffmpeg-7.1.2_cavs_dra.patch"
         "LICENSE::https://raw.githubusercontent.com/maliwen2015/ffmpeg_cavs_dra/$_patchcommit/LICENSE")
-sha256sums=('84ba5b03d1669a658331c1c030200628a488b3af3713d7886d59ddafac906e70'
+sha256sums=('6e00357600a024e9623894fb8dfc4eec2e9156edfd11718612771e0440c4f743'
             '1d1cac53cc2d19af39de854db186985fb653e820b0d071844a1e529550c08e40'
             'cac0ae34bd88bc4347c3901c3d6e9715ee64ae9b2ec8e027b0892ecd67db98f4')
 
