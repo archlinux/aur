@@ -1,22 +1,22 @@
 pkgbase = hyprmasq-bin
 	pkgdesc = Computer use for Hyprland: an MCP server and tools for per-window screenshots and input, prebuilt
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/nyrda/hyprmasq
 	arch = x86_64
 	license = MIT
 	depends = ffmpeg
 	depends = glibc
-	depends = hyprmasq-plugin>=0.5.0
+	depends = hyprmasq-plugin>=0.5.1
 	depends = jq
 	depends = libei
 	depends = libxkbcommon
 	depends = sh
-	provides = hyprmasq=0.5.0
+	provides = hyprmasq=0.5.1
 	conflicts = hyprmasq
 	options = !debug
 	options = !strip
-	source = hyprmasq-0.5.0-x86_64.tar.gz::https://github.com/nyrda/hyprmasq/releases/download/v0.5.0/hyprmasq-0.5.0-x86_64.tar.gz
-	sha256sums = 5d376a061a35cb8f51cb9f095b3b29ee8489dc1e6ed3cd482b8de1ae47563225
+	source = hyprmasq-0.5.1-x86_64.tar.gz::https://github.com/nyrda/hyprmasq/releases/download/v0.5.1/hyprmasq-0.5.1-x86_64.tar.gz
+	sha256sums = 812d49f5bd8addf7e07c7d4c785322cc397fc1fc7d0188ed2290bfff280be7d0
 
 pkgname = hyprmasq-bin
