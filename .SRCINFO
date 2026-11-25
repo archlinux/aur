@@ -1,0 +1,19 @@
+pkgbase = simple-one-api-bin
+	pkgdesc = Single-binary adapter exposing many LLM provider APIs through an OpenAI-compatible interface
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/fruitbars/simple-one-api
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = simple-one-api
+	conflicts = simple-one-api
+	options = !debug
+	source = simple-one-api-bin-0.13.0-LICENSE::https://raw.githubusercontent.com/fruitbars/simple-one-api/v0.13.0/LICENSE
+	sha256sums = e57eaaec2de2064d725e814ebcd42d22b071e6ee2888f77bbcb8ae81243bb74a
+	source_x86_64 = simple-one-api-bin-0.13.0-x86_64.tar.gz::https://github.com/fruitbars/simple-one-api/releases/download/v0.13.0/simple-one-api-linux-amd64.tar.gz
+	sha256sums_x86_64 = 14518a05b430cf110eaaeb424ec6c18b960f7b0db66acc9676e80bcd502cb5ee
+	source_aarch64 = simple-one-api-bin-0.13.0-aarch64.tar.gz::https://github.com/fruitbars/simple-one-api/releases/download/v0.13.0/simple-one-api-linux-arm64.tar.gz
+	sha256sums_aarch64 = 77b8db87feb646e05168535caa2ce72f4af44a9a4f8c19abb56a1fa7076dfbfe
+
+pkgname = simple-one-api-bin
