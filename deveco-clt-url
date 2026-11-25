@@ -23,7 +23,9 @@ cookie 库、必要时解 AES，sh 里靠 jq/sqlite3 拼这些不可维护。Arc
 from __future__ import annotations
 
 import argparse
+import contextlib
 import hashlib
+import io
 import json
 import os
 import random
@@ -37,7 +39,7 @@ import time
 import urllib.error
 import urllib.request
 
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 
 API = "https://svc-drcn.developer.huawei.com/svc/community/common/v1/delegate"
 SVC_LIST = "PartnerCommunityService/v1/developer/downloadCenter/getToolVersionList"
@@ -331,6 +333,19 @@ def load_cookies(args) -> list:
         text = open(COOKIE_CACHE, encoding="utf-8").read().strip()
         if text:
             return [tuple(p.split("=", 1)) for p in text.split(";") if "=" in p]
+
+    # 没有缓存也没指定来源时按可用性自动回退，构建期（yay/makepkg）就不必手工传参。
+    candidates = [cookies_from_firefox]
+    candidates += [(lambda b=b: cookies_from_chromium(b)) for b in ("brave", "chrome", "chromium")]
+    for fn in candidates:
+        buf = io.StringIO()
+        try:
+            with contextlib.redirect_stderr(buf):
+                pairs = fn()
+        except SystemExit:
+            continue
+        if pairs:
+            return pairs
     die("没有可用的登录态。任选一种：\n"
         "  deveco-clt-url --login-cookie        # 从剪贴板读 Cookie 头并缓存（推荐，约 30 天一次）\n"
         "  deveco-clt-url --from-firefox        # Firefox 直读\n"

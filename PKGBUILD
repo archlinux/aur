@@ -11,7 +11,7 @@
 #   ~/.cache/deveco/cookie   (0600, written by --login-cookie)
 #   ~/.cache/deveco/clt-url  (0600, the signed URL)
 pkgname=deveco-clt-url
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Mint signed download URLs for HUAWEI DevEco Command Line Tools / Device Tool'
 arch=('any')
