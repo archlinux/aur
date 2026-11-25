@@ -24,9 +24,9 @@ _GRUB_EXTRAS_COMMIT="8a245d5c1800627af4cefa99162a89c7a46d8842"
 
 pkgname="grub-silent"
 pkgdesc="GNU GRand Unified Bootloader (2) [without welcome and kernel messages]"
-pkgver=2.14
-pkgrel=2
-url="https://www.gnu.org/software/grub/"
+pkgver=2.16
+pkgrel=3
+url="https://gnu-grub.freedesktop.org/"
 arch=('x86_64' 'i686')
 license=('GPL3')
 backup=('etc/grub.d/40_custom')
@@ -40,7 +40,7 @@ provides=('grub' 'grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}")
 makedepends=('autogen' 'bdf-unifont' 'git' 'help2man'
              'python' 'rsync' 'texinfo' 'ttf-dejavu'
 			 'autoconf-archive')
-depends=('device-mapper' 'gettext' 'efibootmgr' 'fuse2')
+depends=('device-mapper' 'gettext' 'efibootmgr' 'fuse3' 'xz')
 optdepends=('freetype2: For grub-mkfont usage'
             'dosfstools: For grub-mkrescue FAT FS and EFI support'
             'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
@@ -53,7 +53,7 @@ if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
                  'sdl: For grub-emu SDL support')
 fi
 
-source=("https://ftp.gnu.org/gnu/${pkgname%-*}/${pkgname%-*}-${pkgver}.tar.xz"
+source=("https://gitlab.freedesktop.org/api/v4/projects/26558/packages/generic/source-assets/grub-${pkgver}/grub-${pkgver}.tar.xz"
         "git+https://git.savannah.gnu.org/git/grub-extras.git#commit=8a245d5c1800627af4cefa99162a89c7a46d8842"
         '01-intel-ucode.patch'
         '02-linux-detect-archlinux-initramfs.patch'
@@ -62,19 +62,17 @@ source=("https://ftp.gnu.org/gnu/${pkgname%-*}/${pkgname%-*}-${pkgver}.tar.xz"
         '05-sleep_shift.patch'
         '06-maybe_quiet.patch'
         '07-quick_boot.patch'
-	'08-ld-gold-fix.patch'
         'grub.silent')
 
-sha256sums=('bc8d3c73535b8838d8c8e2654d73edc4e6ae8c8acdb45d5df5dc9a1547446d43'
+sha256sums=('f0db0104927df0b9a48bc41b735c702936190d17eb2d73d3018fa77474a0cabe'
             '0a85e3691398b897a8f087c99757d67269a5ced0b51bd52b810d195aa125af10'
-            'd101e9d33fbc67f7aaf6fb1191ec1315e8e5572c1d0538b95746ee194b8860db'
-            '21153ab7f020d9f819a70b9c879b29e9709996c5b0304816123c09b6849f95a3'
-            '6fa180674094f9e1723f736d458f1fe0b5740ea7cf5db5064139defc17ce0e94'
-            'bfab74bdc8c02f726d4e9430cb7b5b0688445ce6e34cb6f4a10eba51b451ab9f'
-            '55de3e428a56cd770a49a345da53726eccd493e5bce50a86f9810972524ff489'
-            '34ff4bdfad60590a944c660f085a0aff6587e4d7295e539f6a198e0851964b6d'
-            '943744e3cdd50ab825af54cbf5a764dc429ecec99aefab53f809ca54ff8c4d3d'
-            '9f50291da92c79b47214f6853c112b4034cdaab2e3a3690923b7a2b061be11e7'
+            '8740c18bc0e8873c6c855014ac7282915431185c21f26022375eae615044457e'
+            '6a865fc9db3a6b36a3e8740e92083bee5b068327517ff78832fb1c06d870e2fc'
+            'd550448165a60ee2ae3aa4d1167f897727da59a6613a98d6b3c1aa0e45b77d72'
+            '5333e6f3c95e31d9f2d372f664c54f7015ddddacdf8e59fe6e647d53357eaaae'
+            '7b42be438a8ddb45c1e39eeb7182cc94408e17a38df12ed422b58a33147dda31'
+            'f22bf89dbf18e8f4f042df90374a2275b7acba5e55cf89501fa9aab32eb02fcf'
+            '4653333f2f41ecffe2c7eef42527984b9a5c5d5d4f2e9eb4f9b5beba69348fb9'
             '4f2e9d585b7b0ef8ce0d09e88391d1397b50883c7cb1516dc99785934abe15a2')
 
 prepare() {
@@ -96,9 +94,6 @@ prepare() {
 	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
 	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
 
-	msg "Fix mkinitcpio 'rw' FS#36275"
-	sed 's| ro | rw |g' -i "util/grub.d/10_linux.in"
-
 	msg "Fix OS naming FS#33393"
 	sed 's|GNU/Linux|Linux|' -i "util/grub.d/10_linux.in"
 
@@ -109,13 +104,18 @@ prepare() {
 	patch -Np1 -i "${srcdir}/07-quick_boot.patch"
 	echo
 
-	# https://aur.archlinux.org/packages/grub-silent#comment-1075634
-	msg "Fix for i386-pc compile error: \"kernel.img is miscompiled: its start address is 0x9074 instead of 0x9000: ld.gold bug?\""
-	patch -Np1 -i "${srcdir}/08-ld-gold-fix.patch"
+	# GRUB 2.16 ships the translations in the release tarball, and the
+	# upstream linguas.sh (rsync from translationproject.org) is no longer
+	# required to build.
 
-	msg "Pull in latest language files"
-	./linguas.sh
-	echo
+	msg "Fix mkinitcpio 'rw' FS#36275"
+	sed 's| ro | rw |g' -i "util/grub.d/10_linux.in"
+
+	# The i386-pc "kernel.img is miscompiled: its start address is 0x9074
+	# instead of 0x9000" issue is fixed upstream since GRUB 2.16, which
+	# uses a linker script (conf/i386-pc-kernel.lds) and
+	# --defsym=_grub_text_base for the i386-pc target instead of probing
+	# the linker for --image-base support, so no local patch is needed.
 
     # Remove lua module from grub-extras as it is incompatible with changes to grub_file_open
     # http://git.savannah.gnu.org/cgit/grub.git/commit/?id=ca0a4f689a02c2c5a5e385f874aaaa38e151564e

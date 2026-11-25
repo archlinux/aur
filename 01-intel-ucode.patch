@@ -1,8 +1,8 @@
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 4532266..892d34d 100644
+index 2c03011..079743e 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
-@@ -143,17 +143,14 @@ linux_entry ()
+@@ -158,17 +158,14 @@ linux_entry ()
  	echo	'$(echo "$message" | grub_quote)'
  	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
  EOF
@@ -26,7 +26,7 @@ index 4532266..892d34d 100644
    fi
    sed "s/^/$submenu_indentation/" << EOF
  }
-@@ -228,14 +225,15 @@ while [ "x$list" != "x" ] ; do
+@@ -255,14 +252,15 @@ for linux in ${reverse_sorted_list}; do
    initrd=
    if test -n "${initrd_early}" || test -n "${initrd_real}"; then
      initrd="${initrd_early} ${initrd_real}"
@@ -48,7 +48,7 @@ index 4532266..892d34d 100644
    config=
    for i in "${dirname}/config-${version}" "${dirname}/config-${alt_version}" "/etc/kernels/kernel-config-${version}" ; do
      if test -e "${i}" ; then
-@@ -249,7 +247,9 @@ while [ "x$list" != "x" ] ; do
+@@ -276,7 +274,9 @@ for linux in ${reverse_sorted_list}; do
        initramfs=`grep CONFIG_INITRAMFS_SOURCE= "${config}" | cut -f2 -d= | tr -d \"`
    fi
  

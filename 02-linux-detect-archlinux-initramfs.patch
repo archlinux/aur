@@ -1,17 +1,19 @@
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 8d7b1a9..2cb9d31 100644
+index 079743e..f2287d5 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
-@@ -93,6 +93,8 @@ linux_entry ()
-       case $type in
- 	  recovery)
- 	      title="$(gettext_printf "%s, with Linux %s (recovery mode)" "${os}" "${version}")" ;;
+@@ -103,6 +103,10 @@ linux_entry ()
+ 	      title="$(gettext_printf "%s, with Linux %s (recovery mode)" "${os}" "${version}")"
+ 	      allowed_user_list="$(grub_get_auth_user_list $GRUB_RECOVERY_ACCESS_LEVEL)"
+ 	      ;;
 +	  fallback)
-+	      title="$(gettext_printf "%s, with Linux %s (fallback initramfs)" "${os}" "${version}")" ;;
++	      title="$(gettext_printf "%s, with Linux %s (fallback initramfs)" "${os}" "${version}")"
++	      allowed_user_list="$(grub_get_auth_user_list $GRUB_ADVANCED_ACCESS_LEVEL)"
++	      ;;
  	  *)
- 	      title="$(gettext_printf "%s, with Linux %s" "${os}" "${version}")" ;;
-       esac
-@@ -195,7 +197,7 @@ while [ "x$list" != "x" ] ; do
+ 	      title="$(gettext_printf "%s, with Linux %s" "${os}" "${version}")"
+ 	      allowed_user_list="$(grub_get_auth_user_list $GRUB_ADVANCED_ACCESS_LEVEL)"
+@@ -220,7 +224,7 @@ for linux in ${reverse_sorted_list}; do
    basename=`basename $linux`
    dirname=`dirname $linux`
    rel_dirname=`make_system_path_relative_to_its_root $dirname`
@@ -20,7 +22,7 @@ index 8d7b1a9..2cb9d31 100644
    alt_version=`echo $version | sed -e "s,\.old$,,g"`
    linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
  
-@@ -285,6 +287,18 @@ while [ "x$list" != "x" ] ; do
+@@ -312,6 +316,18 @@ for linux in ${reverse_sorted_list}; do
  
    linux_entry "${OS}" "${version}" advanced \
                "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
@@ -38,4 +40,4 @@ index 8d7b1a9..2cb9d31 100644
 +
    if [ "x${GRUB_DISABLE_RECOVERY}" != "xtrue" ]; then
      linux_entry "${OS}" "${version}" recovery \
-                 "single ${GRUB_CMDLINE_LINUX}"
+                 "${GRUB_CMDLINE_LINUX_RECOVERY} ${GRUB_CMDLINE_LINUX}"
