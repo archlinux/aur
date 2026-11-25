@@ -1,0 +1,19 @@
+pkgbase = dynacat-bin
+	pkgdesc = Dashboard focused on dynamic reloading and easy integration with external applications
+	pkgver = 3.0.4
+	pkgrel = 1
+	url = https://github.com/Panonim/dynacat
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = dynacat
+	conflicts = dynacat
+	options = !debug
+	source = dynacat-bin-3.0.4-LICENSE::https://raw.githubusercontent.com/Panonim/dynacat/3.0.4/LICENSE
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	source_x86_64 = dynacat-bin-3.0.4-x86_64.tar.gz::https://github.com/Panonim/dynacat/releases/download/3.0.4/dynacat-linux-amd64.tar.gz
+	sha256sums_x86_64 = 8498beb8675018bebb2124be54c29c3e5c4193a2a22b8b6a0bade2d49fcd44d8
+	source_aarch64 = dynacat-bin-3.0.4-aarch64.tar.gz::https://github.com/Panonim/dynacat/releases/download/3.0.4/dynacat-linux-arm64.tar.gz
+	sha256sums_aarch64 = 71561914ceb9dbf329e1be4ff8151bd1cdd8393ee66c6f498bfe3866aab02c01
+
+pkgname = dynacat-bin
