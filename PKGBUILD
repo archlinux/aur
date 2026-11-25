@@ -1,7 +1,7 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/shell>
 
 pkgname=hornero-shell
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=2
 pkgdesc="Hornero OS desktop shell, built with Quickshell, QML and Qt for Wayland"
 arch=('x86_64')
@@ -20,9 +20,20 @@ depends=(
   'horneroctl-bin>=0.2.0_preview51'
   'libqalculate'
   'pipewire'
+  # Full session stack: bare pipewire has no session manager, so an
+  # adopted system ends up with no audio devices at all. The ISO
+  # composition masks this; package adopters hit silent audio.
+  # Found by the Install-on-Arch graphical validation, qa#98.
+  'wireplumber'
+  'pipewire-pulse'
+  'pipewire-alsa'
   'python'
   'qt6-base'
   'qt6-declarative'
+  # modules/background/Wallpaper.qml imports QtMultimedia at load time;
+  # without it the whole shell config fails to load. Found by the
+  # Install-on-Arch graphical validation in a clean VM, qa#98.
+  'qt6-multimedia'
   # Hornero Signal typography, RFC 0001 section 3.3; glyphs ship in-tree.
   'ttf-ibm-plex'
   'quickshell>=0.3.2'
@@ -48,7 +59,7 @@ optdepends=(
   'swappy: screenshot annotation'
   'wl-clipboard: clipboard integration via wl-copy'
 )
-source=("$pkgname::git+https://github.com/HorneroOS/shell.git#commit=8fbc5fcf877f70d202a8104da4c15f6cfb5d4444")
+source=("$pkgname::git+https://github.com/HorneroOS/shell.git#commit=1c0e7e02a627804603ce6392f6fe2fca31271011")
 sha256sums=('SKIP')
 
 build() {
