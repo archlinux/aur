@@ -1,6 +1,6 @@
 pkgbase = lovable-oj-bin
 	pkgdesc = Experimental next generation frontend tooling (prebuilt)
-	pkgver = 0.4.21
+	pkgver = 0.4.22
 	pkgrel = 1
 	url = https://github.com/lovablelabs/oj
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = lovable-oj-bin
 	depends = glibc
 	depends = libgcc
 	depends = zlib
-	provides = lovable-oj=0.4.21
+	provides = lovable-oj=0.4.22
 	conflicts = lovable-oj
 	conflicts = ojg-git
-	source = lovable-oj-0.4.21-LICENSE::https://raw.githubusercontent.com/lovablelabs/oj/v0.4.21/LICENSE
+	source = lovable-oj-0.4.22-LICENSE::https://raw.githubusercontent.com/lovablelabs/oj/v0.4.22/LICENSE
 	sha256sums = 3cc3fc954c836676b3e485b8af1f9870b8d50b3e3ec4b94b81f5f2ef012cf535
-	source_x86_64 = oj-0.4.21-x86_64.tar.gz::https://github.com/lovablelabs/oj/releases/download/v0.4.21/oj-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b83432ca3bac69708403d1edcac69f57e3190f9d8e5a48c1d468fd9b159bf191
-	source_aarch64 = oj-0.4.21-aarch64.tar.gz::https://github.com/lovablelabs/oj/releases/download/v0.4.21/oj-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 62426e1a64e60f3b3f9b3a9c558a9daa722b738e52ab823746cc67cf301c149d
+	source_x86_64 = oj-0.4.22-x86_64.tar.gz::https://github.com/lovablelabs/oj/releases/download/v0.4.22/oj-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1f3a65099b7d35bad0a821184f5caa40a45d47b802f813ca4e5b5a6c0f9406d4
+	source_aarch64 = oj-0.4.22-aarch64.tar.gz::https://github.com/lovablelabs/oj/releases/download/v0.4.22/oj-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0711a91a5bce592baf2cbe18eeced1248cb4f9d0d1ff4c1c01cf6e8cc8b766b8
 
 pkgname = lovable-oj-bin
