@@ -18,7 +18,7 @@ def show_progress(count, block_size, total_size):
     global bar
     if bar is None:
         bar = progressbar.ProgressBar(
-            maxval = total_size,
+            max_value = total_size,
             widgets = [
                 progressbar.Percentage(),
                 ' ',

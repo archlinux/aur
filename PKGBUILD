@@ -1,5 +1,5 @@
 pkgname=bricscad-fr_fr
-pkgver=27.1.05
+pkgver=27.1.06
 pkgrel=1
 pkgdesc="Logiciel de CAO DWG"
 arch=("x86_64")
@@ -10,7 +10,7 @@ makedepends=(python-requests python-progressbar python-typing_extensions)
 provides=('bricscad')
 _lang=fr_FR
 _os=2
-_version=10397
+_version=10533
 
 ### Check rpm dependencies
 #sudo pacman -S rpm-tools
@@ -35,5 +35,5 @@ package() {
     rm -rf "${srcdir}"
 }
 
-md5sums=('b4348f91eb39c9a58ebec2c1967a3138'
-         'e22ef5caa5cdf6aad38fd4bf536b1a99')
+md5sums=('f676c62f18e63da55d83ce4185b9b0b3'
+         '5d38d8f407da91a2d1591c45f402cf1c')

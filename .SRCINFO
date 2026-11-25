@@ -1,6 +1,6 @@
 pkgbase = bricscad-fr_fr
 	pkgdesc = Logiciel de CAO DWG
-	pkgver = 27.1.05
+	pkgver = 27.1.06
 	pkgrel = 1
 	url = https://bricscad.octave.com/fr
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = bricscad-fr_fr
 	depends = libxml2
 	provides = bricscad
 	source = dlagent.py
-	source = BricsCAD-V27.1.05-1-fr_FR.x86_64.rpm::https://bricscad.octave.com/fr
-	md5sums = b4348f91eb39c9a58ebec2c1967a3138
-	md5sums = e22ef5caa5cdf6aad38fd4bf536b1a99
+	source = BricsCAD-V27.1.06-1-fr_FR.x86_64.rpm::https://bricscad.octave.com/fr
+	md5sums = f676c62f18e63da55d83ce4185b9b0b3
+	md5sums = 5d38d8f407da91a2d1591c45f402cf1c
 
 pkgname = bricscad-fr_fr
