@@ -1,0 +1,18 @@
+pkgbase = crlfuzz-bin
+	pkgdesc = Fast CRLF injection vulnerability scanner
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/dwisiswant0/crlfuzz
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = crlfuzz
+	conflicts = crlfuzz
+	options = !debug
+	source_x86_64 = crlfuzz-bin-1.4.1-x86_64.tar.gz::https://github.com/dwisiswant0/crlfuzz/releases/download/v1.4.1/crlfuzz_1.4.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 033e97108f1ead4dbd810843316ca3eb9e7be48bb27e058010bd3d919a0a6235
+	source_aarch64 = crlfuzz-bin-1.4.1-aarch64.tar.gz::https://github.com/dwisiswant0/crlfuzz/releases/download/v1.4.1/crlfuzz_1.4.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6f0de652a71827329dbcab504702e4a4464611c99fca2fd1ebd4ed062c58f060
+
+pkgname = crlfuzz-bin
