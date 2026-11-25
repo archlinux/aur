@@ -1,7 +1,7 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 pkgname='firefox-privacy-badger-bin'
-pkgver=2025.5.30
+pkgver=2026.9.15
 pkgrel=1
 pkgdesc='Automatically learns to block invisible trackers.'
 arch=('any')
