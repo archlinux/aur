@@ -1,0 +1,17 @@
+pkgbase = compozy-bin
+	pkgdesc = An operating system for AI agents
+	pkgver = 0.7.8
+	pkgrel = 1
+	url = https://github.com/compozy/compozy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = compozy
+	conflicts = compozy
+	options = !debug
+	source_x86_64 = compozy-bin-0.7.8-x86_64.tar.gz::https://github.com/compozy/compozy/releases/download/v0.7.8/compozy_linux_x86_64.tar.gz
+	sha256sums_x86_64 = b0c515b66d90c6562fad58a4450fffe5fdb7d9e53aa077b5ed9956976a994c8a
+	source_aarch64 = compozy-bin-0.7.8-aarch64.tar.gz::https://github.com/compozy/compozy/releases/download/v0.7.8/compozy_linux_arm64.tar.gz
+	sha256sums_aarch64 = 34e309e171b89fbe66e43b243e0631d5122eea7f112db01cd29eea560b0dbd5c
+
+pkgname = compozy-bin
