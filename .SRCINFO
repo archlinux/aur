@@ -1,7 +1,7 @@
 pkgbase = tune-server
 	pkgdesc = self-hosted multi-room music server in Rust: local library (FLAC/DSD) + Qobuz/Tidal/Deezer to DLNA/UPnP, Chromecast, AirPlay
 	pkgver = 1.0.0.rc13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mozaiklabs.fr/
 	install = tune-server.install
 	arch = x86_64
@@ -28,6 +28,6 @@ pkgbase = tune-server
 	source_x86_64 = https://github.com/renesenses/tune-server-rust/releases/download/v1.0.0-rc13.2/tune-server-linux-x86_64.tar.gz
 	sha256sums_x86_64 = da458b1daa539c9477fa25cb4163e331bc7d1541beabefd5a000790802d183ab
 	source_aarch64 = https://github.com/renesenses/tune-server-rust/releases/download/v1.0.0-rc13.2/tune-server-linux-aarch64.tar.gz
-	sha256sums_aarch64 = a6e5c777f382bc6b70d39c33a67b796d5fca32c1ee7e7c5dff3c156b98fb659a
+	sha256sums_aarch64 = 6067423326246adbd3d11e3c242ccf0858b4838840412d90da232795a0f01f5b
 
 pkgname = tune-server
