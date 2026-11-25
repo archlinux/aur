@@ -1,0 +1,20 @@
+pkgbase = gravity-bin
+	pkgdesc = Replicated DNS and DHCP server with ad blocking, powered by etcd
+	pkgver = 0.34.0
+	pkgrel = 1
+	url = https://github.com/BeryJu/gravity
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	provides = gravity
+	conflicts = gravity
+	options = !debug
+	source = gravity-bin-0.34.0-LICENSE::https://raw.githubusercontent.com/BeryJu/gravity/v0.34.0/LICENSE
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = gravity-bin-0.34.0-x86_64::https://github.com/BeryJu/gravity/releases/download/v0.34.0/gravity-cli_linux_amd64
+	sha256sums_x86_64 = e891d60335fd3ad0285c3ce146a37c3107cf3a4a684e662b3b551ac39c71634a
+	source_aarch64 = gravity-bin-0.34.0-aarch64::https://github.com/BeryJu/gravity/releases/download/v0.34.0/gravity-cli_linux_arm64
+	sha256sums_aarch64 = 1cfaa66e44ed2dac6a9c11f8c9e5237171fe7c46aa5aa45f6773abed65f3f41d
+
+pkgname = gravity-bin
