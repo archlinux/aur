@@ -1,6 +1,6 @@
 pkgbase = bitter-browser
 	pkgdesc = Focused, native web browser for the Linux desktop
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://browser.bebitterbebetter.com.br/
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = bitter-browser
 	conflicts = bitter-browser-bin
 	conflicts = bitter-browser-git
 	options = !lto
-	source = https://github.com/bernardopg/bitter-browser/releases/download/v0.6.0/bitter-browser-0.6.0.tar.gz
-	sha256sums = 45e83f6ef7b05bf3eaa962897e04ae20cfc71fe276313e5079c7602a555539d5
+	source = https://github.com/bernardopg/bitter-browser/releases/download/v0.6.2/bitter-browser-0.6.2.tar.gz
+	sha256sums = 1657d5c63f1a6b502bb46f80d67ca113ffe6457d390e06fe826a382675f468ca
 
 pkgname = bitter-browser

@@ -1,7 +1,7 @@
 # Maintainer: Bernardo Pinto Gomes <bernardopgomes@hotmail.com>
 # Release package: builds the tagged source archive.
 pkgname=bitter-browser
-pkgver=0.6.0
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Focused, native web browser for the Linux desktop'
 arch=('x86_64')
@@ -22,7 +22,7 @@ conflicts=('bitter-browser-bin' 'bitter-browser-git')
 options=('!lto')
 # The release asset, not GitHub's generated archive, whose checksum is not stable.
 source=("https://github.com/bernardopg/bitter-browser/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('45e83f6ef7b05bf3eaa962897e04ae20cfc71fe276313e5079c7602a555539d5')
+sha256sums=('1657d5c63f1a6b502bb46f80d67ca113ffe6457d390e06fe826a382675f468ca')
 
 prepare() {
     cd "$pkgname-$pkgver"
