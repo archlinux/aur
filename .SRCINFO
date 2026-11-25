@@ -1,7 +1,7 @@
 pkgbase = wg-portal
 	pkgdesc = Web-based WireGuard VPN configuration portal with user management
 	pkgver = 2.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/h44z/wg-portal
 	install = wg-portal.install
 	arch = x86_64

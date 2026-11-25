@@ -1,8 +1,8 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Qwen3.8 Flash Next.
+# Created with assistance from Hy4 flash Free.
 pkgname=wg-portal
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Web-based WireGuard VPN configuration portal with user management"
 arch=('x86_64' 'aarch64')
 url="https://github.com/h44z/wg-portal"
