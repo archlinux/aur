@@ -1,0 +1,19 @@
+pkgbase = clother-bin
+	pkgdesc = Use multiple Claude Codecompatible LLM providers from one CLI, switching profiles instantly with simple clother-* commands
+	pkgver = 3.0.12
+	pkgrel = 1
+	url = https://github.com/jolehuit/clother
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = clother
+	conflicts = clother
+	options = !debug
+	source = clother-bin-3.0.12-LICENSE::https://raw.githubusercontent.com/jolehuit/clother/v3.0.12/LICENSE
+	sha256sums = 16c2da22dc5c242465eaba4c16c7638690937aaacf20acf5a94a5ab678ddc40f
+	source_x86_64 = clother-bin-3.0.12-x86_64.tar.gz::https://github.com/jolehuit/clother/releases/download/v3.0.12/clother_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6fce42d6f0b66c5c6b02540e61446ecfcf20b49bd8c824a7d2e55f5999353889
+	source_aarch64 = clother-bin-3.0.12-aarch64.tar.gz::https://github.com/jolehuit/clother/releases/download/v3.0.12/clother_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7bb1e54c1181b8e4063fca8d56149c6d9484cf246fbb20bab93c4aa4a2e7695f
+
+pkgname = clother-bin
