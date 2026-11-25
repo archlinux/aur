@@ -1,0 +1,17 @@
+pkgbase = oxidns-bin
+	pkgdesc = Programmable DNS server with pipeline-based routing
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/svenshi/oxidns
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = oxidns
+	conflicts = oxidns
+	options = !debug
+	source_x86_64 = oxidns-bin-1.7.1-x86_64.tar.gz::https://github.com/svenshi/oxidns/releases/download/v1.7.1/oxidns-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 24ca4c18781db220901542524279cc9fe8ec3a298a8d7c284c80e6c873a71341
+	source_aarch64 = oxidns-bin-1.7.1-aarch64.tar.gz::https://github.com/svenshi/oxidns/releases/download/v1.7.1/oxidns-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = bb18f32821fb6b18541195e3e43e20b162a7fe70a6b49719a7bfb9036b74fd39
+
+pkgname = oxidns-bin
