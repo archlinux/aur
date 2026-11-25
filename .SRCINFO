@@ -1,0 +1,26 @@
+pkgbase = kaori
+	pkgdesc = Discover, download and read comics.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/riyaniii/Kaori
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = meson
+	makedepends = blueprint-compiler
+	depends = python
+	depends = libadwaita
+	source = kaori-1.0.0.tar.gz::https://github.com/riyaniii/Kaori/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 719d12e131b79c797d1bc425f3c6dd2e9b73327c4022d56bd0f605044423bc72
+
+pkgname = kaori
+	depends = python
+	depends = libadwaita
+	depends = python-diskcache
+	depends = python-gql
+	depends = python-gobject
+	depends = python-httpx
+	depends = python-babel
