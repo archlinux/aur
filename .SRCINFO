@@ -1,0 +1,17 @@
+pkgbase = cerbos-bin
+	pkgdesc = Cerbos is an open-core authorization management platform for authorizing every identity and governing every action across applications, gateways, workloads, and AI agents
+	pkgver = 0.58.0
+	pkgrel = 1
+	url = https://github.com/cerbos/cerbos
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = cerbos
+	conflicts = cerbos
+	options = !debug
+	source_x86_64 = cerbos-bin-0.58.0-x86_64.tar.gz::https://github.com/cerbos/cerbos/releases/download/v0.58.0/cerbos_0.58.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = df958663827300e70c7fe2f95867a8291f4f4b9c99524b46762b7b62bbcaf0d9
+	source_aarch64 = cerbos-bin-0.58.0-aarch64.tar.gz::https://github.com/cerbos/cerbos/releases/download/v0.58.0/cerbos_0.58.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 741ee9a41eb5cbce2987ef289cc4c817e17911cc0443f95f9988ebb2e1b32596
+
+pkgname = cerbos-bin
