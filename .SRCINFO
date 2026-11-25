@@ -1,6 +1,6 @@
 pkgbase = rich-gradient-cli
 	pkgdesc = A CLI for creating rich renderables in gradient color
-	pkgver = 0.4.7
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = https://github.com/maxludden/rich-gradient-cli
 	arch = any
@@ -18,9 +18,7 @@ pkgbase = rich-gradient-cli
 	depends = python-typer
 	depends = python-rich-gradient
 	provides = gradient
-	source = https://files.pythonhosted.org/packages/source/r/rich_gradient_cli/rich_gradient_cli-0.4.7.tar.gz
-	source = LICENSE
-	sha256sums = 401203b6b5c3f880709c6a2a9265665490699ca156db776cf491e11c975cae0a
-	sha256sums = ce03c1e0e64ef777f23081460c6474be87d9298b649dca8a01059c51ad9e1b30
+	source = https://files.pythonhosted.org/packages/source/r/rich_gradient_cli/rich_gradient_cli-0.4.8.tar.gz
+	sha256sums = 4eff7f454c03fbf98e4dc19142305ba99e744229fc6683ab3c09e14e521bd0a5
 
 pkgname = rich-gradient-cli

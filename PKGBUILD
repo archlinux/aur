@@ -5,7 +5,7 @@ _appname="rich-gradient-cli"
 _cliname="gradient"
 
 pkgname="${_appname}"
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="A CLI for creating rich renderables in gradient color"
 
@@ -23,10 +23,9 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 depends=('python' 'python-rich' 'python-click' 'python-typer' 'python-rich-gradient')
 provides=("${_cliname}")
 
-source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz" "LICENSE")
-# source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz" "LICENSE")
-sha256sums=('401203b6b5c3f880709c6a2a9265665490699ca156db776cf491e11c975cae0a'
-            'ce03c1e0e64ef777f23081460c6474be87d9298b649dca8a01059c51ad9e1b30')
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
+# source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
+sha256sums=('4eff7f454c03fbf98e4dc19142305ba99e744229fc6683ab3c09e14e521bd0a5')
 
 prepare() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
@@ -49,5 +48,5 @@ package() {
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-    install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
