@@ -40,10 +40,26 @@ case ${CARCH} in
 	;;
 esac
 
+prepare() {
+	cd "${srcdir}/${_gitname}_${_gitversion}_${_CARCH}/" || exit
+
+	mkdir -p "./completions"
+
+	chmod +x "${_appname}"
+
+	"./${_appname}" completion zsh > "./completions/${_appname}.zsh"
+	"./${_appname}" completion bash > "./completions/${_appname}.bash"
+	"./${_appname}" completion fish > "./completions/${_appname}.fish"
+}
+
 package() {
 	cd "${srcdir}/${_gitname}_${_gitversion}_${_CARCH}/" || exit
 
 	install -Dm755 ${_appname} -t "${pkgdir}/usr/bin/"
+
+	install -Dm644 "completions/${_appname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_appname}"
+	install -Dm644 "completions/${_appname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_appname}"
+	install -Dm644 "completions/${_appname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_appname}.fish"
 
 	install -Dm644 dataset/* -t "${pkgdir}/usr/share/${_appname}/dataset/"
 
