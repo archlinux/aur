@@ -2,7 +2,7 @@
 
 pkgname=mew
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Efficient dynamic menu for Wayland, an effective port of dmenu to Wayland'
 arch=('x86_64')
 url='https://codeberg.org/sewn/mew'
@@ -20,7 +20,7 @@ makedepends=(
 	'wayland-protocols'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/sewn/mew/archive/${pkgver}.tar.gz")
-sha256sums=('01452fb92c6c5f792327ed8328bb2cbba55fa491260ccdf1b49db7960583c70b')
+sha256sums=('9076073b1973330563b344034f152b855f3936ecebb1ad849ae5f3deb8fa5e0a')
 
 build() {
 	cd "$pkgname"
