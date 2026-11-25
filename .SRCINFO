@@ -1,0 +1,17 @@
+pkgbase = kubefirst-bin
+	pkgdesc = The Kubefirst Open Source Platform
+	pkgver = 2.10.5
+	pkgrel = 1
+	url = https://github.com/konstructio/kubefirst
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kubefirst
+	conflicts = kubefirst
+	options = !debug
+	source_x86_64 = kubefirst-bin-2.10.5-x86_64.tar.gz::https://github.com/konstructio/kubefirst/releases/download/v2.10.5/kubefirst_2.10.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = f8d557a1b1a94e699e5906cffef85b1c2ba00d048601aa19c8a7f95dd5cedf82
+	source_aarch64 = kubefirst-bin-2.10.5-aarch64.tar.gz::https://github.com/konstructio/kubefirst/releases/download/v2.10.5/kubefirst_2.10.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2711443890435853722b04041afa5911972a3ffe5306fb37575e145f15b02c68
+
+pkgname = kubefirst-bin
