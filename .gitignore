@@ -1,7 +1,13 @@
 org.kde.plasma.quicklaunch.code-workspace
 
+# Local editor settings (retained locally, not tracked)
+.vscode/
+
 # Build
 build/
+src/
+pkg/
+*.pkg.tar.zst
 
 # Temp files
 *.so

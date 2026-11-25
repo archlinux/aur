@@ -1,10 +1,15 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
 #
 # Plasma 6 Quicklaunch applet - a customizable updated quicklaunch widget for KDE Plasma 6 panels.
+#
+# The plugin is installed to a private directory (/usr/lib/plasma6-applet-quicklaunch)
+# and exposed to Plasma via QT_PLUGIN_PATH (/etc/xdg/plasma-workspace/env), so it
+# shadows the bundled kdeplasma-addons copy without any file conflicts. Removing
+# this package restores the bundled applet.
 
 pkgname=plasma6-applet-quicklaunch
 pkgver=6.5.80
-pkgrel=5
+pkgrel=6
 pkgdesc="Customizable quicklaunch widget for KDE Plasma 6 panels"
 arch=(x86_64)
 url="https://github.com/ixnewton/org.kde.plasma.quicklaunch"
@@ -22,10 +27,10 @@ depends=(qt6-base
 makedepends=(extra-cmake-modules
              cmake
              git)
-provides=(org.kde.plasma.quicklaunch)
-conflicts=(org.kde.plasma.quicklaunch)
-source=("git+https://github.com/ixnewton/org.kde.plasma.quicklaunch.git#branch=main")
-sha256sums=('SKIP')
+source=("git+https://github.com/ixnewton/org.kde.plasma.quicklaunch.git#branch=main"
+        "quicklaunch-plugin-path.sh")
+sha256sums=('SKIP'
+            '43522340aef37c6278ed238ca5d4bc7b331f3c9a957bf41cea8fd4436bb2b806')
 
 build() {
     cd "$srcdir/org.kde.plasma.quicklaunch"
@@ -33,7 +38,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DKDE_INSTALL_LIBDIR=lib \
-        -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins \
+        -DKDE_INSTALL_QTPLUGINDIR=lib/plasma6-applet-quicklaunch \
         -DBUILD_TESTING=OFF
     make -C build -j"$(nproc)"
 }
@@ -41,4 +46,6 @@ build() {
 package() {
     cd "$srcdir/org.kde.plasma.quicklaunch"
     make -C build DESTDIR="$pkgdir" install
+    install -Dm644 "$srcdir/quicklaunch-plugin-path.sh" \
+        "$pkgdir/etc/xdg/plasma-workspace/env/quicklaunch-plugin-path.sh"
 }
