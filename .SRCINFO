@@ -1,0 +1,19 @@
+pkgbase = sublinkpro-bin
+	pkgdesc = | TG JS | Go+React UI Modern Proxy Subscription Manager | Smart Tags Speed Test Relays Monitor TG Bot JS Scripts
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/ZeroDeng01/sublinkPro
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sublinkpro
+	conflicts = sublinkpro
+	options = !debug
+	source = sublinkpro-bin-1.3.1-LICENSE::https://raw.githubusercontent.com/ZeroDeng01/sublinkPro/v1.3.1/LICENSE
+	sha256sums = 79606777cec1236109fbef32b8429336e2e92b6fce78359f9ef941ef8ca49fe6
+	source_x86_64 = sublinkpro-bin-1.3.1-x86_64::https://github.com/ZeroDeng01/sublinkPro/releases/download/v1.3.1/sublinkPro-linux-amd64
+	sha256sums_x86_64 = 7fc81aadbfea20de9ea451084326117f7efea570ecab3700bf9677adea2cc679
+	source_aarch64 = sublinkpro-bin-1.3.1-aarch64::https://github.com/ZeroDeng01/sublinkPro/releases/download/v1.3.1/sublinkPro-linux-arm64
+	sha256sums_aarch64 = 541ddcecc139887c5aab7228c23c1dfe5fda7f54ba0f970320736b30f59b5071
+
+pkgname = sublinkpro-bin
