@@ -1,0 +1,19 @@
+pkgbase = mindfs-bin
+	pkgdesc = Access your personal AI agents and workstation data anywhere, anytime through MindFS
+	pkgver = 0.5.9
+	pkgrel = 1
+	url = https://github.com/a9gent/mindfs
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = mindfs
+	conflicts = mindfs
+	options = !debug
+	source = mindfs-bin-0.5.9-LICENSE::https://raw.githubusercontent.com/a9gent/mindfs/v0.5.9/LICENSE
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = mindfs-bin-0.5.9-x86_64.tar.gz::https://github.com/a9gent/mindfs/releases/download/v0.5.9/mindfs_v0.5.9_linux_amd64.tar.gz
+	sha256sums_x86_64 = 07c64582dc9e3a188640ce11950008a4b999d423a8b062b5884eb6df1c4ff6c0
+	source_aarch64 = mindfs-bin-0.5.9-aarch64.tar.gz::https://github.com/a9gent/mindfs/releases/download/v0.5.9/mindfs_v0.5.9_linux_arm64.tar.gz
+	sha256sums_aarch64 = e193a82dac6df82987588a8cb6771d4d254ce62b3854d8b90cb63fb19d10cf4e
+
+pkgname = mindfs-bin
