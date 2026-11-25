@@ -1,7 +1,7 @@
 # Maintainer: BANANASJIM <77719403+BANANASJIM@users.noreply.github.com>
 
 pkgname=bitwig-agent
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Thin MCP/CLI bridge and controller extension for Bitwig Studio'
 arch=('any')
@@ -15,8 +15,8 @@ optdepends=('bitwig-studio: native host; private APIs require exact-JAR-gated 6.
 source=("${url}/releases/download/v${pkgver}/bitwig_agent-${pkgver}.tar.gz"
         "BitwigAgent-${pkgver}.bwextension::${url}/releases/download/v${pkgver}/BitwigAgent.bwextension")
 noextract=("BitwigAgent-${pkgver}.bwextension")
-sha256sums=('4d12987dcba5fbd1e6fc7ade1ee2d553572ce9acca96bd57df4abb784209391f'
-            'c12cff419424f90dbc621f39c58f7fadb9147abd12b6fd4147fde36c639244dd')
+sha256sums=('308bb74461cf77f8c80b80df94ce75cdfa977fb19a2a994e86534ecc10cf3ef8'
+            '5340c061427b1be8af0eeaf7c2b7e4f9ee564013ba6bf21955bb601a5f5084f9')
 
 build() {
     cd "bitwig_agent-${pkgver}"
