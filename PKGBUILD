@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=elevenlabs-cli-bin
-pkgver=1.12.2
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Command line interface for ElevenLabs voice agents"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/elevenlabs-cli-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/elevenlabs-cli-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('1b7a7d76058c28539c53c94f7d07b42648f270e4796f08a9bea98f6bfdde134b')
-sha256sums_aarch64=('b2275583c3ca3896ed12af5c4d7071ed431f0bd31b46996fc11dcecf8cec02da')
+sha256sums_x86_64=('5fb66e11b2d43f2a12470f6f2d69c871c4c7a067046fe53b7beab624489ae360')
+sha256sums_aarch64=('bce295a0dbdb956bafaa4429fa7b383c566dcfb7b7b0da864448d6fdd8bd35e0')
 
 package() {
   local _dir
