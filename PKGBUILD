@@ -1,6 +1,6 @@
 # Maintainer: Thomas L <zobi8225 at gmail dot com>
 pkgname=orgamnesia
-pkgver=1.8.4
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Lightweight Obsidian: second brain and personal wiki in Rust. Markdown and/or Emacs Org-mode notes."
 arch=('x86_64' 'aarch64')

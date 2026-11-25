@@ -1,6 +1,6 @@
 pkgbase = orgamnesia
 	pkgdesc = Lightweight Obsidian: second brain and personal wiki in Rust. Markdown and/or Emacs Org-mode notes.
-	pkgver = 1.8.4
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/thomas-louvigne/orgamnesia
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = orgamnesia
 	conflicts = orgamnesia-git
 	options = !lto
 	options = !debug
-	source = orgamnesia::git+https://github.com/thomas-louvigne/orgamnesia.git#tag=v1.8.4
+	source = orgamnesia::git+https://github.com/thomas-louvigne/orgamnesia.git#tag=v1.9.0
 	sha256sums = SKIP
 
 pkgname = orgamnesia
