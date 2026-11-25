@@ -1,0 +1,17 @@
+pkgbase = brutespray-bin
+	pkgdesc = Fast, multi-protocol credential brute-forcer
+	pkgver = 2.7.8
+	pkgrel = 1
+	url = https://github.com/x90skysn3k/brutespray
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = brutespray
+	conflicts = brutespray
+	options = !debug
+	source_x86_64 = brutespray-bin-2.7.8-x86_64.tar.gz::https://github.com/x90skysn3k/brutespray/releases/download/v2.7.8/brutespray_v2.7.8_linux_amd64.tar.gz
+	sha256sums_x86_64 = d01b56ef52d623b026ff31d456c6768417bff5ccd73cdeb82b3254f080a338d6
+	source_aarch64 = brutespray-bin-2.7.8-aarch64.tar.gz::https://github.com/x90skysn3k/brutespray/releases/download/v2.7.8/brutespray_v2.7.8_linux_arm64.tar.gz
+	sha256sums_aarch64 = 726e6b609dc42ff510a9fd01940b326f792f5a037fb361ee20b7860f3216865d
+
+pkgname = brutespray-bin
