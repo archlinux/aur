@@ -13,7 +13,7 @@
 #   ENABLE_AVX=1 makepkg -si
 
 pkgname=lightpanda
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Headless browser designed for AI and automation - 11x faster than Chrome, 9x less memory"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,9 @@ _v8=15.5.35.13
 _v8_from_source=${LIGHTPANDA_V8_FROM_SOURCE:-0}
 
 source=("lightpanda_${pkgver}.tar.gz::https://github.com/lightpanda-io/browser/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('6050074a29c249e929edb695cec3a454e6a3481625e74fabcec0534fa3fc8ab1')
+sha256sums=('1a6012705a755b76eade6836f0af628256384685af5adbb124dd2af21508077d')
+sha256sums_x86_64=('a1e14e88d8b81619d1ee589683a853c4bde061f79959aed1fc1bd0620a26c370')
+sha256sums_aarch64=('ae51df8bb52d9911808cac8fc1169d58f340f5e776f98aaf1cbcae5d27226c67')
 
 if [[ $_v8_from_source == 1 ]]; then
 	makedepends+=('python')
@@ -37,8 +39,6 @@ else
 	_v8_url="https://github.com/lightpanda-io/zig-v8-fork/releases/download/${_zig_v8}"
 	source_x86_64=("libc_v8_${_v8}_${_zig_v8}_x86_64.a::${_v8_url}/libc_v8_${_v8}_linux_x86_64.a")
 	source_aarch64=("libc_v8_${_v8}_${_zig_v8}_aarch64.a::${_v8_url}/libc_v8_${_v8}_linux_aarch64.a")
-	sha256sums_x86_64=('a1e14e88d8b81619d1ee589683a853c4bde061f79959aed1fc1bd0620a26c370')
-	sha256sums_aarch64=('ae51df8bb52d9911808cac8fc1169d58f340f5e776f98aaf1cbcae5d27226c67')
 	noextract=("libc_v8_${_v8}_${_zig_v8}_x86_64.a" "libc_v8_${_v8}_${_zig_v8}_aarch64.a")
 fi
 
