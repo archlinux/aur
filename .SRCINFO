@@ -1,12 +1,13 @@
 pkgbase = nsc
 	pkgdesc = A tool for creating NATS account and user access configurations
 	pkgver = 2.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nats-io/nsc
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = go
+	depends = glibc
 	source = nsc::git+https://github.com/nats-io/nsc#tag=v2.15.1
 	sha256sums = e3c3a88183e0ed9098a699dbc51b87c8d68cc71afc64a5d71d8bcc622d192793
 
