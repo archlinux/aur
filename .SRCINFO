@@ -1,0 +1,20 @@
+pkgbase = vize-bin
+	pkgdesc = Fast Vue.js toolchain
+	pkgver = 0.797.0
+	pkgrel = 1
+	url = https://github.com/ubugeeei-prod/vize
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = vize
+	conflicts = vize
+	options = !debug
+	source = vize-bin-0.797.0-LICENSE::https://raw.githubusercontent.com/ubugeeei-prod/vize/v0.797.0/LICENSE
+	sha256sums = 4e599bb8d73f48717952dab7ac683101cb21cb0584ab7bb3b851d80be82d726f
+	source_x86_64 = vize-bin-0.797.0-x86_64.tar.gz::https://github.com/ubugeeei-prod/vize/releases/download/v0.797.0/vize-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 99e12786cf6ece8fe71589756406f39a67cdf02529c9ee418142be9fe89e5190
+	source_aarch64 = vize-bin-0.797.0-aarch64.tar.gz::https://github.com/ubugeeei-prod/vize/releases/download/v0.797.0/vize-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5be0a58945fff84c2f9ddee2dc88a71cec2ace04dea2315b816afc38dc2ca99d
+
+pkgname = vize-bin
