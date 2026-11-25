@@ -1,21 +1,22 @@
 pkgbase = python-qiskit-addon-sqd
 	pkgdesc = Sample-based Quantum Diagonalization
-	pkgver = 0.11.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-addon-sqd
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-hatchling
 	depends = python-jax
 	depends = python-jaxlib
 	depends = python-numpy
 	depends = python-pyscf
 	depends = python-qiskit
 	depends = python-scipy
-	source = qiskit-addon-sqd-0.11.0.tar.gz::https://github.com/Qiskit/qiskit-addon-sqd/archive/refs/tags/0.11.0.tar.gz
-	b2sums = 09dbeca239e1285fb0dcbd29b59a897c3083205a9e34d8e99ef5a1e10df007d94511bdb7eb0c7e3871199f63d38e80a618d1d1cf4bb704f249ebb28ce10531e2
+	source = qiskit-addon-sqd::git+https://github.com/Qiskit/qiskit-addon-sqd.git#tag=0.14.1
+	b2sums = a2b038a0e406db1064d04a5486ba4a54eacdfed3bacbc4f791b68671c85a327ce3f3c11939cc494f3fdcf095503a591bb725ebf367d8c94255838238e9ebb113
 
 pkgname = python-qiskit-addon-sqd

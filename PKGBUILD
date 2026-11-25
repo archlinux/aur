@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=qiskit-addon-sqd
 pkgname=python-$_name
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="Sample-based Quantum Diagonalization"
 arch=(any)
@@ -28,7 +28,7 @@ makedepends=(
 # )
 checkdepends=(python-pytest)
 source=($_name::git+https://github.com/Qiskit/$_name.git#tag=$pkgver)
-b2sums=('f275cb10e009839e569d4ad847602e223a4d5404c07253cf86ff1c92cd8b0743d44cfbc5b186d035b9b230d5025ed128673ea4574161bfad6cde7d5804fe03b4')
+b2sums=('a2b038a0e406db1064d04a5486ba4a54eacdfed3bacbc4f791b68671c85a327ce3f3c11939cc494f3fdcf095503a591bb725ebf367d8c94255838238e9ebb113')
 
 build() {
     cd $_name
