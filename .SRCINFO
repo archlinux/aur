@@ -1,0 +1,19 @@
+pkgbase = lindb-bin
+	pkgdesc = Scalable, highly available distributed time series database
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/lindb/lindb
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = lindb
+	conflicts = lindb
+	options = !debug
+	source = lindb-bin-0.4.1-LICENSE::https://raw.githubusercontent.com/lindb/lindb/v0.4.1/LICENSE
+	sha256sums = e6228e6ea7458dcf3972af69e50170914b874b79ffed272b0860f9beb6289e28
+	source_x86_64 = lindb-bin-0.4.1-x86_64.tar.gz::https://github.com/lindb/lindb/releases/download/v0.4.1/lindb-v0.4.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 425bbf90a82f37ce8f13c9c030941d7b5a6818dff559d2ef5ff8a46153eee512
+	source_aarch64 = lindb-bin-0.4.1-aarch64.tar.gz::https://github.com/lindb/lindb/releases/download/v0.4.1/lindb-v0.4.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 2e8dc2a13c8bcf6f8accc3789000cfc1fadf54248a36466974fbddb3a39a4380
+
+pkgname = lindb-bin
