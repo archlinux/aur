@@ -1,0 +1,17 @@
+pkgbase = xurlfind3r-bin
+	pkgdesc = Discover URLs for a given domain
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/hueristiq/xurlfind3r
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = xurlfind3r
+	conflicts = xurlfind3r
+	options = !debug
+	source_x86_64 = xurlfind3r-bin-1.3.0-x86_64.tar.gz::https://github.com/hueristiq/xurlfind3r/releases/download/1.3.0/xurlfind3r_1.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = f39121ba19c9be5aeced27d168be0ac4bdcf8ad8763a3b86219eb1b29632d6c0
+	source_aarch64 = xurlfind3r-bin-1.3.0-aarch64.tar.gz::https://github.com/hueristiq/xurlfind3r/releases/download/1.3.0/xurlfind3r_1.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3552140a386399134c6d469c6c662014f9854776d953b1047038d803a108606b
+
+pkgname = xurlfind3r-bin
