@@ -1,0 +1,17 @@
+pkgbase = deeporg-bin
+	pkgdesc = DeepORG (formerly GraphJin) one AI agent for your whole organization: databases, APIs, files, and code over MCP
+	pkgver = 3.21.27
+	pkgrel = 1
+	url = https://github.com/dosco/deeporg
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = deeporg
+	conflicts = deeporg
+	options = !debug
+	source_x86_64 = deeporg-bin-3.21.27-x86_64.tar.gz::https://github.com/dosco/deeporg/releases/download/v3.21.27/deeporg_3.21.27_linux_amd64.tar.gz
+	sha256sums_x86_64 = b1e3337b8d91e0fe8e51814aef6dc6b8c60f420e91673ab4e2b536e96f669062
+	source_aarch64 = deeporg-bin-3.21.27-aarch64.tar.gz::https://github.com/dosco/deeporg/releases/download/v3.21.27/deeporg_3.21.27_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6c9110ca3f5a4dc032ce2350c1fa730018867348fe7484b6fc7fe222a88256dc
+
+pkgname = deeporg-bin
