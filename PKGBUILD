@@ -1,8 +1,8 @@
 # Contributor: ISSOtm <arch@eldred.fr>
 
 pkgname=linux-id
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.2.5
+pkgrel=1
 pkgdesc="FIDO token implementation for Linux that protects the token keys using your system's TPM."
 arch=(x86_64)
 url=https://github.com/matejsmycka/linux-id
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/matejsmycka/linux-id/archiv
         "$pkgname.service"
         "$pkgname.rules"
         "$pkgname-uhid.conf")
-sha256sums=('fc23f48778899d06174107e037c21999b7f668cf9ed248c863133f4a259bbf34'
+sha256sums=('e8743a65c4e313d6fbc04b295a24f5c0d3a49552bb32d20f0b4b41d0051385f1'
             'a5c21c13e02612996486089c1c88533a894b0983c0afd45cf0ce7d7f4f59f2be'
             '8a42f5924b06effb0620714db1313b385f821db0f324982e11ebd28feca9f1dd'
             '0d328038322f62ff1f3319666df5f8f58c0a028415a917ad247b0446c1ff90f5')
