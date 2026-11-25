@@ -1,0 +1,16 @@
+pkgbase = dagster-bin
+	pkgdesc = An orchestration platform for the development, production, and observation of data assets
+	pkgver = 1.13.31
+	pkgrel = 1
+	url = https://github.com/dagster-io/dagster
+	arch = x86_64
+	license = Apache-2.0
+	provides = dagster
+	conflicts = dagster
+	options = !debug
+	source = dagster-bin-1.13.31-LICENSE::https://raw.githubusercontent.com/dagster-io/dagster/1.13.31/LICENSE
+	sha256sums = e25b0c5be442bdf543e3f179ef0ae6a5edef5f5c70524fce00a2a657f5d3ed9d
+	source_x86_64 = dagster-bin-1.13.31-x86_64.tar.xz::https://github.com/dagster-io/dagster/releases/download/1.13.31/create-dagster-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 8b2ebaff3a9ad639c622ee3947dcb1b9097eedf54946bfe86bf5166dce7319b0
+
+pkgname = dagster-bin
