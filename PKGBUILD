@@ -2,7 +2,7 @@
 # pkgver is rewritten from the git tag by .github/workflows/release.yml.
 
 pkgname=archtoys
-pkgver=0.8.2
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="PowerToys-style tools for Linux: color picker, text extractor, screen ruler"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('tesseract: Text Extractor (Archtoys can also install it when you tu
             'tesseract-data-osd: lets Text Extractor find the writing system by itself')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Mujtaba1i/Archtoys/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a1e900186892388d1cb6d49d6c9534072eab6aada541402aad6c8ad2b1539022')
+sha256sums=('754cedc3114a4f7a88d39fbba2eb29181c7b1ef9ac0a19ee9ded3d9f61cbf482')
 
 prepare() {
   cd "Archtoys-${pkgver}"
