@@ -1,5 +1,5 @@
 pkgbase = shimmer-git
-	pkgdesc = A minimalistic notepad app.(Use system-wide electron)
+	pkgdesc = A Notepad Reimagined for Design Enthusiasts.
 	pkgver = 3.0.0.r1.g2e1812b
 	pkgrel = 1
 	url = https://github.com/Akashonbeats/Shimmer
@@ -8,14 +8,16 @@ pkgbase = shimmer-git
 	makedepends = npm
 	makedepends = nvm
 	makedepends = git
-	makedepends = curl
+	makedepends = jq
 	makedepends = gendesk
 	depends = electron38
 	provides = shimmer=3.0.0
 	conflicts = shimmer
 	source = shimmer.git::git+https://github.com/Akashonbeats/Shimmer.git
+	source = shimmer.js
 	source = shimmer.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b
+	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
 
 pkgname = shimmer-git
