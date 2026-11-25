@@ -11,7 +11,7 @@
 # See https://creativecommons.org/licenses/by/4.0/deed.de
 # endregion
 pkgname=certbot-proxy
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='generic dockerized nginx proxy server with certbot'
 arch=(any)
@@ -26,7 +26,7 @@ backup=(
 # NOTE: Only the service files are needed, the image is pulled from the
 # registry.
 source=("https://github.com/thaibault/certbot-proxy/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('28902e9ce61601275d19f183b7798067594597e541a133af60ace3ac94e0d30f')
+sha256sums=('bb04df051220bb1777fde8ae34ee187ef74a542e53f8af5d28348e000f0b9309')
 copy_to_aur=true
 
 package() {
