@@ -1,0 +1,17 @@
+pkgbase = kanzo-bin
+	pkgdesc = Self-hosted, shareable kanban board for humans and AI agents
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/emanuele-em/kanzo
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = kanzo
+	conflicts = kanzo
+	options = !debug
+	source_x86_64 = kanzo-bin-0.4.2-x86_64.tar.xz::https://github.com/emanuele-em/kanzo/releases/download/v0.4.2/kanzo-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 146c24e93c943158fae8fe35f070f49414a1f4754832312361dba895d3cbefea
+	source_aarch64 = kanzo-bin-0.4.2-aarch64.tar.xz::https://github.com/emanuele-em/kanzo/releases/download/v0.4.2/kanzo-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = 80eda8efc44b4a393d210cc10cd2feb2608e32098b3ee9425d50fe60b7a97a43
+
+pkgname = kanzo-bin
