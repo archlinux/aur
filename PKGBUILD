@@ -1,6 +1,6 @@
 # Maintainer: Frederick Zhang <frederick888@tsundere.moe>
 pkgname=sccache-dist
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="sccache compilation server"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ source=(
     "scheduler.conf"
     "server.conf"
 )
-sha256sums=('1957c3ec03866cb0196a4dd038faf11f8f6f14d131d9b4c93c9787762360d23a'
+sha256sums=('1568b19b3e9bcf911986670dbf92264100974319ddde0b1ccaeecfa82b953632'
             'c239a9c8139712a8fa9f859623849b81b520450214e28e730a903ab34d9e79ae'
             'f46bbb10f8d6df8761707197e9f7e793ff858b5b7c74b04dfc032e6dd04c86ec'
             '2434090e2fa18024ad964d59e33bcc5040f8e08273d0de736ba656bb3ed411d1'
