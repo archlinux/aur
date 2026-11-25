@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Module-first C++ build tool with manifest."
 
-pkgver=0.8.11
+pkgver=0.8.13
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,8 +30,8 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
 sha256sums=('5ac09bfe493443b79e86f98dea6b46141503946d35117fea2647cbd3f2a297c9')
-sha256sums_x86_64=('2cbbc8e865674768b08b94b146bd5b53636f229c71155c9e8bfd157d3772945d')
-sha256sums_aarch64=('81a96b6d45b6a589fabc016df07b3f36760da6fd4af3a52e2a7f59e22bf08721')
+sha256sums_x86_64=('055399f009c95977e6727cce0b0f918bb3fbf51c9f806b5064ece459a31bfc4f')
+sha256sums_aarch64=('c6eef42f07675b5ce2d2ec7f81b5b1eee7f7387fece7a8aeab3f0e0689216431')
 
 
 case ${CARCH} in
