@@ -1,0 +1,19 @@
+pkgbase = seekdb-bin
+	pkgdesc = The AI-Native Search Database
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/oceanbase/seekdb
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libaio
+	provides = seekdb
+	conflicts = seekdb
+	options = !debug
+	source_x86_64 = seekdb-bin-1.4.1-x86_64.tar.gz::https://github.com/oceanbase/seekdb/releases/download/v1.4.1/seekdb-binary-1.4.1.0-linux-x86_64-glibc2.17-20261125T072630Z-sdbab58f3d233bc.tar.gz
+	sha256sums_x86_64 = ba4879645b4fc79e7baf9fd0bcb5a966a8a5361caa7f48e8bf89e9af77e0ccc9
+	source_aarch64 = seekdb-bin-1.4.1-aarch64.tar.gz::https://github.com/oceanbase/seekdb/releases/download/v1.4.1/seekdb-binary-1.4.1.0-linux-aarch64-glibc2.17-20261125T072918Z-sdbab58f3d233bc.tar.gz
+	sha256sums_aarch64 = 0a3825820fccd3e8443a1a2264c74b2139ccfa2afe821f20648e0dd2e353e719
+
+pkgname = seekdb-bin
