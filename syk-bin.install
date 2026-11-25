@@ -1,0 +1,9 @@
+post_install() {
+    if [ -x /usr/bin/syk ]; then
+        /usr/bin/syk --setup welcome || true
+    fi
+}
+
+post_upgrade() {
+    printf '\n  Wolkom werom! syk %s is ready — run "syk --setup welcome" for a quick tour.\n\n' "${1%-*}"
+}

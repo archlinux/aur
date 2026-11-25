@@ -1,5 +1,5 @@
 pkgname=syk-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Search folder names, file names and file contents in one pass"
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,11 @@ depends=('glibc' 'libgcc')
 provides=('syk')
 conflicts=('syk')
 options=('!debug' '!strip')
+install=syk-bin.install
 source_x86_64=("syk-$pkgver-x86_64.tar.xz::$url/releases/download/v$pkgver/syk-search-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("syk-$pkgver-aarch64.tar.xz::$url/releases/download/v$pkgver/syk-search-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('62b57de550c2a9383fba6783a1ba5ce27ca6d0c492f4e6fdcfc22747258f7404')
-sha256sums_aarch64=('6b9db712355abe9e71c3c58947ecaec16a4c27ead4f1afa5e5a66b8ae331da93')
+sha256sums_x86_64=('f70bfd2bfe967d975f95335b5104d086417a6d915b4747b477bda1431dd011b3')
+sha256sums_aarch64=('108c4ee7440cb257d73d629272f50983d6e5726c38ec9cebd3c1985ba0f7e0d7')
 
 package() {
     cd "syk-search-$CARCH-unknown-linux-gnu"

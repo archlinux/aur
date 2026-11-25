@@ -1,8 +1,9 @@
 pkgbase = syk-bin
 	pkgdesc = Search folder names, file names and file contents in one pass
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/remcostoeten/syk
+	install = syk-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -12,9 +13,9 @@ pkgbase = syk-bin
 	conflicts = syk
 	options = !debug
 	options = !strip
-	source_x86_64 = syk-0.1.3-x86_64.tar.xz::https://github.com/remcostoeten/syk/releases/download/v0.1.3/syk-search-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 62b57de550c2a9383fba6783a1ba5ce27ca6d0c492f4e6fdcfc22747258f7404
-	source_aarch64 = syk-0.1.3-aarch64.tar.xz::https://github.com/remcostoeten/syk/releases/download/v0.1.3/syk-search-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 6b9db712355abe9e71c3c58947ecaec16a4c27ead4f1afa5e5a66b8ae331da93
+	source_x86_64 = syk-0.1.4-x86_64.tar.xz::https://github.com/remcostoeten/syk/releases/download/v0.1.4/syk-search-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = f70bfd2bfe967d975f95335b5104d086417a6d915b4747b477bda1431dd011b3
+	source_aarch64 = syk-0.1.4-aarch64.tar.xz::https://github.com/remcostoeten/syk/releases/download/v0.1.4/syk-search-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 108c4ee7440cb257d73d629272f50983d6e5726c38ec9cebd3c1985ba0f7e0d7
 
 pkgname = syk-bin
