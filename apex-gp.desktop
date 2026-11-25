@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: 0BSD
+[Desktop Entry]
+Type=Application
+Name=Apex GP
+GenericName=Racing game
+Comment=Race open-wheel cars with wheel force feedback
+Exec=apex-gp
+Icon=apex-gp
+Terminal=false
+Categories=Game;Simulation;
+Keywords=racing;motorsport;simulation;
+StartupWMClass=Apex GP

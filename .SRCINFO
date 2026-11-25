@@ -1,0 +1,38 @@
+pkgbase = apex-gp-bin
+	pkgdesc = Open-wheel racing game with steering wheel force feedback
+	pkgver = 0.12.5
+	pkgrel = 1
+	url = https://apexgp.racing
+	arch = x86_64
+	license = LicenseRef-Apex-GP
+	makedepends = imagemagick
+	depends = glibc>=2.43
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	depends = wayland
+	depends = libxkbcommon
+	depends = libdecor
+	depends = libx11
+	depends = libxcursor
+	depends = libxext
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxrender
+	depends = libglvnd
+	depends = alsa-lib
+	depends = libpulse
+	depends = dbus
+	depends = fontconfig
+	depends = systemd-libs
+	depends = hicolor-icon-theme
+	provides = apex-gp=0.12.5
+	conflicts = apex-gp
+	options = !strip
+	options = !debug
+	source = https://apexgp.racing/dl/ApexGP-0.12.5-linux-x86_64.tar.gz
+	source = apex-gp.desktop
+	sha256sums = 4998cd89c31113ef63a2cac29cdfd50cee6427b7bff2e5e5c3bb59b2d556716f
+	sha256sums = d2f109fd04d30e24f10afd1691da0e7b6bac174d83de70bedb5cb77c15b66891
+
+pkgname = apex-gp-bin
