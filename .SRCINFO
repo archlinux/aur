@@ -1,0 +1,17 @@
+pkgbase = pushprox-bin
+	pkgdesc = Proxy that lets Prometheus scrape targets behind NAT
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/prometheus-community/PushProx
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = pushprox
+	conflicts = pushprox
+	options = !debug
+	source_x86_64 = pushprox-bin-0.2.0-x86_64.tar.gz::https://github.com/prometheus-community/PushProx/releases/download/v0.2.0/PushProx-0.2.0.linux-amd64.tar.gz
+	sha256sums_x86_64 = c75cc05d078d59571b8bda656039584dc4b7be95fc8ab5332bfabb02c2c806a3
+	source_aarch64 = pushprox-bin-0.2.0-aarch64.tar.gz::https://github.com/prometheus-community/PushProx/releases/download/v0.2.0/PushProx-0.2.0.linux-arm64.tar.gz
+	sha256sums_aarch64 = ff20481791e8e6ec78c6fa9011962d7050c822efce357cddbb14ae3004974219
+
+pkgname = pushprox-bin
