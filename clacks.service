@@ -1,0 +1,14 @@
+[Unit]
+Description=clacks sync daemon (encrypted sync for AI coding sessions)
+Documentation=https://github.com/rodneyosodo/clacks
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/clacks daemon
+Restart=on-failure
+RestartSec=30s
+
+[Install]
+WantedBy=default.target
