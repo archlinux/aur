@@ -1,7 +1,7 @@
 # Maintainer: forvkusa <forvkusa+aur at csie dot ntu dot edu dot tw>
 
 pkgname=hackmd-cli
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='The HackMD Command Line Tool'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('pnpm')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('ed74ff9732cb92a4b1b2e0e3376e0ebed6216d3282a1abc52e29c5a3ce144227')
+sha256sums=('c3fe53facb0ae166427b6ccbf81f496c2c94f0aedc59574e78fa1b350037b8ba')
 
 prepare() {
 	cd "$pkgname-$pkgver"
