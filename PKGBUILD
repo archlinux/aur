@@ -7,7 +7,7 @@
 # New version: ../publish.sh (pkgver, updpkgsums, makepkg --printsrcinfo > .SRCINFO, push to the AUR)
 
 pkgname=cryptyrust-bin
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Post-quantum file encryption: drag-and-drop GUI and command line (X25519 + ML-KEM, Argon2id)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ conflicts=('cryptyrust')
 options=('!strip' '!debug')
 _appimage="cryptyrust-$pkgver-linux.AppImage"
 source=("$_appimage::https://github.com/Antidote1911/cryptyrust/releases/download/v$pkgver/$_appimage")
-sha256sums=('d4fa060a3518eb57d600123f37e7dbf608926c3a051b359e143419671bb84c21')
+sha256sums=('d88e6202115060f0ac6ed60c966f8cdc04e6a87b0159b0d35f38e0df88901d3f')
 
 prepare() {
     chmod +x "$_appimage"
