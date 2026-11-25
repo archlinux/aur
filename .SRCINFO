@@ -1,0 +1,18 @@
+pkgbase = kronk-bin
+	pkgdesc = Hardware-accelerated local inference in Go with llama.cpp, whisper.cpp and stable-diffusion.cpp
+	pkgver = 1.33.3
+	pkgrel = 1
+	url = https://github.com/ardanlabs/kronk
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = kronk
+	conflicts = kronk
+	options = !debug
+	source_x86_64 = kronk-bin-1.33.3-x86_64.tar.gz::https://github.com/ardanlabs/kronk/releases/download/v1.33.3/kronk_1.33.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3f2c379fc3334282be38ab5d54aede8007fef230dd73fd0a39c7a52bf3e2f896
+	source_aarch64 = kronk-bin-1.33.3-aarch64.tar.gz::https://github.com/ardanlabs/kronk/releases/download/v1.33.3/kronk_1.33.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 39a2bde74875382e84a840d3237eaa3e3922ae5a75f977ec449f9ba5fcff98c2
+
+pkgname = kronk-bin
