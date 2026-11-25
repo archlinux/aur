@@ -1,8 +1,8 @@
 # Maintainer: Il Tuo Nome <tua-email@example.com>
 # Nota: sostituisci TUO_UTENTE con il tuo username GitHub prima di pubblicare su AUR.
 
-pkgname=wallcycle-git
-pkgver=r3.0311a10
+pkgname=wallcycle
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Cross-platform wallpaper slideshow with real-time clock overlay and BT.709 luminance filter (Lazarus/FPC)"
 arch=('x86_64' 'aarch64')
