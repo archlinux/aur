@@ -1,0 +1,18 @@
+pkgbase = mempalace-bin
+	pkgdesc = The best-benchmarked open-source AI memory system
+	pkgver = 3.12.0
+	pkgrel = 1
+	url = https://github.com/MemPalace/mempalace
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = mempalace
+	conflicts = mempalace
+	options = !debug
+	source = mempalace-bin-3.12.0-LICENSE::https://raw.githubusercontent.com/MemPalace/mempalace/v3.12.0/LICENSE
+	sha256sums = 81dc6cc278d80f0f1b028ecd86af30d61e441b9ae53d9d9a2ed19389ba657a5d
+	source_x86_64 = mempalace-bin-3.12.0-x86_64::https://github.com/MemPalace/mempalace/releases/download/v3.12.0/mempalace-native-linux-amd64
+	sha256sums_x86_64 = fd0f5075ed22f34875cdf0d742af7d0dfd71c1efd052364b35260815b7664434
+
+pkgname = mempalace-bin
