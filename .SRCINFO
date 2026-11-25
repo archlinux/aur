@@ -1,0 +1,18 @@
+pkgbase = dingtalk-workspace-cli-bin
+	pkgdesc = DingTalk Workspace is an officially open-sourced cross-platform CLI tool from DingTalk
+	pkgver = 1.0.69
+	pkgrel = 1
+	url = https://github.com/DingTalk-Real-AI/dingtalk-workspace-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = dingtalk-workspace-cli
+	conflicts = dingtalk-workspace-cli
+	options = !debug
+	source_x86_64 = dingtalk-workspace-cli-bin-1.0.69-x86_64.tar.gz::https://github.com/DingTalk-Real-AI/dingtalk-workspace-cli/releases/download/v1.0.69/dws-linux-amd64.tar.gz
+	sha256sums_x86_64 = 567257be28c1ccce4f424fc92969f9c21dd15ed600a86c252adbc35821bf7c4a
+	source_aarch64 = dingtalk-workspace-cli-bin-1.0.69-aarch64.tar.gz::https://github.com/DingTalk-Real-AI/dingtalk-workspace-cli/releases/download/v1.0.69/dws-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4a8fdb369527abbb4bcf90ebf79c5e329a2021c2608491f71a610ef3a67a9797
+
+pkgname = dingtalk-workspace-cli-bin
