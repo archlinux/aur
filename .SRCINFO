@@ -1,0 +1,20 @@
+pkgbase = digler-bin
+	pkgdesc = Forensic disk analysis and file recovery tool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ostafen/digler
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = digler
+	conflicts = digler
+	options = !debug
+	source = digler-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/ostafen/digler/v0.1.0/LICENSE
+	sha256sums = ca5ae13ec006328e844f403aa2c322f6e4cb30fee8a28de61388380c9f99fe61
+	source_x86_64 = digler-bin-0.1.0-x86_64::https://github.com/ostafen/digler/releases/download/v0.1.0/digler-linux-amd64
+	sha256sums_x86_64 = f253b328cb655a6a8ba1e5c67bd29ced63940c068275a624d17277484a4cdc2c
+	source_aarch64 = digler-bin-0.1.0-aarch64::https://github.com/ostafen/digler/releases/download/v0.1.0/digler-linux-arm64
+	sha256sums_aarch64 = d3020e9ac132eb15e27b610ba48c3b669466c7d29c333406cc1cded506f437ca
+
+pkgname = digler-bin
