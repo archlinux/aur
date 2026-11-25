@@ -1,0 +1,17 @@
+pkgbase = afrog-bin
+	pkgdesc = A Security Tool for Bug Bounty, Pentest and Red Teaming
+	pkgver = 3.5.12
+	pkgrel = 1
+	url = https://github.com/zan8in/afrog
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = afrog
+	conflicts = afrog
+	options = !debug
+	source_x86_64 = afrog-bin-3.5.12-x86_64.zip::https://github.com/zan8in/afrog/releases/download/v3.5.12/afrog_3.5.12_linux_amd64.zip
+	sha256sums_x86_64 = d706f26b98a4a270660e86c2ff5485082dd2673697fe4183cd9e5d38a701c3da
+	source_aarch64 = afrog-bin-3.5.12-aarch64.zip::https://github.com/zan8in/afrog/releases/download/v3.5.12/afrog_3.5.12_linux_arm64.zip
+	sha256sums_aarch64 = 414b8541e8293ea38206ff31584176db4a2a52b98a2ae17ee9981446b3d9b29a
+
+pkgname = afrog-bin
