@@ -1,0 +1,24 @@
+pkgbase = ymusic-bin
+	pkgdesc = Нативный клиент Яндекс Музыки на Rust и Qt Quick
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ethermawe/ymusic
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = hicolor-icon-theme
+	optdepends = xdg-utils: открытие страницы входа и папки загрузок
+	provides = ymusic
+	conflicts = ymusic
+	conflicts = ymusic-git
+	options = !strip
+	options = !debug
+	source = ymusic-0.3.0-1-x86_64.pkg.tar.zst::https://github.com/ethermawe/ymusic/releases/download/v0.3.0/ymusic-0.3.0-1-x86_64.pkg.tar.zst
+	sha256sums = f1c95281bd55ab7b5e172c113b7340fe09fa75413c9780f0d47265e535089bde
+
+pkgname = ymusic-bin
