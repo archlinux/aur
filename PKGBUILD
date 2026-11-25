@@ -1,6 +1,6 @@
 # Maintainer: James Farr Gomez <james@nertwork.com>
 pkgname=bluepill
-pkgver=1.2.14
+pkgver=1.2.16
 pkgrel=1
 pkgdesc="BluePill — Native Linux/Wayland Qt6/QML desktop & CLI client for iMessage, RCS, and SMS"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=(
 )
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nertwork/bluepill/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('81186034e2c48595fe07179fefab57c3740c9743821c80ebc6d5cfb1d4ea4ca1')
+sha256sums=('f17fe98c6366c68c368dfefb467a665de4ed1ba6051c2a05819b0db77206f3b0')
 
 build() {
     cd "$srcdir/bluepill-${pkgver}"
