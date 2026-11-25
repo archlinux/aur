@@ -1,13 +1,13 @@
 pkgbase = execline-man-pages
 	pkgdesc = Man pages for execline
-	pkgver = 2.9.9.1.1
+	pkgver = 2.10.0.0.1
 	pkgrel = 1
 	url = https://git.sr.ht/~humm/execline-man-pages
 	arch = any
 	license = ISC
 	makedepends = make
 	makedepends = coreutils
-	source = https://git.sr.ht/~humm/execline-man-pages/archive/v2.9.9.1.1.tar.gz
-	sha512sums = bd4ab7d04589003734ef68b5b8f4529a8bcc6c1b387d6e363e5dc9a67d552c5eadc077d4f3eea8ece1d1df21e26833fb4a045377695b0e0c675dec50d5e0e12c
+	source = https://git.sr.ht/~humm/execline-man-pages/archive/v2.10.0.0.1.tar.gz
+	sha512sums = 059a614fa1e969d1f5bacc45b87bd7b4a7ca7730838b18cc874bc2b33c3d0a4ba1d4a8eae6352b208cee7c703e8453fecb6461a382415cd71018fb6264f9441e
 
 pkgname = execline-man-pages
