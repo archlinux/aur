@@ -1,0 +1,19 @@
+pkgbase = tengo-bin
+	pkgdesc = A fast script language for Go
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/d5/tengo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tengo
+	conflicts = tengo
+	options = !debug
+	source = tengo-bin-3.0.0-LICENSE::https://raw.githubusercontent.com/d5/tengo/v3.0.0/LICENSE
+	sha256sums = 7150e12a44e955941375688e0abaf7a49dc9f675826ea87c310a16f8ae660516
+	source_x86_64 = tengo-bin-3.0.0-x86_64.tar.gz::https://github.com/d5/tengo/releases/download/v3.0.0/tengo_3.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 00d452ae175d2d0ff1d9bf758697fe8748995c0d0538f657d58d2ee3d80b8e19
+	source_aarch64 = tengo-bin-3.0.0-aarch64.tar.gz::https://github.com/d5/tengo/releases/download/v3.0.0/tengo_3.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 84ffd709153b5814da1f77033462f49eb04d69b39fcf3e8a06d94c0a3a9ecb27
+
+pkgname = tengo-bin
