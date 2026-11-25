@@ -1,6 +1,6 @@
 pkgbase = dopamine-git
 	pkgdesc = An elegant audio player which tries to make organizing and listening to music as simple and pretty as possible.
-	pkgver = 3.0.12.r4.gbf7643d
+	pkgver = 3.0.12.r9.g713ada9
 	pkgrel = 1
 	url = https://digimezzo.github.io/site/
 	arch = any
@@ -10,14 +10,13 @@ pkgbase = dopamine-git
 	makedepends = nvm
 	makedepends = jq
 	depends = electron38-bin
-	depends = python
 	provides = dopamine=3.0.12
 	conflicts = dopamine
 	source = dopamine.git::git+https://github.com/digimezzo/dopamine.git
 	source = dopamine.js
 	source = dopamine.sh
 	sha256sums = SKIP
-	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+	sha256sums = b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b
+	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
 
 pkgname = dopamine-git

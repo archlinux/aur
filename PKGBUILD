@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dopamine-git
 _pkgname=Dopamine
-pkgver=3.0.12.r4.gbf7643d
+pkgver=3.0.12.r9.g713ada9
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -14,7 +14,6 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}-bin"
-    'python'
 )
 makedepends=(
     'npm'
@@ -28,8 +27,8 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b'
+            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -37,10 +36,10 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 pkgver() {
-	cd "$(_get_project_dir)"
-	set -o pipefail
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$(_get_project_dir)" || return 1
+	local _t=$(git tag --list --sort=-v:refname | grep -m1 -E '^v?[0-9]+(\.[0-9]+)+(-[0-9A-Za-z][0-9A-Za-z.-]*)?$' || :)
+	local _n=$(git rev-list --count "${_t:+$_t..}HEAD") _s=$(git rev-parse --short=7 HEAD) _v=${_t#v}; _v=${_v//-/_}
+	[[ -n $_t ]] && printf '%s.r%s.g%s\n' "$_v" "$_n" "$_s" || printf 'r%s.%s\n' "$_n" "$_s"
 }
 _ensure_local_nvm() {
 	local NVM_DIR="${srcdir}/.nvm"
@@ -57,6 +56,16 @@ _get_electron_version() {
 	_v=${_v:-$(grep -hoE 'electron[@":][^0-9]*[0-9]+\.[0-9.]+' "$(_get_project_dir)"/*lock* 2>/dev/null | grep -oE '[0-9]+\.[0-9.]+' | head -1 | sed 's/\..*//')}
 	[[ "$_v" =~ ^[0-9] ]] || return 1
 	(( ${_v} == _electronversion )) && echo -e "\033[1;32mElectron version: ${_v}\033[0m" || echo -e "\033[1;31mElectron version: ${_v} (expected ${_electronversion})\033[0m"
+}
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 _set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -83,7 +92,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-    " "${srcdir}/${pkgname%-git}.sh" "${srcdir}/${pkgname%-git}.js"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     _set_electron_build_env
     _set_npm_build_env
@@ -93,7 +102,7 @@ prepare() {
     " "deployment/AUR/${_pkgname}.desktop"
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     export NODE_ENV=development
-    npm install --legacy-peer-deps
+    npm install
 }
 build() {
     cd "$(_get_project_dir)"
@@ -103,7 +112,7 @@ build() {
     export NODE_ENV=production
     npm run build:prod
     npm exec -c "electron-builder build --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.config.js"
-    rm -rf "$(_get_app_dir)/resources/default_app.asar"
+    _delete_other_arch_files
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
