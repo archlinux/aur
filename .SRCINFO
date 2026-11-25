@@ -1,0 +1,19 @@
+pkgbase = toughradius-bin
+	pkgdesc = RADIUS server for ISPs, enterprise networks and carriers
+	pkgver = 9.4.0
+	pkgrel = 1
+	url = https://github.com/talkincode/toughradius
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = toughradius
+	conflicts = toughradius
+	options = !debug
+	source = toughradius-bin-9.4.0-LICENSE::https://raw.githubusercontent.com/talkincode/toughradius/v9.4.0/LICENSE
+	sha256sums = 7538072c5f3a33968503503ef849e6d79590d17e3b75a438b988e616e0b53041
+	source_x86_64 = toughradius-bin-9.4.0-x86_64::https://github.com/talkincode/toughradius/releases/download/v9.4.0/toughradius_linux_amd64
+	sha256sums_x86_64 = 52e23dc02687da690c09755d9a32d52d1af0a8476705701814b42afdd7012e5e
+	source_aarch64 = toughradius-bin-9.4.0-aarch64::https://github.com/talkincode/toughradius/releases/download/v9.4.0/toughradius_linux_arm64
+	sha256sums_aarch64 = f5c43cc6f714f11b950a0b5e01b7cb005d2dcb3b40468d1869c907855e693073
+
+pkgname = toughradius-bin
