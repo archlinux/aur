@@ -1,14 +1,14 @@
-# Maintainer: Antidote1911 <antidote1911@gmail.com>
+# Maintainer: Antidote1911 <antidote1911@users.noreply.github.com>
 #
 # Hydra64 from the AppImage of its GitHub release, unpacked into /opt/hydra64: nothing is built,
 # and FUSE is not needed to run it. The AppImage carries its own Qt; what it takes from the system
 # is in depends=().
 #
-# New version: change pkgver, then  updpkgsums && makepkg --printsrcinfo > .SRCINFO
+# New version: ../publish.sh (pkgver, updpkgsums, makepkg --printsrcinfo > .SRCINFO, push to the AUR)
 # (the checksum is also in the SHA256SUMS file of the release).
 
 pkgname=hydra64-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Chess databases, engine analysis, play against an engine and engine tournaments"
 arch=('x86_64')
@@ -22,7 +22,7 @@ conflicts=('hydra64')
 options=('!strip' '!debug')
 _appimage="Hydra64-v$pkgver-linux-x86_64.AppImage"
 source=("$_appimage::https://github.com/Antidote1911/Hydra64/releases/download/v$pkgver/$_appimage")
-sha256sums=('9e0199e37817764679dfa416d4ad33e60b86df55accc07d94113d00b6c7748b6')
+sha256sums=('0e1e2d37046b9c67bbbe900cac0953fdc946178e6dca28c3ce287597622c7a37')
 
 prepare() {
     chmod +x "$_appimage"
@@ -46,5 +46,7 @@ package() {
     install -Dm644 hydra64.desktop "$pkgdir/usr/share/applications/hydra64.desktop"
     install -Dm644 usr/share/icons/hicolor/scalable/apps/hydra64.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
     install -Dm644 usr/share/metainfo/io.github.antidote1911.hydra64.metainfo.xml -t "$pkgdir/usr/share/metainfo"
-    install -Dm644 usr/share/licenses/hydra64/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    # The licence, the notice of the third-party components and the texts of their licences
+    install -d "$pkgdir/usr/share/licenses/$pkgname"
+    cp -a usr/share/licenses/hydra64/. "$pkgdir/usr/share/licenses/$pkgname/"
 }
