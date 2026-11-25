@@ -1,0 +1,20 @@
+pkgbase = llm-space-bin
+	pkgdesc = A desktop app to prototype agent ideas, inspect every harness step, replay failures, and evaluate performance, all in one place
+	pkgver = 4.20.0
+	pkgrel = 1
+	url = https://github.com/deer-flow/llm-space
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = llm-space
+	conflicts = llm-space
+	options = !debug
+	source = llm-space-bin-4.20.0-LICENSE::https://raw.githubusercontent.com/deer-flow/llm-space/v4.20.0/LICENSE
+	sha256sums = bb34a9132f43de68c94353588a48415f50f723316bb56a1bb13041b721788d3e
+	source_x86_64 = llm-space-bin-4.20.0-x86_64.tar.gz::https://github.com/deer-flow/llm-space/releases/download/v4.20.0/llm-space-server-4.20.0-linux-x64.tar.gz
+	sha256sums_x86_64 = de536ee82b5542c1e47cb8561335642f156e7756f1ca9bce4b41fc9c2924f075
+	source_aarch64 = llm-space-bin-4.20.0-aarch64.tar.gz::https://github.com/deer-flow/llm-space/releases/download/v4.20.0/llm-space-server-4.20.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 6ce7c52d43ed5534857173f8fe71a59f8cdb6c3436d091a2ca844dd17888921c
+
+pkgname = llm-space-bin
