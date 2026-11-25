@@ -4,7 +4,7 @@ pkgname=strata-app
 _pkgname=strata
 _binaryname=strata-desktop
 pkgdesc="Strata Desktop - Local inference engine and GUI for frontier AI models"
-pkgver=0.2.13
+pkgver=0.2.21
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Niko1221/Strata"
@@ -41,15 +41,15 @@ conflicts=("${pkgname}-bin")
 # recorded digests.
 #
 # DeepSeek Harness commit staged into the app, from
-# apps/host/server/agent/README.md and preset.mjs
+# app/host/server/agent/README.md and preset.mjs
 _harness_commit=571902028a75c64c1d767f4ae5fd099485f0ddf0
 # standalone CPython, from PBS_RELEASE / PYTHON_VERSION / PYTHON_PINS in
-# packaging/package_terminal.py
+# tools/packaging/package_terminal.py
 _pbs_release=20261009
 _python_version=3.12.15
 _pbs_sha256=5864001bf969db329fadc2b654c4878c6027d170c6bd77e28f88666260bcaf63
 # Node, from STRATA_NODE_VERSION / digest_for in
-# apps/desktop/scripts/fetch-node.sh at the release tag. The app runs its host
+# app/desktop/scripts/fetch-node.sh at the release tag. The app runs its host
 # and the harness on it, and the harness's native addons (node-pty, koffi, ...)
 # are compiled for the Node that builds them, so the same Node is used for the
 # build and shipped as the runtime: the addon ABI always matches, a system
@@ -58,7 +58,7 @@ _node_version=24.12.0
 _node_sha256=6159227e0af7d7c3c6bb2fa900452b04a6cb8841a702a79acc613209d70b04d0
 # makepkg's checksums (a git archive of the ref) of the two git sources, which
 # have no upstream digest; they make a moved tag fail the build
-_src_sha256=87ba613c244b597916c2560ed147ff3ab18a2b94f22d8a940b2ed599e0720b88
+_src_sha256=9b0f9de0efb1688eca8dbf29f033316812193a6b159942bb673e05795d9abe52
 _harness_sha256=0828e92122ddbae364d23b85b76ca24dd83de726734d43845a4c1b2c42f399c2
 
 _pbs_file="cpython-${_python_version}_${_pbs_release}-x86_64-unknown-linux-gnu-install_only.tar.gz"
@@ -80,7 +80,7 @@ sha256sums=("${_src_sha256}"
             "${_pbs_sha256}"
             "${_node_sha256}"
             'bccf986eb5de114e7ae8faa9917116d932b87be578cd5e165888d393c27eee1b'
-            '1041357d7d22ca52363b09e7061c18a58bb6e0516d6d65e5d3e956b0e243a5ca')
+            'eb5385cff5d9c9582b473ee7d81caaa8aea14e099f7e551b3a1ce3186d8e9136')
 
 _env() {
     export PATH="${srcdir}/${_node_dir}/bin:${PATH}"
@@ -99,9 +99,9 @@ prepare() {
     # release AppImage; point users to pacman instead
     patch -Np1 -i "${srcdir}/disable-app-updater.patch"
 
-    npm ci --prefix apps/host
-    npm ci --prefix apps/desktop
-    cargo fetch --locked --manifest-path apps/desktop/src-tauri/Cargo.toml
+    npm ci --prefix app/host
+    npm ci --prefix app/desktop
+    cargo fetch --locked --manifest-path app/desktop/src-tauri/Cargo.toml
 
     cd "${srcdir}/${pkgname}-harness"
     corepack pnpm install --frozen-lockfile
@@ -115,33 +115,33 @@ build() {
     # --prod, pruned, booted once as a check) into resources/harness
     cd "${srcdir}/${pkgname}-harness"
     corepack pnpm run build:artifacts
-    node "${_src}/apps/desktop/scripts/stage-harness.mjs" --src "${srcdir}/${pkgname}-harness"
+    node "${_src}/app/desktop/scripts/stage-harness.mjs" --src "${srcdir}/${pkgname}-harness"
 
     # Control: upstream's Terminal bundle (pinned CPython plus hash-locked
     # wheels), staged into resources/control
     cd "${_src}"
     rm -rf "${srcdir}/control-out"
-    python packaging/package_terminal.py --out "${srcdir}/control-out" --cache "${srcdir}"
-    python apps/desktop/scripts/stage-control.py --archive "${srcdir}"/control-out/strata-terminal-*.tar.gz
+    python tools/packaging/package_terminal.py --out "${srcdir}/control-out" --cache "${srcdir}"
+    python app/desktop/scripts/stage-control.py --archive "${srcdir}"/control-out/strata-terminal-*.tar.gz
 
     # UI, then the Tauri shell; bundling is skipped, package() lays out the
     # resources the way upstream's deb/AppImage does
-    npm --prefix apps/host run build
-    cd apps/desktop
+    npm --prefix app/host run build
+    cd app/desktop
     npm exec -- tauri build --no-bundle -- --locked
 }
 
 package() {
     local _src="${srcdir}/${pkgname}-src"
-    local _tauri="${_src}/apps/desktop/src-tauri"
+    local _tauri="${_src}/app/desktop/src-tauri"
     # the shell looks for its resources at ../lib/Strata relative to itself
     local _res="${pkgdir}/usr/lib/Strata"
 
     install -D -m0755 "${_tauri}/target/release/${_binaryname}" "${pkgdir}/usr/bin/${_binaryname}"
 
     install -d "${_res}/host"
-    cp -a "${_src}/apps/host/dist" "${_src}/apps/host/server" "${_res}/host/"
-    install -m0644 "${_src}/apps/host/package.json" "${_res}/host/package.json"
+    cp -a "${_src}/app/host/dist" "${_src}/app/host/server" "${_res}/host/"
+    install -m0644 "${_src}/app/host/package.json" "${_res}/host/package.json"
     cp -a "${_tauri}/resources/control" "${_tauri}/resources/harness" "${_res}/"
     rm -f "${_res}/control/.gitignore" "${_res}/harness/.gitignore"
 

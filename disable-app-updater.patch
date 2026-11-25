@@ -1,6 +1,6 @@
---- a/apps/desktop/src-tauri/src/updater.rs
-+++ b/apps/desktop/src-tauri/src/updater.rs
-@@ -58,6 +58,11 @@
+--- a/app/desktop/src-tauri/src/updater.rs
++++ b/app/desktop/src-tauri/src/updater.rs
+@@ -231,6 +231,11 @@
  }
  
  fn updater_for(app: &AppHandle) -> Result<tauri_plugin_updater::Updater, String> {
