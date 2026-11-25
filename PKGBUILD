@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=doltlite-bin
-pkgver=0.51.15
+pkgver=0.51.16
 pkgrel=1
 pkgdesc='SQLite fork with Git-style version control (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -18,10 +18,10 @@ source_x86_64=("${_release}/doltlite-tools-linux-x64-${pkgver}.zip"
 source_aarch64=("${_release}/doltlite-tools-linux-arm64-${pkgver}.zip"
                 "${_release}/doltlite-lib-linux-arm64-${pkgver}.zip")
 sha256sums=('29665b418abe9d65f3bdd723ca27336a998477566e9426d436530ede0e65efcf')
-sha256sums_x86_64=('e6b671a3c53e8b2f858a9def9b9fbda3d65665b074faff3bd00a728f4e6788b1'
-                   '7d9e088c362205f5f831a50bde70e3e059328b532affadd02b129284870d7eb9')
-sha256sums_aarch64=('133729bc514b261c19bf054e458ac2d3f02698ac44dd0d0abc0dadb2b45823af'
-                    'd0d9c8e0a6f8bddfcd9aec9cd4902e7443d0beff9b93f6385716ddbd6bcebb21')
+sha256sums_x86_64=('0b9cb795e2054fbeb8a69afb7a0a225c09ae8e769885a7f7fb285ea80b71a9f2'
+                   '352984b9965b318eec00ca080625b5c2513e3f619cc34b797e490710b218b086')
+sha256sums_aarch64=('9aaf92682fcdc986929c125d71ec8e545af1962ba6c4dc1e5fe934134b8b6afa'
+                    '994cbbf845346e58f0a7fd909dd6af8672c2faf3fe0649b8aa102f3ad15a6046')
 
 package() {
   cd doltlite-tools-linux-*-"${pkgver}"

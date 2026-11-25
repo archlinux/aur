@@ -1,6 +1,6 @@
 pkgbase = doltlite-bin
 	pkgdesc = SQLite fork with Git-style version control (prebuilt)
-	pkgver = 0.51.15
+	pkgver = 0.51.16
 	pkgrel = 1
 	url = https://github.com/dolthub/doltlite
 	arch = x86_64
@@ -9,17 +9,17 @@ pkgbase = doltlite-bin
 	makedepends = patchelf
 	depends = glibc
 	depends = zlib
-	provides = doltlite=0.51.15
+	provides = doltlite=0.51.16
 	conflicts = doltlite
-	source = doltlite-0.51.15-LICENSE.md::https://raw.githubusercontent.com/dolthub/doltlite/v0.51.15/LICENSE.md
+	source = doltlite-0.51.16-LICENSE.md::https://raw.githubusercontent.com/dolthub/doltlite/v0.51.16/LICENSE.md
 	sha256sums = 29665b418abe9d65f3bdd723ca27336a998477566e9426d436530ede0e65efcf
-	source_x86_64 = https://github.com/dolthub/doltlite/releases/download/v0.51.15/doltlite-tools-linux-x64-0.51.15.zip
-	source_x86_64 = https://github.com/dolthub/doltlite/releases/download/v0.51.15/doltlite-lib-linux-x64-0.51.15.zip
-	sha256sums_x86_64 = e6b671a3c53e8b2f858a9def9b9fbda3d65665b074faff3bd00a728f4e6788b1
-	sha256sums_x86_64 = 7d9e088c362205f5f831a50bde70e3e059328b532affadd02b129284870d7eb9
-	source_aarch64 = https://github.com/dolthub/doltlite/releases/download/v0.51.15/doltlite-tools-linux-arm64-0.51.15.zip
-	source_aarch64 = https://github.com/dolthub/doltlite/releases/download/v0.51.15/doltlite-lib-linux-arm64-0.51.15.zip
-	sha256sums_aarch64 = 133729bc514b261c19bf054e458ac2d3f02698ac44dd0d0abc0dadb2b45823af
-	sha256sums_aarch64 = d0d9c8e0a6f8bddfcd9aec9cd4902e7443d0beff9b93f6385716ddbd6bcebb21
+	source_x86_64 = https://github.com/dolthub/doltlite/releases/download/v0.51.16/doltlite-tools-linux-x64-0.51.16.zip
+	source_x86_64 = https://github.com/dolthub/doltlite/releases/download/v0.51.16/doltlite-lib-linux-x64-0.51.16.zip
+	sha256sums_x86_64 = 0b9cb795e2054fbeb8a69afb7a0a225c09ae8e769885a7f7fb285ea80b71a9f2
+	sha256sums_x86_64 = 352984b9965b318eec00ca080625b5c2513e3f619cc34b797e490710b218b086
+	source_aarch64 = https://github.com/dolthub/doltlite/releases/download/v0.51.16/doltlite-tools-linux-arm64-0.51.16.zip
+	source_aarch64 = https://github.com/dolthub/doltlite/releases/download/v0.51.16/doltlite-lib-linux-arm64-0.51.16.zip
+	sha256sums_aarch64 = 9aaf92682fcdc986929c125d71ec8e545af1962ba6c4dc1e5fe934134b8b6afa
+	sha256sums_aarch64 = 994cbbf845346e58f0a7fd909dd6af8672c2faf3fe0649b8aa102f3ad15a6046
 
 pkgname = doltlite-bin
