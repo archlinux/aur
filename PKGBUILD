@@ -1,7 +1,7 @@
 # Maintainer: Victor Coscrato <vcoscrato@users.noreply.github.com>
 
 pkgname=speshell-git
-pkgver=r25.gcf6b1e3
+pkgver=r26.g66e0b85
 pkgrel=1
 pkgdesc="A desktop shell built with Quickshell: a bar and its panels, a launcher, and animated themes"
 arch=('any')
@@ -29,6 +29,9 @@ depends=(
 makedepends=('git' 'just' 'qt6-shadertools')
 optdepends=(
   'hyprland: workspaces in the bar and the Displays panel'
+  'hyprsunset: night light'
+  'hyprshutdown: closing apps gracefully on logging out of Hyprland'
+  'tailscale: Tailscale in the Network panel'
   'curl: downloading the dictation model'
   'paru: AUR packages in speshell system (or yay)'
   'brightnessctl: brightness and keyboard backlight controls, and dimming on idle'

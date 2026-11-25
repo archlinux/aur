@@ -1,6 +1,6 @@
 pkgbase = speshell-git
 	pkgdesc = A desktop shell built with Quickshell: a bar and its panels, a launcher, and animated themes
-	pkgver = r25.gcf6b1e3
+	pkgver = r26.g66e0b85
 	pkgrel = 1
 	url = https://github.com/vcoscrato/speshell
 	arch = any
@@ -26,6 +26,9 @@ pkgbase = speshell-git
 	depends = util-linux
 	depends = wireplumber
 	optdepends = hyprland: workspaces in the bar and the Displays panel
+	optdepends = hyprsunset: night light
+	optdepends = hyprshutdown: closing apps gracefully on logging out of Hyprland
+	optdepends = tailscale: Tailscale in the Network panel
 	optdepends = curl: downloading the dictation model
 	optdepends = paru: AUR packages in speshell system (or yay)
 	optdepends = brightnessctl: brightness and keyboard backlight controls, and dimming on idle
