@@ -1,6 +1,6 @@
 pkgbase = hickory-dns
 	pkgdesc = Hickory DNS is a safe and secure DNS server with a variety of protocol featur...
-	pkgver = 0.26.3
+	pkgver = 0.26.4
 	pkgrel = 1
 	url = https://hickory-dns.org/
 	arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = hickory-dns
 	makedepends = cargo-auditable
 	depends = libgcc
 	replaces = trust-dns
-	source = hickory-dns-0.26.3.tar.gz::https://static.crates.io/crates/hickory-dns/0.26.3/download
+	source = hickory-dns-0.26.4.tar.gz::https://static.crates.io/crates/hickory-dns/0.26.4/download
 	source = hickory-dns.service
-	sha512sums = 9383bdf0b4f37dc25f214708c695f7cfb40a161a45c28fbb568c3d5b200e9259de6d5e9194f9c1dd38428cf80fcbfd0978fda2c9b99e89b473102f1e64114c4c
+	sha512sums = 5086f7674c26e51dc64f43f2d2f558aee42e285eba4dd89acadbb86b0ba9e3718c1523ca873d91374e0b0dd499cd0c69065b70838ef0752c69c508f050652bfd
 	sha512sums = fc985e788258f918f7239d207418b1c68a110cff3722682b812b34548727e077f71745c07f28df28999523c80a54480a688fdf2cbf7c1ffa068cce24c3f49baf
 
 pkgname = hickory-dns
