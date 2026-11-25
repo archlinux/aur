@@ -1,0 +1,20 @@
+pkgbase = docker-gen-bin
+	pkgdesc = Generate files from docker container meta-data
+	pkgver = 0.17.2
+	pkgrel = 1
+	url = https://github.com/nginx-proxy/docker-gen
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = docker-gen
+	conflicts = docker-gen
+	options = !debug
+	source = docker-gen-bin-0.17.2-LICENSE::https://raw.githubusercontent.com/nginx-proxy/docker-gen/0.17.2/LICENSE
+	sha256sums = cb50f4c87f6871ae53442a66a47ab5d8914c5b53a7f83738839b53fa55c6c66b
+	source_x86_64 = docker-gen-bin-0.17.2-x86_64.tar.gz::https://github.com/nginx-proxy/docker-gen/releases/download/0.17.2/docker-gen-linux-amd64-0.17.2.tar.gz
+	sha256sums_x86_64 = 7f01f7fac7927c86f48614f0283cf4274b7d051f3ed0b8fff4a8704ea4a125c9
+	source_aarch64 = docker-gen-bin-0.17.2-aarch64.tar.gz::https://github.com/nginx-proxy/docker-gen/releases/download/0.17.2/docker-gen-linux-arm64-0.17.2.tar.gz
+	sha256sums_aarch64 = 8d9b0af87e49dc793cc23f0ccd21b6ac6ba803b1c959a5336f09e3bf2e084323
+
+pkgname = docker-gen-bin
