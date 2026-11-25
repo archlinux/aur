@@ -10,13 +10,13 @@ pkgbase = fcitx5-lotus-git
 	makedepends = extra-cmake-modules
 	makedepends = gcc
 	makedepends = git
-	makedepends = python
 	source = git+https://github.com/LotusInputMethod/fcitx5-lotus.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = fcitx5-lotus-git
 	install = fcitx5-lotus.install
 	depends = acl
+	depends = dbus
 	depends = fcitx5
 	depends = fcitx5-configtool
 	depends = fcitx5-gtk
@@ -30,8 +30,10 @@ pkgname = fcitx5-lotus-git
 	depends = libstdc++
 	depends = libgcc
 	depends = libudev.so
-	depends = python-qtpy
-	depends = python-dbus
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = wayland
 	optdepends = fcitx5-lotus-openrc-git: OpenRC init script for fcitx5-lotus
 	optdepends = fcitx5-lotus-runit-git: Runit service for fcitx5-lotus
 	provides = fcitx5-lotus
