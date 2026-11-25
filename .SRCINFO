@@ -1,0 +1,19 @@
+pkgbase = weclaw-bin
+	pkgdesc = Connect AI agents to WeChat through ClawBot
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/fastclaw-ai/weclaw
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = weclaw
+	conflicts = weclaw
+	options = !debug
+	source = weclaw-bin-0.7.1-LICENSE::https://raw.githubusercontent.com/fastclaw-ai/weclaw/v0.7.1/LICENSE
+	sha256sums = c61044457c2e5aed94a4a1606ecaddd388aa67f0adfe29507c8ceb6f6f568dda
+	source_x86_64 = weclaw-bin-0.7.1-x86_64::https://github.com/fastclaw-ai/weclaw/releases/download/v0.7.1/weclaw_linux_amd64
+	sha256sums_x86_64 = dc1fa59bf4238eb89532f556b0896dc96f5493e039709d2c4b48b4b8b9b6c76a
+	source_aarch64 = weclaw-bin-0.7.1-aarch64::https://github.com/fastclaw-ai/weclaw/releases/download/v0.7.1/weclaw_linux_arm64
+	sha256sums_aarch64 = 6efdd2e58c05def52f2af679828d20131ba8f108ccba82d3cecf047aa86fd170
+
+pkgname = weclaw-bin
