@@ -1,11 +1,14 @@
 pkgbase = alto
-	pkgdesc = GUI file synchronization client that can sync with any cloud provider
+	pkgdesc = GUI file synchronization client that can sync with any cloud provider (uses system-wide Electron and rclone)
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hwittenborn/alto
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = npm
+	makedepends = python
+	depends = electron41
+	depends = rclone
 	depends = libadwaita
 	depends = alsa-lib
 	depends = nss
