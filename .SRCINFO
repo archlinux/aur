@@ -1,6 +1,6 @@
 pkgbase = python-claude-agent-sdk
 	pkgdesc = Python SDK for Claude Code
-	pkgver = 0.2.188
+	pkgver = 0.2.189
 	pkgrel = 1
 	url = https://github.com/anthropics/claude-agent-sdk-python
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-claude-agent-sdk
 	depends = python-sniffio
 	optdepends = python-trio: Trio async backend support
 	optdepends = python-opentelemetry-api: OpenTelemetry propagation support
-	source = https://files.pythonhosted.org/packages/source/c/claude_agent_sdk/claude_agent_sdk-0.2.188.tar.gz
-	sha256sums = 0937793651dcde582f83adf81f0e89a7209bcf2684b8a193326903fd1c743ffc
+	source = https://files.pythonhosted.org/packages/source/c/claude_agent_sdk/claude_agent_sdk-0.2.189.tar.gz
+	sha256sums = 1d859a142ee6cd97aef972215ed7ab5c09f623018194a6577c7dafbbfa481216
 
 pkgname = python-claude-agent-sdk
