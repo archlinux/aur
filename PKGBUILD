@@ -1,6 +1,6 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 pkgname=proton-stream-git
-pkgver=2.4.0.r0.g3552b97
+pkgver=2.5.0.r0.ga14151a
 pkgrel=1
 pkgdesc="Unofficial media library for Proton Drive: browse and stream public links and your own Drive folders (git main)"
 arch=('x86_64')
