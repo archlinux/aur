@@ -1,6 +1,6 @@
 pkgbase = vermouth
 	pkgdesc = A game and app launcher for Linux - native, Windows, and retro
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/dekomote/vermouth
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = vermouth
 	optdepends = sdl2: gamepad support
 	provides = vermouth
 	conflicts = vermouth
-	source = vermouth-2.8.0.tar.gz::https://github.com/dekomote/vermouth/archive/refs/tags/v2.8.0.tar.gz
-	sha256sums = 56602b3e2ee4a51bb76d3bec232c74903939faf1799b817fe039a9400d4c1622
+	source = vermouth-2.9.0.tar.gz::https://github.com/dekomote/vermouth/archive/refs/tags/v2.9.0.tar.gz
+	sha256sums = 92b140a653298cea7cb7538d8027fa21ea9c5aa03196e6fd50fdf2f0fb236f51
 
 pkgname = vermouth
