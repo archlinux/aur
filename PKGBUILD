@@ -5,7 +5,7 @@
 #
 # **The release's own static musl archives**, for the two architectures stikk publishes.
 pkgname=stikk-bin
-pkgver=0.21.1
+pkgver=0.22.0
 pkgrel=1
 pkgdesc='A terminal UI for the prikk version control system (prebuilt, statically linked)'
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ options=('!strip' '!debug')
 source_x86_64=("https://github.com/prikk-vcs/stikk/releases/download/$pkgver/stikk-$pkgver-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("https://github.com/prikk-vcs/stikk/releases/download/$pkgver/stikk-$pkgver-aarch64-unknown-linux-musl.tar.gz")
 # From the release's own `.sha256` assets for this version.
-sha256sums_x86_64=('47c34b76ca82d726a6bcf4a43771c90b0851c63c19bf89ebb7d0fefceea7b498')
-sha256sums_aarch64=('e34ba60785c1ac42fb775929b85496aadb5cd98cfcadb54fccfb0f91e9a278c3')
+sha256sums_x86_64=('614b045c6087b23e4e7be26ae66b857daf97fc66e72827c8caf035ebf9bbae73')
+sha256sums_aarch64=('ce9599bb143dd0a9fdfdd0f7e75e4da025d81860f34485d67eef0c3380ca7ff0')
 
 package() {
   cd "stikk-$pkgver-$CARCH-unknown-linux-musl"
