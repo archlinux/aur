@@ -1,0 +1,17 @@
+pkgbase = cam2ip-bin
+	pkgdesc = Turn any webcam into an IP camera
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/gen2brain/cam2ip
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = cam2ip
+	conflicts = cam2ip
+	options = !debug
+	source_x86_64 = cam2ip-bin-1.8.0-x86_64.tar.gz::https://github.com/gen2brain/cam2ip/releases/download/v1.8.0/cam2ip-1.8.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 109cad231799ae85fa0933acad93d28d1fad286881a3c84e1fd9496ded720e95
+	source_aarch64 = cam2ip-bin-1.8.0-aarch64.tar.gz::https://github.com/gen2brain/cam2ip/releases/download/v1.8.0/cam2ip-1.8.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = c174364eb50e824c21b6ade48a45e422904428e2aa4362bda16c16b9d4fcb527
+
+pkgname = cam2ip-bin
