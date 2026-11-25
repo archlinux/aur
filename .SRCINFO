@@ -1,0 +1,21 @@
+pkgbase = packsquash-bin
+	pkgdesc = Minecraft Java Edition resource and data pack optimizer
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/ComunidadAylas/PackSquash
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = packsquash
+	conflicts = packsquash
+	options = !debug
+	source = packsquash-bin-0.4.1-LICENSE::https://raw.githubusercontent.com/ComunidadAylas/PackSquash/v0.4.1/LICENSE
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	source_x86_64 = packsquash-bin-0.4.1-x86_64.zip::https://github.com/ComunidadAylas/PackSquash/releases/download/v0.4.1/packsquash-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 56c1997b0a223b93238488708e52cee5de6e1f29e500ae49875ea31f6936acfb
+	source_aarch64 = packsquash-bin-0.4.1-aarch64.zip::https://github.com/ComunidadAylas/PackSquash/releases/download/v0.4.1/packsquash-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 04e4569531390d9da1ac9fc21c913aed5e5deebc396e07236d357a26a3e78e36
+
+pkgname = packsquash-bin
