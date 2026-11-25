@@ -1,0 +1,17 @@
+pkgbase = kminion-bin
+	pkgdesc = Prometheus exporter for Apache Kafka
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = https://github.com/redpanda-data/kminion
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kminion
+	conflicts = kminion
+	options = !debug
+	source_x86_64 = kminion-bin-2.6.1-x86_64.tar.gz::https://github.com/redpanda-data/kminion/releases/download/v2.6.1/kminion_2.6.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = d2deb4149453274ebac41e0995b2a26530303f8ab9d8fb7bc5f078cddf2d7bab
+	source_aarch64 = kminion-bin-2.6.1-aarch64.tar.gz::https://github.com/redpanda-data/kminion/releases/download/v2.6.1/kminion_2.6.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 43e2b4b8dd2b3bab24a9ed94f986286c91d86468658cd64509fd95bb6e7c5c71
+
+pkgname = kminion-bin
