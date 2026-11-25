@@ -77,4 +77,10 @@ post_install() {
 
 post_upgrade() {
     post_install
+    echo "==> Running keymux processes keep the old build until they are restarted."
+    echo "    keymux --version                 (names the ones that are out of date)"
+    if [ -d "/run/systemd/system" ]; then
+        echo "    sudo systemctl restart keymux    (the user services restart with it)"
+    fi
+    echo ""
 }

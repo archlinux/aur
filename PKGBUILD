@@ -1,6 +1,6 @@
 # Maintainer: noahlyk <noahlykins@gmail.com>
 pkgname=keymux
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Keyboard middleware for gaming with low-level input interception"
 arch=('x86_64')
@@ -52,7 +52,7 @@ source=(
 )
 # placeholders: the release workflow fills in the real sums (updpkgsums) and refuses to push a SKIP
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'b46bd0961fc585a1e2f79f948cc52ebe0cf0e2740781fd391bf94b531383b566'
+            'c5c8bdf6909b6593ce6eea300e0a827a68d223b6b8ce8d95167821830b4ac8ad'
             'eb16807e3e33e128c103904aa795c879d89ea5f493089a23930aaf2dd0d56c98'
             '3cf2c1b2ff8277e44c2a9ea75695077ab85660c5beba21926e41af7a01e530d3'
             'a7304399130ad16fdfcd2161781bf582651f03590b39968106fd40be68cdcd47'
@@ -78,7 +78,7 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '4d67b22a10a311481018007eebca44d92c1d882f421f8e2657f0564f52f4b15d'
             '09f1da1dd4e92fb9b8a3ffc6a3794b5aadb824a76adcef233b4aea90dbc5abe5'
             '1ab640288c63ff78bd7941eecc27bde25f2189ee0a7c5bc43e7651710605f83d')
-sha256sums_x86_64=('b765b4e575eb03f197f76970b16813ccba94eb0ce7725af97815c93aebf0ee6d')
+sha256sums_x86_64=('ad22cc5c6e135f0031bc377631ad3bc59037349254418ffcbee5d3f5aa405788')
 
 package() {
     install -Dm755 "$srcdir/keymux" "$pkgdir/usr/bin/keymux"
