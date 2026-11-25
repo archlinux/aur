@@ -2,7 +2,7 @@
 
 _pkgbase=vk-gl-cts
 pkgname='vulkan-cts'
-pkgver=1.4.6.1
+pkgver=1.4.7.1
 pkgrel=1
 arch=('any')
 pkgdesc='Khronos Vulkan Conformance Tests'
@@ -61,5 +61,4 @@ EOF
 	install -D deqp-vksc ${pkgdir}/usr/lib/vulkancts/deqp-vksc
 	cp -r vk-default ${pkgdir}/usr/lib/vulkancts/
 	cp -r vulkan ${pkgdir}/usr/lib/vulkancts/
-	cp -r *.a ${pkgdir}/usr/lib/vulkancts/
 }
