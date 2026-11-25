@@ -1,7 +1,7 @@
 # Maintainer: Emiliano Gandini Outeda <e@emiliano-go.com>
 
 pkgname=trustsight
-pkgver=0.30.0
+pkgver=0.31.0
 pkgrel=1
 pkgdesc='Security analysis and intelligence platform for the AUR ecosystem'
 arch=('any')
@@ -47,8 +47,8 @@ validpgpkeys=('F759D6D49B0A395AB922414A5CC3B4C50D37E793')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.sig")
 
-sha256sums=('b76c4408760bfa4a36b3dee762d089dc442eafa3151dc6b538679cbc06ccfdfd'
-            '6c0ff1ed5c731405bd26b2c97657b3b5983eff60b806599cd182969080db011e')
+sha256sums=('05c169c63601f08f80249357a53ed4dbc5c5bea72b56343de008195ac92ac06e'
+            'd9e1cb3b0e941024ee77a6c0b8c91dbabe6e0981d4f7233b4a97a932c6891559')
 
 build() {
   cd "$pkgname-$pkgver"
