@@ -1,0 +1,17 @@
+pkgbase = cli-printing-press-bin
+	pkgdesc = Every API has a secret identity
+	pkgver = 4.36.1
+	pkgrel = 1
+	url = https://github.com/mvanhorn/cli-printing-press
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cli-printing-press
+	conflicts = cli-printing-press
+	options = !debug
+	source_x86_64 = cli-printing-press-bin-4.36.1-x86_64.tar.gz::https://github.com/mvanhorn/cli-printing-press/releases/download/v4.36.1/cli-printing-press_linux_amd64.tar.gz
+	sha256sums_x86_64 = f26c7c731da35183afc4df636634cae77de6f3d1518e8db9a820f28065b720f4
+	source_aarch64 = cli-printing-press-bin-4.36.1-aarch64.tar.gz::https://github.com/mvanhorn/cli-printing-press/releases/download/v4.36.1/cli-printing-press_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4d57f179fbe9c26b9cb8a9b514a1c48e6e7c1a0421b59a4ebb4e8534032687b3
+
+pkgname = cli-printing-press-bin
