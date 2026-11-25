@@ -11,7 +11,7 @@
 # See https://creativecommons.org/licenses/by/4.0/deed.de
 # endregion
 pkgname=containerbase
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='docker base configuration'
 arch=(any)
