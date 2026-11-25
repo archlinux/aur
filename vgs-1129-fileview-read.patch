@@ -1,3 +1,7 @@
+Make FileViewReader::read honor printErrors, quiet only for a confirmed-gone
+file. VGS-only: upstream has no issue or PR; required by
+docs/architecture/distribution.md § Quickshell engine.
+
 --- a/src/io/fileview.cpp
 +++ b/src/io/fileview.cpp
 @@ -1,5 +1,7 @@

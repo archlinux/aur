@@ -1,3 +1,7 @@
+End every Process child and its descendants with the shell, and exit on a
+crash instead of relaunching in place. VGS-only: upstream has no issue or PR;
+required by docs/architecture/runtime.md § Process.
+
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index ac8223762..12f1469e3 100644
 --- a/CMakeLists.txt

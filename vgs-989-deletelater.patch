@@ -1,3 +1,7 @@
+Defer deleting the Hyprland request socket until its readyRead slot returns;
+deleting it inside the slot is a use-after-free.
+Drop once Quickshell fixes https://github.com/quickshell-mirror/quickshell/issues/947
+
 --- a/src/wayland/hyprland/ipc/connection.cpp
 +++ b/src/wayland/hyprland/ipc/connection.cpp
 @@ -190,5 +190,6 @@

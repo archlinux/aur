@@ -1,3 +1,7 @@
+Lock the log category filter tables: the logging thread reads them while
+another thread inserts a category's filter.
+Drop once Quickshell fixes https://github.com/quickshell-mirror/quickshell/issues/1285
+
 diff --git a/src/core/logging.cpp b/src/core/logging.cpp
 index 1dc4a56..b0a3bcf 100644
 --- a/src/core/logging.cpp

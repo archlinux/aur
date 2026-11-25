@@ -1,0 +1,556 @@
+Add the Quickshell.Wayland PresentationFeedback attached type: per-frame
+wp_presentation feedback for a window. frameSwapped says only that Qt queued
+a frame; VGS starts the Jarvis review pause on a frame the compositor
+presented. VGS-only: upstream has no issue or PR; required by
+docs/architecture/distribution.md § Quickshell engine.
+
+Hyprland 0.57.2 (protocols/PresentationTime.cpp, protocols/core/Compositor.cpp,
+render/pass/Pass.cpp, output/OutputCommitCoordinator.cpp) sends presented once
+it drew the surface's committed state into an output frame the backend reports
+presented. It sends discarded when a later buffer supersedes that state, when
+the surface is not drawn (fully covered by opaque content, no texture, empty or
+clipped away), when the output commit fails or is dropped, when the monitor is
+removed and when the surface is destroyed. presented proves light on that
+output, not that no other surface covered part of the window.
+
+diff --git a/src/wayland/CMakeLists.txt b/src/wayland/CMakeLists.txt
+index 1768186..1cb9a4a 100644
+--- a/src/wayland/CMakeLists.txt
++++ b/src/wayland/CMakeLists.txt
+@@ -123,6 +123,9 @@ endif()
+ add_subdirectory(background_effect)
+ list(APPEND WAYLAND_MODULES Quickshell.Wayland._BackgroundEffect)
+ 
++add_subdirectory(presentation)
++list(APPEND WAYLAND_MODULES Quickshell.Wayland._Presentation)
++
+ add_subdirectory(idle_inhibit)
+ list(APPEND WAYLAND_MODULES Quickshell.Wayland._IdleInhibitor)
+ 
+diff --git a/src/wayland/module.md b/src/wayland/module.md
+index 1e34988..d959b65 100644
+--- a/src/wayland/module.md
++++ b/src/wayland/module.md
+@@ -9,5 +9,6 @@ headers = [
+ 	"idle_notify/monitor.hpp",
+ 	"shortcuts_inhibit/inhibitor.hpp",
+ 	"background_effect/qml.hpp",
++	"presentation/qml.hpp",
+ ]
+ -----
+diff --git a/src/wayland/presentation/CMakeLists.txt b/src/wayland/presentation/CMakeLists.txt
+new file mode 100644
+index 0000000..b2c7e5f
+--- /dev/null
++++ b/src/wayland/presentation/CMakeLists.txt
+@@ -0,0 +1,25 @@
++qt_add_library(quickshell-wayland-presentation STATIC
++	manager.cpp
++	qml.cpp
++)
++
++qt_add_qml_module(quickshell-wayland-presentation
++	URI Quickshell.Wayland._Presentation
++	VERSION 0.1
++	DEPENDENCIES QtQml
++)
++
++qs_add_module_deps_light(quickshell-wayland-presentation quickshell-core)
++
++install_qml_module(quickshell-wayland-presentation)
++
++wl_proto(wlp-presentation-time presentation-time "${WAYLAND_PROTOCOLS}/stable/presentation-time")
++
++target_link_libraries(quickshell-wayland-presentation PRIVATE
++	Qt::Quick Qt::WaylandClient Qt::WaylandClientPrivate wayland-client
++	wlp-presentation-time
++)
++
++qs_module_pch(quickshell-wayland-presentation)
++
++target_link_libraries(quickshell PRIVATE quickshell-wayland-presentationplugin)
+diff --git a/src/wayland/presentation/manager.cpp b/src/wayland/presentation/manager.cpp
+new file mode 100644
+index 0000000..9971dde
+--- /dev/null
++++ b/src/wayland/presentation/manager.cpp
+@@ -0,0 +1,16 @@
++#include "manager.hpp"
++
++#include <qwaylandclientextension.h>
++
++namespace qs::wayland::presentation::impl {
++
++PresentationManager::PresentationManager(): QWaylandClientExtensionTemplate(1) {
++	this->initialize();
++}
++
++PresentationManager* PresentationManager::instance() {
++	static auto* instance = new PresentationManager(); // NOLINT
++	return instance->isInitialized() ? instance : nullptr;
++}
++
++} // namespace qs::wayland::presentation::impl
+diff --git a/src/wayland/presentation/manager.hpp b/src/wayland/presentation/manager.hpp
+new file mode 100644
+index 0000000..1dedce3
+--- /dev/null
++++ b/src/wayland/presentation/manager.hpp
+@@ -0,0 +1,21 @@
++#pragma once
++
++#include <qtmetamacros.h>
++#include <qwayland-presentation-time.h>
++#include <qwaylandclientextension.h>
++
++namespace qs::wayland::presentation::impl {
++
++class PresentationManager
++    : public QWaylandClientExtensionTemplate<PresentationManager>
++    , public QtWayland::wp_presentation {
++	Q_OBJECT;
++
++public:
++	explicit PresentationManager();
++
++	// Null when the compositor does not offer wp_presentation.
++	static PresentationManager* instance();
++};
++
++} // namespace qs::wayland::presentation::impl
+diff --git a/src/wayland/presentation/qml.cpp b/src/wayland/presentation/qml.cpp
+new file mode 100644
+index 0000000..017e797
+--- /dev/null
++++ b/src/wayland/presentation/qml.cpp
+@@ -0,0 +1,339 @@
++#include "qml.hpp"
++#include <algorithm>
++#include <climits>
++#include <cstdint>
++#include <memory>
++#include <vector>
++
++#include <private/qwaylandwindow_p.h>
++#include <qcoreevent.h>
++#include <qevent.h>
++#include <qmutex.h>
++#include <qnamespace.h>
++#include <qobject.h>
++#include <qquickwindow.h>
++#include <qtmetamacros.h>
++#include <qwindow.h>
++#include <wayland-client-core.h>
++#include <wayland-presentation-time-client-protocol.h>
++
++#include "../../window/proxywindow.hpp"
++#include "../../window/windowinterface.hpp"
++#include "manager.hpp"
++
++using QtWaylandClient::QWaylandWindow;
++
++namespace qs::wayland::presentation {
++
++namespace impl {
++
++struct FeedbackState;
++
++struct PendingFeedback {
++	FeedbackState* state;
++	struct ::wp_presentation_feedback* proxy;
++	int serial;
++};
++
++// Shared by the GUI thread and the window's render thread. The render-thread
++// connection holds a reference, so a frame that renders while the attached object
++// or its window is torn down touches only this state. The GUI thread writes every
++// field under the mutex; `manager` and `waylandWindow` are valid only while `live`.
++struct FeedbackState {
++	QMutex mutex;
++	PresentationFeedback* owner = nullptr;
++	PresentationManager* manager = nullptr;
++	QQuickWindow* window = nullptr;
++	QWaylandWindow* waylandWindow = nullptr;
++	bool enabled = false;
++	bool live = false;
++	int lastSerial = 0;
++	std::vector<std::unique_ptr<PendingFeedback>> pending;
++
++	FeedbackState() = default;
++	~FeedbackState() { this->dropPending(); }
++	Q_DISABLE_COPY_MOVE(FeedbackState);
++
++	void request(QQuickWindow* source);
++	void finish(PendingFeedback* feedback, bool presented);
++
++	// The mutex is held. libwayland delivers no event to a proxy destroyed on the
++	// client side, so no dropped serial is reported later.
++	void dropPending() {
++		for (auto& feedback: this->pending) wp_presentation_feedback_destroy(feedback->proxy);
++		this->pending.clear();
++	}
++};
++
++namespace {
++
++const wp_presentation_feedback_listener FEEDBACK_LISTENER = {
++    .sync_output = [](void* /*data*/, struct ::wp_presentation_feedback* /*feedback*/, wl_output*) {},
++    .presented =
++        [](void* data,
++           struct ::wp_presentation_feedback* /*feedback*/,
++           uint32_t /*tvSecHi*/,
++           uint32_t /*tvSecLo*/,
++           uint32_t /*tvNsec*/,
++           uint32_t /*refresh*/,
++           uint32_t /*seqHi*/,
++           uint32_t /*seqLo*/,
++           uint32_t /*flags*/) {
++	        auto* feedback = static_cast<PendingFeedback*>(data);
++	        feedback->state->finish(feedback, true);
++        },
++    .discarded =
++        [](void* data, struct ::wp_presentation_feedback* /*feedback*/) {
++	        auto* feedback = static_cast<PendingFeedback*>(data);
++	        feedback->state->finish(feedback, false);
++        },
++};
++
++} // namespace
++
++// Render thread, from QQuickWindow::afterRendering: the scene is recorded and the
++// swap that commits this frame has not run. wp_presentation.feedback binds to the
++// surface's next wl_surface.commit. On Qt 6.12's threaded OpenGL path that is this
++// frame's eglSwapBuffers (QRhiGles2::endFrame -> QWaylandGLContext::swapBuffers);
++// when endFrame fails before the swap, it is the next commit. QWaylandWindow's
++// GUI-thread commits are the role commit before the first frame, the configure ack
++// of an unexposed window and the hide commit. The threaded render loop holds the GUI
++// thread out of hide, obscure and surface teardown until a frame ends
++// (QSGThreadedRenderLoop::handleObscurity and its SurfaceAboutToBeDestroyed filter
++// wait on the render thread), so none of them falls inside a frame and the surface
++// stays valid here. Quickshell's layer surface sends role state, never a commit.
++void FeedbackState::request(QQuickWindow* source) {
++	QMutexLocker lock(&this->mutex);
++	if (!this->enabled || !this->live || this->window != source) return;
++	// Serials must keep increasing; past the bound no frame is reported.
++	if (this->lastSerial == INT_MAX) return;
++
++	auto* surface = this->waylandWindow->wlSurface();
++	if (surface == nullptr) return;
++
++	auto serial = ++this->lastSerial;
++	// The feedback proxy takes the default queue of wp_presentation, so its events
++	// are dispatched on the GUI thread. No event can arrive before this frame's commit.
++	auto* proxy = this->manager->feedback(surface);
++	auto& record = this->pending.emplace_back(new PendingFeedback {this, proxy, serial});
++	wp_presentation_feedback_add_listener(proxy, &FEEDBACK_LISTENER, record.get());
++
++	// The owner outlives a live state: its destructor clears `live` under this mutex.
++	auto* owner = this->owner;
++	QMetaObject::invokeMethod(
++	    owner,
++	    [owner, serial]() { emit owner->submitted(serial); },
++	    Qt::QueuedConnection
++	);
++}
++
++// GUI thread, inside Wayland event dispatch. The signal is queued so QML never runs
++// inside the dispatch.
++void FeedbackState::finish(PendingFeedback* feedback, bool presented) {
++	QMutexLocker lock(&this->mutex);
++	auto found = std::ranges::find_if(this->pending, [feedback](const auto& record) {
++		return record.get() == feedback;
++	});
++	// Only pending records have live proxies, and only live proxies get events.
++	Q_ASSERT(found != this->pending.end());
++
++	auto serial = feedback->serial;
++	// presented and discarded are destructor events: the compositor has already
++	// destroyed its side.
++	wp_presentation_feedback_destroy(feedback->proxy);
++	this->pending.erase(found);
++
++	auto* owner = this->owner;
++	QMetaObject::invokeMethod(
++	    owner,
++	    [owner, serial, presented]() {
++		    if (presented) emit owner->presented(serial);
++		    else emit owner->discarded(serial);
++	    },
++	    Qt::QueuedConnection
++	);
++}
++
++} // namespace impl
++
++PresentationFeedback* PresentationFeedback::qmlAttachedProperties(QObject* object) {
++	auto* proxyWindow = qobject_cast<ProxyWindowBase*>(object);
++
++	if (!proxyWindow) {
++		if (auto* iface = qobject_cast<WindowInterface*>(object)) {
++			proxyWindow = iface->proxyWindow();
++		}
++	}
++
++	if (!proxyWindow) return nullptr;
++	return new PresentationFeedback(proxyWindow, object);
++}
++
++PresentationFeedback::PresentationFeedback(ProxyWindowBase* window, QObject* parent)
++    : QObject(parent)
++    , proxyWindow(window)
++    , state(std::make_shared<impl::FeedbackState>()) {
++	this->state->owner = this;
++
++	QObject::connect(
++	    window,
++	    &ProxyWindowBase::windowConnected,
++	    this,
++	    &PresentationFeedback::onWindowConnected
++	);
++
++	QObject::connect(
++	    window,
++	    &ProxyWindowBase::windowDestroyed,
++	    this,
++	    &PresentationFeedback::onWindowDestroyed
++	);
++
++	QObject::connect(
++	    window,
++	    &QObject::destroyed,
++	    this,
++	    &PresentationFeedback::onProxyWindowDestroyed
++	);
++
++	if (window->backingWindow()) {
++		this->onWindowConnected();
++	}
++}
++
++PresentationFeedback::~PresentationFeedback() {
++	this->detachWindow();
++	QMutexLocker lock(&this->state->mutex);
++	this->state->owner = nullptr;
++}
++
++bool PresentationFeedback::enabled() const { return this->mEnabled; }
++
++void PresentationFeedback::setEnabled(bool enabled) {
++	if (enabled == this->mEnabled) return;
++	this->mEnabled = enabled;
++
++	{
++		QMutexLocker lock(&this->state->mutex);
++		this->state->enabled = enabled;
++	}
++
++	emit this->enabledChanged();
++}
++
++bool PresentationFeedback::available() const { return this->mAvailable; }
++
++bool PresentationFeedback::eventFilter(QObject* object, QEvent* event) {
++	if (event->type() == QEvent::PlatformSurface && object == this->mWindow) {
++		auto* surfaceEvent = static_cast<QPlatformSurfaceEvent*>(event); // NOLINT
++		// QWindow::setVisible(true) emits visibleChanged before it creates the
++		// platform window, so its creation is read here.
++		if (surfaceEvent->surfaceEventType() == QPlatformSurfaceEvent::SurfaceCreated) {
++			this->attachWaylandWindow(dynamic_cast<QWaylandWindow*>(this->mWindow->handle()));
++		} else {
++			this->attachWaylandWindow(nullptr);
++		}
++	}
++
++	return this->QObject::eventFilter(object, event);
++}
++
++void PresentationFeedback::onWindowConnected() {
++	this->detachWindow();
++	auto* window = this->proxyWindow->backingWindow();
++	this->mWindow = window;
++	window->installEventFilter(this);
++
++	QObject::connect(window, &QWindow::visibleChanged, this, &PresentationFeedback::update);
++	QObject::connect(window, &QObject::destroyed, this, &PresentationFeedback::onWindowDestroyed);
++
++	this->renderConnection = QObject::connect(
++	    window,
++	    &QQuickWindow::afterRendering,
++	    window,
++	    [state = this->state, window]() { state->request(window); },
++	    Qt::DirectConnection
++	);
++
++	{
++		QMutexLocker lock(&this->state->mutex);
++		this->state->window = window;
++	}
++
++	this->attachWaylandWindow(dynamic_cast<QWaylandWindow*>(window->handle()));
++}
++
++void PresentationFeedback::onWindowDestroyed() {
++	this->detachWindow();
++	this->update();
++}
++
++void PresentationFeedback::onProxyWindowDestroyed() {
++	this->detachWindow();
++	this->proxyWindow = nullptr;
++	this->update();
++}
++
++void PresentationFeedback::attachWaylandWindow(QWaylandWindow* window) {
++	if (window != this->mWaylandWindow) {
++		if (this->mWaylandWindow) QObject::disconnect(this->mWaylandWindow, nullptr, this, nullptr);
++		this->mWaylandWindow = window;
++
++		if (window) {
++			QObject::connect(
++			    window,
++			    &QWaylandWindow::wlSurfaceCreated,
++			    this,
++			    &PresentationFeedback::update
++			);
++
++			QObject::connect(
++			    window,
++			    &QWaylandWindow::wlSurfaceDestroyed,
++			    this,
++			    &PresentationFeedback::update
++			);
++		}
++	}
++
++	this->update();
++}
++
++void PresentationFeedback::detachWindow() {
++	QObject::disconnect(this->renderConnection);
++	if (this->mWindow) {
++		this->mWindow->removeEventFilter(this);
++		QObject::disconnect(this->mWindow, nullptr, this, nullptr);
++	}
++	if (this->mWaylandWindow) QObject::disconnect(this->mWaylandWindow, nullptr, this, nullptr);
++	this->mWindow = nullptr;
++	this->mWaylandWindow = nullptr;
++
++	QMutexLocker lock(&this->state->mutex);
++	this->state->window = nullptr;
++	this->state->waylandWindow = nullptr;
++	this->state->live = false;
++	this->state->dropPending();
++}
++
++// The one place `live` is decided. Hiding or losing the surface drops every pending
++// feedback, so no frame drawn on an earlier surface or before a hide is reported.
++void PresentationFeedback::update() {
++	auto* manager = this->mWaylandWindow ? impl::PresentationManager::instance() : nullptr;
++	auto live = manager != nullptr && manager->isActive() && this->mWindow
++	         && this->mWindow->isVisible() && this->mWaylandWindow->wlSurface() != nullptr;
++
++	{
++		QMutexLocker lock(&this->state->mutex);
++		if (!live) this->state->dropPending();
++		this->state->live = live;
++		this->state->manager = live ? manager : nullptr;
++		this->state->waylandWindow = live ? this->mWaylandWindow.data() : nullptr;
++	}
++
++	if (live == this->mAvailable) return;
++	this->mAvailable = live;
++	emit this->availableChanged();
++}
++
++} // namespace qs::wayland::presentation
+diff --git a/src/wayland/presentation/qml.hpp b/src/wayland/presentation/qml.hpp
+new file mode 100644
+index 0000000..ba1b43c
+--- /dev/null
++++ b/src/wayland/presentation/qml.hpp
+@@ -0,0 +1,85 @@
++#pragma once
++
++#include <memory>
++
++#include <private/qwaylandwindow_p.h>
++#include <qcoreevent.h>
++#include <qobject.h>
++#include <qpointer.h>
++#include <qqmlintegration.h>
++#include <qquickwindow.h>
++#include <qtmetamacros.h>
++
++#include "../../window/proxywindow.hpp"
++
++namespace qs::wayland::presentation {
++
++namespace impl {
++struct FeedbackState;
++}
++
++///! Compositor presentation feedback for a window's frames.
++/// Reports whether the compositor showed each frame of a @@Quickshell.QsWindow or
++/// subclass, as an attached object, using the [presentation-time] Wayland protocol.
++///
++/// `frameSwapped` only says a frame was queued. While `enabled` is true, each rendered
++/// frame gets a serial: `submitted(serial)` names the frame before its commit, then at
++/// most one of `presented(serial)` or `discarded(serial)` follows. A frame pending when
++/// the window hides or loses its surface is never reported.
++///
++/// [presentation-time]: https://wayland.app/protocols/presentation-time
++class PresentationFeedback: public QObject {
++	Q_OBJECT;
++	// clang-format off
++	/// Request feedback for every rendered frame while true. Defaults to false.
++	Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged);
++	/// True while the compositor offers presentation-time and the window is visible
++	/// with a live surface. A frame rendered while false is never reported.
++	Q_PROPERTY(bool available READ available NOTIFY availableChanged);
++	// clang-format on
++	QML_ELEMENT;
++	QML_UNCREATABLE("PresentationFeedback can only be used as an attached object.");
++	QML_ATTACHED(PresentationFeedback);
++
++public:
++	explicit PresentationFeedback(ProxyWindowBase* window, QObject* parent);
++	~PresentationFeedback() override;
++	Q_DISABLE_COPY_MOVE(PresentationFeedback);
++
++	[[nodiscard]] bool enabled() const;
++	void setEnabled(bool enabled);
++	[[nodiscard]] bool available() const;
++
++	static PresentationFeedback* qmlAttachedProperties(QObject* object);
++
++	bool eventFilter(QObject* object, QEvent* event) override;
++
++signals:
++	void enabledChanged();
++	void availableChanged();
++	/// Frame `serial` asked for feedback; its commit follows. Serials increase for the
++	/// life of the window, across every surface it replaces.
++	void submitted(int serial);
++	/// The compositor showed frame `serial` on an output.
++	void presented(int serial);
++	/// The compositor never showed frame `serial`.
++	void discarded(int serial);
++
++private:
++	void onWindowConnected();
++	void onWindowDestroyed();
++	void onProxyWindowDestroyed();
++	void update();
++	void attachWaylandWindow(QtWaylandClient::QWaylandWindow* window);
++	void detachWindow();
++
++	ProxyWindowBase* proxyWindow;
++	QPointer<QQuickWindow> mWindow;
++	QPointer<QtWaylandClient::QWaylandWindow> mWaylandWindow;
++	QMetaObject::Connection renderConnection;
++	bool mEnabled = false;
++	bool mAvailable = false;
++	std::shared_ptr<impl::FeedbackState> state;
++};
++
++} // namespace qs::wayland::presentation
