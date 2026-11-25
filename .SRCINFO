@@ -1,0 +1,21 @@
+pkgbase = ymir-bin
+	pkgdesc = Sega Saturn emulator
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/ymir-emu/Ymir
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = vulkan-icd-loader
+	provides = ymir
+	conflicts = ymir
+	options = !debug
+	source_x86_64 = ymir-bin-0.4.1-x86_64.tar.xz::https://github.com/ymir-emu/Ymir/releases/download/v0.4.1/ymir-linux-x86_64-AVX2-v0.4.1.tar.xz
+	sha256sums_x86_64 = 53f0b92fe10e1471c5413ae881ff9804049a2c6001594eab31dbf6d0aaa25f1c
+	source_aarch64 = ymir-bin-0.4.1-aarch64.tar.xz::https://github.com/ymir-emu/Ymir/releases/download/v0.4.1/ymir-linux-AArch64-NEON-v0.4.1.tar.xz
+	sha256sums_aarch64 = 30b7eab364b7d1569b84530eaadc26bfcdd790c1fa55366e8235935d0678f248
+
+pkgname = ymir-bin
