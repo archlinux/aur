@@ -1,6 +1,6 @@
 pkgbase = alasraa-bin
 	pkgdesc = Fast, OpenGL terminal emulator for Linux (prebuilt binary)
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://codeberg.org/samibr/alasraa
 	install = alasraa-bin.install
@@ -20,11 +20,11 @@ pkgbase = alasraa-bin
 	depends = pango
 	depends = harfbuzz
 	depends = fontconfig
-	provides = alasraa=0.1.3
+	provides = alasraa=0.1.4
 	conflicts = alasraa
 	options = !strip
 	options = !debug
-	source = alasraa-0.1.3-x86_64-linux.tar.gz::https://codeberg.org/samibr/alasraa/releases/download/v0.1.3/alasraa-0.1.3-x86_64-linux.tar.gz
-	sha256sums = 2791f2139b00dacba1724dd12368545e472d4999570ddc1b2779ca60b83bf8c5
+	source = alasraa-0.1.4-x86_64-linux.tar.gz::https://codeberg.org/samibr/alasraa/releases/download/0.1.4/alasraa-0.1.4-x86_64-linux.tar.gz
+	sha256sums = cc87d01855840e9c94298ee6d74745bd6143d073433d401b620ee146d3ad0156
 
 pkgname = alasraa-bin

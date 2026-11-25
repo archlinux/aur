@@ -9,7 +9,7 @@ _pkgname=alasraa
 _upstream="https://codeberg.org/samibr/alasraa"
 
 pkgname=alasraa-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Fast, OpenGL terminal emulator for Linux (prebuilt binary)"
 arch=('x86_64')
@@ -23,8 +23,8 @@ install="$pkgname.install"
 options=('!strip' '!debug')
 
 _asset="alasraa-$pkgver-x86_64-linux.tar.gz"
-source=("$_asset::$_upstream/releases/download/v$pkgver/$_asset")
-sha256sums=('2791f2139b00dacba1724dd12368545e472d4999570ddc1b2779ca60b83bf8c5')
+source=("$_asset::$_upstream/releases/download/$pkgver/$_asset")
+sha256sums=('cc87d01855840e9c94298ee6d74745bd6143d073433d401b620ee146d3ad0156')
 
 package() {
   cd "$srcdir/alasraa-$pkgver-x86_64-linux"
