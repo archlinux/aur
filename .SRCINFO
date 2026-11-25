@@ -1,0 +1,17 @@
+pkgbase = pretender-bin
+	pkgdesc = MitM tool for relaying attacks using DHCPv6 DNS takeover and mDNS, LLMNR and NetBIOS-NS spoofing
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/RedTeamPentesting/pretender
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pretender
+	conflicts = pretender
+	options = !debug
+	source_x86_64 = pretender-bin-1.4.1-x86_64.tar.gz::https://github.com/RedTeamPentesting/pretender/releases/download/v1.4.1/pretender_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c6d359a95211f2d5f2e87c4bd17cab183971aa82b889a45d64f46b4bf434916e
+	source_aarch64 = pretender-bin-1.4.1-aarch64.tar.gz::https://github.com/RedTeamPentesting/pretender/releases/download/v1.4.1/pretender_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 3ecd476eb2315bec9078a4a73b34144f093b78473631a08e64e5f77d9e47d040
+
+pkgname = pretender-bin
