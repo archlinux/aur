@@ -1,0 +1,19 @@
+pkgbase = epusdt-bin
+	pkgdesc = GM Pay(formerly known as EPUSDT)
+	pkgver = 2.1.6
+	pkgrel = 1
+	url = https://github.com/GMWalletApp/epusdt
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = epusdt
+	conflicts = epusdt
+	options = !debug
+	source = epusdt-bin-2.1.6-LICENSE::https://raw.githubusercontent.com/GMWalletApp/epusdt/v2.1.6/LICENSE
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	source_x86_64 = epusdt-bin-2.1.6-x86_64.tar.gz::https://github.com/GMWalletApp/epusdt/releases/download/v2.1.6/epusdt-2.1.6-linux-amd64.tar.gz
+	sha256sums_x86_64 = fb3efc090a930f6a2a065c96e4fa39f7e702d25a28a2d7143317aa958f116dce
+	source_aarch64 = epusdt-bin-2.1.6-aarch64.tar.gz::https://github.com/GMWalletApp/epusdt/releases/download/v2.1.6/epusdt-2.1.6-linux-arm64.tar.gz
+	sha256sums_aarch64 = 259af5afa5eaa6c0124bc288a4a6a9c175a7a8c21936d32fe51fb470a7b60a1f
+
+pkgname = epusdt-bin
