@@ -1,0 +1,17 @@
+pkgbase = self-host-bin
+	pkgdesc = Self-hosted replacements for paid SaaS tools
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/ajnart/self-host
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = self-host
+	conflicts = self-host
+	options = !debug
+	source_x86_64 = self-host-bin-1.4.0-x86_64.tar.gz::https://github.com/ajnart/self-host/releases/download/v1.4.0/self-host_1.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3450734d345ad9d8797bfa164fa9a92b3e79ae68528d39aee416df908e6b7bb3
+	source_aarch64 = self-host-bin-1.4.0-aarch64.tar.gz::https://github.com/ajnart/self-host/releases/download/v1.4.0/self-host_1.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = e8d146a87e22472ed4641d2845ea9a8553e710104a05ebf1205ae0aa02d05993
+
+pkgname = self-host-bin
