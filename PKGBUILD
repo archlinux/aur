@@ -1,6 +1,6 @@
 # Maintainer: noahlyk <noahlykins@gmail.com>
 pkgname=keymux
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="Keyboard middleware for gaming with low-level input interception"
 arch=('x86_64')
@@ -78,7 +78,7 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '4d67b22a10a311481018007eebca44d92c1d882f421f8e2657f0564f52f4b15d'
             '09f1da1dd4e92fb9b8a3ffc6a3794b5aadb824a76adcef233b4aea90dbc5abe5'
             '1ab640288c63ff78bd7941eecc27bde25f2189ee0a7c5bc43e7651710605f83d')
-sha256sums_x86_64=('ad22cc5c6e135f0031bc377631ad3bc59037349254418ffcbee5d3f5aa405788')
+sha256sums_x86_64=('d31fb759ebe8ead01745fc6c59f71d0ba646dd5e7079254c196c24befb04df24')
 
 package() {
     install -Dm755 "$srcdir/keymux" "$pkgdir/usr/bin/keymux"
