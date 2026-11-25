@@ -1,15 +1,19 @@
 pkgbase = python-hdlparse-git
-	pkgdesc = Simple parser for extracting VHDL documentation
-	pkgver = r20.be7cdab
+	pkgdesc = Simple parser for extracting VHDL and Verilog documentation
+	pkgver = r47.e1153ac
 	pkgrel = 1
-	url = https://github.com/kevinpt/hdlparse.git
+	url = https://github.com/hdl/pyHDLParser
 	arch = any
-	license = mit
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	provides = python-hdlparse
-	source = python-hdlparse::git+https://github.com/kevinpt/hdlparse.git
-	md5sums = SKIP
+	provides = python-hdlparse=r47.e1153ac
+	conflicts = python-hdlparse
+	source = python-hdlparse::git+https://github.com/hdl/pyHDLParser.git
+	sha256sums = SKIP
 
 pkgname = python-hdlparse-git
-

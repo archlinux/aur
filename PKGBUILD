@@ -3,35 +3,42 @@
 
 _pkgname=python-hdlparse
 pkgname=$_pkgname-git
-pkgver=r20.be7cdab
+pkgver=r47.e1153ac
 pkgrel=1
-pkgdesc="Simple parser for extracting VHDL documentation"
-
+pkgdesc="Simple parser for extracting VHDL and Verilog documentation"
 arch=("any")
-license=("mit")
-url="https://github.com/kevinpt/hdlparse.git"
-provides=("$_pkgname")
-
+url="https://github.com/hdl/pyHDLParser"
+license=("MIT")
 depends=("python")
-makedepends=("python-setuptools")
-
-source=("$_pkgname::git+$url")
+makedepends=(
+	"git"
+	"python-build"
+	"python-installer"
+	"python-wheel"
+	"python-setuptools"
+)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+sha256sums=("SKIP")
 
 pkgver() {
 	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+	git -C "$srcdir/$_pkgname" clean -dfx
 }
 
 build() {
 	cd "$_pkgname"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$_pkgname"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
-	install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/"$_pkgname"/LICENSE
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-md5sums=("SKIP")
