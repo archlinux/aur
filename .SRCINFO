@@ -1,6 +1,6 @@
 pkgbase = webdav-git
 	pkgdesc = Standalone WebDAV server (git version)
-	pkgver = r317.b6c41e4
+	pkgver = r328.5c68941
 	pkgrel = 1
 	url = https://github.com/hacdias/webdav
 	arch = x86_64
