@@ -1,0 +1,20 @@
+pkgbase = rtail-bin
+	pkgdesc = Stream terminal output to the browser using UNIX pipes
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/kilianc/rtail
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = rtail
+	conflicts = rtail
+	options = !debug
+	source_x86_64 = rtail-bin-2.0.0-x86_64.tar.gz::https://github.com/kilianc/rtail/releases/download/v2.0.0/rtail_2.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e498d8d0b402da032d208cf98fc6f328939187f70347d5b68f4fd29fa0981b43
+	source_aarch64 = rtail-bin-2.0.0-aarch64.tar.gz::https://github.com/kilianc/rtail/releases/download/v2.0.0/rtail_2.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0da2f07809c29ba78f33a4b775045acc1e2ec0585b8336997bb17036983a4754
+
+pkgname = rtail-bin
