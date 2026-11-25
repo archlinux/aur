@@ -1,0 +1,19 @@
+pkgbase = kubara-bin
+	pkgdesc = A CLI and package manager for building, distributing, and bootstrapping multi-cluster Kubernetes platforms via pure GitOps
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/kubara-io/kubara
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = kubara
+	conflicts = kubara
+	options = !debug
+	source = kubara-bin-0.18.0-LICENSE::https://raw.githubusercontent.com/kubara-io/kubara/v0.18.0/LICENSE
+	sha256sums = 43fcb4fe343b3d149979293fb1fae589a8511846f4929fc21b9ec62b0e639291
+	source_x86_64 = kubara-bin-0.18.0-x86_64.tar.gz::https://github.com/kubara-io/kubara/releases/download/v0.18.0/kubara_0.18.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 21c5881356caa985af7ec7374e0ab931429a8b3d5112b3ce9b60313d90138ba7
+	source_aarch64 = kubara-bin-0.18.0-aarch64.tar.gz::https://github.com/kubara-io/kubara/releases/download/v0.18.0/kubara_0.18.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = bb5a7e56a396355e45c441096546dc662f980c0e5026b3d9709118a24367ca08
+
+pkgname = kubara-bin
