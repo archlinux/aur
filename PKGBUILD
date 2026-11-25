@@ -1,9 +1,9 @@
 # Maintainer: Hash-AK <HashAKAUR [at] duck [dot] com>
 
 pkgname=slick-mod
-pkgver=2.0.162
+pkgver=2.0.163
 pkgrel=1
-_tag=162
+_tag=163
 _electron=electron45 # Slack's version
 pkgdesc="The most powerful and versatile Slack client mod (uses system Electron)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
     "slick-mod.install"
     "slick-mod.sh"
 )
-sha256sums=('e4564300d256e5857fba8ca6610af3b99cdbff20087daa0160d40521e5e055ec'
+sha256sums=('34d75f1043e6662625073772f1a8abf8a8bad0340f8e0f73fdae2ef0ea2dc5eb'
             '8cf302c0a4548fba0afabf217ed3fec1d6e68f7a4a5c780914a8ff8d4f76ba66'
             'f2ec4e5998de279b20d7dff0003d10e49d05e56f4b8e9a22cf5f9b1818b0666a'
             '7a626061948c291ad355c936d2733b9a4d215f9484169edb5e0987ab10b2df04')
