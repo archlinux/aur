@@ -1,0 +1,17 @@
+pkgbase = portr-bin
+	pkgdesc = Expose local http, tcp or websocket connections to the public internet
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/amalshaji/portr
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = portr
+	conflicts = portr
+	options = !debug
+	source_x86_64 = portr-bin-2.1.0-x86_64.zip::https://github.com/amalshaji/portr/releases/download/v2.1.0/portr_2.1.0_Linux_x86_64.zip
+	sha256sums_x86_64 = b5068ed77ab981764c5085be96a08bc830c4086511c97398ce2f075c3d5b2c33
+	source_aarch64 = portr-bin-2.1.0-aarch64.zip::https://github.com/amalshaji/portr/releases/download/v2.1.0/portr_2.1.0_Linux_arm64.zip
+	sha256sums_aarch64 = 87aed4e3d2c8b59429b4577e85161810319675248138b9a4148aa68ee0f8b982
+
+pkgname = portr-bin
