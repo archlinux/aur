@@ -1,0 +1,19 @@
+pkgbase = feishu-cli-bin
+	pkgdesc = Command-line client for Feishu/Lark with Markdown document support
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://github.com/riba2534/feishu-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = feishu-cli
+	conflicts = feishu-cli
+	options = !debug
+	source = feishu-cli-bin-1.44.0-LICENSE::https://raw.githubusercontent.com/riba2534/feishu-cli/v1.44.0/LICENSE
+	sha256sums = 44ad93460de060369cbe39b7a6d0ad7c36b19783d0dec7535fffb0452221b507
+	source_x86_64 = feishu-cli-bin-1.44.0-x86_64.tar.gz::https://github.com/riba2534/feishu-cli/releases/download/v1.44.0/feishu-cli_v1.44.0_linux-amd64.tar.gz
+	sha256sums_x86_64 = e01baf2579904782da68773a26d899d0d9e764bc47e92cffcd1015c23d398184
+	source_aarch64 = feishu-cli-bin-1.44.0-aarch64.tar.gz::https://github.com/riba2534/feishu-cli/releases/download/v1.44.0/feishu-cli_v1.44.0_linux-arm64.tar.gz
+	sha256sums_aarch64 = c9a8a4255e5f4330007990dd55e9740e988d5e7625d87fdbf1607e47a4f543bc
+
+pkgname = feishu-cli-bin
