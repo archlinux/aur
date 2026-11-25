@@ -2,7 +2,7 @@
 
 pkgbase='zl-limiter-bin'
 pkgname=('zl-limiter-vst3-bin' 'zl-limiter-lv2-bin' 'zl-limiter-bin')
-pkgver='0.0.1'
+pkgver='0.1.0'
 pkgrel=1
 pkgdesc='Mastering limiter plugin'
 arch=('x86_64' 'aarch64')
@@ -25,8 +25,8 @@ depends=(
 
 source_x86_64=("https://github.com/ZL-Audio/ZLLimiter/releases/download/${pkgver}/ZL.Limiter-${pkgver}-Linux-x86-64-AVX2.zip")
 source_aarch64=("https://github.com/ZL-Audio/ZLLimiter/releases/download/${pkgver}/ZL.Limiter-${pkgver}-Linux-arm64.zip")
-sha256sums_x86_64=('f2c08aa7253674053c32a81cc810e020ddb85e91f4472f0040230c85d83f2d3b')
-sha256sums_aarch64=('1d583e8b87f56688d2398c0222a3b0a3c75d9821b033ee1ebfbb776fbead2c84')
+sha256sums_x86_64=('1fe0667b5df47be32f490009860e2a1a506bce2fd8af497876c766b12cc19733')
+sha256sums_aarch64=('10d3404640eb9baa0bce5b89552e4589f63bb460b834373b663be9f4f6187f69')
 
 package_zl-limiter-vst3-bin() {
   groups+=('vst3-plugins')
