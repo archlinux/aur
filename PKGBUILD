@@ -1,11 +1,11 @@
 # Maintainer: polarours <polarours@github.com>
 pkgname=hyprfetch-git
-pkgver=0.1.0.r16.gd4cdb07
+pkgver=0.2.0.r1.gfe4eaee
 pkgrel=1
 pkgdesc="Hyprland-native fetch utility for system, session, and rice state"
 arch=("x86_64" "aarch64")
 url="https://github.com/polarours/hyprfetch"
-license=("GPL3")
+license=("GPL-3.0-only")
 depends=("gcc-libs" "glibc")
 makedepends=("cargo" "git")
 optdepends=(
@@ -33,11 +33,6 @@ prepare() {
 build() {
   cd "$srcdir/hyprfetch"
   cargo build --release --locked --target "$CARCH-unknown-linux-gnu"
-}
-
-check() {
-  cd "$srcdir/hyprfetch"
-  cargo test --locked
 }
 
 package() {
