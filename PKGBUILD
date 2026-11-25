@@ -4,7 +4,7 @@ _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
 _debname=com.microsoft.VSCode
-pkgver=1.147.0
+pkgver=1.148.0
 _electronversion=43
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications."
@@ -52,17 +52,14 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-#source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64")
-#source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf")
-#source_x86_64=("${pkgname%-bin}-${pkgver}-${CARCH}.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://update.code.visualstudio.com/${pkgver}/linux-rpm-arm64/stable")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://update.code.visualstudio.com/${pkgver}/linux-rpm-armhf/stable")
 source_x86_64=("${pkgname%-bin}-${pkgver}-${CARCH}.rpm::https://update.code.visualstudio.com/${pkgver}/linux-rpm-x64/stable")
-sha256sums=('dc6e622af50c366f1713adfa1de690bbee9af76c8fec1d4dccddadffc9bdf2ba'
-            '7a5f4c303b1bc17cb5a4ccd2361fa7a4f1e9802eff2a29766e1b029f4714e413')
-sha256sums_aarch64=('c76c0cbe380d06ad647601bb2d4baf54d2f8e9b980e9488ffc2f7a27f4799cf9')
-sha256sums_armv7h=('07d82177347079d24a3337bf5bddbb971672aa9fc0cd9a2303b32a8b330c395e')
-sha256sums_x86_64=('f33ab68ce7db77f5b60de964e33e3c99761cf8e4ce30a8a03f25949b073865ca')
+sha256sums=('03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86'
+            '3211b90722e2c34c51d41c31726eb6f7c3cecbb6d215c4a281e47b264ba6239e')
+sha256sums_aarch64=('8180ffb2166f197b7bd2d3610abae439a2d0608d4a36fe15f31fd851b0f360bb')
+sha256sums_armv7h=('f75166dee05f859a05e2cfb811e25b7fbe38d3dba9621f8081de56af944f900d')
+sha256sums_x86_64=('ec85173fcf8fd244badb045995ba260bea224831145d317188b2aa165363995f')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
@@ -114,7 +111,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     ln -s "${pkgname%-bin}" "${pkgdir}/usr/bin/${_appname}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "$(_get_app_dir)/resources/app/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -a "$(_get_app_dir)/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/appdata/${_debname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
     install -Dm644 "${srcdir}/usr/share/applications/${_debname}.UrlHandler.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}-UrlHandler.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
