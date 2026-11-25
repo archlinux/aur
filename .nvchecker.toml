@@ -3,4 +3,5 @@ source = 'github'
 github = 'google/magika'
 use_max_tag = true
 include_regex = '^python-v.*'
+exclude_regex = '.*rc.*'
 prefix = 'python-v'
