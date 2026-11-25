@@ -1,0 +1,21 @@
+pkgbase = evernote-backup-bin
+	pkgdesc = Backup & export all Evernote notes and notebooks
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://github.com/vzhd1701/evernote-backup
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	provides = evernote-backup
+	conflicts = evernote-backup
+	options = !debug
+	source = evernote-backup-bin-1.15.0-LICENSE::https://raw.githubusercontent.com/vzhd1701/evernote-backup/1.15.0/LICENSE
+	sha256sums = 115d2d0b465b5bb874ec9a26def6b63839532dcec1a2ce84f7cca66de974089c
+	source_x86_64 = evernote-backup-bin-1.15.0-x86_64.tar.gz::https://github.com/vzhd1701/evernote-backup/releases/download/1.15.0/bin_evernote_backup_1.15.0_linux_x64.tar.gz
+	sha256sums_x86_64 = f03c3aa9777e679adb8923309591d85b311a5528f4d684ef1375d9170f2c60f4
+	source_aarch64 = evernote-backup-bin-1.15.0-aarch64.tar.gz::https://github.com/vzhd1701/evernote-backup/releases/download/1.15.0/bin_evernote_backup_1.15.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 59317b8d82a219a1ab2a9cbdeb7f07f0981d0ad1e1c10f07ca0df5ca5e3f6211
+
+pkgname = evernote-backup-bin
