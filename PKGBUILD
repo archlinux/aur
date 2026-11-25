@@ -1,6 +1,6 @@
 # Maintainer: Coobyk <mail@coobyk.com>
 pkgname=tdrive-bin
-pkgver=0.3.4
+pkgver=0.3.6
 pkgrel=2
 pkgdesc="TDrive-compatible Telegram-backed cloud drive client — prebuilt binary"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('fuse3' 'openssl' 'fontconfig' 'libxcb' 'libxkbcommon' 'wayland')
 provides=('tdrive')
 conflicts=('tdrive')
 source=("tdrive-linux-x86_64-$pkgver.tar.gz::https://github.com/Coobyk/tdrive/releases/download/v$pkgver/tdrive-linux-x86_64-$pkgver.tar.gz")
-sha256sums=('b68dd75b4d1f601ff49bb32d784f25eb78642e15f3f58cfa6bccc8034f5d6262')
+sha256sums=('03304d9e5620694393204dbf9c4502afcef9f20c25b9beb28ae6f7a13eca24f8')
 
 package() {
     install -Dm755 "tdrive" "$pkgdir/usr/bin/tdrive"
