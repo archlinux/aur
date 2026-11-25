@@ -1,0 +1,19 @@
+pkgbase = safe-anything-bin
+	pkgdesc = Security scanner for code vulnerabilities, secrets, configs and dependencies
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/erkamyaman/safe-anything
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = safe-anything
+	conflicts = safe-anything
+	options = !debug
+	source_x86_64 = safe-anything-bin-1.1.0-x86_64.tar.gz::https://github.com/erkamyaman/safe-anything/releases/download/v1.1.0/safe-anything-v1.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 8364f838b09ee48df93744ca46008c6c0e50ba869828a00b8af14526de1000be
+	source_aarch64 = safe-anything-bin-1.1.0-aarch64.tar.gz::https://github.com/erkamyaman/safe-anything/releases/download/v1.1.0/safe-anything-v1.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 751148f921aba80d1de80e97bfc3cecb4ca957252ae775bcea0dc3c6cc6fde37
+
+pkgname = safe-anything-bin
