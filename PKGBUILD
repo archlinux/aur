@@ -1,6 +1,6 @@
 # Maintainer: Jan Trefil <hjantrefil@gmail.com>
 pkgname="rkvm"
-pkgver=0.6.1
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Virtual KVM switch for Linux machines"
 # This is a conservative estimate.
@@ -12,7 +12,7 @@ depends=("libevdev>=1.9.0")
 makedepends=("cargo" "clang" "pkgconf")
 optdepends=("openssl: certificate generation")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/htrefil/rkvm/archive/refs/tags/$pkgver.tar.gz")
-md5sums=("3804bb15f9e87e4afd32487000e7d58c")
+md5sums=("02ae59e26cec06b92c3802182e3b6213")
 # Disabled because of a bug in ring: https://github.com/briansmith/ring/issues/1444
 options=('!lto')
 
