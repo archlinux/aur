@@ -1,0 +1,17 @@
+pkgbase = gopy-bin
+	pkgdesc = gopy generates a CPython extension module from a go package
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/go-python/gopy
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	provides = gopy
+	conflicts = gopy
+	options = !debug
+	source_x86_64 = gopy-bin-0.6.0-x86_64.tar.gz::https://github.com/go-python/gopy/releases/download/v0.6.0/gopy_0.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = fb5d3fd639d4290f89922ed06acdf51fce405ffc73ca93706fbf6b931fa92aba
+	source_aarch64 = gopy-bin-0.6.0-aarch64.tar.gz::https://github.com/go-python/gopy/releases/download/v0.6.0/gopy_0.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 36658281e17fba61becb06477863aeb1d31ad9daa791bb92099c72c261951cdd
+
+pkgname = gopy-bin
