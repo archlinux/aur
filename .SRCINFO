@@ -1,6 +1,6 @@
 pkgbase = dhictl-bin
 	pkgdesc = CLI for managing Docker Hardened Images (DHI)
-	pkgver = 0.0.14
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/docker-hardened-images/dhictl
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = dhictl-bin
 	conflicts = dhictl-git
 	options = !strip
 	options = !debug
-	source_x86_64 = dhictl-0.0.14-linux-amd64::https://github.com/docker-hardened-images/dhictl/releases/download/v0.0.14/dhictl-linux-amd64
-	sha256sums_x86_64 = 6bd383daa314f32464ecef6cc81a7e198252943565c929b9b210761650fdbc1a
-	source_aarch64 = dhictl-0.0.14-linux-arm64::https://github.com/docker-hardened-images/dhictl/releases/download/v0.0.14/dhictl-linux-arm64
-	sha256sums_aarch64 = 8a5df1c8d5e7d6352a168481b7b143508830589ff37b65df2b13b9bb3287eed4
+	source_x86_64 = dhictl-1.0.0-linux-amd64::https://github.com/docker-hardened-images/dhictl/releases/download/v1.0.0/dhictl-linux-amd64
+	sha256sums_x86_64 = 112b5ef558896097aac4f769dc52f4b8764f1ca79f9c92d48aac9eaf15896948
+	source_aarch64 = dhictl-1.0.0-linux-arm64::https://github.com/docker-hardened-images/dhictl/releases/download/v1.0.0/dhictl-linux-arm64
+	sha256sums_aarch64 = 1ef2a32a1e43f4e631d9d372e27fd12f78defb8272d200ed188e542ccf12aa58
 
 pkgname = dhictl-bin
