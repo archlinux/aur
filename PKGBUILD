@@ -12,7 +12,7 @@
 
 pkgname=hyprmasq-plugin-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Hyprland plugin of hyprmasq: per-window screenshots and input, prebuilt for the Hyprland of Arch and Omarchy'
 arch=(x86_64)
 url='https://github.com/nyrda/hyprmasq'
@@ -29,7 +29,7 @@ source=(hyprland-builds hyprmasq_plugin.lua "LICENSE-$pkgver::https://raw.github
 for _plugin in "${_plugins[@]}"; do
   source+=("hyprmasq-$pkgver-hyprland-$_plugin.so::$url/releases/download/v$pkgver/hyprmasq-$pkgver-hyprland-$_plugin.so")
 done
-sha256sums=('7043d16d50140d7429c7377cba81a72aa00aff055afe201adf73cf32b1021892'
+sha256sums=('30e9dba854e5a19d736f1bdc0ab36ae68941fccf3d2456ef7b35f1e86a8e349c'
             'dd7b29118e7671e24e3adc50f50fd186e0b3df971d96a35072bde52d6f012547'
             '0b338958047a8d42649c764ea82411c99c366b5d935c90f2465732afef950156'
             'ee9f3cd7b4e7826b8d20347142a426c07f1dd9a4a0ea50a24b9eeed03e94bfa2'
