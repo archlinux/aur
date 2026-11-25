@@ -1,6 +1,6 @@
 pkgbase = navop-bin
 	pkgdesc = A native, all-in-one workspace for databases, SSH, SFTP, terminals, remote desktop, monitoring, and AI.
-	pkgver = 0.24.0
+	pkgver = 0.24.1
 	pkgrel = 1
 	url = https://navop.dev/
 	arch = aarch64
@@ -11,11 +11,11 @@ pkgbase = navop-bin
 	depends = systemd-libs
 	depends = libappindicator
 	depends = libayatana-appindicator
-	provides = navop=0.24.0
+	provides = navop=0.24.1
 	conflicts = navop
-	source_aarch64 = navop-0.24.0-aarch64.tar.gz::https://github.com/feigeCode/navop/releases/download/v0.24.0/navop-0.24.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 65329fa7fc114d539bce051a79f334bbf2ce7bb04b3438e1c07c04e4654e878b
-	source_x86_64 = navop-0.24.0-x86_64.tar.gz::https://github.com/feigeCode/navop/releases/download/v0.24.0/navop-0.24.0-linux-x64.tar.gz
-	sha256sums_x86_64 = 1381ac9f4defd357c16fdf251541d123915e8a9f2fb423406f01f2117dbe67a6
+	source_aarch64 = navop-0.24.1-aarch64.tar.gz::https://github.com/feigeCode/navop/releases/download/v0.24.1/navop-0.24.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9f67ae43a35e1e621359aa26ba1249aa348e3e538d742559b898970af3a9ce89
+	source_x86_64 = navop-0.24.1-x86_64.tar.gz::https://github.com/feigeCode/navop/releases/download/v0.24.1/navop-0.24.1-linux-x64.tar.gz
+	sha256sums_x86_64 = 04ccb5d1551399b7656aeffe1f61e6509f7b154fd765be60e359b78d2f3101d5
 
 pkgname = navop-bin
