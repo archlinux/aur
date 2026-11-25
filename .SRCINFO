@@ -1,0 +1,17 @@
+pkgbase = gobackup-bin
+	pkgdesc = Scheduled backups of databases and files to cloud storage
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/gobackup/gobackup
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gobackup
+	conflicts = gobackup
+	options = !debug
+	source_x86_64 = gobackup-bin-3.1.1-x86_64.tar.gz::https://github.com/gobackup/gobackup/releases/download/v3.1.1/gobackup-linux-amd64.tar.gz
+	sha256sums_x86_64 = d4ec264c2f266742aa370e90a1666535917de0207bd908786823415fce4924c6
+	source_aarch64 = gobackup-bin-3.1.1-aarch64.tar.gz::https://github.com/gobackup/gobackup/releases/download/v3.1.1/gobackup-linux-arm64.tar.gz
+	sha256sums_aarch64 = 517eda21d4e56e0faa0e15c110d395d83fe987bfce26eaab81cee81fe55ff9f8
+
+pkgname = gobackup-bin
