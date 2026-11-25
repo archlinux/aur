@@ -1,7 +1,8 @@
 # Maintainer: Jove Yu <yushijun110 at 126 dot com>
 
 pkgname=lazycat-cloud-client
-pkgver=2.1.4-1
+_pkgver=2.1.4-1
+pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc='懒猫微服'
 url='https://lazycat.cloud'
@@ -18,16 +19,16 @@ makedepends=(
   'tar')
 options=('!strip')
 source=(
-  "https://dl.lazycat.cloud/client/desktop/stable/lzc-client-desktop_v${pkgver}.tar.zst"
+  "https://dl.lazycat.cloud/client/desktop/stable/lzc-client-desktop_v${_pkgver}.tar.zst"
   "lzc-client-desktop")
 install='lazycat-cloud-client.install'
-noextract=("lzc-client-desktop_v${pkgver}.tar.zst")
+noextract=("lzc-client-desktop_v${_pkgver}.tar.zst")
 md5sums=('9327226a37cf6d12878b147732410fa2'
          'b043322b2f2cfef1f7ff898ec5ae1801')
 
 package() {
   install -d ${pkgdir}/opt/lzc-client-desktop/
-  tar --no-same-owner --no-same-permissions -xf lzc-client-desktop_v${pkgver}.tar.zst -C ${pkgdir}/opt/lzc-client-desktop
+  tar --no-same-owner --no-same-permissions -xf lzc-client-desktop_v${_pkgver}.tar.zst -C ${pkgdir}/opt/lzc-client-desktop
 
   # fix desktop file
   install -Dm755 ${srcdir}/lzc-client-desktop ${pkgdir}/usr/bin/lzc-client-desktop

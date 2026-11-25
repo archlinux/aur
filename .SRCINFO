@@ -1,6 +1,6 @@
 pkgbase = lazycat-cloud-client
 	pkgdesc = 懒猫微服
-	pkgver = 2.1.4-1
+	pkgver = 2.1.4_1
 	pkgrel = 1
 	url = https://lazycat.cloud
 	install = lazycat-cloud-client.install
