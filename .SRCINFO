@@ -1,0 +1,17 @@
+pkgbase = openrun-bin
+	pkgdesc = Deployment platform for internal tools
+	pkgver = 1.2611.230
+	pkgrel = 1
+	url = https://github.com/openrundev/openrun
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = openrun
+	conflicts = openrun
+	options = !debug
+	source_x86_64 = openrun-bin-1.2611.230-x86_64.zip::https://github.com/openrundev/openrun/releases/download/v1.2611.230/openrun-v1.2611.230-linux-amd64.zip
+	sha256sums_x86_64 = f96c53b8f906d07191675e939aa2e74722d702cc5a1fa3d32280d863cfb2921a
+	source_aarch64 = openrun-bin-1.2611.230-aarch64.zip::https://github.com/openrundev/openrun/releases/download/v1.2611.230/openrun-v1.2611.230-linux-arm64.zip
+	sha256sums_aarch64 = 9a87e5fbd30a3d256d94b43b415fdf545ee04f357edd83c6221ea2fe766cb35f
+
+pkgname = openrun-bin
