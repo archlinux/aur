@@ -1,0 +1,17 @@
+pkgbase = webanalyze-bin
+	pkgdesc = Detect technologies used on websites, for mass scanning
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/rverton/webanalyze
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = webanalyze
+	conflicts = webanalyze
+	options = !debug
+	source_x86_64 = webanalyze-bin-0.4.6-x86_64.tar.gz::https://github.com/rverton/webanalyze/releases/download/v0.4.6/webanalyze_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = edeb0610d4f8045b88391a2ef962968b83657746d36e954dccf70d2734758ed5
+	source_aarch64 = webanalyze-bin-0.4.6-aarch64.tar.gz::https://github.com/rverton/webanalyze/releases/download/v0.4.6/webanalyze_Linux_arm64.tar.gz
+	sha256sums_aarch64 = fb480490069bad9fc6f339c731d90ae153c13255a3704aca4aeb3024fac7cb55
+
+pkgname = webanalyze-bin
