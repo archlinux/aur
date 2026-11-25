@@ -1,7 +1,7 @@
 # Maintainer: Margot Prego <mopigames@proton.me>
 
 pkgname=spotify-soloist-bin
-pkgver=1.4.0.11
+pkgver=1.4.0.14
 pkgrel=1
 pkgdesc='Official headless Spotify Connect client for Linux and Raspberry Pi'
 arch=('x86_64' 'aarch64' 'armv7h')
