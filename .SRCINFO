@@ -1,0 +1,14 @@
+pkgbase = otpauth-bin
+	pkgdesc = Google Authenticator migration decoder
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/dim13/otpauth
+	arch = x86_64
+	license = ISC
+	provides = otpauth
+	conflicts = otpauth
+	options = !debug
+	source_x86_64 = otpauth-bin-0.7.0-x86_64.tgz::https://github.com/dim13/otpauth/releases/download/v0.7.0/otpauth-v0.7.0-linux-amd64.tgz
+	sha256sums_x86_64 = d77f3b6d0ebca23005313c310ca03adf25cffd9645a56b5002740d926ffba6c3
+
+pkgname = otpauth-bin
