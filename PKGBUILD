@@ -3,7 +3,7 @@
 pkgbase=lucide-font
 pkgname=({eot,ttf,woff,woff2}-"${pkgbase}")
 _fontname=Lucide
-pkgver=1.79.0
+pkgver=1.80.0
 pkgrel=1
 pkgdesc='Beautiful & consistent icon toolkit made by the community.'
 arch=("any")
@@ -22,14 +22,11 @@ function _package {
     cd "${srcdir}/${pkgbase}"
     local fonts=("${pkgbase%-font}.${ext}")
     local installdir="${ext^^}"
-    # Prepare destination directory
     install -Dm755 -d "${pkgdir}/usr/share/fonts/${installdir}"
-    # Install fonts
     local font
     for font in "${fonts[@]}"; do
         install -Dm644 "${font}" "${pkgdir}/usr/share/fonts/${installdir}"
     done
-    # Install license for each sub-package
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 for _pkgname in "${pkgname[@]}"; do
