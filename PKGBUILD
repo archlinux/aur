@@ -35,7 +35,8 @@ build() {
 
   npm run build:offline
 
-  # Remove packages which are only necessary in development / building
+  # Keep only the coding agent and its runtime dependencies
+  npm pkg set --json 'workspaces=["packages/{ai,agent,tui,telemetry,coding-agent,codemode,mcp,schema}"]'
   npm prune --omit=dev --ignore-scripts --no-audit --no-fund --cache "${srcdir}/npm-cache"
 }
 
