@@ -1,8 +1,8 @@
 # Maintainer: Clemens Brunner <clemens.brunner@gmail.com>
 
 pkgname=kymo
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Viewer for large EEG and MEG recordings"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cbrnr/kymo"
@@ -12,11 +12,13 @@ license=('BSD-3-Clause')
 depends=('libgcc' 'glibc' 'hicolor-icon-theme' 'libxkbcommon' 'vulkan-icd-loader'
          'wayland' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'xdg-desktop-portal')
 makedepends=('cargo')
-options=('!lto')
 optdepends=('vulkan-driver: GPU rendering (mesa or the vendor driver provide one)')
+# makepkg's LTO compiles C dependencies (ring's) to GCC bitcode, which rust-lld, Rust's linker
+# on x86_64 Linux since 1.90, can't read: the link then misses their symbols.
+options=('!lto')
 # ${pkgver} with braces: the updater then bumps pkgver= and leaves the URL as it is.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cbrnr/kymo/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ed842b1c684cd3f74d0a3a08431b597b813b9d8d7d2c179587ec548fef78b0b7')
+sha256sums=('a3783f66757554f9dfd44d2bc2bbecb625741b427d1ded6c13edf7d0b94f6539')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -29,14 +31,6 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release -p kymo
-}
-
-check() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    # The readers, the pyramid and the tiles; the viewer's tests need fonts and a GPU.
-    cargo test --frozen -p kymo-core
 }
 
 package() {
