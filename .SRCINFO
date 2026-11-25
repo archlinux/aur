@@ -1,0 +1,23 @@
+pkgbase = proxyjail-git
+	pkgdesc = Proxychains alternative built with Rust and eBPF
+	pkgver = r3.f83727d
+	pkgrel = 1
+	url = https://github.com/erfanara/proxyjail
+	arch = x86_64
+	license = LicenseRef-unknown
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = libbpf
+	makedepends = linux-api-headers
+	depends = glibc
+	depends = libgcc
+	depends = libelf
+	depends = zlib
+	provides = proxyjail
+	conflicts = proxyjail
+	options = !lto
+	source = proxyjail::git+https://github.com/erfanara/proxyjail.git
+	sha256sums = SKIP
+
+pkgname = proxyjail-git
