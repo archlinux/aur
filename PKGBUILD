@@ -2,7 +2,7 @@
 pkgname=novadeck-bin
 _pkgname=Novadeck
 _debname="dev.mzpk.${pkgname%-bin}"
-pkgver=1.12.13
+pkgver=1.12.15
 _electronversion=45
 pkgrel=1
 pkgdesc="Desktop terminal for running Claude Code, Codex and Antigravity side by side, with one Inbox for when they need you."
@@ -21,9 +21,9 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('daa1ee9eb808ab0275b681af0cbcf349467146f01842c7d6005ea805b5fa8893'
-            'd0f201d4e9b0690ccfbe9034779bf95a7a92996cef63a957bf15ea11c7d83236'
-            '6295de105284c8d173a862217d76eee1610dad92dd5543f3f9e6a08a6a77929a')
+sha256sums=('c6e7dff082e2d015429373b9bb88f172a146716a24d456bc798c4c86aa2f4d97'
+            '03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86'
+            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
