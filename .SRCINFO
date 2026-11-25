@@ -1,0 +1,19 @@
+pkgbase = nullhub-bin
+	pkgdesc = Management console to install, configure and monitor AI agents and workflows
+	pkgver = 2026.5.29
+	pkgrel = 1
+	url = https://github.com/nullclaw/nullhub
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = nullhub
+	conflicts = nullhub
+	options = !debug
+	source = nullhub-bin-2026.5.29-LICENSE::https://raw.githubusercontent.com/nullclaw/nullhub/v2026.5.29/LICENSE
+	sha256sums = 1981e80520cfb577316838e0dd3616b612de6fefd0313b0a8d8355aaa3be130f
+	source_x86_64 = nullhub-bin-2026.5.29-x86_64::https://github.com/nullclaw/nullhub/releases/download/v2026.5.29/nullhub-linux-x86_64.bin
+	sha256sums_x86_64 = dd01348a782ab94e6f8104beda746a8b550490149c2d968397995901c5df98ff
+	source_aarch64 = nullhub-bin-2026.5.29-aarch64::https://github.com/nullclaw/nullhub/releases/download/v2026.5.29/nullhub-linux-aarch64.bin
+	sha256sums_aarch64 = 79ce79edff2db60679de8ffa951f6841990dbbe3b3795305ca97f412d2b692a1
+
+pkgname = nullhub-bin
