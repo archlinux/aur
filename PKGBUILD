@@ -2,11 +2,11 @@
 #
 # The AUR package: emobie built from a tagged release's source. The release
 # workflow writes the published copy (version and checksum filled in, plus
-# .SRCINFO and emobie.install) into its `aur` artifact; packaging/arch/PKGBUILD
-# is the same build for a local makepkg.
+# .SRCINFO and emobie.install) into its `aur` artifact. For a local build, run
+# scripts/aur-files.sh vX.Y.Z in an Arch container, or makepkg from a copy.
 
 pkgname=emobie
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Compact emoji palette with macros and optional text expansion"
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   'acl: setfacl for instant keyboard access after Grant without logout'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ef49c54bfbf80a4ea4d5ea8d47444e6f87f9f540676b1e97bb8b7527dcf6dc78')
+sha256sums=('f89450f66dba9b000598724f17c56993d573291d2190c627e4589fb51f1f6e4a')
 
 prepare() {
   cd "$pkgname-$pkgver"
