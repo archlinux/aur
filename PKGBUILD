@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=dffy-bin
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Fast terminal diff viewer for git, built for large repositories: file tree and split or unified view, syntax-aware diff, watch mode, JSON output and an MCP server for coding agents"
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ source_aarch64=("${_tar_aarch64}::https://github.com/amalucelli/dffy/releases/do
 # Both archives hold a file called dffy, so they are unpacked by arch below
 # instead of into the same source directory.
 noextract=("${_tar_x86_64}" "${_tar_aarch64}")
-sha256sums_x86_64=('ada7a2f8d50c9cad28cce1de951774a5facc3441c75a622bfcf397b968f536a6')
-sha256sums_aarch64=('cc4acf442143d80647a0c0f8e48222ec430c820b89345c38e7740198c3e075f5')
+sha256sums_x86_64=('fbc6c345f50f389a2a3632bafaa78dc447fb1653f6792a0f81fd2173679e3a2b')
+sha256sums_aarch64=('65e80113026058cfa93048f22b6e64b4231f82ea7da8aab1e702b298d32a69ff')
 
 package() {
   local tar_var="_tar_${CARCH}"
