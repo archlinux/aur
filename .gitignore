@@ -4,3 +4,4 @@ src/
 .cache/
 .codegraph
 .omo/
+deploy/
