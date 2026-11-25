@@ -1,0 +1,17 @@
+pkgbase = gpk
+	pkgdesc = See all your installed packages in one place.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/neur0map/glazepkg
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0-or-late
+	makedepends = go
+	provides = gpk
+	conflicts = gpk-git
+	conflicts = gpk-bin
+	source = gpk-0.7.0.tar.gz::https://github.com/neur0map/glazepkg/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 2571f6005046d77dee9d5f0f4d2e5981887988d43c3cf6c8d1da5e8aa7d91c48
+
+pkgname = gpk
