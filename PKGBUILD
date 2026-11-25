@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Official desktop client for Lumo, Proton's privacy-first AI assistant"
 arch=('x86_64')
 url="https://lumo.proton.me"
-license=('LicenseRef-Proprietary')
+license=('GPL3')
 options=('!debug')
 depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator'
          'dbus' 'gdk-pixbuf2' 'libsoup3' 'cairo' 'glib2' 'libgcc')
