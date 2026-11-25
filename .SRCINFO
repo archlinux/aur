@@ -1,0 +1,17 @@
+pkgbase = pipelock-bin
+	pkgdesc = Firewall for AI agents covering MCP security and network egress
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = https://github.com/pipelab-org/pipelock
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = pipelock
+	conflicts = pipelock
+	options = !debug
+	source_x86_64 = pipelock-bin-3.8.0-x86_64.tar.gz::https://github.com/pipelab-org/pipelock/releases/download/v3.8.0/pipelock_3.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3b6a9a6aa1185f80f3e32c393e4c47e0efe32356ec0746aec5050eeed4af9d6e
+	source_aarch64 = pipelock-bin-3.8.0-aarch64.tar.gz::https://github.com/pipelab-org/pipelock/releases/download/v3.8.0/pipelock_3.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5b49d2e47e9ab3a13b7ad86b2562aa0c9229829634c8974f3a0683ee5b189978
+
+pkgname = pipelock-bin
