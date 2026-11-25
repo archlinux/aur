@@ -1,0 +1,15 @@
+pkgbase = instatic-bin
+	pkgdesc = The open-source alternative to Webflow, Framer and WordPress
+	pkgver = 0.0.24
+	pkgrel = 1
+	url = https://github.com/CoreBunch/Instatic
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = instatic
+	conflicts = instatic
+	options = !debug
+	source_x86_64 = instatic-bin-0.0.24-x86_64.tar.gz::https://github.com/CoreBunch/Instatic/releases/download/v0.0.24/instatic-server-0.0.24-linux-x64.tar.gz
+	sha256sums_x86_64 = 9e95397f5478b4531192cb485be9934c7d4fea07c80e174292dde25c8079eaba
+
+pkgname = instatic-bin
