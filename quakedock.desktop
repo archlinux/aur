@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=QuakeDock
+GenericName=Quake installer and launcher
+Comment=Install and play the Quake campaign and QuakeWorld multiplayer
+Exec=quakedock
+Icon=quakedock
+Terminal=false
+Categories=Game;ActionGame;
+Keywords=quake;quakeworld;vkquake;ezquake;nquake;steam;

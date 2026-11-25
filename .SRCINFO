@@ -1,0 +1,40 @@
+pkgbase = quakedock-bin
+	pkgdesc = Desktop installer and launcher for Quake (vkQuake campaign, ezQuake + nQuake multiplayer)
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/Evilchuck666/QuakeDock
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc>=2.39
+	depends = gcc-libs
+	depends = zlib
+	depends = fontconfig
+	depends = freetype2
+	depends = libglvnd
+	depends = libx11
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = xcb-util-cursor
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = xcb-util-renderutil
+	depends = xcb-util-wm
+	depends = wayland
+	depends = dbus
+	depends = hicolor-icon-theme
+	depends = lib32-gcc-libs
+	depends = fuse2
+	optdepends = vulkan-icd-loader: Vulkan renderer for vkQuake
+	provides = quakedock=1.3.0
+	conflicts = quakedock
+	options = !strip
+	options = !debug
+	source = QuakeDock-1.3.0-linux-x64.tar.gz::https://github.com/Evilchuck666/QuakeDock/releases/download/v1.3.0/QuakeDock-linux-x64.tar.gz
+	source = quakedock-1.3.0.svg::https://raw.githubusercontent.com/Evilchuck666/QuakeDock/v1.3.0/assets/icons/vkQuake.svg
+	source = quakedock.desktop
+	sha256sums = 7dd8b546130324f8b0018888fb560dd501ac5764a793c7365312ced4a6c2edf2
+	sha256sums = a374ea0f8604905816fb7e219f60e53b0194c757c98150012d272e0bcf97c1be
+	sha256sums = 28226e09d2a45310941319c3208acbf0ab266cbb743b83fc5e4da7a265cebd44
+
+pkgname = quakedock-bin
