@@ -1,6 +1,6 @@
 pkgbase = shisa
-	pkgdesc = Application lock for Linux desktops, enforced at exec time through fanotify
-	pkgver = 0.1.3
+	pkgdesc = App lock for KDE Plasma 6 on Wayland: hides private windows and gates launches via fanotify
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/RiverOnVenus/Shisa
 	install = shisa.install
@@ -15,7 +15,7 @@ pkgbase = shisa
 	depends = gtk3
 	depends = hicolor-icon-theme
 	optdepends = noto-fonts-cjk: Chinese UI font
-	source = https://github.com/RiverOnVenus/Shisa/releases/download/v0.1.3/shisa-0.1.3.tar.gz
-	sha256sums = b48e3621841c64b1a27f2240348a02a4b9f8f8b81b02c43cec78fa3cb26203aa
+	source = https://github.com/RiverOnVenus/Shisa/releases/download/v0.1.7/shisa-0.1.7.tar.gz
+	sha256sums = d63a6495694a74b6c487a4c2f7109e43bb5f03b4105cffba21bf25ed256aa35b
 
 pkgname = shisa

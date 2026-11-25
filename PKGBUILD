@@ -1,8 +1,8 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 pkgname=shisa
-pkgver=0.1.3
+pkgver=0.1.7
 pkgrel=1
-pkgdesc='Application lock for Linux desktops, enforced at exec time through fanotify'
+pkgdesc='App lock for KDE Plasma 6 on Wayland: hides private windows and gates launches via fanotify'
 arch=('x86_64')
 url='https://github.com/RiverOnVenus/Shisa'
 license=('GPL-3.0-or-later')
@@ -13,7 +13,7 @@ optdepends=(
 )
 install=shisa.install
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('b48e3621841c64b1a27f2240348a02a4b9f8f8b81b02c43cec78fa3cb26203aa')
+sha256sums=('d63a6495694a74b6c487a4c2f7109e43bb5f03b4105cffba21bf25ed256aa35b')
 
 prepare() {
     cd "$pkgname-$pkgver"
