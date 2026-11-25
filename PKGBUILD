@@ -10,6 +10,7 @@ depends=('electron44' 'ripgrep')
 optdepends=('libappindicator-gtk3: tray icon support')
 provides=('gambiarra-infinite')
 conflicts=('gambiarra-infinite')
+install=gambiarra-infinite.install
 # opencode-cli is a Bun standalone executable: stripping discards the embedded
 # bundle and leaves a bare runtime that no longer knows the `serve` command.
 options=('!strip' '!debug')

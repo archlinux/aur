@@ -3,6 +3,7 @@ pkgbase = gambiarra-infinite-bin
 	pkgver = 1.0.2
 	pkgrel = 2
 	url = https://github.com/ArthurSimin/GambiarraInfinite
+	install = gambiarra-infinite.install
 	arch = x86_64
 	license = MIT
 	makedepends = zstd
