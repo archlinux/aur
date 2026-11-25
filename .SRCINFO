@@ -1,0 +1,14 @@
+pkgbase = kusion-bin
+	pkgdesc = Intent-driven platform orchestrator for internal developer platforms
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/KusionStack/kusion
+	arch = x86_64
+	license = Apache-2.0
+	provides = kusion
+	conflicts = kusion
+	options = !debug
+	source_x86_64 = kusion-bin-0.15.0-x86_64.tar.gz::https://github.com/KusionStack/kusion/releases/download/v0.15.0/kusion_0.15.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 459379066fd1c44829437694a519919728aefb98979ad74641184546c925185b
+
+pkgname = kusion-bin
