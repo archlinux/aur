@@ -6,7 +6,7 @@
 # (at your option) any later version.
 pkgname=simtrace2-git
 pkgver=0.9.1.r25.936009ed
-pkgrel=1
+pkgrel=2
 pkgdesc="Traces the communication between phones and SIM cards with second generation simtrace hardware."
 arch=('armv7h' 'i686' 'x86_64')
 url="https://osmocom.org/projects/simtrace2"
@@ -14,7 +14,7 @@ license=('GPL-2.0-only') # GPLv2-only according to the source files headers
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}"
           'libosmo-simtrace2.so=1-64')
-depends=('libosmocore' 'libusb' 'talloc')
+depends=('libosmocore-git' 'libusb' 'talloc')
 source=("git+https://gitea.osmocom.org/sim-card/simtrace2.git")
 sha256sums=('SKIP')
 
