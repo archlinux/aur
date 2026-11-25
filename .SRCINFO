@@ -1,0 +1,20 @@
+pkgbase = spytify-bin
+	pkgdesc = Records an application's audio, splits it into tracks and tags them
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/spytify/spytify
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libglvnd
+	depends = wayland
+	provides = spytify
+	conflicts = spytify
+	options = !debug
+	source_x86_64 = spytify-bin-2.0.2-x86_64.tar.gz::https://github.com/spytify/spytify/releases/download/2.0.2/spytify-2.0.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = d9bb1b01e18e90d16e07394aac3e4a3f6406c57831aa9799514c171a48f3a5f7
+	source_aarch64 = spytify-bin-2.0.2-aarch64.tar.gz::https://github.com/spytify/spytify/releases/download/2.0.2/spytify-2.0.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 28493f6d50916bfcf885a25137f0202aed06c8b979a130dbd5eed88725d22492
+
+pkgname = spytify-bin
