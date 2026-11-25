@@ -1,0 +1,11 @@
+diff -Naur a/lasso/lasso.c b/lasso/lasso.c
+--- a/lasso/lasso.c	2024-05-14 13:05:57.543947035 -0400
++++ b/lasso/lasso.c	2026-11-24 20:57:05.867181222 -0500
+@@ -77,6 +77,7 @@
+ #include <xmlsec/xmlsec.h>
+ #include <xmlsec/crypto.h>
+ #include <xmlsec/errors.h>
++#include <xmlsec/dl.h>
+ #include <libxslt/xslt.h>
+ #include <config.h>
+ #include "lasso.h"
