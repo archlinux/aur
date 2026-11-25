@@ -1,0 +1,19 @@
+pkgbase = onwatch-bin
+	pkgdesc = Track AI API quotas across providers in real time
+	pkgver = 2.14.17
+	pkgrel = 1
+	url = https://github.com/onllm-dev/onWatch
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = onwatch
+	conflicts = onwatch
+	options = !debug
+	source = onwatch-bin-2.14.17-LICENSE::https://raw.githubusercontent.com/onllm-dev/onWatch/v2.14.17/LICENSE
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = onwatch-bin-2.14.17-x86_64::https://github.com/onllm-dev/onWatch/releases/download/v2.14.17/onwatch-linux-amd64
+	sha256sums_x86_64 = 31f4a952c51f71fb1d0743585bae9574c978e338026d77f8e757e2f8c7b51852
+	source_aarch64 = onwatch-bin-2.14.17-aarch64::https://github.com/onllm-dev/onWatch/releases/download/v2.14.17/onwatch-linux-arm64
+	sha256sums_aarch64 = dd5f5314d582db14fc8361b566e8f1c43cbb6631f5e75a36c9e353312beed91d
+
+pkgname = onwatch-bin
