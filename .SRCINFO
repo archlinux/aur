@@ -1,6 +1,6 @@
 pkgbase = sabrebat
 	pkgdesc = Battery level of the Corsair Sabre v2 Pro wireless mouse: terminal, status bar or desktop notification
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Evilchuck666/SabreBat
 	arch = any

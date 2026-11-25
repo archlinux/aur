@@ -1,7 +1,7 @@
 # Maintainer: Evilchuck666 <carlos.martinez.medina1992@gmail.com>
 _pkgname=SabreBat
 pkgname=sabrebat
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Battery level of the Corsair Sabre v2 Pro wireless mouse: terminal, status bar or desktop notification"
 arch=('any')
