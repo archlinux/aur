@@ -9,6 +9,7 @@ pkgbase = cargo-pretty
 	depends = glibc
 	depends = libgcc
 	depends = cargo
+	provides = cargo-pretty
 	options = !lto
 	options = !strip
 	source = cargo-pretty-0.3.1.tgz::https://github.com/romancitodev/cargo-pretty/archive/v0.3.1.tar.gz
