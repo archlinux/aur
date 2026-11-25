@@ -64,6 +64,7 @@ source=("git+https://github.com/alliedmodders/sourcemod.git#tag=$_tag"
   sourcepawn-jitdump-timestamp.patch
   zydis-amalgamate-paths.patch
   geoip-libmaxminddb.patch
+  sourcemod-plugins-relative-path.patch
   source-sdk.txt
   spcomp.sh)
 sha512sums=('8af70bfc284c57b30166785899a3130ed56596e48e8d81dc6e6746ac8050b0751baba0060cbb2b0442d4fd099444cb3d85524f807bb15056482b9b3805d80eb2'
@@ -88,6 +89,7 @@ sha512sums=('8af70bfc284c57b30166785899a3130ed56596e48e8d81dc6e6746ac8050b0751ba
   '5bdadff7eaa28ec3735118e3574b959519fe6ad49c3028555c5711e2939d1beaddd398bb24ce286bd980ad60c82850bc843c8ae8b9e4a3f1aa29c6f7cf5a90c4'
   '54c1386ffdc6c6efdbedccdaddffedc78e3e7c31f7b4de7cec0561a28f5364123cb776216efc39cadec5292488d06a8a49ed9d65ed244f4b1d724215ca8283ab'
   '084afa36685393c0806165c8c897553c0df876e6aaa86d28020064f40f3cc25d0ad69163d3abe183c898df6fc92f5ff4685969bb7a9cdf477efbb4b8eb986cda'
+  'f4e07de3fcc806cfa3387f32132c3db99a2b51681c3c8d0987e5daaa881ceb459b67d9d549ddec691f41f0cda14168fc65ae468fec72c15fb38c0323c1ba654e'
   'f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3'
   '3a4c60a485304553ee1ca87ac0e96ba636cb8f0a311c71a0a73b3926964a3ff700c7cca6d24ddef04547dd90bd58f6dec26d137da6286d1c409ebcd6e6ed2bf2')
 b2sums=('1a968fe5df4b4c237fa39f9e02b116a8d0cfd00fb46e12c6814706b232b375f273dae055b670195658e4f4aa4bddc60b3e53b9ec86d2c8505ea3619a070f50b7'
@@ -112,6 +114,7 @@ b2sums=('1a968fe5df4b4c237fa39f9e02b116a8d0cfd00fb46e12c6814706b232b375f273dae05
   '0dea4ce7355bcb962727eb1664769d3ce8ab3913f00f0ec817d1f296c927faee93e833da35d7e3c1d96cbbcaa0431a03c3d79512f74f9a78231c82fbcc016a43'
   'e8f46cfa4744c5ea62c28369a7c81a9027a389dbb6573495279b084ff99b6a39d114097788278c2be84237da7b7986c310bd6a6069fe3896cb234784181bcf68'
   '6a7a7c578f22af05c0a6617a621c36add3f6f287f73d64d127dc91952acf5a1c71c619b3513fdb8ab4bb5767c57dee81fbbcd616f4f6c9163189f9d6002f8fad'
+  '3def001a5b6179d944bf8057f8ca83b6f3d888a00f9b9e121f60df8be06e3cb2bd4422c7039c0c452c8cf11323336173f986ee2fa2f4ab8953c69b5d3673fa62'
   'b856088fc19f7c921a5e2b3320a776e27b10a8d3d77c21041cb59348b2efde62491163c57227080c0091eb77e74c0d1fc2c0b72a01e0770df27777dc077ad600'
   '670fb582edac8bdef05a3842edbef464c5238861df80fbf5e788fe2752275db395826c0b6eb90d5c9fd725b2a368b8d7884aea9de6d89adde6032c481a6311b8')
 
@@ -200,6 +203,10 @@ prepare() {
   # 1.5.2
   # upstream: none, the system's library instead of a bundled one
   patch -Np1 -i "$srcdir/geoip-libmaxminddb.patch"
+  # The plugins compiled with their scripts relative to the build folder, like the include folders,
+  # rather than by their path in $srcdir, which spcomp records in their debug info (.dbg.files)
+  # upstream: none, still to be proposed
+  patch -Np1 -i "$srcdir/sourcemod-plugins-relative-path.patch"
   # Without the gamedata updates from SourceMod's update server (the updater extension isn't loaded):
   # a newer SourceMod comes as a whole with this package
   sed -i -e 's/^\(\t \* The default value is \)"no"\.\( A value of "yes" will block the Auto Updater\.\)/\1"yes" (the package updates SourceMod as a whole).\2/' \
