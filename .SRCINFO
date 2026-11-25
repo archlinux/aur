@@ -1,6 +1,6 @@
 pkgbase = bluegit-backup
 	pkgdesc = Backup server for a BlueGit instance: incremental copy, archives, rollback
-	pkgver = 20261125215351
+	pkgver = 20261125222241
 	pkgrel = 1
 	url = https://git.timfalken.com/timfa/bluegit
 	install = bluegit-backup.install
@@ -9,7 +9,7 @@ pkgbase = bluegit-backup
 	license = GPL-3.0-or-later
 	makedepends = go
 	options = !debug
-	source = bluegit-911a93d8c40e586e6fc0d3f4ff13ea550ebb0860.tar.gz::https://git.timfalken.com/timfa/bluegit/-/archive/911a93d8c40e586e6fc0d3f4ff13ea550ebb0860/bluegit-911a93d8c40e586e6fc0d3f4ff13ea550ebb0860.tar.gz
-	sha256sums = ca18a14d792dada9cde608ef677b8c7897954c1a241cb06789fc0d0da487db7d
+	source = bluegit-efe9faa3b7f37adea4702a7d2b8d7a3855124069.tar.gz::https://git.timfalken.com/timfa/bluegit/-/archive/efe9faa3b7f37adea4702a7d2b8d7a3855124069/bluegit-efe9faa3b7f37adea4702a7d2b8d7a3855124069.tar.gz
+	sha256sums = 8398bec39e6dc07e4d5f63dce2bcab7d81dd06a67d5380585f1c475fa9a63494
 
 pkgname = bluegit-backup
