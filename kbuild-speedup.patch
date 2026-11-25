@@ -3,6 +3,13 @@ kbuild: backport of the Linux 7.4 build-speed work to 7.3
 Single combined diff against vanilla 7.3.1 (stable/linux-7.3.y 79a907609d53).
 It carries 33 commits, listed below in application order.
 
+Refreshed for 7.3.6: that release already contains the result of this patch's
+changes to include/asm-generic/vmlinux.lds.h, scripts/Makefile.vmlinux and
+scripts/Makefile.vmlinux_o. patch reports those hunks as already applied and
+exits non-zero, which fails prepare(), so the three file diffs are removed. The
+commit list below still names every commit; for those three files only, the
+tree already has what they do.
+
 Part 1 (22 commits): changes already merged for 7.4 through the Kbuild /
 Kconfig pull request https://lore.kernel.org/lkml/20261018035817.GA2365306@ax162/
 with the prerequisites they need to apply on 7.3. One conflict in init/Kconfig
@@ -768,19 +775,6 @@ index 832deee36e48..52baacf3e9d9 100644
  
  # avoid eager evaluation to prevent references to non-existent build artifacts
  OBJCOPYFLAGS_vmlinuz.o = -I binary -O $(EFI_ZBOOT_BFD_TARGET) $(EFI_ZBOOT_OBJCOPY_FLAGS) \
-diff --git a/include/asm-generic/vmlinux.lds.h b/include/asm-generic/vmlinux.lds.h
-index b2988aa12f66..7a3e9f00d628 100644
---- a/include/asm-generic/vmlinux.lds.h
-+++ b/include/asm-generic/vmlinux.lds.h
-@@ -855,7 +855,7 @@
- 		KLP_SYMID
- 
- #define MODINFO								\
--		.modinfo : { *(.modinfo) . = ALIGN(8); }
-+		.modinfo (INFO) : { KEEP(*(.modinfo)) }
- 
- #ifdef CONFIG_GENERIC_BUG
- #define BUG_TABLE							\
 diff --git a/include/linux/module.h b/include/linux/module.h
 index 96cc98568eea..a2e44e8540ee 100644
 --- a/include/linux/module.h
@@ -1610,59 +1604,6 @@ index d7d45067d08b..eecf5f5c99b4 100644
  # 4)  create one Module.symvers file with CRC for all exported symbols
  
  # Step 3 is used to place certain information in the module's ELF
-diff --git a/scripts/Makefile.vmlinux b/scripts/Makefile.vmlinux
-index fcae1e432d9a..95b523fe4f9e 100644
---- a/scripts/Makefile.vmlinux
-+++ b/scripts/Makefile.vmlinux
-@@ -89,11 +89,8 @@ remove-section-$(CONFIG_ARCH_VMLINUX_NEEDS_RELOCS) += '.rel.*'
- 
- remove-symbols := -w --strip-unneeded-symbol='__mod_device_table__*'
- 
--# To avoid warnings: "empty loadable segment detected at ..." from GNU objcopy,
--# it is necessary to remove the PT_LOAD flag from the segment.
- quiet_cmd_strip_relocs = OBJCOPY $@
--      cmd_strip_relocs = $(OBJCOPY) $(patsubst %,--set-section-flags %=noload,$(remove-section-y)) $< $@; \
--                         $(OBJCOPY) $(addprefix --remove-section=,$(remove-section-y)) $(remove-symbols) $@
-+      cmd_strip_relocs = $(OBJCOPY) $(addprefix --remove-section=,$(remove-section-y)) $(remove-symbols) $< $@
- 
- targets += vmlinux
- vmlinux: vmlinux.unstripped FORCE
-@@ -102,21 +99,8 @@ vmlinux: vmlinux.unstripped FORCE
- # modules.builtin.modinfo
- # ---------------------------------------------------------------------------
- 
--# .modinfo in vmlinux.unstripped is aligned to 8 bytes for compatibility with
--# tools that expect vmlinux to have sufficiently aligned sections but the
--# additional bytes used for padding .modinfo to satisfy this requirement break
--# certain versions of kmod with
--#
--#   depmod: ERROR: kmod_builtin_iter_next: unexpected string without modname prefix
--#
--# Strip the trailing padding bytes after extracting .modinfo to comply with
--# what kmod expects to parse.
- quiet_cmd_modules_builtin_modinfo = GEN     $@
--      cmd_modules_builtin_modinfo = $(cmd_objcopy); \
--                                    sed -i 's/\x00\+$$/\x00/g' $@; \
--                                    chmod -x $@
--
--OBJCOPYFLAGS_modules.builtin.modinfo := -j .modinfo -O binary
-+      cmd_modules_builtin_modinfo = $(OBJCOPY) -O binary -j .modinfo --dump-section .modinfo=$@ $< /dev/null
- 
- targets += modules.builtin.modinfo
- modules.builtin.modinfo: vmlinux.unstripped FORCE
-diff --git a/scripts/Makefile.vmlinux_o b/scripts/Makefile.vmlinux_o
-index 24a3a4fd271c..0b37bd5dc3a4 100644
---- a/scripts/Makefile.vmlinux_o
-+++ b/scripts/Makefile.vmlinux_o
-@@ -19,7 +19,7 @@ quiet_cmd_gen_initcalls_lds = GEN     $@
- 
- .tmp_initcalls.lds: $(srctree)/scripts/generate_initcall_order.pl \
- 		vmlinux.a $(KBUILD_VMLINUX_LIBS) FORCE
--	$(call if_changed,gen_initcalls_lds)
-+	+$(call if_changed,gen_initcalls_lds)
- 
- targets := .tmp_initcalls.lds
- 
 diff --git a/scripts/Makefile.warn b/scripts/Makefile.warn
 index 35af7d6c6d18..556fa249ca07 100644
 --- a/scripts/Makefile.warn
