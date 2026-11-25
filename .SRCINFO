@@ -1,0 +1,18 @@
+pkgbase = ftpserver-bin
+	pkgdesc = FTP server with SFTP, S3, Dropbox and Google Drive backends
+	pkgver = 0.16.8
+	pkgrel = 1
+	url = https://github.com/fclairamb/ftpserver
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = ftpserver
+	conflicts = ftpserver
+	options = !debug
+	source_x86_64 = ftpserver-bin-0.16.8-x86_64.tar.gz::https://github.com/fclairamb/ftpserver/releases/download/v0.16.8/ftpserver-v0.16.8-linux-amd64.tar.gz
+	sha256sums_x86_64 = 16c05b26073dd99451c22adb10eb86c3db116c02d6ba35b6a3f870ffdb569a4c
+	source_aarch64 = ftpserver-bin-0.16.8-aarch64.tar.gz::https://github.com/fclairamb/ftpserver/releases/download/v0.16.8/ftpserver-v0.16.8-linux-arm64.tar.gz
+	sha256sums_aarch64 = 1346289c8b28750048ef5fbda69b4db2f3f5282722ab6d451e7633e6c8c91ade
+
+pkgname = ftpserver-bin
