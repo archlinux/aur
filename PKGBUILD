@@ -4,7 +4,7 @@
 # pkgver, pkgrel and sha256sums with .github/scripts/generate_aur_files.sh.
 pkgname=zenith-bar
 _reponame=Zenith
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="The lightest beautiful status bar for Wayland: GTK4 glass themes at zero idle CPU, for Hyprland, Sway, niri and river"
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=('ttf-inter: the recommended UI font'
 options=('!lto')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('379d4e08c958cbf8941b3acdc4e987dbb80667f8f777b34d67219616c09fc387')
+sha256sums=('22fc33ccf37560fbe67154905be05dbf2eddd04f4032947d925ceeec399860bb')
 
 prepare() {
   cd "${_reponame}-${pkgver}"
