@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=TouchFish
+Name[zh_CN]=TouchFish 客户端
+GenericName=Chat Client
+Comment=TouchFish V5 modern chat client, built with Flutter
+Comment[zh_CN]=TouchFish V5 现代化聊天客户端
+Exec=touchfish-client %U
+Icon=touchfish-client
+Terminal=false
+Categories=Network;InstantMessaging;Chat;
+Keywords=chat;im;messenger;touchfish-client;
+StartupNotify=true
+StartupWMClass=ci.us.ilovescratch.touchfish.astra.v3.touchfish_client
