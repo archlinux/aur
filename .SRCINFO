@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-ai-usagebar
 	pkgdesc = Show AI plan usage (Claude, Codex, OpenRouter and more) in the GNOME Shell top panel
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/wilfison/ai-usagebar
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = gnome-shell-extension-ai-usagebar
 	depends = gnome-shell>=1:47
 	depends = libsoup3
 	depends = libadwaita
-	source = gnome-shell-extension-ai-usagebar-1.9.0.tar.gz::https://github.com/wilfison/ai-usagebar/archive/refs/tags/v1.9.0.tar.gz
-	sha256sums = 2c58ba9de20384f7d3174cfa9960edee897596b6326b09ad9705849cdf16bdb9
+	source = gnome-shell-extension-ai-usagebar-1.10.0.tar.gz::https://github.com/wilfison/ai-usagebar/archive/refs/tags/v1.10.0.tar.gz
+	sha256sums = 286d0430fa141e0dc263b7f167b21611ad2b79b9610713a59588ebac2bd20906
 
 pkgname = gnome-shell-extension-ai-usagebar
