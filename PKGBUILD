@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=filen-desktop-git
 _pkgname="Filen Desktop"
-pkgver=3.0.54.r1.gfe090c8
+pkgver=3.0.55.r0.g938440d
 _electronversion=43
 _nodeversion=24
 pkgrel=1
 pkgdesc="Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more."
 arch=(
-    'aarch64'
-    'x86_64'
+	'aarch64'
+	'x86_64'
 )
 url="https://filen.io/"
 _ghurl="https://github.com/FilenCloudDienste/filen-desktop"
@@ -16,24 +16,24 @@ license=('AGPL-3.0-only')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
-    "electron${_electronversion}"
-    'rclone'
+	"electron${_electronversion}"
+	'rclone'
 )
 makedepends=(
-    'gendesk'
-    'npm'
-    'nvm'
-    'git'
-    'jq'
+	'gendesk'
+	'npm'
+	'nvm'
+	'git'
+	'jq'
 )
 source=(
-    "${pkgname%-git}.git::git+${_ghurl}"
-    "${pkgname%-git}.js"
-    "${pkgname%-git}.sh"
+	"${pkgname%-git}.git::git+${_ghurl}"
+	"${pkgname%-git}.js"
+	"${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+			'b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b'
+			'739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -92,51 +92,51 @@ _delete_other_arch_files() {
 	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 prepare() {
-    cd "$(_get_project_dir)"
-    _get_electron_version
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-git}/g
-    " "${srcdir}/${pkgname%-git}.sh" "${srcdir}/${pkgname%-git}.js"
-    gendesk -q -f -n \
-        --pkgname="${pkgname%-git}" \
-        --pkgdesc="${pkgdesc}" \
-        --categories="Utility" \
-        --name="${pkgname%-git}" \
-        --exec="${pkgname%-git} %U"
-    _ensure_local_nvm
-    _set_electron_build_env
-    _set_npm_build_env
-    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
-    export NODE_ENV=development
-    npm install
+	cd "$(_get_project_dir)"
+	_get_electron_version
+	sed -i -e "
+		s/@electronversion@/${_electronversion}/g
+		s/@appname@/${pkgname%-git}/g
+	" "${srcdir}/${pkgname%-git}.sh"
+	gendesk -q -f -n \
+		--pkgname="${pkgname%-git}" \
+		--pkgdesc="${pkgdesc}" \
+		--categories="Utility" \
+		--name="${pkgname%-git}" \
+		--exec="${pkgname%-git} %U"
+	_ensure_local_nvm
+	_set_electron_build_env
+	_set_npm_build_env
+	jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
+	export NODE_ENV=development
+	npm install
 }
 build() {
-    cd "$(_get_project_dir)"
-    _ensure_local_nvm
-    _set_electron_build_env
-    _set_npm_build_env
-    export NODE_ENV=production
-    npm run clear
-    npm run tsc
-    rm -rf bin/rclone && mkdir -p bin/rclone
-    cp /usr/bin/rclone bin/rclone/rclone-linux-amd64
-    cp /usr/bin/rclone bin/rclone/rclone-linux-arm64
-    npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
-    _delete_other_arch_files
+	cd "$(_get_project_dir)"
+	_ensure_local_nvm
+	_set_electron_build_env
+	_set_npm_build_env
+	export NODE_ENV=production
+	npm run clear
+	npm run tsc
+	rm -rf bin/rclone && mkdir -p bin/rclone
+	cp /usr/bin/rclone bin/rclone/rclone-linux-amd64
+	cp /usr/bin/rclone bin/rclone/rclone-linux-arm64
+	npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
+	_delete_other_arch_files
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+	install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+	install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
-    local _arch=$([[ "${CARCH}" == "aarch64" ]] && echo arm64 || echo amd64)
-    rm -rf "$(_get_app_dir)/resources/app.asar.unpacked/bin/"*
-    ln -sf /usr/bin/rclone "$(_get_app_dir)/resources/app.asar.unpacked/bin/rclone-linux-${_arch}"
-    install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
-    for _icons in "${icon_sizes[@]}";do
-        install -Dm644 "$(_get_project_dir)/build/icons/png/${_icons}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
-    done
-    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	local _arch=$([[ "${CARCH}" == "aarch64" ]] && echo arm64 || echo amd64)
+	rm -rf "$(_get_app_dir)/resources/app.asar.unpacked/bin/"*
+	ln -sf /usr/bin/rclone "$(_get_app_dir)/resources/app.asar.unpacked/bin/rclone-linux-${_arch}"
+	install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+	icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
+	for _icons in "${icon_sizes[@]}";do
+		install -Dm644 "$(_get_project_dir)/build/icons/png/${_icons}.png" \
+			"${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
+	done
+	install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
