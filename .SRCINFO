@@ -1,0 +1,22 @@
+pkgbase = local-studio-bin
+	pkgdesc = Control panel for vLLM, SGLang, llama.cpp and ExLlamaV3
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/sybil-solutions/local-studio
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = local-studio
+	conflicts = local-studio
+	options = !debug
+	source = local-studio-bin-3.0.3-LICENSE::https://raw.githubusercontent.com/sybil-solutions/local-studio/v3.0.3/LICENSE
+	sha256sums = 935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43
+	source_x86_64 = local-studio-bin-3.0.3-x86_64::https://github.com/sybil-solutions/local-studio/releases/download/v3.0.3/local-studio-controller-linux-x64
+	sha256sums_x86_64 = d4bafae16575971083c1dc851126a2f7f62d79a20eaa52b7c1a7532a822f65d2
+	source_aarch64 = local-studio-bin-3.0.3-aarch64-local-studio-controller::https://github.com/sybil-solutions/local-studio/releases/download/v3.0.3/local-studio-controller-linux-arm64
+	source_aarch64 = local-studio-bin-3.0.3-aarch64-stable::https://github.com/sybil-solutions/local-studio/releases/download/v3.0.3/stable-linux-arm64.yml
+	sha256sums_aarch64 = d7aa184d716037248946d86dc5c218025bd8b5f4a89b48e3349bcf4c4be3b1e1
+	sha256sums_aarch64 = 752ffbb9baced79d0d9f817efd35f1e11140c3ef1e4111e06bdb5b0aae972b71
+
+pkgname = local-studio-bin
