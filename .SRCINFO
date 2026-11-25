@@ -1,0 +1,17 @@
+pkgbase = sablier-bin
+	pkgdesc = Start your containers on demand, shut them down automatically when there's no activity
+	pkgver = 1.21.1
+	pkgrel = 1
+	url = https://github.com/sablierapp/sablier
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = sablier
+	conflicts = sablier
+	options = !debug
+	source_x86_64 = sablier-bin-1.21.1-x86_64.tar.gz::https://github.com/sablierapp/sablier/releases/download/v1.21.1/sablier-1.21.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 732ccbf475e149e6c0e116147ea0259a2454e4c066e4f08d90a9fac675075b94
+	source_aarch64 = sablier-bin-1.21.1-aarch64.tar.gz::https://github.com/sablierapp/sablier/releases/download/v1.21.1/sablier-1.21.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = f4611b153cd7c2dd6aa16065269045ddf35a222542462e11957adfd0feb9cabb
+
+pkgname = sablier-bin
