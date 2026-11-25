@@ -1,0 +1,17 @@
+pkgbase = discrawl-bin
+	pkgdesc = Discord command-line client with a SQLite backend
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/openclaw/discrawl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = discrawl
+	conflicts = discrawl
+	options = !debug
+	source_x86_64 = discrawl-bin-0.21.0-x86_64.tar.gz::https://github.com/openclaw/discrawl/releases/download/v0.21.0/discrawl_0.21.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0ec98448c820519e1230d0a6ea7039a12b4bb781848d8b6f6e469e4126627902
+	source_aarch64 = discrawl-bin-0.21.0-aarch64.tar.gz::https://github.com/openclaw/discrawl/releases/download/v0.21.0/discrawl_0.21.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 78d70b437778f5f8f612bf81cc2c427fbab381db9b80a6313e85f43e54595212
+
+pkgname = discrawl-bin
