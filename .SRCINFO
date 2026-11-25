@@ -1,6 +1,6 @@
 pkgbase = cryptyrust
 	pkgdesc = Post-quantum file encryption: drag-and-drop GUI and command line (X25519 + ML-KEM, Argon2id)
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/Antidote1911/cryptyrust
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = cryptyrust
 	optdepends = wayland: run on Wayland when no X server is available
 	conflicts = cryptyrust-bin
 	options = !lto
-	source = cryptyrust-3.1.0.tar.gz::https://github.com/Antidote1911/cryptyrust/archive/refs/tags/v3.1.0.tar.gz
-	sha256sums = 76fb21ac732c36ae44adb067a4425f3aac4ba04a2ecd6327a35674f5484004de
+	source = cryptyrust-3.2.0.tar.gz::https://github.com/Antidote1911/cryptyrust/archive/refs/tags/v3.2.0.tar.gz
+	sha256sums = 3424c618274e7bb235ae067135fdd50a8ee163eb76b81296137f1e4f760425e3
 
 pkgname = cryptyrust

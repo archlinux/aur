@@ -9,7 +9,7 @@
 # New version: ../publish.sh (pkgver, updpkgsums, makepkg --printsrcinfo > .SRCINFO, push to the AUR)
 
 pkgname=cryptyrust
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Post-quantum file encryption: drag-and-drop GUI and command line (X25519 + ML-KEM, Argon2id)"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ conflicts=('cryptyrust-bin')
 # The C code of the crates (zstd) is linked by rustc, which does not read LTO objects of gcc
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Antidote1911/cryptyrust/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('76fb21ac732c36ae44adb067a4425f3aac4ba04a2ecd6327a35674f5484004de')
+sha256sums=('3424c618274e7bb235ae067135fdd50a8ee163eb76b81296137f1e4f760425e3')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -44,6 +44,7 @@ package() {
     install -Dm755 target/release/cryptyrust -t "$pkgdir/usr/bin"
     install -Dm644 packaging/linux/cryptyrust.desktop -t "$pkgdir/usr/share/applications"
     install -Dm644 packaging/cryptyrust.png -t "$pkgdir/usr/share/icons/hicolor/512x512/apps"
+    install -Dm644 packaging/linux/io.github.antidote1911.cryptyrust.metainfo.xml -t "$pkgdir/usr/share/metainfo"
     install -Dm644 README.md arsenic/FORMAT.md -t "$pkgdir/usr/share/doc/$pkgname"
     # The GUI and CLI reference; a second README.md would overwrite the first
     install -Dm644 cryptyrust/README.md "$pkgdir/usr/share/doc/$pkgname/USAGE.md"
