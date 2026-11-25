@@ -1,6 +1,6 @@
 # Maintainer: noahlyk <noahlykins@gmail.com>
 pkgname=pipewire-crisp-vocals
-pkgver=0.3.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Hot-reloadable PipeWire mic DSP chain (denoise/gate/compressor/EQ) + declarative auto-wiring into a single virtual mic"
 arch=('x86_64')
@@ -9,7 +9,8 @@ license=('MIT')
 depends=('pipewire' 'jack')
 optdepends=('fluidsynth: optional MIDI-keyboard synth fan-in (synth.enabled in crisp-vocals.ron)')
 makedepends=()
-options=('!debug')
+options=('!debug' '!lto')
+install=pipewire-crisp-vocals.install
 
 _arch="$CARCH"
 if [ "$_arch" = "x86_64" ]; then
@@ -25,11 +26,10 @@ source=(
 sha256sums=('SKIP' 'SKIP')
 
 package() {
-    # The release tarball bundles both binaries, the supervisor wrapper
+    # The release tarball bundles the crisp-vocals binary, the supervisor wrapper
     # script, the single systemd unit, the PipeWire config drop-ins and the
     # docs -- see .github/workflows/release.yml's "Create tarball" step.
     install -Dm755 "$srcdir/crisp-vocals" "$pkgdir/usr/bin/crisp-vocals"
-    install -Dm755 "$srcdir/crisp-links" "$pkgdir/usr/bin/crisp-links"
 
     install -Dm755 "$srcdir/pipewire-crisp-vocals-wrapper.sh" "$pkgdir/usr/lib/crisp-vocals/pipewire-crisp-vocals-wrapper.sh"
 
@@ -42,20 +42,4 @@ package() {
     install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 "$srcdir/ARCHITECTURE.md" "$pkgdir/usr/share/doc/$pkgname/ARCHITECTURE.md"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-post_install() {
-    echo ""
-    echo "==> pipewire-crisp-vocals installed. Enable it:"
-    echo ""
-    echo "    systemctl --user enable --now pipewire-crisp-vocals.service"
-    echo ""
-    echo "    That's it -- config is auto-created at ~/.config/pipewire/crisp-vocals.ron"
-    echo "    with your mic auto-detected on first run. Edit that file to tune the DSP"
-    echo "    chain (hot-reloads within ~50ms, no restart needed), or run"
-    echo "    'crisp-links mic --list|--auto|<node-name>' to change the routed mic."
-}
-
-post_upgrade() {
-    post_install
 }

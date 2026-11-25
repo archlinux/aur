@@ -1,0 +1,50 @@
+# pacman scriptlet for pipewire-crisp-vocals (shared by PKGBUILD and aur/PKGBUILD).
+# The service is a systemd *user* unit, so nothing here can start, stop or
+# restart it for you: every step is printed for the user to run.
+
+post_install() {
+    echo ""
+    echo "==> pipewire-crisp-vocals installed. Enable it (as your user, not root):"
+    echo ""
+    echo "    systemctl --user enable --now pipewire-crisp-vocals.service"
+    echo ""
+    echo "    Config is auto-created at ~/.config/pipewire/crisp-vocals.ron with your"
+    echo "    mic auto-detected on first run. Edit that file to tune the DSP chain"
+    echo "    (hot-reloads within ~50ms, no restart needed), or run"
+    echo "    'crisp-vocals mic --list|--auto|<node-name>' to change the routed mic."
+    echo "    Then select 'virtual-mic' as the microphone in your apps."
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> pipewire-crisp-vocals upgraded to $1."
+    echo "    A running service keeps the old build until it is restarted. Check with:"
+    echo ""
+    echo "    crisp-vocals --version"
+    echo ""
+    echo "    A note like '(dsp, links out-of-date, running ...)' means restart it"
+    echo "    (the mic drops out for a moment):"
+    echo ""
+    echo "    systemctl --user restart pipewire-crisp-vocals.service"
+    echo ""
+    # 0.3.x shipped the wiring daemon as a separate crisp-links binary.
+    if [ "$(vercmp "$2" 0.4.0)" -lt 0 ]; then
+        echo "    crisp-links is gone: use 'crisp-vocals mic ...' and"
+        echo "    'crisp-vocals links --dry-run' instead."
+        echo ""
+    fi
+}
+
+pre_remove() {
+    echo ""
+    echo "==> Removing pipewire-crisp-vocals. If the service is still running or"
+    echo "    enabled, stop it as your user (its unit file is about to disappear):"
+    echo ""
+    echo "    systemctl --user disable --now pipewire-crisp-vocals.service"
+    echo ""
+    echo "    Your config stays at ~/.config/pipewire/crisp-vocals.ron; delete it"
+    echo "    yourself if you do not want it back on a reinstall. Runtime version"
+    echo "    files live in \$XDG_RUNTIME_DIR/crisp-vocals/ and vanish at logout."
+    echo ""
+}
