@@ -1,7 +1,7 @@
 # Maintainer: lingdianshiren <ldsrwu@foxmail.com>
 
 pkgname=srun-portal-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Prebuilt Rust client for Srun portal authentication and reconnect"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('srun-portal')
 options=('!strip')
 source=("srun-portal-v$pkgver-$CARCH-unknown-linux-gnu::https://github.com/lingdiansr/srun-portal/releases/download/v$pkgver/srun-portal-v$pkgver-$CARCH-unknown-linux-gnu"
         "LICENSE::https://raw.githubusercontent.com/lingdiansr/srun-portal/v$pkgver/LICENSE")
-sha256sums=('8c7274ae732dbd0a0d153be16c58d24e90429268eb51d5f9e1c479dcc1137731'
+sha256sums=('98402ad0e0bdaf5b546c8a14509156babe7349a7f8922ec87f764fef4a63cd09'
             'd8a6cc31abc16b6748c7a21f21611f5a1ec33f67d22ca23d7da1c19b95496bee')
 
 package() {
