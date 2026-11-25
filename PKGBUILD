@@ -3,20 +3,21 @@
 # other channel. Version + checksums are bumped automatically by the
 # publish-aur job in the repo's release workflow (updpkgsums).
 pkgname=agent-console-bin
-pkgver=0.99.0
+pkgver=0.99.1
 pkgrel=1
-pkgdesc="Minimalist AI-native console for directing coding agents inside a repository"
+pkgdesc="Direct coding agents in your repo, with a verifiable record of what they did"
 arch=('x86_64')
 url="https://github.com/cyl-castillo/agent-console"
 license=('AGPL-3.0-only')
-depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'alsa-lib' 'nodejs' 'git')
-optdepends=('npm: to install the Claude Code CLI (npm i -g @anthropic-ai/claude-code)')
+depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'alsa-lib' 'git')
+optdepends=('nodejs: to run an agent CLI installed through npm (Codex, Claude Code)'
+            'npm: to install one (npm i -g @anthropic-ai/claude-code, npm i -g @openai/codex)')
 provides=('agent-console')
 conflicts=('agent-console')
 options=('!strip')
 source=("$url/releases/download/v$pkgver/Agent.Console_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/cyl-castillo/agent-console/v$pkgver/LICENSE")
-sha256sums=('f77b94a571003da23df53f4ea70d56e36de7132214891ad60fe827caac1f33a9'
+sha256sums=('c410791349b69dc073e532b2faef3fb67d6b9103188f07e254e4e4d1557a1c60'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
 
 package() {
