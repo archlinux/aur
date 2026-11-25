@@ -1,0 +1,19 @@
+pkgbase = polodb-bin
+	pkgdesc = Embedded document database with a MongoDB-like API
+	pkgver = 5.3.0
+	pkgrel = 1
+	url = https://github.com/PoloDB/PoloDB
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = polodb
+	conflicts = polodb
+	options = !debug
+	source = polodb-bin-5.3.0-LICENSE::https://raw.githubusercontent.com/PoloDB/PoloDB/v5.3.0/LICENSE.txt
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = polodb-bin-5.3.0-x86_64::https://github.com/PoloDB/PoloDB/releases/download/v5.3.0/polodb-linux-x64
+	sha256sums_x86_64 = d1e361ab63dc16da45ed6a9e9d96acb17d356915858b24d757092989e9a9ac60
+
+pkgname = polodb-bin
