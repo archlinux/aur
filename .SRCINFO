@@ -1,0 +1,17 @@
+pkgbase = trueblocks-core-bin
+	pkgdesc = Local-first indexing and querying of Ethereum data
+	pkgver = 5.9.3
+	pkgrel = 1
+	url = https://github.com/TrueBlocks/trueblocks-core
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = trueblocks-core
+	conflicts = trueblocks-core
+	options = !debug
+	source_x86_64 = trueblocks-core-bin-5.9.3-x86_64.tar.gz::https://github.com/TrueBlocks/trueblocks-core/releases/download/v5.9.3/trueblocks-core_linux_amd64.tar.gz
+	sha256sums_x86_64 = 918095ab0beb0658986c7bdb18fef167cbd2cec4739834e9a265d03faf8a42bc
+	source_aarch64 = trueblocks-core-bin-5.9.3-aarch64.tar.gz::https://github.com/TrueBlocks/trueblocks-core/releases/download/v5.9.3/trueblocks-core_linux_arm64.tar.gz
+	sha256sums_aarch64 = 75dc6911c60a29aa9f73e62ac0f150cf7e326a408f3914c6e1b02ecc25cce910
+
+pkgname = trueblocks-core-bin
