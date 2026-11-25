@@ -1,7 +1,8 @@
 pkgbase = ytm-rs-bin
 	pkgdesc = Native YouTube Music client
-	pkgver = 2.0.2
+	pkgver = 0.4.0
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/grapedjuice/ytm-rs
 	arch = x86_64
 	license = GPL-3.0-only
@@ -21,12 +22,12 @@ pkgbase = ytm-rs-bin
 	depends = libssl.so=4-64
 	depends = webkit2gtk-4.1
 	optdepends = libpulse: song recognition via parec
-	provides = ytm-rs=2.0.2
+	provides = ytm-rs=1:0.4.0
 	conflicts = ytm-rs
-	noextract = ytm-rs-2.0.2-1-x86_64.pkg.tar.zst
+	noextract = ytm-rs-0.4.0-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = https://github.com/grapedjuice/ytm-rs/releases/download/v2.0.2/ytm-rs-2.0.2-1-x86_64.pkg.tar.zst
-	sha256sums = f058fba857003a0f66088a16f06fdb81d9c9b08d815d14afd2056f5792aac66e
+	source = https://github.com/grapedjuice/ytm-rs/releases/download/v0.4.0/ytm-rs-0.4.0-1-x86_64.pkg.tar.zst
+	sha256sums = a11c5f979c1ed038b7e8311787587c3a65d764557b0fc046d9b7634714ccca11
 
 pkgname = ytm-rs-bin
