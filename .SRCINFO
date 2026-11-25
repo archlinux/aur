@@ -1,0 +1,16 @@
+pkgbase = gshark-bin
+	pkgdesc = Scan code hosting platforms for leaked sensitive information
+	pkgver = 2.1.30
+	pkgrel = 1
+	url = https://github.com/madneal/gshark
+	arch = x86_64
+	license = Apache-2.0
+	provides = gshark
+	conflicts = gshark
+	options = !debug
+	source = gshark-bin-2.1.30-LICENSE::https://raw.githubusercontent.com/madneal/gshark/v2.1.30/LICENSE
+	sha256sums = b43e0ab02760dc8cc1d36c80a922791d811af7a8a64343d7b60f726f300e88ac
+	source_x86_64 = gshark-bin-2.1.30-x86_64.zip::https://github.com/madneal/gshark/releases/download/v2.1.30/gshark_linux_amd64.zip
+	sha256sums_x86_64 = 3f01908d9e8c552cfdc7b6a69f0940fd8e1a4953f3fd83c829ff3ec3a741d62e
+
+pkgname = gshark-bin
