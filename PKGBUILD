@@ -1,6 +1,6 @@
 # Maintainer: Yast <yastcher@gmail.com>
 pkgname=tapeback-cuda
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="CUDA 12 cuBLAS/cuDNN runtime for GPU-accelerated transcription in tapeback"
 arch=('any')
