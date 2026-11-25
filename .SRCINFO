@@ -1,6 +1,6 @@
 pkgbase = file-finder-bin
 	pkgdesc = Fast TUI file finder built in Rust — global & local search, open in editor, copy paths, and more
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/anthonyamaro15/file-finder-rust
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = file-finder-bin
 	provides = ff
 	conflicts = file-finder
 	options = !strip
-	source_x86_64 = file-finder-x86_64-0.3.0.tgz::https://github.com/anthonyamaro15/file-finder-rust/releases/download/v0.3.0/ff-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b64ecb2eb43638a28e7fce7131f3eb407e629aff6e76fec0c6b775cf9d116220
+	source_x86_64 = file-finder-x86_64-0.3.1.tgz::https://github.com/anthonyamaro15/file-finder-rust/releases/download/v0.3.1/ff-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a3a5783a9f37eb69ede90993a3b631e6a5f1340d9be421bdf91d4606f68e5ccf
 
 pkgname = file-finder-bin
