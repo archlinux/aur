@@ -1,6 +1,6 @@
 # Maintainer: Himalian <Himalian9227@proton.me>, phucvinh57 <npvinh0507@gmail.com>
 pkgname=biopass-bin
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="An alternative to Windows Hello/Howdy"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=('biopass')
 conflicts=('biopass')
 source_x86_64=("biopass_${pkgver}_amd64.deb::https://github.com/phucvinh57/biopass/releases/download/${pkgver}/biopass_${pkgver}_amd64.deb")
 source_aarch64=("biopass_${pkgver}_arm64.deb::https://github.com/phucvinh57/biopass/releases/download/${pkgver}/biopass_${pkgver}_arm64.deb")
-sha256sums_x86_64=('5925299338583667bf5beaffbd7f5c63269aaa1860d283a78468b56b422b9bec')
-sha256sums_aarch64=('6cf87a7353cfffc55ef6e12e8135277f3989745f1db13b4499075c9cbd24392d')
+sha256sums_x86_64=('3830203cae937d7554d8ddccf5a47a728a9f0d5a45e57616d7cf13b70f35f0b9')
+sha256sums_aarch64=('0d5e590c606268998c9c205b4011dcbbd5bbca5c722c382fae5c4747cf9bb67c')
 options=(!strip !debug)
 install=biopass-bin.install
 

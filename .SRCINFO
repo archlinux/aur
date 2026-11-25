@@ -1,6 +1,6 @@
 pkgbase = biopass-bin
 	pkgdesc = An alternative to Windows Hello/Howdy
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/phucvinh57/biopass
 	install = biopass-bin.install
@@ -24,9 +24,9 @@ pkgbase = biopass-bin
 	conflicts = biopass
 	options = !strip
 	options = !debug
-	source_x86_64 = biopass_1.5.1_amd64.deb::https://github.com/phucvinh57/biopass/releases/download/1.5.1/biopass_1.5.1_amd64.deb
-	sha256sums_x86_64 = 5925299338583667bf5beaffbd7f5c63269aaa1860d283a78468b56b422b9bec
-	source_aarch64 = biopass_1.5.1_arm64.deb::https://github.com/phucvinh57/biopass/releases/download/1.5.1/biopass_1.5.1_arm64.deb
-	sha256sums_aarch64 = 6cf87a7353cfffc55ef6e12e8135277f3989745f1db13b4499075c9cbd24392d
+	source_x86_64 = biopass_1.6.0_amd64.deb::https://github.com/phucvinh57/biopass/releases/download/1.6.0/biopass_1.6.0_amd64.deb
+	sha256sums_x86_64 = 3830203cae937d7554d8ddccf5a47a728a9f0d5a45e57616d7cf13b70f35f0b9
+	source_aarch64 = biopass_1.6.0_arm64.deb::https://github.com/phucvinh57/biopass/releases/download/1.6.0/biopass_1.6.0_arm64.deb
+	sha256sums_aarch64 = 0d5e590c606268998c9c205b4011dcbbd5bbca5c722c382fae5c4747cf9bb67c
 
 pkgname = biopass-bin
