@@ -1,6 +1,6 @@
 pkgbase = yogurt-bin
 	pkgdesc = Private AI meeting notes that stay on your computer.
-	pkgver = 0.3.72
+	pkgver = 0.3.75
 	pkgrel = 1
 	url = https://yogurt.so
 	arch = x86_64
@@ -9,17 +9,17 @@ pkgbase = yogurt-bin
 	depends = nodejs
 	depends = vulkan-icd-loader
 	depends = libpulse
-	provides = yogurt=0.3.72
+	provides = yogurt=0.3.75
 	conflicts = yogurt
 	options = !strip
 	options = !emptydirs
-	source = yogurt-0.3.72-x86_64.AppImage::https://github.com/FrigadeHQ/yogurt/releases/download/v0.3.72/Yogurt-linux-x86_64.AppImage
-	source = LICENSE-0.3.72::https://raw.githubusercontent.com/FrigadeHQ/yogurt/v0.3.72/LICENSE
+	source = yogurt-0.3.75-x86_64.AppImage::https://github.com/FrigadeHQ/yogurt/releases/download/v0.3.75/Yogurt-linux-x86_64.AppImage
+	source = LICENSE-0.3.75::https://raw.githubusercontent.com/FrigadeHQ/yogurt/v0.3.75/LICENSE
 	source = yogurt.js
 	source = yogurt.sh
-	sha256sums = 3b271e1ed84f8013fd5ddfaa93a9f02b8b87c09e621f85a84f555483fe141d0d
+	sha256sums = 784fb1d02c5c2243170c85b2f1bb9bb79299399e20be8d5bd71a93ae42ff7395
 	sha256sums = 5c7f0de8bbe8ee8a29540939bfdd83adf000e8c2817587d618c9637347dd34ec
-	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	sha256sums = d0f201d4e9b0690ccfbe9034779bf95a7a92996cef63a957bf15ea11c7d83236
+	sha256sums = 6295de105284c8d173a862217d76eee1610dad92dd5543f3f9e6a08a6a77929a
 
 pkgname = yogurt-bin
