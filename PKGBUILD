@@ -1,6 +1,6 @@
 # Maintainer: Geequlim
 pkgname=t3-code-cli-bin
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc='Self-contained T3 Code server and command-line interface'
 arch=('x86_64' 'aarch64')
@@ -11,9 +11,9 @@ options=('!strip')
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/pingdotgg/t3code/v${pkgver}/LICENSE")
 sha256sums=('935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43')
 source_x86_64=("https://github.com/pingdotgg/t3code/releases/download/v${pkgver}/t3-${pkgver}-linux-x64.tar.gz")
-sha256sums_x86_64=('2b691c07f5bcb5adea4a863d5324aae7db21bd6d82280cec7787836dcaa013e1')
+sha256sums_x86_64=('9ba3db46e3554fb9970fd5ede9e823c2f6d6f6763f40340bd4c8ef6b09501c54')
 source_aarch64=("https://github.com/pingdotgg/t3code/releases/download/v${pkgver}/t3-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('7d90a5af032fe0988a616403e0f51a6cb68eff7ed7a84bc40999cc3997dffd71')
+sha256sums_aarch64=('29cfbab19117aa436f1700382afb9cfe5d7ef47609cabba9356271a0bca5ad98')
 
 package() {
   local upstream_arch
