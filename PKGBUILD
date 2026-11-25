@@ -1,7 +1,7 @@
 # Maintainer: Adrian Grzeca <adrian@grzeca.me>
 
 pkgname=data2g
-pkgver=0.5.1
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='HF data modem on the SSTVAE OFDM waveform (VARA-compatible host ports, KISS): host, GUI and tools'
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ depends=(glibc libgcc libstdc++ hamlib qt6-base qt6-multimedia qt6-websockets zl
 makedepends=(cmake ninja)
 optdepends=('rtkit: real-time priority for the audio threads without extra permissions')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3bdff933b647884c7a7c2f4c873bb63249a201feea386c8b32b49d41c09bc1c4')
+sha256sums=('53e4beeac762f547de079796c7f0e7518d04974f4ab21a51f459f68f6c1f862f')
 
 build() {
     # System Hamlib (the same version upstream pins in native/cmake/hamlib.cmake),
