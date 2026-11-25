@@ -85,7 +85,7 @@ LogsSinceLast = 5000
 
 [client-configuration]
 timeout = [
-    10,
+    12,
     0,
 ]
 
