@@ -1,0 +1,21 @@
+pkgbase = wassette-bin
+	pkgdesc = Security-oriented runtime that runs WebAssembly Components via MCP
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/microsoft/wassette
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = wassette
+	conflicts = wassette
+	options = !debug
+	source = wassette-bin-0.8.1-LICENSE::https://raw.githubusercontent.com/microsoft/wassette/v0.8.1/LICENSE
+	sha256sums = fd532481d828e13a0b13ccb598e02338a3617740675a862ee6bdc1541b68e93d
+	source_x86_64 = wassette-bin-0.8.1-x86_64.tar.gz::https://github.com/microsoft/wassette/releases/download/v0.8.1/wassette_0.8.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2a421a73c700798076507df27fbbb25ce4d35862c6b09c4a3fd7297e00c45736
+	source_aarch64 = wassette-bin-0.8.1-aarch64.tar.gz::https://github.com/microsoft/wassette/releases/download/v0.8.1/wassette_0.8.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4081cfcff1de59e4e57455eb813b7a4e831133185f58e16fee14dea44e3a8731
+
+pkgname = wassette-bin
