@@ -1,0 +1,17 @@
+pkgbase = misconfig-mapper-bin
+	pkgdesc = Find security misconfigurations in third-party services
+	pkgver = 1.19.0
+	pkgrel = 1
+	url = https://github.com/intigriti/misconfig-mapper
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = misconfig-mapper
+	conflicts = misconfig-mapper
+	options = !debug
+	source_x86_64 = misconfig-mapper-bin-1.19.0-x86_64.zip::https://github.com/intigriti/misconfig-mapper/releases/download/v1.19.0/misconfig-mapper_1.19.0_linux_amd64.zip
+	sha256sums_x86_64 = da93948e3607e3a014553efba6c91268be6b9fdc06aad18ee2c90e9e104aaa4a
+	source_aarch64 = misconfig-mapper-bin-1.19.0-aarch64.zip::https://github.com/intigriti/misconfig-mapper/releases/download/v1.19.0/misconfig-mapper_1.19.0_linux_arm64.zip
+	sha256sums_aarch64 = 6e06b5703a070712ae701731f5bbb0764a58a2ea2b43e90ab19c825b626abc28
+
+pkgname = misconfig-mapper-bin
