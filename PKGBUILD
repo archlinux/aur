@@ -2,8 +2,8 @@
 
 pkgname=webdump-static
 _pkgname=webdump
-pkgver=0.3
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc='HTML to plain-text converter tool'
 arch=('x86_64' 'aarch64')
 url='https://codemadness.org/webdump.html'
@@ -12,7 +12,7 @@ conflicts=(${_pkgname}-git)
 provides=(${_pkgname})
 makedepends=('musl' 'gcc' 'make')
 source=("https://codemadness.org/releases/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('fa44ba3171b0d7f9f2359c6846aa74f04d3b534bc88791a0e102d800b03da38e7b954a3677af26b16192e59cd1ee204f50d6201bc082949d14a97b17d9b8f705')
+sha512sums=('59618e5e7b5ead87d0a6b5c3e67f9686bdda7ebc956f209d66464134d21f6b622625e9754be91c595f28fe8abfe075d81b36f4b1ef12efbc633b9f2ac55357c6')
 
 build() {
   export CC="musl-gcc -fno-link-libatomic" CFLAGS="$CFLAGS -Os"
