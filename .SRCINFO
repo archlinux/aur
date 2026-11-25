@@ -1,6 +1,6 @@
 pkgbase = sngrep-bin
 	pkgdesc = A tool for displaying SIP call message flows from a terminal (prebuilt)
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/irontec/sngrep
 	install = sngrep-bin.install
@@ -9,18 +9,18 @@ pkgbase = sngrep-bin
 	depends = bash
 	depends = coreutils
 	depends = ncurses
-	provides = sngrep=1.9.0
+	provides = sngrep=1.10.0
 	conflicts = sngrep
 	backup = etc/sngreprc
-	source = sngrep-1.9.0-README.md::https://github.com/irontec/sngrep/raw/refs/tags/v1.9.0/README
-	source = sngrep-1.9.0.man.8::https://github.com/irontec/sngrep/raw/refs/tags/v1.9.0/doc/sngrep.8
-	source = sngrep-1.9.0-sngreprc::https://github.com/irontec/sngrep/raw/refs/tags/v1.9.0/config/sngreprc
+	source = sngrep-1.10.0-README.md::https://github.com/irontec/sngrep/raw/refs/tags/v1.10.0/README
+	source = sngrep-1.10.0.man.8::https://github.com/irontec/sngrep/raw/refs/tags/v1.10.0/doc/sngrep.8
+	source = sngrep-1.10.0-sngreprc::https://github.com/irontec/sngrep/raw/refs/tags/v1.10.0/config/sngreprc
 	source = sngrep.sh
 	sha256sums = 6aab9564131a94f4d0cd03f93376010cb7ab66d0402d1c6aa2d5f82ed594d3ab
-	sha256sums = 2b3630e53485f63bc976776ecbcbd2e6f700c93ee38dca691a129e1986271ad9
-	sha256sums = 55312b67d560ad9e8685f53a637c976a1253acf767798aba05a091a5fe86f439
+	sha256sums = ea78544eb07419eb89e820a007cfc4c5d3dd5dd5cc7afd45098b8208cfed785d
+	sha256sums = dc7609a7acac3caeae44adb87f4b51d113186939507a19a7d3cb3d06334362d9
 	sha256sums = d1612085ffe73d5d02ed06e8835031ebf403b648eea78fe76a08a88741e1004b
-	source_x86_64 = sngrep-1.9.0-x86_64::https://packages.irontec.com/binaries/sngrep-static-amd64-linux-gnu-1.9.0
-	sha256sums_x86_64 = 83f7489d88113ee730cb30b1b4ad5e09dc4041fcf507b6da340957955e8358f9
+	source_x86_64 = sngrep-1.10.0-x86_64::https://packages.irontec.com/binaries/sngrep-static-amd64-linux-gnu-1.10.0
+	sha256sums_x86_64 = efc63f96c05d19ad462e75746c382b6bed5b32a6cba1fe68b66157508bf83a57
 
 pkgname = sngrep-bin

@@ -3,7 +3,7 @@
 
 _pkgname="sngrep"
 pkgname="${_pkgname}-bin"
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A tool for displaying SIP call message flows from a terminal (prebuilt)"
 arch=('x86_64')
@@ -21,10 +21,10 @@ source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README"
         "${_pkgname}.sh")
 source_x86_64=("${_pkgsrc}-x86_64::https://packages.irontec.com/binaries/${_pkgname}-static-amd64-linux-gnu-${pkgver}")
 sha256sums=('6aab9564131a94f4d0cd03f93376010cb7ab66d0402d1c6aa2d5f82ed594d3ab'
-            '2b3630e53485f63bc976776ecbcbd2e6f700c93ee38dca691a129e1986271ad9'
-            '55312b67d560ad9e8685f53a637c976a1253acf767798aba05a091a5fe86f439'
+            'ea78544eb07419eb89e820a007cfc4c5d3dd5dd5cc7afd45098b8208cfed785d'
+            'dc7609a7acac3caeae44adb87f4b51d113186939507a19a7d3cb3d06334362d9'
             'd1612085ffe73d5d02ed06e8835031ebf403b648eea78fe76a08a88741e1004b')
-sha256sums_x86_64=('83f7489d88113ee730cb30b1b4ad5e09dc4041fcf507b6da340957955e8358f9')
+sha256sums_x86_64=('efc63f96c05d19ad462e75746c382b6bed5b32a6cba1fe68b66157508bf83a57')
 
 package() {
   cd "${srcdir}"
