@@ -1,17 +1,17 @@
 pkgbase = gitopolis-bin
 	pkgdesc = CLI tool to manage multiple git repositories; run commands, clone, and organize repos with tags
-	pkgver = 1.17.2
+	pkgver = 1.17.4
 	pkgrel = 1
 	url = https://github.com/timabell/gitopolis
 	arch = x86_64
 	license = AGPL-3.0-only
 	provides = gitopolis
 	conflicts = gitopolis
-	source = README-1.17.2.md::https://raw.githubusercontent.com/timabell/gitopolis/v1.17.2/README.md
-	source = LICENSE-1.17.2::https://raw.githubusercontent.com/timabell/gitopolis/v1.17.2/LICENSE
-	sha256sums = d5776b252fb04156019b98190bb47fb87546fb47dd719019d1f3c12f827e9765
+	source = README-1.17.4.md::https://raw.githubusercontent.com/timabell/gitopolis/v1.17.4/README.md
+	source = LICENSE-1.17.4::https://raw.githubusercontent.com/timabell/gitopolis/v1.17.4/LICENSE
+	sha256sums = ae8d6df529f6c1374105010977107bb77fb79c20104d9eabd53698b377ce07ce
 	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
-	source_x86_64 = gitopolis-x86_64-1.17.2.tgz::https://github.com/timabell/gitopolis/releases/download/v1.17.2/gitopolis-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 22fd064d926c0b10687f7871640d956a3667961a8a906ee033af7dd8dd2a27e9
+	source_x86_64 = gitopolis-x86_64-1.17.4.tgz::https://github.com/timabell/gitopolis/releases/download/v1.17.4/gitopolis-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 73403b09594a21af21144f8956f3d0097516fb41c441c932697769cc5d239a5e
 
 pkgname = gitopolis-bin
