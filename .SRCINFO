@@ -1,0 +1,24 @@
+pkgbase = transom-bin
+	pkgdesc = Sharp remote desktops over RDP (GTK 4, HiDPI-correct) (Pre-compiled Binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jm2/transom
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = Apache-2.0
+	depends = freerdp
+	depends = gtk4>=4.16
+	depends = libadwaita>=1.6
+	depends = libsecret
+	depends = hicolor-icon-theme
+	depends = ffmpeg
+	optdepends = libva-mesa-driver: hardware H.264 decoding on AMD (zero-copy video)
+	optdepends = intel-media-driver: hardware H.264 decoding on Intel (zero-copy video)
+	optdepends = vulkan-icd-loader: GTKs Vulkan renderer, needed to show hardware-decoded video
+	provides = transom=0.1.0
+	conflicts = transom
+	options = !debug
+	source = transom-bin-0.1.0.pkg.tar.zst::https://github.com/jm2/transom/releases/download/v0.1.0/transom-x86_64.pkg.tar.zst
+	sha256sums = 89f4f0b3b36fb7e94e5c6ed08064d880ef738e59cf8cac106dcf3c3234aa3176
+
+pkgname = transom-bin
