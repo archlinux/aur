@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Todoist TUI and CLI for the terminal"
 
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('a857df497e6959083f9c3aca2976cedd8599cd3007ddba79fa682a3a7c1507e8')
-sha256sums_aarch64=('c2bc925e152f8541866f44feaa11446e20bdb5de1e75cb041098087d8cd531da')
+sha256sums_x86_64=('c632d0201dd9e17e750b049172504e41c977866e0de1cf4e35e2b7b46b3fcb1f')
+sha256sums_aarch64=('1a6ce7af27adc5961b05c05e096b21ad9e61af2f98afbff1a45c9f41d90083ba')
 
 
 case ${CARCH} in
