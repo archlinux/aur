@@ -1,0 +1,17 @@
+pkgbase = permify-bin
+	pkgdesc = An open-source authorization as a service inspired by Google Zanzibar, designed to build and manage fine-grained and scalable authorization systems for any application
+	pkgver = 1.7.6
+	pkgrel = 1
+	url = https://github.com/Permify/permify
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = permify
+	conflicts = permify
+	options = !debug
+	source_x86_64 = permify-bin-1.7.6-x86_64.tar.gz::https://github.com/Permify/permify/releases/download/v1.7.6/permify_1.7.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 112b9d669e7cd47e52c1384cbfbdefbe29f3872a3d41756f5ba9a26f800bf199
+	source_aarch64 = permify-bin-1.7.6-aarch64.tar.gz::https://github.com/Permify/permify/releases/download/v1.7.6/permify_1.7.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = b3cf84646fc9f97814cb38a7542fccbc6db232f41615c800db710a93c2e9640b
+
+pkgname = permify-bin
