@@ -2,7 +2,7 @@
 # Contributor: lyj <lyj404@gmail.com>
 pkgname=bettbox-bin
 _pkgname=Bettbox
-pkgver=1.20.0
+pkgver=1.20.1
 pkgrel=1
 pkgdesc="Another Better Network Toolbox"
 arch=('x86_64' 'aarch64')
@@ -46,8 +46,8 @@ source_aarch64=(
 )
 sha256sums=('25e4c72f27aeecb3499f236b20a1aac26288710e855c8f13bb526cda94b9e287'
             '40d61c873b4a66e936b05df4c2c0f5b014ca9933bfc9578dedc2571325079187')
-sha256sums_x86_64=('0f92af8e43b26260f54334cbf2b01ce6bccfaf526225672f7eb65259ae6f3fd9')
-sha256sums_aarch64=('55abe71cfc5ccf3a1ad421393feb2c13b3d0bdf6ba5ac5162f6a9ca9c1871f08')
+sha256sums_x86_64=('dd54bf8cae76d3a6549f49715c877e92e18594d9e319c7b3924ba4cd14ad3f13')
+sha256sums_aarch64=('bea800da1a8ea4184b5fd616f4a9cb7cfadd2498ac9cc5e1ebb8634e807e645b')
 
 prepare() {
   bsdtar -xf "${srcdir}/data."*
