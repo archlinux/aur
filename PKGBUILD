@@ -3,19 +3,22 @@
 # Auto Upgrade: https://github.com/phnx47/pkgbuilds
 
 pkgname=moon
-pkgver=2.6.5
+pkgver=2.6.6
 pkgrel=1
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 license=('MIT')
 url="https://github.com/moonrepo/moon"
 arch=('x86_64' 'aarch64')
 depends=('glibc' 'libgcc')
-makedepends=('cargo' 'cmake' 'protobuf')
+makedepends=('rustup' 'cmake' 'protobuf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9d59064a3dc6e9356226a073f7d9bc95ce23755f8080268833c780784254cab8')
+sha256sums=('c488915d88621582274baa829ab85b06451273e409b31d6bafa43b4aba65871e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
+
+  # use the toolchain pinned by upstream in rust-toolchain.toml
+  rustup toolchain install --profile minimal "$(sed -n 's/^channel = "\(.*\)"$/\1/p' rust-toolchain.toml)"
 
   cargo fetch --locked --target host-tuple
   mkdir -p completions
