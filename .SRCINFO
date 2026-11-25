@@ -1,0 +1,17 @@
+pkgbase = saveany-bot-bin
+	pkgdesc = Save Any Telegram File to Anywhere (Alist, Disk, Webdav, S3, Rclone...) . Support restrict saving content and files beyond telegram
+	pkgver = 0.63.0
+	pkgrel = 1
+	url = https://github.com/krau/SaveAny-Bot
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = saveany-bot
+	conflicts = saveany-bot
+	options = !debug
+	source_x86_64 = saveany-bot-bin-0.63.0-x86_64.tar.gz::https://github.com/krau/SaveAny-Bot/releases/download/v0.63.0/saveany-bot-v0.63.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = f3d5dcf69c9eefada84c4fe569bcc3799360386d8e6f2d572a889552c4829359
+	source_aarch64 = saveany-bot-bin-0.63.0-aarch64.tar.gz::https://github.com/krau/SaveAny-Bot/releases/download/v0.63.0/saveany-bot-v0.63.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7b58424253ba65886b995e499676961a48178c7b0ec828f19509635d1955fd20
+
+pkgname = saveany-bot-bin
