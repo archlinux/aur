@@ -7,7 +7,7 @@ pkgname=(sourcemod-dev-scripting sourcemod-dev sourcemod-dev-src)
 # SourceMod's development builds: the tags of master's builds (1.13, released by upstream as
 # prereleases), <version>.<build>, the build being the number of commits, which SourceMod's
 # versioning counts with git
-pkgver=1.13.0.7493
+pkgver=1.13.0.7496
 pkgrel=1
 pkgdesc="SourceMod, the scripting and administration platform for Source engine game servers (development builds)"
 arch=(x86_64 aarch64)
@@ -16,9 +16,10 @@ license=(GPL-3.0-only LicenseRef-SourceMod-exception)
 makedepends=(ambuild clang git python zlib)
 # The games' addons: the SDKs (hl2sdk), Metamod:Source's sources, the 32-bit libraries of multilib
 # for the 32-bit servers, the database clients, PCRE2, curl, SQLite, zlib and libmaxminddb for both
+# (hl2sdk with TF2's KeyValues of 2026-11-24, which changed their layout: alliedmodders/hl2sdk#443)
 makedepends_x86_64=(
   curl
-  hl2sdk
+  'hl2sdk>=20261124'
   lib32-curl
   lib32-glibc
   lib32-gcc-libs
@@ -65,7 +66,7 @@ source=("git+https://github.com/alliedmodders/sourcemod.git#tag=$_tag"
   geoip-libmaxminddb.patch
   source-sdk.txt
   spcomp.sh)
-sha512sums=('e40c47cfd95e508cbe7596d50c291b1d7d42ab3c807536cb55e723d84f0bcfa5e4a9dd5dc1320f8f0928aa60603d07a3ae223fc93869dbd4bad5e86696228e75'
+sha512sums=('8af70bfc284c57b30166785899a3130ed56596e48e8d81dc6e6746ac8050b0751baba0060cbb2b0442d4fd099444cb3d85524f807bb15056482b9b3805d80eb2'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -89,7 +90,7 @@ sha512sums=('e40c47cfd95e508cbe7596d50c291b1d7d42ab3c807536cb55e723d84f0bcfa5e4a
   '084afa36685393c0806165c8c897553c0df876e6aaa86d28020064f40f3cc25d0ad69163d3abe183c898df6fc92f5ff4685969bb7a9cdf477efbb4b8eb986cda'
   'f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3'
   '3a4c60a485304553ee1ca87ac0e96ba636cb8f0a311c71a0a73b3926964a3ff700c7cca6d24ddef04547dd90bd58f6dec26d137da6286d1c409ebcd6e6ed2bf2')
-b2sums=('4ee440dadca69bfedb6125a8db56d5bce2d2d6eadb88f970a652f25cc1b896024357fb46680d7dc0348bdb8244607b13c8f4c320dad8ed2060795b9db27f408c'
+b2sums=('1a968fe5df4b4c237fa39f9e02b116a8d0cfd00fb46e12c6814706b232b375f273dae055b670195658e4f4aa4bddc60b3e53b9ec86d2c8505ea3619a070f50b7'
   'SKIP'
   'SKIP'
   'SKIP'

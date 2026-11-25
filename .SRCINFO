@@ -1,6 +1,6 @@
 pkgbase = sourcemod-dev
 	pkgdesc = SourceMod, the scripting and administration platform for Source engine game servers (development builds)
-	pkgver = 1.13.0.7493
+	pkgver = 1.13.0.7496
 	pkgrel = 1
 	url = https://www.sourcemod.net
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = sourcemod-dev
 	makedepends = git
 	makedepends = python
 	makedepends = zlib
-	source = git+https://github.com/alliedmodders/sourcemod.git#tag=1.13.0.7493
+	source = git+https://github.com/alliedmodders/sourcemod.git#tag=1.13.0.7496
 	source = git+https://github.com/alliedmodders/amtl.git
 	source = git+https://github.com/alliedmodders/sourcepawn.git
 	source = git+https://github.com/google/googletest.git
@@ -36,7 +36,7 @@ pkgbase = sourcemod-dev
 	source = geoip-libmaxminddb.patch
 	source = source-sdk.txt
 	source = spcomp.sh
-	sha512sums = e40c47cfd95e508cbe7596d50c291b1d7d42ab3c807536cb55e723d84f0bcfa5e4a9dd5dc1320f8f0928aa60603d07a3ae223fc93869dbd4bad5e86696228e75
+	sha512sums = 8af70bfc284c57b30166785899a3130ed56596e48e8d81dc6e6746ac8050b0751baba0060cbb2b0442d4fd099444cb3d85524f807bb15056482b9b3805d80eb2
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -60,7 +60,7 @@ pkgbase = sourcemod-dev
 	sha512sums = 084afa36685393c0806165c8c897553c0df876e6aaa86d28020064f40f3cc25d0ad69163d3abe183c898df6fc92f5ff4685969bb7a9cdf477efbb4b8eb986cda
 	sha512sums = f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3
 	sha512sums = 3a4c60a485304553ee1ca87ac0e96ba636cb8f0a311c71a0a73b3926964a3ff700c7cca6d24ddef04547dd90bd58f6dec26d137da6286d1c409ebcd6e6ed2bf2
-	b2sums = 4ee440dadca69bfedb6125a8db56d5bce2d2d6eadb88f970a652f25cc1b896024357fb46680d7dc0348bdb8244607b13c8f4c320dad8ed2060795b9db27f408c
+	b2sums = 1a968fe5df4b4c237fa39f9e02b116a8d0cfd00fb46e12c6814706b232b375f273dae055b670195658e4f4aa4bddc60b3e53b9ec86d2c8505ea3619a070f50b7
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -85,7 +85,7 @@ pkgbase = sourcemod-dev
 	b2sums = b856088fc19f7c921a5e2b3320a776e27b10a8d3d77c21041cb59348b2efde62491163c57227080c0091eb77e74c0d1fc2c0b72a01e0770df27777dc077ad600
 	b2sums = 670fb582edac8bdef05a3842edbef464c5238861df80fbf5e788fe2752275db395826c0b6eb90d5c9fd725b2a368b8d7884aea9de6d89adde6032c481a6311b8
 	makedepends_x86_64 = curl
-	makedepends_x86_64 = hl2sdk
+	makedepends_x86_64 = hl2sdk>=20261124
 	makedepends_x86_64 = lib32-curl
 	makedepends_x86_64 = lib32-glibc
 	makedepends_x86_64 = lib32-gcc-libs
@@ -115,7 +115,7 @@ pkgname = sourcemod-dev-scripting
 	depends = libstdc++
 	depends = zlib
 	provides = spcomp
-	provides = sourcemod-scripting=1.13.0.7493
+	provides = sourcemod-scripting=1.13.0.7496
 	conflicts = spcomp
 	conflicts = sourcemod-scripting
 
@@ -151,7 +151,7 @@ pkgname = sourcemod-dev
 	optdepends = lib32-libmaxminddb: the GeoIP extension, 32-bit servers
 	optdepends = libmaxminddb: the GeoIP extension, 64-bit servers
 	optdepends = geoipupdate: the GeoLite2 City database of the GeoIP extension
-	provides = sourcemod=1.13.0.7493
+	provides = sourcemod=1.13.0.7496
 	conflicts = sourcemod
 
 pkgname = sourcemod-dev-src
@@ -165,5 +165,5 @@ pkgname = sourcemod-dev-src
 	license = BSL-1.0
 	license = MIT
 	license = RSA-MD
-	provides = sourcemod-src=1.13.0.7493
+	provides = sourcemod-src=1.13.0.7496
 	conflicts = sourcemod-src
