@@ -1,0 +1,19 @@
+pkgbase = kagent-bin
+	pkgdesc = Cloud Native Agentic AI | Discord: https://bit.ly/kagentdiscord
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/kagent-dev/kagent
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = kagent
+	conflicts = kagent
+	options = !debug
+	source = kagent-bin-1.0.1-LICENSE::https://raw.githubusercontent.com/kagent-dev/kagent/v1.0.1/LICENSE
+	sha256sums = 3b1ee5b1e14fda40515c18ec2f0796d632e65a20b2aca8f017c654bc26ca77bd
+	source_x86_64 = kagent-bin-1.0.1-x86_64::https://github.com/kagent-dev/kagent/releases/download/v1.0.1/kagent-linux-amd64
+	sha256sums_x86_64 = f188182aaf445e5707ab8d3458f394fa30f875cc1786ec4f12a30b9fa0a8d77f
+	source_aarch64 = kagent-bin-1.0.1-aarch64::https://github.com/kagent-dev/kagent/releases/download/v1.0.1/kagent-linux-arm64
+	sha256sums_aarch64 = a6ec9809094cdab0f3de6f662309f6accfa645cb8d5eec1551469689c73589e5
+
+pkgname = kagent-bin
