@@ -1,0 +1,20 @@
+pkgbase = okf-agent-memory-bin
+	pkgdesc = Git-native persistent memory for AI coding agents
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/okf-memory/okf-agent-memory
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = okf-agent-memory
+	conflicts = okf-agent-memory
+	options = !debug
+	source = okf-agent-memory-bin-0.9.0-LICENSE::https://raw.githubusercontent.com/okf-memory/okf-agent-memory/v0.9.0/LICENSE
+	sha256sums = 8de41d98bcdfca0d6a0399820f4d79e0738ff53a5fb04d605d1ecad7871cbafb
+	source_x86_64 = okf-agent-memory-bin-0.9.0-x86_64::https://github.com/okf-memory/okf-agent-memory/releases/download/v0.9.0/okf-linux-amd64
+	sha256sums_x86_64 = 9f866288c53c9acf157b3875aecb5d3acc6de118782b7d76a503a0251a83977f
+	source_aarch64 = okf-agent-memory-bin-0.9.0-aarch64::https://github.com/okf-memory/okf-agent-memory/releases/download/v0.9.0/okf-linux-arm64
+	sha256sums_aarch64 = 864a8b1f1aa985731d3a25a2d37520dba12a9a4dbe4b446f39a7777bbfa53079
+
+pkgname = okf-agent-memory-bin
