@@ -1,6 +1,6 @@
 pkgbase = anymd-bin
 	pkgdesc = Convert PDF, Word, PowerPoint, Excel, EPUB and HTML to Markdown
-	pkgver = 8.5.16
+	pkgver = 8.5.17
 	pkgrel = 1
 	url = https://github.com/sylphxai/anymd
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = anymd-bin
 	provides = anymd
 	conflicts = anymd
 	options = !debug
-	source = anymd-bin-8.5.16-LICENSE::https://raw.githubusercontent.com/sylphxai/anymd/v8.5.16/LICENSE
+	source = anymd-bin-8.5.17-LICENSE::https://raw.githubusercontent.com/sylphxai/anymd/v8.5.17/LICENSE
 	sha256sums = b8082a5507c4783ec27b90c2b6016d27d3e15ae70180f53d1f5f74a15a834d8e
-	source_x86_64 = anymd-bin-8.5.16-x86_64.tar.gz::https://github.com/sylphxai/anymd/releases/download/v8.5.16/anymd-linux-x64-gnu.tar.gz
-	sha256sums_x86_64 = 0f6ad01f246e9e380e0c0691dba039cd520258f50abb79a911d1e84fab2d1bb7
-	source_aarch64 = anymd-bin-8.5.16-aarch64.tar.gz::https://github.com/sylphxai/anymd/releases/download/v8.5.16/anymd-linux-arm64-gnu.tar.gz
-	sha256sums_aarch64 = b4b1cf515b53df91b13af121715aa4103fcd68049c13573488edfc3e87fc06f4
+	source_x86_64 = anymd-bin-8.5.17-x86_64.tar.gz::https://github.com/sylphxai/anymd/releases/download/v8.5.17/anymd-linux-x64-gnu.tar.gz
+	sha256sums_x86_64 = 8280a3e55f183f4a440abb1b63f50d706d57830b98b34a568ddf9442ae131a29
+	source_aarch64 = anymd-bin-8.5.17-aarch64.tar.gz::https://github.com/sylphxai/anymd/releases/download/v8.5.17/anymd-linux-arm64-gnu.tar.gz
+	sha256sums_aarch64 = 299cffe6c4129c96c23143c6e6d719289cf378c964e0622ac80b0edbd7f58f12
 
 pkgname = anymd-bin
