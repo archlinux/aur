@@ -76,8 +76,7 @@ build() {
   cmake -B build -S "${pkgname}" \
     -D CMAKE_BUILD_TYPE:STRING=None \
     -D CMAKE_INSTALL_PREFIX:PATH=/usr \
-    -D CMAKE_SKIP_RPATH:BOOL=ON \
-    -W no-dev
+    -D CMAKE_SKIP_RPATH:BOOL=ON
 
   cmake --build build
 }
