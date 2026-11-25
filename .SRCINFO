@@ -1,19 +1,25 @@
 pkgbase = symbolator-git
 	pkgdesc = HDL symbol generator
-	pkgver = r38.a9b24e4
+	pkgver = r60.3f02d90
 	pkgrel = 1
-	url = https://github.com/kevinpt/symbolator.git
+	url = https://github.com/hdl/symbolator
 	arch = any
-	license = mit
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-hdlparse
 	depends = python-cairo
-	depends = python-docutils
-	optdepends = sphinx: for symbolator sphinx integration support
-	provides = symbolator
-	source = symbolator::git+https://github.com/kevinpt/symbolator.git
-	md5sums = SKIP
+	depends = python-gobject
+	depends = pango
+	optdepends = python-sphinx: symbolator sphinx extension
+	optdepends = python-six: symbolator sphinx extension
+	provides = symbolator=r60.3f02d90
+	conflicts = symbolator
+	source = symbolator::git+https://github.com/hdl/symbolator.git
+	sha256sums = SKIP
 
 pkgname = symbolator-git
-
