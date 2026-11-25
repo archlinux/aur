@@ -1,16 +1,16 @@
 pkgbase = tailor-bin
 	pkgdesc = Ready-to-wear project templates for GitHub repositories.
-	pkgver = 0.6.6
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/wimpysworld/tailor
 	license = BlueOak-1.0.0
 	conflicts = tailor
 	provides = tailor
 	arch = aarch64
-	source_aarch64 = https://github.com/wimpysworld/tailor/releases/download/v0.6.6/tailor_0.6.6_arm64.tar.gz
-	sha256sums_aarch64 = bec6ec1ace56cc7a36111a55cc3cdf8ae288a91a3548db9f3b67b8490fc10f0e
+	source_aarch64 = https://github.com/wimpysworld/tailor/releases/download/v0.7.0/tailor_0.7.0_arm64.tar.gz
+	sha256sums_aarch64 = 95e4729f564b971a835b6c4c19952f553fc4aab74d2e3ad1369092e3342511cf
 	arch = x86_64
-	source_x86_64 = https://github.com/wimpysworld/tailor/releases/download/v0.6.6/tailor_0.6.6_amd64.tar.gz
-	sha256sums_x86_64 = 7a51f212f4c4ba6c7cea8bfa1565593a72d968b67ddf356aa5710f68de61f892
+	source_x86_64 = https://github.com/wimpysworld/tailor/releases/download/v0.7.0/tailor_0.7.0_amd64.tar.gz
+	sha256sums_x86_64 = 4e6391c83988457a4f8056aca2c8ffa2aade8f71e47ead7ec848ada40edb3e6c
 	
 pkgname = tailor-bin
