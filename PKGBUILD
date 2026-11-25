@@ -2,7 +2,7 @@
 pkgname=inkstone-git
 _pkgname=Inkstone
 _zhsname='砚'
-pkgver=0.17.1.r2.g9fa80d0
+pkgver=0.17.2.r0.g5090c93
 _electronversion=45
 _nodeversion=24
 pkgrel=1
@@ -30,8 +30,8 @@ source=(
 	"${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+            'b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b'
+            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -79,13 +79,23 @@ _set_npm_build_env() {
 	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
 	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
 }
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+}
 prepare() {
 	cd "$(_get_project_dir)"
 	_get_electron_version
 	sed -i -e "
 		s/@electronversion@/${_electronversion}/g
 		s/@appname@/${pkgname%-git}/g
-	" "${srcdir}/${pkgname%-git}.sh" "${srcdir}/${pkgname%-git}.js"
+	" "${srcdir}/${pkgname%-git}.sh"
 	gendesk -q -f -n \
 		--pkgname="${pkgname%-git}" \
 		--pkgdesc="${pkgdesc}" \
@@ -111,11 +121,7 @@ build() {
     npm run vendor:pi
 	npm run build
 	npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.yml"
-	rm -rf "$(_get_app_dir)/resources/default_app.asar"
-    local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
-	find "$(_get_app_dir)" -type d \
-		\( -name '*darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
-		-prune -exec rm -rf {} +
+	_delete_other_arch_files
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
