@@ -1,6 +1,6 @@
 pkgbase = python-qiskit-ibm-runtime
 	pkgdesc = IBM Client for Qiskit Runtime
-	pkgver = 0.51.0
+	pkgver = 0.52.1
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-ibm-runtime
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = python-qiskit-ibm-runtime
 	depends = python-urllib3
 	optdepends = python-plotly: interactive plots
 	optdepends = python-qiskit-aer: support for simulator and noise models
-	source = qiskit-ibm-runtime::git+https://github.com/Qiskit/qiskit-ibm-runtime.git#tag=0.51.0
-	b2sums = eb3b830ba72625e570dbf29772b8114715e7977636fa25f6c07c32124dfcf521e87474ce5aad070f09f1c38c6deede6b3ea5b5674ca645ae990360d938924062
+	source = qiskit-ibm-runtime::git+https://github.com/Qiskit/qiskit-ibm-runtime.git#tag=0.52.1
+	b2sums = 601faacd129b4213ad121cfb6db381bdcaf23e5e1f60041f396c36ab0de550ffed20af8179798068c294e9367af767746fcc0f299633ac63ea73b9d3206bbd53
 
 pkgname = python-qiskit-ibm-runtime
