@@ -1,6 +1,6 @@
 pkgbase = trinityrnaseq
 	pkgdesc = Transcriptome assembler for RNA-seq reads https://doi.org/10.1038%2Fnbt.1883
-	pkgver = 2.16.3
+	pkgver = 2.16.4
 	pkgrel = 1
 	url = https://github.com/Trinotate/Trinotate/wiki
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = trinityrnaseq
 	makedepends = make
 	makedepends = python
 	makedepends = rsync
-	source = git+https://github.com/trinityrnaseq/trinityrnaseq.git#tag=Trinity-v2.16.3
-	sha256sums = d07919a00d5dafb2462e3f1fbd10fe9ea904533d8f102c7fab055650f346f465
+	source = git+https://github.com/trinityrnaseq/trinityrnaseq.git#tag=Trinity-v2.16.4
+	sha256sums = 9759549a8ec6660bef1d208ddc09d93d41b4799f9bb9c2524a7abbd9b4ba33d1
 
 pkgname = trinityrnaseq
 	depends = perl
