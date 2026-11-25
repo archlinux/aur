@@ -1,0 +1,17 @@
+pkgbase = libredesk-bin
+	pkgdesc = Open-source, self-hosted customer support desk in a single binary
+	pkgver = 2.9.2
+	pkgrel = 1
+	url = https://github.com/abhinavxd/libredesk
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = libredesk
+	conflicts = libredesk
+	options = !debug
+	source_x86_64 = libredesk-bin-2.9.2-x86_64.tar.gz::https://github.com/abhinavxd/libredesk/releases/download/v2.9.2/libredesk_2.9.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = aabc2ce549920e4002900104eecb62bda74fbb01420b16593f50354b829b4c6c
+	source_aarch64 = libredesk-bin-2.9.2-aarch64.tar.gz::https://github.com/abhinavxd/libredesk/releases/download/v2.9.2/libredesk_2.9.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 266a03a03e2cff4f5946a002bb78dd6295eeeeb6cde3f5aa92b6d733a57e6b1e
+
+pkgname = libredesk-bin
