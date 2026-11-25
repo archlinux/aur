@@ -1,7 +1,7 @@
 pkgbase = selah-bin
 	pkgdesc = A cross-platform Bible study app using Flutter and the 1769 King James Version
 	pkgver = 1.1.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/toazd/selah
 	arch = x86_64
 	license = Unlicense
@@ -11,7 +11,7 @@ pkgbase = selah-bin
 	depends = glibc
 	provides = selah
 	conflicts = selah
-	source = selah-bin-1.1.8-3.deb::https://github.com/toazd/selah/releases/download/v1.1.8-build.242/selah_1.1.8_amd64.deb
-	sha256sums = 1ca2a91474ef7e6c85dee515666b1bf30496d9aa791fbcfbf7773fc392ea75df
+	source = selah-bin-1.1.8-4.deb::https://github.com/toazd/selah/releases/download/v1.1.8-build.243/selah_1.1.8_amd64.deb
+	sha256sums = 59aee6c8edf2cd4556a0a861504ef3000753e9319f6dcdb3980bec5e840e0c43
 
 pkgname = selah-bin
