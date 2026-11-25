@@ -5,8 +5,14 @@ GambiarraInfinite V4 (Linux port) installed.
   Launcher : gambiarra-infinite
   Menu     : "GambiarraInfinite V4"
 
-The app drives the OpenCode v2 CLI over a local service; it is bundled with
-this package, so nothing else needs to be installed.
+The app drives the GambiarraInfinite CLI over a local service; it is bundled with
+this package, so nothing else needs to be installed. That CLI is the Gambiarra
+fork of OpenCode (with the /_larpcode/* API: GambiarraAPI Marketplace,
+jailbreaks, images, free-route and Tor), not the stock upstream CLI.
+
+Upgrading from a build that shipped the stock OpenCode CLI? Quit the app once and
+relaunch: it notices the version mismatch, stops the old background service and
+starts the bundled Gambiarra CLI.
 EOM
 }
 
