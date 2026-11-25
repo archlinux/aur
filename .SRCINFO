@@ -1,0 +1,18 @@
+pkgbase = pogocache-bin
+	pkgdesc = Low-latency, CPU-efficient caching server
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/tidwall/pogocache
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = pogocache
+	conflicts = pogocache
+	options = !debug
+	source_x86_64 = pogocache-bin-1.3.2-x86_64.tar.gz::https://github.com/tidwall/pogocache/releases/download/1.3.2/pogocache-linux-amd64.tar.gz
+	sha256sums_x86_64 = 5e7d35e479446b84f37187808a47f3de048732ec02f2fcaec9932d8ddf4545d9
+	source_aarch64 = pogocache-bin-1.3.2-aarch64.tar.gz::https://github.com/tidwall/pogocache/releases/download/1.3.2/pogocache-linux-arm64.tar.gz
+	sha256sums_aarch64 = 51b2cd50cf19b58ba2769fb39c47dd54241c100d02f1359706bdba41752e4063
+
+pkgname = pogocache-bin
