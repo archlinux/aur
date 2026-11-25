@@ -1,7 +1,7 @@
 # Maintainer: Konrad Guzek <konrad at guzek dot uk>
 
 pkgname=monocode-bin
-pkgver=0.16.0
+pkgver=0.16.0 # renovate: datasource=github-releases depName=hardbeat920/monocode
 pkgrel=1
 pkgdesc='Desktop interface for AI coding agents (prebuilt)'
 arch=('x86_64')
