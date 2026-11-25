@@ -1,32 +1,35 @@
-# Maintainer: Julian Daube <julian (at) daube (dot) xyz> 
+# Maintainer: Julian Daube <julian (at) daube (dot) xyz>
 # Contributor: Julian Daube <julian (at) daube (dot) xyz>
-pkgname=istyle-verilog-formatter-git
-pkgdesc="Fast and Free Automatic Formatter for Verilog Source Code"
-pkgver=v1.23.r0.g3ec7507
+
+_pkgname=istyle-verilog-formatter
+pkgname=$_pkgname-git
+pkgver=1.23.r13.ge368dee
 pkgrel=1
-
-url="https://github.com/thomasrussellmurphy/istyle-verilog-formatter"
+pkgdesc="Automatic formatter for Verilog source code"
 arch=("x86_64")
-
-provides=("istyle-verilog-formatter")
-conflicts=("istyle-verilog-formatter")
-
-makedepends=("make")
-
-source=("$pkgname::git+https://github.com/thomasrussellmurphy/istyle-verilog-formatter.git")
-md5sums=("SKIP")
+url="https://github.com/thomasrussellmurphy/istyle-verilog-formatter"
+license=("GPL-2.0-or-later")
+depends=("glibc" "libgcc" "libstdc++")
+makedepends=("git")
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+sha256sums=("SKIP")
 
 pkgver() {
-	cd "$pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	git -C "$srcdir/$_pkgname" clean -dfx
 }
 
 build() {
-	cd "$pkgname"
-	make 
+	cd "$_pkgname"
+	make FLAGS="$CPPFLAGS $CXXFLAGS $LDFLAGS"
 }
 
 package() {
-	mkdir -p "$pkgdir"/usr/bin	
-	install -m 755 "$srcdir/$pkgname/bin/release/iStyle" "$pkgdir"/usr/bin/iStyle	
+	install -Dm 755 "$_pkgname/bin/release/iStyle" -t "$pkgdir/usr/bin/"
 }
