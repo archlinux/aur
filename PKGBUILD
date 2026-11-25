@@ -11,24 +11,31 @@ arch=('x86_64')
 url='https://github.com/xenia-canary/xenia-canary'
 license=('BSD-3-Clause')
 depends=(
-  'alsa-lib'
-  'gcc-libs'
+  'capstone'
+  'fmt'
   'glibc'
   'gtk3'
   'hicolor-icon-theme'
   'libx11'
+  'pugixml'
   'sdl3'
-  'vulkan-icd-loader'
+  'snappy'
+  'zstd'
 )
 makedepends=(
   'clang'
   'cmake'
   'cxxopts'
   'git'
+  'glslang'
+  'python'
   'rapidjson'
   'spirv-tools'
   'tomlplusplus'
+  'utf8cpp'
   'vulkan-headers'
+  'vulkan-icd-loader'
+  'xxhash'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
@@ -39,25 +46,19 @@ source=(
   'FidelityFX-FSR::git+https://github.com/GPUOpen-Effects/FidelityFX-FSR.git'
   'VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
   'aes_128::git+https://github.com/openluopworld/aes_128.git'
-  'capstone::git+https://github.com/capstone-engine/capstone.git'
   'catch::git+https://github.com/catchorg/Catch2.git'
   'date::git+https://github.com/HowardHinnant/date.git'
   'discord-rpc::git+https://github.com/discordapp/discord-rpc.git'
   'disruptorplus::git+https://github.com/xenia-canary/disruptorplus.git'
-  'fmt::git+https://github.com/fmtlib/fmt.git'
   'glslang::git+https://github.com/KhronosGroup/glslang.git'
   'imgui::git+https://github.com/ocornut/imgui.git'
-  'pugixml::git+https://github.com/zeux/pugixml.git'
   'rapidcsv::git+https://github.com/d99kris/rapidcsv.git'
-  'snappy::git+https://github.com/google/snappy.git'
   'tabulate::git+https://github.com/p-ranav/tabulate.git'
-  'utfcpp::git+https://github.com/nemtrif/utfcpp.git'
   'xbyak::git+https://github.com/herumi/xbyak.git'
-  'xxhash::git+https://github.com/Cyan4973/xxHash.git'
   'zarchive::git+https://github.com/exzap/ZArchive.git'
   'zlib-ng::git+https://github.com/zlib-ng/zlib-ng.git'
-  'zstd::git+https://github.com/facebook/zstd.git'
   "${pkgname}.desktop"
+  "xenia-canary-use-system-libs.patch"
 )
 sha256sums=(
   'SKIP'
@@ -77,14 +78,8 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
   '243b520f53161c2e3b1bd7ecae4ddcdeb91778cd426e89d8bc64e018fa4210fb'
+  '27fc0545435e2f3d2c17a260754f410b676b96957c65b0ba907822872d4452ab'
 )
 
 pkgver() {
@@ -94,6 +89,8 @@ pkgver() {
 }
 
 prepare() {
+  patch --directory="${pkgname}" --strip=1 --input="${srcdir}/xenia-canary-use-system-libs.patch"
+
   local _submodule
   for _submodule in $(git -C "${pkgname}" submodule status | awk '{print $2}'); do
     [[ -d "${srcdir}/${_submodule#third_party/}" ]] || continue
@@ -103,27 +100,47 @@ prepare() {
   git -C "${pkgname}" -c protocol.file.allow=always submodule update
 
   # Link system headers in place of unbundled third_party submodules
-  rm -rf \
+  rm --recursive --force \
     "${pkgname}/third_party/SDL3" \
     "${pkgname}/third_party/SPIRV-Tools" \
     "${pkgname}/third_party/Vulkan-Headers" \
+    "${pkgname}/third_party/capstone" \
     "${pkgname}/third_party/cxxopts" \
-    "${pkgname}/third_party/tomlplusplus"
+    "${pkgname}/third_party/fmt" \
+    "${pkgname}/third_party/pugixml" \
+    "${pkgname}/third_party/snappy" \
+    "${pkgname}/third_party/tomlplusplus" \
+    "${pkgname}/third_party/utfcpp" \
+    "${pkgname}/third_party/xxhash" \
+    "${pkgname}/third_party/zstd"
 
-  mkdir -p \
+  mkdir --parents \
     "${pkgname}/third_party/SDL3" \
     "${pkgname}/third_party/SPIRV-Tools/include" \
     "${pkgname}/third_party/Vulkan-Headers/include" \
+    "${pkgname}/third_party/capstone/include" \
     "${pkgname}/third_party/cxxopts/include" \
-    "${pkgname}/third_party/tomlplusplus/include"
+    "${pkgname}/third_party/fmt/include" \
+    "${pkgname}/third_party/pugixml/src" \
+    "${pkgname}/third_party/snappy" \
+    "${pkgname}/third_party/tomlplusplus/include" \
+    "${pkgname}/third_party/utfcpp" \
+    "${pkgname}/third_party/xxhash"
 
-  ln -s /usr/include/SDL3 "${pkgname}/third_party/SDL3/include"
-  ln -s /usr/include/spirv-tools "${pkgname}/third_party/SPIRV-Tools/include/spirv-tools"
-  ln -s /usr/include/vulkan "${pkgname}/third_party/Vulkan-Headers/include/vulkan"
-  ln -s /usr/include/cxxopts.hpp "${pkgname}/third_party/cxxopts/include/cxxopts.hpp"
-  ln -s /usr/include/toml++/toml.hpp "${pkgname}/third_party/tomlplusplus/toml.hpp"
-  ln -s /usr/include/toml++/impl "${pkgname}/third_party/tomlplusplus/impl"
-  ln -s /usr/include/toml++ "${pkgname}/third_party/tomlplusplus/include/toml++"
+  ln --symbolic /usr/include/SDL3 "${pkgname}/third_party/SDL3/include"
+  ln --symbolic /usr/include/spirv-tools "${pkgname}/third_party/SPIRV-Tools/include/spirv-tools"
+  ln --symbolic /usr/include/vulkan "${pkgname}/third_party/Vulkan-Headers/include/vulkan"
+  ln --symbolic /usr/include/capstone "${pkgname}/third_party/capstone/include/capstone"
+  ln --symbolic /usr/include/cxxopts.hpp "${pkgname}/third_party/cxxopts/include/cxxopts.hpp"
+  ln --symbolic /usr/include/fmt "${pkgname}/third_party/fmt/include/fmt"
+  ln --symbolic /usr/include/pugixml.hpp "${pkgname}/third_party/pugixml/src/pugixml.hpp"
+  ln --symbolic /usr/include/snappy-sinksource.h "${pkgname}/third_party/snappy/snappy-sinksource.h"
+  ln --symbolic /usr/include/snappy.h "${pkgname}/third_party/snappy/snappy.h"
+  ln --symbolic /usr/include/toml++/toml.hpp "${pkgname}/third_party/tomlplusplus/toml.hpp"
+  ln --symbolic /usr/include/toml++/impl "${pkgname}/third_party/tomlplusplus/impl"
+  ln --symbolic /usr/include/toml++ "${pkgname}/third_party/tomlplusplus/include/toml++"
+  ln --symbolic /usr/include/utf8cpp "${pkgname}/third_party/utfcpp/source"
+  ln --symbolic /usr/include/xxhash.h "${pkgname}/third_party/xxhash/xxhash.h"
 }
 
 build() {

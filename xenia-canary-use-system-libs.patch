@@ -1,0 +1,159 @@
+diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
+index d9f5eaf48..6b0022198 100644
+--- a/third_party/CMakeLists.txt
++++ b/third_party/CMakeLists.txt
+@@ -39,44 +39,12 @@ target_include_directories(aes_128 PUBLIC aes_128)
+ # ==============================================================================
+ # capstone
+ # ==============================================================================
+-add_library(capstone STATIC
+-  capstone/cs.c
+-  capstone/MCInst.c
+-  capstone/MCInstPrinter.c
+-  capstone/MCInstrDesc.c
+-  capstone/MCRegisterInfo.c
+-  capstone/SStream.c
+-  capstone/utils.c
+-  capstone/Mapping.c
+-)
+-# Architecture-specific capstone files
+-if(XE_TARGET_AARCH64)
+-  file(GLOB _capstone_arch_c "capstone/arch/AArch64/*.c")
+-  file(GLOB _capstone_arch_h "capstone/arch/AArch64/*.h")
+-  file(GLOB _capstone_arch_inc "capstone/arch/AArch64/*.inc")
+-  target_sources(capstone PRIVATE ${_capstone_arch_c} ${_capstone_arch_h} ${_capstone_arch_inc})
+-  target_compile_definitions(capstone PRIVATE
+-    CAPSTONE_HAS_ARM64
+-    CAPSTONE_HAS_AARCH64
+-    CAPSTONE_USE_SYS_DYN_MEM
+-  )
+-else()
+-  file(GLOB _capstone_x86_c "capstone/arch/X86/*.c")
+-  file(GLOB _capstone_x86_h "capstone/arch/X86/*.h")
+-  file(GLOB _capstone_x86_inc "capstone/arch/X86/*.inc")
+-  list(FILTER _capstone_x86_c EXCLUDE REGEX "X86ATTInstPrinter\\.c$")
+-  list(FILTER _capstone_x86_inc EXCLUDE REGEX "reduce\\.inc$")
+-  target_sources(capstone PRIVATE ${_capstone_x86_c} ${_capstone_x86_h} ${_capstone_x86_inc})
+-  target_compile_definitions(capstone PRIVATE
+-    CAPSTONE_X86_ATT_DISABLE
+-    CAPSTONE_HAS_X86
+-    CAPSTONE_USE_SYS_DYN_MEM
+-  )
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(CAPSTONE REQUIRED IMPORTED_TARGET capstone)
++if(NOT TARGET capstone)
++  add_library(capstone INTERFACE)
++  target_link_libraries(capstone INTERFACE PkgConfig::CAPSTONE)
+ endif()
+-target_include_directories(capstone PUBLIC capstone/include PRIVATE capstone)
+-# Force all capstone sources to compile as C
+-file(GLOB_RECURSE _capstone_all_c "capstone/*.c")
+-set_source_files_properties(${_capstone_all_c} PROPERTIES LANGUAGE C)
+ 
+ # ==============================================================================
+ # cxxopts (header-only)
+@@ -137,11 +105,7 @@ endif()
+ # ==============================================================================
+ # fmt
+ # ==============================================================================
+-add_library(fmt STATIC
+-  fmt/src/format.cc
+-  fmt/src/os.cc
+-)
+-target_include_directories(fmt PUBLIC fmt/include)
++find_package(fmt CONFIG REQUIRED)
+ 
+ # ==============================================================================
+ # glslang-spirv (not needed on macOS — no Vulkan/SPIR-V backend)
+@@ -187,75 +151,36 @@ target_link_libraries(mspack PUBLIC xenia-base)
+ # ==============================================================================
+ # pugixml
+ # ==============================================================================
+-add_library(pugixml STATIC
+-  pugixml/src/pugixml.cpp
+-)
+-target_include_directories(pugixml PUBLIC pugixml/src)
++find_package(pugixml CONFIG REQUIRED)
+ 
+ # ==============================================================================
+ # snappy
+ # ==============================================================================
+-# Generate snappy-stubs-public.h if missing
+-if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/snappy/snappy-stubs-public.h")
+-  if(XE_TARGET_X86_64)
+-    set(_snappy_avx_flag "-DSNAPPY_REQUIRE_AVX=ON")
+-  else()
+-    set(_snappy_avx_flag "-DSNAPPY_REQUIRE_AVX=OFF")
+-  endif()
+-  execute_process(
+-    COMMAND ${CMAKE_COMMAND}
+-      -DSNAPPY_BUILD_TESTS=OFF
+-      -DSNAPPY_BUILD_BENCHMARKS=OFF
+-      ${_snappy_avx_flag}
+-      ${CMAKE_CURRENT_SOURCE_DIR}/snappy
+-      -B${CMAKE_CURRENT_SOURCE_DIR}/snappy
+-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
++find_path(SNAPPY_INCLUDE_DIR NAMES snappy.h REQUIRED)
++find_library(SNAPPY_LIBRARY NAMES snappy REQUIRED)
++if(NOT TARGET snappy)
++  add_library(snappy UNKNOWN IMPORTED)
++  set_target_properties(snappy PROPERTIES
++    IMPORTED_LOCATION "${SNAPPY_LIBRARY}"
++    INTERFACE_INCLUDE_DIRECTORIES "${SNAPPY_INCLUDE_DIR}"
+   )
+ endif()
+-add_library(snappy STATIC
+-  snappy/snappy-internal.h
+-  snappy/snappy-sinksource.cc
+-  snappy/snappy-sinksource.h
+-  snappy/snappy-stubs-internal.cc
+-  snappy/snappy-stubs-internal.h
+-  snappy/snappy-stubs-public.h
+-  snappy/snappy.cc
+-  snappy/snappy.h
+-)
+-target_include_directories(snappy PUBLIC snappy)
+ 
+ # ==============================================================================
+ # xxhash
+ # ==============================================================================
+-add_library(xxhash STATIC
+-  xxhash/xxhash.c
+-)
+-target_include_directories(xxhash PUBLIC xxhash)
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(XXHASH REQUIRED IMPORTED_TARGET libxxhash)
++add_library(xxhash INTERFACE)
++target_link_libraries(xxhash INTERFACE PkgConfig::XXHASH)
+ 
+ # ==============================================================================
+ # zstd
+ # ==============================================================================
+-file(GLOB_RECURSE _zstd_common "zstd/lib/common/*.c" "zstd/lib/common/*.h")
+-list(FILTER _zstd_common EXCLUDE REGEX "threading\\.c$")
+-file(GLOB_RECURSE _zstd_compress "zstd/lib/compress/*.c" "zstd/lib/compress/*.h")
+-file(GLOB_RECURSE _zstd_decompress "zstd/lib/decompress/*.c" "zstd/lib/decompress/*.h")
+-add_library(zstd STATIC
+-  zstd/lib/zstd.h
+-  ${_zstd_common}
+-  ${_zstd_compress}
+-  ${_zstd_decompress}
+-)
+-target_include_directories(zstd PUBLIC zstd/lib PRIVATE zstd/lib/common)
+-target_compile_definitions(zstd PRIVATE
+-  XXH_NAMESPACE=ZSTD_
+-  ZSTD_LEGACY_SUPPORT=0
+-)
+-if(XE_TARGET_X86_64 AND NOT MSVC)
+-  enable_language(ASM)
+-  target_sources(zstd PRIVATE zstd/lib/decompress/huf_decompress_amd64.S)
+-else()
+-  target_compile_definitions(zstd PRIVATE ZSTD_DISABLE_ASM)
+-endif()
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(ZSTD REQUIRED IMPORTED_TARGET libzstd)
++add_library(zstd INTERFACE)
++target_link_libraries(zstd INTERFACE PkgConfig::ZSTD)
+ 
+ # ==============================================================================
+ # zarchive
