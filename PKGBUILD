@@ -1,6 +1,6 @@
 # Maintainer: Fabian Schmieder <fabian@schmieder.eu>
 pkgname=ugos-cli-bin
-pkgver=0.26.0
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="CLI and MCP server for UGREEN NAS (UGOS) management"
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,10 @@ url="https://github.com/metaneutrons/ugos-cli"
 license=('GPL-3.0-or-later')
 provides=('ugos-cli')
 conflicts=('ugos-cli')
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/metaneutrons/ugos-cli/releases/download/v0.26.0/ugos-cli-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/metaneutrons/ugos-cli/releases/download/v0.26.0/ugos-cli-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('dc6049550258da631ac522858e4c02c6a8000edf16e0cf502efc2e71d3ed7d4b')
-sha256sums_aarch64=('723f03d39d3ef995f9ee29c9bf8719bb7c3844fa3bf5f4a3f6280837a6d62353')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/metaneutrons/ugos-cli/releases/download/v0.27.0/ugos-cli-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/metaneutrons/ugos-cli/releases/download/v0.27.0/ugos-cli-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('b61b06ee48a82fbe199b33b3adee31f75212a00d45dceb2f1ce1f14424df045a')
+sha256sums_aarch64=('2676924131269e962de6fcc4ea293e3a499462c8e9b5ba2d7b924a2bc5da5030')
 
 package() {
   install -Dm755 "${srcdir}/ugos-cli" "${pkgdir}/usr/bin/ugos-cli"
