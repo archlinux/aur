@@ -1,0 +1,19 @@
+pkgbase = agentdock-bin
+	pkgdesc = Secure MCP runtime for AI agents to operate local machines, servers and containers
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/uvwt/agentdock
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = agentdock
+	conflicts = agentdock
+	options = !debug
+	source = agentdock-bin-1.1.1-LICENSE::https://raw.githubusercontent.com/uvwt/agentdock/v1.1.1/LICENSE
+	sha256sums = 52329d75f907341ab1b9ef45c762b3b113cf2cf54182aad3abb052816fe16ef1
+	source_x86_64 = agentdock-bin-1.1.1-x86_64.tar.gz::https://github.com/uvwt/agentdock/releases/download/v1.1.1/agentdock_linux_amd64.tar.gz
+	sha256sums_x86_64 = e09c04ebb0043de392f258db0023c77691a42d51468910d9553dc1eb94913a3a
+	source_aarch64 = agentdock-bin-1.1.1-aarch64.tar.gz::https://github.com/uvwt/agentdock/releases/download/v1.1.1/agentdock_linux_arm64.tar.gz
+	sha256sums_aarch64 = ea873c86200b0bc94838f6a30ec89da83e7a8739bd6a5686119c35ad053f5aa8
+
+pkgname = agentdock-bin
