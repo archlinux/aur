@@ -1,0 +1,17 @@
+pkgbase = cameradar-bin
+	pkgdesc = Cameradar hacks its way into RTSP videosurveillance cameras
+	pkgver = 6.2.1
+	pkgrel = 1
+	url = https://github.com/Ullaakut/cameradar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cameradar
+	conflicts = cameradar
+	options = !debug
+	source_x86_64 = cameradar-bin-6.2.1-x86_64.tar.gz::https://github.com/Ullaakut/cameradar/releases/download/v6.2.1/cameradar_linux_amd64.tar.gz
+	sha256sums_x86_64 = eb0603e3b753deea94a7a451e6fb1bb2f47c2c40c7cccff10d8963ea7cf49e9d
+	source_aarch64 = cameradar-bin-6.2.1-aarch64.tar.gz::https://github.com/Ullaakut/cameradar/releases/download/v6.2.1/cameradar_linux_arm64.tar.gz
+	sha256sums_aarch64 = 72249df0492d8db34c540768168c9fb643900c5603e4594026cbbedaa46cbdec
+
+pkgname = cameradar-bin
