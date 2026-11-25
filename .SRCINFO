@@ -1,6 +1,6 @@
 pkgbase = pinky-bin
 	pkgdesc = Let AI agents use an Android phone or iPhone, with you approving the risky steps: drives the phone over MCP, records every run, and brings its own adb
-	pkgver = 2026.1125.7
+	pkgver = 2026.1125.9
 	pkgrel = 1
 	url = https://github.com/DIYgod/pinky
 	arch = x86_64
@@ -19,12 +19,12 @@ pkgbase = pinky-bin
 	provides = pinky
 	conflicts = pinky
 	conflicts = pinky-git
-	noextract = pinky_2026.1125.7_amd64.deb
+	noextract = pinky_2026.1125.9_amd64.deb
 	options = !strip
 	options = !debug
-	source = pinky_2026.1125.7_amd64.deb::https://github.com/DIYgod/pinky/releases/download/v2026.1125.7/pinky_2026.1125.7_amd64.deb
-	source = pinky-LICENSE::https://raw.githubusercontent.com/DIYgod/pinky/v2026.1125.7/LICENSE
-	sha256sums = a45f19742691112c9893f0596282a156c23cd9988111f662f46248da25e08118
+	source = pinky_2026.1125.9_amd64.deb::https://github.com/DIYgod/pinky/releases/download/v2026.1125.9/pinky_2026.1125.9_amd64.deb
+	source = pinky-LICENSE::https://raw.githubusercontent.com/DIYgod/pinky/v2026.1125.9/LICENSE
+	sha256sums = a42557b3bb4c6f7537319ac8ccf1793c711ceb68d3889c847a3e4fe742ebd419
 	sha256sums = c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c
 
 pkgname = pinky-bin
