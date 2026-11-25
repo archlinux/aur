@@ -1,6 +1,6 @@
 pkgbase = orpheus-desktop-bin
 	pkgdesc = Desktop app for the Orpheus Discord music bot, with the full dashboard, media controls and a tray remote
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://orpheus.evilnick.net
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = orpheus-desktop-bin
 	depends = webkit2gtk-4.1
 	provides = orpheus-desktop
 	conflicts = orpheus-desktop
-	source = orpheus-desktop-bin-1.5.1.deb::https://downloads.evilnick.net/orpheus-desktop/1.5.1/Orpheus_1.5.1_amd64.deb
-	sha256sums = d6c40cb98e14745c9f70ba02af56af48ea3fb9034cc88d19893377b456d54d73
+	source = orpheus-desktop-bin-1.6.0.deb::https://downloads.evilnick.net/orpheus-desktop/1.6.0/Orpheus_1.6.0_amd64.deb
+	sha256sums = e3573071e7778f23cb02b5e87e9353e560e3846f64c015c713ec737b5e5cf6ff
 
 pkgname = orpheus-desktop-bin
