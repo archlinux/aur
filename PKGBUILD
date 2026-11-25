@@ -2,7 +2,7 @@
 # Contributor: KspLite <ksplite@outlook.com>
 pkgname=64gram-desktop-bin
 pkgver=1.2.13
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Unofficial desktop version of Telegram messaging app - binary version"
 arch=(x86_64)
@@ -39,7 +39,7 @@ package() {
 	install -dm755 "$pkgdir/usr/share/applications/"
 
 	# Program
-	install -Dm755 "$srcdir/Telegram" "$pkgdir/usr/bin/64gram-desktop"
+	install -Dm755 "$srcdir/64Gram" "$pkgdir/usr/bin/64gram-desktop"
 
 	# Desktop launcher
 	install -Dm644 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/64gram.png"
