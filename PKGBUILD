@@ -3,16 +3,17 @@
 _pkgbase=ymaudio
 _gitname=YMAudio
 pkgname=${_pkgbase}-git
-pkgver=r18.082e86e
+pkgver=r21.f7ab2ee
 pkgrel=1
-pkgdesc="Yandex.Music CLI Audio Player"
+pkgdesc="Yandex.Music CLI Audio Player (git version)"
 arch=('any')
 url="https://apps.sdore.me/${_gitname}"
 license=('LGPL3')
 depends=('python-yandex-music-api' 'python-vlc' 'python-scurses' 'python-sutils' 'python-scimg')
-optdepends=('python-notify2: for playback notifications when MPRIS is not available'
+optdepends=('dbus-python: for MPRIS support'
             'python-gobject: for MPRIS support'
-            'dbus-python: for MPRIS support')
+            'python-notify2: for playback notifications when MPRIS is not available')
+makedepends=('git' 'python-build')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -33,7 +34,7 @@ build() {
 package() {
 	cd "${srcdir}"
 
-	python -m installer --destdir="${pkgdir}" "dist/${_gitname}-"*.whl
+	python -m installer --destdir="${pkgdir}" "dist/${_gitname,,}-"*.whl
 
 	cd "${_gitname}"
 
