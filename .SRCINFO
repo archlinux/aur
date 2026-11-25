@@ -1,0 +1,17 @@
+pkgbase = rockstar-bin
+	pkgdesc = Home of the Rockstar programming language
+	pkgver = 2.0.38
+	pkgrel = 1
+	url = https://github.com/RockstarLang/rockstar
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = glibc
+	provides = rockstar
+	conflicts = rockstar
+	options = !debug
+	source = rockstar-bin-2.0.38-LICENSE::https://raw.githubusercontent.com/RockstarLang/rockstar/v2.0.38/LICENSE
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	source_x86_64 = rockstar-bin-2.0.38-x86_64.tar.gz::https://github.com/RockstarLang/rockstar/releases/download/v2.0.38/rockstar-v2.0.38-linux-x64.tar.gz
+	sha256sums_x86_64 = 2560dd5312877852fb644680978c55234cfb15566de78ed6b006fb13879e88aa
+
+pkgname = rockstar-bin
