@@ -1,6 +1,6 @@
 pkgbase = code-on-incus-bin
 	pkgdesc = Run each AI coding agent in its own Incus container
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/mensfeld/code-on-incus
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = code-on-incus-bin
 	provides = code-on-incus
 	conflicts = code-on-incus
 	options = !debug
-	source = code-on-incus-bin-0.16.0-LICENSE::https://raw.githubusercontent.com/mensfeld/code-on-incus/v0.16.0/LICENSE
+	source = code-on-incus-bin-0.17.0-LICENSE::https://raw.githubusercontent.com/mensfeld/code-on-incus/v0.17.0/LICENSE
 	sha256sums = b86b2744481db41ab552d987135c68c38ce3a7a62221b0b696d8dbff1a8147c1
-	source_x86_64 = code-on-incus-bin-0.16.0-x86_64::https://github.com/mensfeld/code-on-incus/releases/download/v0.16.0/coi-linux-amd64
-	sha256sums_x86_64 = d0f18584ca412f30d18cd4b44d98ad742ce13ce3875815124b5b0b16195dfd42
-	source_aarch64 = code-on-incus-bin-0.16.0-aarch64::https://github.com/mensfeld/code-on-incus/releases/download/v0.16.0/coi-linux-arm64
-	sha256sums_aarch64 = 456d4925c153fe31b87b6c978ec222828555eedaf2880ccb9689c805bd163d63
+	source_x86_64 = code-on-incus-bin-0.17.0-x86_64::https://github.com/mensfeld/code-on-incus/releases/download/v0.17.0/coi-linux-amd64
+	sha256sums_x86_64 = 241efa7569b115223de4953287ae07d2c589f61ab140ff848446d8a86d15642e
+	source_aarch64 = code-on-incus-bin-0.17.0-aarch64::https://github.com/mensfeld/code-on-incus/releases/download/v0.17.0/coi-linux-arm64
+	sha256sums_aarch64 = 296733ea75980ee6fac71776427e0e20cd8216de874b9dc18e42a6e650a520a7
 
 pkgname = code-on-incus-bin
