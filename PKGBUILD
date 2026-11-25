@@ -1,13 +1,14 @@
 # Maintainer: Bernardo Gomes <bernardopg@users.noreply.github.com>
 pkgname=wingdrive-nightly
-pkgver=3.7.1
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='WingDrive desktop file manager, every release including alpha, beta and rc'
 arch=('x86_64')
 url='https://wingdrive.org'
 license=('Apache-2.0' 'GPL-3.0-only')
-depends=('glibc' 'libgcc' 'glib2' 'gtk3' 'webkit2gtk-4.1' 'libsoup3' 'cairo' 'gdk-pixbuf2' 'dbus' 'libheif' 'libva' 'xdg-utils' 'libayatana-appindicator')
-optdepends=('gst-plugins-good: audio and video playback in previews'
+depends=('glibc' 'libgcc' 'glib2' 'gtk3' 'webkit2gtk-4.1' 'libsoup3' 'cairo' 'gdk-pixbuf2' 'dbus' 'libheif' 'libva' 'xdg-utils' 'libayatana-appindicator' 'bubblewrap')
+optdepends=('python: adapters from the store (Obsidian, GitHub and others)'
+            'gst-plugins-good: audio and video playback in previews'
             'gvfs: network locations (SFTP, FTP, WebDAV) in the sidebar'
             'gvfs-mtp: Android phones over MTP'
             'gvfs-smb: Windows and Samba shares'
@@ -17,10 +18,10 @@ optdepends=('gst-plugins-good: audio and video playback in previews'
 provides=('wingdrive')
 conflicts=('wingdrive' 'wingdrive-bin')
 options=('!strip' '!debug')
-_upstream_version=3.7.1
-source=("WingDrive-3.7.1-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-3.7.1-x86_64.AppImage"
+_upstream_version=3.8.0
+source=("WingDrive-3.8.0-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-3.8.0-x86_64.AppImage"
         "LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/LICENSE")
-sha256sums=('b6afdac94a98101159f7367ab77c180f268c58377925fb19e6415ed9b4522aad' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
+sha256sums=('1f18ff00bbe236a4b0fac847fd0377856a751a7dfe66d40744744e50b2de52ff' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
 
 # The AppImage carries an Ubuntu GTK/WebKit stack. Loading it next to Arch's
 # libraries breaks host tools (gdbus) and crashes WebKit on exit, so only the
@@ -29,8 +30,8 @@ sha256sums=('b6afdac94a98101159f7367ab77c180f268c58377925fb19e6415ed9b4522aad' '
 _bundled_libs='libavcodec.so.* libavfilter.so.* libavformat.so.* libavutil.so.* libpostproc.so.* libswresample.so.* libswscale.so.*'
 
 prepare() {
-  chmod +x "WingDrive-3.7.1-x86_64.AppImage"
-  "./WingDrive-3.7.1-x86_64.AppImage" --appimage-extract > /dev/null
+  chmod +x "WingDrive-3.8.0-x86_64.AppImage"
+  "./WingDrive-3.8.0-x86_64.AppImage" --appimage-extract > /dev/null
   find squashfs-root -type d -exec chmod 755 {} +
 }
 
@@ -42,6 +43,8 @@ package() {
   install -d "$app/usr/lib"
   cp -a squashfs-root/usr/lib/WingDrive "$app/usr/lib/"
   (cd squashfs-root/usr/lib && cp -a $_bundled_libs "$app/usr/lib/")
+  # PDF thumbnails dlopen pdfium from <bin>/../lib/wingdrive, which ldd never sees.
+  install -Dm644 squashfs-root/usr/lib/wingdrive/libpdfium.so "$app/usr/lib/wingdrive/libpdfium.so"
 
   local missing
   missing="$(ldd "$app/usr/bin/WingDrive" "$app/usr/bin/wing-daemon" "$app/usr/bin/wing" "$app"/usr/lib/*.so.* | grep 'not found' | sort -u || true)"
