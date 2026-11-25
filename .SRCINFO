@@ -1,6 +1,6 @@
 pkgbase = qslib
 	pkgdesc = Library for communicating with and using the QuantStudio qPCR machine
-	pkgver = 0.15.1
+	pkgver = 0.15.3
 	pkgrel = 1
 	url = https://github.com/cgevans/qslib
 	arch = x86_64
@@ -38,13 +38,13 @@ pkgbase = qslib
 	optdepends = python-influxdb-client: for monitor support
 	optdepends = python-lxml: for monitor support
 	optdepends = python-altair: for altair plotting support
-	optdepends = python-vegafusion: for altair plotting support
-	optdepends = python-vl-convert-python: for altair plotting support
-	provides = python-qslib=0.15.1
+	provides = python-qslib=0.15.3
 	conflicts = python-qslib
 	options = !lto
 	options = !debug
-	source = qslib-0.15.1.tar.gz::https://github.com/cgevans/qslib/archive/refs/tags/v0.15.1.tar.gz
-	sha256sums = eca7cb5dc9a4ef8e32c1960070363b6f334195673b8b1b761e561faa8af91eb2
+	source = qslib-0.15.3.tar.gz::https://github.com/cgevans/qslib/archive/refs/tags/v0.15.3.tar.gz
+	source = polars-2.0.patch
+	sha256sums = 79b346a0dcb888b103eaec3abd6d6614ee27f16aebed3c2c8ad1607f91c373a4
+	sha256sums = ced7f0912941b05e36b6066b52ecce7d9ff0c52b5e60e98a137444b3fb2afa97
 
 pkgname = qslib

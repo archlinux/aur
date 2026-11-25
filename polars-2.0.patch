@@ -1,0 +1,19 @@
+--- a/python/qslib/experiment.py
++++ b/python/qslib/experiment.py
+@@ -1758,7 +1758,7 @@
+                 on="well",
+                 how="left",
+             )
+-        return d
++        return d.sort("timestamp")
+ 
+     @property
+     @cached_method
+@@ -2762,6 +2762,7 @@
+         for (filter, sample, well), group in sorted(
+             reduceddata.group_by(["filter_set", "sample", "well"]), key=plot_order
+         ):
++            group = group.sort("time")
+             label = _gen_label(
+                 sample,  # self.plate_setup.get_descriptive_string(sample), # FIXME
+                 well,

@@ -2,7 +2,7 @@
 
 pkgname=qslib
 _pkgname=qslib
-pkgver=0.15.1
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="Library for communicating with and using the QuantStudio qPCR machine"
 arch=('x86_64')
@@ -48,20 +48,23 @@ optdepends=(
     'python-influxdb-client: for monitor support'
     'python-lxml: for monitor support'
     'python-altair: for altair plotting support'
-    'python-vegafusion: for altair plotting support'
-    'python-vl-convert-python: for altair plotting support'
+    # 'python-vegafusion: for altair plotting support'
+    # 'python-vl-convert-python: for altair plotting support'
 )
+
 options=('!lto' '!debug')
 provides=("python-${pkgname}=${pkgver}")
 conflicts=("python-${pkgname}")
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/cgevans/qslib/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('eca7cb5dc9a4ef8e32c1960070363b6f334195673b8b1b761e561faa8af91eb2')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/cgevans/qslib/archive/refs/tags/v${pkgver}.tar.gz"
+        "polars-2.0.patch")
+sha256sums=('79b346a0dcb888b103eaec3abd6d6614ee27f16aebed3c2c8ad1607f91c373a4'
+            'ced7f0912941b05e36b6066b52ecce7d9ff0c52b5e60e98a137444b3fb2afa97')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
-    # Fix compatibility with polars >= 2.0 
-    sed -i 's/min_periods=self\.min_periods/min_samples=self.min_periods/' python/qslib/processors.py
 
+    # Ensure compatability with polars >= 2.x
+    patch -Np1 -i "${srcdir}/polars-2.0.patch"
     local target
     target="$(rustc -vV 2>/dev/null | sed -n 's/host: //p')"
     if [[ -n "$target" ]]; then
