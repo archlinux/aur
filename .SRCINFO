@@ -1,0 +1,18 @@
+pkgbase = ofelia-bin
+	pkgdesc = A docker job scheduler (aka
+	pkgver = 0.3.23
+	pkgrel = 1
+	url = https://github.com/mcuadros/ofelia
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = ofelia
+	conflicts = ofelia
+	options = !debug
+	source_x86_64 = ofelia-bin-0.3.23-x86_64.tar.gz::https://github.com/mcuadros/ofelia/releases/download/v0.3.23/ofelia_0.3.23_linux_amd64.tar.gz
+	sha256sums_x86_64 = 63887c087113705051b207405c2aca1fe09d866a5cf4d7a08f6df6838bc0752d
+	source_aarch64 = ofelia-bin-0.3.23-aarch64.tar.gz::https://github.com/mcuadros/ofelia/releases/download/v0.3.23/ofelia_0.3.23_linux_arm64.tar.gz
+	sha256sums_aarch64 = 01e405135d0a726143da94989d6062005f8fd10d291df1392261c05f147261c3
+
+pkgname = ofelia-bin
