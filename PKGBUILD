@@ -6,8 +6,8 @@ pkgbase=sourcemod
 pkgname=(sourcemod-scripting sourcemod sourcemod-src)
 # SourceMod's version: the stable branch's tag, <version>.<build>, the build being the number of
 # commits, which SourceMod's versioning counts with git
-pkgver=1.12.0.7260
-pkgrel=7
+pkgver=1.12.0.7263
+pkgrel=1
 pkgdesc="SourceMod, the scripting and administration platform for Source engine game servers"
 arch=(x86_64 aarch64)
 url="https://www.sourcemod.net"
@@ -15,9 +15,10 @@ license=(GPL-3.0-only LicenseRef-SourceMod-exception)
 makedepends=(ambuild clang git python zlib)
 # The games' addons: the SDKs (hl2sdk), Metamod:Source's sources, the 32-bit libraries of multilib
 # for the 32-bit servers, the database clients, PCRE2, curl, SQLite, zlib and libmaxminddb for both
+# (hl2sdk with TF2's KeyValues of 2026-11-24, which changed their layout: alliedmodders/hl2sdk#443)
 makedepends_x86_64=(
   curl
-  hl2sdk
+  'hl2sdk>=20261124'
   lib32-curl
   lib32-glibc
   lib32-gcc-libs
@@ -70,7 +71,7 @@ source=("git+https://github.com/alliedmodders/sourcemod.git#tag=$_tag"
   zydis-amalgamate-paths.patch
   source-sdk.txt
   spcomp.sh)
-sha512sums=('783fe9bb0dd53f3f751871e89a03e52911afc4fbfaddd73c03c16291a9bdd6e9fe4194caf94617c7cb94caef6850d0cd077bc6bf478846c2383607a966fbba4e'
+sha512sums=('be06272f270c9bb15ba4733bdc96ddbe259d00512be674e173ec17d7fc2478a16a451a832bfa2746469d7a139509cc56e6b86643be933f6222b728d9e65f9ff1'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -100,7 +101,7 @@ sha512sums=('783fe9bb0dd53f3f751871e89a03e52911afc4fbfaddd73c03c16291a9bdd6e9fe4
   '54c1386ffdc6c6efdbedccdaddffedc78e3e7c31f7b4de7cec0561a28f5364123cb776216efc39cadec5292488d06a8a49ed9d65ed244f4b1d724215ca8283ab'
   'f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3'
   '3a4c60a485304553ee1ca87ac0e96ba636cb8f0a311c71a0a73b3926964a3ff700c7cca6d24ddef04547dd90bd58f6dec26d137da6286d1c409ebcd6e6ed2bf2')
-b2sums=('80681ad0378521bc27756add78ac4c66c81d53b28016efc37b4f1a7d82b598a370bd6a90a277dd66f08ed08bde169f142c51e2f424de3176c939dad21a131575'
+b2sums=('59f12a547a045efdd89e77588a5bce5cbfd9f5752b02e4b7ea11bc3477180bf54514de263b047b02f7e579cb4318441bcf3ab4e4ecfb62adf01af08b43930d34'
   'SKIP'
   'SKIP'
   'SKIP'

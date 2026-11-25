@@ -1,7 +1,7 @@
 pkgbase = sourcemod
 	pkgdesc = SourceMod, the scripting and administration platform for Source engine game servers
-	pkgver = 1.12.0.7260
-	pkgrel = 7
+	pkgver = 1.12.0.7263
+	pkgrel = 1
 	url = https://www.sourcemod.net
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = sourcemod
 	makedepends = git
 	makedepends = python
 	makedepends = zlib
-	source = git+https://github.com/alliedmodders/sourcemod.git#tag=1.12.0.7260
+	source = git+https://github.com/alliedmodders/sourcemod.git#tag=1.12.0.7263
 	source = git+https://github.com/alliedmodders/amtl.git
 	source = git+https://github.com/alliedmodders/sourcepawn.git
 	source = git+https://github.com/alliedmodders/hl2sdk-manifests.git
@@ -42,7 +42,7 @@ pkgbase = sourcemod
 	source = zydis-amalgamate-paths.patch
 	source = source-sdk.txt
 	source = spcomp.sh
-	sha512sums = 783fe9bb0dd53f3f751871e89a03e52911afc4fbfaddd73c03c16291a9bdd6e9fe4194caf94617c7cb94caef6850d0cd077bc6bf478846c2383607a966fbba4e
+	sha512sums = be06272f270c9bb15ba4733bdc96ddbe259d00512be674e173ec17d7fc2478a16a451a832bfa2746469d7a139509cc56e6b86643be933f6222b728d9e65f9ff1
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -72,7 +72,7 @@ pkgbase = sourcemod
 	sha512sums = 54c1386ffdc6c6efdbedccdaddffedc78e3e7c31f7b4de7cec0561a28f5364123cb776216efc39cadec5292488d06a8a49ed9d65ed244f4b1d724215ca8283ab
 	sha512sums = f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3
 	sha512sums = 3a4c60a485304553ee1ca87ac0e96ba636cb8f0a311c71a0a73b3926964a3ff700c7cca6d24ddef04547dd90bd58f6dec26d137da6286d1c409ebcd6e6ed2bf2
-	b2sums = 80681ad0378521bc27756add78ac4c66c81d53b28016efc37b4f1a7d82b598a370bd6a90a277dd66f08ed08bde169f142c51e2f424de3176c939dad21a131575
+	b2sums = 59f12a547a045efdd89e77588a5bce5cbfd9f5752b02e4b7ea11bc3477180bf54514de263b047b02f7e579cb4318441bcf3ab4e4ecfb62adf01af08b43930d34
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -103,7 +103,7 @@ pkgbase = sourcemod
 	b2sums = b856088fc19f7c921a5e2b3320a776e27b10a8d3d77c21041cb59348b2efde62491163c57227080c0091eb77e74c0d1fc2c0b72a01e0770df27777dc077ad600
 	b2sums = 670fb582edac8bdef05a3842edbef464c5238861df80fbf5e788fe2752275db395826c0b6eb90d5c9fd725b2a368b8d7884aea9de6d89adde6032c481a6311b8
 	makedepends_x86_64 = curl
-	makedepends_x86_64 = hl2sdk
+	makedepends_x86_64 = hl2sdk>=20261124
 	makedepends_x86_64 = lib32-curl
 	makedepends_x86_64 = lib32-glibc
 	makedepends_x86_64 = lib32-gcc-libs
