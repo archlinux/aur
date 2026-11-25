@@ -4,7 +4,7 @@
 # Bruno Pagani <archange@archlinux.org>
 # Caleb Maclennan <caleb@alerque.com>
 pkgname=electron44-bin
-pkgver=44.11.5
+pkgver=44.11.6
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
 arch=(
@@ -47,11 +47,11 @@ source_x86_64=(
     "${pkgname%-bin}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/chromedriver-v${pkgver}-linux-x64.zip"
     "${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/electron-v${pkgver}-linux-x64.zip"
 )
-sha256sums=('cea9f99f6d0a9a8bab239ffd2192dca3adf4f769b3123a2f366983c82d572ac9')
-sha256sums_aarch64=('28bcb3e83239ef924d574e432ad9209814ba129bca421c7d0ddc908626448ff4'
-                    '0bf637f2cecbd000a158d25b956b7982e30fd720a7537084f024a1a367f6cb11')
-sha256sums_x86_64=('bfb98b69abe09bc5cf6db6d35d4380415b4328f0fef294ff526408addaf7a471'
-                    '765b846228245704d7796aaa8621b753cc5bbb9aec8d7ccd32c5fc268aa0348a')
+sha256sums=('3fc91f3cbd94eeff7f37420454a13fc30b5f6caaaa4c338bc9d63530c4dcc728')
+sha256sums_aarch64=('6e721b56a27727ae58c23e773d0c07a009d61f3b62fab0dbf5e293f032d8af36'
+                    '8fdd6410c1cc6650caa007c179dfb7b895e12e63eb50493f4f5a62bc7d71be2b')
+sha256sums_x86_64=('5038bd557a7110059eb5ba8b5c431aa069b9f9561b70502d18fb53f93868969a'
+                   '0852ee34438a1f9590e1cd9641dcd7e81073f480eb540bb1f192838916e5fcde')
 prepare() {
     sed -i "s/@ELECTRON@/${pkgname%-bin}/g" "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/${pkgname%-bin}"
