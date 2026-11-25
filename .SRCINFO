@@ -1,6 +1,6 @@
 pkgbase = omniclicker
 	pkgdesc = Native Linux autoclicker for X11 and Wayland-aware sessions
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/limonyx/omniclicker
 	install = omniclicker.install
@@ -15,7 +15,7 @@ pkgbase = omniclicker
 	depends = libx11
 	depends = libxtst
 	depends = qt6-base
-	source = omniclicker-1.2.2.tar.gz::https://github.com/limonyx/omniclicker/archive/refs/tags/v1.2.2.tar.gz
-	sha256sums = f044d4856a908e872b051a738e87a0afb964ec1145a18cf1ddada49746ad2a51
+	source = omniclicker-1.2.3.tar.gz::https://github.com/limonyx/omniclicker/archive/refs/tags/v1.2.3.tar.gz
+	sha256sums = 8814b6a9f1a54bff4057a91bae3ff6f4cc65bcc005fb985168b7ee84ac02c465
 
 pkgname = omniclicker
