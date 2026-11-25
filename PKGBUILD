@@ -1,8 +1,8 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Nemotron 3.5 Lightning 30B A3B.
+# Created with assistance from Hy4 flash Free.
 
 pkgname=telegram-drive-appimage
-pkgver=4.1.7
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Turn your Telegram account into an unlimited, secure cloud storage drive (from AppImage)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/caamer20/Telegram-Drive/releases/download/v${pkgver}/Telegram.Drive_${pkgver}_amd64.AppImage"
         "LICENSE::https://raw.githubusercontent.com/caamer20/Telegram-Drive/v${pkgver}/packaging/arch/UPSTREAM-LICENSE-NOTICE")
-sha256sums=('ca5009ec2595081f82442b68a49aa2981b4a824cda75daf4102d8055319370bf'
+sha256sums=('dddc5e5d2b5270654daa2d8ba39ec0d7a4e9a1ef7c650605c57605874185f510'
             '164994ae2a66a7215deca4a6ebf5822cc1d67737c5c1e1ba2f32b28016e0d6fb')
 
 prepare() {
