@@ -11,8 +11,8 @@
 # hyprland-builds, sha256sums and pkgrel. A Hyprland build that it verifies later bumps pkgrel.
 
 pkgname=hyprmasq-plugin-bin
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Hyprland plugin of hyprmasq: per-window screenshots and input, prebuilt for the Hyprland of Arch and Omarchy'
 arch=(x86_64)
 url='https://github.com/nyrda/hyprmasq'
@@ -32,8 +32,8 @@ done
 sha256sums=('30e9dba854e5a19d736f1bdc0ab36ae68941fccf3d2456ef7b35f1e86a8e349c'
             'dd7b29118e7671e24e3adc50f50fd186e0b3df971d96a35072bde52d6f012547'
             '0b338958047a8d42649c764ea82411c99c366b5d935c90f2465732afef950156'
-            'ee9f3cd7b4e7826b8d20347142a426c07f1dd9a4a0ea50a24b9eeed03e94bfa2'
-            'a19c100484147c38abc5ed7becc817250e2083fda26a6b4eda1a911db8d156ea')
+            '6e50d713f9e46a3eaf3243cd29c59645ef6aead69d652a2d2b32c44987399930'
+            'e35326a552647e6322a8466d73eb9f987949ff32d5cac59d4af1ea2d5cc5c8c4')
 
 package() {
   local plugin abi label version how
