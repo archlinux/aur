@@ -1,0 +1,17 @@
+pkgbase = gitlab-ci-pipelines-exporter-bin
+	pkgdesc = Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/mvisonneau/gitlab-ci-pipelines-exporter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = gitlab-ci-pipelines-exporter
+	conflicts = gitlab-ci-pipelines-exporter
+	options = !debug
+	source_x86_64 = gitlab-ci-pipelines-exporter-bin-0.6.0-x86_64.tar.gz::https://github.com/mvisonneau/gitlab-ci-pipelines-exporter/releases/download/v0.6.0/gitlab-ci-pipelines-exporter_v0.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6c83cc99278c02d675768b6dc8a59477aea0e82991d76cbfe0ff658321ead2c7
+	source_aarch64 = gitlab-ci-pipelines-exporter-bin-0.6.0-aarch64.tar.gz::https://github.com/mvisonneau/gitlab-ci-pipelines-exporter/releases/download/v0.6.0/gitlab-ci-pipelines-exporter_v0.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0ac09c1733a1da1d99e7d32e99d358ac1ddd66512ade91684043f26ac41e0c18
+
+pkgname = gitlab-ci-pipelines-exporter-bin
