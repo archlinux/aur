@@ -1,0 +1,17 @@
+pkgbase = oxicloud-bin
+	pkgdesc = Ultra-fast, secure & lightweight self-hosted cloud storage your files, photos, calendars & contacts, all in one place
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/AtalayaLabs/OxiCloud
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = oxicloud
+	conflicts = oxicloud
+	options = !debug
+	source_x86_64 = oxicloud-bin-0.10.1-x86_64.tar.gz::https://github.com/AtalayaLabs/OxiCloud/releases/download/v0.10.1/oxicloud-0.10.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = d1f53e1fb2afd00606fc3940fe82eee04886bfbf87d0d4bc820d955fc55a49cc
+	source_aarch64 = oxicloud-bin-0.10.1-aarch64.tar.gz::https://github.com/AtalayaLabs/OxiCloud/releases/download/v0.10.1/oxicloud-0.10.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = b460f75c590dc9bbe789b3b64ef8167607a24ec38250ea908a6f914d45ee85b0
+
+pkgname = oxicloud-bin
