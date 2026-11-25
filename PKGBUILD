@@ -3,9 +3,9 @@
 pkgname=dux-qt-base-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.4.73
-pkgrel=1
+pkgrel=2
 # the prebuilt library links private Qt headers, so each arch only runs against the Qt it was built with
-_qtver_x86_64=6.12.0
+_qtver_x86_64=6.12.1
 _qtver_aarch64=6.12.0
 pkgdesc='Quickshell QML runtime as a shared library with a C entry point (prebuilt)'
 arch=(x86_64 aarch64)
@@ -39,8 +39,8 @@ source_x86_64=("$_pkgname-$pkgver-qt$_qtver_x86_64-x86_64.tar.zst::$_urlrel/$_pk
 source_aarch64=("$_pkgname-$pkgver-qt$_qtver_aarch64-aarch64.tar.zst::$_urlrel/$_pkgname-$pkgver-qt$_qtver_aarch64-aarch64.tar.zst")
 sha256sums=('e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118'
             '1b3782ccad7b8614100cda30d3faf42fc39f2e97932908c543005053b654ca68')
-sha256sums_x86_64=('79e97c8cf4ac42480943cd9b2d202e24db315bcd47393d4df21e7cd3dd4c6115')
-sha256sums_aarch64=('f8d3f3b27a6b4b793824e9da14f0f7582edcfcf1ba202b32d8da6cf01415a941')
+sha256sums_x86_64=('c45db54a659351a26ae4e387e680ca5b9a02ce92751cef0821408888235abafe')
+sha256sums_aarch64=('dce13fef48e1b4e13c591e8b60ea10e1866d662a27d207dfe2bf07c261359796')
 
 package() {
 	cp -a "$srcdir/usr" "$pkgdir/"
