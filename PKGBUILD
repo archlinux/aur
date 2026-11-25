@@ -1,6 +1,6 @@
 pkgname=phoenixbrowser
 _pkgname=PhoenixBrowser
-pkgver=0.95.6
+pkgver=0.96
 pkgrel=1
 pkgdesc="A light and snappy web browser"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('electron-castlab-bin>=v44.5.1' 'libelectron>=2026.6' 'nss' 'gtk3' 'libxss' 'git' 'bitwarden-cli')
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver/phoenix-$pkgver.tar.bz2")
-sha256sums=('ae01118776a2e29d9f2157c1d69cbf995fa33c94949f78998298754e4b3bd9e8')
+sha256sums=('9cce4487c64fa9b24c43dcfe62ebaeff785a50da8f882c1c69b6c779ab262157')
 
 package() {
     install -dm755 "$pkgdir/opt/$_pkgname"
