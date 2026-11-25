@@ -1,0 +1,17 @@
+pkgbase = gowrap-bin
+	pkgdesc = Generate decorators for Go interfaces
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/hexdigest/gowrap
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gowrap
+	conflicts = gowrap
+	options = !debug
+	source_x86_64 = gowrap-bin-1.5.0-x86_64.tar.gz::https://github.com/hexdigest/gowrap/releases/download/v1.5.0/gowrap_1.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2e768b23ae7406f064faa7d774756ebc5b7fd088276378f6c0f10f8bf99f3d77
+	source_aarch64 = gowrap-bin-1.5.0-aarch64.tar.gz::https://github.com/hexdigest/gowrap/releases/download/v1.5.0/gowrap_1.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = bb02fc6cfbb8df2cef65a091f5212e6cfb086baf371d5b8ae5809e5c724257a9
+
+pkgname = gowrap-bin
