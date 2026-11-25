@@ -1,7 +1,7 @@
 pkgbase = extension-bitwarden-dist
 	pkgdesc = Bitwarden browser extensions (official release dist builds)
 	pkgver = 2026.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bitwarden/clients
 	arch = any
 	license = GPL-3.0-or-later
@@ -53,19 +53,23 @@ pkgname = edge-extension-bitwarden-dist
 	conflicts = edge-extension-bitwarden-git
 
 pkgname = firefox-extension-bitwarden-dist
-	pkgdesc = Bitwarden browser extension for Firefox (official dist build)
+	pkgdesc = Bitwarden browser extension for Firefox, LibreWolf, Floorp and Firefox Nightly (official dist build)
+	install = firefox-extension-bitwarden-dist.install
 	groups = firefox-addons
-	optdepends = firefox: the browser this extension is for
+	optdepends = firefox: installed for the system Firefox
+	optdepends = librewolf: installed for LibreWolf (needs unsigned add-ons allowed)
+	optdepends = floorp: installed for Floorp
+	optdepends = firefox-nightly: installed for Firefox Nightly (needs unsigned add-ons allowed)
 	provides = firefox-extension-bitwarden
+	provides = librewolf-extension-bitwarden
+	provides = floorp-extension-bitwarden
 	conflicts = firefox-extension-bitwarden
 	conflicts = firefox-extension-bitwarden-git
-
-pkgname = librewolf-extension-bitwarden-dist
-	pkgdesc = Bitwarden browser extension for LibreWolf (official dist build)
-	optdepends = librewolf: the browser this extension is for
-	provides = librewolf-extension-bitwarden
 	conflicts = librewolf-extension-bitwarden
 	conflicts = librewolf-extension-bitwarden-git
+	conflicts = librewolf-extension-bitwarden-dist
+	conflicts = floorp-extension-bitwarden
+	replaces = librewolf-extension-bitwarden-dist
 
 pkgname = opera-extension-bitwarden-dist
 	pkgdesc = Bitwarden browser extension for Opera (official dist build)

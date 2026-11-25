@@ -7,10 +7,9 @@ pkgname=('brave-extension-bitwarden-dist'
          'chromium-extension-bitwarden-dist'
          'edge-extension-bitwarden-dist'
          'firefox-extension-bitwarden-dist'
-         'librewolf-extension-bitwarden-dist'
          'opera-extension-bitwarden-dist')
 pkgver=2026.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bitwarden browser extensions (official release dist builds)'
 arch=('any')
 url='https://github.com/bitwarden/clients'
@@ -46,13 +45,25 @@ _package_unpacked() {
   install -Dm644 "${srcdir}/LICENSE_GPL-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_GPL.txt"
 }
 
-# Firefox-family: the zip is the xpi, auto-loaded from the system extensions directory.
-_package_xpi() {
-  local _dir=$1
-  install -Dm644 "${srcdir}/${_dist}dist-firefox-${pkgver}.zip" \
-    "${pkgdir}/usr/lib/${_dir}/browser/extensions/${_firefox_id}.xpi"
-  install -Dm644 "${srcdir}/LICENSE_GPL-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_GPL.txt"
-}
+# Firefox family: the zip is the xpi. One copy per browser (plain copies: hard links across
+# directories break when one of them is on another filesystem); a browser that is not
+# installed just gets an unused directory. Where it goes depends on how the browser was built:
+#  - Arch/CachyOS Firefox is built with --allow-addon-sideload, so it loads new add-ons
+#    from <install dir>/browser/extensions (application scope) directly.
+#  - Firefox Nightly (Mozilla binary), LibreWolf and Floorp are not
+#    (AppConstants.MOZ_ALLOW_ADDON_SIDELOAD=false): they never pick up a new add-on from
+#    browser/extensions. They do install <install dir>/distribution/extensions/*.xpi into
+#    the profile at the next start, and on later browser updates replace it with a newer
+#    version from there. Once installed it is a normal profile add-on.
+# The dist build is NOT signed by Mozilla: Arch/CachyOS Firefox accepts unsigned add-ons in
+# the application scope, Floorp defaults to xpinstall.signatures.required=false, LibreWolf
+# and Firefox Nightly need it set to false (otherwise the add-on is removed as "not
+# correctly signed").
+# install directory under /usr/lib : extensions directory inside it
+_firefox_browsers=(firefox:browser/extensions
+                   librewolf:distribution/extensions
+                   floorp:distribution/extensions
+                   firefox-nightly:distribution/extensions)
 
 package_brave-extension-bitwarden-dist() {
   pkgdesc='Bitwarden browser extension for Brave (official dist build)'
@@ -91,20 +102,25 @@ package_edge-extension-bitwarden-dist() {
 }
 
 package_firefox-extension-bitwarden-dist() {
-  pkgdesc='Bitwarden browser extension for Firefox (official dist build)'
+  pkgdesc='Bitwarden browser extension for Firefox, LibreWolf, Floorp and Firefox Nightly (official dist build)'
   groups=('firefox-addons')
-  optdepends=('firefox: the browser this extension is for')
-  provides=('firefox-extension-bitwarden')
-  conflicts=('firefox-extension-bitwarden' 'firefox-extension-bitwarden-git')
-  _package_xpi firefox
-}
-
-package_librewolf-extension-bitwarden-dist() {
-  pkgdesc='Bitwarden browser extension for LibreWolf (official dist build)'
-  optdepends=('librewolf: the browser this extension is for')
-  provides=('librewolf-extension-bitwarden')
-  conflicts=('librewolf-extension-bitwarden' 'librewolf-extension-bitwarden-git')
-  _package_xpi librewolf
+  optdepends=('firefox: installed for the system Firefox'
+              'librewolf: installed for LibreWolf (needs unsigned add-ons allowed)'
+              'floorp: installed for Floorp'
+              'firefox-nightly: installed for Firefox Nightly (needs unsigned add-ons allowed)')
+  provides=('firefox-extension-bitwarden' 'librewolf-extension-bitwarden' 'floorp-extension-bitwarden')
+  conflicts=('firefox-extension-bitwarden' 'firefox-extension-bitwarden-git'
+             'librewolf-extension-bitwarden' 'librewolf-extension-bitwarden-git'
+             'librewolf-extension-bitwarden-dist'
+             'floorp-extension-bitwarden')
+  replaces=('librewolf-extension-bitwarden-dist')
+  install="${pkgname}.install"
+  local b
+  for b in "${_firefox_browsers[@]}"; do
+    install -Dm644 "${srcdir}/${_dist}dist-firefox-${pkgver}.zip" \
+      "${pkgdir}/usr/lib/${b%%:*}/${b#*:}/${_firefox_id}.xpi"
+  done
+  install -Dm644 "${srcdir}/LICENSE_GPL-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_GPL.txt"
 }
 
 package_opera-extension-bitwarden-dist() {

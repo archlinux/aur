@@ -1,0 +1,12 @@
+_notes() {
+  cat <<MSG
+==> Bitwarden is installed for Firefox, LibreWolf, Floorp and Firefox Nightly.
+    Restart the browser to load it. LibreWolf, Floorp and Nightly copy it into the
+    profile at that start and only take newer versions when the browser itself updates.
+    LibreWolf and Firefox Nightly only accept it with
+    xpinstall.signatures.required=false (about:config).
+MSG
+}
+
+post_install() { _notes; }
+post_upgrade() { _notes; }
