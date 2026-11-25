@@ -2,7 +2,7 @@
 
 pkgname=python-k3redisutil
 _name=${pkgname#python-}
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Redis utilities for easier client management and proxy support"
 provides=(${pkgname})
@@ -34,7 +34,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('9b195fb36d683fee0089f198fd7161912e178a60143ecb31a2137d5b3d7f3a81')
+sha256sums=('43f9a138c0cc0b7c6ca197b1c17555a0f135df256d7df400a4bb4c93676cb37d')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
@@ -49,13 +49,7 @@ check() {
 	cd "${srcdir}/${_name}"
 
     export PYTHONPATH="${srcdir}${PYTHONPATH:+:${PYTHONPATH}}"
-	# These classes start real Redis containers via k3utdocker/Docker,
-	# which needs a running daemon at /var/run/docker.sock (absent in the
-	# build chroot). Other tests use fakes/local HTTP servers.
-	pytest -x \
-		--deselect=test/test_k3redisutil.py::TestRedis::test_set_get \
-		--deselect=test/test_k3redisutil.py::TestRedis::test_list_channel \
-		--deselect=test/test_k3redisutil.py::TestRedisRecreate::test_recreate_client
+	pytest -x 
 }
 
 package() {

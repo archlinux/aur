@@ -1,6 +1,6 @@
 pkgbase = python-k3redisutil
 	pkgdesc = Redis utilities for easier client management and proxy support
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/pykit3/k3redisutil
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-k3redisutil
 	depends = python-k3utfjson
 	provides = python-k3redisutil
 	conflicts = python-k3redisutil
-	source = k3redisutil::git+https://github.com/pykit3/k3redisutil.git#tag=v0.1.9
-	sha256sums = 9b195fb36d683fee0089f198fd7161912e178a60143ecb31a2137d5b3d7f3a81
+	source = k3redisutil::git+https://github.com/pykit3/k3redisutil.git#tag=v0.1.10
+	sha256sums = 43f9a138c0cc0b7c6ca197b1c17555a0f135df256d7df400a4bb4c93676cb37d
 
 pkgname = python-k3redisutil
