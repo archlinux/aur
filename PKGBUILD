@@ -11,8 +11,14 @@ license=('AGPL-3.0-only')
 makedepends=('go' 'git')
 provides=($_pkgname_base)
 conflicts=($_pkgname_base $pkgname)
-source=("$pkgname::git+$url.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+$url.git"
+		"pixivfe.service"
+		"pixivfe.tmpfiles"
+		"pixivfe.sysusers")
+sha256sums=('SKIP'
+			'SKIP'
+			'SKIP'
+			'SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -41,6 +47,11 @@ build() {
 }
 
 package() {
-	cd  "$pkgname"
+	cd "$srcdir"
 	install -vDm755 "$srcdir/$pkgname/$_pkgname_base" "$pkgdir/usr/bin/$_pkgname_base"
+	install -Dm644 "$srcdir/$pkgname/deploy/.env.example" "$pkgdir/etc/pixivfe/pixivfe.env"
+	install -Dm644 pixivfe.service "$pkgdir/usr/lib/systemd/system/pixivfe.service"
+	install -Dm644 pixivfe.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/pixivfe.conf"
+	install -Dm644 pixivfe.sysusers "$pkgdir/usr/lib/sysusers.d/pixivfe.conf"
 }
+backup=('etc/pixivfe/pixivfe.env')

@@ -1,0 +1,16 @@
+[Unit]
+Description=PixivFE - An open-source alternative front-end for pixiv.
+Ater=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=exec
+User=pixivfe
+Group=pixivfe
+SyslogIdentifier=pixivfe
+EnvironmentFile=/etc/pixivfe/pixivfe.env
+ExecStart=/usr/bin/pixivfe
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

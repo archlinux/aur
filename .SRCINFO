@@ -10,7 +10,14 @@ pkgbase = pixivfe-git
 	provides = pixivfe
 	conflicts = pixivfe
 	conflicts = pixivfe-git
+	backup = etc/pixivfe/pixivfe.env
 	source = pixivfe-git::git+https://gitlab.com/pixivfe/PixivFE.git
+	source = pixivfe.service
+	source = pixivfe.tmpfiles
+	source = pixivfe.sysusers
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pixivfe-git
