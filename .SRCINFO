@@ -1,10 +1,10 @@
 pkgbase = ttf-google-sans-hinted
-	pkgdesc = Google Sans and Google Sans Display, tuned with fonttune (optionally Nerd Fonts patched)
-	pkgver = 1.020
-	pkgrel = 3
-	url = https://flutter.googlesource.com/gallery-assets
+	pkgdesc = Google Sans and Google Sans Text, tuned with fonttune (optionally Nerd Fonts patched)
+	pkgver = 14.000
+	pkgrel = 1
+	url = https://github.com/googlefonts/googlesans
 	arch = any
-	license = LicenseRef-Google-Sans
+	license = OFL-1.1
 	makedepends = git
 	makedepends = python
 	makedepends = python-fonttools
@@ -14,13 +14,16 @@ pkgbase = ttf-google-sans-hinted
 	makedepends = ttfautohint
 	provides = ttf-google-sans
 	conflicts = ttf-google-sans
+	noextract = GoogleSans-v14.000.zip
 	noextract = font-patcher-3.5.1.zip
 	options = !strip
 	options = !zipman
-	source = fonts.tar.gz::https://flutter.googlesource.com/gallery-assets/+archive/refs/heads/master/lib/fonts.tar.gz
+	source = GoogleSans-v14.000.zip::https://github.com/googlefonts/googlesans/releases/download/v14.000/GoogleSans-v14.000.zip
+	source = OFL-14.000.txt::https://raw.githubusercontent.com/google/fonts/fc0842ce25d003e57a2fc72cd4c4a6af6175a2cc/ofl/googlesans/OFL.txt
 	source = font-patcher-3.5.1.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/FontPatcher.zip
 	source = fonttune::git+https://github.com/gaou-piou/fonttune.git#branch=main
-	sha256sums = SKIP
+	sha256sums = d338f0e74f5eabead86a85b87edf4cc50cd6561196dbe173d1db4139e95b3ca7
+	sha256sums = 2b75ef20f13d83a7514aee452c4782c20cdc9ff2dee17600f44d37a06d4fb958
 	sha256sums = 42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a
 	sha256sums = SKIP
 

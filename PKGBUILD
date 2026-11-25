@@ -4,57 +4,44 @@
 pkgname=ttf-google-sans-hinted
 _ftapi=1       # fonttune API this PKGBUILD was written for; the build stops if main moved to another one
 _nfver=3.5.1
-pkgver=1.020
-pkgrel=3
-pkgdesc='Google Sans and Google Sans Display, tuned with fonttune (optionally Nerd Fonts patched)'
-url='https://flutter.googlesource.com/gallery-assets'
+_ofl_commit=fc0842ce25d003e57a2fc72cd4c4a6af6175a2cc   # google/fonts: ofl/googlesans/OFL.txt
+pkgver=14.000
+pkgrel=1
+pkgdesc='Google Sans and Google Sans Text, tuned with fonttune (optionally Nerd Fonts patched)'
+url='https://github.com/googlefonts/googlesans'
 arch=('any')
-license=('LicenseRef-Google-Sans')
+license=('OFL-1.1')
 makedepends=('git' 'python' 'python-fonttools' 'python-freetype-py' 'parallel' 'fontforge' 'ttfautohint')
 options=(!strip !zipman)
 conflicts=('ttf-google-sans')
 provides=('ttf-google-sans')
 
 source=(
-  'fonts.tar.gz::https://flutter.googlesource.com/gallery-assets/+archive/refs/heads/master/lib/fonts.tar.gz'
+  "GoogleSans-v${pkgver}.zip::${url}/releases/download/v${pkgver}/GoogleSans-v${pkgver}.zip"
+  "OFL-${pkgver}.txt::https://raw.githubusercontent.com/google/fonts/${_ofl_commit}/ofl/googlesans/OFL.txt"
   "font-patcher-${_nfver}.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v${_nfver}/FontPatcher.zip"
   "fonttune::git+${FONTTUNE_REPO:-https://github.com/gaou-piou/fonttune.git}#${FONTTUNE_REF:-branch=main}"
 )
-noextract=("font-patcher-${_nfver}.zip")
-# gitiles builds the archive on every request and stamps each entry with the
-# download time, so its checksum changes every time - even for a pinned commit.
-# The archive is SKIPped here; prepare() checks the fonts themselves instead.
-sha256sums=('SKIP'
+noextract=("GoogleSans-v${pkgver}.zip" "font-patcher-${_nfver}.zip")
+# The upstream repository's own OFL.txt still carries the Google Sans Flex
+# copyright line, so the licence comes from google/fonts (pinned commit).
+sha256sums=('d338f0e74f5eabead86a85b87edf4cc50cd6561196dbe173d1db4139e95b3ca7'
+            '2b75ef20f13d83a7514aee452c4782c20cdc9ff2dee17600f44d37a06d4fb958'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
             'SKIP')
 
-# sha256 of the upstream TTFs (see the note above sha256sums). When Google
-# updates the fonts, prepare() fails here: refresh this list and set pkgver to
-# the new name ID 5 version.
-_font_sums=(
-  '804fdad80c0a5bf7ea7a2396f7368abbcb4d948f31f0ac88b199dc4c18ef3391  GoogleSans-Bold.ttf'
-  'c22e02ace4469ff22340fc1c90c10e9414910f3dadf51e91c50445000b843bea  GoogleSans-BoldItalic.ttf'
-  '011fbabfe51a86e81401ffa3eb87df74dec15ad38e75b9ade8460f6ca630e657  GoogleSans-Italic.ttf'
-  '8e72f9df72eddef9a75aa93b0972c35491bab52d65c32714fe004b75bd7b5271  GoogleSans-Medium.ttf'
-  'cefc41078b3da17b5c1aa9ccf8507b911e50b42005f70f18a7128eb47d3285f7  GoogleSans-MediumItalic.ttf'
-  'f8914b020e2c78fe86ca14198095455139f08047b8b52ab69003cb5af35cbbc0  GoogleSans-Regular.ttf'
-  '842e6578c478336a0ecd49ed7779bb67cd2dfb4188aff9a7e24fd6ed868eac2a  GoogleSansDisplay-Bold.ttf'
-  '603682b81c56ddd52af4a22eb5e1f9d82cea836ea5d0016f1611a447b0a39569  GoogleSansDisplay-BoldItalic.ttf'
-  '4af7c400d97c640a2e12155734637f65beacc0a4c51853b676e785faae1af417  GoogleSansDisplay-Italic.ttf'
-  '40c1436cb0e94370dee18db4f09e3eb8e199713919adb33295536e6c26d9b74d  GoogleSansDisplay-Medium.ttf'
-  '2419ca16947c7e974a537f8e887a73d67ec2c8ac7dd1f6fc47b1a22f4d56a68f  GoogleSansDisplay-MediumItalic.ttf'
-  'c1b3bd356f209f250345f33413fe659d8f0634fb15bb2b640b2eee24708978fd  GoogleSansDisplay-Regular.ttf'
-)
-
-# Google Sans and Google Sans Display (Google, Flutter gallery assets): six
-# static TTFs each (Regular, Medium, Bold and their italics). Tuning (hinting,
-# gasp, features baked into calt, ...) is done by fonttune, which asks in
-# prepare(); every key can be preset as FONTTUNE_<KEY>. Local testing:
-# `FONTTUNE_DEV=true` (see _ft_local).
+# Google Sans and Google Sans Text (Google, OFL, github.com/googlefonts/googlesans
+# releases): six static TTFs each (Regular, Medium, Bold and their italics), the
+# desktop build/GoogleSans/static/ set of the release zip. "Google Sans" is the
+# opsz 18 (display) cut, "Google Sans Text" the opsz 17 cut for small sizes; the
+# old "Google Sans Display" family no longer exists. Tuning (hinting, gasp,
+# features baked into calt, ...) is done by fonttune, which asks in prepare();
+# every key can be preset as FONTTUNE_<KEY>. Local testing: `FONTTUNE_DEV=true`
+# (see _ft_local).
 #
-#   WANT_GOOGLE_SANS=true|false          "Google Sans"         (default true)
-#   WANT_GOOGLE_SANS_DISPLAY=true|false  "Google Sans Display" (default true)
-#   NERD_PATCH=true                      patch with Nerd Fonts glyphs (default false)
+#   WANT_GOOGLE_SANS=true|false       "Google Sans"      (default true)
+#   WANT_GOOGLE_SANS_TEXT=true|false  "Google Sans Text" (default true)
+#   NERD_PATCH=true                   patch with Nerd Fonts glyphs (default false)
 
 # Local fonttune, uncommitted edits included, only with FONTTUNE_DEV=true: the
 # tree in FONTTUNE_DEV_DIR, else the one saved by `fonttune dev set [path]`, else
@@ -118,22 +105,22 @@ _ask() {  # _ask VAR "question" default(y|n): only on a TTY and when VAR is unse
 
 prepare() {
   cd "$srcdir"
-  printf '%s\n' "${_font_sums[@]}" | sha256sum -c --quiet - || {
-    echo "Error: the upstream fonts changed - update _font_sums and pkgver." >&2; exit 1
-  }
+  rm -rf "$srcdir/static"; mkdir "$srcdir/static"
+  bsdtar xf "GoogleSans-v${pkgver}.zip" -C "$srcdir/static" --strip-components 3 'build/GoogleSans/static/*.ttf'
+  compgen -G "$srcdir/static/GoogleSans*.ttf" >/dev/null || { echo "Error: no static TTFs in the release zip." >&2; exit 1; }
   _ft_local
   _check_fonttune
   _ask WANT_GOOGLE_SANS "Include Google Sans" y
-  _ask WANT_GOOGLE_SANS_DISPLAY "Include Google Sans Display" y
+  _ask WANT_GOOGLE_SANS_TEXT "Include Google Sans Text" y
   _ask NERD_PATCH "Patch with Nerd Fonts glyphs" n
-  if [[ "$WANT_GOOGLE_SANS$WANT_GOOGLE_SANS_DISPLAY" != *true* ]]; then
+  if [[ "$WANT_GOOGLE_SANS$WANT_GOOGLE_SANS_TEXT" != *true* ]]; then
     echo "Error: select at least one family." >&2; exit 1
   fi
   printf '%s\n' "$NERD_PATCH" > "$srcdir/.nerd"
 
   rm -rf "$srcdir/selected" "$srcdir/font-patcher"; mkdir -p "$srcdir/selected"
-  if [[ "$WANT_GOOGLE_SANS" == true ]]; then cp "$srcdir"/GoogleSans-*.ttf "$srcdir/selected/"; fi
-  if [[ "$WANT_GOOGLE_SANS_DISPLAY" == true ]]; then cp "$srcdir"/GoogleSansDisplay-*.ttf "$srcdir/selected/"; fi
+  if [[ "$WANT_GOOGLE_SANS" == true ]]; then cp "$srcdir"/static/GoogleSans-*.ttf "$srcdir/selected/"; fi
+  if [[ "$WANT_GOOGLE_SANS_TEXT" == true ]]; then cp "$srcdir"/static/GoogleSansText-*.ttf "$srcdir/selected/"; fi
   if [[ "$NERD_PATCH" == true ]]; then
     mkdir -p "$srcdir/font-patcher"
     bsdtar xf "$srcdir/font-patcher-${_nfver}.zip" -C "$srcdir/font-patcher"
@@ -166,15 +153,12 @@ package() {
   local _fontdir="$pkgdir/usr/share/fonts/google-sans"
   install -Dm644 -t "$_fontdir" "$_src/"*.ttf
 
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
-  cat > "$pkgdir/usr/share/licenses/$pkgname/LICENSE" <<'EOF'
-Google Sans fonts are proprietary fonts owned by Google LLC.
-They are distributed as part of Google's Flutter gallery assets.
-See https://flutter.googlesource.com/gallery-assets for details.
-
-Nerd Fonts glyphs are licensed under their respective open-source licenses.
-See https://github.com/ryanoasis/nerd-fonts for details.
-EOF
+  install -Dm644 "$srcdir/OFL-${pkgver}.txt" "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
+  if [[ "$(< "$srcdir/.nerd")" == true ]]; then
+    printf '%s\n' 'Nerd Fonts glyphs are licensed under their respective open-source licenses.' \
+      'See https://github.com/ryanoasis/nerd-fonts for details.' \
+      > "$pkgdir/usr/share/licenses/$pkgname/NERD-FONTS"
+  fi
 
   install -d "$pkgdir/usr/share/doc/$pkgname"
   _ft_rev > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
