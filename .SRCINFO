@@ -1,6 +1,6 @@
 pkgbase = certbot-proxy
 	pkgdesc = generic dockerized nginx proxy server with certbot
-	pkgver = 3.0.1
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://tsickert.com/certbot-proxy
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = certbot-proxy
 	backup = srv/http/service/certbot-proxy/etc/nginx/00_default.conf
 	backup = srv/http/service/certbot-proxy/etc/nginx/helper/certificate.include
 	backup = srv/http/service/certbot-proxy/etc/nginx/helper/ssl.include
-	source = https://github.com/thaibault/certbot-proxy/archive/refs/tags/v3.0.1.tar.gz
-	sha256sums = bb04df051220bb1777fde8ae34ee187ef74a542e53f8af5d28348e000f0b9309
+	source = https://github.com/thaibault/certbot-proxy/archive/refs/tags/v4.0.0.tar.gz
+	sha256sums = 1a3bf4b38353ae397aeb75dba703b9cc11e1f2358ac6367d34a6b0aa6023cd54
 
 pkgname = certbot-proxy
