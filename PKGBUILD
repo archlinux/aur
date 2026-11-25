@@ -1,20 +1,34 @@
 # Maintainer: KometTeam
 
 pkgname=komet
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.0_dev.23
+pkgrel=1
 pkgdesc="Komet — Multifunctional MAX client (Flutter desktop)"
 arch=('x86_64')
 url="https://github.com/KometTeam/Komet"
 license=('GPL3')
-depends=('gtk3' 'glib2' 'libsecret' 'libepoxy' 'at-spi2-core')
-makedepends=('flutter' 'git')
-options=(!debug) # Отключаем debug пакет, чтобы не было конфликтов с flutter-debug
-source=("git+https://github.com/KometTeam/Komet.git#commit=3272e81c6360e064f71a6d39f2064a96a894a727")
+depends=('gtk3' 'glib2' 'libsecret' 'libepoxy'
+         'at-spi2-core' 'mpv' 'opus' 'libogg' 'jsoncpp')
+makedepends=('flutter' 'git' 'rustup' 'clang' 'cmake' 'ninja')
+options=(!debug !buildflags !lto) # Отключаем debug пакет, чтобы не было конфликтов с flutter-debug
+source=("git+https://github.com/KometTeam/Komet.git#tag=v${pkgver//_/-}")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/Komet"
+  git submodule update --init --recursive
+}
 
 build() {
   cd "$srcdir/Komet"
+
+  export RUSTUP_HOME="$srcdir/rustup"
+  export CARGO_HOME="$srcdir/cargo"
+  export RUSTUP_TOOLCHAIN=stable
+
+  rustup toolchain install stable --profile minimal
+
+  unset RUSTFLAGS CARGO_ENCODED_RUSTFLAGS
 
   flutter build linux --release
 }
