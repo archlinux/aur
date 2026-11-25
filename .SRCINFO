@@ -1,0 +1,19 @@
+pkgbase = openagent-bin
+	pkgdesc = next-generation personal AI assistant powered by LLM, RAG and agent loops, supporting computer-use, browser-use and coding agent, demo: https://demo.openagentai.org
+	pkgver = 2.89.2
+	pkgrel = 1
+	url = https://github.com/the-open-agent/openagent
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = openagent
+	conflicts = openagent
+	options = !debug
+	source = openagent-bin-2.89.2-LICENSE::https://raw.githubusercontent.com/the-open-agent/openagent/v2.89.2/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = openagent-bin-2.89.2-x86_64::https://github.com/the-open-agent/openagent/releases/download/v2.89.2/openagent_linux_x86_64
+	sha256sums_x86_64 = 2fede9b4262cece581c3134e778ad1b481457439a89e8eb356a47be9364be4f2
+	source_aarch64 = openagent-bin-2.89.2-aarch64::https://github.com/the-open-agent/openagent/releases/download/v2.89.2/openagent_linux_arm64
+	sha256sums_aarch64 = 131e347c0eeb09225c2a233e208b9903c112c8a92359ec8c43baa614bbb57949
+
+pkgname = openagent-bin
