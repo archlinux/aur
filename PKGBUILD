@@ -1,7 +1,7 @@
 # Maintainer: Inky Quill
 
 pkgname=galley-pad-bin
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Desktop Markdown editor for plain .md files"
 arch=("x86_64")
@@ -16,7 +16,7 @@ provides=("galley-pad")
 conflicts=("galley-pad")
 options=("!strip")
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Galley.Pad_${pkgver}_amd64.deb")
-sha256sums=("02d2a94396f6819dd464294cac6e078d541048dbb03c1d7b04378e7a004c3cbd")
+sha256sums=("717581fd435f5ef96a6f309fd80cb4a87242eaff361498789620ff6c4ce84a8b")
 
 package() {
   bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.deb" -C "${srcdir}" data.tar.gz
