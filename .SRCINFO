@@ -1,0 +1,22 @@
+pkgbase = pw-loudness-eq-git
+	pkgdesc = Windows Loudness Equalization (per app) and audio engine limiter (per device) for PipeWire
+	pkgver = r6.3c7b908
+	pkgrel = 1
+	url = https://github.com/xoxorwr/pw-loudness-eq
+	install = pw-loudness-eq.install
+	arch = x86_64
+	license = LicenseRef-unknown
+	makedepends = git
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libpipewire
+	depends = pango
+	depends = pipewire>=1:1.4.0
+	provides = pw-loudness-eq
+	conflicts = pw-loudness-eq
+	source = git+https://github.com/xoxorwr/pw-loudness-eq.git
+	sha256sums = SKIP
+
+pkgname = pw-loudness-eq-git

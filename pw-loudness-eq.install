@@ -1,0 +1,25 @@
+_restart_note() {
+  cat <<'EOF'
+==> pw-loudness-eq: Loudness Equalization and the output limiter load with
+    PipeWire. Activate them as your user (not root):
+      systemctl --user restart pipewire pipewire-pulse wireplumber
+    Settings saved earlier in ~/.local/state/pw-loudness-eq/state.conf
+    override the defaults.
+    Access GUI: pw-loudness-eq
+EOF
+}
+
+post_install() {
+  _restart_note
+}
+
+post_upgrade() {
+  _restart_note
+}
+
+post_remove() {
+  cat <<'EOF'
+==> pw-loudness-eq: removed. Unload it from the running PipeWire with:
+      systemctl --user restart pipewire pipewire-pulse wireplumber
+EOF
+}
