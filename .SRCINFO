@@ -1,15 +1,15 @@
 pkgbase = haj
-	pkgdesc = fast, quiet, beautiful package manager and tui for blahArch Linux.
-	pkgver = 0.2.9
+	pkgdesc = the beautiful, cross-distro package manager and tui.
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/asitos/haj
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = pacman
 	depends = libalpm.so
 	depends = display3d
-	source = haj-0.2.9.tar.gz::https://github.com/asitos/haj/archive/refs/tags/v0.2.9.tar.gz
-	sha256sums = 13052aa96574e8217624fed73835401bcef5afb716633719d8db76f5266489b5
+	source = haj-0.3.2.tar.gz::https://github.com/asitos/haj/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = b28187351c3c93d0218f76684aebf544d46278f3cfe6cce43256702b1d06ff67
 
 pkgname = haj
