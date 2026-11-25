@@ -1,0 +1,19 @@
+pkgbase = redisshake-bin
+	pkgdesc = RedisShake is a Valkey/Redis data processing and migration tool
+	pkgver = 4.9.0
+	pkgrel = 1
+	url = https://github.com/tair-opensource/RedisShake
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = redisshake
+	conflicts = redisshake
+	options = !debug
+	source = redisshake-bin-4.9.0-LICENSE::https://raw.githubusercontent.com/tair-opensource/RedisShake/v4.9.0/license.txt
+	sha256sums = d5572c959a0e9f3254d33270a4c90521b52a35fa158849d1db4c5c6708528cbd
+	source_x86_64 = redisshake-bin-4.9.0-x86_64.tar.gz::https://github.com/tair-opensource/RedisShake/releases/download/v4.9.0/redis-shake-v4.9.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 3a8b61fd5259a1deb5ffe4cdcfdb9f80f5c34a7254483066be0eea4152540b4e
+	source_aarch64 = redisshake-bin-4.9.0-aarch64.tar.gz::https://github.com/tair-opensource/RedisShake/releases/download/v4.9.0/redis-shake-v4.9.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = c8479d2896b4495397e7be4d53a6027ad1ba2f229f497d80fad4b840db6ce755
+
+pkgname = redisshake-bin
