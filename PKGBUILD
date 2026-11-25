@@ -1,6 +1,6 @@
 # Maintainer: ZeroiJ
 pkgname=clove-linux
-pkgver=0.1.5
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Fast dithered-storage file manager"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = clove-linux
 	pkgdesc = Fast dithered-storage file manager
-	pkgver = 0.1.5
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/ZeroiJ/clove-win
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = clove-linux
 	depends = wayland
 	depends = vulkan-icd-loader
 	options = !debug
-	source = clove-linux-0.1.5.tar.gz::https://github.com/ZeroiJ/clove-win/archive/refs/tags/v0.1.5.tar.gz
+	source = clove-linux-1.6.2.tar.gz::https://github.com/ZeroiJ/clove-win/archive/refs/tags/v1.6.2.tar.gz
 	source = rune-db301c06ab0d68b70c4822a542fffc6615bbd419.tar.gz::https://github.com/anomalyco/rune/archive/db301c06ab0d68b70c4822a542fffc6615bbd419.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
