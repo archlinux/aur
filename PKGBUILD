@@ -1,7 +1,7 @@
 # Maintainer: James Farr Gomez <james@nertwork.com>
 pkgname=bluepill
 pkgver=1.2.16
-pkgrel=1
+pkgrel=2
 pkgdesc="BluePill — Native Linux/Wayland Qt6/QML desktop & CLI client for iMessage, RCS, and SMS"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nertwork/bluepill"
@@ -29,6 +29,14 @@ build() {
 
 check() {
     cd "$srcdir/bluepill-${pkgver}"
+    local _test_home
+    _test_home="$(mktemp -d)"
+    trap 'rm -rf "$_test_home"' RETURN
+    HOME="$_test_home" \
+    XDG_CONFIG_HOME="$_test_home/.config" \
+    XDG_CACHE_HOME="$_test_home/.cache" \
+    XDG_DATA_HOME="$_test_home/.local/share" \
+    XDG_STATE_HOME="$_test_home/.local/state" \
     QT_QPA_PLATFORM=offscreen ./bin/test
 }
 
