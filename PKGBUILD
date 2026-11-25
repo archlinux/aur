@@ -1,7 +1,7 @@
 # Maintainer: 9M2PJU <9m2pju@hamradio.my>
 
 pkgname=aircast-ap
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Modern GTK4 + Libadwaita Wi-Fi 6 Access Point and Hotspot Manager for Linux (with CLI and RTL8852CU support)"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
 )
 conflicts=('aircast-ap-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('99f7d48ee047bdc1f25318f761decea2dace0cf19e0db3eda0a8870cd2348595')
+sha256sums=('6a5b5b53106f2e59d58ec8a92718b9d1453ce50abcb0616ecc0a729786d114d5')
 
 build() {
     cd "AirCast-AP-${pkgver}"
