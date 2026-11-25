@@ -1,7 +1,7 @@
 # Maintainer: Iván Zaera Avellón <ivan.zaera@posteo.net>
 pkgname=peter
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A USB based keys manager which integrates with PAM and SSH.'
 arch=('pentium4' 'x86_64')
 url='https://codeberg.org/ivan-zaera/peter'
@@ -11,6 +11,7 @@ depends=(
 	'coreutils'            # cat, date
 	'systemd'
 	'util-linux'           # mount, setpriv
+	'x11-ssh-askpass'      # /usr/lib/ssh/ssh-askpass
 )
 optdepends=(
 	'openssh: integration with ssh-agent'
