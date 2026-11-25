@@ -1,6 +1,6 @@
 pkgbase = bluegit-runner
 	pkgdesc = Separate CI runner for BlueGit (runs jobs in Docker on your own machine)
-	pkgver = 20261124225645
+	pkgver = 20261125121156
 	pkgrel = 1
 	url = https://git.timfalken.com/timfa/bluegit
 	install = bluegit-runner.install
@@ -11,7 +11,7 @@ pkgbase = bluegit-runner
 	depends = git
 	depends = docker
 	options = !debug
-	source = bluegit-052189054c3a2965cedbe371fbbfa8abca6288ec.tar.gz::https://git.timfalken.com/timfa/bluegit/-/archive/052189054c3a2965cedbe371fbbfa8abca6288ec/bluegit-052189054c3a2965cedbe371fbbfa8abca6288ec.tar.gz
-	sha256sums = 679d87ef46113027010028cec98a613bed66a4726061a66c3678afdb24f7b6cc
+	source = bluegit-c5943443f25b3251a610996a22b5579c361e09d8.tar.gz::https://git.timfalken.com/timfa/bluegit/-/archive/c5943443f25b3251a610996a22b5579c361e09d8/bluegit-c5943443f25b3251a610996a22b5579c361e09d8.tar.gz
+	sha256sums = 73c14de1ae383c79d7c272aec4c73950e801b968a5ccfd217c75615a75024a81
 
 pkgname = bluegit-runner
