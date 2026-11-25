@@ -1,6 +1,6 @@
 pkgbase = bladebro-bin
 	pkgdesc = Agentic browser driver for AI: five MCP tools over a real Chromium session
-	pkgver = 4.8.3
+	pkgver = 4.8.4
 	pkgrel = 1
 	url = https://github.com/dondai44423/bladebro
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = bladebro-bin
 	conflicts = bladebro
 	options = !strip
 	options = !debug
-	source = LICENSE-4.8.3::https://github.com/dondai44423/bladebro/raw/v4.8.3/LICENSE
+	source = LICENSE-4.8.4::https://github.com/dondai44423/bladebro/raw/v4.8.4/LICENSE
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	source_x86_64 = bladebro-4.8.3-x86_64::https://github.com/dondai44423/bladebro/releases/download/v4.8.3/bladebro-linux-x86_64
-	sha256sums_x86_64 = c288a3e1bdc914639e9b187f151e4094b532f76b57a0fe0c1287a8a5f9e2c6bc
-	source_aarch64 = bladebro-4.8.3-aarch64::https://github.com/dondai44423/bladebro/releases/download/v4.8.3/bladebro-linux-aarch64
-	sha256sums_aarch64 = e904d5cda53b42ef2a0d890a683245f76cfcc8e9e40d51dfdd982a47d36e589c
+	source_x86_64 = bladebro-4.8.4-x86_64::https://github.com/dondai44423/bladebro/releases/download/v4.8.4/bladebro-linux-x86_64
+	sha256sums_x86_64 = 87439d4632f18d21af8fe021d2dc069572e1688cef4da874a1ee8ef97f6c4362
+	source_aarch64 = bladebro-4.8.4-aarch64::https://github.com/dondai44423/bladebro/releases/download/v4.8.4/bladebro-linux-aarch64
+	sha256sums_aarch64 = 0a5e3a4753a62ddfa161f3f00568b75249b058a4a9d4e0008cfc43c0bfe75ba5
 
 pkgname = bladebro-bin

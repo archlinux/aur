@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=bladebro-bin
-pkgver=4.8.3
+pkgver=4.8.4
 pkgrel=1
 pkgdesc='Agentic browser driver for AI: five MCP tools over a real Chromium session'
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ options=('!strip' '!debug')
 
 source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('c288a3e1bdc914639e9b187f151e4094b532f76b57a0fe0c1287a8a5f9e2c6bc')
-sha256sums_aarch64=('e904d5cda53b42ef2a0d890a683245f76cfcc8e9e40d51dfdd982a47d36e589c')
+sha256sums_x86_64=('87439d4632f18d21af8fe021d2dc069572e1688cef4da874a1ee8ef97f6c4362')
+sha256sums_aarch64=('0a5e3a4753a62ddfa161f3f00568b75249b058a4a9d4e0008cfc43c0bfe75ba5')
 
 # spelled out per architecture rather than with $CARCH: .SRCINFO records what the build host
 # expanded, so $CARCH would write the x86_64 filename into source_aarch64
