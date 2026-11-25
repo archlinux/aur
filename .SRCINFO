@@ -1,0 +1,17 @@
+pkgbase = boop-bin
+	pkgdesc = Tiny self-hosted notification inbox for developers
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/chrisgreg/boop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = boop
+	conflicts = boop
+	options = !debug
+	source_x86_64 = boop-bin-1.3.0-x86_64.tar.gz::https://github.com/chrisgreg/boop/releases/download/v1.3.0/boop_1.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e68ea6a7dec4bf6f8fe6133735b0b1db4ccb4089d5e6b76e9813a1a63f4797a8
+	source_aarch64 = boop-bin-1.3.0-aarch64.tar.gz::https://github.com/chrisgreg/boop/releases/download/v1.3.0/boop_1.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ec5096f514d9fcabef22e4546c0892474d4708f7644b30222621cf61ac95580c
+
+pkgname = boop-bin
