@@ -1,12 +1,12 @@
 pkgbase = go-fuck
 	pkgdesc = A blazingly fast reimplementation of thefuck in Go
-	pkgver = 4.0.1
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/leafevans/go-fuck
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = go-fuck-4.0.1.tar.gz::https://github.com/leafevans/go-fuck/archive/refs/tags/v4.0.1.tar.gz
-	sha256sums = 1c50821871c9c8837341e7cc3f83f3797817f9d15448d435ebdbde1d19dde5bd
+	source = go-fuck-4.1.0.tar.gz::https://github.com/leafevans/go-fuck/archive/refs/tags/v4.1.0.tar.gz
+	sha256sums = 4d4338b610d88fa534b9e4fec8e124e50c4e85ab0e405e3b88a3b7c49d0cf4d7
 
 pkgname = go-fuck
