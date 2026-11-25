@@ -2,7 +2,7 @@
 # Upstream publishes ready Arch packages (nfpm): /opt/ely-office/ely-table plus
 # /usr/bin symlink, desktop entry and icon. Repack them verbatim.
 pkgname=ely-table-bin
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc='ElyTable, part of Ely Office - spreadsheet editor (prebuilt upstream package)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 source=("LICENSE::$url/raw/v$pkgver/LICENSE")
 sha256sums=('6f90eb4b2f3d6354ac31cdf330a711d9e43d8c95b968dc046f49443db956b2c1')
 source_x86_64=("ely-table-$pkgver-1-x86_64.pkg.tar.zst::$url/releases/download/v$pkgver/ely-table-$pkgver-1-x86_64.pkg.tar.zst")
-sha256sums_x86_64=('73a3590a1ad93966323dd94afe88880b93178d8920b5b7f5b4868dfde979039a')
+sha256sums_x86_64=('d8d75af3cd957279fb27ca5a8cb52993dd3e86ec5bfd0bf4c02be598e06d6d90')
 
 package() {
 	cp -a "$srcdir/opt" "$srcdir/usr" "$pkgdir/"
