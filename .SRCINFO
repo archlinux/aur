@@ -1,6 +1,6 @@
 pkgbase = rivermonad
 	pkgdesc = xmonad-style tiling window manager for the river Wayland compositor
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/prietus/rivermonad
 	arch = x86_64
@@ -14,21 +14,23 @@ pkgbase = rivermonad
 	optdepends = foot: the default terminal
 	optdepends = fuzzel: the default launcher (mod-p)
 	optdepends = kanshi: monitor resolution and scale, started by the session
+	optdepends = river-fx: river with rounded corners, translucency, blur, shadows and fades (replaces river)
 	optdepends = libnotify: notifications when the configuration fails to compile
-	source = rivermonad-0.5.0.tar.gz::https://github.com/prietus/rivermonad/archive/v0.5.0.tar.gz
-	sha256sums = 3611211ac0cf76fe1d6ac37b04268839e83c1a3279015b5911e6ba43b2fbc2b4
+	source = rivermonad-0.6.0.tar.gz::https://github.com/prietus/rivermonad/archive/v0.6.0.tar.gz
+	sha256sums = 05f79018251df7e3a5df40681141936825079b2df81443d3cc8741e9124968e1
 
 pkgname = rivermonad
 	optdepends = foot: the default terminal
 	optdepends = fuzzel: the default launcher (mod-p)
 	optdepends = kanshi: monitor resolution and scale, started by the session
+	optdepends = river-fx: river with rounded corners, translucency, blur, shadows and fades (replaces river)
 	optdepends = libnotify: notifications when the configuration fails to compile
 	optdepends = rivermonad-dotfiles: a complete desktop configuration (run rivermonad-setup)
 
 pkgname = rivermonad-dotfiles
 	pkgdesc = A complete river + rivermonad desktop: bar, living wallpaper, widgets, launcher, screenshots
 	arch = any
-	depends = rivermonad=0.5.0
+	depends = rivermonad=0.6.0
 	depends = waymobar>=0.5.0
 	depends = bgmonad
 	depends = hasklets
