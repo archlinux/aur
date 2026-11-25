@@ -1,0 +1,17 @@
+pkgbase = bestsub-bin
+	pkgdesc = Self-hosted proxy subscription manager and node tester with a web UI
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = https://github.com/bestruirui/BestSub
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = bestsub
+	conflicts = bestsub
+	options = !debug
+	source_x86_64 = bestsub-bin-2.0.6-x86_64.zip::https://github.com/bestruirui/BestSub/releases/download/v2.0.6/bestsub-linux-amd64.zip
+	sha256sums_x86_64 = b5ad54fd5449eac57a9a86c8b13af1cac9d041a58bfd917308c2d1b661450cc0
+	source_aarch64 = bestsub-bin-2.0.6-aarch64.zip::https://github.com/bestruirui/BestSub/releases/download/v2.0.6/bestsub-linux-arm64.zip
+	sha256sums_aarch64 = e2c13202f7f4b722a8208003d0c470ed0d6353236f24e5c6103386951ecb0def
+
+pkgname = bestsub-bin
