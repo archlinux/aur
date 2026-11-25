@@ -2,7 +2,7 @@
 
 pkgname="workout-tracker-bin"
 _pkgname="${pkgname%-bin}"
-pkgver=2.10.1
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="A workout tracking web application for personal use (or family, friends), geared towards running and other GPX-based activities"
 url="https://github.com/jovandeginste/workout-tracker"
@@ -20,8 +20,8 @@ b2sums=('ec89bbd6656597e4723381b78c57e0a508f8a1d35291553f6c57f0a9f507ea0fb19e4b9
         'fa90f14f6cacbe15a3a253372325ac263f66fd6a90118434b26831939c7a9cb1025e4a867e9c301f08f7527c5b06e9cbdee6ecac3fb2fd52215785408264b756'
         '3a7041fcbe36b7e15e69e303dcbf56ebd0b674d335128b456d4aca80590f992cc4707a0dce24691395070d4b4fc4cde7c9df1d8a654a367dd9125b7712a46c24'
         '52f16826f65e2fd13f3dd2158f6c0f934de1c39e546bac4e088a5bb478e33216225c11f9c10710a7efdb9fdec6ea44f5967f61be44dded86fecef5cd88435639')
-b2sums_x86_64=('046b6edf44910c63402242658f0b160ace6fd885498d1695069d9c6d33d83576c8755cc1b5e528fe01182b6d551f84a4e3bd9a83eb93f18c7384ba0a2b3e9b6e')
-b2sums_aarch64=('7f8756ffa9c4ac15f042e252ac5a3396e6f2f21c1a8c53ea6a92511ac30bc701eab4b6e20f59e84d4c85cab1626ce65172407134db1ce1928edc5948006ccbd8')
+b2sums_x86_64=('4d7c52b4c8324a241221e78162d70c68128a5f0ccb412685c9f3dc6011a9a73110b85dbc4618aa5e876f1986ef6dd66dcddd8303c5e40baf9898f69aa1cdfa6a')
+b2sums_aarch64=('3f967c20e378f4f751b2cb89e5a7dd439d0bec8050b3ff339498f0b50bdd8a7536ad28075e3eb03d91dddc3c83ac02a2a7dde1f5b444afd71c6ec7eed6aa7156')
 backup=("etc/$_pkgname/env")
 install="$_pkgname.install"
 
