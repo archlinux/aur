@@ -1,7 +1,7 @@
 pkgbase = deskew-git
 	pkgdesc = A command-line program for automatically straightening images
-	pkgver = 1.35.r0.g992b1d8
-	pkgrel = 2
+	pkgver = 1.35.r2.g16ee75a
+	pkgrel = 1
 	url = http://jwilk.net/software/deskew
 	arch = x86_64
 	arch = aarch64
