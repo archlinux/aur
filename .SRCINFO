@@ -1,0 +1,17 @@
+pkgbase = docktail-bin
+	pkgdesc = Label-based Tailscale Services for Docker containers
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/marvinvr/docktail
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = docktail
+	conflicts = docktail
+	options = !debug
+	source_x86_64 = docktail-bin-1.9.0-x86_64.tar.gz::https://github.com/marvinvr/docktail/releases/download/1.9.0/docktail_1.9.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7e25fafeb7dc539493b7e4718c6b4f741a9fb65d28933fb8bf6f771470060f10
+	source_aarch64 = docktail-bin-1.9.0-aarch64.tar.gz::https://github.com/marvinvr/docktail/releases/download/1.9.0/docktail_1.9.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d71e4c35a349c5ac1034d5bf30c6beb3045f19801c7172cbeb9eb906aa665cb5
+
+pkgname = docktail-bin
