@@ -1,0 +1,17 @@
+pkgbase = cayley-bin
+	pkgdesc = An open-source graph database
+	pkgver = 0.7.7
+	pkgrel = 1
+	url = https://github.com/cayleygraph/cayley
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = cayley
+	conflicts = cayley
+	options = !debug
+	source_x86_64 = cayley-bin-0.7.7-x86_64.tar.gz::https://github.com/cayleygraph/cayley/releases/download/v0.7.7/cayley_0.7.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = c2604af5a549ed30ea817dd4bc9a206ba29d82e1949c805ac6a9179e214ca6c2
+	source_aarch64 = cayley-bin-0.7.7-aarch64.tar.gz::https://github.com/cayleygraph/cayley/releases/download/v0.7.7/cayley_0.7.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = a96827df89ff306ad8dfe9019b85aac60145dbfdf8fd27ebfa1fbd6fae2006ce
+
+pkgname = cayley-bin
