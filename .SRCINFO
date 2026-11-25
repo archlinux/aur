@@ -1,0 +1,21 @@
+pkgbase = luksbox-bin
+	pkgdesc = Store sensitive files in encrypted containers on the cloud or shared media
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/PentHertz/LUKSbox
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libfido2
+	depends = libgcc
+	depends = openssl-3
+	provides = luksbox
+	conflicts = luksbox
+	options = !debug
+	source_x86_64 = luksbox-bin-0.6.1-x86_64.tar.gz::https://github.com/PentHertz/LUKSbox/releases/download/v0.6.1/luksbox-x86_64-linux-jammy.tar.gz
+	sha256sums_x86_64 = 22d3e75d8de2dd596cf0faf6cb2c6c7eb7c663e1d9393c040f193a10ab70eca6
+	source_aarch64 = luksbox-bin-0.6.1-aarch64.tar.gz::https://github.com/PentHertz/LUKSbox/releases/download/v0.6.1/luksbox-aarch64-linux-jammy.tar.gz
+	sha256sums_aarch64 = 375b2527125cc0e03cbc51393e022fe5f9093a9262204d000e04010729812531
+
+pkgname = luksbox-bin
