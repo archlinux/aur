@@ -302,6 +302,20 @@ if ((${#zst_files[@]} > 1)); then
 fi
 shopt -u nullglob
 
+# makepkg 的 src/ 会按版本保留解包目录和源码软链，同样只保留当前版本
+if [[ -d src ]]; then
+	src_removed=0
+	for entry in src/motty-*-linux-*; do
+		[[ -e $entry || -L $entry ]] || continue
+		[[ ${entry##*/} == "motty-${ver}-linux-"* ]] && continue
+		rm -rf -- "$entry"
+		src_removed=$((src_removed + 1))
+	done
+	if ((src_removed > 0)); then
+		log "已清理 src/ 旧版本文件 ${src_removed} 个"
+	fi
+fi
+
 # ---------------------------------------------------------------- 提交并推送
 
 if ! git rev-parse --git-dir >/dev/null 2>&1; then
