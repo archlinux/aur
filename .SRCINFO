@@ -1,0 +1,17 @@
+pkgbase = codapi-bin
+	pkgdesc = Sandbox server for interactive code examples
+	pkgver = 0.14.2
+	pkgrel = 1
+	url = https://github.com/nalgeon/codapi
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = codapi
+	conflicts = codapi
+	options = !debug
+	source_x86_64 = codapi-bin-0.14.2-x86_64.tar.gz::https://github.com/nalgeon/codapi/releases/download/v0.14.2/codapi_0.14.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4778aca294e7eba8170e8301c2705b2474ba7ddd157ef7ae98959b7504e96388
+	source_aarch64 = codapi-bin-0.14.2-aarch64.tar.gz::https://github.com/nalgeon/codapi/releases/download/v0.14.2/codapi_0.14.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = d8aa512147d7df314264c15fede6a082a2a2bc1717fb01eeb70c93b39304da27
+
+pkgname = codapi-bin
