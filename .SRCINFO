@@ -1,0 +1,19 @@
+pkgbase = clicd-bin
+	pkgdesc = CLICD is a lightweight LXC/KVM virtualization management panel featuring a web console, batch operations, image management, NAT networking, IPv6 allocation, WebSSH, VNC, resource and bandwidth controls, security monitoring, and delegated user access
+	pkgver = 1.1.41
+	pkgrel = 1
+	url = https://github.com/MengMengCode/CLICD
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = clicd
+	conflicts = clicd
+	options = !debug
+	source = clicd-bin-1.1.41-LICENSE::https://raw.githubusercontent.com/MengMengCode/CLICD/v1.1.41/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = clicd-bin-1.1.41-x86_64.tar.gz::https://github.com/MengMengCode/CLICD/releases/download/v1.1.41/clicd-linux-amd64.tar.gz
+	sha256sums_x86_64 = eb28cd65e19261cb1e3e90dbb8aa1c040106624c02e5fc89330224622f1c3c8b
+	source_aarch64 = clicd-bin-1.1.41-aarch64.tar.gz::https://github.com/MengMengCode/CLICD/releases/download/v1.1.41/clicd-linux-arm64.tar.gz
+	sha256sums_aarch64 = 1e1dbe3754c8a0d9074465bb711f2cfeb140f4437261e2e69a49b4cda8a8ed73
+
+pkgname = clicd-bin
