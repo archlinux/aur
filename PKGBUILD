@@ -1,9 +1,9 @@
 # Maintainer: 9M2PJU <9m2pju@hamradio.my>
 
 pkgname=aircast-ap
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="Modern GTK4 + Libadwaita Wi-Fi 6 Access Point & Hotspot Manager for Linux (with CLI & RTL8852CU support)"
+pkgdesc="Modern GTK4 + Libadwaita Wi-Fi 6 Access Point and Hotspot Manager for Linux (with CLI and RTL8852CU support)"
 arch=('any')
 url="https://github.com/9M2PJU/AirCast-AP"
 license=('GPL-3.0-or-later')
@@ -22,7 +22,7 @@ optdepends=(
 )
 conflicts=('aircast-ap-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8e9347f87db5439d993c981d269e8e32540012a0afd56357a999245cee6183ad')
+sha256sums=('99f7d48ee047bdc1f25318f761decea2dace0cf19e0db3eda0a8870cd2348595')
 
 build() {
     cd "AirCast-AP-${pkgver}"
@@ -33,5 +33,7 @@ package() {
     cd "AirCast-AP-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 data/aircast-ap.desktop "${pkgdir}/usr/share/applications/aircast-ap.desktop"
+    install -Dm644 data/icons/my.hamradio.AirCastAP.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/my.hamradio.AirCastAP.svg"
+    install -Dm644 data/icons/aircast-ap-logo.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/my.hamradio.AirCastAP.png"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

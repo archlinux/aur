@@ -1,6 +1,6 @@
 pkgbase = aircast-ap
-	pkgdesc = Modern GTK4 + Libadwaita Wi-Fi 6 Access Point & Hotspot Manager for Linux (with CLI & RTL8852CU support)
-	pkgver = 1.0.1
+	pkgdesc = Modern GTK4 + Libadwaita Wi-Fi 6 Access Point and Hotspot Manager for Linux (with CLI and RTL8852CU support)
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/9M2PJU/AirCast-AP
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = aircast-ap
 	optdepends = polkit: Graphical privilege elevation (pkexec)
 	optdepends = rtl8852cu-9m2pju-dkms: Realtek RTL8852CU/RTL8832CU Wi-Fi 6 USB driver
 	conflicts = aircast-ap-git
-	source = aircast-ap-1.0.1.tar.gz::https://github.com/9M2PJU/AirCast-AP/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 8e9347f87db5439d993c981d269e8e32540012a0afd56357a999245cee6183ad
+	source = aircast-ap-1.0.2.tar.gz::https://github.com/9M2PJU/AirCast-AP/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 99f7d48ee047bdc1f25318f761decea2dace0cf19e0db3eda0a8870cd2348595
 
 pkgname = aircast-ap
