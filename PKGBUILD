@@ -1,5 +1,5 @@
 # Maintainer: guglovich <https://github.com/guglovich>
-# Created with assistance from Qwen3.8 Flash Next.
+# Created with assistance from Hy4 flash Free.
 # Lineage II map previewer, geodata generator and map/radar renderer.
 # Upstream has no tagged releases yet: the package pins the current master commit
 # and downloads the submodules as tarballs at their pinned SHAs (real checksums,
@@ -10,7 +10,7 @@
 pkgname=l2mapconv
 _commit=474ffe9c74353efb85e2c77c00be0a6ceceb526d
 pkgver=r164.g474ffe9
-pkgrel=1
+pkgrel=2
 pkgdesc='Lineage II map previewer, geodata generator and map/radar renderer'
 arch=('x86_64')
 url='https://github.com/guglovich/l2mapconv-linux'

@@ -1,7 +1,7 @@
 pkgbase = l2mapconv
 	pkgdesc = Lineage II map previewer, geodata generator and map/radar renderer
 	pkgver = r164.g474ffe9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/guglovich/l2mapconv-linux
 	arch = x86_64
 	license = MIT
