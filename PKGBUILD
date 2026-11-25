@@ -3,7 +3,7 @@
 pkgname='opencoarrays-mpich'
 _name="OpenCoarrays"
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A transport layer for coarray Fortran compilers, compiled with MPICH."
 arch=('x86_64')
 url="https://github.com/sourceryinstitute/${_name}"
@@ -22,7 +22,7 @@ install=
 changelog=
 noextract=()
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('2444f2083df3654675cc5563d0391885969b03db94c5b6cb522c85918a48f878')
 
 build() {
 
