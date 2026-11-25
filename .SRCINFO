@@ -1,0 +1,17 @@
+pkgbase = ninjabot-bin
+	pkgdesc = Cryptocurrency trading bot framework and CLI
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/rodrigo-brito/ninjabot
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ninjabot
+	conflicts = ninjabot
+	options = !debug
+	source_x86_64 = ninjabot-bin-0.6.0-x86_64.tar.gz::https://github.com/rodrigo-brito/ninjabot/releases/download/v0.6.0/ninjabot_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = dc4d8c8c9b26737646c68ecea266eb738793ca39de55f921b20faf56bd28e954
+	source_aarch64 = ninjabot-bin-0.6.0-aarch64.tar.gz::https://github.com/rodrigo-brito/ninjabot/releases/download/v0.6.0/ninjabot_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9afef18a01199cbee2448a5e6bbde0a0c74dd578e3f33ebb797f9df147b3a8ed
+
+pkgname = ninjabot-bin
