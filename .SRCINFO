@@ -1,6 +1,6 @@
 pkgbase = openchamber-bin
-	pkgdesc = OpenChamber desktop application (official prebuilt Linux binary)
-	pkgver = 2.7.2
+	pkgdesc = OpenChamber desktop application (prebuilt binary)
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/openchamber/openchamber
 	install = openchamber-bin.install
@@ -40,9 +40,9 @@ pkgbase = openchamber-bin
 	conflicts = openchamber-desktop-git
 	conflicts = openchamber-desktop-appimage
 	options = !strip
-	source = OpenChamber-2.7.2-linux-amd64.deb::https://github.com/openchamber/openchamber/releases/download/v2.7.2/OpenChamber-2.7.2-linux-amd64.deb
+	source = OpenChamber-2.8.0-linux-amd64.deb::https://github.com/openchamber/openchamber/releases/download/v2.8.0/OpenChamber-2.8.0-linux-amd64.deb
 	source = LICENSE-MIT
-	sha256sums = d991ee6ade4c203ff200c7314ff7e1f8ad50c6a1ddfd0d647a681cd1bd9aa28d
+	sha256sums = 5e2440b8c7e3261443e57abce3a6e13d0678701eceab1a4684c1dfbdcd7b94af
 	sha256sums = 1f6e869a3feff6b4eb07907afc89176562b1f4324389f163d9fd94f09864b44e
 
 pkgname = openchamber-bin

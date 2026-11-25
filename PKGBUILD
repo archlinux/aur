@@ -1,7 +1,7 @@
 # Maintainer: Jakariya Abbas <jakariya3460 at gmail dot com>
 
 pkgname=openchamber-bin
-pkgver=2.7.2
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='OpenChamber desktop application (prebuilt binary)'
 arch=('x86_64')
@@ -65,7 +65,7 @@ source=(
   'LICENSE-MIT'
 )
 
-sha256sums=('d991ee6ade4c203ff200c7314ff7e1f8ad50c6a1ddfd0d647a681cd1bd9aa28d'
+sha256sums=('5e2440b8c7e3261443e57abce3a6e13d0678701eceab1a4684c1dfbdcd7b94af'
             '1f6e869a3feff6b4eb07907afc89176562b1f4324389f163d9fd94f09864b44e')
 
 prepare() {
