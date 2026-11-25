@@ -3,8 +3,8 @@
 # Maintainer: shenmo <shenmo@spark-app.store>
 
 pkgname=amber-package-manager
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='bwrap wrapper for install and running debs inside a Amber-PM container'
 arch=('x86_64' 'aarch64')
 url='https://gitee.com/amber-ce/amber-pm/'
