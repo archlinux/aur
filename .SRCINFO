@@ -1,0 +1,20 @@
+pkgbase = supergateway-bin
+	pkgdesc = Run MCP stdio servers over HTTP streamable, SSE and SSE over stdio
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://github.com/supercorp-ai/supergateway
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = supergateway
+	conflicts = supergateway
+	options = !debug
+	source_x86_64 = supergateway-bin-4.3.0-x86_64.tar.gz::https://github.com/supercorp-ai/supergateway/releases/download/v4.3.0/supergateway-linux-x64.tar.gz
+	sha256sums_x86_64 = b6d74e1e2c286b12b843e7d58d9bee54d90cb7173bbad4fc31c68324d5d8a32c
+	source_aarch64 = supergateway-bin-4.3.0-aarch64.tar.gz::https://github.com/supercorp-ai/supergateway/releases/download/v4.3.0/supergateway-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0fd7a1f4f1d4ef6c1b1a6f1cdb12c6f2601fb9da6d9660a1c64094b9550f368a
+
+pkgname = supergateway-bin
