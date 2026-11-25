@@ -1,7 +1,7 @@
 pkgbase = libarchive-static
 	pkgdesc = Statically-compiled bsdtar (Multi-format archive and compression library, to fix badly broken systems)
 	pkgver = 3.8.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://libarchive.org/
 	arch = i486
 	arch = i686
@@ -32,8 +32,8 @@ pkgbase = libarchive-static
 	source = git+https://github.com/tukaani-project/xz#tag=v5.8.4
 	source = https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz
 	source = https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz.sig
-	source = https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.zst
-	source = https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.zst.sig
+	source = https://github.com/facebook/zstd/releases/download/v1.6.0/zstd-1.6.0.tar.zst
+	source = https://github.com/facebook/zstd/releases/download/v1.6.0/zstd-1.6.0.tar.zst.sig
 	validpgpkeys = DB2C7CF1B4C265FAEF56E3FC5848A18B8F14184B
 	validpgpkeys = 659C84C0E23EA1FA97E0B58CC040B508D63D2B36
 	validpgpkeys = 600CD204FBCEA418BD2CA74F154343260542DF34
@@ -72,7 +72,7 @@ pkgbase = libarchive-static
 	sha512sums = d669b66a7dcea627c88c077f3f3f23b42c1dd477bd240b5c26b6f473b0f2ea1b9db3c0a7b153cece3172e657e7d734a5f51c84b4174c98ba567d0b36535b28d6
 	sha512sums = 083f5e675d73f3233c7930ebe20425a533feedeaaa9d8cc86831312a6581cefbe6ed0d08d2fa89be81082f2a5abdabca8b3c080bf97218a1bd59dc118a30b9f3
 	sha512sums = SKIP
-	sha512sums = 2af02be3df319556b65403450acc55964d971fe263fed87dea823fb264a862db807a2a3d89358564277a83e5b303302cc677f66b5e523e3d224120b884e5ef1b
+	sha512sums = 8eb9a87e15659709afd367def86dc0529575375c9dc8a407caac6d5ec15333feadda4d301798e01d37013aec97f261822241f07beb509688b0a4aa52e7225b36
 	sha512sums = SKIP
 
 pkgname = libarchive-static

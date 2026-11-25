@@ -4,14 +4,14 @@
 pkgname=libarchive-static
 _pkgname=libarchive
 pkgver=3.8.11
-pkgrel=3
+pkgrel=4
 _attrver=2.5.2
 _aclver=2.3.2
 _sslver=4.1.0
 _zlibver=1.4
 _xzver=5.8.4
 _bzipver=1.0.8
-_zstdver=1.5.7
+_zstdver=1.6.0
 pkgdesc='Statically-compiled bsdtar (Multi-format archive and compression library, to fix badly broken systems)'
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://libarchive.org/'
@@ -39,7 +39,7 @@ sha512sums=('ff90345323a945930b60a822a0997f079a40f081385cc0f41869ec6d19420a36358
             'd669b66a7dcea627c88c077f3f3f23b42c1dd477bd240b5c26b6f473b0f2ea1b9db3c0a7b153cece3172e657e7d734a5f51c84b4174c98ba567d0b36535b28d6'
             '083f5e675d73f3233c7930ebe20425a533feedeaaa9d8cc86831312a6581cefbe6ed0d08d2fa89be81082f2a5abdabca8b3c080bf97218a1bd59dc118a30b9f3'
             'SKIP'
-            '2af02be3df319556b65403450acc55964d971fe263fed87dea823fb264a862db807a2a3d89358564277a83e5b303302cc677f66b5e523e3d224120b884e5ef1b'
+            '8eb9a87e15659709afd367def86dc0529575375c9dc8a407caac6d5ec15333feadda4d301798e01d37013aec97f261822241f07beb509688b0a4aa52e7225b36'
             'SKIP')
 # i486/armv6h can't checksum a git source (see memory/libarchive-static.md)
 case "${CARCH}" in
