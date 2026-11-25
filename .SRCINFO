@@ -1,0 +1,17 @@
+pkgbase = adguardhome-sync-bin
+	pkgdesc = Synchronize AdGuard Home config to replicas
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/bakito/adguardhome-sync
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = adguardhome-sync
+	conflicts = adguardhome-sync
+	options = !debug
+	source_x86_64 = adguardhome-sync-bin-0.10.1-x86_64.tar.gz::https://github.com/bakito/adguardhome-sync/releases/download/v0.10.1/adguardhome-sync_0.10.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = fe04b23deef2b11514edc49f0e030c1f9ad08264229d82f4243651679698bb96
+	source_aarch64 = adguardhome-sync-bin-0.10.1-aarch64.tar.gz::https://github.com/bakito/adguardhome-sync/releases/download/v0.10.1/adguardhome-sync_0.10.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9a4459bc2925cd47874a6ed3f0282dbb0b4ed71c3a45d6b5bc12108ce85f3f84
+
+pkgname = adguardhome-sync-bin
