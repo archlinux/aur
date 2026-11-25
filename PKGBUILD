@@ -1,8 +1,8 @@
 # Maintainer: fox1e <git@work.fox1e.dev>
 
 pkgname=wizardchat-bin
-_version=26.12.4
-pkgver=26.12.4
+_version=26.12.5
+pkgver=26.12.5
 pkgrel=1
 pkgdesc='Simple, secure, magical Matrix client'
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('wizardchat')
 conflicts=('wizardchat')
 options=('!debug')
 source=("https://gitlab.com/api/v4/projects/wizardchat%2Fwizardchat/packages/generic/wizardchat-desktop/v${_version}/wizardchat-${_version}-linux-x86_64.tar.gz")
-sha256sums=('0ead607fbf0f5896721551f8a0a1d738b5ca7b30661a30ba7572c4bdec253aab')
+sha256sums=('ee66a802fcb7988151d2d75c26dbc499cae907504f2bf6955d9336232d16f275')
 
 package() {
   cp -a "${srcdir}/usr" "${pkgdir}/"
