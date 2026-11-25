@@ -1,6 +1,6 @@
 # Maintainer: Kim Nielsen <github@insecurity.dk>
 pkgname=axon-cli
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Runs named requests from a .http file, authenticating via .netrc, and prints the responses curl-style, or as JSON"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 # ring's C code built with -flto emits GCC bitcode that rust-lld can't link
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('383e5560fbf844504c7cbd612794921a463161fe35f4f0b6e54d744ae55b8689')
+sha256sums=('264e48bdb7ed544fce9849b6def62b957e22d66818d446e67f6109f263b53eb8')
 
 build() {
   cd "$pkgname-$pkgver"
