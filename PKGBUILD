@@ -45,9 +45,7 @@ provides=("${_pkgname}=${pkgver}")
 source=(
     "git+https://github.com/SteamClientHomebrew/${_Pkgname}.git#branch=main"
 )
-sha256sums=(
-    'SKIP'
-)
+sha256sums=('SKIP')
 options=(!debug)
 install="${_pkgname}.install"
 
