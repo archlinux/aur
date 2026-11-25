@@ -1,0 +1,19 @@
+pkgbase = komari-bin
+	pkgdesc = A simple server monitor tool
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/komari-monitor/komari
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = komari
+	conflicts = komari
+	options = !debug
+	source = komari-bin-1.6.2-LICENSE::https://raw.githubusercontent.com/komari-monitor/komari/1.6.2/LICENSE
+	sha256sums = 3f14ba28b2e275d15a274fb7c936e4fa9f6fe851d1ea96e7f7b9cd9badc4b016
+	source_x86_64 = komari-bin-1.6.2-x86_64::https://github.com/komari-monitor/komari/releases/download/1.6.2/komari-linux-amd64
+	sha256sums_x86_64 = dab1a00dd273fc741795e18a2fdf4fe1b3b057478110911084abbe6929829bb2
+	source_aarch64 = komari-bin-1.6.2-aarch64::https://github.com/komari-monitor/komari/releases/download/1.6.2/komari-linux-arm64
+	sha256sums_aarch64 = 9ea325433e2efc04eaa72122f7ac38cacdbc20fdde5193871f76f5a5ae176552
+
+pkgname = komari-bin
