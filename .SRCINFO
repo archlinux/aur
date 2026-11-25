@@ -1,0 +1,19 @@
+pkgbase = ch-ui-bin
+	pkgdesc = Self-hosted web interface for ClickHouse
+	pkgver = 2.33.1
+	pkgrel = 1
+	url = https://github.com/caioricciuti/ch-ui
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = ch-ui
+	conflicts = ch-ui
+	options = !debug
+	source = ch-ui-bin-2.33.1-LICENSE::https://raw.githubusercontent.com/caioricciuti/ch-ui/v2.33.1/LICENSE.md
+	sha256sums = f8334209415bdab2f5d7da244532dfe6e04dd587bbaa0829c63e3d144ec76f66
+	source_x86_64 = ch-ui-bin-2.33.1-x86_64::https://github.com/caioricciuti/ch-ui/releases/download/v2.33.1/ch-ui-linux-amd64
+	sha256sums_x86_64 = fa0c98db3e71236d5e4906c67c73f3fbf3e617758d92ff0e8d28867c77472fd1
+	source_aarch64 = ch-ui-bin-2.33.1-aarch64::https://github.com/caioricciuti/ch-ui/releases/download/v2.33.1/ch-ui-linux-arm64
+	sha256sums_aarch64 = 9565c4368b479195133e9844d900c208a4b5ed16ffde8bc2543881b47ee0550f
+
+pkgname = ch-ui-bin
