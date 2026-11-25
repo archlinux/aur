@@ -1,6 +1,6 @@
 pkgname=bloodyad
 pkgver=2.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Active Directory privilege escalation swiss army knife"
 arch=('x86_64')
 url="https://github.com/CravateRouge/bloodyAD"
@@ -59,16 +59,15 @@ package() {
     # Wrapper using real entrypoint
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/bloodyad" << EOF
 #!/bin/bash
-export PYTHONPATH="${_pylib}:\$PYTHONPATH"
-export PYTHONWARNINGS="ignore::SyntaxWarning"
-exec python -c "from bloodyAD.main import main; main()" "\$@"
+# Use only the package's vendored Python dependencies, not system site-packages.
+export PYTHONPATH="${_pylib}"
+exec python -S -W ignore::SyntaxWarning -c "from bloodyAD.main import main; main()" "\$@"
 EOF
 
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/bloodyAD" << EOF
 #!/bin/bash
-export PYTHONPATH="${_pylib}:\$PYTHONPATH"
-export PYTHONWARNINGS="ignore::SyntaxWarning"
-exec python -c "from bloodyAD.main import main; main()" "\$@"
+export PYTHONPATH="${_pylib}"
+exec python -S -W ignore::SyntaxWarning -c "from bloodyAD.main import main; main()" "\$@"
 EOF
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
