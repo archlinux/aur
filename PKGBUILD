@@ -10,7 +10,7 @@ _upstream="https://codeberg.org/samibr/alasraa"
 
 pkgname=alasraa-bin
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, OpenGL terminal emulator for Linux (prebuilt binary)"
 arch=('x86_64')
 url="$_upstream"
