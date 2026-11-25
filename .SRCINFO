@@ -1,0 +1,21 @@
+pkgbase = lerd-bin
+	pkgdesc = Local PHP development environment
+	pkgver = 1.39.2
+	pkgrel = 1
+	url = https://github.com/lerd-env/lerd
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = lerd
+	conflicts = lerd
+	options = !debug
+	source_x86_64 = lerd-bin-1.39.2-x86_64.tar.gz::https://github.com/lerd-env/lerd/releases/download/v1.39.2/lerd_1.39.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = ec43a3185c2be540f8db59307a29848e51c441b576604b05f594bb5a86495499
+	source_aarch64 = lerd-bin-1.39.2-aarch64.tar.gz::https://github.com/lerd-env/lerd/releases/download/v1.39.2/lerd_1.39.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = b48cb0d150570c54ea0e0d1f96c5a8e5be6d71d1becd5ac7422eb0b9c61efcdf
+
+pkgname = lerd-bin
