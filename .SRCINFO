@@ -13,6 +13,7 @@ pkgbase = notes-src
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libayatana-appindicator
+	optdepends = libnotify: to-do reminders while the app is closed
 	provides = notes
 	conflicts = notes
 	conflicts = notes-bin

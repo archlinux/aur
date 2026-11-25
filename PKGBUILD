@@ -9,6 +9,7 @@ arch=('x86_64')
 url='https://jonasled.dev/jonasled/notes'
 license=('GPL-3.0-only')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
+optdepends=('libnotify: to-do reminders while the app is closed')
 makedepends=('git' 'rust' 'nodejs' 'pnpm' 'pkgconf')
 provides=('notes')
 conflicts=('notes' 'notes-bin')
