@@ -19,23 +19,37 @@ path = [
     "*.socket",
     "*.timer",
     "*.desktop",
-    "*.hook",
+    "*.hook"
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
+    "pdfium-system-lcms2.patch"
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "pdfium-installed-headers.patch",
+    "pdfium-shared-library.patch"
+]
+SPDX-FileCopyrightText = "2014-2025 Benoit Blanchon"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = [
     "compiler-rt-adjust-paths.patch",
-    "increase-fortify-level.patch",
+    "increase-fortify-level.patch"
 ]
 SPDX-FileCopyrightText = "Chromium contributors"
 SPDX-License-Identifier = "BSD-3-Clause"
 
 [[annotations]]
 path = [
-    "chromium-153-hermetic-python.patch",
-    "chromium-156-revert-gn-check-includes.patch"
+    "hermetic-python.patch"
 ]
 SPDX-FileCopyrightText = "2015-2026 The ungoogled-chromium Authors"
 SPDX-License-Identifier = "BSD-3-Clause"

@@ -1,43 +1,56 @@
 pkgbase = libpdfium
-	pkgdesc = PDF rendering/manipulation library from Chromium
-	pkgver = 156.0.8078.81
+	pkgdesc = PDF rendering and manipulation library
+	pkgver = 158.0.8127.88
 	pkgrel = 1
 	url = https://pdfium.googlesource.com/pdfium/
 	arch = x86_64
-	license = Apache-2.0 AND MIT AND BSD-3-Clause AND (Apache-2.0 WITH LLVM-exception AND (MIT OR NCSA))
+	license = Apache-2.0
 	makedepends = clang
 	makedepends = compiler-rt
 	makedepends = fast_float
+	makedepends = git
 	makedepends = gn
-	makedepends = lld
-	makedepends = llvm
 	makedepends = ninja
+	makedepends = patchelf
 	makedepends = pkgconf
 	makedepends = python
-	makedepends = rust
-	makedepends = highway
 	depends = glibc
-	depends = libbrotlidec.so=1-64
-	depends = libfreetype.so=6-64
-	depends = libgcc_s.so=1-64
-	depends = libharfbuzz.so=0-64
-	depends = libharfbuzz-subset.so=0-64
-	depends = libicuuc.so=78-64
-	depends = liblcms2.so=2-64
-	depends = libjpeg.so=8-64
-	depends = libz.so=1-64
+	depends = highway
+	depends = libfreetype.so
+	depends = libgcc_s.so
+	depends = libharfbuzz-subset.so
+	depends = libharfbuzz.so
+	depends = libicuuc.so
+	depends = libjpeg.so
+	depends = liblcms2.so
+	depends = libstdc++.so
+	depends = libz.so
 	depends = openjpeg2
 	provides = libpdfium.so
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-156.0.8078.81-lite.tar.xz
+	source = pdfium::git+https://pdfium.googlesource.com/pdfium.git#commit=b23fee3ac22360878efaa8aa533dac892fe777ab
+	source = build::git+https://chromium.googlesource.com/chromium/src/build.git#commit=ebdaeefa62db7c40f27cacb0eb034db3a5cdb849
+	source = buildtools::git+https://chromium.googlesource.com/chromium/src/buildtools.git#commit=64e87f9fbdaf6f53f6cff8f15e4b06f17cead514
+	source = abseil-cpp::git+https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp.git#commit=a00d74bb55b38f213a3c6110b4bcab5bb565bd56
+	source = dragonbox::git+https://chromium.googlesource.com/external/github.com/jk-jeon/dragonbox.git#commit=beeeef91cf6fef89a4d4ba5e95d47ca64ccb3a44
+	source = generate_shim_headers.py::https://github.com/chromium/chromium/raw/refs/tags/158.0.8127.88/tools/generate_shim_headers/generate_shim_headers.py
 	source = compiler-rt-adjust-paths.patch
+	source = hermetic-python.patch
 	source = increase-fortify-level.patch
-	source = chromium-153-hermetic-python.patch
-	source = chromium-156-revert-gn-check-includes.patch
-	sha256sums = 09621f39188030ae189a6e0316ac3f1b7bfe4165679ea1ec615918b85abfe4cb
-	sha256sums = ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863
-	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
-	sha256sums = ebf74154266d0b6d6cc957c413f845052c5fcfce7745befb8821595cdf3f7d49
-	sha256sums = c666f9b009d3a2c737501d714689677e6d474982695966651fe7cdbcbc6e5815
+	source = pdfium-installed-headers.patch
+	source = pdfium-shared-library.patch
+	source = pdfium-system-lcms2.patch
+	sha256sums = a3982bf9e230682b29e74db47167fcbdc80d8e1021d3a307f0a94e39dd83ee84
+	sha256sums = 1a26b007c9afd9f065843509a8535063dee92f43c3852dffceecf1358f44f3fc
+	sha256sums = 042464a0dbe2060f40fe678d3bfb6a7307497fcd0f89c952ce844e0a8da17a0f
+	sha256sums = 81139ae7644b634486ea9cf144360e317adeb67e25f57aa03caac9e56610e829
+	sha256sums = 36401f4a3f1928af41d6954b17b1a48db7d1b91787bfc3fbb2687c040a1af4f3
+	sha256sums = 21df5ac8b9e5d3831f97cc168f484164a6717c52023214ef203cc4a34c484724
+	sha256sums = 4ada493a28e95a64d0ed2f47b924ae75930a16c93dcba34ccfb43ecb721d107b
+	sha256sums = fe919a63c45a8fad706c89a18f508ea697e4c17460cbe814755978a963ef54fd
+	sha256sums = 05b1f881807e404c22ffbfa6837bea1a50d85ad09d5c4b5744c5e287d360b54d
+	sha256sums = c7d18dd353bc282cada28848fb2d3fb016ea1885ee9e2ebc57b38419522a704b
+	sha256sums = c58c25728cfe5df22e421000f8913dccec82dd14324a15c5e65743a360ba8f30
+	sha256sums = 357e6a267dc5cada6c985c683d4fa702c82d81cee2e91ed656c422f88a7b1aa0
 
 pkgname = libpdfium
