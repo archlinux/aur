@@ -1,0 +1,17 @@
+pkgbase = stream-sprout
+	pkgdesc = Restream a video source to multiple destinations such as Twitch, YouTube, Owncast, and PeerTube.
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://stream-sprout.wimpys.world/
+	arch = any
+	license = Apache-2.0
+	depends = bash
+	depends = coreutils
+	depends = ffmpeg
+	depends = gawk
+	depends = grep
+	depends = sed
+	source = stream-sprout-0.1.7.tar.gz::https://github.com/wimpysworld/stream-sprout/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = d2e9f9ff90ed0f733eba987a41ba83b0a52237036ee913f5e9b1210c9e5b67d9
+
+pkgname = stream-sprout
