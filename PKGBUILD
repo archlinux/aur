@@ -1,14 +1,14 @@
 # Maintainer: John Wason <wason@wasontech.com>
 pkgbase=robotraconteur-companion
 pkgname=(librobotraconteur-companion0.4 librobotraconteur-companion-devel)
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Robot Raconteur C++ Companion Library"
 arch=('x86_64' 'aarch64')
 url="https://github.com/robotraconteur/robotraconteur_companion"
 license=('Apache-2.0')
 source=("https://github.com/robotraconteur/robotraconteur_companion/releases/download/v${pkgver}/RobotRaconteurCompanion-${pkgver}-Source.tar.gz")
-sha256sums=('8b440fd9d89bf03fa6e5d294f2b46f2fd6689004a86190e2fb3ead1548708bcb')
+sha256sums=('e63ed75155973f39ec639c0247073a66329b5536d1f57ee9a8911091d8b6fa9a')
 makedepends=(
   'cmake>=3.5.1'
   'boost>=1.58.0'
