@@ -1,0 +1,21 @@
+pkgbase = conflux-rust-bin
+	pkgdesc = Rust implementation of the Conflux blockchain protocol
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/Conflux-Chain/conflux-rust
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = conflux-rust
+	conflicts = conflux-rust
+	options = !debug
+	source = conflux-rust-bin-3.1.1-LICENSE::https://raw.githubusercontent.com/Conflux-Chain/conflux-rust/v3.1.1/LICENSE
+	sha256sums = 928137f2380ba70c58a144bae385a66397c9fcf4a21db60825b908a99720ed0a
+	source_x86_64 = conflux-rust-bin-3.1.1-x86_64.tar.gz::https://github.com/Conflux-Chain/conflux-rust/releases/download/v3.1.1/conflux-v3.1.1-linux-x86_64-glibc2.27.tar.gz
+	sha256sums_x86_64 = 7971eb8b6799bc393fbccf57c6dd7aad82b2b8a21c874d3aeafafa02710cfe68
+	source_aarch64 = conflux-rust-bin-3.1.1-aarch64.tar.gz::https://github.com/Conflux-Chain/conflux-rust/releases/download/v3.1.1/conflux-v3.1.1-linux-aarch64-glibc2.27.tar.gz
+	sha256sums_aarch64 = 1de7cd77b119d0fedcff4e7271253aeecaf9d4d188894816e6efdd537c0c68b3
+
+pkgname = conflux-rust-bin
