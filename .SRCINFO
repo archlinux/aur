@@ -1,0 +1,21 @@
+pkgbase = go-enum-bin
+	pkgdesc = Enum generator for Go
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/abice/go-enum
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = go-enum
+	conflicts = go-enum
+	options = !debug
+	source = go-enum-bin-0.9.5-LICENSE::https://raw.githubusercontent.com/abice/go-enum/v0.9.5/LICENSE
+	sha256sums = 5494d56236ba15978fdaf62662ee16cabceb505ce20a7d6a725a94c057226a52
+	source_x86_64 = go-enum-bin-0.9.5-x86_64::https://github.com/abice/go-enum/releases/download/v0.9.5/go-enum_Linux_x86_64
+	sha256sums_x86_64 = d1a4ef83a729f2184f19e85446b6acfea07d25047bf4ef8b5e8e6c0d0c2ffff9
+	source_aarch64 = go-enum-bin-0.9.5-aarch64-go-enum::https://github.com/abice/go-enum/releases/download/v0.9.5/go-enum_Linux_aarch64
+	source_aarch64 = go-enum-bin-0.9.5-aarch64-go-enum::https://github.com/abice/go-enum/releases/download/v0.9.5/go-enum_Linux_arm64
+	sha256sums_aarch64 = 0b9fd7f291c6383b2438472215b2fab8c6db37eb4c57011901ac5bc0d3d5fdfc
+	sha256sums_aarch64 = 0b9fd7f291c6383b2438472215b2fab8c6db37eb4c57011901ac5bc0d3d5fdfc
+
+pkgname = go-enum-bin
