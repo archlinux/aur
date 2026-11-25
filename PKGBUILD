@@ -4,7 +4,7 @@
 # Contributor: Peter Smit <peter@smitmail.eu>
 
 pkgname=argo-bin
-pkgver=4.1.6
+pkgver=4.1.7
 pkgrel=1
 pkgdesc="Argo Workflows: Get stuff done with Kubernetes"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ conflicts=("${pkgname%-bin}")
 options=('!debug')
 source_x86_64=("argo_${pkgver}_x86_64.gz::https://github.com/argoproj/argo-workflows/releases/download/v${pkgver}/argo-linux-amd64.gz")
 source_aarch64=("argo_${pkgver}_aarch64.gz::https://github.com/argoproj/argo-workflows/releases/download/v${pkgver}/argo-linux-arm64.gz")
-sha256sums_x86_64=('885f886a338d7e7c0fd4a681152770fb54df1847f8fc55eaed788d661c0304e0')
-sha256sums_aarch64=('c11996a95329288ebcc51e5830ad34d61ed684d5280251828596305599f92bf5')
+sha256sums_x86_64=('bd1901b10c72c6e0d858cdab3f48a18f035aa90bbf5c13d9e64f08e4d9807fa4')
+sha256sums_aarch64=('048f6fa3d435fcf3e0bb488c512ccb16e5761394dd1bbbfca2ab6470759a7a59')
 
 latestver() {
   gh api --paginate repos/argoproj/argo-workflows/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "argo-linux-amd64.gz") and any(.assets[]; .name == "argo-linux-arm64.gz")) | .tag_name' | head -1 | sed -E 's/^v//'
