@@ -25,7 +25,7 @@ cd ompweb
 makepkg -si
 ```
 
-The package depends on Node.js 22.19.0 or newer and installs the AUR
+The package depends on Node.js 24.0.0 or newer and installs the AUR
 `oh-my-pi` package, which provides the `omp` command.
 
 ## Usage
