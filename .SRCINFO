@@ -1,0 +1,17 @@
+pkgbase = blitzar-bin
+	pkgdesc = Zero-knowledge proof acceleration with GPUs for C++ and Rust
+	pkgver = 1.115.3
+	pkgrel = 1
+	url = https://github.com/spaceandtimefdn/blitzar
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = blitzar
+	conflicts = blitzar
+	options = !debug
+	source = blitzar-bin-1.115.3-LICENSE::https://raw.githubusercontent.com/spaceandtimefdn/blitzar/v1.115.3/LICENSE
+	sha256sums = 5e865419e37fe3c7a51b8066f826d0a2dc59f0e86fbd3c7d97ef4ee47c294cd4
+	source_x86_64 = blitzar-bin-1.115.3-x86_64::https://github.com/spaceandtimefdn/blitzar/releases/download/v1.115.3/libblitzar-linux-x86_64.so
+	sha256sums_x86_64 = 7bb8059c86dfeeb940eef1688298bfbc524860841a6f4adc97f21db5de2bb430
+
+pkgname = blitzar-bin
