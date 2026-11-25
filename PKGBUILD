@@ -13,6 +13,7 @@ license=('GPL-2.0-or-later')
 makedepends=(
   'apache'
   'apr'
+  'boost'
   'cmake'
   'git'
   'glib2'
@@ -57,8 +58,7 @@ build() {
     -D USE_CAIRO:BOOL=OFF \
     -D USE_CURL:BOOL=OFF \
     -D USE_MEMCACHED:BOOL=OFF \
-    -D USE_RADOS:BOOL=OFF \
-    -W no-dev
+    -D USE_RADOS:BOOL=OFF
 
   cmake --build build
 }

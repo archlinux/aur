@@ -12,6 +12,7 @@ pkgbase = mod_tile-git
 	checkdepends = procps-ng
 	makedepends = apache
 	makedepends = apr
+	makedepends = boost
 	makedepends = cmake
 	makedepends = git
 	makedepends = glib2
