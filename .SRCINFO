@@ -1,0 +1,17 @@
+pkgbase = wg-obfuscator-bin
+	pkgdesc = Obfuscator for WireGuard traffic
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/ClusterM/wg-obfuscator
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = wg-obfuscator
+	conflicts = wg-obfuscator
+	options = !debug
+	source_x86_64 = wg-obfuscator-bin-1.6-x86_64.tar.gz::https://github.com/ClusterM/wg-obfuscator/releases/download/v1.6/wg-obfuscator-v1.6-linux-x64.tar.gz
+	sha256sums_x86_64 = af30264278c70c2e53ad3234e8050686b3bef4f6564edc9fb068ea8c885b8354
+	source_aarch64 = wg-obfuscator-bin-1.6-aarch64.tar.gz::https://github.com/ClusterM/wg-obfuscator/releases/download/v1.6/wg-obfuscator-v1.6-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4c730b3370665e7fd81fb2b7800b87b3387b9a179e935cb6498f85a8fc088fb8
+
+pkgname = wg-obfuscator-bin
