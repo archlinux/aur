@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Arrieta <sarrietav.dev@gmail.com>
 pkgname=omaread-git
-pkgver=r47.d13644a
+pkgver=r49.fd8eb88
 pkgrel=1
 pkgdesc="A fast, keyboard-first EPUB reader for Omarchy"
 arch=('x86_64')

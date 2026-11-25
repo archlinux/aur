@@ -1,6 +1,6 @@
 pkgbase = omaread-git
 	pkgdesc = A fast, keyboard-first EPUB reader for Omarchy
-	pkgver = r47.d13644a
+	pkgver = r49.fd8eb88
 	pkgrel = 1
 	url = https://github.com/sarrietav-dev/omaread
 	arch = x86_64
