@@ -1,6 +1,6 @@
 pkgbase = amspirit-lite-qt
-	pkgdesc = An accurate Amstrad emulator - Qt version (AppImage)
-	pkgver = 1.17.1
+	pkgdesc = An accurate Amstrad emulator - Qt5 version (AppImage)
+	pkgver = 1.18.3
 	pkgrel = 1
 	url = https://amspirit.fr/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = amspirit-lite-qt
 	depends = hicolor-icon-theme
 	options = !strip
 	options = !debug
-	source = amspirit-lite-qt-1.17.1.AppImage::https://github.com/AMSpiriT-Emulator/amspirit-releases/releases/download/Lite-1.17.1/Amspirit-Lite-Qt-1.17.1-x86_64.AppImage
-	sha256sums = 1011b5facd5b14cc602dd262398533327406ee2f762070303dcd04340b64bfb3
+	source = amspirit-lite-qt-1.18.3.AppImage::https://github.com/AMSpiriT-Emulator/amspirit-releases/releases/download/Lite-1.18.3/Amspirit-Lite-Qt-1.18.3-x86_64.AppImage
+	sha256sums = 9d57725322f2da1cb74f70333f015ad0d2d7542e43a01386b7d651d53ddeb438
 
 pkgname = amspirit-lite-qt
