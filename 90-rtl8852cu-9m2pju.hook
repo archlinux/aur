@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = rtl8852cu-9m2pju-dkms
+
+[Action]
+Description = Showing rtl8852cu-9m2pju-dkms install message...
+When = PostTransaction
+Exec = /bin/sh -c 'echo ":: The rtl8852cu kernel module (9M2PJU DKMS release) has been installed."; echo ":: Reboot or replug your USB WiFi adapter to load the driver."; echo ":: 73 from 9M2PJU, https://hamradio.my"'
