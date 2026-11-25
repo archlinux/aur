@@ -3,7 +3,7 @@
 # The copy in the Wayper repository (packaging/aur/PKGBUILD) is the source of
 # truth. The release workflow fills in pkgver and sha256sums and publishes it.
 pkgname=wayper
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Wayland-first wallpaper manager with Wallhaven integration"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=(
 )
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yuukidach/wayper/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a3896fde4132319882f818ccba4c13d4c2cbd3288a31aff9e469942fd63420e2')
+sha256sums=('9274475d839cd1e8a68cb32f681724d242b6fb9c437b3a9f0ff27eb1975a4d22')
 
 build() {
     cd "$pkgname-$pkgver"
