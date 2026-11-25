@@ -1,7 +1,7 @@
 pkgbase = zxc
 	pkgdesc = Asymmetric lossless compression CLI — ultra-fast decode, 40%+ faster than LZ4 on ARM64 (source build)
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hellobertrand/zxc
 	arch = x86_64
 	arch = aarch64

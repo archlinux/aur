@@ -1,9 +1,9 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Qwen3.8 Flash Next.
+# Created with assistance from Hy4 flash Free.
 
 pkgname=zxc
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Asymmetric lossless compression CLI — ultra-fast decode, 40%+ faster than LZ4 on ARM64 (source build)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hellobertrand/zxc"
