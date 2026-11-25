@@ -203,14 +203,6 @@ models:
 #                           (a decode that used to wait behind a 64K prompt runs
 #                           12.3 -> 40.9 tok/s; GUIDE.md 4.x). 0 restores the old
 #                           schedule; N pins the share.
-#                           head = each step is governed by the class of the OLDEST
-#                           active request: a prefill head freezes the decode lanes,
-#                           a decode head freezes prefill and admission. TRADE: a
-#                           new prompt's TTFT floor becomes the summed remaining
-#                           decode of every older request (new prompts wait behind
-#                           older decodes). Health: /stats head_freeze_releases
-#                           should stay ~0; each rise marks a near-stall the
-#                           liveness net had to release. auto/N remains the default.
 #   prefix-cache-mib: N     keeps finished conversations in RAM, UNENCRYPTED
 #   prefix-cache-ttl: S     how long a prefix entry stays (GUIDE.md 4.8)
 #   deterministic: true     reproducible scheduling (disables the lending cache)

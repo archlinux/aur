@@ -6,26 +6,8 @@
 #   4. Build and test (run: makepkg -sf)
 _pkgname=radiance-inference
 pkgname=${_pkgname}-git
-pkgver=2.2.0.r1099
-# pkgrel 2: ships the 12-patch scheduler-governance series on base b6b8751c
-# ("radiance 2.2.0"): 0001-0003 "head-class governance" (prefill-interleave:
-# head — each step governed by the oldest active request's class), 0004 a
-# head-mode steps_held_decode undercount fix found by live load testing,
-# 0005-0007 "cohort-epoch governance" (prefill-interleave: epoch — the oldest
-# active request's class governs until every same-class request present at
-# epoch start finishes that phase; preemption revokes cohort membership), and
-# 0008-0010 the epoch cohort JOIN WINDOW (requests created within 5 s of
-# epoch formation join the cohort with full membership), and 0011-0012 make
-# that window SYMMETRIC — [formation − 5 s, formation + 5 s] — with the
-# pre-formation side cut-only (only rows the formation froze on the other
-# class may join, once they flip into the epoch's class). NB: makepkg runs
-# prepare() BEFORE pkgver(), so pkgver carries the +12 patch commits
-# (r1099 = 1087 on main + 12); and when upstream moves, makepkg's
-# pkgver rewrite resets pkgrel to 1 — re-set it to 2 on rebuilds so
-# `pacman -Q` keeps distinguishing the patched build. Patches touch no build
-# files (core/sched/config/server-metrics + tests + docs only), so the VOPD
-# logic below is unaffected.
-pkgrel=2
+pkgver=2.2.0.r1087
+pkgrel=1
 pkgdesc="C++20 LLM inference server for AMD GPUs (primarily gfx1201) with OpenAI-compatible HTTP API (git HEAD)"
 arch=('x86_64')
 url="https://codeberg.org/StillDeadcode/radiance"
@@ -44,35 +26,11 @@ options=('!lto' '!debug')
 source=("${_pkgname}::git+${url}.git#branch=main"
         radiance.service
         radiance.yaml
-        radiance.env
-        0001-sched-prefill-interleave-head-mode-oldest-request-cl.patch
-        0002-tests-head-mode-governance-coverage.patch
-        0003-docs-document-prefill-interleave-head.patch
-        0004-sched-head-mode-steps_held_decode-counts-the-frozen-.patch
-        0005-sched-prefill-interleave-epoch-mode-cohort-epoch-gov.patch
-        0006-tests-epoch-governance-coverage.patch
-        0007-docs-document-prefill-interleave-epoch.patch
-        0008-sched-epoch-cohort-join-window-arrivals-within-5-s-o.patch
-        0009-tests-epoch-join-window-coverage.patch
-        0010-docs-document-the-epoch-cohort-join-window.patch
-        0011-sched-symmetric-epoch-cohort-join-window-the-pre-for.patch
-        0012-docs-document-the-symmetric-epoch-join-window-and-th.patch)
+        radiance.env)
 sha256sums=('SKIP'
             'c903669f221faea09545b70525f780001d73648c66cfc472ac9b23df23956400'
-            'cc76ea474ab22a0a2ef24a00c1dbb936df444c83c522ebcd667fd0eafce49112'
-            'a0310c047f107a493c275e5e92b896785238f8dbcc5319efca86ac537885c3ac'
-            'ff769d39bb82fe419ec3694e1f8beebadd6dcc1a602e3f7cf7969527ea347c18'
-            'd33d9f9cb9b7623528f93ed15fbfb3c88bae1c6e193bcf206fc59b54c537f678'
-            'dbcf0099b44df7f8a82f18b745e9f5c39fd9a63c032127d6b2b4f58f617d6de2'
-            'aaa09367edce9a1d536cfcd1678efe2f446b2e2d9edb2b8561473c11efe05b32'
-            '1b383f08e53ce9147441971084a6c489c5116ca9e371ff7fd64af8048d4109a7'
-            '959716d3ced50db15d60637dea7a9ff325de6572fe4b1110b367af9f8319b413'
-            'ae7b6f818ad65d03064cae61c7eb818813069a84aef397fd7122935cd1b5f1c8'
-            'e8049113a9f994c3386ef6d21a6e3fe440ebc25f891492a9271c335b427684af'
-            '3c5b56023b51a0ffe39faeb7fc9aee9dfe1f7c8ae4728018f7b35d48a4db86f1'
-            '43dc59a9d51d6968b9ed6af322e40924f45392bafd13fe35bcaf39a0b76098d2'
-            '4b830dcfcff7a636ad02121d08df8b3b76dfc82bca74d5cf1e1dbf7699e13070'
-            '16c9167c5570c5e12af8f1305d0fe0ca02afd6251a90713a6d87d70914550479')
+            'f03e9c85f9540527b2d1a756238fb3dd25c1e4718c78b48eb0e0ef8b3313c9e5'
+            'a0310c047f107a493c275e5e92b896785238f8dbcc5319efca86ac537885c3ac')
 
 # Edit for other hardware: run `offload-arch`.
 _hip_archs='gfx1201'
@@ -87,26 +45,6 @@ pkgver() {
   # upstream bumps per release (2.0.0 at ddcb9c6), plus the commit count.
   _basever=$(grep -m1 '^project(' CMakeLists.txt | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
   printf "%s.r%s" "${_basever}" "$(git rev-list --count HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  # git am needs an identity for the merge commits --3way may produce.
-  git config user.email "packaging@localhost"
-  git config user.name "makepkg"
-  # The 00??-*.patch files live beside the PKGBUILD, NOT in a patches/ subdir:
-  # makepkg strips any directory prefix from local source entries (get_filename
-  # keeps only the basename) and resolves them against $startdir/$SRCDEST only,
-  # so a "patches/..." entry fails with "not found in the build directory".
-  # They are staged into $srcdir by basename. Applied explicitly in order;
-  # loud failure on upstream drift is intended — no fallbacks: a conflict
-  # means the series no longer matches main and must be rebased in the dev
-  # clone, not papered over here.
-  git am --3way "${srcdir}"/0001-*.patch "${srcdir}"/0002-*.patch "${srcdir}"/0003-*.patch \
-              "${srcdir}"/0004-*.patch "${srcdir}"/0005-*.patch "${srcdir}"/0006-*.patch \
-              "${srcdir}"/0007-*.patch "${srcdir}"/0008-*.patch "${srcdir}"/0009-*.patch \
-              "${srcdir}"/0010-*.patch \
-              "${srcdir}"/0011-*.patch "${srcdir}"/0012-*.patch
 }
 
 build() {
