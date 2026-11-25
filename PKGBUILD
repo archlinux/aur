@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folia-major
 _pkgname=Folia
-pkgver=0.7.29
+pkgver=0.8.0
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -20,6 +20,7 @@ makedepends=(
     'nvm'
     'git'
     'rustup'
+    'curl'
     'jq'
 )
 source=(
@@ -27,9 +28,9 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('dc0ddd9b08419eacae5e183aa198db7232561f691217794d3bd67abdc3467dfe'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+sha256sums=('cb2ccac2f10c51dbd1a3f4a6a3ca90db3021f8ed1d89ba0cc8b131049d1fabd9'
+            'b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b'
+            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -82,6 +83,16 @@ _set_rust_build_env() {
 	export CARGO_PROFILE_RELEASE_STRIP=symbols
 	mkdir -p "${HOME}" "${CARGO_HOME}"
 }
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+}
 _build_windowtolayer() {
     cd "$(_get_project_dir)"
     local _wt_script="$(_get_project_dir)/packaging/linux/build-windowtolayer.mjs"
@@ -116,7 +127,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
-    " "${srcdir}/${pkgname}.sh" "${srcdir}/${pkgname}.js"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     _set_electron_build_env
     _set_npm_build_env
@@ -139,17 +150,18 @@ build() {
     export NODE_ENV=production
     export NODE_OPTIONS="--max-old-space-size=4096"
     npm run build:vercel-api
+    npm run sources:build
     npx vite build
     _build_windowtolayer
     npm run build:wallpaper-helper
     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
     ln -sf "/usr/bin/ffmpeg" "$(_get_app_dir)/resources/ffmpeg-audio/ffmpeg"
-    rm -rf "$(_get_app_dir)/resources/default_app.asar"
+    _delete_other_arch_files
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.js" -t "${pkgdir}/usr/lib/${pkgname}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname}/"
-    install -Dm644 "$(_get_project_dir)/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "$(_get_project_dir)/build/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
     install -Dm644 "$(_get_project_dir)/packaging/aur/${pkgname}-bin/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
