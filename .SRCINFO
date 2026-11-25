@@ -1,0 +1,17 @@
+pkgbase = solace-nisshi-bin
+	pkgdesc = Apache Kafka compatible broker with S3, PostgreSQL, SQLite, Apache Iceberg and Delta Lake
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/nisshi-io/solace-nisshi
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = solace-nisshi
+	conflicts = solace-nisshi
+	options = !debug
+	source_x86_64 = solace-nisshi-bin-0.8.2-x86_64.tar.gz::https://github.com/nisshi-io/solace-nisshi/releases/download/v0.8.2/nisshi-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 36c92a399f2fa8a777488977c7d3fee5b1a51a385cdb7149a1ea96f0ecb58664
+	source_aarch64 = solace-nisshi-bin-0.8.2-aarch64.tar.gz::https://github.com/nisshi-io/solace-nisshi/releases/download/v0.8.2/nisshi-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 09f4012b7742d5892cc567ad641105e145d4b9857f5cf6eab7efdd346bc9905e
+
+pkgname = solace-nisshi-bin
