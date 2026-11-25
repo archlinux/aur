@@ -2,7 +2,7 @@
 # Rendered from packaging/aur/blockwork-bin/PKGBUILD.in in Blockworked/Blockwork by .github/workflows/aur.yml.
 
 pkgname=blockwork-bin
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='Build keyboard and mouse macros by snapping blocks together (prebuilt, bundles its own Qt)'
 url='https://blockworked.com'
@@ -24,9 +24,9 @@ source_aarch64=("blockwork-$pkgver-aarch64.AppImage::$_repo/releases/download/$p
 noextract=("blockwork-$pkgver-$CARCH.AppImage")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '208792027d8ad6017e501d77bef37b710243178ed434f3d3d5c92e1a25edf200'
-            '58f70ccb971e79ab178c16c5284d14db30a4402e1e275737c6acb7788c0f33e0')
-sha256sums_x86_64=('373f9b7cb858b2457ea090ed86284801080be040d893f07cf60edce62ac482f4')
-sha256sums_aarch64=('36cefd7efbdd010ccdc3d715ef81923f8db8977c6bf4620f5f45b518b78f1b1b')
+            'da86846a4f910166154cb359f00bd2f1e5469dc4c5e28923a9fc606ef8250677')
+sha256sums_x86_64=('3f92f56cecf2b1493075b5f3d03931cf0bcd4b119cab5e7c7700090492e1bfe0')
+sha256sums_aarch64=('f3f5d79df553af7c05016475164dcf9c666ecf069073c58ace58e689daeff7f1')
 
 prepare() {
     rm -rf squashfs-root
