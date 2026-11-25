@@ -3,7 +3,7 @@
 
 pkgname=layrics-git
 _pkgname=layrics
-pkgver=r124.83205fd
+pkgver=r125.8aa2171
 pkgrel=1
 pkgdesc="Desktop lyrics overlay for Wayland — auto-synced with MPRIS players, rendered via libass on wlr-layer-shell"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
   'python-diskcache'
   'python-pyaes'
   'python-appdirs'
-  'python-kara-templater>=1.1.0'
+  'python-kara-templater>=1.1.1'
 )
 makedepends=(
   'git'

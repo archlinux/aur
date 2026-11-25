@@ -1,6 +1,6 @@
 pkgbase = layrics-git
 	pkgdesc = Desktop lyrics overlay for Wayland — auto-synced with MPRIS players, rendered via libass on wlr-layer-shell
-	pkgver = r124.83205fd
+	pkgver = r125.8aa2171
 	pkgrel = 1
 	url = https://github.com/sitiyou/layrics
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = layrics-git
 	depends = python-diskcache
 	depends = python-pyaes
 	depends = python-appdirs
-	depends = python-kara-templater>=1.1.0
+	depends = python-kara-templater>=1.1.1
 	provides = layrics
 	conflicts = layrics
 	source = layrics::git+https://github.com/sitiyou/layrics.git
