@@ -1,35 +1,50 @@
 # Maintainer: Julian Daube <joposter (at) gmail (dot) com>
 # Contributor: Julian Daube <joposter (at) gmail (dot) com>
+
 _pkgname=python-django-weasyprint
 pkgname=$_pkgname-git
-pkgver=v0.6.0.r14.g1e0a377
+pkgver=2.6.0.r0.gc88c5ef
 pkgrel=1
-pkgdesc="A Django class-based view generating PDF resposes using WeasyPrint"
-
-provides=("$_pkgname")
-url="https://github.com/fdemmer/django-weasyprint"
+pkgdesc="A Django class-based view generating PDF responses using WeasyPrint"
 arch=("any")
-license=("Apache")
-
-source=("$pkgname::git+$url")
-depends=("python-django" "python-weasyprint")
-makepepends=("python-setuptools")
-
+url="https://github.com/fdemmer/django-weasyprint"
+license=("Apache-2.0")
+depends=("python" "python-django>=3.2" "python-weasyprint>=68")
+makedepends=(
+	"git"
+	"python-build"
+	"python-installer"
+	"python-wheel"
+	"python-setuptools"
+)
+checkdepends=("python-pytest")
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+sha256sums=("SKIP")
 
 pkgver() {
-	cd "$pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	git -C "$srcdir/$_pkgname" clean -dfx
+}
 
-build() { 
-	cd "$pkgname"
-	python setup.py build 
+build() {
+	cd "$_pkgname"
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "$_pkgname"
+	PYTHONPATH="$PWD/src" python -m pytest
 }
 
 package() {
-	cd "$pkgname"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-}
+	cd "$_pkgname"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
-md5sums=("SKIP")
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+}

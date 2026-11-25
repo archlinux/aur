@@ -1,15 +1,22 @@
 pkgbase = python-django-weasyprint-git
-	pkgdesc = A Django class-based view generating PDF resposes using WeasyPrint
-	pkgver = v0.6.0.r14.g1e0a377
+	pkgdesc = A Django class-based view generating PDF responses using WeasyPrint
+	pkgver = 2.6.0.r0.gc88c5ef
 	pkgrel = 1
 	url = https://github.com/fdemmer/django-weasyprint
 	arch = any
-	license = Apache
-	depends = python-django
-	depends = python-weasyprint
-	provides = python-django-weasyprint
-	source = python-django-weasyprint-git::git+https://github.com/fdemmer/django-weasyprint
-	md5sums = SKIP
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-django>=3.2
+	depends = python-weasyprint>=68
+	provides = python-django-weasyprint=2.6.0.r0.gc88c5ef
+	conflicts = python-django-weasyprint
+	source = python-django-weasyprint::git+https://github.com/fdemmer/django-weasyprint.git
+	sha256sums = SKIP
 
 pkgname = python-django-weasyprint-git
-
