@@ -2,7 +2,7 @@
 
 pkgbase=mdcz
 pkgname=("${pkgbase}-desktop")
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Media metadata scraper (desktop, built on Electron)"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ install="${pkgbase}.install"
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgbase}.desktop"
         "${pkgbase}.sh")
-sha256sums=('65ebfbf2239f4bd4efd9f09907eda109ad479e982b01205d929b760c5a4a0bb7'
+sha256sums=('42c63b0e406e65b72fb1a152c39bbfc641e90888b204d7f199b2e434c63a0faf'
             '045c3410b0ecb1aa6eb4e1a9c5d72f70d49146135f7f631decbc40bbb0bbde40'
             'cbfd7e103b2cd99572348601e4e9d809d7dca993b1c7d664ddeeb7a24f84549a')
 
