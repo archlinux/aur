@@ -1,0 +1,19 @@
+pkgbase = yorkie-bin
+	pkgdesc = Document store for collaborative applications
+	pkgver = 0.7.29
+	pkgrel = 1
+	url = https://github.com/yorkie-team/yorkie
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = yorkie
+	conflicts = yorkie
+	options = !debug
+	source = yorkie-bin-0.7.29-LICENSE::https://raw.githubusercontent.com/yorkie-team/yorkie/v0.7.29/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = yorkie-bin-0.7.29-x86_64.tar.gz::https://github.com/yorkie-team/yorkie/releases/download/v0.7.29/yorkie-v0.7.29-linux-amd64.tar.gz
+	sha256sums_x86_64 = e5120534d977062c43957247aa72b4e8ef8ed5d0fbc33b4fafea190b8e68c65b
+	source_aarch64 = yorkie-bin-0.7.29-aarch64.tar.gz::https://github.com/yorkie-team/yorkie/releases/download/v0.7.29/yorkie-v0.7.29-linux-arm64.tar.gz
+	sha256sums_aarch64 = cfe54bfd6160b088993af2d01238159912de558b8a653dd85a67e10ade680e2c
+
+pkgname = yorkie-bin
