@@ -1,7 +1,7 @@
 # Maintainer: Eli Fereira <eli@fereira.net>
 
 pkgname=colibri-social-beta
-pkgver=0.6.0_spaces.25
+pkgver=0.6.0_spaces.38
 pkgrel=1
 pkgdesc="Call, chat, and hang out on a platform built for you! (spaces version)"
 url="https://github.com/colibri-social/colibri.social"
@@ -36,7 +36,7 @@ source=(
   "LICENSE_$pkgver::$_rawurl/LICENSE"
 )
 sha256sums=(
-  '3c20ad33a6c6876066106f80286bcdedcba4ab11c735eafb1c4a1023ad4cd2a2'
+  'baedcb10aafce6c6c71445f75f512e73284716f5c6ee4ed70dae5020b7ce463a'
   'SKIP'
 )
 
@@ -52,7 +52,9 @@ prepare() {
 build() {
   cd "${srcdir}/colibri.social-${pkgver//_/-}"
 
-  pnpm install --frozen-lockfile
+  # Use sharp's prebuilt binaries instead of compiling against a globally
+  # installed libvips (which would require node-addon-api and libvips headers)
+  SHARP_IGNORE_GLOBAL_LIBVIPS=1 pnpm install --frozen-lockfile
   pnpm --filter @colibri-social/wrapper tauri build --bundles deb --no-sign
 }
 
