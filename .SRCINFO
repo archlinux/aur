@@ -1,6 +1,6 @@
 pkgbase = md-viewer-git
 	pkgdesc = Fast, lightweight markdown viewer with LaTeX math, mermaid diagrams, tabs, file explorer and live reload
-	pkgver = 0.3.12
+	pkgver = 0.3.13
 	pkgrel = 2
 	url = https://github.com/aydiler/md-viewer
 	arch = x86_64
