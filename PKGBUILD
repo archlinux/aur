@@ -9,7 +9,7 @@
 #   $ curl -s https://api.github.com/repos/LuaJIT/LuaJIT/commits/v2.1 | jq -r "\"2.1.\(.commit.committer.date | fromdate)+\(.sha[0:7])\""
 
 pkgname=mingw-w64-luajit
-pkgver=2.1.1794386141+63c8f1a
+pkgver=2.1.1795119671+96f7b29
 _commit=${pkgver##*+}
 pkgrel=1
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua 5.1'
@@ -19,7 +19,7 @@ license=('MIT')
 depends=('mingw-w64-crt')
 makedepends=('gcc-libs' 'lib32-gcc-libs' 'mingw-w64-gcc')
 source=("LuaJIT-${_commit}.tar.gz::https://github.com/LuaJIT/LuaJIT/archive/${_commit}.tar.gz")
-sha256sums=('8cad76f444b76001b7123dc626c5d0bfc24f1f790333737443345f7e6b41bb5f')
+sha256sums=('ce9d03b33e4c28492e8dacacf69c6975a0502cf9225957a6b42dc28f92cbbd34')
 options=('!debug' '!strip' '!buildflags' staticlibs)
 
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
