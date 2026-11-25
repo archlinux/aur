@@ -12,8 +12,8 @@ pkgdesc="C++20 LLM inference server for AMD GPUs (primarily gfx1201) with OpenAI
 arch=('x86_64')
 url="https://codeberg.org/StillDeadcode/radiance"
 license=('Apache-2.0')
-depends=('gcc-libs' 'glibc' 'ffmpeg' 'rocm-gfx120x-bin' 'openblas')
-makedepends=('git' 'cmake' 'ninja' 'openblas')
+depends=('gcc-libs' 'glibc' 'ffmpeg' 'rocm-hip-runtime' 'openblas')
+makedepends=('git' 'cmake' 'ninja' 'openblas' 'rocm-hip-sdk')
 optdepends=('curl: hfget.sh model-download helper (/usr/libexec/radiance/hfget.sh)'
             'jq: hfget.sh'
             'python3: rad-export tool (/usr/bin/rad-export)')
