@@ -1,0 +1,20 @@
+pkgbase = tproxy-bin
+	pkgdesc = A cli tool to proxy and analyze TCP connections
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/kevwan/tproxy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = tproxy
+	conflicts = tproxy
+	options = !debug
+	source = tproxy-bin-0.9.2-LICENSE::https://raw.githubusercontent.com/kevwan/tproxy/v0.9.2/LICENSE
+	sha256sums = 54234cce94fcd7dbc33849756dcb5516311e0385b464cd9efc9cd3ae4a4b55f6
+	source_x86_64 = tproxy-bin-0.9.2-x86_64.tar.gz::https://github.com/kevwan/tproxy/releases/download/v0.9.2/tproxy-v0.9.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = 115b0c7eda6928b65262acf5a820014443f0e4272790296d353d31be6de7f6a4
+	source_aarch64 = tproxy-bin-0.9.2-aarch64.tar.gz::https://github.com/kevwan/tproxy/releases/download/v0.9.2/tproxy-v0.9.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = fad03e3558a4ea518f0c1ad885ca9525fd9005470fbb15e4b75e2cfd18fa9de0
+
+pkgname = tproxy-bin
