@@ -1,0 +1,19 @@
+pkgbase = agent-tincan-bin
+	pkgdesc = Let your AI agents ask each other for help, over Tailscale
+	pkgver = 0.33.0
+	pkgrel = 1
+	url = https://github.com/mvanhorn/agent-tincan
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = agent-tincan
+	conflicts = agent-tincan
+	options = !debug
+	source = agent-tincan-bin-0.33.0-LICENSE::https://raw.githubusercontent.com/mvanhorn/agent-tincan/v0.33.0/LICENSE
+	sha256sums = be567392323b5023cb95cedbe384f23549efea46ad3acefaba5cc8285632c802
+	source_x86_64 = agent-tincan-bin-0.33.0-x86_64::https://github.com/mvanhorn/agent-tincan/releases/download/v0.33.0/tincan_linux_amd64
+	sha256sums_x86_64 = b3e52eefdba574b05c89db0179e1e96ddecd5a4fc42cb4c01cd7549eed3382de
+	source_aarch64 = agent-tincan-bin-0.33.0-aarch64::https://github.com/mvanhorn/agent-tincan/releases/download/v0.33.0/tincan_linux_arm64
+	sha256sums_aarch64 = c23560e2c2c5b5ce7a709188ddc480bfdbb0afb0c3c7a126ad9ba88132e025c8
+
+pkgname = agent-tincan-bin
