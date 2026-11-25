@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=chrome-devtools-mcp
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="MCP server for Chrome DevTools"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
 )
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha512sums=('61fe2a852d3eda8a3b73e80ec923031d0b7864bff22971b6331c738e4d20700ac836d710ded2e2415cc05ba8369ecc90cc01a191c2f0596040b65c77060f92a6')
+sha512sums=('b0eec6626aa7be68d0d25f638aebf0d83c8fc62de70404c56f1bcd53c02b6a960e51713bf73e9f6e280ab836c9f3f8ec8bfe0e0373af1e51aaf379872f07a618')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${pkgname}/latest" | jq -r '.version'
