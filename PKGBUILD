@@ -29,8 +29,8 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-            '1d078765ddfb31c3c424fbfef8a47a4443b38303e82065d7db49a88371df6ac8')
+sha256sums=('b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b'
+            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 sha256sums_aarch64=('17d7f27f72c61072c13951f8503149a31e3cc9d81a9d7dd68b5a92cc547e2757')
 sha256sums_x86_64=('09f4719fb469f27a352f162db2d308bc4e7b0063a64475ac40335a4f0a9fc7e8')
 _get_app_dir() {
