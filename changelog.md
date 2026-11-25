@@ -1,3 +1,36 @@
+2026.11.25, v19.24.5
+
+feature:
+- 32b3aba5 cloudcmd: dword v16.0.6
+- 34e59ee4 cloudcmd: edward v16.0.6
+
+2026.11.25, v19.24.4
+
+fix:
+- 07b8f2a0 server: limit request body size to 1 MiB
+- 68f155de server: config: reject null payload in socket message
+
+feature:
+- d35f84b0 cloudcmd: pullout v5.0.1
+
+2026.11.25, v19.24.3
+
+fix:
+- 6bbe5811 server: config: reject null payload in socket message
+
+feature:
+- a9bed3ab cloudcmd: qword v1.1.22
+- 9517d45d cloudcmd: deepword v11.0.2
+- 18f3d429 cloudcmd: dword v16.0.5
+- 75799337 cloudcmd: edward v16.0.4 (#491)
+
+2026.11.25, v19.24.2
+
+feature:
+- 54e5570f cloudcmd: restbox: v5.0.1
+- 20e6aac7 get-json-from-file-table: use fields
+- c44de9df common: fields: add
+
 2026.11.23, v19.24.1
 
 feature:
