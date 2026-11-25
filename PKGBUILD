@@ -1,6 +1,6 @@
 # Maintainer: Kamil Piwowarski <kapiwko@gmail.com>
 pkgname=meteo-pl
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc='ICM weather forecasts, interactive meteograms and a Plasma 6 widget'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,12 @@ depends=('glibc' 'libgcc' 'libstdc++' 'hicolor-icon-theme'
          'kirigami' 'ki18n' 'knotifications' 'kcolorscheme' 'kcoreaddons' 'qqc2-desktop-style'
          'breeze-icons' 'krunner')
 makedepends=('cmake' 'ninja' 'gettext' 'extra-cmake-modules' 'python')
-checkdepends=('xorg-server-xvfb' 'xorg-xauth' 'dbus' 'ttf-dejavu'
-              'plasma-workspace' 'plasma-desktop')
+_build_tests=OFF
+if [[ ${METEO_AUR_TESTS:-0} == 1 ]]; then
+    _build_tests=ON
+    checkdepends=('xorg-server-xvfb' 'xorg-xauth' 'dbus' 'ttf-dejavu'
+                  'plasma-workspace' 'plasma-desktop')
+fi
 optdepends=('plasma-desktop: Plasma widget and KRunner integration'
             'libplasma: Plasma widget runtime'
             'kcmutils: Plasma widget settings')
@@ -22,9 +26,9 @@ source=("https://github.com/kapiwko/meteo-pl/releases/download/v${pkgver}/meteo-
         "meteo-pl-${pkgver}-SHA256SUMS::https://github.com/kapiwko/meteo-pl/releases/download/v${pkgver}/SHA256SUMS"
         "meteo-pl-${pkgver}-SHA256SUMS.asc::https://github.com/kapiwko/meteo-pl/releases/download/v${pkgver}/SHA256SUMS.asc"
         'valijson-5eac4b66.tar.gz::https://codeload.github.com/tristanpenman/valijson/tar.gz/5eac4b66f20b2c189ae40281c29e71cf39a958ec')
-sha256sums=('8b12d44145463a90a9a0579f1806a7795c9d05594b93cb7a92d2cdceb6a2f17d'
-            '4e482d508aa3d9d3bf37924a02a65c4a3b69eb84d3b24f18a979aa24dacc2454'
-            '7acc9f52476177794502ef63217e782850c87891fa00d16289c8843b54edda79'
+sha256sums=('bb1477d8b192a528b505d4754abf264221fa64ec3dc36f70ecdee96d019e6a0f'
+            'f1df7de7bf532a9e798d4c552e34963abf94e96e26f862d4111e7c75f0eaff71'
+            '5be0bb655a31fa986e09000d80c082bbbad2d5c1f8d5952ae5943315f1ef1bf9'
             '8b68741da04708c806d07a5a5fd181d3fb801aa161d7f65f45d7a3cc1b0c98ee')
 validpgpkeys=('1C0C43EF3001F658C11971D1A4A884E5B7A2A8A1')
 
@@ -39,7 +43,7 @@ build() {
     cmake -S "$srcdir/meteo-pl-${pkgver}" -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_TESTING=ON \
+        -DBUILD_TESTING="$_build_tests" \
         -DMETEO_BUILD_PLASMOID=ON \
         -DMETEO_BUILD_KRUNNER=ON \
         -DFETCHCONTENT_SOURCE_DIR_METEO_VALIJSON="$srcdir/valijson-5eac4b66f20b2c189ae40281c29e71cf39a958ec" \
@@ -47,9 +51,11 @@ build() {
     cmake --build build
 }
 
-check() {
-    dbus-run-session -- xvfb-run --auto-servernum ctest --test-dir build --output-on-failure
-}
+if [[ $_build_tests == ON ]]; then
+    check() {
+        dbus-run-session -- xvfb-run --auto-servernum ctest --test-dir build --output-on-failure
+    }
+fi
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
