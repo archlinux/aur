@@ -3,10 +3,10 @@
 pkgname=nsky-protondrive-client-bin
 _pkgname=nsky-protondrive-client
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial Proton Drive command-line client with bidirectional folder sync'
 arch=('x86_64' 'aarch64')
-url='https://github.com/NSky/nsky-protondrive-client'
+url='https://github.com/NSky/protondrive-client'
 license=('MIT')
 # Self-contained .NET build: no .NET runtime needed. OpenSSL is not linked but loaded at run time (HTTPS),
 # so namcap cannot see that it is needed.

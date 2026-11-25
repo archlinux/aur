@@ -1,8 +1,8 @@
 pkgbase = nsky-protondrive-client-bin
 	pkgdesc = Unofficial Proton Drive command-line client with bidirectional folder sync
 	pkgver = 0.2.2
-	pkgrel = 1
-	url = https://github.com/NSky/nsky-protondrive-client
+	pkgrel = 2
+	url = https://github.com/NSky/protondrive-client
 	install = nsky-protondrive-client-bin.install
 	arch = x86_64
 	arch = aarch64
