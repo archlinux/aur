@@ -1,0 +1,19 @@
+pkgbase = fast-note-sync-service-bin
+	pkgdesc = Low-latency note synchronization service with a web UI and REST API
+	pkgver = 3.6.1
+	pkgrel = 1
+	url = https://github.com/haierkeys/fast-note-sync-service
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = fast-note-sync-service
+	conflicts = fast-note-sync-service
+	options = !debug
+	source = fast-note-sync-service-bin-3.6.1-LICENSE::https://raw.githubusercontent.com/haierkeys/fast-note-sync-service/3.6.1/LICENSE
+	sha256sums = 0c0f3c7cad5aa48c127fdb50c089f7742788c90dd1a7170ea734d41d9993d3fe
+	source_x86_64 = fast-note-sync-service-bin-3.6.1-x86_64.tar.gz::https://github.com/haierkeys/fast-note-sync-service/releases/download/3.6.1/fast-note-sync-service-3.6.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = b6fdd037f33066ab7644814112ed82bc8528f8a1b10d0faf4f53d9d28834e237
+	source_aarch64 = fast-note-sync-service-bin-3.6.1-aarch64.tar.gz::https://github.com/haierkeys/fast-note-sync-service/releases/download/3.6.1/fast-note-sync-service-3.6.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 948d640912d58b5038f1bf348db6264cd452756ed0ba0088c51322aebcfe01dd
+
+pkgname = fast-note-sync-service-bin
