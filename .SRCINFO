@@ -1,0 +1,19 @@
+pkgbase = snarkos-bin
+	pkgdesc = A Decentralized Operating System for ZK Applications
+	pkgver = 4.13.1
+	pkgrel = 1
+	url = https://github.com/aleo-labs-protocol/snarkOS
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = snarkos
+	conflicts = snarkos
+	options = !debug
+	source = snarkos-bin-4.13.1-LICENSE::https://raw.githubusercontent.com/aleo-labs-protocol/snarkOS/v4.13.1/LICENSE.md
+	sha256sums = d1ee81266b96305cdec883e60fad804aa1d04b4698dccb5942ca51816b10df57
+	source_x86_64 = snarkos-bin-4.13.1-x86_64.zip::https://github.com/aleo-labs-protocol/snarkOS/releases/download/v4.13.1/aleo-v4.13.1-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 23a93edcaee8fee88077028798648accf7cfe54e06dd64b0ed0174b39fd379f1
+
+pkgname = snarkos-bin
