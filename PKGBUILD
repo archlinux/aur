@@ -2,7 +2,7 @@
 # Contributor: Jacqueline Fisher <jcfisher@reality-overwritten.net>
 pkgname=postybirb
 _pkgname=PostyBirb
-pkgver=4.1.7
+pkgver=4.1.8
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -32,9 +32,9 @@ source=(
     "${pkgname}.js"
 	"${pkgname}.sh"
 )
-sha256sums=('9c3e223e7aa703924554306a7e1085b7c96e97ce710cca4255b45bfd8cc0f70b'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+sha256sums=('28630b9d753ecc9aa26f069fb73a2bda0a5e7306079f064e640693b9695315bf'
+            'b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b'
+            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -114,13 +114,23 @@ _set_yarn_build_env() {
 		sed -i "s|https://registry.yarnpkg.com/|${_reg}/|g" yarn.lock
 	fi
 }
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+}
 prepare() {
     cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
-    " "${srcdir}/${pkgname}.sh" "${srcdir}/${pkgname}.js"
+    " "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -143,7 +153,7 @@ build() {
     export NODE_ENV=production
     yarn run build:prod
     yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config electron-builder.yml
-	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+	_delete_other_arch_files
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
