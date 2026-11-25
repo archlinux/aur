@@ -1,0 +1,20 @@
+pkgbase = opensrc-bin
+	pkgdesc = Fetch source code for npm packages to give AI coding agents deeper context
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/vercel-labs/opensrc
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = opensrc
+	conflicts = opensrc
+	options = !debug
+	source = opensrc-bin-0.7.3-LICENSE::https://raw.githubusercontent.com/vercel-labs/opensrc/v0.7.3/LICENSE
+	sha256sums = 014bb31e83d5c2e76aea1cc6e82217346ab41362f32cb355ad0f5c10aa0aeaff
+	source_x86_64 = opensrc-bin-0.7.3-x86_64::https://github.com/vercel-labs/opensrc/releases/download/v0.7.3/opensrc-linux-x64
+	sha256sums_x86_64 = 2f472269c2c05e56d098c967be9a78efa9c2d23389b293ee3dec942d6f62c882
+	source_aarch64 = opensrc-bin-0.7.3-aarch64::https://github.com/vercel-labs/opensrc/releases/download/v0.7.3/opensrc-linux-arm64
+	sha256sums_aarch64 = a69c98845cb65f3558239e985830d740db67a1ef8853742cc983157080a182bc
+
+pkgname = opensrc-bin
