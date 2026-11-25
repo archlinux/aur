@@ -1,0 +1,14 @@
+pkgbase = unfake.js-bin
+	pkgdesc = Fix AI-generated pixel art and vector images
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/jenissimo/unfake.js
+	arch = x86_64
+	license = MIT
+	provides = unfake.js
+	conflicts = unfake.js
+	options = !debug
+	source_x86_64 = unfake.js-bin-1.4.0-x86_64.tar.gz::https://github.com/jenissimo/unfake.js/releases/download/v1.4.0/unfake-cli-1.4.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 0c118152fc49f92ba81c6f5b9c7da7ebbb53bde448c1170cbb396dd7b2f81389
+
+pkgname = unfake.js-bin
