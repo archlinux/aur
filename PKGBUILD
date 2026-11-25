@@ -2,7 +2,7 @@
 # Upstream publishes ready Arch packages (nfpm): /opt/ely-office/ely-doc plus
 # /usr/bin symlink, desktop entry and icon. Repack them verbatim.
 pkgname=ely-doc-bin
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc='ElyDoc, part of Ely Office - offline-first word processor (prebuilt upstream package)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 source=("LICENSE::$url/raw/v$pkgver/LICENSE")
 sha256sums=('6f90eb4b2f3d6354ac31cdf330a711d9e43d8c95b968dc046f49443db956b2c1')
 source_x86_64=("ely-doc-$pkgver-1-x86_64.pkg.tar.zst::$url/releases/download/v$pkgver/ely-doc-$pkgver-1-x86_64.pkg.tar.zst")
-sha256sums_x86_64=('14b01f98844b87d36bc149bae258c2b56f404df03083dde65d704db0f3aeb454')
+sha256sums_x86_64=('a181cdbcbf349618946869e9599cb0bf1f76f82ef89ae73d1a1dcbcccdb05739')
 
 package() {
 	cp -a "$srcdir/opt" "$srcdir/usr" "$pkgdir/"
