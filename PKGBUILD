@@ -1,5 +1,5 @@
 pkgname=pleazyng-bin
-pkgver=3.0.49
+pkgver=3.0.51
 pkgrel=1
 pkgdesc='Plex client with Jellyfin and Emby support, offline downloads, and HDR'
 arch=('x86_64' 'aarch64')
@@ -13,11 +13,11 @@ makedepends=('python' 'binutils' 'zstd' 'gdk-pixbuf2' 'pkgconf')
 provides=('pleazyng')
 _webkit_version=2.52.6-0ubuntu0.24.04.2
 source=('pleazyng.desktop' 'LICENSE' 'install-webkit-helpers.py' 'webkit-runtime.json' 'rebuild-pixbuf-cache.py')
-source_x86_64=("$pkgname-$pkgver-linux-x64.tar.gz::https://github.com/snapetech-org/pleazyng/releases/download/v3.0.49/pleazyng-linux-x64.tar.gz" "webkit-x64.deb::https://security.ubuntu.com/ubuntu/pool/main/w/webkit2gtk/libwebkit2gtk-4.1-0_${_webkit_version}_amd64.deb")
-source_aarch64=("$pkgname-$pkgver-linux-arm64.tar.gz::https://github.com/snapetech-org/pleazyng/releases/download/v3.0.49/pleazyng-linux-arm64.tar.gz" "webkit-arm64.deb::https://ports.ubuntu.com/ubuntu-ports/pool/main/w/webkit2gtk/libwebkit2gtk-4.1-0_${_webkit_version}_arm64.deb")
+source_x86_64=("$pkgname-$pkgver-linux-x64.tar.gz::https://github.com/snapetech-org/pleazyng/releases/download/v3.0.51/pleazyng-linux-x64.tar.gz" "webkit-x64.deb::https://security.ubuntu.com/ubuntu/pool/main/w/webkit2gtk/libwebkit2gtk-4.1-0_${_webkit_version}_amd64.deb")
+source_aarch64=("$pkgname-$pkgver-linux-arm64.tar.gz::https://github.com/snapetech-org/pleazyng/releases/download/v3.0.51/pleazyng-linux-arm64.tar.gz" "webkit-arm64.deb::https://ports.ubuntu.com/ubuntu-ports/pool/main/w/webkit2gtk/libwebkit2gtk-4.1-0_${_webkit_version}_arm64.deb")
 sha256sums=('128aa0babfce8d659c4a407b59fb8af85138c630e0b53c69a3f2159b871f324b' '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986' 'fc28ccb4ff06df8fd5ff4212f84d221143560b9309ad497cf47b72c366ed71ba' 'ba063a1b775207f249dd74bc5f00096257f9cd32893266df1add49e962e104f9' 'ab9ae42d2061af4f6b1dfd9aab2abd88416cefd0082a31217d0ea7e9b3251325')
-sha256sums_x86_64=('1263b68e5718b9c654059e34eb4f13c30fbdb6ad93e8ce1c5c12380133b8ef4d' '0f0278776be4250283a2120e849f9d0d856d5f3e45e886e2ced92fa93f58a969')
-sha256sums_aarch64=('f889b03142a015fa376292b5c0e8c7cfdfb91af01d9650ac17cfed93b8482cd6' '85629246d18ac069b80f05854007931356357d9108627ce5ace6bb90ae320b1b')
+sha256sums_x86_64=('30832ba1b818e73f0b2863dccd47320e9be8fef006c612a5a65fc153cbedd3b6' '0f0278776be4250283a2120e849f9d0d856d5f3e45e886e2ced92fa93f58a969')
+sha256sums_aarch64=('850580445e1d264a485cc5d7d7a9eb5bb9e58ecb4ab5e00a08bb3503774746dd' '85629246d18ac069b80f05854007931356357d9108627ce5ace6bb90ae320b1b')
 noextract=("$pkgname-$pkgver-linux-x64.tar.gz" "$pkgname-$pkgver-linux-arm64.tar.gz" 'webkit-x64.deb' 'webkit-arm64.deb')
 
 package() {
