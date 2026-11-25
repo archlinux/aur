@@ -1,0 +1,17 @@
+pkgbase = mcpjungle-bin
+	pkgdesc = One place to manage & connect to all your MCP servers
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/mcpjungle/MCPJungle
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	provides = mcpjungle
+	conflicts = mcpjungle
+	options = !debug
+	source_x86_64 = mcpjungle-bin-0.4.7-x86_64.tar.gz::https://github.com/mcpjungle/MCPJungle/releases/download/0.4.7/mcpjungle_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 43bf2d5b0faa26e267619b8c6a34cc6b97710e1486f9e23db63ddd1c2b4b766c
+	source_aarch64 = mcpjungle-bin-0.4.7-aarch64.tar.gz::https://github.com/mcpjungle/MCPJungle/releases/download/0.4.7/mcpjungle_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8b095bf3b5281da64f2829f39aab2eea41ee56b6879b83b5b0fa3e8e17098771
+
+pkgname = mcpjungle-bin
