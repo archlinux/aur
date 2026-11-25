@@ -1,6 +1,6 @@
 pkgbase = bitter-browser-bin
 	pkgdesc = Focused, native web browser for the Linux desktop (prebuilt binary)
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://browser.bebitterbebetter.com.br/
 	arch = x86_64
@@ -23,12 +23,12 @@ pkgbase = bitter-browser-bin
 	optdepends = xdg-utils: make Bitter Browser the default browser on every desktop
 	optdepends = geoclue: location for sites you allow
 	optdepends = hunspell-en_us: spell checking dictionary (install the ones for your languages)
-	provides = bitter-browser=0.6.0
+	provides = bitter-browser=0.6.2
 	conflicts = bitter-browser
 	conflicts = bitter-browser-git
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/bernardopg/bitter-browser/releases/download/v0.6.0/bitter-browser-0.6.0-linux-x86_64.tar.xz
-	sha256sums_x86_64 = 0e932f4649b2ee7d000030ea74645af2925b482dc181ff0889351b27f2012ccf
+	source_x86_64 = https://github.com/bernardopg/bitter-browser/releases/download/v0.6.2/bitter-browser-0.6.2-linux-x86_64.tar.xz
+	sha256sums_x86_64 = 944b3ae1d402081575060a1ba9e39afeb5712a047ba0aa655f43586c1a15d4ef
 
 pkgname = bitter-browser-bin

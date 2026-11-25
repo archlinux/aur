@@ -3,7 +3,7 @@
 # Debian 13 and verified on Arch Linux by the release workflow).
 pkgname=bitter-browser-bin
 _pkgname=bitter-browser
-pkgver=0.6.0
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Focused, native web browser for the Linux desktop (prebuilt binary)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" 'bitter-browser-git')
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/bernardopg/bitter-browser/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.xz")
-sha256sums_x86_64=('0e932f4649b2ee7d000030ea74645af2925b482dc181ff0889351b27f2012ccf')
+sha256sums_x86_64=('944b3ae1d402081575060a1ba9e39afeb5712a047ba0aa655f43586c1a15d4ef')
 
 package() {
     cd "$_pkgname-$pkgver-linux-$CARCH"
