@@ -1,0 +1,20 @@
+pkgbase = kimchi-bin
+	pkgdesc = Terminal coding agent powered by Kimchi's multi-model orchestration
+	pkgver = 1.41.0
+	pkgrel = 1
+	url = https://github.com/getkimchi/kimchi
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = kimchi
+	conflicts = kimchi
+	options = !debug
+	source = kimchi-bin-1.41.0-LICENSE::https://raw.githubusercontent.com/getkimchi/kimchi/v1.41.0/LICENSE
+	sha256sums = f1d4bccc8cbd1beb2adee81b287ea2631c368c6c930e080b113fcd22638ca700
+	source_x86_64 = kimchi-bin-1.41.0-x86_64.tar.gz::https://github.com/getkimchi/kimchi/releases/download/v1.41.0/kimchi_linux_amd64.tar.gz
+	sha256sums_x86_64 = 630f741a2b167c48ff9f01207048fdddb966031d02ea3f2fc3486fa40fdfdb96
+	source_aarch64 = kimchi-bin-1.41.0-aarch64.tar.gz::https://github.com/getkimchi/kimchi/releases/download/v1.41.0/kimchi_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2b84414f94afbc15f61c559b1ac2e8910dff93bf7658a7a109f66f3e6f0bf94d
+
+pkgname = kimchi-bin
