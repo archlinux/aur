@@ -1,6 +1,6 @@
 # Maintainer: Yubo Cao <cao2006721@gmail.com>
 pkgname=typeless-bin
-pkgver=2.2.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='AI voice dictation for any application (official Linux binary)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("typeless=$pkgver")
 conflicts=('typeless')
 options=('!strip' '!debug')
 source=("https://typeless-static.com/desktop-release/Typeless-${pkgver}-x64.deb")
-sha256sums=('5130b311a58e8e3bf55a4e1410e0fc7f5d3c01a15b9c3a2c1619b224f14d76bc')
+sha256sums=('fc14c02abed685c520308ad1f1015462ef2a09c48876475a65b19b0cf4fe5203')
 
 package() {
   bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"

@@ -1,6 +1,6 @@
 pkgbase = typeless-bin
 	pkgdesc = AI voice dictation for any application (official Linux binary)
-	pkgver = 2.2.1
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://www.typeless.com/
 	arch = x86_64
@@ -43,11 +43,11 @@ pkgbase = typeless-bin
 	optdepends = libappindicator-gtk3: tray icon support
 	optdepends = ibus: VoiceIME integration
 	optdepends = python-gobject: Python IBus VoiceIME engine
-	provides = typeless=2.2.1
+	provides = typeless=2.5.0
 	conflicts = typeless
 	options = !strip
 	options = !debug
-	source = https://typeless-static.com/desktop-release/Typeless-2.2.1-x64.deb
-	sha256sums = 5130b311a58e8e3bf55a4e1410e0fc7f5d3c01a15b9c3a2c1619b224f14d76bc
+	source = https://typeless-static.com/desktop-release/Typeless-2.5.0-x64.deb
+	sha256sums = fc14c02abed685c520308ad1f1015462ef2a09c48876475a65b19b0cf4fe5203
 
 pkgname = typeless-bin
