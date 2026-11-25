@@ -1,0 +1,18 @@
+pkgbase = daptin-bin
+	pkgdesc = Self-hosted application server for schema-driven APIs, identity, files, automation, integrations, realtime, metering, and protocols
+	pkgver = 0.13.63
+	pkgrel = 1
+	url = https://github.com/daptin/daptin
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	depends = glibc
+	provides = daptin
+	conflicts = daptin
+	options = !debug
+	source_x86_64 = daptin-bin-0.13.63-x86_64.tar.gz::https://github.com/daptin/daptin/releases/download/v0.13.63/daptin-v0.13.63-linux-amd64.tar.gz
+	sha256sums_x86_64 = c6da8868c04ca7976b80bd5fd0ab1467f43eccecd5d7b5de9f998b05be74a4da
+	source_aarch64 = daptin-bin-0.13.63-aarch64.tar.gz::https://github.com/daptin/daptin/releases/download/v0.13.63/daptin-v0.13.63-linux-arm64.tar.gz
+	sha256sums_aarch64 = a9491ff8e385ae5ac23f5ddf05242909bb66370dbe103d9fddacf0655370fd64
+
+pkgname = daptin-bin
