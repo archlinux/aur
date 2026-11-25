@@ -20,7 +20,7 @@ optdepends=(
 options=('!strip' '!debug')
 source=("bluepill-${pkgver}-1-x86_64.pkg.tar.zst::https://github.com/nertwork/bluepill/releases/download/v${pkgver}/bluepill-${pkgver}-1-x86_64.pkg.tar.zst")
 noextract=("bluepill-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('1f7e91e74f20438ec29eb5d814510779a62af790d15a68072d1f9b41e7c4b648')
+sha256sums=('52249ccefe5e88246a7bee88442d3a4c37ba96a457fb0bdb157c9e6400708bb9')
 
 package() {
     tar --zstd -xf "$srcdir/bluepill-${pkgver}-1-x86_64.pkg.tar.zst" -C "$pkgdir" usr
