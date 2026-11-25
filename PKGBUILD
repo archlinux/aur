@@ -1,7 +1,7 @@
 # Maintainer: Giorgio Gilestro <giorgio@gilest.ro>
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=ccusage
-pkgver=20.0.51
+pkgver=20.1.2
 pkgrel=1
 pkgdesc="Analyze coding agent CLI token usage and costs from local data"
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ _npm_base="https://registry.npmjs.org/@ccusage"
 source=("${pkgname}-${pkgver}-main.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tgz::${_npm_base}/ccusage-linux-x64/-/ccusage-linux-x64-${pkgver}.tgz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tgz::${_npm_base}/ccusage-linux-arm64/-/ccusage-linux-arm64-${pkgver}.tgz")
-sha256sums=('5ab934e2df6f1607ab821ec3f3fdcaa3333d3b9c0c5572dc8dc2a0b6e9a1d212')
-sha256sums_x86_64=('21dc3e381144f4fe6e86e09d63ef062faeccd9161aa4136a8f35052b0f59f0ba')
-sha256sums_aarch64=('f6ae136744a9e8cc6a125f2052e4e923db7e9d9400ac0e546bdcc705d361ef77')
+sha256sums=('8f68e2cdc8f56f08873dc264f9a41eddfc61cf2481b8cf3f939920134c903d4f')
+sha256sums_x86_64=('5499db393a805f8b47e9738bc47eea9b020ef93be2930731443606feb1fca003')
+sha256sums_aarch64=('daf02e2632fc15f216745d153b1c40f83e249635803da2f3877f37fde2b67903')
 noextract=("${pkgname}-${pkgver}-main.tgz")
 
 latestver() {
