@@ -1,15 +1,15 @@
 pkgbase = haj
 	pkgdesc = the beautiful, cross-distro package manager and tui.
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/asitos/haj
 	arch = x86_64
-	license = GPL-3.0-or-later
+	license = GPL-2.0-only
 	makedepends = cargo
 	depends = pacman
 	depends = libalpm.so
-	depends = display3d
-	source = haj-0.3.2.tar.gz::https://github.com/asitos/haj/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = b28187351c3c93d0218f76684aebf544d46278f3cfe6cce43256702b1d06ff67
+	optdepends = display3d: 3d spinning shark animation in tui
+	source = haj-0.3.3.tar.gz::https://github.com/asitos/haj/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = 65eba9b92e1e548ebf0726faa13e232a67fa3c499ac9e455310a8ccf1369c87a
 
 pkgname = haj
