@@ -2,16 +2,16 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 
 pkgname=udon
-pkgver=0.065
+pkgver=0.066
 pkgrel=1
-epoch=1
+epoch=0
 pkgdesc="Minimalistic CLI based End to End Encrypted (E2EE) message passing tool/service."
 arch=('any')
 url="https://github.com/treedavies/udon"
-license=('GPL')
+license=('GPL2')
 groups=()
 depends=('openssl' 'python-psutil' 'python-beautifulsoup4' 'python-cffi'  'python-cryptography' 'python-daemon'  'protobuf' 'python-grpcio' 'python-grpcio-tools' 'grpc')
-makedepends=()
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools>=40.8.0' 'python-wheel')
 checkdepends=()
 optdepends=()
 provides=()
@@ -21,29 +21,25 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/treedavies/udon/archive/refs/tags/udon-v0.065.tar.gz")
+source=("https://github.com/treedavies/udon/archive/refs/tags/udon-v0.066.tar.gz")
 noextract=()
-sha256sums=("4c4eead2d9cb534ca102ec9003590ea3939a1d4b91acc3dccec07d9401f6bf29")
+sha256sums=("5cd6eab2576b5ccdd1a895c7ea832144c16f88224bf8ca64fb0a6332b5e200f3")
 validpgpkeys=()
+
+build() {
+	cd "udon-$pkgname-v$pkgver"
+
+	# BUILD PROTOBUFFERS
+	PROTO_PATH="src/udon"
+	/usr/bin/python3 -m grpc_tools.protoc --proto_path=$PROTO_PATH udon.proto --python_out=$PROTO_PATH --grpc_python_out=$PROTO_PATH
+
+	python -m build --wheel --no-isolation
+}
 
 package() {
 	cd "udon-$pkgname-v$pkgver"
-
-	# Crate Directories and INSTALL FILES
-	install -d -m 755 -o root "$pkgdir"/usr/bin/udon.d
-	install -m 755 -o root ./src/udon "$pkgdir"/usr/bin/udon.d
-	ln -s /usr/bin/udon.d/udon "$pkgdir"/usr/bin/udon
-
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -m 755 -o root src/libudon.py "$pkgdir"/usr/bin/udon.d
-	install -m 755 -o root src/test_libudon.py "$pkgdir"/usr/bin/udon.d
-	install -m 755 -o root src/udon_init.py "$pkgdir"/usr/bin/udon.d
-	install -m 755 -o root src/udon.proto "$pkgdir"/usr/bin/udon.d
-
-	# BUILD PROTOBUFFERS	
-	PROTO_PATH="$pkgdir/usr/bin/udon.d/"
-	/usr/bin/python3 -m grpc_tools.protoc --proto_path=$PROTO_PATH udon.proto --python_out=$PROTO_PATH --grpc_python_out=$PROTO_PATH
-
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	chmod +x "$pkgdir"/usr/lib/python3.14/site-packages/udon/udon.py 
 }
 
 
