@@ -1,6 +1,6 @@
 pkgbase = aircast-ap-git
-	pkgdesc = Modern GTK4 + Libadwaita Wi-Fi 6 Access Point & Hotspot Manager for Linux (git version)
-	pkgver = 1.0.1.r0.g29b79e8
+	pkgdesc = Modern GTK4 + Libadwaita Wi-Fi 6 Access Point and Hotspot Manager for Linux (git version)
+	pkgver = 1.0.2.r0.gc4b8e6b
 	pkgrel = 1
 	url = https://github.com/9M2PJU/AirCast-AP
 	arch = any
