@@ -1,7 +1,7 @@
 pkgbase = furtherance-gtk
-	pkgdesc = Time tracking app for GNOME (GTK fork)
+	pkgdesc = Track your time without being tracked (GTK fork)
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fingel/furtherance-gtk
 	arch = x86_64
 	arch = aarch64

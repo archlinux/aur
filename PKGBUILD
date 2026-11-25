@@ -1,8 +1,8 @@
 # Maintainer: Austin Riba <austin@m51.io>
 pkgname=furtherance-gtk
 pkgver=1.9.1
-pkgrel=1
-pkgdesc="Time tracking app for GNOME (GTK fork)"
+pkgrel=2
+pkgdesc="Track your time without being tracked (GTK fork)"
 arch=("x86_64" "aarch64")
 url="https://github.com/Fingel/furtherance-gtk"
 license=("GPL-3.0-or-later")
