@@ -1,6 +1,6 @@
 pkgbase = bitter-browser-git
 	pkgdesc = Focused, native web browser for the Linux desktop
-	pkgver = 0.6.0.r0.g5fa8ea5
+	pkgver = 0.6.2.r0.ge005603
 	pkgrel = 1
 	url = https://browser.bebitterbebetter.com.br/
 	arch = x86_64

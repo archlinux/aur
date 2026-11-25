@@ -1,7 +1,7 @@
 # Maintainer: Bernardo Pinto Gomes <bernardopgomes@hotmail.com>
 # Development package: builds the latest commit of the main branch.
 pkgname=bitter-browser-git
-pkgver=0.6.0.r0.g5fa8ea5
+pkgver=0.6.2.r0.ge005603
 pkgrel=1
 pkgdesc='Focused, native web browser for the Linux desktop'
 arch=('x86_64')
