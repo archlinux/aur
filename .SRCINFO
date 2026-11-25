@@ -1,0 +1,20 @@
+pkgbase = tradingagents-bin
+	pkgdesc = TradingAgents: Towards Agentic Finance Research
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/TauricResearch/TradingAgents
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = tradingagents
+	conflicts = tradingagents
+	options = !debug
+	source = tradingagents-bin-1.0.1-LICENSE::https://raw.githubusercontent.com/TauricResearch/TradingAgents/v1.0.1/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = tradingagents-bin-1.0.1-x86_64::https://github.com/TauricResearch/TradingAgents/releases/download/v1.0.1/tradingagents-linux-x64
+	sha256sums_x86_64 = 6bf8f17a4fa02c74358c2943756038f840044c025a68329075c07497bae32717
+	source_aarch64 = tradingagents-bin-1.0.1-aarch64::https://github.com/TauricResearch/TradingAgents/releases/download/v1.0.1/tradingagents-linux-arm64
+	sha256sums_aarch64 = e2d77efb02c718f03a2007d35a469521bc569a5e31fab1c6938538aba94de30c
+
+pkgname = tradingagents-bin
