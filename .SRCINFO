@@ -1,0 +1,16 @@
+pkgbase = monitoror-bin
+	pkgdesc = Unified monitoring wallboard Light, ergonomic and reliable monitoring for anything
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/monitoror/monitoror
+	arch = x86_64
+	license = MIT
+	provides = monitoror
+	conflicts = monitoror
+	options = !debug
+	source = monitoror-bin-4.0.1-LICENSE::https://raw.githubusercontent.com/monitoror/monitoror/4.0.1/LICENSE
+	sha256sums = 00c9be539851cc87e5eeb2b8bb1abd488e3e8a755dd1002837cb85e9fb42e4ae
+	source_x86_64 = monitoror-bin-4.0.1-x86_64::https://github.com/monitoror/monitoror/releases/download/4.0.1/monitoror-linux-amd64-4.0.1
+	sha256sums_x86_64 = e13ec2ad1c7d0bcad2e6e04193ad14b0f648cc91d8103f1a55d9b1424789f9bd
+
+pkgname = monitoror-bin
