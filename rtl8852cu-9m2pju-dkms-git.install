@@ -1,0 +1,6 @@
+post_install() {
+    echo ":: rtl8852cu-9m2pju-dkms-git has been installed."
+    echo ":: Tip: blacklist rtw89_8852cu in /etc/modprobe.d/ if it conflicts with 8852cu."
+    echo ":: Reboot or replug your USB WiFi adapter to load the driver."
+    echo ":: 73 from 9M2PJU — https://hamradio.my"
+}

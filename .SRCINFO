@@ -1,0 +1,22 @@
+pkgbase = rtl8852cu-9m2pju-dkms-git
+	pkgdesc = Realtek RTL8832CU/RTL8852CU USB WiFi driver (DKMS, 9M2PJU fork with Linux 7.3+ & Clang/LLVM support)
+	pkgver = 20261126
+	pkgrel = 1
+	url = https://github.com/9M2PJU/rtl8852cu-9M2PJU-dkms
+	install = rtl8852cu-9m2pju-dkms-git.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	provides = rtl8852cu-dkms
+	provides = rtl8852cu-dkms-morrownr-git
+	conflicts = rtl8852cu-dkms
+	conflicts = rtl8852cu-dkms-morrownr-git
+	replaces = rtl8852cu-dkms-morrownr-git
+	source = rtl8852cu-9m2pju-dkms-git::git+https://github.com/9M2PJU/rtl8852cu-9M2PJU-dkms.git
+	source = 90-rtl8852cu-9m2pju.hook
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rtl8852cu-9m2pju-dkms-git
