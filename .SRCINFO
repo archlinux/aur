@@ -1,0 +1,17 @@
+pkgbase = octo-cli-bin
+	pkgdesc = Metadata-driven CLI for AI agent bots with structured JSON I/O
+	pkgver = 0.19.5
+	pkgrel = 1
+	url = https://github.com/Mininglamp-OSS/octo-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = octo-cli
+	conflicts = octo-cli
+	options = !debug
+	source_x86_64 = octo-cli-bin-0.19.5-x86_64.tar.gz::https://github.com/Mininglamp-OSS/octo-cli/releases/download/v0.19.5/octo-cli_0.19.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 97cbd1d67d2cbd9e9cbc73465491724bf72babf60367acf6a0b53ef85b35cdbe
+	source_aarch64 = octo-cli-bin-0.19.5-aarch64.tar.gz::https://github.com/Mininglamp-OSS/octo-cli/releases/download/v0.19.5/octo-cli_0.19.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = d70b2203593e5e9665f679ffb24902b50d046e5b59461585df4611f617395b69
+
+pkgname = octo-cli-bin
