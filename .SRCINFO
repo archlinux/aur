@@ -1,0 +1,25 @@
+pkgbase = furtherance-gtk
+	pkgdesc = Time tracking app for GNOME (GTK fork)
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/Fingel/furtherance-gtk
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = gettext
+	makedepends = meson
+	makedepends = ninja
+	depends = dbus
+	depends = glib2
+	depends = gtk4
+	depends = libadwaita
+	depends = sqlite
+	conflicts = furtherance
+	conflicts = furtherance-git
+	options = !lto
+	options = !debug
+	source = furtherance-gtk-1.9.1.tar.gz::https://github.com/Fingel/furtherance-gtk/archive/refs/tags/v1.9.1.tar.gz
+	sha512sums = 1d787f803825e72e3f99252d9d58dfef4a1e65843598a594437e43de9f57c0134751b8da5f32cac802028763e543151936b5fa2a6bdbe0d0921adf016c24bf56
+
+pkgname = furtherance-gtk
