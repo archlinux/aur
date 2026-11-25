@@ -1,19 +1,33 @@
 pkgbase = python-rapidfuzz-git
 	pkgdesc = Rapid fuzzy string matching in Python using the Levenshtein Distance
-	pkgver = 0.9.2.r0.geae941a
+	pkgver = 3.14.6.1.r9.ge5ba595
 	pkgrel = 1
-	url = https://github.com/maxbachmann/rapidfuzz
-	arch = any
+	url = https://github.com/rapidfuzz/RapidFuzz
+	arch = x86_64
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = gcc
-	makedepends = python-pytest
+	checkdepends = python-hypothesis
+	checkdepends = python-numpy
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = cmake
+	makedepends = cython
+	makedepends = ninja
+	makedepends = python-scikit-build-core
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = python
-	provides = python-rapidfuzz
-	source = python-rapidfuzz-git::git+https://github.com/maxbachmann/rapidfuzz
-	source = python-rapidfuzz-git-cpp::git+https://github.com/maxbachmann/rapidfuzz-cpp
-	md5sums = SKIP
-	md5sums = SKIP
+	optdepends = python-numpy: cdist support
+	provides = python-rapidfuzz=3.14.6.1.r9.ge5ba595
+	conflicts = python-rapidfuzz
+	source = python-rapidfuzz::git+https://github.com/rapidfuzz/RapidFuzz.git
+	source = rapidfuzz-cpp::git+https://github.com/rapidfuzz/rapidfuzz-cpp.git
+	source = taskflow::git+https://github.com/taskflow/taskflow.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-rapidfuzz-git
-
