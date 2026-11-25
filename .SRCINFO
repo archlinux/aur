@@ -1,0 +1,19 @@
+pkgbase = reylo-bin
+	pkgdesc = Import .sql files into TypeScript with full type inference and zero codegen
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/reylosql/reylo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = reylo
+	conflicts = reylo
+	options = !debug
+	source_x86_64 = reylo-bin-0.9.0-x86_64.tar.gz::https://github.com/reylosql/reylo/releases/download/v0.9.0/reylo-linux-x64.tar.gz
+	sha256sums_x86_64 = f573882ac608e7b46bcb01304d6e329c8b419efccf7fc571209c18f8915cdb95
+	source_aarch64 = reylo-bin-0.9.0-aarch64.tar.gz::https://github.com/reylosql/reylo/releases/download/v0.9.0/reylo-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7185a6f866b0ac65eba2bcf0dc7821ce60b36225d37f6988301a0960e26853db
+
+pkgname = reylo-bin
