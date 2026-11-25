@@ -1,6 +1,6 @@
 pkgbase = talkey-git
 	pkgdesc = Push-to-talk voice input for X11/i3 - hold a key, speak, the text is typed. Offline, no API key.
-	pkgver = 0.2.0.r3.gc9f8e8e
+	pkgver = 0.2.0.r39.gd2339e8
 	pkgrel = 1
 	url = https://github.com/yogh-io/talkey
 	install = talkey-git.install
@@ -23,10 +23,13 @@ pkgbase = talkey-git
 	depends = xorg-xev
 	optdepends = whisper.cpp-model-large-v3-turbo: the default speech model (AUR) - talkey needs some model
 	optdepends = python: automatic speech detection, voice commands, live text in the HUD and translate mode
-	optdepends = python-numpy: optional Smart Turn feature extraction
+	optdepends = python-numpy: optional Smart Turn feature extraction, and the talkey camera
+	optdepends = python-pillow: the talkey camera, subtitles on your video
+	optdepends = v4l2loopback-dkms: the talkey camera, subtitles on your video
 	optdepends = python-onnxruntime: optional Smart Turn CPU inference
 	optdepends = libnotify: desktop notifications alongside the HUD, and the only feedback if you disable it
 	optdepends = ollama: translate mode (translategemma:4b) and naming archived recordings (qwen2.5:3b)
+	optdepends = uv: Python 3.10 for the optional Seamless translate engine; its weights are CC-BY-NC-4.0 (non-commercial), downloaded by talkey-setup seamless
 	optdepends = xclip: paste mode (TALKEY_PASTE=1) instead of typing
 	optdepends = sxhkd: key bindings without i3
 	optdepends = xbindkeys: key bindings without i3

@@ -6,7 +6,7 @@ _name=talkey
 # A placeholder. makepkg runs pkgver() against the clone and rewrites this line
 # in place, so whatever is committed here is only what the AUR page shows until
 # the next build.
-pkgver=0.2.0.r3.gc9f8e8e
+pkgver=0.2.0.r39.gd2339e8
 pkgrel=1
 pkgdesc="Push-to-talk voice input for X11/i3 - hold a key, speak, the text is typed. Offline, no API key."
 arch=('any')
@@ -37,10 +37,13 @@ depends=(
 optdepends=(
   'whisper.cpp-model-large-v3-turbo: the default speech model (AUR) - talkey needs some model'
   'python: automatic speech detection, voice commands, live text in the HUD and translate mode'
-  'python-numpy: optional Smart Turn feature extraction'
+  'python-numpy: optional Smart Turn feature extraction, and the talkey camera'
+  'python-pillow: the talkey camera, subtitles on your video'
+  'v4l2loopback-dkms: the talkey camera, subtitles on your video'
   'python-onnxruntime: optional Smart Turn CPU inference'
   'libnotify: desktop notifications alongside the HUD, and the only feedback if you disable it'
   'ollama: translate mode (translategemma:4b) and naming archived recordings (qwen2.5:3b)'
+  'uv: Python 3.10 for the optional Seamless translate engine; its weights are CC-BY-NC-4.0 (non-commercial), downloaded by talkey-setup seamless'
   'xclip: paste mode (TALKEY_PASTE=1) instead of typing'
   'sxhkd: key bindings without i3'
   'xbindkeys: key bindings without i3'
@@ -80,6 +83,8 @@ package() {
     bin/talkey-live-pump \
     bin/talkey-auto-worker \
     bin/talkey-translate-worker \
+    bin/talkey-seamless-server \
+    bin/talkey-camera-worker \
     bin/talkey-norepeat \
     bin/talkey-whisper-server \
     bin/talkey-hud
@@ -88,7 +93,8 @@ package() {
   # so the scripts resolve it with one probe and behave identically either way.
   install -Dm644 -t "$pkgdir/usr/share/$_name" vocabulary.txt
   install -Dm644 -t "$pkgdir/usr/share/$_name/lib" lib/*.sh
-  install -Dm644 -t "$pkgdir/usr/share/$_name/lib" lib/smart_turn.py lib/speech.py lib/commands.py lib/vad.py
+  install -Dm644 -t "$pkgdir/usr/share/$_name/lib" lib/smart_turn.py lib/speech.py lib/commands.py lib/vad.py lib/stretch.py \
+    lib/captions.py lib/seamless.py lib/whisper_engine.py
   install -Dm644 -t "$pkgdir/usr/share/$_name/lib/vendor" \
     lib/vendor/*.py lib/vendor/LICENSE.* lib/vendor/README.md
   install -Dm644 -t "$pkgdir/usr/share/$_name/lib/setup" lib/setup/*.sh
@@ -97,7 +103,7 @@ package() {
     bindings/i3.conf bindings/sxhkdrc bindings/xbindkeysrc bindings/README.md
   install -Dm644 -t "$pkgdir/usr/share/$_name/config" config/talkey.env.example
   install -Dm644 -t "$pkgdir/usr/share/$_name/config" config/smart-turn-requirements.txt \
-    config/translate-requirements.txt
+    config/translate-requirements.txt config/seamless-requirements.txt config/seamless-weights.sha256
   install -Dm644 -t "$pkgdir/usr/share/$_name/config/commands.d" config/commands.d/*.json
   install -Dm644 -t "$pkgdir/usr/share/$_name/integrations/eww" \
     integrations/eww/eww.yuck integrations/eww/eww.scss integrations/eww/blank.svg \
