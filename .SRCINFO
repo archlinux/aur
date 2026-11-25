@@ -1,16 +1,25 @@
 pkgbase = python-django-tex-git
-	pkgdesc = A simple Django app to render LaTeX templates and compile them into PDF files.
-	pkgver = 1.1.7.r0.g75ddacd
+	pkgdesc = A simple Django app to render LaTeX templates and compile them into PDF files
+	pkgver = 1.1.12.r0.g4abb02b
 	pkgrel = 1
-	url = https://github.com/weinbusch/django-tex
+	url = https://github.com/ramibch/django-tex
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
 	depends = python-django>=2.2
-	depends = texlive-bin
 	depends = python-jinja>=2.9.6
-	provides = python-django-tex
-	source = python-django-tex-git::git+https://github.com/weinbusch/django-tex
-	md5sums = SKIP
+	depends = texlive-bin
+	optdepends = texlive-binextra: latexmk as LaTeX interpreter
+	optdepends = texlive-luatex: lualatex, the default LaTeX interpreter
+	provides = python-django-tex=1.1.12.r0.g4abb02b
+	conflicts = python-django-tex
+	source = python-django-tex::git+https://github.com/ramibch/django-tex.git
+	sha256sums = SKIP
 
 pkgname = python-django-tex-git
-

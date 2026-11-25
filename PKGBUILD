@@ -1,36 +1,54 @@
 # Maintainer: Julian Daube <joposter (at) gmail (dot) com>
 # Contributor: Julian Daube <joposter (at) gmail (dot) com>
+
 _pkgname=python-django-tex
 pkgname=$_pkgname-git
-pkgver=1.1.7.r0.g75ddacd
+pkgver=1.1.12.r0.g4abb02b
 pkgrel=1
-pkgdesc="A simple Django app to render LaTeX templates and compile them into PDF files."
-
-provides=("$_pkgname")
-url="https://github.com/weinbusch/django-tex"
+pkgdesc="A simple Django app to render LaTeX templates and compile them into PDF files"
 arch=("any")
+url="https://github.com/ramibch/django-tex"
 license=("MIT")
-
-source=("$pkgname::git+$url")
-depends=("python-django>=2.2" "texlive-bin" "python-jinja>=2.9.6")
-makepepends=("python-setuptools")
-
+depends=(
+	"python"
+	"python-django>=2.2"
+	"python-jinja>=2.9.6"
+	"texlive-bin"
+)
+makedepends=(
+	"git"
+	"python-build"
+	"python-installer"
+	"python-wheel"
+	"python-setuptools"
+	"python-setuptools-scm"
+)
+optdepends=(
+	"texlive-binextra: latexmk as LaTeX interpreter"
+	"texlive-luatex: lualatex, the default LaTeX interpreter"
+)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+sha256sums=("SKIP")
 
 pkgver() {
-	cd "$pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() { 
-	cd "$pkgname"
-	python setup.py build 
+prepare() {
+	git -C "$srcdir/$_pkgname" clean -dfx
+}
+
+build() {
+	cd "$_pkgname"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$pkgname"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	
-	install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
-}
+	cd "$_pkgname"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
-md5sums=("SKIP")
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
