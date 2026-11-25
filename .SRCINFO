@@ -1,0 +1,30 @@
+pkgbase = monocode-bin
+	pkgdesc = Desktop interface for AI coding agents (prebuilt)
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/hardbeat920/monocode
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = monocode=0.16.0
+	conflicts = monocode
+	noextract = MonoCode_0.16.0_amd64.deb
+	options = !strip
+	options = !debug
+	source = monocode-0.16.0-LICENSE::https://raw.githubusercontent.com/hardbeat920/monocode/v0.16.0/LICENSE
+	source = monocode-0.16.0-NOTICE::https://raw.githubusercontent.com/hardbeat920/monocode/v0.16.0/NOTICE
+	sha256sums = 3333be61cff8f46a68a883978fff0a6a2a993c3f434396c54482413ce9f63416
+	sha256sums = 34dd91624ab87f2b5e30b068ce0ccc54e7980cda83b189946c65f868a17511a6
+	source_x86_64 = https://github.com/hardbeat920/monocode/releases/download/v0.16.0/MonoCode_0.16.0_amd64.deb
+	sha256sums_x86_64 = 517e62e168da247ade4532d2cd2acbba3c24991cd01dbc6feeb9d56b9a0b0c04
+
+pkgname = monocode-bin
