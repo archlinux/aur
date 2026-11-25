@@ -1,0 +1,26 @@
+pkgbase = wallcycle-git
+	pkgdesc = Cross-platform wallpaper slideshow with real-time clock overlay and BT.709 luminance filter (Lazarus/FPC)
+	pkgver = r3.0311a10
+	pkgrel = 1
+	url = https://github.com/nightranger73/WallCycle
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = fpc
+	makedepends = lazarus-qt6
+	depends = curl
+	depends = qt6pas
+	optdepends = awww: Wayland wallpaper backend for Niri, Umbriel, Hyprland and generic Wayland
+	optdepends = hyprpaper: native wallpaper daemon for Hyprland
+	optdepends = sway: Sway wallpaper support via swaymsg
+	optdepends = feh: X11 wallpaper backend for i3/Openbox/BSPWM
+	optdepends = nitrogen: X11 wallpaper backend fallback
+	provides = wallcycle
+	conflicts = wallcycle
+	source = wallcycle::git+https://github.com/nightranger73/WallCycle.git
+	source = luipack::git+https://github.com/blikblum/luipack.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = wallcycle-git
