@@ -1,0 +1,42 @@
+pkgbase = esphome-device-builder
+	pkgdesc = Web dashboard for configuring, building and installing ESPHome firmware
+	pkgver = 1.28.1
+	pkgrel = 1
+	url = https://github.com/esphome/device-builder
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = esphome>=2026.10.2
+	depends = python-aiohttp>=3.9.0
+	depends = python-aiohttp-asyncmdnsresolver>=0.1.1
+	depends = python-colorlog>=6.8.0
+	depends = python-cryptography>=42.0.2
+	depends = python-fnv-hash-fast>=2.0.0
+	depends = python-ifaddr>=0.2.0
+	depends = python-icmplib>=3.0.4
+	depends = python-mashumaro>=3.13
+	depends = python-orjson>=3.9.0
+	depends = python-yaml>=6.0
+	depends = python-ruamel-yaml>=0.18.0
+	depends = python-voluptuous>=0.13.1
+	depends = python-zeroconf>=0.150.0
+	depends = git
+	depends = systemd
+	noextract = esphome_device_builder_frontend-0.1.387-py3-none-any.whl
+	backup = etc/conf.d/esphome-device-builder
+	source = https://github.com/esphome/device-builder/releases/download/1.28.1/esphome_device_builder-1.28.1.tar.gz
+	source = https://github.com/esphome/device-builder-frontend/releases/download/0.1.387/esphome_device_builder_frontend-0.1.387-py3-none-any.whl
+	source = esphome-device-builder.service
+	source = esphome-device-builder.sysusers
+	source = esphome-device-builder.conf
+	sha256sums = 6985d68e2768d290846b1fedee1a273097d92ed38cf655c057d4b349806c5063
+	sha256sums = 0df6aec175fe6b008d807a29222fc2aa163208679f45ce8a546d8513e990179e
+	sha256sums = 037e5438f11f89e92e06eb22f5fa636f728f9c1a54921e6185e0cfbf8e0b0fe9
+	sha256sums = 4f2e4e195b4c4b0aaf71c936e02c0604d12735e17c1b414855de79150b5acdce
+	sha256sums = 648a9427a94c2bcd78763aa4ea2de9f6e62cfe1c84a7ffd61924ce43d1ba9d06
+
+pkgname = esphome-device-builder

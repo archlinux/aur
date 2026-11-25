@@ -1,0 +1,31 @@
+[Unit]
+Description=ESPHome Device Builder
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=esphome-builder
+Group=esphome-builder
+StateDirectory=esphome-device-builder
+StateDirectoryMode=0700
+WorkingDirectory=/var/lib/esphome-device-builder
+Environment=HOME=/var/lib/esphome-device-builder
+Environment=PLATFORMIO_CORE_DIR=/var/lib/esphome-device-builder/platformio
+Environment=PYTHONUNBUFFERED=1
+Environment=ESPHOME_BUILDER_HOST=127.0.0.1
+Environment=ESPHOME_BUILDER_PORT=6052
+Environment=ESPHOME_BUILDER_CONFIG=/var/lib/esphome-device-builder/configs
+EnvironmentFile=-/etc/conf.d/esphome-device-builder
+ExecStartPre=/usr/bin/mkdir -p ${ESPHOME_BUILDER_CONFIG}
+ExecStart=/usr/bin/esphome-device-builder --host ${ESPHOME_BUILDER_HOST} --port ${ESPHOME_BUILDER_PORT} ${ESPHOME_BUILDER_CONFIG}
+Restart=on-failure
+RestartSec=5s
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
