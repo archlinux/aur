@@ -1,0 +1,19 @@
+pkgbase = openserp-bin
+	pkgdesc = Self-hosted web search for AI agents and SEO. Google, Bing, Yandex, Baidu, DuckDuckGo & Ecosia, rendered in a real browser: ranked results and clean page Markdown
+	pkgver = 0.8.22
+	pkgrel = 1
+	url = https://github.com/karust/openserp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = openserp
+	conflicts = openserp
+	options = !debug
+	source = openserp-bin-0.8.22-LICENSE::https://raw.githubusercontent.com/karust/openserp/v0.8.22/LICENSE
+	sha256sums = b9d115fd46f6a68dcf99a7174731daaa54364244f4a1884eadee426252c0af38
+	source_x86_64 = openserp-bin-0.8.22-x86_64.tgz::https://github.com/karust/openserp/releases/download/v0.8.22/openserp-linux-amd64-0.8.22.tgz
+	sha256sums_x86_64 = 1ff03e489103b72a29978698fab979f8329f7111f38fecb69256fe942b6ab10e
+	source_aarch64 = openserp-bin-0.8.22-aarch64.tgz::https://github.com/karust/openserp/releases/download/v0.8.22/openserp-linux-arm64-0.8.22.tgz
+	sha256sums_aarch64 = 0d8e95d86562b148176e93efb46a4fb82924694bc7a4a4669f943510b438dacb
+
+pkgname = openserp-bin
