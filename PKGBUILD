@@ -5,7 +5,7 @@ _appname="rich-gradient-cli"
 _cliname="gradient"
 
 pkgname="${_appname}"
-pkgver=0.4.4
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="A CLI for creating rich renderables in gradient color"
 
@@ -25,7 +25,7 @@ provides=("${_cliname}")
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz" "LICENSE")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz" "LICENSE")
-sha256sums=('96c57fbd300bbadf59e2b1843bed028535e4ea421f032f2fd9252b7afbe8a09f'
+sha256sums=('3ecb1ab942da7fe70be74509d3ef88565c3410a177238de298615151435fe295'
             'ce03c1e0e64ef777f23081460c6474be87d9298b649dca8a01059c51ad9e1b30')
 
 prepare() {
