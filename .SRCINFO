@@ -1,0 +1,18 @@
+pkgbase = fakecloud-bin
+	pkgdesc = Open-source AWS emulator
+	pkgver = 0.52.0
+	pkgrel = 1
+	url = https://github.com/faiscadev/fakecloud
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	provides = fakecloud
+	conflicts = fakecloud
+	options = !debug
+	source_x86_64 = fakecloud-bin-0.52.0-x86_64.tar.gz::https://github.com/faiscadev/fakecloud/releases/download/v0.52.0/fakecloud-v0.52.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1edf2ada0fcc0def610b748a21421cc2f4ed827eb2ed6bc5f8a2fdc041c8f7aa
+	source_aarch64 = fakecloud-bin-0.52.0-aarch64.tar.gz::https://github.com/faiscadev/fakecloud/releases/download/v0.52.0/fakecloud-v0.52.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = cea517e5594607ee2ca11c2d468e116bebd70f9c6c913d0b393d2db1b17b2a81
+
+pkgname = fakecloud-bin
