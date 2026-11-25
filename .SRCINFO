@@ -1,0 +1,16 @@
+pkgbase = pysensor-qt
+	pkgdesc = Compact Qt sensor monitor with short names, favorites and hardware sorting
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/eusouobn/pysensor-qt
+	arch = any
+	license = GPL-3.0-only
+	depends = python
+	depends = python-pyqt6
+	depends = lm_sensors
+	depends = pciutils
+	optdepends = nvidia-utils: NVIDIA GPU readings via nvidia-smi
+	source = https://github.com/eusouobn/pysensor-qt/archive/refs/tags/v0.12.0.tar.gz
+	sha256sums = c25a8ba1c014745a49348d89d74e49aa2151cf494a2f3ffdf89670ec3320cff4
+
+pkgname = pysensor-qt
