@@ -1,0 +1,30 @@
+pkgbase = micforge
+	pkgdesc = Microphone processor for PipeWire: voice-only gate, AI noise removal, effects, voice changer and VST3/LV2 plugin hosting
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/stuartw-source/micforge
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	license = MIT
+	makedepends = git
+	makedepends = lv2
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = pipewire
+	depends = rnnoise
+	depends = lilv
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	depends = glibc
+	source = micforge-0.1.0.tar.gz::https://github.com/stuartw-source/micforge/archive/refs/tags/v0.1.0.tar.gz
+	source = vst3_base::git+https://github.com/steinbergmedia/vst3_base.git#tag=v3.8.1_build_84
+	source = vst3_pluginterfaces::git+https://github.com/steinbergmedia/vst3_pluginterfaces.git#tag=v3.8.1_build_84
+	source = vst3_public_sdk::git+https://github.com/steinbergmedia/vst3_public_sdk.git#tag=v3.8.1_build_84
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = micforge
