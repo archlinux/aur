@@ -1,0 +1,20 @@
+pkgbase = larql-bin
+	pkgdesc = Run, serve, query and edit AI models in the inspectable VINDEX format
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/chrishayuk/larql
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openblas
+	provides = larql
+	conflicts = larql
+	options = !debug
+	source = larql-bin-0.3.0-LICENSE::https://raw.githubusercontent.com/chrishayuk/larql/v0.3.0/LICENSE
+	sha256sums = ac16f5b441ceda45ca7a8a5d2dc02f49794bd3f506dbb081cee3e917f0a9f4af
+	source_x86_64 = larql-bin-0.3.0-x86_64.tar.gz::https://github.com/chrishayuk/larql/releases/download/v0.3.0/larql-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 99d14e7683a7a875f43ce4fc426462f509b6596be94cc8643781dbbab387348d
+
+pkgname = larql-bin
