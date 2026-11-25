@@ -1,11 +1,12 @@
 pkgbase = imap
 	pkgver = 2007f
-	pkgrel = 22
+	pkgrel = 23
 	url = https://github.com/uw-imap/imap
 	arch = x86_64
 	license = APACHE
 	makedepends = pam
 	makedepends = git
+	makedepends = openssl-3
 	options = staticlibs
 	source = imap-src::git+https://github.com/uw-imap/imap.git#tag=patches-FD29-RPM
 	source = c-client-2006k_GENTOO_amd64-so-fix.patch

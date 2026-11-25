@@ -1,11 +1,11 @@
 pkgbase=imap
 pkgname=imap
 pkgver=2007f
-pkgrel=22
+pkgrel=23
 arch=('x86_64')
 license=('APACHE')
 url="https://github.com/uw-imap/imap"
-makedepends=('pam' 'git')
+makedepends=('pam' 'git' 'openssl-3')
 source=("imap-src::git+https://github.com/uw-imap/imap.git#tag=patches-FD29-RPM"
         'c-client-2006k_GENTOO_amd64-so-fix.patch'
         'imap' 'ipop2' 'ipop3')
@@ -23,6 +23,8 @@ prepare() {
     -e "s:-g -fno-omit-frame-pointer -O6:\${CFLAGS}:" \
     -e "s:SSLDIR=/usr/local/ssl:SSLDIR=/usr:" \
     -e "s:SSLCERTS=\$(SSLDIR)/certs:SSLCERTS=/etc/ssl/certs:" \
+    -e "s:SSLLIB=\$(SSLDIR)/lib:SSLLIB=\$(SSLDIR)/lib/openssl-3:" \
+    -e "s:-I\$(SSLINCLUDE)/openssl:-I\$(SSLINCLUDE)/openssl-3/openssl:" \
     -i src/osdep/unix/Makefile
 
   patch -p1 -i "$srcdir/c-client-2006k_GENTOO_amd64-so-fix.patch"
@@ -30,8 +32,15 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgbase-src"
-  CFLAGS+=" -ffat-lto-objects -Wno-implicit-function-declaration  -Wno-incompatible-pointer-types"
-  yes "y" | make -j1 lnp EXTRAAUTHENTICATORS=gss PASSWDTYPE=pam SPECIALAUTHENTICATORS=ssl SSLTYPE=unix EXTRACFLAGS="${CFLAGS} -fPIC -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err -lpam" EXTRALDFLAGS="${LDFLAGS}"
+  CFLAGS+=" -ffat-lto-objects -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -Wno-error=int-conversion "
+  export PKG_CONFIG_PATH="/usr/lib/openssl-3/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+  yes "y" | make -j1 lnp \
+    EXTRAAUTHENTICATORS=gss \
+    PASSWDTYPE=pam \
+    SPECIALAUTHENTICATORS=ssl \
+    SSLTYPE=unix \
+    EXTRACFLAGS="${CFLAGS} -fPIC -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err -lpam" \
+    EXTRALDFLAGS="${LDFLAGS}"
 
 }
 
