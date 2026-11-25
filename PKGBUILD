@@ -4,7 +4,7 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=uq
-pkgver=0.3.40
+pkgver=0.3.41
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 # The uq-hyprland-pin this release's config/hypr/base.lua is tested with: equal to
@@ -61,7 +61,7 @@ backup=(etc/pam.d/uq-greetd etc/pam.d/uq-greeter etc/pam.d/uq-lock etc/pam.d/uq-
 # (so its checksum) can change. The release workflow uploads exactly this file and prints its sum.
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; update it with pkgver at each release (docs/releasing.md).
-sha256sums=('de800539cf17b5b695512c786e8f7be171148060a39baf921e6561ab33af4183')
+sha256sums=('c19b2bc5802d7c56439681dfaff3ab5e7bcba4aa81a56ec37f5f1b79f9723c35')
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"
