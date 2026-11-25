@@ -2,7 +2,7 @@
 
 pkgname=dux-qt-base
 pkgver=0.4.73
-pkgrel=1
+pkgrel=2
 pkgdesc='Quickshell QML runtime as a shared library with a C entry point'
 arch=(x86_64 aarch64)
 url="https://github.com/duxlabs-dev/$pkgname"
