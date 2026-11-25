@@ -1,7 +1,7 @@
 pkgname=fcitx5-areca-git
 _pkgname=fcitx5-areca
 _reponame=ArecaIME
-pkgver=r353.42c4117
+pkgver=r377.3300e73
 pkgrel=1
 pkgdesc='Areca Vietnamese input method for Fcitx5 using the Bamboo engine'
 arch=('x86_64')
@@ -17,10 +17,7 @@ depends=(
   'libei'
   'libportal'
   'systemd-libs'
-  'sdl3'
-  'fontconfig'
-  'libx11'
-  'libxtst'
+  'wayland'
 )
 makedepends=(
   'cmake'
@@ -30,10 +27,7 @@ makedepends=(
   'ninja'
   'pkgconf'
   'dbus'
-  'sdl3'
-  'fontconfig'
-  'libx11'
-  'libxtst'
+  'wayland'
 )
 optdepends=('fcitx5-configtool: graphical configuration tool')
 _bamboo_commit='b2e49a2b48c7d3772a3673142a7747eccd9d5f79'
