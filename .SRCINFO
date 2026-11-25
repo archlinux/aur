@@ -1,0 +1,17 @@
+pkgbase = outpost-bin
+	pkgdesc = Outbound webhooks and event destination infrastructure
+	pkgver = 1.11.1
+	pkgrel = 1
+	url = https://github.com/hookdeck/outpost
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = outpost
+	conflicts = outpost
+	options = !debug
+	source_x86_64 = outpost-bin-1.11.1-x86_64.tar.gz::https://github.com/hookdeck/outpost/releases/download/v1.11.1/outpost_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ddd8e471c6f2fa8bd6c34091c9143c6852ba67eaf142aaf375bc2b115fef50fc
+	source_aarch64 = outpost-bin-1.11.1-aarch64.tar.gz::https://github.com/hookdeck/outpost/releases/download/v1.11.1/outpost_Linux_arm64.tar.gz
+	sha256sums_aarch64 = a6ebb9b0b777992da1cba1d3faa2a0f710c44e90b32d25df94d0ccbf9c68b9a3
+
+pkgname = outpost-bin
