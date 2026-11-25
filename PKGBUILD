@@ -1,6 +1,6 @@
 # Maintainer: Kreuder <mk@singular.de>
 pkgname=drew
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Image annotation for Wayland. Bells and whistles included'
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
   'gettext'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mkay/drew/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('867ab011a379a3c8eed46c9c08c5de5615f230d012f1b934d30ab76fb2d53a36')
+sha256sums=('60c1f9d0deca0dfa2ad6a3becb1fd4a94b4e67a55de900c6e8480bbbb0ee9508')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
