@@ -3,7 +3,7 @@ pkgname="${appname}-adblocker-git"
 _pkgname=Zen
 pkgver=0.24.1.r6.ge9451ef
 _nodeversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source system-wide ad-blocker and privacy guard."
 arch=('any')
 url="https://irbis.sh/zen"
@@ -44,7 +44,7 @@ _ensure_local_nvm() {
 }
 build() {
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U" --custom="StartupWMClass=zen"
     cd "${srcdir}/${pkgname%-git}.git"
     export CGO_ENABLED=1
     export GO111MODULE=on
