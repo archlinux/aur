@@ -1,7 +1,7 @@
 # Maintainer: Alexander R. <srwork@gmail.com>
 
 pkgname=meld-qt
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Visual diff and merge tool"
 url="https://github.com/Alexander-r/meld-qt"
@@ -10,7 +10,7 @@ depends=('qt6-base' 'hicolor-icon-theme')
 makedepends=('qt6-tools' 'cmake')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/Alexander-r/meld-qt/tar.gz/refs/tags/v${pkgver}")
-sha256sums=('5b4d9902604e91f66e2460a1b392f055069e5f7ac751ef3d410b407d7bf46d2f')
+sha256sums=('99a3401690c01577b0519194a49749c21dc31617d8667352b4c87911eb7baca1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
