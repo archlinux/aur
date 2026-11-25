@@ -1,8 +1,8 @@
 # Maintainer: colegeming <collegeming@outlook.com>
 
 pkgname=siyuan-unlock-bin
-pkgver=3.8.11
-pkgrel=2
+pkgver=3.8.12
+pkgrel=1
 pkgdesc='Privacy-first personal knowledge management software (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://b3log.org/siyuan/en/'
@@ -12,9 +12,9 @@ provides=('siyuan' 'siyuan-unlock')
 conflicts=('siyuan' 'siyuan-unlock')
 options=('!strip')
 source_x86_64=("https://github.com/appdev/siyuan-unlock/releases/download/v${pkgver}/siyuan-${pkgver}-linux.tar.gz")
-sha256sums_x86_64=('c9280bca4e7848400c6b33ae8fc689357317f6ec42897ae16702b0a40c598b40')
+sha256sums_x86_64=('a29df9e7bfcdf26cb513476c9a4dfc7c420a84c5e305381d7ee9e51c2f2d72b0')
 source_aarch64=("https://github.com/appdev/siyuan-unlock/releases/download/v${pkgver}/siyuan-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('aaee94897df7b1db265280a551bb1d7f9e19e4c35d32fa85be06007e2f756cdd')
+sha256sums_aarch64=('7c33aa2069410dee05ee8aa09a8de79618030a81fe990cd9e50a1ffc161a2dac')
 
 package() {
     local appdir="${pkgdir}/opt/siyuan"
