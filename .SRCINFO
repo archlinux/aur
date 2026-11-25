@@ -1,0 +1,20 @@
+pkgbase = zukou
+	pkgdesc = Client library for Zwin
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/zwin-project/zukou
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	makedepends = zwin-protocols
+	makedepends = libjpeg-turbo
+	depends = wayland
+	depends = glm
+	depends = libglvnd
+	depends = gcc-libs
+	depends = glibc
+	source = zukou-0.1.2.tar.gz::https://github.com/zwin-project/zukou/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = ac7f5365ab972f0cd1b64699b9a331ac57b7e604f17e521ac3921e5741d99828
+
+pkgname = zukou
