@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=zot-agent-bin
-pkgver=0.4.88
+pkgver=0.4.89
 pkgrel=1
 pkgdesc="Lightweight coding agent harness"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/zot_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/zot_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('a2ff02a7abb513600dab94a2fe581932d8eaf124c251f11a2ed88ff6b3e00414')
-sha256sums_aarch64=('434f3187064466882c18c65f2e0fa546306f8935fc80801fdae07ace0b3338d3')
+sha256sums_x86_64=('95440f52ce6495bd6b80eef41ae1aa94e3d140c05cb2b0d0e6686520d271b605')
+sha256sums_aarch64=('9bdad7cf52d990bf7318c869148935c1605ea54bce87d29e01c00bb813629b11')
 
 package() {
   install -Dm755 "zot" "${pkgdir}/usr/bin/zot"

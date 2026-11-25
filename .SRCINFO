@@ -1,6 +1,6 @@
 pkgbase = zot-agent-bin
 	pkgdesc = Lightweight coding agent harness
-	pkgver = 0.4.88
+	pkgver = 0.4.89
 	pkgrel = 1
 	url = https://github.com/patriceckhart/zot
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = zot-agent-bin
 	conflicts = zot-agent
 	conflicts = zot
 	options = !debug
-	source_x86_64 = zot-agent-bin-0.4.88-x86_64.tar.gz::https://github.com/patriceckhart/zot/releases/download/v0.4.88/zot_0.4.88_linux_amd64.tar.gz
-	sha256sums_x86_64 = a2ff02a7abb513600dab94a2fe581932d8eaf124c251f11a2ed88ff6b3e00414
-	source_aarch64 = zot-agent-bin-0.4.88-aarch64.tar.gz::https://github.com/patriceckhart/zot/releases/download/v0.4.88/zot_0.4.88_linux_arm64.tar.gz
-	sha256sums_aarch64 = 434f3187064466882c18c65f2e0fa546306f8935fc80801fdae07ace0b3338d3
+	source_x86_64 = zot-agent-bin-0.4.89-x86_64.tar.gz::https://github.com/patriceckhart/zot/releases/download/v0.4.89/zot_0.4.89_linux_amd64.tar.gz
+	sha256sums_x86_64 = 95440f52ce6495bd6b80eef41ae1aa94e3d140c05cb2b0d0e6686520d271b605
+	source_aarch64 = zot-agent-bin-0.4.89-aarch64.tar.gz::https://github.com/patriceckhart/zot/releases/download/v0.4.89/zot_0.4.89_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9bdad7cf52d990bf7318c869148935c1605ea54bce87d29e01c00bb813629b11
 
 pkgname = zot-agent-bin
