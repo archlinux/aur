@@ -1,0 +1,25 @@
+pkgbase = dusk-menu
+	pkgdesc = A sleek, customizable logout and power menu for Hyprland, Sway and Niri
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/rodneyosodo/dusk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = pkgconf
+	makedepends = rust
+	depends = fontconfig
+	depends = glibc
+	depends = libgcc
+	depends = libxkbcommon
+	depends = systemd
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = libnotify: notifications when an action fails
+	conflicts = dusk-menu-bin
+	conflicts = dusk-git
+	source = dusk-0.1.4.tar.gz::https://github.com/rodneyosodo/dusk/releases/download/v0.1.4/dusk-0.1.4-source.tar.gz
+	sha256sums = dd007b39e6a0ee714636a8ba0b24cf608ec7c781351249db9de83906b8068b0c
+
+pkgname = dusk-menu
