@@ -1,0 +1,17 @@
+pkgbase = inbucket-bin
+	pkgdesc = Disposable webmail server (similar to Mailinator) with built in SMTP, POP3, RESTful servers; no DB required
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/inbucket/inbucket
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = inbucket
+	conflicts = inbucket
+	options = !debug
+	source_x86_64 = inbucket-bin-3.2.0-x86_64.tar.gz::https://github.com/inbucket/inbucket/releases/download/v3.2.0/inbucket_3.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0d7d76ed7e66b0700c38aeef7ad1f086e4a159ce554abd92c95052d0838e0e24
+	source_aarch64 = inbucket-bin-3.2.0-aarch64.tar.gz::https://github.com/inbucket/inbucket/releases/download/v3.2.0/inbucket_3.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0d9070eaee5b3f4182d10b9bac7feefbac7762e04cec2484e5679e5ebabd7e68
+
+pkgname = inbucket-bin
