@@ -19,7 +19,7 @@
 # PostgreSQL 15+ and nginx are runtime deps (matches the RPM spec which
 # pins postgresql-server >= 12 and Requires: nginx).
 pkgname=sysmanage
-pkgver=3.15.0.16
+pkgver=3.15.0.17
 pkgrel=1
 pkgdesc="Centralized system management server with web-based interface"
 arch=('any')
@@ -55,7 +55,7 @@ depends=(
 makedepends=('python-setuptools' 'python-pip')
 backup=('etc/sysmanage.yaml' 'etc/nginx/conf.d/sysmanage-nginx.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bceverly/sysmanage/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3dbfd6554c0e113f74e294eda6cbcd59585bf01c1e88fda9f133810a15e18131')
+sha256sums=('072660c04e28c38a39c6a28ce62a7fa8ea31f652ee551d332c2755b7233a04a1')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
