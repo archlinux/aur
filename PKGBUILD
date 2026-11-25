@@ -4,13 +4,13 @@ _pkgbase=dearsql
 _vcpkg_commit=77df67cfff9c12ccfdb52284e07c87c75092f723
 _mongo_patch_commit=bd93b56711a393a3c498991e023f94b7542832bb
 pkgname=${_pkgbase}-git
-pkgver=0.6.0.r4.g95c5d72
+pkgver=0.8.1.r0.g22dc848
 pkgrel=1
 pkgdesc="Cross-platform SQL database client (git version)"
 arch=('x86_64')
 url="https://github.com/dunkbing/dearsql"
 license=('LicenseRef-FSL')
-depends=('freetds' 'gtk4' 'libepoxy' 'libx11')
+depends=('freetds' 'gtk4' 'libepoxy' 'libsecret' 'libx11')
 makedepends=(
     'autoconf'
     'autoconf-archive'
@@ -19,6 +19,7 @@ makedepends=(
     'curl'
     'git'
     'gnutls'
+    'gperf'
     'krb5'
     'libltdl'
     'libtirpc'
@@ -52,6 +53,7 @@ prepare() {
         mv "vcpkg-${_vcpkg_commit}" vcpkg
     fi
     sed -i '/"builtin-baseline":/d' "${_pkgbase}/vcpkg.json"
+    sed -i 's/"dependencies": \[/"dependencies": ["miniz",/' "${_pkgbase}/vcpkg.json"
     rm -rf vcpkg-overlay
     mkdir -p vcpkg-overlay/mongo-c-driver
     cp -a vcpkg/ports/mongo-c-driver/. vcpkg-overlay/mongo-c-driver/
@@ -62,6 +64,15 @@ prepare() {
     sed -i \
         '/remove_abs_patch.cmake/a\        mongo-cmake-4.4.patch' \
         vcpkg-overlay/mongo-c-driver/portfile.cmake
+    cp -a vcpkg-overlay/mongo-c-driver "${_pkgbase}/cmake/ports-linux/"
+    sed -i \
+        '/-DOPENSSL_USE_STATIC_LIBS=ON/a\            -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.so\
+            -DZLIB_LIBRARY_DEBUG=/usr/lib/libz.so\
+            -DHAVE_BIO_GET_DATA=1' \
+        "${_pkgbase}/external/libdearsql/cmake/FreeTDS.cmake"
+    sed -i \
+        "/set(VCPKG_CRT_LINKAGE dynamic)/a\\set(VCPKG_C_FLAGS \"-ffile-prefix-map=${srcdir}=.\")\\nset(VCPKG_CXX_FLAGS \"-ffile-prefix-map=${srcdir}=.\")" \
+        "${_pkgbase}/cmake/triplets/x64-linux.cmake"
 
     ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
 }
@@ -71,7 +82,8 @@ build() {
     export VCPKG_BUILD_TYPE=release
     export VCPKG_DISABLE_METRICS=1
     export VCPKG_DOWNLOADS="$srcdir/vcpkg-downloads"
-    export CFLAGS="${CFLAGS} -Wno-error=override-init"
+    export CFLAGS="${CFLAGS} -Wno-error=override-init -ffile-prefix-map=${srcdir}=."
+    export CXXFLAGS="${CXXFLAGS} -ffile-prefix-map=${srcdir}=."
 
     cmake -S "${srcdir}/${_pkgbase}" -B "${srcdir}/build" \
         -G Ninja \
