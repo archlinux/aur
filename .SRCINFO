@@ -1,0 +1,17 @@
+pkgbase = coop-bin
+	pkgdesc = Isolated VM environment for running Claude Code and Codex
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/trailofbits/coop
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = coop
+	conflicts = coop
+	options = !debug
+	source_x86_64 = coop-bin-0.10.0-x86_64.tar.gz::https://github.com/trailofbits/coop/releases/download/v0.10.0/coop-v0.10.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = e5f8c6a254789eb89e46edf816a018e3ed3a1b3c55a47be72b4f8fa8c5f01568
+	source_aarch64 = coop-bin-0.10.0-aarch64.tar.gz::https://github.com/trailofbits/coop/releases/download/v0.10.0/coop-v0.10.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = fac703208a931f3b26f23de8f8d2c415d557ec0109e30392ab403fd716793405
+
+pkgname = coop-bin
