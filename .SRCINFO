@@ -1,6 +1,6 @@
 pkgbase = vle
 	pkgdesc = A lightweight text editor
-	pkgver = 1.24.1
+	pkgver = 1.24.2
 	pkgrel = 1
 	url = https://github.com/tuffy/vle
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vle
 	depends = glibc
 	depends = libgcc
 	options = !lto
-	source = vle-1.24.1.tar.gz::https://github.com/tuffy/vle/archive/refs/tags/v1.24.1.tar.gz
-	sha256sums = 22702e49a2d2d3eb3f055f6269e23b44108a26ee51c6a48c86f1162d51f4b3ef
+	source = vle-1.24.2.tar.gz::https://github.com/tuffy/vle/archive/refs/tags/v1.24.2.tar.gz
+	sha256sums = 47d395200a922ff5938eb26441ff8b2db2b7e7cad67034e4de09d2fc7c3a5a5c
 
 pkgname = vle

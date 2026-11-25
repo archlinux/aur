@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=vle
-pkgver=1.24.1
+pkgver=1.24.2
 pkgrel=1
 _srcdir="vle-${pkgver}"
 pkgdesc="A lightweight text editor"
@@ -12,7 +12,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('22702e49a2d2d3eb3f055f6269e23b44108a26ee51c6a48c86f1162d51f4b3ef')
+sha256sums=('47d395200a922ff5938eb26441ff8b2db2b7e7cad67034e4de09d2fc7c3a5a5c')
 
 prepare() {
   cd "${_srcdir}"
