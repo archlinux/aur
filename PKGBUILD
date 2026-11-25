@@ -1,6 +1,6 @@
 # Maintainer: polarours <polarours@github.com>
 pkgname=hyprfetch-git
-pkgver=0.2.0.r1.gfe4eaee
+pkgver=0.2.1.r4.gfda8293
 pkgrel=1
 pkgdesc="Hyprland-native fetch utility for system, session, and rice state"
 arch=("x86_64" "aarch64")
