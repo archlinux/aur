@@ -1,13 +1,19 @@
 pkgbase = refind-theme-darkmini-git
-	pkgdesc = Dark theme for rEFInd
-	pkgver = r20.0bef03e
+	pkgdesc = Dark, minimal theme for rEFInd and RefindPlus
+	pkgver = r30.8ad13bd
 	pkgrel = 1
 	url = https://github.com/LightAir/darkmini
+	install = refind-theme-darkmini-git.install
 	arch = any
-	license = none
+	license = MIT
 	makedepends = git
 	depends = refind
+	optdepends = refindplus-bin: use the theme with RefindPlus
+	provides = refind-theme-darkmini
+	conflicts = refind-theme-darkmini
 	source = refind-theme-darkmini-git::git+https://github.com/LightAir/darkmini.git
+	source = setup.sh
 	sha256sums = SKIP
+	sha256sums = 1494c697b76d06f4be52ece019858e30b19e729536f9a11623486d9221776726
 
 pkgname = refind-theme-darkmini-git
