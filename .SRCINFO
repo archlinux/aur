@@ -1,6 +1,6 @@
 pkgbase = motty-bin
 	pkgdesc = SSH, SFTP, port forwarding, VNC/RDP and AI assistant in one native window
-	pkgver = 0.4.30
+	pkgver = 0.4.31
 	pkgrel = 1
 	url = https://motty.page
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = motty-bin
 	options = !debug
 	source = LICENSE
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	source_x86_64 = motty-0.4.30-linux-amd64.tar.gz::https://github.com/t8y2/motty/releases/download/v0.4.30/motty-0.4.30-linux-amd64.tar.gz
-	sha256sums_x86_64 = eea588e5e2d289ca1429f877b3688a4203401ac71d9e6fa421aeb22fb7a7dd2e
-	source_aarch64 = motty-0.4.30-linux-arm64.tar.gz::https://github.com/t8y2/motty/releases/download/v0.4.30/motty-0.4.30-linux-arm64.tar.gz
-	sha256sums_aarch64 = 4493b4021040574f9afac6e09667dbc9231bd210f80d31ae0f3ba273f464e8a7
+	source_x86_64 = motty-0.4.31-linux-amd64.tar.gz::https://github.com/t8y2/motty/releases/download/v0.4.31/motty-0.4.31-linux-amd64.tar.gz
+	sha256sums_x86_64 = 6cdeca04a7adcfbb3455d1f26cfa9c354c7332ef24bd174a5ed108711b94be5b
+	source_aarch64 = motty-0.4.31-linux-arm64.tar.gz::https://github.com/t8y2/motty/releases/download/v0.4.31/motty-0.4.31-linux-arm64.tar.gz
+	sha256sums_aarch64 = 1a004ef481258d758ce9c9891cc54c9f7930ba8d8ca761f7e69d06831cda110a
 
 pkgname = motty-bin
