@@ -1,5 +1,5 @@
 pkgname=nagram-desktop
-pkgver=7.4.4.1
+pkgver=7.4.6.1
 _td_commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 _wallet_engine_ver=0.0.7
 pkgrel=1
@@ -9,7 +9,6 @@ url="https://github.com/NextAlone/Nagram-Qt"
 license=('GPL-3.0-or-later WITH OpenSSL-exception')
 depends=(
   'abseil-cpp'
-  'ada'
   'ffmpeg'
   'glib2'
   'glibc'
@@ -71,8 +70,9 @@ makedepends=(
   'vulkan-headers'
 )
 optdepends=(
-  'geoclue: geoinformation support'
   'crow-translate: translation provider'
+  'enchant: system spellcheck dictionaries support'
+  'geoclue: geoinformation support'
   'webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1 (gtk3)'
   'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (gtk4)'
   'xdg-desktop-portal: desktop integration'
@@ -82,7 +82,7 @@ source=(
   "git+https://github.com/tdlib/td.git#commit=${_td_commit}"
   # We're vendoring wallet-engine because tdesktop requires a massive patch against it.
   "wallet-engine-${_wallet_engine_ver}.tar.gz::https://github.com/i582/wallet-engine/archive/refs/tags/v${_wallet_engine_ver}.tar.gz"
-  "https://github.com/desktop-app/patches/raw/69f23a834024d6064da209076151393582b3c966/wallet-engine.patch"
+  "https://github.com/desktop-app/patches/raw/8a28b8433af70771c3d101c776ad837a94bd47ec/wallet-engine.patch"
   "git+https://github.com/Microsoft/GSL.git"
   "git+https://github.com/Cyan4973/xxHash.git"
   "git+https://github.com/lz4/lz4.git"
@@ -124,11 +124,13 @@ source=(
   "git+https://gitlab.com/mnauw/cppgir.git"
   "git+https://github.com/martinmoene/expected-lite.git"
   "git+https://github.com/TelegramMessenger/quickjs.git"
+  "git+https://github.com/TelegramMessenger/nova-safe.git"
 )
-sha512sums=('aed53d54ef0367fa18ae7bbaa393088b3346072d33a94c65d4c89c40732cf7dc11e143b41c58a1927eb45a115320a135260a96c04e576b9f4ad0680d6a780cda'
+sha512sums=('f3fd311f2671cc0e4396835531d96095c1f3074b01688795a730fbd9aa3d28801c13a01411a8f7f38ef442c9a3d5d25628cbf1be40d8e5f0073049b3fcd63609'
             'dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2'
             'f1a38de20459c5b780c98aaab037fdf34357980e7f3b93c4b523636d016ca4ffc9d9679c2ee4a246b138ef0474b8190d2db1874b204c006b0f30b3c950c62ff6'
-            '71c9b0aacef42e87febee042d251c2835e3d30b8000f9b00afb48d74a7e7aba93a36530c1ef0d6da69bb4d115e7a852a8888f1bcf868d1bd60d9e3f55a024088'
+            '02a56630652d9fbf80a78a4aba46d64a6a32cc9768dab8465a5ede75686895d10716b9ade03957eefdbec50abb4d93788352bf507f782a7e9b9f890ff2eca91d'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -210,6 +212,7 @@ prepare() {
   git -C Nagram-Qt config --local submodule."Telegram/ThirdParty/zxcvbn".url "file://${srcdir}/zxcvbn-c"
   git -C Nagram-Qt config --local submodule."Telegram/ThirdParty/twidget".url "file://${srcdir}/twidget"
   git -C Nagram-Qt config --local submodule."Telegram/ThirdParty/widget-sandbox".url "file://${srcdir}/widget-sandbox"
+  git -C Nagram-Qt config --local submodule."Telegram/ThirdParty/nova-safe".url "file://${srcdir}/nova-safe"
   git -C Nagram-Qt -c protocol.file.allow=always submodule update
 
   git -C Nagram-Qt/cmake submodule init
@@ -257,6 +260,7 @@ build() {
   cmake -B build -S Nagram-Qt -G Ninja \
     -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -Dtde2e_DIR="$PWD/td/install/lib/cmake/tde2e" \
     -DCMAKE_PREFIX_PATH="$PWD/wallet-engine-${_wallet_engine_ver}/install" \
     -DCMAKE_BUILD_TYPE=None \
