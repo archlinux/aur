@@ -1,6 +1,6 @@
 pkgbase = atlassian-tui-bin
 	pkgdesc = Jira and Confluence in the terminal with a TUI, CLI, HTTP API and read-only MCP mode
-	pkgver = 0.8.1
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/BiteFoundry/atlassian
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = atlassian-tui-bin
 	provides = atlassian-tui
 	conflicts = atlassian-tui
 	options = !debug
-	source_x86_64 = atlassian-tui-bin-0.8.1-x86_64.tar.gz::https://github.com/BiteFoundry/atlassian/releases/download/v0.8.1/atlassian-0.8.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 8104c70195ca8ed6d2827a98bd0f8e15dd74d2145c190e27f9478c5344fbaedc
-	source_aarch64 = atlassian-tui-bin-0.8.1-aarch64.tar.gz::https://github.com/BiteFoundry/atlassian/releases/download/v0.8.1/atlassian-0.8.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = b491514165f7edfaacad6204b9aa4ff32dc50d63c53dbcc81b308ff788d6c6ea
+	source_x86_64 = atlassian-tui-bin-0.8.4-x86_64.tar.gz::https://github.com/BiteFoundry/atlassian/releases/download/v0.8.4/atlassian-0.8.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4094d593c64735ad48985ee0b799fb31f7076a4cfad1256d5166642262312b78
+	source_aarch64 = atlassian-tui-bin-0.8.4-aarch64.tar.gz::https://github.com/BiteFoundry/atlassian/releases/download/v0.8.4/atlassian-0.8.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = bd76828ec6e7a281dd86b98644ce6fa227a1d06511972b5aeba1162f7d36d09a
 
 pkgname = atlassian-tui-bin
