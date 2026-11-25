@@ -3,7 +3,7 @@
 pkgbase=lynx-imager-bin
 pkgname=lynx-imager-bin
 _pkgname=LYNX-Imager
-_tagname=0.1-rc10
+_tagname=0.1-rc11
 pkgver=${_tagname//-/+}
 pkgrel=1
 arch=('x86_64')
@@ -49,7 +49,7 @@ license=('GPL-3.0-or-later')
 url="https://github.com/dshanpi/lynx-imager"
 install=
 source=("${url}/releases/download/v${_tagname}/${_name}.deb")
-sha256sums=('0daaa677f27d9c1152b8434afadabe46d829b95ca033d2cbaac69c839a07e467')
+sha256sums=('238697326fd8806b23d52615da3c17d8c6acfa824eaafb764faab744b7e4c99f')
 # noextract=()
 
 # prepare() {
