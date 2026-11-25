@@ -1,0 +1,204 @@
+1	english	x-vnd.Ringbinder	0
+Occasion	AnniversarySection		Событие
+Date	AnniversarySection		Дата
+Category	AnniversarySection		Категория
+Birthday|Anniversary|Holiday|Other	AnniversarySection		День рождения|Годовщина|Праздник|Другое
+Notes	AnniversarySection		Заметки
++ %d more	AnniversarySection		+ ещё %d
+today	AnniversarySection		сегодня
+tomorrow	AnniversarySection		завтра
+in %d days	AnniversarySection		через %d дн.
+Today	AnniversarySection		Сегодня
+Edit	AnniversarySection		Изменить
+Delete	AnniversarySection		Удалить
+Birthday	AnniversarySection		День рождения
+Edit Occasion	AnniversarySection		Изменить событие
+OK	App		ОК
+File	BinderWindow		Файл
+Save	BinderWindow		Сохранить
+Quit	BinderWindow		Выход
+Entry	BinderWindow		Запись
+Mark done / not done	BinderWindow		Отметить выполненной / невыполненной
+View	BinderWindow		Вид
+Previous	BinderWindow		Назад
+Next	BinderWindow		Вперёд
+Today	BinderWindow		Сегодня
+Sync	BinderWindow		Синхронизация
+Sync with Google now	BinderWindow		Синхронизировать с Google сейчас
+Section	BinderWindow		Раздел
+Could not start Google sign-in.	BinderWindow		Не удалось начать вход в Google.
+Disconnect	BinderWindow		Отключить
+Cancel	BinderWindow		Отмена
+Your organizer could not be saved.	BinderWindow		Не удалось сохранить органайзер.
+OK	BinderWindow		ОК
+Google sync	BinderWindow		Синхронизация Google
+Description	CalendarSection		Описание
+Date	CalendarSection		Дата
+Start time	CalendarSection		Время начала
+End time	CalendarSection		Время окончания
+Location	CalendarSection		Место
+Category	CalendarSection		Категория
+Business|Personal|Travel|Holiday|Other	CalendarSection		Работа|Личное|Поездка|Праздник|Другое
+Notes	CalendarSection		Заметки
+Today	CalendarSection		Сегодня
+This week	CalendarSection		Эта неделя
+New appointment	CalendarSection		Новая встреча
+Edit	CalendarSection		Изменить
+Delete	CalendarSection		Удалить
+Edit appointment	CalendarSection		Изменить встречу
+Calendar	Constants		Календарь
+To Do	Constants		Задачи
+Address	Constants		Адрес
+Calls	Constants		Звонки
+Planner	Constants		Планировщик
+Notepad	Constants		Заметки
+Anniversary	Constants		Годовщины
+Welcome to Ringbinder	DataStore		Добро пожаловать в Ringbinder
+January	DateUtil		января
+February	DateUtil		февраля
+March	DateUtil		марта
+April	DateUtil		апреля
+May	DateUtil		мая
+June	DateUtil		июня
+July	DateUtil		июля
+August	DateUtil		августа
+September	DateUtil		сентября
+October	DateUtil		октября
+November	DateUtil		ноября
+December	DateUtil		декабря
+Jan	DateUtil		янв
+Feb	DateUtil		фев
+Mar	DateUtil		мар
+Apr	DateUtil		апр
+Jun	DateUtil		июн
+Jul	DateUtil		июл
+Aug	DateUtil		авг
+Sep	DateUtil		сен
+Oct	DateUtil		окт
+Nov	DateUtil		ноя
+Dec	DateUtil		дек
+Monday	DateUtil		понедельник
+Tuesday	DateUtil		вторник
+Wednesday	DateUtil		среда
+Thursday	DateUtil		четверг
+Friday	DateUtil		пятница
+Saturday	DateUtil		суббота
+Sunday	DateUtil		воскресенье
+Mon	DateUtil		пн
+Tue	DateUtil		вт
+Wed	DateUtil		ср
+Thu	DateUtil		чт
+Fri	DateUtil		пт
+Sat	DateUtil		сб
+Sun	DateUtil		вс
+today	DateUtil		сегодня
+tomorrow	DateUtil		завтра
+YYYY-MM-DD, or "today"	EditWindow		ГГГГ-ММ-ДД или "сегодня"
+HH:MM (24 hour)	EditWindow		ЧЧ:ММ (24 часа)
+Cancel	EditWindow		Отмена
+Save	EditWindow		Сохранить
+Please fill in "%s".	EditWindow		Заполните "%s".
+OK	EditWindow		ОК
+Only when I ask	GoogleSettingsWindow		Только по запросу
+Every 15 minutes	GoogleSettingsWindow		Каждые 15 минут
+Every 30 minutes	GoogleSettingsWindow		Каждые 30 минут
+Every hour	GoogleSettingsWindow		Каждый час
+Every 4 hours	GoogleSettingsWindow		Каждые 4 часа
+Google sync	GoogleSettingsWindow		Синхронизация Google
+Client ID:	GoogleSettingsWindow		ID клиента:
+Client secret:	GoogleSettingsWindow		Секрет клиента:
+Disconnect	GoogleSettingsWindow		Отключить
+Calendar ID:	GoogleSettingsWindow		ID календаря:
+Sync automatically:	GoogleSettingsWindow		Синхронизировать автоматически:
+Sync now	GoogleSettingsWindow		Синхронизировать сейчас
+Close	GoogleSettingsWindow		Закрыть
+account	GoogleSettingsWindow		учётной записи
+Google account	GoogleSettingsWindow		Учётная запись Google
+What to sync	GoogleSettingsWindow		Что синхронизировать
+Connected	GoogleSettingsWindow		Подключено
+Cancel	GoogleSettingsWindow		Отмена
+Could not open the web browser.	GoogleSync		Не удалось открыть веб-браузер.
+Sign-in failed.	GoogleSync		Не удалось войти.
+Connected. Not synced yet.	GoogleSync		Подключено. Ещё не синхронизировано.
+ (and %d more problems)	GoogleSync		 (и ещё %d проблем)
+Everything is up to date.	GoogleSync		Всё актуально.
+Last sync 	GoogleSync		Последняя синхронизация 
+Not connected.	GoogleSync		Не подключено.
+Connected.	GoogleSync		Подключено.
+Title:	NotepadSection		Заголовок:
+Contents	NotepadSection		Содержание
+New page	NotepadSection		Новая страница
+Delete	NotepadSection		Удалить
+Untitled page	NotepadSection		Безымянная страница
+Meeting	PlannerSection		Встреча
+Vacation	PlannerSection		Отпуск
+Travel	PlannerSection		Поездка
+Training	PlannerSection		Обучение
+Holiday	PlannerSection		Праздник
+Other	PlannerSection		Другое
+Event	PlannerSection		Событие
+Category	PlannerSection		Категория
+Meeting|Vacation|Travel|Training|Holiday|Other	PlannerSection		Встреча|Отпуск|Поездка|Обучение|Праздник|Другое
+Start date	PlannerSection		Дата начала
+End date	PlannerSection		Дата окончания
+Notes	PlannerSection		Заметки
+Drag across days to add an event	PlannerSection		Протяните по дням, чтобы добавить событие
+This year	PlannerSection		Этот год
+New event	PlannerSection		Новое событие
+Edit	PlannerSection		Изменить
+Delete	PlannerSection		Удалить
+New planner event	PlannerSection		Новое событие планировщика
+Edit planner event	PlannerSection		Изменить событие планировщика
+Today!	RecordListSection		Сегодня!
+Tomorrow	RecordListSection		Завтра
+in %d days	RecordListSection		через %d дн.
+Double-click the card to edit	RecordListSection		Двойной щелчок по карточке — изменить
+All	RecordListSection		Все
+Overdue	RecordListSection		Просрочено
+Current	RecordListSection		Текущие
+Future	RecordListSection		Будущие
+Completed	RecordListSection		Завершённые
+New 	RecordListSection		Создать 
+Edit	RecordListSection		Изменить
+Delete	RecordListSection		Удалить
+Mark done	RecordListSection		Отметить выполненной
+%d of %d shown	RecordListSection		Показано %d из %d
+No %ss yet.
+Click "New %s" to add one.	RecordListSection		Пока нет записей [%s].
+Нажмите "Создать %s", чтобы добавить.
+No %ss behind this tab.	RecordListSection		За этой вкладкой нет записей (%s).
+Select a %s to see it here.	RecordListSection		Выберите %s, чтобы увидеть его здесь.
+Edit 	RecordListSection		Изменить 
+Delete "%s"?
+
+This cannot be undone.	Section		Удалить "%s"?
+
+Это действие нельзя отменить.
+Delete	Section		Удалить
+Cancel	Section		Отмена
+Task	SectionFactory		Задача
+Priority	SectionFactory		Приоритет
+2 - Normal|1 - High|3 - Low	SectionFactory		2 — Обычный|1 — Высокий|3 — Низкий
+Due date	SectionFactory		Срок
+Category	SectionFactory		Категория
+Business|Personal|Home|Errands|Other	SectionFactory		Работа|Личное|Дом|Поручения|Другое
+Completed	SectionFactory		Завершённые
+Notes	SectionFactory		Заметки
+Pri	SectionFactory		Приор.
+Due	SectionFactory		Срок
+Last name	SectionFactory		Фамилия
+First name	SectionFactory		Имя
+Company	SectionFactory		Компания
+Job title	SectionFactory		Должность
+Phone	SectionFactory		Телефон
+Mobile	SectionFactory		Мобильный
+E-mail	SectionFactory		Эл. почта
+Address	SectionFactory		Адрес
+Birthday	SectionFactory		День рождения
+Contact	SectionFactory		Контакт
+Name	SectionFactory		Название
+Type	SectionFactory		Тип
+Outgoing|Incoming|Missed|Call back	SectionFactory		Исходящий|Входящий|Пропущенный|Перезвонить
+Date	SectionFactory		Дата
+Time	SectionFactory		Время
+Call	SectionFactory		Звонок
