@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary from RStudio official repository)
-	pkgver = 2026.11.0.203
+	pkgver = 2026.11.1.204
 	pkgrel = 1
 	url = https://posit.co/products/open-source/rstudio/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = rstudio-desktop-bin
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-preview-bin
 	options = !strip
-	source_x86_64 = https://download1.rstudio.org/electron/jammy/amd64/rstudio-2026.11.0-203-amd64.deb
-	sha256sums_x86_64 = 2604384f3506a86ef396b5b654ef765d94c6dd13d10a50bb47676107508adf15
+	source_x86_64 = https://download1.rstudio.org/electron/jammy/amd64/rstudio-2026.11.1-204-amd64.deb
+	sha256sums_x86_64 = 3c90213f645359358150906b246ed50d67b0b4daf7af45608bbdb668914a1b4a
 
 pkgname = rstudio-desktop-bin

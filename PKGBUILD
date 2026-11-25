@@ -1,6 +1,6 @@
 # Maintainer: Clemens Brunner < clemens dot brunner at gmail dot com >
 pkgname=rstudio-desktop-bin
-pkgver=2026.11.0.203
+pkgver=2026.11.1.204
 _pkgver=${pkgver%.*}-${pkgver##*.}
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary from RStudio official repository)"
@@ -14,7 +14,7 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-preview-bin'
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
 
-sha256sums_x86_64=('2604384f3506a86ef396b5b654ef765d94c6dd13d10a50bb47676107508adf15')
+sha256sums_x86_64=('3c90213f645359358150906b246ed50d67b0b4daf7af45608bbdb668914a1b4a')
 
 source_x86_64=("https://download1.rstudio.org/electron/jammy/amd64/rstudio-${_pkgver}-amd64.deb")
 
