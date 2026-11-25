@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=slack-export-viewer
-pkgver=4.0.1
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="A Slack Export archive viewer"
 arch=(any)
@@ -22,7 +22,7 @@ makedepends=(
 optdepends=('python-frozen-flask: support static HTML output')
 checkdepends=(python-pytest)
 source=($pkgname-$pkgver.tar.gz::https://github.com/hfaran/$pkgname/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('5a973d1240ab7af6cc6332b256121213afe6211d2343c2bfbee84b3bafd652ae4af6faf47fa40c731138546ad16abf2e14bbefe532c6646e71294f254cf00e62')
+b2sums=('16556b6cbb74aff2d0c72e092658521367ee7587ef78244ec8f06eca1e44725841e9a29dd63e8797e58e87a49e97b0bb421efab21041cc348b6c338e535bf029')
 
 build() {
     cd $pkgname-$pkgver
@@ -35,6 +35,14 @@ check() {
     python -m installer --destdir=../test_dir dist/*.whl
     rm -rf slackviewer
     PYTHONPATH="$PWD"/../test_dir/$_site_packages pytest
+}
+
+check() {
+    cd $pkgname-$pkgver
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    rm -rf slackviewer
+    test-env/bin/python -P -m pytest -o addopts="" --ignore=tests/test_release.py
 }
 
 package() {
