@@ -1,0 +1,15 @@
+pkgbase = fastctx-bin
+	pkgdesc = Fast, context-efficient repository tools for AI agents over MCP
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/yc-duan/fastctx
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = fastctx
+	conflicts = fastctx
+	options = !debug
+	source_x86_64 = fastctx-bin-0.2.6-x86_64.tar.gz::https://github.com/yc-duan/fastctx/releases/download/v0.2.6/fastctx-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6c8f3c8df4c168e760c379f0b2037b1495711764039b827b0c23f8c2f5e13cee
+
+pkgname = fastctx-bin
