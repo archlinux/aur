@@ -1,5 +1,5 @@
 pkgname=strength-coach-for-garmin
-pkgver=5.2.2
+pkgver=5.3.0
 pkgrel=1
 pkgdesc='Sync your devices and track your strength training'
 arch=('x86_64')

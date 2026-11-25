@@ -1,6 +1,6 @@
 pkgbase = strength-coach-for-garmin
 	pkgdesc = Sync your devices and track your strength training
-	pkgver = 5.2.2
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://github.com/Emiliopg91/strength-coach-for-garmin
 	install = strength-coach-for-garmin.install
@@ -23,7 +23,7 @@ pkgbase = strength-coach-for-garmin
 	conflicts = strength-tracker-rs
 	replaces = garmin-tracker-rs
 	replaces = strength-tracker-rs
-	source = git+https://github.com/Emiliopg91/strength-coach-for-garmin.git#tag=5.2.2
+	source = git+https://github.com/Emiliopg91/strength-coach-for-garmin.git#tag=5.3.0
 	sha256sums = SKIP
 
 pkgname = strength-coach-for-garmin
