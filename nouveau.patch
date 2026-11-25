@@ -3730,3 +3730,30 @@ diff -ruN a/nvkm/subdev/fb/ramgf100.c b/nvkm/subdev/fb/ramgf100.c
  }
  
  static void
+--- a/nouveau_connector.c
++++ b/nouveau_connector.c
+@@ -669,6 +669,24 @@
+ 		}
+ 	}
+ 
++	/*
++	 * If DDC/analog detection found nothing, still honor an explicit EDID
++	 * override (drm.edid_firmware / debugfs edid_override) for digital
++	 * connectors so displays with missing/broken EDID EEPROMs work without
++	 * also requiring video=<conn>:e.
++	 */
++	if (drm_edid_override_connector_update(connector) > 0) {
++		nv_encoder = find_encoder(connector, DCB_OUTPUT_TMDS);
++		if (!nv_encoder)
++			nv_encoder = find_encoder(connector, DCB_OUTPUT_DP);
++		if (!nv_encoder)
++			nv_encoder = find_encoder(connector, DCB_OUTPUT_LVDS);
++		if (nv_encoder) {
++			nouveau_connector_set_encoder(connector, nv_encoder);
++			conn_status = connector_status_connected;
++		}
++	}
++
+  out:
+ 	if (!nv_connector->edid)
+ 		drm_dp_cec_unset_edid(&nv_connector->aux);
