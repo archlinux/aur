@@ -1,9 +1,9 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Qwen3.8 Flash Next.
+# Created with assistance from Hy4 flash Free.
 
 pkgname=slint-viewer-bin
 pkgver=1.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Viewer for Slint UI files (prebuilt binary)"
 arch=('x86_64')
 url="https://slint-ui.com"

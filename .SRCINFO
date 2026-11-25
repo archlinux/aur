@@ -1,7 +1,7 @@
 pkgbase = slint-viewer-bin
 	pkgdesc = Viewer for Slint UI files (prebuilt binary)
 	pkgver = 1.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://slint-ui.com
 	arch = x86_64
 	license = GPL-3.0-only
