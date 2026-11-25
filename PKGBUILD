@@ -1,14 +1,14 @@
 # Maintainer: Iman <zolfaghari19@gmail.com>
 pkgname=paste-links
-pkgver=0.1.60
+pkgver=0.1.61
 pkgrel=1
 pkgdesc="Add Paste Symlink Here action to GNOME Files"
 arch=('any')
 url="https://github.com/imz87/paste-links"
 license=('MIT')
 depends=('nautilus' 'python-gobject' 'gtk4' 'python-nautilus')
-source=("https://github.com/imz87/paste-links/archive/refs/tags/v0.1.60.tar.gz")
-sha256sums=('39154def0fb4d2adb5bc50bc60a41e1f89c0423a4098fe5aa5b611f0eaff4994')
+source=("https://github.com/imz87/paste-links/archive/refs/tags/v0.1.61.tar.gz")
+sha256sums=('ecc78f8e7e4b01d45a894a06d3e65d733d1626d29876ba5cc566ebffd5d786a5')
 
 package() {
     cd "$pkgname-$pkgver"
