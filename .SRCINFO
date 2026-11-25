@@ -1,0 +1,21 @@
+pkgbase = clacks-bin
+	pkgdesc = Encrypted, self-hosted sync for AI coding sessions (prebuilt)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/rodneyosodo/clacks
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = opencode: the sessions clacks syncs
+	provides = clacks
+	conflicts = clacks
+	options = !strip
+	options = !debug
+	source = clacks.service
+	sha256sums = f40acb644896600724a249e5d6b261ff38bcd3adffd70cc9034961f17681999f
+	source_x86_64 = clacks-0.2.1-x86_64.tar.gz::https://github.com/rodneyosodo/clacks/releases/download/v0.2.1/clacks-linux-amd64.tar.gz
+	sha256sums_x86_64 = 538d0d0ccfff23423d32bdc5d83440448c03231d8615383a447ee2fc4ad9f933
+	source_aarch64 = clacks-0.2.1-aarch64.tar.gz::https://github.com/rodneyosodo/clacks/releases/download/v0.2.1/clacks-linux-arm64.tar.gz
+	sha256sums_aarch64 = b347cc1d0219fb7cc7e647439b1b71fabaa68b07a09e081b8713fa0b0e5c5666
+
+pkgname = clacks-bin
