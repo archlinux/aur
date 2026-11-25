@@ -1,7 +1,7 @@
 pkgbase = peter
 	pkgdesc = A USB based keys manager which integrates with PAM and SSH.
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/ivan-zaera/peter
 	install = install.sh
 	arch = pentium4
@@ -13,6 +13,7 @@ pkgbase = peter
 	depends = coreutils
 	depends = systemd
 	depends = util-linux
+	depends = x11-ssh-askpass
 	optdepends = openssh: integration with ssh-agent
 	optdepends = pam: integration with pam_exec.so
 	source = peter-0.0.3.tar.gz::https://codeberg.org/ivan.zaera/peter/archive/0.0.3.tar.gz
