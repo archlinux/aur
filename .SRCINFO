@@ -1,0 +1,17 @@
+pkgbase = net-merge-bin
+	pkgdesc = Use all your internet connections at once on Windows, macOS, Linux and Android: per-connection load balancing over Wi-Fi, Ethernet, mobile data and phone tethers
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/net-merge/net-merge
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = net-merge
+	conflicts = net-merge
+	options = !debug
+	source_x86_64 = net-merge-bin-0.3.7-x86_64.tar.gz::https://github.com/net-merge/net-merge/releases/download/v0.3.7/net-merge-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 4bba086500c6f931ce94358833ce05b14abcb5d1af76698827aee963e12d1a86
+	source_aarch64 = net-merge-bin-0.3.7-aarch64.tar.gz::https://github.com/net-merge/net-merge/releases/download/v0.3.7/net-merge-linux-aarch64.tar.gz
+	sha256sums_aarch64 = b0dafa703b5dceec7f8daf935cbfad849f085701ffcc9dfa2ae67a60744b5796
+
+pkgname = net-merge-bin
