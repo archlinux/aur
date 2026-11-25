@@ -1,0 +1,22 @@
+pkgbase = codex-manager-bin
+	pkgdesc = Codex cli Codex cli
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/qxcnm/Codex-Manager
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = codex-manager
+	conflicts = codex-manager
+	options = !debug
+	source = codex-manager-bin-0.7.5-LICENSE::https://raw.githubusercontent.com/qxcnm/Codex-Manager/v0.7.5/LICENSE
+	sha256sums = b3cd584756c0b14c97fd0aa66b1e28225788d122508707c68bca73b183d3733d
+	source_x86_64 = codex-manager-bin-0.7.5-x86_64.zip::https://github.com/qxcnm/Codex-Manager/releases/download/v0.7.5/CodexManager-web-linux-x86_64.zip
+	sha256sums_x86_64 = 675d95db18882dd676f25ecad73341764c9c6111fc3ec730cf03dcfb81673396
+	source_aarch64 = codex-manager-bin-0.7.5-aarch64.zip::https://github.com/qxcnm/Codex-Manager/releases/download/v0.7.5/CodexManager-web-linux-arm64.zip
+	sha256sums_aarch64 = aac70d9e50be938381926b573d8c89eb5ef3578d3b476eae5abd7b219262b00c
+
+pkgname = codex-manager-bin
