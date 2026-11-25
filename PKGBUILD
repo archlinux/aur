@@ -98,8 +98,7 @@ build() {
     -D CMAKE_BUILD_TYPE:STRING=None \
     -D CMAKE_INSTALL_PREFIX:PATH=/usr \
     -D FONTS_INSTALL_DIR:PATH=share/fonts/TTF \
-    -D USE_EXTERNAL_MAPBOX_PROTOZERO:BOOL=ON \
-    -W no-dev
+    -D USE_EXTERNAL_MAPBOX_PROTOZERO:BOOL=ON
 
   cmake --build build
 }
