@@ -1,0 +1,23 @@
+pkgbase = kilo-compress-git
+	pkgdesc = Fast, local-first batch image compression for desktop.极速本地批量图片压缩工具
+	pkgver = 3.3.1.r17.gbe38e45
+	pkgrel = 1
+	url = https://xiangsu.fun
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = gendesk
+	makedepends = bun
+	makedepends = nvm
+	makedepends = imagemagick
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = icu
+	provides = kilo-compress
+	conflicts = kilo-compress
+	options = !strip
+	options = !debug
+	source = kilo-compress.git::git+https://github.com/richhost/kilo.git
+	sha256sums = SKIP
+
+pkgname = kilo-compress-git
