@@ -1,6 +1,6 @@
 pkgbase = database-lab-git
 	pkgdesc = Database branching and thin cloning for any Postgres database, client tools (git version)
-	pkgver = r1957.5511f3f
+	pkgver = r1961.6ee274b
 	pkgrel = 1
 	url = https://gitlab.com/postgres-ai/database-lab
 	arch = x86_64

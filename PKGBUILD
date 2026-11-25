@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=database-lab-git
-pkgver=r1957.5511f3f
+pkgver=r1961.6ee274b
 pkgrel=1
 pkgdesc='Database branching and thin cloning for any Postgres database, client tools (git version)'
 arch=('x86_64' 'aarch64')
