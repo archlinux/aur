@@ -1,12 +1,12 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 
-# Co-Maintainer: Harsh Vyapari <harshvy5094@proton.me>
+# Co-Maintainer: Harsh Vyapari <harshv5094@gmail.com>
 # https://github.com/harshv5094
 
 _pkgname=linutil
 pkgname="$_pkgname-bin"
-pkgver=2026.07.17
+pkgver=2026.11.14
 pkgrel=1
 pkgdesc="Distro-agnostic toolbox designed to simplify everyday Linux tasks"
 arch=('x86_64' 'aarch64')
@@ -23,13 +23,13 @@ source_aarch64=("$_pkgname-$pkgver::$url/releases/download/$pkgver/$_pkgname-aar
   "$_pkgname-$pkgver.desktop::$_url_raw/refs/tags/$pkgver/$_pkgname.desktop"
   "LICENSE-$pkgver::$_url_raw/refs/tags/$pkgver/LICENSE"
   "README-$pkgver.md::$_url_raw/refs/tags/$pkgver/README.md")
-sha256sums_x86_64=('3e7dd8da45b644e7af3ff29bfba391ebd13772865eeefb55ea88a48c74f7d1ff'
-                   '513b5df85842d709232c120b869f86ca8be9794a9144be5d54c7d8a9c95c2975'
+sha256sums_x86_64=('e71ce4667a271575251b77dd1ee940b95fe084ff59f40778c9a385523f13567a'
+                   '041791e2c4a75d02551a9e3120f18c2f808dd2a255ab10719bb13400ff577609'
                    'e62a5bed2b3a5f80421827168ff10ff35388b39cf313d0a00e1f8cff841902a9'
                    '8d353e5a8bc69b891e948bd02afc9c05c0aff00c69279ca32f7b654b387792d6'
                    '63fb32ab2d9b3395e75336af74082432f1c51c3cab222561d5c27223f495f04b')
-sha256sums_aarch64=('3e7dd8da45b644e7af3ff29bfba391ebd13772865eeefb55ea88a48c74f7d1ff'
-                    '513b5df85842d709232c120b869f86ca8be9794a9144be5d54c7d8a9c95c2975'
+sha256sums_aarch64=('e71ce4667a271575251b77dd1ee940b95fe084ff59f40778c9a385523f13567a'
+                    '041791e2c4a75d02551a9e3120f18c2f808dd2a255ab10719bb13400ff577609'
                     'e62a5bed2b3a5f80421827168ff10ff35388b39cf313d0a00e1f8cff841902a9'
                     '8d353e5a8bc69b891e948bd02afc9c05c0aff00c69279ca32f7b654b387792d6'
                     '63fb32ab2d9b3395e75336af74082432f1c51c3cab222561d5c27223f495f04b')
