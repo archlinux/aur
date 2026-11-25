@@ -8,7 +8,7 @@
 
 pkgname=calculix-ccx-pardiso
 pkgver=2.24
-pkgrel=1
+pkgrel=2
 conflicts=('calculix')
 pkgdesc="CalculiX: 3D Structural Finite Element Program - Solver with Pardiso"
 arch=('i686' 'x86_64')
@@ -41,11 +41,11 @@ sha256sums=('99fb4f9b0ec19b100a914c3a097ea1e7f0c22f715b96338acc4a66b63306a2e2'
 #
 build() {
     MKL_DIR=/opt/intel/oneapi/mkl/latest/lib/intel64
-    CLIBS="-lspooles \
+    CLIBS=" \
         ${MKL_DIR}/libmkl_intel_lp64.so.3 \
         ${MKL_DIR}/libmkl_intel_thread.so.3 \
         ${MKL_DIR}/libmkl_core.so.3 \
-        /opt/intel/oneapi/compiler/2026.0/lib/libiomp5.so \
+        /opt/intel/oneapi/compiler/latest/lib/libiomp5.so \
         -lpthread -lm -lc -lblas -llapack -lgomp -larpack"
 
     cd "${srcdir}/CalculiX/ccx_${pkgver}/src"
