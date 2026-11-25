@@ -1,0 +1,19 @@
+pkgbase = api-linter-bin
+	pkgdesc = Linter for APIs defined in protocol buffers
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/googleapis/api-linter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = api-linter
+	conflicts = api-linter
+	options = !debug
+	source = api-linter-bin-2.4.1-LICENSE::https://raw.githubusercontent.com/googleapis/api-linter/v2.4.1/LICENSE
+	sha256sums = b1d2870f1a00e4d7f56576e5f0870cba109e041f8af66866cf5b499478e654e7
+	source_x86_64 = api-linter-bin-2.4.1-x86_64.tar.gz::https://github.com/googleapis/api-linter/releases/download/v2.4.1/api-linter-2.4.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = adf6b94b01bf1d82723feb2790109b69fc74af65f9be334e418dcc9b9d9ddd03
+	source_aarch64 = api-linter-bin-2.4.1-aarch64.tar.gz::https://github.com/googleapis/api-linter/releases/download/v2.4.1/api-linter-2.4.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 1fe17f676a8d69bc6cebb95e4e7f523ca39979451599c2c5c495081a210d3a7f
+
+pkgname = api-linter-bin
