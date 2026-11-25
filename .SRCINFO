@@ -1,0 +1,19 @@
+pkgbase = jscpd-bin
+	pkgdesc = Copy/paste detector for source code
+	pkgver = 5.4.3
+	pkgrel = 1
+	url = https://github.com/kucherenko/jscpd
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = jscpd
+	conflicts = jscpd
+	options = !debug
+	source_x86_64 = jscpd-bin-5.4.3-x86_64.tar.gz::https://github.com/kucherenko/jscpd/releases/download/v5.4.3/jscpd-linux-x64-gnu.tar.gz
+	sha256sums_x86_64 = a19d719331b21a047a7537f982566dabcf6d6e5f51581c3b80d9c420979cc92c
+	source_aarch64 = jscpd-bin-5.4.3-aarch64.tar.gz::https://github.com/kucherenko/jscpd/releases/download/v5.4.3/jscpd-linux-arm64-gnu.tar.gz
+	sha256sums_aarch64 = 221a62a254ab4cc42f26e076943ca79ecd311ae41646a76a08e4b790ed8c5fbe
+
+pkgname = jscpd-bin
