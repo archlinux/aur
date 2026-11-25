@@ -1,36 +1,49 @@
 # Maintainer: Julian Daube <joposter (at) gmail (dot) com>
 # Contributor: Julian Daube <joposter (at) gmail (dot) com>
 
-pkgname="python-django-markdownx-git"
-pkgver=v3.0.1.r2.g30f2930
+_pkgname=python-django-markdownx
+pkgname=$_pkgname-git
+pkgver=4.0.11.r0.g36cd358
 pkgrel=1
 pkgdesc="Comprehensive Markdown plugin built for Django"
 arch=("any")
 url="https://github.com/neutronX/django-markdownx"
-license=("bsd")
-
-provides=("python-django-markdownx")
-
-source=("$pkgname::git+$url")
-
-depends=("python" "python-django" "python-pillow" "python-markdown")
-makedepends=("python-setuptools")
+license=("BSD-2-Clause-Views")
+depends=(
+	"python"
+	"python-django"
+	"python-pillow"
+	"python-markdown"
+)
+makedepends=(
+	"git"
+	"python-build"
+	"python-installer"
+	"python-wheel"
+	"python-setuptools"
+)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+sha256sums=("SKIP")
 
 pkgver() {
-        cd "$pkgname"
-        git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	git -C "$srcdir/$_pkgname" clean -dfx
 }
 
 build() {
-	cd $pkgname
-	python setup.py build
+	cd "$_pkgname"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd $pkgname
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	
-	install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/python-django-markdownx/LICENSE
-}
+	cd "$_pkgname"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
-md5sums=("SKIP")
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
