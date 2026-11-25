@@ -1,0 +1,19 @@
+pkgbase = uptrace-bin
+	pkgdesc = Open source APM: OpenTelemetry traces, metrics, and logs
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/uptrace/uptrace
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = uptrace
+	conflicts = uptrace
+	options = !debug
+	source = uptrace-bin-2.1.0-LICENSE::https://raw.githubusercontent.com/uptrace/uptrace/v2.1.0/LICENSE
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = uptrace-bin-2.1.0-x86_64::https://github.com/uptrace/uptrace/releases/download/v2.1.0/uptrace_linux_amd64
+	sha256sums_x86_64 = 4a8a20e2db33b241e12600cc17c4a899089c6b1dbb95fd455740c0e96bd61475
+	source_aarch64 = uptrace-bin-2.1.0-aarch64::https://github.com/uptrace/uptrace/releases/download/v2.1.0/uptrace_linux_arm64
+	sha256sums_aarch64 = fb1031a5decc13667237c828e8ab0a0aab025e131a129284d2115e19591f2d1e
+
+pkgname = uptrace-bin
