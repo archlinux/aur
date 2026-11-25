@@ -1,6 +1,6 @@
 # Maintainer: Martin Kopecký <kopecky@thekrew.app>
 pkgname=spot-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='TOML+CSS dialog runtime for Wayland (layer-shell overlays), prebuilt binary'
 arch=('x86_64')
@@ -15,8 +15,8 @@ _release="$url/releases/download/v$pkgver"
 source=("spot-linux-x64-$pkgver::$_release/spot-linux-x64"
         "spot-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("spot-linux-x64-$pkgver")
-sha256sums=('73d4b3101043223394393b8cf796048ddc6332a7e898b6dd9b0915d9936e1b94'
-            '80db3f90dceca408079943b92e0c816e3c4ee2d9fdff0e52598d3f6e3c8b2170')
+sha256sums=('637b5194e00b8d7be48a267038aba507c916eae7bb2f02e377714ecf000e57ec'
+            '22a512175e0549a63dbb2393f3f91239807f3349ee032fd82839c0163c476122')
 
 package() {
   install -Dm755 "$srcdir/spot-linux-x64-$pkgver" "$pkgdir/usr/bin/spot"
