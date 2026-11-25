@@ -1,0 +1,19 @@
+pkgbase = safebucket-bin
+	pkgdesc = Self-hosted file sharing service
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/safebucket/safebucket
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = safebucket
+	conflicts = safebucket
+	options = !debug
+	source = safebucket-bin-0.8.1-LICENSE::https://raw.githubusercontent.com/safebucket/safebucket/v0.8.1/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = safebucket-bin-0.8.1-x86_64::https://github.com/safebucket/safebucket/releases/download/v0.8.1/safebucket-linux-amd64
+	sha256sums_x86_64 = 95a8c3f64e32104c58e5205880f1e2a59b2444b2217b6af19afca84432ac2609
+	source_aarch64 = safebucket-bin-0.8.1-aarch64::https://github.com/safebucket/safebucket/releases/download/v0.8.1/safebucket-linux-arm64
+	sha256sums_aarch64 = ac3ac172ca49798149cc04e1548c74fef84a2865e125d82802ece98ebec62f5f
+
+pkgname = safebucket-bin
