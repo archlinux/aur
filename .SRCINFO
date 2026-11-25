@@ -1,0 +1,25 @@
+pkgbase = gutcheck-bin
+	pkgdesc = Check the health of every git repo in a folder: CI, PRs, branches, uncommitted work and more
+	pkgver = 0.29.0
+	pkgrel = 1
+	url = https://github.com/asafelobotomy/gutcheck
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = gtk3
+	depends = nss
+	depends = git
+	depends = github-cli
+	depends = hicolor-icon-theme
+	optdepends = libnotify: notifications when a scheduled scan finds something new
+	provides = gutcheck
+	conflicts = gutcheck
+	noextract = GutCheck-0.29.0-x86_64.AppImage
+	options = !strip
+	options = !debug
+	source = GutCheck-0.29.0-x86_64.AppImage::https://github.com/asafelobotomy/gutcheck/releases/download/v0.29.0/GutCheck-0.29.0-x86_64.AppImage
+	source = LICENSE-0.29.0::https://raw.githubusercontent.com/asafelobotomy/gutcheck/v0.29.0/LICENSE
+	sha256sums = 862447e9133175ce19a81213acbd283194a39f103d5e357ac2fc1d974bc11dd2
+	sha256sums = b96b5a0ecb11e311dab94d71fe36add411fd2110b624d336a6e54cc74aba3e4b
+
+pkgname = gutcheck-bin
