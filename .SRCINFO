@@ -8,17 +8,20 @@ pkgbase = witsy-git
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = nvm
-	makedepends = curl
 	makedepends = git
 	makedepends = jq
 	makedepends = zip
+	makedepends = imagemagick
 	depends = electron38
 	depends = nodejs
+	optdepends = ollama
 	provides = witsy=3.5.2
 	conflicts = witsy
 	source = witsy.git::git+https://github.com/Kochava-Studios/witsy.git
+	source = witsy.js
 	source = witsy.sh
 	sha256sums = SKIP
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = 03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86
+	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
 
 pkgname = witsy-git
