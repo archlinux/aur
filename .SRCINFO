@@ -1,0 +1,19 @@
+pkgbase = muxy-bin
+	pkgdesc = Lightweight and Memory efficient terminal multiplexer
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/muxy-app/muxy
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = muxy
+	conflicts = muxy
+	options = !debug
+	source_x86_64 = muxy-bin-2.5.0-x86_64.tar.gz::https://github.com/muxy-app/muxy/releases/download/v2.5.0/muxy-2.5.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 2dc482c94bb4d7764e2589697502d4f8c8c08275a2b64bfa0418c3599cd8d0d2
+	source_aarch64 = muxy-bin-2.5.0-aarch64.tar.gz::https://github.com/muxy-app/muxy/releases/download/v2.5.0/muxy-2.5.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = ed9ef5d84469a168d16d8833375a3ff2d79f43080a4293014e1b19caa6175614
+
+pkgname = muxy-bin
