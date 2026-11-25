@@ -1,20 +1,20 @@
 pkgbase = modelharbor-bin
 	pkgdesc = Lokale KI-Chatmodelle mit einem Klick: Hardware-Erkennung, llama.cpp-Backends (CUDA/ROCm/Vulkan/Metal/SYCL/CPU), HuggingFace-Downloads, vier Presets.
-	pkgver = 1.7.4
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Goitonthefloor/modelharbor
 	arch = x86_64
 	license = LicenseRef-ModelHarbor
 	depends = electron45
-	provides = modelharbor=1.7.4
+	provides = modelharbor=2.0.0
 	conflicts = modelharbor
-	source = modelharbor-1.7.4-x86_64.AppImage::https://github.com/Goitonthefloor/modelharbor/releases/download/v1.7.4/ModelHarbor-1.7.4.AppImage
-	source = LICENSE-1.7.4::https://raw.githubusercontent.com/Goitonthefloor/modelharbor/v1.7.4/LICENSE
+	source = modelharbor-2.0.0-x86_64.AppImage::https://github.com/Goitonthefloor/modelharbor/releases/download/v2.0.0/ModelHarbor-2.0.0.AppImage
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/Goitonthefloor/modelharbor/v2.0.0/LICENSE
 	source = modelharbor.js
 	source = modelharbor.sh
-	sha256sums = f0034f5cdbad4d627559619bc5692dc26fcd228461523f6ee4bbf4fbf6fe66be
+	sha256sums = cf626b35a055d510b6e2a5532fa3cb6fd948c94c38f75c37a9d8d8f1ffeb1597
 	sha256sums = e167ae19419045aef48ea5eb6ec5685e7410b8f5fca2c8772533790391f79d90
-	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	sha256sums = b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b
+	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
 
 pkgname = modelharbor-bin

@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=modelharbor-bin
 _pkgname=ModelHarbor
-pkgver=1.7.4
+pkgver=2.0.0
 _electronversion=45
 pkgrel=1
 pkgdesc="Lokale KI-Chatmodelle mit einem Klick: Hardware-Erkennung, llama.cpp-Backends (CUDA/ROCm/Vulkan/Metal/SYCL/CPU), HuggingFace-Downloads, vier Presets."
@@ -19,10 +19,10 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('f0034f5cdbad4d627559619bc5692dc26fcd228461523f6ee4bbf4fbf6fe66be'
+sha256sums=('cf626b35a055d510b6e2a5532fa3cb6fd948c94c38f75c37a9d8d8f1ffeb1597'
             'e167ae19419045aef48ea5eb6ec5685e7410b8f5fca2c8772533790391f79d90'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+            'b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b'
+            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -36,15 +36,16 @@ _check_electron_version() {
 	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
 }
 _install_icons() {
-	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
-	while IFS= read -r -d '' _icon; do
-		_ext="${_icon##*.}"
-		_size=$(echo "${_icon%/*}" | grep -oE '[0-9]+x[0-9]+|scalable' | head -1)
-		[[ -z "${_size}" ]] && _size=$([[ "${_ext}" == svg ]] && echo scalable || od -An -tu1 -j16 -N8 "${_icon}" 2>/dev/null | awk '{printf "%dx%d",$1*16777216+$2*65536+$3*256+$4,$5*16777216+$6*65536+$7*256+$8}')
-		[[ "${_size}" =~ ^[0-9]+x[0-9]+$ ]] || _size=scalable
-		_dest=$([[ "${_icon}" == */share/pixmaps/* ]] && echo pixmaps || echo "icons/hicolor/${_size}/apps")
-		install -Dm644 "${_icon}" "${pkgdir}/usr/share/${_dest}/${_name}.${_ext}"
-	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
+	local _s="${1:-$srcdir}" _n="${pkgname%-bin}" _i _e _z
+	while IFS= read -r -d '' _i; do
+		_e=${_i##*.}
+		_z=$(printf %s "${_i%/*}"|grep -oE '[0-9]+x[0-9]+(@[0-9]+x?)?|scalable'|tail -n1)
+		[[ $_z ]] || _z=$([[ $_e == svg ]]&&echo scalable||od -An -tx1 -j16 -N8 "$_i"| \
+		{ read a b c d e f g h; printf %dx%d 0x$a$b$c$d 0x$e$f$g$h; })
+		[[ $_z =~ ^[0-9]+x[0-9]+(@[0-9]+x?)?$ || $_z == scalable ]]||_z=scalable
+		install -Dm644 "$_i" "$pkgdir/usr/share/icons/hicolor/$_z/apps/$_n.$_e"
+	done < <(find "$_s" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' \
+		-o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 _delete_other_arch_files() {
 	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
@@ -60,7 +61,7 @@ prepare() {
 	sed -i -e "
 		s/@electronversion@/${_electronversion}/g
 		s/@appname@/${pkgname%-bin}/g
-	" "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
+	" "${srcdir}/${pkgname%-bin}.sh"
 	chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
 	rm -rf "${srcdir}/squashfs-root"
 	"${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
