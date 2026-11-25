@@ -1,11 +1,11 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgbase=azahar
 pkgname=({,libretro-}"$_pkgbase-git")
-pkgver=2126.0.alpha2.r7.g93143bc
+pkgver=2127.0.1.r8.gc621eaf
 pkgrel=1
 arch=('x86_64')
 url="https://azahar-emu.org/"
-license=('GPL-2.0-or-later')
+license=('GPL-3.0-or-later')
 depends=(
 	'crypto++'
 	'enet'
@@ -18,7 +18,7 @@ makedepends=(
 	'cmake'
 	'cpp-jwt'
 	'cubeb'
-	'ffmpeg4.4'
+	'ffmpeg7.1'
 	'fmt'
 	'git'
 	'libbacktrace'
@@ -47,6 +47,7 @@ source=(
 	"$_pkgbase-discord-rpc::git+https://github.com/azahar-emu/discord-rpc.git"
 	"$_pkgbase-dynarmic::git+https://github.com/azahar-emu/dynarmic.git"
 	"$_pkgbase-mcl::git+https://github.com/azahar-emu/mcl.git"
+	"$_pkgbase-microtar::git+https://github.com/azahar-emu/microtar.git"
 	"$_pkgbase-sirit::git+https://github.com/azahar-emu/sirit.git"
 	"$_pkgbase-soundtouch::git+https://github.com/azahar-emu/soundtouch.git"
 	"dds-ktx::git+https://github.com/septag/dds-ktx.git"
@@ -59,7 +60,7 @@ source=(
 	"xxhash::git+https://github.com/Cyan4973/xxHash.git"
 	"zstd::git+https://github.com/facebook/zstd.git"
 )
-b2sums=('SKIP'{,,,,,,,,,,,,,,,})
+b2sums=('SKIP'{,,,,,,,,,,,,,,,,})
 
 pkgver() {
 	cd $_pkgbase
@@ -76,6 +77,7 @@ prepare() {
 	git config submodule.externals/xxHash.url ../xxhash
 	git config submodule.faad2.url ../faad2
 	git config submodule.lodepng.url ../lodepng
+	git config submodule.microtar.url ../$_pkgbase-microtar
 	git config submodule.nihstro.url ../nihstro
 	git config submodule.sirit.url ../$_pkgbase-sirit
 	git config submodule.soundtouch.url ../$_pkgbase-soundtouch
@@ -99,7 +101,6 @@ build() {
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
-		-D CMAKE_INCLUDE_PATH="/usr/include/ffmpeg4.4"
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D DISABLE_SYSTEM_CPP_HTTPLIB=ON
 		-D DISABLE_SYSTEM_DYNARMIC=ON
@@ -120,6 +121,7 @@ build() {
 		options+=(-D ENABLE_SSE42=OFF)
 	fi
 	cd $_pkgbase
+	export PKG_CONFIG_PATH="/usr/lib/ffmpeg7.1/pkgconfig"
 	cmake "${options[@]}" -B build
 	cmake --build build
 	options+=(
@@ -140,6 +142,10 @@ package_azahar-git() {
 	pkgdesc="Nintendo 3DS emulator based on Citra"
 	depends+=(
 		'hicolor-icon-theme'
+		'libavcodec.so'
+		'libavfilter.so'
+		'libavformat.so'
+		'libavutil.so'
 		'libbacktrace.so'
 		'libboost_iostreams.so'
 		'libboost_serialization.so'
@@ -150,6 +156,7 @@ package_azahar-git() {
 		'libopenal.so'
 		'libssl.so'
 		'libstdc++.so'
+		'libswresample.so'
 		'libusb-1.0.so'
 		'libZydis.so'
 		'qt6-base'
