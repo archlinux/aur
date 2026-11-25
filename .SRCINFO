@@ -12,7 +12,6 @@ pkgbase = imgvwr-git
 	depends = wayland
 	depends = libxkbcommon
 	depends = dav1d
-	depends = libjxl
 	optdepends = vulkan-icd-loader: GPU-accelerated rendering via Vulkan
 	provides = imgvwr
 	conflicts = imgvwr
