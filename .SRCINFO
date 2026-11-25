@@ -1,0 +1,17 @@
+pkgbase = go-jsonschema-bin
+	pkgdesc = Generate Go data types from JSON Schema definitions
+	pkgver = 0.24.1
+	pkgrel = 1
+	url = https://github.com/omissis/go-jsonschema
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = go-jsonschema
+	conflicts = go-jsonschema
+	options = !debug
+	source_x86_64 = go-jsonschema-bin-0.24.1-x86_64.tar.gz::https://github.com/omissis/go-jsonschema/releases/download/v0.24.1/go-jsonschema_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a486718d9041114449eaf2a422eae46d29337421fee80325a1c481a5126b78c8
+	source_aarch64 = go-jsonschema-bin-0.24.1-aarch64.tar.gz::https://github.com/omissis/go-jsonschema/releases/download/v0.24.1/go-jsonschema_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c59b7c04a4f475d9d23c5ce3aaa263b42ee02eb3a21ff044616effa2bfeca9ec
+
+pkgname = go-jsonschema-bin
