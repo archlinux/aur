@@ -29,8 +29,7 @@ build() {
   cmake -B "${pkgname}-build" -S "${pkgname}-${pkgver}" \
     -D CMAKE_BUILD_TYPE:STRING=None \
     -D CMAKE_INSTALL_PREFIX:PATH=/usr \
-    -D CMAKE_POLICY_VERSION_MINIMUM:STRING=3.5 \
-    -W no-dev
+    -D CMAKE_POLICY_VERSION_MINIMUM:STRING=3.5
 
   cmake --build "${pkgname}-build"
 }
