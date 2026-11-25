@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=chronytop-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="TUI for chrony NTP time server monitoring"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686' 'riscv64')
@@ -23,11 +23,11 @@ source_armv7h=("${pkgname}-${pkgver}-armv7h::${_dl}/chronytop-linux-arm")
 source_i686=("${pkgname}-${pkgver}-i686::${_dl}/chronytop-linux-386")
 source_riscv64=("${pkgname}-${pkgver}-riscv64::${_dl}/chronytop-linux-riscv64")
 sha256sums=('bef1e846bdaac81614dda7bbedfa7bb2c1a2f177536aa0b4700deb38966efc90')
-sha256sums_x86_64=('91d3daefbc6cc103f1f6c67e9408baaa5159c3373d20d7f00800044919e6d3df')
-sha256sums_aarch64=('48a448dfeb4e0ed2f71c6f0543daa2d2e8d44326214b0f031956a9a598e814c1')
-sha256sums_armv7h=('02950813e17627b1da7fe00303629f5c5b3675f65c64632bbef5f34ac84daf22')
-sha256sums_i686=('795591a1b4e96c468aae661c83ae4c0966c2d315fd9892b824b90b3fb7eb65b4')
-sha256sums_riscv64=('847e38b59db2e8f1ced9d79c2d5eb9b8656356908c66de2471c00466b84f2945')
+sha256sums_x86_64=('6718c5486c228e531fb5a59948f299cab2e5cdb8e83edf910e774d1edd44d961')
+sha256sums_aarch64=('bae223300728d37c408ac177ba184223e87521b02b65bc0cf077937212fb49c9')
+sha256sums_armv7h=('e3579cc85459c91893c5d038714388d385f61d029d673a2efa3a1e2f6e800d33')
+sha256sums_i686=('b56a22f0ff758f2c24fe67625c6a95bd2dd969eff7c6ca3488e0e099ad20c680')
+sha256sums_riscv64=('3db16f7d4de4a2bf1cda978b1cd3d2ff22ddfa60d4da2b8d0114f6a6b4528eae')
 
 package() {
   install -Dm755 "${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/chronytop"
