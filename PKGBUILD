@@ -1,8 +1,8 @@
 # Maintainer: Velmi1337
 # Stable source release; see https://github.com/Velmi1337/ALOL
 pkgname=alol
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Arizona RP and Rodina RP for Linux with a Material 3 Expressive interface'
 arch=('x86_64')
 url='https://github.com/Velmi1337/ALOL'
@@ -17,7 +17,7 @@ optdepends=(
 )
 options=('!debug' '!lto' '!buildflags')
 source=("$url/releases/download/v$pkgver/alol-$pkgver.tar.gz")
-sha256sums=('79a87f58d1e37daecb6a77ed74ac566101bf26d6e9e8e2738dbf4a40113a244e')
+sha256sums=('12d13096500a40566f770b3978d64321590beeb8f1268092bb7e60ae1947952b')
 
 _alol_buildenv() {
     # Keep user paths out of binaries, including panic strings and compiler metadata.
