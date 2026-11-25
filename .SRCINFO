@@ -1,0 +1,17 @@
+pkgbase = ssosync-bin
+	pkgdesc = Sync Google Workspace users and groups into AWS SSO
+	pkgver = 2.12.2
+	pkgrel = 1
+	url = https://github.com/awslabs/ssosync
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = ssosync
+	conflicts = ssosync
+	options = !debug
+	source_x86_64 = ssosync-bin-2.12.2-x86_64.tar.gz::https://github.com/awslabs/ssosync/releases/download/v2.12.2/ssosync_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 82970b77e0b404f67ca6f3f4158ec60a7224234f0785abd5dbd335b6e2e7219c
+	source_aarch64 = ssosync-bin-2.12.2-aarch64.tar.gz::https://github.com/awslabs/ssosync/releases/download/v2.12.2/ssosync_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 043d7780f9ebc1f8dbff45e6cbd9f889ed622f01d415e3efae6402de4f40e3c6
+
+pkgname = ssosync-bin
