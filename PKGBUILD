@@ -2,7 +2,7 @@
 
 pkgname=kymo
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Viewer for large EEG and MEG recordings"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cbrnr/kymo"
@@ -12,6 +12,7 @@ license=('BSD-3-Clause')
 depends=('libgcc' 'glibc' 'hicolor-icon-theme' 'libxkbcommon' 'vulkan-icd-loader'
          'wayland' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'xdg-desktop-portal')
 makedepends=('cargo')
+options=('!lto')
 optdepends=('vulkan-driver: GPU rendering (mesa or the vendor driver provide one)')
 # ${pkgver} with braces: the updater then bumps pkgver= and leaves the URL as it is.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cbrnr/kymo/archive/refs/tags/v${pkgver}.tar.gz")
