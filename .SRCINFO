@@ -1,0 +1,21 @@
+pkgbase = fabro-bin
+	pkgdesc = The open source dark software factory for expert engineers
+	pkgver = 0.254.0
+	pkgrel = 1
+	url = https://github.com/fabro-sh/fabro
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = fabro
+	conflicts = fabro
+	options = !debug
+	source = fabro-bin-0.254.0-LICENSE::https://raw.githubusercontent.com/fabro-sh/fabro/v0.254.0/LICENSE.md
+	sha256sums = 9d8408208299ecc4a14d8ec82f7a263a47e0672360d8025b4394c45ed8e1cdbc
+	source_x86_64 = fabro-bin-0.254.0-x86_64.tar.gz::https://github.com/fabro-sh/fabro/releases/download/v0.254.0/fabro-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ccfa12394fd928c3194fd9af04daa9417989b9e3f9cb37d71a5df63f3143e787
+	source_aarch64 = fabro-bin-0.254.0-aarch64.tar.gz::https://github.com/fabro-sh/fabro/releases/download/v0.254.0/fabro-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5a87a599822494ca2b946229cd3a12a8d51f62fefda61980296116e31bb8e1f6
+
+pkgname = fabro-bin
