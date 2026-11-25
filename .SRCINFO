@@ -1,0 +1,16 @@
+pkgbase = aistore-bin
+	pkgdesc = AIStore: scalable storage for AI applications
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/NVIDIA/aistore
+	arch = x86_64
+	license = MIT
+	provides = aistore
+	conflicts = aistore
+	options = !debug
+	source = aistore-bin-1.5.2-LICENSE::https://raw.githubusercontent.com/NVIDIA/aistore/v1.5.2/LICENSE
+	sha256sums = ff94bae9259bdc688e7fe9627bad82cc69e3d97dcf0f4514f1cada1c2a0c0a5b
+	source_x86_64 = aistore-bin-1.5.2-x86_64.tar.gz::https://github.com/NVIDIA/aistore/releases/download/v1.5.2/ais-linux-amd64.tar.gz
+	sha256sums_x86_64 = 2459fee32ca49a5d1ff56abeeaa86d9da3fc65e7119fb73857688a235cf0c537
+
+pkgname = aistore-bin
