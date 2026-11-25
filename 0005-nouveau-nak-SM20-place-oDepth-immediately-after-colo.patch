@@ -1,0 +1,18 @@
+--- a/src/nouveau/compiler/nak/from_nir.rs	2026-11-25 19:44:37.936376476 +0200
++++ b/src/nouveau/compiler/nak/from_nir.rs	2026-11-25 19:34:45.663585795 +0200
+@@ -3088,11 +3088,13 @@
+                     }
+                 }
+ 
+-                // These always come together for some reason
++                // On Kepler+ (SM30+), depth is always after sample_mask even
++                // when sample_mask is not written; on Fermi (SM20), depth
++                // immediately follows the last color output if sample_mask is absent.
+                 if info.writes_sample_mask || info.writes_depth {
+                     if info.writes_sample_mask {
+                         srcs.push(self.fs_out_regs[mask_idx].unwrap().into());
+-                    } else {
++                    } else if b.sm() >= 30 {
+                         srcs.push(b.undef().into());
+                     }
+                     if info.writes_depth {
