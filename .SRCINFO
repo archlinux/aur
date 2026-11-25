@@ -1,0 +1,24 @@
+pkgbase = zennist
+	pkgdesc = Launcher and environment application for the Zen 3D compositor
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/zwin-project/zennist
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = CC-BY-4.0
+	makedepends = meson
+	makedepends = glm
+	makedepends = libglvnd
+	depends = zukou
+	depends = cairo
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = librsvg
+	depends = glib2
+	depends = gcc-libs
+	depends = glibc
+	source = zennist-0.1.2.tar.gz::https://github.com/zwin-project/zennist/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 7ab807242c21cd6a69eecba6900d892ce58fe682896f4565f8e8866c869b2f4f
+
+pkgname = zennist
