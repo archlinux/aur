@@ -1,6 +1,6 @@
 pkgbase = peter
 	pkgdesc = A USB based keys manager which integrates with PAM and SSH.
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://codeberg.org/ivan-zaera/peter
 	install = install.sh
@@ -15,7 +15,7 @@ pkgbase = peter
 	depends = util-linux
 	optdepends = openssh: integration with ssh-agent
 	optdepends = pam: integration with pam_exec.so
-	source = peter-0.0.2.tar.gz::https://codeberg.org/ivan.zaera/peter/archive/0.0.2.tar.gz
-	sha256sums = a0800e46a142345ea821536b18915dfd593c6d528153318c46c335f4e96ac4e2
+	source = peter-0.0.3.tar.gz::https://codeberg.org/ivan.zaera/peter/archive/0.0.3.tar.gz
+	sha256sums = eecf00129ddc32c92e7a3da230e4cd36f7e2e0c2c84c7254cb6aeff0bde8a675
 
 pkgname = peter
