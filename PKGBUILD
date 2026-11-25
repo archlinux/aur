@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=cromma-code-bin
-pkgver=0.4.7
+pkgver=0.4.10
 pkgrel=1
 pkgdesc="The playful desktop terminal for Claude Code and Codex: watch agents work as a game and dispatch worker bees"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip' '!debug')
 # so the deb URL has no version and makepkg must not reuse cached downloads.
 source=("crommacode-${pkgver}.deb::https://dl.cromma.ai/code/artifacts/${pkgver}/CrommaCode-${pkgver}-linux-amd64.deb")
 noextract=("crommacode-${pkgver}.deb")
-sha256sums=('2437420cd62fff00c78775cb744ce0a42706918545bde68e73c87920d38b8391')
+sha256sums=('fe37406fce0e314b45a0343133202040b7a66cf8dbae8a96cad29092bfc7ff96')
 
 package() {
     # Keep the upstream layout: binaries live in /opt/crommacode and
