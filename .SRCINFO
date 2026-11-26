@@ -1,6 +1,6 @@
 pkgbase = toppingctl
 	pkgdesc = Control the TOPPING E2x2 USB audio interface over HID
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ktoulgaridis/toppingctl
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = toppingctl
 	depends = glibc
 	depends = systemd-libs
 	conflicts = toppingctl-bin
-	source = toppingctl-0.1.2.tar.gz::https://github.com/ktoulgaridis/toppingctl/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = d9ae4e73ebe4c2b70c307a71ade6a468d6fb6694db41a87d0a09cd3c5342300a
+	source = toppingctl-0.2.0.tar.gz::https://github.com/ktoulgaridis/toppingctl/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 462e1001b0b800c2faf1ab84b1908eea14ff35e173675745ca425d071a058f38
 
 pkgname = toppingctl
