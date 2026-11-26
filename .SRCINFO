@@ -1,23 +1,26 @@
 pkgbase = r-dartrverse
 	pkgdesc = Install and Load the 'dartRverse' Suits of Packages
-	pkgver = 1.0.6
-	pkgrel = 4
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=dartRverse
 	arch = any
 	license = GPL-3.0-or-later
-	depends = r-httr
-	depends = r-devtools
-	depends = r-rcurl
+	depends = r-biocmanager
 	depends = r-cli
+	depends = r-httr
+	depends = r-remotes
 	depends = r-rlang
 	optdepends = r-dartr.base
-	optdepends = r-dartr.sim
 	optdepends = r-dartr.captive
-	optdepends = r-dartr.popgen
-	optdepends = r-dartr.spatial
 	optdepends = r-dartr.data
-	source = https://cran.r-project.org/src/contrib/dartRverse_1.0.6.tar.gz
-	md5sums = 234e3e944fdaba9f592038a1391df15c
-	b2sums = d252579a58e4235fb45531b83fda974d8382744693995e21020fc226dc3c9fce70f941c15861810129809b451b0d861af470ee891ce99fd5fd4f5cee13900f62
+	optdepends = r-dartr.popgen
+	optdepends = r-dartr.sexlinked
+	optdepends = r-dartr.sim
+	optdepends = r-dartr.spatial
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/dartRverse_1.3.0.tar.gz
+	md5sums = a132175ab19aaf10b4033a4230c76b33
+	b2sums = 752976f6109592149f559b4bfeb0f7711ea064f50840d3921b7c7e261aeaedb528f2a6c71e2eb62d6dcb436518bed3409401f9cde28f7aecfa6ffab1f18ca2ef
 
 pkgname = r-dartrverse
