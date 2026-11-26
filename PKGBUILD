@@ -2,7 +2,7 @@
 
 pkgname=python-k3fs
 _name=${pkgname#python-}
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="File-system utilities for reading, writing, and directory operations"
 provides=(${pkgname})
@@ -31,7 +31,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('b92389961de2a9e6fa3439953b5d565ed33105d70a1c59d5376c5f43e1550f91')
+sha256sums=('7faf628e8d5f8a78d621181b14e582d14eb8dc5043464c2e4f138fd0d98810c4')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
@@ -45,47 +45,8 @@ build() {
 check() {
 	cd "${srcdir}/${_name}"
 
-	# Upstream tests assume a physical host: '/' is a real partition and '/dev'
-	# is devtmpfs. In a chroot '/' is a bind/overlay mount and '/dev' is tmpfs,
-	# so psutil.disk_partitions() output must be normalized for both cases.
-	# Patch before pytest/k3fs import psutil.
-	cat > "${srcdir}/sitecustomize.py" <<'PY'
-import psutil
-
-_orig = psutil.disk_partitions
-_ROOT_FSTYPES = ("apfs", "hfs", "xfs", "ext2", "ext3", "ext4")
-
-
-def _normalize(pt):
-    if pt.mountpoint == "/dev" and pt.fstype == "tmpfs":
-        return pt._replace(fstype="devtmpfs")
-    if pt.mountpoint == "/" and pt.fstype not in _ROOT_FSTYPES:
-        return pt._replace(fstype="ext4")
-    return pt
-
-
-def _disk_partitions(all=False):
-    parts = [_normalize(p) for p in _orig(all=all)]
-    if not all and not any(p.mountpoint == "/" for p in parts):
-        root = next((p for p in _orig(all=True) if p.mountpoint == "/"), None)
-        if root is not None:
-            parts.append(_normalize(root))
-    return parts
-
-
-psutil.disk_partitions = _disk_partitions
-PY
-
-	export PYTHONPATH="${srcdir}${PYTHONPATH:+:${PYTHONPATH}}"
-	# These tests call chown() to non-caller uid/gid and assert the new owner;
-	# check() runs as an unprivileged user, so they can only pass as root.
-	# Deselect uses prefix matching, so test_makedirs also covers *_with_config
-	# and *_with_root_ids; test_read_write_file covers the uid/gid write case.
-	pytest -x \
-		--deselect=test/test_fs.py::TestFS::test_makedirs \
-		--deselect=test/test_fs.py::TestFS::test_read_write_file \
-		--deselect=test/test_fs.py::TestFS::test_write_file_with_config \
-		--deselect=test/test_fs.py::TestFS::test_write_file_with_root_ids
+    export PYTHONPATH="${srcdir}${PYTHONPATH:+:${PYTHONPATH}}"
+	pytest -x
 }
 
 package() {
