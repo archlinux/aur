@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RPA
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
-pkgver=1.68.0
+pkgver=1.70.0
 pkgrel=1
 pkgdesc='RPA: Robust Probabilistic Averaging for probe-level analysis'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-parallel
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('522122ff7b805936dbb9e89949edfcd8b6ff6f337eab974641a93a9b1c99a9b4')
+sha256sums=('1b0c211b38e3315c0f3a88697179ae0466e7be8b3ac5d4109c0f18f818714c1a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
