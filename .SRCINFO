@@ -1,0 +1,21 @@
+pkgbase = dbdev-bin
+	pkgdesc = CLI for the Postgres database package registry
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/supabase/dbdev
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = dbdev
+	conflicts = dbdev
+	options = !debug
+	source = dbdev-bin-0.1.7-LICENSE::https://raw.githubusercontent.com/supabase/dbdev/v0.1.7/LICENSE
+	sha256sums = 9b78bbb5a12f0e1928691f09604c788f8b8b4db59cdb82f9924679cf9beae5d2
+	source_x86_64 = dbdev-bin-0.1.7-x86_64.tar.gz::https://github.com/supabase/dbdev/releases/download/v0.1.7/dbdev-v0.1.7-linux-amd64.tar.gz
+	sha256sums_x86_64 = 911e66420682cea8d694a75134327daaf069cb686662f16a8e6f9b13c39d67b0
+	source_aarch64 = dbdev-bin-0.1.7-aarch64.tar.gz::https://github.com/supabase/dbdev/releases/download/v0.1.7/dbdev-v0.1.7-linux-arm64.tar.gz
+	sha256sums_aarch64 = 5b867c60eaee70b02bdec66543b507817937678b30eb3fa5480cc267130f15b8
+
+pkgname = dbdev-bin
