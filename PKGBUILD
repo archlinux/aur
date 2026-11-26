@@ -2,7 +2,7 @@
 
 pkgname=vulcanium
 pkgver=158.0.8127.36
-pkgrel=3
+pkgrel=4
 _launcher_ver=8
 _manual_clone=0
 _system_clang=1
@@ -368,7 +368,7 @@ build() {
       'clang_base_path="/usr"'
       'clang_use_chrome_plugins=false'
       "clang_version=\"$_clang_version\""
-      'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+      'chrome_pgo_phase=2'
       'v8_metagen_libclang_so="/usr/lib/libclang.so"'
       "v8_metagen_libclang_bindings_dir=\"$_site_packages\""
     )
