@@ -1,7 +1,7 @@
-From a11b5d11affa86136d23c5a43ec5a2ac889d0d73 Mon Sep 17 00:00:00 2001
+From 5233dc7734ff1b422c611c1666a82b56548143c3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 9 May 2025 22:26:39 +0200
-Subject: [PATCH 18/24] Fix Android build after
+Subject: [PATCH 18/22] Fix Android build after
  ec2e3e7ac92d000e0df0c693b9a636390d34a9eb
 
 Change-Id: I02563b129a949c36aff91a4645b6ee10a8cfba2c
@@ -10,10 +10,10 @@ Change-Id: I02563b129a949c36aff91a4645b6ee10a8cfba2c
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/corelib/global/qlogging.cpp b/src/corelib/global/qlogging.cpp
-index 2673f4535a6..12cf80cd103 100644
+index 714005f43b4..739478d9c43 100644
 --- a/src/corelib/global/qlogging.cpp
 +++ b/src/corelib/global/qlogging.cpp
-@@ -208,7 +208,7 @@ static bool isFatal(QtMsgType msgType)
+@@ -207,7 +207,7 @@ static bool isFatal(QtMsgType msgType)
      return false;
  }
  
@@ -23,5 +23,5 @@ index 2673f4535a6..12cf80cd103 100644
  {
      std::array<char, 16> name{};
 -- 
-2.56.0
+2.56.1
 
