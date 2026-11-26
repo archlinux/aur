@@ -1,7 +1,7 @@
 # Maintainer: Ateles
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=llm-visuals-git
-pkgver=0.14.0.r32.gde6b1a0
+pkgver=0.14.0.r47.gc5b9f40
 pkgrel=1
 pkgdesc='Live truecolor terminal dashboard for a locally running LLM'
 arch=('x86_64' 'aarch64')
