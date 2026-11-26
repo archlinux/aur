@@ -1,0 +1,22 @@
+post_install() {
+    cat << 'EOF'
+==> X3D Toggle has been installed.
+==> To manage the daemon without sudo, add your user to the x3d-toggle group:
+      sudo usermod -aG x3d-toggle "$USER"
+    (Log out and back in for the group membership to take effect.)
+==> To enable and start the background optimizer daemon:
+      sudo systemctl enable --now x3d-toggle.service
+EOF
+}
+
+post_upgrade() {
+    cat << 'EOF'
+==> X3D Toggle has been upgraded.
+==> If the daemon is running, restart it to load the new binary:
+      sudo systemctl restart x3d-toggle.service
+EOF
+}
+
+pre_remove() {
+    systemctl disable --now x3d-toggle.service 2>/dev/null || true
+}
