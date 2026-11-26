@@ -1,0 +1,19 @@
+pkgbase = tyson-bin
+	pkgdesc = TypeScript as a configuration language
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/jetify-com/tyson
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = tyson
+	conflicts = tyson
+	options = !debug
+	source = tyson-bin-0.1.1-LICENSE::https://raw.githubusercontent.com/jetify-com/tyson/v0.1.1/LICENSE
+	sha256sums = 43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1
+	source_x86_64 = tyson-bin-0.1.1-x86_64.tar.gz::https://github.com/jetify-com/tyson/releases/download/v0.1.1/tyson_v0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = e240a84054c13322cd3e18d529c93933cd29209b1b8a54bdde34d8360cbf549d
+	source_aarch64 = tyson-bin-0.1.1-aarch64.tar.gz::https://github.com/jetify-com/tyson/releases/download/v0.1.1/tyson_v0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = a8310fa58286f76bd0d3f9aa684517210c85c1ffb5dd79c5da30319455c3019c
+
+pkgname = tyson-bin
