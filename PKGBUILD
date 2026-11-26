@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNORode
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.54.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='ODE add-on to CellNOptR'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-meigor
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('85c74695fd125df635eb742b105f5dc4e9c39ba8575a88adfa314d0c16af7b10')
+sha256sums=('d095ee6ea0b232cdd9ad0c11e3cd8939461285afefcc5ec99736d31ab4a8c5c5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
