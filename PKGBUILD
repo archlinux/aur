@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=t3-code-bin
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Desktop GUI for coding agents"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ _deb_aarch64="T3-Code-${pkgver}-arm64.deb"
 source_x86_64=("${_deb_x86_64}::https://github.com/pingdotgg/t3code/releases/download/v${pkgver}/${_deb_x86_64}")
 source_aarch64=("${_deb_aarch64}::https://github.com/pingdotgg/t3code/releases/download/v${pkgver}/${_deb_aarch64}")
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
-sha256sums_x86_64=('c1ca3e656e12ba10377513e9bbe20a5112540cda9601e21c70b85ba7c53f1b29')
-sha256sums_aarch64=('3ca1a4e548794e39fa11027d39f5e6a3510154c49bd771756b1744a1d5a804e0')
+sha256sums_x86_64=('630dfe9d041b42622d9e5d5b1138b3f1068136eb12af85ec34d491e33aeaa061')
+sha256sums_aarch64=('34ce948112c9d52891464fac2d4f61ddaabf94bbf1c706902156b822e32151d7')
 
 package() {
   local _deb_var="_deb_${CARCH}"
