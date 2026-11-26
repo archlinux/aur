@@ -1,6 +1,6 @@
 pkgbase = misa77
 	pkgdesc = Fast LZ77 codec with high decompression throughput
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/welcome-to-the-sunny-side/misa77
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = misa77
 	depends = glibc
 	options = !lto
 	options = staticlibs
-	source = misa77-0.7.0.tar.gz::https://github.com/welcome-to-the-sunny-side/misa77/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = 66b38f2210dbd52bd749bf92c572827fd216eff5d751cdcd9b289c33aaa18c79
+	source = misa77-0.8.0.tar.gz::https://github.com/welcome-to-the-sunny-side/misa77/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 95b1142743ee5e990fdec3208f0ef4be9a7ad83be56960cab8ae38459ba8c00d
 
 pkgname = misa77
