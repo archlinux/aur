@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-openvino-bin
 	pkgdesc = llama.cpp upstream prebuilt binaries with the OpenVINO backend
-	pkgver = b12379
+	pkgver = b12752
 	pkgrel = 1
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = llama.cpp-openvino-bin
 	conflicts = llama.cpp-openvino
 	options = !strip
 	options = !debug
-	source = https://github.com/ggml-org/llama.cpp/releases/download/b12379/llama-b12379-bin-ubuntu-openvino-2026.4.1-x64.tar.gz
-	sha256sums = 178512995cef5a0cf2ba65eca4a34f878c9b352780230baad7b931eb89282e8f
+	source = https://github.com/ggml-org/llama.cpp/releases/download/b12752/llama-b12752-bin-ubuntu-openvino-2026.4.1-x64.tar.gz
+	sha256sums = fd33d5439651748862c9c3de96c03a657ba957cdb3f387a6c9c7c24764e25b81
 
 pkgname = llama.cpp-openvino-bin
