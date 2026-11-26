@@ -1,18 +1,20 @@
 # Maintainer: Adityarup Laha <me@adityaruplaha.me>
 
 _pkgname=plyxp
-_pkgver=1.6.1
+_pkgver=1.8.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Data masks for SummarizedExperiment enabling dplyr-like manipulation"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
+  r-biocgenerics
   r-cli
   r-dplyr
   r-glue
+  r-iranges
   r-pillar
   r-purrr
   r-rlang
@@ -28,14 +30,13 @@ optdepends=(
   r-airway
   r-devtools
   r-here
-  r-iranges
   r-knitr
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5d09a94e3071487e520ce782f1924095')
-b2sums=('effdb898295d9d1e2bd3468bb932a8aa3a1d4474f97d1225dcc125eb286b4a1598b1aa96b08826897b318009d67ba5d25c30fe9840973b9c9e1fb7f90be9d80f')
+md5sums=('35670b5eefe2d7983155c01064394fca')
+b2sums=('3ee9516783cdfec62754fe6340c125b37dc38189716abf984e15a6b02b0db882bfe3e0dad88164b1539d02108a5a62a799686468ee7998585ca0bda63fc77d0b')
 
 build() {
   mkdir build
