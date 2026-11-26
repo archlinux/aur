@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ARRmData
-_pkgver=1.49.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('61dff3440f23f322bdacbf749aff60ec')
-b2sums=('ffec420923025c10bef62e019b38543512819effc2f3264b7496dd7ec1582b56d74398ec5c138a506ce3aeafc40dba626fea945930669259803d6dc64eabbbb5')
+md5sums=('1e522d0fa95596d01122139ce9cbe298')
+b2sums=('783e6e55bd36fd9f3ec5a9c12918da9dd96f037666e16e5a1898017e25f22f5c2d514086281dff77683c3fb83fcfa0df7b452d5dd0e1f6d07fe1563fa70efa4e')
 
 build() {
   mkdir build
