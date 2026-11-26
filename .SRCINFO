@@ -1,0 +1,17 @@
+pkgbase = isaiah-bin
+	pkgdesc = Self-hosted web clone of lazydocker
+	pkgver = 1.36.9
+	pkgrel = 1
+	url = https://github.com/will-moss/isaiah
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = isaiah
+	conflicts = isaiah
+	options = !debug
+	source_x86_64 = isaiah-bin-1.36.9-x86_64.tar.gz::https://github.com/will-moss/isaiah/releases/download/1.36.9/isaiah_1.36.9_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = d39a419fd6e37536efd566a47ff40af9d0381657ee07249dc1577954291a7ca5
+	source_aarch64 = isaiah-bin-1.36.9-aarch64.tar.gz::https://github.com/will-moss/isaiah/releases/download/1.36.9/isaiah_1.36.9_Linux_arm64.tar.gz
+	sha256sums_aarch64 = dd548bad624b765033624b8137e59eb77f9cf16dece8d0c38f32d16fefe96c4e
+
+pkgname = isaiah-bin
