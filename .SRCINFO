@@ -1,6 +1,6 @@
 pkgbase = prism-download-manager-bin
 	pkgdesc = The fast, beautiful, open-source download manager for Windows, macOS and Linux — Up to 32 connections, browser integration, video & MP3 downloads, crash-safe resume
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://prismdl.site/
 	arch = x86_64
@@ -19,13 +19,13 @@ pkgbase = prism-download-manager-bin
 	depends = hicolor-icon-theme
 	conflicts = prism-download-manager
 	options = !strip
-	source = BROWSER-EXTENSION-1.2.6.md::https://raw.githubusercontent.com/FortoGraphy/prism-download-manager/v1.2.6/docs/guide/browser-extension.md
-	source = README-1.2.6.md::https://raw.githubusercontent.com/FortoGraphy/prism-download-manager/v1.2.6/README.md
-	source = LICENSE-1.2.6::https://raw.githubusercontent.com/FortoGraphy/prism-download-manager/v1.2.6/LICENSE
+	source = BROWSER-EXTENSION-1.2.7.md::https://raw.githubusercontent.com/FortoGraphy/prism-download-manager/v1.2.7/docs/guide/browser-extension.md
+	source = README-1.2.7.md::https://raw.githubusercontent.com/FortoGraphy/prism-download-manager/v1.2.7/README.md
+	source = LICENSE-1.2.7::https://raw.githubusercontent.com/FortoGraphy/prism-download-manager/v1.2.7/LICENSE
 	sha256sums = ec723fe4f2f46f91adc1c98df9414e99f55aab0dbd232e35ba758d666848cfcb
 	sha256sums = d6ff44f186537ff7f674a5dd0e80070ece0f181cdfb29f465a6a99ee8bfde80e
 	sha256sums = 25a36f52335b77308ed7ed587d1b70e074e1757d997686ef6eb936952c5da956
-	source_x86_64 = prism-x86_64-1.2.6.deb::https://github.com/FortoGraphy/prism-download-manager/releases/download/v1.2.6/Prism_1.2.6_amd64.deb
-	sha256sums_x86_64 = 8d00eaadd839649625245eceaa4d7104f30756bc938001dd1eef517f7ea7ae0e
+	source_x86_64 = prism-x86_64-1.2.7.deb::https://github.com/FortoGraphy/prism-download-manager/releases/download/v1.2.7/Prism_1.2.7_amd64.deb
+	sha256sums_x86_64 = a23ec8998b816cf8ba85b27b3522e7549d05168d607287f1fcbcbb1d7a622043
 
 pkgname = prism-download-manager-bin
