@@ -1,0 +1,12 @@
+pkgbase = nika-fonts
+	pkgdesc = Persian/Arabic font for text and print
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/font-store/NikaFont
+	arch = any
+	license = OFL-1.1
+	provides = nika
+	source = nika-fonts-1.0.0.tar.gz::https://github.com/font-store/NikaFont/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 9dc3241f0702e7dd22dcdd00ebd21357147d488dfd7914808e12f9a842800138
+
+pkgname = nika-fonts
