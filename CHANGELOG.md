@@ -9,6 +9,14 @@ If this project saves you or your company time, consider [sponsoring](https://gi
 
 <!-- ## [Unreleased] -->
 
+## [2.26.1] - 2026-11-26
+
+### Changed
+- Russian translation
+
+### Fixed
+- Fixed journal events thread deadlock and memory leak
+
 ## [2.26.0] - 2026-11-23
 
 ### Added
