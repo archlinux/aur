@@ -2,10 +2,10 @@
 pkgname=cosmic-ext-manager-bin
 _pkgname=cosmic-ext-manager
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Browse, install, update and remove community COSMIC extensions (prebuilt binary)'
 arch=('x86_64')
-url='https://github.com/kevinRForshey/CosmicEDxtensionManager'
+url='https://github.com/kevinRForshey/CosmicExtensionManager'
 license=('Apache-2.0')
 # git, just and a Rust toolchain are needed at runtime: extensions are built from source.
 depends=('git' 'just' 'rust' 'libxkbcommon' 'wayland' 'vulkan-icd-loader' 'fontconfig')
