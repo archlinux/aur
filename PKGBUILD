@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RbcBook1
-_pkgver=1.80.0
+_pkgver=1.82.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-graph
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('501e8d3baf42778fc7fa61187c436805')
-b2sums=('296de8811b3e5bd2cafb94e6fcf8c47b6c1d0d0e5d709b24d7891be4dc8408930543944ed7dda2fcf1144c62a9908d2bb09a9868e2117ee5b87ae9e084002706')
+md5sums=('23c30512aec006cdd14403b977a62471')
+b2sums=('0a05a378c22a55ead3f865a9b87226782d368f380bdbd7202488d49b5eb8a665e9257156fa6fd116e9e6712486256caff0bcea3f4c15c4b4d6057cb91b045093')
 
 build() {
   mkdir build
