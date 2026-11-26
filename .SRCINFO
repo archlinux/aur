@@ -1,6 +1,6 @@
 pkgbase = r-meigor
 	pkgdesc = MEtaheuristics for bIoinformatics Global Optimization
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MEIGOR
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = r-meigor
 	optdepends = r-biocstyle
 	optdepends = r-cellnoptr
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MEIGOR_1.46.0.tar.gz
-	md5sums = f5cfac0364a4767300205e3b7752d1e8
-	b2sums = 680a93893f2a1f6b9c471a856181ce4326b8ec51128a315848bbf92c496fcf494980f75dac62109b3c4df4af04b7e57a4b0a21490597d1f24efa264350e3dcc5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MEIGOR_1.48.0.tar.gz
+	md5sums = a8239342419e8fad518a1da7c58ab569
+	b2sums = 8f2c12a52b343f296f8abff5424f84dc414198730adcd32e77ee68c07b18ce3878f7415dba0893cea2caa47ce940004f780c7b03a45ebcac523d59a802cdcca2
 
 pkgname = r-meigor
