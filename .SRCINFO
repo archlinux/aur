@@ -1,6 +1,6 @@
 pkgbase = r-parsnip
 	pkgdesc = A Common API to Modeling and Analysis Functions
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=parsnip
 	arch = any
@@ -51,15 +51,18 @@ pkgbase = r-parsnip
 	optdepends = r-modeldata
 	optdepends = r-prodlim
 	optdepends = r-ranger
+	optdepends = r-recipes
 	optdepends = r-remotes
 	optdepends = r-rmarkdown
+	optdepends = r-robustbase
 	optdepends = r-sparklyr
 	optdepends = r-tensorflow
 	optdepends = r-testthat
 	optdepends = r-withr
+	optdepends = r-workflows
 	optdepends = r-xgboost
-	source = https://cran.r-project.org/src/contrib/parsnip_1.6.1.tar.gz
-	md5sums = 99340bcc371fbce7094176074f420177
-	b2sums = 8b80e99ac4df791416a6b7c95988dae07652100676af8c597b393640d4f00c83e2b2812b6ddb559bece035a64ddaec455abd672ce1b98a960e00f6cde95ffc8e
+	source = https://cran.r-project.org/src/contrib/parsnip_1.7.0.tar.gz
+	md5sums = 7f0a2b76de2192875cb9d1221ed0de3a
+	b2sums = f9567a013e4022f0eeaea89f987317e00a534e11078be36cdf91f788fd09fac6e35cae10f6b7cf47681f2326ee975fa04f16ec522ae2c1fa4a326cd97a4ff7c3
 
 pkgname = r-parsnip
