@@ -8,7 +8,7 @@
 # sets pkgver, the release service's linux-x64 and linux-arm64 file URLs, and
 # the checksums for each release.
 pkgname=hex-bin
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc='Hex voice dictation app by Anomaly: hold a key, speak, and it types (Linux beta; not the hex dump tool)'
 arch=('x86_64' 'aarch64')
@@ -37,14 +37,14 @@ source=(
   'anomaly.hex-16.png' 'anomaly.hex-24.png' 'anomaly.hex-32.png' 'anomaly.hex-48.png'
   'anomaly.hex-64.png' 'anomaly.hex-128.png' 'anomaly.hex-256.png' 'anomaly.hex-512.png'
 )
-source_x86_64=("hex-${pkgver}-linux-x64::https://anoma.ly/release/hex/files/dda02ec994523f8827fd8d2948d51b9d00e05b2b46648a82e15ef74153df9996/hex")
-source_aarch64=("hex-${pkgver}-linux-arm64::https://anoma.ly/release/hex/files/ae98b6d9bdb048931ffb2ebb19355e6cdf4e8c29c7c6bcd7d91f650ae5befa48/hex")
+source_x86_64=("hex-${pkgver}-linux-x64::https://anoma.ly/release/hex/files/08e950a85b30abdaa0b3289377ebf0e7f7495b2409ba673145e6a831c52aff89/hex")
+source_aarch64=("hex-${pkgver}-linux-arm64::https://anoma.ly/release/hex/files/69449f94147d58fca118479639d327d2c15a2fc6d0e0493c7b4e9475b5721aed/hex")
 sha256sums=('8451e8be59f7aed50229fe7d9736196c305302b66ff0def2f21e002c85dfaa1a'
             '7b7f3baa337f53b46574e4ea16d98f45c066ddcfc9cfd13bc255f5d4ce628652'
             '0c267f186f600c6f4d9d229d1792861361f2c433cfb23054fece61f227006344'
             '9edade6f7fa4b57630cc0998b45fb93ca87de53bf113c3994b1faf6f48ca0e73' '50f9a1d6c901084580343ac2280552be7840d2121d4e384eaf4a123f51c5b893' '9eed258adaea95b40c231b7106a5c7717364450bb9ff8581ca9854317a2b1ca8' '4e40a9abd77580b8990b690f338aff50107a0c4382bf0397b6986afe80a6200f' 'f6a8f2075290cbfb0c3ec455b71aaae3893726ec69d957de209869e1f03600c0' '02f6dd00cadaf344b22f1be1d26d3afb59eebaa6bc94da442bf4f81b0579454b' 'c6715346520daf5d991760d3b2016d014e48329fc31af7b621e807a895df2194' 'bbb18f2474a4d5343b401353bc223e18394a0a386616aba3485b140c2313aaa8')
-sha256sums_x86_64=('dda02ec994523f8827fd8d2948d51b9d00e05b2b46648a82e15ef74153df9996')
-sha256sums_aarch64=('ae98b6d9bdb048931ffb2ebb19355e6cdf4e8c29c7c6bcd7d91f650ae5befa48')
+sha256sums_x86_64=('08e950a85b30abdaa0b3289377ebf0e7f7495b2409ba673145e6a831c52aff89')
+sha256sums_aarch64=('69449f94147d58fca118479639d327d2c15a2fc6d0e0493c7b4e9475b5721aed')
 
 package() {
   local target=x64
