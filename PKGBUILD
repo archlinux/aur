@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=microbiomeExplorer
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Microbiome Exploration App'
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
   r-v8
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('960af3c8f137ef6f027dc6003491a2652d723da0f70917f578514c77800fc03d')
+sha256sums=('92d57285ebcd4674515a5585e5c2602ed99d4e6e04943805a44dc9e3f4df2ec8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
