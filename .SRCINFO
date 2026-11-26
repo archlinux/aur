@@ -1,0 +1,17 @@
+pkgbase = dashboard-linter-bin
+	pkgdesc = Lint Grafana dashboards
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/grafana/dashboard-linter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = dashboard-linter
+	conflicts = dashboard-linter
+	options = !debug
+	source_x86_64 = dashboard-linter-bin-0.5.2-x86_64.tar.gz::https://github.com/grafana/dashboard-linter/releases/download/v0.5.2/dashboard-linter_0.5.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 108004b1020eac3f578752d3245def9180ea08667fe25d54a09a422039b13aab
+	source_aarch64 = dashboard-linter-bin-0.5.2-aarch64.tar.gz::https://github.com/grafana/dashboard-linter/releases/download/v0.5.2/dashboard-linter_0.5.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7dae2f1882dc1dcedd9d65a54115b4d9a579579d8f7a4667b169fcb8508487b3
+
+pkgname = dashboard-linter-bin
