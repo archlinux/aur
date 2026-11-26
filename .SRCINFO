@@ -1,6 +1,6 @@
 pkgbase = r-cellbench
 	pkgdesc = Construct Benchmarks for Single Cell Analysis Methods
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CellBench
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-cellbench
 	optdepends = r-limma
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellBench_1.28.0.tar.gz
-	sha256sums = d4a92ae3a89ca89b4572db38e22f9a9c3feeaf7bfa0a7d234456db1c2a909dad
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellBench_1.30.0.tar.gz
+	sha256sums = ec27ee8c5d9d4b1e961a0c662bc3f3a8ec3af674674291422832fa16287b26c4
 
 pkgname = r-cellbench
