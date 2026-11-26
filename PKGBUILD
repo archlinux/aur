@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/packerlschupfer/pulsar-mouse-linux"
 license=('MIT')
 depends=(
+  'glib2'
   'python'
   'python-pyusb'
   'python-gobject'
@@ -60,6 +61,10 @@ package() {
 
   # Debian-only docs
   rm -f "$pkgdir"/usr/share/doc/"${_pkgname}"/changelog.Debian.gz
+
+  # Point shebangs at Arch's python (Debian ships /usr/bin/python3 / env python3)
+  grep -rlZ '^#!.*python3' "$pkgdir"/usr/bin "$pkgdir$_site" 2>/dev/null \
+    | xargs -0 -r sed -i -E '1s@^#!.*python3$@#!/usr/bin/python@'
 
   # Byte-compile like any other Arch Python package
   python -m compileall -q -f -s "$pkgdir" -p / "$pkgdir$_site"
