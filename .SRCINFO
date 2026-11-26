@@ -1,0 +1,17 @@
+pkgbase = dashlit-bin
+	pkgdesc = Self-hosted start page for links, tools and service status
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/codewec/dashlit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = dashlit
+	conflicts = dashlit
+	options = !debug
+	source_x86_64 = dashlit-bin-1.1.3-x86_64.tar.gz::https://github.com/codewec/dashlit/releases/download/v1.1.3/dashlit_1.1.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1cad724ca42a601d9a6b9c4e84349e1d9abe04abf93f839151bc1dcba7f31da9
+	source_aarch64 = dashlit-bin-1.1.3-aarch64.tar.gz::https://github.com/codewec/dashlit/releases/download/v1.1.3/dashlit_1.1.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = b579c356d2e2e23b6bca64eba4764efa76927688f7b7e854eaa139f156794297
+
+pkgname = dashlit-bin
