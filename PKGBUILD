@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSALightning
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('130522a927c80580033bb4f38ad48af6')
-b2sums=('a565d837a152565889024bc0c7ff5915e9b0dbe0c979c56bb07f7f54e27600573930b0fcbe71aec0e44517b68d6b1e6197be8621b5e8995dadcc482150bf9189')
+md5sums=('5de08117a89c274a8dc51ee9a7cad4c0')
+b2sums=('aa572fe55ef3d40074f71f7132f0d1eee10a8c53de45396e827ee30170ca0ceb4ee682990bab595b365235e392ee6a439b1cf0f69ea2396b06c7b6cfe9ad978d')
 
 build() {
   mkdir build
