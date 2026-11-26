@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MBQN
-_pkgver=2.24.0
+_pkgver=2.26.0
 pkgname=r-${_pkgname,,}
-pkgver=2.24.0
+pkgver=2.26.0
 pkgrel=1
 pkgdesc='Mean/Median-balanced quantile normalization'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('13fa962678e2f7048af15827b511f35121bf57f112600d4c3aab7de762a4bcd5')
+sha256sums=('7e453919285d91a9b23483303b04c9083eb3a20d4a4337bd2af5869c51afc872')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
