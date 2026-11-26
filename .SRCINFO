@@ -1,0 +1,17 @@
+pkgbase = openapi-mock-bin
+	pkgdesc = OpenAPI mock server with random data generation
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://github.com/muonsoft/openapi-mock
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = openapi-mock
+	conflicts = openapi-mock
+	options = !debug
+	source = openapi-mock-bin-0.3.9-LICENSE::https://raw.githubusercontent.com/muonsoft/openapi-mock/v0.3.9/LICENSE
+	sha256sums = 4d935aad318eb257a6f26b4d618a2d4512089eedcb489d42ddc1bc1071681ff9
+	source_x86_64 = openapi-mock-bin-0.3.9-x86_64.tar.gz::https://github.com/muonsoft/openapi-mock/releases/download/v0.3.9/openapi-mock-v0.3.9-linux-amd64.tar.gz
+	sha256sums_x86_64 = 2b9505061697eb72c74aba25eaab44ab18f0377d599ecb8f48c21e318b2c24f4
+
+pkgname = openapi-mock-bin
