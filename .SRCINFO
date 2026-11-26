@@ -1,0 +1,17 @@
+pkgbase = rota-bin
+	pkgdesc = Proxy rotation engine with IP management and health monitoring
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/alpkeskin/rota
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = rota
+	conflicts = rota
+	options = !debug
+	source_x86_64 = rota-bin-2.3.0-x86_64.tar.gz::https://github.com/alpkeskin/rota/releases/download/v2.3.0/rota_v2.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d9157f391c3649ae32789247671e537bfeaf0bcda7d6638abd20250dc33521b2
+	source_aarch64 = rota-bin-2.3.0-aarch64.tar.gz::https://github.com/alpkeskin/rota/releases/download/v2.3.0/rota_v2.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = cf88d251b9f0836faba0e4a2c8f3755a75f4dbe546ee92d1fbc630803ce6e1ee
+
+pkgname = rota-bin
