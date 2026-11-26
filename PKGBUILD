@@ -93,7 +93,9 @@ build() {
 check() {
     cd "$srcdir/misstype"
     _zig
-    (cd core-zig && "$MISSTYPE_ZIG" build test -Doptimize=ReleaseFast)
+    if [[ ${MISSTYPE_SKIP_ZIG_TESTS:-0} != 1 ]]; then
+        (cd core-zig && "$MISSTYPE_ZIG" build test -Doptimize=ReleaseFast)
+    fi
     bash script/linux/test_capi.sh
     ctest --test-dir build/arch --output-on-failure
 }
