@@ -1,6 +1,6 @@
 pkgbase = mandara-bin
 	pkgdesc = GPU-accelerated, design-first Wayland desktop shell for MangoWM, Niri and Hyprland (binary release)
-	pkgver = 0.38.5
+	pkgver = 0.38.7
 	pkgrel = 1
 	url = https://github.com/theHamdiz/mandara
 	arch = x86_64
@@ -32,9 +32,9 @@ pkgbase = mandara-bin
 	options = !strip
 	options = !debug
 	backup = etc/pam.d/mandara-lock
-	source_x86_64 = https://github.com/theHamdiz/mandara/releases/download/v0.38.5/mandara-0.38.5-x86_64-linux-gnu.tar.gz
-	sha256sums_x86_64 = b68eb62c3b762f2758241258a2ca75682b6b6cc50de1f6392f1ec443531dc6aa
-	source_aarch64 = https://github.com/theHamdiz/mandara/releases/download/v0.38.5/mandara-0.38.5-aarch64-linux-gnu.tar.gz
-	sha256sums_aarch64 = 01effe01315df593f3af994178830e35413e46b21b36bdebd0af4854dfb575a0
+	source_x86_64 = https://github.com/theHamdiz/mandara/releases/download/v0.38.7/mandara-0.38.7-x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7d69706d21ec7e78d6459493e31c34bf29715460660b566f2e302d2f1f92223b
+	source_aarch64 = https://github.com/theHamdiz/mandara/releases/download/v0.38.7/mandara-0.38.7-aarch64-linux-gnu.tar.gz
+	sha256sums_aarch64 = aa6457f33245a8ceefd3f33576beee305faf30ee6e4646071ff9f57862506e81
 
 pkgname = mandara-bin
