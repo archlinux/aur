@@ -1,0 +1,18 @@
+pkgbase = leaker-bin
+	pkgdesc = Passive leak enumeration tool
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/vflame6/leaker
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = leaker
+	conflicts = leaker
+	options = !debug
+	source_x86_64 = leaker-bin-1.7.1-x86_64.tar.gz::https://github.com/vflame6/leaker/releases/download/v1.7.1/leaker_1.7.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 319fe42caa5b1008658ab651aa7670d202810b36e89833b1549d35c2f9cc9b9a
+	source_aarch64 = leaker-bin-1.7.1-aarch64.tar.gz::https://github.com/vflame6/leaker/releases/download/v1.7.1/leaker_1.7.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4bde735ed0764f99f0b2c3e3203ac1f991ab362726057a65d7cc0c55ef002357
+
+pkgname = leaker-bin
