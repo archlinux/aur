@@ -2,7 +2,7 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=h5mread
-_pkgver=1.4.1
+_pkgver=1.5.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6157cb0bfe144f4d58c10befa3eb9c85')
-b2sums=('0e193a109279459a03936ffb097f9016ef98e605793384c6c9d6545193b7a4c4de6673c065750785d31de4986ffd8171c09f210a681358b2f136f112785d116e')
+md5sums=('6b44ad2ef5bbec6ba4fda3e3b6a4766f')
+b2sums=('9c33d3f592c2946c0c161e34a4dfe7590df5432925b0d53008bc3c1ded3946dda4053d467b1dcbd36ae6dec24f00a2f149cbfd5239bd737ff4d04654ee445d30')
 
 build() {
   mkdir build
