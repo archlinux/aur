@@ -1,8 +1,8 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=bowel-bin
-pkgver=0.4.8
-pkgrel=2
+pkgver=0.4.9
+pkgrel=1
 pkgdesc="Desktop client for the mihomo proxy core, for non-commercial use"
 arch=('x86_64' 'aarch64')
 url="https://github.com/21stware/bowel"
@@ -37,8 +37,8 @@ noextract=("${_deb_x86_64}" "${_deb_aarch64}")
 sha256sums=('29674d8efb4bb229267c3036e3c11aa17857f167a34b8723450bb767c7284c3e'
             'fc7ec6ad2de383c8971a064c6dfeb3a3d9da351b19a304ec9bd36f3956cdd050'
             'e7c596b37ff27ec487d19b1920f73e0c97a78067ea35766530ee9659ade72711')
-sha256sums_x86_64=('59d059b3eb7e4e3bd674df92dc4b8d3f291f76f3c4b8c63ea5daa8a17987de43')
-sha256sums_aarch64=('763092dd1eb43781bcae390d21708a1aba56a147ef562d8c412f1411817aa502')
+sha256sums_x86_64=('742196c8e7d57f5e7ae6353f47e35b1a0a55e50c6a349cc745c38d2e0983eb11')
+sha256sums_aarch64=('eed723083dd4f3703c7342dbe8808f1d4328e2b1a4eaae70bb6694fbcb18de55')
 
 package() {
   local deb_var="_deb_${CARCH}"
