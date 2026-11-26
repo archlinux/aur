@@ -1,16 +1,16 @@
 # Maintainer: Remy Huang <me@remya.top>
 pkgname=remya-bar
 _app_id=remya_bar
-_upstream_ver=0.2.1
-pkgver=0.2.1
+_upstream_ver=0.3.0
+pkgver=0.3.0
 pkgrel=1
-_core_ver=0.2.0
+_core_ver=0.3.0
 pkgdesc="A Material Design 3 Expressive desktop bar for Hyprland on Linux"
 arch=('x86_64')
 url="https://github.com/remyhuang03/remya-bar"
 license=('LicenseRef-PolyForm-Noncommercial-1.0.0')
 depends=(
-  'remya-core>=0.2.0'
+  'remya-core>=0.3.0'
   'gtk3'
   'gtk-layer-shell>=0.6'
   'inter-font'
@@ -36,8 +36,8 @@ source=(
   "remya-bar-${_upstream_ver}.tar.gz::${url}/archive/refs/tags/v${_upstream_ver}.tar.gz"
   "remya-core-${_core_ver}.tar.gz::https://github.com/remyhuang03/remya-core/archive/refs/tags/v${_core_ver}.tar.gz"
 )
-sha256sums=('c5e3728f88c16b8cfb9793cbe93cb0ebb13d4b92d8672cee97f780e4af4a73fc'
-            '1f3f7564d7042bffaa604b6b9cac2feb0ac7ae63d687963999e8a098f1864c78')
+sha256sums=('b1addb242be6925086839bc959d4375cd775698eb8d473932ee862e2a0824d96'
+            '7d6446827dde819e21c6029e5aa8af732dc12753c79b990d474b29bc5b7a22b7')
 
 prepare() {
   ln -sfn "${srcdir}/remya-core-${_core_ver}" "${srcdir}/remya-core"
