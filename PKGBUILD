@@ -1,7 +1,7 @@
 # Maintainer: YageGeng <icoderdev@outlook.com>
 # 使用官网域名对应的名称，区分 AUR 上另一个曾叫 runner-bin 的项目。
 pkgname=runnersh-bin
-pkgver=0.20.2
+pkgver=0.20.4
 pkgrel=1
 pkgdesc='Local desktop cockpit for CLI coding agents'
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ source=("runner-$pkgver-LICENSE::https://raw.githubusercontent.com/yicheng47/run
 source_x86_64=("$url/releases/download/v$pkgver/Runner_${pkgver}_linux-x64.deb")
 source_aarch64=("$url/releases/download/v$pkgver/Runner_${pkgver}_linux-arm64.deb")
 sha256sums=('9cd05f17e4eb355ec72bcc88306c54e0e0d19a9d701fe38ddb02604f0ea68af7')
-sha256sums_x86_64=('4afce8365dffe68a5663096488528e258f5d775bbe30eb746e88d2ee2d601eea')
-sha256sums_aarch64=('9af532974dc113fcafc9631197f64232396eb6fd215657046cc721878ad07853')
+sha256sums_x86_64=('fd0d36a7107ec2f32e74a4b71459811565625b9fd1099cae23c66701beecf692')
+sha256sums_aarch64=('de5770d9eb1480c885b46fd554a9f58a778cacee809b2cb3c4942fb7fc1d3600')
 
 # 安装官方载荷及许可证，并将命令入口交给 pacman 管理。
 package() {
