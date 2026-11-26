@@ -1,0 +1,17 @@
+pkgbase = gately-bin
+	pkgdesc = Self-hosted gateway with reverse proxy, automatic HTTPS, DDNS, NAT traversal and WAF
+	pkgver = 0.6.8.8
+	pkgrel = 1
+	url = https://github.com/wangwanjie/gately
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = gately
+	conflicts = gately
+	options = !debug
+	source_x86_64 = gately-bin-0.6.8.8-x86_64.tar.gz::https://github.com/wangwanjie/gately/releases/download/v0.6.8.8/gately_v0.6.8.8_linux_amd64.tar.gz
+	sha256sums_x86_64 = 781217c8ae267096ed3c04d721718a2df183084bbb5dd9420ca3d87be4ee17c8
+	source_aarch64 = gately-bin-0.6.8.8-aarch64.tar.gz::https://github.com/wangwanjie/gately/releases/download/v0.6.8.8/gately_v0.6.8.8_linux_arm64.tar.gz
+	sha256sums_aarch64 = 958559ba3c4b6006a0eb1a3afdd1b70ca7dbd2b05fb280acff2f1fe705ae8c91
+
+pkgname = gately-bin
