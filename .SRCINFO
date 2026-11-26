@@ -1,7 +1,7 @@
 pkgbase = herdr-app-bin
 	pkgdesc = Native desktop workspace for terminals and coding agents that keep running
 	pkgver = 0.1.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://herdr.dev
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = herdr-app-bin
 	depends = libxkbcommon-x11
 	depends = vulkan-icd-loader
 	depends = wayland
-	depends = herdr-core>=0.1.11
+	optdepends = herdr-core: local background server (install herdr-core-bin for prebuilt binary)
 	provides = herdr-app=0.1.18
 	conflicts = herdr-app
 	options = !strip

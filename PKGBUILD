@@ -1,7 +1,7 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=herdr-app-bin
 pkgver=0.1.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Native desktop workspace for terminals and coding agents that keep running'
 url='https://herdr.dev'
 arch=(
@@ -21,7 +21,9 @@ depends=(
     'libxkbcommon-x11'
     'vulkan-icd-loader'
     'wayland'
-    'herdr-core>=0.1.11'
+)
+optdepends=(
+    'herdr-core: local background server (install herdr-core-bin for prebuilt binary)'
 )
 provides=(
     "${pkgname%-bin}=$pkgver"
