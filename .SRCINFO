@@ -1,0 +1,17 @@
+pkgbase = portier-broker-bin
+	pkgdesc = Reference implementation of the Portier login broker
+	pkgver = 0.15.2
+	pkgrel = 1
+	url = https://github.com/portier/portier-broker
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = portier-broker
+	conflicts = portier-broker
+	options = !debug
+	source_x86_64 = portier-broker-bin-0.15.2-x86_64.tgz::https://github.com/portier/portier-broker/releases/download/v0.15.2/Portier-Broker-v0.15.2-Linux-x86_64.tgz
+	sha256sums_x86_64 = af9cc6bf04431ad79268422b66db3227a55ae3feb3f2a2945039c8e78f1f26c1
+	source_aarch64 = portier-broker-bin-0.15.2-aarch64.tgz::https://github.com/portier/portier-broker/releases/download/v0.15.2/Portier-Broker-v0.15.2-Linux-aarch64.tgz
+	sha256sums_aarch64 = 21ddce2b4657c3ec768aa3d5597bc6e4cc3a592bc5817e1ef86c8bf488d17714
+
+pkgname = portier-broker-bin
