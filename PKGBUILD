@@ -1,6 +1,6 @@
 # Maintainer: monsoon <29970829+monsoon235@users.noreply.github.com>
 pkgname=llama.cpp-cuda-bin
-pkgver=b12380
+pkgver=b12752
 pkgrel=1
 pkgdesc='llama.cpp upstream prebuilt binaries with the CUDA backend'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('llama.cpp')
 options=('!strip' '!debug')
 _cudaver=13.5
 source=("https://github.com/ggml-org/llama.cpp/releases/download/${pkgver}/llama-${pkgver}-bin-ubuntu-cuda-${_cudaver}-x64.tar.gz")
-sha256sums=('65218bdd9a5658d55ac66377087e2eb382d94ae1075bc3c245e8f063f85ec89e')
+sha256sums=('d881ef335ac3e8c5013489dc77a396f3d4bae5109bccc4dbde83aa0662f406f6')
 
 package() {
     local upstream="$srcdir/llama-$pkgver" executable
