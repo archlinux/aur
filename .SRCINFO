@@ -1,0 +1,14 @@
+pkgbase = trousseau-bin
+	pkgdesc = File-based encrypted key-value store
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/oleiade/trousseau
+	arch = x86_64
+	license = MIT
+	provides = trousseau
+	conflicts = trousseau
+	options = !debug
+	source_x86_64 = trousseau-bin-0.4.1-x86_64.tar.gz::https://github.com/oleiade/trousseau/releases/download/v0.4.1/trousseau_0.4.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c81aba40c526c464e55d84cad50212f66c7e9c5781c0aa3c97b55dee301081c0
+
+pkgname = trousseau-bin
