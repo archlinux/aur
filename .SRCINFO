@@ -1,0 +1,22 @@
+pkgbase = cyberapi-bin
+	pkgdesc = Small, fast API client built on GPUI
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/vicanso/cyberapi
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	provides = cyberapi
+	conflicts = cyberapi
+	options = !debug
+	source_x86_64 = cyberapi-bin-0.6.3-x86_64.tar.gz::https://github.com/vicanso/cyberapi/releases/download/v0.6.3/cyberapi-0.6.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = cbf5f9a326ab9f616306e63717387a30a6c69e7eeed45f88a430701761669fc4
+	source_aarch64 = cyberapi-bin-0.6.3-aarch64.tar.gz::https://github.com/vicanso/cyberapi/releases/download/v0.6.3/cyberapi-0.6.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3d9d8ef300aa92a862e1dd5d867559ce32babab71a61dfb052f5ac2cf8708590
+
+pkgname = cyberapi-bin
