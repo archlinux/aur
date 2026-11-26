@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mdp
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Molecular Degree of Perturbation calculates scores for transcriptome data samples based on their perturbation from controls'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('44d9b76ed72430cae11f1c4e3a79fd9d54a72cc64d0130dfa638f3f617ec8cb3')
+sha256sums=('42e55e629ef0d6ad8e56c75eaade639c886a43592ad1e10f7f5bc99bbe202a53')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
