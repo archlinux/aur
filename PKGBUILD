@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=genArise
-_pkgver=1.88.0
+_pkgver=1.90.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,8 +15,8 @@ depends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5253d9749b7f17e69ae0e71e7f1c22bc')
-b2sums=('6e15a0a39421897aaea78115d9ffa89f46823db27bfc9bdce3d46f612400457ca76e3a9ead683abee5eb7c25d9594b959ea3b726bcf0f70eed15ebfb4f32880c')
+md5sums=('d616da80cb46d3821a815691deaa55d8')
+b2sums=('a2e8b6aced1244c84333d4df96f8a29051ba4575ff4fcfd18f76ec602f5d5a984214d1a5c01bc687d26180648a3c352594ebce5d821dd7d0fce0c98865b254e9')
 
 build() {
   mkdir build
