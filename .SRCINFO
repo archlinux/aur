@@ -1,6 +1,6 @@
 pkgbase = r-pairkat
 	pkgdesc = PaIRKAT
-	pkgver = 1.18.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pairkat
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-pairkat
 	optdepends = r-dplyr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pairkat_1.18.0.tar.gz
-	sha256sums = ad611821cce7c6645e36fb1397905613ac4319b06c8b74d6a4a60aea0e69b714
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pairkat_1.19.0.tar.gz
+	sha256sums = 468424d09dfe55dfc8765d5d2aff0eaa2ebb287759b31ac7a6d872a760b3ef16
 
 pkgname = r-pairkat
