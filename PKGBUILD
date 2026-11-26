@@ -3,7 +3,7 @@
 # Rendered from packaging/aur/PKGBUILD.in by deploy/scripts/release-aur.sh. Do not edit a published copy; change the
 # template.
 pkgname=puramai-bin
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Puramai desktop app (repackaged from the official .deb)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip' '!debug')
 source=("https://puramai.io-workshop.net/download/puramai_${pkgver}_amd64.deb"
         'LICENSE')
 noextract=("puramai_${pkgver}_amd64.deb")
-sha256sums=('a201571a76fce22a9cdfb1f39fdf2b8b217af8fdac587f468f64fd8975a4046a'
+sha256sums=('71f25f87ee66ed41e821565e836f973cd05f882e86c39acbcedff2da65803440'
             '26a02bba9618166b1d2c9f4af1a084be050112c93a344269759370e45cd961d1')
 
 prepare() {
