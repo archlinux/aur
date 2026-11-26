@@ -1,6 +1,6 @@
 pkgbase = r-deformats
 	pkgdesc = Differential gene expression data formats converter
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DEFormats
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-deformats
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEFormats_1.40.0.tar.gz
-	sha256sums = c449408f46638b43e5dd74100826aeb2f8864400917e6987fbc288ffbca0ca6f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEFormats_1.42.0.tar.gz
+	sha256sums = 0c49c563a815b094ffd828853a881998d932a5f3244724588894c7e72853fff9
 
 pkgname = r-deformats
