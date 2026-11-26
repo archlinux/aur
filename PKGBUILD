@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ConsensusClusterPlus
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
+pkgver=1.78.0
 pkgrel=1
 pkgdesc='ConsensusClusterPlus'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b432b6ba4ea34201386c64049873bf7b2ec798d8dce45f177512cd09fcc58d1b')
+sha256sums=('d2a7973a0e1f295088266e1fc2dff07874cf02bbafcb5d0bcac3eedb8f484495')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
