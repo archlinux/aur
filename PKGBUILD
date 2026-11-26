@@ -2,7 +2,7 @@
 
 pkgname=openrockcli
 pkgver=1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A command-line and lightweight TUI firmware flashing tool for Rockchip SoCs"
 arch=($CARCH)
@@ -45,6 +45,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     install -vDm0755 ${pkgname} -t"${pkgdir}/usr/bin/"
+    install -vDm0644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
     install -vDm0644 *.rules -t "${pkgdir}/usr/lib/udev/rules.d/"
     install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

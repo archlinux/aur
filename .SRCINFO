@@ -1,7 +1,7 @@
 pkgbase = openrockcli
 	pkgdesc = A command-line and lightweight TUI firmware flashing tool for Rockchip SoCs
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dshanpi/openrockcli
 	arch = x86_64
 	license = MIT
