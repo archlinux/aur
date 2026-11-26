@@ -1,6 +1,6 @@
 pkgbase = io-workshop-act-bin
 	pkgdesc = ACT — a MyAnimeList client (desktop build)
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/MustD/act
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = io-workshop-act-bin
 	depends = libxrender
 	depends = libxtst
 	depends = xdg-utils
-	noextract = io-workshop-act_1.0.1_amd64.deb
+	noextract = io-workshop-act_1.1.0_amd64.deb
 	options = !strip
-	source = io-workshop-act_1.0.1_amd64.deb::https://github.com/MustD/act/releases/download/1.0.1/io-workshop-act_1.0.1_amd64.deb
+	source = io-workshop-act_1.1.0_amd64.deb::https://github.com/MustD/act/releases/download/1.1.0/io-workshop-act_1.1.0_amd64.deb
 	source = LICENSE
-	sha256sums = c2efb04e237e4c8761c9dc98366e5b9c5fa5af58b2c99e53135f895c9ebc4e10
+	sha256sums = 29d535e24248510f9c68729f3d5c07c4b92f0bbe85a20d61d9c87decafce94b5
 	sha256sums = 728f66fa204d52fb356bbd85728252f77f77ba61be57816b9b478d772c7bc914
 
 pkgname = io-workshop-act-bin
