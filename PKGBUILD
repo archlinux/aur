@@ -1,7 +1,7 @@
 # Maintainer: Braulio Oliveira <brauliobo@gmail.com>
 
 pkgname=zensmu-bin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Safety-first Rust CLI, live TUI, and unprivileged GUI for AMD Ryzen SMU control and telemetry (prebuilt binary)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ provides=('zensmu')
 conflicts=('zensmu' 'zensmu-git')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/brauliobo/zensmu/releases/download/v${pkgver}/zensmu-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('0f80e5e9726e816a1d3130e85c758dbf99e48293515f30c6964eca41ed41c095')
+sha256sums=('ff56c9c26c39adbf5200c75d5799748fd89de8b82dabbdc467928f1adb7ee753')
 
 package() {
     local root="${srcdir}/zensmu-v${pkgver}-x86_64-unknown-linux-gnu"
@@ -35,9 +35,11 @@ package() {
     install -Dm755 "${root}/zensmu" "${pkgdir}/usr/bin/zensmu"
     install -Dm755 "${root}/zensmu-gui" "${pkgdir}/usr/bin/zensmu-gui"
 
-    # Systemd boot apply service & suspend/hibernate resume hook
+    # Systemd boot apply service, user telemetry recorder service, & suspend/hibernate resume hook
     install -Dm644 "${root}/packaging/systemd/zensmu-apply.service" \
         "${pkgdir}/usr/lib/systemd/system/zensmu-apply.service"
+    install -Dm644 "${root}/packaging/systemd/zensmu-record.service" \
+        "${pkgdir}/usr/lib/systemd/user/zensmu-record.service"
     install -Dm755 "${root}/packaging/systemd/zensmu-resume" \
         "${pkgdir}/usr/lib/systemd/system-sleep/zensmu-resume"
 
