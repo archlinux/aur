@@ -1,0 +1,16 @@
+pkgbase = iso8583-bin
+	pkgdesc = Marshal and unmarshal ISO 8583 messages
+	pkgver = 0.26.5
+	pkgrel = 1
+	url = https://github.com/moov-io/iso8583
+	arch = x86_64
+	license = Apache-2.0
+	provides = iso8583
+	conflicts = iso8583
+	options = !debug
+	source = iso8583-bin-0.26.5-LICENSE::https://raw.githubusercontent.com/moov-io/iso8583/v0.26.5/LICENSE
+	sha256sums = 3c96c0da3de9587c2062f25bc7efccba795f81dbf1b08dc71652c856e88b01a8
+	source_x86_64 = iso8583-bin-0.26.5-x86_64::https://github.com/moov-io/iso8583/releases/download/v0.26.5/iso8583-linux-amd64
+	sha256sums_x86_64 = 2bd8ceb43d12b387b6765b37dc17539c709ff5d210bc08094f92d1bf3a76af1b
+
+pkgname = iso8583-bin
