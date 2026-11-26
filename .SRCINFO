@@ -1,6 +1,6 @@
 pkgbase = r-methped
 	pkgdesc = A DNA methylation classifier tool for the identification of pediatric brain tumor subtypes
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MethPed
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-methped
 	optdepends = r-impute
 	optdepends = r-knitr
 	optdepends = r-markdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MethPed_1.40.0.tar.gz
-	md5sums = eff74c5d78acad84b0205c53ab48ad7e
-	b2sums = 2bab6014f677b62362e4fc58d401367b94296b29839489b991435e4a9602bb3dccdd5132664be8adbf17b95dfd0dc1b42ffe1deb7d6cdf32ee0dd3454c25dcd2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MethPed_1.42.0.tar.gz
+	md5sums = b2e3df06a4b095ea1150bcd5c10672fe
+	b2sums = b12cdaf17a5df54bf2b4680bada83bfb1e58018ff3d7191fbe5abd3c0163b9c7c6421ec544cc3ebf891b17780177332b73f038b77cfbcf56dabdb69348376143
 
 pkgname = r-methped
