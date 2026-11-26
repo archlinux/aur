@@ -1,6 +1,6 @@
 # Maintainer: Jotalea <main@jotalea.com.ar>
 pkgname=jotawm-keybinds-git
-pkgver=2026.10.17.r132.ef7bb8b
+pkgver=2026.11.26.r136.bce913e
 pkgrel=1
 pkgdesc="Always-on-top popup showing jotawm's keybinds"
 arch=('x86_64' 'aarch64' 'armv7h')
