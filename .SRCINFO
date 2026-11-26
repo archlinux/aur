@@ -1,6 +1,6 @@
 pkgbase = wsmancer
 	pkgdesc = PSRP-native WinRM shell
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/sresarehumantoo/wsmancer
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wsmancer
 	depends = glibc
 	provides = wsmancer
 	conflicts = wsmancer-git
-	source = wsmancer-0.2.1.tar.gz::https://github.com/sresarehumantoo/wsmancer/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 18cdc29d8047a516a6c366518fae9a33a553cdef418560894446e22f77bb6bf7
+	source = wsmancer-0.2.3.tar.gz::https://github.com/sresarehumantoo/wsmancer/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 5c309885a5342d6aec78e027ab943fcebfe4c6bec461ac0ef4557798da6dc861
 
 pkgname = wsmancer
