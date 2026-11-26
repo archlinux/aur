@@ -1,17 +1,22 @@
 pkgbase = promptr-bin
-	pkgver = 0.2.3
+	pkgdesc = Native GTK4 chat frontend with independent provider plugins
+	pkgver = 0.3.0
 	pkgrel = 1
-	pkgdesc = GTK4 overlay prompt for opencode
+	url = https://github.com/toxdes/promptr
 	arch = x86_64
 	arch = aarch64
-	url = https://github.com/toxdes/promptr
 	license = MIT
 	depends = gtk4
 	depends = gtksourceview5
 	depends = gtk4-layer-shell
-	source_x86_64 = promptr-${pkgver}-x86_64.tar.gz::https://packages.toxdes.com/releases/promptr_${pkgver}_amd64.tar.gz
-	sha256sums_x86_64 = 1a3166601657c71ee306390dd957f8aa251df0e0dd878b502dec91e8c709d221
-	source_aarch64 = promptr-${pkgver}-aarch64.tar.gz::https://packages.toxdes.com/releases/promptr_${pkgver}_arm64.tar.gz
-	sha256sums_aarch64 = 667d3d71cb662f84f760a50df2ad7aa1aeac8b8474efe8345d3f139d354bdbbf
+	depends = curl
+	depends = json-glib
+	depends = libsecret
+	provides = promptr=0.3.0
+	conflicts = promptr
+	source_x86_64 = promptr-0.3.0-x86_64.tar.gz::https://packages.toxdes.com/releases/promptr_0.3.0_amd64.tar.gz
+	sha256sums_x86_64 = 0a6e46c00ac2cddba59ed8d04ac24fb59482edf4d02efe0088d33059917e267a
+	source_aarch64 = promptr-0.3.0-aarch64.tar.gz::https://packages.toxdes.com/releases/promptr_0.3.0_arm64.tar.gz
+	sha256sums_aarch64 = 5b07deb3c4e0ffb2416c2db16d7e28ce058e5e4def388d086c38dc6a7d16926b
 
 pkgname = promptr-bin
