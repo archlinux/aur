@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BioCartaImage
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ceb25ea33e43bd58bab21d57c6f4111e')
-b2sums=('336709d8c2a64bd90baef7185c48e5151435fcd845161fadd6340b1890fdcb5509c501c8ac9a738f17d71fb6e239027e61f5c5da05a3e2bc586e14ea4c70e6d9')
+md5sums=('a939caa38c51e809fb66ff6940423c6e')
+b2sums=('e3a3e731a5a1ecd35d4ab11b8283451615cfa74ffde2b7d5a124f89224f1216b5d9640cc9f4582339b74bec12fb349611d6bf1f34c9ee9e25066b8eb33940d6f')
 
 build() {
   mkdir build
