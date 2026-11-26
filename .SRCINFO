@@ -1,0 +1,17 @@
+pkgbase = sql_exporter-bin
+	pkgdesc = Database-agnostic SQL exporter for Prometheus
+	pkgver = 0.24.14
+	pkgrel = 1
+	url = https://github.com/burningalchemist/sql_exporter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sql_exporter
+	conflicts = sql_exporter
+	options = !debug
+	source_x86_64 = sql_exporter-bin-0.24.14-x86_64.tar.gz::https://github.com/burningalchemist/sql_exporter/releases/download/0.24.14/sql_exporter-0.24.14.linux-amd64.tar.gz
+	sha256sums_x86_64 = e6b7b08f48ccd4a30256e163c620810bf06c6d75d1aa21d83417b260ea3fac76
+	source_aarch64 = sql_exporter-bin-0.24.14-aarch64.tar.gz::https://github.com/burningalchemist/sql_exporter/releases/download/0.24.14/sql_exporter-0.24.14.linux-arm64.tar.gz
+	sha256sums_aarch64 = af0bedbd24d4eeca0cce7a5520f97f762abd03e783d0a1d2f84c320ead932a30
+
+pkgname = sql_exporter-bin
