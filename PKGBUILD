@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EmpiricalBrownsMethod
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8e91cbc6ba5ffa443341db0bee25bd38')
-b2sums=('ce19ac4ad414c1c39f3554ea72a6a56b056c89b217f9fd1ad0dd5fc65dfb4b05978ce6a6f942a7b35b57d3a8c85d7c9d8daf2a2b29f58daa03d3db38de808f11')
+md5sums=('0dc394867e6a02949e27dc6767a2b5cd')
+b2sums=('0bb2fdd88a37b80b556211fbb877fcfd400ae6141f1302a2a7d0632607c837e7a6e7843617ba9e51174c64d35944321d9e05a6c89d7f99fcd9d807bf892c0612')
 
 build() {
   mkdir build
