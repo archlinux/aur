@@ -1,0 +1,17 @@
+pkgbase = clickhouse_sinker-bin
+	pkgdesc = Load data from Kafka into ClickHouse
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/housepower/clickhouse_sinker
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = clickhouse_sinker
+	conflicts = clickhouse_sinker
+	options = !debug
+	source_x86_64 = clickhouse_sinker-bin-3.2.0-x86_64.tar.gz::https://github.com/housepower/clickhouse_sinker/releases/download/v3.2.0/clickhouse_sinker_3.2.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8f5f1f2f2e690fdcc7456e9a0eedf71df338173bd5625c72a9277701d155b452
+	source_aarch64 = clickhouse_sinker-bin-3.2.0-aarch64.tar.gz::https://github.com/housepower/clickhouse_sinker/releases/download/v3.2.0/clickhouse_sinker_3.2.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 394e635afdf5adf0712411203d5f4899f20164a2dd2645078f531d914a578407
+
+pkgname = clickhouse_sinker-bin
