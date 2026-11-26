@@ -1,0 +1,17 @@
+pkgbase = boss-bin
+	pkgdesc = Dependency manager for Delphi and Lazarus
+	pkgver = 3.0.17
+	pkgrel = 1
+	url = https://github.com/HashLoad/boss
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = boss
+	conflicts = boss
+	options = !debug
+	source_x86_64 = boss-bin-3.0.17-x86_64.tar.gz::https://github.com/HashLoad/boss/releases/download/v3.0.17/boss_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c40ec124f4f2563b6c873dbeeba2dfad6b80b644a0f765a7291bd9efd0b21e3e
+	source_aarch64 = boss-bin-3.0.17-aarch64.tar.gz::https://github.com/HashLoad/boss/releases/download/v3.0.17/boss_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 45eaf0ff2f1c7a9a276815148eea562471a3a2aafe64103b6a57476482035539
+
+pkgname = boss-bin
