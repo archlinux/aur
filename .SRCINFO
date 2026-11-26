@@ -1,6 +1,6 @@
-pkgbase = affine
+pkgbase = affine-beta
 	pkgdesc = A next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.
-	pkgver = 0.27.4
+	pkgver = 0.27.5.beta.3
 	pkgrel = 1
 	url = https://affine.pro
 	arch = x86_64
@@ -20,21 +20,22 @@ pkgbase = affine
 	makedepends = unzip
 	depends = bash
 	depends = hicolor-icon-theme
-	depends = electron39
-	provides = affine=0.27.4
-	provides = affine-stable=0.27.4
+	depends = electron43
+	provides = affine-beta=0.27.5.beta.3
+	provides = affine-beta-stable=0.27.5.beta.3
 	conflicts = affine-bin
+	conflicts = affine
 	options = strip
 	options = !staticlibs
 	options = !zipman
 	options = !debug
 	options = buildflags
 	options = lto
-	source = AFFiNE-0.27.4::git+https://github.com/toeverything/AFFiNE#tag=v0.27.4
-	source = affine.sh
-	source = affine.desktop
-	sha256sums = 6ac5990e150357409ce85cf01fe130ef1cd13b112c689d0d578dd619fe67ef13
+	source = AFFiNE-0.27.5.beta.3::git+https://github.com/toeverything/AFFiNE#tag=v0.27.5-beta.3
+	source = affine-beta.sh
+	source = affine-beta.desktop
+	sha256sums = 4d6189fffad620667a38e7d8f73ab3f6a0024cb336d85e94d07329eb4a8b178f
 	sha256sums = 25363b65c38961d22b1213bed8b8e90b996b7713ab69e4d776a84c1bfe94bf34
-	sha256sums = 18724474ab2351ed00965f9fe9adea04967458dec810866b572cf44ca8185b5b
+	sha256sums = a8dab9ac4e28a3e2297d0801f4252cee6bd7f2a98451386a26bbdb211bf6a0f3
 
-pkgname = affine
+pkgname = affine-beta

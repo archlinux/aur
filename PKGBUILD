@@ -3,8 +3,13 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 # shellcheck disable=SC2034,SC2154,SC2164
 
-pkgname=affine
-pkgver=0.27.4
+_ver=0.27.5
+_type=beta
+_num=3
+_tag=${_ver}-${_type}.${_num}
+
+pkgname=affine-${_type}
+pkgver=${_ver}.${_type}.${_num}
 pkgrel=1
 pkgdesc='A next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.'
 arch=('x86_64')
@@ -12,7 +17,7 @@ url='https://affine.pro'
 _pkgname=AFFiNE
 _nodejs='nvm'
 _build_type=stable
-_electronversion=39
+_electronversion=43
 _nodeversion=22
 _ghurl='https://github.com/toeverything/AFFiNE'
 license=(
@@ -23,7 +28,7 @@ provides=(
   "${pkgname}=${pkgver}"
   "${pkgname}-${_build_type}=${pkgver}"
 )
-conflicts=('affine-bin')
+conflicts=('affine-bin' 'affine') # TODO: Does it?
 depends=(
   bash
   hicolor-icon-theme
@@ -35,13 +40,13 @@ makedepends=(
   git jq zip unzip
 )
 source=(
-  "${_pkgname}-${pkgver}::git+https://github.com/toeverything/AFFiNE#tag=v${pkgver}"
+  "${_pkgname}-${pkgver}::git+https://github.com/toeverything/AFFiNE#tag=v${_tag}"
   "${pkgname}.sh"
   "${pkgname}.desktop"
 )
-sha256sums=('6ac5990e150357409ce85cf01fe130ef1cd13b112c689d0d578dd619fe67ef13'
+sha256sums=('4d6189fffad620667a38e7d8f73ab3f6a0024cb336d85e94d07329eb4a8b178f'
             '25363b65c38961d22b1213bed8b8e90b996b7713ab69e4d776a84c1bfe94bf34'
-            '18724474ab2351ed00965f9fe9adea04967458dec810866b572cf44ca8185b5b')
+            'a8dab9ac4e28a3e2297d0801f4252cee6bd7f2a98451386a26bbdb211bf6a0f3')
 
 options=('strip' '!staticlibs' '!zipman' '!debug' 'buildflags' 'lto')
 
@@ -114,8 +119,8 @@ build() {
 
   # https://github.com/toeverything/AFFiNE/blob/canary/docs/building-desktop-client-app.md
   # https://github.com/toeverything/AFFiNE/blob/canary/.github/actions/setup-version/action.yml
-  declare -rx APP_VERSION="$pkgver"
-  declare -rx RELEASE_VERSION="$pkgver"
+  declare -rx APP_VERSION="$_tag"
+  declare -rx RELEASE_VERSION="$_tag"
   #declare -rx DEBUG='*'
   #declare -rx DEBUG='affine:*,napi:*'
 

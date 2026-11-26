@@ -3,6 +3,7 @@
 !.SRCINFO
 !PKGBUILD
 !*.patch
-!affine.sh
+!affine-beta.sh
+!affine-beta.desktop
 !*.install
 !update.sh

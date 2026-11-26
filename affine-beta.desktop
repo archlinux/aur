@@ -2,10 +2,9 @@
 Name=AFFiNE
 Comment=AFFiNE Desktop App
 GenericName=AFFiNE
-Exec=affine %U
+Exec=affine-beta %U
 Icon=affine
 Type=Application
 StartupNotify=true
 Categories=GNOME;GTK;Utility;
 MimeType=x-scheme-handler/affine;
-
