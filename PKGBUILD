@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GraphAT
-_pkgver=1.84.0
+_pkgver=1.86.0
 pkgname=r-${_pkgname,,}
-pkgver=1.84.0
+pkgver=1.86.0
 pkgrel=1
 pkgdesc='Graph Theoretic Association Tests'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-mcmcpack
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f2ef38e41b9af5a696676ad2f549ff1933321ff130155ad502c8b11c713853c0')
+sha256sums=('a59c11673d601bd3d6d8f946e4bfe03aabd56a44fdd45582346f62ef4dd1e7a4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
