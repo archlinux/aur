@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=UNDO
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,8 +15,8 @@ depends=(
   r-nnls
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8bef36afd05b3414a3d0e784d252a02c')
-b2sums=('6d362d9cf3b72ba8e27d992b37f1aba744e9a4bd755b18a5c2fdf429e641a22082b34016268a84ccdd8dd45ee187c090599564b550205b6f5410339da1f6687b')
+md5sums=('c555a60d49d602fbc58a9477e64673a1')
+b2sums=('e24b4b740353fc22e469c2aa41116fbb5978fe4d73c5b1d9ab37e4a944f112e9fb61c1003e7d67834d6676242e33b9b480e94c2ae5f44390a76542d0fa9e9018')
 
 build() {
   mkdir build
