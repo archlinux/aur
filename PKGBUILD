@@ -1,7 +1,7 @@
 # Maintainer: hotline1337 <denuvo at tuta dot io>
 
 pkgname=openbot
-pkgver=0.78.0
+pkgver=0.79.0
 pkgrel=1
 pkgdesc="Local-first desktop workspace for persistent AI teammates."
 arch=("x86_64" "aarch64")
@@ -89,9 +89,9 @@ noextract=(
   "OpenBot-${pkgver}-arm64.AppImage"
 )
 b2sums=('be7e2f7213f7ff6da53ad0557d9b4cd8028a85295f79efeec460e9a0d373612f241bf9cdfa3084181e4c40f36cbcf77a4ffd6241d454f5f20cf3c2446036f2bf'
-        'e51a75346164f980aa37be25ccf13f8a4157a0e019302c6673aa5731995f65fdeef863d74cd006a6db7e06f82438ec7c992226db80b6cbf3a243ed6e06b507c7')
-b2sums_x86_64=('9ddfaaa15e67977892cb84ff72a8da832a51731ce45faecb2847f3e09b7e575de572731aba93dd6ee0c6df04986e7b35e68e8b5c34f22d8f000738ad050b7168')
-b2sums_aarch64=('b42f222dbf9a66c5d95457fbc0d5a4903a9eca0125f7e7d06c50e1992a8b974c99c66fe0502299fc5e779741fd3c6722ef2018837a87a03bd2b3940645e7e95f')
+        '5abb5d6e8d20f8a40606b9007b52ab465b71ea87bb8ffb560694cb135ae70b6117954710aab2d1599949e4c30bdd19b4d452661797439b31b814dc94a0821c47')
+b2sums_x86_64=('8e8caa48b46ae1fc1153a190b82a566491c9001913cf68f39e4dcddc45dd7dc769267f44241331e15d28afacace0d7d27fbeca5da179aa89c99cb862b8263d48')
+b2sums_aarch64=('60b77fdd85db7c9863ffffa826a7902d523acef5f33bee9d84ea4d3989016949757a73b23e45ffef7ec537803ffa30579dd867a1774ef73b05c5dc9dd5c16a06')
 
 prepare() {
   local -A _arch_map=([x86_64]="x86_64" [aarch64]="arm64")
