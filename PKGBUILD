@@ -2,11 +2,11 @@ pkgname=wasm-bindgen-git
 _pkgname=wasm-bindgen
 pkgdesc="Interoperating JS and Rust code"
 pkgrel=1
-pkgver=0.2.78.3270
+pkgver=0.2.130.4538
 arch=('i686' 'x86_64')
 conflicts=("wasm-bindgen")
 provides=("wasm-bindgen")
-url="https://github.com/rustwasm/wasm-bindgen"
+url="https://github.com/wasm-bindgen/wasm-bindgen"
 license=('Apache' 'MIT')
 depends=()
 makedepends=('rust' 'cargo')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd $_pkgname/crates/cli
-	env CARGO_INCREMENTAL=0 cargo build --release
+	env CARGO_INCREMENTAL=0 cargo build --release --no-default-features --features native-tls
 }
 
 package() {
