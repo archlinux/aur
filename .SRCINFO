@@ -1,7 +1,7 @@
 pkgbase = niri-better
 	pkgdesc = Scrollable-tiling Wayland compositor with the Better Desktop companion apps
 	pkgver = 26.4.0.elite
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/fram446742/better-niri
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = niri-better
 	makedepends = git
 	makedepends = pkgconf
 	makedepends = rust
-	source = better-niri::git+https://github.com/fram446742/better-niri.git#commit=644e02812e34b17697cc972f726d771c54ccf5fe
+	source = better-niri::git+https://github.com/fram446742/better-niri.git#commit=07e14ac3396e9cbcebe446787fdb40d6582d13ec
 	source = better-settings.desktop
 	source = better-desktop.README.md
 	sha256sums = SKIP

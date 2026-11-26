@@ -46,8 +46,8 @@ pkgname=(
 )
 _pkgname=better-niri
 pkgver=26.4.0.elite
-pkgrel=3
-_commit=644e02812e34b17697cc972f726d771c54ccf5fe
+pkgrel=4
+_commit=07e14ac3396e9cbcebe446787fdb40d6582d13ec
 pkgdesc="Scrollable-tiling Wayland compositor with the Better Desktop companion apps"
 arch=(x86_64 aarch64)
 url="https://github.com/fram446742/better-niri"
