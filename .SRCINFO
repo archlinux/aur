@@ -1,0 +1,17 @@
+pkgbase = ratchet-bin
+	pkgdesc = Secure CI/CD workflows by pinning versions
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/sethvargo/ratchet
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = ratchet
+	conflicts = ratchet
+	options = !debug
+	source_x86_64 = ratchet-bin-0.12.0-x86_64.tar.gz::https://github.com/sethvargo/ratchet/releases/download/v0.12.0/ratchet_0.12.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e1fb026d93d84020cc4354dd3fdc667f6e03f04d017edcc4a2bddfc78c1efb56
+	source_aarch64 = ratchet-bin-0.12.0-aarch64.tar.gz::https://github.com/sethvargo/ratchet/releases/download/v0.12.0/ratchet_0.12.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 15e6f7f00b53dd95001487bf5651d9dcd48d61dc22cfc945df375419c6000b4c
+
+pkgname = ratchet-bin
