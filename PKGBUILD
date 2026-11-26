@@ -2,7 +2,7 @@
 # Contributor: nopw <aur@n0.pw>
 
 pkgname=stremio-linux-shell-git
-pkgver=1.2.2.r36.gd7b2c91
+pkgver=1.3.0.r14.g75b4fa9
 pkgrel=1
 pkgdesc="A native Linux client for Stremio"
 arch=('x86_64')
@@ -56,7 +56,7 @@ package() {
   cd "stremio-linux-shell"
 
   install -Dm755 "target/release/stremio-linux-shell" "$pkgdir/usr/bin/stremio"
-  install -Dm644 "data/server.js" "$pkgdir/usr/lib/stremio/server.js"
+  install -Dm644 "target/server/server.js" "$pkgdir/usr/lib/stremio/server.js"
 
   install -Dm644 "data/com.stremio.Stremio.desktop" \
     "$pkgdir/usr/share/applications/com.stremio.Stremio.desktop"
