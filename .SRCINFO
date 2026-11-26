@@ -1,0 +1,19 @@
+pkgbase = flamingo-bin
+	pkgdesc = Capture credentials sprayed across the network by IT and security products
+	pkgver = 0.0.20
+	pkgrel = 1
+	url = https://github.com/atredispartners/flamingo
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	provides = flamingo
+	conflicts = flamingo
+	options = !debug
+	source = flamingo-bin-0.0.20-LICENSE::https://raw.githubusercontent.com/atredispartners/flamingo/v0.0.20/LICENSE
+	sha256sums = c61411f79c602effd6938c78d629c307557d6a35f1f129edbcb237b0cea32c4e
+	source_x86_64 = flamingo-bin-0.0.20-x86_64::https://github.com/atredispartners/flamingo/releases/download/v0.0.20/flamingo-linux-amd64
+	sha256sums_x86_64 = 35151cc0915175b7debcc8f1d767f967216d8d8f789174cb4b89599e3e0e1f94
+	source_aarch64 = flamingo-bin-0.0.20-aarch64::https://github.com/atredispartners/flamingo/releases/download/v0.0.20/flamingo-linux-aarch64
+	sha256sums_aarch64 = 558a553da952e0d47ac6b98de48b07f16bd6a9ef0af02c33c38c0088b15d3022
+
+pkgname = flamingo-bin
