@@ -2,17 +2,18 @@
 
 pkgname=openrockcli-git
 pkgver=1+r0+g039ed3a
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A command-line and lightweight TUI firmware flashing tool for Rockchip SoCs"
 arch=($CARCH)
 url="https://github.com/dshanpi/openrockcli"
 license=('MIT')
 depends=(
-    'glibc'
-    'libusb'
+    libusb
 )
-makedepends=('git')
+makedepends=(
+    git
+)
 optdepends=(
     "rkbin: Rockchip update.img flashing through the SDK bundled upgrade_tool"
 )
@@ -44,6 +45,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname%-git}"
     install -vDm0755 ${pkgname%-git} -t"${pkgdir}/usr/bin/"
+    install -vDm0644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
     install -vDm0644 *.rules -t "${pkgdir}/usr/lib/udev/rules.d/"
     install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
