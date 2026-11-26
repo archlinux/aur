@@ -1,0 +1,17 @@
+pkgbase = slashdocs-bin
+	pkgdesc = Let AI agents publish reviewable HTML documents
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/razorpay/slashdocs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = slashdocs
+	conflicts = slashdocs
+	options = !debug
+	source_x86_64 = slashdocs-bin-0.5.0-x86_64.tar.gz::https://github.com/razorpay/slashdocs/releases/download/v0.5.0/slashdocs_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = a30474c1b13575d3913d1d0af7c153b14ef32b94cdf7605397d23fce02bdc77c
+	source_aarch64 = slashdocs-bin-0.5.0-aarch64.tar.gz::https://github.com/razorpay/slashdocs/releases/download/v0.5.0/slashdocs_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0ae19b91f4c7947994a39dab4f7802199d52f9b9649ea991e084a695552684ef
+
+pkgname = slashdocs-bin
