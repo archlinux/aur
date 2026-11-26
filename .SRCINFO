@@ -1,6 +1,6 @@
 pkgbase = r-sscu
 	pkgdesc = Strength of Selected Codon Usage
-	pkgver = 2.42.0
+	pkgver = 2.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sscu
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-sscu
 	depends = r-seqinr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sscu_2.42.0.tar.gz
-	sha256sums = 23bb32cdc207d1300d13fe31072cd3c55817a547753273c526a959fc1a0891cd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sscu_2.44.0.tar.gz
+	sha256sums = 199cf09aee912691d790c71058fa11a9350d58604f8dd4cb87425c6c83ef43ea
 
 pkgname = r-sscu
