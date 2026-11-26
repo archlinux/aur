@@ -1,6 +1,6 @@
 pkgbase = gh-proxy-manager-bin
 	pkgdesc = GUI manager for GitHub download acceleration in yay, makepkg, git clone and curl
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/pingod/gh-proxy-manager
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = gh-proxy-manager-bin
 	depends = git
 	provides = gh-proxy-manager
 	conflicts = gh-proxy-manager
-	noextract = gh-proxy-manager-3.1.0-1-x86_64.pkg.tar.zst
+	noextract = gh-proxy-manager-3.2.0-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = gh-proxy-manager-3.1.0-1-x86_64.pkg.tar.zst::https://github.com/pingod/gh-proxy-manager/releases/download/v3.1.0/gh-proxy-manager-3.1.0-1-x86_64.pkg.tar.zst
-	sha256sums = 9a82ae61046242f7bf7f1422309a5cd80cd93009d2afaf6fc38da8caacd1da90
+	source = gh-proxy-manager-3.2.0-1-x86_64.pkg.tar.zst::https://github.com/pingod/gh-proxy-manager/releases/download/v3.2.0/gh-proxy-manager-3.2.0-1-x86_64.pkg.tar.zst
+	sha256sums = 6f3b4ab81d53de090aac276bd499554ce21372ff7b77034ffa05dc894bcff58b
 
 pkgname = gh-proxy-manager-bin
