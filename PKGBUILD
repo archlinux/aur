@@ -1,13 +1,14 @@
 # Maintainer: Ilyas Turki <turki.ilyass at gmail dot com>
 pkgname=prayer-times-bin
 _pkgname=prayer-times
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Islamic Prayer Times Information and Notifications"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Yasso9/prayer-times"
 license=('MIT')
-depends=('dbus' 'openssl')
+depends=('gcc-libs' 'glibc')
+optdepends=('dbus: desktop notifications')
 provides=('prayer-times')
 conflicts=('prayer-times')
 options=('!strip')
@@ -23,8 +24,8 @@ source=(
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/prayer-times-linux-x64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/prayer-times-linux-arm64")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-sha256sums_x86_64=('9efbfa35981d6172a1a026e7e3ea9cef33b6eec20f21be6f78e9100a4909b369')
-sha256sums_aarch64=('e0042ccec5a661128d75a5ecf9a9a375a8bfc9dcd655e82765e644dba942e8d8')
+sha256sums_x86_64=('3065fdc4f815019c6a3cbdd6975de893f58f469ddd5115c7771b62cf7bdbd91d')
+sha256sums_aarch64=('d327866fcf07c46d612e468b5de88d24291b7877ee9295f05f57f2549713658b')
 
 package() {
     install -Dm755 "${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
