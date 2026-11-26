@@ -1,7 +1,7 @@
 # Maintainer: Ali Mohammad Pur <totally@fakegmail.ch>
 
 pkgname=ladybird-bin
-pkgver=2026.47.8
+pkgver=2026.48.0
 _debrel=1~ubuntu26.04
 pkgrel=1
 pkgdesc='Truly independent web browser (alpha release)'
@@ -19,9 +19,9 @@ source_aarch64=("https://apt.ladybird.org/pool/main/l/ladybird/ladybird_${pkgver
 validpgpkeys=('4F3D5DFE64EBD9BB35D58FBDCF9EF7324C4B27AE') # Ladybird APT repository <https://apt.ladybird.org/ladybird.asc>
 noextract=("ladybird_${pkgver}-${_debrel}_amd64.deb" "ladybird_${pkgver}-${_debrel}_arm64.deb")
 sha256sums=('275f18944ac7ba41acabbb468387c1c9e8e2f81f7d49e6442dafe37c25ffeea7')
-sha256sums_x86_64=('3fffea5f917ce3a79415964e24314e89a47bea4543d79f719419c36d7ace2c73'
+sha256sums_x86_64=('71b6b62b56ecb2ecf20651378dea24cff0fb77daa469f976b2425c30eb750c45'
                    'SKIP')
-sha256sums_aarch64=('6594323ac4145fbbc67d23e986f1b792b3003f70c2424d5765cb7372e68a4aa6'
+sha256sums_aarch64=('4e5c6bc03809f231f9dd0c5a2c9f602dddbcb60fbe2747ee3b9935492e3677e5'
                     'SKIP')
 
 package() {
