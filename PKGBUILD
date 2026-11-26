@@ -1,7 +1,7 @@
 # Maintainer: colegeming <colegeming@outlook.com>
 
 pkgname=dbx-desktop-bin
-pkgver=0.6.74
+pkgver=0.6.75
 pkgrel=1
 pkgdesc='Lightweight cross-platform database client for 100+ databases, with built-in AI and MCP server (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -20,10 +20,10 @@ options=('!strip' '!debug')
 # The upstream .deb name embeds the version; the local alias is versioned too
 # so a stale download from a previous release can never be reused from the
 # makepkg/yay cache.
-source_x86_64=("DBX_${pkgver}_amd64.deb::https://github.com/t8y2/dbx/releases/download/v0.6.74/DBX_0.6.74_amd64.deb")
-sha256sums_x86_64=('fd56bbc81bf554b9e8417cb485f78cea496be3f7f92c09bb3cf4a70639f692f9')
-source_aarch64=("DBX_${pkgver}_arm64.deb::https://github.com/t8y2/dbx/releases/download/v0.6.74/DBX_0.6.74_arm64.deb")
-sha256sums_aarch64=('c431fcb2646b95e7f43f6580cada2797ef461a01d5f84494277ae414daaa5fc1')
+source_x86_64=("DBX_${pkgver}_amd64.deb::https://github.com/t8y2/dbx/releases/download/v0.6.75/DBX_0.6.75_amd64.deb")
+sha256sums_x86_64=('5b53723c9a4fdcbb58fcc0f707aa16fc845afc709a66cc42f9b6e5271a754d64')
+source_aarch64=("DBX_${pkgver}_arm64.deb::https://github.com/t8y2/dbx/releases/download/v0.6.75/DBX_0.6.75_arm64.deb")
+sha256sums_aarch64=('75f30c6336acf48e944ed61946c79cdd76ff74886d9670a75f2fc36fdbf59d03')
 
 package() {
     # The .deb payload is exactly: usr/bin/dbx, usr/share/applications/DBX.desktop
