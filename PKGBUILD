@@ -3,7 +3,7 @@
 
 pkgname=paperling
 pkgdesc="A minimal, distraction-free markdown editor"
-pkgver=1.0.51
+pkgver=1.3.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/Razee4315/Paperling"
@@ -11,15 +11,12 @@ license=(Apache-2.0)
 depends=(glibc libgcc gtk3 dbus libsoup3 cairo gdk-pixbuf2 webkit2gtk-4.1 hicolor-icon-theme)
 makedepends=(bun cargo cargo-tauri nodejs)
 options=(!lto)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "001-fix-version.patch::$url/commit/74d5ac73c63a5264a94e4cca98328ca2958b36a0.diff")
-sha256sums=('ac15b88347c4fb53f3daba56f3455345d89e4bd250f4f6c3a0f1cfd56f136a99'
-            'afd7f81537bc9e20a8548756d15c833d42824fd2a18fd5f0c1361fb67a46a1c6')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('a68d53b0cdc66f683147b97278dbd2885f65439745a8e345c2689758f1e55664')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cd "${pkgname^}-$pkgver"
-    patch -p1 < "$srcdir/001-fix-version.patch"
     bun install --frozen-lockfile --ignore-scripts
     cd src-tauri
     cargo update
@@ -29,6 +26,7 @@ prepare() {
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export AWS_LC_SYS_NO_JITTER_ENTROPY=1
     cd "${pkgname^}-$pkgver"
     bun run cargo tauri build -b deb --no-sign --ci -- --frozen
 }
