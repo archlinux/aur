@@ -1,10 +1,12 @@
 post_install() {
     if [ -f /usr/bin/sing-box ]; then
-        setcap cap_net_admin=+ep /usr/bin/sing-box 2>/dev/null || true
-        echo "==> Note: Network admin capability granted to /usr/bin/sing-box for TUN mode."
+        if ! setcap cap_net_admin=+ep /usr/bin/sing-box; then
+            echo "==> TUN mode requires CAP_NET_ADMIN on /usr/bin/sing-box." >&2
+        fi
     fi
-    echo "==> GUI.for.SingBox installed successfully."
-    echo "==> Application data is cleanly isolated in ~/.local/share/GUI.for.SingBox/"
+    echo "==> GUI.for.SingBox uses ~/.local/share/GUI.for.SingBox/ for your data."
+    echo "==> CPU selection is automatic. To review it, run gui-for-singbox --select-cpu."
+    echo "==> Press Enter to keep Automatic."
 }
 
 post_upgrade() {
@@ -18,6 +20,7 @@ post_remove() {
     echo "==> To ONLY remove the app caches & binary copy but KEEP your data/configs, run:"
     echo "    find ~/.local/share/GUI.for.SingBox -mindepth 1 -maxdepth 1 ! -name 'data' -exec rm -rf {} +"
     echo ""
-    echo "==> To COMPLETELY wipe all configs, profiles, and data, run:"
+    echo "==> To remove the application's profiles, settings, and data, run:"
     echo "    rm -rf ~/.local/share/GUI.for.SingBox"
+    echo '==> The optional CPU preference is stored in ${XDG_CONFIG_HOME:-$HOME/.config}/gui-for-singbox/cpu.'
 }
