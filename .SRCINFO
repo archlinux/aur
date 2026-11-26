@@ -1,0 +1,17 @@
+pkgbase = goaws-bin
+	pkgdesc = AWS SQS and SNS clone for development and testing
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/Admiral-Piett/goaws
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = goaws
+	conflicts = goaws
+	options = !debug
+	source_x86_64 = goaws-bin-0.5.4-x86_64.tar.gz::https://github.com/Admiral-Piett/goaws/releases/download/v0.5.4/goaws_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 091a09d0433b98e4786e5d0c5dd04c0328fba436070b3c24b3b133c217d2ba5c
+	source_aarch64 = goaws-bin-0.5.4-aarch64.tar.gz::https://github.com/Admiral-Piett/goaws/releases/download/v0.5.4/goaws_Linux_arm64.tar.gz
+	sha256sums_aarch64 = a24383485deaa80a4c6334eb73fd55293cc3c6f8b65a903d5e7f5c807f1d0b49
+
+pkgname = goaws-bin
