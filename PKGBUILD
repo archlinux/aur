@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fmrs
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0b89c2e62af62000b3844dd7e8fb9bf6')
-b2sums=('872d5de3349289205698a0d088604b531685d3528d751b0b9ca850667f2a18f581aff904e45c19fbc102c05f0e231a0c080b1bd102db8d5e1fd5de3cb663ea3e')
+md5sums=('ce0249e3c2f12843423e0df83a7b4a74')
+b2sums=('81e0c86761331450c0f9646c4548e5bfa1beb3b52b44a51035ec66df079580569f6f02ab83313861704b659fa89f478174205403719c596603fc05316c500be7')
 
 build() {
   mkdir build
