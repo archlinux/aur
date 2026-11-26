@@ -1,0 +1,19 @@
+pkgbase = airpipe-bin
+	pkgdesc = Send files between your terminal and any device by scanning a QR code
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://github.com/Sanyam-G/Airpipe
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = airpipe
+	conflicts = airpipe
+	options = !debug
+	source = airpipe-bin-5.1.0-LICENSE::https://raw.githubusercontent.com/Sanyam-G/Airpipe/v5.1.0/LICENSE
+	sha256sums = c9481fc580be43cca977ce590f61c645f1f73f0ef25b5d1cd94c022481606acb
+	source_x86_64 = airpipe-bin-5.1.0-x86_64::https://github.com/Sanyam-G/Airpipe/releases/download/v5.1.0/airpipe-linux-amd64
+	sha256sums_x86_64 = d72a476fc8abc87cb20fbddb161805851da32019128cc3a7db59319299f34a5d
+	source_aarch64 = airpipe-bin-5.1.0-aarch64::https://github.com/Sanyam-G/Airpipe/releases/download/v5.1.0/airpipe-linux-arm64
+	sha256sums_aarch64 = 708b3f363a29b2d5d63a548f9ee08d4011e17e8d525238be12d137754c78e1c6
+
+pkgname = airpipe-bin
