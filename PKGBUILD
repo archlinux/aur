@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GloScope
-_pkgver=2.2.0
+_pkgver=2.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-zellkonverter
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fe8a054c4a9ae6e32c58e02b0a4fee95')
-b2sums=('eef6e848bb30effb769ebef351857ee91fe465569b6ff599503d3661ad44a8e037ab98e635c98e02a437f920a981d4c688504084d8975e5793cc088a76cd66f0')
+md5sums=('3a8738b08b5fe9d054ae001223344010')
+b2sums=('59fd73c503923c24a6fb3c7655e26616a7400dc823b3332e6ed82ca06e263c107629ae715c1ff6e36617f1cfe45b8449094426a4cdffd62471a6036a9c7a21fd')
 
 build() {
   mkdir build
