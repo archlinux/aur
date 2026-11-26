@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=DepInfeR
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9a83524390da5056f4dedc1e2e64306e')
-b2sums=('8b6e404733ce7b7513a4deb0f75781ed715207672e8ef3d2efb9cfadd418b600378c0d01a2340d28264208e49cb98410431a84393fd4cdb32dbb689db34bd4a3')
+md5sums=('4cb176a6227344ded6ac96d71b9f2c46')
+b2sums=('ba7b73a4863cece51914abc82c9bd94ae769ca2069ab60bd76c96e529a344708af4d5e426c6a47f0350bbb57bd6a414491f7015a8af8d24e44fdc1d4cc733248')
 
 build() {
   mkdir build
