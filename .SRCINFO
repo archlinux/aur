@@ -1,6 +1,6 @@
 pkgbase = overbright-bin
 	pkgdesc = Native reimplementation of Need for Speed: Underground 2 in Rust and wgpu (requires original PC game files)
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/j0braun/overbright
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = overbright-bin
 	depends = vulkan-driver
 	depends = vulkan-icd-loader
 	depends = wayland
-	provides = overbright=0.6.2
+	provides = overbright=0.6.3
 	conflicts = overbright
 	options = !strip
 	options = !debug
-	source = https://github.com/j0braun/overbright/releases/download/v0.6.2/overbright-0.6.2-linux-x86_64.tar.gz
-	sha256sums = b09f22ede62dca75addd428737f8e056d1676787facc59312ca63eeead9c6229
+	source = https://github.com/j0braun/overbright/releases/download/v0.6.3/overbright-0.6.3-linux-x86_64.tar.gz
+	sha256sums = 0d414ba2f307ec3220e56f97349c00541869e014a842a0970869862d39d97c34
 
 pkgname = overbright-bin

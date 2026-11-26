@@ -1,7 +1,7 @@
 # Maintainer: n0yd
 
 pkgname=overbright-bin
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Native reimplementation of Need for Speed: Underground 2 in Rust and wgpu (requires original PC game files)'
 arch=('x86_64')
@@ -27,7 +27,7 @@ conflicts=('overbright')
 options=('!strip' '!debug')
 _archive="overbright-${pkgver}-linux-${CARCH}"
 source=("${url}/releases/download/v${pkgver}/${_archive}.tar.gz")
-sha256sums=('b09f22ede62dca75addd428737f8e056d1676787facc59312ca63eeead9c6229')
+sha256sums=('0d414ba2f307ec3220e56f97349c00541869e014a842a0970869862d39d97c34')
 
 package() {
   cd "${srcdir}/${_archive}"
