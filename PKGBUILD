@@ -4,12 +4,12 @@
 pkgname=fluffychat-bin
 _pkgname=fluffychat
 pkgver=2.11.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized."
 arch=('x86_64') # 'aarch64'
 url="https://fluffychat.im/"
 license=('AGPL3')
-depends=(
+depends=('mpv'
   'gtk3'
   # flutter_secure_storage
   'libsecret'
