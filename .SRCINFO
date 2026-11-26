@@ -1,0 +1,17 @@
+pkgbase = ldeep-bin
+	pkgdesc = In-depth LDAP enumeration utility
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/franc-pentest/ldeep
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = ldeep
+	conflicts = ldeep
+	options = !debug
+	source = ldeep-bin-2.0.4-LICENSE::https://raw.githubusercontent.com/franc-pentest/ldeep/2.0.4/LICENSE
+	sha256sums = 785dd0f2cc587b99e8340ad744653f8143e0596cff506c2ac389ef5dc0758475
+	source_x86_64 = ldeep-bin-2.0.4-x86_64::https://github.com/franc-pentest/ldeep/releases/download/2.0.4/ldeep_linux-amd64
+	sha256sums_x86_64 = 0b9876ea674609a1667c39475c2ccfddfaa36e794879aee63b77ab81ff263b29
+
+pkgname = ldeep-bin
