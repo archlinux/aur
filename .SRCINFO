@@ -1,6 +1,6 @@
 pkgbase = r-megadepth
 	pkgdesc = megadepth: BigWig and BAM related utilities
-	pkgver = 1.22.0
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/megadepth
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-megadepth
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
 	optdepends = r-tools
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/megadepth_1.22.0.tar.gz
-	sha256sums = fe168471b6fb12d653e4582b692236df7ddede394079fa31ea516297f5d758ca
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/megadepth_1.23.0.tar.gz
+	sha256sums = 61d126985ec15cf39f1f8ff360c44502fa69487ac9b31cecd712d0cf9a7cb6cc
 
 pkgname = r-megadepth
