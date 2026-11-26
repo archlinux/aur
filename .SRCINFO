@@ -1,6 +1,6 @@
 pkgbase = r-rgraph2js
 	pkgdesc = Convert a Graph into a D3js Script
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RGraph2js
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-rgraph2js
 	optdepends = r-runit
 	optdepends = r-sna
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RGraph2js_1.40.0.tar.gz
-	sha256sums = 11b647655add5e1696ba2215163926d185a8f7271c4f5e481c90f5bec7c4b91e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RGraph2js_1.42.0.tar.gz
+	sha256sums = c7fb6de30b29264f8da68b35c64657c72313b2abe2e87c80640a8f18fd4bc146
 
 pkgname = r-rgraph2js
