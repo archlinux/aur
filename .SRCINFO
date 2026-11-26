@@ -1,6 +1,6 @@
 pkgbase = r-trajectoryutils
 	pkgdesc = Single-Cell Trajectory Analysis Utilities
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TrajectoryUtils
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-trajectoryutils
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TrajectoryUtils_1.20.0.tar.gz
-	sha256sums = af71229305abda6271caa17b307fa58d79976c744859f68f7d607b6a093d1791
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TrajectoryUtils_1.22.0.tar.gz
+	sha256sums = fa7ad82c8ec30adc200aad80da617e8aeaf34a81cfa3fd175f0d8050a7f7a909
 
 pkgname = r-trajectoryutils
