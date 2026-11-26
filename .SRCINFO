@@ -1,0 +1,19 @@
+pkgbase = rospo-bin
+	pkgdesc = Persistent SSH tunnels with an embedded server
+	pkgver = 0.15.3
+	pkgrel = 1
+	url = https://github.com/ferama/rospo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = rospo
+	conflicts = rospo
+	options = !debug
+	source = rospo-bin-0.15.3-LICENSE::https://raw.githubusercontent.com/ferama/rospo/v0.15.3/LICENSE
+	sha256sums = b20f153ec7dbb655ddeaf92b8ffaf26de6c1a6d1d03e587b31212df8cf768b04
+	source_x86_64 = rospo-bin-0.15.3-x86_64::https://github.com/ferama/rospo/releases/download/v0.15.3/rospo-linux-amd64
+	sha256sums_x86_64 = 2e9d8147091e0068808985a7489219f48358bf339da81c30e573f56c45aa40b4
+	source_aarch64 = rospo-bin-0.15.3-aarch64::https://github.com/ferama/rospo/releases/download/v0.15.3/rospo-linux-arm64
+	sha256sums_aarch64 = 90c516b1d7994600a473fc8779d9b3a2f5baab0b566894a0fe51354024867469
+
+pkgname = rospo-bin
