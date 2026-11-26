@@ -171,6 +171,7 @@ keep = {
     'shader-slang',       # not in official Arch (cachyos-only); provides slangc tool
     'glslang',            # visualizer FORCE-pins glslang_DIR to the vcpkg dir
     'xxhash',             # Arch ships only libxxhash.pc, no CMake config for find_package(xxHash CONFIG)
+    'apriltag',           # geometry module needs apriltag::apriltag; no Arch package ships its CMake config
 }
 
 cfg['dependencies'] = [
