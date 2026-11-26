@@ -26,9 +26,9 @@ pkgbase = uu-remote-linux-private-bin
 	optdepends = wl-clipboard: Wayland 剪贴板同步
 	provides = uu-remote-linux=0.2.67
 	conflicts = uu-remote-linux
-	source_x86_64 = https://gh-proxy.cn/https://github.com/VallierDev/uu-remote-linux/releases/download/v0.2.67/uu-remote-linux-v0.2.67-x86_64-linux.tar.gz
+	source_x86_64 = https://gh-proxy.com/https://github.com/VallierDev/uu-remote-linux/releases/download/v0.2.67/uu-remote-linux-v0.2.67-x86_64-linux.tar.gz
 	sha256sums_x86_64 = 15b113a39d901b0425d98e23f85471ea0652c908fd20d841a54e4cfc8986bdba
-	source_aarch64 = https://gh-proxy.cn/https://github.com/VallierDev/uu-remote-linux/releases/download/v0.2.67/uu-remote-linux-v0.2.67-aarch64-linux.tar.gz
+	source_aarch64 = https://gh-proxy.com/https://github.com/VallierDev/uu-remote-linux/releases/download/v0.2.67/uu-remote-linux-v0.2.67-aarch64-linux.tar.gz
 	sha256sums_aarch64 = f3d04c39b0cf8879d795d08f122af251fc5a42cb3608d3266f561a16c7433d03
 
 pkgname = uu-remote-linux-private-bin
