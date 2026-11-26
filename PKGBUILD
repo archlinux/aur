@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PeacoQC
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2b10a5dc2e383344303ca907d240afd4')
-b2sums=('5e86433f12e49855b55c796891c9a62fca9b31b401acf68ec3fc6b7024a87d24aa7131d671ed269b91549875357e525f214d3092172a989091f6d74e9569e91d')
+md5sums=('3945eef95a2a48654060261e42d14a32')
+b2sums=('ecdd0488e7d1d7b7186c45b346d38e16c2f885a83e415803ff51390ff06fb911fcfd24c97b939be80eb39316c4b9457f86065b96cc084392a46f7b695045273f')
 
 build() {
   mkdir build
