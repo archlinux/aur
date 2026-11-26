@@ -1,6 +1,6 @@
 pkgbase = fwci-bin
 	pkgdesc = CLI Tooling for FirmwareCI - binary distribution
-	pkgver = 0.21.1
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://firmware-ci.com/
 	license = custom
@@ -9,10 +9,10 @@ pkgbase = fwci-bin
 	provides = fwci-cli
 	provides = fwci
 	arch = aarch64
-	source_aarch64 = fwci-bin_0.21.1_aarch64.tar.gz::https://fwci-cli.s3.eu-central-1.amazonaws.com/0.21.1/fwci-0.21.1.linux-arm64.tar.gz
-	sha256sums_aarch64 = a84188ae6e28b16f0cea2bf2a2df228b52e7a353101fbf54bdb3ea00aa0a3415
+	source_aarch64 = fwci-bin_0.22.0_aarch64.tar.gz::https://fwci-cli.s3.eu-central-1.amazonaws.com/0.22.0/fwci-0.22.0.linux-arm64.tar.gz
+	sha256sums_aarch64 = 5aa6411cdee98ca6e7fcc0324c385c8af495db191753a68e00ad1fced3d28ebf
 	arch = x86_64
-	source_x86_64 = fwci-bin_0.21.1_x86_64.tar.gz::https://fwci-cli.s3.eu-central-1.amazonaws.com/0.21.1/fwci-0.21.1.linux-amd64.tar.gz
-	sha256sums_x86_64 = de283627b5e5df7a3aef050ade83f1d58585cf679492e0b3f729339961b7a408
+	source_x86_64 = fwci-bin_0.22.0_x86_64.tar.gz::https://fwci-cli.s3.eu-central-1.amazonaws.com/0.22.0/fwci-0.22.0.linux-amd64.tar.gz
+	sha256sums_x86_64 = b12cecd0ac3ba7713bed37c6ab1f8fe61afdbba028bbb8bd8954774a6cf38a73
 	
 pkgname = fwci-bin
