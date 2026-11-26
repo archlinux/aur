@@ -1,0 +1,17 @@
+pkgbase = droidline-bin
+	pkgdesc = Android automation from code
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/KnifeLemon/Droidline
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = droidline
+	conflicts = droidline
+	options = !debug
+	source_x86_64 = droidline-bin-0.1.13-x86_64.tar.gz::https://github.com/KnifeLemon/Droidline/releases/download/v0.1.13/droidline_0.1.13_linux_amd64.tar.gz
+	sha256sums_x86_64 = 43c07866334a33ac259aa16d895cb773b91823df4bf43c33b761efcaa4c67657
+	source_aarch64 = droidline-bin-0.1.13-aarch64.tar.gz::https://github.com/KnifeLemon/Droidline/releases/download/v0.1.13/droidline_0.1.13_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0d3c694f63b60f95b9ab05203627eb25c84e5ed2b813e4421f8ef6e4fd3ac2db
+
+pkgname = droidline-bin
