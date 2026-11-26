@@ -1,6 +1,6 @@
 pkgbase = r-rbgl
 	pkgdesc = An interface to the BOOST graph library
-	pkgver = 1.88.0
+	pkgver = 1.90.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RBGL
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = r-rbgl
 	optdepends = r-rgraphviz
 	optdepends = r-runit
 	optdepends = r-xml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RBGL_1.88.0.tar.gz
-	md5sums = 73342b8cffe74267307e7c2e0a7ecc1c
-	b2sums = a6f33df88a364020f9e2a761798ddb3228421323a6ee35e08e85a631be86f16b0f9d24433429619204b23e97614c05c1a548e50be77ea62ddd6f6a14cfd45514
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RBGL_1.90.0.tar.gz
+	md5sums = 9b3a49cb32958d7bb81ccff80ea73b7e
+	b2sums = 783a39e3e16e0c8c42482678f37aa32946faba848536c59876f6238454f14cdc8e2588dffa49af67517b8edeae9e94399dd5a789079bc1e64c2ea1b69864812b
 
 pkgname = r-rbgl
