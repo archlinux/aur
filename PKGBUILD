@@ -3,11 +3,11 @@
 
 pkgname=furmark
 pkgver=2.11.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight but intensive GPU stress test and benchmarking tool for OpenGL and Vulkan'
 arch=('x86_64' 'aarch64')
 url='https://www.geeks3d.com/furmark/v2/'
-license=('custom:freeware')
+license=('LicenseRef-FurMark-EULA')
 depends=(gcc-libs opengl-driver glu libxcb)
 optdepends=('vulkan-driver: Vulkan benchmark support')
 makedepends=('7zip')
@@ -41,20 +41,18 @@ package(){
 
 
     # Create config directory
-    install -dm757 "$pkgdir/etc/opt/$pkgname"
+    install -dm755 "$pkgdir/etc/opt/$pkgname"
 
     # Copy config files into writeable directory
-    cp "$pkgdir/opt/$pkgname/settings.lua"  "$pkgdir/etc/opt/$pkgname/settings.lua"
-    cp "$pkgdir/opt/$pkgname/conf.xml"      "$pkgdir/etc/opt/$pkgname/conf.xml"
+    install -m666 "$pkgdir/opt/$pkgname/settings.lua" "$pkgdir/etc/opt/$pkgname/settings.lua"
+    install -m666 "$pkgdir/opt/$pkgname/conf.xml" "$pkgdir/etc/opt/$pkgname/conf.xml"
+
     # Delete original defaults
     rm "$pkgdir/opt/$pkgname/settings.lua"
     rm "$pkgdir/opt/$pkgname/conf.xml"
-    # Set permissions
-    chmod 646 "$pkgdir/etc/opt/$pkgname/settings.lua"
-    chmod 646 "$pkgdir/etc/opt/$pkgname/conf.xml"
 
     # Create log directory
-    install -dm757 "$pkgdir/var/log/$pkgname"
+    install -dm777 "$pkgdir/var/log/$pkgname"
 
     ln -s "/var/log/$pkgname/furmark.log"   "$pkgdir/opt/$pkgname/_furmark_log.txt"
     ln -s "/var/log/$pkgname/geexlab.log"   "$pkgdir/opt/$pkgname/_geexlab_log.txt"
