@@ -2,29 +2,31 @@
 
 XPipe shipped with an MCP server feature for over a year now. This feature has seen a lot of use, but getting it to work seamlessly required manual configuration and some experience.
 
-XPipe 25 comes with a full integration for all common AI agent harnesses in the terminal, which includes: Claude Code, Codex CLI, GitHub Copilot CLI, Grok CLI, Hermes Agent, Junie, OpenCode, and Qwen Code. It works out of the box and allows you to open a terminal agent session to your remote system with the click of a button. The session is preconfigured so that the agent understands it is working exclusively on the remote system. The session is also isolated to a certain system, meaning that the agent can't just connect to any other systems or do something else that is not approved.
+XPipe 25 comes with a full integration for all common AI agent harnesses in the terminal, which includes: Claude Code, Codex CLI, GitHub Copilot CLI, Grok CLI, Hermes, Junie, OpenCode, and Qwen Code. It works out of the box and allows you to open a terminal agent session to your remote system with the click of a button. The session is preconfigured so that the agent understands it is working exclusively on the remote system. The session is also isolated to a certain system, meaning that the agent can't just connect to any other systems or do something else that is not approved.
 
 The main focus here is to provide an integration that aligns with XPipe's workflow and security principles. The integration is flexible, meaning that it can connect to your agent wherever it runs: Either on your local machine (not really recommended), or better a sandboxed environment or server, which has the only purpose of running your installed agent. XPipe will then connect your agent sandbox to your remote system that you want to open a session to. Every part is isolated from each other, so the agent can't access any important information like connection credentials, it has only access to a shell to the remote system.
 
 ![](https://xpipe.io/assets/images/BlogPage/agents-terminal.png)
 
+There is also support for multi-agent sessions where the agent gets access to many systems at the same time via batch mode. The agent can then perform actions across different systems at the same time, e.g. to coordinate fixing networking issues between multiple systems or upgrading them:
+
+![](https://xpipe.io/assets/images/BlogPage/agents-multi.png)
+
 You can enable this in the settings menu.
 
 ![](https://xpipe.io/assets/images/BlogPage/agents.png)
 
-## Herdr integration
-
-There is now an integration for the new terminal multiplexer herdr. In addition to the normal terminal multiplexer features, it also comes with special support for running AI agent sessions as well.
-
-![](https://xpipe.io/assets/images/BlogPage/herdr.png)
-
 ## Wireguard integration
 
-There is now support for managing your local wireguard interfaces from within XPipe. Any locally available interfaces and their configured peers are automatically listed, and you can add new interfaces or edit the config of existing ones. Wireguard interfaces can also be used as a gateway for other connections, meaning that XPipe will automatically bring up the interface when a connection requires it.
+There is now support for managing your local wireguard interfaces from within XPipe. Any locally available interfaces and their configured peers are automatically listed, and you can add new interfaces or edit the config file of existing ones:
 
 ![](https://xpipe.io/assets/images/BlogPage/wireguard.png)
 
-For Windows, the integration comes with special admin elevation support as managing those tunnel services require admin permissions.
+For Windows, the integration comes with special automatic admin elevation support as managing those tunnel services require admin permissions. On Linux and macOS, you will be prompted for sudo access when managing the tunnels.
+
+Wireguard interfaces can also be used as a gateway for other connections, meaning that XPipe will automatically bring up the interface when a connection requires it:
+
+![](https://xpipe.io/assets/images/BlogPage/wireguard-gateway.png)
 
 ## Bitwarden improvements
 
@@ -52,9 +54,9 @@ The technology is finally here, you can now choose whether to show the sidebar o
 
 ![](https://xpipe.io/assets/images/BlogPage/sidebar.png)
 
-## Vault sync status
+## Improved git sync
 
-There is now a sync status display for the git vault, so you can see at a glance whether your vault is up to date, has unpushed changes, the remote is not reachable, you only have read access, and more.
+There is now a sync status display for the git vault, so you can see at a glance whether your vault is up to date, has unpushed changes, the remote is not reachable, you only have read access, and more:
 
 ![](https://xpipe.io/assets/images/BlogPage/sync-status.png)
 
@@ -62,7 +64,7 @@ The git sync also now properly handles cases where the remote repository history
 
 It will also handle any error state better, i.e. when your connection to the remote temporarily drops, the local side will still be updated so any changes made meanwhile still get pushed later on.
 
-There is also a new sync mode called squashed sync to sync instantly with one commit per save operation. This is useful if you don't want individual commits for every single change, e.g. when adding an entry with many children at once.
+There is also a new sync mode to sync instantly with one commit per save operation. This is useful if you don't want individual commits for every single change, e.g. when adding an entry with many children at once. Your changes get squashed but still synced instantly.
 
 ## Settings rework
 
@@ -89,6 +91,12 @@ Password manager identities can now be configured to retrieve a username + passw
 You can now choose which local X11 server should be used for SSH X11 forwarding if no other X11 server is already running. Next to the existing options, with a specific WSL2 distribution, there is now a custom command to launch a custom server:
 
 ![](https://xpipe.io/assets/images/BlogPage/x11.png)
+
+## Herdr integration
+
+There is now an integration for the new terminal multiplexer herdr. In addition to the normal terminal multiplexer features, it also comes with special support for running AI agent sessions as well.
+
+![](https://xpipe.io/assets/images/BlogPage/herdr.png)
 
 ## Terminal exit behaviour
 
