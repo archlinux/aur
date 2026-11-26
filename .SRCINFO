@@ -1,18 +1,27 @@
 pkgbase = python-msal-extensions
 	pkgdesc = Microsoft Authentication Library extensions for Python
 	pkgver = 1.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AzureAD/microsoft-authentication-extensions-for-python
 	arch = any
 	license = MIT
+	checkdepends = python-gobject
 	checkdepends = python-pytest
+	checkdepends = libsecret
+	checkdepends = org.freedesktop.secrets
+	checkdepends = xorg-server-xvfb
 	makedepends = python-setuptools
-	depends = python>=3.9.0
-	depends = python-gobject
-	depends = python-msal>=1.29.0
-	depends = python-portalocker>=1.4.0
-	depends = org.freedesktop.secrets
-	source = python-msal-extensions-1.3.1.tar.gz::https://github.com/AzureAD/microsoft-authentication-extensions-for-python/archive/1.3.1.tar.gz
-	b2sums = 45c4b39a8179c88111f44e7322e7d9bbee9b61852f0b2972fc437058ff63ee0646a37f923ad32974d3054bf9d4d5bdf0ea52a69a80453c1ee0b4c21399f83109
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-msal
+	optdepends = python-gobject: libsecret persistence
+	optdepends = libsecret: libsecret persistence
+	optdepends = org.freedesktop.secrets: libsecret persistence
+	optdepends = python-portalocker: portalocker
+	source = msal-extensions-1.3.1.tar.gz::https://github.com/AzureAD/microsoft-authentication-extensions-for-python/archive/refs/tags/1.3.1.tar.gz
+	source = secret-service.py
+	sha256sums = 4fd784f391e19a56d1f86c2288f878fb00b2f9e8658b6396dea5eea6baace58b
+	sha256sums = 553e09ceca3e9e8480b186ad4cd63d5240e0fa7c8db572846ffd8b4d9cda35e1
 
 pkgname = python-msal-extensions
