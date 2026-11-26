@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MPFE
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6c815e53c249e7478387c5161ca9c035')
-b2sums=('6f107b9d7a858150e270643e9404833d3af084cca9692e9df3bcdb49523a65949ea32a7c381fb451d4a1b17c21453e1e2794dc0a52c9292301af11f71c76f385')
+md5sums=('8f0598d6f8a43d291b0235b32fead47c')
+b2sums=('b3a868fae2a0ddf0a1ec7b9ca1b9fcaf1925bf62c3581fabd19b326808153d349e5473d32aa55ffcf27b8475199c94f8ae880e773ff08a61930aff9210d5130b')
 
 build() {
   mkdir build
