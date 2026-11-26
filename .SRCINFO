@@ -1,0 +1,21 @@
+pkgbase = smfs-bin
+	pkgdesc = Filesystem for AI agents with retrieval, memory profiles and sync
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/supermemoryai/smfs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = smfs
+	conflicts = smfs
+	options = !debug
+	source = smfs-bin-0.0.5-LICENSE::https://raw.githubusercontent.com/supermemoryai/smfs/v0.0.5/LICENSE
+	sha256sums = a34709278d72c5b1e6915b0f76983252639f72bdf403e84298be4c31074bd79a
+	source_x86_64 = smfs-bin-0.0.5-x86_64::https://github.com/supermemoryai/smfs/releases/download/v0.0.5/smfs-linux-x64
+	sha256sums_x86_64 = a08c9561d1dfb3b4b2b02f3b8737cd29c3265b0d584ac243d3bdddfc21e1aad3
+	source_aarch64 = smfs-bin-0.0.5-aarch64::https://github.com/supermemoryai/smfs/releases/download/v0.0.5/smfs-linux-arm64
+	sha256sums_aarch64 = 5069649d1ede1aa0e3e6d66cf150a0660c8bed36454b76d4201ad2ee9444cdaf
+
+pkgname = smfs-bin
