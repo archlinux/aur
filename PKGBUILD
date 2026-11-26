@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DelayedMatrixStats
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('52d67c6e3ac42277b94d9ebbb4205638')
-b2sums=('f41da235329e64e3d529d24b4d5221624c535a0938a86c49254b90f88ea202e42fba2e639a6306d3f1faa5745e635dc9ca3bea000b7a6ff0db07a7ba30cd8ad1')
+md5sums=('86ef5819bbebe6b243c9f0197af1b26b')
+b2sums=('d8202b34d4241ad55324b4af31fe9d534b8671179da72f45ff76e0484192830ead2696dd486a863d911ec9cf6bbb7c8b680d67eaa84a117b86236458fecf0f12')
 
 build() {
   mkdir build
