@@ -2,7 +2,7 @@
 
 pkgname=bowel-bin
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for the mihomo proxy core, for non-commercial use"
 arch=('x86_64' 'aarch64')
 url="https://github.com/21stware/bowel"
@@ -12,7 +12,6 @@ license=('PolyForm-Noncommercial-1.0.0')
 depends=('glibc' 'gtk3' 'hicolor-icon-theme' 'webkit2gtk-4.1')
 optdepends=(
   'gtk-layer-shell: put the window of the app in the layer shell of Wayland'
-  'libsecret: keep the secrets of the app in the keyring of the desktop'
 )
 provides=('bowel')
 conflicts=('bowel' 'bowel-git')
