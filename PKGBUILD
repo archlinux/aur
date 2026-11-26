@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=freerouting-zh-cn
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 _jrever=25
 _jdkver=25
@@ -33,7 +33,7 @@ backup=()
 options=('!strip' '!debug')
 #install=${pkgname}.install
 source=("${pkgname%-zh-cn}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('a7985995f3317dba44c6ca4208b879c65784d8f4ff33a47dd60f2aba04dc8aaf')
+sha256sums=('136363b619560cfa8a288af6d1149001d42b92f245cce78cb9671a1fb513b084')
 
 prepare() {
     git -C "${srcdir}/${pkgname%-zh-cn}" clean -dfx
@@ -42,14 +42,15 @@ prepare() {
 build() {
     cd "${pkgname%-zh-cn}"
     export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin:$PATH"
-    export JAVA_HOME="/usr/lib/jvm/java-${_jdkver}-openjdk"
-    ./gradlew --no-configuration-cache assemble
+    # chmod +x gradlew
+    # ./gradlew assemble
+    ./gradlew dist
 }
 
 package() {
     cd "${pkgname%-zh-cn}"
     install -vDm0644 assets/icon/freerouting_icon_256x256_v2.png "${pkgdir}/usr/share/pixmaps/${pkgname%-zh-cn}.png"
-    install -vDm0755 build/libs/freerouting.jar -t "${pkgdir}/usr/lib/freerouting/"
+    install -vDm0755 build/dist/freerouting-executable.jar -t "${pkgdir}/usr/lib/freerouting/"
     install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -vDm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-zh-cn}" <<EOF
 #!/usr/bin/bash
@@ -69,7 +70,7 @@ Comment=${pkgdesc}
 Exec=${pkgname%-zh-cn}
 Type=Application
 StartupNotify=true
-Categories=Tool;Electron;PCB;
+Categories=Utility;Engineering;Science;Electronics;
 Terminal=false
 Icon=${pkgname%-zh-cn}.png
 Version=${pkgver}
