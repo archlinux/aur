@@ -1,0 +1,19 @@
+pkgbase = sower-bin
+	pkgdesc = Cross-platform transparent proxy
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/sower-proxy/sower
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sower
+	conflicts = sower
+	options = !debug
+	source = sower-bin-1.8.0-LICENSE::https://raw.githubusercontent.com/sower-proxy/sower/v1.8.0/LICENSE
+	sha256sums = 815ce12a7b01d1634356e74d364e57c24434dc270f2f837332dafd9c3e9ed3d5
+	source_x86_64 = sower-bin-1.8.0-x86_64.tar.gz::https://github.com/sower-proxy/sower/releases/download/v1.8.0/sower-linux-amd64.tar.gz
+	sha256sums_x86_64 = 90641656b1d9e61df1eb8d15b7190c12b508fbff7c69b602a8add01d8cc864a4
+	source_aarch64 = sower-bin-1.8.0-aarch64.tar.gz::https://github.com/sower-proxy/sower/releases/download/v1.8.0/sower-linux-arm64.tar.gz
+	sha256sums_aarch64 = bb8393765b589bb57c4b4ae6957eb4615b6f61e812b087d605df140507c4659d
+
+pkgname = sower-bin
