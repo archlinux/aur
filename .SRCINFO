@@ -1,0 +1,18 @@
+pkgbase = certgraph-bin
+	pkgdesc = OSINT tool that crawls the graph of certificate alternate names
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/lanrat/certgraph
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	depends = glibc
+	provides = certgraph
+	conflicts = certgraph
+	options = !debug
+	source_x86_64 = certgraph-bin-0.1.3-x86_64.tar.gz::https://github.com/lanrat/certgraph/releases/download/v0.1.3/certgraph_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0245801ed916d248f861385af7ccc7a6865a280d627221568170c9867543ef02
+	source_aarch64 = certgraph-bin-0.1.3-aarch64.tar.gz::https://github.com/lanrat/certgraph/releases/download/v0.1.3/certgraph_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3ba5e34d282f757600f05a300f4c99fa707e1c4bfeb896e82b6a858f6670f694
+
+pkgname = certgraph-bin
