@@ -1,17 +1,17 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=uefi-manager
-pkgver=26.07.1
+pkgver=26.11
 pkgrel=1
 pkgdesc="A graphical tool for managing UEFI boot entries"
 arch=('x86_64' 'i686')
 url="https://mxlinux.org"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('efibootmgr' 'qt6-base' 'polkit')
-provides=('uefi-manager')
-conflicts=('uefi-manager')
+optdepends=('cryptsetup: unlock encrypted partitions'
+            'xdg-utils: open help and license links')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/uefi-manager/archive/refs/tags/26.07.1.tar.gz")
-sha256sums=('282c5a7b910f06265eecea9b5016f8c174a8689c78f02f0102680526e340f1f7')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MX-Linux/uefi-manager/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('1c2e3ffe61b68a323ed47f233d6ab523fa82f7d8d2c7bdd2aaf1a330adcec0db')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -42,8 +42,7 @@ package() {
     install -Dm755 build/uefi-manager "${pkgdir}/usr/bin/uefi-manager"
 
     # Install translations
-    install -dm755 "${pkgdir}/usr/share/uefi-manager/locale"
-    install -Dm644 build/*.qm "${pkgdir}/usr/share/uefi-manager/locale/" 2>/dev/null || true
+    install -Dm644 -t "${pkgdir}/usr/share/uefi-manager/locale/" build/*.qm
 
     # Install helper components
     install -dm755 "${pkgdir}/usr/lib/uefi-manager"
@@ -63,10 +62,8 @@ package() {
     install -Dm644 uefi-manager.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/uefi-manager.svg"
 
     # Install documentation
-    install -dm755 "${pkgdir}/usr/share/doc/uefi-manager"
-    if [ -d docs ]; then
-        cp -r docs/license.html "${pkgdir}/usr/share/doc/uefi-manager/" 2>/dev/null || true
-    fi
+    install -Dm644 docs/license.html "${pkgdir}/usr/share/doc/uefi-manager/license.html"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # Install man page
     install -Dm644 docs/uefi-manager.1 "${pkgdir}/usr/share/man/man1/uefi-manager.1"
