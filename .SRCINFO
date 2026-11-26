@@ -1,0 +1,16 @@
+pkgbase = kite-mcp-server-bin
+	pkgdesc = MCP server for the Zerodha Kite trading API
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/zerodha/kite-mcp-server
+	arch = x86_64
+	license = MIT
+	provides = kite-mcp-server
+	conflicts = kite-mcp-server
+	options = !debug
+	source = kite-mcp-server-bin-0.3.2-LICENSE::https://raw.githubusercontent.com/zerodha/kite-mcp-server/v0.3.2/LICENSE
+	sha256sums = ebc95ae05d2e11478474fec30f55980a2fbe68971bc3ffe7071225e7ae7b9cba
+	source_x86_64 = kite-mcp-server-bin-0.3.2-x86_64::https://github.com/zerodha/kite-mcp-server/releases/download/v0.3.2/kite-mcp-server-linux-amd64
+	sha256sums_x86_64 = 12c5c0689ce87a1e577879818beb23df8ba791026cd2981ce88a484621ef5483
+
+pkgname = kite-mcp-server-bin
