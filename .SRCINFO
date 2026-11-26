@@ -1,0 +1,18 @@
+pkgbase = salvanza_client-bin
+	pkgdesc = Backup client for Proxmox Backup Server
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Salvanza/salvanza_client
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	provides = salvanza_client
+	conflicts = salvanza_client
+	options = !debug
+	source_x86_64 = salvanza_client-bin-2.0.0-x86_64.tar.gz::https://github.com/Salvanza/salvanza_client/releases/download/v2.0.0/salvanza_client_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = e36f95188363231cfecfc8d6283a6a29a725e7227fe698118c2b97d3131b399f
+	source_aarch64 = salvanza_client-bin-2.0.0-aarch64.tar.gz::https://github.com/Salvanza/salvanza_client/releases/download/v2.0.0/salvanza_client_Linux_arm64.tar.gz
+	sha256sums_aarch64 = cc4f18b62a6286b6650abb157344e0cdada6c4d0f799ee2f93d3e0e430f28354
+
+pkgname = salvanza_client-bin
