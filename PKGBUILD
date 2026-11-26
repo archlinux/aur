@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=snm
-_pkgver=1.60.0
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.60.0
+pkgver=1.62.0
 pkgrel=1
 pkgdesc='Supervised Normalization of Microarrays'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-lme4
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('42b33977d707cc1121b707287ea8ac275dc4fd31289d0fc7b7430add3ae4f3ec')
+sha256sums=('3f27cc5adc04c8d873ad9b3af71721c0176ca2893aba6c35c4a2cd70c0b6265e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
