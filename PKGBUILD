@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folia-major
 _pkgname=Folia
-pkgver=0.8.0
+pkgver=0.8.2
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('cb2ccac2f10c51dbd1a3f4a6a3ca90db3021f8ed1d89ba0cc8b131049d1fabd9'
+sha256sums=('ff1186d9d7135ff77d1f2a820e0a5b99954241e894d69f6847091b69fa4789e9'
             'b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b'
             '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_project_dir() {
@@ -138,6 +138,7 @@ prepare() {
     rustup default stable
     export NODE_ENV=development
     export npm_config_allow_remote=all
+    sed -i "/registry=/d" .npmrc
     npm install
 }
 build() {
