@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SwathXtend
-_pkgver=2.34.0
+_pkgver=2.36.0
 pkgname=r-${_pkgname,,}
-pkgver=2.34.0
+pkgver=2.36.0
 pkgrel=1
 pkgdesc='SWATH extended library generation and statistical data analysis'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-venndiagram
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e2c4ab17a9a140b353f3ed38257eef0be17b15800db52899c3f327f8363cb25b')
+sha256sums=('fb8db1e1ead198c343e689d53b9e743f4d3071781a6f63bc4872671a5e81829c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
