@@ -1,0 +1,17 @@
+pkgbase = json-repair-bin
+	pkgdesc = Repair malformed JSON from LLMs
+	pkgver = 0.0.19
+	pkgrel = 1
+	url = https://github.com/RealAlexandreAI/json-repair
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = json-repair
+	conflicts = json-repair
+	options = !debug
+	source_x86_64 = json-repair-bin-0.0.19-x86_64.tar.gz::https://github.com/RealAlexandreAI/json-repair/releases/download/v0.0.19/jsonrepair_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 85c4b86d9874547264e5de34f94181aff1d06bd01a8b7ed782299a4f1f8c7c87
+	source_aarch64 = json-repair-bin-0.0.19-aarch64.tar.gz::https://github.com/RealAlexandreAI/json-repair/releases/download/v0.0.19/jsonrepair_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 4661ce57d383932864d01f561a0eca8c2f8be9e21f1edf035b87641ad01f0b1b
+
+pkgname = json-repair-bin
