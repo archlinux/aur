@@ -10,7 +10,7 @@
 # Keep pkgver in step with debian/changelog: it names the tarball.
 
 pkgname=mx-snapshot
-pkgver=26.11.1
+pkgver=26.11.2
 pkgrel=1
 pkgdesc="A tool for creating live ISO images from running systems"
 arch=('x86_64' 'i686')
@@ -31,12 +31,12 @@ provides=('mx-remaster-live-files=1.0.0')
 # /etc/mx-snapshot.conf and the exclude list are meant to be user-edited;
 # without this, pacman would overwrite local changes on every upgrade.
 backup=('etc/mx-snapshot.conf' 'etc/mx-snapshot-exclude.list')
-source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.11.1.tar.gz")
-sha256sums=('b09172231079fb080a9a66248c6d8ef2c6040bb8f4bc56863da4d16423233abc')
+source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.11.2.tar.gz")
+sha256sums=('0e489ea85dbba2b236b259fc35bbdd6351ac1817fe4b082a3d925139fc09b652')
 
 # dpkg-source packed this tarball from a directory called "src", so that - not
 # ${pkgname}-${pkgver} - is what it unpacks to.
-_srcdir="mx-snapshot-26.11.1"
+_srcdir="mx-snapshot-26.11.2"
 
 build() {
     cd "${srcdir}/${_srcdir}"
