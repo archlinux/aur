@@ -3,7 +3,7 @@
 # Rendered by `scripts/package.sh render aur` (#22): it rewrites pkgver, pkgrel and the
 # sha256sums lines from a release's SHA256SUMS. Edit the rest here.
 pkgname=toppingctl-bin
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Control the TOPPING E2x2 USB audio interface over HID (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ conflicts=('toppingctl')
 options=('!strip' '!debug')
 source_x86_64=("toppingctl-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::${url}/releases/download/v${pkgver}/toppingctl-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("toppingctl-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::${url}/releases/download/v${pkgver}/toppingctl-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('096224f5cd04cd2e6b741be20ea99ca4122d9e8daf8f2fb5d6115d2338a51cf3')
-sha256sums_aarch64=('12f53ba4966ebee0f9dddb36ea3b3da765a19c0d271af0a0c2a5a61013e63897')
+sha256sums_x86_64=('27248282a8724dcc6e528469429e18bd32d909e1281fc9dddefdeeb343419721')
+sha256sums_aarch64=('ac1dd6a6e13933789f6fce9dff0fd4ded934d6a68aebc5fc6fb880a913658488')
 
 package() {
   cd "toppingctl-v${pkgver}-${CARCH}-unknown-linux-gnu"
