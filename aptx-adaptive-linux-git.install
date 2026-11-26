@@ -1,0 +1,23 @@
+_message() {
+  cat <<'EOF'
+==> aptX Adaptive: as your user, run
+      systemctl --user daemon-reload && systemctl --user restart wireplumber pipewire
+    then reconnect the headset. Card profiles: a2dp-sink (Low Latency) and
+    a2dp-sink-aptx_adaptive. Headsets without aptX Adaptive keep stock aptX / aptX HD.
+==> The stream is host-timed. If a headset stays silent, try source-timed: add
+      [Service]
+      Environment="APTX_ADAPTIVE_ST0=1"
+    to ~/.config/systemd/user/wireplumber.service.d/override.conf (needed by the
+    Bose QC Ultra), then restart as above.
+==> Rebuild this package after every pipewire upgrade: the plugin is tied to
+    PipeWire's codec ABI, and on a mismatch aptX and aptX HD disappear too.
+EOF
+}
+
+post_install() {
+  _message
+}
+
+post_upgrade() {
+  _message
+}

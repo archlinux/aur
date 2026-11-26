@@ -1,0 +1,280 @@
+From 973c9813c07a8ab4c91a8e423d427e909af67fa9 Mon Sep 17 00:00:00 2001
+From: Adam Delman <adam@delman.cc>
+Date: Thu, 26 Nov 2026 12:04:35 +0200
+Subject: [PATCH] Revert "codec: update media_codec ABI to version 17 (PipeWire
+ 1.7.0)"
+
+This reverts commit 3de4e4d27f3072b3470a99e67f366058d4cb41f0.
+---
+ crates/spa-codec-aptx-adaptive/src/ffi.rs     | 63 +++++++++----------
+ crates/spa-codec-aptx-adaptive/src/lib.rs     |  2 -
+ .../src/passthrough.rs                        | 42 +++++++------
+ .../spa-codec-aptx-adaptive/src/ported/mod.rs |  2 -
+ 4 files changed, 50 insertions(+), 59 deletions(-)
+
+diff --git a/crates/spa-codec-aptx-adaptive/src/ffi.rs b/crates/spa-codec-aptx-adaptive/src/ffi.rs
+index 21e2d57..06f1fe1 100644
+--- a/crates/spa-codec-aptx-adaptive/src/ffi.rs
++++ b/crates/spa-codec-aptx-adaptive/src/ffi.rs
+@@ -2,7 +2,7 @@ use std::ffi::{c_char, c_int, c_void};
+ 
+ pub const SPA_VERSION_HANDLE: u32 = 0;
+ pub const SPA_VERSION_HANDLE_FACTORY: u32 = 1;
+-pub const SPA_VERSION_BLUEZ5_CODEC_MEDIA: u32 = 17;
++pub const SPA_VERSION_BLUEZ5_CODEC_MEDIA: u32 = 16;
+ 
+ #[cfg(test)]
+ pub const SPA_PARAM_ENUM_FORMAT: u32 = 3;
+@@ -201,7 +201,6 @@ pub struct media_codec_audio_info {
+ pub type Opaque = c_void;
+ 
+ #[repr(C)]
+-#[derive(Clone, Copy)]
+ pub struct media_codec {
+     pub id: u32,
+     pub kind: u32,
+@@ -214,7 +213,6 @@ pub struct media_codec {
+     pub send_buf_size: usize,
+     pub duplex_codec: *const media_codec,
+     pub stream_pkt: bool,
+-    pub endpoint_companion: bool,
+ 
+     pub get_bis_config: Option<
+         unsafe extern "C" fn(
+@@ -227,9 +225,6 @@ pub struct media_codec {
+     >,
+     pub fill_caps:
+         Option<unsafe extern "C" fn(*const media_codec, u32, *const spa_dict, *mut u8) -> c_int>,
+-    pub combine_caps: Option<
+-        unsafe extern "C" fn(*const media_codec, u32, *mut u8, c_int, *const u8, c_int) -> c_int,
+-    >,
+     pub select_config: Option<
+         unsafe extern "C" fn(
+             *const media_codec,
+@@ -383,7 +378,7 @@ unsafe extern "C" {
+ const _: () = {
+     use std::mem::{align_of, offset_of, size_of};
+ 
+-    assert!(size_of::<media_codec>() == 304);
++    assert!(size_of::<media_codec>() == 296);
+     assert!(align_of::<media_codec>() == 8);
+     assert!(offset_of!(media_codec, kind) == 4);
+     assert!(offset_of!(media_codec, codec_id) == 8);
+@@ -395,36 +390,34 @@ const _: () = {
+     assert!(offset_of!(media_codec, send_buf_size) == 48);
+     assert!(offset_of!(media_codec, duplex_codec) == 56);
+     assert!(offset_of!(media_codec, stream_pkt) == 64);
+-    assert!(offset_of!(media_codec, endpoint_companion) == 65);
+     assert!(offset_of!(media_codec, get_bis_config) == 72);
+     assert!(offset_of!(media_codec, fill_caps) == 80);
+-    assert!(offset_of!(media_codec, combine_caps) == 88);
+-    assert!(offset_of!(media_codec, select_config) == 96);
+-    assert!(offset_of!(media_codec, enum_config) == 104);
+-    assert!(offset_of!(media_codec, validate_config) == 112);
+-    assert!(offset_of!(media_codec, get_qos) == 120);
+-    assert!(offset_of!(media_codec, get_metadata) == 128);
+-    assert!(offset_of!(media_codec, free_config_data) == 136);
+-    assert!(offset_of!(media_codec, caps_preference_cmp) == 144);
+-    assert!(offset_of!(media_codec, init_props) == 152);
+-    assert!(offset_of!(media_codec, clear_props) == 160);
+-    assert!(offset_of!(media_codec, enum_props) == 168);
+-    assert!(offset_of!(media_codec, set_props) == 176);
+-    assert!(offset_of!(media_codec, init) == 184);
+-    assert!(offset_of!(media_codec, deinit) == 192);
+-    assert!(offset_of!(media_codec, update_props) == 200);
+-    assert!(offset_of!(media_codec, get_block_size) == 208);
+-    assert!(offset_of!(media_codec, get_interval) == 216);
+-    assert!(offset_of!(media_codec, abr_process) == 224);
+-    assert!(offset_of!(media_codec, start_encode) == 232);
+-    assert!(offset_of!(media_codec, encode) == 240);
+-    assert!(offset_of!(media_codec, start_decode) == 248);
+-    assert!(offset_of!(media_codec, decode) == 256);
+-    assert!(offset_of!(media_codec, produce_plc) == 264);
+-    assert!(offset_of!(media_codec, reduce_bitpool) == 272);
+-    assert!(offset_of!(media_codec, increase_bitpool) == 280);
+-    assert!(offset_of!(media_codec, set_log) == 288);
+-    assert!(offset_of!(media_codec, get_delay) == 296);
++    assert!(offset_of!(media_codec, select_config) == 88);
++    assert!(offset_of!(media_codec, enum_config) == 96);
++    assert!(offset_of!(media_codec, validate_config) == 104);
++    assert!(offset_of!(media_codec, get_qos) == 112);
++    assert!(offset_of!(media_codec, get_metadata) == 120);
++    assert!(offset_of!(media_codec, free_config_data) == 128);
++    assert!(offset_of!(media_codec, caps_preference_cmp) == 136);
++    assert!(offset_of!(media_codec, init_props) == 144);
++    assert!(offset_of!(media_codec, clear_props) == 152);
++    assert!(offset_of!(media_codec, enum_props) == 160);
++    assert!(offset_of!(media_codec, set_props) == 168);
++    assert!(offset_of!(media_codec, init) == 176);
++    assert!(offset_of!(media_codec, deinit) == 184);
++    assert!(offset_of!(media_codec, update_props) == 192);
++    assert!(offset_of!(media_codec, get_block_size) == 200);
++    assert!(offset_of!(media_codec, get_interval) == 208);
++    assert!(offset_of!(media_codec, abr_process) == 216);
++    assert!(offset_of!(media_codec, start_encode) == 224);
++    assert!(offset_of!(media_codec, encode) == 232);
++    assert!(offset_of!(media_codec, start_decode) == 240);
++    assert!(offset_of!(media_codec, decode) == 248);
++    assert!(offset_of!(media_codec, produce_plc) == 256);
++    assert!(offset_of!(media_codec, reduce_bitpool) == 264);
++    assert!(offset_of!(media_codec, increase_bitpool) == 272);
++    assert!(offset_of!(media_codec, set_log) == 280);
++    assert!(offset_of!(media_codec, get_delay) == 288);
+ 
+     assert!(size_of::<a2dp_vendor_codec_t>() == 6);
+     assert!(size_of::<spa_bluez5_codec_a2dp>() == 40);
+diff --git a/crates/spa-codec-aptx-adaptive/src/lib.rs b/crates/spa-codec-aptx-adaptive/src/lib.rs
+index 3ac3865..41b42b8 100644
+--- a/crates/spa-codec-aptx-adaptive/src/lib.rs
++++ b/crates/spa-codec-aptx-adaptive/src/lib.rs
+@@ -98,10 +98,8 @@ const fn codec(mode: DefaultMode, slot: Slot, owner: bool) -> media_codec {
+         send_buf_size: ids::SEND_BUF_SIZE,
+         duplex_codec: ptr::null(),
+         stream_pkt: false,
+-        endpoint_companion: !owner,
+         get_bis_config: None,
+         fill_caps,
+-        combine_caps: None,
+         select_config: Some(codec_select_config),
+         enum_config: Some(codec_enum_config),
+         validate_config: Some(codec_validate_config),
+diff --git a/crates/spa-codec-aptx-adaptive/src/passthrough.rs b/crates/spa-codec-aptx-adaptive/src/passthrough.rs
+index e23c896..c6aa581 100644
+--- a/crates/spa-codec-aptx-adaptive/src/passthrough.rs
++++ b/crates/spa-codec-aptx-adaptive/src/passthrough.rs
+@@ -84,11 +84,11 @@ impl Table {
+         match res {
+             Ok(l) => {
+                 let real = self.real.get().cast::<media_codec>();
+-                for (i, c) in l.codecs.iter().enumerate() {
++                for (i, &c) in l.codecs.iter().enumerate() {
+                     // SAFETY: `c` passed `validate`, and i < MAX_REAL; a bitwise copy keeps
+                     // every pointer inside it.
+                     unsafe {
+-                        real.add(i).write(*c);
++                        real.add(i).write(ptr::read(c));
+                         list[2 + i] = real.add(i);
+                     }
+                 }
+@@ -162,10 +162,10 @@ impl Table3 {
+         match res {
+             Ok(l) => {
+                 let real = self.real.get().cast::<media_codec>();
+-                for (i, c) in l.codecs.iter().enumerate() {
++                for (i, &c) in l.codecs.iter().enumerate() {
+                     // SAFETY: `c` passed `validate`; a bitwise copy keeps its pointers.
+                     unsafe {
+-                        real.add(i).write(*c);
++                        real.add(i).write(ptr::read(c));
+                         list[n + i] = real.add(i);
+                     }
+                 }
+@@ -186,7 +186,7 @@ fn log(msg: &str) {
+ 
+ struct Loaded {
+     path: PathBuf,
+-    codecs: Vec<media_codec>,
++    codecs: Vec<*const media_codec>,
+ }
+ 
+ /// Where to look, in order: `SPA_PLUGIN_DIR` (colon-separated, like PipeWire) or, if it's
+@@ -294,7 +294,7 @@ unsafe fn probe(
+     info: *const spa_dict,
+     support: *const spa_support,
+     n_support: u32,
+-) -> Result<Vec<media_codec>, String> {
++) -> Result<Vec<*const media_codec>, String> {
+     // SAFETY: caller contract; the symbol has the C type of spa_handle_factory_enum.
+     unsafe {
+         let sym = crate::ffi::dlsym(lib, c"spa_handle_factory_enum".as_ptr());
+@@ -357,11 +357,11 @@ unsafe fn probe(
+         let mut codecs = Vec::new();
+         if !iface.codecs.is_null() {
+             while codecs.len() <= MAX_REAL {
+-                let ptr = *iface.codecs.add(codecs.len());
+-                if ptr.is_null() {
++                let c = *iface.codecs.add(codecs.len());
++                if c.is_null() {
+                     break;
+                 }
+-                codecs.push(*ptr);
++                codecs.push(c);
+             }
+         }
+         if let Err(e) = validate(&codecs) {
+@@ -389,12 +389,14 @@ unsafe fn is_ours(info: *const spa_dict) -> bool {
+ /// has the version but not the contents we expect. Every entry needs a name, A2DP kind,
+ /// vendor codec type and the callbacks PipeWire calls on any A2DP codec; `aptx_hd` and `aptx`
+ /// must also have their ids and vendor ids where we expect them.
+-fn validate(codecs: &[media_codec]) -> Result<(), String> {
++fn validate(codecs: &[*const media_codec]) -> Result<(), String> {
+     if codecs.len() > MAX_REAL {
+         return Err(format!("more than {MAX_REAL} codecs"));
+     }
+     let mut found = [false; 2];
+-    for c in codecs {
++    for &c in codecs {
++        // SAFETY: entries of a NULL-terminated list from the plugin.
++        let c = unsafe { &*c };
+         let (v, cid) = (c.vendor.vendor_id, c.vendor.codec_id);
+         if c.codec_id == A2DP_CODEC_VENDOR && (v, cid) == (ids::VENDOR_ID, ids::CODEC_ID) {
+             return Err("it's another copy of the aptX Adaptive plugin".into());
+@@ -470,31 +472,31 @@ mod tests {
+     fn validate_rejects_missing_or_wrong_entries() {
+         assert_eq!(validate(&[]), Err("no aptx_hd codec".into()));
+         let ours = crate::codec_for_test();
+-        assert!(validate(&[ours]).unwrap_err().contains("copy"));
++        assert!(validate(&[&raw const ours]).unwrap_err().contains("copy"));
+         let mut hd = crate::codec_for_test();
+         hd.name = c"aptx_hd".as_ptr();
+         hd.vendor.codec_id = 0x24;
+-        assert!(validate(&[hd]).unwrap_err().contains("layout"));
++        assert!(validate(&[&raw const hd]).unwrap_err().contains("layout"));
+         hd.id = SPA_BLUETOOTH_AUDIO_CODEC_APTX_HD;
+-        assert_eq!(validate(&[hd]), Err("no aptx codec".into()));
++        assert_eq!(validate(&[&raw const hd]), Err("no aptx codec".into()));
+         let mut aptx = crate::codec_for_test();
+         aptx.name = c"aptx".as_ptr();
+         aptx.vendor.vendor_id = 0x4F;
+         aptx.vendor.codec_id = 0x01;
+         aptx.id = SPA_BLUETOOTH_AUDIO_CODEC_APTX;
+-        assert_eq!(validate(&[hd, aptx]), Ok(()));
++        assert_eq!(validate(&[&raw const hd, &raw const aptx]), Ok(()));
+ 
+         let mut other = crate::codec_for_test();
+         other.name = c"aptx_ll".as_ptr();
+         other.vendor.vendor_id = 0x0A;
+-        let check = |o: media_codec| validate(&[hd, aptx, o]);
+-        assert_eq!(check(other), Ok(()));
++        let check = |o: &media_codec| validate(&[&raw const hd, &raw const aptx, o]);
++        assert_eq!(check(&other), Ok(()));
+         other.kind = 1;
+-        assert!(check(other).unwrap_err().contains("aptx_ll is kind 1"));
++        assert!(check(&other).unwrap_err().contains("aptx_ll is kind 1"));
+         other.kind = MEDIA_CODEC_A2DP;
+         other.init = None;
+-        assert!(check(other).unwrap_err().contains("layout"));
++        assert!(check(&other).unwrap_err().contains("layout"));
+         other.name = ptr::null();
+-        assert!(check(other).unwrap_err().contains("without a name"));
++        assert!(check(&other).unwrap_err().contains("without a name"));
+     }
+ }
+diff --git a/crates/spa-codec-aptx-adaptive/src/ported/mod.rs b/crates/spa-codec-aptx-adaptive/src/ported/mod.rs
+index be97495..f146440 100644
+--- a/crates/spa-codec-aptx-adaptive/src/ported/mod.rs
++++ b/crates/spa-codec-aptx-adaptive/src/ported/mod.rs
+@@ -367,10 +367,8 @@ const fn codec(mode: Mode, owner: bool) -> media_codec {
+         send_buf_size: 0,
+         duplex_codec: ptr::null(),
+         stream_pkt: false,
+-        endpoint_companion: !owner,
+         get_bis_config: None,
+         fill_caps: if owner { Some(codec_fill_caps) } else { None },
+-        combine_caps: None,
+         select_config: Some(codec_select_config),
+         enum_config: Some(codec_enum_config),
+         validate_config: None,
+-- 
+2.56.1
+

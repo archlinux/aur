@@ -1,0 +1,25 @@
+pkgbase = aptx-adaptive-linux-git
+	pkgdesc = aptX Adaptive Bluetooth codec plugin for PipeWire (Low Latency and adaptive modes)
+	pkgver = 0.1.0.r181.f21ecec
+	pkgrel = 1
+	url = https://github.com/AKS-Logic/aptx-adaptive-linux
+	install = aptx-adaptive-linux-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = pipewire>=1:1.6
+	depends = pipewire-audio
+	depends = wireplumber
+	depends = bluez
+	depends = gcc-libs
+	depends = glibc
+	provides = aptx-adaptive-linux
+	conflicts = aptx-adaptive-linux
+	source = aptx-adaptive-linux-git::git+https://github.com/AKS-Logic/aptx-adaptive-linux.git
+	source = pipewire-1.6-codec-abi-16.patch
+	sha256sums = SKIP
+	sha256sums = 398e3d1b950c0cd79daeba28280a0e72eddc174c804a670403ede41693757569
+
+pkgname = aptx-adaptive-linux-git

@@ -1,0 +1,9 @@
+# Only the AUR files are tracked; everything else here (builds, helper scripts,
+# btmon captures) stays local.
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE
+!aptx-adaptive-linux-git.install
+!pipewire-1.6-codec-abi-16.patch
