@@ -1,0 +1,16 @@
+post_install() {
+  cat <<'EOF'
+==> Pinshot has been installed system-wide.
+==> On GNOME Wayland, log out and log back in, then enable the extension:
+    gnome-extensions enable pinshot@dgxz99
+==> If you previously installed Pinshot via scripts/install.sh into ~/.local,
+    run scripts/uninstall.sh so the user copy does not shadow /usr/share.
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> Pinshot has been upgraded.
+==> On GNOME Wayland, log out and log back in to reload the updated GNOME Shell extension.
+EOF
+}

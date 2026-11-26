@@ -1,0 +1,27 @@
+pkgbase = pinshot-bin
+	pkgdesc = Lightweight Wayland screenshot, screen-pinning, scrolling capture and GIF tool for GNOME Shell (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dgxz99/pinshot
+	install = pinshot-bin.install
+	arch = x86_64
+	license = MIT
+	depends = gnome-shell
+	depends = wl-clipboard
+	depends = pango
+	depends = xdg-desktop-portal-gnome
+	depends = pipewire
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-base-libs
+	depends = gst-plugin-pipewire
+	depends = hicolor-icon-theme
+	optdepends = satty: annotate screenshots and pins
+	optdepends = libnotify: desktop notifications
+	provides = pinshot
+	conflicts = pinshot
+	conflicts = pinshot-git
+	source_x86_64 = https://github.com/dgxz99/pinshot/releases/download/v0.1.0/pinshot-v0.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a7ec9a902fea1bc0ae8c65f67e801d132790f523d4ee62636bf8856c99692295
+
+pkgname = pinshot-bin
