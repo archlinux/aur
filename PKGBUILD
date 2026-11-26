@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocWorkflowTools
-_pkgver=1.32.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Tools to aid the development of Bioconductor Workflow packages'
 arch=('any')
@@ -22,7 +22,7 @@ depends=(
   r-usethis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8bb7f2a6164ea3f969689d011ceb55f3f913dbafb1fd565e928a054fd436b6a4')
+sha256sums=('d878cf4cc21625d9db3ab4818b0d286a88903087dbeb7bf128044140413735ad')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
