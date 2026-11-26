@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocVersion
-_pkgver=3.23.1
+_pkgver=3.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1ea22c71ce7f9862be8dcfaa37a2f1e4')
-b2sums=('6be1af443e55f610d6f76cb548c742f922cf08ae1a5de1bc836d53357ebc6b58985086a3b43f8173010f105e29b51f3aaad0cd3a63703d1cadbd193bbca714b3')
+md5sums=('fb13e31f12a7e6d46de34c9d3f2fd13c')
+b2sums=('a196fd7d16349c3486711a32283ec28b891615dd7135859c3dd35f59aaa9984fe98c025a8e29c06fb88289921eed28af8589beb1e68068dc7d10a75977cf8f52')
 
 build() {
   mkdir build
