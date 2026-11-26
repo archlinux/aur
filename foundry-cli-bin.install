@@ -1,6 +1,8 @@
 post_install() {
   cat <<'MSG'
 ==> foundry-cli-bin: package-manager installs do not edit your shell config.
+==> foundry-cli and fcli run Go. Use install.sh --alias ts for a standalone install with TypeScript as the default.
+==> foundry-cli-ts and foundry-cli superrepo need Node.js 26 or newer on PATH.
 ==> To add shell completion in zsh:
     printf '\nsource <(foundry-cli completion --code zsh)\n' >> ~/.zshrc
 ==> To add it in bash:

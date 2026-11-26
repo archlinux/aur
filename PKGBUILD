@@ -2,13 +2,15 @@
 
 pkgname=foundry-cli-bin
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Foundry DevOps automation CLI"
 arch=('x86_64')
 url="https://github.com/shpitdev/foundry-cli"
 license=('LicenseRef-proprietary')
 install="${pkgname}.install"
 makedepends=('github-cli')
+optdepends=('nodejs>=26: foundry-cli-ts and foundry-cli superrepo')
+options=('!strip' '!debug')
 provides=('foundry-cli')
 conflicts=('foundry-cli')
 
@@ -26,9 +28,10 @@ prepare() {
 }
 
 package() {
-  install -dm755 "${pkgdir}/usr/lib/foundry-cli"
-  install -Dm755 "foundry-cli" \
-    "${pkgdir}/usr/lib/foundry-cli/foundry-cli"
+  local prefix="${pkgdir}/usr/lib/foundry-cli"
+  install -Dm755 foundry-cli "${prefix}/bin/foundry-cli-go"
+  install -Dm755 bin/foundry-cli-ts "${prefix}/bin/foundry-cli-ts"
+  cp -R libexec "${prefix}/libexec"
   if [[ -d templates ]]; then
     cp -R templates "${pkgdir}/usr/lib/foundry-cli/"
 
@@ -47,6 +50,9 @@ EOT
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s ../lib/foundry-cli/foundry-cli \
-    "${pkgdir}/usr/bin/foundry-cli"
+  local name
+  for name in foundry-cli-go foundry-cli fcli; do
+    ln -s ../lib/foundry-cli/bin/foundry-cli-go "${pkgdir}/usr/bin/${name}"
+  done
+  ln -s ../lib/foundry-cli/bin/foundry-cli-ts "${pkgdir}/usr/bin/foundry-cli-ts"
 }
