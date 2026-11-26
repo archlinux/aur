@@ -1,6 +1,6 @@
 pkgbase = python-porepy
 	pkgdesc = Simulation tool for fractured and deformable porous media
-	pkgver = 1.13
+	pkgver = 1.14
 	pkgrel = 1
 	url = https://github.com/pmgbergen/porepy
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = python-porepy
 	depends = python-shapely
 	depends = python-sympy
 	depends = python-typing_extensions
-	source = porepy-1.13.tar.gz::https://github.com/pmgbergen/porepy/archive/v1.13.tar.gz
-	sha512sums = f7d85cf9989f4e1aca2408494f99660463091291ffcdcdc01c768f6a7147b39ba9a8ee0b2e447b6c415980d67d100bd38c4fbeacb5c96ece6f82664f674bdcad
+	source = porepy-1.14.tar.gz::https://github.com/pmgbergen/porepy/archive/v1.14.tar.gz
+	sha512sums = 46f24d876deaf060cdf93568f6de7a8389424261120d4e863fa87224233403713ded8806c7757e0c29ca0c7e76407859b3811d774ce989ee6f10dd63043fff99
 
 pkgname = python-porepy
