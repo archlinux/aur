@@ -1,7 +1,7 @@
 pkgbase = gvisor
 	pkgdesc = Application kernel and OCI runtime (runsc) for sandboxed containers
 	pkgver = 20261123.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gvisor.dev
 	arch = x86_64
 	arch = aarch64

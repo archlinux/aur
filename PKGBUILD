@@ -4,7 +4,7 @@
 
 pkgname=gvisor
 pkgver=20261123.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Application kernel and OCI runtime (runsc) for sandboxed containers'
 arch=('x86_64' 'aarch64')
 url='https://gvisor.dev'
@@ -35,8 +35,7 @@ prepare() {
         --compilation_mode=opt \
         --copt=-fcanonical-system-headers \
         --host_copt=-fcanonical-system-headers \
-        //runsc:runsc \
-        //shim:containerd-shim-runsc-v1
+        //:release
     bazel-real --output_user_root="${srcdir}/bazel-root" shutdown
 }
 
@@ -49,14 +48,16 @@ build() {
         --host_copt=-fcanonical-system-headers \
         --nofetch \
         --verbose_failures \
-        //runsc:runsc \
-        //shim:containerd-shim-runsc-v1
+        //:release
     bazel-real --output_user_root="${srcdir}/bazel-root" shutdown
 }
 
 package() {
-    cd "${pkgname}-release-${pkgver}/bazel-bin"
-    install -Dm755 runsc/runsc_/runsc "${pkgdir}/usr/bin/runsc"
-    install -Dm755 shim/containerd-shim-runsc-v1_/containerd-shim-runsc-v1 \
+    cd "${pkgname}-release-${pkgver}/bazel-bin/release"
+    install -Dm755 runsc "${pkgdir}/usr/lib/${pkgname}/runsc"
+    install -Dm755 -t "${pkgdir}/usr/lib/${pkgname}/gvisor-bin" gvisor-bin/*
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "../lib/${pkgname}/runsc" "${pkgdir}/usr/bin/runsc"
+    install -Dm755 containerd-shim-runsc-v1 \
         "${pkgdir}/usr/bin/containerd-shim-runsc-v1"
 }
