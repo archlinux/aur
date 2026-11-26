@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tximportData
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-markdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('47a7c6fadb4d8865a8d512bf7e56ac75')
-b2sums=('64cd8a037b5ff50723dc9e5ea6b8f90df3aab9c266628111609e59862fa827f170594015540b2a91224bd98c6fb38d9ba715286197a12ef53b4979c1ce273fec')
+md5sums=('bbd800817ad4c383ad396a4c6ac88fc0')
+b2sums=('d719586fac84eafd5f299aa35e6e8e0e86b2365a1f3c99246492ba5834dde4c2254694e9190096dbef174471180fddd7a4152751925b299a582cdb24c85d84ec')
 
 build() {
   mkdir build
