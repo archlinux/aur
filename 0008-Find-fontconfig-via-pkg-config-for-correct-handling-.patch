@@ -1,7 +1,7 @@
-From 741ab259432962696eb917188c3ec923cc32519c Mon Sep 17 00:00:00 2001
+From 4bfce102b97ec7d71e879d15aa9d5fe75f6319ff Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:00:27 +0200
-Subject: [PATCH 08/24] Find fontconfig via pkg-config for correct handling of
+Subject: [PATCH 08/22] Find fontconfig via pkg-config for correct handling of
  its dependencies
 
 CMake's own find module unforunately does not consider fontconfig's deps so
@@ -33,10 +33,10 @@ index 00000000000..1a52327ae6f
 +    set(Fontconfig_FOUND 1)
 +endif()
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index 6324c99b1b7..2592fbf8f3d 100644
+index 23aa80d2feb..f2be690ed84 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
-@@ -863,7 +863,7 @@ qt_internal_extend_target(Gui CONDITION QT_FEATURE_fontconfig AND QT_FEATURE_fre
+@@ -866,7 +866,7 @@ qt_internal_extend_target(Gui CONDITION QT_FEATURE_fontconfig AND QT_FEATURE_fre
          text/unix/qfontconfigdatabase.cpp text/unix/qfontconfigdatabase_p.h
          text/unix/qfontenginemultifontconfig.cpp text/unix/qfontenginemultifontconfig_p.h
      LIBRARIES
@@ -59,5 +59,5 @@ index 3218c669b95..652ddc26473 100644
      VCPKG_PORT fontconfig
      VCPKG_ADD_TO_FEATURE fontconfig
 -- 
-2.56.0
+2.56.1
 
