@@ -1,4 +1,5 @@
 # Maintainer: pusi77 <pusineriandrea+gmail+com>
+# Contributor: pusi77-robot <pusineriandrea+gmail+com>
 
 pkgname=ciphey-bin
 pkgver=0.12.1
