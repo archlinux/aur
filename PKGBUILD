@@ -1,7 +1,7 @@
 # Maintainer: Zentino <Zylsjsp@gmail.com>
 _name=certbot-pkcs12
 pkgname=python-${_name}
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="PKCS#12 installer plugin for Certbot and Let's Encrypt"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('certbot' 'python-cryptography>38.0')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'git' 'python-setuptools-scm')
 # source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nasa-gcn/certbot-pkcs12/archive/refs/tags/v${pkgver}.tar.gz")
 source=("${_name}::git+https://github.com/nasa-gcn/certbot-pkcs12/#tag=v${pkgver}")
-sha256sums=('d6385fcc500ebd85cf348947eb07d1b8085dc67e0241874168db2344db274593')
+sha256sums=('bcb0a46aaeda1c287222cb068ccd8bfa451c41d6247e984060bf5040dae7dba1')
 
 # pkgver() {
 #   cd "$_name"
