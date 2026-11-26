@@ -3,7 +3,7 @@
 
 pkgname=nwipe
 pkgver=0.43.1 # renovate: datasource=github-tags depName=martijnvanbrummelen/nwipe
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of the dwipe command that will securely erase disks using a variety of recognised methods"
 arch=('x86_64' 'aarch64')
 url="https://github.com/martijnvanbrummelen/nwipe"
