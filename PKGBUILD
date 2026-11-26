@@ -3,12 +3,12 @@
 
 pkgname=tchmaterial-parser
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="国家中小学智慧教育平台 资源下载工具，帮助您从国家中小学智慧教育平台中获取电子课本的 PDF 文件网址并进行下载，让您更方便地获取课本内容。"
 arch=('any')
 url="https://github.com/happycola233/tchMaterial-parser"
 license=('MIT')
-depends=('python' 'tk' 'python-pillow' 'python-psutil' 'python-requests' 'python-pypdf' 'python-sv-ttk')
+depends=('python' 'tk' 'python-pillow' 'python-psutil' 'python-requests' 'python-pypdf' 'python-cryptography' 'python-sv-ttk')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=(
         "v$pkgver.tar.gz::https://github.com/happycola233/tchMaterial-parser/archive/refs/tags/v$pkgver.tar.gz"
