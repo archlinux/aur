@@ -1,0 +1,18 @@
+post_install() {
+  cat <<'EOF'
+==> Chimera keeps its settings, cores and firmware in /opt/chimera-tas,
+==> which is writable by all users. It ships no cores: put .chimeraCore
+==> packages in /opt/chimera-tas/cores (see the Cores table at
+==> https://github.com/ToolAssisted-run/chimera#cores).
+==> The extension is case-sensitive: a file ending in .chimeracore is
+==> not found until it is renamed to .chimeraCore.
+EOF
+}
+
+post_remove() {
+  cat <<'EOF'
+==> Files Chimera made in /opt/chimera-tas (settings.json, cores, firmware,
+==> movies) are not removed. Delete the folder by hand if you do not
+==> want them.
+EOF
+}

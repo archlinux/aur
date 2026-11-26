@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Chimera
+GenericName=TAS Frontend
+Comment=Modular frontend for creating tool-assisted speedruns
+Exec=chimera-tas %f
+Icon=chimera-tas
+Terminal=false
+Categories=Game;Emulator;
+Keywords=TAS;tool-assisted;speedrun;emulator;
