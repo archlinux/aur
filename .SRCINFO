@@ -1,0 +1,17 @@
+pkgbase = discogs-xml2db-bin
+	pkgdesc = Imports the discogs.com monthly XML dumps into databases
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/philipmat/discogs-xml2db
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = discogs-xml2db
+	conflicts = discogs-xml2db
+	options = !debug
+	source_x86_64 = discogs-xml2db-bin-2.1-x86_64.zip::https://github.com/philipmat/discogs-xml2db/releases/download/v2.1/discogsxml2db-linux-x64.zip
+	sha256sums_x86_64 = 9ae576454f9426d1d83b60b0a8357f69e3cf15e56329dc09df56f1d9c917c09f
+
+pkgname = discogs-xml2db-bin
