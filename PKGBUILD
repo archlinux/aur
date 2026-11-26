@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=optimalFlowData
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('56698e0c5916762b910e42c9d8a44df7')
-b2sums=('64688bb98be9458ae9f2c06b8293600e2805cde965cf1f3c5495861d764227c5f88e085eccd80a13da6f821ba2fc543e79a8b4b50cdc1184c5ed0568ddf03ce4')
+md5sums=('ede52b40540b2f0ed4d91507ccacbe6f')
+b2sums=('3e9fa69e5cf056e0181ee3ef715c1e680738757ed1e2a53c1018d963c5d666c3f7d1898fd02f140ffaa1cf606d6948982a74fbb25ce863b7c7c53de38346b3a9')
 
 build() {
   mkdir build
