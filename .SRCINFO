@@ -1,0 +1,20 @@
+pkgbase = transok-bin
+	pkgdesc = LAN file sharing tool
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/bent2685/transok
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = transok
+	conflicts = transok
+	options = !debug
+	source = transok-bin-0.5.6-LICENSE::https://raw.githubusercontent.com/bent2685/transok/v0.5.6/LICENSE
+	sha256sums = c949e6a57a197bf801525c2d61482e991311868c564b936a7e444f88e6510c34
+	source_x86_64 = transok-bin-0.5.6-x86_64.tar.gz::https://github.com/bent2685/transok/releases/download/v0.5.6/transok-0.5.6-linux-amd64.tar.gz
+	sha256sums_x86_64 = 2471cee92303329fd4934ec9d647de3d55bf445fbcea88b248d835ac9bd51204
+	source_aarch64 = transok-bin-0.5.6-aarch64.tar.gz::https://github.com/bent2685/transok/releases/download/v0.5.6/transok-0.5.6-linux-arm64.tar.gz
+	sha256sums_aarch64 = 6237c4916e52e97b7620083301994a86933c32276f5e739984e0e3d0022f2d95
+
+pkgname = transok-bin
