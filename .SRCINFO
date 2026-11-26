@@ -1,6 +1,6 @@
 pkgbase = skwir-bin
 	pkgdesc = An augmented file manager, for humans and agents (the release build)
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://skwir.org
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = skwir-bin
 	optdepends = ffmpeg: still frames of films
 	optdepends = perl-image-exiftool: writing and removing pictures locations
 	optdepends = plocate: instant name searches over whole disks
+	optdepends = skwird: name searches answered from an index kept current
 	optdepends = udisks2: unmounting volumes from the sidebar
 	optdepends = sshfs: opening sftp:// addresses through your ssh
 	optdepends = rclone: opening rclone remotes, s3:// and servers that ask a password
@@ -42,17 +43,17 @@ pkgbase = skwir-bin
 	optdepends = fuse3: rclone mounts, and phones KDE holds
 	optdepends = avahi: servers nearby, a NAS or a Mac
 	optdepends = wsdd: Windows PCs nearby
-	provides = skwir=0.7.0
-	provides = skwir-mermaid=0.7.0
-	provides = skwir-math=0.7.0
-	provides = skwir-mupdf=0.7.0
+	provides = skwir=0.7.1
+	provides = skwir-mermaid=0.7.1
+	provides = skwir-math=0.7.1
+	provides = skwir-mupdf=0.7.1
 	conflicts = skwir
 	conflicts = skwir-mermaid
 	conflicts = skwir-math
 	conflicts = skwir-mupdf
 	options = !strip
 	options = !debug
-	source = skwir-0.7.0-linux-x86_64.tar.gz::https://github.com/skwir-org/skwir/releases/download/v0.7.0/skwir-0.7.0-linux-x86_64.tar.gz
-	sha256sums = 3bfd1d988857c9b319e0ff4e45d208c5cc7df2dc53c473d7270d60f9d384f738
+	source = skwir-0.7.1-linux-x86_64.tar.gz::https://github.com/skwir-org/skwir/releases/download/v0.7.1/skwir-0.7.1-linux-x86_64.tar.gz
+	sha256sums = 1e4d9730d4e8d3769dab121c03644c04d29bb77e3d667a6188cc6b756a399e41
 
 pkgname = skwir-bin

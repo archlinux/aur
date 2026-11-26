@@ -8,7 +8,7 @@
 # Maintainer: venator <venator at tutamail dot com>
 
 pkgname=skwir-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents (the release build)'
 arch=('x86_64')
@@ -33,6 +33,10 @@ optdepends=(
   'ffmpeg: still frames of films'
   'perl-image-exiftool: writing and removing pictures locations'
   'plocate: instant name searches over whole disks'
+  # The tarball carries skwird beside skwir, in /opt/skwir; a skwird
+  # pacman installs, on PATH, takes the carried copy's place (skwir looks
+  # there first), and pacman updates it.
+  'skwird: name searches answered from an index kept current'
   'udisks2: unmounting volumes from the sidebar'
   'sshfs: opening sftp:// addresses through your ssh'
   'rclone: opening rclone remotes, s3:// and servers that ask a password'
@@ -54,7 +58,7 @@ conflicts=('skwir' 'skwir-mermaid' 'skwir-math' 'skwir-mupdf')
 options=('!strip' '!debug')
 source=("skwir-$pkgver-linux-x86_64.tar.gz::$_repo/releases/download/v$pkgver/skwir-$pkgver-linux-x86_64.tar.gz")
 # Filled by aur-prepare with the release's.
-sha256sums=('3bfd1d988857c9b319e0ff4e45d208c5cc7df2dc53c473d7270d60f9d384f738')
+sha256sums=('1e4d9730d4e8d3769dab121c03644c04d29bb77e3d667a6188cc6b756a399e41')
 
 package() {
   install -d "$pkgdir/opt" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses"
@@ -65,9 +69,12 @@ package() {
   # skwir finds its helpers, libraries and licences beside the program
   # the link leads to.
   ln -s /opt/skwir/usr/bin/skwir "$pkgdir/usr/bin/skwir"
+  # Started under this name, skwir is `skwir view` (ADR-151).
+  ln -s skwir "$pkgdir/usr/bin/skw"
   ln -s /opt/skwir/usr/share/licenses/skwir "$pkgdir/usr/share/licenses/$pkgname"
   cd "$pkgdir/opt/skwir/usr/share"
   install -Dm644 applications/org.skwir.skwir.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 applications/org.skwir.skwir.view.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 metainfo/org.skwir.skwir.metainfo.xml -t "$pkgdir/usr/share/metainfo/"
   install -Dm644 xdg-desktop-portal/portals/skwir.portal -t "$pkgdir/usr/share/xdg-desktop-portal/portals/"
   install -Dm644 dbus-1/services/org.freedesktop.impl.portal.desktop.skwir.service -t "$pkgdir/usr/share/dbus-1/services/"
