@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pickgene
-_pkgver=1.84.0
+_pkgver=1.86.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cf5cce301a080ade6bfb299332e0f2c8')
-b2sums=('cadb3766274763b0a1631acb1cc81201194a93ca6fd1b77a72d4c678b18220e581bd3116b867390bb2792a2330fed1042dd7479caed4bdb01d2c0359e0d0c6ab')
+md5sums=('b3191c63ee2ab2d3a72c3e99c3f5616f')
+b2sums=('1d6d2d50766341dee6d6b23b22c35944a8c24f8efe3cbc9ad2fe90d088463b05846ff4aa1b51f6b24aa25e5b1c8d1345036691613d09e0ca2fee49690663646c')
 
 build() {
   mkdir build
