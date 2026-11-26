@@ -1,7 +1,7 @@
 # Maintainer: illusory <becomeillusory@gmail.com>
 # 自用维护：仅信任官方 GitHub release 资产，sha256 锁定官方 SHA256SUMS.txt。
 pkgname=wordcraft-private-bin
-pkgver=0.18.1
+pkgver=0.19.1
 pkgrel=4
 pkgdesc='自用维护：开源 clean-room 版 Microsoft Word 替代（纯 Rust 字处理器），上游 storytold/wordcraft'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=('alsa-lib: sound support'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
 source=("${_gh_mirror}https://github.com/storytold/wordcraft/releases/download/v${pkgver}/wordcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
-sha256sums=('5b1b2851bdebf75a23f2ce2efdbda2b2b542749b9fe653f9b7b16dc209dcbb64')
+sha256sums=('6af586975f52a6621ac4e0a96bd2e335629c152f21a535af311a829b56261ba9')
 
 package() {
   bsdtar -xf "$srcdir/wordcraft-$pkgver-linux-x86_64.pkg.tar.zst" \
