@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IMPCdata
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-rjson
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('775586a4b623e67c8f6f2ef2ff0b6fe7')
-b2sums=('f3b9797cc437bdcd599b51c252f9be4872fe8b1746d39a7c59595dce31b4c9432c3781a8e28955336444c782b1a33aeb34ad26b36ef6bbaaf0a9fa122b360a26')
+md5sums=('f57764ff6aed8de6105c3b47807729c9')
+b2sums=('d3bd3ae37db2c76a6a892d744208782282c20397f27028589c6263af1c2b23627c5274b99cb36533a0d45474c9b5d022cd28fcb8f607cf7ec2804ca4b5c77b35')
 
 build() {
   mkdir build
