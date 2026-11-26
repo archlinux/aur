@@ -1,0 +1,17 @@
+pkgbase = rustybgp-bin
+	pkgdesc = BGP daemon written in Rust
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/osrg/rustybgp
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = rustybgp
+	conflicts = rustybgp
+	options = !debug
+	source_x86_64 = rustybgp-bin-0.2.0-x86_64.tar.gz::https://github.com/osrg/rustybgp/releases/download/v0.2.0/rustybgp-v0.2.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = fafc05cf933b5406eb5751ededc076f1eadf96df60f472e326b53d10eb682a7e
+	source_aarch64 = rustybgp-bin-0.2.0-aarch64.tar.gz::https://github.com/osrg/rustybgp/releases/download/v0.2.0/rustybgp-v0.2.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 57e94ce33af5e9c508f7049402a88243fb2e6a8061cf4aa1675f405d1c4f3551
+
+pkgname = rustybgp-bin
