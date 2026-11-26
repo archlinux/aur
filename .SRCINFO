@@ -1,0 +1,27 @@
+pkgbase = tubeglass-bin
+	pkgdesc = YouTube, YouTube Music and podcast desktop client, no account or API key needed
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/flawlesscode254/TubeGlass
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = alsa-lib
+	depends = ffmpeg
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libxkbcommon
+	optdepends = libx11: X11 support
+	optdepends = wayland: Wayland support
+	optdepends = xdg-desktop-portal: native file dialogs
+	provides = tubeglass
+	conflicts = tubeglass
+	options = !strip
+	source_x86_64 = https://github.com/flawlesscode254/TubeGlass/releases/download/v0.3.0/tubeglass_0.3.0_amd64.deb
+	sha256sums_x86_64 = 15b260562d7ef36cf52410a2e1d2af2d5141f5eabfb3f1454a916d3ffaa70ae4
+	source_aarch64 = https://github.com/flawlesscode254/TubeGlass/releases/download/v0.3.0/tubeglass_0.3.0_arm64.deb
+	sha256sums_aarch64 = 9971599775f2e50e683656eeb15d154dd7360f979fc3557078de4364f29f8a8c
+
+pkgname = tubeglass-bin
