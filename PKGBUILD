@@ -6,7 +6,7 @@
 # and publishes it on AUR as kalliope-bin (.github/workflows/aur.yml). See docs/releasing.md.
 
 pkgname=kalliope-bin
-pkgver=0.1
+pkgver=0.2
 # A test of the release workflow, 0.0-test.N, is written 0.0_test.N here: pkgver cannot contain "-".
 _version=${pkgver//_/-}
 pkgrel=1
@@ -17,7 +17,7 @@ license=('LicenseRef-SANSEVIERIA-1.1')
 # Linked: glibc, gcc-libs, fontconfig. Loaded at run time: libxkbcommon always, then wayland or
 # the X11 libraries for the window, and libpipewire for the virtual microphone. ONNX Runtime and
 # the voice models come in the tarball (lib/, share/kalliope/): nothing is downloaded.
-depends=('glibc' 'gcc-libs' 'fontconfig' 'libxkbcommon')
+depends=('glibc' 'gcc-libs' 'fontconfig' 'libxkbcommon' 'qt6-base' 'qt6-wayland' 'python-gobject' 'libadwaita')
 optdepends=(
   'libpipewire: the virtual microphone'
   'wayland: the window on Wayland'
@@ -30,7 +30,7 @@ provides=('kalliope')
 conflicts=('kalliope')
 options=('!strip' '!debug')
 source=("$url/releases/download/v$_version/kalliope-$_version-linux-x86_64.tar.gz")
-sha256sums=('e15518909c6491f2de7dbc7da1f0fe770763084f0ffd5fa2c4f0075faa2681ca')
+sha256sums=('050a53e2bd2fd27d279675893a00f4ac3ca525b63430b2983526fdeaedd0257e')
 
 package() {
   cd "kalliope-$_version-linux-x86_64"
