@@ -1,6 +1,6 @@
 # Maintainer: Julian Houba <info@craftingdragon.ch>
 pkgname=opengrep-bin
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Lightweight static analysis for many languages. Fork of semgrep (binary release)"
 arch=('x86_64' 'aarch64')
@@ -11,11 +11,11 @@ conflicts=('opengrep')
 depends=('git' 'ca-certificates')
 options=(!strip !debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/opengrep/opengrep/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3ae46d85b3ff3dafbf302b981f31a4dd59e9206040ed68de0174b0781b23c2cd')
+sha256sums=('7ccefdf7bd039498a913089c24f71935f8932c137f3edcb25b70ed3b3c5779a7')
+sha256sums_x86_64=('d6a68a84c01a3d8ee933f60847decf1b4d0fd7791a26833b32b95922baf28974')
+sha256sums_aarch64=('3abfc87d66f208efd143a1b408d489af934cea7d9968ab1f37dca001f9886092')
 source_x86_64=("opengrep_linux_x86_v${pkgver}::https://github.com/opengrep/opengrep/releases/download/v${pkgver}/opengrep_linux_x86")
-sha256sums_x86_64=('37e93f4da5fd04a18c5c1febbdd12f7e98dfccd4d0c9cf2593bcb25eeb462da0')
 source_aarch64=("opengrep_linux_aarch64_v${pkgver}::https://github.com/opengrep/opengrep/releases/download/v${pkgver}/opengrep_linux_aarch64")
-sha256sums_aarch64=('6257b65423a744b704af2ff9beeb8f222c2f6925236af386b56b031d4c06d6d8')
 
 package() {
   local _binary=opengrep_linux_x86
