@@ -1,0 +1,17 @@
+pkgbase = idpbuilder-bin
+	pkgdesc = Spin up a complete internal developer platform with only Docker
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/cnoe-io/idpbuilder
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = idpbuilder
+	conflicts = idpbuilder
+	options = !debug
+	source_x86_64 = idpbuilder-bin-0.10.2-x86_64.tar.gz::https://github.com/cnoe-io/idpbuilder/releases/download/v0.10.2/idpbuilder-linux-amd64.tar.gz
+	sha256sums_x86_64 = d679cfc14f7a612e517730313952d4c349b8dab03589fa467698fc70a993d5cc
+	source_aarch64 = idpbuilder-bin-0.10.2-aarch64.tar.gz::https://github.com/cnoe-io/idpbuilder/releases/download/v0.10.2/idpbuilder-linux-arm64.tar.gz
+	sha256sums_aarch64 = f381a25b02530915c17ca4a765b226090bb51268deddca6eefc2bd7f8adfca33
+
+pkgname = idpbuilder-bin
