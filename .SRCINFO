@@ -1,7 +1,7 @@
 pkgbase = easyboard-app-bin
 	pkgdesc = Cross-platform soundboard with a virtual microphone input (prebuilt binary)
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MrRedstonia/EasyBoard
 	arch = x86_64
 	license = MIT
