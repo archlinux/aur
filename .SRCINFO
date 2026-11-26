@@ -1,6 +1,6 @@
 pkgbase = ghostex-bin
 	pkgdesc = Ghostty-based desktop workspace for AI agent CLIs, with persistent terminals, browser panes, and a built-in IDE
-	pkgver = 12.2.0
+	pkgver = 12.3.0
 	pkgrel = 1
 	url = https://ghostex.dev
 	install = ghostex-bin.install
@@ -35,13 +35,13 @@ pkgbase = ghostex-bin
 	depends = nss
 	depends = pango
 	optdepends = wmctrl: raise the running Ghostex window from the ghostex command on X11
-	provides = ghostex=12.2.0
+	provides = ghostex=12.3.0
 	conflicts = ghostex
 	options = !strip
 	options = !debug
-	source = ghostex-12.2.0-LICENSE::https://raw.githubusercontent.com/maddada/Ghostex/v12.2.0/LICENSE
-	source = https://github.com/maddada/Ghostex/releases/download/v12.2.0/ghostex-12.2.0-linux-x64.tar.zst
+	source = ghostex-12.3.0-LICENSE::https://raw.githubusercontent.com/maddada/Ghostex/v12.3.0/LICENSE
+	source = https://github.com/maddada/Ghostex/releases/download/v12.3.0/ghostex-12.3.0-linux-x64.tar.zst
 	sha256sums = 50c3e6ee30c68e93ebed3e549770999eaee10b88618588d57c9d5355d0996509
-	sha256sums = 03e42e900822bd502574a941be8a3bf5f2748ecdd6b2f9eb62e150849b352c4e
+	sha256sums = 5bcd7d86ee161dbbd1296af464e60c8f8b0f2c2b5042e5f4cf1dd442b8bbb7c3
 
 pkgname = ghostex-bin
