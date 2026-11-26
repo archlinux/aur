@@ -1,0 +1,17 @@
+pkgbase = threatcl-bin
+	pkgdesc = Document threat models with HCL
+	pkgver = 0.6.14
+	pkgrel = 1
+	url = https://github.com/threatcl/threatcl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = threatcl
+	conflicts = threatcl
+	options = !debug
+	source_x86_64 = threatcl-bin-0.6.14-x86_64.tar.gz::https://github.com/threatcl/threatcl/releases/download/v0.6.14/threatcl_0.6.14_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2d7ad88dca69f3e7318db7d089b6a348d497adbf352fd10664ba8d26c0e08c44
+	source_aarch64 = threatcl-bin-0.6.14-aarch64.tar.gz::https://github.com/threatcl/threatcl/releases/download/v0.6.14/threatcl_0.6.14_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4f57398a5b5ab7b399f0df623f7ab96955e6617cafd13355637e5c24566036cf
+
+pkgname = threatcl-bin
