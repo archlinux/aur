@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ROTS
-_pkgver=2.4.0
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
-pkgver=2.4.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Reproducibility-Optimized Test Statistic'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e811506974358064d6e0ff1cb3763e93d6645846ddfcf884bde21c02912c8584')
+sha256sums=('981d6c412a6691146b003ae3168800d6a07368e813122357511a12315d8efbd8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
