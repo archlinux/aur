@@ -1,0 +1,8 @@
+post_install() {
+  echo ":: Re-plug your Pulsar mouse (or its dongle) so the new udev rule applies."
+  echo ":: No group membership is needed; access is granted to the logged-in user (uaccess)."
+}
+
+post_upgrade() {
+  post_install
+}

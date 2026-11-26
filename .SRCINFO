@@ -1,0 +1,28 @@
+pkgbase = pulsar-mouse-linux-bin
+	pkgdesc = Configuration tool (CLI + GTK4/libadwaita GUI) for Pulsar gaming mice (X2A, X2H, Xlite, and more) - prebuilt release
+	pkgver = 0.1.34
+	pkgrel = 1
+	url = https://github.com/packerlschupfer/pulsar-mouse-linux
+	install = pulsar-mouse-linux-bin.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyusb
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = libdbusmenu-glib
+	depends = hicolor-icon-theme
+	optdepends = gnome-shell-extension-appindicator: tray icon on GNOME
+	provides = pulsar-mouse-linux=0.1.34
+	conflicts = pulsar-mouse-linux
+	conflicts = pulsar-mouse-linux-git
+	conflicts = pulsar-x2a-linux
+	replaces = pulsar-x2a-linux
+	noextract = pulsar-mouse-linux_0.1.34_all.deb
+	source = https://github.com/packerlschupfer/pulsar-mouse-linux/releases/download/v0.1.34/pulsar-mouse-linux_0.1.34_all.deb
+	source = LICENSE-0.1.34::https://raw.githubusercontent.com/packerlschupfer/pulsar-mouse-linux/v0.1.34/LICENSE
+	sha256sums = ad86b08f8665e94d95e2576a93f1bfd470703429571e466450c4ea3e48bd6823
+	sha256sums = 037292e5878197a269682c03fb29586fa0fd3098edf1fa919f375047eff093c1
+
+pkgname = pulsar-mouse-linux-bin
