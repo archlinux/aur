@@ -1,0 +1,19 @@
+pkgbase = sshocker-bin
+	pkgdesc = SSH with reverse sshfs and port forwarding in a Docker-like CLI
+	pkgver = 0.3.11
+	pkgrel = 1
+	url = https://github.com/lima-vm/sshocker
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = sshocker
+	conflicts = sshocker
+	options = !debug
+	source = sshocker-bin-0.3.11-LICENSE::https://raw.githubusercontent.com/lima-vm/sshocker/v0.3.11/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = sshocker-bin-0.3.11-x86_64::https://github.com/lima-vm/sshocker/releases/download/v0.3.11/sshocker-Linux-x86_64
+	sha256sums_x86_64 = 9e2a8437640abad8533e6246bd042670f8f927e3a883b85a1392129bfef6e843
+	source_aarch64 = sshocker-bin-0.3.11-aarch64::https://github.com/lima-vm/sshocker/releases/download/v0.3.11/sshocker-Linux-aarch64
+	sha256sums_aarch64 = 7f35ca1cbf13483cad882ea85d29c8e84f2530e4a0ad62c1bd31a90a53ead49f
+
+pkgname = sshocker-bin
