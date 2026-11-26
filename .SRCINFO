@@ -1,0 +1,17 @@
+pkgbase = komoplane-bin
+	pkgdesc = Crossplane troubleshooting tool
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/komodorio/komoplane
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = komoplane
+	conflicts = komoplane
+	options = !debug
+	source_x86_64 = komoplane-bin-0.2.1-x86_64.tar.gz::https://github.com/komodorio/komoplane/releases/download/0.2.1/komoplane_0.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 06ed121c646c57a22b7c7c41343a8f4e87392c77b937d493174aa087cd037011
+	source_aarch64 = komoplane-bin-0.2.1-aarch64.tar.gz::https://github.com/komodorio/komoplane/releases/download/0.2.1/komoplane_0.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 14506a180de4d52d1c47c4b83505e25c3c2c1e11121eea6e2ad2993ff44dfdc0
+
+pkgname = komoplane-bin
