@@ -2,8 +2,8 @@
 pkgname=cosmic-ext-manager-bin
 _pkgname=cosmic-ext-manager
 pkgver=0.1.1
-pkgrel=1
-pkgdesc='Browse, install, update and remove community COSMIC extensions (prebuilt binary)'
+pkgrel=2
+pkgdesc="DEPRECATED: renamed to cosmic-applet-manager-bin"
 arch=('x86_64')
 url='https://github.com/kevinRForshey/CosmicExtensionManager'
 license=('Apache-2.0')
