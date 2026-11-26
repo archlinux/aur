@@ -1,5 +1,5 @@
 pkgname=sdroxide
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Powerful SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (native RTL-SDR/RX-888/CAT/etc backends, no SoapySDR)"
 arch=('x86_64' 'aarch64')
@@ -69,7 +69,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "xng-$_xng_commit.tar.gz::https://github.com/airframesio/xng/archive/$_xng_commit.tar.gz"
         "mercury-$_mercury_commit.tar.gz::https://github.com/Rhizomatica/mercury/archive/$_mercury_commit.tar.gz"
         "data2g-$_data2g_commit.tar.gz::https://github.com/arodland/Data2G/archive/$_data2g_commit.tar.gz")
-sha256sums=('2d2d66c0004bbd34c11960e16216bc6475c5d9ee96a702e7e8bfa273d66b1f94'
+sha256sums=('1c2ebd30ac4a08b6573495b90e9b247fea8c63ac7644a6d6f58904093ef6931a'
             'eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd'
             '6e164f38216f46f1d08494c2adeaa7c72d7f3d5456e0b8c5ae424159d7051753'
             '98725cefc915771f00ffd0286901c865e7d3fd0e5ff6b98d004d6f48904776f9'
