@@ -7,7 +7,7 @@ _execname=ff
 pkgname=${_appname}-bin
 pkgdesc="Fast TUI file finder built in Rust — global & local search, open in editor, copy paths, and more"
 
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,7 +28,7 @@ depends=('glibc' 'libgcc')
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_execname}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('a3a5783a9f37eb69ede90993a3b631e6a5f1340d9be421bdf91d4606f68e5ccf')
+sha256sums_x86_64=('0e048d0fce0aaa196b632f23dda510754f1bd8ffc2d3b9ad430294418705a6a5')
 
 
 case ${CARCH} in
