@@ -2,7 +2,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=qui
-pkgver=1.36.1
+pkgver=1.37.0
 pkgrel=1
 pkgdesc="A fast, modern web interface for qBittorrent"
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(git+"${url}".git#tag=v"${pkgver}"
 	"${pkgname}.service"
 	"${pkgname}.sysusers"
 	"${pkgname}.tmpfiles")
-sha256sums=('7dfa4754876446e8ad02e888f76ef6e0084f25429db788bc346f9df7079afc9c'
+sha256sums=('730a183002ae50c153c9d1a8e4e1215b7f6e91ae26d1006667804c3bdccb0492'
             'f9f478c29d18cadb7a58b421c7c65711bc612822e32077c19849e473cc269e6b'
             '149029ffcc078976e0ac6cd1f002b25221bb1561a1c979362dc27d9e6ad5dda3'
             '3bacde8867fbb7b6d566666b635589579c1cc079cd23418284f43a7b37f0c41b')

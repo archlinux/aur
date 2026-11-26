@@ -1,6 +1,6 @@
 pkgbase = qui
 	pkgdesc = A fast, modern web interface for qBittorrent
-	pkgver = 1.36.1
+	pkgver = 1.37.0
 	pkgrel = 1
 	url = https://github.com/autobrr/qui
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = qui
 	makedepends = nodejs
 	makedepends = pnpm
 	depends = glibc
-	source = git+https://github.com/autobrr/qui.git#tag=v1.36.1
+	source = git+https://github.com/autobrr/qui.git#tag=v1.37.0
 	source = qui.service
 	source = qui.sysusers
 	source = qui.tmpfiles
-	sha256sums = 7dfa4754876446e8ad02e888f76ef6e0084f25429db788bc346f9df7079afc9c
+	sha256sums = 730a183002ae50c153c9d1a8e4e1215b7f6e91ae26d1006667804c3bdccb0492
 	sha256sums = f9f478c29d18cadb7a58b421c7c65711bc612822e32077c19849e473cc269e6b
 	sha256sums = 149029ffcc078976e0ac6cd1f002b25221bb1561a1c979362dc27d9e6ad5dda3
 	sha256sums = 3bacde8867fbb7b6d566666b635589579c1cc079cd23418284f43a7b37f0c41b
