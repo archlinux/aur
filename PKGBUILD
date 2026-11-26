@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatialDE
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='R wrapper for SpatialDE'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('37a85a597aa1268006f631ff4ccfe5a7aca12cdd5d1fa1dba85eccffda011bd2')
+sha256sums=('9672773d2e605a6c509493c3e685167fa5c19dd4359047f94a693c414bb00733')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
