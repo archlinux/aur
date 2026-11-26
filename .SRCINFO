@@ -1,13 +1,13 @@
 pkgbase = r-ntw
 	pkgdesc = Predict gene network using an Ordinary Differential Equation (ODE) based method
-	pkgver = 1.62.0
+	pkgver = 1.64.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NTW
 	arch = any
 	license = GPL-2.0-only
 	depends = r-mvtnorm
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NTW_1.62.0.tar.gz
-	md5sums = 2c38a4a3b187c78d2219b8c7e5a482b5
-	b2sums = 3936e1b59ddf792c6e706719b570d5e844b4f67f845117677dfa5331b2efd84a0bd9c8b21d7fa65964e47de1e98dbed1bc965c04cf9855be213c2f0022220262
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NTW_1.64.0.tar.gz
+	md5sums = 3d884c8d7b01d248e7ba3333c33a6e76
+	b2sums = be41f60b524b556e691fb9124f1b3fe9143c1b5f4db42ccae5a56702a31314c02c405733e38572b29a74be69dae19bc64a4509c7c1dd51458a3d662a461cc412
 
 pkgname = r-ntw
