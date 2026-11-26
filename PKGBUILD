@@ -1,10 +1,10 @@
 # Maintainer: Adityarup Laha <me@adityaruplaha.me>
 
 _pkgname=MSstatsBioNet
-_pkgver=1.4.1
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Network Analysis for MS-based Proteomics Experiments"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('178da22bd6d5aff119f8523c7deb1110')
-b2sums=('e0e9ab7581716a455ee4dc362cf64a8e4f36da2d52899509e2662df777c13e5c1769273d44185f9ed92d97a3889621046bac2eda904200a25375fd0be81656a2')
+md5sums=('56fdfe2f67ac352dd22d2cfbc606d9ec')
+b2sums=('7540728edb42aabd445e58447781f3a6b133e8a10c25e67a4a87d94eba067aeb05abcedb157e6db19f66900182e97d14079fa5fe8a2c631b0b184a47597334e8')
 
 build() {
   mkdir build
