@@ -1,7 +1,7 @@
 # Maintainer: illusory <becomeillusory@gmail.com>
 # 自用维护：仅信任官方 GitHub release 资产，sha256 锁定官方 SHA256SUMS.txt。
 pkgname=deckcraft-private-bin
-pkgver=0.18.1
+pkgver=0.19.1
 pkgrel=4
 pkgdesc='自用维护：开源 clean-room 版 PowerPoint 替代（演示文稿），上游 storytold/deckcraft'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=('alsa-lib: sound support'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
 source=("${_gh_mirror}https://github.com/storytold/deckcraft/releases/download/v${pkgver}/deckcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
-sha256sums=('ecd7d10ac3792ea9e0949baab81c264b2fe615d5c1e2b5a85b9611ac9c7d4d1b')
+sha256sums=('081072ab8ba83c0eef63980b692f99b545d44581933c53934ec2a53d5cbe9d77')
 
 package() {
   bsdtar -xf "$srcdir/deckcraft-$pkgver-linux-x86_64.pkg.tar.zst" \
