@@ -1,26 +1,26 @@
 pkgbase = thoughts-bin
 	pkgdesc = A relatively powerful web mind map.一个还算强大的Web思维导图.
-	pkgver = 0.21.0
+	pkgver = 0.21.1
 	pkgrel = 1
 	url = https://wanglin2.github.io/mind-map/#/index
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	depends = electron23
-	provides = thoughts=0.21.0
+	depends = electron23-bin
+	provides = thoughts=0.21.1
 	conflicts = thoughts
-	source = LICENSE-0.21.0::https://raw.githubusercontent.com/wanglin2/mind-map/0.21.0/LICENSE
+	source = LICENSE-0.21.1::https://raw.githubusercontent.com/wanglin2/mind-map/0.21.1/LICENSE
 	source = thoughts.js
 	source = thoughts.sh
 	sha256sums = 8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7
-	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
-	source_aarch64 = thoughts-0.21.0-aarch64.deb::https://github.com/wanglin2/mind-map/releases/download/0.21.0/thoughts_0.21.0_arm64.deb
-	sha256sums_aarch64 = 03cbd7fb23e7c526d1d32413bc4c4d2dfed0304b7d08e066ee8144027a2265e3
-	source_armv7h = thoughts-0.21.0-armv7h.deb::https://github.com/wanglin2/mind-map/releases/download/0.21.0/thoughts_0.21.0_armv7l.deb
-	sha256sums_armv7h = 52937e7e23c3b9d2b1418e4f937568c6bf3a7b2849f8883f3aeb6c63f8f37e50
-	source_x86_64 = thoughts-0.21.0-x86_64.deb::https://github.com/wanglin2/mind-map/releases/download/0.21.0/thoughts_0.21.0_amd64.deb
-	sha256sums_x86_64 = 72c63deb040bbe208a77b92c6ee28ff860b884b6fe663520a4ac92b3d38aa068
+	sha256sums = 03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86
+	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
+	source_aarch64 = thoughts-0.21.1-aarch64.deb::https://github.com/wanglin2/mind-map/releases/download/0.21.1/thoughts_0.21.1_arm64.deb
+	sha256sums_aarch64 = 8da5d351e224c909ddb8d368cedf5391f4e5c2253ac9c0e570b6b0e1f8667cba
+	source_armv7h = thoughts-0.21.1-armv7h.deb::https://github.com/wanglin2/mind-map/releases/download/0.21.1/thoughts_0.21.1_armv7l.deb
+	sha256sums_armv7h = 209ddcd34c7a819bb4d054c9d8c31b5bcc7781a03918886f245cee79773d2ab1
+	source_x86_64 = thoughts-0.21.1-x86_64.deb::https://github.com/wanglin2/mind-map/releases/download/0.21.1/thoughts_0.21.1_amd64.deb
+	sha256sums_x86_64 = b6a6c067dc4a97848041328a100c2dfbd2b440d51751a341df36017ab98b57fd
 
 pkgname = thoughts-bin
