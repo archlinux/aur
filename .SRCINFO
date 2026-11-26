@@ -1,0 +1,17 @@
+pkgbase = kubectl-foreach-bin
+	pkgdesc = Run kubectl commands across multiple contexts in parallel
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ahmetb/kubectl-foreach
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = kubectl-foreach
+	conflicts = kubectl-foreach
+	options = !debug
+	source_x86_64 = kubectl-foreach-bin-0.3.0-x86_64.tar.gz::https://github.com/ahmetb/kubectl-foreach/releases/download/v0.3.0/kubectl-foreach_v0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 34cd3dad24738d2c70f792be17c2731e4b46fe6a03209a42a08446d0c60d7ea1
+	source_aarch64 = kubectl-foreach-bin-0.3.0-aarch64.tar.gz::https://github.com/ahmetb/kubectl-foreach/releases/download/v0.3.0/kubectl-foreach_v0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = db293c0bfd485ee2ae2ce9300bc2a5aa9e9baa404ea853bf3e41b9d6e9feaae1
+
+pkgname = kubectl-foreach-bin
