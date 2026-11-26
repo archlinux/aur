@@ -1,0 +1,19 @@
+pkgbase = neva-bin
+	pkgdesc = Dataflow programming language with message-passing graphs that run in parallel by default
+	pkgver = 0.41.0
+	pkgrel = 1
+	url = https://github.com/nevalang/neva
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = neva
+	conflicts = neva
+	options = !debug
+	source = neva-bin-0.41.0-LICENSE::https://raw.githubusercontent.com/nevalang/neva/v0.41.0/LICENSE
+	sha256sums = d2416e11c5655e4f07ac92d6dc7dda5bbfdd5bb40e24f0ebbecf20bbc1f233f0
+	source_x86_64 = neva-bin-0.41.0-x86_64::https://github.com/nevalang/neva/releases/download/v0.41.0/neva-linux-amd64
+	sha256sums_x86_64 = 1a14dc4e68253936a6181136aac3b2f3ad19a6e51958985ea3e109683dcee26a
+	source_aarch64 = neva-bin-0.41.0-aarch64::https://github.com/nevalang/neva/releases/download/v0.41.0/neva-linux-arm64
+	sha256sums_aarch64 = b3307336aadfc158007e2e02782cfdd66f1eb19f2f0f1b4c1c5deb8454a66d11
+
+pkgname = neva-bin
