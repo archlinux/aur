@@ -1,7 +1,7 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=AnVILBase
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b59133c286cd7c4a4385b74675aad9c2')
-b2sums=('3aab830ef9848043aa8e48c88a208be0bd34dc095510c63620ef657ed600a3627c232315189af3d31d9304000e78ec9a80e520ea02ff68b8e779a3eedb41a88d')
+md5sums=('41196ce60d132c5fc146eae585603097')
+b2sums=('3ff5c0044c28b524226ae2bd859ae7d7cb19e0f5b05bf5e02475c8e56a0a00fdc1a77ff4b1f6c8ad671b31698a8c1945cfdbe9bfd26a63fa2c2a7af97fa67efc')
 
 build() {
   mkdir build
