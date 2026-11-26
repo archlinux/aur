@@ -4,7 +4,7 @@
 # C++ math library (blaze-lib); extra/blaze is header-only and installs no executables, so
 # /usr/bin/blaze is free and this package neither provides nor conflicts with `blaze`.
 pkgname=blaze-bin
-pkgver=0.20261027.0
+pkgver=0.20261122.0
 pkgrel=1
 pkgdesc="Incremental Rust build engine that rebuilds only what an edit changed"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ options=('!debug')
 # the release's published SHA256SUMS, the only way to have it on an x86_64 build host
 source_x86_64=("blaze-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/indexable-inc/blaze/releases/download/v${pkgver}/blaze-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("blaze-${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/indexable-inc/blaze/releases/download/v${pkgver}/blaze-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('df61ce6d8216087a40e986d4f84cf2a230638bde014e38519e08b50282e90e5d')
-sha256sums_aarch64=('5fcc6c37e375be244d4d64a293d1f1574834fbfd3036d113fd886ca632f964ff')
+sha256sums_x86_64=('45d5e42537f84a02146921f5dc8ad6ee0bea4db3cba610e597f8daef2ae0e1c9')
+sha256sums_aarch64=('f6be8678acd5d471c13a8d473f14cbb50daf978ad9e3a90845377d10797084de')
 
 # Releases are dated, 0.YYYYMMDD.N, and land on the canary channel first as GitHub
 # prereleases: /releases/latest is the newest one that passed the heavy tests

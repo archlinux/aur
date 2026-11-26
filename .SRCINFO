@@ -1,6 +1,6 @@
 pkgbase = blaze-bin
 	pkgdesc = Incremental Rust build engine that rebuilds only what an edit changed
-	pkgver = 0.20261027.0
+	pkgver = 0.20261122.0
 	pkgrel = 1
 	url = https://github.com/indexable-inc/blaze
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = blaze-bin
 	provides = blaze-engine
 	conflicts = blaze-engine
 	options = !debug
-	source_x86_64 = blaze-0.20261027.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/indexable-inc/blaze/releases/download/v0.20261027.0/blaze-v0.20261027.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = df61ce6d8216087a40e986d4f84cf2a230638bde014e38519e08b50282e90e5d
-	source_aarch64 = blaze-0.20261027.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/indexable-inc/blaze/releases/download/v0.20261027.0/blaze-v0.20261027.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 5fcc6c37e375be244d4d64a293d1f1574834fbfd3036d113fd886ca632f964ff
+	source_x86_64 = blaze-0.20261122.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/indexable-inc/blaze/releases/download/v0.20261122.0/blaze-v0.20261122.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 45d5e42537f84a02146921f5dc8ad6ee0bea4db3cba610e597f8daef2ae0e1c9
+	source_aarch64 = blaze-0.20261122.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/indexable-inc/blaze/releases/download/v0.20261122.0/blaze-v0.20261122.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f6be8678acd5d471c13a8d473f14cbb50daf978ad9e3a90845377d10797084de
 
 pkgname = blaze-bin
