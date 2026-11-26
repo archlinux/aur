@@ -1,0 +1,19 @@
+pkgbase = thingspanel-backend-community-bin
+	pkgdesc = Backend server for the ThingsPanel IoT platform
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/ThingsPanel/thingspanel-backend-community
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = thingspanel-backend-community
+	conflicts = thingspanel-backend-community
+	options = !debug
+	source = thingspanel-backend-community-bin-1.4.0-LICENSE::https://raw.githubusercontent.com/ThingsPanel/thingspanel-backend-community/v1.4.0/LICENSE
+	sha256sums = 4691ae29626cb29c623b497d2d7a727b4520d9a44c577053fec315e241ecfe04
+	source_x86_64 = thingspanel-backend-community-bin-1.4.0-x86_64.tar.gz::https://github.com/ThingsPanel/thingspanel-backend-community/releases/download/v1.4.0/thingspanel-backend-community-linux-amd64.tar.gz
+	sha256sums_x86_64 = 54f8220c8e91662f2ccfe57fa638164e335bf11ffc79cb04cfbfdd8325300ed7
+	source_aarch64 = thingspanel-backend-community-bin-1.4.0-aarch64.tar.gz::https://github.com/ThingsPanel/thingspanel-backend-community/releases/download/v1.4.0/thingspanel-backend-community-linux-arm64.tar.gz
+	sha256sums_aarch64 = 252bef474e5f2d462dcae7c6a43dd26f5299131fc4e1327d42804da41e40535f
+
+pkgname = thingspanel-backend-community-bin
