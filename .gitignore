@@ -1,0 +1,8 @@
+# Only the package recipe files are tracked in the AUR git repository.
+# Everything else (downloaded sources, build tree, built packages) stays out.
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!LICENSE
+!kwin-6.8-paint-returns-bool.patch

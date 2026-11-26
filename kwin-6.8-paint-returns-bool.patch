@@ -1,0 +1,129 @@
+diff --git a/kwin-snow-0.3.2/CMakeLists.txt b/kwin-snow-0.3.2/CMakeLists.txt
+index 299121a..5a49420 100644
+--- a/kwin-snow-0.3.2/CMakeLists.txt
++++ b/kwin-snow-0.3.2/CMakeLists.txt
+@@ -82,6 +82,14 @@ set(SNOW_CONFIG_INSTALL_DIR "${SNOW_QT_PLUGIN_DIR}/kwin/effects/configs")
+ 
+ add_subdirectory(src)
+ 
++# KWin 6.8 changed the paint* virtuals (and the EffectHandler pass-throughs)
++# from void to bool, where false means the paint failed (e.g. a GPU reset) and
++# the effect must stop rendering. Tell the effect which API generation it is
++# building against so its signatures match the base class.
++if(KWin_VERSION VERSION_GREATER_EQUAL 6.8.0)
++    target_compile_definitions(snow PRIVATE SNOW_KWIN_PAINT_RETURNS_BOOL)
++endif()
++
+ # CTest defines BUILD_TESTING, defaulting to ON. Qt6::Test is only looked for
+ # when it is actually going to be used, so building the effect never needs it.
+ include(CTest)
+diff --git a/kwin-snow-0.3.2/src/snoweffect.cpp b/kwin-snow-0.3.2/src/snoweffect.cpp
+index d6efd4b..29e240b 100644
+--- a/kwin-snow-0.3.2/src/snoweffect.cpp
++++ b/kwin-snow-0.3.2/src/snoweffect.cpp
+@@ -220,8 +220,13 @@ void SnowEffect::prePaintScreen(KWin::ScreenPrePaintData &data)
+     prePaintScreen(data, monotonicMilliseconds());
+ }
+ 
++#ifdef SNOW_KWIN_PAINT_RETURNS_BOOL
++bool SnowEffect::paintScreen(const KWin::RenderTarget &renderTarget, const KWin::RenderViewport &viewport,
++                             int mask, const KWin::Region &deviceRegion, KWin::LogicalOutput *screen)
++#else
+ void SnowEffect::paintScreen(const KWin::RenderTarget &renderTarget, const KWin::RenderViewport &viewport,
+                              int mask, const KWin::Region &deviceRegion, KWin::LogicalOutput *screen)
++#endif
+ {
+     // The ground Catcher is per output, and its Cap goes down in paintWindow,
+     // which is not told which output it is painting; prePaintScreen kept it.
+@@ -241,7 +246,13 @@ void SnowEffect::paintScreen(const KWin::RenderTarget &renderTarget, const KWin:
+     // enabled Catcher class is Solid, so no Flake is ever behind a window to
+     // begin with (ADR-0003). The Caps are drawn from inside this call, each in
+     // its own Catcher's pass.
++#ifdef SNOW_KWIN_PAINT_RETURNS_BOOL
++    if (!KWin::effects->paintScreen(renderTarget, viewport, mask, deviceRegion, screen)) {
++        return false;
++    }
++#else
+     KWin::effects->paintScreen(renderTarget, viewport, mask, deviceRegion, screen);
++#endif
+ 
+     // The Flakes of this output and no others. A Flake belongs to one Snowfall
+     // for the whole of its life and never crosses to another (spec: Rendering),
+@@ -250,6 +261,9 @@ void SnowEffect::paintScreen(const KWin::RenderTarget &renderTarget, const KWin:
+         m_flakePainter->paint(renderTarget, viewport, snowfall->flakes(),
+                               m_settings.flakeStyle, m_paintedRegion);
+     }
++#ifdef SNOW_KWIN_PAINT_RETURNS_BOOL
++    return true;
++#endif
+ }
+ 
+ void SnowEffect::prePaintWindow(KWin::RenderView *view, KWin::EffectWindow *w,
+@@ -274,11 +288,23 @@ void SnowEffect::prePaintWindow(KWin::RenderView *view, KWin::EffectWindow *w, K
+     prePaintWindow(view, w, data, monotonicMilliseconds());
+ }
+ 
++#ifdef SNOW_KWIN_PAINT_RETURNS_BOOL
++bool SnowEffect::paintWindow(const KWin::RenderTarget &renderTarget, const KWin::RenderViewport &viewport,
++                             KWin::EffectWindow *w, int mask, const KWin::Region &deviceRegion,
++                             KWin::WindowPaintData &data)
++#else
+ void SnowEffect::paintWindow(const KWin::RenderTarget &renderTarget, const KWin::RenderViewport &viewport,
+                              KWin::EffectWindow *w, int mask, const KWin::Region &deviceRegion,
+                              KWin::WindowPaintData &data)
++#endif
+ {
++#ifdef SNOW_KWIN_PAINT_RETURNS_BOOL
++    if (!KWin::effects->paintWindow(renderTarget, viewport, w, mask, deviceRegion, data)) {
++        return false;
++    }
++#else
+     KWin::effects->paintWindow(renderTarget, viewport, w, mask, deviceRegion, data);
++#endif
+ 
+     // The ground's Cap lies on the desktop: over the wallpaper and under every
+     // window. The wallpaper is itself a window -- plasmashell's desktop window,
+@@ -304,6 +330,9 @@ void SnowEffect::paintWindow(const KWin::RenderTarget &renderTarget, const KWin:
+                             viewport.projectionMatrix() * data.toMatrix(viewport.scale()),
+                             *catcher, m_settings, data.opacity(), m_paintedRegion);
+     }
++#ifdef SNOW_KWIN_PAINT_RETURNS_BOOL
++    return true;
++#endif
+ }
+ 
+ const Catcher *SnowEffect::cappedCatcher(KWin::EffectWindow *window) const
+diff --git a/kwin-snow-0.3.2/src/snoweffect.h b/kwin-snow-0.3.2/src/snoweffect.h
+index 2d5209d..eb61517 100644
+--- a/kwin-snow-0.3.2/src/snoweffect.h
++++ b/kwin-snow-0.3.2/src/snoweffect.h
+@@ -96,8 +96,13 @@ public:
+      * which is the same point in the frame; it is here because this is the call
+      * KWin hands a render target and a viewport to.
+      */
++#ifdef SNOW_KWIN_PAINT_RETURNS_BOOL
++    bool paintScreen(const KWin::RenderTarget &renderTarget, const KWin::RenderViewport &viewport,
++                     int mask, const KWin::Region &deviceRegion, KWin::LogicalOutput *screen) override;
++#else
+     void paintScreen(const KWin::RenderTarget &renderTarget, const KWin::RenderViewport &viewport,
+                      int mask, const KWin::Region &deviceRegion, KWin::LogicalOutput *screen) override;
++#endif
+ 
+     /**
+      * Stops the window about to be painted from claiming to be opaque up to
+@@ -125,9 +130,15 @@ public:
+      * The ground's Cap is drawn here too, just after the wallpaper, which is
+      * the one point in a frame that is over the desktop and under every window.
+      */
++#ifdef SNOW_KWIN_PAINT_RETURNS_BOOL
++    bool paintWindow(const KWin::RenderTarget &renderTarget, const KWin::RenderViewport &viewport,
++                     KWin::EffectWindow *w, int mask, const KWin::Region &deviceRegion,
++                     KWin::WindowPaintData &data) override;
++#else
+     void paintWindow(const KWin::RenderTarget &renderTarget, const KWin::RenderViewport &viewport,
+                      KWin::EffectWindow *w, int mask, const KWin::Region &deviceRegion,
+                      KWin::WindowPaintData &data) override;
++#endif
+ 
+     /**
+      * Reports the frame to the FrameClock of the output it was for, which is
