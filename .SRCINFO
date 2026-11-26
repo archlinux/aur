@@ -1,6 +1,6 @@
 pkgbase = pi-ui-bin
 	pkgdesc = Use pi-ui in your browser
-	pkgver = 0.72.1
+	pkgver = 0.73.0
 	pkgrel = 1
 	url = https://github.com/hyperpuncher/pi-ui
 	arch = x86_64
@@ -8,14 +8,14 @@ pkgbase = pi-ui-bin
 	license = MIT
 	depends = glibc
 	depends = libgcc
-	provides = pi-ui=0.72.1
+	provides = pi-ui=0.73.0
 	conflicts = pi-ui
 	options = !strip
 	source = LICENSE
 	sha256sums = 6b7faf66323093e92a63a7d6d0cd20ef3718b77a2192e06cb00466fe870f14cf
-	source_x86_64 = pi-ui-bin-0.72.1-x86_64.tar.zst::https://github.com/hyperpuncher/pi-ui/releases/download/v0.72.1/pi-ui-linux-x64.tar.zst
-	sha256sums_x86_64 = 3008af736755108f06e190a090de74b938286999d9c1bc24df59fdd64952bc1c
-	source_aarch64 = pi-ui-bin-0.72.1-aarch64.tar.zst::https://github.com/hyperpuncher/pi-ui/releases/download/v0.72.1/pi-ui-linux-arm64.tar.zst
-	sha256sums_aarch64 = 3bdead17708c1a6b67ab7b72ac84cba9a766b5a552cc859bfec9f09420cf5ad6
+	source_x86_64 = pi-ui-bin-0.73.0-x86_64.tar.zst::https://github.com/hyperpuncher/pi-ui/releases/download/v0.73.0/pi-ui-linux-x64.tar.zst
+	sha256sums_x86_64 = 0490a1ba54aebcfc46701e1a723fc962be0b65c6ba071512bfe740d141587740
+	source_aarch64 = pi-ui-bin-0.73.0-aarch64.tar.zst::https://github.com/hyperpuncher/pi-ui/releases/download/v0.73.0/pi-ui-linux-arm64.tar.zst
+	sha256sums_aarch64 = 78e5121bf2f3c72302a806d6f0bc0a9dce0cd3a7170b903a2864cb2eac5cedb9
 
 pkgname = pi-ui-bin
