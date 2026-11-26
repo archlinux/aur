@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lpNet
-_pkgver=2.44.0
+_pkgver=2.46.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-lpsolve
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0df5420893c41402ec99789f6edaec0c')
-b2sums=('003c3d3d462b02a50530c6eec1c2ea3dd4804c3d0c803aa23acad1b5c791ab713032fff1dc24850575dec94669bb72bdd7b6f0eafb186fc7b0c26d6fd40876c3')
+md5sums=('8e09513685f8ab85e406d678bad25c83')
+b2sums=('70a8cc7847d7bbfe06a060ae5cd4e4273ee87a940c37cc6fe2dec418dafb17bbd3a6ccf189397e1d61b644e9a864bd9da9e83971314151e5f25de0e7b666ce52')
 
 build() {
   mkdir build
