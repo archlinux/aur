@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.4.10
+pkgver=0.4.11
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults: Hornero Signal themes, compositor, terminal, GTK/Qt, fonts, XDG handlers"
 arch=('any')
@@ -65,7 +65,7 @@ optdepends=(
 # AUR chroot builds identical to local packaging/ builds.
 install=hornero-config.install
 backup=('etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf')
-source=("config::git+https://github.com/HorneroOS/config.git#commit=59dfd26e2e65eeac66b53fcfc299df034e3a6c8b")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=72f2463664c5162043d9df7261726e884ef8ab06")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -264,7 +264,7 @@ package() {
   # Stage the canonical Hornero data and configuration paths.
   mkdir -p "$pkgdir/usr/share/hornero/lib"
   cp -a "$stage/.local/lib/hornero" "$pkgdir/usr/share/hornero/lib/hornero"
-  cp -a "$stage/.local/bin"/hornero-* "$pkgdir/usr/share/hornero/bin/"
+  cp -aL "$stage/.local/bin"/hornero-* "$pkgdir/usr/share/hornero/bin/"
   mkdir -p "$pkgdir/usr/share/hornero/themes"
   cp -a "$stage/.local/share/hornero/themes/." "$pkgdir/usr/share/hornero/themes/"
   # Hornero Chromatic: first-party app templates rendered by horneroctl
