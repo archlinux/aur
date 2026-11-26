@@ -1,0 +1,15 @@
+pkgbase = argocd-lovely-plugin-bin
+	pkgdesc = Argo CD plugin that combines Helm, Kustomize and other tools
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/crumbhole/argocd-lovely-plugin
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = glibc
+	provides = argocd-lovely-plugin
+	conflicts = argocd-lovely-plugin
+	options = !debug
+	source_x86_64 = argocd-lovely-plugin-bin-2.0.0-x86_64.tar.gz::https://github.com/crumbhole/argocd-lovely-plugin/releases/download/v2.0.0/argocd-lovely-plugin-v2.0.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 7f3d3b9cc772c80460de446580d035dd2ca379c97a8c7e9581ab9489fb55947e
+
+pkgname = argocd-lovely-plugin-bin
