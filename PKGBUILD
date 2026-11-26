@@ -1,6 +1,6 @@
 # Maintainer: Sofian Jafar <skjafar@gmail.com>
 pkgname=dshub-bin
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Native desktop application for monitoring and controlling industrial devices via TCP/UDP"
 arch=('x86_64')
@@ -26,8 +26,8 @@ source=(
     "dshub-${pkgver}-linux.tar.gz::${url}/releases/download/v${pkgver}/dshub-linux.tar.gz"
     "dshub-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('7b81cac0a0ca669c3bdeded11e06955013cd23d3fe6db22d70aecc75fb52ca65'
-            'ca733a4b7681f509e370c0771334ad01c876ba5bfc7bbdf6a145d47abbe7dc96')
+sha256sums=('2ae14378e70ae585b90e87c6fade873ec1993761c677d6d3acd7d6ba02241fea'
+            '680e0e2b426f36a72a2b789c0d6437c2c917ce2f13c3d3090017c4405b4dfed5')
 
 package() {
     install -Dm755 "${srcdir}/dshub" "${pkgdir}/usr/bin/dshub"
