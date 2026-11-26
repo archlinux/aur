@@ -1,8 +1,8 @@
 # Maintainer: Thomas Weißschuh <aur t-8ch de>
 
 pkgname=mpdris2
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="MPRIS2 support for MPD"
 url="https://github.com/eonpatapon/mpDris2"
 arch=(any)
@@ -13,16 +13,8 @@ optdepends=(
   'python-mutagen: read covers from music files'
   'libnotify: notifications on track change'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eonpatapon/mpDris2/archive/${pkgver}.tar.gz"
-	798b410a286879801ecebbf165273c4105ed07c9.patch)
-sha256sums=('d0f0467841e7866310cff44a1063334a9c776a64fd594815d926670b765fbee6'
-            '36feedf56cda2d064e379512df717fc1a4a0104e05f7913140cd9ad1acd3fff0')
-
-prepare() {
-	cd "${srcdir}/mpDris2-${pkgver}"
-
-	patch -p1 < "${srcdir}/798b410a286879801ecebbf165273c4105ed07c9.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eonpatapon/mpDris2/archive/${pkgver}.tar.gz")
+sha256sums=('37aea1eb5beae03f4344593bf3e490cfa78ce8adc0a1882bac403ff3a35c633b')
 
 build() {
 	cd "${srcdir}/mpDris2-${pkgver}"
