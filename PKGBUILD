@@ -48,4 +48,9 @@ package() {
   # Upstream installs the license under the bare project name
   mv "${pkgdir}/usr/share/licenses/${_pkgname}" \
     "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  install -Dm644 "${_pkgname}/README.md" \
+    "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/examples" \
+    "${_pkgname}"/examples/*
 }
