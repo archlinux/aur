@@ -1,0 +1,20 @@
+pkgbase = iam-policy-autopilot-bin
+	pkgdesc = Static code analysis tool that generates baseline AWS IAM policies
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/awslabs/iam-policy-autopilot
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = iam-policy-autopilot
+	conflicts = iam-policy-autopilot
+	options = !debug
+	source = iam-policy-autopilot-bin-0.4.0-LICENSE::https://raw.githubusercontent.com/awslabs/iam-policy-autopilot/0.4.0/LICENSE
+	sha256sums = 09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b
+	source_x86_64 = iam-policy-autopilot-bin-0.4.0-x86_64.tar.gz::https://github.com/awslabs/iam-policy-autopilot/releases/download/0.4.0/iam-policy-autopilot-0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 737de8c943e3acbf7ae8ef43a655b4b613324a6839aaf1e3e2232859f3caa190
+	source_aarch64 = iam-policy-autopilot-bin-0.4.0-aarch64.tar.gz::https://github.com/awslabs/iam-policy-autopilot/releases/download/0.4.0/iam-policy-autopilot-0.4.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 036bd80f552e99469e70b8e614dc6d40df4c3f7e7b78465a6b2fc13d79be17fc
+
+pkgname = iam-policy-autopilot-bin
