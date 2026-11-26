@@ -1,7 +1,7 @@
 # Maintainer: maria-rcks <maria at kuuro dot net>
 
 pkgname=t3code-bin
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc='Desktop control surface for local coding agents'
 arch=('x86_64' 'aarch64')
@@ -49,9 +49,9 @@ _asset_aarch64="T3-Code-arm64.AppImage"
 source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v${pkgver}/LICENSE")
 sha256sums=('935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43') # upstream license
 source_x86_64=("T3-Code-${pkgver}-x86_64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v${pkgver}/$_asset_x86_64")
-sha256sums_x86_64=('66b91551571df6d29b55cb590295edf411cff96c95a8feb3f41c3ca595d722e2')
+sha256sums_x86_64=('dac1bbe9e93c1a5fb0942332befa998597f6a086232a87766ef5d8235a44f56d')
 source_aarch64=("T3-Code-${pkgver}-arm64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v${pkgver}/$_asset_aarch64")
-sha256sums_aarch64=('6a004d5da562ec25d147ddf4ae577ed66e3d052b68954e455a178297a83bd8fa')
+sha256sums_aarch64=('47156eade4d3e8c635554f859a590e15614d63b6d9792dd7684bdecae365ec41')
 
 prepare() {
   chmod +x "$srcdir/$_appimage"
