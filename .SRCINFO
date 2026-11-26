@@ -1,6 +1,6 @@
 pkgbase = qoderwake-bin
 	pkgdesc = QoderWake local CLI and daemon (official prebuilt Linux runtime)
-	pkgver = 1.2.23
+	pkgver = 1.2.25
 	pkgrel = 1
 	url = https://qoder.com/
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = qoderwake-bin
 	depends = glibc
 	depends = python
 	optdepends = xdg-utils: open the QoderWake console in the default browser
-	provides = qoderwake=1.2.23
+	provides = qoderwake=1.2.25
 	conflicts = qoderwake
 	options = !strip
 	options = !debug
-	source_x86_64 = qoderwake-1.2.23-linux-amd64.tar.gz::https://download.qoder.com/qoderwake/releases/1.2.23/qoderwake_1.2.23_linux_amd64.tar.gz
-	sha256sums_x86_64 = bba7a60ac40cc21ded3588fa6c6e13ef9d83ed92085206706e940e81b4dbf6a9
-	source_aarch64 = qoderwake-1.2.23-linux-arm64.tar.gz::https://download.qoder.com/qoderwake/releases/1.2.23/qoderwake_1.2.23_linux_arm64.tar.gz
-	sha256sums_aarch64 = bd2091b88a3da69110900734b569a531016da764d35d642df8d67abeab14244f
+	source_x86_64 = qoderwake-1.2.25-linux-amd64.tar.gz::https://download.qoder.com/qoderwake/releases/1.2.25/qoderwake_1.2.25_linux_amd64.tar.gz
+	sha256sums_x86_64 = e57936b2b4200b88bcfa9b9f7eb1222fe6b96a15588b68bab193a79227b69c4b
+	source_aarch64 = qoderwake-1.2.25-linux-arm64.tar.gz::https://download.qoder.com/qoderwake/releases/1.2.25/qoderwake_1.2.25_linux_arm64.tar.gz
+	sha256sums_aarch64 = f0266d4d3585a656bf562b047a59d829e8ad3dcfe277976c5ecb0eddf97c85cc
 
 pkgname = qoderwake-bin
