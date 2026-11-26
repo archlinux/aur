@@ -1,18 +1,18 @@
 pkgbase = gitify-bin
 	pkgdesc = GitHub notifications on your menu bar.
-	pkgver = 8.2.0
+	pkgver = 8.3.0
 	pkgrel = 1
 	url = https://www.gitify.io/
 	arch = x86_64
 	license = MIT
 	depends = electron45
-	source = gitify-8.2.0.deb::https://github.com/gitify-app/gitify/releases/download/v8.2.0/gitify_8.2.0_amd64.deb
-	source = LICENSE-8.2.0::https://raw.githubusercontent.com/gitify-app/gitify/v8.2.0/LICENSE
+	source = gitify-8.3.0.deb::https://github.com/gitify-app/gitify/releases/download/v8.3.0/gitify_8.3.0_amd64.deb
+	source = LICENSE-8.3.0::https://raw.githubusercontent.com/gitify-app/gitify/v8.3.0/LICENSE
 	source = gitify.js
 	source = gitify.sh
-	sha256sums = 48ca23c9f4d31c0de2bbfa0d23d9154a56a1629febd19a0788b43e694e8100b7
+	sha256sums = d53642d64d4aaffff192eff8a8743f03a22f8340508c68f84fc9a4e8a00992a6
 	sha256sums = e3583a920d79b28287ca8bf4b021c6cbeba746a75073c0c68b0aa64ff0b38961
-	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	sha256sums = 03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86
+	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
 
 pkgname = gitify-bin
