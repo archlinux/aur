@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=affyio
-_pkgver=1.82.0
+_pkgver=1.84.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   zlib
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4864c8ca59b42938b313c995e6760156')
-b2sums=('282bb6253d2485acb014abce7da15ff80fef1233f2a8b1ec6e0e6a76ea3890c970573fbb47206d2752d8f7882fd8e1073ab580e5a76758cd0579dc698e35ac29')
+md5sums=('7d999471a037a7e967859f69bfb6603c')
+b2sums=('9078ff3880f1eeae16e9df572ce90f8df409868406da7222d305a51b625368a4fb445da94693f15cb58ca3adeab630813a8dc60def071e7b9482ff329ebf5ef9')
 
 build() {
   mkdir build
