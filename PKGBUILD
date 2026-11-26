@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=factDesign
-_pkgver=1.88.0
+_pkgver=1.90.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-multtest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('63744ad2a9a346a5f239b94940d895b1')
-b2sums=('2a2b9a227af5c0254f697aa99b6fa5b5ed17b2db414825e4a4a06dfe4c4ecc4b0d9b353d6ddaba5337d20c02e4726de7b815985669034e6c48aa84401fa3abb2')
+md5sums=('a6b048a6302efbea3b9201398b49f88a')
+b2sums=('6c61f7eabb3689c8669dd5a3c3363876f37a7cab02e5c3b297f5c316f3d4eb8399e7fa8e017b2bbd59676c44dab3ec0f7f5617bd8d1c206acee5287cf4bb56e2')
 
 build() {
   mkdir build
