@@ -1,6 +1,6 @@
 pkgbase = r-tximport
 	pkgdesc = Import and summarize transcript-level estimates for transcript- and gene-level analysis
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tximport
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = r-tximport
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	optdepends = r-tximportdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tximport_1.40.0.tar.gz
-	md5sums = deddabdf258dee9e734e50d215690cfd
-	b2sums = c26bbf0546da8b5869f050cf360b8121bd29c0845d5b87725f3e0c898980199d4588283aa3911da0d6424f2c39e9951e6a7230e5e437cba121b82382b37a080e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tximport_1.42.0.tar.gz
+	md5sums = f97c0a63a277b9547d2d52d3c7066a7b
+	b2sums = 9e371fbea849fc1fe4eb4951949a1c8d2d67c1a4b294315fc1a02576c0306c02dc2fab30b1d57cfa889bd96c132cdeba1e36cf12fc77f020a2a2a395670b83ff
 
 pkgname = r-tximport

@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tximport
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-tximportdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('deddabdf258dee9e734e50d215690cfd')
-b2sums=('c26bbf0546da8b5869f050cf360b8121bd29c0845d5b87725f3e0c898980199d4588283aa3911da0d6424f2c39e9951e6a7230e5e437cba121b82382b37a080e')
+md5sums=('f97c0a63a277b9547d2d52d3c7066a7b')
+b2sums=('9e371fbea849fc1fe4eb4951949a1c8d2d67c1a4b294315fc1a02576c0306c02dc2fab30b1d57cfa889bd96c132cdeba1e36cf12fc77f020a2a2a395670b83ff')
 
 build() {
   mkdir build
