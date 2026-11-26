@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=scopebuddy
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Manager script to make Gamescope easier to use on desktop"
 arch=('any')
 url="https://github.com/OpenGamingCollective/ScopeBuddy"
@@ -12,6 +12,7 @@ depends=(
   'gamescope'
   'jq'
   'perl'
+  'xorg-xwayland'
 )
 optdepends=(
   'kdialog: Error dialog on Plasma'
@@ -22,7 +23,7 @@ optdepends=(
   'zenity: Error dialog on GTK-based systems'
 )
 source=("ScopeBuddy-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('151eaaee947aa3cdcd0cc8bc02269b127efee4be3cbcf8cbc395efb7678bee7b')
+sha256sums=('48614879ffe0f4a412e17ad5b7ba2e2c3c7cbbe56bfab36353b652886c645676')
 
 package() {
   cd "ScopeBuddy-$pkgver"

@@ -1,7 +1,7 @@
 pkgbase = scopebuddy
 	pkgdesc = Manager script to make Gamescope easier to use on desktop
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://github.com/OpenGamingCollective/ScopeBuddy
 	arch = any
 	license = Apache-2.0
@@ -10,13 +10,14 @@ pkgbase = scopebuddy
 	depends = gamescope
 	depends = jq
 	depends = perl
+	depends = xorg-xwayland
 	optdepends = kdialog: Error dialog on Plasma
 	optdepends = libkscreen: Display detection via kscreen-doctor on Plasma
 	optdepends = libnotify: Last resort fallback error dialog
 	optdepends = wlr-randr: Display detection with wlroots compositors
 	optdepends = xorg-xmessage: Fallback error dialog for basic X11 systems
 	optdepends = zenity: Error dialog on GTK-based systems
-	source = ScopeBuddy-1.5.0.tar.gz::https://github.com/OpenGamingCollective/ScopeBuddy/archive/refs/tags/1.5.0.tar.gz
-	sha256sums = 151eaaee947aa3cdcd0cc8bc02269b127efee4be3cbcf8cbc395efb7678bee7b
+	source = ScopeBuddy-1.5.1.tar.gz::https://github.com/OpenGamingCollective/ScopeBuddy/archive/refs/tags/1.5.1.tar.gz
+	sha256sums = 48614879ffe0f4a412e17ad5b7ba2e2c3c7cbbe56bfab36353b652886c645676
 
 pkgname = scopebuddy
