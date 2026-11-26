@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EBImage
-_pkgver=4.54.0
+_pkgver=4.56.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-shiny
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('61c2983805700e4358989257a802bd58')
-b2sums=('7526577f385a6e3af6d7127cb438113fb7ece66d2143574add2751c988bf783a65b65888c4911f357a1c384e4e6a15081d7035b0c7f1502bbf74d4b997199065')
+md5sums=('a917eb03ea7e8daf45232270c4933f40')
+b2sums=('1c0ae560baf33af841acf9363c3313968010ddbff5fca8414805bc4fd4ba263f6c2e1cc0241ada1de455ec38688d911622e74248921d0405a5405f2b87569acd')
 
 build() {
   mkdir build
