@@ -2,7 +2,7 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=8.2.0
+pkgver=8.3.0
 _electronversion=45
 _nodeversion=24
 pkgrel=1
@@ -28,14 +28,24 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('f21688e1421d6c61aca06f6efdb130c9f746bbbd3744c1e693acc95897713174'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+sha256sums=('55063bcfdc736915326d525cae00d19cc38176b55a2042ef789df6de58f99264'
+            '03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86'
+            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_project_dir() {
-	local d
-	while IFS= read -r d; do
-		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
-	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+	local _d _f _t _bt= _best= _bs=0
+	while IFS= read -r _d; do
+		_t=$(jq -er '((.dependencies // {}) + (.devDependencies // {}) + (.optionalDependencies // {}) + (.peerDependencies // {})) as $a
+			| select([$a | keys[] | select(test("^(electron|@electron-forge/|@electron/)"))] | length > 0)
+			| if (.devDependencies // {}) | has("@electron-forge/cli") then "electron-forge"
+			elif (.devDependencies // {}) | has("electron-builder") then "electron-builder"
+			elif (.devDependencies // {}) | has("electron-packager") then "electron-packager"
+			elif (.build | type) == "object" then "electron-builder" else "" end' "${_d}/package.json" 2>/dev/null) || continue
+		for _f in "${_d}"/forge.config.*; do [[ -e ${_f} ]] && _t=electron-forge; done
+		for _f in "${_d}"/electron-builder.{yml,yaml,json,json5,toml}; do [[ -e ${_f} ]] && _t=electron-builder; done
+		(( 1 + (${#_t} > 0) > _bs )) && { _best=${_d}; _bt=${_t}; _bs=$((1 + (${#_t} > 0))); }
+	done < <(find "${srcdir}" \( -name '.*' -o -name node_modules \) -prune -o -type f -name package.json -printf '%h\n' 2>/dev/null)
+	[[ -n ${_best} ]] || { echo "ERROR: no package.json depending on electron under ${srcdir}" >&2; return 1; }
+	[[ ${1} == tool ]] && printf '%s\n' "${_bt}" || printf '%s\n' "${_best}"
 }
 _ensure_local_nvm() {
 	local NVM_DIR="${srcdir}/.nvm"
@@ -48,15 +58,20 @@ _get_app_dir() {
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _get_electron_version() {
-	local _v
-	_v=$(jq -r '.. | (.electron? // empty) | strings | select(test("^[0-9]"))' "$(_get_project_dir)/package.json" 2>/dev/null | head -1)
-	[[ -z "$_v" ]] && _v=$(grep -oE 'electron@[0-9.]+' "$(_get_project_dir)/pnpm-lock.yaml" 2>/dev/null | head -1 | sed 's/^electron@//')
-	[[ -z "$_v" ]] && _v=$(grep -oE 'electron@npm:[0-9.]+' "$(_get_project_dir)/yarn.lock" 2>/dev/null | head -1 | sed 's/^electron@npm://')
-	[[ -z "$_v" ]] && _v=$(jq -r '.packages["node_modules/electron"].version // empty' "$(_get_project_dir)/package-lock.json" 2>/dev/null | head -1)
-	[[ -z "$_v" ]] && _v=$(grep -oE 'electron: ?\[?"?npm:?[0-9.]+' "$(_get_project_dir)/bun.lock" 2>/dev/null | grep -oE '[0-9.]+' | head -1)
-	[[ -z "$_v" ]] && return 1
-	_v="${_v%%.*}"
+	local _v=$(find "$(_get_project_dir)" -name package.json ! -path '*/node_modules/*' -exec jq -r '.. | (.electron? // empty) | strings' {} + 2>/dev/null | sed 's/^[^0-9]*//' | grep -E '^[0-9]' | head -1 | sed 's/\..*//')
+	_v=${_v:-$(grep -hoE 'electron[@":][^0-9]*[0-9]+\.[0-9.]+' "$(_get_project_dir)"/*lock* 2>/dev/null | grep -oE '[0-9]+\.[0-9.]+' | head -1 | sed 's/\..*//')}
+	[[ "$_v" =~ ^[0-9] ]] || return 1
 	(( ${_v} == _electronversion )) && echo -e "\033[1;32mElectron version: ${_v}\033[0m" || echo -e "\033[1;31mElectron version: ${_v} (expected ${_electronversion})\033[0m"
+}
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 _set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -103,7 +118,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
-    " "${srcdir}/${pkgname}.sh" "${srcdir}/${pkgname}.js"
+    " "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -126,7 +141,7 @@ build() {
     export NODE_ENV=production
     pnpm run build
     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.js"
-	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+	_delete_other_arch_files
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
