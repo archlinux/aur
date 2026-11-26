@@ -1,0 +1,23 @@
+pkgbase = pg2b3dm-bin
+	pkgdesc = Create 3D Tiles from PostGIS geometries
+	pkgver = 2.28.0
+	pkgrel = 1
+	url = https://github.com/Geodan/pg2b3dm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = zlib
+	provides = pg2b3dm
+	conflicts = pg2b3dm
+	options = !debug
+	source = pg2b3dm-bin-2.28.0-LICENSE::https://raw.githubusercontent.com/Geodan/pg2b3dm/v2.28.0/LICENSE
+	sha256sums = 032ade9aa83fec8725a4163b1381243ab67fab43f799409e9c40cec300bc0977
+	source_x86_64 = pg2b3dm-bin-2.28.0-x86_64.zip::https://github.com/Geodan/pg2b3dm/releases/download/v2.28.0/pg2b3dm-linux-x64.zip
+	sha256sums_x86_64 = f001004968096b33e1face6757d4f705643fcb81cf9acec7bd27c3137828196c
+	source_aarch64 = pg2b3dm-bin-2.28.0-aarch64.zip::https://github.com/Geodan/pg2b3dm/releases/download/v2.28.0/pg2b3dm-linux-arm64.zip
+	sha256sums_aarch64 = d220b001b3c0bff0498d920b0148c3acdcb72d93f09bc8e81cfad3dc20d602ef
+
+pkgname = pg2b3dm-bin
