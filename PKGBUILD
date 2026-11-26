@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=sshuttle_gui
 pkgname="${_pkgname//_/-}-bin"
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="GUI for SShuttle - Transparent proxy server that works as a poor man's VPN. Forwards over ssh."
 arch=('x86_64')
@@ -20,18 +20,19 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-0.mrx10.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9695be1e76a55894b7a9e453861557a2eabeae27b4c76a29e3e288f9c39a3d55'
+sha256sums=('df1fe20cadb1b5d42b4adf6982c6923d7e5e63e9723d0acbdaa4f408c1ca4e56'
             '23f7a8faeadd7dec49591825313577b71852c2822486a99202b9b53e7c65f0a3')
 _install_icons() {
-	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
-	while IFS= read -r -d '' _icon; do
-		_ext="${_icon##*.}"
-		_size=$(echo "${_icon%/*}" | grep -oE '[0-9]+x[0-9]+|scalable' | head -1)
-		[[ -z "${_size}" ]] && _size=$([[ "${_ext}" == svg ]] && echo scalable || od -An -tu1 -j16 -N8 "${_icon}" 2>/dev/null | awk '{printf "%dx%d",$1*16777216+$2*65536+$3*256+$4,$5*16777216+$6*65536+$7*256+$8}')
-		[[ "${_size}" =~ ^[0-9]+x[0-9]+$ ]] || _size=scalable
-		_dest=$([[ "${_icon}" == */share/pixmaps/* ]] && echo pixmaps || echo "icons/hicolor/${_size}/apps")
-		install -Dm644 "${_icon}" "${pkgdir}/usr/share/${_dest}/${_name}.${_ext}"
-	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
+	local _s="${1:-$srcdir}" _n="${pkgname%-bin}" _i _e _z
+	while IFS= read -r -d '' _i; do
+		_e=${_i##*.}
+		_z=$(printf %s "${_i%/*}"|grep -oE '[0-9]+x[0-9]+(@[0-9]+x?)?|scalable'|tail -n1)
+		[[ $_z ]] || _z=$([[ $_e == svg ]]&&echo scalable||od -An -tx1 -j16 -N8 "$_i"| \
+		{ read a b c d e f g h; printf %dx%d 0x$a$b$c$d 0x$e$f$g$h; })
+		[[ $_z =~ ^[0-9]+x[0-9]+(@[0-9]+x?)?$ || $_z == scalable ]]||_z=scalable
+		install -Dm644 "$_i" "$pkgdir/usr/share/icons/hicolor/$_z/apps/$_n.$_e"
+	done < <(find "$_s" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' \
+		-o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
     sed -i -e "
