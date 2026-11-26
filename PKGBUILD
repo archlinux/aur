@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=cindy-bin
-pkgver=0.1.146
+pkgver=0.1.148
 pkgrel=1
 pkgdesc="Open-source AI agent that works out of the box (global edition)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ options=('!strip' '!debug')
 
 _deb="cindy-${pkgver}-linux-x64-global.deb"
 source_x86_64=("${_deb}::${url}/releases/download/v${pkgver}/${_deb}")
-sha256sums_x86_64=('338411c6bd505aa28ade03e902d5ee17811b1840ffaedc57c35da599e3ed40f8')
+sha256sums_x86_64=('24117bfe806b871baef1d1c719ae783ee018538118157f6c07d585deba603eff')
 noextract=("${_deb}")
 
 package() {
