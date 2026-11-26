@@ -1,0 +1,19 @@
+pkgbase = rustinel-bin
+	pkgdesc = Endpoint detection with Sigma, YARA and IOC rules on native telemetry
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/Karib0u/rustinel
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = rustinel
+	conflicts = rustinel
+	options = !debug
+	source = rustinel-bin-1.11.0-LICENSE::https://raw.githubusercontent.com/Karib0u/rustinel/v1.11.0/LICENSE
+	sha256sums = 58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd
+	source_x86_64 = rustinel-bin-1.11.0-x86_64.tar.gz::https://github.com/Karib0u/rustinel/releases/download/v1.11.0/rustinel-1.11.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 230cebfbcfec58c42cccf7a52eb38128dc31b41274afd7a08e3222e7868af7f1
+	source_aarch64 = rustinel-bin-1.11.0-aarch64.tar.gz::https://github.com/Karib0u/rustinel/releases/download/v1.11.0/rustinel-1.11.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = fd4688308fbae88847f5ac31aecf1a198c8b3b801ad143cde484992860d43747
+
+pkgname = rustinel-bin
