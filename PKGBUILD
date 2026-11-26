@@ -5,7 +5,7 @@
 # cache — see the README. That is why there is no `source` beyond this
 # repository and no huge `package()`.
 pkgname=uwp-crossbuild
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Compile C++/WinRT UWP applications for Windows, from Linux"
 arch=('any')
@@ -30,7 +30,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # and a checksum carried over from the previous release would describe a
 # different tarball — the one failure a checksum is there to prevent. The script
 # refuses to publish while this still says SKIP.
-sha256sums=('1f287eda80272f7654d10de0dceaa45405164757fb7fbc13fa800a2771055be0')
+sha256sums=('2f6afbd16e0e07a1a29cf5bc525596ba68b43a7d421c84ac33665988ca26e3e8')
 
 check() {
 	cd "$pkgname-$pkgver"

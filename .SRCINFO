@@ -1,6 +1,6 @@
 pkgbase = uwp-crossbuild
 	pkgdesc = Compile C++/WinRT UWP applications for Windows, from Linux
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/gianlucamazza/uwp-crossbuild
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = uwp-crossbuild
 	depends = python
 	optdepends = winetricks: installs msxml6, which makepri needs
 	optdepends = xwin: CRT and SDK headers and libraries
-	source = uwp-crossbuild-0.5.3.tar.gz::https://github.com/gianlucamazza/uwp-crossbuild/archive/refs/tags/v0.5.3.tar.gz
-	sha256sums = 1f287eda80272f7654d10de0dceaa45405164757fb7fbc13fa800a2771055be0
+	source = uwp-crossbuild-0.5.4.tar.gz::https://github.com/gianlucamazza/uwp-crossbuild/archive/refs/tags/v0.5.4.tar.gz
+	sha256sums = 2f6afbd16e0e07a1a29cf5bc525596ba68b43a7d421c84ac33665988ca26e3e8
 
 pkgname = uwp-crossbuild
