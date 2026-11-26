@@ -1,0 +1,17 @@
+pkgbase = ghtkn-bin
+	pkgdesc = Create short-lived GitHub App user access tokens for local development
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/suzuki-shunsuke/ghtkn
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ghtkn
+	conflicts = ghtkn
+	options = !debug
+	source_x86_64 = ghtkn-bin-0.4.3-x86_64.tar.gz::https://github.com/suzuki-shunsuke/ghtkn/releases/download/v0.4.3/ghtkn_linux_amd64.tar.gz
+	sha256sums_x86_64 = e451a18622995f9cca89a149d1d1d54e886c8656e9592adc512a60a522b18709
+	source_aarch64 = ghtkn-bin-0.4.3-aarch64.tar.gz::https://github.com/suzuki-shunsuke/ghtkn/releases/download/v0.4.3/ghtkn_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8d7f539a0a924d7ea9873d180f8f13692252e762eb905959ad1c7b856290a1bb
+
+pkgname = ghtkn-bin
