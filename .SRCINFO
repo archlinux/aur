@@ -1,0 +1,16 @@
+pkgbase = openrockcli
+	pkgdesc = A command-line and lightweight TUI firmware flashing tool for Rockchip SoCs
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/dshanpi/openrockcli
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libusb
+	optdepends = rkbin: Rockchip update.img flashing through the SDK bundled upgrade_tool
+	provides = openrockcli
+	conflicts = openrockcli
+	source = openrockcli::git+https://github.com/dshanpi/openrockcli.git#tag=v1
+	sha256sums = dc83c34612940843a6ef6ab83c597f827c743607e348fa7b7d0759af66cd56a6
+
+pkgname = openrockcli
