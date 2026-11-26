@@ -1,5 +1,6 @@
-# Maintainer: AlexDevFlow <107987666+AlexDevFlow@users.noreply.github.com>
-# Contributor: cypress-exe
+# Maintainer: cypress-exe
+# Contributor: AlexDevFlow <107987666+AlexDevFlow@users.noreply.github.com>
+
 #
 # Bleeding-edge package: builds from `main` and self-versions on the user's
 # machine via pkgver(), so `makepkg -si` (or a `yay -Syu`) always gets the
