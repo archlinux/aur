@@ -1,10 +1,14 @@
 pkgbase = python-typechat-git
 	pkgdesc = TypeChat is a library that makes it easy to build natural language interfaces using types.
-	pkgver = r410.d493376
-	pkgrel = 3
+	pkgver = r505.9f7b3f6
+	pkgrel = 1
 	url = https://github.com/microsoft/TypeChat
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-xdist
+	checkdepends = python-syrupy
+	checkdepends = python-dotenv
 	makedepends = git
 	makedepends = python-hatchling
 	makedepends = python-build

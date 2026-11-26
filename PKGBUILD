@@ -3,8 +3,8 @@
 pkgname=python-typechat-git
 _name=${pkgname%-git}
 _name=${_name#python-}
-pkgver=r410.d493376
-pkgrel=3
+pkgver=r505.9f7b3f6
+pkgrel=1
 pkgdesc="TypeChat is a library that makes it easy to build natural language interfaces using types."
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
@@ -28,6 +28,12 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
 )
+checkdepends=(
+    python-pytest
+    python-pytest-xdist
+    python-syrupy
+    python-dotenv
+)
 optdepends=()
 license=('MIT')
 source=("${_name}::git+${url}.git")
@@ -49,6 +55,13 @@ prepare() {
 build() {
     cd "${srcdir}/${_name}/python"
     python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "${srcdir}/${_name}/python"
+
+	export PYTHONPATH="${srcdir}/${_name}/python/src:${srcdir}/${_name}/python${PYTHONPATH:+:${PYTHONPATH}}"
+	pytest -x
 }
 
 package() {
