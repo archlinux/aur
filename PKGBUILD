@@ -2,7 +2,7 @@
 # Contributor: Josep Bigorra <jjbigorra@gmail.com>
 
 pkgname=maak
-pkgver=1.4.1
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Command runner à la Make using Guile Scheme"
 
@@ -27,7 +27,7 @@ makedepends=(
 # `maak sync-version' writes $pkgver, and the checksum is updated afterwards
 # from the published archive, which is the one thing no release task can know.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jjba23/maak/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3829a36b0b848679ef788b32783ab361977da2fa6da735ce856b201f86cbad6d')
+sha256sums=('51137f5dc46dffd58359dc2777654aaf4e77efcc6a131c89fddacea7834f6b6b')
 
 # Guile looks for byte-compiled modules under the site-ccache directory, which
 # differs between distributions (and between a Guile installed system-wide and
