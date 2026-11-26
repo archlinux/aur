@@ -7,7 +7,7 @@ pkgname=${_appname}-bin
 pkgdesc="Drop-in tmux replacement. Modern stack. Better rendering. Live upgrades."
 
 pkgver=3.8
-pkgrel=1
+pkgrel=3
 _gitversion=v${pkgver}-rc${pkgrel}
 
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('6ea4acc54e65190d103ef2c4448837275100bfc2b09d2d0a17f5e0c653063c8b')
-sha256sums_aarch64=('621c5692757d3d4381bd628d398cf725515d05b23d155613ad699c4326d8e9a6')
+sha256sums_x86_64=('d1b6d39271dbbdbfae19775f1b4ffa42db867fe56db3d40ded7d47450372d07e')
+sha256sums_aarch64=('e4476cb42d177640b39eaa9f9c847b4e2f77b557a7cdf2f1e0a74be0eb0645c4')
 
 
 case ${CARCH} in

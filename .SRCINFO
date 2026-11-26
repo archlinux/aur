@@ -1,7 +1,7 @@
 pkgbase = vtmux-bin
 	pkgdesc = Drop-in tmux replacement. Modern stack. Better rendering. Live upgrades.
 	pkgver = 3.8
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/martintrojer/vtmux
 	arch = x86_64
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = vtmux-bin
 	provides = vtmux
 	conflicts = vtmux
 	options = !strip
-	source_x86_64 = vtmux-x86_64-3.8.tgz::https://github.com/martintrojer/vtmux/releases/download/v3.8-rc1/vtmux-v3.8-rc1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 6ea4acc54e65190d103ef2c4448837275100bfc2b09d2d0a17f5e0c653063c8b
-	source_aarch64 = vtmux-aarch64-3.8.tgz::https://github.com/martintrojer/vtmux/releases/download/v3.8-rc1/vtmux-v3.8-rc1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 621c5692757d3d4381bd628d398cf725515d05b23d155613ad699c4326d8e9a6
+	source_x86_64 = vtmux-x86_64-3.8.tgz::https://github.com/martintrojer/vtmux/releases/download/v3.8-rc3/vtmux-v3.8-rc3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d1b6d39271dbbdbfae19775f1b4ffa42db867fe56db3d40ded7d47450372d07e
+	source_aarch64 = vtmux-aarch64-3.8.tgz::https://github.com/martintrojer/vtmux/releases/download/v3.8-rc3/vtmux-v3.8-rc3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e4476cb42d177640b39eaa9f9c847b4e2f77b557a7cdf2f1e0a74be0eb0645c4
 
 pkgname = vtmux-bin
