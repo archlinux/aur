@@ -1,0 +1,21 @@
+pkgbase = biomcp-bin
+	pkgdesc = Biomedical data access for AI agents over MCP
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/genomoncology/biomcp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = biomcp
+	conflicts = biomcp
+	options = !debug
+	source = biomcp-bin-0.9.3-LICENSE::https://raw.githubusercontent.com/genomoncology/biomcp/v0.9.3/LICENSE
+	sha256sums = 6b37b76fb5f5b29c74d9c0e35f9dc18b8e46273eadba8048513887f2d5feaabf
+	source_x86_64 = biomcp-bin-0.9.3-x86_64.tar.gz::https://github.com/genomoncology/biomcp/releases/download/v0.9.3/biomcp-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c21292950988962eb32de2df56a5c56ccff707f83365b0f2e94a358fa9a0b5d0
+	source_aarch64 = biomcp-bin-0.9.3-aarch64.tar.gz::https://github.com/genomoncology/biomcp/releases/download/v0.9.3/biomcp-linux-arm64.tar.gz
+	sha256sums_aarch64 = fb76b9ec47c580ba020ed9395877e118bef3ef1ead1670229fe2553eea5a1a49
+
+pkgname = biomcp-bin
