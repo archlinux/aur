@@ -1,6 +1,6 @@
 pkgbase = remya-core-bin
 	pkgdesc = Shared Remya daemon, updater and CLI
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/remyhuang03/remya-core
 	install = remya-core.install
@@ -17,11 +17,11 @@ pkgbase = remya-core-bin
 	depends = sqlite
 	depends = glibc
 	depends = gcc-libs
-	provides = remya-core=0.2.0
+	provides = remya-core=0.3.0
 	conflicts = remya-core
 	conflicts = remya-core-git
 	options = !strip
-	source = remya_core-0.2.0-linux-x86_64.tar.zst::https://github.com/remyhuang03/remya-core/releases/download/v0.2.0/remya_core-0.2.0-linux-x86_64.tar.zst
-	sha256sums = fe4e8ac32d6ccf1a4446528550c9015257e98f712a320f71ec2a029e256879a6
+	source = remya_core-0.3.0-linux-x86_64.tar.zst::https://github.com/remyhuang03/remya-core/releases/download/v0.3.0/remya_core-0.3.0-linux-x86_64.tar.zst
+	sha256sums = 320768b14008989921a604a42136274e87d7793cd2d6f2e1eb735a4ad604b491
 
 pkgname = remya-core-bin
