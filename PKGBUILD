@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=fenr
-_pkgver=1.10.3
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,9 +37,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('10b817bea0f848746475fc7d1fa5a4ab'
+md5sums=('d8d9a82e992a091f2309f9de6dc21005'
          '6798204e8be4babba5a589a4c303de0d')
-b2sums=('818f177e23f8b418828532e00b4517a8b8ce5f5da7c033d312924b42e71a598c02b13aa104e2ec30d3f4cd56376268037b78efdb91f5244e00996da1b7e672ad'
+b2sums=('47d87ae39da3c1d82e5128631273522a401f9771650107762678ac9b13b05f6561a926cb92f59026f0e16d671dadfff3a6bde0fca6a4c109f0af18c8f31ed6ca'
         '534aaa7bc8ed386545ac5d10ef4b9d1fb9b270f9e2ea66aa5c0a450d7733a3bfbc629a83588c39fb35882d5240015aa86e4060456dcd4d27bd55e79a7cc3138c')
 
 prepare() {
