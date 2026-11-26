@@ -1,6 +1,6 @@
 pkgbase = r-microbiomedasim
 	pkgdesc = Microbiome Differential Abundance Simulation
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/microbiomeDASim
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-microbiomedasim
 	optdepends = r-devtools
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/microbiomeDASim_1.26.0.tar.gz
-	sha256sums = e20b52b47c29b22bc591574a3b87a0672859113dff3796c0d4b44336e7ff7319
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/microbiomeDASim_1.28.0.tar.gz
+	sha256sums = 221c107e34312d3956943518ba277c2714184454241bd418f90bfc4e26407066
 
 pkgname = r-microbiomedasim
