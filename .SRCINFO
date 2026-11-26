@@ -1,6 +1,6 @@
 pkgbase = devcrate
 	pkgdesc = A fast, cross-platform developer toolkit built on Tauri.
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/LongYinStudio/DevCrate
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = devcrate
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = webkit2gtk-4.1
-	source = https://github.com/LongYinStudio/DevCrate/releases/download/v0.5.0/devcrate_0.5.0_amd64.deb
+	source = https://github.com/LongYinStudio/DevCrate/releases/download/v0.6.0/devcrate_0.6.0_amd64.deb
 	source = devcrate.png
 	source = devcrate.desktop
-	sha256sums = bda8a5ef6c549c68b80eda5d01291071bb9c6a99e7f74fa405fbebde0d8d0b15
+	sha256sums = 3875e23e78ef54138798b86e134cc547ea476db70c5963989924c9da4881036d
 	sha256sums = c195dadca4560de368eb437776443e8935011a02772ec19828c3cbef9ecf51f6
 	sha256sums = 2d182e37d3dd440d5e05a10e7c061cecd8adad28aa2e6def241053d6422c2e17
 
