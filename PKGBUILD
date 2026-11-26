@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=a4Preproc
-_pkgver=1.60.0
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c3c7de8edf416208d1f345499bf781f1')
-b2sums=('9eabd041dd02aaa72f94ef4851d23b2e271a5237ba5f34fc85412b862c546c5ca45212b4b04e68070e2db66ce22f2fa4b361c3a2dea3048c784a714eee28559b')
+md5sums=('d9c147c1db3848c6373e62ee738c435e')
+b2sums=('a8d6302c446eacdb4682a931dc44a52d476f781dcd02bc6e9f9348d1dc8dd72530282d762218e456fa3cd467e8aa36c65a762784c372f2169d94583e7df9783d')
 
 build() {
   mkdir build
