@@ -1,7 +1,7 @@
 pkgbase = open-wallpaper-engine
 	pkgdesc = Open source scene renderer, mostly for linux.
-	pkgver = 0.3.4
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/waywallen/open-wallpaper-engine
 	arch = x86_64
 	license = GPL-2.0-only
@@ -15,6 +15,7 @@ pkgbase = open-wallpaper-engine
 	makedepends = eigen
 	makedepends = vulkan-headers
 	makedepends = waywallen-display
+	makedepends = openal
 	depends = libgcc
 	depends = libstdc++
 	depends = glibc
@@ -30,18 +31,19 @@ pkgbase = open-wallpaper-engine
 	depends = quickjs-ng
 	depends = glfw
 	depends = wayland
+	optdepends = openal: For Scene spatial audio
 	options = !lto
-	source = git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v0.3.4
-	source = git+https://github.com/hypengw/wavsen.git#commit=fe27f752e29a94565b6a33083d90df9a020ee76f
-	source = git+https://github.com/vecren/vrento.git#commit=02101d93c5fd76d8d4892910ba16765892d197c0
-	source = git+https://github.com/vecren/vectext.git#commit=36fc965d8cb418f9dc17d31683dc268dabb52cb2
+	source = git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v0.4.1
+	source = git+https://github.com/hypengw/wavsen.git#commit=a93fbd8f61a8dcaccbd817bcffc38db2ddf3d119
+	source = git+https://github.com/vecren/vrento.git#commit=ecf0509f10ce61f124e787777f87b026ab5b6d43
+	source = git+https://github.com/vecren/vectext.git#commit=4b371daf184a8067327d95ceee5a46efdd1f3f72
+	source = git+https://github.com/vecren/vui.git#commit=8dc96c204bf0554476063974fa66b6cba6abd19c
 	source = 0001-lito-Use-system-cef.patch
-	source = 0002-weweb-multiplane-dmabuf-import.patch
-	sha256sums = 9637b2ec6b6265745a2fe9ad31a04b37208487508c2c7e840267e22944375538
-	sha256sums = e64fd2498d75a21749a71c8f82dbe534b59acb3a462b73c1e2d330538588e5c0
-	sha256sums = 80614f5810186112c4680d77b6535e89da162e8b17e3e302bc86e1a9d9ae3ace
-	sha256sums = d710ad4ce7b565c8a07042f5e054545ffe732013919637fa824603d86eaad293
-	sha256sums = 3629af4ae0b17d055fa869f3613f9dc975e4c5e084fa9fc0e993f2f27d812212
-	sha256sums = 1c728792ff31c0f5394ef6b125413eff040f4f49c083b3be159b71465708ccd8
+	sha256sums = 6e67bf67a730a3e09be07de5de3f2e9c1ad5be74f9d5858c9d5809f5b13a07c0
+	sha256sums = 9d6a8347f623fd1eac1b527585a5344305084cdb266f54af4e9da61b5108f5e3
+	sha256sums = 4c46799da28f2ad621d35eee7587fd2574ec3c50721e83f389474d0f98c45cbc
+	sha256sums = 46fba7fef15a04a607c4eb09ec5d6586c1f6ebdd91f7dc6c3e43417e1401c7a5
+	sha256sums = 22ce25a06faa0d756e54883329576aceb23c71ac69fa051276b9e74291fc884c
+	sha256sums = d2670b5679973ce492adccbd3761066da6a147fb0d162c004cfb3f0b93210f91
 
 pkgname = open-wallpaper-engine
