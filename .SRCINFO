@@ -1,0 +1,17 @@
+pkgbase = cashier-bin
+	pkgdesc = Self-service certificate authority for OpenSSH
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/cashier-go/cashier
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cashier
+	conflicts = cashier
+	options = !debug
+	source_x86_64 = cashier-bin-1.3.0-x86_64.tar.gz::https://github.com/cashier-go/cashier/releases/download/v1.3.0/cashier_1.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 88964a67e5c6e9a3910b14f0abc0a86f4ac8c000942762ab6e33d88621ce4cf4
+	source_aarch64 = cashier-bin-1.3.0-aarch64.tar.gz::https://github.com/cashier-go/cashier/releases/download/v1.3.0/cashier_1.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b31121bbc7a5272acfba049bad7e10c430ade785ff35d1d54d610f2061662953
+
+pkgname = cashier-bin
