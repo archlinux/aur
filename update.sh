@@ -273,9 +273,51 @@ if [[ $ver != "$current_ver" ]] &&
 	die "上游版本 ${ver} 比本地 ${current_ver} 更旧，拒绝降级（确需操作请手工处理）"
 fi
 
-# ---------------------------------------------------------------- 拉校验清单
+# 缓存里的旧版本安装包/校验清单只对当时那次发布有用，回写前即可丢弃；
+# 必须保留当前版本的四个文件，否则推送失败重试时要重新下载。
+prune_cache() {
+	local arch f base k removed=0 is_keep
+	local -a kept=()
+	for arch in "${!ARCH_ASSET[@]}"; do
+		kept+=("motty-${ver}-linux-${ARCH_ASSET[$arch]}.tar.gz")
+	done
+	kept+=("SHA256SUMS.${ver}" "LICENSE.${ver}")
+
+	shopt -s nullglob
+	for f in "$CACHE_DIR"/*; do
+		base=${f##*/}
+		case $base in
+		motty-*-linux-*.tar.gz | SHA256SUMS.* | LICENSE.* | *.part) ;;
+		*) continue ;;
+		esac
+
+		is_keep=0
+		for k in "${kept[@]}"; do
+			if [[ $base == "$k" ]]; then
+				is_keep=1
+				break
+			fi
+		done
+		if ((is_keep)); then
+			continue
+		fi
+
+		rm -f -- "$f"
+		removed=$((removed + 1))
+	done
+	shopt -u nullglob
+
+	if ((removed > 0)); then
+		log "已清理旧版本缓存 ${removed} 个（保留 ${ver}）"
+	fi
+}
+
+# ---------------------------------------------------------------- 清理旧版本缓存
 
 mkdir -p "$CACHE_DIR"
+if ! $dry_run; then
+	prune_cache
+fi
 release_url="https://github.com/${UPSTREAM_REPO}/releases/download/${tag}"
 sums_file="${CACHE_DIR}/SHA256SUMS.${ver}"
 
