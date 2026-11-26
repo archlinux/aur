@@ -3,7 +3,7 @@
 # Development package: builds the latest commit on the main branch.
 
 pkgname=micforge-git
-pkgver=0.1.0.r0.g0000000
+pkgver=0.2.0.r0.g0000000
 pkgrel=1
 pkgdesc="Microphone processor for PipeWire: voice-only gate, AI noise removal, effects, voice changer and VST3/LV2 plugin hosting (git version)"
 arch=('x86_64' 'aarch64')
@@ -12,6 +12,9 @@ license=('GPL-3.0-or-later' 'MIT') # MIT: bundled parts of Steinberg's VST3 SDK
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'pipewire' 'rnnoise' 'lilv' 'hicolor-icon-theme'
          'gcc-libs' 'glibc')
 makedepends=('git' 'lv2')
+optdepends=('xorg-xwayland: windows of VST3 plugins (plugins run fine without it)'
+            'lsp-plugins-lv2: a large set of free plugins to use inside MicForge'
+            'lsp-plugins-vst3: the same plugins as VST3, with their own windows')
 provides=('micforge')
 conflicts=('micforge')
 source=("micforge::git+$url.git"
@@ -28,7 +31,7 @@ pkgver() {
   if git describe --tags --long >/dev/null 2>&1; then
     git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   else
-    printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf "0.2.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   fi
 }
 
