@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=decontam
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Identify Contaminants in Marker-gene and Metagenomics Sequencing Data'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7eb4a2db086dd55838aa8aabe339c06db238261bb0e9c6fc264cf65b6e3a2ef5')
+sha256sums=('69d8e5394fe37f227ade4cf363b04fe45cf4be6007bc427bd408224a5d01d8ce')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
