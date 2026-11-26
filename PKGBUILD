@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sagenhaft
-_pkgver=1.82.0
+_pkgver=1.84.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-sparsem
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a07afb4cff3ac04418201d4f1a69b985')
-b2sums=('705f7f45e4d68d1a2bf64c163c922f12e3bb66c1849a3e8cb0c1024fc2c2b6734c73e3d4f57b90e267da49f91d294853b8a7fb4bfa486a759bba6ffb5db83533')
+md5sums=('6242da3f71ff4c5bd9425b1d47fff71a')
+b2sums=('aa3a1a89330448516013e931482cbd5df0718ec7cfe246c6f284dd0b0d5fc3ffa3cfcea767817191935f354bdf1313604fb24acf17922886b7acf2589d710e1c')
 
 build() {
   mkdir build
