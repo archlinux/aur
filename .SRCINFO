@@ -1,11 +1,11 @@
 pkgbase = legio-launcher-git
 	pkgdesc = Legio desktop game launcher (development sources)
-	pkgver = 0.3.1.r292.ga4d3808
+	pkgver = 1.0.2.r407.g546c7af
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/fraa2a/Legio
 	arch = x86_64
-	license = LicenseRef-SA-NC-PD-1.0
+	license = LicenseRef-Apache-2.0-with-Commons-Clause
 	makedepends = git
 	makedepends = rust>=1.98.1
 	makedepends = nodejs>=22
