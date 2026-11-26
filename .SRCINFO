@@ -1,21 +1,21 @@
 pkgbase = doriterm-bin
 	pkgdesc = Your devices, one terminal. Every machine you own, linked through an end-to-end encrypted mesh: the shells and coding agents on your machines in a browser tab, a phone and a desktop app, through a relay that only sees ciphertext.
-	pkgver = 0.1.24
+	pkgver = 0.1.25
 	pkgrel = 1
 	url = https://doriterm.com
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron45
-	provides = doriterm=0.1.24
+	provides = doriterm=0.1.25
 	conflicts = doriterm
 	source = doriterm.js
 	source = doriterm.sh
 	sha256sums = b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b
 	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
-	source_aarch64 = doriterm-0.1.24-aarch64.deb::https://github.com/sisyphuslabs/doriterm/releases/download/v0.1.24/Doriterm_0.1.24_arm64.deb
-	sha256sums_aarch64 = bf6817613ef5e51e3e978c6064d39e86ee379217e1fa57b38c4d49245c8448ff
-	source_x86_64 = doriterm-0.1.24-x86_64.deb::https://github.com/sisyphuslabs/doriterm/releases/download/v0.1.24/Doriterm_0.1.24_amd64.deb
-	sha256sums_x86_64 = 448c37720eedc30f25718e12b413f09f8d1aad1b1b5d91e55516d209705a3e18
+	source_aarch64 = doriterm-0.1.25-aarch64.deb::https://github.com/sisyphuslabs/doriterm/releases/download/v0.1.25/Doriterm_0.1.25_arm64.deb
+	sha256sums_aarch64 = 840168b71e69b5c892df8a5ade9e813a8f50642071454801f51afb28e6b520f8
+	source_x86_64 = doriterm-0.1.25-x86_64.deb::https://github.com/sisyphuslabs/doriterm/releases/download/v0.1.25/Doriterm_0.1.25_amd64.deb
+	sha256sums_x86_64 = add61345a4807203b04b323d18524e8a5c4e5fe75d70972db74bff0da5eb56bd
 
 pkgname = doriterm-bin
