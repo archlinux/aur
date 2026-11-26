@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RBioFormats
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-xml2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('beb9e76977a4e06f7a885743fff69312')
-b2sums=('4b6e0ab898fed8c15442fe73045226738578cc2e31c51e160850aea6d7af71686d760e34bcb45909361b71c2114b5b601ceb397ab8f624819dc14b61bb42117e')
+md5sums=('85dda0729dee50c67cca9d2dd2c218cb')
+b2sums=('04b279281f0d80da25f7f705c0b020597913c5bb89f6e7989bf057dbe6ef2639be1a9e1713dd62d5e96eba6d6e6b3f2ad75218a1782363e3144810b687bb3465')
 
 build() {
   mkdir build
