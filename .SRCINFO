@@ -1,6 +1,6 @@
 pkgbase = waycentral-bin
 	pkgdesc = Centralized Program for Waybar Custom Modules (clock, updates, volume, music, network, GPU, tray, ...) with a C library
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/TheElevatedOne/waycentral
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = waycentral-bin
 	depends = gtk3
 	optdepends = hwdata: GPU names
 	optdepends = nvidia-utils: NVIDIA GPU statistics
-	provides = waycentral=1.4.1
+	provides = waycentral=1.4.2
 	provides = libwaycentral.so
 	conflicts = waycentral
-	source = waycentral-1.4.1.tar.gz::https://github.com/TheElevatedOne/waycentral/releases/download/1.4.1/waycentral-1.4.1.tar.gz
-	sha256sums = 19db7e8c9898ed91edd3663e20b8474d29253d7bd5723c75bad4507591a7ac3f
+	source = waycentral-1.4.2.tar.gz::https://github.com/TheElevatedOne/waycentral/releases/download/1.4.2/waycentral-1.4.2.tar.gz
+	sha256sums = 4c536819df9abf536e2d3f9faf00c77d7b619a65bdb6c4c940c1f7a834cfc20a
 
 pkgname = waycentral-bin
