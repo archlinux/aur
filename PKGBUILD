@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LedPred
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Learning from DNA to Predict Enhancers'
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('15fda53f84294a324c7291a780553f680d227b6571808c1bb2844e7a96588996')
+sha256sums=('f8a02c4e490530a5acf10f303f18b3347d378eb5f83b74670d48d5c9fb3b5fb6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
