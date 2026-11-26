@@ -1,0 +1,17 @@
+pkgbase = dashbrr-bin
+	pkgdesc = Dashboard for monitoring and managing media stack services
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/autobrr/dashbrr
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	provides = dashbrr
+	conflicts = dashbrr
+	options = !debug
+	source_x86_64 = dashbrr-bin-0.8.0-x86_64.tar.gz::https://github.com/autobrr/dashbrr/releases/download/v0.8.0/dashbrr_0.8.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = cee467fa76d75b56743def67e7b51bdb1d5b76e6f4aef66e4dabad223d73eae5
+	source_aarch64 = dashbrr-bin-0.8.0-aarch64.tar.gz::https://github.com/autobrr/dashbrr/releases/download/v0.8.0/dashbrr_0.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 807d0d18a93193f40bf1ed1cd69d4af63f3b72835ac1d26ab81bf140486d167e
+
+pkgname = dashbrr-bin
