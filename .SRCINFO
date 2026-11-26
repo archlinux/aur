@@ -1,0 +1,17 @@
+pkgbase = hookdeck-cli-bin
+	pkgdesc = Forward webhooks to localhost and manage Hookdeck Event Gateway resources
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/hookdeck/hookdeck-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = hookdeck-cli
+	conflicts = hookdeck-cli
+	options = !debug
+	source_x86_64 = hookdeck-cli-bin-3.2.0-x86_64.tar.gz::https://github.com/hookdeck/hookdeck-cli/releases/download/v3.2.0/hookdeck_3.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 97baef0b4446e9ef8ba7a8b179f681425656e5059c2b5a86ed067ffdb5f6be78
+	source_aarch64 = hookdeck-cli-bin-3.2.0-aarch64.tar.gz::https://github.com/hookdeck/hookdeck-cli/releases/download/v3.2.0/hookdeck_3.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ce31d4b580fdcb9804041309efc88c1ca94541a642d8e9c3599dee09355f81f2
+
+pkgname = hookdeck-cli-bin
