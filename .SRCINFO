@@ -1,6 +1,6 @@
 pkgbase = r-biocbaseutils
 	pkgdesc = Utility and internal functions for Bioconductor packages
-	pkgver = 1.14.2
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiocBaseUtils
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = r-biocbaseutils
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-tinytest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocBaseUtils_1.14.2.tar.gz
-	md5sums = b298d1fbe77cf2c818dc31dad20063d0
-	b2sums = c0a5be8c9994a1e6d446f66c46a799bd9c3af4b0e42cc2929bb6cdf3ff8b2194d464b4a7ba9d5080363094d0f0e860f73bc7119c3e39c24a7cdaf59572ea455e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocBaseUtils_1.16.0.tar.gz
+	md5sums = 6fdafb758af58fff41ca8112edfeb73c
+	b2sums = 33fd7587372838571ba025b28829d208ffea2a573825e4d5f3f912659843d38ab4bd89523658ab76f574a4cd478ff3aea547d10367d049976248eba23c21c64c
 
 pkgname = r-biocbaseutils
