@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowViz
-_pkgver=1.76.1
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.1
+pkgver=1.78.0
 pkgrel=1
 pkgdesc='Visualization for flow cytometry'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('668ff68d319479448c1edeafbb21e7b4c56c43cda7825be87fa2f11cc58c704c')
+sha256sums=('a9b9f833aa1fd8d9802cb9138309648dbe3aa0df93aa4dd35078bc984c47b8a9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
