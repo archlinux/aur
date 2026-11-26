@@ -1,6 +1,6 @@
 pkgbase = toha-bin
 	pkgdesc = Generate projects and files from templates
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/wyrd-company/toha
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = toha-bin
 	provides = toha
 	conflicts = toha
 	options = !strip
-	source_x86_64 = toha-bin-0.5.0-x86_64.tar.gz::https://repo.wyrd.foo/artifacts/toha/0.5.0/toha_0.5.0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 35fabd2cd6a986f0d7f90cdd576e5c28c00db5abd61775c3436656108793a71d
-	source_aarch64 = toha-bin-0.5.0-aarch64.tar.gz::https://repo.wyrd.foo/artifacts/toha/0.5.0/toha_0.5.0_linux_aarch64.tar.gz
-	sha256sums_aarch64 = a1b2fb7c5a79a0c00b7df813d6a2d14f44e729d41b7ea781d0a5942cf0b5f9e8
+	source_x86_64 = toha-bin-0.5.1-x86_64.tar.gz::https://repo.wyrd.foo/artifacts/toha/0.5.1/toha_0.5.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 764891a397e7d3b83d6ae775bc9fa0a3dfea01d90292f27dcce134b11e54b2ad
+	source_aarch64 = toha-bin-0.5.1-aarch64.tar.gz::https://repo.wyrd.foo/artifacts/toha/0.5.1/toha_0.5.1_linux_aarch64.tar.gz
+	sha256sums_aarch64 = 828fb74d0fb3936c395237b12a675b01c8d68a71bb073a7c9541d47a9f419a71
 
 pkgname = toha-bin
