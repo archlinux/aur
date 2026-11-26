@@ -1,0 +1,14 @@
+pkgbase = kadeessh-bin
+	pkgdesc = Extensible, modular, memory-safe SSH server
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/kadeessh/kadeessh
+	arch = x86_64
+	license = Apache-2.0
+	provides = kadeessh
+	conflicts = kadeessh
+	options = !debug
+	source_x86_64 = kadeessh-bin-0.0.2-x86_64.tar.gz::https://github.com/kadeessh/kadeessh/releases/download/v0.0.2/kadeessh_0.0.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 360de1091720261c2f676b2a28febe2a5bf167f983eb022af792c95c913c191a
+
+pkgname = kadeessh-bin
