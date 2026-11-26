@@ -2,7 +2,7 @@
 # Contributor: ArkFlame Studios <maintainers@arkflame.dev>
 
 pkgname=flamewm-bin
-pkgver=0.1.7
+pkgver=0.1.7.b
 pkgrel=1
 pkgdesc='Fast Rust X11 window manager and desktop session, with a preliminary Wayland compositor'
 arch=('x86_64')
@@ -99,7 +99,7 @@ source=(
   "flamewm-${pkgver}-amd64.deb::https://github.com/ArkFlame/flamewm/releases/download/${_tag}/flamewm_${_debver}_amd64.deb"
   "flamewm-lock.pam::https://raw.githubusercontent.com/ArkFlame/flamewm/${_tag}/packaging/arch/flamewm-lock.pam"
 )
-sha256sums=('e51cde5b28963907d233515ca6e6d0f7d31d4c43579cc5bc4dd2473efe036df7'
+sha256sums=('578459ab8e6b14f70f29589afba7a8083d250cc7b537b8a8a8c523201bac0109'
             '2f9b7a7a8a8583ed40969240ee7d0d42ffba4a44b69a7d241bd60634795a8e84')
 
 package() {
