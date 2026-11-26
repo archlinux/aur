@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=metabomxtr
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='A package to run mixture models for truncated metabolomics data with normal or lognormal distributions'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cb6939d7dd2af4a7ce9f623436755b15041d1ffa9e1ed58430e866d42e0e715e')
+sha256sums=('25f7ae3c4099ec387924f76d35c059c6e70f5bb51f854b70965ed37f1640c8b1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
