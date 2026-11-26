@@ -1,0 +1,22 @@
+pkgbase = slasha-bin
+	pkgdesc = Self-hosted PaaS in a single binary that runs on any server
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/slashacom/slasha
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = zlib
+	provides = slasha
+	conflicts = slasha
+	options = !debug
+	source = slasha-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/slashacom/slasha/v0.1.0/LICENSE
+	sha256sums = 67de0ab8847012e9ce62d52a651e155dc7a6065895404eaef3621ab3c77aaebc
+	source_x86_64 = slasha-bin-0.1.0-x86_64.tar.gz::https://github.com/slashacom/slasha/releases/download/v0.1.0/slasha-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = bff7ea626129a3f9834d4f657382ac8cd15a23e13ce76a2d49d313ced49d587b
+	source_aarch64 = slasha-bin-0.1.0-aarch64.tar.gz::https://github.com/slashacom/slasha/releases/download/v0.1.0/slasha-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = db8f8ec7508937ba259bbd0960bfc2a580c0768c180ea9ad35f9f515f18586f6
+
+pkgname = slasha-bin
