@@ -1,13 +1,17 @@
 # Maintainer: Aleksandar Zarić <salexandarz@github.com>
 pkgname=mail-badge-notifier-git
-pkgver=r27.6385b5a
+pkgver=r41.a0b770e
 pkgrel=1
 pkgdesc="Unread mail taskbar badges for Thunderbird/Betterbird with headless systemd service and GUI wrapper"
 arch=('x86_64' 'aarch64')
 url="https://github.com/salexandarz/mail-badge-notifier"
 license=('MIT')
 install=mail-badge-notifier-git.install
-depends=('python' 'thunderbird' 'bash' 'systemd')
+depends=('python' 'bash' 'systemd')
+optdepends=(
+  'thunderbird: supported mail client'
+  'betterbird-bin: supported mail client'
+)
 makedepends=('git' 'python')
 provides=('mail-badge-notifier')
 conflicts=('mail-badge-notifier' 'mail-badge-bridge')
