@@ -1,0 +1,27 @@
+pkgbase = microsoft-authentication-cli-bin
+	pkgdesc = Command-line utility for Microsoft Entra authentication (AzureAuth)
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = https://github.com/AzureAD/microsoft-authentication-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = ca-certificates
+	depends = gcc-libs
+	depends = glibc
+	depends = icu
+	depends = krb5
+	depends = openssl
+	depends = zlib
+	optdepends = xdg-utils: open the browser for interactive authentication
+	provides = azureauth
+	conflicts = azureauth
+	noextract = azureauth-0.9.8-linux-x64.deb
+	noextract = azureauth-0.9.8-linux-arm64.deb
+	options = !strip
+	source_x86_64 = https://github.com/AzureAD/microsoft-authentication-cli/releases/download/0.9.8/azureauth-0.9.8-linux-x64.deb
+	sha256sums_x86_64 = dbc002debe53f48ef2fd801b333f1ca454ee89f8d59980bad642884750b466cf
+	source_aarch64 = https://github.com/AzureAD/microsoft-authentication-cli/releases/download/0.9.8/azureauth-0.9.8-linux-arm64.deb
+	sha256sums_aarch64 = aa8d27cab7032f4cb6934a3a9dabcc9af50bca4617ef8c72c0e11c278ad6809e
+
+pkgname = microsoft-authentication-cli-bin
