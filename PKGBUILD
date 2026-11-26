@@ -2,8 +2,8 @@
 
 pkgbase=xwm-git
 pkgname=xwm-git
-pkgver=1.0.0.r11.g96d93c0
-pkgrel=9
+pkgver=1.1.0.r0.g879f73b
+pkgrel=1
 pkgdesc="XWM (X light Window Manager) is a light-weight window manager for the X11 Window System"
 arch=($CARCH)
 url="https://gitee.com/xinligg/xwm"
@@ -27,15 +27,14 @@ depends=(
     libxmu
     libxinerama
     libxpm
+    pam
     pango
 )
 makedepends=(
-    autoconf
-    automake
-    coreutils
+    cmake
+    ninja
     gettext
     git
-    m4
     pkgconf
 )
 checkdepends=()
@@ -46,7 +45,7 @@ optdepends=(
 )
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-options=()
+options=(!debug)
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -59,25 +58,22 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
-    cd "$srcdir/$pkgname"
-    autopoint --force
-    autoreconf -fiv -I m4
 }
 
 build() {
     cd "${srcdir}/${pkgname}"
 
-    ./configure \
-        --enable-nls \
-        --prefix=/usr \
-        --sysconfdir=/etc
+    cmake -D CMAKE_BUILD_TYPE=None \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_INSTALL_SYSCONFDIR=/etc \
+        -B build \
+        -G Ninja
 
-    make update-po
-    make update-gmo
-    make
+    ninja -C build
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
-    make DESTDIR="$pkgdir" install
+    DESTDIR="${pkgdir}" ninja -C build install
+    install -vDm644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
 }
