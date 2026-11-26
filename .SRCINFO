@@ -1,0 +1,20 @@
+pkgbase = shelf-cli-bin
+	pkgdesc = CLI for shelf, publish HTML pages and docs and get a link back
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/BUR4KBEY/shelf
+	license = MIT
+	conflicts = shelf-bin
+	conflicts = shelf-git
+	provides = shelf
+	arch = aarch64
+	source_aarch64 = shelf-cli-bin_0.1.0_aarch64.tar.gz::https://github.com/BUR4KBEY/shelf/releases/download/v0.1.0/shelf_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 390a93252eca0821752ac6a45accb82a65b662e09213b8c91f38a548e39118c1
+	arch = armv7h
+	source_armv7h = shelf-cli-bin_0.1.0_armv7h.tar.gz::https://github.com/BUR4KBEY/shelf/releases/download/v0.1.0/shelf_0.1.0_linux_armv7.tar.gz
+	sha256sums_armv7h = a75e04c34a5baf63eaa1d72a2339d3e408a5c8fe1147ed586b3422380022eab4
+	arch = x86_64
+	source_x86_64 = shelf-cli-bin_0.1.0_x86_64.tar.gz::https://github.com/BUR4KBEY/shelf/releases/download/v0.1.0/shelf_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 74ee63688c0b32f12d68e1f4ef57287a6a3efa1d4b8b4e24f590ce5fab537c59
+	
+pkgname = shelf-cli-bin
