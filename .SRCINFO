@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-gtk4-bin
 	pkgdesc = GTK4 backend for xdg-desktop-portal (prebuilt release binary)
-	pkgver = 1.6.7
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/JohnRTitor/xdg-desktop-portal-gtk4
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = xdg-desktop-portal-gtk4-bin
 	conflicts = xdg-desktop-portal-gtk4-printfix
 	options = !strip
 	options = !debug
-	source = xdg-desktop-portal-gtk4-bin-1.6.7.tar.gz::https://github.com/JohnRTitor/xdg-desktop-portal-gtk4/releases/download/v1.6.7/xdg-desktop-portal-gtk4-linux-x86_64.tar.gz
-	source = xdg-desktop-portal-gtk4-1.6.7.tar.gz::https://github.com/JohnRTitor/xdg-desktop-portal-gtk4/releases/download/v1.6.7/xdg-desktop-portal-gtk4-1.6.7.tar.gz
-	sha256sums = 7ab7e37188207f7530d33d4a8f6b4211110b84b6ab2e4bc4c78755a3db41d8d8
-	sha256sums = 0d63001f7b97673f45cd32fa677bee5d1e0322b3511b2359e4a8165cd8d35867
+	source = xdg-desktop-portal-gtk4-bin-1.7.0.tar.gz::https://github.com/JohnRTitor/xdg-desktop-portal-gtk4/releases/download/v1.7.0/xdg-desktop-portal-gtk4-linux-x86_64.tar.gz
+	source = xdg-desktop-portal-gtk4-1.7.0.tar.gz::https://github.com/JohnRTitor/xdg-desktop-portal-gtk4/releases/download/v1.7.0/xdg-desktop-portal-gtk4-1.7.0.tar.gz
+	sha256sums = 0acc2531c466654f510d0f1c999639aaaec686e7267675b086ff524b8ae1c1d9
+	sha256sums = 9fe1cdee3ddabde8633bc5775e24736b1d036292e93e86582ef30eee7d87cbf7
 
 pkgname = xdg-desktop-portal-gtk4-bin
