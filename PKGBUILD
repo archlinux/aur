@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=lupin
-pkgver=0.1.62
+pkgver=0.1.63
 pkgrel=1
 pkgdesc='The reference interpreter for the wolf language, and the compiler differential oracle'
 arch=('x86_64' 'aarch64')
@@ -48,9 +48,17 @@ check() {
     # red by construction. The `|| true` this replaces hid those two and,
     # because cargo stops at the first failing test binary, every target
     # after tests/differ_cli.rs too.
+    #
+    # A third is skipped for the toolchain, not for lupin, until
+    # wolf-interp#387 is fixed.
+    # tests/build_stamp.rs's a_re_vendor_invalidates_the_stamp_too reads
+    # cargo's build-script cache at <target>/debug/build/<pkg>-<hash>/output.
+    # Rust 1.100.0 lays out the build directory differently, so the test finds
+    # no output file and panics. At the same tag it passes under Rust 1.99.1.
     cargo test --frozen --release -- \
         --skip a_debug_harness_is_refused_by_name_before_it_can_compare \
-        --skip the_door_is_loud_and_stamps_the_profile_on_the_report
+        --skip the_door_is_loud_and_stamps_the_profile_on_the_report \
+        --skip a_re_vendor_invalidates_the_stamp_too
 }
 
 package() {
