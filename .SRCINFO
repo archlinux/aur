@@ -1,0 +1,14 @@
+pkgbase = narcolepsyd
+	pkgdesc = An idle power optimizer for Linux laptops with Intel hybrid CPUs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/obra/narcolepsyd
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cargo
+	depends = systemd
+	source = git+http://github.com/obra/narcolepsyd.git
+	md5sums = SKIP
+
+pkgname = narcolepsyd
