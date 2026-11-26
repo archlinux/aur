@@ -1,13 +1,13 @@
 # lito.lock
 _luato_commit=500fa77514f1ea32c9dffd1d68a16ab5bd31e069
-_wavsen_commit=fe27f752e29a94565b6a33083d90df9a020ee76f
-_qextra_commit=1ce54ee77fda9679e2bedfb55d9addefb26aa114
-_qml_material_commit=9b942c175e89711de1a66467e6a7b35e976f2188
-_vecgltf_commit=20bb93a742a4e7246ad27620cb11745d96a4478c
-_vrento_commit=02101d93c5fd76d8d4892910ba16765892d197c0
+_wavsen_commit=a93fbd8f61a8dcaccbd817bcffc38db2ddf3d119
+_qextra_commit=9497df3060a8b406d5f00743cbc2ebf09c0ba8df
+_qml_material_commit=712fb288660c470e7883b590569f5ec06f25a24c
+_vecgltf_commit=573de6bd6f4be883e5a5c8c8085621455c062491
+_vrento_commit=ecf0509f10ce61f124e787777f87b026ab5b6d43
 
 pkgname=waywallen
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
@@ -32,13 +32,13 @@ else
     makedepends+=(git-lfs qt6-shadertools)
     source+=("git+https://github.com/hypengw/QmlMaterial.git#commit=$_qml_material_commit")
 fi
-sha256sums=('5e213520f17d01f0ff732379defbc36f146634e494ddfed22db45289bccc2dba'
+sha256sums=('71413ce91c2ff9b15738be9dd029c790cda85735fbc42accca1a5a45f0f3d379'
             '03c85e20d4a80e20552f6f2e6655409d68ebaac554dd0044e4c0b150a386f355'
-            'e64fd2498d75a21749a71c8f82dbe534b59acb3a462b73c1e2d330538588e5c0'
-            '58fd823fc8e948659fa2ffa409897228d79d69d3a97580fbbf77c164e808872b'
-            '575b170d8e7acf421e55c54e0670ee6d524c608ed0bdd8af114e7d6f0555b7d4'
-            '80614f5810186112c4680d77b6535e89da162e8b17e3e302bc86e1a9d9ae3ace'
-            '6bccc21285ccbc9dbcce619b7d7b63293e6d11a72f45b2e4244876f3ce7df244')
+            '9d6a8347f623fd1eac1b527585a5344305084cdb266f54af4e9da61b5108f5e3'
+            '77faa4eee4ecea3eef6a1848d3c22e6cececbe68e33f4f9ed9cff4f8fc7d605d'
+            'd91f9736bc0445592316a2f956a95c17da5fcaa21f7f79f8af319c040a1cee61'
+            '4c46799da28f2ad621d35eee7587fd2574ec3c50721e83f389474d0f98c45cbc'
+            'e2be7ff53b4b21abd6c4ce518f7023ccdd56a6c99bd3280a5a4d811a051f172c')
 
 prepare() {
     cd "$pkgname"
