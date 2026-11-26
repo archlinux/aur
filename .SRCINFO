@@ -1,6 +1,6 @@
 pkgbase = openartifact
 	pkgdesc = Free-as-in-freedom artifact repository manager (Maven, npm, PyPI, OCI, Helm, ...)
-	pkgver = 0.25.0
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://github.com/openartifact/openartifact
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = openartifact
 	license = AGPL-3.0-or-later
 	makedepends = go
 	makedepends = bun
-	provides = oa-cli=0.25.0
+	provides = oa-cli=0.25.1
 	conflicts = openartifact-bin
 	backup = etc/openartifact/openartifact.yaml
-	source = openartifact-0.25.0.tar.gz::https://github.com/openartifact/openartifact/archive/refs/tags/v0.25.0.tar.gz
+	source = openartifact-0.25.1.tar.gz::https://github.com/openartifact/openartifact/archive/refs/tags/v0.25.1.tar.gz
 	source = openartifact.service
-	sha256sums = f920cf77fa32c7bf862d6d12d572fa1be3e891d9740306fee856e282654e9330
+	sha256sums = 026fade6b23cf50447dc9d68f497e1bdb198445f27637ef2c6465c01fa653d73
 	sha256sums = bc1ec1cb88982f5c3bfc5a86505bcc8b87e6e83541609526b90b298ea2c473cb
 
 pkgname = openartifact
