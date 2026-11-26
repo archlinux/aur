@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.ranges
-_pkgver=1.8.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,11 +12,11 @@ license=('MIT')
 depends=(
   r-alabaster.base
   r-biocgenerics
-  r-genomeinfodb
   r-genomicranges
   r-iranges
   r-rhdf5
   r-s4vectors
+  r-seqinfo
 )
 checkdepends=(
   r-testthat
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('044af29a548145b74d672c69c17207d1')
-b2sums=('2d66e587929b8fbfb2c9c034253f708226ba82d7bb87fca83de9e19da67b570d44b446ac6e81b8dac9dbb620dc0fa79ded3b34c5513c02fd07e17f0c63704966')
+md5sums=('508e2384260fa560e313afbc1f85a704')
+b2sums=('b4cec093cca0374f55fc3a0902e21ab149deaf883754e02a123b7690d0c249364394ecb3071057f0f974d7c59c7eb3c31a0a22e743a869fde8c77f15ba83a5ac')
 
 build() {
   mkdir build
