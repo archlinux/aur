@@ -1,9 +1,8 @@
 [Desktop Entry]
-Name=Drill
-Comment=Search files
-Exec=drill
-Terminal=false
-Icon=drill
 Type=Application
-Categories=Utility;
-StartupNotify=false
+Name=Drill
+Comment=Search files without indexing
+Exec=drill
+Icon=drill
+Categories=Utility;FileTools;
+Terminal=false
