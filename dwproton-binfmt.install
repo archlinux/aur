@@ -1,0 +1,33 @@
+_dwb_unregister() {
+  local entry=/proc/sys/fs/binfmt_misc/DOSWin
+  [ -e "$entry" ] || return 0
+  printf -- '-1\n' > "$entry" 2>/dev/null || true
+}
+
+_dwb_reload() {
+  _dwb_unregister
+  systemctl restart systemd-binfmt 2>/dev/null \
+    || /usr/lib/systemd/systemd-binfmt 2>/dev/null \
+    || true
+}
+
+_dwb_show() {
+  local entry=/proc/sys/fs/binfmt_misc/DOSWin
+  if [ -e "$entry" ] && grep -q '^interpreter /usr/bin/dwproton$' "$entry"; then
+    printf '  -> binfmt: DOSWin -> /usr/bin/dwproton （已生效，重启后仍有效）\n'
+  else
+    printf '  -> 警告: DOSWin 未指向 /usr/bin/dwproton，稍后用 systemctl status systemd-binfmt 查\n'
+  fi
+}
+
+post_install() { _dwb_reload; _dwb_show; }
+post_upgrade() { _dwb_reload; _dwb_show; }
+
+pre_remove() {
+  _dwb_unregister
+}
+
+post_remove() {
+  systemctl restart systemd-binfmt 2>/dev/null || true
+  printf '  -> 已撤销 dwproton 的 DOSWin 注册；若 wine 仍在，其注册已恢复\n'
+}
