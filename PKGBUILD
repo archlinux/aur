@@ -2,7 +2,7 @@
 
 pkgbase=xwm-git
 pkgname=xwm-git
-pkgver=1.1.0.r0.g879f73b
+pkgver=1.1.0.r5.gad8f9d7
 pkgrel=1
 pkgdesc="XWM (X light Window Manager) is a light-weight window manager for the X11 Window System"
 arch=($CARCH)
@@ -65,7 +65,6 @@ build() {
 
     cmake -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr \
-        -D CMAKE_INSTALL_SYSCONFDIR=/etc \
         -B build \
         -G Ninja
 
