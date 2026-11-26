@@ -1,6 +1,6 @@
 pkgbase = omapdf-bin
 	pkgdesc = Native Wayland and X11 PDF and EPUB reader built with GPUI and MuPDF (portable binary)
-	pkgver = 0.0.11
+	pkgver = 0.0.12
 	pkgrel = 1
 	url = https://github.com/qwlp/omapdf
 	arch = x86_64
@@ -14,17 +14,17 @@ pkgbase = omapdf-bin
 	depends = vulkan-icd-loader
 	depends = fontconfig
 	optdepends = xdg-desktop-portal: desktop file chooser integration
-	provides = omapdf=0.0.11
+	provides = omapdf=0.0.12
 	conflicts = omapdf
-	noextract = omapdf-0.0.11-x86_64
-	noextract = omapdf-0.0.11-aarch64
+	noextract = omapdf-0.0.12-x86_64
+	noextract = omapdf-0.0.12-aarch64
 	options = !strip
 	options = !debug
-	source = omapdf-0.0.11.tar.gz::https://github.com/qwlp/omapdf/archive/refs/tags/v0.0.11.tar.gz
-	sha256sums = 0873ecd34883df295a51c2ce3ef2ee256d5cfb3593861964570b8551664aefa2
-	source_x86_64 = omapdf-0.0.11-x86_64::https://github.com/qwlp/omapdf/releases/download/v0.0.11/omapdf-linux-x86_64
-	sha256sums_x86_64 = ca515edf4aa509238f9d5ac6b4a49f8ae8673de2fa642a3708b7f391bb7037bf
-	source_aarch64 = omapdf-0.0.11-aarch64::https://github.com/qwlp/omapdf/releases/download/v0.0.11/omapdf-linux-aarch64
-	sha256sums_aarch64 = c4c1f678622c4b6f22e552cda35f429bc0c5e587fc3f90728652cc9e2160d59f
+	source = omapdf-0.0.12.tar.gz::https://github.com/qwlp/omapdf/archive/refs/tags/v0.0.12.tar.gz
+	sha256sums = cacc4e4c368e0ecfa1696e61b6dbf788e3c42fa92919fbb5856ac9b3096cd56d
+	source_x86_64 = omapdf-0.0.12-x86_64::https://github.com/qwlp/omapdf/releases/download/v0.0.12/omapdf-linux-x86_64
+	sha256sums_x86_64 = 9338e88ccef8b773c05a24983fa1a71c7de2e91adc79f3d6ff7edcdeb59b6ca9
+	source_aarch64 = omapdf-0.0.12-aarch64::https://github.com/qwlp/omapdf/releases/download/v0.0.12/omapdf-linux-aarch64
+	sha256sums_aarch64 = 18c788f7defb0764f25e74734b3d409904fb87a05e72aed25b6b54e107598e92
 
 pkgname = omapdf-bin
