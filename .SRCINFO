@@ -1,6 +1,6 @@
 pkgbase = passel
 	pkgdesc = A pass-compatible password manager for GNOME
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Pierrotws/passel
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = passel
 	conflicts = gnome-vault
 	conflicts = gnome-vault-bin
 	replaces = gnome-vault
-	source = passel-0.3.0::git+https://github.com/Pierrotws/passel.git#tag=v0.3.0
-	sha256sums = fe6e3e2f50ff39667ba844b551fa68d2022a4f5fb0c874b06e92b70d32dae79b
+	source = passel-0.3.1::git+https://github.com/Pierrotws/passel.git#tag=v0.3.1
+	sha256sums = 9b60927ef12b6f20fe57f23b54166f88f0d4b01b7d7036d18638b9d5dca27cce
 
 pkgname = passel
