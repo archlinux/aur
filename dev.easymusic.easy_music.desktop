@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Easy Music
+Comment=Play local music and HTTPS audio streams
+Exec=easy-music
+Icon=multimedia-player
+Terminal=false
+Categories=AudioVideo;Audio;Player;

@@ -1,0 +1,24 @@
+pkgbase = easy-music-bin
+	pkgdesc = Music player for local files and HTTPS audio streams
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/leychan/easy-music
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libdbusmenu-glib
+	depends = libsecret
+	depends = mpv
+	depends = xdg-desktop-portal
+	optdepends = xdg-desktop-portal-gtk: GTK file chooser backend
+	optdepends = org.freedesktop.secrets: desktop credential storage
+	provides = easy-music=0.1.7
+	conflicts = easy-music
+	options = !strip
+	options = !debug
+	source = https://github.com/leychan/easy-music/releases/download/v0.1.7/easy-music-0.1.7-linux-x86_64.tar.gz
+	source = dev.easymusic.easy_music.desktop
+	sha256sums = 6167345c656705cb5dd2f02ec6e1fa465649fdc7d1e00f598e296da6d07b1bcc
+	sha256sums = 4faf800cca809517eea9f854359d6969809f079ded92f889526b3e47a329e4ae
+
+pkgname = easy-music-bin
