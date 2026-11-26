@@ -1,6 +1,6 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=dreamcoder
-pkgver=1.0.16
+pkgver=1.0.17
 pkgrel=1
 pkgdesc='AI-powered coding assistant with semantic code search'
 url='https://www.dreamcoder.ai'
@@ -21,12 +21,12 @@ options=(
     '!debug'
 )
 source=(
-    "$pkgname-$pkgver-amd64.deb::https://www.dreamcoder.ai/downloads/files/public/$pkgver/linux-deb/dreamcoder-dreamcoder_${pkgver}_amd64.deb"
+    "$pkgname-$pkgver-amd64.deb::https://www.dreamcoder.ai/downloads/files/public/$pkgver/linux-deb/debian/dreamcoder-dreamcoder_${pkgver}_amd64.deb"
 )
 noextract=(
     "$pkgname-$pkgver-amd64.deb"
 )
-sha256sums=('add81b22741b71f34426a7651c449fe460c9790ab45190e3372e190472dfbeae')
+sha256sums=('6225b3d8994b3afd1f7e7a5398b9a66eb7d02cacc7c1768dade0b3b62ad0b2bd')
 
 package() {
     local _deb="$srcdir/$pkgname-$pkgver-amd64.deb"
