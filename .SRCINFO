@@ -1,6 +1,6 @@
 pkgbase = spendo-bin
 	pkgdesc = Local-first personal finance manager
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/lewisflames/spendo
 	install = spendo-bin.install
@@ -17,7 +17,7 @@ pkgbase = spendo-bin
 	conflicts = spendo
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/lewisflames/spendo/releases/download/v0.7.1/Spendo_0.7.1_amd64.deb
-	sha256sums_x86_64 = c734f7ce70fa2e5c77b56c530112eb9304611a310d5d127a521b8c37a8ef8cd6
+	source_x86_64 = https://github.com/lewisflames/spendo/releases/download/v0.8.0/Spendo_0.8.0_amd64.deb
+	sha256sums_x86_64 = 8fa8bf989c53dca5e49c6621d745e9bb7dcadd7cbee10250738c606623f88cb6
 
 pkgname = spendo-bin
