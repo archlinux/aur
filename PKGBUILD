@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=oligo
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -47,8 +47,8 @@ optdepends=(
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
 #  "fix-implicit-fun.patch::https://github.com/benilton/oligo/commit/b24d8b0e.patch"
 )
-md5sums=('9b610137ba35653a00ee0e89c59a8b47')
-b2sums=('240157d03085b207181d110b9baebb344ddb763d77f02cfe9cc511b184e92e9a3c34c76b07b91cf042cddca43a5149ff7226c468b5d452f53df2b5950f22b719')
+md5sums=('16d5f22977227ff3f7cdba27941b09f9')
+b2sums=('037844e1f092870ae183d932493f274b6c4045e0c15130635e276480a0671b67147d37aab678d3cb448b797fe0936ab7ceead0662354e9ffc4364e3a2e07cf53')
 #         'd28e79c36d0a0aeedf1a954dbfcd99fe')
 #        '2b137f5ff851fb7e2589d7712030c48e8037ab16f9218ceaad9d2639deec06c79f2e0765409878c33d7daced87e0407b7180401b66f83b4ae6cfc17b29d44b2f')
 #prepare() {
