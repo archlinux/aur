@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BufferedMatrixMethods
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-affyio
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('df68e6773383f41216478882748d91de')
-b2sums=('88f5c667ae44dce868fb8b38314618392dd72d595e6545d2f07fcad1f7b49f0c2fb991960820effb97aec3b4285d91f94b04c04dab651b5934de53350d7f2e52')
+md5sums=('abad337dc8fcc3ef02f0ddeca01b14f7')
+b2sums=('0d672882500d2101e1b46df97cec7e24dde4e021cb474edd579e70d9645c4889770dc8a1dcb582db1ae9f2e940c781a0c15177d872f4db5b74084b565ff4c666')
 
 build() {
   mkdir build
