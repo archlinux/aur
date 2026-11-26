@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=weitrix
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Tools for matrices with precision weights, test and explore weighted or sparse data'
 arch=('any')
@@ -45,7 +45,7 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('25406cf1c5373f93052f520303ef460b8bb65d7faadadbe94b807adee67dadad')
+sha256sums=('f8c7e0595fa207b0c4024efb448c3e63a93e7279ab943235e8783b2ed6e17c36')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
