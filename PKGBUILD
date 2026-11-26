@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Omixer
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Omixer: multivariate and reproducible sample randomization to proactively counter batch effects in omics studies'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3f28a48265d1b383b2b9ff8b26adcf8546f289bdf3a4782134e7a03d0d4584b7')
+sha256sums=('0bc31eebf5a9f4873367260bf6837ea067ba1b5144d99088731d12187cad3c11')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
