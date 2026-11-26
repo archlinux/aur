@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=h5vcData
-_pkgver=2.33.0
+_pkgver=2.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-h5vc
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('65ca18beeb78609fd47ee9e41cf2543f')
-b2sums=('9abac930aefea75073c0113b44db02ce5cffee70f161c5639f6ca399a7fc3bbe5c07720a9d86ee1dbd2c5aae04a2412504ca7815f1d4f23afd1fd4a94cbf217d')
+md5sums=('b705684f72974ae57dad1dfb7efccd59')
+b2sums=('584699c683f1de5ff6325d9793a2cfd8da4b11a71042b6d5dc97afb08311897ed1849b5adbefa84e9d0866dd13dc7c904ead5c57733cbd62257ad587d38fd848')
 
 build() {
   mkdir build
