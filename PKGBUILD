@@ -1,7 +1,7 @@
 # Maintainer: colegeming <collegeming@outlook.com>
 
 pkgname=snishaper-bin
-pkgver=1.30.3.2
+pkgver=1.30.3.3
 pkgrel=1
 pkgdesc='Local proxy to bypass SNI blocking via ECH injection, TLS fragmentation, QUIC and a TUN device (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -26,22 +26,22 @@ options=('!strip')
 # are arch-independent but must be listed in each arch array: makepkg uses only
 # the array matching $CARCH, so there is no duplicate-download conflict.
 source_x86_64=(
-    "snishaper-${pkgver}-linux-x64.tar.gz::https://github.com/SnishaperTeam/SniShaper/releases/download/v1.30.3.2/snishaper-linux-x64.tar.gz"
-    "snishaper-${pkgver}-icon.png::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.30.3.2/Assets/AppList.targetsize-256_altform-unplated.png"
-    "snishaper-${pkgver}-LICENSE::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.30.3.2/LICENSE"
+    "snishaper-${pkgver}-linux-x64.tar.gz::https://github.com/SnishaperTeam/SniShaper/releases/download/v1.30.3.3/snishaper-linux-x64.tar.gz"
+    "snishaper-${pkgver}-icon.png::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.30.3.3/Assets/AppList.targetsize-256_altform-unplated.png"
+    "snishaper-${pkgver}-LICENSE::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.30.3.3/LICENSE"
 )
 sha256sums_x86_64=(
-    'e1b3936dfab305e255f63e8f38ce5f9ef3aa8bc04acf217f4f8e6dd90a4f8b16'
+    'ba89a51ba5fe64c2c772f03e6bb5bae65e6b534a6d8a4079eda09c58d66b6e00'
     'c8c6fb14ef896c6fe2a3d65632445bb1d01a3c78796f3ed494e0592bf329d40b'
     '48be7d67a45ae8e41d3da4d9f2779b7ebbb3ddc10c7d099ff8c8f51cdcb3f080'
 )
 source_aarch64=(
-    "snishaper-${pkgver}-linux-arm64.tar.gz::https://github.com/SnishaperTeam/SniShaper/releases/download/v1.30.3.2/snishaper-linux-arm64.tar.gz"
-    "snishaper-${pkgver}-icon.png::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.30.3.2/Assets/AppList.targetsize-256_altform-unplated.png"
-    "snishaper-${pkgver}-LICENSE::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.30.3.2/LICENSE"
+    "snishaper-${pkgver}-linux-arm64.tar.gz::https://github.com/SnishaperTeam/SniShaper/releases/download/v1.30.3.3/snishaper-linux-arm64.tar.gz"
+    "snishaper-${pkgver}-icon.png::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.30.3.3/Assets/AppList.targetsize-256_altform-unplated.png"
+    "snishaper-${pkgver}-LICENSE::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.30.3.3/LICENSE"
 )
 sha256sums_aarch64=(
-    '796875d15295709d17f385f621675dcf95e1eb40be267e48ff056b320a5f0dcd'
+    'c61f316b414024ccc6a9a219d59d2fba8b87690d92ff38a8f08bda4b203fa5af'
     'c8c6fb14ef896c6fe2a3d65632445bb1d01a3c78796f3ed494e0592bf329d40b'
     '48be7d67a45ae8e41d3da4d9f2779b7ebbb3ddc10c7d099ff8c8f51cdcb3f080'
 )
