@@ -1,6 +1,6 @@
 pkgbase = agent-console-bin
 	pkgdesc = Direct coding agents in your repo, with a verifiable record of what they did
-	pkgver = 0.99.1
+	pkgver = 0.99.2
 	pkgrel = 1
 	url = https://github.com/cyl-castillo/agent-console
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = agent-console-bin
 	provides = agent-console
 	conflicts = agent-console
 	options = !strip
-	source = https://github.com/cyl-castillo/agent-console/releases/download/v0.99.1/Agent.Console_0.99.1_amd64.deb
-	source = LICENSE-0.99.1::https://raw.githubusercontent.com/cyl-castillo/agent-console/v0.99.1/LICENSE
-	sha256sums = c410791349b69dc073e532b2faef3fb67d6b9103188f07e254e4e4d1557a1c60
+	source = https://github.com/cyl-castillo/agent-console/releases/download/v0.99.2/Agent.Console_0.99.2_amd64.deb
+	source = LICENSE-0.99.2::https://raw.githubusercontent.com/cyl-castillo/agent-console/v0.99.2/LICENSE
+	sha256sums = 2d000cb0a8ef46d040016e7e2676afa5fa36fb99cf909879a252de4c5d3af467
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 
 pkgname = agent-console-bin

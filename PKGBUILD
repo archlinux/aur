@@ -3,7 +3,7 @@
 # other channel. Version + checksums are bumped automatically by the
 # publish-aur job in the repo's release workflow (updpkgsums).
 pkgname=agent-console-bin
-pkgver=0.99.1
+pkgver=0.99.2
 pkgrel=1
 pkgdesc="Direct coding agents in your repo, with a verifiable record of what they did"
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('agent-console')
 options=('!strip')
 source=("$url/releases/download/v$pkgver/Agent.Console_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/cyl-castillo/agent-console/v$pkgver/LICENSE")
-sha256sums=('c410791349b69dc073e532b2faef3fb67d6b9103188f07e254e4e4d1557a1c60'
+sha256sums=('2d000cb0a8ef46d040016e7e2676afa5fa36fb99cf909879a252de4c5d3af467'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
 
 package() {
