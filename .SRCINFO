@@ -1,0 +1,17 @@
+pkgbase = liza-bin
+	pkgdesc = Disciplined multi-agent coding system
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/liza-mas/liza
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = liza
+	conflicts = liza
+	options = !debug
+	source_x86_64 = liza-bin-0.10.0-x86_64.tar.gz::https://github.com/liza-mas/liza/releases/download/v0.10.0/liza-0.10.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 0b44c5a73f1b4331ce16755c72ac9328c84b21bed0f94a7a207ca746999bf5c5
+	source_aarch64 = liza-bin-0.10.0-aarch64.tar.gz::https://github.com/liza-mas/liza/releases/download/v0.10.0/liza-0.10.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = eda82bb3acdc1944d3ab18622457546b4d900ce7ac134e418404c3e14b7927ca
+
+pkgname = liza-bin
