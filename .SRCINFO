@@ -1,0 +1,17 @@
+pkgbase = network_exporter-bin
+	pkgdesc = Prometheus exporter for ICMP, MTR, TCP port and HTTP checks
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/syepes/network_exporter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = network_exporter
+	conflicts = network_exporter
+	options = !debug
+	source_x86_64 = network_exporter-bin-2.0.0-x86_64.tar.gz::https://github.com/syepes/network_exporter/releases/download/2.0.0/network_exporter_2.0.0.Linux_x86_64.tar.gz
+	sha256sums_x86_64 = b1b39fdc9fc474369cd3a3d95a1bc268f5c4da6e3c003f7505bbcae24eaac87c
+	source_aarch64 = network_exporter-bin-2.0.0-aarch64.tar.gz::https://github.com/syepes/network_exporter/releases/download/2.0.0/network_exporter_2.0.0.Linux_arm64.tar.gz
+	sha256sums_aarch64 = b50c2ccd144445dea5b9da6b6de270e01422c383fb59f1c6e91a2aff6838f9d0
+
+pkgname = network_exporter-bin
