@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Herper
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9e5c316f84b0d40e586afd61b51ba547')
-b2sums=('0eb96bb046e62b2692980a460b09b92f5fec57dbc3e5c3d683fa6a22f5b8db665ccdaae9ddcd47487a6c6d67da2b429b4365e3a805cd8fff880bcbd9d9d4eb21')
+md5sums=('0ed6af1fb16b49fd3aa4794b6ebf03f3')
+b2sums=('842445f3a1edf55dc72b288ea26e11c3f619c085debf6bf44bd497f17ea6cc04fe2a1d4ebb6a04e37a34eb50d1e8b54799e012a10dcec5628735b0e9b1f2e0aa')
 
 build() {
   mkdir build
