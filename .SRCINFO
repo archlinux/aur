@@ -1,9 +1,10 @@
 pkgbase = python-pymunk
 	pkgdesc = Pymunk is a easy-to-use pythonic 2D physics library.
-	pkgver = 7.3.1
+	pkgver = 7.4.0
 	pkgrel = 1
 	url = https://github.com/viblo/pymunk
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	checkdepends = python-pyglet
 	checkdepends = python-pygame
@@ -11,20 +12,22 @@ pkgbase = python-pymunk
 	checkdepends = python-matplotlib
 	checkdepends = python-numpy
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-cffi
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
 	depends = python
 	depends = python-cffi
+	depends = glibc
 	optdepends = python-pyglet
 	optdepends = python-pygame
 	optdepends = python-matplotlib
-	source = https://github.com/viblo/pymunk/archive/refs/tags/7.3.1.tar.gz
-	source = Munk2D::git+https://github.com/viblo/Munk2D.git#commit=47b0e6b200c1aedb7b9ee09a998a2ef0bbad8f82
-	sha256sums = bca3d4b3da475e242d95b17d01404c3aa8afc235ae09850765a8e721dfeb2bd0
-	sha256sums = 8de048933171aee3f10f925a85b297b5b10cafbc247845c6595c969f7506bf14
+	source = pymunk-7.4.0.tar.gz::https://github.com/viblo/pymunk/archive/refs/tags/7.4.0.tar.gz
+	source = Munk2D::git+https://github.com/viblo/Munk2D.git#commit=47e051689dcd747ad0cc329669d0768767279101
+	sha256sums = 969a62f8517739208fe42eb31561260535be3735884295b483ed91a14546bd81
+	sha256sums = 4b721a7efced1c3eacd2589ce5a6c01bb4119376339beef86f0e74c655b5ff66
 
 pkgname = python-pymunk
