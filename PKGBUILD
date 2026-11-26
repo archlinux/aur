@@ -2,8 +2,8 @@
 
 pkgbase=kanidm-bin
 pkgname=(kanidm-clients-bin kanidm-unixd-clients-bin kanidm-server-bin kanidm-bin)
-pkgver=1.12.1
-pkgrel=2  # set by CI: 1 per new pkgver, +1 per packaging change
+pkgver=1.12.2
+pkgrel=1  # set by CI: 1 per new pkgver, +1 per packaging change
 pkgdesc='Modern identity management platform (prebuilt binaries)'
 arch=(x86_64 aarch64)
 url='https://kanidm.com'
@@ -14,8 +14,8 @@ _publisher=bendik/kanidm
 
 source_x86_64=("kanidm-v${pkgver}-x86_64-linux-gnu.tar.gz::https://github.com/${_publisher}/releases/download/v${pkgver}-bin/kanidm-v${pkgver}-x86_64-linux-gnu.tar.gz")
 source_aarch64=("kanidm-v${pkgver}-aarch64-linux-gnu.tar.gz::https://github.com/${_publisher}/releases/download/v${pkgver}-bin/kanidm-v${pkgver}-aarch64-linux-gnu.tar.gz")
-sha256sums_x86_64=('73bc2afc2d77660d2b971aac311ceea851beb8d123b3dbbdeca3b43d322b772c')
-sha256sums_aarch64=('870c5abf089eb8c4265a625db9840844ad7a68e5f11c063a8cb6087595173137')
+sha256sums_x86_64=('ae7fecd16bfd8ce246dfedd8f7418630a79e64b8fee1178ab425d3783947f5cf')
+sha256sums_aarch64=('486b9f1cd32c083939ed5b738552915229040bce99d15a866e3ab9e72547888e')
 
 _srcdir() {
   if [[ $CARCH == x86_64 ]]; then echo "kanidm-v${pkgver}-x86_64-linux-gnu"
