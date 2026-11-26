@@ -1,6 +1,6 @@
 pkgbase = radio-tui
 	pkgdesc = Lightweight curses internet radio player
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Twilight0/radio-tui
 	arch = any
@@ -14,7 +14,9 @@ pkgbase = radio-tui
 	depends = alsa-utils
 	optdepends = libpulse: PipeWire/PulseAudio playback and volume control
 	optdepends = bluez-alsa: Bluetooth A2DP volume control
-	source = radio-tui-1.1.1.tar.gz::https://github.com/Twilight0/radio-tui/archive/refs/tags/v1.1.1.tar.gz
-	sha256sums = cdea4da6be1bcadde83de7163d15e683cee79560b9d589d4956f9e2461ee002b
+	optdepends = curl: fallback for legacy SHOUTcast (ICY) streams on ffmpeg 9.1+
+	optdepends = yt-dlp: play manually added YouTube URLs
+	source = radio-tui-1.2.0.tar.gz::https://github.com/Twilight0/radio-tui/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = be04d2bc563dc405cfe46d514f2b150f2644db9d8470b45e67ae34cf2b1f7b6d
 
 pkgname = radio-tui
