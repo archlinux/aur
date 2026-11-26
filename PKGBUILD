@@ -7,7 +7,7 @@
 
 pkgname=kimi-work-intl-bin
 pkgver=3.2.28
-pkgrel=1
+pkgrel=2
 _prefix='/opt/kimi-work-intl'
 pkgdesc='Kimi Work desktop client, international build pinned to the overseas region'
 arch=('x86_64')
