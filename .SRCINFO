@@ -1,6 +1,6 @@
 pkgbase = vox
 	pkgdesc = Make your microphone sound better in every app, with switchable voice profiles
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/koenhendriks/vox
 	arch = x86_64
@@ -20,7 +20,8 @@ pkgbase = vox
 	depends = swh-plugins
 	depends = noise-suppression-for-voice
 	depends = x42-plugins-lv2
-	source = https://github.com/koenhendriks/vox/releases/download/v0.4.0/vox-0.4.0.tar.gz
-	sha256sums = c65ed3230e23ed624f1b987a62d9b517ee1b9b66718f3ab9870a0de72da539e5
+	depends = ffmpeg
+	source = https://github.com/koenhendriks/vox/releases/download/v0.5.0/vox-0.5.0.tar.gz
+	sha256sums = 847ede4696ef31a2db4b317622f90d055d8435895257faca527e981cd42bcfa4
 
 pkgname = vox
