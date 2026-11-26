@@ -1,6 +1,6 @@
 pkgbase = python312-packaging
 	pkgdesc = Core utilities for Python packages for Python 3.12
-	pkgver = 26.3
+	pkgver = 26.4
 	pkgrel = 1
 	url = https://packaging.pypa.io/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python312-packaging
 	makedepends = python-build
 	makedepends = python-flit-core
 	depends = python312
-	source = packaging-26.3.tar.gz::https://files.pythonhosted.org/packages/source/p/packaging/packaging-26.3.tar.gz
-	sha256sums = 94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79
+	source = packaging-26.4.tar.gz::https://files.pythonhosted.org/packages/source/p/packaging/packaging-26.4.tar.gz
+	sha256sums = c4b671c41ddb9bf26e543c37723610d28fb6bf7affc4da17cf048d419d2c062a
 
 pkgname = python312-packaging
