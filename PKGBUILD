@@ -9,7 +9,7 @@
 # system Python. When Arch moves to a new Python, rebuild it: yay -S --rebuild auren.
 
 pkgname=auren
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='Voice assistant for Omarchy: say what you want, and it uses your desktop'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=('claude-code: the main brain (Claude Code)'
 install=auren.install
 options=('!strip' '!debug')        # the wheels' libraries come as they were built
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fa76a61815b745e8d6bac1873985f47eee74c58caf257482940a4372af89f159')
+sha256sums=('29586d6ae7e14674a48ed80599f8d9ddb8787346f40c7c681169378ad9bcc524')
 _src="Auren-$pkgver"
 
 build() {
