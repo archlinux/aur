@@ -1,3 +1,6 @@
+# Maintainer: qubeck <qubeck (AT) disroot (DOT) org>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
+
 pkgbase=jna
 pkgname=(jna jna-platform)
 pkgver=5.19.1
