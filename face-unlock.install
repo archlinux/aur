@@ -3,13 +3,13 @@ post_install() {
   face-unlock --root migrate >/dev/null 2>&1 || true
   cat <<'MSG'
 
-  face-unlock is installed. Run it as your own user, not with sudo:
+  face-unlock is installed. Open Face Unlock from the application menu, or
+  run it as your own user, not with sudo:
 
-    face-unlock          interactive menu
-    face-unlock enable   set up your face and turn it on
+    face-unlock          the window, which walks you through the setup
+    face-unlock enable   set up your face and turn it on in the terminal
 
-  It asks for your password when it needs to. sudo and admin prompts stay
-  with the password until you switch them on under Settings.
+  It asks for your password when it needs to.
 
 MSG
 }
