@@ -1,6 +1,0 @@
-#!/bin/sh
-# /usr/lib/systemd/system-sleep/b580-watt-freq
-# systemd lo llama con pre/post
-if [ "$1" = "post" ]; then
-  /usr/bin/b580_watt_freq
-fi

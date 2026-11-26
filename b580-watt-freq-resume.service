@@ -4,8 +4,7 @@ After=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate
 
 [Service]
 Type=oneshot
-ExecStartPre=/bin/sleep 3
-ExecStart=/bin/bash /usr/local/bin/b580_watt_freq
+ExecStart=/usr/bin/b580_watt_freq
 StandardOutput=journal
 StandardError=journal
 
