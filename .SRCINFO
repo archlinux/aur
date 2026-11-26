@@ -1,6 +1,6 @@
 pkgbase = r-coveb
 	pkgdesc = Empirical Bayes estimate of block diagonal covariance matrices
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/covEB
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-coveb
 	depends = r-laplacesdemon
 	depends = r-mvtnorm
 	optdepends = r-curatedbladderdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/covEB_1.38.0.tar.gz
-	sha256sums = b0a8e7a0272bca87e4baef8fe56f53a47afb567a144bd00671c6eb276640767e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/covEB_1.40.0.tar.gz
+	sha256sums = 2dfe1dfd34c660ff582d702febca01c8950be620790f45913709b5ac61815b2f
 
 pkgname = r-coveb
