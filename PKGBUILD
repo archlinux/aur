@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=safe-chain-bin
-pkgver=1.5.29
+pkgver=1.5.30
 pkgrel=1
 pkgdesc='Protect against malicious code installed via npm, yarn, pnpm, pip, uv and poetry (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ options=('!strip' '!debug')
 _release="${url}/releases/download/${pkgver}"
 source_x86_64=("safe-chain-${pkgver}-linux-x64::${_release}/safe-chain-linux-x64")
 source_aarch64=("safe-chain-${pkgver}-linux-arm64::${_release}/safe-chain-linux-arm64")
-sha256sums_x86_64=('1b8f655b02ae5e362d28087987e5d88d1c9d58e8bf9773275a2ecf95adcd7903')
-sha256sums_aarch64=('6f5e1e43877756ab1ad2590aeff859c61be19ec4e4ac30f9b6b646f532579c92')
+sha256sums_x86_64=('3ccb658526091bfc45fbd6a538206ab907944515f3712e32021eb039698a32c8')
+sha256sums_aarch64=('2f42b9a2841ad52ed928b5331fda8ceb44dc9e781b601aca61e3774d8a1b01a4')
 
 package() {
   install -Dm755 safe-chain-"${pkgver}"-linux-* "${pkgdir}/usr/lib/safe-chain/safe-chain"
