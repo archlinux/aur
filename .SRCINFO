@@ -1,6 +1,6 @@
 pkgbase = desktop-plus-bin
 	pkgdesc = GitHub Desktop fork with extra features and improvements (binary release).
-	pkgver = 3.6.12.0
+	pkgver = 3.7.1.0
 	pkgrel = 1
 	url = https://github.com/desktop-plus/desktop-plus
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = desktop-plus-bin
 	source = launch-app.sh
 	sha256sums = a49191aebdf7c21d7605778e94d1490fcde9af0cb695aaf0d7f30e1214fe0c6c
 	sha256sums = ccf8e189b15a46a00363c7a40299762ef313827aa4809140f7940c5801db2e27
-	source_x86_64 = https://github.com/desktop-plus/desktop-plus/releases/download/v3.6.12.0/DesktopPlus-v3.6.12.0-linux-x86_64.deb
-	sha256sums_x86_64 = 91ac51e9f338ea4a6d8aa41ddbf547d7437eabc8bb8750955a9a10b8f8a23d87
-	source_aarch64 = https://github.com/desktop-plus/desktop-plus/releases/download/v3.6.12.0/DesktopPlus-v3.6.12.0-linux-arm64.deb
-	sha256sums_aarch64 = eb5295f85984b8e3db4a6f93bba59e15175228f973cdea437237ae5ea0b11b74
+	source_x86_64 = https://github.com/desktop-plus/desktop-plus/releases/download/v3.7.1.0/DesktopPlus-v3.7.1.0-linux-x86_64.deb
+	sha256sums_x86_64 = 26b990f0a6fe27f88940db043a9839aa622b925785c1dc2e81da49b1e69e486f
+	source_aarch64 = https://github.com/desktop-plus/desktop-plus/releases/download/v3.7.1.0/DesktopPlus-v3.7.1.0-linux-arm64.deb
+	sha256sums_aarch64 = 8b251f0ba6cf1c9d03e7cca25837d0c59d1e61f70247affa2957ef72447be721
 
 pkgname = desktop-plus-bin
