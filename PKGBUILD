@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 
 pkgname=env0-cli-bin
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="The env0 command-line interface"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=('env0-cli')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tgz::https://registry.npmjs.org/@env0/cli-linux-x64/-/cli-linux-x64-${pkgver}.tgz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tgz::https://registry.npmjs.org/@env0/cli-linux-arm64/-/cli-linux-arm64-${pkgver}.tgz")
-sha256sums_x86_64=('de3557f89abcf2141d1f75390a0584b6e4ff1afd37de1f7e46b0015a1adcc95a')
-sha256sums_aarch64=('d85a8d14dd36d62860421f737df08267d29494617545f67eec066cb59faebad0')
+sha256sums_x86_64=('7ff9e61b609b1d01433a079408e5f5ae1750bc59ac8dc62c8c63713d79466781')
+sha256sums_aarch64=('9dee6140395888f6cc0632e49a7ae8954b698870be9175418f747e3ea93a3971')
 
 build() {
   cd "${srcdir}/package"
