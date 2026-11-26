@@ -5,7 +5,7 @@
 # Contributor: Simon Thorpe <simon@hivetechnology.com.au>
 
 pkgname=pianoteq
-pkgver=9.3.0
+pkgver=9.3.1
 pkgrel=1
 _name="Pianoteq ${pkgver%%.*}"
 pkgdesc='Physical modelling piano instrument standalone program, VST3 and LV2 plugin. STANDARD version'
@@ -23,7 +23,7 @@ optdepends=(
 conflicts=(pianoteq-stage pianoteq-trial-bin)
 source=("local://pianoteq_setup_v${pkgver//./}.tar.xz"
         'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-sha256sums=('ae87054832f33e32031142dc22fd78128a069b9b8f1fc9015a43763b3e77a99b'
+sha256sums=('defed76492807a3ed1dbd25685b42108478a30c9f73777b5db69e5af2da2bc59'
             '94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 
 prepare() {
