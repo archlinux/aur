@@ -1,6 +1,6 @@
 pkgbase = r-plotgrouper
 	pkgdesc = Shiny app GUI wrapper for ggplot with built-in statistical analysis
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/plotGrouper
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-plotgrouper
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/plotGrouper_1.30.0.tar.gz
-	sha256sums = c41f8c48bb982f542ec27716bf9bacf9b30134034e236f53f53c66a236ef8390
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/plotGrouper_1.32.0.tar.gz
+	sha256sums = c5a952b0cc8e861cf1afe74eaca1ef2f6e3aa1c565b5e773e483256cfd066975
 
 pkgname = r-plotgrouper
