@@ -1,0 +1,330 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+HYPR_DIR="$HOME/.config/hypr"
+HYPR_SCRIPTS="$HYPR_DIR/UserScripts"
+
+migrate_shortcuts() {
+    local lua="$HYPR_DIR/conf.d/spotify.lua" legacy="$HYPR_DIR/conf.d/spotify.conf"
+    local changed=0
+    if [[ -f "$lua" ]] && grep -Fxq -- '-- Spotify Tray Configuration' "$lua"; then
+        if grep -Fxq 'hl.bind("SUPER + M", hl.dsp.window.move({ workspace = "special:spotify", follow = false }))' "$lua" ||
+            grep -Fxq 'hl.bind("SUPER + grave", hl.dsp.workspace.toggle_special("spotify"))' "$lua"; then
+            sed -zi 's/pcall(hl\.unbind, "SUPER + M")\nhl\.bind("SUPER + M", hl\.dsp\.window\.move({ workspace = "special:spotify", follow = false }))\n//; s/\nhl\.bind("SUPER + grave", hl\.dsp\.workspace\.toggle_special("spotify"))\n/\n/' "$lua"
+            changed=1
+        fi
+    fi
+    if [[ -f "$legacy" ]] && grep -Fxq '# Spotify Tray Configuration' "$legacy"; then
+        if grep -Fxq 'bind = SUPER, M, movetoworkspacesilent, special:spotify' "$legacy" ||
+            grep -Fxq 'bind = SUPER, grave, togglespecialworkspace, spotify' "$legacy"; then
+            sed -zi 's/unbind = SUPER, M\nbind = SUPER, M, movetoworkspacesilent, special:spotify\n//; s/\nbind = SUPER, grave, togglespecialworkspace, spotify\n/\n/' "$legacy"
+            changed=1
+        fi
+    fi
+    if (( changed )); then
+        reload_hyprland
+    fi
+}
+
+reload_hyprland() {
+    if [[ -z "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]]; then
+        local sockets=("${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"/hypr/*/.socket.sock)
+        if (( ${#sockets[@]} == 1 )) && [[ -S "${sockets[0]}" ]]; then
+            local instance=${sockets[0]%/.socket.sock}
+            HYPRLAND_INSTANCE_SIGNATURE="${instance##*/}" hyprctl reload >/dev/null 2>&1 && return
+        fi
+    fi
+    hyprctl reload >/dev/null 2>&1 || echo "Reload Hyprland to apply the changes."
+}
+
+install_desktop_entry() {
+    local launcher="$1" apps="$HOME/.local/share/applications"
+    mkdir -p "$apps"
+    cat > "$apps/spotify.desktop" << EOF
+[Desktop Entry]
+Type=Application
+Name=Spotify
+GenericName=Music Player
+Icon=spotify
+TryExec=spotify
+Exec="$launcher" %U
+Terminal=false
+MimeType=x-scheme-handler/spotify;
+Categories=Audio;Music;Player;AudioVideo;
+StartupWMClass=spotify
+EOF
+    if command -v update-desktop-database >/dev/null; then
+        update-desktop-database "$apps" 2>/dev/null || true
+    fi
+}
+
+case "${1:-}" in
+    --migrate) migrate_shortcuts; exit ;;
+    --upgrade)
+        if [[ ! -e "$HOME/.local/share/applications/spotify.desktop" ]]; then
+            install_desktop_entry /usr/bin/spotify-tray-launcher
+        fi
+        migrate_shortcuts
+        exit ;;
+    --install-desktop)
+        install_desktop_entry "${2:-/usr/bin/spotify-tray-launcher}"
+        migrate_shortcuts
+        exit ;;
+    "") ;;
+    *) echo "Usage: spotify-tray-setup" >&2; exit 2 ;;
+esac
+
+if [[ ! -t 0 || ! -t 1 ]]; then
+    echo "Run spotify-tray-setup in a terminal to configure optional keyboard controls."
+    exit 0
+fi
+
+migrate_shortcuts
+
+if [[ -f "$HYPR_DIR/hyprland.lua" ]]; then
+    HYPR_LUA=1
+elif [[ -f "$HYPR_DIR/hyprland.conf" ]]; then
+    HYPR_LUA=0
+else
+    echo "No Hyprland config found in $HYPR_DIR."
+    exit 1
+fi
+
+# Detect user's killactive keybind
+detect_killactive_keybind() {
+    local killactive_line modifier key
+
+    # Search all hyprland configs for killactive binding
+    killactive_line=$(grep -rh --include='*.conf' --exclude='spotify.conf' "killactive" "$HYPR_DIR" 2>/dev/null | grep -E '^[[:space:]]*bind[a-z]*[[:space:]]*=.*, *killactive([[:space:]]*(,|#|$))' | head -1 || true)
+
+    if [[ -z "$killactive_line" ]]; then
+        return
+    fi
+
+    # Extract modifier and key from bind line
+    # Format: bind[d] = MODIFIER, KEY, [description,] killactive
+    # Remove everything after the = and parse
+    local bind_part
+    bind_part=${killactive_line#*=}
+
+    # Get first two comma-separated values (modifier, key)
+    IFS=, read -r modifier key _ <<< "$bind_part"
+    modifier=$(sed -E 's/^[[:space:]]+|[[:space:]]+$//g' <<< "$modifier")
+    key=$(sed -E 's/^[[:space:]]+|[[:space:]]+$//g' <<< "$key")
+
+    # Resolve $mainMod variable if present
+    if [[ "$modifier" == *'$mainMod'* ]] || [[ "$modifier" == *'${mainMod}'* ]]; then
+        # Find mainMod definition
+        local mainmod_def
+        mainmod_def=$(grep -rh '^\$mainMod\s*=' "$HYPR_DIR" 2>/dev/null | head -1 | sed 's/.*=\s*//' | tr -d ' ' || true)
+        [[ -n "$mainmod_def" ]] || return 0
+        modifier=${modifier//\$mainMod/$mainmod_def}
+        modifier=${modifier//\${mainMod\}/$mainmod_def}
+    fi
+
+    printf '%s + %s\n' "$modifier" "$key"
+}
+
+# Lua config (Hyprland >= 0.55): find hl.bind(..., hl.dsp.window.close()) and
+# turn e.g. `mainMod .. " + " .. "Q"` into "SUPER + Q".
+detect_close_combo_lua() {
+    local line mainmod
+    line=$(grep -rh --include='*.lua' --exclude='spotify.lua' -E '^[[:space:]]*hl\.bind\(.*hl\.dsp\.window\.close\(' "$HYPR_DIR" 2>/dev/null | head -1 || true)
+    if [[ -z "$line" ]]; then
+        return
+    fi
+    mainmod=$(grep -rhoE --include='*.lua' 'mainMod[[:space:]]*=[[:space:]]*"[^"]+"' "$HYPR_DIR" 2>/dev/null | head -1 | sed -E 's/.*"([^"]+)"/\1/' || true)
+    [[ "$line" != *mainMod* || -n "$mainmod" ]] || return 0
+    echo "$line" | sed -E 's/.*hl\.bind\([[:space:]]*//; s/,[[:space:]]*hl\.dsp\.window\.close.*//' \
+        | sed -E "s/mainMod/${mainmod}/g; s/\"//g; s/[[:space:]]*\.\.[[:space:]]*//g; s/[[:space:]]*\+[[:space:]]*/ + /g"
+}
+
+snippet="$HYPR_DIR/conf.d/spotify.conf"
+if [[ "$HYPR_LUA" == 1 ]]; then
+    snippet="$HYPR_DIR/conf.d/spotify.lua"
+fi
+combo_pattern='^([[:alnum:]_]+([[:space:]]+[[:alnum:]_]+)*)[[:space:]]*\+[[:space:]]*([[:alnum:]_:-]+)$'
+
+load_spotify_config() {
+    if [[ "$HYPR_LUA" == 1 ]]; then
+        # Lua has no glob source: load our file explicitly
+        if ! grep -q "conf.d/spotify.lua" "$HYPR_DIR/hyprland.lua"; then
+            echo 'dofile(os.getenv("HOME") .. "/.config/hypr/conf.d/spotify.lua")' >> "$HYPR_DIR/hyprland.lua"
+            echo "      Added spotify.lua loader to hyprland.lua"
+        fi
+    else
+        # Check if the Spotify snippet is sourced in the main config
+        if ! grep -Eq '^[[:space:]]*source[[:space:]]*=.*conf\.d/(\*|spotify)\.conf' "$HYPR_DIR/hyprland.conf" 2>/dev/null; then
+            echo "" >> "$HYPR_DIR/hyprland.conf"
+            echo "# Source additional configs" >> "$HYPR_DIR/hyprland.conf"
+            echo "source = ~/.config/hypr/conf.d/spotify.conf" >> "$HYPR_DIR/hyprland.conf"
+            echo "      Added conf.d source to hyprland.conf"
+        fi
+    fi
+}
+
+create_spotify_config() {
+    mkdir -p "$HYPR_DIR/conf.d"
+    if [[ -e "$snippet" ]]; then
+        return 0
+    fi
+    if [[ "$HYPR_LUA" == 1 ]]; then
+        printf '%s\n' '-- Spotify Tray Configuration' > "$snippet"
+    else
+        printf '%s\n' '# Spotify Tray Configuration' > "$snippet"
+    fi
+}
+
+configure_smart_close() {
+    if grep -Fq 'UserScripts/smart-close.sh' "$snippet" 2>/dev/null; then
+        echo "Smart close is already configured."
+        return 0
+    fi
+    local choice detected combo confirm CLOSE_MOD CLOSE_KEY CLOSE_COMBO
+    printf '%s\n' '1. Keep my close shortcut as is (default)' \
+        '2. Hide Spotify to the tray when I press my close shortcut'
+    read -r -p 'Choose [1]: ' choice || return 0
+    [[ "$choice" == 2 ]] || return 0
+
+    if [[ "$HYPR_LUA" == 1 ]]; then
+        detected=$(detect_close_combo_lua)
+    else
+        detected=$(detect_killactive_keybind)
+    fi
+    if [[ "$detected" =~ $combo_pattern ]]; then
+        read -r -p "Close shortcut [$detected]: " combo || return 0
+        combo=${combo:-$detected}
+    else
+        read -r -p 'Enter your close shortcut (format: MODIFIER + KEY, blank to skip): ' combo || return 0
+    fi
+    [[ -n "$combo" ]] || return 0
+    if [[ ! "$combo" =~ $combo_pattern ]]; then
+        echo "Invalid shortcut. Use the format MODIFIER + KEY."
+        return 1
+    fi
+    CLOSE_MOD=${BASH_REMATCH[1]}
+    CLOSE_KEY=${BASH_REMATCH[3]}
+    CLOSE_COMBO="$CLOSE_MOD + $CLOSE_KEY"
+    read -r -p "Replace $CLOSE_COMBO with smart close? [y/N] " confirm || return 0
+    [[ "$confirm" == [yY] || "$confirm" == [yY][eE][sS] ]] || return 0
+
+    mkdir -p "$HYPR_SCRIPTS" "$HYPR_DIR/conf.d"
+    cat > "$HYPR_SCRIPTS/smart-close.sh" << 'EOF'
+#!/bin/bash
+# Smart close: minimize Spotify to tray, kill other windows
+# Part of spotify-tray-wayland
+
+class=$(hyprctl activewindow | grep "class:" | cut -d' ' -f2)
+
+# Hyprland >= 0.55 takes Lua dispatchers; older versions only the legacy ones.
+if [[ "${class,,}" == "spotify" ]]; then
+    hyprctl dispatch 'hl.dsp.window.move({ workspace = "special:spotify", follow = false })' | grep -qx ok \
+        || hyprctl dispatch movetoworkspacesilent special:spotify
+else
+    hyprctl dispatch 'hl.dsp.window.close()' | grep -qx ok || hyprctl dispatch killactive
+fi
+EOF
+    chmod +x "$HYPR_SCRIPTS/smart-close.sh"
+
+    create_spotify_config
+    if [[ "$HYPR_LUA" == 1 ]]; then
+        cat >> "$snippet" << EOF
+
+-- Smart close: minimize Spotify to tray, kill other windows
+pcall(hl.unbind, "$CLOSE_COMBO")
+hl.bind("$CLOSE_COMBO", hl.dsp.exec_cmd("~/.config/hypr/UserScripts/smart-close.sh"))
+EOF
+    else
+        cat >> "$snippet" << EOF
+
+# Smart close: minimize Spotify to tray, kill other windows
+# Detected keybind: $CLOSE_MOD + $CLOSE_KEY
+unbind = $CLOSE_MOD, $CLOSE_KEY
+bind = $CLOSE_MOD, $CLOSE_KEY, exec, ~/.config/hypr/UserScripts/smart-close.sh
+EOF
+    fi
+
+    load_spotify_config
+    reload_hyprland
+    echo "Smart close enabled for $CLOSE_COMBO."
+}
+
+# Hyprland reports modifier masks and key names separately.
+workspace_shortcut_conflicts() {
+    local modifiers="$1" key="${2,,}" bindings="$3" modifier mask=0
+    local -a modifier_list
+    read -r -a modifier_list <<< "$modifiers"
+    for modifier in "${modifier_list[@]}"; do
+        case "${modifier^^}" in
+            SHIFT) (( mask |= 1 )) ;;
+            CAPS) (( mask |= 2 )) ;;
+            CTRL|CONTROL) (( mask |= 4 )) ;;
+            ALT|MOD1) (( mask |= 8 )) ;;
+            MOD2) (( mask |= 16 )) ;;
+            MOD3) (( mask |= 32 )) ;;
+            SUPER|WIN|LOGO|MOD4) (( mask |= 64 )) ;;
+            MOD5) (( mask |= 128 )) ;;
+            *) return 2 ;;
+        esac
+    done
+    jq -er --arg key "$key" --argjson mask "$mask" '
+        any(.[]; .modmask == $mask and
+            ((.key | ascii_downcase) == $key or
+             (.keycode > 0 and ("code:" + (.keycode | tostring)) == $key)))
+    ' <<< "$bindings" >/dev/null
+}
+
+configure_workspace_shortcut() {
+    local bindings combo suggested='SUPER + grave' modifiers key
+    if grep -Fq 'Spotify Tray workspace shortcut' "$snippet" 2>/dev/null; then
+        echo "Spotify workspace shortcut is already configured."
+        return 0
+    fi
+    if ! command -v jq >/dev/null ||
+        ! bindings=$(hyprctl -j binds 2>/dev/null) ||
+        ! jq -e 'type == "array" and all(.[]; (.modmask | type) == "number" and (.key | type) == "string" and (.keycode | type) == "number")' <<< "$bindings" >/dev/null; then
+        echo "Could not check active Hyprland shortcuts. Workspace shortcut skipped."
+        return 0
+    fi
+    if workspace_shortcut_conflicts SUPER grave "$bindings"; then
+        echo "$suggested is already in use."
+        suggested=''
+    fi
+    while true; do
+        if [[ -n "$suggested" ]]; then
+            read -r -p "Spotify workspace shortcut [$suggested, 'skip' to leave unset]: " combo || return 0
+            combo=${combo:-$suggested}
+        else
+            read -r -p 'Enter a different shortcut (MODIFIER + KEY, blank to skip): ' combo || return 0
+        fi
+        [[ -n "$combo" && "${combo,,}" != skip ]] || return 0
+        if [[ ! "$combo" =~ $combo_pattern ]]; then
+            echo 'Invalid shortcut. Use the format MODIFIER + KEY.'
+            continue
+        fi
+        modifiers=${BASH_REMATCH[1]^^}
+        key=${BASH_REMATCH[3]}
+        # Keep the name accepted by both Hyprland config formats.
+        modifiers=${modifiers//WIN/SUPER}
+        if workspace_shortcut_conflicts "$modifiers" "$key" "$bindings"; then
+            echo "$modifiers + $key is already in use."
+        else
+            if [[ $? == 1 ]]; then
+                break
+            fi
+            echo 'Use Hyprland modifier names such as SUPER, CTRL, ALT, or SHIFT.'
+        fi
+    done
+    create_spotify_config
+    if [[ "$HYPR_LUA" == 1 ]]; then
+        printf '\nhl.bind("%s + %s", hl.dsp.workspace.toggle_special("spotify")) -- Spotify Tray workspace shortcut\n' "$modifiers" "$key" >> "$snippet"
+    else
+        printf '\nbindd = %s, %s, Spotify Tray workspace shortcut, togglespecialworkspace, spotify\n' "$modifiers" "$key" >> "$snippet"
+    fi
+    load_spotify_config
+    reload_hyprland
+    echo "Spotify workspace shortcut set to $modifiers + $key."
+}
+
+configure_smart_close
+configure_workspace_shortcut

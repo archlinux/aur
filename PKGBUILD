@@ -1,6 +1,6 @@
 # Maintainer: xander1421 <alexpruteanu@hotmail.com>
 pkgname=spotify-tray-wayland-bin
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Native Wayland/Hyprland system tray for Spotify with scroll and middle-click controls"
 arch=('x86_64' 'aarch64')
@@ -11,15 +11,18 @@ optdepends=(
     'spotify-launcher: official Spotify launcher'
     'spotify: Spotify client (AUR)'
     'hyprland: for window show/hide functionality'
+    'jq: check for conflicting Hyprland shortcuts during setup'
 )
 provides=('spotify-tray-wayland')
 conflicts=('spotify-tray-wayland' 'spotify-tray-wayland-git')
 options=('!debug')
 install="${pkgname}.install"
+source=('spotify-tray-setup')
+sha256sums=('1885727529522403aa41025eb6bb706d3f1ec8d7b420afc0be943ec771971884')
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/xander1421/spotify-tray-wayland/releases/download/v${pkgver}/spotify-tray-wayland-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/xander1421/spotify-tray-wayland/releases/download/v${pkgver}/spotify-tray-wayland-linux-arm64")
-sha256sums_x86_64=('85ea8d0585f6dbe39a8423280e56dbcd4770976ef47a77c265373d1f6c7a0dfe')
-sha256sums_aarch64=('7eacec5cf41ff5cc2e633330b2412a8c806f89da9d31f36c1aaac3bdf22435c8')
+sha256sums_x86_64=('8f05590f1c808feb8528b81ae56feda8d228aace3058e13fd87461951cd2d624')
+sha256sums_aarch64=('8a57a12c9a7f510bc2c48e937df3284872775ac55a57157e9ce90704b8ff69aa')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/spotify-tray-wayland"
@@ -28,145 +31,11 @@ package() {
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/spotify-tray-launcher" << 'EOF'
 #!/usr/bin/env bash
 # Spotify Launcher - starts tray with Spotify
-if ! pgrep -f spotify-tray-wayland >/dev/null; then
+if ! pgrep -u "$(id -u)" -f '^([^ ]*/)?spotify-tray-wayland$' >/dev/null; then
     /usr/bin/spotify-tray-wayland &
 fi
 exec spotify "$@"
 EOF
 
-    # Install smart-close script for Hyprland
-    install -Dm755 /dev/stdin "${pkgdir}/usr/share/spotify-tray-wayland/smart-close.sh" << 'EOF'
-#!/bin/bash
-# Smart close: minimize Spotify to tray, kill other windows
-class=$(hyprctl activewindow | grep "class:" | cut -d' ' -f2)
-# Hyprland >= 0.55 takes Lua dispatchers; older versions only the legacy ones.
-if [[ "${class,,}" == "spotify" ]]; then
-    hyprctl dispatch 'hl.dsp.window.move({ workspace = "special:spotify", follow = false })' | grep -qx ok \
-        || hyprctl dispatch movetoworkspacesilent special:spotify
-else
-    hyprctl dispatch 'hl.dsp.window.close()' | grep -qx ok || hyprctl dispatch killactive
-fi
-EOF
-
-    # Install setup helper script
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/spotify-tray-setup" << 'EOF'
-#!/usr/bin/env bash
-# spotify-tray-setup: Configure Hyprland keybinds for spotify-tray-wayland
-
-HYPR_DIR="$HOME/.config/hypr"
-HYPR_SCRIPTS="$HYPR_DIR/UserScripts"
-
-echo "=== Spotify Tray Hyprland Setup ==="
-
-# Detect killactive keybind
-# Lua config (Hyprland >= 0.55): find hl.bind(..., hl.dsp.window.close()) and
-# turn e.g. `mainMod .. " + " .. "Q"` into "SUPER + Q".
-detect_close_combo_lua() {
-    local line mainmod
-    line=$(grep -rh --include='*.lua' --exclude='spotify.lua' -E '^[[:space:]]*hl\.bind\(.*hl\.dsp\.window\.close\(' "$HYPR_DIR" 2>/dev/null | head -1 || true)
-    if [[ -z "$line" ]]; then
-        echo "SUPER + Q"
-        return
-    fi
-    mainmod=$(grep -rhoE --include='*.lua' 'mainMod[[:space:]]*=[[:space:]]*"[^"]+"' "$HYPR_DIR" 2>/dev/null | head -1 | sed -E 's/.*"([^"]+)"/\1/' || true)
-    echo "$line" | sed -E 's/.*hl\.bind\([[:space:]]*//; s/,[[:space:]]*hl\.dsp\.window\.close.*//' \
-        | sed -E "s/mainMod/${mainmod:-SUPER}/g; s/\"//g; s/[[:space:]]*\.\.[[:space:]]*//g; s/[[:space:]]*\+[[:space:]]*/ + /g"
-}
-
-echo "[1/3] Detecting your close-window keybind..."
-if [[ -f "$HYPR_DIR/hyprland.lua" ]]; then
-    CLOSE_COMBO=$(detect_close_combo_lua)
-else
-killactive_line=$(grep -rh "killactive" "$HYPR_DIR" 2>/dev/null | grep -E "^bind" | head -1)
-if [[ -z "$killactive_line" ]]; then
-    CLOSE_MOD="SUPER"
-    CLOSE_KEY="Q"
-else
-    bind_part=$(echo "$killactive_line" | sed 's/.*=\s*//' | tr -d ' ')
-    CLOSE_MOD=$(echo "$bind_part" | cut -d',' -f1)
-    CLOSE_KEY=$(echo "$bind_part" | cut -d',' -f2)
-    if [[ "$CLOSE_MOD" == *'$mainMod'* ]]; then
-        mainmod_def=$(grep -rh '^\$mainMod\s*=' "$HYPR_DIR" 2>/dev/null | head -1 | sed 's/.*=\s*//' | tr -d ' ')
-        CLOSE_MOD=$(echo "$CLOSE_MOD" | sed "s/\\\$mainMod/${mainmod_def:-SUPER}/g")
-    fi
-fi
-CLOSE_COMBO="$CLOSE_MOD + $CLOSE_KEY"
-fi
-echo "      Found: $CLOSE_COMBO"
-
-# Install smart-close script
-echo "[2/3] Installing smart-close script..."
-mkdir -p "$HYPR_SCRIPTS"
-cp /usr/share/spotify-tray-wayland/smart-close.sh "$HYPR_SCRIPTS/"
-chmod +x "$HYPR_SCRIPTS/smart-close.sh"
-
-# Create Hyprland config
-echo "[3/3] Creating Hyprland config..."
-mkdir -p "$HYPR_DIR/conf.d"
-if [[ -f "$HYPR_DIR/hyprland.lua" ]]; then
-# Hyprland >= 0.55: Lua config
-cat > "$HYPR_DIR/conf.d/spotify.lua" << CONF
--- Spotify Tray Configuration
--- Generated by spotify-tray-setup
-
--- Smart close: minimize Spotify to tray, kill other windows
-pcall(hl.unbind, "$CLOSE_COMBO")
-hl.bind("$CLOSE_COMBO", hl.dsp.exec_cmd("~/.config/hypr/UserScripts/smart-close.sh"))
-
-pcall(hl.unbind, "SUPER + M")
-hl.bind("SUPER + M", hl.dsp.window.move({ workspace = "special:spotify", follow = false }))
-hl.bind("SUPER + grave", hl.dsp.workspace.toggle_special("spotify"))
-CONF
-# Lua has no glob source: load our file explicitly
-if ! grep -q "conf.d/spotify.lua" "$HYPR_DIR/hyprland.lua"; then
-    echo 'dofile(os.getenv("HOME") .. "/.config/hypr/conf.d/spotify.lua")' >> "$HYPR_DIR/hyprland.lua"
-fi
-else
-cat > "$HYPR_DIR/conf.d/spotify.conf" << CONF
-# Spotify Tray Configuration
-# Generated by spotify-tray-setup
-
-unbind = $CLOSE_MOD, $CLOSE_KEY
-bind = $CLOSE_MOD, $CLOSE_KEY, exec, ~/.config/hypr/UserScripts/smart-close.sh
-
-unbind = SUPER, M
-bind = SUPER, M, movetoworkspacesilent, special:spotify
-bind = SUPER, grave, togglespecialworkspace, spotify
-CONF
-
-# Ensure conf.d is sourced (don't add duplicate if wildcard already exists)
-if ! grep -q "source.*conf.d" "$HYPR_DIR/hyprland.conf" 2>/dev/null; then
-    echo "source = ~/.config/hypr/conf.d/*.conf" >> "$HYPR_DIR/hyprland.conf"
-fi
-fi
-
-# Reload Hyprland (find instance signature if not set)
-if [[ -z "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
-    HYPRLAND_INSTANCE_SIGNATURE=$(ls /run/user/$(id -u)/hypr/ 2>/dev/null | head -1)
-fi
-if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
-    export HYPRLAND_INSTANCE_SIGNATURE
-    hyprctl reload 2>/dev/null && echo "Hyprland config reloaded."
-fi
-
-# Override Spotify desktop entry (user local takes precedence)
-mkdir -p "$HOME/.local/share/applications"
-cat > "$HOME/.local/share/applications/spotify.desktop" << DESKTOP
-[Desktop Entry]
-Type=Application
-Name=Spotify
-GenericName=Music Player
-Icon=spotify
-TryExec=spotify
-Exec=/usr/bin/spotify-tray-launcher %U
-Terminal=false
-MimeType=x-scheme-handler/spotify;
-Categories=Audio;Music;Player;AudioVideo;
-StartupWMClass=spotify
-DESKTOP
-
-echo ""
-echo "=== Setup Complete ==="
-echo "Your $CLOSE_COMBO keybind now minimizes Spotify to tray."
-EOF
+    install -Dm755 "${srcdir}/spotify-tray-setup" "${pkgdir}/usr/bin/spotify-tray-setup"
 }
