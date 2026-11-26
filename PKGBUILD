@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AMOUNTAIN
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b92e9f22a39dba23d742dbd49337da67')
-b2sums=('3eb584d7b51a17896c01fef2054009fe54aeaf99f0fdbc1f7b55484eabc9b4905fe448f26cbe9debc1ec96f4d90e345d9304fa887ccad804a6e30819583f997f')
+md5sums=('1a7351cfd48155ffe314458f8fc7cfa9')
+b2sums=('facb434d509fab115fcb5804edc120f324045db119e65497cd9b14ed248896b3dad61bf71ad02825f3005b26319e79e08c7abd4e4bdc30cf91a2d1b0fa01110a')
 
 build() {
   mkdir build
