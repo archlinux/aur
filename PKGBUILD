@@ -1,6 +1,6 @@
 # Maintainer: Bernardo Gomes <bernardopg@users.noreply.github.com>
 pkgname=wingdrive-bin
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc='WingDrive desktop file manager'
 arch=('x86_64')
@@ -18,10 +18,10 @@ optdepends=('python: adapters from the store (Obsidian, GitHub and others)'
 provides=('wingdrive')
 conflicts=('wingdrive' 'wingdrive-nightly')
 options=('!strip' '!debug')
-_upstream_version=3.8.0
-source=("WingDrive-3.8.0-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-3.8.0-x86_64.AppImage"
+_upstream_version=3.8.1
+source=("WingDrive-3.8.1-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-3.8.1-x86_64.AppImage"
         "LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/LICENSE")
-sha256sums=('1f18ff00bbe236a4b0fac847fd0377856a751a7dfe66d40744744e50b2de52ff' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
+sha256sums=('bc597edc3d94c369762badb251094b3e92df341cf14c730d2709db504ffedd9b' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
 
 # The AppImage carries an Ubuntu GTK/WebKit stack. Loading it next to Arch's
 # libraries breaks host tools (gdbus) and crashes WebKit on exit, so only the
@@ -30,8 +30,8 @@ sha256sums=('1f18ff00bbe236a4b0fac847fd0377856a751a7dfe66d40744744e50b2de52ff' '
 _bundled_libs='libavcodec.so.* libavfilter.so.* libavformat.so.* libavutil.so.* libpostproc.so.* libswresample.so.* libswscale.so.*'
 
 prepare() {
-  chmod +x "WingDrive-3.8.0-x86_64.AppImage"
-  "./WingDrive-3.8.0-x86_64.AppImage" --appimage-extract > /dev/null
+  chmod +x "WingDrive-3.8.1-x86_64.AppImage"
+  "./WingDrive-3.8.1-x86_64.AppImage" --appimage-extract > /dev/null
   find squashfs-root -type d -exec chmod 755 {} +
 }
 
