@@ -1,0 +1,17 @@
+pkgbase = ccteam-bin
+	pkgdesc = Run coding agents from different vendors as one team, steered from Telegram, Lark or a browser
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = https://github.com/firstintent/ccteam
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ccteam
+	conflicts = ccteam
+	options = !debug
+	source_x86_64 = ccteam-bin-0.13.2-x86_64.tar.gz::https://github.com/firstintent/ccteam/releases/download/v0.13.2/ccteam-v0.13.2-linux-x64.tar.gz
+	sha256sums_x86_64 = b2e98e36b5211a33298afed08f4e22dcdcfe964a01780b2620de09b341340cdf
+	source_aarch64 = ccteam-bin-0.13.2-aarch64.tar.gz::https://github.com/firstintent/ccteam/releases/download/v0.13.2/ccteam-v0.13.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 56a0a51932ced5c9ff7835610f422fc56a8f0322a837235de66391cd19ec69e4
+
+pkgname = ccteam-bin
