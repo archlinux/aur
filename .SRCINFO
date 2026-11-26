@@ -1,0 +1,19 @@
+pkgbase = mycart-bin
+	pkgdesc = Single-file shopping cart with card and cryptocurrency payments
+	pkgver = 0.2.11
+	pkgrel = 1
+	url = https://github.com/shurco/mycart
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mycart
+	conflicts = mycart
+	options = !debug
+	source = mycart-bin-0.2.11-LICENSE::https://raw.githubusercontent.com/shurco/mycart/v0.2.11/LICENSE
+	sha256sums = 069781c299f8a7c5d155b274c4dc2d47bee048334eaabd266ff33b31bc3ffe6d
+	source_x86_64 = mycart-bin-0.2.11-x86_64.tar.gz::https://github.com/shurco/mycart/releases/download/v0.2.11/mycart_0.2.11_linux-amd64.tar.gz
+	sha256sums_x86_64 = baa060d50ddae7db283caecf560e2db45baa76f1eef1874b816884c3681c6c57
+	source_aarch64 = mycart-bin-0.2.11-aarch64.tar.gz::https://github.com/shurco/mycart/releases/download/v0.2.11/mycart_0.2.11_linux-arm64.tar.gz
+	sha256sums_aarch64 = 5eed80ea9b6c8f47f3c43f1ea15deefeb098cf1c9645911260458d0e4ee8c291
+
+pkgname = mycart-bin
