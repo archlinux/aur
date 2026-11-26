@@ -1,5 +1,5 @@
 pkgname=augenblick
-pkgver=0.5.7
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Fullscreen eye-blink overlay for X11 and Wayland"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ depends=('glibc' 'libxcb')
 makedepends=('rust')
 
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/x71c9/$pkgname/tar.gz/refs/tags/v$pkgver")
-sha256sums=("f6b46216d2460d8b775d91651840afeb7142d7a0dd7c4c8a60f3084b1a29b926")
+sha256sums=("6dfe5e34f91529c7d1db34dec831b4b97029e30273490d831bca1df0df485314")
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -27,4 +27,5 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/augenblick"
+  install -Dm644 "contrib/augenblick.service" "$pkgdir/usr/lib/systemd/user/augenblick.service"
 }
