@@ -1,6 +1,6 @@
 pkgbase = wolf-lang-bin
 	pkgdesc = The wolf systems language: the wolfgang compiler, its runtime and the C importer (release archive)
-	pkgver = 0.2.40
+	pkgver = 0.2.41
 	pkgrel = 1
 	url = https://github.com/wolffe-lang/wolf-lang
 	install = wolf-lang-bin.install
@@ -14,14 +14,14 @@ pkgbase = wolf-lang-bin
 	optdepends = lld: faster linking — wolf prefers ld.lld and says so when it is absent
 	optdepends = clang: for `import c` beyond the headers gcc ships
 	optdepends = lupin-bin: the reference interpreter wolf is differentially tested against
-	provides = wolf-lang=0.2.40
+	provides = wolf-lang=0.2.41
 	conflicts = wolf-lang
 	conflicts = wolf
 	options = !strip
 	options = !debug
-	source_x86_64 = wolf-lang-0.2.40-x86_64.tar.gz::https://github.com/wolffe-lang/wolf-lang/releases/download/v0.2.40/wolf-0.2.40-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = bc2020e0b7400c18162a6072c299c65c0582ea74a0eba22aaa57ca04ae13e7e1
-	source_aarch64 = wolf-lang-0.2.40-aarch64.tar.gz::https://github.com/wolffe-lang/wolf-lang/releases/download/v0.2.40/wolf-0.2.40-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = cea26eea215e7cdba60db2870c0eb4d2c5738065046ec5fe6e0eec7da55e48cd
+	source_x86_64 = wolf-lang-0.2.41-x86_64.tar.gz::https://github.com/wolffe-lang/wolf-lang/releases/download/v0.2.41/wolf-0.2.41-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e7ec4cde06db2f2235ae82e3dff1db06f6b8e37249c883a3a35bdee8c86b8c34
+	source_aarch64 = wolf-lang-0.2.41-aarch64.tar.gz::https://github.com/wolffe-lang/wolf-lang/releases/download/v0.2.41/wolf-0.2.41-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a4319aab6203928960c632b37a95e58765bd51d343d7b376af49a3ac878b1fd3
 
 pkgname = wolf-lang-bin
