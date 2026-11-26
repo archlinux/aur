@@ -1,5 +1,5 @@
 pkgname=kwin-effects-yet-another-magic-lamp-reloaded-git
-pkgver=6.8.r23.gf6dbfcf
+pkgver=6.8.r0.g5751f7e
 pkgrel=1
 pkgdesc="Heavily extended fork of Yet Another Magic Lamp, targeting Plasma 6.6+ with exclusive Wayland support"
 arch=('x86_64')
