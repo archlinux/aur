@@ -1,10 +1,10 @@
 # Maintainer: Adityarup Laha <me@adityaruplaha.me>
 
 _pkgname=PTMods
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Managing Post-Translational Modifications in R"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   r-xml2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('770a1a8642945ef5aadcc3a39fd91de8')
-b2sums=('171a28e2ffd531bd502e42d240e74bc23234f1352ecc23d7711725ad276f6b5ba2a08094410d13f8593947ffc36855f018a5f8a74fc894b113cd2e7a94f28a9f')
+md5sums=('336dd0e12e4a16f33f8f4c90d0b90892')
+b2sums=('bdc843f61df1caeb78819be8f6fd1150ef540234dc2d29e3f43ac6a093bd4f061e0f8e4494037e9d6ec5abcc3297f06ba6b4eb8dc71c8529286b01d327b1f70c')
 
 build() {
   mkdir build
