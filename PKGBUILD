@@ -1,6 +1,6 @@
 # Maintainer: creations <creations@creations.works>
 pkgname=grabit-git
-pkgver=0.8.0.r358.g67654f0
+pkgver=0.9.0.r407.g8fa6580
 pkgrel=1
 pkgdesc="Screenshot, screen-recording, OCR, and uploader for wlroots and KDE Plasma 6 Wayland compositors (git)"
 arch=('x86_64' 'aarch64')
@@ -12,6 +12,10 @@ depends=(
     'dbus'
     'file'
     'json-c'
+    'libjpeg-turbo'
+    'libpipewire'
+    'libpng'
+    'libwebp'
     'libxkbcommon'
     'wayland'
 )
@@ -20,12 +24,11 @@ makedepends=(
     'wayland-protocols'
 )
 optdepends=(
-    'ffmpeg: --record support'
+    'ffmpeg: --record support, and video thumbnails and playback in the settings history'
     'tesseract: --tesseract (OCR) support'
     'tesseract-data-eng: english OCR data'
     'translate-shell: --translate (OCR -> translated text) support'
-    'libjpeg-turbo: JPEG output (--format jpeg)'
-    'libwebp: WebP output (--format webp)'
+    'xdg-utils: open links, files and folders from previews, pins, history and settings'
     'pipewire: pw-play (default shutter-sound player)'
     'libpulse: paplay (alternative sound player)'
     'alsa-utils: aplay (alternative sound player)'
