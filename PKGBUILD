@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Informeasure
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('10c4635bb3b800feb45d8886ec1f299f')
-b2sums=('98d39ebef2ceb33033cff6d714ae085233dcb230a0df1ccb6aeabe2a1e516d04a0a25e85ad42f41b1a63ff6ca28f26489bbdf6be26d592a7c803ab39c79a3477')
+md5sums=('837497320de85a08ba7f2ed0ae9ecad0')
+b2sums=('4b1ceaf4f58de43b515e7de4af225f0bfe6d44513a6f730c2cc675f68e8b20634d0f29af90ea5e84bee76791976a3c1e7b929fd47f017fcdfa6f3c4b58b0234b')
 
 build() {
   mkdir build
