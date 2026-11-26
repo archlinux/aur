@@ -5,7 +5,7 @@
 
 pkgname=ladybird
 epoch=1
-pkgver=2026.47.8
+pkgver=2026.48.0
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
