@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mBPCR
-_pkgver=1.66.0
+_pkgver=1.68.0
 pkgname=r-${_pkgname,,}
-pkgver=1.66.0
+pkgver=1.68.0
 pkgrel=1
 pkgdesc='Bayesian Piecewise Constant Regression for DNA copy number estimation'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('da2f5e86b7acae3a0b66d1e5f5b87822e3a36b89a087fed06fc290817ad36e48')
+sha256sums=('badc55157f68ef13b83bd250d5a36854f07c2855852cb8be3a64a4e7d1480b29')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
