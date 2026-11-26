@@ -1,27 +1,18 @@
 post_install() {
-	# lpr
-	/opt/brother/Printers/dcpj140w/inf/setupPrintcapij dcpj140w -i
-	
-	# cupswrapper
-	/opt/brother/Printers/dcpj140w/cupswrapper/cupswrapperdcpj140w
-	
-	systemctl restart org.cups.cupsd.service
+  echo ">>> Printer: add a queue, e.g. for USB:"
+  echo ">>>   lpadmin -p DCPJ140W -E -v \"\$(lpinfo -v | grep -m1 'usb://Brother')\" -P /usr/share/cups/model/Brother/brother_dcpj140w_printer_en.ppd"
+  echo ">>>   or pick \"Brother DCP-J140W\" in the CUPS web interface (http://localhost:631)."
+  echo ">>> Scanner: USB works out of the box (brscan4). Over the network run:"
+  echo ">>>   brsaneconfig4 -a name=DCPJ140W model=DCP-J140W ip=<printer IP>"
+  echo ">>> Scan button: enable brscan-skey, e.g. systemctl --user enable --now brscan-skey.service"
 }
 
 post_upgrade() {
-	/bin/true
+  if (( $(vercmp "$2" 1.1.3-4) < 0 )); then
+    post_install
+  fi
 }
 
-pre_remove() {
-	# lpr
-	/opt/brother/Printers/dcpj140w/inf/setupPrintcapij dcpj140w -e
-	
-	# cupswrapper
-	/opt/brother/Printers/dcpj140w/cupswrapper/cupswrapperdcpj140w -e
+post_remove() {
+  echo ">>> Remove the print queue if you no longer need it: lpadmin -x DCPJ140W"
 }
-
-op=$1
-shift
-
-$op "$@"
-
