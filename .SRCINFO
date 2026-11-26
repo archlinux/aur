@@ -1,0 +1,20 @@
+pkgbase = tailsnitch-bin
+	pkgdesc = Security auditor for Tailscale configurations
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/Adversis/tailsnitch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = tailsnitch
+	conflicts = tailsnitch
+	options = !debug
+	source = tailsnitch-bin-1.7-LICENSE::https://raw.githubusercontent.com/Adversis/tailsnitch/v1.7/LICENSE
+	sha256sums = 0681e42a161ee51f4355a895a67ca79b099fc422cf3825a795cb69a92f0df384
+	source_x86_64 = tailsnitch-bin-1.7-x86_64::https://github.com/Adversis/tailsnitch/releases/download/v1.7/tailsnitch-linux-amd64
+	sha256sums_x86_64 = d6635af47c448ec84a340039a78a5825cc210eddb75dddc910705d5201a1daff
+	source_aarch64 = tailsnitch-bin-1.7-aarch64::https://github.com/Adversis/tailsnitch/releases/download/v1.7/tailsnitch-linux-arm64
+	sha256sums_aarch64 = 6fa63c9c91ec6d4696b6fde371d96c59782d83e5849e55b17e01497422152de4
+
+pkgname = tailsnitch-bin
