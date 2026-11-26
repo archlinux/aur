@@ -1,0 +1,20 @@
+pkgbase = nonograph-bin
+	pkgdesc = Minimalist anonymous publishing tool
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/du82/nonograph
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = nonograph
+	conflicts = nonograph
+	options = !debug
+	source_x86_64 = nonograph-bin-0.5.6-x86_64.tar.gz::https://github.com/du82/nonograph/releases/download/v0.5.6/nonograph-v0.5.6-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e460567af49f2ed371d351c85769e8b36620c6ccdd71f47b0bbf00e9a19afafe
+	source_aarch64 = nonograph-bin-0.5.6-aarch64.tar.gz::https://github.com/du82/nonograph/releases/download/v0.5.6/nonograph-v0.5.6-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 699528e6f058bcc80d83fcf1e721583a728d82dae1023cf61105ebfb7edd847e
+
+pkgname = nonograph-bin
