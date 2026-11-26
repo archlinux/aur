@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PANR
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='Posterior association networks and functional modules inferred from rich phenotypes of gene perturbations'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-snow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2b402db622f23a2186b582e8ce0c92b9b84452d95f4578e2b49e1291d743146c')
+sha256sums=('4ef6ca9c9852af4b0c73208d5bc94ae6026bedb4f191b6bb709b0419e9521e31')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
