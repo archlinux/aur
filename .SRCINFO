@@ -1,7 +1,7 @@
 pkgbase = radio-tui
 	pkgdesc = Lightweight curses internet radio player
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/Twilight0/radio-tui
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = radio-tui
 	depends = alsa-utils
 	optdepends = libpulse: PipeWire/PulseAudio playback and volume control
 	optdepends = bluez-alsa: Bluetooth A2DP volume control
-	source = radio-tui-1.0.0.tar.gz::https://github.com/Twilight0/radio-tui/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 248e564b142c132ab808760d1c0a63a1ac8cb3d6686c3096362da961db84a729
+	source = radio-tui-1.1.0.tar.gz::https://github.com/Twilight0/radio-tui/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 1ced2b6d07328d09a8df24ef85f52d5caed6363c4e7ea278f998b641f0957eb1
 
 pkgname = radio-tui
