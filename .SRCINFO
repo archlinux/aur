@@ -1,0 +1,14 @@
+pkgbase = proxsave-bin
+	pkgdesc = Configuration backup and disaster recovery for Proxmox VE and PBS hosts
+	pkgver = 0.47.1
+	pkgrel = 1
+	url = https://github.com/tis24dev/proxsave
+	arch = x86_64
+	license = MIT
+	provides = proxsave
+	conflicts = proxsave
+	options = !debug
+	source_x86_64 = proxsave-bin-0.47.1-x86_64.tar.gz::https://github.com/tis24dev/proxsave/releases/download/v0.47.1/proxsave_0.47.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = d958a472fd4de201f12e41fe94bf4f0c30d5f70bf78c85075a34c8ef20a4601b
+
+pkgname = proxsave-bin
