@@ -1,0 +1,20 @@
+pkgbase = quickshare-bin
+	pkgdesc = Quick and simple file sharing between devices
+	pkgver = 0.11.4
+	pkgrel = 1
+	url = https://github.com/ihexxa/quickshare
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	depends = glibc
+	provides = quickshare
+	conflicts = quickshare
+	options = !debug
+	source = quickshare-bin-0.11.4-LICENSE::https://raw.githubusercontent.com/ihexxa/quickshare/v0.11.4/LICENSE
+	sha256sums = 8e1c608ff068dae9f02ca7ed877d310f4877376f20b8458ab568152297031efc
+	source_x86_64 = quickshare-bin-0.11.4-x86_64.zip::https://github.com/ihexxa/quickshare/releases/download/v0.11.4/quickshare_linux_amd64.zip
+	sha256sums_x86_64 = 36256309c20e5494bafc499f5b9288c41c3d12ac63c4ffced25aae6754ae4ce0
+	source_aarch64 = quickshare-bin-0.11.4-aarch64.zip::https://github.com/ihexxa/quickshare/releases/download/v0.11.4/quickshare_linux_arm64.zip
+	sha256sums_aarch64 = b8434a01bba52feeed64d462a1d2ce110aa36aa7b020376ad0df37718230e7e7
+
+pkgname = quickshare-bin
