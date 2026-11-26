@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Chicago
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='CHiCAGO: Capture Hi-C Analysis of Genomic Organization'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('41e356f9db59a949bf97160b59b2df6fc8d5ea5075166836a1dff1fcc6e23309')
+sha256sums=('a163158c6a13aa4dbd597073d4a11fbdf6ddab41c8fb3e2ec7f8a2acb06e639a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
