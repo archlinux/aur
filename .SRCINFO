@@ -1,0 +1,19 @@
+pkgbase = script_exporter-bin
+	pkgdesc = Prometheus exporter that runs scripts and collects metrics from their output
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/ricoberger/script_exporter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = script_exporter
+	conflicts = script_exporter
+	options = !debug
+	source = script_exporter-bin-3.3.0-LICENSE::https://raw.githubusercontent.com/ricoberger/script_exporter/v3.3.0/LICENSE
+	sha256sums = 7da7a3ddaff23e9841c73643f3b2e1fa35476933c1883ffdf54bf9422111b8a8
+	source_x86_64 = script_exporter-bin-3.3.0-x86_64.tar.gz::https://github.com/ricoberger/script_exporter/releases/download/v3.3.0/script_exporter-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1d09330a18e87afdda5b59070cd946fa149e40015959c8de18735cd6befbec19
+	source_aarch64 = script_exporter-bin-3.3.0-aarch64.tar.gz::https://github.com/ricoberger/script_exporter/releases/download/v3.3.0/script_exporter-linux-arm64.tar.gz
+	sha256sums_aarch64 = 40dc64f096d505f6aaeb73c81c4ba34c32ac539eeaf2b997779b1165f18db9b7
+
+pkgname = script_exporter-bin
