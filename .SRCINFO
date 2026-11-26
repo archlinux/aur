@@ -1,0 +1,19 @@
+pkgbase = cadmpeg-bin
+	pkgdesc = Convert between CAD formats
+	pkgver = 0.6.12
+	pkgrel = 1
+	url = https://github.com/cadmpeg/cadmpeg
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = cadmpeg
+	conflicts = cadmpeg
+	options = !debug
+	source_x86_64 = cadmpeg-bin-0.6.12-x86_64.tar.xz::https://github.com/cadmpeg/cadmpeg/releases/download/v0.6.12/cadmpeg-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 88366e96420481830911f7d390575fd871d8ee2488bf430b3700f46a67343305
+	source_aarch64 = cadmpeg-bin-0.6.12-aarch64.tar.xz::https://github.com/cadmpeg/cadmpeg/releases/download/v0.6.12/cadmpeg-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = d50be20395f01e0d57dd4404caac385d87a53dd49e585ee2b13ac2d64f88f7d9
+
+pkgname = cadmpeg-bin
