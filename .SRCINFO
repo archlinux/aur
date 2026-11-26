@@ -1,6 +1,6 @@
 pkgbase = fast-text-editor-bin
 	pkgdesc = A fast customised text editor in rust
-	pkgver = 0.7.2
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/Fast-Text-editor/Fast-text-editor
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = fast-text-editor-bin
 	depends = libgcc
 	conflicts = fast-text-editor
 	options = !strip
-	source_x86_64 = fast-text-editor-x86_64-0.7.2.tgz::https://github.com/Fast-Text-editor/Fast-text-editor/releases/download/v0.7.2/fast-text-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 4597b3e70156ac1515c11d223600750f17945de53f47f9f18740a79df64d4a94
-	source_aarch64 = fast-text-editor-aarch64-0.7.2.tgz::https://github.com/Fast-Text-editor/Fast-text-editor/releases/download/v0.7.2/fast-text-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = c2062b4f7705274f3edd02e5f0fecb1ab3bbc63f0eaf39386a30befe403fc0aa
+	source_x86_64 = fast-text-editor-x86_64-0.8.0.tgz::https://github.com/Fast-Text-editor/Fast-text-editor/releases/download/v0.8.0/fast-text-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6f83632a9df98c53f7194aaf80dbfbf8cc8c760f66520ef3b57d3d2cd44917e5
+	source_aarch64 = fast-text-editor-aarch64-0.8.0.tgz::https://github.com/Fast-Text-editor/Fast-text-editor/releases/download/v0.8.0/fast-text-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a3aa7a1c8222fa1319078f1b293edb98b0900ca0e899f37f4d91914d352672c0
 
 pkgname = fast-text-editor-bin
