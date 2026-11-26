@@ -11,30 +11,36 @@
 # Contributor: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=gitkraken-standalone
-pkgrel=1
+pkgrel=2
 pkgver=12.7.0
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client. Serverless version (requires license file)."
 url="https://help.gitkraken.com/gitkraken-desktop/serverless/"
 provides=('gitkraken')
 conflicts=('gitkraken')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('custom')
-depends=('nss' 'gtk3' 'libsecret' 'libxkbfile')
+depends=('alsa-lib' 'at-spi2-core' 'cairo' 'curl' 'dbus' 'e2fsprogs' 'expat' 'fontconfig'
+         'gcc-libs' 'glib2' 'glibc' 'gtk3' 'krb5' 'libcups' 'libdrm' 'libgcrypt'
+         'libnotify' 'libsecret' 'libudev.so' 'libx11' 'libxcb' 'libxcomposite'
+         'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxkbfile' 'libxrandr'
+         'libxtst' 'mesa' 'nspr' 'nss' 'pango' 'xdg-utils' 'zlib')
 optdepends=('git-lfs: git-lfs support'
             'org.freedesktop.secrets: Provides ways to store passwords and encryption keys')
 makedepends=()
 backup=()
 install=''
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://api.gitkraken.dev/releases/standalone/production/linux/x64/${pkgver}/gitkraken-amd64.tar.gz"
     "GitKraken.desktop"
     "eula.html"
     "gitkraken.sh"
 )
-sha256sums=('5f22c65b95d7520b12f98df072906d8576f8b6d23d53af1c26ba3aee2885ec63'
-            '078fa2cdf6826d956bf73387fb2ef147b1aca5f4a7a3cb4be8c71e6105fc9c6c'
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://api.gitkraken.dev/releases/standalone/production/linux/x64/${pkgver}/gitkraken-amd64.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://api.gitkraken.dev/releases/standalone/production/linux/arm64/${pkgver}/gitkraken-aarch64.tar.gz")
+sha256sums=('078fa2cdf6826d956bf73387fb2ef147b1aca5f4a7a3cb4be8c71e6105fc9c6c'
             '5b7b39b331bc32a606e1e79c695df4519c9b220225be00fb34ef368c3af319a6'
             '6e6c6ac37287e1ec5d5266689a49d18899488be901b21f5cb9749f545453626f')
+sha256sums_x86_64=('5f22c65b95d7520b12f98df072906d8576f8b6d23d53af1c26ba3aee2885ec63')
+sha256sums_aarch64=('e3d682eb32e8b0e2541ea0fac6b9ecf846d2119f2f37913f3d71599028a11dfb')
 
 package() {
     install -d "$pkgdir"/opt
