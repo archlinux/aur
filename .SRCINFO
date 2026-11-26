@@ -1,6 +1,6 @@
 pkgbase = r-specl
 	pkgdesc = specL - Prepare Peptide Spectrum Matches for Use in Targeted Proteomics
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/specL
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-specl
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/specL_1.46.0.tar.gz
-	sha256sums = 408315a71d4507facbe3a98ca03596f6c03b979d898d1fe67bbed916eae70081
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/specL_1.48.0.tar.gz
+	sha256sums = 423b0c2a1a5508c41b8cb43a6faca7ea0bf3b757db9cafce97366fafa4b51c47
 
 pkgname = r-specl
