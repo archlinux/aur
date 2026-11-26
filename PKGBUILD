@@ -94,6 +94,11 @@ build() {
   export CARGO_HOME="${srcdir}/cargo-home"
   export CARGO_TARGET_DIR="${srcdir}/target"
   export LIBCLANG_PATH=/usr/lib
+  # Arch enables GCC LTO in CFLAGS. Rust links C objects with its own linker,
+  # which cannot consume GCC LTO archives (libspa-rs-reexports is the first one
+  # that fails). Keep the hardening flags but drop LTO for the C dependencies.
+  export CFLAGS="${CFLAGS//-flto=auto/}"
+  export CXXFLAGS="${CXXFLAGS//-flto=auto/}"
   export NIRI_BUILD_COMMIT="$(git rev-parse --short HEAD)"
 
   cargo build --frozen --release -p niri
