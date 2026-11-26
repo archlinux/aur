@@ -1,0 +1,23 @@
+pkgbase = nuclear-bin
+	pkgdesc = Streaming music player that finds free music for you
+	pkgver = 1.56.4
+	pkgrel = 1
+	url = https://github.com/nukeop/nuclear
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = libarchive
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = openssl
+	depends = alsa-lib
+	depends = libpulse
+	provides = nuclear
+	conflicts = nuclear
+	noextract = Nuclear_1.56.4_amd64.deb
+	options = !strip
+	source = Nuclear_1.56.4_amd64.deb::https://github.com/nukeop/nuclear/releases/download/player%401.56.4/Nuclear_1.56.4_amd64.deb
+	sha256sums = d3194979dcdc7d530341dabde0451a10036c3216995a6e84fe58f47fa911d61a
+
+pkgname = nuclear-bin
