@@ -3,7 +3,7 @@
 # Contributor: blx32 <develop at srmoura dot com dot br>
 
 pkgname=mementodb
-pkgver=3.11.1
+pkgver=3.12.0
 pkgrel=1
 pkgdesc='A complex, easy-to-use and customizable solution for database management'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('LicenseRef-MementoDBInc')
 depends=('alsa-lib' 'glibc' 'java-runtime' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst' 'zlib')
 options=('!docs' '!strip')
 source=("https://download.mementodb.com/${pkgname}-${pkgver}-linux.deb")
-sha256sums=('d02a4b91a1cc6d0d40be74c092860c43bb39be022b966f801cf528410d61eb7c')
+sha256sums=('69221c1b82b3757f4fe399a93ebe55cb678f418cd1a9bd08326e5ba0de0ca3fd')
 
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}"
