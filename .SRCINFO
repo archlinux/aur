@@ -1,0 +1,16 @@
+pkgbase = mixin-bin
+	pkgdesc = Reference implementation of the Mixin BFT-DAG network
+	pkgver = 0.16.10
+	pkgrel = 1
+	url = https://github.com/MixinNetwork/mixin
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = mixin
+	conflicts = mixin
+	options = !debug
+	source = mixin-bin-0.16.10-LICENSE::https://raw.githubusercontent.com/MixinNetwork/mixin/v0.16.10/LICENSE
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+	source_x86_64 = mixin-bin-0.16.10-x86_64.tar.bz2::https://github.com/MixinNetwork/mixin/releases/download/v0.16.10/mixin-linux-x64-v0.16.10.tar.bz2
+	sha256sums_x86_64 = 09ab5389a789a97575d79dc6f8b84712d209f554bf11b5173eb3e24faa5ff47e
+
+pkgname = mixin-bin
