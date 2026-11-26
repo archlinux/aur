@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ITALICSData
-_pkgver=2.50.0
+_pkgver=2.52.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('85c8ec8c3d54fa2910c3021a7057634f')
-b2sums=('1225e891667449ad9f6a2619bec7e54dd69064eeb03c53c2adec54c936be0474bef8455058ecc719d3d6d2e0a3f704b17c8249c7b9e275f08225bbb78dc3930f')
+md5sums=('3906253262034d00f02665409a1c4927')
+b2sums=('577e0cab0e3ce4ce1e91be9a3da2064242928ffdf5eb39210d93612533e39b483cd188aa9690eded6e4ec99f0f1ac4041723254ad902e1fb070e0e225ecead0d')
 
 build() {
   mkdir build
