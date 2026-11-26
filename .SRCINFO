@@ -1,6 +1,6 @@
 pkgbase = r-destiny
 	pkgdesc = Creates diffusion maps
-	pkgver = 3.26.0
+	pkgver = 3.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/destiny
 	arch = x86_64
@@ -46,7 +46,7 @@ pkgbase = r-destiny
 	optdepends = r-testthat
 	optdepends = r-tidyverse
 	optdepends = r-viridis
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/destiny_3.26.0.tar.gz
-	sha256sums = 88d2540ad1025128bab53600f7d706f5f24a8d31b7bb160fb716d754dd1833e2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/destiny_3.28.0.tar.gz
+	sha256sums = 0d5b2aacbfc097c59db6e2c0ec031a8387ca2c9a14d6e326258a2a3319714729
 
 pkgname = r-destiny
