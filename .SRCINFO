@@ -1,0 +1,19 @@
+pkgbase = the0-bin
+	pkgdesc = Open-source algorithmic trading engine
+	pkgver = 1.25.0
+	pkgrel = 1
+	url = https://github.com/alexanderwanyoike/the0
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = the0
+	conflicts = the0
+	options = !debug
+	source = the0-bin-1.25.0-LICENSE::https://raw.githubusercontent.com/alexanderwanyoike/the0/v1.25.0/LICENSE
+	sha256sums = 1c098e124c5d0368cbaaaac3038d90ab834881b8dec8ee04b4ad39a3035c4792
+	source_x86_64 = the0-bin-1.25.0-x86_64::https://github.com/alexanderwanyoike/the0/releases/download/v1.25.0/the0-linux-amd64
+	sha256sums_x86_64 = a68eeb239a9f5e99f108e1d15417635683edcb81afcf57a829ed90ffbcfdd0ec
+	source_aarch64 = the0-bin-1.25.0-aarch64::https://github.com/alexanderwanyoike/the0/releases/download/v1.25.0/the0-linux-arm64
+	sha256sums_aarch64 = 51b00fdbe9915935ebceb99df84694f08a9b36d47d683cfe2015d10f3ae91a9c
+
+pkgname = the0-bin
