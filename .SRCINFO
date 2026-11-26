@@ -1,6 +1,6 @@
 pkgbase = r-scpca
 	pkgdesc = Sparse Contrastive Principal Component Analysis
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scPCA
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-scpca
 	optdepends = r-sparsematrixstats
 	optdepends = r-splatter
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scPCA_1.26.0.tar.gz
-	sha256sums = ebc94a61e00891867349a1bc8404f192bf7b5c8726b493781e0c35640e9c7b5e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scPCA_1.28.0.tar.gz
+	sha256sums = 73e5e092f5af4400fe55e74c4c48938d3349a7df296552fe0cf967bb416bc1e0
 
 pkgname = r-scpca
