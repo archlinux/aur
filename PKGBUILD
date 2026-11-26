@@ -3,7 +3,7 @@
 pkgname=mandara-bin
 _pkgname="${pkgname%-bin}"
 _appid=org.mandara.studio
-pkgver=0.39.0 # renovate: datasource=github-releases depName=theHamdiz/mandara
+pkgver=0.40.0 # renovate: datasource=github-releases depName=theHamdiz/mandara
 pkgrel=1
 pkgdesc="GPU-accelerated, design-first Wayland desktop shell for MangoWM, Niri and Hyprland (binary release)"
 arch=(x86_64 aarch64)
@@ -41,8 +41,8 @@ backup=("etc/pam.d/${_pkgname}-lock")
 options=(!strip !debug)
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64-linux-gnu.tar.gz")
-sha256sums_x86_64=('2869b04cd51105b7ffda93406637359c7875a9874008f0ad3f9ecfe70c2c2539')
-sha256sums_aarch64=('e82d88e0b1c54510b4066e847f81ad8b4488abed1ca0ad8426c7cc663cce18d6')
+sha256sums_x86_64=('b1fa67beeb5cbfe3604873a90d1d8caee1146c2da804284c7cea2baf1e3101d3')
+sha256sums_aarch64=('9bea2753814fcf76194f81c3a8703f2786b6d90539ad96663f33874fd417f129')
 
 package() {
   cd "${_pkgname}-${pkgver}-${CARCH}-linux-gnu"
