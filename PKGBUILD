@@ -1,7 +1,7 @@
 # Maintainer: Ulises Jeremias Cornejo Fandos <ulisescf.24@gmail.com>
 # Native V binary plus its SHA-256-pinned offline resources from GitHub Releases.
 pkgname=agent-toolkit-bin
-pkgver=1.50.0
+pkgver=1.51.1
 pkgrel=1
 pkgdesc="Composable AI agent toolkit — native V CLI (prebuilt GitHub Release binary)"
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,10 @@ provides=('agent-toolkit')
 conflicts=('agent-toolkit')
 options=('!strip')
 resource_bundle_required=1
-source_x86_64=("agent-toolkit-1.50.0-linux-x86_64.tar.gz::https://github.com/ulises-jeremias/agent-toolkit/releases/download/v1.50.0/agent-toolkit-1.50.0-linux-x86_64.tar.gz")
-source_aarch64=("agent-toolkit-1.50.0-linux-arm64.tar.gz::https://github.com/ulises-jeremias/agent-toolkit/releases/download/v1.50.0/agent-toolkit-1.50.0-linux-arm64.tar.gz")
-sha256sums_x86_64=('0390bcc90dd195d69c46ce5cba53dc43285d5a071334e8d9ed285d7b376c2fe4')
-sha256sums_aarch64=('8b84e0ca93c0b169bed0ada0e935b32998115a634cbeccb6449daf185e382f33')
+source_x86_64=("agent-toolkit-1.51.1-linux-x86_64.tar.gz::https://github.com/ulises-jeremias/agent-toolkit/releases/download/v1.51.1/agent-toolkit-1.51.1-linux-x86_64.tar.gz")
+source_aarch64=("agent-toolkit-1.51.1-linux-arm64.tar.gz::https://github.com/ulises-jeremias/agent-toolkit/releases/download/v1.51.1/agent-toolkit-1.51.1-linux-arm64.tar.gz")
+sha256sums_x86_64=('e278100183cbe89fee4a906c07d7a7dcefa407e048ceb872986694d806fb7ef9')
+sha256sums_aarch64=('38ff0ff4ccc3a428606858f0db5517310a48a083337347e77151216378857268')
 
 package() {
     install -Dm755 "${srcdir}/agent-toolkit" "${pkgdir}/usr/bin/agent-toolkit"
