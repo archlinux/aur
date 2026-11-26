@@ -1,0 +1,19 @@
+pkgbase = pkarr-bin
+	pkgdesc = Relay for Public Key Addressable Resource Records
+	pkgver = 9.0.0
+	pkgrel = 1
+	url = https://github.com/pubky/pkarr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pkarr
+	conflicts = pkarr
+	options = !debug
+	source = pkarr-bin-9.0.0-LICENSE::https://raw.githubusercontent.com/pubky/pkarr/v9.0.0/LICENSE
+	sha256sums = 089e801fd0cd8e0258a1e1fe226a1046bb2d702a5349a0ef5a0e232b39a29594
+	source_x86_64 = pkarr-bin-9.0.0-x86_64.tar.gz::https://github.com/pubky/pkarr/releases/download/v9.0.0/pkarr-relay-v3.0.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 4ad948a5708a2717070f4bbc8062e077f42ffc3b8c149f5c7a293bbdfee3af04
+	source_aarch64 = pkarr-bin-9.0.0-aarch64.tar.gz::https://github.com/pubky/pkarr/releases/download/v9.0.0/pkarr-relay-v3.0.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 87beb4d80f52f59a21e597f6e56cd80c559368c072fbb3afb3bc8edf46f90b3f
+
+pkgname = pkarr-bin
