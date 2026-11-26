@@ -1,0 +1,17 @@
+pkgbase = homebutler-bin
+	pkgdesc = Tells you what changed on your server, only what is worth telling
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/Higangssh/homebutler
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = homebutler
+	conflicts = homebutler
+	options = !debug
+	source_x86_64 = homebutler-bin-1.9.0-x86_64.tar.gz::https://github.com/Higangssh/homebutler/releases/download/v1.9.0/homebutler_1.9.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b3772ab9374538453c9955ebb53f29fdd85810d55d20f4a1f466f4ad3be54d19
+	source_aarch64 = homebutler-bin-1.9.0-aarch64.tar.gz::https://github.com/Higangssh/homebutler/releases/download/v1.9.0/homebutler_1.9.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4503738e1d2a7010ed634a48a7ca7f5323c4a033417c2be093dd65240b6e330a
+
+pkgname = homebutler-bin
