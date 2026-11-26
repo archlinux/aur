@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cytoKernel
-_pkgver=1.14.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Differential expression using kernel-based score test'
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d5d4f8ab594887a7fff361f1c71841b5d2cf4b95973fc6edd23215c79921a01f')
+sha256sums=('7dd4a1bf97a9963b453439aea380933a385b3e0998901245f6fe452fda9a0d39')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
