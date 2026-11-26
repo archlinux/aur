@@ -1,6 +1,6 @@
 pkgbase = r-methtargetedngs
 	pkgdesc = Perform Methylation Analysis on Next Generation Sequencing Data
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MethTargetedNGS
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-methtargetedngs
 	depends = r-pwalign
 	depends = r-seqinr
 	depends = r-stringr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MethTargetedNGS_1.44.0.tar.gz
-	md5sums = ab4a2ded31cb1ffe7c6914a28f0b962a
-	b2sums = 1160c85cc0a9d8b54cedee04034e0238034b69accf3dbf4f658fcf17ef9ba1bce23b3f778a8494c61e8af39061c9de4914a9ec9dd8ebb65889e100a978fa7e17
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MethTargetedNGS_1.46.0.tar.gz
+	md5sums = 6a6cdb7f5338db26785d39beeef99e99
+	b2sums = c292977e6c62ce9726c7320bf11b29e7d64814f833dd38c696487429b72e73c6c58b5d59855b22be401ffbe639bcd6b1d0d1bd050288d4fc7d6bab6dbd1e879e
 
 pkgname = r-methtargetedngs
