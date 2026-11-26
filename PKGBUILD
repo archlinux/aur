@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CMA
-_pkgver=1.70.0
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-st
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('de5ba56e66a14ccfe5810185149f5900')
-b2sums=('2762110a32d677edb66a40c63000e79fd8e771e1d03e4128cc38380ec127a001608af216246d480d5cd670943ce024e965466bf7992735bba306da8b85d8b093')
+md5sums=('b5916ed0dbbc7b3d2d34908da8e32e2d')
+b2sums=('46c7bfb43f74e25cf7aeda624315361be0540cdac4fe65535c406c920d3d135c6820c212dfdda5dc51b920f1bd4d847d877d5b0cfb1a4cbcab67e82fd7c1aed3')
 
 build() {
   mkdir build
