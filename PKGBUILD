@@ -4,7 +4,7 @@
 # sha256sums and pushes it here. Send changes there.
 
 pkgname=ibus-ngosen
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Ngó Sen, a Vietnamese input method for IBus"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('fcitx5-ngosen')
 options=('!debug')
 # The release tarball, unlike the tag archive, carries the ngosen submodule.
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/releases/download/$pkgname-$pkgver-$pkgrel/$pkgname-$pkgver.tar.gz")
-sha256sums=('62103227f1e901eea4a7933467338b0cd72908e2cd5f49a424039fb5ebd38c5d')
+sha256sums=('8f9fbf349e3ffc69e90f19a9a8e70a131abf7a4f5ea9cd6d611d74f9d6710e63')
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build \
