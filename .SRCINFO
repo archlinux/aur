@@ -1,0 +1,16 @@
+pkgbase = go-junit-report-bin
+	pkgdesc = Convert Go test output to JUnit XML
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/jstemmer/go-junit-report
+	arch = x86_64
+	license = MIT
+	provides = go-junit-report
+	conflicts = go-junit-report
+	options = !debug
+	source = go-junit-report-bin-2.1.0-LICENSE::https://raw.githubusercontent.com/jstemmer/go-junit-report/v2.1.0/LICENSE
+	sha256sums = 3a1d422cc6a5cb78caad72d2f5b4ca6f81814fb31fa3fa044c4430df0f59539b
+	source_x86_64 = go-junit-report-bin-2.1.0-x86_64.tar.gz::https://github.com/jstemmer/go-junit-report/releases/download/v2.1.0/go-junit-report-v2.1.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = d732451fe505862333f3e97e85ab429a69a4ab1a55c6baa387b184db4d714ba8
+
+pkgname = go-junit-report-bin
