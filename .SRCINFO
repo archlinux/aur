@@ -1,0 +1,17 @@
+pkgbase = pacaptr-bin
+	pkgdesc = Pacman-like syntax wrapper for many package managers
+	pkgver = 0.23.2
+	pkgrel = 1
+	url = https://github.com/rami3l/pacaptr
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = pacaptr
+	conflicts = pacaptr
+	options = !debug
+	source_x86_64 = pacaptr-bin-0.23.2-x86_64.tar.gz::https://github.com/rami3l/pacaptr/releases/download/v0.23.2/pacaptr-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1c2f9ee938078486437694bab45b1bb79346e8ea8f6905f343de0ac4d3c94eb2
+	source_aarch64 = pacaptr-bin-0.23.2-aarch64.tar.gz::https://github.com/rami3l/pacaptr/releases/download/v0.23.2/pacaptr-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0e39e3f7b1f3a3b1d1e8c198f639aeb9ca433e6d08197abb28f8eebe9fe8b67f
+
+pkgname = pacaptr-bin
