@@ -1,0 +1,17 @@
+pkgbase = shield-bin
+	pkgdesc = Backup and restore system for a wide variety of pluggable data systems
+	pkgver = 9.0.2
+	pkgrel = 1
+	url = https://github.com/shieldproject/shield
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = shield
+	conflicts = shield
+	options = !debug
+	source = shield-bin-9.0.2-LICENSE::https://raw.githubusercontent.com/shieldproject/shield/v9.0.2/LICENSE
+	sha256sums = a4a1544e07cdb692863c26dea5340c837a643b73c1b554a895c64a048bb2e2bd
+	source_x86_64 = shield-bin-9.0.2-x86_64::https://github.com/shieldproject/shield/releases/download/v9.0.2/shield-linux-amd64
+	sha256sums_x86_64 = fb86087e9b0adc9f8f4813567bd2ad3c558f4288da71805b3cf73ef098f5f87a
+
+pkgname = shield-bin
