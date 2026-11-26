@@ -3,7 +3,11 @@
 #
 # 流程：查上游最新 tag → 下载对应架构的预编译包并用上游 SHA256SUMS 校验
 #      → 回写 PKGBUILD（pkgver / pkgrel / sha256sums）→ 重新生成 .SRCINFO
-#      → makepkg 构建验证 → 提交并推送 AUR。
+#      → makepkg 构建验证（仅 Arch）→ 提交并推送 AUR。
+#
+# makepkg 只在 Arch 上存在。没有 makepkg 时（如容器里的 Alpine/Debian，
+# 或 macOS 本机）会用内置生成器重建 .SRCINFO 并跳过构建验证，
+# 其余流程完全一致。内置生成器输出与 makepkg --printsrcinfo 逐字节一致。
 #
 # 国内网络不稳时可带代理运行：HTTPS_PROXY=http://127.0.0.1:7890 ./update.sh
 
@@ -32,7 +36,7 @@ usage() {
 选项:
   -c, --check        只检查是否有更新（只拉 SHA256SUMS，不下载安装包、不修改、不推送）
   -n, --dry-run      走完全部校验流程，打印 PKGBUILD 改动后回滚，不构建不提交不推送
-      --no-build     跳过 makepkg 构建验证
+      --no-build     跳过 makepkg 构建验证（无 makepkg 时会自动跳过）
       --no-push      只提交到本地 git，不推送到 AUR
   -f, --force        上游版本没变也强制重新生成校验值并发布（pkgrel 自动 +1）
       --tag TAG      指定上游 tag，例如 --tag v0.1.9（默认取 releases/latest）
@@ -78,9 +82,11 @@ done
 cd -- "${REPO_DIR:-$(dirname -- "$(readlink -f -- "$0")")}"
 CACHE_DIR=$(readlink -m -- "$CACHE_DIR")
 
-for cmd in curl sha256sum tar git makepkg awk sed; do
+for cmd in curl sha256sum tar git awk sed; do
 	command -v "$cmd" >/dev/null 2>&1 || die "缺少命令: $cmd"
 done
+has_makepkg=false
+command -v makepkg >/dev/null 2>&1 && has_makepkg=true
 [[ -f PKGBUILD ]] || die "当前目录没有 PKGBUILD: $PWD"
 
 # ---------------------------------------------------------------- git 辅助
@@ -145,6 +151,81 @@ pkgbuild_var() { # 变量名 → 值（数组取其第一个元素）
 		# shellcheck disable=SC1091
 		source ./PKGBUILD
 		eval "printf '%s' \"\${$1}\""
+	)
+}
+
+# makepkg --printsrcinfo 的等价实现：source PKGBUILD 后按 pacman 的字段顺序输出。
+# 逐字节对照过真实 makepkg 的输出（含 source/校验值的变量展开与 arch 后缀顺序）。
+srcinfo_emit() { # 字段名 值...
+	local key=$1 v
+	shift
+	for v in "$@"; do printf '\t%s = %s\n' "$key" "$v"; done
+}
+
+srcinfo_emit_if() { # 字段名 值...（无值时不输出）
+	local key=$1
+	shift
+	(($#)) || return 0
+	srcinfo_emit "$key" "$@"
+}
+
+srcinfo_emit_arch() { # 字段名 变量名 —— 间接取数组元素，空数组时不输出
+	local key=$1 name=$2
+	eval "local -a _vals=(\${$name[@]+\"\${$name[@]}\"})"
+	((${#_vals[@]})) || return 0
+	srcinfo_emit "$key" "${_vals[@]}"
+}
+
+regen_srcinfo() {
+	(
+		set -euo pipefail
+		# shellcheck disable=SC1091
+		source ./PKGBUILD
+
+		printf 'pkgbase = %s\n' "${pkgbase:-$pkgname}"
+		printf '\tpkgdesc = %s\n' "${pkgdesc:-}"
+		printf '\tpkgver = %s\n' "$pkgver"
+		printf '\tpkgrel = %s\n' "$pkgrel"
+		[[ -n ${epoch:-} ]] && printf '\tepoch = %s\n' "$epoch"
+		printf '\turl = %s\n' "${url:-}"
+
+		srcinfo_emit_if arch ${arch[@]+"${arch[@]}"}
+		srcinfo_emit_if license ${license[@]+"${license[@]}"}
+		srcinfo_emit_if groups ${groups[@]+"${groups[@]}"}
+		srcinfo_emit_if makedepends ${makedepends[@]+"${makedepends[@]}"}
+		srcinfo_emit_if checkdepends ${checkdepends[@]+"${checkdepends[@]}"}
+		srcinfo_emit_if depends ${depends[@]+"${depends[@]}"}
+		srcinfo_emit_if optdepends ${optdepends[@]+"${optdepends[@]}"}
+		srcinfo_emit_if provides ${provides[@]+"${provides[@]}"}
+		srcinfo_emit_if conflicts ${conflicts[@]+"${conflicts[@]}"}
+		srcinfo_emit_if replaces ${replaces[@]+"${replaces[@]}"}
+		srcinfo_emit_if options ${options[@]+"${options[@]}"}
+		srcinfo_emit_if backup ${backup[@]+"${backup[@]}"}
+		srcinfo_emit_if source ${source[@]+"${source[@]}"}
+		srcinfo_emit_if noextract ${noextract[@]+"${noextract[@]}"}
+		srcinfo_emit_if validpgpkeys ${validpgpkeys[@]+"${validpgpkeys[@]}"}
+		srcinfo_emit_if md5sums ${md5sums[@]+"${md5sums[@]}"}
+		srcinfo_emit_if sha1sums ${sha1sums[@]+"${sha1sums[@]}"}
+		srcinfo_emit_if sha224sums ${sha224sums[@]+"${sha224sums[@]}"}
+		srcinfo_emit_if sha256sums ${sha256sums[@]+"${sha256sums[@]}"}
+		srcinfo_emit_if sha384sums ${sha384sums[@]+"${sha384sums[@]}"}
+		srcinfo_emit_if sha512sums ${sha512sums[@]+"${sha512sums[@]}"}
+		srcinfo_emit_if b2sums ${b2sums[@]+"${b2sums[@]}"}
+
+		for a in ${arch[@]+"${arch[@]}"}; do
+			key=${a//-/_}
+			srcinfo_emit_arch "source_${key}" "source_${key}"
+			srcinfo_emit_arch "noextract_${key}" "noextract_${key}"
+			srcinfo_emit_arch "md5sums_${key}" "md5sums_${key}"
+			srcinfo_emit_arch "sha1sums_${key}" "sha1sums_${key}"
+			srcinfo_emit_arch "sha224sums_${key}" "sha224sums_${key}"
+			srcinfo_emit_arch "sha256sums_${key}" "sha256sums_${key}"
+			srcinfo_emit_arch "sha384sums_${key}" "sha384sums_${key}"
+			srcinfo_emit_arch "sha512sums_${key}" "sha512sums_${key}"
+			srcinfo_emit_arch "b2sums_${key}" "b2sums_${key}"
+		done
+
+		printf '\npkgname = %s\n' "$pkgname"
 	)
 }
 
@@ -330,8 +411,19 @@ sed -i -E "s#^sha256sums_aarch64=.*#sha256sums_aarch64=('${hash[aarch64]}')#" PK
 	[[ ${sha256sums_aarch64[0]} == "${hash[aarch64]}" ]] || exit 1
 ) || die "PKGBUILD 回写校验失败"
 
-makepkg --printsrcinfo >.SRCINFO || die "生成 .SRCINFO 失败"
-ok ".SRCINFO 已重新生成"
+if $has_makepkg; then
+	makepkg --printsrcinfo >.SRCINFO || die "生成 .SRCINFO 失败"
+	ok ".SRCINFO 已重新生成（makepkg）"
+else
+	regen_srcinfo >.SRCINFO || die "生成 .SRCINFO 失败（内置生成器）"
+	ok ".SRCINFO 已重新生成（内置生成器，无 makepkg）"
+fi
+
+for expect in "pkgver = ${ver}" "pkgrel = ${new_rel}" \
+	"sha256sums_x86_64 = ${hash[x86_64]}" "sha256sums_aarch64 = ${hash[aarch64]}"; do
+	grep -Fqx "	$expect" .SRCINFO || die ".SRCINFO 回读校验失败，缺少: ${expect}"
+done
+ok ".SRCINFO 回读校验通过"
 
 if $dry_run; then
 	log "改动预览（dry-run，随后回滚）"
@@ -345,12 +437,15 @@ fi
 
 # ---------------------------------------------------------------- 构建验证
 
-if $do_build; then
+if $do_build && $has_makepkg; then
 	makepkg_args=()
 	[[ -n ${MAKEPKG_ARGS:-} ]] && read -r -a makepkg_args <<<"$MAKEPKG_ARGS"
 	log "构建验证: SRCDEST=${CACHE_DIR} makepkg -f ${MAKEPKG_ARGS:-}"
 	SRCDEST="$CACHE_DIR" makepkg -f "${makepkg_args[@]}" || die "构建失败，改动保留在本地，未提交"
 	ok "构建通过"
+elif $do_build; then
+	warn "未安装 makepkg（非 Arch 系统），跳过构建验证"
+	warn "上游包的目录布局已通过前面 tar 清单比对确认"
 else
 	warn "已跳过构建验证（--no-build）"
 fi
