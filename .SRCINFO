@@ -1,8 +1,8 @@
 pkgbase = cosmic-ext-manager-git
 	pkgdesc = Browse, install, update and remove community COSMIC extensions
 	pkgver = 0.1.0
-	pkgrel = 1
-	url = https://github.com/kevinRForshey/CosmicEDxtensionManager
+	pkgrel = 2
+	url = https://github.com/kevinRForshey/CosmicExtensionManager
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
@@ -20,7 +20,7 @@ pkgbase = cosmic-ext-manager-git
 	provides = cosmic-ext-manager
 	conflicts = cosmic-ext-manager
 	options = !lto
-	source = cosmic-ext-manager::git+https://github.com/kevinRForshey/CosmicEDxtensionManager.git
+	source = cosmic-ext-manager::git+https://github.com/kevinRForshey/CosmicExtensionManager.git
 	sha256sums = SKIP
 
 pkgname = cosmic-ext-manager-git
