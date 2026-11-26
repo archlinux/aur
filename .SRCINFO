@@ -1,0 +1,24 @@
+pkgbase = moria-bin
+	pkgdesc = IoT firmware identification and extraction
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/nmatt0/moria
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = lz4
+	depends = xz
+	depends = zlib
+	depends = zstd
+	provides = moria
+	conflicts = moria
+	options = !debug
+	source_x86_64 = moria-bin-0.3.0-x86_64.tar.gz::https://github.com/nmatt0/moria/releases/download/v0.3.0/moria-v0.3.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 1660e4555620d5fd32c290ce5995f74d88baf6ec791afdb4ef06cc1293771e72
+	source_aarch64 = moria-bin-0.3.0-aarch64.tar.gz::https://github.com/nmatt0/moria/releases/download/v0.3.0/moria-v0.3.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8a541e1e36deea02d1b5c1f5116febe1dd5b7cee5befeba13af3d8b18647a0d0
+
+pkgname = moria-bin
