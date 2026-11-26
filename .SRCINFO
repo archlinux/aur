@@ -1,6 +1,6 @@
 pkgbase = locklet
 	pkgdesc = Lock screen for river and rivermonad (ext-session-lock-v1), with the blurred wallpaper of bgmonad
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/prietus/locklet
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = locklet
 	depends = gtk4
 	depends = gtk4-layer-shell
 	depends = pam
-	optdepends = python-pillow: blurred background with the slow drift (else GTK blurs it, without drift)
+	optdepends = python-pillow: blurred background that flows slowly (else GTK blurs it, still)
 	optdepends = grim: start from the screen as it was and crossfade
 	optdepends = bgmonad: the same wallpaper as the desktop on every output
 	backup = etc/pam.d/locklet
-	source = locklet-0.1.0.tar.gz::https://github.com/prietus/locklet/archive/v0.1.0.tar.gz
-	sha256sums = 0d962daf7c68155a705aced524efbf871f8c341d7006e62169638c1660d842da
+	source = locklet-0.2.0.tar.gz::https://github.com/prietus/locklet/archive/v0.2.0.tar.gz
+	sha256sums = 6eafdfad2e1b59d422efcb2597e1a842197ca7c8cc968e83d5cad8d53c23419e
 
 pkgname = locklet
