@@ -1,7 +1,7 @@
 # Maintainer: XSilverTH <XSilverTH@proton.me>
 
 pkgname=silverscreen-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Native GTK4 YouTube client that plays videos with MPV (precompiled binary)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'libsoup3' 'mpv' 'yt-dlp' 'hicolor-
 provides=('silverscreen')
 conflicts=('silverscreen')
 source=("$pkgname-$pkgver.tar.zst::$url/releases/download/v$pkgver/silverscreen-v$pkgver-x86_64.tar.zst")
-sha256sums=('f95f490c0edb73563e7116dd7dc8e453f4f4ab29625ef59f35977fd1a78e71df')
+sha256sums=('e7c491ed30d79e8cfa6ffdcb5c2e4ef20ee09446b00dfc7357e2748745efd048')
 
 package() {
   cd "$srcdir"
