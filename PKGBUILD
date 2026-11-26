@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeneSelectMMD
-_pkgver=2.56.0
+_pkgver=2.58.0
 pkgname=r-${_pkgname,,}
-pkgver=2.56.0
+pkgver=2.58.0
 pkgrel=1
 pkgdesc='Gene selection based on the marginal distributions of gene profiles that characterized by a mixture of three-component multivariate distributions'
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c1f1145a275c8d6d06935a67f70d5e13f6c7ed5f9f20d2276b6731a7a893fbd2')
+sha256sums=('9317e1360c805b6054a47385285c0791235649935dc51d3f0179c62c1330231f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
