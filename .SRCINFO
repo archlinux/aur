@@ -1,7 +1,7 @@
 pkgbase = r-rigraphlib
 	pkgdesc = igraph library as an R package
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/Rigraphlib
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,8 +12,8 @@ pkgbase = r-rigraphlib
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rigraphlib_1.4.0.tar.gz
-	md5sums = efdfd93d8a70c0bcc22eb7916dba79cd
-	b2sums = e9cd9d69af440d0e72004d114b92e762cfd78b20e867ca6fe3eb7d070dea37cf5d67ef935c0303102b812bca7102043232b23348c3a3266ff9e3ae2766ad97ec
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rigraphlib_1.6.0.tar.gz
+	md5sums = 2809d75a3caae5d0637cac5e0383f016
+	b2sums = aa9d0c8cc598a8bdcd7fba858f994cfd4cbca6e0afc9bf6df70a96114588f6e75f4785d493cdb5eea738d6ed66f977de7a3b97c60354cf018b6c713133fd67a7
 
 pkgname = r-rigraphlib

@@ -1,10 +1,10 @@
 # Maintainer: Adityarup Laha <me@adityaruplaha.me>
 
 _pkgname=Rigraphlib
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="igraph library as an R package"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('efdfd93d8a70c0bcc22eb7916dba79cd')
-b2sums=('e9cd9d69af440d0e72004d114b92e762cfd78b20e867ca6fe3eb7d070dea37cf5d67ef935c0303102b812bca7102043232b23348c3a3266ff9e3ae2766ad97ec')
+md5sums=('2809d75a3caae5d0637cac5e0383f016')
+b2sums=('aa9d0c8cc598a8bdcd7fba858f994cfd4cbca6e0afc9bf6df70a96114588f6e75f4785d493cdb5eea738d6ed66f977de7a3b97c60354cf018b6c713133fd67a7')
 
 build() {
   mkdir build
