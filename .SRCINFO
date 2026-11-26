@@ -1,0 +1,22 @@
+pkgbase = resend-cli-bin
+	pkgdesc = Command-line interface for the Resend email API
+	pkgver = 2.30.0
+	pkgrel = 1
+	url = https://github.com/resend/resend-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = resend-cli
+	conflicts = resend-cli
+	options = !debug
+	source = resend-cli-bin-2.30.0-LICENSE::https://raw.githubusercontent.com/resend/resend-cli/v2.30.0/LICENSE
+	sha256sums = 1959acb1978684aadd7cee9f1510fd9ea31bedac0bc4223de1fe5d2381f300c8
+	source_x86_64 = resend-cli-bin-2.30.0-x86_64.tar.gz::https://github.com/resend/resend-cli/releases/download/v2.30.0/resend-linux-x64.tar.gz
+	sha256sums_x86_64 = c18e28aeea30497c6e79feeb041199f88271abeb7149aae71a49ef7e661285a7
+	source_aarch64 = resend-cli-bin-2.30.0-aarch64.tar.gz::https://github.com/resend/resend-cli/releases/download/v2.30.0/resend-linux-arm64.tar.gz
+	sha256sums_aarch64 = af96f74de741719e4ee00f7a9c3138697b305e0a4d61d642f512799b4f113476
+
+pkgname = resend-cli-bin
