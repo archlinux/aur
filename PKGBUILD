@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="TUI for Github Pull Requests"
 
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('4893c28ee710e57971585aca1d782fc7f41a271d59532366cefd8ff6cfee0e12')
-sha256sums_aarch64=('156125c5066eaae07a18d25b94591e76354d4b7f4af0e64dcecee790268057f2')
+sha256sums_x86_64=('ba2c375013f65696481c95d63ba769913e8817fc30ea26f8f59eabd531697893')
+sha256sums_aarch64=('d4daf2f6ca97f27652505f63cda56f58c49282e18f0d81cd7dfec2ab706c18ce')
 
 
 package() {
