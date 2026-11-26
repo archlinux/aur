@@ -1,0 +1,17 @@
+pkgbase = k8tz-bin
+	pkgdesc = Inject timezones into Kubernetes Pods and CronJobs
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://github.com/k8tz/k8tz
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = k8tz
+	conflicts = k8tz
+	options = !debug
+	source_x86_64 = k8tz-bin-0.22.0-x86_64.tar.gz::https://github.com/k8tz/k8tz/releases/download/v0.22.0/k8tz_0.22.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4941bb836d8f631af1c8eb26325b05796b1f380ff35f78886151b33c5e1a9dea
+	source_aarch64 = k8tz-bin-0.22.0-aarch64.tar.gz::https://github.com/k8tz/k8tz/releases/download/v0.22.0/k8tz_0.22.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 74c529e57fd2231d034adc2e1b2bb8307f4ded924430db1e283cbb5af274d203
+
+pkgname = k8tz-bin
