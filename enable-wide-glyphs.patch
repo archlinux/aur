@@ -12,7 +12,7 @@
  
 --- a/configure
 +++ b/configure
-@@ -739,6 +739,7 @@
+@@ -729,6 +729,7 @@
  enable_combining
  enable_xft
  enable_font_styles
@@ -20,15 +20,15 @@
  enable_pixbuf
  enable_startup_notification
  enable_transparency
-@@ -1414,6 +1415,7 @@
+@@ -1405,6 +1406,7 @@
    --enable-combining      enable composition of base and combining characters
    --enable-xft            enable xft support on systems that have it
    --enable-font-styles    enable bold and italic support
 +  --enable-wide-glyphs    enable displaying of wide glyphs
-   --enable-pixbuf         enable integration with gdk-pixbuf for background images
-   --enable-startup-notification  enable freedesktop startup notification support
-   --enable-transparency   enable transparent backgrounds
-@@ -5025,6 +5027,7 @@
+   --enable-pixbuf         enable integration with gdk-pixbuf for background
+                           images
+   --enable-startup-notification
+@@ -5120,6 +5122,7 @@
         support_8bitctrls=no
         support_iso14755=no
         support_styles=no
@@ -36,7 +36,7 @@
         support_perl=no
         codesets=
      fi
-@@ -5050,6 +5053,7 @@
+@@ -5145,6 +5148,7 @@
         #support_8bitctrls=yes
         support_iso14755=yes
         support_styles=yes
@@ -44,7 +44,7 @@
         support_perl=yes
         codesets=all
      fi
-@@ -5182,6 +5186,14 @@
+@@ -5278,6 +5282,14 @@
  fi
  
  
@@ -59,7 +59,7 @@
  # Check whether --enable-pixbuf was given.
  if test ${enable_pixbuf+y}
  then :
-@@ -7727,6 +7739,11 @@
+@@ -7731,6 +7743,11 @@
  printf "%s\n" "#define MOUSE_SLIP_WHEELING 1" >>confdefs.h
  
  fi
@@ -73,7 +73,7 @@
  
 --- a/configure.ac
 +++ b/configure.ac
-@@ -123,6 +123,7 @@
+@@ -124,6 +124,7 @@
         support_8bitctrls=no
         support_iso14755=no
         support_styles=no
@@ -81,7 +81,7 @@
         support_perl=no
         codesets=
      fi
-@@ -148,6 +149,7 @@
+@@ -149,6 +150,7 @@
         #support_8bitctrls=yes
         support_iso14755=yes
         support_styles=yes
@@ -89,7 +89,7 @@
         support_perl=yes
         codesets=all
      fi
-@@ -231,6 +233,12 @@
+@@ -239,6 +241,12 @@
      support_styles=$enableval
    fi])
  
@@ -100,9 +100,9 @@
 +  fi])
 +
  AC_ARG_ENABLE(pixbuf,
-   [  --enable-pixbuf         enable integration with gdk-pixbuf for background images],
-   [if test x$enableval = xyes -o x$enableval = xno; then
-@@ -653,6 +661,9 @@
+   [AS_HELP_STRING([--enable-pixbuf],
+      [enable integration with gdk-pixbuf for background images])],
+@@ -691,6 +699,9 @@
  if test x$support_styles = xyes; then
    AC_DEFINE(ENABLE_STYLES, 1, Define if you want bold and italic support)
  fi
@@ -114,7 +114,7 @@
  fi
 --- a/src/command.C
 +++ b/src/command.C
-@@ -237,7 +237,9 @@
+@@ -239,7 +239,9 @@
  # endif
        scr_overlay_set (11, y + 1, ch, r);
  
@@ -126,15 +126,7 @@
  
 --- a/src/rxvtfont.C
 +++ b/src/rxvtfont.C
-@@ -471,6 +471,7 @@
-       else
-         switch (t)
-           {
-+            case ' ':
-             case '\t':
-             case ZERO_WIDTH_CHAR:
-             case NOCHAR:
-@@ -1038,8 +1039,10 @@
+@@ -1041,8 +1041,10 @@
  
    careful = xcs->lbearing < 0 || xcs->rbearing > prop->width * wcw;
  
@@ -145,7 +137,7 @@
  
    return true;
  }
-@@ -1410,12 +1413,14 @@
+@@ -1413,12 +1415,14 @@
  
    careful = g.x > 0 || w > cwidth;
  
@@ -160,7 +152,7 @@
  
    return true;
  }
-@@ -1496,6 +1501,10 @@
+@@ -1499,6 +1503,10 @@
  
            ep->glyph = glyph;
            ep->x = x_;
@@ -173,7 +165,7 @@
            // the xft font cell might differ from the terminal font cell,
 --- a/src/screen.C
 +++ b/src/screen.C
-@@ -977,7 +977,61 @@
+@@ -976,7 +976,61 @@
  # endif
  #endif
  
@@ -236,7 +228,7 @@
  
            // if the character doesn't fit into the remaining columns...
            if (ecb_unlikely (screen.cur.col > ncol - width && ncol >= width))
-@@ -2436,7 +2490,12 @@
+@@ -2435,7 +2489,12 @@
                  text--, count++, xpixel -= fwidth;
  
                // force redraw after "careful" characters to avoid pixel droppings

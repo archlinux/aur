@@ -1,6 +1,6 @@
 --- a/src/rxvtfont.C
 +++ b/src/rxvtfont.C
-@@ -1253,98 +1253,60 @@
+@@ -1255,98 +1255,60 @@
      return false;
  
    int ftheight = 0;
@@ -24,7 +24,7 @@
 -      FT_Face face = XftLockFace (f);
 -
 -      // fuck me plenty: XftLockFace can actually return 0. try not to crash.
--      // we also assume blindly that if the first lock succeeeds, then subsequent
+-      // we also assume blindly that if the first lock succeeds, then subsequent
 -      // locks will also succeed.
 -      if (!face)
 -        {
@@ -47,9 +47,9 @@
 +      return false;
 +    }
  
--      for (uint16_t *t = extent_test_chars; t < extent_test_chars + ecb_array_length (extent_test_chars); t++)
+-      for (uint32_t *t = extent_test_chars; t < extent_test_chars + ecb_array_length (extent_test_chars); t++)
 -        {
--          FcChar16 ch = *t;
+-          FcChar32 ch = *t;
 +  FT_Face face = XftLockFace (f);
  
 -          if (cs != CS_UNICODE
@@ -68,13 +68,13 @@
 +  bool scalable = face->face_flags & FT_FACE_FLAG_SCALABLE;
  
 -          XGlyphInfo g;
--          XftTextExtents16 (disp, f, &ch, 1, &g);
+-          XftTextExtents32 (disp, f, &ch, 1, &g);
 +  XftUnlockFace (f);
  
 -          g.width -= g.x;
-+  for (uint16_t *t = extent_test_chars; t < extent_test_chars + ecb_array_length (extent_test_chars); t++)
++  for (uint32_t *t = extent_test_chars; t < extent_test_chars + ecb_array_length (extent_test_chars); t++)
 +    {
-+      FcChar16 ch = *t;
++      FcChar32 ch = *t;
  
 -          int wcw = WCWIDTH (ch);
 -          if (wcw > 0) g.width = (g.width + wcw - 1) / wcw;
@@ -93,7 +93,7 @@
 -          if (glheight < g.height - g.y) glheight = g.height - g.y;
 -        }
 +      XGlyphInfo g;
-+      XftTextExtents16 (disp, f, &ch, 1, &g);
++      XftTextExtents32 (disp, f, &ch, 1, &g);
  
 -      if (!width)
 -        {
@@ -139,7 +139,7 @@
      }
  
    FcPatternDestroy (match);
-@@ -1505,7 +1467,7 @@
+@@ -1507,7 +1469,7 @@
            /* Left-align to bounding box, do not overlap to the left. */
            max_it(ep->x, x_);
  #endif
@@ -150,7 +150,7 @@
            // in which case we use the average between the two.
 --- a/src/screen.C
 +++ b/src/screen.C
-@@ -2540,8 +2540,8 @@
+@@ -2539,8 +2539,8 @@
                  XSetForeground (dpy, gc, lookup_color(fore, pix_colors));
  
                XDrawLine (dpy, vt, gc,

@@ -7,7 +7,7 @@ iterm2, apple terminal, st, and many other.
 
 --- a/src/command.C
 +++ b/src/command.C
-@@ -3299,22 +3299,22 @@
+@@ -3318,22 +3318,22 @@
  rxvt_term::process_osc_seq ()
  {
    int arg;
@@ -43,7 +43,7 @@ iterm2, apple terminal, st, and many other.
  }
  
  static unsigned int
-@@ -3463,6 +3463,13 @@
+@@ -3482,6 +3482,13 @@
    if (HOOK_INVOKE ((this, HOOK_OSC_SEQ, DT_INT, op, DT_STR, str, DT_END)))
      return;
  
@@ -57,7 +57,7 @@ iterm2, apple terminal, st, and many other.
    switch (op)
      {
        case XTerm_name:
-@@ -3533,14 +3540,17 @@
+@@ -3552,14 +3559,17 @@
          break;
        case Rxvt_restoreFG:
        case XTerm_Color00:
@@ -77,7 +77,7 @@ iterm2, apple terminal, st, and many other.
  #endif
 --- a/src/init.C
 +++ b/src/init.C
-@@ -765,10 +765,13 @@
+@@ -766,10 +766,13 @@
      }
  #endif
  
@@ -232,7 +232,7 @@ iterm2, apple terminal, st, and many other.
  };
  
  /* Words starting with `Color_' are colours.  Others are counts */
-@@ -1243,6 +1247,8 @@
+@@ -1244,6 +1248,8 @@
  #endif
  
    const char     *rs[NUM_RESOURCES];
@@ -241,7 +241,7 @@ iterm2, apple terminal, st, and many other.
    /* command input buffering */
    char           *cmdbuf_ptr, *cmdbuf_endp;
    char            cmdbuf_base[CBUFSIZ];
-@@ -1432,6 +1438,7 @@
+@@ -1433,6 +1439,7 @@
    void set_window_color (int idx, const char *color);
    char *get_colorfgbg ();
    bool set_color (rxvt_color &color, const char *name);
