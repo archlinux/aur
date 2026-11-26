@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=parody
-_pkgver=1.70.0
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('828abbc4c789b933e0123844f6442966')
-b2sums=('0774d1a6940ce0a339426a5fc1dcd87122cea92a13a56578347ce162e034c169eceee4fb6650e05d0ac22efd8b5e5a7c10a592c381c0a09337f47167a918270d')
+md5sums=('ed9d3eabe15a73aef35ece4f1b2b044b')
+b2sums=('a70a28798aa35fd046060852a37c7fc8a13ab6f42cf78c6fb5223549cce2176a4b1cef2302cba1680ab6561f2ae7830114b031cbd3b7bc564977bb3954df7a65')
 
 build() {
   mkdir build
