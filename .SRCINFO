@@ -1,6 +1,6 @@
 pkgbase = r-geneexpressionsignature
 	pkgdesc = Gene Expression Signature based Similarity Metric
-	pkgver = 1.58.0
+	pkgver = 1.60.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GeneExpressionSignature
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-geneexpressionsignature
 	optdepends = r-geoquery
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneExpressionSignature_1.58.0.tar.gz
-	md5sums = a61f4816e1d78307c4431a79ee8ad5bc
-	b2sums = cf58203fa2583a9ca9da139a24f0390350ae7a4f3fa01e12d9a8d237a49d76ee2f319731263881e6ba401ba64f382e403c7eb5606ba10e65f4cd9ba196160a38
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneExpressionSignature_1.60.0.tar.gz
+	md5sums = b6e64da019afbf91ff3089579219705d
+	b2sums = bbb797c303361492001e9ebca299426b742c3b86bcc905e07456ae3c4cc1cfcfe9089aa1fd4f3cd3225a73fa0f9430e7b551cf515701f75ef566d29c8ccd09f6
 
 pkgname = r-geneexpressionsignature
