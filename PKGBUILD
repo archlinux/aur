@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=safe-chain
-pkgver=1.5.29
+pkgver=1.5.30
 pkgrel=1
 pkgdesc='Protect against malicious code installed via npm, yarn, pnpm, pip, uv and poetry'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('npm: wrap npm and npx'
             'python-poetry: wrap poetry'
             'python-pdm: wrap pdm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('6e9502c5374d6e0b256651efc4dacce858a82feb365a5fa62cb211b33e8caf88')
+sha256sums=('ca76c646f11d8e42669f3026e9e0192094a102bb2c111577ecbcb661451d4faa')
 
 _safe_chain_env() {
   export HOME="${srcdir}/home"
