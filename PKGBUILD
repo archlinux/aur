@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iSEE
-_pkgver=2.20.0
+_pkgver=2.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,14 +42,15 @@ optdepends=(
   r-rcolorbrewer
   r-rmarkdown
   r-scater
+  r-scrapper
   r-scrnaseq
   r-tenxpbmcdata
   r-testthat
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7ff850817446b8be5649a31dfb720c92')
-b2sums=('9879984e1cfb4f8d049c09957875ea002b7694fa0a9b7f306ea2e9796c3268c899fab90417bcdf26da3239e92f3a7eb4eecce2b7c750acba8244747f961748e6')
+md5sums=('51f2a218d8c11427efd2973c7d3bc9e1')
+b2sums=('184b8d6f968508eea1c22805b2f24f82715b40a95bd4ed5d4491e9d2ef78dd9ea4d5cf9a8bbfac0b2b6a0d3f6d5a8f763871aa735512297cd767742b773bfa8f')
 
 build() {
   mkdir build
