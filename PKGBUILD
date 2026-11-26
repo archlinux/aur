@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CytoPipelineGUI
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ee4cc68dd42a02fb98c84f1128394e6b')
-b2sums=('375dfe477d33568739c10b92075a245c8d77da3ec50bb7f584dd5282c9cbe5235a9d909f892b19ec253074312651d1a2d4a0b2677724f4596a4a2e5c5d3f2c15')
+md5sums=('2d98c5206fdd948ff61078b0331d3a62')
+b2sums=('2c9816b43d068e48951ecaf49f0177e7714f9c02cdf55562613361133a8cf2982077b581f2b1202e6cb3f8abb47dd8d24a7ecaf34ff3bab84525b0d19007443d')
 
 build() {
   mkdir build
