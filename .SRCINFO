@@ -1,0 +1,25 @@
+pkgbase = kalliope-bin
+	pkgdesc = Type, and be heard in video calls: a local voice through a virtual microphone
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/SANSEVIERIA-OU/kalliope
+	arch = x86_64
+	license = LicenseRef-SANSEVIERIA-1.1
+	depends = glibc
+	depends = gcc-libs
+	depends = fontconfig
+	depends = libxkbcommon
+	optdepends = libpipewire: the virtual microphone
+	optdepends = wayland: the window on Wayland
+	optdepends = libx11: the window on X11
+	optdepends = libxcursor: the window on X11
+	optdepends = libxi: the window on X11
+	optdepends = libxkbcommon-x11: the window on X11
+	provides = kalliope
+	conflicts = kalliope
+	options = !strip
+	options = !debug
+	source = https://github.com/SANSEVIERIA-OU/kalliope/releases/download/v0.1/kalliope-0.1-linux-x86_64.tar.gz
+	sha256sums = e15518909c6491f2de7dbc7da1f0fe770763084f0ffd5fa2c4f0075faa2681ca
+
+pkgname = kalliope-bin

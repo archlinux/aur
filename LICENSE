@@ -1,0 +1,197 @@
+SANSEVIERIA License 1.1
+
+This is the standard source-available software licence for SANSEVIERIA OÜ projects. The same terms may be applied unchanged to multiple projects and releases. It is a standalone licence, not an OSI-approved open-source licence, and does not itself offer an alternative grant under the GNU GPL or AGPL. Separately licensed material and permissions remain subject to their own terms.
+
+1 Definitions and application
+
+Project means a software project or identifiable software component released under this License. This License is not limited to one named application, repository, programming language or type of software. Each Project and release uses the same licence text; its release notice identifies the applicable software, rights holders and separately licensed components without changing these terms.
+
+Application of this License requires a grant by a person entitled to make it. A company-wide licensing policy does not by itself relicense third-party material or withdraw rights previously granted under other terms. The mere presence of a file in a SANSEVIERIA repository does not override an applicable separate licence.
+
+Steward means SANSEVIERIA OÜ, identified in the release notice. The Steward maintains the official project and administers the limited Commercial Authorization mechanism in section 7 and the later-version authority in section 15. Its position does not make it the owner of every Contribution. Those authorities cannot be transferred and end or are suspended as provided in section 7. Change of Control has the meaning given in section 7.
+
+Original Software means software that a person entitled to license it expressly makes available under this License and identifies in the applicable release. Modified Version means a work that modifies Original Software or incorporates it into a derivative work, to the extent those modifications or incorporations fall within the rights protected by applicable copyright law. It does not include an independent work merely aggregated with or interoperating with Original Software as described in section 3.
+
+Covered Software means Original Software and the covered portions of Modified Versions, including additions that form part of the derivative work within the preceding definition. Changing a label or omitting a licence notice does not remove a modification from that scope. Separately licensed third-party material retains its own terms; section 5 governs whether a proposed combination can lawfully be distributed. The applicable release must identify the covered files or components and separately licensed material.
+
+Contribution means an original addition or modification to Covered Software that its rights holder intentionally releases under this License. Contributor means that rights holder, or a person authorized to grant the relevant rights on its behalf. A Licensor is a Contributor or other rights holder making a grant under this License. These definitions do not treat unsolicited communications, downloads or mere repository access as contributions or grants.
+
+You means the person exercising rights under this License. A person acting for an organization must have authority to do so. Each separate organization receives its own rights directly under this License; it does not acquire them solely by sharing ownership with another organization.
+
+Corresponding Source means the preferred form for modifying the Covered Software version concerned, together with the source of its covered modifications and the build, installation and execution instructions, interface definitions and scripts reasonably necessary to reproduce and operate that version. It excludes users' data, passwords, private keys and production credentials. Use templates and instructions in place of secrets. Separately licensed general-purpose tools and independent components need not be relicensed under this License, but their identities, versions, required notices and lawful means of obtaining them must be documented where necessary to build or operate the Covered Software.
+
+External Network Use means enabling people outside Your organization to interact with the Covered Software or a material part of its functionality over a network. Your personnel and contractors acting solely for Your internal operations are not external users for that activity. Independent customers and users of a service are external users.
+
+Commercial Offering means an activity described in section 4. Commercial Authorization means a written authorization satisfying section 7. Permission under that section concerns the restrictions in section 4 only.
+
+2 Copyright permission
+
+Subject to this License, each Licensor grants You a worldwide, non-exclusive, royalty-free permission, for the duration of the relevant rights and subject only to the termination provisions below, to run, study, reproduce, modify, display, make available and distribute its Covered Software, in source or executable form, and to make compliant forks.
+
+This permission includes personal use, research and internal business use. It permits private modifications without a duty to publish them merely because they were made. The source obligations in section 5 apply when You distribute Covered Software or enable External Network Use. Commercial Offerings require section 7 authorization unless section 4 expressly permits the activity.
+
+No Licensor grants rights it does not own or control. This License does not require surrender of copyright or moral rights. Except where expressly granted, rights are reserved, without limiting statutory exceptions or other permissions You already hold.
+
+3 Independent works and protected rights
+
+This License does not apply to an independently created program merely because that program communicates with, calls or implements a compatible interface. It does not license or restrict independently created outputs merely because Covered Software was used to produce them. An output or purported independent component containing Covered Software or other protected material remains subject to the applicable rights in that material.
+
+These exclusions do not exempt Your own operation, copying or distribution of Covered Software from this License. For example, a separately developed user interface does not exempt a paid service that You operate using Covered Software from section 4.
+
+The same distinction applies to an independent extension: operating or distributing Covered Software as part of a paid offering can require authorization even where the paid features are implemented by that extension. Selling only an independent extension, without supplying or operating Covered Software, does not by itself make the extension's author subject to this License. A separately licensed component's commercial permissions are not amended by this License; Your own activities involving Covered Software must independently satisfy its conditions.
+
+Nothing restricts observation, study, testing, interoperability, reverse engineering or other acts to the extent applicable law permits them notwithstanding contractual terms. No provision asserts an exclusive right in ideas, functionality or interfaces as such.
+
+4 Commercial scope
+
+Without a Commercial Authorization, You must not:
+
+1. require consideration for a copy, download, licence, distribution or fork of Covered Software;
+2. provide Covered Software as a hosted, managed, white-label or other service in return for consideration for access to the software or a material part of its functionality;
+3. operate or distribute Covered Software as part of an offering in which payment is required to unlock functionality delivered through that software, including paid integrated extensions or tiers; or
+4. condition access to a copy, update or covered functionality on purchasing another product or service, paying a related party, accepting a nominal donation requirement or making a functionally equivalent payment.
+
+Consideration includes fees, royalties, subscriptions and other agreed value provided in exchange for the relevant copy, access or functionality. The payment's label, invoice allocation or recipient does not avoid these restrictions. Ordinary revenue from an independent business that uses Covered Software internally is not, by itself, consideration for Covered Software. Merely using Covered Software to create independent goods, documents, analyses or other outputs does not make their sale a Commercial Offering.
+
+You may charge for separately supplied consulting, training, installation, support or commissioned development if the charge purchases the professional work rather than a right to obtain or use Covered Software, and is not a required purchase for copies or covered functionality that You otherwise offer. Delivering covered modifications to a customer triggers section 5; the customer must receive them under this License without additional licence restrictions. Development work may be paid for even though the resulting covered code is licensed without a licence fee.
+
+A professional-service charge is not separate if You require it, directly or through another person, as a condition of obtaining, activating, updating or ordinarily using a copy or covered functionality that You supply, regardless of the amount or invoice description. This rule does not prevent payment for genuinely commissioned work whose resulting code is delivered under the preceding paragraph.
+
+The professional-services exception does not authorize You to sell access to a hosted instance that You provide or control as a service, even if an equivalent copy can be self-hosted for free. Installation and administration work performed on the customer's infrastructure or cloud account may qualify as professional services when the customer separately obtains the infrastructure and the work does not supply an access subscription. No exception for hosting merely described as dedicated or at cost is implied.
+
+This permitted work may include recurring configuration, monitoring, maintenance and administration performed on the customer's instructions, provided the customer independently contracts and pays for the infrastructure, controls the instance and can replace the contractor without losing the right or practical means to access the Covered Software. Merely placing an account in the customer's name does not turn a subscription controlled and supplied by the provider into professional work.
+
+You may accept genuinely voluntary donations or sponsorship that do not purchase copies, updates, access, features or preferential use of Covered Software. This paragraph does not authorize a paid access tier presented as a donation.
+
+Ordinary advertising displayed alongside genuinely free software access is not, by itself, consideration for that access. This does not exempt a payment that in substance buys access or paid functionality, and it grants no permission to collect, disclose or monetize personal data. This License therefore does not prohibit all revenue-generating activity associated with a free offering.
+
+5 Distribution and source availability
+
+When You distribute Covered Software, You must:
+
+1. supply this License, preserve applicable copyright, licence and attribution notices, identify material modifications and provide a reasonable way to identify the version distributed;
+2. license Your covered modifications under this same version of this License and make the grants required by sections 6, 7 and 15 for those modifications;
+3. provide the Corresponding Source with the copy or offer it to each recipient through an accessible electronic means without an additional source-access fee; and
+4. refrain from imposing additional terms or technical restrictions that prevent recipients from exercising the rights this License grants in Covered Software. This does not prohibit legitimate security controls that leave a practical means to obtain and use the source and exercise those rights.
+
+During External Network Use, give every interacting user a reasonably prominent way to obtain the Corresponding Source of the version actually used, at no additional charge and without requiring purchase of a separate service. Access may require the same account used for the service, but must not require surrender of the rights granted by this License or disclosure of unnecessary personal information.
+
+Keep the source offer available for at least three years after the last distribution of that version by You or the end of its External Network Use by You, whichever is later. Maintain a reliable delivery method during that period. This obligation does not require continued operation of the application service itself.
+
+The source may be supplied to the entitled recipients or users; publication on a public repository is permitted but is not mandatory. Those recipients receive the same rights and may redistribute the source, including to the Steward. You must not prohibit that redistribution. No obligation to submit a pull request or secure a merge decision is created.
+
+These requirements cover only the scope licensed under this License. They do not authorize violation of third-party licence terms. If You cannot satisfy both this License and applicable third-party terms for a proposed combination or distribution, this License does not permit that combination or distribution.
+
+6 Contributions and patent permission
+
+Each Contributor retains ownership of its Contribution. By intentionally releasing covered modifications under this License, a Contributor grants recipients the copyright permission in section 2, subject to all conditions of this License. Submission to the official repository must include an express, recorded assent to these terms and the limited authorities in sections 7 and 15, made by a person with the necessary authority. Mere publication of a pull request without that assent is not treated by the Steward as permission to merge, to authorize commercial use or to apply section 15.
+
+For downstream releases, each distributor must be entitled to make the same grants for its covered modifications and include a notice expressly identifying this License as applying to them and affirming the grants in sections 2, 6, 7 and 15. The notice must identify the releasing person or organization and the relevant version; it need not disclose unnecessary personal information or be sent to the Steward. Redistributing another person's work does not create rights that person has not granted. Preserve evidence of the applicable terms and provenance; no general transfer of authorship or ownership is required.
+
+Each Licensor grants, for activities permitted by this License, a worldwide, non-exclusive, royalty-free patent licence under claims it owns or controls that would necessarily be infringed by the Covered Software it makes available, alone or combined with the Covered Software version identified in its applicable release. This includes the Licensor's Original Software as well as its Contributions. It covers making, using, offering, selling and importing to the extent the activity is otherwise permitted here. It does not cover claims infringed only by additional modifications or other combinations, and is not a warranty about third-party patents.
+
+If You initiate, or direct another person to initiate, a claim seeking relief for alleged direct or indirect infringement of patent claims You own or control by Covered Software as provided by a Licensor, that Licensor may terminate its patent permission to You upon written notice, to the extent permitted by applicable law. This includes an affirmative patent counterclaim seeking such relief, but does not include a defence that seeks no relief for infringement by that Covered Software. Copyright permissions and claims against unrelated products are not terminated by this paragraph alone.
+
+7 Limited commercial authorization
+
+Each Licensor that intentionally makes Original Software or Contributions available under this License expressly authorizes the Steward to approve specified activities otherwise restricted by section 4 for that Licensor's covered material, subject to the continuity rules at the end of this section. This is a limited authority, not a transfer of copyright or an unrestricted right to relicense. For an offering involving material from multiple Licensors, the authorization is effective only where the Steward has the necessary rights or authority from every relevant rights holder for each covered part; it must not represent that one Contributor's assent covers another's rights.
+
+A Commercial Authorization must be in writing, issued by an authorized representative of the Steward, and identify the authorized person, the covered Project or Projects and releases or another objectively determinable software scope, the permitted commercial activity, duration and any agreed commercial conditions. The Steward may charge for that authorization. Neither negotiations, repository access, silence nor a partner badge constitutes authorization.
+
+Before issuing it, the Steward must keep records supporting its authority for the covered parts concerned and identify to the customer any excluded components or permissions that must be obtained separately. The authorization must state the scope for which the Steward confirms it holds the required rights or authority. This does not require public disclosure of confidential contributor records or personal information.
+
+This authority permits exceptions only to section 4. It does not permit the Steward to waive source availability, reciprocity, notices, recipients' rights, the scope of patent grants or third-party terms, or to issue proprietary sublicences for Contributions. A customer receiving an authorized Commercial Offering retains the source and reuse rights provided by this License; the provider must not charge separately for the source required by section 5.
+
+A Commercial Authorization does not automatically authorize a customer or other recipient to make a further Commercial Offering. That recipient may make free distributions and exercise all other permissions of this License, and may seek its own authorization when needed. This limitation does not restrict any non-waivable statutory right.
+
+An authorization is effective only to the extent the Steward holds the relevant rights or limited authority from the relevant rights holders. It does not cure missing rights in third-party code or Contributions released under other terms. For its own Contributions, the Steward remains the rights holder; this License does not represent that it has transferred its underlying rights to users or contributors.
+
+The authorities granted to the Steward under this section and section 15 are personal to the legal person SANSEVIERIA OÜ identified in the release notice, including by its registry code where available, and are granted in reliance on the persons who control it when each grant is made. A change of name or legal form does not create a new Steward, and another entity using the same name is not the Steward. These authorities cannot be transferred by assignment, merger, division, sale of a business or assets, insolvency, enforcement, succession or any other means, and do not pass to a liquidator, trustee, creditor, acquirer or successor of the Steward.
+
+Change of Control means a transaction or other event, including a series of related transactions and succession on death, after which a person who did not control the Steward immediately before the event controls it, alone or jointly with others. A person controls the Steward if it holds, directly or indirectly, more than half of the voting rights, can appoint or remove a majority of the management body, or can direct, by agreement, financing terms, power of attorney or otherwise, the Steward's decisions generally or its decisions on Commercial Authorizations or under section 15. Acting solely as a member of a management or supervisory body, employee or representative, under an appointment the controlling persons can revoke, is not control. Customary lender protections, and agents acting within limits set by the Steward and terminable by it, are not control. A reorganization is not a Change of Control if the same natural persons retain ultimate control and no other person acquires control.
+
+On a Change of Control, when a resolution or court decision to dissolve or liquidate the Steward takes effect, when bankruptcy is declared or when the Steward is deleted from the commercial register (each an ending event), those authorities end for the material of every Licensor other than the Steward. A Licensor may renew ended authorities, in whole or in part and for a limited scope or duration, by an express, recorded statement made after the ending event in a form that can be retained. Silence, continued use or continued participation does not renew an ended authority.
+
+Those authorities are suspended from the filing of a bankruptcy petition, the appointment of an interim trustee or the commencement of reorganization proceedings until the petition or proceedings end without an ending event. During a suspension, existing Commercial Authorizations continue, but none may be issued, extended, renewed, broadened or assigned, and releasing material does not grant those authorities.
+
+After an ending event, releasing material under this License does not by itself grant those authorities, and sections 5 and 6 do not require that grant; only an express, recorded assent given after the ending event does so, and only for the material it identifies.
+
+Commercial Authorizations issued before an ending event remain effective only for releases published before it, for their stated term but no longer than three years after it. They cannot be extended, renewed or broadened under an ended authority, or assigned or extended to another person after the ending event. A Commercial Authorization issued to the Steward, to a person controlling, controlled by or acquiring control of it, or outside the ordinary course of business in contemplation of the ending event, ends on that event for other Licensors' material. Material already made available under a later version in accordance with section 15 remains available under that version, subject to the continuity rules of that version.
+
+The Steward must publish notice of each ending event and suspension in the official repository of each affected Project within 30 days after it takes effect, stating its date, that the authorities have ended or are suspended under this section, and the Projects and expiry dates of the Commercial Authorizations that remain effective, without disclosing confidential terms. Failure to publish does not prolong the authorities.
+
+Any authority that the Steward holds under an earlier version of this License or under a contributor declaration, to approve activities restricted by section 4 or to make material available under later versions, is subject to these continuity rules from the time the Steward first releases material under this version. The Steward accepts that limitation.
+
+If the Steward materially exceeds the limits of this section or section 15, an affected Licensor may end those authorities for its material by notice under section 14, without affecting Commercial Authorizations validly issued before the notice or any recipient's rights. A later version that does not satisfy section 15 does not apply to that Licensor's material.
+
+These rules do not affect the permissions that recipients receive under sections 2, 5 and 6, which continue unchanged, and do not limit any Licensor's rights in its own material, including the Steward's rights in material it owns.
+
+8 Official project and trademarks
+
+The Steward and its appointed maintainers decide whether to accept Contributions and which releases to designate as official. You do not acquire a right to a merge, maintenance, endorsement or access to an official repository merely by submitting code or maintaining a fork.
+
+This License grants no general permission to use a Licensor's trademarks or imply affiliation, endorsement or certification. Truthful attribution and referential uses permitted by applicable law remain available. Preserve required attribution without presenting a modified version or independent service as an official SANSEVIERIA release or service.
+
+9 Acceptance and reserved statutory rights
+
+This License must be provided or clearly made accessible before You are asked to accept it. You may accept it by express agreement or by performing an act requiring its permissions after notice identifying the licence version and the particular act that constitutes acceptance. A person relying on acceptance by conduct must provide that notice and a practical opportunity to examine and retain the full text before the identified act. Mere viewing of a website or code, receiving a copy without that notice, or silence is not contractual acceptance.
+
+This provision does not require registration with the Steward or collection of identifying information from every recipient. The express assents for Contributions submitted to the official repository and the written Commercial Authorizations must be recorded as described in sections 6 and 7. Other questions of assent and proof are governed by applicable law.
+
+If You do not accept, this document grants no permission for acts requiring the Licensors' authorization. This does not remove statutory rights, rights under another applicable licence or rights that do not require acceptance. Nothing in this License requires payment or individual permission merely to make a compliant free fork or free distribution.
+
+10 Compliance, termination and reinstatement
+
+This License does not authorize activities that fail its applicable conditions. A cure period is not a permission to carry out a prohibited Commercial Offering and does not erase liability for past acts.
+
+No cure period suspends a condition of permission. During cure, You must stop the non-compliant act and take reasonable steps to remedy its consequences; cure does not waive claims for past conduct.
+
+A Licensor may terminate its grants for Your material breach by written notice identifying the breach if You do not cure it within 30 days after receipt. If completion is reasonably impossible within 30 days, You must cease the prohibited activity, begin cure within that period and complete it diligently within a further 30 days, unless a longer period is agreed in writing. This extension does not permit continued unauthorized commercial activity.
+
+Termination for a repeat material breach after a previously cured breach, or for a breach incapable of cure, may take effect on written notice to the extent permitted by applicable law. Lawful interim or urgent relief is not excluded by these procedures.
+
+A Licensor may reinstate its grants in writing after cure. Termination affects only grants made by the Licensor entitled to terminate them; the Steward cannot terminate other Licensors' grants without their authority. Licences already granted to compliant downstream recipients remain unaffected solely by Your breach. Source offers and delivery obligations already triggered by distribution or External Network Use, required notices and accrued claims survive termination to the extent applicable law permits.
+
+No Licensor may revoke a compliant grant under this version merely for convenience or because a later licence version is published. Rights and remedies that applicable law makes non-waivable are preserved.
+
+11 Warranty and support
+
+Unless a Licensor expressly agrees otherwise in writing, the software is supplied as available, without a voluntary commitment of uninterrupted operation, fitness for a particular purpose, support, updates or security maintenance. To the extent permitted by law, no additional warranty is given merely by granting this License.
+
+This clause does not exclude a warranty, conformity obligation, remedy or other right that applicable law makes mandatory. No Contributor represents that it has verified all possible third-party patent or other rights. Separate express commitments remain governed by their terms and applicable law.
+
+No disclaimer overrides a legally binding express description or undertaking made for the relevant release, or any mandatory conformity requirement or remedy.
+
+12 Liability
+
+Liability is determined under applicable law. This License does not impose an indemnity on You, set liability to zero or introduce a monetary cap. Nothing excludes or limits liability or remedies that cannot lawfully be excluded or limited, including intentional misconduct, gross negligence where it cannot lawfully be excluded or limited, death or personal injury and applicable consumer rights.
+
+A separate agreement may allocate risk between its parties to the extent lawful, but may not withdraw other recipients' rights under this License or purport to bind Contributors who have not agreed to it.
+
+13 Applicable law and disputes
+
+To the extent this License forms a contract, its contractual obligations are governed by Estonian law, subject to mandatory rules that apply notwithstanding that choice. This clause does not determine the law governing non-contractual intellectual-property infringement claims; the applicable conflict-of-laws rules remain effective.
+
+For contractual disputes between You acting in a business capacity and the Steward, the competent courts of Estonia have non-exclusive jurisdiction to the extent a valid jurisdiction agreement may be made. This does not exclude another court with jurisdiction under applicable law or determine jurisdiction for claims between other parties.
+
+Consumers retain all non-waivable protections and jurisdiction rights. Where the applicable conflict-of-laws rules protect a consumer under the law that would apply without this choice, choosing Estonian law does not deprive that consumer of those mandatory protections. In particular, this License does not require a consumer to bring proceedings only in Estonia or allow proceedings against a consumer in a forum that mandatory law excludes.
+
+14 Notices and identity
+
+The release notice must identify the Steward, the project and covered release, the applicable licence version, a functioning licensing contact and the location of source and third-party notices. It must not claim ownership of Contributions the Steward does not own.
+
+Notices under this License must be in a form that can be retained and must identify the sender, the relevant rights or authority, the software and the matter concerned. Contractual notices may be sent to an address designated for them or another address valid under applicable law. This clause does not replace formal service requirements for legal proceedings.
+
+15 Versions, separate agreements and severability
+
+This is version 1.1. It adds the continuity rules in section 7 and the later-version authority in this section. Material licensed under version 1.0 becomes subject to this version only through a valid grant or authorization by its Licensor, and rights already received under version 1.0 are not withdrawn.
+
+Each Licensor authorizes the Steward to make that Licensor's covered material available, in addition, under any later version of the SANSEVIERIA License that the Steward publishes as a single version applicable to all Projects under the SANSEVIERIA License. The later version must preserve at least to the extent of this version: the permissions in section 2 without a licence fee, including personal, research and internal business use, private modifications and compliant free forks and distributions; the exclusions for independent works in section 3; source availability and reciprocity under section 5; the patent permission in section 6; the Licensors' retained ownership; the cure, reinstatement and non-revocation protections in section 10 and the rule that only the granting Licensor may terminate its grants; and the limits on the Steward's authority in sections 7 and 15, including the continuity rules. It must apply the restrictions of section 4 equally to every person without a Commercial Authorization, including the Steward and its affiliates; additions to section 4 may restrict only activities generating revenue, including advertising revenue, connected with Covered Software. It must not require recipients to register, give indemnities or accept an exclusive forum, and must not impose on a Licensor obligations, warranties, liabilities or patent grants broader than this version. This authority does not permit a proprietary licence or terms that differ between Projects, and it ends or is suspended as provided in section 7.
+
+A later version does not withdraw rights received under an earlier version. Except as provided in this section, no automatic conversion to a different licence and no general permission for recipients to choose later versions is provided.
+
+The Licensors' grants in this License and any separate applicable permissions determine the rights in the software. FAQs, marketing statements and governance documents do not amend these grants. A Commercial Authorization operates only as stated in section 7; other agreements cannot bind a non-party or remove rights already granted to other recipients.
+
+If a provision is held invalid or unenforceable, the remaining provisions continue only to the extent permitted by applicable law. Neither the Steward nor this clause is authorized to rewrite an invalid provision unilaterally. Mandatory statutory rules replace or supplement terms where the law requires.
+
+The normative text of this License is in English. An explanatory translation does not reduce rights required by applicable law or substitute for any information that must legally be provided in another language.
