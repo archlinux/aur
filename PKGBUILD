@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ABarray
-_pkgver=1.80.0
+_pkgver=1.82.0
 pkgname=r-${_pkgname,,}
-pkgver=1.80.0
+pkgver=1.82.0
 pkgrel=1
 pkgdesc='Microarray QA and statistical data analysis for Applied Biosystems Genome Survey Microrarray (AB1700) gene expression data.'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-lpe
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5890d07e3fa3348cce52fc00160b4ee6cc88e6f893b43c450ba56849054374ef')
+sha256sums=('b70524e257b5c1ef4e576a0f59f06ffe4ec34f8c666faa60f37c5f596f97b6e7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
