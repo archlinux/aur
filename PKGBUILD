@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'libxcb' 'libxau' 'libxdmcp' 'libxkbcommon')
 provides=('shotori')
 conflicts=('shotori' 'shotori-git' 'shotori-bin')
-source=("$url/releases/download/v0.19.1-clipboard2/shotori-__TAG__-x86_64.tar.gz")
+source=("$url/releases/download/v0.19.1-clipboard2/shotori-v0.19.1-clipboard2-x86_64.tar.gz")
 sha256sums=('79d9c953fdd0c5028917a2ecf7e241e5cc08485a3c706c3890a8ddd60e1d0f68')
 
 package() {
