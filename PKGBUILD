@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clustComp
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('535e89cf7455e8bea39239642dd30002')
-b2sums=('454a0218cb86ac7d24a783d00aa2d91deae42484196ff30a75bfe83bdbb5067754c8b06c3a72452d816e9557e1e02e5d6f59583c3b74094e775fa00fe81ef0b6')
+md5sums=('2a4f254dcb8205f056a5f2f0f7d841ce')
+b2sums=('4ef4fd386d654fa83aeb58138560aaa2ea68eab0af23b5d93e245d2e808b39f7778d285af2ba02a16cee777b94192f260d7b6fe20a9c51430ad07294c9fb76cf')
 
 build() {
   mkdir build
