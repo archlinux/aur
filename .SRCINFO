@@ -1,6 +1,6 @@
 pkgbase = r-compounddb
 	pkgdesc = Creating and Using (Chemical) Compound Annotation Databases
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CompoundDb
 	arch = any
@@ -31,8 +31,8 @@ pkgbase = r-compounddb
 	optdepends = r-msbackendmgf
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CompoundDb_1.16.0.tar.gz
-	md5sums = a82271539f1d2e0fce912869011f5d1a
-	b2sums = 9968b94c83021503549551d519d073255c6f9add986aa0dedb107759df23b4a313c1a5c6fc9bf9c0a1b5bee0d9df4a682cb4ee18fff9c23fac6aafae409d14a7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CompoundDb_1.18.0.tar.gz
+	md5sums = 12e1fb8959cee99ef347568688626fa2
+	b2sums = 6c59c9282b71d6d2b510befbcde84aab14cd2193fa7c29b164fef2a4cdf963c094668881226ecb804be0a5e872d1c221e16b263fb6b013b062e4745fbc0b9147
 
 pkgname = r-compounddb
