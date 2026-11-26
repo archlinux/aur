@@ -1,6 +1,6 @@
 # Maintainer: Dreamink0 <Dream_ink@qq.com>
 pkgname=vrcs-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Real-time caption, translation, learning and AI tool for VRChat"
 arch=('x86_64')
@@ -36,7 +36,7 @@ options=('!strip' '!debug')
 _deb="VRCS-${pkgver}-linux-x86_64.deb"
 noextract=("${_deb}")
 source=("${_deb}::${url}/releases/download/${pkgver}/${_deb}")
-sha256sums=('9b032106d9c430ad638b9139a46ce9ef5c86e8af8465008867dc258cdc30970a')
+sha256sums=('36fe8b082dd9309b1413b68a0a8bdfa11981b0c2b1c9c657ec31b6de9d348f62')
 
 package() {
   local data_tar
