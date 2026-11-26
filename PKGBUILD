@@ -3,7 +3,7 @@
 pkgbase=x3d-toggle
 pkgname=('x3d-toggle' 'x3d-toggle-gui')
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/X3D-Toggle/x3d-toggle-main"
 license=('GPL-3.0-or-later')
