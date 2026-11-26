@@ -1,6 +1,6 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=transom-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Sharp remote desktops over RDP (GTK 4, HiDPI-correct) (Pre-compiled Binary)"
 arch=('x86_64')
@@ -9,7 +9,12 @@ license=('GPL-3.0-or-later' 'Apache-2.0')
 # The release binary is already stripped, so there is no debug info to split out.
 options=('!debug')
 depends=(
-  'freerdp'
+  'glibc'
+  'libgcc'
+  'glib2'
+  'pango'
+  'graphene'
+  'freerdp>=2:3.33.1'
   'gtk4>=4.16'
   'libadwaita>=1.6'
   'libsecret'
@@ -25,7 +30,7 @@ provides=("transom=${pkgver}")
 conflicts=('transom')
 # Use the official Arch pre-compiled package as the source
 source=("${pkgname}-${pkgver}.pkg.tar.zst::${url}/releases/download/v${pkgver}/transom-${CARCH}.pkg.tar.zst")
-sha256sums=('89f4f0b3b36fb7e94e5c6ed08064d880ef738e59cf8cac106dcf3c3234aa3176')
+sha256sums=('f63b62f6ed60b59d3043aaa291897ebe9b73cf81e0045ed5b92c8ace135b92a9')
 
 package() {
   # The source is a .pkg.tar.zst which makepkg extracts to $srcdir.
