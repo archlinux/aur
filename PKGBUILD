@@ -2,7 +2,7 @@
 
 pkgname=slskd
 pkgver=0.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern client-server application for the Soulseek file sharing network'
 url='https://github.com/slskd/slskd'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -56,6 +56,7 @@ build() {
 	dotnet publish \
 		   --configuration Release \
 		   --runtime "$rid" \
+		   -p:Version="${pkgver}" \
 		   -p:AllowMissingPrunePackageData=true \
 		   --self-contained false \
 		   --output "$srcdir/publish"

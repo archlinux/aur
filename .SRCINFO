@@ -1,7 +1,7 @@
 pkgbase = slskd
 	pkgdesc = A modern client-server application for the Soulseek file sharing network
 	pkgver = 0.26.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slskd/slskd
 	arch = x86_64
 	arch = aarch64
