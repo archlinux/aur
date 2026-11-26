@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SBMLR
-_pkgver=2.8.0
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-rsbml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c5005dec45f1cc3d695ddca88e121358')
-b2sums=('547bc2a2d9707001eed6a8cd660f7cbae2bee40b6fe711a1a8ef4aa5ba35cd9c9ac7d983796df424cae39e7727862deab8665211f199a4020d960a8a0eed0655')
+md5sums=('5132ee014d355e078ddcea125507bfd3')
+b2sums=('d5c4f4672aa43334edbee78f86a6c0c34b65befd745f3def72380dcbc49b10c7246c3c77da4efb53e2c7d87b1628ff520915bfad87b31e959cd993e75efb7b1e')
 
 build() {
   mkdir build
