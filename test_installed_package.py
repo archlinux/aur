@@ -1,12 +1,7 @@
 import os
-import re
 import subprocess
 
 import pytest
-
-LIB_PATH_PATTERN = re.compile(
-    r"/(opt/eidklient-native|usr/lib/eID_klient)/.+",
-)
 
 DEPENDENCY_PATHS_PARAMS = [
     (
@@ -107,18 +102,20 @@ def test_dependency_paths(
     )
 
     actual_paths = sorted(
-        match.group()
+        path
         for line in gdb.stdout.splitlines()
         if line.startswith("0x")
         and (
-            match := LIB_PATH_PATTERN.fullmatch(
-                os.path.realpath(
-                    line.rsplit(maxsplit=1)[-1],
-                    strict=True,
-                ),
+            path := os.path.realpath(
+                line.rsplit(maxsplit=1)[-1],
+                strict=True,
             )
+        ).startswith(
+            (
+                "/opt/eidklient-native/",
+                "/usr/lib/eID_klient/",
+            ),
         )
-        is not None
     )
 
     assert actual_paths == expected_paths
