@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=limma
-_pkgver=3.68.5
+_pkgver=4.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,11 +26,12 @@ optdepends=(
   r-knitr
   r-locfit
   r-org.hs.eg.db
+  r-summarizedexperiment
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('473b53b1c0b7abec13ffa570f36af2f6')
-b2sums=('168ba2ab248aed21de526b918134d8bcae22d829e5ff3b4b31810eda5e509bec40c6ef18b8860baf2ec5ac84b66008d59950f4878fa8f4b0379ed76b4d0267ab')
+md5sums=('09367a161c6d8198638bc43b04c9961c')
+b2sums=('41337a92eda7995e210f3054c9c37e4ac0b8f7b5019d67f1708f0e5ce1e3cf611863d7d7688fc7dd285371548f04ea22032489282e39eedc44fc4e7baa882cc1')
 
 build() {
   mkdir build
