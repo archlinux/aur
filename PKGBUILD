@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=mingle-bin
-pkgver=0.4.12
+pkgver=0.4.13
 pkgrel=1
 pkgdesc="Bring your agent companion into the chat apps you already use: it runs on your machine, no server needed"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ _releases="https://github.com/earayu/Mingle/releases/download/v${pkgver}"
 source_x86_64=("${_deb_x86_64}::${_releases}/${_deb_x86_64}")
 source_aarch64=("${_deb_aarch64}::${_releases}/${_deb_aarch64}")
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
-sha256sums_x86_64=('52ddbbbf163e50c75fa0c04b43217d43cec4dfe30ba6c5a95226eab446630586')
-sha256sums_aarch64=('8bcfed28890325e3a3b860ab331ab8513f30bd33a2215c3dca1ba2b66295714a')
+sha256sums_x86_64=('fe55bed4246a0dccf9b6d9168189a76a6a3fa6d12b542f1f4153fe014d92075c')
+sha256sums_aarch64=('e3b96f9daac35aa607aaaae7f596474e1a8ab737ab245f995b54567a62ded302')
 
 package() {
   local deb_var="_deb_${CARCH}"
