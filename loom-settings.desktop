@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Loom Settings
+GenericName=Niri Settings
+Comment=Configure niri's KDL configuration
+Exec=loom-settings
+Icon=preferences-system
+Terminal=false
+Categories=Settings;DesktopSettings;GTK;
+Keywords=niri;settings;config;wayland;
+StartupNotify=true

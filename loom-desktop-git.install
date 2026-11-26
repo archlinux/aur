@@ -1,0 +1,27 @@
+post_install() {
+  cat <<'EOF'
+Loom installed the compositor and its companion packages.
+
+Next steps:
+  1. Log out and choose "Loom Niri" in your display manager, or run loom-niri-session.
+  2. systemctl --user daemon-reload
+  3. To use the standalone portal backend:
+       systemctl --user enable --now loom-portal.service
+     and select the "loom" backend in
+       ~/.config/xdg-desktop-portal/portals.conf
+     (see /usr/share/doc/loom-portal/portals.conf.loom.example).
+  4. Optional daemons (loom-companion, loom-wallpaper, loom-audio,
+     loom-sidepanels) are installed but not enabled. Start them from
+     loom-niri's spawn-at-startup or as user units.
+  5. Run `loom-niri --check-vulkan` to see the resolved renderer plan.
+
+To install only selected companions, use their package names directly
+(loom-portal, loom-shot, loom-settings, ...). They do not rebuild niri.
+
+Full instructions: https://github.com/fram446742/loom
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
