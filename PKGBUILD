@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=disc-image-studio
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Generate CD, DVD and Blu-ray images that show a picture on the burned disc'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('dotnet-runtime-10.0' 'glibc' 'libgcc' 'libstdc++')
 makedepends=('dotnet-sdk-10.0')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a72002d1a3869a3fffd1e6127860acb69f4ca4052d5bd2d5d3a0742c704d2531')
+sha256sums=('f95ed6f61b84858c15c585a57d86ae43082351ba31a95d3de95cf9a2c0562d0b')
 
 _project=src/DiscImageStudio.Cli/DiscImageStudio.Cli.csproj
 
