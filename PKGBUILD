@@ -3,7 +3,7 @@
 _reponame="Sciverse-Agent-Tools"
 pkgname="sciverse"
 pkgdesc="Sciverse Agent Tools — OpenAI / Anthropic / LangChain compatible tool schema and async client for Sciverse retrieval APIs"
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 arch=('any')
 url="https://github.com/opendatalab/${_reponame}"
@@ -13,8 +13,8 @@ makedepends=("python-build" "python-hatchling" "python-installer")
 checkdepends=("python-pytest" "python-pytest-asyncio" "python-respx")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}-skill-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/web-skill.tgz")
-sha256sums=('29ef6741969d5624cec27e5eef63e3efa43e1b2b871ce0aa825025c10d005682'
-            '562a93b2227898707e301965eccd6e147069a3b355cde345bce2326a9c60c086')
+sha256sums=('a63d87c508291eb3c9efcb57773b49fb6dcde331e4724bcbf80772569046362f'
+            '8e5fa7c28a188113af8b64dd2702349c7608fd7899b2319d75f597be5f0adffa')
 
 build() {
     cd "${_reponame}-${pkgver}/packages/python"
