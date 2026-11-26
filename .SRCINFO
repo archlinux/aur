@@ -1,6 +1,6 @@
 pkgbase = r-simat
 	pkgdesc = GC-SIM-MS data processing and alaysis tool
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SIMAT
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-simat
 	depends = r-reshape2
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SIMAT_1.44.0.tar.gz
-	sha256sums = 30e5f1619d1c716eefc70d1c2151165db955a6d4cb2417690dea355c11144f13
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SIMAT_1.46.0.tar.gz
+	sha256sums = d9e30b29e61e86903b69db76bed92ea874fd438483d7f14aa9ef679974751ddc
 
 pkgname = r-simat
