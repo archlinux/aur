@@ -1,5 +1,5 @@
 pkgname=roplayer
-pkgver=1.1.7
+pkgver=1.1.11
 pkgrel=1
 pkgdesc="RoPlayer - a desktop music player for Linux built with PyQt6"
 arch=('any')
@@ -7,7 +7,7 @@ url="https://github.com/rohanisawesome/RoPlayer"
 license=('MIT')
 depends=('python' 'python-pyqt6' 'python-mutagen' 'python-pychromecast' 'python-dbus' 'python-gobject')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rohanisawesome/RoPlayer/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('048531ab7f6a8e7e1faa015856b88eeb303c5653a5fd74abacf95a006598ae11')
+sha256sums=('ee7ff0770c82b79f1e291ad5ce50029dcfc58830d1123d1fdd4fcbb3b08a226b')
 
 package() {
     cd "$srcdir"/RoPlayer-*
