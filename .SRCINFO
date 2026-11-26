@@ -1,6 +1,6 @@
 pkgbase = legio-launcher-git
 	pkgdesc = Legio desktop game launcher (development sources)
-	pkgver = 1.0.2.r407.g546c7af
+	pkgver = 1.0.2.r408.g01d1c2b
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/fraa2a/Legio

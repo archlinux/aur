@@ -1,5 +1,5 @@
 pkgname=legio-launcher-git
-pkgver=1.0.2.r407.g546c7af
+pkgver=1.0.2.r408.g01d1c2b
 pkgrel=1
 epoch=1
 pkgdesc='Legio desktop game launcher (development sources)'
@@ -36,6 +36,7 @@ package() {
   install -Dm644 packaging/aur/legio-launcher.desktop "$pkgdir/usr/share/applications/legio-launcher.desktop"
   install -Dm644 src-tauri/icons/icon.png "$pkgdir/usr/share/pixmaps/legio-launcher.png"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 NOTICE "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
   install -Dm644 THIRD_PARTY_NOTICES.md "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_NOTICES.md"
   install -Dm644 src/assets/fonts/OFL.txt "$pkgdir/usr/share/licenses/$pkgname/Inter-OFL.txt"
   install -Dm644 _meta/licenses/lucide.txt "$pkgdir/usr/share/licenses/$pkgname/lucide.txt"
