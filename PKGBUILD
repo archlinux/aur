@@ -11,7 +11,7 @@ _appname=robin
 pkgname=${_cratename//_/-}
 pkgdesc="A CLI tool to run scripts for any project"
 
-pkgver=1.4.1
+pkgver=1.6.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -29,7 +29,7 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('d2e2894f4a77cc30c582a36b5a57271466d25febed2f9b0fe6c33b91c438b803')
+sha256sums=('640a9831eb9dcc9b9a1e69959085002dbbc8067bf77d6a5f9bf52f449be4c86f')
 
 
 build() {
