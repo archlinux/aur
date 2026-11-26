@@ -2,7 +2,7 @@
 
 pkgbase=thinkmeta-concurrenttasks-samples-bin
 pkgname=(ctdeflate-bin ctlame-bin ctopus-bin ctjpeg-bin)
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/ThinkMeta-com/ThinkMeta.ConcurrentTasks.Samples"
@@ -18,7 +18,7 @@ options=('!strip' '!debug')
 # is that tag and the version each program reports (ctDeflate 0.1.4, ctLame
 # 0.3.0, ctOpus 0.1.4, ctJpeg 0.1.3) is not a release of its own.
 source=("samples-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dfec9feffaca9a0ede5370ec045da5cf0f222c4498daf7f88e30e34f0f77c4c7')
+sha256sums=('3381032af63e70b2b4dce5f7b788e43c4648f3d07d66cb05de703066aa2bcddc')
 
 _latestver() {
   gh api --paginate repos/ThinkMeta-com/ThinkMeta.ConcurrentTasks.Samples/tags --jq '.[].name' |
