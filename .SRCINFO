@@ -1,0 +1,16 @@
+pkgbase = dups-bin
+	pkgdesc = Find and remove duplicate files using multiple cores and MD5, SHA256 or xxHash
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Navid2zp/dups
+	arch = x86_64
+	license = Apache-2.0
+	provides = dups
+	conflicts = dups
+	options = !debug
+	source = dups-bin-0.2.1-LICENSE::https://raw.githubusercontent.com/Navid2zp/dups/v0.2.1/LICENSE
+	sha256sums = 41f48155bfc915eac51bb4c4e2cd37d26cd55839449bd6c5766fcd4bb384aa6e
+	source_x86_64 = dups-bin-0.2.1-x86_64::https://github.com/Navid2zp/dups/releases/download/v0.2.1/dups_linux_amd64
+	sha256sums_x86_64 = 0ef5d2c22bbbfd39159a513a52ea82a44bcea0c5d05ebc0d6ec150a98bc2bb93
+
+pkgname = dups-bin
