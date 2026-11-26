@@ -1,0 +1,12 @@
+pkgbase = vizhehazad-fonts
+	pkgdesc = Persian/Arabic display font
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/font-store/font-VizhehAzad
+	arch = any
+	license = OFL-1.1
+	provides = vizhehazad
+	source = vizhehazad-fonts-0.0.3.tar.gz::https://github.com/font-store/font-VizhehAzad/archive/e82a39ff57f8fcc714c8d924893fd342ed8234b2.tar.gz
+	sha256sums = 270fb0af7382c9678bcfa8abaab96df9a5017343b6829942a4ba69628ae7b1a5
+
+pkgname = vizhehazad-fonts
