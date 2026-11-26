@@ -1,6 +1,6 @@
 pkgbase = deckcraft
 	pkgdesc = vibe coded clean-room reimplementation of Microsoft PowerPoint
-	pkgver = 0.18.1
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://getartcraft.com/apps/deckcraft
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = deckcraft
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	source = https://github.com/storytold/deckcraft/archive/refs/tags/v0.18.1/deckcraft-0.18.1.tar.gz
-	sha256sums = df8827f38677020445a68d5fd5779adfdb74dd72b127c3d06ba7dff60fbfa738
+	source = https://github.com/storytold/deckcraft/archive/refs/tags/v0.19.1/deckcraft-0.19.1.tar.gz
+	sha256sums = 1dc319d785362919bc1d94737e33c05ec78d386e409e5156bdb2b7d63c6c5ba2
 
 pkgname = deckcraft
 	depends = alsa-lib

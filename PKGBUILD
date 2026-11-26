@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=deckcraft
-pkgver=0.18.1
+pkgver=0.19.1
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -15,7 +15,7 @@ depends=(alsa-lib
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('df8827f38677020445a68d5fd5779adfdb74dd72b127c3d06ba7dff60fbfa738')
+sha256sums=('1dc319d785362919bc1d94737e33c05ec78d386e409e5156bdb2b7d63c6c5ba2')
 
 _srcenv() {
 	cd "$_archive"
