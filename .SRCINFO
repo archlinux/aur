@@ -1,0 +1,21 @@
+pkgbase = jmal-cloud-server-bin
+	pkgdesc = Self-hosted private cloud storage
+	pkgver = 2.16.10
+	pkgrel = 1
+	url = https://github.com/jamebal/jmal-cloud-server
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = jmal-cloud-server
+	conflicts = jmal-cloud-server
+	options = !debug
+	source = jmal-cloud-server-bin-2.16.10-LICENSE::https://raw.githubusercontent.com/jamebal/jmal-cloud-server/v2.16.10/LICENSE
+	sha256sums = 5db5f3dd77a044bd27fc0b2456aa8d97f50de7393b63d7b86ca6a64690c2a9ea
+	source_x86_64 = jmal-cloud-server-bin-2.16.10-x86_64.tar.gz::https://github.com/jamebal/jmal-cloud-server/releases/download/v2.16.10/jmalcloud-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2a1561ff6575f1b83bc6a4d84f390bbc9c0d95df0a78420c1dfd02c3cc85ff9d
+	source_aarch64 = jmal-cloud-server-bin-2.16.10-aarch64.tar.gz::https://github.com/jamebal/jmal-cloud-server/releases/download/v2.16.10/jmalcloud-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 135fc80f17271e75a363333f7951097686253e9bdf354974cf1e8d2ae6ef3d86
+
+pkgname = jmal-cloud-server-bin
