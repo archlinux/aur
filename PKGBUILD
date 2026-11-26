@@ -2,7 +2,7 @@
 
 pkgname=python-spsdk-iped
 _name=${pkgname#python-}
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Fast C++ PRINCE cipher backend for SPSDK IPED encryption"
 arch=(any)
@@ -26,7 +26,7 @@ replaces=(${_name})
 _name=${_name//-/_}
 options=(!debug)
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('548dc4608cca6ca1a311e5c9ba754252157050029fee320e3f97c3511969ede410614a7d6fe1e1e1245c6631b5db7ebc55a4e3a877bc9fc069ebbd73cc748bec')
+sha512sums=('099856b179b68f77985f23efbb5069ca5837736fd72ba5f932b5c7c4bc85b9d0ecda5d8f4e62d61d67acb7d64c8d89c5c727aec598e3c5eaa2d9839d2168472b')
 
 build() {
   cd ${srcdir}/$_name-$pkgver
