@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SNPediaR
-_pkgver=1.38.0
+_pkgver=1.39.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.39.0
 pkgrel=1
 pkgdesc='Query data from SNPedia'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('632d7a945484063f1a468b92c4008d93beb0c39250b24c50689f73bbdaa1a508')
+sha256sums=('759268fadb597ded614e34eb0f0c3f15521e4f286358ec487aaeeed47d125a0f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
