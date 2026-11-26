@@ -1,6 +1,6 @@
 pkgbase = r-modstrings
 	pkgdesc = Working with modified nucleotide sequences
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Modstrings
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-modstrings
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-usethis
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Modstrings_1.28.0.tar.gz
-	sha256sums = 9488b8967fde0b7ef7d4a73bbf5e743dccd512b6c6f651042466616dffa6af63
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Modstrings_1.30.0.tar.gz
+	sha256sums = 2a157bb8232f229b5d5dda9033b9a010bf27fc5cd62dd6ccf2adb0ecf0c8b63e
 
 pkgname = r-modstrings
