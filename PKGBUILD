@@ -1,9 +1,12 @@
-# Maintainer: drakkan <nicola.murino at gmail dot com>
+# Maintainer in AUR: drakkan <nicola.murino at gmail dot com>
+
+# This version includes the static library as well (in contrast
+# to the version found in the AUR).
+
 pkgname=mingw-w64-brotli
 _pkgname=brotli
-_gitcommit=ed738e842d2fbdf2d6459e39267a633c4a9b2f5d
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='Brotli compression library (mingw-w64)'
 arch=('any')
 license=('MIT')
@@ -11,8 +14,8 @@ url='https://github.com/google/brotli.git'
 depends=('mingw-w64-gcc')
 makedepends=('mingw-w64-cmake' 'git')
 options=('!buildflags' '!strip' 'staticlibs')
-source=(${_pkgname}::"git+${url}#commit=${_gitcommit}")
-sha512sums=('SKIP')
+source=(${_pkgname}::"git+${url}#tag=v${pkgver}")
+sha512sums=('5b75c0bd67e47441aac8d8e67b4f2416f06c2f5e4fb09f1f213ccf313d00a9d08dfda42d59f5133884f980ea712509bbc6f26f4e942316352eb4150b2f16e964')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
