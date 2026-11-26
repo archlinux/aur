@@ -1,0 +1,21 @@
+pkgbase = rundler-bin
+	pkgdesc = ERC-4337 bundler in Rust
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/alchemyplatform/rundler
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = rundler
+	conflicts = rundler
+	options = !debug
+	source = rundler-bin-0.11.0-LICENSE::https://raw.githubusercontent.com/alchemyplatform/rundler/v0.11.0/COPYING
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = rundler-bin-0.11.0-x86_64.tar.gz::https://github.com/alchemyplatform/rundler/releases/download/v0.11.0/rundler-v0.11.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b9d9baf7ee145976aab5c392e3e6de16d6aae2e9126a0b20b10a0acab3d75240
+	source_aarch64 = rundler-bin-0.11.0-aarch64.tar.gz::https://github.com/alchemyplatform/rundler/releases/download/v0.11.0/rundler-v0.11.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3c00812dfc10770d3b7e9ca946e8678927664b65a130a4e47c796380471cfb43
+
+pkgname = rundler-bin
