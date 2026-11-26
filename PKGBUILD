@@ -1,6 +1,6 @@
 # Maintainer: toxdes <hi@toxdes.com>
 pkgname=vylk
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Lightweight, low-resource single-binary markdown notes editor"
 arch=('x86_64' 'aarch64')
