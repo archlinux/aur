@@ -1,8 +1,8 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=pi-ext-rpiv-todo
-pkgver=2.15.0
-pkgrel=2
+pkgver=2.16.0
+pkgrel=1
 pkgdesc='Model-facing todo list rendered as a live overlay, for the Pi coding agent'
 arch=('any')
 url='https://github.com/juicesharp/rpiv-mono'
@@ -16,7 +16,7 @@ _npmname=@juicesharp/rpiv-todo
 _tarball=rpiv-todo
 
 source=("${_tarball}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_tarball}-${pkgver}.tgz")
-sha256sums=('03cedc8e9eb76c97c0aa800fb3919fc77242c726929401724718ae5fb373b0fb')
+sha256sums=('e25c5e0ecada30e6c184a1016f495573aa80619aea0911317f53b78e139cf35f')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${_npmname}/latest" | jq -r '.version'
