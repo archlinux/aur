@@ -1,15 +1,18 @@
 # Maintainer: Fovty <38868829+Fovty@users.noreply.github.com>
 pkgname=hushmic
-pkgver=0.11.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Real-time microphone noise suppression as a virtual mic (DPDFNet via PipeWire)"
 arch=('x86_64')
-url="https://github.com/Fovty/hushmic"
+url="https://hushmic.org"
 license=('MIT OR Apache-2.0')
-depends=('pipewire' 'pipewire-pulse' 'wireplumber' 'onnxruntime')
+# opus: Opus recordings decode through the system libopus.
+depends=('pipewire' 'pipewire-pulse' 'wireplumber' 'onnxruntime' 'opus')
+# without ffmpeg Save writes FLAC and a video keeps its sound only
+optdepends=('ffmpeg: Save in the original format')
 makedepends=('rust' 'cargo' 'python' 'curl')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('41d4a4840b9d173290f666ebcbe047fbb640b930bc7a5b4acde139736f822a27')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Fovty/hushmic/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('e663e9d02bf4bfd9bcf3d74300438becde55c5301ce6dfdae4be5a4605dfec39')
 # GitHub archive dirs use the CANONICAL repo name (Fovty/HushMic), so the
 # tarball extracts to HushMic-<ver>/ regardless of the URL's casing.
 _srcname="HushMic-$pkgver"
@@ -39,7 +42,7 @@ build() {
   # otherwise bake $srcdir into panic strings (a namcap "$srcdir reference"
   # warning and non-reproducible output).
   export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/build"
-  cargo build --release --frozen
+  cargo build --release --frozen --features hushmic/opus
 }
 
 package() {
@@ -58,8 +61,15 @@ package() {
   install -Dm644 assets/models/dpdfnet8_48khz_hr.weights.f32 "$pkgdir/usr/share/hushmic/models/dpdfnet8_48khz_hr.weights.f32"
   install -Dm644 assets/models/dpdfnet2_48khz_hr.weights.f32 "$pkgdir/usr/share/hushmic/models/dpdfnet2_48khz_hr.weights.f32"
   install -Dm644 packaging/hushmic.desktop "$pkgdir/usr/share/applications/hushmic.desktop"
+  install -Dm644 packaging/hushmic-clean.desktop "$pkgdir/usr/share/applications/hushmic-clean.desktop"
   install -Dm644 packaging/systemd/hushmic.service "$pkgdir/usr/lib/systemd/user/hushmic.service"
-  install -Dm644 packaging/hushmic-256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/hushmic.png"
+  # App icon at every hicolor size plus scalable/.
+  for _size in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256 512x512; do
+    install -Dm644 "packaging/tray/hicolor/$_size/apps/hushmic.png" \
+      "$pkgdir/usr/share/icons/hicolor/$_size/apps/hushmic.png"
+  done
+  install -Dm644 packaging/tray/hicolor/scalable/apps/hushmic.svg \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/hushmic.svg"
   # Tray status-icon ladder (five SNI names x eight sizes); explicit installs
   # so a missing size or state fails packaging instead of shipping incomplete.
   for _size in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
