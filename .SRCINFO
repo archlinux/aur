@@ -1,6 +1,6 @@
 pkgbase = joplin-beta-bin
 	pkgdesc = A note taking and to-do application with synchronization capabilities (beta binary version)
-	pkgver = 3.7.22
+	pkgver = 3.8.4
 	pkgrel = 1
 	url = https://github.com/laurent22/joplin
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = joplin-beta-bin
 	conflicts = joplin-electron
 	conflicts = joplin-beta-appimage
 	options = !debug
-	source_x86_64 = joplin-beta-bin-3.7.22.deb::https://github.com/laurent22/joplin/releases/download/v3.7.22/joplin-3.7.22.deb
-	sha256sums_x86_64 = 18dace7f4b63e0c57d565df22fde9d9e8da0fb0f684651972d8a2ebc265effab
+	source_x86_64 = joplin-beta-bin-3.8.4.deb::https://github.com/laurent22/joplin/releases/download/v3.8.4/joplin-3.8.4.deb
+	sha256sums_x86_64 = ccd68fd494330ba12a041b800c7fc85ce03ed07ee0b6b3ad588e082c10657c18
 
 pkgname = joplin-beta-bin
