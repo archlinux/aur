@@ -1,0 +1,18 @@
+pkgbase = myle-bin
+	pkgdesc = Command-line tool for the Myle API
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://developers.myleapp.fr/en/guides/cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = myle
+	conflicts = myle
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/myleapp/api/releases/download/v0.1.0/myle-0.1.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 8074dd4a407709727a31e9b9ffe713dcf19ef2e34f9c3d5ae4eeaff5bebed1f5
+	source_aarch64 = https://github.com/myleapp/api/releases/download/v0.1.0/myle-0.1.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = c912314e557dfad7ed9e20efd08e8e4b533d53ac333ded0532b096d8c0f790be
+
+pkgname = myle-bin
