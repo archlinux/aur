@@ -1,6 +1,6 @@
 # Maintainer: Martin Kopecký <kopecky@thekrew.app>
 pkgname=spot-git
-pkgver=0.8.1.r0.g4768b1e
+pkgver=0.8.2.r0.g67e628c
 pkgrel=1
 pkgdesc='TOML+CSS dialog runtime for Wayland (layer-shell overlays), built from git'
 arch=('x86_64')
