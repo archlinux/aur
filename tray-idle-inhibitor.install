@@ -7,6 +7,16 @@ post_install() {
   * разовый запуск — команда `tray-idle-inhibitor --auto` в терминале.
 
 Для автовключения по медиа нужен playerctl (optdepends).
+
+Пример конфига лежит в /etc/xdg/tray-idle-inhibitor/config.toml.example.
+Копировать его не обязательно: значения по умолчанию в программе те же.
+Кладите свой конфиг в ~/.config/tray-idle-inhibitor/config.toml — там
+достаточно только изменяемых ключей.
+
+Если обновление с версии 0.1.1 не проходит из-за существующего
+/etc/xdg/tray-idle-inhibitor/config.toml, поставьте пакет с --overwrite:
+  sudo pacman -U --overwrite '/etc/xdg/tray-idle-inhibitor/config.toml*' <пакет>
+Файл при этом остаётся вашим — база пакета просто перестаёт его учитывать.
 MSG
 }
 

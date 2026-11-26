@@ -1,6 +1,6 @@
 # Maintainer: JageloR <jagelor@yandex.ru>
 pkgname=tray-idle-inhibitor
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Апплет трея: инхибитор idle для Wayland (labwc/LXQt) — wayland + logind"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ optdepends=('playerctl: автовключение инхибитора при �
 makedepends=('cargo')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2ac9c0aea1b157ee56d0ceda06d3d732099cfaa135ad53e8818ddc99a3de2cbd')
+sha256sums=('1b28f0f2f2e0c675574721e8fe04ac2787b374623ef197657069a4ca903788b1')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -31,7 +31,9 @@ check() {
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 config.toml "${pkgdir}/etc/xdg/${pkgname}/config.toml"
+  # Пример конфига — как .pacnew: существующий файл не конфликтует с пакетом,
+  # а встроенные значения программы повторяют эти же настройки.
+  install -Dm644 config.toml "${pkgdir}/etc/xdg/${pkgname}/config.toml.example"
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/etc/xdg/autostart/${pkgname}.desktop"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
