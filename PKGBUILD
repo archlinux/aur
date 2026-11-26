@@ -1,13 +1,13 @@
 # Maintainer: Maxim Devaev <mdevaev@gmail.com>
 
-_commit=13343f1d5cfc25225594e9acc89030b7d8d556d2
+_commit=3b9869fb240a4670ce9f9bf4c84c851b3b778a4e
 pkgname=qtcurve
-pkgver=20260906
+pkgver=20261123
 pkgrel=1
 pkgdesc="A configurable set of widget styles for KDE and Gtk (Qt6 fork)"
 arch=(x86_64)
 url="https://invent.kde.org/system/qtcurve"
-license=(GPL)
+license=(LGPL)
 groups=(qtcurve)
 depends=(
 	qt6-base
@@ -42,7 +42,8 @@ build() {
 	cmake .. \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DENABLE_QT5=OFF \
-		-DENABLE_QT6=ON
+		-DENABLE_QT6=ON \
+		-DQTC_QT6_ENABLE_KDE=ON
 	make
 }
 
