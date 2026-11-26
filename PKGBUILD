@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=waddR
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3af356d154f7d640f77810e816fbab0b')
-b2sums=('9fa1cf4bf9e5e627fb98f3ba26157b8caed71ba3447944eb09bb250ad6ca487a4115e8a428a2196c73c884761763f708061ac93215c9d41fb727ff910b8d5a4b')
+md5sums=('4f39be264f4cbcee072c52397f4dc3d9')
+b2sums=('ff0434e8dc05cfb4ccd915e9eda4c47f1e29b95a1bfeb8f5dde73573b2491c341f7234005bc68c1ec449fa3284970ced1d2d5c626e2060a04027d5c2c4aaaa0d')
 
 build() {
   mkdir build
