@@ -1,6 +1,6 @@
 pkgbase = r-epinem
 	pkgdesc = epiNEM
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/epiNEM
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-epinem
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-stringdb
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/epiNEM_1.36.0.tar.gz
-	sha256sums = e0bd3bacda14d82d2d00a4a0a97f1a291fe4605175f4e49224d018f44f489726
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/epiNEM_1.38.0.tar.gz
+	sha256sums = f13bae3989a606642902c0d24be807a71394558accb8cead516aacbcd01ac52d
 
 pkgname = r-epinem
