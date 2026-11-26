@@ -1,7 +1,7 @@
 # Maintainer: Kcocoa <kamforzn2@proton.me>
 
 pkgname=cpa-usage-keeper-systemd-bin
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="CPA usage persistence and analytics dashboard (prebuilt binary with systemd service)"
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ source_aarch64=(
 sha256sums=('bb8358668d819291ca111df9ba81dbbbcc7ee47f2bae22fce8da616aca2a2ad7'
             '881ae236ce3f3e5c1bf8aa806a288ac67accf1a0bb848fd4baa3d16df84d81a0'
             '69319d4ab7251749afddd8cdb697020a438b18e93edc6bfaac7db4ebe10608cd')
-sha256sums_x86_64=('c53bb8a25eff741f022097bad394e68b186fad3446396948c263953199df1c8b')
-sha256sums_aarch64=('90b830614c92a2b7bebc4221119571f45677dc751a8036c88b16b1bffeb095a5')
+sha256sums_x86_64=('cb63f75a2ab66f5027da64e8c3fd87161a482d554c33bbe9f707acd1943b8711')
+sha256sums_aarch64=('0c493b874c22b18d098d21be5cafdb08a99098b102cbc6495023a8b8d41dea0c')
 
 package() {
   local _pkgdir
