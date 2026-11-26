@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chaski-bin
 _pkgname=Chaski
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A content aggregator that helps you focus on what matters."
 arch=('x86_64')
@@ -18,18 +18,15 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/app-v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 )
-sha256sums=('02a60a04359803570ef2270a1a5a6958e90b12069da8b5c28e78090ec1892c9c')
-_install_icons() {
-	local _s="${1:-$srcdir}" _n="${pkgname%-bin}" _i _e _z
-	while IFS= read -r -d '' _i; do
-		_e=${_i##*.}
-		_z=$(printf %s "${_i%/*}"|grep -oE '[0-9]+x[0-9]+(@[0-9]+x?)?|scalable'|tail -n1)
-		[[ $_z ]] || _z=$([[ $_e == svg ]]&&echo scalable||od -An -tx1 -j16 -N8 "$_i"| \
-		{ read a b c d e f g h; printf %dx%d 0x$a$b$c$d 0x$e$f$g$h; })
-		[[ $_z =~ ^[0-9]+x[0-9]+(@[0-9]+x?)?$ || $_z == scalable ]]||_z=scalable
-		install -Dm644 "$_i" "$pkgdir/usr/share/icons/hicolor/$_z/apps/$_n.$_e"
-	done < <(find "$_s" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' \
-		-o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
+sha256sums=('1d14c4aaadb727156d1ecf0da40ffa95fe451be64093a31de98fabd13436d10c')
+_generate_icons() {
+	local _sizes=(16 24 32 48 64 96 128 256) _src="${srcdir}/usr/share/icons/hicolor/256x256@2/apps/${pkgname%-bin}.png" _s
+	for _s in "${_sizes[@]}"; do
+		install -d "${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps"
+		magick "${_src}" -background none -filter Lanczos -resize "${_s}x${_s}" \
+			-strip -define png:compression-level=9 \
+			"${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps/${pkgname%-git}.png"
+	done
 }
 prepare() {
     bsdtar -xf "${srcdir}/data."*
@@ -38,6 +35,6 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
-    _install_icons
+    _generate_icons
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
