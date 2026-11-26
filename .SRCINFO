@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-rocm-bin
 	pkgdesc = llama.cpp upstream prebuilt binaries with the ROCm backend
-	pkgver = b12378
+	pkgver = b12752
 	pkgrel = 1
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = llama.cpp-rocm-bin
 	conflicts = llama.cpp
 	options = !strip
 	options = !debug
-	source = https://github.com/ggml-org/llama.cpp/releases/download/b12378/llama-b12378-bin-ubuntu-rocm-10.0-x64.tar.gz
-	sha256sums = 783734f02359b9add530247d20d6d31a27f593130773417703075204904c2fd5
+	source = https://github.com/ggml-org/llama.cpp/releases/download/b12752/llama-b12752-bin-ubuntu-rocm-10.0-x64.tar.gz
+	sha256sums = af12b10b0e266c3cc88fdec9e85d3cafa44024798d3dc9faa11d08086ac000d2
 
 pkgname = llama.cpp-rocm-bin

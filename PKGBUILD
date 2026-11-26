@@ -1,6 +1,6 @@
 # Maintainer: monsoon <29970829+monsoon235@users.noreply.github.com>
 pkgname=llama.cpp-rocm-bin
-pkgver=b12378
+pkgver=b12752
 pkgrel=1
 pkgdesc='llama.cpp upstream prebuilt binaries with the ROCm backend'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('llama.cpp')
 options=('!strip' '!debug')
 _rocmver=10.0
 source=("https://github.com/ggml-org/llama.cpp/releases/download/${pkgver}/llama-${pkgver}-bin-ubuntu-rocm-${_rocmver}-x64.tar.gz")
-sha256sums=('783734f02359b9add530247d20d6d31a27f593130773417703075204904c2fd5')
+sha256sums=('af12b10b0e266c3cc88fdec9e85d3cafa44024798d3dc9faa11d08086ac000d2')
 
 package() {
     local upstream="$srcdir/llama-$pkgver" executable
