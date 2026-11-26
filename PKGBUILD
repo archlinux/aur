@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RedeR
-_pkgver=3.8.1
+_pkgver=3.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-treeandleaf
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4407421a1da4dfce1f67595c2134bf5f')
-b2sums=('4c43f7821bf5429d2f761f1bd2007ade545f5922b79f9588e4ff79da686794a11e68dd505eeb7d7827bb2f1f6e6ed728d5c2bd0a7efa655c0d9d880f4ad92484')
+md5sums=('4175b3f2519756c337bd601a7985bab3')
+b2sums=('3d89e778ff278940a1c02d88a7f1b120e84677f82ef557249c7218ff3fbbe77a5140cdc7c92897c0ef239975ada10d50bdbc0d5a731e1e75ecdd66e72d8d31c3')
 
 build() {
   mkdir build
