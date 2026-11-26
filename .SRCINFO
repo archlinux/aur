@@ -1,0 +1,19 @@
+pkgbase = mcpstore-bin
+	pkgdesc = Manage MCP services
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://github.com/ip2a/mcpstore
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = mcpstore
+	conflicts = mcpstore
+	options = !debug
+	source_x86_64 = mcpstore-bin-2.3.2-x86_64.tar.gz::https://github.com/ip2a/mcpstore/releases/download/v2.3.2/mcpstore-v2.3.2-linux-x64-gnu.tar.gz
+	sha256sums_x86_64 = e4b7c2b0cea1accf3d91ad32aaf270f255ffa7c2fddb1c6931a61d6b8bf72e78
+	source_aarch64 = mcpstore-bin-2.3.2-aarch64.tar.gz::https://github.com/ip2a/mcpstore/releases/download/v2.3.2/mcpstore-v2.3.2-linux-arm64-gnu.tar.gz
+	sha256sums_aarch64 = b940dcaaa9eecdd26f78ee4c3ed9603debe9957c984c9d311f56e37b4b7985bf
+
+pkgname = mcpstore-bin
