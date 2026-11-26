@@ -1,6 +1,6 @@
 pkgbase = aurora-player-git
 	pkgdesc = A multi-source music client side, combining multiple platforms, such as NetEase Cloud, QQ Music, Kugou, and soda music into a music library, and the same song or album on different platforms only occupies one position
-	pkgver = 0.9.27.r0.ge11bcaa
+	pkgver = 0.10.0.r0.g0afceda
 	pkgrel = 1
 	url = https://github.com/LN334/aurora
 	arch = any

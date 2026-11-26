@@ -2,7 +2,7 @@
 pkgname=aurora-player-git
 _pkgname=Aurora
 _zhsname='极光播放器'
-pkgver=0.9.27.r0.ge11bcaa
+pkgver=0.10.0.r0.g0afceda
 _electronversion=44
 _nodeversion=24
 pkgrel=1
