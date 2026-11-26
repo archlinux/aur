@@ -1,0 +1,14 @@
+pkgbase = eliasdb-bin
+	pkgdesc = Graph-based database
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/krotik/eliasdb
+	arch = x86_64
+	license = MPL-2.0
+	provides = eliasdb
+	conflicts = eliasdb
+	options = !debug
+	source_x86_64 = eliasdb-bin-1.4.0-x86_64.tar.gz::https://github.com/krotik/eliasdb/releases/download/v1.4.0/eliasdb_v1.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0fc0f537f4f608c7d96500eaa56fb44d6a519ee6a25b8f7835966d3314d6bab6
+
+pkgname = eliasdb-bin
