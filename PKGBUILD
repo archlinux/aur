@@ -2,8 +2,8 @@
 # Contributor: MoazSalem <https://github.com/MoazSalem>
 
 pkgname=litefin-bin
-pkgver=2.0.20
-pkgrel=2
+pkgver=2.10.0
+pkgrel=1
 pkgdesc="Jellyfin & Emby Client for Smart TVs and Desktop (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/MoazSalem/litefin"
@@ -15,7 +15,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'glib2' 'glibc')
 optdepends=('jellyfin-server: Media server to connect to')
 makedepends=('libarchive')
 source=("${pkgname}-${pkgver}-amd64.deb::https://github.com/MoazSalem/litefin/releases/download/v${pkgver}/Litefin_${pkgver}_amd64.deb")
-sha256sums=('3c84995cc15919575b65190af85a8eb62f904db6fba497b4aa20c78539a1bbe3')
+sha256sums=('c58c87a91688e1096d562540a33943e6bdcb5d150fe2f8db354ebf96914d82cf')
 noextract=("${pkgname}-${pkgver}-amd64.deb")
 
 prepare() {
@@ -39,6 +39,10 @@ package() {
   # Install desktop entry
   if [ -f "usr/share/applications/Litefin.desktop" ]; then
     install -Dm644 "usr/share/applications/Litefin.desktop" \
+      "${pkgdir}/usr/share/applications/Litefin.desktop"
+
+    # Upstream ships an empty Categories= line; fill it in so menus can place the app
+    sed -i 's/^Categories=[[:space:]]*$/Categories=AudioVideo;Video;Player;/' \
       "${pkgdir}/usr/share/applications/Litefin.desktop"
   fi
 

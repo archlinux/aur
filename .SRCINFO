@@ -1,7 +1,7 @@
 pkgbase = litefin-bin
 	pkgdesc = Jellyfin & Emby Client for Smart TVs and Desktop (prebuilt binary)
-	pkgver = 2.0.20
-	pkgrel = 2
+	pkgver = 2.10.0
+	pkgrel = 1
 	url = https://github.com/MoazSalem/litefin
 	arch = x86_64
 	license = MPL-2.0
@@ -13,9 +13,9 @@ pkgbase = litefin-bin
 	optdepends = jellyfin-server: Media server to connect to
 	provides = litefin
 	conflicts = litefin
-	noextract = litefin-bin-2.0.20-amd64.deb
+	noextract = litefin-bin-2.10.0-amd64.deb
 	options = !debug
-	source = litefin-bin-2.0.20-amd64.deb::https://github.com/MoazSalem/litefin/releases/download/v2.0.20/Litefin_2.0.20_amd64.deb
-	sha256sums = 3c84995cc15919575b65190af85a8eb62f904db6fba497b4aa20c78539a1bbe3
+	source = litefin-bin-2.10.0-amd64.deb::https://github.com/MoazSalem/litefin/releases/download/v2.10.0/Litefin_2.10.0_amd64.deb
+	sha256sums = c58c87a91688e1096d562540a33943e6bdcb5d150fe2f8db354ebf96914d82cf
 
 pkgname = litefin-bin
