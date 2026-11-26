@@ -1,0 +1,20 @@
+pkgbase = rushdb-bin
+	pkgdesc = Graph, vector and analytics database for AI agents
+	pkgver = 3.0.15
+	pkgrel = 1
+	url = https://github.com/rush-db/rushdb
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = rushdb
+	conflicts = rushdb
+	options = !debug
+	source_x86_64 = rushdb-bin-3.0.15-x86_64.tar.gz::https://github.com/rush-db/rushdb/releases/download/v3.0.15/rushdb-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 5120ba0842237ff7a08cd41e8e74b4ee2b3b9605b39cb2a4e2f79a363dfafc55
+	source_aarch64 = rushdb-bin-3.0.15-aarch64.tar.gz::https://github.com/rush-db/rushdb/releases/download/v3.0.15/rushdb-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 6bc41f32f454829622b2a22591a58b0e7f47a4b55e9e9268457ad51b95fdfbf8
+
+pkgname = rushdb-bin
