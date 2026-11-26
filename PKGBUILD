@@ -2,7 +2,7 @@
 
 pkgname=python-k3cgrouparch
 _name=${pkgname#python-}
-pkgver=0.1.7
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Set up cgroup directory tree and add pid to cgroup"
 provides=(${pkgname})
@@ -35,7 +35,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('5f5b1409735516e36b776759f93d98e99e7527a0623f55a2eb55b186957f2734')
+sha256sums=('8da25d0daef38cf76a39e4eaf252ac8dc8fa105cf8969a5c38216d826ee37b11')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
@@ -50,10 +50,7 @@ check() {
 	cd "${srcdir}/${_name}"
 	
     export PYTHONPATH="${srcdir}${PYTHONPATH:+:${PYTHONPATH}}"
-
-    pytest -x \
-        --deselect=test/test_blkio.py::TestBlkio::test_blkio_weight \
-        --deselect=test/test_cpu.py::TestCpu::test_cpu_share
+    pytest -x
 }
 
 package() {

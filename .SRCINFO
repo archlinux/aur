@@ -1,6 +1,6 @@
 pkgbase = python-k3cgrouparch
 	pkgdesc = Set up cgroup directory tree and add pid to cgroup
-	pkgver = 0.1.7
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/pykit3/k3cgrouparch
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-k3cgrouparch
 	depends = python-redis
 	provides = python-k3cgrouparch
 	conflicts = python-k3cgrouparch
-	source = k3cgrouparch::git+https://github.com/pykit3/k3cgrouparch.git#tag=v0.1.7
-	sha256sums = 5f5b1409735516e36b776759f93d98e99e7527a0623f55a2eb55b186957f2734
+	source = k3cgrouparch::git+https://github.com/pykit3/k3cgrouparch.git#tag=v0.1.9
+	sha256sums = 8da25d0daef38cf76a39e4eaf252ac8dc8fa105cf8969a5c38216d826ee37b11
 
 pkgname = python-k3cgrouparch
