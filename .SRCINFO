@@ -1,0 +1,17 @@
+pkgbase = clickclack-bin
+	pkgdesc = Chat app for humans and AI agents
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/openclaw/clickclack
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = clickclack
+	conflicts = clickclack
+	options = !debug
+	source_x86_64 = clickclack-bin-0.9.5-x86_64.tar.gz::https://github.com/openclaw/clickclack/releases/download/v0.9.5/clickclack_0.9.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = b283d60599e49d87d69bf011dc7cc4a59483f70af34721db9ba970f1cd19dfe4
+	source_aarch64 = clickclack-bin-0.9.5-aarch64.tar.gz::https://github.com/openclaw/clickclack/releases/download/v0.9.5/clickclack_0.9.5_linux_aarch64.tar.gz
+	sha256sums_aarch64 = ffed716205db36b9adf0addc695bbc36c8e00ff81d1c3611f03bf816414bdd70
+
+pkgname = clickclack-bin
