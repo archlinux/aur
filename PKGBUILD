@@ -1,0 +1,90 @@
+# Maintainer: Braulio Oliveira <brauliobo@gmail.com>
+
+pkgname=zensmu-git
+pkgver=0.1.1.r0.gc458c83
+pkgrel=1
+pkgdesc="Safety-first Rust CLI, live TUI, and unprivileged GUI for AMD Ryzen SMU control and telemetry"
+arch=('x86_64')
+url="https://github.com/brauliobo/zensmu"
+license=('MIT')
+depends=(
+    'polkit'
+    'gcc-libs'
+    'glibc'
+)
+optdepends=(
+    'ryzen_smu-dkms-git: required DKMS kernel module providing /sys/kernel/ryzen_smu_drv (needed on Arch/CachyOS unless built into a custom kernel)'
+    'libglvnd: OpenGL support for zensmu-gui'
+    'libxkbcommon: keyboard support for zensmu-gui on Wayland/X11'
+    'wayland: native Wayland windowing for zensmu-gui'
+    'libxcb: X11 windowing for zensmu-gui'
+)
+makedepends=(
+    'rust'
+    'cargo'
+    'git'
+)
+provides=('zensmu')
+conflicts=('zensmu' 'zensmu-bin')
+source=("${pkgname}::git+https://github.com/brauliobo/zensmu.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "0.1.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+    cd "${srcdir}/${pkgname}"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd "${srcdir}/${pkgname}"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --workspace
+}
+
+check() {
+    cd "${srcdir}/${pkgname}"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo test --frozen --workspace
+}
+
+package() {
+    cd "${srcdir}/${pkgname}"
+
+    # Binaries
+    install -Dm755 "target/release/zensmu" "${pkgdir}/usr/bin/zensmu"
+    install -Dm755 "target/release/zensmu-gui" "${pkgdir}/usr/bin/zensmu-gui"
+
+    # Systemd boot apply service & suspend/hibernate resume hook
+    install -Dm644 "packaging/systemd/zensmu-apply.service" \
+        "${pkgdir}/usr/lib/systemd/system/zensmu-apply.service"
+    install -Dm755 "packaging/systemd/zensmu-resume" \
+        "${pkgdir}/usr/lib/systemd/system-sleep/zensmu-resume"
+
+    # PolicyKit policy for unprivileged zensmu-gui -> pkexec /usr/bin/zensmu elevation
+    install -Dm644 "packaging/polkit/org.zensmu.policy" \
+        "${pkgdir}/usr/share/polkit-1/actions/org.zensmu.policy"
+
+    # Profile directory
+    install -dm755 "${pkgdir}/etc/zensmu"
+
+    # Shell completions
+    install -dm755 \
+        "${pkgdir}/usr/share/bash-completion/completions" \
+        "${pkgdir}/usr/share/zsh/site-functions" \
+        "${pkgdir}/usr/share/fish/vendor_completions.d"
+    "target/release/zensmu" completions bash > "${pkgdir}/usr/share/bash-completion/completions/zensmu"
+    "target/release/zensmu" completions zsh  > "${pkgdir}/usr/share/zsh/site-functions/_zensmu"
+    "target/release/zensmu" completions fish > "${pkgdir}/usr/share/fish/vendor_completions.d/zensmu.fish"
+
+    # Documentation & License
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
