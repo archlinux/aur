@@ -1,0 +1,17 @@
+pkgbase = python-perf_baseline
+	pkgdesc = A performance regression detection tool for Python projects
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rayluo/perf_baseline
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = perf_baseline-0.1.0.tar.gz::https://github.com/rayluo/perf_baseline/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 75a33395eb6c265c4fb30737d581a8fc47e53f08e11865fae3315c7db1633067
+
+pkgname = python-perf_baseline
