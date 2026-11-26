@@ -1,6 +1,6 @@
 pkgbase = furmark
 	pkgdesc = Lightweight but intensive GPU stress test and benchmarking tool for OpenGL and Vulkan
-	pkgver = 2.10.2
+	pkgver = 2.11.0.4
 	pkgrel = 1
 	url = https://www.geeks3d.com/furmark/v2/
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = furmark
 	backup = etc/opt/furmark/conf.xml
 	source = furmark-gui.desktop
 	source = https://geeks3d.com/furmark/i/20240220-furmark-logo-02.png
-	sha256sums = SKIP
-	sha256sums = 12A8564204C4985FF601CA83C601ADAF69B948C62EA76F213C4848EACB05C3B8
-	source_x86_64 = https://gpumagick.com/downloads/files/2025/fm2/2_10_dbc69dd0a08da5ff09169a4fc759ddaa/FurMark_2.10.2_linux64.7z
-	sha256sums_x86_64 = B3D0048FDAFB90184F18F537EB91E0C52F6D132AE6ED48CBB68C43DB5A42AEDB
-	source_aarch64 = https://gpumagick.com/downloads/files/2025/fm2/2_10_dbc69dd0a08da5ff09169a4fc759ddaa/FurMark_2.10.1_arm64.7z
-	sha256sums_aarch64 = 5D0B8AE948193A3C2AA443641D562CA221BDCF26406CD8D1FBAE618FD76F018F
+	sha256sums = 5debb3a66411da54f1ab12b5ceb36d10698312f2d401541c63c647be786ef3f8
+	sha256sums = 12a8564204c4985ff601ca83c601adaf69b948c62ea76f213c4848eacb05c3b8
+	source_x86_64 = https://gpumagick.com/downloads/files/2026/fm2/FurMark_2.11.0.4_linux64.7z
+	sha256sums_x86_64 = 265e6e3b06e5cb1311f3f1eeb942d347d261c809acbf4d9c5b84e8ed470a1cac
+	source_aarch64 = https://gpumagick.com/downloads/files/2026/fm2/FurMark_2.11.0.4_arm64.7z
+	sha256sums_aarch64 = 1e1c713475d094d1d7baf6988ac2afe15862bf4bbbc2de8f6f3744535f37dd6a
 
 pkgname = furmark
