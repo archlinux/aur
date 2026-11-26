@@ -1,7 +1,7 @@
 # Maintainer: Myle <contact@myleapp.fr>
 # Written by the release workflow of github.com/myleapp/api (packaging/aur/PKGBUILD.in): do not edit here.
 pkgname=myle-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Command-line tool for the Myle API"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('myle')
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/myleapp/api/releases/download/v${pkgver}/myle-${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("https://github.com/myleapp/api/releases/download/v${pkgver}/myle-${pkgver}-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('8074dd4a407709727a31e9b9ffe713dcf19ef2e34f9c3d5ae4eeaff5bebed1f5')
-sha256sums_aarch64=('c912314e557dfad7ed9e20efd08e8e4b533d53ac333ded0532b096d8c0f790be')
+sha256sums_x86_64=('20532eed6f18a7584d34096856c763c5731418d37eec96e17770cccd6adae0bf')
+sha256sums_aarch64=('e394d4a0c45e9413527851b114043a54d83ce2638f5e8eb747ef2aaffc105d75')
 
 package() {
   install -Dm755 myle "${pkgdir}/usr/bin/myle"
