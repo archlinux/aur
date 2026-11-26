@@ -1,0 +1,21 @@
+pkgbase = cosmic-ext-manager-bin
+	pkgdesc = Browse, install, update and remove community COSMIC extensions (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kevinRForshey/CosmicEDxtensionManager
+	arch = x86_64
+	license = Apache-2.0
+	depends = git
+	depends = just
+	depends = rust
+	depends = libxkbcommon
+	depends = wayland
+	depends = vulkan-icd-loader
+	depends = fontconfig
+	provides = cosmic-ext-manager
+	conflicts = cosmic-ext-manager
+	options = !strip
+	source = https://github.com/kevinRForshey/CosmicEDxtensionManager/releases/download/v0.1.0/cosmic-ext-manager-v0.1.0-x86_64-linux.tar.gz
+	sha256sums = 9aa87b532a77473f8605e9c20841d95ec17a93fab3a85316bece9523efe065db
+
+pkgname = cosmic-ext-manager-bin
