@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=drill-search
 pkgver=125
-pkgrel=1
+pkgrel=2
 epoch=1
 _tag=45868342744-1
 pkgdesc="Very fast file searcher without indexing"
@@ -38,6 +38,6 @@ build() {
 package() {
   cd "Drill-rust-release-${_tag}"
   install -Dm755 target/release/drill -t "$pkgdir/usr/bin/"
-  install -Dm644 src/assets/drill.svg -t "$pkgdir/usr/share/icons/scalable/apps/"
+  install -Dm644 src/assets/drill.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 "$srcdir/drill.desktop" -t "$pkgdir/usr/share/applications/"
 }
