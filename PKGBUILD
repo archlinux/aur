@@ -7,7 +7,7 @@
 # Contributor: Rose Ames <rose at happyspork dot com>
 
 pkgname=zulip-desktop
-pkgver=5.14.2
+pkgver=5.14.3
 pkgrel=1
 pkgdesc='Zulip Desktop Client for Linux'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('bash' "${_electron}" 'glibc')
 makedepends=('gendesk' 'nodejs' 'pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zulip/zulip-desktop/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha512sums=('f5cdaf9ace6d3873386845a96acda78351694c7d4e5e375db78f4c22d20c2a9f5e18d01770ea0200c560051b5ab88e8466c92c6d957f59a255b5d2a168dc2ce5'
+sha512sums=('e23cbea1ad99728851ccdfb1ce9fd0e2f090b64a81bd42e619757a16fac4d85fa157575f9458f4b445d58cf037775cfcfd2237d8f4d6d2a17b943f7e22b06fbb'
             '32753894751dffd40781cd04435643573252494be4db3e542f7af90885d00317188bd65587287f5fbaa63b79fcfad33d98929e456e31e90b434e5cd59bbfbafb')
 
 prepare() {
