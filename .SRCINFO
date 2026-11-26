@@ -1,6 +1,6 @@
 pkgbase = mx-datetime
 	pkgdesc = Date and time configuration tool for MX Linux
-	pkgver = 26.07
+	pkgver = 26.11
 	pkgrel = 1
 	url = https://github.com/MX-Linux/mx-datetime
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mx-datetime
 	depends = util-linux
 	depends = qt6-base
 	depends = polkit
-	source = https://github.com/MX-Linux/mx-datetime/archive/refs/tags/26.07.tar.gz
-	sha256sums = d24dbe75cd047af2bd5fe84db74e829d067a08156820b316c5fc067dd8a46a60
+	source = https://github.com/MX-Linux/mx-datetime/archive/refs/tags/26.11.tar.gz
+	sha256sums = 5b909266a13cd4d96e5af9e20a43e2868d96f65d6c191285123d42e1ca822226
 
 pkgname = mx-datetime
