@@ -1,0 +1,17 @@
+pkgbase = aiken-bin
+	pkgdesc = Smart contract language and toolchain for Cardano
+	pkgver = 1.1.24
+	pkgrel = 1
+	url = https://github.com/aiken-lang/aiken
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = aiken
+	conflicts = aiken
+	options = !debug
+	source_x86_64 = aiken-bin-1.1.24-x86_64.tar.gz::https://github.com/aiken-lang/aiken/releases/download/v1.1.24/aiken-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = c378acccdaf9533f3375ea623c948d3dcb21f7e8c5ecbb741162c53653470b13
+	source_aarch64 = aiken-bin-1.1.24-aarch64.tar.gz::https://github.com/aiken-lang/aiken/releases/download/v1.1.24/aiken-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = faea24b60ca753c3efe65ff1bd1db62622088575e1702349c5b84a75ab26b4bc
+
+pkgname = aiken-bin
