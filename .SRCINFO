@@ -1,0 +1,19 @@
+pkgbase = thunderid-bin
+	pkgdesc = Open-source identity and access management for humans, AI agents and machines
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/thunder-id/thunderid
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = thunderid
+	conflicts = thunderid
+	options = !debug
+	source = thunderid-bin-1.1.1-LICENSE::https://raw.githubusercontent.com/thunder-id/thunderid/v1.1.1/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = thunderid-bin-1.1.1-x86_64.zip::https://github.com/thunder-id/thunderid/releases/download/v1.1.1/thunderid-1.1.1-linux-x64.zip
+	sha256sums_x86_64 = 27a70400241f14e51b738bc88ef32a6d652619f069a2ce1efdac15cc3b1cd906
+	source_aarch64 = thunderid-bin-1.1.1-aarch64.zip::https://github.com/thunder-id/thunderid/releases/download/v1.1.1/thunderid-1.1.1-linux-arm64.zip
+	sha256sums_aarch64 = 3e68a0350f570dabb80ff6894c78d8a758d2047378046c032872f54630d35abf
+
+pkgname = thunderid-bin
