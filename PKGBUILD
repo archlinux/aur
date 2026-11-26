@@ -2,7 +2,7 @@
 
 pkgname=hummingbird-player
 _pkgname=hummingbird
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Modern music player written in Rust using GPUI with a focus on design and performance"
 arch=(x86_64 aarch64)
@@ -47,6 +47,12 @@ build() {
 	CFLAGS+=' -ffat-lto-objects'
 	CXXFLAGS+=' -ffat-lto-objects'
 	export HUMMINGBIRD_RELEASE_CHANNEL=stable
+	# no real better way to do this without incurring some costs
+	# this isn't as bad as it seems, without the local user's keys these are read-only (and even then all you can do is scrobble)
+	# and the local user's keys are only stored on their computer
+	# still unfortunate, though
+	export LASTFM_API_KEY="7bbd03d0dda426841c6d812f16851d45"
+	export LASTFM_API_SECRET="c9e763ffc75b2920aeebe914dfad449c"
 	cargo build --release --locked
 }
 
