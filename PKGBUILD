@@ -1,7 +1,7 @@
 # Maintainer: agzes <agzes0@proton.me>
 pkgname=antiafk-rbx-sober
 _pkgname=AntiAFK-RBX-Sober
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Native Linux Anti-AFK utility for Sober (Roblox)"
 arch=('x86_64')
@@ -15,11 +15,12 @@ optdepends=(
     'xdotool: window management and input fallback on X11 and i3'
     'wmctrl: window listing on X11'
     'maim: screen capture for Auto Reconnect on X11'
+    'qt6-tools: qdbus6 utility for KDE Plasma 6'
 )
 makedepends=('cargo' 'pkgconf')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v.$pkgver.tar.gz")
-sha256sums=('2b72297f672ab8c9325dd16327b98efb99699153019bc2cf4beeed9abe1a9331')
+sha256sums=('b1e4464e2c8b902e30596500206abd099f17abe66f9d7b6f141941480d0b71ef')
 
 prepare() {
   cd "$_pkgname-v.$pkgver"
