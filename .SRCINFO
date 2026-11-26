@@ -1,0 +1,14 @@
+pkgbase = wq
+	pkgdesc = Pure TUI plain-text editor built for Ghostty & Kitty protocols on Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Friendships6666/wq
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = wq-0.1.0.tar.gz::https://github.com/Friendships6666/wq/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = fb3105e5a6fe930d2dd39195b8758705a32235a9105f77c833de7cb084cd95d9
+
+pkgname = wq
