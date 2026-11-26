@@ -46,7 +46,7 @@ pkgname=(
 )
 _pkgname=better-niri
 pkgver=26.4.0.elite
-pkgrel=4
+pkgrel=5
 _commit=07e14ac3396e9cbcebe446787fdb40d6582d13ec
 pkgdesc="Scrollable-tiling Wayland compositor with the Better Desktop companion apps"
 arch=(x86_64 aarch64)
@@ -292,6 +292,7 @@ package_better-monitor() {
   _install_completions better-monitor
   pkgdesc="Output profile save, apply and rollback for Better Niri"
   depends=(gcc-libs glibc)
+  optdepends=('wl-mirror: apply profile mirror relations')
 
   cd "${_pkgname}"
   install -Dm755 "${srcdir}/target/release/better-monitor" \

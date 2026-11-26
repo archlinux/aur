@@ -1,7 +1,7 @@
 pkgbase = niri-better
 	pkgdesc = Scrollable-tiling Wayland compositor with the Better Desktop companion apps
 	pkgver = 26.4.0.elite
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/fram446742/better-niri
 	arch = x86_64
 	arch = aarch64
@@ -85,6 +85,7 @@ pkgname = better-monitor
 	pkgdesc = Output profile save, apply and rollback for Better Niri
 	depends = gcc-libs
 	depends = glibc
+	optdepends = wl-mirror: apply profile mirror relations
 
 pkgname = better-session
 	pkgdesc = Named workspace, window and output contexts for Better Niri
