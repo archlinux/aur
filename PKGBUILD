@@ -8,8 +8,8 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=v3.15.42.r1.gd1ca4e091
-pkgrel=2
+pkgver=v3.22.14.r1.g881fc079b
+pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 
@@ -19,7 +19,7 @@ license=('MIT')
 
 depends=(
   'python'
-  # documented in requirements.in
+  # documented in pyproject.toml
   'python-feedparser>=6.0.2-3'
   'python-sqlalchemy>=1.3.10'
   'python-yaml>=4.2b1'
@@ -83,21 +83,6 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
-
-  # Remove specific versions, because they are not going to match
-  # versions of Arch packages. Yes, this might break something.
-  sed -i 's/==.*//g' requirements.txt
-  sed -i 's/<=.*//g' requirements.txt
-  sed -i 's/~=.*//g' requirements.txt
-
-  # Relax loguru requirement (AUR out-of-date right now)
-  sed -i 's/loguru>=0.4.1/loguru>=0.4/g' requirements.txt
-
-  #zxcvbn-python has been renamed zxcvbn
-  sed -i 's!zxcvbn-python!zxcvbn!' requirements.txt
-
-  # Python distribution of progressbar v3.x.x is named progressbar2
-  sed -i 's/progressbar/progressbar2/' requirements.txt
 
   # Remove stale wheels
   git -C "${srcdir}/${_pkgname}" clean -dfx

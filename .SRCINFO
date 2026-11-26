@@ -1,7 +1,7 @@
 pkgbase = flexget-git
 	pkgdesc = Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more.
-	pkgver = v3.15.42.r1.gd1ca4e091
-	pkgrel = 2
+	pkgver = v3.22.14.r1.g881fc079b
+	pkgrel = 1
 	url = http://flexget.com/
 	arch = any
 	license = MIT
