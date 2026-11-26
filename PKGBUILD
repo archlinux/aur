@@ -3,7 +3,7 @@
 # Written from the PyPI release by scripts/aur_package.py, which sets pkgver and sha256sums.
 
 pkgname=fastbrowse
-pkgver=0.11.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Browser automation with cited answers, structured output and code-controlled credentials and authorization"
 # The wheel carries the Rust core as `fastbrowse._native`, compiled here from the sdist, so the package is one per
@@ -27,7 +27,7 @@ optdepends=(
   'google-chrome: a local browser for --local'
 )
 source=("https://files.pythonhosted.org/packages/source/f/fastbrowse/fastbrowse-$pkgver.tar.gz")
-sha256sums=('fc138619c8103c2b39e74f095995de0832b853aaaf3df638caa73904c7bd9f6e')
+sha256sums=('5514a5e3349c36ef444ed854a41d19a9d354067a0385873f31b5114b71ccf6da')
 
 build() {
   cd "$srcdir/fastbrowse-$pkgver"
