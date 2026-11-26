@@ -1,5 +1,5 @@
 pkgbase = macos-sequoia-sound-theme
-	pkgdesc = macOS Sequoia system sounds as a KDE Plasma / freedesktop sound theme (extracted from Apple at build time)
+	pkgdesc = macOS Sequoia sound theme for KDE Plasma and other freedesktop desktops (sounds extracted from Apple at build time)
 	pkgver = 15.8.3
 	pkgrel = 1
 	url = https://support.apple.com/en-us/100100
