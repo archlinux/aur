@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Finance terminal, in your terminal"
 
-pkgver=0.20.21
+pkgver=0.20.22
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_gitname}-${arch[0]}-${pkgver}.gz::${_ghurl}/releases/download
 source_aarch64=("${_gitname}-${arch[1]}-${pkgver}.gz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}.gz")
 sha256sums=('b9fcd29a854c14dd8d6168eb7eb152466d5fcd5a7484659cd8a08e1ee0f7fe84'
             '621768803b2a602fa8033ee7434d90bbda73622041c2bd26d7ce739485178728')
-sha256sums_x86_64=('86f014af5002856a13a9cc8f7b060af0328039cd5887311841fc9784cb35f33e')
-sha256sums_aarch64=('930608532d38e131f1b62a84ad239be121f9ed762c127ca8f3e68ce387bf73a8')
+sha256sums_x86_64=('56c371c270cddccec273d8fb7ea63aad586124215f8ab44f3eedb03903aabe8a')
+sha256sums_aarch64=('3b6ff56b078fe2dbbc8d0fd422d7decc4c7f52054727b16eaa521a92f26c24e0')
 
 
 package() {
