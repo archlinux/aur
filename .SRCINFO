@@ -1,0 +1,17 @@
+pkgbase = avdslim-bin
+	pkgdesc = Reduce Android Virtual Device emulator RAM usage
+	pkgver = 1.0.17
+	pkgrel = 1
+	url = https://github.com/kdbhalala/avdslim
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = avdslim
+	conflicts = avdslim
+	options = !debug
+	source_x86_64 = avdslim-bin-1.0.17-x86_64.tar.gz::https://github.com/kdbhalala/avdslim/releases/download/v1.0.17/avdslim_v1.0.17_linux_amd64.tar.gz
+	sha256sums_x86_64 = bb4adaec3b33a084c134162a384b3687696b8c98ad92eeb8ba0ccd841f345569
+	source_aarch64 = avdslim-bin-1.0.17-aarch64.tar.gz::https://github.com/kdbhalala/avdslim/releases/download/v1.0.17/avdslim_v1.0.17_linux_arm64.tar.gz
+	sha256sums_aarch64 = 79a46fa206bda6db67206337a3b78f503f8cd426e4b4b604b6bb26aaf46ed4e4
+
+pkgname = avdslim-bin
