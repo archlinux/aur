@@ -19,7 +19,7 @@ provides=("archtoys=${pkgver}")
 conflicts=('archtoys')
 options=('!debug')
 source=("archtoys-linux-x86_64-v${pkgver}.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v${pkgver}/archtoys-linux-x86_64.tar.gz")
-sha256sums=('107653e7ff36a77346fcef739ea6164bebbfa93fee2e21309c687f5b67a14858')
+sha256sums=('1856b99027e3dc72e5b4344ca3296dfa8383b0dfaa525bc006b00f2991bf5ea8')
 
 package() {
   cd "${srcdir}"
