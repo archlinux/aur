@@ -1,6 +1,6 @@
 pkgbase = freebasic-ng-bin
 	pkgdesc = FreeBASIC-NG compiler (prebuilt release)
-	pkgver = 1.25.2
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://github.com/metaneutrons/freebasic-ng
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = freebasic-ng-bin
 	conflicts = freebasic
 	conflicts = freebasic-ng
 	options = staticlibs
-	source = freebasic-ng-1.25.2-source.tar.gz::https://github.com/metaneutrons/freebasic-ng/releases/download/v1.25.2/freebasic-ng-1.25.2-source.tar.gz
-	sha256sums = f598a3bb2f08fea46dca2d2cdd453904ebe19b123961c43ccdb603563315ea45
-	source_x86_64 = freebasic-ng-1.25.2-linux-x86_64.tar.xz::https://github.com/metaneutrons/freebasic-ng/releases/download/v1.25.2/freebasic-ng-1.25.2-linux-x86_64.tar.xz
-	sha256sums_x86_64 = 5cdd663bf227c90ef543696960a82cc4f5506ba116e90223285170af16a63126
-	source_aarch64 = freebasic-ng-1.25.2-linux-aarch64.tar.xz::https://github.com/metaneutrons/freebasic-ng/releases/download/v1.25.2/freebasic-ng-1.25.2-linux-aarch64.tar.xz
-	sha256sums_aarch64 = 94a0ea99e812d2ddc4ef001d61633b378ab01e2f9e7d9bcebc191f5ec9048acb
+	source = freebasic-ng-1.26.0-source.tar.gz::https://github.com/metaneutrons/freebasic-ng/releases/download/v1.26.0/freebasic-ng-1.26.0-source.tar.gz
+	sha256sums = 3435a2a2fd96ad3b0d1bf82a01bacbd202399a1ff10842694e8ae4f2baf2926f
+	source_x86_64 = freebasic-ng-1.26.0-linux-x86_64.tar.xz::https://github.com/metaneutrons/freebasic-ng/releases/download/v1.26.0/freebasic-ng-1.26.0-linux-x86_64.tar.xz
+	sha256sums_x86_64 = 6da4d98747c11db2cbfb4d94132802c6b0ea553ffa60fcb20f98d60630a53eff
+	source_aarch64 = freebasic-ng-1.26.0-linux-aarch64.tar.xz::https://github.com/metaneutrons/freebasic-ng/releases/download/v1.26.0/freebasic-ng-1.26.0-linux-aarch64.tar.xz
+	sha256sums_aarch64 = f940137034fbf272e918285985862402e146a3a917c2a98c8fcd0d96a79db5a2
 
 pkgname = freebasic-ng-bin
