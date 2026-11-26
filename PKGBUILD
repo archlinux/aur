@@ -1,6 +1,6 @@
 # Maintainer: Ulises Jeremias <ulisescf.24@gmail.com>
 pkgname=veasel-code-bin
-pkgver=0.106.2.next.0
+pkgver=0.106.3.next.0
 pkgrel=1
 pkgdesc="Veasel Code terminal CLI and TUI (not the Desktop app)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 )
 noextract=('veasel-Linux.tar.gz')
 sha256sums=(
-  'f75df8b5863a98f4c1d778838df9cde302b730a3ff12b668f6d8d5411f1931ef'
+  'f8ef09fc815a0dec3a54f2b351141573fd3ba6f8febb6d9d6a0b7a788c678e6e'
   'e150ff1e9cd21b388ec966f3d77ed4731e86e4731b17f127e879f72ff5b2e3d5'
 )
 
