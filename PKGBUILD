@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=KEGGandMetacoreDzPathwaysGEO
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-biocgenerics
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bd1dedd8df67c06a43f6bd934cb0ea4b')
-b2sums=('001113fc853f87a22379a55ad952dafa6c73cd9635e1401f2594297b51532775e8e02f27a749fa5c61eb416f6a70e1fe803bd32626bfc823e1ca3bcd355d9c5b')
+md5sums=('3150ea9732f366cdd554930f0e065a53')
+b2sums=('a9dfa9d05c721aaa41862f82a860cd11639bfcc83dfaf82f79d93300fc5f410e7d09945a56bd1019e641408027a98bba9971451d69269578563cbe34caaa23fe')
 
 build() {
   mkdir build
