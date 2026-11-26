@@ -3,7 +3,7 @@
 pkgname=devcontainer-cli
 _npm_namespace="@devcontainers"
 _npm_name="cli"
-pkgver=0.89.0
+pkgver=0.91.0
 pkgrel=1
 pkgdesc="Dev container CLI, which can take a devcontainer.json and create and configure a dev container from it."
 arch=("any")
@@ -13,10 +13,12 @@ depends=("nodejs")
 makedepends=("npm" "jq")
 optdepends=()
 source=("https://registry.npmjs.org/${_npm_namespace}/${_npm_name}/-/${_npm_name}-${pkgver}.tgz")
-sha256sums=('49c7d71d40058f89e1fd8b019a193ed4215b7fc773c0f6273f7032a46cd33f4b')
+sha256sums=('d83e2291a799818ea8abfba634f0bb699f05a8df21376feefb07bb631844f41f')
 noextract=("${_npm_name}-${pkgver}.tgz")
 
 package() {
+	install -dm 644 -t "${srcdir}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+
 	npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${_npm_name}-${pkgver}.tgz"
 
 	# npm gives ownership of ALL FILES to build user
