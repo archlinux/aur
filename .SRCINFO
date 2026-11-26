@@ -1,6 +1,6 @@
 pkgbase = arkha-bin
 	pkgdesc = A fast graphical file manager (prebuilt binary)
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/dekart811/arkha
 	arch = x86_64
@@ -25,11 +25,12 @@ pkgbase = arkha-bin
 	optdepends = engrampa: creating and extracting archives
 	optdepends = file-roller: creating and extracting archives
 	optdepends = xarchiver: creating and extracting archives
+	optdepends = ark: creating and extracting archives
 	optdepends = xterm: Open in Terminal, if no other terminal is installed
 	provides = arkha
 	conflicts = arkha
 	options = !debug
-	source_x86_64 = https://github.com/dekart811/arkha/releases/download/v1.2.0/arkha-1.2.0-x86_64.tar.gz
-	sha256sums_x86_64 = 2269a49ff3ee831cc45c788fd30e34942e4c840b09c03727bcacf4e36c603227
+	source_x86_64 = https://github.com/dekart811/arkha/releases/download/v1.3.0/arkha-1.3.0-x86_64.tar.gz
+	sha256sums_x86_64 = 7e9414cf0ad30fec677bf5dd51ed4c24caee0d7987261bbea752d32b98837b87
 
 pkgname = arkha-bin
