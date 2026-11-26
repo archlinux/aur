@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RBM
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='RBM: a R package for microarray and RNA-Seq data analysis'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-marray
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0d7b3cccfc89587e488447c46824833a8258bb96ad5e62b8afc26e14aeb4a5e3')
+sha256sums=('e37f968f9c3caade88955d3805d80bcf5bc7f6bb333279d5edbf48fe3e566e0f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
