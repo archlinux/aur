@@ -1,0 +1,17 @@
+pkgbase = query-json-bin
+	pkgdesc = Fast, portable implementation of a jq-inspired language
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/davesnx/query-json
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = glibc
+	provides = query-json
+	conflicts = query-json
+	options = !debug
+	source = query-json-bin-0.6.1-LICENSE::https://raw.githubusercontent.com/davesnx/query-json/0.6.1/LICENSE
+	sha256sums = 6640986ac6f29f8e2df077c0f0cc50322444a1f9fa29e3c51d95f08a6eb5e9fb
+	source_x86_64 = query-json-bin-0.6.1-x86_64.zip::https://github.com/davesnx/query-json/releases/download/0.6.1/query-json-linux-x64.zip
+	sha256sums_x86_64 = c19e6a31ca48445c04fa6a92ad4dda734ffb268c90fef2ba15bd197dd9df4b88
+
+pkgname = query-json-bin
