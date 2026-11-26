@@ -1,6 +1,6 @@
 pkgbase = musql-bin
 	pkgdesc = SQLite-compatible SQL, accelerated by columnar storage and a JIT compiler
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/samyfodil/musql
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = musql-bin
 	provides = musql-convert
 	conflicts = musql
 	options = !strip
-	source_x86_64 = musql-x86_64-0.7.0.tgz::https://github.com/samyfodil/musql/releases/download/v0.7.0/musql-linux-amd64.tar.gz
-	sha256sums_x86_64 = f770705529241156469d9177756a49a9cd0f81d147f19479e90f1f09e89aa6f8
-	source_aarch64 = musql-aarch64-0.7.0.tgz::https://github.com/samyfodil/musql/releases/download/v0.7.0/musql-linux-arm64.tar.gz
-	sha256sums_aarch64 = b15d38d52b15be9be24c59ffaa7741e81219a18a34ec721859666c860f7bfdad
+	source_x86_64 = musql-x86_64-0.8.0.tgz::https://github.com/samyfodil/musql/releases/download/v0.8.0/musql-linux-amd64.tar.gz
+	sha256sums_x86_64 = 9dc4a4a7e9abf699e36feb202aa4cca78eb7a2ffb5e0e047e6d7b4605e0c49f3
+	source_aarch64 = musql-aarch64-0.8.0.tgz::https://github.com/samyfodil/musql/releases/download/v0.8.0/musql-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7d5fb991279797e83328847ab863614ef37c53289129365826f4947a75efc45a
 
 pkgname = musql-bin
