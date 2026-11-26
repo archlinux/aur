@@ -1,7 +1,7 @@
 # Maintainer: Ilya Obukhov <ilya.obukhov.bs@gmail.com>
 # Rendered by deploy/scripts/release-aur.sh from packaging/aur/PKGBUILD.in — edit the template, not the AUR copy.
 pkgname=io-workshop-act-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='ACT — a MyAnimeList client (desktop build)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip')
 _deb="io-workshop-act_${pkgver}_amd64.deb"
 source=("$_deb::https://github.com/MustD/act/releases/download/$pkgver/$_deb" 'LICENSE')
 noextract=("$_deb")
-sha256sums=('f3520a59a42bb7816f2664dafa8ac5aeb9e129d4715b9636fac1dedf2999150b' '728f66fa204d52fb356bbd85728252f77f77ba61be57816b9b478d772c7bc914')
+sha256sums=('c2efb04e237e4c8761c9dc98366e5b9c5fa5af58b2c99e53135f895c9ebc4e10' '728f66fa204d52fb356bbd85728252f77f77ba61be57816b9b478d772c7bc914')
 
 package() {
 	# A .deb's maintainer scripts never run here, so the menu entry, icon and /usr/bin link are installed by hand.
