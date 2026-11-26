@@ -2,7 +2,7 @@
 
 pkgname=moonlight-qt-qiin2333-bin
 _pkgname=moonlight-qt-qiin2333
-pkgver=6.5.0
+pkgver=6.5.7
 pkgrel=1
 pkgdesc="GameStream client for PCs with extra features (qiin2333 fork, prebuilt AppImage)"
 arch=('x86_64' 'aarch64')
@@ -34,10 +34,10 @@ conflicts=('moonlight-qt' "$_pkgname")
 options=('!strip' '!debug' '!emptydirs')
 source=("LICENSE::https://raw.githubusercontent.com/qiin2333/moonlight-qt/v$pkgver/LICENSE")
 sha256sums=('589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2')
+sha256sums_x86_64=('60808708129b54c0016b2cf421410c21409ba3859fa963b5b392ad425835a931')
+sha256sums_aarch64=('aec90c578f24e97b9db1943330a50ab3193f17e02e472146b1df77a80dc1f163')
 source_x86_64=("Moonlight-VPlus-$pkgver-x86_64.AppImage::https://github.com/qiin2333/moonlight-qt/releases/download/v$pkgver/Moonlight-VPlus-$pkgver-x86_64.AppImage")
-sha256sums_x86_64=('35e41bef7f23125c25a6f2ee8f283a2f4e54283082fa2b8014348aab311fc3ea')
 source_aarch64=("Moonlight-VPlus-$pkgver-aarch64.AppImage::https://github.com/qiin2333/moonlight-qt/releases/download/v$pkgver/Moonlight-VPlus-$pkgver-aarch64.AppImage")
-sha256sums_aarch64=('33c33341c766118dc351f746ca4e93d35cc49efb10dcf70c1daed13e6333f21b')
 
 prepare() {
   cd "$srcdir"
