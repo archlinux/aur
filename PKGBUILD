@@ -2,7 +2,7 @@
 
 pkgname=modustoolbox-gcc-system
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Configures modustoolbox to use the system install of the arm-none-eabi gcc and binutils"
 arch=('x86_64')
 license=("LicenseRef-${pkgname}")
@@ -13,5 +13,5 @@ sha256sums=('a22c791de9d7002feb2c443b77bc57d9a6431b4c67b375a0c40274a981ddf895')
 options=('!strip')
 
 package() {
-    cp "${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
+    install -m 644 -D "${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
 }
