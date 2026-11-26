@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ompBAM
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-usethis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('af3f77a279249f789ab90d6ee324f83a')
-b2sums=('1c295991a3044361a892d1b4e65b0c4508edc36fe6bc49d3e0ceb7ab57e8e6aaff4cf78b9f61964bc0eb9984d548d72253d9e163e02caf8d60b6f333c2332f2d')
+md5sums=('13e33aa222d8705e969af021f6456320')
+b2sums=('dc7485be8733bbc89795e91e4f31249e3629c29518bffcb1d460c894ec48fc3ab5f5547f585e84e32fc407681fa4f7d6f6437239559e2231be0a9e2443327337')
 
 build() {
   mkdir build
