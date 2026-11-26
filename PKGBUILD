@@ -1,0 +1,39 @@
+# Maintainer: JageloR <jagelor@yandex.ru>
+pkgname=tray-idle-inhibitor
+pkgver=0.1.1
+pkgrel=1
+pkgdesc="Апплет трея: инхибитор idle для Wayland (labwc/LXQt) — wayland + logind"
+arch=('x86_64' 'aarch64')
+url="https://github.com/JageloR/tray-idle-inhibitor"
+license=('MIT')
+depends=('gcc-libs')
+optdepends=('playerctl: автовключение инхибитора при воспроизведении медиа (--auto)')
+makedepends=('cargo')
+install="${pkgname}.install"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('2ac9c0aea1b157ee56d0ceda06d3d732099cfaa135ad53e8818ddc99a3de2cbd')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  cargo build --frozen --release --locked
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+  cargo test --frozen --release --locked
+}
+
+package() {
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 config.toml "${pkgdir}/etc/xdg/${pkgname}/config.toml"
+  install -Dm644 "${pkgname}.desktop" "${pkgdir}/etc/xdg/autostart/${pkgname}.desktop"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+}
