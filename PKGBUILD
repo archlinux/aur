@@ -37,18 +37,14 @@ latestver() {
 package() {
   local _dir="blaze-v${pkgver}-${CARCH}-unknown-linux-gnu"
 
-  # blaze runs ra-jit and blaze-proc-macro-srv from out of the directory of its own
-  # executable, so the programs stay together here and /usr/bin points at them
-  install -d "${pkgdir}/usr/lib/blaze" "${pkgdir}/usr/bin"
-  install -m755 "${_dir}"/{blaze,cargo-blaze,cargo-ra-jit,ra-jit,ra-jit-rustc,ra-jit-rustc-first,blaze-proc-macro-srv} \
-    "${pkgdir}/usr/lib/blaze/"
-  ln -s ../lib/blaze/blaze "${pkgdir}/usr/bin/blaze"
-  ln -s ../lib/blaze/cargo-blaze "${pkgdir}/usr/bin/cargo-blaze"
-  ln -s ../lib/blaze/cargo-ra-jit "${pkgdir}/usr/bin/cargo-ra-jit"
+  # Upstream's release now ships one self-contained executable. cargo installs
+  # expose that same program as blaze-engine as well.
+  install -Dm755 "${_dir}/blaze" "${pkgdir}/usr/bin/blaze"
+  ln -s blaze "${pkgdir}/usr/bin/blaze-engine"
 
   install -Dm644 "${_dir}/LICENSE-MIT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+  install -Dm644 "${_dir}/LICENSE-APACHE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
   install -Dm644 "${_dir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "${_dir}/CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 }
 
 check() {
