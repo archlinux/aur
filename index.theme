@@ -1,0 +1,6 @@
+[Icon Theme]
+Name=macOS Sequoia
+Name[zh_CN]=macOS Sequoia
+Comment=macOS Sequoia cursors, extracted from Apple's update image
+Comment[zh_CN]=macOS Sequoia 光标（从 Apple 系统更新镜像提取）
+Inherits=breeze_cursors

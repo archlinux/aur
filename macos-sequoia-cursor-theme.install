@@ -1,0 +1,7 @@
+post_install() {
+  cat <<'MSG'
+==> These are Apple's cursors. Read /usr/share/licenses/macos-sequoia-cursor-theme/NOTICE.txt
+    before using them, and do not redistribute the built package.
+==> Select the theme in System Settings > Colors & Themes > Cursors > macOS Sequoia.
+MSG
+}

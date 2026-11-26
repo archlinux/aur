@@ -1,0 +1,20 @@
+pkgbase = macos-sequoia-cursor-theme
+	pkgdesc = macOS Sequoia cursor theme for KDE Plasma and other XCursor desktops (cursors extracted from Apple at build time)
+	pkgver = 15.8.3
+	pkgrel = 1
+	url = https://support.apple.com/en-us/100100
+	install = macos-sequoia-cursor-theme.install
+	arch = any
+	license = LicenseRef-Apple
+	makedepends = python
+	makedepends = python-pillow
+	makedepends = poppler
+	optdepends = breeze-cursors: fallback for the few cursors macOS has no equivalent for
+	source = extract_cursors.py
+	source = index.theme
+	source = NOTICE.txt
+	sha256sums = 3e2d536349ff227a1b283f66bfcfcd5170ec09d2c3f8aee166e9260dbe626059
+	sha256sums = 29fe18dc5edeb03fcf8cadee9325fe381449148f3fa372313a7e0fef61a658d9
+	sha256sums = 31a9dd8d0c8a616cd22eada1b52cf4eda6aaf0473d89a4eae1d4d5f24519f763
+
+pkgname = macos-sequoia-cursor-theme
