@@ -1,0 +1,21 @@
+pkgbase = nowhere-bin
+	pkgdesc = TCP and UDP relay over TLS and QUIC
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/NodePassProject/Nowhere
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = nowhere
+	conflicts = nowhere
+	options = !debug
+	source = nowhere-bin-3.4.0-LICENSE::https://raw.githubusercontent.com/NodePassProject/Nowhere/v3.4.0/LICENSE
+	sha256sums = c05aecf60628f61ee41b664a1d9fc51f448b65143e5dda5988f2199691cda5d5
+	source_x86_64 = nowhere-bin-3.4.0-x86_64.tar.gz::https://github.com/NodePassProject/Nowhere/releases/download/v3.4.0/nowhere-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e2fe08c135198415e73495b6835e45e3a512f4cdf347a2ffe6871367929c2e34
+	source_aarch64 = nowhere-bin-3.4.0-aarch64.tar.gz::https://github.com/NodePassProject/Nowhere/releases/download/v3.4.0/nowhere-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2acf03a50b7be4b85280f5093e9f083cbb507603088fb6bd3eb2b5063104b316
+
+pkgname = nowhere-bin
