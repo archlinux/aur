@@ -1,11 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iClusterPlus
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Integrative clustering of multi-type genomic data"
+pkgdesc="Integrative clustering of multi-omics data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-2.0-or-later')
@@ -22,8 +22,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6be13290ff87571d769f84f79113387d')
-b2sums=('76f224cd50516f1f0e2ece9fd1b12771cb0f942e352f6e9774c2fb136c7ca37b71f7563e810d17ff885d1f56f4fe7609fdd646a5fa84706ab90628f6ef889b35')
+md5sums=('b18af284469f92fe7513e6ae227753e9')
+b2sums=('ba3ef83977e6e4efee061e70865c245d34f3d9af33d57686ea106de6f1dbd10f4088ff8a1e80dd4d7d2d61b0a2481a54a9b8d9e6a38101bb535ffd6959c9052f')
 
 build() {
   mkdir build
