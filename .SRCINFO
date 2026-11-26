@@ -1,0 +1,17 @@
+pkgbase = graymatter-bin
+	pkgdesc = Persistent memory for AI agents
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/angelnicolasc/graymatter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = graymatter
+	conflicts = graymatter
+	options = !debug
+	source_x86_64 = graymatter-bin-0.21.0-x86_64.tar.gz::https://github.com/angelnicolasc/graymatter/releases/download/v0.21.0/graymatter_0.21.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 387128420708ecff1d34def4b53851cbe60114e3f7bae574103952d8fe1b87d8
+	source_aarch64 = graymatter-bin-0.21.0-aarch64.tar.gz::https://github.com/angelnicolasc/graymatter/releases/download/v0.21.0/graymatter_0.21.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2dbe267c2a9f29d867ca8e057e8ae042a5b89a359edecedd9268299bfd0dce68
+
+pkgname = graymatter-bin
