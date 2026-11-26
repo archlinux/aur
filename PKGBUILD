@@ -1,5 +1,5 @@
-# Maintainer: AlexDevFlow <107987666+AlexDevFlow@users.noreply.github.com>
-# Contributor: cypress-exe
+# Maintainer: cypress-exe
+# Contributor: AlexDevFlow <107987666+AlexDevFlow@users.noreply.github.com>
 #
 # Stable package: tracks tagged GitHub releases. The tag-triggered release
 # workflow (.github/workflows/release.yml) sets `pkgver` and pushes this to
