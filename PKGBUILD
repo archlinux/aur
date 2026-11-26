@@ -1,7 +1,7 @@
 # Maintainer: Pierre Sauvage <m.sauvage.pierre@gmail.com>
 pkgname=passel-bin
 _pkgname=passel
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A pass-compatible password manager for GNOME (prebuilt binary)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ replaces=('gnome-vault-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
 # Replace per release with the sha256 published next to the tarball, or
 # regenerate locally with `updpkgsums`.
-sha256sums=('c842cc7b5ead6e08512eff9583cf5bafbf0675f4a33a1fe38ab10eb38e791c9d')
+sha256sums=('0c8a24aeea772fb376694e21e89ea6b09654081c6b79c0de634522f090e4b37b')
 
 package() {
     cp -a "$srcdir/usr" "$pkgdir/"
