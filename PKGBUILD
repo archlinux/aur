@@ -9,9 +9,8 @@ license=('MIT')
 depends=('gcc-libs' 'libxcb' 'libxau' 'libxdmcp' 'libxkbcommon')
 provides=('shotori')
 conflicts=('shotori' 'shotori-git' 'shotori-bin')
-_rel=v0.19.1-clipboard1
-source=("$url/releases/download/${_rel}/shotori-${_rel}-x86_64.tar.gz")
-sha256sums=('9f843d59a976d68069947e29a6a0496c7bc176b641aa0a00803481226bba4cdd')
+source=("$url/releases/download/v0.19.1-clipboard2/shotori-__TAG__-x86_64.tar.gz")
+sha256sums=('79d9c953fdd0c5028917a2ecf7e241e5cc08485a3c706c3890a8ddd60e1d0f68')
 
 package() {
   install -Dm755 shotori "$pkgdir/usr/bin/shotori"
