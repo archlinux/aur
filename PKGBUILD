@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sizepower
-_pkgver=1.82.0
+_pkgver=1.84.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6d27f31ec4cddbbc786c9ef47ef3b62c')
-b2sums=('b9be47c958537b21417f550b39af987baa555514144cfda252c09eb367a835164715dbd848e987bea2aa56807a846f3afdeaeadc1f3981db17cfcc47303583d8')
+md5sums=('fd31d1702f9db83f9b15b9328748fdec')
+b2sums=('d35bb13508a6c5ae607ed86b702be2865dafd97fa58fdb5d09c8ed9ab0dd74c1645f8a66e4dc80f4621290b941a5099623c44ee5cb706c136593d9973fbdd637')
 
 build() {
   mkdir build
