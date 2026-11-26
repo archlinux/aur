@@ -1,0 +1,17 @@
+pkgbase = csprecon-bin
+	pkgdesc = Discover target domains using Content Security Policy headers
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/edoardottt/csprecon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = csprecon
+	conflicts = csprecon
+	options = !debug
+	source_x86_64 = csprecon-bin-0.5.0-x86_64.zip::https://github.com/edoardottt/csprecon/releases/download/v0.5.0/csprecon_0.5.0_linux_amd64.zip
+	sha256sums_x86_64 = ba5553165e20b3a615e9b86b56c4fbae76b1ec985c5bf01478e7235f9682a03f
+	source_aarch64 = csprecon-bin-0.5.0-aarch64.zip::https://github.com/edoardottt/csprecon/releases/download/v0.5.0/csprecon_0.5.0_linux_arm64.zip
+	sha256sums_aarch64 = d89e0383954be53bc72a36291abffe981d625fcda5539c263d391d4b2892835f
+
+pkgname = csprecon-bin
