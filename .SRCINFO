@@ -1,14 +1,13 @@
 pkgbase = deucessh-git
 	pkgdesc = SSH client and server library (development version)
 	pkgver = 1.0.0.r532.79c3bc8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RealDeuce/DeuceSSH
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = cmake
 	makedepends = git
-	makedepends = pkgconf
-	depends = botan
+	depends = openssl
 	provides = deucessh
 	provides = libdeucessh.so
 	conflicts = deucessh

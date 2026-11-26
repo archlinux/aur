@@ -3,16 +3,15 @@
 pkgname=deucessh-git
 _pkgname=deucessh
 pkgver=1.0.0.r532.79c3bc8
-pkgrel=1
+pkgrel=2
 pkgdesc="SSH client and server library (development version)"
 arch=('x86_64')
 url="https://github.com/RealDeuce/DeuceSSH"
 license=('BSD-2-Clause')
-depends=('botan')
+depends=('openssl')
 makedepends=(
   'cmake'
   'git'
-  'pkgconf'
 )
 provides=(
   "${_pkgname}"
@@ -35,7 +34,7 @@ build() {
     -S "${_pkgname}"
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
-    -DDEUCESSH_CRYPTO_BACKEND=Botan
+    -DDEUCESSH_CRYPTO_BACKEND=OpenSSL
     -DDEUCESSH_BUILD_STATIC=OFF
   )
   cmake "${cmake_options[@]}"
