@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE.package
+!redragon-rgb-bin.install

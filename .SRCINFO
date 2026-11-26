@@ -1,0 +1,21 @@
+pkgbase = redragon-rgb-bin
+	pkgdesc = GTK4/libadwaita app and CLI to configure RGB lighting on Redragon M711 mice and K556 keyboards
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/codingkoala/redragon-rgb
+	install = redragon-rgb-bin.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python>=3.10
+	depends = python-gobject
+	depends = python-cairo
+	depends = gtk4
+	depends = libadwaita>=1.6
+	depends = libusb
+	provides = redragon-rgb=0.3.0
+	conflicts = redragon-rgb
+	noextract = redragon-rgb_0.3.0_all.deb
+	source = redragon-rgb_0.3.0_all.deb::https://github.com/codingkoala/redragon-rgb/releases/download/v0.3.0/redragon-rgb_0.3.0_all.deb
+	sha256sums = c765596a9e0f0bc5cf6cd1f079d342035a0e19b112e055a330aa93104133f190
+
+pkgname = redragon-rgb-bin

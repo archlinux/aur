@@ -1,0 +1,16 @@
+# Equivale ao postinst/postrm do .deb oficial
+_postinstall() {
+  if [[ -x /usr/bin/udevadm ]]; then
+    /usr/bin/udevadm control --reload-rules || true
+    /usr/bin/udevadm trigger --subsystem-match=usb --subsystem-match=hidraw || true
+  fi
+}
+
+post_install() { _postinstall; }
+post_upgrade() { _postinstall; }
+
+post_remove() {
+  if [[ -x /usr/bin/udevadm ]]; then
+    /usr/bin/udevadm control --reload-rules || true
+  fi
+}
