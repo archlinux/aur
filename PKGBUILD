@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Illumina450ProbeVariants.db
-_pkgver=1.49.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1ccba9853ade48f2cc4ae17415523825')
-b2sums=('609aca40f00140013b606f00910661fe507cc981b36454565d4a4ebc42fe5e8eb7a566693a95e2d174e245311769f5f00dab70bbbad3d6f8e9ad0212c49ed853')
+md5sums=('bd29112a23e4754b5f28d032d484b21c')
+b2sums=('3ecfa58976bba8af48ada13b053b2d64286216ecd8ac79d0076f6c237f97d41d04484f533d3614315e9dd908d00766618a951fa53ed3d38b2ce45433b57cc1b3')
 
 build() {
   mkdir build
