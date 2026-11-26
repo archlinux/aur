@@ -1,0 +1,18 @@
+pkgbase = deadcheck-bin
+	pkgdesc = Dead man's switch that does not rely on your own infrastructure
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/adamdecaf/deadcheck
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = deadcheck
+	conflicts = deadcheck
+	options = !debug
+	source_x86_64 = deadcheck-bin-0.8.1-x86_64.tar.gz::https://github.com/adamdecaf/deadcheck/releases/download/v0.8.1/deadcheck_0.8.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9178f548999ce5c033883531842a8dc7c11300b803a2fa4d7a533eac9090349f
+	source_aarch64 = deadcheck-bin-0.8.1-aarch64.tar.gz::https://github.com/adamdecaf/deadcheck/releases/download/v0.8.1/deadcheck_0.8.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 78c1363bc49d18dd75f96480d8c9df778ee50377587b5e6f7fc4005ff4c6443e
+
+pkgname = deadcheck-bin
