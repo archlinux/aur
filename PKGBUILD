@@ -1,10 +1,10 @@
 # Maintainer: Adityarup Laha <me@adityaruplaha.me>
 
 _pkgname=scrapper
-_pkgver=1.6.3
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Bindings to C++ Libraries for Single-Cell Analysis"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -30,15 +30,14 @@ optdepends=(
   r-knitr
   r-org.mm.eg.db
   r-rmarkdown
-  r-scater
   r-scrnaseq
   r-singlecellexperiment
   r-summarizedexperiment
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('40e0127fb2a456d8ace5e092eb8f41ec')
-b2sums=('67cc00833ae2a6ae81fa1e1024889bcd589708111905302b973c4656cffc082afdf1251b9c14fa1b318529d0258d7849b5162acda7c7e2fa4841e407a32f5568')
+md5sums=('b0c6a59e15fe68496c9e46361b25e29b')
+b2sums=('000ca7540da20581767487e3cf64b3ff74319565f78e88acf93e48f4c6af7078795f55dd6c2645e6229f06cb50872c324449d8447f082d3b28539fb8fb5fce4d')
 
 build() {
   mkdir build
