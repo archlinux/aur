@@ -1,6 +1,6 @@
 pkgbase = zcall-gui-bin
 	pkgdesc = Native Project Z control panel for the zcalld local AI gateway (binary)
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/zcall-gui
 	arch = x86_64
@@ -17,12 +17,12 @@ pkgbase = zcall-gui-bin
 	depends = hicolor-icon-theme
 	optdepends = xorg-xwayland: run on Wayland sessions
 	optdepends = noto-fonts-cjk: Chinese and Japanese glyphs
-	provides = zcall-gui=0.1.10
+	provides = zcall-gui=0.1.11
 	conflicts = zcall-gui
 	options = !strip
-	source_x86_64 = zcall-gui-v0.1.10-x86_64-unknown-linux-gnu.tar.gz::https://github.com/LIghtJUNction/zcall-gui/releases/download/v0.1.10/zcall-gui-v0.1.10-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 931bd2173e31dc1f6f12a7165c32ae1aa8d137cce0219bb0add061e55f7cd7ec
-	source_aarch64 = zcall-gui-v0.1.10-aarch64-unknown-linux-gnu.tar.gz::https://github.com/LIghtJUNction/zcall-gui/releases/download/v0.1.10/zcall-gui-v0.1.10-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 1afc1912b92f3d24c481bde0c6dc51fce97a294ae00828ae3de1ade088ae6036
+	source_x86_64 = zcall-gui-v0.1.11-x86_64-unknown-linux-gnu.tar.gz::https://github.com/LIghtJUNction/zcall-gui/releases/download/v0.1.11/zcall-gui-v0.1.11-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 82ffe2bbcc179ede5690e5bbaa2d0c856c3966a4183a7259590cda825f8a939d
+	source_aarch64 = zcall-gui-v0.1.11-aarch64-unknown-linux-gnu.tar.gz::https://github.com/LIghtJUNction/zcall-gui/releases/download/v0.1.11/zcall-gui-v0.1.11-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b69a547b35dda3dbe6e05597e06e252424fc7444e7a7b9a1a41374697e60ab72
 
 pkgname = zcall-gui-bin
