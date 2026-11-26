@@ -3,7 +3,7 @@
 pkgname=dvb-firmware-siliconlabs
 pkgver=22.06
 pkgrel=1
-pkgdesc="Silicon Labs firmware for Geniatech MyGica D202 / PT360 / T230 / T230A / T230C / T230C2 (August DVB-T210 / DVB-T210 v2.0 / DVB-T230, eyeTV T2, Evolveo Sigma T2, Openbox T230C), GoTView MasterHD 3, Hauppauge WinTV-HVR-900H / WinTV-HVR-901H / WinTV-HVR-930 / WinTV-HVR-935 / WinTV-HVR-975 / WinTV-HVR-2205 / WinTV-soloHD / WinTV-dualHD / WinTV-quadHD, PCTV QuatroStick 521e / QuatroStick 522e / tripleStick 292e, DVBSky T330 / T680CI / T9580, Evromedia Full Hybrid Full HD, TechnoTrend CT2-4400 / CT2-4500 CI / CT2-4650 CI, Terratec H7 Rev.4 / Cinergy T2 Stick HD."
+pkgdesc="Silicon Labs firmware for Geniatech MyGica (August, eyeTV T2, Evolveo Sigma T2, Openbox), GoTView MasterHD 3, Hauppauge WinTV, PCTV QuatroStick / tripleStick, DVBSky, Evromedia Full Hybrid Full HD, TechnoTrend, Terratec."
 arch=('any')
 license=('LicenseRef-SiliconLabs-Redistribution')
 url="https://www.silabs.com"
