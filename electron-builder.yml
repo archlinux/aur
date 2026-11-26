@@ -1,7 +1,0 @@
-productName: Elephicon
-copyright: "© 2020-2024 sprout2000"
-directories:
-  output: release
-  buildResources: assets
-files:
-  "dist/**/*"
