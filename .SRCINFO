@@ -1,0 +1,15 @@
+pkgbase = scenarigo-bin
+	pkgdesc = End-to-end scenario testing for HTTP and gRPC servers
+	pkgver = 0.29.0
+	pkgrel = 1
+	url = https://github.com/scenarigo/scenarigo
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = scenarigo
+	conflicts = scenarigo
+	options = !debug
+	source_x86_64 = scenarigo-bin-0.29.0-x86_64.tar.gz::https://github.com/scenarigo/scenarigo/releases/download/v0.29.0/scenarigo_v0.29.0_go1.26.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c3fd00b8309508d9a4eba8e3881ee5e60ff18a417cd05af6cadc301ab4123e56
+
+pkgname = scenarigo-bin
