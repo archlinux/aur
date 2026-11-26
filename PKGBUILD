@@ -1,7 +1,7 @@
 # Maintainer: dekart811 <mail@dekart811.net>
 
 pkgname=arkha
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A fast graphical file manager'
 arch=('x86_64' 'aarch64')
@@ -31,6 +31,7 @@ optdepends=(
   'engrampa: creating and extracting archives'
   'file-roller: creating and extracting archives'
   'xarchiver: creating and extracting archives'
+  'ark: creating and extracting archives'
   'xterm: Open in Terminal, if no other terminal is installed'
 )
 # Cargo strips the program: there's nothing for a -debug package.
@@ -38,7 +39,7 @@ options=('!debug')
 # The release's sources, as GitHub packs the tag v$pkgver. The checksum is
 # set for each release (updpkgsums, then makepkg --printsrcinfo > .SRCINFO).
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e5c15bdbda375387bb732c5eae9b6345414b27633df42f373be04449228df7c5')
+sha256sums=('bb98ed4ea498df287a25d22aded13ac69768bccb007592c176120061891bc62a')
 
 prepare() {
   cd "$pkgname-$pkgver"
