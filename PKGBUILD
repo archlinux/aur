@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ASAFE
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e1f1a3f0baf9a8b965bbe0a8f3ae7a30')
-b2sums=('6be821fbcd1bd6d2c05f865a3fd772bbc6a1c110f6631c2192cf41226fc8f4040548c1813576cef763a5a7a14d935e98b7a87b8fad52dc66c4b38bab30481a7f')
+md5sums=('9fa88698c5c2b76ff89b05e1eae31f70')
+b2sums=('0cdf39533b3450c120920296a53206858ae43cb3d6cf20e3c29b8458dff51a97eec1824c0df1f794c834ce834247aa892c491a61d96dc97175157613d98a754a')
 
 build() {
   mkdir build
