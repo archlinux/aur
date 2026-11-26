@@ -1,6 +1,6 @@
 # Maintainer: DeepChirp <deepchirp@archlinuxcn.org>
 pkgname=aacs-keydb-daily
-pkgver=20261125001238
+pkgver=20261126001035
 pkgrel=1
 pkgdesc='Contains the Key Database for the AACS Library (Daily Updates)'
 arch=('any')
@@ -9,7 +9,7 @@ depends=('libaacs')
 provides=("${pkgname%-daily}")
 conflicts=("${pkgname%-daily}")
 source=("keydb_eng-${pkgver}.zip::https://web.archive.org/web/${pkgver}/http://fvonline-db.bplaced.net/export/keydb_eng.zip")
-sha256sums=('a5a6e4f0cf676a7792df5151fa0a3b56686abea82306ff67395d4d6c3f306ebe')
+sha256sums=('38d7b3099cbaa1b8b777e21fc4627dce56ceaf8d6b87f5fc531affd8f029e42c')
 
 package() {
     install -Dm644 "${srcdir}/keydb.cfg" "${pkgdir}/etc/xdg/aacs/KEYDB.cfg"
