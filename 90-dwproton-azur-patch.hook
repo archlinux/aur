@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = dwproton-bin
+
+[Action]
+Description = 重新应用 dwproton 的 Azur Promilia 兼容驱动补丁…
+When = PostTransaction
+Exec = /usr/lib/dwproton-azur-patch/apply --quiet

@@ -1,0 +1,62 @@
+#!/bin/bash
+# 内部工具：把 dwproton 的 Wine 驱动还原成原版。
+# 由 dwproton-azur-patch.install（pacman 卸载本包时）自动调用，
+# 正常使用不需要手敲。
+#
+# 默认拒绝覆盖备份目录里不存在的文件，避免把一次失败应用变成永久损坏。
+set -euo pipefail
+
+TOOL="${DWPROTON_TOOL:-/usr/share/steam/compatibilitytools.d/dwproton}"
+STATE="${DWPROTON_AZUR_STATE:-/var/lib/dwproton-azur-patch}"
+FILES=(win32u.so winex11.so)
+
+QUIET=0
+for arg in "$@"; do
+  case "$arg" in
+    -q | --quiet) QUIET=1 ;;
+    *)
+      printf 'dwproton-azur-patch: 未知参数 %s\n' "$arg" >&2
+      exit 2
+      ;;
+  esac
+done
+
+log() { [ "$QUIET" = 1 ] || printf '%s\n' "$*"; }
+warn() { printf '%s\n' "$*" >&2; }
+
+if [ "${EUID:-$(id -u)}" -ne 0 ] && [ "${DWPROTON_AZUR_ALLOW_UNPRIVILEGED:-0}" != 1 ]; then
+  warn 'dwproton-azur-patch: 需要 root 权限（测试时可设 DWPROTON_AZUR_ALLOW_UNPRIVILEGED=1）'
+  exit 1
+fi
+
+DEST="$TOOL/files/lib/wine/x86_64-unix"
+
+if [ ! -d "$DEST" ]; then
+  warn "dwproton-azur-patch: 找不到 $DEST，没有需要还原的东西"
+  exit 0
+fi
+
+restored=0
+missing=()
+for f in "${FILES[@]}"; do
+  if [ -f "$STATE/orig/$f" ]; then
+    chmod u+w "$DEST/$f" 2>/dev/null || true
+    install -m 755 "$STATE/orig/$f" "$DEST/$f"
+    chmod 555 "$DEST/$f"
+    log "已还原原版驱动：$f"
+    restored=1
+  else
+    missing+=("$f")
+  fi
+done
+
+if [ ${#missing[@]} -gt 0 ]; then
+  warn "dwproton-azur-patch: 备份里没有 ${missing[*]}，这些文件保持原样"
+fi
+
+rm -f "$STATE/applied.state"
+
+if [ "$restored" = 0 ]; then
+  log '没有备份记录，dwproton 驱动未被本包改动过。'
+fi
+exit 0

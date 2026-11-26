@@ -1,0 +1,24 @@
+# pacman 安装脚本：装完就生效，卸载就还原，不需要用户手动跑命令。
+
+post_install() {
+  printf '==> 应用 dwproton 的 Azur Promilia 兼容驱动补丁\n'
+  if ! /usr/lib/dwproton-azur-patch/apply; then
+    printf '==> 未能应用补丁（dwproton 未安装，或版本与补丁不匹配）。\n' >&2
+    printf '==> 装好匹配版本的 dwproton-bin 后，重装本包或升级 dwproton-bin 会自动重试。\n' >&2
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  printf '==> 还原 dwproton 的 Wine 驱动\n'
+  /usr/lib/dwproton-azur-patch/revert || printf '==> 还原未完成，请检查 /var/lib/dwproton-azur-patch/orig\n' >&2
+}
+
+post_remove() {
+  if [ -d /var/lib/dwproton-azur-patch/orig ]; then
+    rm -rf /var/lib/dwproton-azur-patch
+  fi
+}

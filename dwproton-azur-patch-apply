@@ -1,0 +1,106 @@
+#!/bin/bash
+# 内部工具：把打补丁的 Wine Unix 驱动覆盖到已安装的 dwproton。
+# 由 dwproton-azur-patch.install（pacman 安装/升级时）和 alpm hook 自动调用，
+# 正常使用不需要手敲。
+#
+#   apply           把补丁驱动覆盖上去（幂等，重复跑等于校验）
+#   apply --quiet   不打印常规信息（hook 用）
+#   apply --force   跳过 dwproton 版本检查
+#
+# 环境变量（主要给测试用）：
+#   DWPROTON_TOOL        dwproton 兼容工具目录
+#   DWPROTON_AZUR_SRC    补丁二进制目录
+#   DWPROTON_AZUR_STATE  备份/状态目录
+#   DWPROTON_AZUR_EXPECT 期望的 dwproton 版本串
+set -euo pipefail
+
+TOOL="${DWPROTON_TOOL:-/usr/share/steam/compatibilitytools.d/dwproton}"
+SRC="${DWPROTON_AZUR_SRC:-/usr/share/dwproton-azur-patch}"
+STATE="${DWPROTON_AZUR_STATE:-/var/lib/dwproton-azur-patch}"
+EXPECT="${DWPROTON_AZUR_EXPECT:-dwproton-11.0-17}"
+FILES=(win32u.so winex11.so)
+
+QUIET=0
+FORCE=${DWPROTON_AZUR_FORCE:-0}
+for arg in "$@"; do
+  case "$arg" in
+    -q | --quiet) QUIET=1 ;;
+    -f | --force) FORCE=1 ;;
+    *)
+      printf 'dwproton-azur-patch: 未知参数 %s\n' "$arg" >&2
+      exit 2
+      ;;
+  esac
+done
+
+log() { [ "$QUIET" = 1 ] || printf '%s\n' "$*"; }
+warn() { printf '%s\n' "$*" >&2; }
+
+if [ "${EUID:-$(id -u)}" -ne 0 ] && [ "${DWPROTON_AZUR_ALLOW_UNPRIVILEGED:-0}" != 1 ]; then
+  warn 'dwproton-azur-patch: 需要 root 权限（测试时可设 DWPROTON_AZUR_ALLOW_UNPRIVILEGED=1）'
+  exit 1
+fi
+
+DEST="$TOOL/files/lib/wine/x86_64-unix"
+
+if [ ! -d "$DEST" ]; then
+  warn "dwproton-azur-patch: 找不到 $DEST —— dwproton 没装，或 DWPROTON_TOOL 指错了"
+  exit 1
+fi
+for f in "${FILES[@]}"; do
+  if [ ! -f "$SRC/$f" ]; then
+    warn "dwproton-azur-patch: 找不到补丁二进制 $SRC/$f"
+    exit 1
+  fi
+done
+
+# ---- 版本闸门：驱动是为特定 Wine ABI 编译的，版本不对不许覆盖 ----
+if [ "$FORCE" != 1 ] && [ -f "$TOOL/version" ]; then
+  if ! grep -q -- "$EXPECT" "$TOOL/version"; then
+    warn "dwproton-azur-patch: 版本不匹配，跳过覆盖。"
+    warn "  补丁为：「$EXPECT」构建"
+    warn "  实际是：$(head -1 "$TOOL/version")"
+    warn '  驱动与 Wine 内部结构强耦合，硬覆盖会崩溃。等本包跟进新版，'
+    warn '  或确认无碍后设 DWPROTON_AZUR_FORCE=1 重装本包。'
+    exit 1
+  fi
+fi
+
+# ---- 首次应用时备份原驱动，之后不再覆盖备份 ----
+install -d -m 700 "$STATE/orig"
+for f in "${FILES[@]}"; do
+  if [ ! -f "$STATE/orig/$f" ] && [ -f "$DEST/$f" ]; then
+    cp -a "$DEST/$f" "$STATE/orig/$f"
+    log "已备份原始 $f -> $STATE/orig/$f"
+  fi
+done
+
+# ---- 覆盖 ----
+changed=0
+for f in "${FILES[@]}"; do
+  if cmp -s "$SRC/$f" "$DEST/$f"; then
+    log "已是补丁版：$f"
+    chmod 555 "$DEST/$f"
+    continue
+  fi
+  chmod u+w "$DEST/$f" 2>/dev/null || true
+  install -m 755 "$SRC/$f" "$DEST/$f"
+  chmod 555 "$DEST/$f"
+  log "已应用补丁驱动：$f"
+  changed=1
+done
+
+{
+  printf 'expect=%s\n' "$EXPECT"
+  printf 'applied_at=%s\n' "$(date -Is)"
+  printf 'tool=%s\n' "$TOOL"
+  for f in "${FILES[@]}"; do
+    printf '%s=%s\n' "$f" "$(sha256sum "$DEST/$f" | cut -d' ' -f1)"
+  done
+} >"$STATE/applied.state"
+chmod 644 "$STATE/applied.state"
+
+if [ "$changed" = 1 ]; then
+  log '补丁已生效（删除本包即自动还原）。'
+fi
+exit 0
