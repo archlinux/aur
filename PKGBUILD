@@ -1,6 +1,6 @@
 # Maintainer: Hans-Dieter Buddenberg <hbuddenberg@gmail.com>
 pkgname=rdp-connect
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="🖥️ High-performance RDP connection manager for Hyprland, Niri & Wayland compositors with Quickshell, Walker & Wofi menus"
 arch=(any)
@@ -18,7 +18,7 @@ optdepends=(
 )
 install=rdp-connect.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('95d89f035e8b6a8c4a360d79f165e54bd0ac5f819b1fcf9689b077d4aea46cfc')
+sha256sums=('3dbf9c9346f2ac93c646e495402852da161688c7e3cecb4f1bae3dba0a2e244f')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver" || return
@@ -29,8 +29,9 @@ package() {
     # Shared library
     install -Dm644 lib/rdp-common.bash "${pkgdir}/usr/share/rdp-connect/lib/rdp-common.bash"
 
-    # Quickshell UI Modal
+    # Quickshell UI Modal & View-Only Shield
     install -Dm644 ui/shell.qml "${pkgdir}/usr/share/rdp-connect/ui/shell.qml"
+    install -Dm644 ui/shield.qml "${pkgdir}/usr/share/rdp-connect/ui/shield.qml"
 
     # Translations
     install -dm755 "${pkgdir}/usr/share/rdp-connect/i18n"
