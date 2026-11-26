@@ -2,7 +2,7 @@
 
 pkgname=wlink
 pkgver=0.1.3
-pkgrel=1
+pkgrel=3
 pkgdesc="wlink - WCH-Link(RV) command line tool"
 arch=($CARCH)
 url="https://github.com/ch32-rs/wlink"
@@ -11,9 +11,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
 depends=(
-    gcc-libs
-    glibc
-    libusb
+    libgcc
     systemd-libs
 )
 makedepends=(
@@ -21,7 +19,7 @@ makedepends=(
     rust
 )
 backup=()
-options=('!strip' '!debug')
+options=('!lto' '!strip' '!debug')
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 sha256sums=('be76e497a8176e624089d4a5ede6af839869e3b309e4988d30b5bf37e6b23270')
@@ -48,8 +46,8 @@ package() {
     cd "${srcdir}/${pkgname}/"
     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/50-wlink.rules" <<EOF
-SUBSYSTEM=="usb" ATTR{idVendor}="1a86" ATTR{idProduct}=="8010" MODE:="0666"
-SUBSYSTEM=="usb" ATTR{idVendor}="4348" ATTR{idProduct}=="55e0" MODE:="0666"
-SUBSYSTEM=="usb" ATTR{idVendor}="1a86" ATTR{idProduct}=="8012" MODE:="0666"
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="1a86", ATTR{idProduct}=="8010", TAG+="uaccess"
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="1a86", ATTR{idProduct}=="8012", TAG+="uaccess"
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="4348", ATTR{idProduct}=="55e0", TAG+="uaccess"
 EOF
 }
