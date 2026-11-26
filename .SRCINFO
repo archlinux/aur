@@ -1,0 +1,19 @@
+pkgbase = go-stress-bin
+	pkgdesc = HTTP, gRPC and WebSocket load testing tool
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/kamalyes/go-stress
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = go-stress
+	conflicts = go-stress
+	options = !debug
+	source = go-stress-bin-1.0.1-LICENSE::https://raw.githubusercontent.com/kamalyes/go-stress/v1.0.1/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = go-stress-bin-1.0.1-x86_64::https://github.com/kamalyes/go-stress/releases/download/v1.0.1/go-stress-linux-amd64
+	sha256sums_x86_64 = 19f11382ed7fdb445b35316d269753d535e3f9ae0f79b0f1edcd83f752587328
+	source_aarch64 = go-stress-bin-1.0.1-aarch64::https://github.com/kamalyes/go-stress/releases/download/v1.0.1/go-stress-linux-arm64
+	sha256sums_aarch64 = 242c837b974dc67933941035c1c533709ff9121d66f6f4990fe6bb5c14f27168
+
+pkgname = go-stress-bin
