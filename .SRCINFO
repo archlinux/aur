@@ -1,0 +1,16 @@
+pkgbase = minotari
+	pkgdesc = Tari layer 1 mainnet node, wallet, mining, and utility applications
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://github.com/tari-project/tari
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = protobuf
+	options = !lto
+	source = tari-6.2.0.tar.gz::https://github.com/tari-project/tari/archive/refs/tags/v6.2.0.tar.gz
+	b2sums = 7b5c0936f7197d451ab5236e32a0b8ca9b44a7d525e35e6d41ddf124f8bad5706f5aaf6786dbfd9aa164fc6172a1cf01a490806e4dea99fd63d9a8d1cbd994ab
+
+pkgname = minotari
