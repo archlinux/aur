@@ -1,17 +1,17 @@
 pkgbase = qrcode-barcode-scanner-bin
 	pkgdesc = Command-line QR code and barcode scanner with QR quality diagnostics
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/qrcode-ai-com/qrcode-barcode-scanner
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	provides = qrcode-barcode-scanner=0.12.0
+	provides = qrcode-barcode-scanner=0.12.1
 	conflicts = qrcode-barcode-scanner
 	conflicts = qrscan
 	options = !strip
 	options = !debug
-	source = https://github.com/qrcode-ai-com/qrcode-barcode-scanner/releases/download/v0.12.0/qrcode-barcode-scanner-cli-0.12.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 1e6aea17507d22b13a370de3531697264dc748f34a1039425e892c3ee008217c
+	source = https://github.com/qrcode-ai-com/qrcode-barcode-scanner/releases/download/v0.12.1/qrcode-barcode-scanner-cli-0.12.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 5e99d584447b03eef3818e14034c12ad09c88f31f8535b5929b0b846203a0665
 
 pkgname = qrcode-barcode-scanner-bin

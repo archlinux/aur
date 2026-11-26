@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=qrcode-barcode-scanner-bin
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='Command-line QR code and barcode scanner with QR quality diagnostics'
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip' '!debug')
 
 _archive="qrcode-barcode-scanner-cli-$pkgver-x86_64-unknown-linux-gnu"
 source=("$url/releases/download/v$pkgver/$_archive.tar.gz")
-sha256sums=('1e6aea17507d22b13a370de3531697264dc748f34a1039425e892c3ee008217c')
+sha256sums=('5e99d584447b03eef3818e14034c12ad09c88f31f8535b5929b0b846203a0665')
 
 package() {
   cd "$srcdir/$_archive" || return
