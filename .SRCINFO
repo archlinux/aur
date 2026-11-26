@@ -1,6 +1,6 @@
 pkgbase = r-tidysinglecellexperiment
 	pkgdesc = Brings SingleCellExperiment to the Tidyverse
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tidySingleCellExperiment
 	arch = any
@@ -41,7 +41,7 @@ pkgbase = r-tidysinglecellexperiment
 	optdepends = r-testthat
 	optdepends = r-tidyheatmap
 	optdepends = r-uwot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tidySingleCellExperiment_1.22.0.tar.gz
-	sha256sums = d9d17a1c0f1ab8a2eb7ce4e8c31ad37200069267f992b5f67b9a759862d48120
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tidySingleCellExperiment_1.24.0.tar.gz
+	sha256sums = 9d296735b0d0e1c59d61b383a418487f8d3448fd5ab273a7735b376c8c4ece0e
 
 pkgname = r-tidysinglecellexperiment
