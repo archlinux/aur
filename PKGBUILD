@@ -1,8 +1,8 @@
 # Maintainer: lzsnyy <710080675@qq.com>
 
 pkgname=trae-ide
-pkgver=2.3.103560
-pkgrel=3
+pkgver=2.3.106769
+pkgrel=1
 pkgdesc="AI-powered IDE by ByteDance"
 arch=('x86_64' 'aarch64')
 url="https://www.trae.cn/"
@@ -17,12 +17,12 @@ optdepends=('libappindicator-gtk3: System tray support'
 options=('!strip' '!debug')
 install=${pkgname}.install
 source=("trae.sh" "trae.desktop")
-source_x86_64=("Trae-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.103560/linux/TRAE-linux-x64.tar.gz")
-source_aarch64=("Trae-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.103560/linux/TRAE-linux-arm64.tar.gz")
+source_x86_64=("Trae-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/TRAE-linux-x64.tar.gz")
+source_aarch64=("Trae-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/TRAE-linux-arm64.tar.gz")
 b2sums=('893d21c29fb84a2b349084750b5499a2722c95ce64aba2ef7157c6a8364e5b6dcb6dca7249583c0d6a3fbde8492ac5fff2b937e77e3d53ba48e533e7d2e34ec9'
             '4f361b9a0735b952bc9800777b62e58cdd74c2bfb39c13d875ba5ec7ccd1045878423d822c58c01f23d60384b81a7575e32c71a11b98362e7a8cd96f855ca7cf')
-b2sums_x86_64=('859c942df91ae67a6419220096ba0b222772e63acef13eaedac5d0f763bbdcf2871255813df3c651cab19d022fab811b7bcd0de6ff4655e2e7886de306a1cb96')
-b2sums_aarch64=('32645241e50e527c115f7557a8a1fec8d4c904b84f806a05427df13bc60ee36f79ff274d0dc78f88eda74525bb0c7f1dd8e4669c16fc45706642c901bfd6bfaf')
+b2sums_x86_64=('8ed4c565822656339381bb7d8e18b1f2d62195ed1cfa5ae0cd4b47e9c0e58602c5676c2458e2721b0769bac249bafe0400c688def0fd9cb058049f8c611caf0d')
+b2sums_aarch64=('e0c538bce088ef6d59a8e649846db5075aa4faa1d5c83b73949b59c88cbd5d567b5053f39f4612c9ff655523efba2620634f3b993ec1af4e3ecd75177c6c7b38')
 
 # 国际版与国内版共用上游 code.png，右下角合成 INTL 角标以与国内版区分。
 _badge_icon() {
