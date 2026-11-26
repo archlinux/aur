@@ -3,8 +3,8 @@
 # Contributor: matrixDoppelganger <www.kinker31.com>
 
 pkgname=trenchbroom-git
-pkgver=v2025.3.r2218.g8f329f11e
-pkgrel=2
+pkgver=v2025.3.r2270.gcd41c6c07
+pkgrel=1
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games. (Git-nightly release)"
 arch=("i686" "x86_64")
 url="https://trenchbroom.github.io/"
@@ -43,7 +43,10 @@ _BUILDDIR=build
 build() {
 	mkdir -p "$_BUILDDIR"
 	cd "$_BUILDDIR"
-	cmake "$srcdir/trenchbroom" -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="cmake/packages"
+	cmake "$srcdir/trenchbroom" -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_PREFIX_PATH="cmake/packages" \
+	-G Ninja
 	cmake --build . --target TrenchBroom
 }
 
