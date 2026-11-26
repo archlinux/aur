@@ -1,12 +1,13 @@
 # Maintainer: Ilyas Turki <turki.ilyass at gmail dot com>
 pkgname=prayer-times
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Islamic Prayer Times Information and Notifications"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Yasso9/prayer-times"
 license=('MIT')
-depends=('dbus' 'openssl')
+depends=('gcc-libs' 'glibc')
+optdepends=('dbus: desktop notifications')
 makedepends=('rust')
 conflicts=('prayer-times-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
@@ -31,7 +32,7 @@ build() {
 check() {
     cd "${pkgname}-${pkgver}"
     export CARGO_HOME="${srcdir}/.cargo"
-    cargo test --release --frozen --locked -- --skip config::tests::test_config_from_str
+    cargo test --release --frozen --locked
 }
 
 package() {

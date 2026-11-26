@@ -1,18 +1,19 @@
 pkgbase = prayer-times
 	pkgdesc = Islamic Prayer Times Information and Notifications
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/Yasso9/prayer-times
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = rust
-	depends = dbus
-	depends = openssl
+	depends = gcc-libs
+	depends = glibc
+	optdepends = dbus: desktop notifications
 	conflicts = prayer-times-bin
 	options = !debug
 	options = !lto
-	source = prayer-times-0.4.4.tar.gz::https://github.com/Yasso9/prayer-times/archive/v0.4.4.tar.gz
+	source = prayer-times-0.4.5.tar.gz::https://github.com/Yasso9/prayer-times/archive/v0.4.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = prayer-times
