@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=acde
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0ddff9f928cf3296a67f7ff955e6cb4a')
-b2sums=('398a385777008c66d0af9b8ae77c4943b9e3c86a8fcacf5a91abad1047a5387ec0b9d37e88a1a309dae667d0f425c2101f54ec041918b04281b3c4f80366469b')
+md5sums=('8458b32c2b9f6770543803338f9f6552')
+b2sums=('81c33a426af2a06f85637f97e03f8759616b3c184a1e6172d2ef43601c6d122951efeb0d3b7277a0e3beebc2e20238ab60e127c3e2152f17a0b3a8c006042019')
 
 build() {
   mkdir build
