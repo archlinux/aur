@@ -2,7 +2,7 @@
 # Maintainer: pusi77 <pusineriandrea+gmail+com>
 
 pkgname=hypnotix-wayland
-pkgver=5.9
+pkgver=5.10
 pkgrel=1
 pkgdesc="An IPTV streaming application. (With Wayland support)."
 arch=(any)
@@ -22,7 +22,7 @@ depends=(
         )
 conflicts=(hypnotix hypnotix-git)
 source=("hypnotix-$pkgver.tar.gz::https://github.com/linuxmint/hypnotix/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('37399e3497c7494b07f82e7858b029124f308e23fb8cbf333c6adbc903ecc14d')
+sha256sums=('a0aef01c372c7fc649a03e60ca8da88f417bf591ed0bacf6cb4ff104b1fca1cc')
 prepare() {
         cd hypnotix-$pkgver
         sed -i "s/__DEB_VERSION__/$pkgver/g" usr/lib/hypnotix/hypnotix.py
