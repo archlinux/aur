@@ -1,0 +1,26 @@
+pkgbase = fileconverter
+	pkgdesc = Right-click file conversion for your Linux file manager (ffmpeg / ImageMagick / LibreOffice)
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/AlexDevFlow/Media-Converter
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-yaml
+	depends = ffmpeg
+	depends = imagemagick
+	optdepends = python-gobject: GTK progress and settings windows
+	optdepends = gtk4: GTK progress and settings windows
+	optdepends = libadwaita: GTK progress and settings windows
+	optdepends = tk: fallback GUI when GTK is unavailable
+	optdepends = ghostscript: PDF processing
+	optdepends = libreoffice-still: document conversions (docx, xlsx, pptx, epub, ...)
+	optdepends = python-nautilus: right-click menu in Nautilus (GNOME)
+	source = fileconverter-1.4.1.tar.gz::https://github.com/AlexDevFlow/Media-Converter/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = 1da6af081add865325fb4ebdb4573f3ab96b0bd431cbaf50d75ab05f8bf92c93
+
+pkgname = fileconverter
