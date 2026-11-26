@@ -1,6 +1,6 @@
 pkgbase = hasklets
 	pkgdesc = Desktop widgets for Wayland (weather, system, media, music servers, disks, processes, calendar, journal, backups) in Haskell
-	pkgver = 0.1.6.0
+	pkgver = 0.1.7.0
 	pkgrel = 1
 	url = https://github.com/prietus/hasklets
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = hasklets
 	optdepends = inter-font: the font of most themes
 	optdepends = systemd: the journal widget
 	options = !lto
-	source = hasklets-0.1.6.0.tar.gz::https://github.com/prietus/hasklets/archive/v0.1.6.0.tar.gz
-	sha256sums = 508bf6e53a97615f190556a76e750c6ccc8a7c766e0200ffbc49b49751fea0ad
+	source = hasklets-0.1.7.0.tar.gz::https://github.com/prietus/hasklets/archive/v0.1.7.0.tar.gz
+	sha256sums = 71de575656cc503a33c209fe1dbd9ba96d892407cc8cd3505e7eb2c9f086ffc2
 
 pkgname = hasklets
