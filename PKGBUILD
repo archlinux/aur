@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bacon
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Controlling bias and inflation in association studies using the empirical null distribution'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cc62fd9ee4ea866f779e47e92e979c8482d33fb1bbd2a2cc04925ad3bea4982a')
+sha256sums=('8c3ae7d46305a2ceba8b0934c94bbdd15be650405639b36cae7cc14e3448ad73')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
