@@ -1,16 +1,17 @@
 pkgbase = rrep
 	pkgdesc = Replaces strings with regular expressions in files and directories
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://sr.ht/~asnelt/rrep/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = gettext
 	depends = acl
-	source = https://git.sr.ht/~asnelt/rrep/refs/download/upstream/1.4.0/rrep-1.4.0.tar.gz
-	source = https://git.sr.ht/~asnelt/rrep/refs/download/upstream/1.4.0/rrep-1.4.0.tar.gz.asc
+	depends = attr
+	source = https://git.sr.ht/~asnelt/rrep/refs/download/upstream/1.4.1/rrep-1.4.1.tar.gz
+	source = https://git.sr.ht/~asnelt/rrep/refs/download/upstream/1.4.1/rrep-1.4.1.tar.gz.asc
 	validpgpkeys = 528E36DD2348C90F8B7FF085A441BB1D665FE6A8
-	sha256sums = f2f72ea6c6a57c3ada58d34aea315a6e5ac3eee2553cade9ec060383525aadb7
+	sha256sums = 1a816ebcdb0c51c1cdfc5fc7101b330a214e6492440fe1937ea44078dbee50ff
 	sha256sums = SKIP
 
 pkgname = rrep
