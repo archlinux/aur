@@ -1,6 +1,6 @@
 pkgbase = skwird
 	pkgdesc = An index of file names kept current, answered over a local socket
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://skwir.org
 	install = skwird.install
@@ -10,7 +10,7 @@ pkgbase = skwird
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = skwird-0.2.0.tar.gz::https://github.com/skwir-org/skwird/archive/v0.2.0.tar.gz
-	sha256sums = 78a33d216159469757505f186a4c9e68532662183723bbd331b22f2f145f2b0c
+	source = skwird-0.3.0.tar.gz::https://github.com/skwir-org/skwird/archive/v0.3.0.tar.gz
+	sha256sums = 94954733e71c09c9d7bfbe1ae1377ae15ccc24ed738d6c4da44ff7acc6ba821a
 
 pkgname = skwird

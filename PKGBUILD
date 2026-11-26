@@ -10,7 +10,7 @@
 # Maintainer: The skwir authors
 
 pkgname=skwird
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='An index of file names kept current, answered over a local socket'
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 install=skwird.install
 source=("$pkgname-$pkgver.tar.gz::$_repo/archive/v$pkgver.tar.gz")
-sha256sums=('78a33d216159469757505f186a4c9e68532662183723bbd331b22f2f145f2b0c')
+sha256sums=('94954733e71c09c9d7bfbe1ae1377ae15ccc24ed738d6c4da44ff7acc6ba821a')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -46,5 +46,6 @@ package() {
   install -Dm644 dist/systemd/skwird-system.service -t "$pkgdir/usr/lib/systemd/system"
   install -Dm644 dist/sysusers/skwird.conf -t "$pkgdir/usr/lib/sysusers.d"
   install -Dm644 LICENSE-MIT LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 dist/notices/linux.txt "$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-NOTICES"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
