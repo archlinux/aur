@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RUVnormalize
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='RUV for normalization of expression array data'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-spams
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0cfe10cf1bf61f91551967371c41372cd4a61c2e987d0b03d6923efd3e9714dd')
+sha256sums=('ea4db09f09111ce056ee025f0225236d42762d2b9583560428ae3b8f0d15c5fb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
