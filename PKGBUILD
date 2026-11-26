@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=filestash-git
-pkgver=r2569.d8211c54
+pkgver=r2621.4623144d
 pkgrel=1
 pkgdesc="Universal file management platform / storage-agnostic Dropbox alternative"
 arch=('x86_64' 'aarch64')
@@ -42,75 +42,38 @@ prepare() {
         's/-l:lib\([^.]*\)\.a/-l\1/g' \
         {} +
 
-    # Fix video cache paths - make them respect FILESTASH_CACHE_PATH env var for XDG compliance
-    # For plg_video_transcoder: remove VIDEO_CACHE_PATH from const block and add as a var after
-    sed -i '/^\tVIDEO_CACHE_PATH  = "data\/cache\/video\/"$/d' server/plugin/plg_video_transcoder/index.go
+    # Video cache paths are upstream's job now: commit 96ca70c5 (2026-11-13)
+    # turned them into `VIDEO_CACHE_PATH = filepath.Join(TMP_PATH, "video")`
+    # (plg_video_transcoder/index.go) and `VideoCachePath = filepath.Join(
+    # TMP_PATH, "video-thumbnail")` (plg_video_thumbnail/index.go), importing
+    # "path/filepath" themselves. The old sed rules below them appended a second
+    # "path/filepath" import -> "filepath redeclared in this block" plus
+    # "imported and not used"; they are therefore removed.
 
-    # Add path/filepath import
-    sed -i '/^import (/,/^)/{
-    /^)/ i\
-\t"path/filepath"
-  }' server/plugin/plg_video_transcoder/index.go
-
-    # Add var declaration and init function after the const block
-    sed -i '/^const ($/,/^)$/{
-    /^)$/ a\
-\
-var VIDEO_CACHE_PATH string\
-\
-func init() {\
-\tcachePath := os.Getenv("FILESTASH_CACHE_PATH")\
-\tif cachePath == "" {\
-\t\tcachePath = "/var/cache/filestash"\
+    # FHS-compliant log/cache paths via env vars (the unit sets
+    # FILESTASH_LOG_PATH / FILESTASH_CACHE_PATH). Upstream moved these constants
+    # from server/common/constants.go to server/pkg/env/constants.go on
+    # 2026-08-19 (9b11653a), which silently turned the old patch into a no-op.
+    sed -i \
+        -e 's|^\tLOG_PATH    = fromPath("state/log/")|\tLOG_PATH    = fromEnv("FILESTASH_LOG_PATH", fromPath("state/log/"))|' \
+        -e 's|^\tTMP_PATH    = fromPath("cache/")|\tTMP_PATH    = fromEnv("FILESTASH_CACHE_PATH", fromPath("cache/"))|' \
+        server/pkg/env/constants.go
+    sed -i '/^func fromPath(p string) string {$/i\
+func fromEnv(key, fallback string) string {\
+\tif p := os.Getenv(key); p != "" {\
+\t\treturn p\
 \t}\
-\tVIDEO_CACHE_PATH = filepath.Join(cachePath, "video") + "/"\
-}
-  }' server/plugin/plg_video_transcoder/index.go
-
-    # Same for thumbnail plugin - remove VideoCachePath from const block
-    sed -i '/^\tVideoCachePath = "data\/cache\/video-thumbnail\/"$/d' server/plugin/plg_video_thumbnail/index.go
-
-    # Add path/filepath import
-    sed -i '/^import (/,/^)/{
-    /^)/ i\
-\t"path/filepath"
-  }' server/plugin/plg_video_thumbnail/index.go
-
-    # Add var declaration and init function after the const block
-    sed -i '/^const ($/,/^)$/{
-    /^)$/ a\
-\
-var VideoCachePath string\
-\
-func init() {\
-\tcachePath := os.Getenv("FILESTASH_CACHE_PATH")\
-\tif cachePath == "" {\
-\t\tcachePath = "/var/cache/filestash"\
-\t}\
-\tVideoCachePath = filepath.Join(cachePath, "video-thumbnail") + "/"\
-}
-  }' server/plugin/plg_video_thumbnail/index.go
-
-    # Patch constants.go to support FHS-compliant log and cache paths via env vars
-    # This allows separating /var/log/filestash and /var/cache/filestash from /var/lib/filestash
-    sed -i '/^func init() {$/,/^}$/ {
-    /rootPath := "data\/"/ a\
-\t// Support FHS-compliant paths\
-\tlogPath := os.Getenv("FILESTASH_LOG_PATH")\
-\ttmpPath := os.Getenv("FILESTASH_CACHE_PATH")
-    /LOG_PATH = filepath.Join(rootPath, LOG_PATH)/ c\
-\tif logPath != "" {\
-\t\tLOG_PATH = logPath\
-\t} else {\
-\t\tLOG_PATH = filepath.Join(rootPath, LOG_PATH)\
-\t}
-    /TMP_PATH = filepath.Join(rootPath, TMP_PATH)/ c\
-\tif tmpPath != "" {\
-\t\tTMP_PATH = tmpPath\
-\t} else {\
-\t\tTMP_PATH = filepath.Join(rootPath, TMP_PATH)\
-\t}
-  }' server/common/constants.go
+\treturn fallback\
+}\
+' server/pkg/env/constants.go
+    # Fail loudly rather than silently losing the FHS split if upstream moves
+    # these lines again.
+    for pat in 'fromEnv("FILESTASH_LOG_PATH"' 'fromEnv("FILESTASH_CACHE_PATH"' '^func fromEnv(key, fallback string) string {$'; do
+        if ! grep -q -- "$pat" server/pkg/env/constants.go; then
+            echo "ERROR: constants.go patch did not apply (missing: $pat)" >&2
+            return 1
+        fi
+    done
 
     # Upstream added delta sync (github.com/balena-os/librsync-go import in
     # server/pkg/files/handler_save.go) on 2026-07-14 without updating go.mod.
