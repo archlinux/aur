@@ -15,7 +15,7 @@
 
 pkgbase=skwir
 pkgname=(skwir skwir-mermaid skwir-math skwir-mupdf)
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents'
 arch=('x86_64' 'aarch64')
@@ -39,7 +39,7 @@ source_x86_64=("pdfium-linux-x64-$_pdfium.tgz::https://github.com/bblanchon/pdfi
 source_aarch64=("pdfium-linux-arm64-$_pdfium.tgz::https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F$_pdfium/pdfium-linux-arm64.tgz")
 # skwir's: filled by aur-prepare after the release tag is pushed; PDFium's: as
 # tools/package/pdfium.lock pins them.
-sha256sums=('480670a190ae54932c58a3fbb81f315d693cc00c3fadd1f4a952bbdf02dd0261')
+sha256sums=('b176e39269cad56c53cbfc34ece9a73e89f91b5ccb7fbd375fdc461b9a95bce5')
 sha256sums_x86_64=('e1c3ce6e270cb5e0c20816b379ad9f2c1309972697c505f508de92bf5e7d6659')
 sha256sums_aarch64=('8b8818f2ec57d1b213d952ca6d7f0ffeca9d0110487d0e20ad83ba918bc92efa')
 
@@ -89,6 +89,7 @@ package_skwir() {
     'ffmpeg: still frames of films'
     'perl-image-exiftool: writing and removing pictures locations'
     'plocate: instant name searches over whole disks'
+    'skwird: name searches answered from an index kept current'
     'udisks2: unmounting volumes from the sidebar'
     'sshfs: opening sftp:// addresses through your ssh'
     'rclone: opening rclone remotes, s3:// and servers that ask a password'
@@ -112,6 +113,8 @@ package_skwir() {
   license=('Apache-2.0' 'BSD-3-Clause' 'GPL-3.0-only' 'LGPL-2.1-only')
   cd "$pkgbase-$pkgver"
   install -Dm755 target/dist/skwir "$pkgdir/usr/bin/skwir"
+  # Started under this name, skwir is `skwir view` (ADR-151).
+  ln -s skwir "$pkgdir/usr/bin/skw"
   while read -r program; do
     case "$program" in
     skwir | skwir-mermaid-worker | skwir-math-worker | skwir-mupdf-worker) ;;
@@ -123,6 +126,7 @@ package_skwir() {
   # (crates/platform/src/about.rs) whichever package holds it.
   install -Dm644 "$srcdir/LICENSE" "$srcdir"/licenses/* -t "$pkgdir/usr/share/licenses/skwir/pdfium/"
   install -Dm644 target/l10n/applications/org.skwir.skwir.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 target/l10n/applications/org.skwir.skwir.view.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 target/l10n/metainfo/org.skwir.skwir.metainfo.xml -t "$pkgdir/usr/share/metainfo/"
   # Other programs' Open and Save dialogs, once chosen in Settings
   # (ADR-141): the portal's back end, which the bus starts.
