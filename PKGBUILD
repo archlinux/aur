@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GEOsubmission
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Prepares microarray data for submission to GEO'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3a77df3a76a37514a57c1fc208ae603a6d859a6bb4a63c70d6c92b912f2e8ce1')
+sha256sums=('d81cac0e7199b9d48017885cf622abef420406689045d5c4120b6bfffd0f5f73')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
