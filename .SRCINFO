@@ -1,6 +1,6 @@
 pkgbase = hyprfetch-git
 	pkgdesc = Hyprland-native fetch utility for system, session, and rice state
-	pkgver = 0.2.2.r12.g1f0b6b2
+	pkgver = 0.2.3.r17.gba239af
 	pkgrel = 1
 	url = https://github.com/polarours/hyprfetch
 	arch = x86_64
