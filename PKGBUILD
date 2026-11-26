@@ -2,7 +2,7 @@
 
 pkgname=arkha-git
 _pkgname=arkha
-pkgver=1.2.0.r225.g51ef377
+pkgver=1.3.0.r251.g1598db8
 pkgrel=1
 pkgdesc='A fast graphical file manager (development version from master)'
 arch=('x86_64' 'aarch64')
@@ -32,6 +32,7 @@ optdepends=(
   'engrampa: creating and extracting archives'
   'file-roller: creating and extracting archives'
   'xarchiver: creating and extracting archives'
+  'ark: creating and extracting archives'
   'xterm: Open in Terminal, if no other terminal is installed'
 )
 provides=("$_pkgname")
