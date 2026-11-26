@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 # Co-maintainer: robertfoster
 pkgname=rayfish-bin
-pkgver=0.5.17 # renovate: datasource=github-releases depName=rayfish/rayfish
+pkgver=0.5.18 # renovate: datasource=github-releases depName=rayfish/rayfish
 pkgrel=1
 pkgdesc="P2P mesh VPN powered by iroh"
 arch=(x86_64 aarch64)
@@ -15,10 +15,10 @@ source_x86_64=("rayfish-$CARCH-$pkgver.sha256::https://github.com/rayfish/rayfis
 source_aarch64=("rayfish-aarch64-$pkgver.sha256::https://github.com/rayfish/rayfish/releases/download/v$pkgver/ray-linux-aarch64.sha256"
 "rayfish-aarch64-$pkgver::https://github.com/rayfish/rayfish/releases/download/v$pkgver/ray-linux-aarch64")
 b2sums=('ea64e603735076c542af3d9c61520709df834f4255ee2da6bf05a66285a2b1bfdcd2f3a2c0ed98053f0f77f21b8df9fee116fc686778fc3f68e76d7e73f70737')
-b2sums_x86_64=('6672f370175a325c5eea24648cc8fab3036462fe4927a6066db3e253158c0cb7224733e2e4f550257b97717256e88c9a1948ff124cffaffe419b0877edd7ffbc'
-               '555a6c1d9630d8392c2e0a0ffceea0cdd9ba3dae962016c313d1282f8aafae64dc7e3c23a3ca998ecf856f8efbda92c18e509684e7b6f66e085ceb320388ab30')
-b2sums_aarch64=('89f96a97db5ba2e900f16d79e48a09bbbe6c0b2ba7bd4a5c8eaf2183d5d548c5d816901638e2828216a38257916d56e15e7cb30950cb84a38bb23931793e9944'
-                '543afe092fc5f8b3ad39285ac4c8d46b27c8d9039c4bea17aeaf5cb48a0fb92508368f67ec26ee90874a2ceae20e6c9a363d70075c2c29665413f87c5985b827')
+b2sums_x86_64=('7b6de3d97a93fd4c8a7212f494d640ed32e4650912315dc163e7473941dfce8add19c3308b62becca2b5e7dc114b8cf8db88c83e8189f429fee87d603ba7c003'
+               '40f7d75a3e1a206a52134d6dc144da1afac878b913547f0407ac7749c45b44d46d0cc7e742615b8f41da29265004f5ff443ec954fd74956f614faf974b3028e2')
+b2sums_aarch64=('72bb98c0f8274f0d0a0ffb854261215c43f44c5e97f261ab89a524e03396a93c9808e5ae7d2f4fe3b69eaaea00af75ace4c33480cb5c1328d64741ae03742f94'
+                '2e4035508b1d213cdb23c35f14bcd858f9c34bec200031868daf07909ddb8c762422cbb71e9b37c2a22280d1fd3d4bd55219d6e901c70e1c27a695d3e9f7c9a7')
 
 package() {
   install -Dm755 "rayfish-$CARCH-$pkgver" "$pkgdir/usr/bin/ray"
