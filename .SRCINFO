@@ -1,0 +1,16 @@
+pkgbase = sqlvet-bin
+	pkgdesc = Static analysis of raw SQL queries in Go code
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/houqp/sqlvet
+	arch = x86_64
+	license = MIT
+	provides = sqlvet
+	conflicts = sqlvet
+	options = !debug
+	source = sqlvet-bin-1.2.0-LICENSE::https://raw.githubusercontent.com/houqp/sqlvet/v1.2.0/LICENSE
+	sha256sums = 7eb6872f62b20c2441c3ee9fd30f916da6fa4b8da5f4619c029e0cc542e1e0b9
+	source_x86_64 = sqlvet-bin-1.2.0-x86_64.tar.gz::https://github.com/houqp/sqlvet/releases/download/v1.2.0/sqlvet-v1.2.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 158b76811d619034b394e779776ac2a1525031b8e0c163996f0976207b923aa7
+
+pkgname = sqlvet-bin
