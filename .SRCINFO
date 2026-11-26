@@ -1,6 +1,6 @@
 pkgbase = r-ihw
 	pkgdesc = Independent Hypothesis Weighting
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/IHW
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-ihw
 	optdepends = r-rmarkdown
 	optdepends = r-scales
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IHW_1.40.0.tar.gz
-	sha256sums = 7867a7d5a3dcaf2a75a57ffb63ac2a3c1993ce5b1a93b0061f7be90a75145705
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IHW_1.42.0.tar.gz
+	sha256sums = d3b5196ed1ed35331f96e518f92a7e50347afc85aca43a6c1915b892446ca39c
 
 pkgname = r-ihw
