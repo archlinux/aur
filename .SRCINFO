@@ -1,0 +1,20 @@
+pkgbase = parakeet-bin
+	pkgdesc = Whisper-compatible speech recognition server using NVIDIA Parakeet
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/achetronic/parakeet
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = parakeet
+	conflicts = parakeet
+	options = !debug
+	source = parakeet-bin-0.12.0-LICENSE::https://raw.githubusercontent.com/achetronic/parakeet/v0.12.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = parakeet-bin-0.12.0-x86_64::https://github.com/achetronic/parakeet/releases/download/v0.12.0/parakeet-linux-amd64
+	sha256sums_x86_64 = f879644b3859cac98202aa1b62bff9f93a711c059ebee10cb9fd90e197cb103b
+	source_aarch64 = parakeet-bin-0.12.0-aarch64::https://github.com/achetronic/parakeet/releases/download/v0.12.0/parakeet-linux-arm64
+	sha256sums_aarch64 = 7f5fc2f0d00a916845485857687bbb4bd65214a07b747ece3868752d9e539b0a
+
+pkgname = parakeet-bin
