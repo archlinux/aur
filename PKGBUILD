@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GMRP
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='GWAS-based Mendelian Randomization and Path Analyses'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('08131fc46cf49b58a138e59efdb6bd1712151d83c3883f7a51b90635703a3ced')
+sha256sums=('3984078e3e6c39a3c113d7d782dd3b0b9282e846b96ec346fa85656a3ef5de39')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
