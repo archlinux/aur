@@ -1,14 +1,14 @@
 pkgbase = subdomainizer
 	pkgdesc = A tool to find subdomains and interesting things hidden inside, external Javascript files of page, folder, and Github.
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nsonaniya2010/SubDomainizer
 	arch = any
 	license = MIT
 	depends = python-termcolor
 	depends = python-beautifulsoup4
 	depends = python-requests
-	depends = python-htmlmin
+	depends = python-htmlmin2
 	depends = python-tldextract
 	depends = python-colorama
 	depends = python-cffi
