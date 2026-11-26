@@ -1,7 +1,7 @@
 # Maintainer: JageloR <jagelor@yandex.ru>
 pkgname=tray-idle-inhibitor
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Апплет трея: инхибитор idle для Wayland (labwc/LXQt) — wayland + logind"
 arch=('x86_64' 'aarch64')
 url="https://github.com/JageloR/tray-idle-inhibitor"

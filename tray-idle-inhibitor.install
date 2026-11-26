@@ -1,3 +1,25 @@
+_preserve_system_config() {
+  local cfg=/etc/xdg/tray-idle-inhibitor/config.toml
+  local keep=/etc/xdg/tray-idle-inhibitor/config.toml.keep
+  # 0.1.1 ставил config.toml файлом пакета; 0.1.2 его больше не содержит,
+  # поэтому при обновлении pacman удалил бы пользовательские настройки.
+  if [ -f "$cfg" ] && [ ! -e "$keep" ]; then
+    cp -a "$cfg" "$keep"
+  fi
+}
+
+_restore_system_config() {
+  local cfg=/etc/xdg/tray-idle-inhibitor/config.toml
+  local keep=/etc/xdg/tray-idle-inhibitor/config.toml.keep
+  if [ -f "$keep" ]; then
+    if [ -e "$cfg" ]; then
+      rm -f "$keep"
+    else
+      mv -f "$keep" "$cfg"
+    fi
+  fi
+}
+
 post_install() {
   cat <<'MSG'
 Окончательный запуск выберите сами:
@@ -12,14 +34,14 @@ post_install() {
 Копировать его не обязательно: значения по умолчанию в программе те же.
 Кладите свой конфиг в ~/.config/tray-idle-inhibitor/config.toml — там
 достаточно только изменяемых ключей.
-
-Если обновление с версии 0.1.1 не проходит из-за существующего
-/etc/xdg/tray-idle-inhibitor/config.toml, поставьте пакет с --overwrite:
-  sudo pacman -U --overwrite '/etc/xdg/tray-idle-inhibitor/config.toml*' <пакет>
-Файл при этом остаётся вашим — база пакета просто перестаёт его учитывать.
 MSG
 }
 
+pre_upgrade() {
+  _preserve_system_config
+}
+
 post_upgrade() {
+  _restore_system_config
   post_install
 }

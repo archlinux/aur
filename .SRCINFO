@@ -1,7 +1,7 @@
 pkgbase = tray-idle-inhibitor
 	pkgdesc = Апплет трея: инхибитор idle для Wayland (labwc/LXQt) — wayland + logind
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JageloR/tray-idle-inhibitor
 	install = tray-idle-inhibitor.install
 	arch = x86_64
