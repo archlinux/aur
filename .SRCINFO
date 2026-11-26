@@ -1,6 +1,6 @@
 pkgbase = openxplorer
 	pkgdesc = Windows File Explorer-inspired file manager for Linux
-	pkgver = 2.0.25
+	pkgver = 2.0.26
 	pkgrel = 1
 	url = https://openxplorer.app/
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = openxplorer
 	provides = winspace
 	options = !debug
 	options = !strip
-	source = openxplorer-2.0.25.tgz::https://github.com/AKolenda/openxplorer/archive/v2.0.25.tar.gz
-	sha256sums = ebe7815337401d46026c834dbebcf7f60a6de2a24267850230f20e5ec6e82445
+	source = openxplorer-2.0.26.tgz::https://github.com/AKolenda/openxplorer/archive/v2.0.26.tar.gz
+	sha256sums = b347b7556aa00ca848ead17275a1f5ca45fb440132e05ae0cc9af8024b64091c
 
 pkgname = openxplorer
