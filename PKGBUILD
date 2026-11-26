@@ -9,7 +9,7 @@
 
 pkgbase=skwir-git
 pkgname=(skwir-git skwir-mermaid-git skwir-math-git skwir-mupdf-git)
-pkgver=0.7.0.r0.g66574ee
+pkgver=0.7.1.r0.g53b39ab
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents (its last commit)'
 arch=('x86_64' 'aarch64')
@@ -96,6 +96,7 @@ package_skwir-git() {
     'ffmpeg: still frames of films'
     'perl-image-exiftool: writing and removing pictures locations'
     'plocate: instant name searches over whole disks'
+    'skwird: name searches answered from an index kept current'
     'udisks2: unmounting volumes from the sidebar'
     'sshfs: opening sftp:// addresses through your ssh'
     'rclone: opening rclone remotes, s3:// and servers that ask a password'
@@ -119,6 +120,8 @@ package_skwir-git() {
   license=('Apache-2.0' 'BSD-3-Clause' 'GPL-3.0-only' 'LGPL-2.1-only')
   cd skwir
   install -Dm755 target/dist/skwir "$pkgdir/usr/bin/skwir"
+  # Started under this name, skwir is `skwir view` (ADR-151).
+  ln -s skwir "$pkgdir/usr/bin/skw"
   while read -r program; do
     case "$program" in
     skwir | skwir-mermaid-worker | skwir-math-worker | skwir-mupdf-worker) ;;
@@ -130,6 +133,7 @@ package_skwir-git() {
   # (crates/platform/src/about.rs) whichever package holds it.
   install -Dm644 "$srcdir/LICENSE" "$srcdir"/licenses/* -t "$pkgdir/usr/share/licenses/skwir/pdfium/"
   install -Dm644 target/l10n/applications/org.skwir.skwir.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 target/l10n/applications/org.skwir.skwir.view.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 target/l10n/metainfo/org.skwir.skwir.metainfo.xml -t "$pkgdir/usr/share/metainfo/"
   # Other programs' Open and Save dialogs, once chosen in Settings
   # (ADR-141): the portal's back end, which the bus starts.
