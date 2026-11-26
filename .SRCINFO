@@ -1,0 +1,19 @@
+pkgbase = db-mcp-server-bin
+	pkgdesc = Multi-database MCP server giving AI assistants structured database access
+	pkgver = 1.15.1
+	pkgrel = 1
+	url = https://github.com/FreePeak/db-mcp-server
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = db-mcp-server
+	conflicts = db-mcp-server
+	options = !debug
+	source = db-mcp-server-bin-1.15.1-LICENSE::https://raw.githubusercontent.com/FreePeak/db-mcp-server/v1.15.1/LICENSE
+	sha256sums = bb09cee1be7b5ee9ee79849b947435c6facf7070ef58c9f92c11879ac6c454dc
+	source_x86_64 = db-mcp-server-bin-1.15.1-x86_64::https://github.com/FreePeak/db-mcp-server/releases/download/v1.15.1/db-mcp-server-linux-amd64
+	sha256sums_x86_64 = 364290c018f6269c16ade6f2327c7d1cbf276af284f47ceca4bbcec7f0fd8da4
+	source_aarch64 = db-mcp-server-bin-1.15.1-aarch64::https://github.com/FreePeak/db-mcp-server/releases/download/v1.15.1/db-mcp-server-linux-arm64
+	sha256sums_aarch64 = 93a5761ee3cabce8602bc4858b1cb3dc747353a384b4016623ebfd44ebe68801
+
+pkgname = db-mcp-server-bin
