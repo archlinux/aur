@@ -1,24 +1,24 @@
 pkgbase = vimp-git
-	pkgdesc = Youtube video / music downloader.(Use system-wide electron)
-	pkgver = 0.1.2.r157.g7e1f67f
+	pkgdesc = Youtube video / music downloader.
+	pkgver = 0.1.2.r244.g630edc9
 	pkgrel = 1
 	url = https://github.com/Larksel/Vimp
 	arch = any
 	license = MIT
 	makedepends = nvm
 	makedepends = git
-	makedepends = curl
 	makedepends = gendesk
-	makedepends = pnpm
 	makedepends = yarn
 	makedepends = jq
-	depends = electron37
+	depends = electron41
 	depends = python
 	provides = vimp=0.1.2
 	conflicts = vimp
 	source = vimp.git::git+https://github.com/Larksel/Vimp.git
+	source = vimp.js
 	source = vimp.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = 03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86
+	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
 
 pkgname = vimp-git
