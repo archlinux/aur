@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeneOverlap
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
+pkgver=1.50.0
 pkgrel=1
 pkgdesc='Test and visualize gene overlaps'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f00c6c7f668522d2fdcff85175c2d6d6c392cc4048d7a0a9b144cae765e2c2b6')
+sha256sums=('5ec0d3f5a7b67595581cf126d7875ff839266f9c7e89d436362cfa1b5bbdd002')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
