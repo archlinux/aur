@@ -1,0 +1,17 @@
+pkgbase = prevail-bin
+	pkgdesc = eBPF verifier based on abstract interpretation
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/vbpf/prevail
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = prevail
+	conflicts = prevail
+	options = !debug
+	source_x86_64 = prevail-bin-0.2.6-x86_64.tar.gz::https://github.com/vbpf/prevail/releases/download/v0.2.6/prevail-Linux-X64.tar.gz
+	sha256sums_x86_64 = fbdce7faa7cf1af1ac5fea606de4bb315fb8c4495fb6673ab01ef7d08c517ef5
+
+pkgname = prevail-bin
