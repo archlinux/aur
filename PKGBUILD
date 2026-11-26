@@ -9,7 +9,7 @@
 
 pkgname=md2pdf-alchemy
 _name=md2pdf
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Convert Markdown to PDF, with customizable JSON5 styles and bundled fonts'
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ conflicts=("${_name}" 'md2pdf-git')
 makedepends=('go')
 options=('!debug') # debugedit cannot process Go's DWARF; the debug package would be empty
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6283b40049bc2e184e99ea321f3f63ca948e7c27d8464a185d23e483435c33bf')
+sha256sums=('3e61e3628cb636fe5169666845d8be2f4502460bf3905ca5a9e65089260e0567')
 
 prepare() {
   cd "${_name}-${pkgver}"
