@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=dpdk-lts
-pkgver=26.07
-pkgrel=3
+pkgver=26.11
+pkgrel=1
 pkgdesc='A set of libraries and drivers for fast packet processing'
 arch=($CARCH)
 url='http://dpdk.org'
@@ -44,7 +44,7 @@ checkdepends=()
 source=(
   "http://fast.dpdk.org/rel/dpdk-$pkgver.tar.xz"
 )
-sha256sums=('7141a8b5bad9d7d965483ac0d75317ac0c21dcee1d13d373693c655f9e3fabe6')
+sha256sums=('392b7be5d830ecd6842ce12f5dbd530f8211c20efebc65e7992dfe15ee32ed33')
 
 prepare() {
   meson subprojects download --sourcedir="${srcdir}/dpdk-$pkgver"
