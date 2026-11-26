@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lpsymphony
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,9 +24,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-symphony.patch")
-md5sums=('7f1fd3baaba679821667df56c82c2e27'
+md5sums=('b621fcad40d7ec12e5071088c0c24760'
          '5fe82566bce5f45a9d9d8682e51ebfaa')
-b2sums=('d450cae311f3822c94e7fec8e6f1173e751816332605df70aa9cde9b3e6a68882f6c9c3ba6d4ae67a8bdba33eeb9f6fc444bea2e5b7ff4e8a38c616ce50d0327'
+b2sums=('a833b44198cf577f8c090b3c29b74dc3dda0e2097d68a8c4031f36851203830b623a25fb650daeccd25ab053191ad98addf0feb8e49aa509518db5eee16fdcee'
         '86b91dad7e7979ff31b83a876c5fb64f626b8dbddc389e2e91ba206c9644f88ad482d6bd8e4b2bfd841fc8d4fd8e00bc6e7529645bae75e4af18eef1fb5ce022')
 
 #prepare() {
