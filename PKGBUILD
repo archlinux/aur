@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: irbissh
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=zen-adblocker
 pkgver=0.30.0
 pkgrel=1
