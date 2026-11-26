@@ -6,7 +6,7 @@
 # lacks symbols the current upstream binaries need, so the runtime is bundled in a
 # private directory instead and no system oneAPI installation is required.
 pkgname=llama.cpp-sycl-bin
-pkgver=b12380
+pkgver=b12752
 pkgrel=1
 pkgdesc='llama.cpp upstream prebuilt binaries with the SYCL backend (bundled oneAPI runtime)'
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(
 )
 noextract=("${_llamasrc}" "${_inteldebs[@]}")
 sha256sums=(
-  'dffdca8bd148d0d1445fff5f18baef9c5425a4fb56213c4d33151adcaaf922e8'
+  '7a77c6060c9860d1181471fbf2f42e387a969b4617be3723e31742103b8d4baf'
   '4dd258b182f137080f95bb9aef0df32c3569d0ce405f409cffef5a6d2ad9f495'
   'fdb13eb410afec2214b20bc8b9296ec4e9e61c41d5aeda268de40e9b37354b87'
   '1b687b71bb33048ef40886b0c3b10224460d3c35e0226e6358ef283d2ecb1601'
