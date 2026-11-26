@@ -2,8 +2,8 @@
 
 pkgname=python-spsdk-pqc
 _name=${pkgname#python-}
-pkgver=0.7.5
-pkgrel=2
+pkgver=0.7.6
+pkgrel=1
 pkgdesc="Post-Quantum Crypto support for SPSDK"
 arch=($CARCH)
 url="https://pypi.org/project/${_name}"
@@ -38,7 +38,7 @@ provides=(${_name})
 conflicts=(${_name})
 replaces=(${_name})
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-${pkgver}.tar.gz")
-sha512sums=('9dcf0ff7197ec83d6adccf2304bb63a5e79be467a5555d27b5326574ebed4f923a411cf6e51f740a3737d3ba65feacbceac9f81514f8c99d2df72380afb2e252')
+sha512sums=('6d1a23604d51ef613ded91a07cda25c7e16ad7a6918b0d777ff0ee7c296a9d754d8bdb8811a8b461bc2a86ea66c28a4d5fb12cc01c5fdb22ab0e9d9cba0e76d6')
 _name=${_name//-/_}
 
 build() {
