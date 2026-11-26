@@ -1,10 +1,10 @@
 # Maintainer: Adityarup Laha <me@adityaruplaha.me>
 
 _pkgname=immReferent
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="An Interface for Immune Receptor and HLA Gene Reference Data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -28,8 +28,8 @@ optdepends=(
   r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('820a424ad9a822ab3ee7b0083f412c3b')
-b2sums=('f5c4e59075d32b8bfd881fda3d46290c0458aa761691317ca423ad27d83af67bd4e6e6241dd67f14da1a10bd71e63265c5b8451109f9ffd06a490262e58b00ce')
+md5sums=('4ec0215245c4136e4d9942ad5f8da588')
+b2sums=('1d24ab367981e8ebb74eccfaea0ea3b11abcde7f9b95abd3256b50b8500119275b2d4c0e004f72fcce62371671e2d397b49b05a1444b3e96a4fb208cd516062c')
 
 build() {
   mkdir build
