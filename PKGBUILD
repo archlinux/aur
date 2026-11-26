@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=updateObject
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2826c0eccbdfa046e15b45518fb3a918')
-b2sums=('f9c4ec39846abf75d7e4d3648d4eb9c69dcda8ba2ea42f3f481bae53d5b84cc2de54aa26f5ebd35ca96637af77ee1c09360bb9ed2538b23754dc47defa0f4bdc')
+md5sums=('0708b7addc515e319f2137e10254821a')
+b2sums=('13a32f468cdad663170bf4a6dc7f354e62b71b1af23f2e624fd91adac4af5e8470690af4596072d2266c9144ea51e73e248d1fbea450c1a983a90ed715956b7c')
 
 build() {
   mkdir build
