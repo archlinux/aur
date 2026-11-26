@@ -1,6 +1,6 @@
 pkgbase = r-genomicinstability
 	pkgdesc = Genomic Instability estimation for scRNA-Seq
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/genomicInstability
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-genomicinstability
 	optdepends = r-experimenthub
 	optdepends = r-proc
 	optdepends = r-singlecellexperiment
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/genomicInstability_1.18.0.tar.gz
-	sha256sums = 273e9d2f09b64b024b4bb93be5835da7270734722f928f162bdbe085e4c75b62
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/genomicInstability_1.20.0.tar.gz
+	sha256sums = 4b3a260914d3a8488e3fbc734f55afee134595a1881eaea79ee1205b803275aa
 
 pkgname = r-genomicinstability
