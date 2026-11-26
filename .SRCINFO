@@ -1,0 +1,32 @@
+pkgbase = nhl-hitz-pro-bin
+	pkgdesc = Native Linux recompilation of NHL Hitz Pro for the original Xbox
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/dalves408/nhlhitzpro-recomp
+	arch = x86_64
+	license = custom
+	makedepends = squashfs-tools
+	depends = bash
+	depends = glibc>=2.39
+	depends = libgcc
+	depends = libstdc++
+	depends = zlib
+	depends = bzip2
+	depends = expat
+	depends = libffi
+	depends = openssl
+	depends = xz
+	depends = fontconfig
+	depends = freetype2
+	depends = libx11
+	depends = libxext
+	depends = libxrender
+	depends = libglvnd
+	depends = ca-certificates
+	optdepends = xorg-xwayland: Open the setup and settings windows on Wayland
+	options = !strip
+	options = !debug
+	source = https://github.com/dalves408/nhlhitzpro-recomp/releases/download/v1.1.1/NHLHitzPro-1.1.1-linux-Linux-x64.tar.gz
+	sha256sums = a7c2a3a05101fb44721e873b5fdfbf49ae8133cc9cfa38a69e4f54d2a635a31b
+
+pkgname = nhl-hitz-pro-bin
