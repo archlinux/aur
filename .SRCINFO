@@ -1,0 +1,18 @@
+pkgbase = deepx-code-bin
+	pkgdesc = DeepSeek coding agent with code graph and OCR support
+	pkgver = 0.2.114
+	pkgrel = 1
+	url = https://github.com/itmisx/deepx-code
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = deepx-code
+	conflicts = deepx-code
+	options = !debug
+	source_x86_64 = deepx-code-bin-0.2.114-x86_64.tar.gz::https://github.com/itmisx/deepx-code/releases/download/v0.2.114/deepx_0.2.114_linux_amd64.tar.gz
+	sha256sums_x86_64 = 43f5a31aff4b5449a98ebd90b5eebf8528f5136fefc0d3a9eccf8f968a11a6c2
+	source_aarch64 = deepx-code-bin-0.2.114-aarch64.tar.gz::https://github.com/itmisx/deepx-code/releases/download/v0.2.114/deepx_0.2.114_linux_arm64.tar.gz
+	sha256sums_aarch64 = 973f89a9e9d7f82d84c50dca98f893009fa7f5cc7eca949b2b96807d81566894
+
+pkgname = deepx-code-bin
