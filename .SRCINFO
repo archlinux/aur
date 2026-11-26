@@ -1,6 +1,6 @@
 pkgbase = r-screcover
 	pkgdesc = scRecover for imputation of single-cell RNA-seq data
-	pkgver = 1.28.0
+	pkgver = 1.29.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scRecover
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-screcover
 	optdepends = r-rmarkdown
 	optdepends = r-singlecellexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scRecover_1.28.0.tar.gz
-	sha256sums = b1ca980dfc1bca70fed9ad164f0e54f307e9195defd4aa685c7499ac500ce956
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scRecover_1.29.0.tar.gz
+	sha256sums = 7beafef319a442bf0db4906e8309662ad364fb9af98bd91605375e9e2a5283d9
 
 pkgname = r-screcover
