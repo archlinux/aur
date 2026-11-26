@@ -1,0 +1,17 @@
+pkgbase = killgrave-bin
+	pkgdesc = Simple mock server generator
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/friendsofgo/killgrave
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = killgrave
+	conflicts = killgrave
+	options = !debug
+	source_x86_64 = killgrave-bin-0.5.1-x86_64.tar.gz::https://github.com/friendsofgo/killgrave/releases/download/v0.5.1/killgrave_0.5.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 583adc9bc795e70a16cd6931945a275dab2ca3f8d3becc161046202835059e2f
+	source_aarch64 = killgrave-bin-0.5.1-aarch64.tar.gz::https://github.com/friendsofgo/killgrave/releases/download/v0.5.1/killgrave_0.5.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = dabeec6bf6a71b266ce41abc923723bfba48e142c61ce296851984b66d5a6c05
+
+pkgname = killgrave-bin
