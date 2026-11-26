@@ -2,7 +2,7 @@
 # Contributor:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname=notesmd-cli
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="Interact with Obsidian in the terminal. Open, search, create, update and move notes!"
 arch=('aarch64' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 install="${pkgname}.install"
-sha256sums=('49b415bb8fbd32bf55a35e9632b3c29988aa7745471431a5ae84b54edc8571b8')
+sha256sums=('284501d32fe15836eca6a7bea33ce125124f6e33b16a740b360ff3abd8bfc44f')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
