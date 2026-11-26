@@ -1,8 +1,8 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=pi-ext-workspace-history
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc='Undo and redo for the Pi coding agent: rewinds files and conversation together'
 arch=('any')
 url='https://github.com/wcldyx/pi-workspace-history'
@@ -16,7 +16,7 @@ _piname=pi-workspace-history
 _npmname=pi-workspace-history
 
 source=("${_npmname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-sha256sums=('185cb2f967736d213cc4ebb77a9f66bf90882c29713ea1803fc943d72d6b1704')
+sha256sums=('8cffbebe13a306a6ca18e16d3d35f3c8f9a52d96b07c40f751045b45ac467f31')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${_npmname}/latest" | jq -r '.version'
