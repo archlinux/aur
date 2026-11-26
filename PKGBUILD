@@ -1,7 +1,7 @@
 # Maintainer: none
 pkgname=b580-watt-freq
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Sets Intel Arc B580 power limit and frequency without LACT, with frequency step detection and no daemon"
 arch=('any')
 url="https://aur.archlinux.org/packages/b580-watt-freq"
