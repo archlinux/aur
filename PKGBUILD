@@ -1,7 +1,7 @@
 # Maintainer: mizorewww <mizorewww@users.noreply.github.com>
 # Generated from course2md/packaging/aur/PKGBUILD-gui.template on release.
 pkgname=course2md-gui-bin
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='Native desktop app to turn course videos into illustrated notes'
 arch=(x86_64)
@@ -21,7 +21,7 @@ provides=(course2md-gui)
 conflicts=(course2md-gui)
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/course2md-desktop-linux-x86_64.tar.gz")
-sha256sums=('0162554ebf92cb66f9217c803eabd1dd8c618a7933f2451a8aedc6ec085df4ab')
+sha256sums=('c9217781820f78fe944c4371f879fa943d4da45860497e700407d5b94881531a')
 
 package() {
     cd "${srcdir}/course2md-desktop-linux-x86_64"
