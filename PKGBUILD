@@ -1,8 +1,8 @@
 # Maintainer: krforshey
 pkgname=cosmic-ext-manager-bin
 _pkgname=cosmic-ext-manager
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='Browse, install, update and remove community COSMIC extensions (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/kevinRForshey/CosmicExtensionManager'
@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
 source=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-linux.tar.gz")
-sha256sums=('9aa87b532a77473f8605e9c20841d95ec17a93fab3a85316bece9523efe065db')
+sha256sums=('dfa1e6e9a79bdd972c449b836a8b304793bb4eed246b63d942d55a71371e880f')
 
 package() {
   cd "$_pkgname-v$pkgver-x86_64-linux"
