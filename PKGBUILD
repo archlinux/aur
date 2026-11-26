@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=poilog
-_pkgver=0.4.2.1
+_pkgver=0.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,9 +12,12 @@ license=('GPL-3.0-only')
 depends=(
   r
 )
+optdepends=(
+  r-testthat
+)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('856acda96547132a5c253b37bed1f7d9')
-b2sums=('518dcea7c7bb458879f9f0beebd0ceec9ef41195061171ff8e26e7f54a07a506409d6227a08129ae6c56c1bcfda23ce55b696074f938224f9b55ce4ef933cbd9')
+md5sums=('0d8a1d86070922cf415ca34a23b304c9')
+b2sums=('4e9391183502a088b5d74e12ec5d7b7d443bed9714c18112f9f70f58fe0f42b1ec1338d1d4b36afe9db1e109fda8eaee0d4a1d21165bd674ce791ccd19d54a55')
 
 build() {
   mkdir build
