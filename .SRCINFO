@@ -7,6 +7,7 @@ pkgbase = matrix-federation-tester-git
 	arch = x86_64
 	license = none
 	makedepends = go
+	makedepends = git
 	provides = matrix-federation-tester
 	backup = etc/default/matrix-federation-tester
 	source = git+https://github.com/matrix-org/matrix-federation-tester.git
