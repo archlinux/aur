@@ -7,7 +7,8 @@ compositor and all companion applications:
 | Component | Package | Binary | Purpose |
 | --- | --- | --- | --- |
 | selector | `loom-desktop` | `loom` | one command for every tool (`loom shot`, `loom monitor`, …) |
-| niri | `loom-niri` | `niri`, `niri-session` | compositor and session launcher |
+| niri | `loom-niri` | `loom-niri`, `loom-niri-session` | coexisting compositor and session launcher |
+| niri (replace) | `loom-niri-replace` | `niri`, `niri-session` | compositor under the niri names; conflicts with niri |
 | loom-portal | `loom-portal` | `loom-portal`, `loom-portal-picker` | standalone Screenshot/ScreenCast portal backend |
 | loom-companion | `loom-companion` | `loom-companion`, `loomctl` | window/workspace automation and parking daemon |
 | loom-shot | `loom-shot` | `loom-shot` | screenshot capture, clipboard, annotations |
@@ -16,7 +17,8 @@ compositor and all companion applications:
 | loom-wallpaper | `loom-wallpaper` | `loom-wallpaper` | per-workspace wallpaper scenes |
 | loom-settings | `loom-settings` | `loom-settings`, `loom-settingsctl` | GTK4 settings UI and CLI |
 | loom-audio | `loom-audio` | `loom-audio` | PipeWire routing rules and default sink |
-| loom-sidepanels | `loom-sidepanels` | `loom-sidepanels` | layer-shell panels with exclusive zones |
+| loom-sidepanels | `loom-sidepanels` | `loom-sidepanels` | layer-shell panels and minimap |
+| loom-tui | `loom-tui` | `loom-tui` | terminal dashboard |
 
 The companion packages are independent: install just the ones you need and skip
 this meta package. Every package in the split comes from the same source
