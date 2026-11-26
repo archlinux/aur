@@ -1,0 +1,19 @@
+pkgbase = esp-emulator-bin
+	pkgdesc = Emulator for ESP32 series SoCs
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/espressif/esp-emulator
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = esp-emulator
+	conflicts = esp-emulator
+	options = !debug
+	source = esp-emulator-bin-1.2.0-LICENSE::https://raw.githubusercontent.com/espressif/esp-emulator/v1.2.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = esp-emulator-bin-1.2.0-x86_64.tar.gz::https://github.com/espressif/esp-emulator/releases/download/v1.2.0/esp-emu-1.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 560236344fd69dc8d74bc862c79aea01f7a69ac626ae3f54b1b0946bbce078c1
+	source_aarch64 = esp-emulator-bin-1.2.0-aarch64.tar.gz::https://github.com/espressif/esp-emulator/releases/download/v1.2.0/esp-emu-1.2.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5481a2840c6b521d57709d1f7cad03fbcfe9dbedafda28d7d2635d2cbbedabd5
+
+pkgname = esp-emulator-bin
