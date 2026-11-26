@@ -1,0 +1,17 @@
+pkgbase = crosslink-bin
+	pkgdesc = LLM API gateway with load balancing, failover, rate limiting, budgets and caching
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/HotRiceNoodles/CrossLink
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = crosslink
+	conflicts = crosslink
+	options = !debug
+	source_x86_64 = crosslink-bin-0.2.1-x86_64.tar.gz::https://github.com/HotRiceNoodles/CrossLink/releases/download/v0.2.1/crosslink_0.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0e126507e59c5ce77a794c40a1e3398af1937f42522fb7a7a01ea21ad6278e45
+	source_aarch64 = crosslink-bin-0.2.1-aarch64.tar.gz::https://github.com/HotRiceNoodles/CrossLink/releases/download/v0.2.1/crosslink_0.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 433dc7c4c1926d34353a4b589f5b516cd6c535251c45806c9fdef44c82066e86
+
+pkgname = crosslink-bin
