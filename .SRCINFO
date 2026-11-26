@@ -1,6 +1,6 @@
 pkgbase = stable-diffusion.cpp-vulkan-bin
 	pkgdesc = stable-diffusion.cpp upstream Linux x86_64 prebuilt binaries with the Vulkan backend
-	pkgver = master_1043_3be2378
+	pkgver = master_1133_52491bd
 	pkgrel = 1
 	url = https://github.com/leejet/stable-diffusion.cpp
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = stable-diffusion.cpp-vulkan-bin
 	conflicts = stable-diffusion.cpp-rocm-bin
 	options = !strip
 	options = !debug
-	source = stable-diffusion.cpp-vulkan-bin-master_1043_3be2378.zip::https://github.com/leejet/stable-diffusion.cpp/releases/download/master-1043-3be2378/sd-master-3be2378-bin-Linux-Ubuntu-24.04-x86_64-vulkan.zip
-	sha256sums = 7608901016fb4a348bc5b75c46fc971085dadadf44e6f30daa97301844b1ce2e
+	source = stable-diffusion.cpp-vulkan-bin-master_1133_52491bd.zip::https://github.com/leejet/stable-diffusion.cpp/releases/download/master-1133-52491bd/sd-master-52491bd-bin-Linux-Ubuntu-26.04-x86_64-vulkan.zip
+	sha256sums = b2803c094aad4b31393d0a48ef31bac0fff5132a14b8e8cbbc732933fc8b2618
 
 pkgname = stable-diffusion.cpp-vulkan-bin
