@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EnrichedHeatmap
-_pkgver=1.38.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Making Enriched Heatmaps'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8a517b11d1b172fb27339005ddd0f2300228449a8b78a39fcb8850d0f8ba39d0')
+sha256sums=('8b3cbd44830ba5515d89703a069d2bd118a70cf130fd22fc59471619ed7c3f3f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
