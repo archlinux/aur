@@ -27,6 +27,7 @@ depends=(
     'pipewire-pulse'
     'kexec-tools'
     'fastfech'
+    'python'
     # === AUDIO ENHANCEMENT ===
     'easyeffects'                 # Audio effects
     'lsp-lv2'                     # Audio plugins
@@ -56,6 +57,7 @@ depends=(
     'mpv'			  # Watching the videos
     'qbittorrent'		  # You know
     'qbittorrent-nox'		  # You know, but cli
+
     
     # === SYSTEM ===
     'hyprpolkitagent'             # Authentication
@@ -69,7 +71,6 @@ depends=(
     'opentabletdriver'            # Tablet driver
     'lutris'
     'gamescope'
-
     'mangohud'
     'goverlay'
     # === NETWORK ===
@@ -82,7 +83,7 @@ depends=(
     'yay'			  # Yet Another Yoghurt
     'portage-manifest'		  # Graphical (window shopper) app store
 )
-makedepends=('git')
+makedepends=('git' 'python-pipx')
 provides=('polland-de')
 conflicts=('polland-de')
 source=("git+https://github.com/Pol-Jak-295/polland.git")
@@ -148,6 +149,7 @@ package() {
         mkdir -p "$pkgdir/usr/share/nwg-bar/images"
         cp -r "$srcdir/polland/nwg-bar/icons" "$pkgdir/usr/share/nwg-bar/images/"
     fi
+
     
     # === INSTALL SYNC SCRIPT ===
     mkdir -p "$pkgdir/usr/lib/polland"
@@ -208,6 +210,8 @@ if [ -d "$REPO_CONFIGS/images" ]; then
     echo "  🖼️  Installed wallpapers"
 fi
 
+echo "Installing notify-send-py through pipx..."
+pipx install notify-send-py
 echo ""
 echo "✅ Installation complete!"
 echo "💡 Reload Hyprland with Super+Shift+R"
