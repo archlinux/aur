@@ -1,6 +1,6 @@
 pkgbase = basket-git
 	pkgdesc = All-purpose notes taker for KDE.
-	pkgver = 2.49.90.r1501.79a7ef1
+	pkgver = 2.49.90.r1716.ff2a973
 	pkgrel = 1
 	url = https://invent.kde.org/utilities/basket
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = basket-git
 	depends = kcmutils
 	depends = kfilemetadata
 	depends = kparts
-	depends = phonon-qt5
+	depends = phonon-qt6
 	depends = libgit2
 	provides = basket
 	conflicts = basket
@@ -20,4 +20,3 @@ pkgbase = basket-git
 	sha1sums = SKIP
 
 pkgname = basket-git
-

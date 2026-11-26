@@ -1,11 +1,13 @@
+# Maintainer: Dominik Kummer <admin@arkades.org>
+
 pkgname=basket-git
-pkgver=2.49.90.r1501.79a7ef1
+pkgver=2.49.90.r1716.ff2a973
 pkgrel=1
 pkgdesc="All-purpose notes taker for KDE."
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/utilities/basket"
 license=('GPL')
-depends=(kcmutils  kfilemetadata  kparts  phonon-qt5  libgit2)
+depends=(kcmutils  kfilemetadata  kparts  phonon-qt6  libgit2)
 makedepends=('extra-cmake-modules' 'kdoctools' 'git')
 provides=('basket')
 conflicts=('basket')
