@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=freerouting-zh-cn-git
-pkgver=2.3.0.r285.g278fe14
+pkgver=2.6.0.r2.g779e271
 pkgrel=1
 _jrever=25
 _jdkver=25
@@ -50,20 +50,20 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname%-git}"
     export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin:$PATH"
-    #     chmod +x gradlew
-    ./gradlew assemble
-    #     ./gradlew dist
+    # chmod +x gradlew
+    # ./gradlew assemble
+    ./gradlew dist
 }
 
 package() {
     cd "${pkgname%-git}"
     install -vDm0644 assets/icon/freerouting_icon_256x256_v2.png "${pkgdir}/usr/share/pixmaps/${pkgname%-zh-cn-git}.png"
-    install -vDm0755 build/libs/freerouting.jar -t "${pkgdir}/usr/lib/freerouting/"
+    install -vDm0644 build/dist/freerouting-executable.jar "${pkgdir}/usr/lib/freerouting/${pkgname%-zh-cn-git}.jar"
     install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -vDm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-zh-cn-git}" <<EOF
 #!/usr/bin/bash
-export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin/:\$PATH"
 
+export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin/:\$PATH"
 java -jar /usr/lib/freerouting/${pkgname%-zh-cn-git}.jar -l zh "\$@"
 
 exit 0
@@ -79,9 +79,8 @@ Comment=${pkgdesc}
 Exec=${pkgname%-zh-cn-git}
 Type=Application
 StartupNotify=true
-Categories=Tool;Electron;PCB;
+Categories=Utility;Engineering;Science;Electronics;
 Terminal=false
 Icon=${pkgname%-zh-cn-git}.png
-Version=${pkgver}
 EOF
 }
