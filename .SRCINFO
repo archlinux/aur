@@ -1,6 +1,6 @@
 pkgbase = python-multiarchive
 	pkgdesc = A high level archive handler for Python
-	pkgver = 0.2.2
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/NSPC911/multiarchive
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = python-multiarchive
 	makedepends = python-hatchling
 	depends = python
 	depends = python-rarfile
-	source = https://files.pythonhosted.org/packages/source/m/multiarchive/multiarchive-0.2.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/m/multiarchive/multiarchive-0.2.4.tar.gz
 	source = LICENSE
-	sha256sums = c20dd8b2a07b425040019909ecc6d47286e3cbbf121ab9edc3b4ee0fa236533c
+	sha256sums = d949d35d29c0de2b8c91f9ff0a0edcae7053c8c522228480b34c503c884bbc3a
 	sha256sums = 4f0239fdf0572b5752c8efacf1ce6b1060181479b504b3a5e22e0aa7af6176f1
 
 pkgname = python-multiarchive

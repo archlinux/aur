@@ -21,7 +21,7 @@ _appauthor="NSPC911"
 _appname="multiarchive"
 
 pkgname="python-${_appname}"
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A high level archive handler for Python"
 
@@ -40,7 +40,7 @@ depends=('python' 'python-rarfile')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz" "LICENSE")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz" "LICENSE")
-sha256sums=('c20dd8b2a07b425040019909ecc6d47286e3cbbf121ab9edc3b4ee0fa236533c'
+sha256sums=('d949d35d29c0de2b8c91f9ff0a0edcae7053c8c522228480b34c503c884bbc3a'
             '4f0239fdf0572b5752c8efacf1ce6b1060181479b504b3a5e22e0aa7af6176f1')
 
 prepare() {
