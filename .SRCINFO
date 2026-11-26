@@ -1,6 +1,6 @@
 pkgbase = omp-ctl-bin
 	pkgdesc = Desktop GUI for managing omp configuration in ~/.omp-ctl (prebuilt)
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/moecly/omp-ctl
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = omp-ctl-bin
 	depends = gcc-libs
 	provides = omp-ctl
 	conflicts = omp-ctl
-	noextract = omp-ctl_0.9.3_amd64.deb
+	noextract = omp-ctl_0.9.4_amd64.deb
 	options = !strip
 	options = !debug
-	source = https://github.com/moecly/omp-ctl/releases/download/v0.9.3/omp-ctl_0.9.3_amd64.deb
-	sha256sums = 4bfb0afbfc13c90bc6c5b4a88006037089f1f7192e783ca5c0e684b5061d8a3d
+	source = https://github.com/moecly/omp-ctl/releases/download/v0.9.4/omp-ctl_0.9.4_amd64.deb
+	sha256sums = eb05d62fee90a1de024e682bc60807991c6b16ffad55f60660b281a3a51f74ce
 
 pkgname = omp-ctl-bin
