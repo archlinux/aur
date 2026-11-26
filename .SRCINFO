@@ -1,0 +1,17 @@
+pkgbase = freesbc-bin
+	pkgdesc = SIP and WebRTC edge proxy and session border controller in one binary
+	pkgver = 0.8.6
+	pkgrel = 1
+	url = https://github.com/rasonyang/freesbc
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = freesbc
+	conflicts = freesbc
+	options = !debug
+	source_x86_64 = freesbc-bin-0.8.6-x86_64.tar.gz::https://github.com/rasonyang/freesbc/releases/download/v0.8.6/freesbc_v0.8.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4947992b220c2fc4d6973ffa6f0b131292f64bde310c36fa4fba1a6585cbfb7d
+	source_aarch64 = freesbc-bin-0.8.6-aarch64.tar.gz::https://github.com/rasonyang/freesbc/releases/download/v0.8.6/freesbc_v0.8.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 49949bb35553e3b44a7c011863ba8f674c36952773778d56145b8b84ffd74d46
+
+pkgname = freesbc-bin
