@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miaSim
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Microbiome Data Simulation'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-vegan
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1aa9e025d4f4c20435fe86b36c3bac138d428988add174cce4c5fd63bb5f2331')
+sha256sums=('78f7fac41fa7d6ccea873b28f69ee7a5acf1563a021602af82f573108ec6dbf7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
