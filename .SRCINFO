@@ -1,0 +1,23 @@
+pkgbase = kwin-kiri
+	pkgdesc = Scrollable tiling KWin script in the style of niri (Karousel fork)
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/SeniorMatt/kiri
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = vulkan-headers
+	depends = libepoxy
+	depends = kwin
+	depends = plasma-workspace
+	depends = qt6-declarative
+	optdepends = python: niri2kiri script
+	source = kiri-1.1.tar.gz::https://github.com/SeniorMatt/kiri/releases/download/v1.1/kiri_1_1.tar.gz
+	sha256sums = cf4a5b1baef29971ba38e03f1d06f29802d45853fd646db158f8f6c26597fbf7
+
+pkgname = kwin-kiri
