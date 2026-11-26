@@ -1,6 +1,6 @@
 pkgbase = syscall-bin
 	pkgdesc = Look up Linux syscalls from your terminal
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/guitmz/syscall
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = syscall-bin
 	provides = syscall
 	conflicts = syscall
 	options = !strip
-	source_x86_64 = syscall-x86_64-0.2.1.tgz::https://github.com/guitmz/syscall/releases/download/v0.2.1/syscall_v0.2.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = d26f587f036c381a916506090aef59535d5bf0f9e5aa971d5b785b3fa198390b
-	source_aarch64 = syscall-aarch64-0.2.1.tgz::https://github.com/guitmz/syscall/releases/download/v0.2.1/syscall_v0.2.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = d69efc591750bf32ac65f32e2ae080c315a5ec1375780914b82cf2582e15691b
+	source_x86_64 = syscall-x86_64-0.2.2.tgz::https://github.com/guitmz/syscall/releases/download/v0.2.2/syscall_v0.2.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 74b8f86337ca2111176287f8fcc7ca5c19b571f22904500ff59a335884514168
+	source_aarch64 = syscall-aarch64-0.2.2.tgz::https://github.com/guitmz/syscall/releases/download/v0.2.2/syscall_v0.2.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2897c77c6b79fa3c24944e8fc28e530e1974372014ddc4c15632a157cda058f2
 
 pkgname = syscall-bin

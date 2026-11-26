@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Look up Linux syscalls from your terminal"
 
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('d26f587f036c381a916506090aef59535d5bf0f9e5aa971d5b785b3fa198390b')
-sha256sums_aarch64=('d69efc591750bf32ac65f32e2ae080c315a5ec1375780914b82cf2582e15691b')
+sha256sums_x86_64=('74b8f86337ca2111176287f8fcc7ca5c19b571f22904500ff59a335884514168')
+sha256sums_aarch64=('2897c77c6b79fa3c24944e8fc28e530e1974372014ddc4c15632a157cda058f2')
 
 
 case ${CARCH} in
