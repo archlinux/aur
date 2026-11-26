@@ -1,7 +1,7 @@
 pkgbase = devcontainer-cli
 	pkgdesc = Dev container CLI, which can take a devcontainer.json and create and configure a dev container from it.
 	pkgver = 0.91.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/devcontainers/cli
 	arch = any
 	license = MIT
