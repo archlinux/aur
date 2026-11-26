@@ -1,8 +1,8 @@
 pkgbase = pacaur-git
 	pkgdesc = An AUR helper that minimizes user interaction
-	pkgver = 4.8.4.4.gd1064f3
-	pkgrel = 1
-	url = https://github.com/E5ten/pacaur
+	pkgver = 4.8.6.48.g0b63eda
+	pkgrel = 2
+	url = https://gitlab.com/arkadesOrg/pacaur
 	arch = any
 	license = ISC
 	makedepends = perl
@@ -15,8 +15,7 @@ pkgbase = pacaur-git
 	provides = pacaur
 	conflicts = pacaur
 	backup = etc/xdg/pacaur/config
-	source = git+https://github.com/E5ten/pacaur.git
+	source = git+https://gitlab.com/arkadesOrg/pacaur.git
 	sha256sums = SKIP
 
 pkgname = pacaur-git
-

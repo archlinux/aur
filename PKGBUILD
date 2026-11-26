@@ -1,17 +1,19 @@
+# Maintainer: Dominik Kummer <admin@arkades.org>
+
 pkgname='pacaur-git'
 _pkgname="${pkgname/-git}"
-pkgver=4.8.4.4.gd1064f3
-pkgrel=1
+pkgver=4.8.6.48.g0b63eda
+pkgrel=2
 pkgdesc='An AUR helper that minimizes user interaction'
 arch=('any')
-url="https://github.com/E5ten/${_pkgname}"
+url="https://gitlab.com/arkadesOrg/${_pkgname}"
 license=('ISC')
 depends=('auracle-git' 'expac' 'sudo' 'git' 'jq')
 makedepends=('perl' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 backup=("etc/xdg/${_pkgname}/config")
-source=("git+https://github.com/E5ten/${_pkgname}.git")
+source=("git+https://gitlab.com/arkadesOrg/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
