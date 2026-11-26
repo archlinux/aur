@@ -1,6 +1,6 @@
 pkgbase = mca-selector-rs-bin
 	pkgdesc = A faithful Rust + GPUI port of MCA Selector (prebuilt binary)
-	pkgver = 0.1.0.r133.g904f558
+	pkgver = 0.1.0.r134.g40d6515
 	pkgrel = 1
 	url = https://github.com/Coobyk/mca-selector-rs
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = mca-selector-rs-bin
 	provides = mca-selector
 	conflicts = mca-selector
 	conflicts = mca-selector-rs-git
-	source = mca-selector-0.1.0.r133.g904f558.bin::https://github.com/Coobyk/mca-selector-rs/releases/download/nightly/mca-selector-linux-x86_64
+	source = mca-selector-0.1.0.r134.g40d6515.bin::https://github.com/Coobyk/mca-selector-rs/releases/download/nightly/mca-selector-linux-x86_64
 	source = mca-selector.desktop::https://raw.githubusercontent.com/Coobyk/mca-selector-rs/nightly/packaging/mca-selector.desktop
 	source = mca-selector.png::https://raw.githubusercontent.com/Coobyk/mca-selector-rs/nightly/packaging/mca-selector.png
-	sha256sums = f393835b17551f382070940e51259ee7eb26987470497d338f0f4f8ccb4035a1
+	sha256sums = a3ef2715bfa867764913915a5648bf5d148000d72d729969c5464395c65f3435
 	sha256sums = SKIP
 	sha256sums = SKIP
 
