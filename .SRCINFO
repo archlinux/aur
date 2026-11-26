@@ -1,0 +1,17 @@
+pkgbase = niks3-bin
+	pkgdesc = S3-backed Nix binary cache with garbage collection
+	pkgver = 1.19.0
+	pkgrel = 1
+	url = https://github.com/Mic92/niks3
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = niks3
+	conflicts = niks3
+	options = !debug
+	source_x86_64 = niks3-bin-1.19.0-x86_64.tar.gz::https://github.com/Mic92/niks3/releases/download/v1.19.0/niks3_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5e13424d0f54d4bf26a69857539329bc8b3de14ab53ede967f527365fc64993b
+	source_aarch64 = niks3-bin-1.19.0-aarch64.tar.gz::https://github.com/Mic92/niks3/releases/download/v1.19.0/niks3_Linux_arm64.tar.gz
+	sha256sums_aarch64 = f06bd2bf4670c297cf22e0a44281f53b7b75325b64a5918a7159127c35d068c3
+
+pkgname = niks3-bin
