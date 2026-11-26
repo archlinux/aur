@@ -1,0 +1,17 @@
+pkgbase = go-cve-dictionary-bin
+	pkgdesc = Build a local copy of the CVE databases from NVD and JVN
+	pkgver = 0.16.2
+	pkgrel = 1
+	url = https://github.com/vulsio/go-cve-dictionary
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = go-cve-dictionary
+	conflicts = go-cve-dictionary
+	options = !debug
+	source_x86_64 = go-cve-dictionary-bin-0.16.2-x86_64.tar.gz::https://github.com/vulsio/go-cve-dictionary/releases/download/v0.16.2/go-cve-dictionary_0.16.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 93c8b2bfb74f9edd855e901ea1b32a8c95d0bc146d6ccad480efa7d7c79bd7cc
+	source_aarch64 = go-cve-dictionary-bin-0.16.2-aarch64.tar.gz::https://github.com/vulsio/go-cve-dictionary/releases/download/v0.16.2/go-cve-dictionary_0.16.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 227bb01080312a5a783562eef0e18adccaa7daa22eed495a673760ee99c29cc8
+
+pkgname = go-cve-dictionary-bin
