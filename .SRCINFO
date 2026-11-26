@@ -1,0 +1,23 @@
+pkgbase = cosmic-applet-manager
+	pkgdesc = Browse, install, update and remove community COSMIC extensions
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/kevinRForshey/CosmicAppletManager
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = just
+	makedepends = pkgconf
+	depends = git
+	depends = just
+	depends = rust
+	depends = libxkbcommon
+	depends = wayland
+	depends = vulkan-icd-loader
+	depends = fontconfig
+	options = !lto
+	source = cosmic-applet-manager-0.2.0.tar.gz::https://github.com/kevinRForshey/CosmicAppletManager/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 2f4f255133877e10441323e72f12b847c7549fe95ac1d1564f58b71673531dc2
+
+pkgname = cosmic-applet-manager
