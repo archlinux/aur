@@ -3,10 +3,10 @@
 pkgname=dux-qt-base-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.4.73
-pkgrel=3
+pkgrel=4
 # no qt version pins: they deadlock pacman -Syu against makepkg on every qt bump
 _qtver_x86_64=6.12.1
-_qtver_aarch64=6.12.0
+_qtver_aarch64=6.12.1
 pkgdesc='Quickshell QML runtime as a shared library with a C entry point (prebuilt)'
 arch=(x86_64 aarch64)
 url="https://github.com/duxlabs-dev/$_pkgname"
@@ -36,8 +36,8 @@ source_x86_64=("$_pkgname-$pkgver-qt$_qtver_x86_64-x86_64.tar.zst::$_urlrel/$_pk
 source_aarch64=("$_pkgname-$pkgver-qt$_qtver_aarch64-aarch64.tar.zst::$_urlrel/$_pkgname-$pkgver-qt$_qtver_aarch64-aarch64.tar.zst")
 sha256sums=('e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118'
             '1b3782ccad7b8614100cda30d3faf42fc39f2e97932908c543005053b654ca68')
-sha256sums_x86_64=('c45db54a659351a26ae4e387e680ca5b9a02ce92751cef0821408888235abafe')
-sha256sums_aarch64=('dce13fef48e1b4e13c591e8b60ea10e1866d662a27d207dfe2bf07c261359796')
+sha256sums_x86_64=('cd614837950b050e1ac8c1ed4717d653f027e4034c3466eaf6dfe02a2f34055e')
+sha256sums_aarch64=('c346298b22d0a0d9c8f620837bc5af18aac76811a1021dd7362846f0d92aaa90')
 
 package() {
 	cp -a "$srcdir/usr" "$pkgdir/"
