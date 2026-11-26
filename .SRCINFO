@@ -1,6 +1,6 @@
 pkgbase = r-aldex2
 	pkgdesc = Analysis Of Differential Abundance Taking Sample Variation Into Account
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ALDEx2
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-aldex2
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ALDEx2_1.44.0.tar.gz
-	sha256sums = f7c79827cc3a90b5fb94106e76ef173c110d2d3d63ce5236e88eef06d5af32db
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ALDEx2_1.46.0.tar.gz
+	sha256sums = 467494cb42ae4b2b538d761c96060026fd090149b164a9497b428f69d634bb0e
 
 pkgname = r-aldex2
