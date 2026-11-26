@@ -14,7 +14,7 @@ pkgbase = uefi-manager
 	depends = polkit
 	optdepends = cryptsetup: unlock encrypted partitions
 	optdepends = xdg-utils: open help and license links
-	source = uefi-manager-26.11.tar.gz::https://github.com/MX-Linux/uefi-manager/archive/refs/tags/26.11.tar.gz
+	source = https://github.com/MX-Linux/uefi-manager/archive/refs/tags/26.11.tar.gz
 	sha256sums = 1c2e3ffe61b68a323ed47f233d6ab523fa82f7d8d2c7bdd2aaf1a330adcec0db
 
 pkgname = uefi-manager
