@@ -1,0 +1,17 @@
+pkgbase = prom2json-bin
+	pkgdesc = Scrape a Prometheus client and dump the result as JSON
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/prometheus/prom2json
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = prom2json
+	conflicts = prom2json
+	options = !debug
+	source_x86_64 = prom2json-bin-1.5.0-x86_64.tar.gz::https://github.com/prometheus/prom2json/releases/download/v1.5.0/prom2json-1.5.0.linux-amd64.tar.gz
+	sha256sums_x86_64 = 5935363cc8c88360e3aa275ddc5a754ad95f6bab6b6052978e686300baa5a4d6
+	source_aarch64 = prom2json-bin-1.5.0-aarch64.tar.gz::https://github.com/prometheus/prom2json/releases/download/v1.5.0/prom2json-1.5.0.linux-arm64.tar.gz
+	sha256sums_aarch64 = 9b60ac476ffb838e5eb80489394c0590254ff1303b9a0c83364ded2cfa5a7353
+
+pkgname = prom2json-bin
