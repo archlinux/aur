@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dupRadar
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('118452bbd784fb6b040c267022fc7446')
-b2sums=('d1397511cfc10090cffa43887a9e12cddf64597df8646b21c9f3056a086848a3403e071a0872081a5dde4dfd9c429e927c317631a0c5917a47b61222abf0a2ed')
+md5sums=('0771369098536592492b41465955890d')
+b2sums=('cd06e301eea45719ef0016f02cd0ac38be276269a14553d0e5bc103a66a3af019467cbbc375ba9f11e9ca90f9662249a9c5ba8e80783ade5c4b9eb05e4b07640')
 
 build() {
   mkdir build
