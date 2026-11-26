@@ -1,6 +1,6 @@
 pkgbase = r-clippda
 	pkgdesc = A package for the clinical proteomic profiling data analysis
-	pkgver = 1.62.0
+	pkgver = 1.64.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/clippda
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-clippda
 	depends = r-rgl
 	depends = r-scatterplot3d
 	depends = r-statmod
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/clippda_1.62.0.tar.gz
-	sha256sums = 1a291c2daa26bac5961943c3aefdcf430796d1173cdbc47782381e4ec6d91ff7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/clippda_1.64.0.tar.gz
+	sha256sums = b0251e9a64da40053053df92fcfb80fb126fcacf51eb288138c31e5cb0be2943
 
 pkgname = r-clippda
