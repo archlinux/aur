@@ -1,0 +1,21 @@
+pkgbase = port-buddy-bin
+	pkgdesc = Expose local ports to the internet
+	pkgver = 1.0.18
+	pkgrel = 1
+	url = https://github.com/amak-tech/port-buddy
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = zlib
+	provides = port-buddy
+	conflicts = port-buddy
+	options = !debug
+	source = port-buddy-bin-1.0.18-LICENSE::https://raw.githubusercontent.com/amak-tech/port-buddy/1.0.18/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = port-buddy-bin-1.0.18-x86_64::https://github.com/amak-tech/port-buddy/releases/download/1.0.18/portbuddy-linux-x64
+	sha256sums_x86_64 = 06bbd6182e77db97bc849719db806e6ef416da4a47c7e1645596854deca9e84f
+	source_aarch64 = port-buddy-bin-1.0.18-aarch64::https://github.com/amak-tech/port-buddy/releases/download/1.0.18/portbuddy-linux-arm64
+	sha256sums_aarch64 = 348c06f642536feff4b33b51ccb408efd271dc96682088a36b5bc8771f007059
+
+pkgname = port-buddy-bin
