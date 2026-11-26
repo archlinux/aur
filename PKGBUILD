@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RTNsurvival
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Survival analysis using transcriptional networks inferred by the RTN package'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d01044a8a5191ef3a3831a47d4a21a49f3a71b8bc88770a84b3a70b1d20b1de0')
+sha256sums=('ff53cbcf5ba9df3991d35254bfa581130a8422a4d2607e4a956a16dc11f9b67f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
