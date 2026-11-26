@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=jdk-openjdk-ea
-pkgver=28+25
+pkgver=28+26
 pkgrel=1
 _major=${pkgver%%+*}
 pkgdesc="OpenJDK ${_major} early access build, compiled from the openjdk/jdk sources"
@@ -43,7 +43,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openjdk/jdk/archive/ref
         'java.desktop'
         'jconsole.desktop'
         'jshell.desktop')
-sha256sums=('b5c129868a712520efe9ce635465a8438ee8fe2f5bf40915ac5cd8a4505abe20'
+sha256sums=('d1f7741fe8dbc0066194b7d41f0ab57b1b8f0a3476a899e125799821e6adbfcd'
             '3682e4ff646bf279b111fd9ae6565fdc7bb6fc01fe6adf19cb9dd0c0899c9fe5'
             'cd3bcb8acec426d4194021ebfe0830c5712eaa2c0910bc3dd3fccc3acf0c639b'
             '4ef04dd2b586c17734d0dc82c59ae0bf08e67b0a8d58fa7e1bb144fc8e7143f8')
