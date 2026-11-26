@@ -1,6 +1,6 @@
 pkgbase = r-spqn
 	pkgdesc = Spatial quantile normalization
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/spqn
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-spqn
 	optdepends = r-runit
 	optdepends = r-spqndata
 	optdepends = r-tools
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/spqn_1.24.0.tar.gz
-	sha256sums = 35672aaf23bb6e84457db4bf330f4a638460d7f0db912d0b5821203bcde70daf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/spqn_1.26.0.tar.gz
+	sha256sums = 627a2765a8d6a8e7d9c062b0007952fcfb8515e23949c9c02d7a1928a91ac488
 
 pkgname = r-spqn
