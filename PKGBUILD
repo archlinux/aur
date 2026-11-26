@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowDensity
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3d86467cb8f5d34ddbc37fc24da18c85')
-b2sums=('5b290e26a38b00ca22b7a31c5fe35368e2de74998eac2907a1463eb9e67cff33725434da81fbd9375a9c954cbef1f12a647786e76e6acac0abe0940b7d5ced9d')
+md5sums=('c2cf2f6bd4212e80840687668669f252')
+b2sums=('f6ae6f83d1afde929fbae29b14b2faba50ec50d04cf9a8d00e2494018281c24a6ddcb1146e9a03c1881a2814aa4cf34c1003fcf90d1559d6c73f7800244487ea')
 
 build() {
   mkdir build
