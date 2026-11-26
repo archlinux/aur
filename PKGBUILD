@@ -8,7 +8,12 @@ pkgdesc="Linux utility for flashing multiple USB devices in parallel, written in
 url="https://github.com/pop-os/popsicle"
 arch=(x86_64 aarch64 armv7h)
 license=(MIT)
-depends=(gtk3)
+depends=(
+    glibc
+    hicolor-icon-theme
+    libgcc
+    libxkbcommon
+    )
 makedepends=(
     git
     cargo
@@ -40,7 +45,7 @@ build() {
 
 package() {
   cd popsicle
-  just rootdir="${pkgdir}" install
-  install -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  just prefix=/usr rootdir="${pkgdir}" install
+  install -D LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
 
