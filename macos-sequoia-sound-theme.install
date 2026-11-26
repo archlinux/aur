@@ -1,0 +1,9 @@
+post_install() {
+  cat <<'MSG'
+==> These are Apple's sounds. Read /usr/share/licenses/macos-sequoia-sound-theme/NOTICE.txt
+    before using them, and do not redistribute the built package.
+==> Select the theme in System Settings > Colors & Themes > System Sounds > macOS Sequoia.
+    The 14 macOS alert sounds are also in /usr/share/sounds/macos-sequoia/alerts/ if you
+    want to assign one to a particular notification.
+MSG
+}

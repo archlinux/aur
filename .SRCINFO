@@ -1,0 +1,20 @@
+pkgbase = macos-sequoia-sound-theme
+	pkgdesc = macOS Sequoia system sounds as a KDE Plasma / freedesktop sound theme (extracted from Apple at build time)
+	pkgver = 15.8.3
+	pkgrel = 1
+	url = https://support.apple.com/en-us/100100
+	install = macos-sequoia-sound-theme.install
+	arch = any
+	license = LicenseRef-Apple
+	makedepends = python
+	makedepends = ffmpeg
+	depends = ocean-sound-theme
+	optdepends = libcanberra: playback (used by Plasma notifications)
+	source = extract_sounds.py
+	source = index.theme
+	source = NOTICE.txt
+	sha256sums = f6e6776a0093b5d88abedcb096e4875defbe7325d68671acee63ec9e942073e8
+	sha256sums = 6050fd9ded5f96c853c176bc424a11149122baef061ca9bead0e936b8e36f343
+	sha256sums = 62ba6d58d369d6951ce008a24b47a9c5e884862c85085bddd750422a5df14996
+
+pkgname = macos-sequoia-sound-theme

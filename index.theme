@@ -1,0 +1,11 @@
+[Sound Theme]
+Name=macOS Sequoia
+Name[zh_CN]=macOS Sequoia
+Comment=macOS Sequoia system sounds, extracted from Apple's update image
+Comment[zh_CN]=macOS Sequoia 系统声音（从 Apple 系统更新镜像提取）
+Inherits=ocean,freedesktop
+Directories=stereo
+Example=theme-demo
+
+[stereo]
+OutputProfile=stereo

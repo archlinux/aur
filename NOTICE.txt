@@ -1,0 +1,9 @@
+The sounds installed by this package are Apple's, copyright Apple Inc., and are not
+covered by the license of the packaging scripts. Neither the AUR repository nor these
+scripts contain them: they are downloaded from Apple's software update servers while
+the package is built, on your own machine.
+
+Use of macOS content is governed by the macOS Software License Agreement
+(https://www.apple.com/legal/sla/), which licenses it for use on Apple hardware.
+Read it before using this package. Do not redistribute the built package or the
+extracted files. Installing this package grants you no additional rights.
