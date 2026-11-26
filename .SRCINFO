@@ -1,0 +1,19 @@
+pkgbase = dslcad-bin
+	pkgdesc = Programming language and interpreter for building 3D models
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/DSchroer/dslcad
+	arch = x86_64
+	license = LGPL-2.1-only
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = dslcad
+	conflicts = dslcad
+	options = !debug
+	source = dslcad-bin-0.0.6-LICENSE::https://raw.githubusercontent.com/DSchroer/dslcad/v0.0.6/LICENSE
+	sha256sums = f2f118b9029ec1871b953639ecc46651b2fc7b62e295e6cf3ef2ac4c9a058b33
+	source_x86_64 = dslcad-bin-0.0.6-x86_64.zip::https://github.com/DSchroer/dslcad/releases/download/v0.0.6/x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = efcd59b4cd12e807b406de5909cefd8e28120c9f2a436fbcca96a3c713983dd5
+
+pkgname = dslcad-bin
