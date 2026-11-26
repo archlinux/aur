@@ -1,7 +1,7 @@
 # Maintainer: Braulio Oliveira <brauliobo@gmail.com>
 
 pkgname=zensmu-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Safety-first Rust CLI, live TUI, and unprivileged GUI for AMD Ryzen SMU control and telemetry (prebuilt binary)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ provides=('zensmu')
 conflicts=('zensmu' 'zensmu-git')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/brauliobo/zensmu/releases/download/v${pkgver}/zensmu-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('ff56c9c26c39adbf5200c75d5799748fd89de8b82dabbdc467928f1adb7ee753')
+sha256sums=('c56ffcf5f63a8ff5c39c3bc39a88027f21554eb5ef251a7cf84bcb4149cc4c6e')
 
 package() {
     local root="${srcdir}/zensmu-v${pkgver}-x86_64-unknown-linux-gnu"
