@@ -1,0 +1,27 @@
+pkgbase = privacynotes-appimage
+	pkgdesc = End-to-end encrypted notes, tasks, files, passwords and journal (official AppImage)
+	pkgver = 0.847.1
+	pkgrel = 1
+	url = https://github.com/LifetimeLabsHQ/PrivacyNotes.app
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = squashfs-tools
+	depends = fuse2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = webkit2gtk-4.1
+	depends = xdg-utils
+	provides = privacynotes=0.847.1
+	conflicts = privacynotes
+	conflicts = privacynotes-bin
+	noextract = PrivacyNotes_0.847.1_amd64.AppImage
+	noextract = PrivacyNotes_0.847.1_aarch64.AppImage
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/LifetimeLabsHQ/PrivacyNotes.app/releases/download/v0.847.1/PrivacyNotes_0.847.1_amd64.AppImage
+	sha256sums_x86_64 = c9e9d2ad932c122a3da7f6b11a846d3b49568a62cf15ce31945365ba7c786881
+	source_aarch64 = https://github.com/LifetimeLabsHQ/PrivacyNotes.app/releases/download/v0.847.1/PrivacyNotes_0.847.1_aarch64.AppImage
+	sha256sums_aarch64 = 7a42f2e3aa290c446b5ee9622306dff97696a09751bd96fd01d88d27448c8dc1
+
+pkgname = privacynotes-appimage
