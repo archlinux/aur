@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=erccdashboard
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Assess Differential Gene Expression Experiments with ERCC Controls'
 arch=('any')
@@ -27,7 +27,7 @@ depends=(
   r-stringr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d825f924c0b0c0520e6fb5146b3b3530d401fbfa928d1ae828bcf35524b52841')
+sha256sums=('3931aa891940dc6cf4ce36a3c4daefa942f1e0710203dc99bc4105a31f6ca2a3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
