@@ -1,5 +1,5 @@
 pkgname=hongguo-desktop-bin
-pkgver=0.2.181
+pkgver=0.2.182
 pkgrel=1
 pkgdesc="红果短剧桌面版（预编译 AppImage）"
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=(
 provides=('hongguo-desktop')
 conflicts=('hongguo-desktop')
 options=('!strip' '!debug')
-source=("https://github.com/aston314/hongguo-tv-releases/releases/download/linux-v0.2.181-test.1/hongguo-desktop-0.2.181-x86_64.AppImage")
-sha256sums=('555c61be4df6e2809c71eb1854adb2bb15a960d90f943d5d33b32a3a5b18850a')
+source=("https://github.com/aston314/hongguo-tv-releases/releases/download/linux-v0.2.182-test.1/hongguo-desktop-0.2.182-x86_64.AppImage")
+sha256sums=('d2296d7f8c0ce7f95ad1ffbdca001f6e2b7375dd68b6cfc37c230dfbe3bea372')
 
 prepare() {
   chmod +x "$srcdir/hongguo-desktop-$pkgver-x86_64.AppImage"
