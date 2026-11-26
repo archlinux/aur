@@ -1,6 +1,6 @@
 pkgbase = antigravity-latest-bin
 	pkgdesc = Google Antigravity 2.0 multi-agent orchestration platform (Prebuilt binary)
-	pkgver = 2.35.1
+	pkgver = 2.35.2
 	pkgrel = 1
 	url = https://antigravity.google/product/antigravity-2
 	arch = aarch64
@@ -38,9 +38,9 @@ pkgbase = antigravity-latest-bin
 	source = antigravity.png
 	b2sums = ec2c74f0e6f2458f2ef1c67b1321c058a3f7c422e364d8871a0a933220ec52ee5736e449cb797b6f135cff1f4adfe6f81e0fdbc76d3ec67c245aea002b8577d8
 	b2sums = 772849ebf4574dccc7d2fc30751baed10b4a5d4091c524f3d69938192387693501c0c54ea5b43fa2ed382f70ecdff369a4c65ce3d0f778c68712fa0c2b5e84b8
-	source_aarch64 = Antigravity-2.35.1-4615540875067392-aarch64.tar.gz::https://storage.googleapis.com/antigravity-public/antigravity-hub/2.35.1-4615540875067392/linux-arm/Antigravity.tar.gz
-	b2sums_aarch64 = e3c8f250f5e42a8f834e578f14bc651214aac70dab4b740c882251eb71dcd767f19efeaf6278a466069433be74719e8bb0bf9aee4194219304ab586a01f3746e
-	source_x86_64 = Antigravity-2.35.1-4615540875067392-x86_64.tar.gz::https://storage.googleapis.com/antigravity-public/antigravity-hub/2.35.1-4615540875067392/linux-x64/Antigravity.tar.gz
-	b2sums_x86_64 = f3c9cca07966018432e69aa42793860561067ceae80d449ba8f8e4e9ae65a7c48490c2bf170d819efea567c09ff9791694f2836d61d75fb4750d4a5324ff7765
+	source_aarch64 = Antigravity-2.35.2-4585983447007232-aarch64.tar.gz::https://storage.googleapis.com/antigravity-public/antigravity-hub/2.35.2-4585983447007232/linux-arm/Antigravity.tar.gz
+	b2sums_aarch64 = 363ab973ccecac82900039da2f8cf197bba118c5d3b89ac8b4e70b75cc4658628b6613f5dec8c55472ca8a5d07dc1e681dff54b70d593f0c5b1a49013f19e6ea
+	source_x86_64 = Antigravity-2.35.2-4585983447007232-x86_64.tar.gz::https://storage.googleapis.com/antigravity-public/antigravity-hub/2.35.2-4585983447007232/linux-x64/Antigravity.tar.gz
+	b2sums_x86_64 = 557bc1de90b1c1a46a48774cfbbd3fb43a752590fbd8cef9284b5aeb333d7f9f69bb81547e1e59a38cbfe147b49483152e0256f364fd62e653451ec1a38f7eca
 
 pkgname = antigravity-latest-bin
