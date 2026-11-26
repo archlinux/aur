@@ -1,0 +1,17 @@
+pkgbase = traefik-kop-bin
+	pkgdesc = Docker to Redis to Traefik service discovery agent
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/jittering/traefik-kop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = traefik-kop
+	conflicts = traefik-kop
+	options = !debug
+	source_x86_64 = traefik-kop-bin-0.21.0-x86_64.tar.gz::https://github.com/jittering/traefik-kop/releases/download/v0.21.0/traefik-kop_linux_amd64.tar.gz
+	sha256sums_x86_64 = af1d9fd9c6f0baefb144a4be0a9239b29a46ae232cdd11bde9eb5ca5c02a9309
+	source_aarch64 = traefik-kop-bin-0.21.0-aarch64.tar.gz::https://github.com/jittering/traefik-kop/releases/download/v0.21.0/traefik-kop_linux_arm64.tar.gz
+	sha256sums_aarch64 = c0ddf81349b1d04b39b958c1a9a319e0ebffaf12df00e8b3476c32feea4a3c96
+
+pkgname = traefik-kop-bin
