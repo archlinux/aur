@@ -2,7 +2,7 @@
 
 pkgname=qt6-mpvqml
 _projname=mpvqml
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Qt6 QML video player element backed by libmpv"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt6-base' 'qt6-declarative' 'mpv')
 makedepends=('cmake')
 conflicts=('qt6-mpvqml-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f172fa15a999cba29b00e2cc091b653c5224369caad4f7902df306d0641f809c')
+sha256sums=('ce15ef421edfb770befbe801529b2073d4f93ee5581122c6d0d1cd3ec03acfc9')
 
 build() {
     cmake -B build -S "${srcdir}/${_projname}-${pkgver}" \
