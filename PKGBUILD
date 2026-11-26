@@ -24,7 +24,7 @@
 #   Enabling acceleration also creates /etc/gh-proxy/, /etc/makepkg.conf.d/99-gh-proxy.conf and /usr/local/bin/curl-gh, which are not owned by this package.
 #   Run `gh-proxy-manager reset --yes` before uninstalling to remove the system files and the global git insteadOf rules.
 pkgname='gh-proxy-manager-bin'
-pkgver='3.0.0'
+pkgver='3.1.0'
 pkgrel=1
 pkgdesc='GUI manager for GitHub download acceleration in yay, makepkg, git clone and curl'
 arch=('x86_64')
@@ -38,9 +38,9 @@ conflicts=('gh-proxy-manager')
 replaces=()
 options=('!strip' '!debug')
 backup=()
-source=('gh-proxy-manager-3.0.0-1-x86_64.pkg.tar.zst::https://github.com/pingod/gh-proxy-manager/releases/download/v3.0.0/gh-proxy-manager-3.0.0-1-x86_64.pkg.tar.zst')
-sha256sums=('b42b0191d859e44cf864d90f3f1b5495b706a0ad15779bb3cd16d7fb22a81899')
-noextract=('gh-proxy-manager-3.0.0-1-x86_64.pkg.tar.zst')
+source=('gh-proxy-manager-3.1.0-1-x86_64.pkg.tar.zst::https://github.com/pingod/gh-proxy-manager/releases/download/v3.1.0/gh-proxy-manager-3.1.0-1-x86_64.pkg.tar.zst')
+sha256sums=('9a82ae61046242f7bf7f1422309a5cd80cd93009d2afaf6fc38da8caacd1da90')
+noextract=('gh-proxy-manager-3.1.0-1-x86_64.pkg.tar.zst')
 
 prepare() {
 # The upstream release is already an Arch package.
