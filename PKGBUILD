@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ISoLDE
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5ab1ba1d3299590d60ec7fe6cf4a9a26')
-b2sums=('26aba10e0a98a3aad59e3fd764193ad5101676e6f8cfc35da0d47690fe61557800d4b02c8a734edf6faccf35420736445bcbb325518bf37653e084b23b99f8e5')
+md5sums=('72fe2a3d1105aa40f5dea089c9ece93f')
+b2sums=('0767d940fa60dec5abe90978985f85a1c034cd491ab576c0a2d37947ad13e15aaf6fbcd7e535b407045b5fc5345fbf4294bea0dc653e63ccfc301150d6897e20')
 
 build() {
   mkdir build
