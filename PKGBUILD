@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FamAgg
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Pedigree Analysis and Familial Aggregation'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f7ae76c803a727bb1723351beee15e4196db67affd8b9bb02387ef7a5d6aa6e8')
+sha256sums=('d0665e63b3cdbcc3ccebb3e92b5a73b33ea77b0f9fdd9aff7a81fefb0b6cba78')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
