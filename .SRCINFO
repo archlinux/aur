@@ -1,6 +1,6 @@
 pkgbase = r-scanmir
 	pkgdesc = scanMiR
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scanMiR
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = r-scanmir
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scanMiR_1.18.0.tar.gz
-	md5sums = 19215883bc917acc0751311863dc016f
-	b2sums = 751168ed47bc67926a528a7fc5fd005bdf4a1e3ab66ad666ded9c13dfa95d0e501b11d675b7c545b852b803c1c58a81ee188d32cf911dbf7e8e0f8fe97dcc284
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scanMiR_1.20.0.tar.gz
+	md5sums = 14f61cf322a9058b245279826751a312
+	b2sums = a8466d2e96c2343c771cd9965a2eb3570920ba9e6b3cca7bf11b3592e0193270554320ba231581c1beb09aded7c870566b2aa8a5f836409fccb9ade8d61c60ba
 
 pkgname = r-scanmir
