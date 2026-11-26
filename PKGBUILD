@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=INTACT
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3ac9191df0ef44addac178f1f0edb80c')
-b2sums=('5384d4b148cec700678b38c2a8d960ccee89f258beaad51e4c2a4d45b64894350f1a23090075a582c22651f1c7561771ed35b6ba270a1c6fffcb935660cd2bee')
+md5sums=('c89f1cd2831919ac32bfa860441b4155')
+b2sums=('b5e6889caf901c09c65f3edd2f474cf3fcfb34a75aea9bcc49ff27f066232f04eb95564e0a9cfe301f87cfe4a9978504f803aac80673b5cde1efe33c8d730f06')
 
 build() {
   mkdir build
