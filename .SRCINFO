@@ -1,6 +1,6 @@
 pkgbase = r-sparsenetgls
 	pkgdesc = Using Gaussian graphical structue learning estimation in generalized least squared regression for multivariate normal regression
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sparsenetgls
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-sparsenetgls
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sparsenetgls_1.30.0.tar.gz
-	sha256sums = 0d56a8ae2ea8e31715dfae1237d6416924f46315e65cc37bc943a77447198ade
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sparsenetgls_1.32.0.tar.gz
+	sha256sums = 896d7f216617da7673f878af79719790a8a51506e295af089b9932a5ece40e1a
 
 pkgname = r-sparsenetgls
