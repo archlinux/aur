@@ -1,0 +1,19 @@
+pkgbase = kern-bin
+	pkgdesc = Fast, rootless, daemonless container runtime and sandbox
+	pkgver = 0.56.0
+	pkgrel = 1
+	url = https://github.com/getkern/kern
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = kern
+	conflicts = kern
+	options = !debug
+	source = kern-bin-0.56.0-LICENSE::https://raw.githubusercontent.com/getkern/kern/v0.56.0/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = kern-bin-0.56.0-x86_64.tar.gz::https://github.com/getkern/kern/releases/download/v0.56.0/kern-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 917db0542ad96019abea51646dfed67d714d6744c7bcd2db8ce78ef31ed8e6ed
+	source_aarch64 = kern-bin-0.56.0-aarch64.tar.gz::https://github.com/getkern/kern/releases/download/v0.56.0/kern-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 26f5925aca9b16a22afd765f8529ea46f5e08964fb39d10b3e21f6a2767b57e4
+
+pkgname = kern-bin
