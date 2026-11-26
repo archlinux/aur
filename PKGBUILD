@@ -1,7 +1,7 @@
 # Maintainer: colegeming <collegeming@outlook.com>
 
 pkgname=kimi-code-desktop-bin
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Kimi Code Desktop - GUI client for the Kimi Code agent (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -17,14 +17,14 @@ options=('!strip')
 # x86_64 forwards the vendor's own .deb straight from its update feed. aarch64
 # is built by this repository (see [build] in metadata.toml): the same app
 # payload with the official Electron arm64 runtime and a rebuilt node-pty.
-source_x86_64=("KimiCode-${pkgver}-linux-amd64.deb::https://code.kimi.com/kimi-code/desktop/binaries/1.5.0/KimiCode-1.5.0-linux-amd64.deb")
-sha512sums_x86_64=('956f75769bb763ebe991f86a255a7ad3c880f9d2585a36bea1e079c268a025cd40ad4585da91ac6d2e673106f0cbfab8b7721e5e27fb33a8ba7472c9eee894fd')
+source_x86_64=("KimiCode-${pkgver}-linux-amd64.deb::https://code.kimi.com/kimi-code/desktop/binaries/1.5.1/KimiCode-1.5.1-linux-amd64.deb")
+sha512sums_x86_64=('0cca2af04cf7c990c9f8fb6b4e69f9db5280ef435377dd5805a1a9507350c0b87b46ba1a69e8ae5fd05b0635b8541463741ed4077ea2f0753a4b1d684af1a8ab')
 # Keep makepkg from unpacking the .deb itself (bsdtar would scatter its ar
 # members across $srcdir); package() unpacks data.tar deliberately.
 noextract=("KimiCode-${pkgver}-linux-amd64.deb")
 
-source_aarch64=("kimi-code-desktop-bin-${pkgver}-1-aarch64.pkg.tar.zst::https://github.com/collegeming/aur-release/releases/download/aur-built-latest/kimi-code-desktop-bin-1.5.0-1-aarch64.pkg.tar.zst")
-sha256sums_aarch64=('4757a82dc910a3ed18e1c8eb5181ce4b570787f8256d75e4cbea95c6eba3dbb5')
+source_aarch64=("kimi-code-desktop-bin-${pkgver}-1-aarch64.pkg.tar.zst::https://github.com/collegeming/aur-release/releases/download/aur-built-latest/kimi-code-desktop-bin-1.5.1-1-aarch64.pkg.tar.zst")
+sha256sums_aarch64=('2e1809addc61295e38c29224eb9f596809610905e729a668edb113a34fc865d9')
 
 package() {
     if [ "${CARCH}" = "x86_64" ]; then
