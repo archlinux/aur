@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rqt
-_pkgver=1.34.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='rqt: utilities for gene-level meta-analysis'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a1b9b02694b8e564341cd5df3aad29900d5f38d0c48813a44bae5fe23af81119')
+sha256sums=('283083f4b4b3a361e82ac8d9f81d65f232281d2fd88a2a1cf27bed5139ba6cb0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
