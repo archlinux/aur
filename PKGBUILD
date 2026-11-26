@@ -1,6 +1,6 @@
 # Maintainer: lifespirit <life@crabs.pro>
 pkgname=homeassistant-matterjs-server
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Open Home Foundation Matter Server based on matter.js'
 arch=('x86_64' 'aarch64')
