@@ -1,0 +1,17 @@
+pkgbase = dlayer-bin
+	pkgdesc = Docker image layer analyzer
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/orisano/dlayer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = dlayer
+	conflicts = dlayer
+	options = !debug
+	source_x86_64 = dlayer-bin-0.3.1-x86_64.tar.gz::https://github.com/orisano/dlayer/releases/download/v0.3.1/dlayer_0.3.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 21664bbbde8b7fd6bdf17d9aa72c63aff49c3c4041d14caadabbabc3cbbac45c
+	source_aarch64 = dlayer-bin-0.3.1-aarch64.tar.gz::https://github.com/orisano/dlayer/releases/download/v0.3.1/dlayer_0.3.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 760360483d2ab217582dcffeee1431f5f98d55053d3d9defbde361f59c1f2184
+
+pkgname = dlayer-bin
