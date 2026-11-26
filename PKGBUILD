@@ -175,7 +175,7 @@ _minor=6
 #_minorc=$((_minor+1))
 #_rcver=rc6
 pkgver=${_major}.${_minor}
-_tagrel=2
+_tagrel=3
 pkgrel=1
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc='CachyOS Linux kernel with cjktty patches'
@@ -815,7 +815,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('148dcab6da9aae4be99786f08491b3de895457d87de3a8aa0008211f57669d5b0471b4037f70e3ca875b9b82b470099158de8fb7ba04f69381150c73e4fea0fe'
+b2sums=('5a798874563c81951c7072792fd9457b8233873dd388920cadbb62755242520e926683a850fcb55e47bf5cf7bcb7dc04afaa781e1740a28e4a783b57418c611c'
         '4165667205ba90d93dfbeb0ae6df3f4b0e1cd3d9348c1eac5dea259723d8c6d6e0af2d8c1b52f643a291bb39e8468f6b3e847506dc793e9037722f3a64bb18d2'
         'eb7ad3aa7b873786cb084247edfc8e8029edaf819d2f25e08e91f36c58e76fd225561bb526287b53353079ace71afae7821d1259b7156d15d2de0a14e7da0a35'
         '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678'
