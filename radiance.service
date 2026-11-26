@@ -1,0 +1,42 @@
+# Installed verbatim by the radiance-inference-git PKGBUILD (install -Dm644).
+[Unit]
+Description=radiance LLM inference server (OpenAI-compatible HTTP API)
+Documentation=https://codeberg.org/StillDeadcode/radiance
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=exec
+# The server reads its settings from /etc/radiance/radiance.yaml (radiance 2.0.0+
+# accepts only --help/--check/--config FILE). The API key travels through the
+# environment: the YAML names it with server.api-key-env, and radiance.env (0600
+# root:root, optional, in backup=) supplies it. PID 1 reads it as root, so the
+# unit needs no access beyond that; adding User= below would mean making the file
+# group-readable for that user, widening the secret's audience.
+EnvironmentFile=-/etc/radiance/radiance.env
+# The HIP runtime caps one allocation and the heap below what the placement plan
+# hands out (Dockerfile ENV, docs/DOCKER.md).
+Environment=GPU_MAX_ALLOC_PERCENT=100 GPU_MAX_HEAP_SIZE=100
+ExecStart=/usr/bin/radiance --config /etc/radiance/radiance.yaml
+
+Restart=on-failure
+RestartSec=15
+# Finishes the step in flight, then releases the cards (compose stop_grace_period 60s).
+TimeoutStopSec=90
+
+# No PrivateDevices=/DevicePolicy=closed/SystemCallFilter= here: an io_uring or
+# mbind/set_mempolicy refusal stops model serving (docs/DOCKER.md).
+NoNewPrivileges=yes
+ProtectSystem=strict
+# model: <owner/name> fetches (hfget.sh) write under the server.download-dir.
+# ProtectSystem=strict mounts the whole hierarchy, /srv included, read-only
+# (systemd.exec(5)); without this the fetch dies EROFS and startup fails.
+ReadWritePaths=/srv/models/rad
+ProtectHome=read-only
+PrivateTmp=yes
+UMask=0077
+# host-pool-mib pins host memory; Arch defaults to 8 MiB. Required for GPU host tiers.
+LimitMEMLOCK=infinity
+
+[Install]
+WantedBy=multi-user.target

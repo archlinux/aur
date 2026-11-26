@@ -1,0 +1,109 @@
+# Tightens /etc/radiance and its EnvironmentFile to root-only. pacman keeps the
+# user's copy of a backup= file *with its mode*, so a world-readable env file from
+# an older package survives the upgrade, and it holds RADIANCE_API_KEY when auth
+# is enabled. Clears the group/other bits only; the owner's mode and the file's
+# ownership are left alone. (radiance.yaml ships 0644 by design: with
+# server.api-key-env the YAML carries no secret. radiance.env ships 0600: it is
+# the secret store.)
+_lockdown_conf() {
+  local dir=/etc/radiance f
+  # find -perm /BITS matches when any of BITS is set; -printf x makes that testable. The
+  # dir is shipped 0750, so only group-write and every world bit count as too open; the
+  # key-carrying file is shipped 0600, so any group/other bit counts.
+  [[ -d $dir ]] && [[ -n "$(find "$dir" -maxdepth 0 -perm /0027 -printf x 2>/dev/null)" ]] &&
+    chmod 750 "$dir" && echo "==> ${dir} is now 0750 root:root"
+  for f in radiance.env; do
+    [[ -f "$dir/$f" ]] && [[ -n "$(find "$dir/$f" -maxdepth 0 -perm /077 -printf x 2>/dev/null)" ]] &&
+      chmod go= "$dir/$f" &&
+      echo "==> ${dir}/${f}: cleared its group/other bits (package ships 0600 root:root) - it can carry RADIANCE_API_KEY"
+  done
+  return 0
+}
+
+# arg 1:  the new package version
+post_install() {
+  cat <<'EOM'
+==> radiance-inference was installed. Next steps:
+==>   1. Learn the configuration keys: radiance --help
+==>   2. Edit the configuration:     sudo $EDITOR /etc/radiance/radiance.yaml
+==>      (radiance 2.0.0 reads ONE YAML file, no CLI flags. The shipped models.main.model
+==>       is the repo id StillDeadcode/qwen3.8-next-flash-iqr-v4: the first start
+==>       downloads it (113 GiB) into /srv/models/rad, and every start re-checks the
+==>       hub - an unreachable hub serves the last complete fetch. Point model: at your
+==>       own .rad container or HF directory to serve something else. Validate a
+==>       new file with: radiance --config /etc/radiance/radiance.yaml --check)
+==>      (auth: uncomment server.api-key-env in the YAML and set RADIANCE_API_KEY in
+==>       /etc/radiance/radiance.env (values there are literal - no $() /
+==>       expansion); radiance.env is 0600 root:root, do not widen it, and keep a
+==>       root-only backup of it)
+==>   3. Enable and start service:   sudo systemctl enable --now radiance.service
+EOM
+}
+
+# One-time migration into radiance.env, the single 0600 EnvironmentFile. Covers
+# both predecessor eras: the 1.x flag-bag radiance.conf (CLI env vars 2.0.0
+# ignores - those settings belong in radiance.yaml) and the short-lived split
+# radiance.conf + api.key.env. Content-gated and idempotent: after the move-aside
+# there is nothing left to migrate. pacman's backup= rules explain the rest:
+# radiance.conf/api.key.env are dropped from the package, so pacman removes them
+# only when UNMODIFIED; a modified file is preserved silently - this function
+# catches those and moves them out of the way (never deletes: they can carry the
+# key), then carries the secret and the still-valid knobs into radiance.env.
+_migrate_env() {
+  local dir=/etc/radiance
+  local env="$dir/radiance.env"
+  local conf="$dir/radiance.conf"
+  local keyenv="$dir/api.key.env"
+  local f t n key line k
+  # collect the key: api.key.env first, then a pasted key in radiance.conf,
+  # then the 1.x flag bag's --api-key (ACTIVE lines only - the 1.x conf's
+  # comments mention --api-key in prose, matching them captures a prose word).
+  if [[ -f $keyenv ]]; then key=$(grep -E '^RADIANCE_API_KEY=.' "$keyenv" | head -1 | sed -E 's/^RADIANCE_API_KEY=//'); fi
+  if [[ -z $key && -f $conf ]]; then
+    key=$(grep -E '^RADIANCE_API_KEY=.' "$conf" | head -1 | sed -E 's/^RADIANCE_API_KEY=//')
+  fi
+  if [[ -z $key && -f $conf ]]; then
+    key=$(grep -vE '^[[:space:]]*#' "$conf" | grep -oE -- '--api-key([= ])[^[:space:]]+' | head -1 | sed -E 's/^--api-key[= ]+//')
+  fi
+  if [[ -n $key && -f $env ]] && ! grep -qE '^RADIANCE_API_KEY=.' "$env"; then
+    awk -v k="$key" '{print ($0 ~ /^RADIANCE_API_KEY=/ ? "RADIANCE_API_KEY=" k : $0)}' "$env" > "$env.tmp" &&
+      chmod 600 "$env.tmp" && mv "$env.tmp" "$env" &&
+      echo "==> carried RADIANCE_API_KEY into ${env} (0600 root:root, value not echoed)"
+  fi
+  # carry the 2.0-era knobs (the only env vars radiance 2.0.0 reads) out of the
+  # retiring radiance.conf; the 1.x flag-bag names (MODEL/HOST/PORT/EXTRA_ARGS)
+  # are inert env vars - they get the port-to-YAML notice, not a copy.
+  if [[ -f $conf ]] && [[ -f $env ]]; then
+    while IFS= read -r line; do
+      k=${line%%=*}
+      grep -qE "^[[:space:]]*${k}=" "$env" || printf '%s\n' "$line" >> "$env"
+    done < <(grep -E '^[[:space:]]*RADIANCE_(HOME|KERNELS|LOG)=' "$conf")
+  fi
+  # retire both files: move aside, root-only, never delete (they can carry the key).
+  for f in "$conf" "$keyenv"; do
+    [[ -f $f ]] || continue
+    t="$f.pre-env"; n=1
+    while [[ -e $t ]]; do t="$f.pre-env.$n"; ((n++)); done
+    mv "$f" "$t" && chmod go= "$t" &&
+      echo "==> ${f} retired (merged into radiance.env): moved to ${t}"
+  done
+  if [[ -f "$conf.pre-env" ]] && grep -qE '^[[:space:]]*RADIANCE_(MODEL|HOST|PORT|EXTRA_ARGS)=' "$conf.pre-env"; then
+    echo "==> the moved radiance.conf was the 1.x flag bag: port its settings into"
+    echo "    radiance.yaml (rad-yaml converts old flag lines: \`rad-yaml --model X --tp 2 ... > radiance.yaml\`)"
+  fi
+  return 0
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  _migrate_env
+  _lockdown_conf
+  cat <<'EOM'
+==> NOTE 2.x config layout: radiance.conf and api.key.env are retired; one file,
+==> /etc/radiance/radiance.env (0600), carries the key + env knobs, loaded as
+==> EnvironmentFile=-. The scriptlet above merged your key/knobs and moved any
+==> modified predecessors to *.pre-env; port 1.x flag-bag settings into
+==> radiance.yaml with rad-yaml.
+EOM
+}
