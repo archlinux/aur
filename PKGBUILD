@@ -1,8 +1,8 @@
 # Maintainer: Aria Arctic <aria@zeusteam.dev>
 # Contributor: Rowan <rowan@zeusteam.dev>
 pkgname=ferron-git
-pkgver=3.0.0.rc.11.r47.g907a108
-pkgrel=10
+pkgver=3.0.0.rc.11.r48.gc976683
+pkgrel=11
 pkgdesc='A fast, modern web server written in Rust (git)'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'riscv64')
 url='https://ferron.sh'
