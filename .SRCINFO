@@ -1,6 +1,6 @@
 pkgbase = python-rosettasciio
 	pkgdesc = Rosetta Scientific Input Output library
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = http://hyperspy.org/rosettasciio
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = python-rosettasciio
 	optdepends = python-zarr<3: zspy
 	optdepends = python-msgpack: zspy
 	provides = rsciio
-	source = https://files.pythonhosted.org/packages/source/r/rosettasciio/rosettasciio-0.15.0.tar.gz
-	sha256sums = fcf6e6e3675d766231e6eae59b951d2850e3363fd1c9a23957d8408f2833132f
+	source = https://files.pythonhosted.org/packages/source/r/rosettasciio/rosettasciio-0.16.0.tar.gz
+	sha256sums = b59356c851e9c7e8eae026e004121851ad35af735f77fc0ee6d04132f5080ff3
 
 pkgname = python-rosettasciio
