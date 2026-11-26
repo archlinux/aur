@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rexposome
-_pkgver=1.34.2
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -43,8 +43,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('115b1388033dbd8aa722bb3c05dcbac8')
-b2sums=('95778cfef322451f016c1f40774cb105b7fbcf424c8b5b1e65870704c7a1f4022d77c54d12667c9d7418a9cbcb3f7a7c900404c3a13b79f406b3c38a04ab985c')
+md5sums=('a2f7e7fcd6ec7a1e3d57f2e78bf6ea99')
+b2sums=('3e5b1d071ed584eaa6935853572c230abc0fc7e4c2fd277bb0f30ffe48e4b0ebb2fcd811412548ea3d3abe83cc8557727e5f6de26b2403b3c07045e25a3f11de')
 
 build() {
   mkdir build
