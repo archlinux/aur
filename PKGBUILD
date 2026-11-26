@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mgsa
-_pkgver=1.60.0
+_pkgver=1.61.0
 pkgname=r-${_pkgname,,}
-pkgver=1.60.0
+pkgver=1.61.0
 pkgrel=1
 pkgdesc='Model-based gene set analysis'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('eecdd2b8da1510612ddca1042faf373bbb0506c93e76c883f930b1729549a48d')
+sha256sums=('201924f354faaccb4e298fd44caa906dabd29fe84fb8afb112374326a7823305')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
