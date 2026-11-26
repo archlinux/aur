@@ -1,6 +1,7 @@
+# Maintainer: Ateles
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=upmd-bin
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Markdown-based task and workflow runner"
 arch=("x86_64" "aarch64")
@@ -14,9 +15,9 @@ source_x86_64=("https://github.com/rezigned/upmd/releases/download/v${pkgver}/up
 
 source_aarch64=("https://github.com/rezigned/upmd/releases/download/v${pkgver}/upmd-aarch64-unknown-linux-gnu.tar.xz")
 
-sha256sums_x86_64=('101336d7a8f4648a3bf894d5636875f1df3d219719d470096c562e0cf4d6b9aa')
+sha256sums_x86_64=('9befb2bd007e8425602c144f039326dc2a94a117019aca12c959b9b9ebc982ea')
+sha256sums_aarch64=('17148c7eef9aa96aecce0fb79d1deec459ab46e6ec8566126eb4cd3a3f5f6869')
 
-sha256sums_aarch64=('213c77a602d33628508fdea9cc4bb2e6238030e57528b748ca5137f70542e7a0')
 
 package() {
     install -Dm755 "$srcdir/upmd-${CARCH}-unknown-linux-gnu/upmd"      "$pkgdir/usr/bin/upmd"
