@@ -1,0 +1,19 @@
+pkgbase = xray-checker-bin
+	pkgdesc = Prometheus exporter for monitoring Xray proxies
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/kutovoys/xray-checker
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = xray-checker
+	conflicts = xray-checker
+	options = !debug
+	source = xray-checker-bin-1.3.1-LICENSE::https://raw.githubusercontent.com/kutovoys/xray-checker/v1.3.1/LICENSE
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	source_x86_64 = xray-checker-bin-1.3.1-x86_64.tar.gz::https://github.com/kutovoys/xray-checker/releases/download/v1.3.1/xray-checker-v1.3.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = d6267f0685636f7ee91c1671a52b69dc3d4715a6678056455481f5ed7a5afcfc
+	source_aarch64 = xray-checker-bin-1.3.1-aarch64.tar.gz::https://github.com/kutovoys/xray-checker/releases/download/v1.3.1/xray-checker-v1.3.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 05c6dc5836cf64d5de03ee3720d6685ef80937c8f95a0ce4f124cf0ccc834d0a
+
+pkgname = xray-checker-bin
