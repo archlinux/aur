@@ -1,7 +1,7 @@
-# Maintainer in AUR: drakkan <nicola.murino at gmail dot com>
+# Maintainer: Martchus <martchus@gmx.net>
 
-# This version includes the static library as well (in contrast
-# to the version found in the AUR).
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
 
 pkgname=mingw-w64-brotli
 _pkgname=brotli
