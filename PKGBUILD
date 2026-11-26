@@ -7,7 +7,7 @@
 
 pkgname=kimi-work-cn-bin
 pkgver=3.2.28
-pkgrel=1
+pkgrel=2
 _prefix='/opt/kimi-work-cn'
 pkgdesc='Kimi Work desktop client, mainland China build pinned to the China region'
 arch=('x86_64')

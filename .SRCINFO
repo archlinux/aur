@@ -1,7 +1,7 @@
 pkgbase = kimi-work-cn-bin
 	pkgdesc = Kimi Work desktop client, mainland China build pinned to the China region
 	pkgver = 3.2.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kimi.com/products/kimi-work
 	arch = x86_64
 	license = LicenseRef-proprietary
