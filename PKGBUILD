@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pathwayPCA
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4893327d174e201838b1949108af4649')
-b2sums=('2d3db0c699304a0d02a262dd361f21021f5240e78caa3ee9c13d4adc14bb6ace2b426c950fb24e4f139b26ee1e0844b95776ed8cf7d9af4b90c93599ae3938ba')
+md5sums=('331d718ca55e75e55f74a8820f438ba7')
+b2sums=('aaf1eb24264e23fa58f44a1c4e5aac9f85daa37ef843d7187f2c09278e70ebf192e3d0b0dc5aa0c5651f561cad7ef1ce0fa43162595b9962abf757c774c51283')
 
 build() {
   mkdir build
