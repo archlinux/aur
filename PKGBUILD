@@ -87,7 +87,9 @@ build() {
 check() {
     cd "$srcdir/misstype"
     _zig
-    (cd core-zig && "$MISSTYPE_ZIG" build test -Doptimize=ReleaseFast)
+    if [[ ${MISSTYPE_SKIP_ZIG_TESTS:-0} != 1 ]]; then
+        (cd core-zig && "$MISSTYPE_ZIG" build test -Doptimize=ReleaseFast)
+    fi
     bash script/linux/test_capi.sh
     # The headless IBus suite (script/linux/test_ibus.sh) needs Xvfb and a
     # private session bus; CI runs it, so it is not repeated here.
