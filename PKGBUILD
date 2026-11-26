@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=retrofit
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b62839b315572e262b6397502767749a')
-b2sums=('695e7115f516472f4d28b44e0af4c413e5bdb673ca194f96d5b2c11216a727bf8608967cf8e94a431836e1db0218ae0d6e13d1c2357360b4bdc962acf721a41e')
+md5sums=('18e5ff24f8c1a9e2b9a1e3ef9484827e')
+b2sums=('ed0b8d51288e8d48c10642312e5c33e12e5a0b07e9cc3bc6863987505647caf6b7b865cac6f10d86770c6141289298c869d3449e9dbe2133690cb47eb09356e0')
 
 build() {
   mkdir build
