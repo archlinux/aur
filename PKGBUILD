@@ -1,26 +1,30 @@
 # Maintainer: Fovty <38868829+Fovty@users.noreply.github.com>
 pkgname=hushmic-bin
 _srcname=hushmic
-pkgver=0.11.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Real-time microphone noise suppression as a virtual mic (DPDFNet via PipeWire) — prebuilt binary"
 arch=('x86_64')
-url="https://github.com/Fovty/hushmic"
+url="https://hushmic.org"
 license=('MIT OR Apache-2.0')
 # No 'onnxruntime': this package ships the ONNX Runtime the release was built
 # and tested against under /usr/lib/hushmic/ (the source package links the
 # system one instead). No rust/cargo/python either — nothing is compiled here.
 # glibc/gcc-libs back the prebuilt ELFs; pipewire* and wireplumber are invoked
 # as subprocesses, so namcap cannot see them from the linkage alone.
+# libopus is linked into the release binary.
 depends=('pipewire' 'pipewire-pulse' 'wireplumber'
          'glibc' 'gcc-libs' 'hicolor-icon-theme')
+# ffmpeg writes Save's formats (run as a program); without it Save writes
+# FLAC and a video keeps its sound only.
+optdepends=('ffmpeg: Save in the original format')
 provides=("hushmic=$pkgver")
 conflicts=('hushmic')
 # Prebuilt payload: stripping it would only churn the binary and the 23 MB
 # bundled ONNX Runtime, and debug extraction has no sources to point at.
 options=('!strip' '!debug')
-source=("$url/releases/download/v$pkgver/hushmic-$pkgver-x86_64.tar.gz")
-sha256sums=('9a8c91551c32584536d277b23ba91d8f03b55f41c93957e03248716a989fda53')
+source=("https://github.com/Fovty/hushmic/releases/download/v$pkgver/hushmic-$pkgver-x86_64.tar.gz")
+sha256sums=('f32aa84449f21eacdfea9d1a86a6546b5a9171a924e1cc9a8310440511ed86b8')
 
 package() {
   cd "$srcdir/hushmic-$pkgver-x86_64"
@@ -52,10 +56,13 @@ package() {
     "$pkgdir/usr/lib/systemd/user/hushmic.service"
   install -Dm644 share/applications/hushmic.desktop \
     "$pkgdir/usr/share/applications/hushmic.desktop"
+  install -Dm644 share/applications/hushmic-clean.desktop \
+    "$pkgdir/usr/share/applications/hushmic-clean.desktop"
 
-  # App icon + the tray status ladder (five SNI names x eight sizes) + the
-  # monochrome -symbolic SVGs the desktop recolors; a plain copy of the tree
-  # keeps every size, state and format the release ships.
+  # App icon (every size + scalable) + the tray status ladder (five SNI
+  # names x eight sizes) + the monochrome -symbolic SVGs the desktop
+  # recolors; a plain copy of the tree keeps every size, state and format
+  # the release ships.
   find share/icons -type f \( -name '*.png' -o -name '*.svg' \) -print0 \
     | while IFS= read -r -d '' _icon; do
     install -Dm644 "$_icon" "$pkgdir/usr/$_icon"
