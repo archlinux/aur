@@ -1,7 +1,7 @@
 # Maintainer: guohw <go1em>
 pkgname=shotori-clipboard-uri-list
 pkgver=0.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Screenshot tool fork: the clipboard also offers text/uri-list and text/html so X11 clients can paste large images"
 arch=('x86_64')
 url="https://github.com/go1em/shotori"
