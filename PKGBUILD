@@ -1,5 +1,6 @@
 # This is just the package from the linuxmint repositories modified to work with wayland
 # Maintainer: pusi77 <pusineriandrea+gmail+com>
+# Contributor: pusi77-robot <pusineriandrea+gmail+com>
 
 pkgname=hypnotix-wayland
 pkgver=5.10
