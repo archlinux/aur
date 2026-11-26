@@ -1,5 +1,5 @@
 pkgbase = shelly-cli
-	pkgver = 3.4.1r5476.g496089a
+	pkgver = 3.4.2.r5640.gc279248
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
@@ -10,9 +10,8 @@ pkgbase = shelly-cli
 	makedepends = gnupg
 	makedepends = git
 	makedepends = pkgconf
-	makedepends = zig=0.17.1
+	makedepends = zig>=0.17.1
 	makedepends = flatpak
-	makedepends = ripgrep
 	makedepends = go-md2man
 	makedepends = binutils
 	makedepends = pacman
@@ -22,7 +21,7 @@ pkgbase = shelly-cli
 	source = shelly-cli::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development
 	source = shellybuild.conf
 	sha256sums = SKIP
-	sha256sums = 4126da205e91a3ba3b15453c2aeade92f67e16e3386a52aae32fbd3f2e4af9cc
+	sha256sums = 14822fabf00c21937d4df2e634d95e1c2d1666ec211ab9d0531f688909208f56
 
 pkgname = shelly-cli
 	pkgdesc = Native Shelly package-manager CLI beta
@@ -45,15 +44,14 @@ pkgname = shelly-cli
 	optdepends = plocate: locate-based pacfile discovery
 	optdepends = util-linux: isolate fresh-root provisioning for --isolated builds
 	optdepends = vim: default visual pacfile diff viewer
-	provides = shelly-beta
 	backup = etc/shellybuild.conf
 
 pkgname = shelly-cli-flatpak-backend
 	pkgdesc = Optional native Flatpak backend for the Shelly CLI beta
-	depends = shelly-cli=3.4.1r5476.g496089a-1
+	depends = shelly-cli=3.4.2.r5640.gc279248-1
 	depends = flatpak
 	optdepends = 
-	provides = shelly-flatpak-backend=3.4.1r5476.g496089a
+	provides = shelly-flatpak-backend=3.4.2.r5640.gc279248
 	conflicts = shelly-flatpak-backend
 	conflicts = shelly-flatpak-backend-git
 	conflicts = shelly-flatpak-backend-bin
