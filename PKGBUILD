@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sights
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Statistics and dIagnostic Graphs for HTS'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-xlsx
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('41d39c02a6a00ebd184267f22012d4546cb691b638a7371032e14c0833f58907')
+sha256sums=('192edc6ed31b76caf15d3373e32947c68c3e9a115bec5cebd777cb016c226e92')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
