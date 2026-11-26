@@ -1,0 +1,21 @@
+pkgbase = jormungandr-bin
+	pkgdesc = Cardano Jormungandr blockchain node
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = https://github.com/cardano-foundation/jormungandr
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = jormungandr
+	conflicts = jormungandr
+	options = !debug
+	source = jormungandr-bin-0.15.1-LICENSE::https://raw.githubusercontent.com/cardano-foundation/jormungandr/v0.15.1/LICENSE-APACHE
+	sha256sums = 1ca206082309bb9901d775d27cd838ebaa88b1eb80f858cdbfafda52cc9a9082
+	source_x86_64 = jormungandr-bin-0.15.1-x86_64.tar.gz::https://github.com/cardano-foundation/jormungandr/releases/download/v0.15.1/jormungandr-0.15.1-x86_64-unknown-linux-gnu-generic.tar.gz
+	sha256sums_x86_64 = ba2a4f29509bcd404c27bc4c67a1f9e9de6fff6c7ac41d6f88821994ed327671
+	source_aarch64 = jormungandr-bin-0.15.1-aarch64.tar.gz::https://github.com/cardano-foundation/jormungandr/releases/download/v0.15.1/jormungandr-0.15.1-aarch64-unknown-linux-gnu-generic.tar.gz
+	sha256sums_aarch64 = 0c252f92407a31ae48bf3810645f2d60681149a87b5cfdf227725d16d792cd9d
+
+pkgname = jormungandr-bin
