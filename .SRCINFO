@@ -1,7 +1,7 @@
 pkgbase = vulcanium-bin
 	pkgdesc = Chromium with native Wayland Vulkan rendering and Vulkan Video decoding/encoding (prebuilt)
 	pkgver = 158.0.8127.36
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lumexren/vulcanium
 	arch = x86_64
 	license = BSD-3-Clause
@@ -72,10 +72,10 @@ pkgbase = vulcanium-bin
 	conflicts = vulcanium
 	conflicts = ungoogled-vulcanium
 	conflicts = ungoogled-vulcanium-bin
-	noextract = vulcanium-158.0.8127.36-3-x86_64.pkg.tar.zst
+	noextract = vulcanium-158.0.8127.36-4-x86_64.pkg.tar.zst
 	options = !strip
 	backup = etc/vulcanium/default-flags.conf
-	source = https://github.com/lumexren/vulcanium/releases/download/v158.0.8127.36-3/vulcanium-158.0.8127.36-3-x86_64.pkg.tar.zst
-	sha256sums = 9fdd39ff01babaef44c5308246dd429fa6c3922d3b15921d0c52c0df7f77b108
+	source = https://github.com/lumexren/vulcanium/releases/download/v158.0.8127.36-4/vulcanium-158.0.8127.36-4-x86_64.pkg.tar.zst
+	sha256sums = d26a2bdb8e39c0031f2d3a8fdf4a8b3d87585b1bf3b0941f4eb05a8ea212270c
 
 pkgname = vulcanium-bin
