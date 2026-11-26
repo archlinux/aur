@@ -2,7 +2,7 @@
 
 _pkgname=mpv-music
 pkgname=$_pkgname-bin
-pkgver=0.29.1
+pkgver=0.30.0
 pkgrel=1
 pkgdesc='Blazing-fast, terminal-native music player and library browser for mpv (prebuilt, static musl)'
 arch=(x86_64 aarch64)
@@ -19,8 +19,8 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/FurqanHun/$_pkgname/
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64-unknown-linux-musl.tar.gz")
 sha256sums=('a45fa2598cba03440691efa1ea743252a7651963808921e5627f7845696a0689')
-sha256sums_x86_64=('c77fddbe9ec695307498be73424e67c2d12ae3d287a0a2a2a28ca0f225e4fc3a')
-sha256sums_aarch64=('616d999f62b780f41a7bbd03fa54167fd163aede06e2df2c0f13a78bf6d8f800')
+sha256sums_x86_64=('b0b0d339ad16ae1fc9d2bed0ec7af15474c94ff4749fcce228206051e8d3ea12')
+sha256sums_aarch64=('f9586006f5c78ca138ea172ccb8c53e638d6b5aafd7be95a8225192a3e1d68d7')
 
 package() {
 	install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
