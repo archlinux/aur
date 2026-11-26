@@ -1,0 +1,26 @@
+pkgbase = mochawaita-gtk-theme-git
+	pkgdesc = Catppuccin Mocha in the shape of Adwaita: GTK3/GTK4 theme (recolored adw-gtk3) and tinted icons
+	pkgver = r8.e872c59
+	pkgrel = 1
+	url = https://github.com/prietus/mochawaita-gtk-theme
+	install = mochawaita.install
+	arch = any
+	license = LGPL-2.1-or-later
+	makedepends = git
+	depends = python
+	depends = python-pillow
+	depends = librsvg
+	depends = adwaita-icon-theme
+	depends = glib2
+	optdepends = gtk3: GTK3 applications
+	optdepends = gtk4: GTK4 applications
+	optdepends = libadwaita: libadwaita applications (recolored through the user gtk.css)
+	optdepends = gtk-update-icon-cache: icon theme cache
+	optdepends = fuzzel: mochawaita apply sets its icon theme
+	provides = mochawaita-gtk-theme
+	conflicts = mochawaita-gtk-theme
+	backup = etc/mochawaita.conf
+	source = mochawaita-gtk-theme-git::git+https://github.com/prietus/mochawaita-gtk-theme.git
+	sha256sums = SKIP
+
+pkgname = mochawaita-gtk-theme-git
