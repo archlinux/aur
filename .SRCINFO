@@ -1,6 +1,6 @@
 pkgbase = transom
 	pkgdesc = Sharp remote desktops over RDP (GTK 4, HiDPI-correct)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/jm2/transom
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = transom
 	depends = glib2
 	depends = pango
 	depends = graphene
-	depends = freerdp>=3.15
+	depends = freerdp>=2:3.33.1
 	depends = gtk4>=4.16
 	depends = libadwaita>=1.6
 	depends = libsecret
@@ -26,7 +26,7 @@ pkgbase = transom
 	optdepends = vulkan-icd-loader: GTKs Vulkan renderer, needed to show hardware-decoded video
 	options = !lto
 	options = !debug
-	source = transom-0.1.0.tar.gz::https://github.com/jm2/transom/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = ecdaf9a66faae074fb6028ab443bd42e5059a475e58e46106ddb44ccf5053dff
+	source = transom-0.1.1.tar.gz::https://github.com/jm2/transom/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 8ba5ff7d01c321e2cf750bf58f56c14e7ff9be4616ab149319a7a31c8fb6c9f0
 
 pkgname = transom
