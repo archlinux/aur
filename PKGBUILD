@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="⚡️ Ziggity an ultra fast, keyboard driven terminal UI for Git, written in Zig."
 
-pkgver=0.66.0
+pkgver=0.67.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ depends=('git')
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums_x86_64=('d9a9eadd5ec48a2182268588078589de63528b05f6541739c4cdcb68e1c2d6b5')
+sha256sums_x86_64=('a9545821acb1137a912f5d21e8fa792d33cf6e36f4ed5235ca7c7e2f6c20a4c8')
 
 
 build() {
