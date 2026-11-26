@@ -1,6 +1,6 @@
 pkgbase = remya-screen-capture
 	pkgdesc = Screen capture, recording and editing for Hyprland
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/remyhuang03/remya-screen-capture
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = remya-screen-capture
 	makedepends = ninja
 	makedepends = rustup
 	makedepends = wayland-protocols
-	depends = remya-core>=0.2.0
+	depends = remya-core>=0.3.0
 	depends = gtk3
 	depends = gtk-layer-shell
 	depends = wayland
@@ -30,9 +30,9 @@ pkgbase = remya-screen-capture
 	conflicts = remya-screen-capture-bin
 	conflicts = remya-screen-capture-git
 	options = !strip
-	source = remya-screen-capture-0.3.0.tar.gz::https://github.com/remyhuang03/remya-screen-capture/archive/refs/tags/v0.3.0.tar.gz
-	source = remya-core-0.2.0.tar.gz::https://github.com/remyhuang03/remya-core/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = c18a208feac08dee15928e691204a7d718b335948c3ee5ea44161ef53878eee2
-	sha256sums = 1f3f7564d7042bffaa604b6b9cac2feb0ac7ae63d687963999e8a098f1864c78
+	source = remya-screen-capture-0.4.0.tar.gz::https://github.com/remyhuang03/remya-screen-capture/archive/refs/tags/v0.4.0.tar.gz
+	source = remya-core-0.3.0.tar.gz::https://github.com/remyhuang03/remya-core/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 7af45b2be0015c19eba926094293d78905dc0d6dc39148f2475acb4c3d47817a
+	sha256sums = 7d6446827dde819e21c6029e5aa8af732dc12753c79b990d474b29bc5b7a22b7
 
 pkgname = remya-screen-capture
