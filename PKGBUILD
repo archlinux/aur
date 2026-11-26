@@ -1,6 +1,6 @@
 # Maintainer: Christopher Patrick Fair <christopherpatrickfair@gmail.com>
 pkgname=wscreensavers
-pkgver=1.1.33
+pkgver=1.1.34
 pkgrel=1
 pkgdesc="Native Wayland version of XScreenSaver with 33 built-in WebGL/Canvas ports, XScreenSaver XML bridge, PAM lock screen, and live desktop wallpaper mode"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ makedepends=('go' 'nodejs' 'npm' 'pkgconf')
 provides=('wscreensavers')
 conflicts=('wscreensavers')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chrisfair/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8971c7875ad80c06e5c03ce0e50c822d18e77cb6bbe58b501febaad49f71d0e6')
+sha256sums=('2c3a75741793664a3867d8ea458164aff43c53bb9808599f31ddab1e5824e941')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
