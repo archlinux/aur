@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=lovable-oj-bin
-pkgver=0.4.24
+pkgver=0.4.25
 pkgrel=1
 pkgdesc='Experimental next generation frontend tooling (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("lovable-oj-${pkgver}-LICENSE::https://raw.githubusercontent.com/lovable
 source_x86_64=("oj-${pkgver}-x86_64.tar.gz::${_release}/oj-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("oj-${pkgver}-aarch64.tar.gz::${_release}/oj-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('3cc3fc954c836676b3e485b8af1f9870b8d50b3e3ec4b94b81f5f2ef012cf535')
-sha256sums_x86_64=('8b09a542aab62676f9a87cc70d5881603d4bf76bfa5f879673359e69da5c53c3')
-sha256sums_aarch64=('ad2c573a9c9196e1069b184071df4d3db0ecf00dcf1607e02afc9bae88ec17ff')
+sha256sums_x86_64=('003e155e4b325f50ee55aa693a896df0d77fc3ef2e2a70ace92034dae52b5c53')
+sha256sums_aarch64=('0a270940fdc84d2bce63efbe046cf6c2e253dc8e6ee200b240ff23f3fa455a37')
 
 package() {
   install -Dm755 oj -t "${pkgdir}/usr/bin"
