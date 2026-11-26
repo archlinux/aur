@@ -1,0 +1,20 @@
+pkgbase = python-pycm
+	pkgdesc = Multi-class confusion matrix library for Python
+	pkgver = 4.6
+	pkgrel = 1
+	url = https://github.com/sepandhaghighi/pycm
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-art
+	depends = python-numpy
+	optdepends = python-matplotlib: plotting confusion matrices
+	optdepends = python-seaborn: heatmap plots
+	source = https://files.pythonhosted.org/packages/source/p/pycm/pycm-4.6.tar.gz
+	sha256sums = f0b52b2a75505faa6ff61e3395af5f632b81dd44e2215adf9f9d63c61ebd04e3
+
+pkgname = python-pycm
