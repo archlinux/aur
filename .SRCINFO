@@ -1,0 +1,18 @@
+pkgbase = tigrisfs-bin
+	pkgdesc = High performance FUSE filesystem for AI workloads with S3 compatible backends
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/tigrisdata/tigrisfs
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = fuse3
+	provides = tigrisfs
+	conflicts = tigrisfs
+	options = !debug
+	source_x86_64 = tigrisfs-bin-1.2.4-x86_64.tar.gz::https://github.com/tigrisdata/tigrisfs/releases/download/v1.2.4/tigrisfs_1.2.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 94e5e73df98186c87aec9e8bb1338fdbc92915f00f98cd3508f8f2f40764159a
+	source_aarch64 = tigrisfs-bin-1.2.4-aarch64.tar.gz::https://github.com/tigrisdata/tigrisfs/releases/download/v1.2.4/tigrisfs_1.2.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 14c07933aa7fa6916c9ee2eff7dcbce03208c90b524df868e8a16ecfd6ad61b8
+
+pkgname = tigrisfs-bin
