@@ -10,7 +10,7 @@ pkgbase=${_gitname}
 pkgname=(ttf-${_gitname} ttf-${_gitname}-nerd otf-${_gitname} otf-${_gitname}-nerd)
 pkgdesc="A hand-drawn monospaced font for code and terminals, derived from Comic Shanns Mono"
 
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source=("${_ghurl}/releases/download/${_gitversion}/${_fontname}-${pkgver}.zip"
 		"${_ghurl}/releases/download/${_gitversion}/${_nerdfontname}-${pkgver}.zip")
-sha256sums=('b7466674cb82ea83afe51401e64902db76ac364f975fe8c897b9a0b0d0e30231'
-            'e7580ea0c9ef3dedc6b504c0e5f1db453976acbac2ff6bc87d3324eb87b8a171')
+sha256sums=('cff8edd4a909af105f8c78fd3b0a20723449380086029345c753c8257611d3c5'
+            'fc818327199227d09c8a1557120612e855be99f2ca51a9d76dd66a8c0e7e7982')
 
 
 package_ttf-comic-caret() {
