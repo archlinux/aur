@@ -1,16 +1,16 @@
 # Maintainer: Remy Huang <me@remya.top>
 pkgname=remya-settings-git
 _app_id=remya_settings
-_upstream_ver=0.1.0-dev.20261118.0
-_core_ver=0.2.0
-pkgver=0.1.0_dev.20261118.0.r140.g5c3cae9
+_upstream_ver=0.1.0-dev.20261126.0
+_core_ver=0.3.0
+pkgver=0.1.0_dev.20261126.0.r148.g2d45360
 pkgrel=1
 pkgdesc="A Material Design 3 Expressive system settings application for Hyprland on Linux (git)"
 arch=('x86_64')
 url="https://github.com/remyhuang03/remya-settings"
 license=('LicenseRef-PolyForm-Noncommercial-1.0.0')
 depends=(
-  'remya-core>=0.2.0'
+  'remya-core>=0.3.0'
   'gtk3'
   'gstreamer'
   'gst-plugins-base-libs'
