@@ -2,7 +2,7 @@
 # Based on the river package of Arch Linux (Daurnimator, Andrea Feletto).
 
 pkgname=river-fx
-pkgver=0.5.2.fx1
+pkgver=0.5.2.fx2
 pkgrel=1
 pkgdesc='river (non-monolithic Wayland compositor) drawn with SceneFX: opacity, rounded corners, blur and shadows for window managers'
 arch=('x86_64' 'aarch64')
@@ -45,7 +45,7 @@ source=(
     "${_zig_deps[@]}"
 )
 noextract=("${_zig_deps[@]%%::*}")
-sha256sums=('5d36f9db07a6fc0d9019c3c6ae089d81f3522ccb83a73219207df6b2c5291b38'
+sha256sums=('1063edcec5a403429f72393432ba50e7c8fdfb4b2339eea24348b17bdcffc5cd'
             'b2f4c707c8692a0821081abd20372d95b06a8be4d6cf93e4021b3492454546d8'
             '4b0b57ce37f7bb3a2c2fc76eec93d060830d2c92155bf2a6baa43d61ad05499e'
             '6eb33184b52f4b8f834c90f539dfb2fc0ec7ce5931896fadb4c3eab720b8c9b8'
