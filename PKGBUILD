@@ -77,8 +77,7 @@ source_aarch64=(
 )
 
 latestver() {
-  curl -fsSL "https://pypi.org/pypi/${_pyname}/json" |
-    sed -nE 's/^ *"version": *"([0-9]+(\.[0-9]+)*)".*/\1/p' | head -1
+  curl -fsSL "https://pypi.org/pypi/${_pyname}/json" | jq -r '.info.version'
 }
 
 prepare() {
