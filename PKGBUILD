@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Clomial
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-permute
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('abeae58b94cd2d97c4d4519149eeefed')
-b2sums=('eeaf5c49a3255adff107f3286ffb901e6a15dcdef9461e8e03c4fead1fd0a42c1d5e64f877fdd5f4d92a262ee1c4a7cbdb2f52e297bc0284cbff22783feec73a')
+md5sums=('cedf59d032c788c7524f9e137b0d7dd4')
+b2sums=('f85ae0066827ca7aa287d1093fccd35e652b37a7ad191ae43975956dee685b9aa7216dac0e849522325a89eb524ae4c5d650443ff62cb4f09b5f3a91bed76d90')
 
 build() {
   mkdir build
