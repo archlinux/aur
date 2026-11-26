@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=krakend
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc='High-performance, stateless, declarative API gateway'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ backup=('etc/krakend/krakend.json')
 install=krakend.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'krakend.sysusers')
-sha256sums=('6b7ccbd00e4aae2c44c32471be6f868ae3769b2cfd0d92e15791951e8d9aea00'
+sha256sums=('3e32c172026c54a0c8bd2bb544ba1183dd57f4ec89f735e23ebb0919cb5619d8'
             '6710405313f2e37386f5299581058a0ba5e14bd800262a04759c0faa98e48c08')
 
 prepare() {
