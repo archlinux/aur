@@ -1,20 +1,39 @@
 pkgbase = python-azure-core
 	pkgdesc = Microsoft Azure Core Shared Client Library for Python
 	pkgver = 1.41.0
-	pkgrel = 1
-	url = https://github.com/Azure/azure-sdk-for-python
+	pkgrel = 2
+	url = https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-core
 	arch = any
 	license = MIT
-	makedepends = python-build
+	checkdepends = python-trio
+	checkdepends = python-aiohttp
+	checkdepends = python-certifi
+	checkdepends = python-pytest
+	checkdepends = python-dotenv
+	checkdepends = python-urllib3
+	checkdepends = python-configargparse
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-flask
+	checkdepends = python-isodate
+	checkdepends = python-geojson
+	checkdepends = python-pytest-trio
+	checkdepends = python-cryptography
+	checkdepends = python-opentelemetry-sdk
+	checkdepends = python-opentelemetry-instrumentation-requests
+	checkdepends = python-packaging
+	checkdepends = python-opentelemetry-api
 	makedepends = python-setuptools
+	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.10.0
-	depends = python-requests>=2.21.0
-	depends = python-typing_extensions>=4.6.0
-	optdepends = python-aiohttp: aiohttp transport
-	optdepends = python-opentelemetry-api: OpenTelemetry tracing support
-	source = python-azure-core-1.41.0.tar.gz::https://github.com/Azure/azure-sdk-for-python/archive/refs/tags/azure-core_1.41.0.tar.gz
-	b2sums = 962a42ab5fdeab204f8fa34a3089a5658d76c190beb897524259d3d6338256ce61d7b458aa7422ec3b96c02ec9c6b74d2f4737e5befc20e8445263fbd676dffc
+	depends = python
+	depends = python-requests
+	depends = python-typing_extensions
+	optdepends = python-aiohttp: aio
+	optdepends = python-opentelemetry-api: tracing
+	source = azure-core-1.41.0.tar.gz::https://github.com/Azure/azure-sdk-for-python/archive/refs/tags/azure-core_1.41.0.tar.gz
+	source = event-loop.patch
+	sha256sums = 43b5159c2c4111521ef32c6542cc2c3465de086f70d280dcf63d5c2d7846aa9a
+	sha256sums = f8b76e67519a487c0d5661c68bcf54f78a32ca3feff797a205911cdf6bc1a788
 
 pkgname = python-azure-core

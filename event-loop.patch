@@ -1,0 +1,20 @@
+diff --git a/tests/async_tests/test_basic_transport_async.py b/tests/async_tests/test_basic_transport_async.py
+index 63e20a2b0..c2e0880ae 100644
+--- a/tests/async_tests/test_basic_transport_async.py
++++ b/tests/async_tests/test_basic_transport_async.py
+@@ -973,9 +973,12 @@ def test_aiohttp_loop():
+     import asyncio
+     from azure.core.pipeline.transport import AioHttpTransport
+ 
+-    loop = asyncio.get_event_loop()
+-    with pytest.raises(ValueError):
+-        transport = AioHttpTransport(loop=loop)
++    loop = asyncio.new_event_loop()
++    try:
++        with pytest.raises(ValueError):
++            transport = AioHttpTransport(loop=loop)
++    finally:
++        loop.close()
+ 
+ 
+ class MockAiohttpResponse:
