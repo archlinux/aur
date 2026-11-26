@@ -1,8 +1,8 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from GLM 5.3 Flash.
+# Created with assistance from Hy4 flash Free.
 # Desktop GUI is WPF and Windows-only; the release ships a self-contained CLI for Linux.
 pkgname=discimagestudio-bin
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Disc Image Studio CLI: generate and burn visible image-mapped CD, DVD and BD-R discs (prebuilt Linux CLI, GUI is Windows-only)'
 arch=('x86_64' 'aarch64')
@@ -14,9 +14,9 @@ conflicts=('discimagestudio')
 options=('!strip' '!debug')
 
 source_x86_64=("DiscImageStudio-CLI-${pkgver}-linux-x64.tar.gz::$url/releases/download/v$pkgver/DiscImageStudio-CLI-v$pkgver-linux-x64.tar.gz")
-sha256sums_x86_64=('44772e1c990c7966cc49fadebe4a8a66ac6f3ffb7fe0826908efc76d95170f3f')
+sha256sums_x86_64=('ae5ed37b1219febeab7eaba8b38c47a77b7988ab3ea42caf7ab762419885e9b3')
 source_aarch64=("DiscImageStudio-CLI-${pkgver}-linux-arm64.tar.gz::$url/releases/download/v$pkgver/DiscImageStudio-CLI-v$pkgver-linux-arm64.tar.gz")
-sha256sums_aarch64=('3813053a2bd12400280ed8e96a005fd3f5bff58a1cef88fa8b6822323ba6931e')
+sha256sums_aarch64=('fbe9663af50d05b19a642d59c614ceff79f9a650c07f8d4b1fa77ad39d182b49')
 
 build() {
     # The release tarball has no top-level directory: files land in $srcdir.
