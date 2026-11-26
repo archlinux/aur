@@ -1,6 +1,6 @@
 pkgbase = transom-git
 	pkgdesc = Sharp remote desktops over RDP (GTK 4, HiDPI-correct) (Git version)
-	pkgver = 0.1.0.r156.g4ea2cbf
+	pkgver = 0.1.1.r194.g6688834
 	pkgrel = 1
 	url = https://github.com/jm2/transom
 	arch = x86_64
@@ -10,7 +10,13 @@ pkgbase = transom-git
 	makedepends = git
 	makedepends = cargo
 	makedepends = clang
-	depends = freerdp
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc
+	depends = glib2
+	depends = pango
+	depends = graphene
+	depends = freerdp>=2:3.33.1
 	depends = gtk4>=4.16
 	depends = libadwaita>=1.6
 	depends = libsecret
@@ -19,7 +25,7 @@ pkgbase = transom-git
 	optdepends = libva-mesa-driver: hardware H.264 decoding on AMD (zero-copy video)
 	optdepends = intel-media-driver: hardware H.264 decoding on Intel (zero-copy video)
 	optdepends = vulkan-icd-loader: GTKs Vulkan renderer, needed to show hardware-decoded video
-	provides = transom=0.1.0.r156.g4ea2cbf
+	provides = transom=0.1.1.r194.g6688834
 	conflicts = transom
 	options = !lto
 	options = !debug

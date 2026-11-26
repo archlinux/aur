@@ -1,13 +1,18 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=transom-git
-pkgver=0.1.0.r156.g4ea2cbf
+pkgver=0.1.1.r194.g6688834
 pkgrel=1
 pkgdesc="Sharp remote desktops over RDP (GTK 4, HiDPI-correct) (Git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jm2/transom"
 license=('GPL-3.0-or-later' 'Apache-2.0')
 depends=(
-  'freerdp'
+  'glibc'
+  'libgcc'
+  'glib2'
+  'pango'
+  'graphene'
+  'freerdp>=2:3.33.1'
   'gtk4>=4.16'
   'libadwaita>=1.6'
   'libsecret'
@@ -23,6 +28,7 @@ makedepends=(
   'git'
   'cargo'
   'clang'
+  'pkgconf'
 )
 # The release profile already strips; makepkg's LTO and debug split stay off.
 options=('!lto' '!debug')
