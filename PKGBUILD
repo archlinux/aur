@@ -1,12 +1,14 @@
 # Maintainer: toxdes <hi@toxdes.com>
 pkgname=promptr-git
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="GTK4 overlay prompt for opencode"
+pkgdesc="Native GTK4 chat frontend with independent provider plugins"
 arch=('x86_64' 'aarch64')
 url="https://github.com/toxdes/promptr"
 license=('MIT')
-depends=('gtk4' 'gtksourceview5' 'gtk4-layer-shell')
+provides=("promptr=${pkgver}")
+conflicts=('promptr')
+depends=('gtk4' 'gtksourceview5' 'gtk4-layer-shell' 'curl' 'json-glib' 'libsecret')
 makedepends=('git' 'gcc' 'make' 'pkg-config')
 source=("git+https://github.com/toxdes/promptr.git")
 sha256sums=('SKIP')
@@ -18,7 +20,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/promptr"
-  make BUILD=release
+  make BUILD=release PREFIX=/usr providers promptr
 }
 
 package() {

@@ -1,18 +1,23 @@
 pkgbase = promptr-git
-	pkgver = 0.2.3
+	pkgdesc = Native GTK4 chat frontend with independent provider plugins
+	pkgver = 0.3.0
 	pkgrel = 1
-	pkgdesc = GTK4 overlay prompt for opencode
+	url = https://github.com/toxdes/promptr
 	arch = x86_64
 	arch = aarch64
-	url = https://github.com/toxdes/promptr
 	license = MIT
-	depends = gtk4
-	depends = gtksourceview5
-	depends = gtk4-layer-shell
 	makedepends = git
 	makedepends = gcc
 	makedepends = make
 	makedepends = pkg-config
+	depends = gtk4
+	depends = gtksourceview5
+	depends = gtk4-layer-shell
+	depends = curl
+	depends = json-glib
+	depends = libsecret
+	provides = promptr=0.3.0
+	conflicts = promptr
 	source = git+https://github.com/toxdes/promptr.git
 	sha256sums = SKIP
 
