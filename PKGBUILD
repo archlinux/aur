@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=metaSeq
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='Meta-analysis of RNA-Seq count data in multiple studies'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-snow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('66cd1d5ceae5099f528c92485be5f4ff57b33dbcb284262271d3ec5bd2675fb2')
+sha256sums=('b15b4820e8f45fa7b47fff53bbdfec98ad971c3180c30a4a664bb82bc62b4297')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
