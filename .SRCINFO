@@ -1,0 +1,19 @@
+pkgbase = bitbang-cli-bin
+	pkgdesc = Share your machine as a URL over peer-to-peer WebRTC
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/richlegrand/bitbang-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = bitbang-cli
+	conflicts = bitbang-cli
+	options = !debug
+	source = bitbang-cli-bin-0.5.4-LICENSE::https://raw.githubusercontent.com/richlegrand/bitbang-cli/0.5.4/LICENSE
+	sha256sums = e3d24cc5ce1e01fcd02d1d4dabd7f79db03355ec6783d922c9c65d6668fc255a
+	source_x86_64 = bitbang-cli-bin-0.5.4-x86_64::https://github.com/richlegrand/bitbang-cli/releases/download/0.5.4/bitbang-linux-amd64
+	sha256sums_x86_64 = 6d77b2679f04d2d4b69a03185ce321c2a7f8ea07eead74e75e14b3aa8e60c284
+	source_aarch64 = bitbang-cli-bin-0.5.4-aarch64::https://github.com/richlegrand/bitbang-cli/releases/download/0.5.4/bitbang-linux-arm64
+	sha256sums_aarch64 = 9f7a90fec3aa9c806e32d772a5175579837e1ac5b81d26d1b56d9b7b542890f1
+
+pkgname = bitbang-cli-bin
