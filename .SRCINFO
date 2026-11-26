@@ -1,0 +1,21 @@
+pkgbase = foremerge-bin
+	pkgdesc = Catch intent conflicts between branches before code conflicts
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/naw103/foremerge
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = foremerge
+	conflicts = foremerge
+	options = !debug
+	source = foremerge-bin-0.7.0-LICENSE::https://raw.githubusercontent.com/naw103/foremerge/v0.7.0/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = foremerge-bin-0.7.0-x86_64.tar.gz::https://github.com/naw103/foremerge/releases/download/v0.7.0/foremerge-v0.7.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ed49be510adc51bf9d13a4fb4d31a80e01522fca00563190c21815eca400ad04
+	source_aarch64 = foremerge-bin-0.7.0-aarch64.tar.gz::https://github.com/naw103/foremerge/releases/download/v0.7.0/foremerge-v0.7.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 94e13225e45208796c122c7c52e188509a5f44dbd20efab290360cafbb8ea701
+
+pkgname = foremerge-bin
