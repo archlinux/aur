@@ -2,7 +2,7 @@
 
 pkgname=netcatty-bin
 _pkgname=netcatty
-pkgver=1.1.90
+pkgver=1.1.91
 pkgrel=1
 pkgdesc='AI-Powered SSH Client, SFTP Browser & Terminal Manager'
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ options=('!strip' '!debug')
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.pacman::https://github.com/binaricat/Netcatty/releases/download/v${pkgver}/Netcatty-${pkgver}-linux-x64.pacman")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.pacman::https://github.com/binaricat/Netcatty/releases/download/v${pkgver}/Netcatty-${pkgver}-linux-aarch64.pacman")
 
-sha256sums_x86_64=('6546fce731441b9ed1d2db2cc884e9a707c81ccf53c389a6eba4460088881a4c')
-sha256sums_aarch64=('1aca1a311bdd73887739f5903accdc3f59c6ce4b45907821f986f0523db09b2a')
+sha256sums_x86_64=('bfe7024c3542aa38fc687c153628d9290d40dd7fad268fe9f9cf47bb90d96b24')
+sha256sums_aarch64=('10eda22c66f70a8ac0f24a9946b1dd51f86c6026ba132202d281e8ea2c1066f0')
 
 package() {
     bsdtar -xf "${_pkgname}-${pkgver}-"*.pacman -C "${pkgdir}" \
