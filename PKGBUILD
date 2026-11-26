@@ -2,7 +2,7 @@
 
 _pkgname=gufo
 pkgname=${_pkgname}-git
-pkgver=0.35.0.r20.gba0cb3b6
+pkgver=0.37.0.r8.gcead7b617
 pkgrel=1
 pkgdesc="The Open Source Strix Halo AI engine (git version)."
 arch=(x86_64)
@@ -36,6 +36,7 @@ makedepends=(
   cargo
   git
   hipcub
+  ninja
   pkgconf
   rocm-llvm
   rocprim
