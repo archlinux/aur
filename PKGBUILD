@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDRutils
-_pkgver=1.10.0
+_pkgver=1.12.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,7 +10,6 @@ arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
 depends=(
-  r-biocparallel
   r-bumpymatrix
   r-checkmate
   r-data.table
@@ -48,8 +47,8 @@ optdepends=(
   r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('027bd9457b1d092be70271fbf348d03c')
-b2sums=('2ac4eb86518769a3e83ef9cea0b912a98d12f60eeca5ba488d3bfab707c755dbcdd7f365c7214e4c3335ea311022d7269f7bc8298c4124cccee1192ceb7e4895')
+md5sums=('ca968931625019966e76406dab45a9c3')
+b2sums=('a72cb31bca081d0457d327bc52b462061221d9caea4611180f4e28fdd1c23ea9fb3e39b62bbbcac0f1ac0b39bc1d5fc854483e15ba26793e209e49a55834da9a')
 
 build() {
   mkdir build
