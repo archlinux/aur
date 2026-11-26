@@ -1,6 +1,6 @@
 # Maintainer: Joop Kiefte <ikojba at gmail dot com>
 pkgname=accolade
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Screenplay editor for Fountain, with PDF/HTML/FDX export"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc' 'hicolor-icon-theme' 'libgl' 'libx11' 'libxcursor' 'libxrandr' 
 makedepends=('go' 'pkgconf' 'mesa')
 conflicts=('accolade-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5aa0357079c732690f525f49dc51496e62035d02087e8d96c10f9a8a5692e7d1')
+sha256sums=('e486447b23d5825e990f302d79bff559596b2b17bffe6b2f06ae3be6b667b39a')
 
 prepare() {
   cd "$pkgname-$pkgver"
