@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ttgsea
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Tokenizing Text of Gene Set Enrichment Analysis'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8ee26dee624f7d174dc97fe6474d7783aa32f1d40bd9f4bda81a2760ec613ed9')
+sha256sums=('c93aac18dfb99e7f42216e83e361be1d62f11103816e65a992d36b63b3e61728')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
