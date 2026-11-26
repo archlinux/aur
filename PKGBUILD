@@ -15,7 +15,7 @@ optdepends=('tesseract: Text Extractor (Archtoys can also install it when you tu
             'tesseract-data-osd: lets Text Extractor find the writing system by itself')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Mujtaba1i/Archtoys/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b4803ff9509a4a30e6ff85bce37b4677ec0fe95067f21fd0f2df17d68a953fac')
+sha256sums=('ef7061962af876ebdde61635518fa461820ae92dd5f21b68340f6f2368eb9e40')
 
 prepare() {
   cd "Archtoys-${pkgver}"
