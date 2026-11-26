@@ -1,6 +1,6 @@
 # Maintainer: Dax <mail@thdxr.com>
 pkgname=opencode-beta
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='OpenCode beta - the AI coding agent for the terminal'
 url='https://github.com/anomalyco/opencode'
@@ -12,10 +12,10 @@ conflicts=('opencode' 'opencode2')
 options=('!strip' '!debug')
 source=('LICENSE' 'opencode2')
 sha256sums=('625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b' 'cd03022601e4848a957999a2a7b1c1ccf18b94f9a084a44719f62abaacebe83c')
-source_x86_64=('opencode-beta-2.4.1-x86_64.tgz::https://registry.npmjs.org/@opencode/cli-linux-x64-baseline/-/cli-linux-x64-baseline-2.4.1.tgz')
-sha256sums_x86_64=('fd9714fb1a982f51f6185b5fb242706c31faf8b1d0cd633613df9156f565f7fa')
-source_aarch64=('opencode-beta-2.4.1-aarch64.tgz::https://registry.npmjs.org/@opencode/cli-linux-arm64/-/cli-linux-arm64-2.4.1.tgz')
-sha256sums_aarch64=('9eb4567ff0fab90b6dac106f786652a0ec15d65e25ffbcbb106e5ed1cee4f4e2')
+source_x86_64=('opencode-beta-2.4.2-x86_64.tgz::https://registry.npmjs.org/@opencode/cli-linux-x64-baseline/-/cli-linux-x64-baseline-2.4.2.tgz')
+sha256sums_x86_64=('050caaa33e48f95fb76b10e0527750c1f88787bad27c99cceb60d8545e9850fd')
+source_aarch64=('opencode-beta-2.4.2-aarch64.tgz::https://registry.npmjs.org/@opencode/cli-linux-arm64/-/cli-linux-arm64-2.4.2.tgz')
+sha256sums_aarch64=('d0847f587adca7339c69e22631c50edd6e4f97dee99cec8596e1ec810b98ae95')
 
 package() {
   install -Dm755 "$srcdir/package/bin/opencode" "$pkgdir/usr/bin/opencode"
