@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=mithka-bin
-pkgver=1.12.8
+pkgver=1.13.10
 pkgrel=1
 pkgdesc="A fast, compact Telegram client built with Flutter and TDLib"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ conflicts=('mithka')
 options=('!strip' '!debug')
 
 # The release date (20261115) is part of the asset file names.
-_tagdate="20261115"
+_tagdate=20261126
 source=(
     "mithka-${pkgver}-LICENSE::https://raw.githubusercontent.com/iebb/mithka/v${pkgver}/LICENSE"
     "mithka-${pkgver}-icon::https://raw.githubusercontent.com/iebb/mithka/v${pkgver}/assets/app_icon.png"
@@ -22,8 +22,8 @@ source_x86_64=("mithka-${pkgver}-${_tagdate}-linux-x64.tar.gz::https://github.co
 source_aarch64=("mithka-${pkgver}-${_tagdate}-linux-arm64.tar.gz::https://github.com/iebb/mithka/releases/download/v${pkgver}/mithka-${pkgver}-${_tagdate}-linux-arm64.tar.gz")
 sha256sums=('8320bc58c5839b20a4e9f7531d13082336a9ff0a2599fe2a9d9a6faf4bee47fa'
             '8010ea96d90e816f8c080597bf6616466d475395610c749e3bea311519fec7fc')
-sha256sums_x86_64=('0f9af478a0fd62c21b8c6fd8cca95b801efc1615f9d136e5a1ed7040fd533552')
-sha256sums_aarch64=('47f32e072cce1028a183783d71c8fb4aa533451841195ff71838619aefd7bccd')
+sha256sums_x86_64=('18a75ce6c2cc2b991680a1cdadcbe8f55097b830a6f672f109bfccee97d142f0')
+sha256sums_aarch64=('a1a4c25ae98d8387d6bcce31c2855f2a74815b6cc96c6063370335664839aba4')
 
 package() {
     local _arch

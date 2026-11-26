@@ -1,6 +1,6 @@
 pkgbase = mithka-bin
 	pkgdesc = A fast, compact Telegram client built with Flutter and TDLib
-	pkgver = 1.12.8
+	pkgver = 1.13.10
 	pkgrel = 1
 	url = https://mithka.ieb.app
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = mithka-bin
 	conflicts = mithka
 	options = !strip
 	options = !debug
-	source = mithka-1.12.8-LICENSE::https://raw.githubusercontent.com/iebb/mithka/v1.12.8/LICENSE
-	source = mithka-1.12.8-icon::https://raw.githubusercontent.com/iebb/mithka/v1.12.8/assets/app_icon.png
+	source = mithka-1.13.10-LICENSE::https://raw.githubusercontent.com/iebb/mithka/v1.13.10/LICENSE
+	source = mithka-1.13.10-icon::https://raw.githubusercontent.com/iebb/mithka/v1.13.10/assets/app_icon.png
 	sha256sums = 8320bc58c5839b20a4e9f7531d13082336a9ff0a2599fe2a9d9a6faf4bee47fa
 	sha256sums = 8010ea96d90e816f8c080597bf6616466d475395610c749e3bea311519fec7fc
-	source_x86_64 = mithka-1.12.8-20261115-linux-x64.tar.gz::https://github.com/iebb/mithka/releases/download/v1.12.8/mithka-1.12.8-20261115-linux-x64.tar.gz
-	sha256sums_x86_64 = 0f9af478a0fd62c21b8c6fd8cca95b801efc1615f9d136e5a1ed7040fd533552
-	source_aarch64 = mithka-1.12.8-20261115-linux-arm64.tar.gz::https://github.com/iebb/mithka/releases/download/v1.12.8/mithka-1.12.8-20261115-linux-arm64.tar.gz
-	sha256sums_aarch64 = 47f32e072cce1028a183783d71c8fb4aa533451841195ff71838619aefd7bccd
+	source_x86_64 = mithka-1.13.10-20261126-linux-x64.tar.gz::https://github.com/iebb/mithka/releases/download/v1.13.10/mithka-1.13.10-20261126-linux-x64.tar.gz
+	sha256sums_x86_64 = 18a75ce6c2cc2b991680a1cdadcbe8f55097b830a6f672f109bfccee97d142f0
+	source_aarch64 = mithka-1.13.10-20261126-linux-arm64.tar.gz::https://github.com/iebb/mithka/releases/download/v1.13.10/mithka-1.13.10-20261126-linux-arm64.tar.gz
+	sha256sums_aarch64 = a1a4c25ae98d8387d6bcce31c2855f2a74815b6cc96c6063370335664839aba4
 
 pkgname = mithka-bin
