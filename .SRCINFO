@@ -1,18 +1,19 @@
 pkgbase = nexora
 	pkgdesc = Open-source cross-platform desktop audio player
-	pkgver = 2026.4.0
+	pkgver = 2026.4.1
 	pkgrel = 1
 	url = https://github.com/Sapryx/Nexora
 	arch = x86_64
 	license = GPL-3.0-or-later
+	license = Apache-2.0
 	makedepends = dotnet-sdk
 	makedepends = clang
 	makedepends = zlib
 	depends = vlc
-	source = nexora-2026.4.0.tar.gz::https://github.com/Sapryx/Nexora/archive/refs/tags/2026.4.0.tar.gz
+	source = nexora-2026.4.1.tar.gz::https://github.com/Sapryx/Nexora/archive/refs/tags/2026.4.1.tar.gz
 	source = nexora
 	source = nexora.desktop
-	sha512sums = afe341c8591db3eea58e7168816882f883c1ba9cbda9ef7cb0fabc57e7e39e883c50618619eb557616c8d4f939c066addca76a4b63d6b5d0eb9cfd9104c4dbaa
+	sha512sums = f34fb348f0042030c14a0d08cc2b64aa9d12596cae1f9aaa59645ad5918ea327c5f7a16fe15a4709c58682b601aa0d40fdbd1155b7370703b4b52056554420a1
 	sha512sums = e7df54e12a9ec7bbcb4e9278f773e66c8d045634cb57fed46defd308ea2bc63c015b93c9aa8095b3e54eca318f31eab849482058a60928e9ebce38a57f4e7bcc
 	sha512sums = 53cec80965a1d32f5c89b81d6d3b434f44fbe7b7b544a04331a99e1f26f4847af4c4f6cd1ac43f355a9b5d9f5aca51186889995b0c1578cce62999261c6bf49d
 
