@@ -1,0 +1,19 @@
+pkgbase = gobrew-bin
+	pkgdesc = Go version manager
+	pkgver = 1.10.17
+	pkgrel = 1
+	url = https://github.com/kevincobain2000/gobrew
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gobrew
+	conflicts = gobrew
+	options = !debug
+	source = gobrew-bin-1.10.17-LICENSE::https://raw.githubusercontent.com/kevincobain2000/gobrew/v1.10.17/LICENSE
+	sha256sums = 10e01565f766b4a464a76c8f29518d71417940f7f5458a60c1895a51c03760ad
+	source_x86_64 = gobrew-bin-1.10.17-x86_64::https://github.com/kevincobain2000/gobrew/releases/download/v1.10.17/gobrew-linux-amd64
+	sha256sums_x86_64 = 48123f6503b6ce76a03ff4c6ff3d87fa76e40d931ee914bf1c8c74ba22703401
+	source_aarch64 = gobrew-bin-1.10.17-aarch64::https://github.com/kevincobain2000/gobrew/releases/download/v1.10.17/gobrew-linux-arm64
+	sha256sums_aarch64 = fb8c5d6b9e3e78209ceb5824e41e34956aa71e887f25924024a119b3e15be03d
+
+pkgname = gobrew-bin
