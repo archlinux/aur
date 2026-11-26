@@ -8,7 +8,7 @@
 # itself is built.
 
 pkgname=jotawm-git
-pkgver=2026.10.17.r132.ef7bb8b
+pkgver=2026.11.26.r136.bce913e
 pkgrel=1
 pkgdesc="A minimal tiling window manager for X11"
 arch=('x86_64' 'aarch64' 'armv7h')
