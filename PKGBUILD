@@ -35,6 +35,9 @@ package() {
   # Install to /opt/neoarch
   install -d "$pkgdir/opt/neoarch"
   cp -r Neoarch "$pkgdir/opt/neoarch/"
+  for theme in evergreen ember glacier aero lagoon moss sakura crystal halloween; do
+    rm -f "$pkgdir/opt/neoarch/Neoarch/assets/themes/backgrounds/neoarch-pro-$theme.jpg"
+  done
   # Make scripts executable
   chmod +x "$pkgdir/opt/neoarch/Neoarch/scripts/install_arch_deps.sh"
   chmod +x "$pkgdir/opt/neoarch/Neoarch/bin/neoarch.sh"
