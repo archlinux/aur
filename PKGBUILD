@@ -1,7 +1,7 @@
 # Maintainer: Ateles
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=upmd
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Markdown-based task and workflow runner"
 arch=("x86_64")
