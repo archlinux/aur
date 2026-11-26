@@ -1,6 +1,6 @@
 pkgbase = r-pwalign
 	pkgdesc = Perform pairwise sequence alignments
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pwalign
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = r-pwalign
 	depends = r-iranges
 	depends = r-s4vectors
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pwalign_1.8.0.tar.gz
-	md5sums = 284cea12f42e5fdb06af15c4e80a1fcc
-	b2sums = 201263e6631723357874e6af67009ba1558c5d12f6423ea395354d0ad918678f06953f98ab0ffd665096a56f364ee77ac786991411051deada6bb9ddf98fad1d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pwalign_1.10.0.tar.gz
+	md5sums = b2014fb32f770ee6b56687a71e98be56
+	b2sums = 71d283ec7c1df0a8051acab5833b04d72434543b1c39fec515efbd1e651dcff26da583939ff7fc3d1f3915a20b09da075f7667aacc17b353bf7cc4b99d54c301
 
 pkgname = r-pwalign
