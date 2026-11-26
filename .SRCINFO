@@ -1,6 +1,6 @@
 pkgbase = r-stategra
 	pkgdesc = Classes and methods for multi-omics data integration
-	pkgver = 1.48.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/STATegRa
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-stategra
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/STATegRa_1.48.0.tar.gz
-	sha256sums = 2c6a1bf91628c600cc794d9784a8f096a71b64628a86846e73478cf7c8885b66
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/STATegRa_1.50.0.tar.gz
+	sha256sums = 52dba918df8ec8b911f9bf0df8a35b142b221b0807822673a44aea4406c8664d
 
 pkgname = r-stategra
