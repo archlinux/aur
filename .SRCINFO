@@ -1,0 +1,14 @@
+pkgbase = roundhouse-bin
+	pkgdesc = Build Rails applications for different deployment targets
+	pkgver = 2026.9.18
+	pkgrel = 1
+	url = https://github.com/roundhouse-rb/roundhouse
+	arch = x86_64
+	license = Apache-2.0
+	provides = roundhouse
+	conflicts = roundhouse
+	options = !debug
+	source_x86_64 = roundhouse-bin-2026.9.18-x86_64.tar.xz::https://github.com/roundhouse-rb/roundhouse/releases/download/v2026.9.18/roundhouse-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = aa8b13f53154ad41cc0a83088f6d4f06532760ec8dbeb165eccc0c946bcd7945
+
+pkgname = roundhouse-bin
