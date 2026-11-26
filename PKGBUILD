@@ -2,7 +2,7 @@
 
 pkgname=panda-re
 pkgver=1.8.85
-pkgrel=2
+pkgrel=3
 pkgdesc='Platform for Architecture-Neutral Dynamic Analysis'
 arch=('x86_64')
 url='https://github.com/panda-re/panda'
@@ -16,8 +16,8 @@ depends=('glib2' 'zlib' 'libpng' 'pixman' 'ncurses' 'gnutls' 'nettle'
          'at-spi2-core' 'bluez-libs' 'bzip2' 'cairo' 'curl' 'gdk-pixbuf2'
          'glusterfs' 'gtk3' 'harfbuzz' 'jsoncpp' 'libusb' 'libx11' 'lzo'
          'pango' 'sdl2' 'snappy' 'util-linux-libs' 'vte3')
-makedepends=('cmake' 'ninja' 'pkgconf' 'python' 'cargo' 'chrpath'
-             'llvm14-bin' 'glib2' 'pixman' 'libslirp' 'dtc' 'capstone'
+makedepends=('clang' 'cmake' 'ninja' 'pkgconf' 'python' 'cargo' 'chrpath'
+             'llvm14' 'glib2' 'pixman' 'libslirp' 'dtc' 'capstone'
              'protobuf' 'protobuf-c' 'z3' 'rapidjson' 'libnfs'
              'wireshark-cli' 'libarchive' 'openssl' 'libaio' 'libiscsi'
              'spice' 'libcacard' 'usbredir' 'brltty' 'rdma-core' 'mesa'
@@ -46,6 +46,10 @@ prepare() {
 
 build() {
     # PANDA's LLVM pass manager code requires LLVM 14; newer LLVM removed those APIs.
+    # A source-built llvm14 exposes one shared libLLVM, which core and plugins share.
+    # The binary llvm14-bin exposes only static component libraries and its plugins
+    # cannot be loaded into the same process as the core; that provider still builds.
+    /usr/lib/llvm14/bin/llvm-config --shared-mode || true
     # Keep the build directory out of binary strings and debug metadata.
     export CFLAGS="-O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -ffile-prefix-map=${srcdir}/="
     export CXXFLAGS="$CFLAGS"
