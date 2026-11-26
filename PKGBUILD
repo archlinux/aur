@@ -1,7 +1,7 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=m-flasher
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Back up, restore and reinstall the firmware of an M-VAVE FM-1 or SMK-37"
 arch=('x86_64' 'armv7h')
 url="https://github.com/jvitkauskas/m-flasher"
@@ -33,6 +33,6 @@ package() {
     install -Dm0644 -t "$pkgdir/usr/lib/udev/rules.d/" "linux/70-m-flasher.rules"
 
     # Desktop file and icon
-    install -Dm0644 "linux/m-flasher.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+    install -Dm0644 "linux/m-flasher.png" "$pkgdir/usr/share/pixmaps/io.github.jvitkauskas.m-flasher.png"
     install -Dm0644 "linux/package/io.github.jvitkauskas.m-flasher.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 }
