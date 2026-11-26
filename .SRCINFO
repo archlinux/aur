@@ -1,18 +1,26 @@
 pkgbase = wild-git
 	pkgdesc = A linker with the goal of being very fast for iterative development
-	pkgver = 0.11.0.r204.gc1cba811
-	pkgrel = 5
+	pkgver = 0.11.0.r222.g9e0f1192
+	pkgrel = 1
 	url = https://github.com/wild-linker/wild
 	arch = x86_64
 	license = Apache-2.0
 	license = MIT
+	checkdepends = clang
+	checkdepends = lld
+	checkdepends = rust-musl
+	checkdepends = taplo-cli
+	checkdepends = wabt
+	checkdepends = wasi-libc
+	checkdepends = wasm-tools
+	checkdepends = wasmtime
 	makedepends = git
 	makedepends = cargo
 	makedepends = zstd
 	depends = glibc
 	depends = libgcc
 	depends = libzstd.so
-	provides = wild=0.11.0.r204.gc1cba811
+	provides = wild=0.11.0.r222.g9e0f1192
 	conflicts = wild
 	options = !lto
 	source = git+https://github.com/wild-linker/wild.git
