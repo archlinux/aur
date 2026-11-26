@@ -1,16 +1,15 @@
 pkgbase = brush-git
 	pkgdesc = Bash compatible shell implemented in Rust
-	pkgver = 0.3.0.69.g30584b9
+	pkgver = brush.clap.adapter.v0.1.0.0.gc10a423
 	pkgrel = 1
 	url = https://github.com/reubeno/brush
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
 	provides = brush
 	conflicts = brush
 	source = git+https://github.com/reubeno/brush.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = brush-git
