@@ -1,6 +1,6 @@
 pkgbase = r-mfuzz
 	pkgdesc = Soft clustering of time series gene expression data
-	pkgver = 2.72.0
+	pkgver = 2.74.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Mfuzz
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-mfuzz
 	depends = r-e1071
 	depends = r-tkwidgets
 	optdepends = r-marray
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Mfuzz_2.72.0.tar.gz
-	sha256sums = 5bfbb25fca1709d8270e65b2e0db76c380e57cc1825de7f81fb35e972f33ba87
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Mfuzz_2.74.0.tar.gz
+	sha256sums = 8735d8dac8ab589fa232829a1ca11c72679df1f6413f8fef954e4a9caa4278e7
 
 pkgname = r-mfuzz
