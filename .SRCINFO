@@ -1,7 +1,7 @@
 pkgbase = ztty
 	pkgdesc = Lightweight no_std Rust terminal emulator for X11, XWayland and native Wayland
-	pkgver = 0.6.3
-	pkgrel = 2
+	pkgver = 0.6.4
+	pkgrel = 1
 	url = https://github.com/LIghtJUNction/ztty
 	arch = x86_64
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = ztty
 	depends = libxkbcommon
 	optdepends = xdg-utils: open hyperlinks
 	optdepends = ttf-dejavu: default monospace font
-	source = https://github.com/LIghtJUNction/ztty/releases/download/v0.6.3/ztty-0.6.3.tar.gz
-	sha256sums = 02e6af305e8409e77f2c39006c40233cc5973c2a488e77ea7c66c1b223f7bd1a
+	source = https://github.com/LIghtJUNction/ztty/releases/download/v0.6.4/ztty-0.6.4.tar.gz
+	sha256sums = 35ba36c9dca1e1bf904e57528a713fd4c80630e80f2b4fee27d6cb8bbd0e5b72
 
 pkgname = ztty
