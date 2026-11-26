@@ -1,0 +1,18 @@
+pkgbase = readflow-bin
+	pkgdesc = Versatile and simple read-it-later news reader
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ncarlier/readflow
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	provides = readflow
+	conflicts = readflow
+	options = !debug
+	source_x86_64 = readflow-bin-1.2.0-x86_64.tgz::https://github.com/ncarlier/readflow/releases/download/v1.2.0/readflow-linux-amd64.tgz
+	sha256sums_x86_64 = ea1b606ab6b0e1d0c671fd5fc9ff6ab24141d5b1fed8c1c6fd2489041edb7eaa
+	source_aarch64 = readflow-bin-1.2.0-aarch64.tgz::https://github.com/ncarlier/readflow/releases/download/v1.2.0/readflow-linux-arm64.tgz
+	sha256sums_aarch64 = 3f0eae0913fc2896192bc35a3372876bbf860a9a13f01a03ca74c9e23780840d
+
+pkgname = readflow-bin
