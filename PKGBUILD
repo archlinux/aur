@@ -2,8 +2,8 @@
 # Contributor: fossdd <fossdd@pwned.life
 # Contributor: Julian <juliannfairfax@protonmail.com>
 pkgname=pipeline-gtk
-pkgver=4.1.1
-pkgrel=2
+pkgver=4.1.3
+pkgrel=1
 pkgdesc="Watch YouTube and PeerTube videos in one place"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/schmiddi-on-mobile/pipeline"
@@ -14,7 +14,7 @@ depends=(
   'libadwaita'
   'libclapper'
   'libclapper-gtk'
-  'openssl-3'
+  'openssl'
   'sqlite'
   'yt-dlp'
 )
@@ -29,7 +29,7 @@ checkdepends=(
 )
 conflicts=('tubefeeder')
 source=("$url/-/archive/$pkgver/pipeline-$pkgver.tar.gz")
-sha256sums=('2f62ed3a6f6606faa4c1d6dc87f9e5cfd37b6ab155df4d08019a0debc7e437ed')
+sha256sums=('91c851e1142376174267153ca411e3546c02c99877ae4a840cad17ec8090464b')
 
 prepare() {
   cd pipeline-$pkgver
@@ -38,7 +38,6 @@ prepare() {
 }
 
 build() {
-  export PKG_CONFIG_PATH="/usr/lib/openssl-3/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
   export GETTEXT_SYSTEM=true
   export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
   export OPENSSL_NO_VENDOR=1
