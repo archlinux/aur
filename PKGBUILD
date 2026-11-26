@@ -6,7 +6,7 @@
 # values here are the release this copy was last checked against.
 
 # pacman sorts a prerelease such as 0.3.0rc.1 before 0.3.0 only without the `-`.
-_version=0.30.4-beta.1
+_version=0.31.0-beta.1
 # The beta channel's wikistow-desktop-beta-bin is this package, renamed and
 # with _channel=beta, which the app reads to offer betas (docs/releasing.md).
 _channel=beta
@@ -37,7 +37,7 @@ options=('!strip' '!debug')
 provides=("$_app")
 conflicts=("$_app")
 source=("https://github.com/skint007/wikistow/releases/download/v$_version/wikistow-desktop-$_version.tar.gz")
-sha256sums=('68081be5a9b92f02390eebcae338cd29a7f31e17e9e85c6fcf0ba11f6b1ac8d3')
+sha256sums=('2aec9ad6fa8e1db73cc35f64ff9b3423937d3d2bcbcdf3a48725e2128b8db4fe')
 
 package() {
     cd "wikistow-desktop-$_version"
