@@ -1,0 +1,17 @@
+pkgbase = ffmate-bin
+	pkgdesc = Automation layer on top of FFmpeg for video and audio transcoding
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/welovemedia/ffmate
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = ffmate
+	conflicts = ffmate
+	options = !debug
+	source_x86_64 = ffmate-bin-2.1.1-x86_64.tar.gz::https://github.com/welovemedia/ffmate/releases/download/v2.1.1/ffmate_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = d24c8f66ebc16c9a0e78e73b88438a553c0efe34cab8cc404bdec7174e87bfd9
+	source_aarch64 = ffmate-bin-2.1.1-aarch64.tar.gz::https://github.com/welovemedia/ffmate/releases/download/v2.1.1/ffmate_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 4dc0e0ed759955bf5040a24edae51264a485d8d0c2da2ecbaed41918aa261b7a
+
+pkgname = ffmate-bin
