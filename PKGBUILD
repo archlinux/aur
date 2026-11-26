@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=adverSCarial
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-tenxpbmcdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('da68471d5482521a6d574b34400fb9ac')
-b2sums=('2e1e8472c86a2263b02a4028e13ef8623f38d37e94a766124358182ff7be10c266e1fb8e1ff049291e1b6a4f4e0a0cbaf9e8f8151f328070c920b5bd6a1d6418')
+md5sums=('52d8fdac0131531c2e9c0168a675550d')
+b2sums=('5dc88dbdf82b02c1790efac8ad0f8131ff5c486c0f1122a3b7ec3c9835cbc56263f56c6d140d0cbcaccfac707a35bb499af80e4cd037c1eed2f7087b786b3259')
 
 build() {
   mkdir build
