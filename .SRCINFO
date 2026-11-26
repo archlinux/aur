@@ -1,0 +1,16 @@
+pkgbase = best-claude-hud-bin
+	pkgdesc = Minimal statusline HUD for Claude Code
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/GaoSSR/best-claude-hud
+	arch = x86_64
+	license = Apache-2.0
+	provides = best-claude-hud
+	conflicts = best-claude-hud
+	options = !debug
+	source = best-claude-hud-bin-0.1.11-LICENSE::https://raw.githubusercontent.com/GaoSSR/best-claude-hud/v0.1.11/LICENSE
+	sha256sums = 9568a2b155e66ac3e0ba1fd80b52b827b9460e6cf6f233125e7cbca8e206ddc3
+	source_x86_64 = best-claude-hud-bin-0.1.11-x86_64.tar.gz::https://github.com/GaoSSR/best-claude-hud/releases/download/v0.1.11/best-claude-hud-linux-x64-musl.tar.gz
+	sha256sums_x86_64 = 25867fa8518ce0d487a9c0dc0da72c6ea405632579de985edd45a563391eabb8
+
+pkgname = best-claude-hud-bin
