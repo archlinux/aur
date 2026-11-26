@@ -1,6 +1,6 @@
 # Maintainer: monsoon <29970829+monsoon235@users.noreply.github.com>
 pkgname=stable-diffusion.cpp-rocm-bin
-pkgver=master_1098_b521db4
+pkgver=master_1133_52491bd
 pkgrel=1
 pkgdesc='stable-diffusion.cpp upstream Linux x86_64 prebuilt binaries with the ROCm backend'
 arch=('x86_64')
@@ -10,11 +10,11 @@ depends=('glibc' 'gcc-libs' 'hip-runtime-amd' 'hipblas' 'hipblaslt' 'rocblas')
 provides=('stable-diffusion.cpp')
 conflicts=('stable-diffusion.cpp' 'stable-diffusion.cpp-git' 'stable-diffusion.cpp-vulkan-bin')
 options=('!strip' '!debug')
-_upstream_tag=master-1098-b521db4
-_commit=b521db4
+_upstream_tag=master-1133-52491bd
+_commit=52491bd
 _rocm_version=10.1.0
 source=("${pkgname}-${pkgver}.zip::https://github.com/leejet/stable-diffusion.cpp/releases/download/${_upstream_tag}/sd-master-${_commit}-bin-Linux-Ubuntu-24.04-x86_64-rocm-${_rocm_version}.zip")
-sha256sums=('fb58c475ef787d3c27a06826901045a594c02409c9f5b9a49f7aaaa469f8156f')
+sha256sums=('52d034fdf9778635f5d8ab454efb719d48b9d7f10c5df292c915734894c11cec')
 
 package() {
     local upstream="$srcdir/build/bin" executable license_file
