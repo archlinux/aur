@@ -1,6 +1,6 @@
 pkgbase = coros-link-appimage
 	pkgdesc = Unofficial COROS watch companion — media sync, offline maps, route builder, and training analytics (AppImage)
-	pkgver = 0.1.83
+	pkgver = 0.1.85
 	pkgrel = 1
 	url = https://coros-link.vercel.app/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = coros-link-appimage
 	depends = hicolor-icon-theme
 	options = !strip
 	options = !debug
-	source = coros-link-appimage-0.1.83.AppImage::https://github.com/JunAkerBuilds/CorosLink/releases/download/v0.1.83/CorosLink-0.1.83.AppImage
+	source = coros-link-appimage-0.1.85.AppImage::https://github.com/JunAkerBuilds/CorosLink/releases/download/v0.1.85/CorosLink-0.1.85.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/JunAkerBuilds/CorosLink/main/LICENSE
-	sha256sums = ca92e5c76de7526afe0a10484592882bed934fbfe56cb3ed7878a9faae04df55
+	sha256sums = fedcee60b153d77f2e6e4d2d3ce39fae2b7ececfaf78c7910e13e851cc2f9ab0
 	sha256sums = 852251d268287b43ae09daa3cb5ece6ccb6cb03245da1ec7ad23d7054dc1a8da
 
 pkgname = coros-link-appimage
