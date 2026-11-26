@@ -51,7 +51,7 @@ source=(
   "buildtools::git+https://chromium.googlesource.com/chromium/src/buildtools.git#commit=${_buildtools_commit}"
   "abseil-cpp::git+https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp.git#commit=${_abseil_commit}"
   "dragonbox::git+https://chromium.googlesource.com/external/github.com/jk-jeon/dragonbox.git#commit=${_dragonbox_commit}"
-  "generate_shim_headers.py::https://github.com/chromium/chromium/raw/refs/tags/${pkgver}/tools/generate_shim_headers/generate_shim_headers.py"
+  "generate_shim_headers.py::https://cdn.jsdelivr.net/gh/chromium/chromium@${pkgver}/tools/generate_shim_headers/generate_shim_headers.py"
   'compiler-rt-adjust-paths.patch'
   'hermetic-python.patch'
   'increase-fortify-level.patch'
