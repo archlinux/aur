@@ -1,13 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protonplus
-pkgver=0.6.8
-pkgrel=2
+pkgver=0.6.9
+pkgrel=1
 pkgdesc="A modern compatibility tools manager"
 arch=('x86_64' 'aarch64')
-url="https://github.com/Vysp3r/ProtonPlus"
+url="https://protonplus.vysp3r.com"
 license=('GPL-3.0-or-later')
 depends=(
-  'appstream'
   'gtk4'
   'json-glib'
   'libadwaita'
@@ -15,22 +14,32 @@ depends=(
   'libgee'
   'libnotify'
   'libsoup3'
+  'libyaml'
   'sdl3'
+  'which'
 )
 makedepends=(
   'meson'
   'vala'
 )
-checkdepends=('desktop-file-utils')
+checkdepends=(
+  'appstream'
+  # 'dbus'
+  'desktop-file-utils'
+  # 'ttf-dejavu'
+  # 'xorg-server-xvfb'
+  # 'xorg-xauth'
+)
 optdepends=(
   'gamemode'
   'gamescope'
   'mangohud'
+  'proton-autogen'
   'protontricks'
   'scopebuddy'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9635706b4649032add033fcedf6db8dcbafe20c63789523c10a4764cb08fd2c7')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Vysp3r/ProtonPlus/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('d259e6f5ee04d20bf2adb80a0d1207a9b5dd9b77a1f7bbf8c0042535942f6583')
 
 build() {
   arch-meson "ProtonPlus-$pkgver" build
@@ -38,7 +47,14 @@ build() {
 }
 
 check() {
-  meson test -C build --no-rebuild --print-errorlogs
+
+  # Unit tests cannot be run in chroot
+  local meson_tests=(
+    'Validate desktop file'
+    'Validate appstream file'
+    'Validate schema file'
+  )
+  meson test -C build "${meson_tests[@]}" --no-rebuild --print-errorlogs
 }
 
 package() {
