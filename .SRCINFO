@@ -1,0 +1,21 @@
+pkgbase = okular-backend-libofd
+	pkgdesc = Standalone Open Fixed-layout Document (OFD) reader plugin for Okular
+	pkgver = 0.2.0
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	checkdepends = appstream
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = extra-cmake-modules>=6.13
+	depends = okular
+	depends = qt6-base>=6.8
+	depends = karchive>=6.13
+	depends = ki18n>=6.13
+	depends = kcoreaddons>=6.13
+	depends = shared-mime-info
+	source = https://github.com/leaeasy/okular-backend-libofd/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = 1382006f4cf1facf09ee10cf0a2a78a19753b6ceb0481d0cc03e1b08b7d684fd
+
+pkgname = okular-backend-libofd
