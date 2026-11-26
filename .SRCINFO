@@ -1,0 +1,19 @@
+pkgbase = mirrorproxy-bin
+	pkgdesc = Mirror and download accelerator for GitHub, Docker, npm, PyPI, Cargo and more
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/inbjo/MirrorProxy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mirrorproxy
+	conflicts = mirrorproxy
+	options = !debug
+	source = mirrorproxy-bin-1.8.1-LICENSE::https://raw.githubusercontent.com/inbjo/MirrorProxy/v1.8.1/LICENSE
+	sha256sums = d12faa744c2f445332aa3c981453269c10157d920bc433abfc9945f55b1454d8
+	source_x86_64 = mirrorproxy-bin-1.8.1-x86_64.tar.gz::https://github.com/inbjo/MirrorProxy/releases/download/v1.8.1/mirrorproxy-client-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = e72d8355d779e5dcef222a3e98e2732a0c9f7b72c7f081b2fbf5c9a90aaf0edc
+	source_aarch64 = mirrorproxy-bin-1.8.1-aarch64.tar.gz::https://github.com/inbjo/MirrorProxy/releases/download/v1.8.1/mirrorproxy-client-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = df18f547874377ea9893100a84c187bd6483558d5c581dbea68b4a3dcffdda2d
+
+pkgname = mirrorproxy-bin
