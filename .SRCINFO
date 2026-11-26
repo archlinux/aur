@@ -1,0 +1,12 @@
+pkgbase = miladazad-fonts
+	pkgdesc = Persian/Arabic display font
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/font-store/font-MiladAzad
+	arch = any
+	license = OFL-1.1
+	provides = miladazad
+	source = miladazad-fonts-0.0.3.tar.gz::https://github.com/font-store/font-MiladAzad/archive/59f634ef38e23a060ab441f4212b949a13132394.tar.gz
+	sha256sums = fcb8da29cd052a0a4a9726b269bd0395ccae2374686da6ef99c0de9bc57c0c83
+
+pkgname = miladazad-fonts
