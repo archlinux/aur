@@ -1,6 +1,6 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/greeter>
 pkgname=hornero-greeter-greetd
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='HorneroOS graphical greeter for greetd on Hornero Signal (Qt6/QML, cage)'
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,10 @@ license=('GPL-3.0-only')
 # platform plugin (qt6-wayland). ttf-ibm-plex supplies the Signal type
 # families; without it fontconfig falls back and the greeter still works.
 depends=('greetd' 'cage' 'qt6-base' 'qt6-declarative' 'qt6-wayland' 'ttf-ibm-plex')
-makedepends=('cmake' 'ninja' 'qt6-tools')
+makedepends=('cmake' 'git' 'ninja' 'qt6-tools')
 # Named "$pkgname" so the checkout lands at "${srcdir}/$pkgname", like
 # the SDDM theme package; build functions only read from there.
-source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#commit=92b187342c98507d17078b5d00406038c47e9fd6")
+source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#commit=e516d11067617ec32ea11f349e2c5e5a55b3c5b6")
 sha256sums=('SKIP')
 install=hornero-greeter-greetd.install
 
