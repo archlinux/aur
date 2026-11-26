@@ -1,0 +1,18 @@
+pkgbase = arcmd-bin
+	pkgdesc = Native Markdown editor with a rich-text canvas
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Ciao1019/ArcMD
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = arcmd
+	conflicts = arcmd
+	options = !debug
+	source_x86_64 = arcmd-bin-0.4.0-x86_64.tar.gz::https://github.com/Ciao1019/ArcMD/releases/download/v0.4.0/arcmd-0.4.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 66d427b182f0d7fa367b046272c4dbda231e563c2c7924a3a710b8b34ddba137
+	source_aarch64 = arcmd-bin-0.4.0-aarch64.tar.gz::https://github.com/Ciao1019/ArcMD/releases/download/v0.4.0/arcmd-0.4.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 6a2b8909f6cb62c4e70e3c64ee41fbd14e9e04bb49899cfeb5fa8f6560eb2cc6
+
+pkgname = arcmd-bin
