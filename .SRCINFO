@@ -1,0 +1,22 @@
+pkgbase = acton-bin
+	pkgdesc = Toolchain for TON smart contract development
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/ton-blockchain/acton
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = acton
+	conflicts = acton
+	options = !debug
+	source = acton-bin-1.2.1-LICENSE::https://raw.githubusercontent.com/ton-blockchain/acton/v1.2.1/LICENSE-APACHE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = acton-bin-1.2.1-x86_64.tar.gz::https://github.com/ton-blockchain/acton/releases/download/v1.2.1/acton-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 490d6763dcfe148e9c8346e3d56c398e950552d329a768b7e9168d4dd54afe3f
+	source_aarch64 = acton-bin-1.2.1-aarch64.tar.gz::https://github.com/ton-blockchain/acton/releases/download/v1.2.1/acton-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 1af10f5f47bcf7e2317dd70f6926b8ba52f5b9e73481b030ac472920a4c581b2
+
+pkgname = acton-bin
