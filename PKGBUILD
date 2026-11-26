@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RCM
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Fit row-column association models with the negative binomial distribution for the microbiome'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ae67b7df0ef96b42bdc63fd5fe2f596e1cfddae753695c178d5b10206a8df731')
+sha256sums=('0239ab7c83d91fac99e668c1e65e14f9d76067acb6349f54540ae2699411638e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
