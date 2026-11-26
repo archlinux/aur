@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biobtreeR
-_pkgver=1.24.0
+_pkgver=1.25.1
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.25.1
 pkgrel=1
 pkgdesc='Using biobtree tool from R'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6073d3a2b4d310eae847efa50000a1ef0d716ecb392021f63e6fb477439c73be')
+sha256sums=('1b323607a70224c0df8f77f73e16ac84870dbc2dd870780fdf2ed92e58a83d42')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
