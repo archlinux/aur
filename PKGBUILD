@@ -73,18 +73,31 @@ options=('!debug')
 backup=('etc/pam.d/flamewm-lock' 'etc/xdg/menus/flamewm-applications.menu')
 
 latestver() {
-  gh api repos/ArkFlame/flamewm/releases/latest --jq '.tag_name'
+  local tag
+  tag=$(gh api repos/ArkFlame/flamewm/releases/latest --jq '.tag_name')
+  # A bare revision letter sorts below the unlettered release in pacman
+  # (0.1.7b < 0.1.7), so report it as a separate version component.
+  if [[ $tag =~ ^([0-9]+(\.[0-9]+)*)([a-z])$ ]]; then
+    printf '%s.%s\n' "${BASH_REMATCH[1]}" "${BASH_REMATCH[3]}"
+  else
+    printf '%s\n' "$tag"
+  fi
 }
 
-# The release tag carries a revision letter that the .deb filename does not:
-# tag 0.1.2b publishes flamewm_0.1.2_amd64.deb. pkgver keeps the tag, because
-# consecutive revisions are separately built and are byte-different payloads
-# under the same .deb filename.
-_debver=${pkgver%[a-z]}
+# Upstream tags hotfixes with a revision letter (0.1.7b) but names the .deb
+# after the base version (flamewm_0.1.7_amd64.deb). pkgver stores the revision
+# as a dotted component so pacman orders the hotfix after the base release.
+if [[ $pkgver =~ ^([0-9]+(\.[0-9]+)*)\.([a-z])$ ]]; then
+  _tag=${BASH_REMATCH[1]}${BASH_REMATCH[3]}
+  _debver=${BASH_REMATCH[1]}
+else
+  _tag=$pkgver
+  _debver=$pkgver
+fi
 
 source=(
-  "flamewm-${pkgver}-amd64.deb::https://github.com/ArkFlame/flamewm/releases/download/${pkgver}/flamewm_${_debver}_amd64.deb"
-  "flamewm-lock.pam::https://raw.githubusercontent.com/ArkFlame/flamewm/${pkgver}/packaging/arch/flamewm-lock.pam"
+  "flamewm-${pkgver}-amd64.deb::https://github.com/ArkFlame/flamewm/releases/download/${_tag}/flamewm_${_debver}_amd64.deb"
+  "flamewm-lock.pam::https://raw.githubusercontent.com/ArkFlame/flamewm/${_tag}/packaging/arch/flamewm-lock.pam"
 )
 sha256sums=('e51cde5b28963907d233515ca6e6d0f7d31d4c43579cc5bc4dd2473efe036df7'
             '2f9b7a7a8a8583ed40969240ee7d0d42ffba4a44b69a7d241bd60634795a8e84')
