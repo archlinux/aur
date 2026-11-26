@@ -1,0 +1,19 @@
+pkgbase = opendev-bin
+	pkgdesc = Open-source coding agent for the terminal
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/opendev-to/opendev
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = opendev
+	conflicts = opendev
+	options = !debug
+	source_x86_64 = opendev-bin-0.1.9-x86_64.tar.xz::https://github.com/opendev-to/opendev/releases/download/v0.1.9/opendev-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = a64752cd4fa34265c2c777191ee7bec5f9e896d750ea95a3118b25dd332bf524
+	source_aarch64 = opendev-bin-0.1.9-aarch64.tar.xz::https://github.com/opendev-to/opendev/releases/download/v0.1.9/opendev-cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 1ebe17046805c3fc8d52258bce9fa5590b797ddd0480bef32c92c01ee8c07061
+
+pkgname = opendev-bin
