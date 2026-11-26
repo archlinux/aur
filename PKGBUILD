@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-workspaces-git
-pkgver=1.2.0.r9.g28a2bfe
+pkgver=1.12.0.r3.g44db369
 pkgrel=1
 pkgdesc="Cosmic workspaces"
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,7 @@ depends=(
 makedepends=(
   'cargo'
   'git'
+  'just'
   'mold'
 )
 provides=("${pkgname%-git}")
@@ -42,16 +43,17 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}-epoch"
+  export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice make ARGS+=" --frozen --release"
+  nice just build-release --frozen
 }
 
 package() {
   cd "${pkgname%-git}-epoch"
-  make prefix='/usr' DESTDIR="$pkgdir" install
+  just rootdir="$pkgdir" install
 }
