@@ -6,7 +6,7 @@ pkgbase = silverscreen-git
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = dotnet-sdk>=10
+	makedepends = dotnet-sdk>=11
 	makedepends = blueprint-compiler
 	makedepends = glib2
 	makedepends = clang

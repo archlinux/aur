@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/XSilverTH/SilverScreen'
 license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'libsoup3' 'mpv' 'yt-dlp' 'hicolor-icon-theme')
-makedepends=('git' 'dotnet-sdk>=10' 'blueprint-compiler' 'glib2' 'clang' 'pkgconf')
+makedepends=('git' 'dotnet-sdk>=11' 'blueprint-compiler' 'glib2' 'clang' 'pkgconf')
 provides=('silverscreen')
 conflicts=('silverscreen')
 source=("git+$url.git")
