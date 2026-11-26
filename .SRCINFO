@@ -1,0 +1,19 @@
+pkgbase = claude-ast-index-search-bin
+	pkgdesc = AST-based code search for AI coding agents that saves tokens
+	pkgver = 3.56.0
+	pkgrel = 1
+	url = https://github.com/defendend/Claude-ast-index-search
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = claude-ast-index-search
+	conflicts = claude-ast-index-search
+	options = !debug
+	source = claude-ast-index-search-bin-3.56.0-LICENSE::https://raw.githubusercontent.com/defendend/Claude-ast-index-search/v3.56.0/LICENSE
+	sha256sums = 704ed39e482cc852b8b26aafc25cb59c96e652f6cd795e12936e8a0087be2e0b
+	source_x86_64 = claude-ast-index-search-bin-3.56.0-x86_64.tar.gz::https://github.com/defendend/Claude-ast-index-search/releases/download/v3.56.0/ast-index-v3.56.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 88c84ed45c16528c1884da0c960110aed42bc6697a5bba1604d954863bf6a1b8
+	source_aarch64 = claude-ast-index-search-bin-3.56.0-aarch64.tar.gz::https://github.com/defendend/Claude-ast-index-search/releases/download/v3.56.0/ast-index-v3.56.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 088e7f30ccd39629e9987e4d5e09d576e0c92190207fc4ab49f991a6b904edb0
+
+pkgname = claude-ast-index-search-bin
