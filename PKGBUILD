@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cogena
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='co-expressed gene-set enrichment analysis'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6aab1e651541e7c45b66d3aef471ab025d053ad59bf629598ead7c260478f676')
+sha256sums=('a1fe42438fe38bbb8328cea749209856759ad46bda80e71e56d5a8936b744e4e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
