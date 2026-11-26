@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RCSL
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-tinytex
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fc40086659c58268b0c51b70b3f51ff1')
-b2sums=('70874a448971ab0126bffde1f7012de93be8473db3f406cc79794588bcf5a7a51b3c03c78395f185876c9495702cd6c67f1b149c0555c49d77016387e16289fc')
+md5sums=('3f99b8822eee6c58f7bf787f402c2ab7')
+b2sums=('4532554e0ab6320e9ab84fa8b34550aedd339f704c6945670de1be17f979db83a663d7b222da3f9c0d3133dc8d791875b8092e2ea76414dfd42e2c85787296d3')
 
 build() {
   mkdir build
