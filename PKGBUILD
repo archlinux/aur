@@ -5,7 +5,7 @@
 # poe-waytrade.install to ssh://aur@aur.archlinux.org/poe-waytrade.git (master).
 # Keep it in step with ../arch/PKGBUILD when the build changes.
 pkgname=poe-waytrade
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="In-game Vulkan price-check overlay for Path of Exile and Path of Exile 2 on Wayland"
 arch=('x86_64')
@@ -26,7 +26,7 @@ _models=https://ocrs-models.s3-accelerate.amazonaws.com
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$_models/text-detection.onnx"
         "$_models/text-recognition.onnx")
-sha256sums=('fa235a16005a3856f38f4f195ecc957e615962205b24d9dff2fab7424f03eca5'
+sha256sums=('2be67c1185d22d85ac72d5f2843316ae27a48a44370ffb27223610216f57fab6'
             'a917b23dbd9524b465df7e922641b3ff2981623df4ded5a0234004ef2fee7cfe'
             '86c145c2edb96c8caed5b1ebb8f44d706408922211451c309c625157dd6061c5')
 
