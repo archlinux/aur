@@ -1,0 +1,21 @@
+pkgbase = aptivi-adt-git
+	pkgdesc = Simulates our future-planned kernel
+	pkgver = v1.2.0.4.r27.52f17ed
+	pkgrel = 1
+	url = https://aptivi.github.io
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-babel
+	depends = python-gitpython
+	provides = aptivi-adt
+	conflicts = aptivi-adt
+	options = !strip
+	source = aptivi-adt-git::git+https://github.com/Aptivi/tools#branch=main
+	sha256sums = SKIP
+
+pkgname = aptivi-adt-git
