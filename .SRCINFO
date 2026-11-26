@@ -1,0 +1,15 @@
+pkgbase = rfxgen-bin
+	pkgdesc = Simple and easy-to-use sound effects generator
+	pkgver = 5.0
+	pkgrel = 1
+	url = https://github.com/raysan5/rfxgen
+	arch = x86_64
+	license = Zlib
+	depends = glibc
+	provides = rfxgen
+	conflicts = rfxgen
+	options = !debug
+	source_x86_64 = rfxgen-bin-5.0-x86_64.zip::https://github.com/raysan5/rfxgen/releases/download/5.0/rfxgen_v5.0_linux_x64.zip
+	sha256sums_x86_64 = e53dda7caab55d7b42568a1abf2e608631dce7f6d539070ece17595ce8d2f77c
+
+pkgname = rfxgen-bin
