@@ -1,6 +1,6 @@
 pkgbase = r-cosnet
 	pkgdesc = Cost Sensitive Network for node label prediction on graphs with highly unbalanced labelings
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/COSNet
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = r-cosnet
 	optdepends = r-bionetdata
 	optdepends = r-perfmeas
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/COSNet_1.46.0.tar.gz
-	md5sums = 2884f950d7f702e50dbf65fede384485
-	b2sums = b0fd6b03da3aeb5af7a6e64291c900d9c7c3c9f24264b191d22f94cafbfabb4971d5a8c8e576659350ec742ebc4505ad209bf021821fa6f49dee4c22e40041d7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/COSNet_1.48.0.tar.gz
+	md5sums = a22f502997e0bf2bccd6c0013704b8f8
+	b2sums = 6e5ccdbd8b5f5b9551920b0380bfa9f970d1e75a6b896b6d5cbcc78541833f8f050e8549d3e1fb18f2dfc8a570620e66e2f2487c57da9c7456bbbc9ff630f336
 
 pkgname = r-cosnet
