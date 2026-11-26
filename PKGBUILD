@@ -1,10 +1,10 @@
 # Maintainer: Adityarup Laha <me@adityaruplaha.me>
 
 _pkgname=maaslin3
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc='"Refining and extending generalized multivariate linear models for meta-omic association discovery"'
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,7 +17,6 @@ depends=(
   r-ggplot2
   r-lme4
   r-lmertest
-  r-logging
   r-mirai
   r-multcomp
   r-optparse
@@ -38,8 +37,8 @@ optdepends=(
   r-treesummarizedexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f7f84edfa8070976c84e45fbbfc88a5a')
-b2sums=('249026768a4ebf6fc52e4809dadb1ec767d7a0479c12f533ac59e05934e20a0c1d2ae238095c7866736dce1075fb70fafe8f2d2303279f34c8cccd747b7da029')
+md5sums=('1749512ad76f2b1057f83830ca88f0b8')
+b2sums=('40a590bc8abd89462302116f428d14383202fd27fae4ab07f99205daa38724c0ea5bfd915d2dabf2d7a4825417be47e9a7610fc0aef8c0dc7c4b090e0b10c446')
 
 build() {
   mkdir build
