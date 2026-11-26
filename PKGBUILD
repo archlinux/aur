@@ -1,6 +1,6 @@
 # Maintainer: alcubierre-drive
 pkgname=narcolepsyd
-pkgrel=1
+pkgrel=2
 pkgver=0.1.0
 pkgdesc="An idle power optimizer for Linux laptops with Intel hybrid CPUs"
 arch=('x86_64')
@@ -26,6 +26,6 @@ check() {
 
 package() {
     cd "${srcdir}/${pkgname}"
-    install -m755 -D target/release/narcolepsyd -t "$pkgdir/usr/local/bin/"
+    install -m755 -D target/release/narcolepsyd -t "$pkgdir/usr/bin/"
     install -m644 -D dist/narcolepsyd.service -t "$pkgdir/etc/systemd/system/"
 }
