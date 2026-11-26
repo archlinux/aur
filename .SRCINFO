@@ -1,6 +1,6 @@
 pkgbase = r-rseqan
 	pkgdesc = R SeqAn
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RSeqAn
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-rseqan
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RSeqAn_1.32.0.tar.gz
-	sha256sums = d7ce08cb093bcfd4a4286acffe1beb905bf68b435fc8028596bd89a214b396d6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RSeqAn_1.34.0.tar.gz
+	sha256sums = fd4c2fb48cbb99c6ce9fced94942a08cd1d6a95dbca92ae307436c9b752bd12a
 
 pkgname = r-rseqan
