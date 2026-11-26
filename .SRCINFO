@@ -1,13 +1,13 @@
 pkgbase = r-mbamethyl
 	pkgdesc = Model-based analysis of DNA methylation data
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MBAmethyl
 	arch = any
 	license = Artistic-2.0
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MBAmethyl_1.46.0.tar.gz
-	md5sums = fc5611bca4d0d0ba64e98b6ba3345a28
-	b2sums = 3d603165397b4269ccacfcd893a667fb3a9cd335588db0ae20cd80f28bd5257bc014b0b1213d663e9b17fa6562b65072eb6e38bfedede1dc4f1c36278ee827db
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MBAmethyl_1.48.0.tar.gz
+	md5sums = c9bbf4026a7a50ae8f9fb7e133405377
+	b2sums = 0be23cdb636225917317cf27a143bdd5786fc459236046c6382b3904febea8ed002d695b24de32727e5f98f374c3bb0a13b8b9dc3c191b8c208ab1114e6a596a
 
 pkgname = r-mbamethyl
