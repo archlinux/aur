@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MultiRNAflow
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -41,8 +41,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('283ae2a0dd14bbbde286b1d5dcd8ca8d')
-b2sums=('f08b65718586ca95fce814c141d22970c84bebdee17ca2cfb2fdf32b9d6cffc5e797964d86564237eae7fece4e41ba0d521271a01ecfb5a402e0206518f81cdb')
+md5sums=('10fe27f4aa2f8b9da8068983bee74749')
+b2sums=('8484820386bd85268790b91e718045a4e7890d0cc35c154236d7a445bb40cba55943aa33aabf4f665acb98066036ce1b18c60d1e43f13203b29ea4d4c785a542')
 
 build() {
   mkdir build
