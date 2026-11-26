@@ -1,7 +1,7 @@
 # Maintainer: Braulio Oliveira <brauliobo@gmail.com>
 
 pkgname=zensmu-git
-pkgver=0.1.1.r0.gc458c83
+pkgver=0.2.0.r0.g44aa45b
 pkgrel=1
 pkgdesc="Safety-first Rust CLI, live TUI, and unprivileged GUI for AMD Ryzen SMU control and telemetry"
 arch=('x86_64')
@@ -32,7 +32,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname}"
     git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "0.1.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+        printf "0.2.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
@@ -62,9 +62,11 @@ package() {
     install -Dm755 "target/release/zensmu" "${pkgdir}/usr/bin/zensmu"
     install -Dm755 "target/release/zensmu-gui" "${pkgdir}/usr/bin/zensmu-gui"
 
-    # Systemd boot apply service & suspend/hibernate resume hook
+    # Systemd boot apply service, user telemetry recorder service, & suspend/hibernate resume hook
     install -Dm644 "packaging/systemd/zensmu-apply.service" \
         "${pkgdir}/usr/lib/systemd/system/zensmu-apply.service"
+    install -Dm644 "packaging/systemd/zensmu-record.service" \
+        "${pkgdir}/usr/lib/systemd/user/zensmu-record.service"
     install -Dm755 "packaging/systemd/zensmu-resume" \
         "${pkgdir}/usr/lib/systemd/system-sleep/zensmu-resume"
 
