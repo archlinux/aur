@@ -1,0 +1,18 @@
+pkgbase = python-opem
+	pkgdesc = Open-source PEM fuel cell simulation tool
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/ECSIM/opem
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-art
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/o/opem/opem-1.4.tar.gz
+	sha256sums = 41e63dc198a5752a16a375a764bd2fc56093219e3bc8c15ee315fbe146c5e5b2
+
+pkgname = python-opem
