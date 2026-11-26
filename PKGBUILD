@@ -2,7 +2,7 @@
 
 pkgname=nsky-protondrive-client-bin
 _pkgname=nsky-protondrive-client
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='Unofficial Proton Drive command-line client with bidirectional folder sync'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ options=('!strip' '!debug')
 
 source_x86_64=("$url/releases/download/v$pkgver/protondrive-$pkgver-linux-x64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/protondrive-$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('281f894384612124e2d858d9f577f8d3177929e18aa87edbf3af9729e9edeee1')
-sha256sums_aarch64=('ba308a21bde830a8a3af96d03221a3a52271cdc72ac3bdd15ca2642cd63c047b')
+sha256sums_x86_64=('daac79f780398f283679b1e19793799609b0de8e911e3b80e137d7550f0eb7dc')
+sha256sums_aarch64=('c74b99245b67ae81789f187264b4c320d73380df77fc6e965e1bed0b0ea32c3f')
 
 _rid() {
   case "$CARCH" in
