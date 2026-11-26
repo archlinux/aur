@@ -1,6 +1,6 @@
 pkgbase = x3d-toggle
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/X3D-Toggle/x3d-toggle-main
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -15,8 +15,8 @@ pkgbase = x3d-toggle
 	makedepends = libadwaita
 	options = !strip
 	options = !lto
-	source = x3d-toggle-2.0.0.tar.gz::https://github.com/X3D-Toggle/x3d-toggle-main/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = ee1163b87e35f91b4d3f1481b6b5ea0bf8b4c32f9c681426bf882a3aed695b55
+	source = x3d-toggle-2.0.1.tar.gz::https://github.com/X3D-Toggle/x3d-toggle-main/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 89b3223d5091d7d981960247872a7931bad860825bf29559e55c99117d6498fe
 
 pkgname = x3d-toggle
 	pkgdesc = AMD Ryzen X3D V-Cache CCD priority optimizer daemon and CLI (POSIX C / eBPF)
@@ -37,7 +37,7 @@ pkgname = x3d-toggle
 
 pkgname = x3d-toggle-gui
 	pkgdesc = GTK4/libadwaita desktop dashboard for X3D Toggle
-	depends = x3d-toggle=2.0.0-2
+	depends = x3d-toggle=2.0.1-1
 	depends = gtk4
 	depends = libadwaita
 	optdepends = lact: AMD GPU clocks, voltages, power limits, and fan curves
