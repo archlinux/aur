@@ -1,6 +1,6 @@
 pkgbase = kaze
 	pkgdesc = A calm, intelligent local music player
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/selfAnnihilator/kaze
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = kaze
 	depends = sqlite
 	depends = hicolor-icon-theme
 	options = !lto
-	source = kaze-2.2.2.tar.gz::https://github.com/selfAnnihilator/kaze/archive/refs/tags/v2.2.2.tar.gz
+	source = kaze-2.2.3.tar.gz::https://github.com/selfAnnihilator/kaze/archive/refs/tags/v2.2.3.tar.gz
 	source = kaze.desktop
-	sha256sums = 247830d2b2993391cfa9440c6ac25da1c0b3d082bedb4836480e894fe0b8aa1d
+	sha256sums = 4e0c7703bbb5d99e63735943eabb81611c8b06f35ca99938ddc18e3b59f78283
 	sha256sums = eaf39dc7d4a05cefeb1543018e5a2ae84148343e3b5a8de50ba365087d43dd0c
 
 pkgname = kaze
