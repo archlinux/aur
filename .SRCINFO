@@ -1,0 +1,19 @@
+pkgbase = binenv-bin
+	pkgdesc = Install and manage versions of many CLI tools from one binary
+	pkgver = 0.21.1
+	pkgrel = 1
+	url = https://github.com/devops-works/binenv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = binenv
+	conflicts = binenv
+	options = !debug
+	source = binenv-bin-0.21.1-LICENSE::https://raw.githubusercontent.com/devops-works/binenv/v0.21.1/LICENSE
+	sha256sums = 0859ca048f4450a1928b71dc77b5bf5a8a24e4876ca288a0484ea5b322ba7d30
+	source_x86_64 = binenv-bin-0.21.1-x86_64::https://github.com/devops-works/binenv/releases/download/v0.21.1/binenv_linux_amd64
+	sha256sums_x86_64 = f78a46c42a9724b78ff8def1de4a80ea75c46a5eba48b641d3bd9653b964d4c2
+	source_aarch64 = binenv-bin-0.21.1-aarch64::https://github.com/devops-works/binenv/releases/download/v0.21.1/binenv_linux_arm64
+	sha256sums_aarch64 = 3a3bde80ccd29a956b79b90fff31aa9a078773de0d6cc261fbaa0ddfa92dfdbb
+
+pkgname = binenv-bin
