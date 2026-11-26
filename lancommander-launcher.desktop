@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=LANCommander Launcher
+GenericName=Game Launcher
+Comment=Install and play games from your LANCommander server
+Exec=lancommander-launcher %u
+Icon=lancommander-launcher
+Categories=Game;
+Keywords=lan;games;launcher;
+Terminal=false
+MimeType=x-scheme-handler/lancommander;

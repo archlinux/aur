@@ -1,0 +1,29 @@
+--- a/LANCommander.Launcher/Services/Protocol/ProtocolHandlerRegistration.cs
++++ b/LANCommander.Launcher/Services/Protocol/ProtocolHandlerRegistration.cs
+@@ -29,6 +29,13 @@
+     {
+         try
+         {
++            // A package-managed install (e.g. /usr/lib on Linux) ships its own desktop entry for the
++            // scheme, which goes through the wrapper script; a per-user entry here would bypass it
++            if (OperatingSystem.IsLinux()
++                && Environment.ProcessPath is { } processPath
++                && !LANCommander.SDK.Helpers.DirectoryHelper.IsDirectoryWritable(Path.GetDirectoryName(processPath)!))
++                return;
++
+             var command = GetLaunchCommand();
+ 
+             if (command == null)
+--- a/LANCommander.SDK/Updating/UpdateInstallation.cs
++++ b/LANCommander.SDK/Updating/UpdateInstallation.cs
+@@ -50,6 +50,10 @@
+ 
+         var executableDirectory = Path.GetDirectoryName(Path.GetFullPath(executable))!;
+ 
++        // A package-managed install (e.g. /usr/lib on Linux) is updated by the package manager
++        if (OperatingSystem.IsLinux() && !DirectoryHelper.IsDirectoryWritable(executableDirectory))
++            return null;
++
+         // A macOS app runs from Name.app/Contents/MacOS; updates replace the bundle's contents
+         if (OperatingSystem.IsMacOS()
+             && Path.GetFileName(executableDirectory) == "MacOS"

@@ -1,0 +1,8 @@
+# Only the package sources go to the AUR; build output, the upstream clone and the NuGet cache stay local.
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!package-managed-install.patch
+!lancommander-launcher.sh
+!lancommander-launcher.desktop
