@@ -1,0 +1,17 @@
+pkgbase = labctl-bin
+	pkgdesc = Start remote iximiuz Labs microVM playgrounds from the command line
+	pkgver = 0.1.116
+	pkgrel = 1
+	url = https://github.com/iximiuz/labctl
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = labctl
+	conflicts = labctl
+	options = !debug
+	source_x86_64 = labctl-bin-0.1.116-x86_64.tar.gz::https://github.com/iximiuz/labctl/releases/download/v0.1.116/labctl_linux_amd64.tar.gz
+	sha256sums_x86_64 = a06c3b443a0c61f215d3382504047cd12b22e612b56490eb8e9fd65bb2adb53a
+	source_aarch64 = labctl-bin-0.1.116-aarch64.tar.gz::https://github.com/iximiuz/labctl/releases/download/v0.1.116/labctl_linux_arm64.tar.gz
+	sha256sums_aarch64 = a3c4c81061b9beedefedc24839e542f2b578e1e4faa482baa990c976b6b24fce
+
+pkgname = labctl-bin
