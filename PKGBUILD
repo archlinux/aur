@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MoleculeExperiment
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1b9f8b848ae27247eeca88d61a41c916')
-b2sums=('727a3219b4c20d5fe3afb3df80e07a358e61e8afadf2be571b3249cbb1f36f908d29ecda57d29100592cf19d8669b41133ce3b0dad11dec0e4b054c6a9ed340c')
+md5sums=('1c69c2dd788da4f0ec6aa6c1d0145ff4')
+b2sums=('f3208aeb539f379b73ee947bf88410c258c6aec4c5d8d768ab886683b92f7fe1d690bf269cc096093312bac92c4bc2a977552f9e7fd9913388df44709afd9b31')
 
 build() {
   mkdir build
