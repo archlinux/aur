@@ -1,0 +1,19 @@
+pkgbase = samloader-rs-bin
+	pkgdesc = Samsung firmware download and flash tool
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/topjohnwu/samloader-rs
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = samloader-rs
+	conflicts = samloader-rs
+	options = !debug
+	source = samloader-rs-bin-2.2.0-LICENSE::https://raw.githubusercontent.com/topjohnwu/samloader-rs/2.2.0/LICENSE
+	sha256sums = 2ea3de1fafacdfc925bc8bd63ae70cf6df2a622a8aef0d1c4b6b3e23256c4a9d
+	source_x86_64 = samloader-rs-bin-2.2.0-x86_64.zip::https://github.com/topjohnwu/samloader-rs/releases/download/2.2.0/samloader-v2.2.0-linux-x86_64.zip
+	sha256sums_x86_64 = f6029dcce75b8a66acc1975529085c53903f7cdb35505e0ac0a973f2652480ff
+	source_aarch64 = samloader-rs-bin-2.2.0-aarch64.zip::https://github.com/topjohnwu/samloader-rs/releases/download/2.2.0/samloader-v2.2.0-linux-aarch64.zip
+	sha256sums_aarch64 = c17addb7693adc4a5f6b52eb2aa27a3398433ded980319b9dcd3cd9f7a6d267e
+
+pkgname = samloader-rs-bin
