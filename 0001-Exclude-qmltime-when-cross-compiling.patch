@@ -1,7 +1,7 @@
-From f33005bb887241200c15475229c66824b5272e19 Mon Sep 17 00:00:00 2001
+From 7052991a9778f573dc71463bda89526fa56da3b2 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 5 Feb 2021 02:22:45 +0100
-Subject: [PATCH 1/2] Exclude qmltime when cross compiling
+Subject: [PATCH] Exclude qmltime when cross compiling
 
 as the build script would attempt to set the property of a target
 which does not exist (leading to a configuration error).
@@ -29,5 +29,5 @@ index d1102c6fdb..e346a4e58f 100644
      if(QT_BUILD_SHARED_LIBS
          AND QT_FEATURE_process
 -- 
-2.55.0
+2.56.1
 
