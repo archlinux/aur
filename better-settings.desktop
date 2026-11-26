@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Better Settings
+GenericName=Niri Settings
+Comment=Configure niri's KDL configuration
+Exec=better-settings
+Icon=preferences-system
+Terminal=false
+Categories=Settings;DesktopSettings;GTK;
+Keywords=niri;settings;config;wayland;
+StartupNotify=true

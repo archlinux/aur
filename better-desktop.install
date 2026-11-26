@@ -1,0 +1,27 @@
+post_install() {
+  cat <<'EOF'
+better-desktop installed the Better Niri compositor and companion packages.
+
+Next steps:
+  1. Log out and choose "Niri" in your display manager, or run niri-session.
+  2. systemctl --user daemon-reload
+  3. To use the standalone portal backend:
+       systemctl --user enable --now better-portal.service
+     and select the "better" backend in
+       ~/.config/xdg-desktop-portal/portals.conf
+     (see /usr/share/doc/better-portal/portals.conf.better.example).
+  4. Optional daemons (better-companion, better-wallpaper, better-audio,
+     better-sidepanels) are installed but not enabled. Start them from
+     niri's spawn-at-startup or as user units.
+  5. Run `niri --check-vulkan` to see the resolved renderer plan.
+
+To install only selected companions, use their package names directly
+(better-portal, better-shot, better-settings, ...). They do not rebuild niri.
+
+Full instructions: /usr/share/doc/niri-better/PACKAGING.md
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
