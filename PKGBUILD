@@ -2,8 +2,8 @@
 # Contributor: MoazSalem <https://github.com/MoazSalem>
 
 pkgname=litefin
-pkgver=2.0.20  # Update to match the release tag/commit count
-pkgrel=2
+pkgver=2.10.0  # Update to match the release tag/commit count
+pkgrel=1
 pkgdesc="Jellyfin & Emby Client for Smart TVs and Desktop"
 arch=('x86_64')
 url="https://github.com/MoazSalem/litefin"
@@ -46,8 +46,8 @@ package() {
 [Desktop Entry]
 Name=Litefin
 Exec=/usr/bin/litefin
-Icon=/usr/share/icons/hicolor/512x512/apps/litefin.png
+Icon=litefin
 Type=Application
-Categories=Multimedia;
+Categories=AudioVideo;Video;Player;
 EOF
 }
