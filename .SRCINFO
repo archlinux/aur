@@ -1,0 +1,17 @@
+pkgbase = rf-swift-bin
+	pkgdesc = RF toolbox that deploys radio, hardware and security tools in containers
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://github.com/PentHertz/RF-Swift
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = rf-swift
+	conflicts = rf-swift
+	options = !debug
+	source_x86_64 = rf-swift-bin-4.1.1-x86_64.tar.gz::https://github.com/PentHertz/RF-Swift/releases/download/v4.1.1/rfswift_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 902d90e83e9da8e167dadc130d34a74dadb5bb215a1138692a31899eaee07048
+	source_aarch64 = rf-swift-bin-4.1.1-aarch64.tar.gz::https://github.com/PentHertz/RF-Swift/releases/download/v4.1.1/rfswift_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 189e35647700f874c55092abca8a51210b3c96d1c61833aba984395e4aafcf1b
+
+pkgname = rf-swift-bin
