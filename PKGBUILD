@@ -1,5 +1,5 @@
 pkgname=ioruba-desktop
-pkgver=1.10.4
+pkgver=1.10.5
 pkgrel=1
 pkgdesc="Tactile audio mixer for Arduino-based Linux control"
 arch=('x86_64')
@@ -16,7 +16,7 @@ replaces=('ioruba')
 # !debug: nao publicamos pacote de debug symbols.
 options=('!lto' '!debug')
 source=("ioruba-${pkgver}.tar.gz::https://github.com/bernardopg/ioruba/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ad0a854e0b6669990ad436d7afa1d1b24249bb13bdf9875a85de87126f63a826')
+sha256sums=('81d98ec6bb882f7a5c650b6565942e8ec18c4256be084a42a2291e29b1bab445')
 
 prepare() {
   cd "ioruba-${pkgver}"
