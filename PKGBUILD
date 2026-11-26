@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CONSTANd
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('de9be2d5d6cffaaf11f1873a646426a6')
-b2sums=('833d74443a56a52c03308fbc734f22dc36e8bf60f8adc74feece214517932a81b2351d50041af1ad93c9b3d27c502f91691af8f46bf68f7850ed4de789af76ea')
+md5sums=('dde473cc7124f9371316ac8d0c261d78')
+b2sums=('7fd36fd76b6673626022013cd73c78299463aff061280637623f207fbb01780093e56ff973eeb8f54650e3a7fe12487c63efe33626e782cef16c49e7d4887069')
 
 build() {
   mkdir build
