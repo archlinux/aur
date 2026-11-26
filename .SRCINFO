@@ -1,0 +1,17 @@
+pkgbase = kubectl-klock-bin
+	pkgdesc = kubectl plugin that renders watch output more readably
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/applejag/kubectl-klock
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = kubectl-klock
+	conflicts = kubectl-klock
+	options = !debug
+	source_x86_64 = kubectl-klock-bin-0.9.3-x86_64.tar.gz::https://github.com/applejag/kubectl-klock/releases/download/v0.9.3/kubectl-klock_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2e7d0b9b44c6391b8cad90a87d1b3be5ea2a52dd9c5562bd05fe2183d9e5b714
+	source_aarch64 = kubectl-klock-bin-0.9.3-aarch64.tar.gz::https://github.com/applejag/kubectl-klock/releases/download/v0.9.3/kubectl-klock_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8dc0b6b193bcc0a1f151efad3e033a3d934ddbba94744d676c60c9d3200e45f5
+
+pkgname = kubectl-klock-bin
