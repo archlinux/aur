@@ -1,6 +1,6 @@
 pkgbase = bgrun-bin
 	pkgdesc = Background process runner for development workflows
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/bethropolis/bgrun
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = bgrun-bin
 	provides = bgrun
 	provides = bgrun-daemon
 	arch = aarch64
-	source_aarch64 = bgrun-bin_0.7.0_aarch64.tar.gz::https://github.com/bethropolis/bgrun/releases/download/v0.7.0/bgrun_0.7.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7df904681a69e0c67319cc5f59bfa98e175241009c19f4f6078bedbe26b286b9
+	source_aarch64 = bgrun-bin_0.8.0_aarch64.tar.gz::https://github.com/bethropolis/bgrun/releases/download/v0.8.0/bgrun_0.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 87371fe097dd0f2e55623bb78ed753edf510634746f3f9524389bad89bced757
 	arch = x86_64
-	source_x86_64 = bgrun-bin_0.7.0_x86_64.tar.gz::https://github.com/bethropolis/bgrun/releases/download/v0.7.0/bgrun_0.7.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 13e550a69225e7b7dbf28228c94e13a0f837736ff21848318e6386c716cb3861
+	source_x86_64 = bgrun-bin_0.8.0_x86_64.tar.gz::https://github.com/bethropolis/bgrun/releases/download/v0.8.0/bgrun_0.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 91b453d4dabe0c83a2a74b0661a26d48d3e38920eb811f582f47d35c9dcb7c20
 	
 pkgname = bgrun-bin
