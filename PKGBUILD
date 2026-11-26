@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gscreend
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b182cf2171ae49d8709553f0092489a7')
-b2sums=('b7ee328c361025ca6b7f94d43135a2f4970fa17213987fd2113ad84837d6fcad0ecfe9b633f1d47ea27c699f0bb0b9500fb97a3e0a11dbc52cef0c75c5c47910')
+md5sums=('ebea32a0cd122797bc12b1591cd0fd14')
+b2sums=('5071f548bd1ef631518a15020c3cf77c97d6ae2ec8043354ebbc299ad0a617b8de05be1ea958d12b406c68c7634bd649b7a8736afa1c2b6a09f0d8678e8ed813')
 
 build() {
   mkdir build
