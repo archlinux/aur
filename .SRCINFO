@@ -5,6 +5,7 @@ pkgbase = chaski-bin
 	url = https://chaski.a-chacon.com
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = imagemagick
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1

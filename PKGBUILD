@@ -15,6 +15,9 @@ depends=(
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
 )
+makedepends=(
+    'imagemagick'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/app-v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 )
