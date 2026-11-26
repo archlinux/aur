@@ -1,0 +1,16 @@
+pkgbase = vscli-bin
+	pkgdesc = CLI and TUI for launching VS Code projects with a focus on dev containers
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://github.com/michidk/vscli
+	arch = x86_64
+	license = MIT
+	provides = vscli
+	conflicts = vscli
+	options = !debug
+	source = vscli-bin-1.3.3-LICENSE::https://raw.githubusercontent.com/michidk/vscli/v1.3.3/LICENSE
+	sha256sums = 508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1
+	source_x86_64 = vscli-bin-1.3.3-x86_64.tar.gz::https://github.com/michidk/vscli/releases/download/v1.3.3/vscli-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = ccc7853560f113607713239886466bf1cce503aa439f96582df960c3a03c65f0
+
+pkgname = vscli-bin
