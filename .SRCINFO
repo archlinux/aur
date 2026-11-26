@@ -1,6 +1,6 @@
 pkgbase = kettu-bin
 	pkgdesc = All your coding agents, side by side in one window that looks good and feels right.
-	pkgver = 0.1.21
+	pkgver = 0.1.25
 	pkgrel = 1
 	url = https://www.kettu.sh
 	arch = aarch64
@@ -12,15 +12,15 @@ pkgbase = kettu-bin
 	depends = python-gobject
 	depends = git
 	depends = github-cli
-	provides = kettu=0.1.21
+	provides = kettu=0.1.25
 	conflicts = kettu
 	source = kettu.js
 	source = kettu.sh
 	sha256sums = b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b
 	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
-	source_aarch64 = kettu-0.1.21-aarch64.AppImage::https://github.com/KettuAI/Kettu/releases/download/v0.1.21/Kettu-arm64.AppImage
-	sha256sums_aarch64 = 70f1449218b7d1e9ff519af1f03ceea99f180c9b10bbbd08c376346bf37be746
-	source_x86_64 = kettu-0.1.21-x86_64.AppImage::https://github.com/KettuAI/Kettu/releases/download/v0.1.21/Kettu-x86_64.AppImage
-	sha256sums_x86_64 = 3b8398df09a94e02cd9befaddca7f139c1f27b593a552f244b0cc54b2f07f462
+	source_aarch64 = kettu-0.1.25-aarch64.AppImage::https://github.com/KettuAI/Kettu/releases/download/v0.1.25/Kettu-arm64.AppImage
+	sha256sums_aarch64 = 3ef3c44823611b43914de572c43cf77c9e94cbb7300be0d7d816d8e243476c59
+	source_x86_64 = kettu-0.1.25-x86_64.AppImage::https://github.com/KettuAI/Kettu/releases/download/v0.1.25/Kettu-x86_64.AppImage
+	sha256sums_x86_64 = ab7c7a643a7f5bee6ee331e3d67010600b293bde0325309b3eb35a6944167ddd
 
 pkgname = kettu-bin
