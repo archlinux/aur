@@ -1,6 +1,6 @@
 pkgbase = r-crlmm
 	pkgdesc = Genotype Calling (CRLMM) and Copy Number Analysis tool for Affymetrix SNP 5.0 and 6.0 and Illumina arrays
-	pkgver = 1.70.0
+	pkgver = 1.71.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/crlmm
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = r-crlmm
 	optdepends = r-hapmapsnp6
 	optdepends = r-runit
 	optdepends = r-snpstats
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/crlmm_1.70.0.tar.gz
-	sha256sums = b12c14ff2961054ae260fad7049f29ae0625490ffb9d1eb891a387195b2bc8ba
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/crlmm_1.71.0.tar.gz
+	sha256sums = 33064be2d7c1fcc156fa7effea1a48d688244aebdb4648eafa46ad9f9e54472a
 
 pkgname = r-crlmm

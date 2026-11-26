@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=crlmm
-_pkgver=1.70.0
+_pkgver=1.71.0
 pkgname=r-${_pkgname,,}
-pkgver=1.70.0
+pkgver=1.71.0
 pkgrel=1
 pkgdesc='Genotype Calling (CRLMM) and Copy Number Analysis tool for Affymetrix SNP 5.0 and 6.0 and Illumina arrays'
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
   r-snpstats
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b12c14ff2961054ae260fad7049f29ae0625490ffb9d1eb891a387195b2bc8ba')
+sha256sums=('33064be2d7c1fcc156fa7effea1a48d688244aebdb4648eafa46ad9f9e54472a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
