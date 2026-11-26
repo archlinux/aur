@@ -7,7 +7,7 @@
 
 pkgname=servo-nightly-bin
 _pkgname=servo
-pkgver=20261116
+pkgver=20261125
 pkgrel=1
 pkgdesc='Parallel Browser Project: web browser written in Rust'
 arch=(x86_64)
@@ -41,8 +41,8 @@ source=(
   "${_pkgname}-${pkgver}.tar.gz.sha256::${_url}/${_pkgname}-x86_64-linux-gnu.tar.gz.sha256"
   'LICENSE-servo::https://raw.githubusercontent.com/servo/servo/main/LICENSE'
 )
-sha256sums=('20b9d34d66beba8acfaf33007661691bc2e12dba7807e2c0fc99187aa7f4ee33'
-            '0f335faddf484dc344f5b600003276128e6b294e4f5d946f6efa0bbd5c765b23'
+sha256sums=('6572e869654127e59904a857135c6e6118bb1bf7d8dce0fb0ac0574a655921fe'
+            'a57c6b7e1d5bb78ded01dfd889e913eab9227e3a2f1c80ed4ded0717140117fa'
             '1af2d2b02d9c86030d29ed77117ca7a1b0e4b6ff35bcf8eeb124867d0f5cb59e')
 
 prepare() {
