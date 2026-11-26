@@ -1,6 +1,6 @@
 # Maintainer: storbake
 pkgname=wallpaper_splitter
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Split and span a single wallpaper across multiple screens on KDE Plasma"
 url="https://github.com/kstorbakken/wallpaper_splitter"
@@ -20,7 +20,7 @@ makedepends=(
   'extra-cmake-modules'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ad2abe67e6dd26fa653b0e04ee9349441815e8d66ce362071ad542a97fe61232')
+sha256sums=('ffdc23c110ef6b9ad54dcf8b7561e58dec332253776bc7589d944b1b7ffa2881')
 
 build() {
   cmake -S "${pkgname}-${pkgver}" -B build \
