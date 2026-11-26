@@ -1,0 +1,17 @@
+pkgbase = emcee-bin
+	pkgdesc = Generate MCP servers from OpenAPI specs
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/mattt/emcee
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = emcee
+	conflicts = emcee
+	options = !debug
+	source_x86_64 = emcee-bin-0.9.1-x86_64.tar.gz::https://github.com/mattt/emcee/releases/download/v0.9.1/emcee_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 053db42913356c00cd62c636c67dd3cd0dbb2d9e3a0eca2b102c4f25c93fbcdd
+	source_aarch64 = emcee-bin-0.9.1-aarch64.tar.gz::https://github.com/mattt/emcee/releases/download/v0.9.1/emcee_Linux_arm64.tar.gz
+	sha256sums_aarch64 = dd9dff396fbf19c20d13aae1ac8fb9ac074803e2502ee656a082160eee0fcd29
+
+pkgname = emcee-bin
