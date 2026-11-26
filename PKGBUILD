@@ -11,7 +11,7 @@
 # See https://creativecommons.org/licenses/by/4.0/deed.de
 # endregion
 pkgname=polyfill-bundler
-pkgver=1.0.138
+pkgver=1.0.139
 pkgrel=1
 pkgdesc='Polyfill service.'
 arch=(any)
@@ -21,7 +21,7 @@ depends=(docker)
 # NOTE: Only the service file is needed, the image is pulled from the
 # registry.
 source=("https://github.com/thaibault/polyfill-bundler/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d4188499819228900029e1fb05d2a3190c11d2194e9f23825155766220ef584a')
+sha256sums=('187fdd008e7455b59cfedd70d9e8c88825957cec466b07f237df7364d15e3a6d')
 copy_to_aur=true
 
 package() {
