@@ -1,12 +1,13 @@
 pkgbase = kahip
 	pkgdesc = Karlsruhe HIGH Quality Partitioning
 	pkgver = 3.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KaHIP/KaHIP
 	arch = x86_64
 	license = MIT
 	license = BSD-3-Clause
 	makedepends = cmake
+	makedepends = gcc-fortran
 	makedepends = pybind11
 	depends = python
 	depends = glibc
@@ -19,9 +20,9 @@ pkgbase = kahip
 	options = !lto
 	source = KaHIP-3.30.tar.gz::https://github.com/KaHIP/KaHIP/archive/refs/tags/v3.30.tar.gz
 	source = fix-out-of-bounds.patch
-	source = fix-ordered-edge-map-prefetch.patch
+	source = fix-prefetch.patch
 	sha256sums = 9fe214ba2978951fdc75b3f4f2dc944e3279bb1ddeac32ae097121310b1c5c51
 	sha256sums = 03250c9f51c4e6391d19549263a7a501d264c5c032a8ce35dab49ea599ec65d8
-	sha256sums = 37d29ec6b489b68ddbf2041d3e98ff91bc6edfde33a83bc942f68c04b85134ff
+	sha256sums = 78492503be743a72f1a4aae7d3f913ae8f6247e1641e16b8b3fa5fd6b872f2cd
 
 pkgname = kahip
