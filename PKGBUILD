@@ -1,8 +1,8 @@
 # Maintainer: krforshey
 pkgname=cosmic-ext-manager-git
 _pkgname=cosmic-ext-manager
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='Browse, install, update and remove community COSMIC extensions'
 arch=('x86_64' 'aarch64')
 url='https://github.com/kevinRForshey/CosmicExtensionManager'
