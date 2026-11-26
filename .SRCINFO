@@ -1,6 +1,6 @@
 pkgbase = formatusb
 	pkgdesc = USB Device Formatting Utility
-	pkgver = 26.06
+	pkgver = 26.11
 	pkgrel = 1
 	url = https://github.com/MX-Linux/formatusb
 	arch = x86_64
@@ -11,9 +11,13 @@ pkgbase = formatusb
 	makedepends = ninja
 	depends = qt6-base
 	depends = parted
+	depends = dosfstools
+	depends = e2fsprogs
+	depends = exfatprogs
+	depends = ntfs-3g
 	depends = coreutils
 	depends = util-linux
-	source = https://github.com/MX-Linux/formatusb/archive/refs/tags/26.06.tar.gz
-	sha256sums = 61f079fd43fc6c2e8cfe9c75b72fa0440f289fb8f1b5ad9ff1961acfc492f4dd
+	source = https://github.com/MX-Linux/formatusb/archive/refs/tags/26.11.tar.gz
+	sha256sums = efa354b6dfee34aa52982c1015fa360785e24cf220ac9f8b273cd6466ecbcf70
 
 pkgname = formatusb
