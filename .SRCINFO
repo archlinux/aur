@@ -1,6 +1,6 @@
 pkgbase = creabim-bin
 	pkgdesc = Free, open-source BIM modeller: one model for 3D, plans, sections, elevations, sheets, schedules, quantities and IFC
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/chopinregis/CreaBIM
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = creabim-bin
 	provides = creabim
 	conflicts = creabim
 	conflicts = creabim-git
-	noextract = CreaBIM-1.1.1-2026-11-11-linux-x64.deb
+	noextract = CreaBIM-1.2.0-2026-11-26-linux-x64.deb
 	options = !strip
 	options = !debug
-	source = CreaBIM-1.1.1-2026-11-11-linux-x64.deb::https://github.com/chopinregis/CreaBIM/releases/download/v1.1.1/CreaBIM-1.1.1-2026-11-11-linux-x64.deb
-	sha256sums = 1ef3016a888ab70bc2a0337023255fc3ad8c08cda3fc76db351ba99cfc7570fb
+	source = CreaBIM-1.2.0-2026-11-26-linux-x64.deb::https://github.com/chopinregis/CreaBIM/releases/download/v1.2.0/CreaBIM-1.2.0-2026-11-26-linux-x64.deb
+	sha256sums = bce0fd5989039fbc6acc745f5050860f5720ffa3adfea45ddf343c2176f7c439
 
 pkgname = creabim-bin
