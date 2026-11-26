@@ -1,0 +1,19 @@
+pkgbase = grafana-kiosk-bin
+	pkgdesc = Kiosk utility for Grafana
+	pkgver = 1.0.13
+	pkgrel = 1
+	url = https://github.com/grafana/grafana-kiosk
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = grafana-kiosk
+	conflicts = grafana-kiosk
+	options = !debug
+	source = grafana-kiosk-bin-1.0.13-LICENSE::https://raw.githubusercontent.com/grafana/grafana-kiosk/v1.0.13/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = grafana-kiosk-bin-1.0.13-x86_64::https://github.com/grafana/grafana-kiosk/releases/download/v1.0.13/grafana-kiosk.linux.amd64
+	sha256sums_x86_64 = b0a88bcce27765cad951e030c076451e64f0958b591214deb39f690e153e68dc
+	source_aarch64 = grafana-kiosk-bin-1.0.13-aarch64::https://github.com/grafana/grafana-kiosk/releases/download/v1.0.13/grafana-kiosk.linux.arm64
+	sha256sums_aarch64 = a0103bc72caf84131ea6bdca03b4fed6c33c7de14ccf923355b3e77391f7cb3a
+
+pkgname = grafana-kiosk-bin
