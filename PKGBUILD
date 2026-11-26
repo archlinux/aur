@@ -5,7 +5,7 @@ _pkgname=gitopolis
 pkgname=${_pkgname}-bin
 pkgdesc="CLI tool to manage multiple git repositories; run commands, clone, and organize repos with tags"
 
-pkgver=1.17.4
+pkgver=1.18.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,9 +23,9 @@ conflicts=("${_pkgname}")
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
-sha256sums=('ae8d6df529f6c1374105010977107bb77fb79c20104d9eabd53698b377ce07ce'
+sha256sums=('42e3087e30064582b6af0ee8d63ed25664e9d5c4afdd957e8b49ac40100dadc1'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
-sha256sums_x86_64=('73403b09594a21af21144f8956f3d0097516fb41c441c932697769cc5d239a5e')
+sha256sums_x86_64=('a6388c31991fd9115d33d51173dd498a9ec563e8f02084d5e3ec7283c78c52df')
 
 
 package() {
