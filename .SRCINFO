@@ -1,19 +1,22 @@
 pkgbase = duolingo-desktop-bin
-	pkgdesc = Desktop client for the Duolingo language learning application.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.2.0
+	pkgdesc = An unofficial Linux desktop application for Duolingo that wraps the official web application in a dedicated Electron window and blocks common trackers.
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://github.com/hmlendea/dl-desktop
+	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron36
-	provides = duolingo-desktop=4.1.1
+	depends = electron42
+	provides = duolingo-desktop=4.3.2
 	conflicts = dl-desktop
 	conflicts = duolingo-desktop
-	source = duolingo-desktop-4.2.0.zip::https://github.com/hmlendea/dl-desktop/releases/download/v4.2.0/dl-desktop_4.2.0_linux.zip
-	source = duolingo-desktop-4.2.0.png::https://raw.githubusercontent.com/hmlendea/dl-desktop/v4.2.0/icon.png
+	source = duolingo-desktop.js
 	source = duolingo-desktop.sh
-	sha256sums = bda7e2dcf4bdf9e72998130784768de3705a546ce53774c66f52ec3072e99c28
-	sha256sums = 67642cd03a241ff097a83800f39e442c533e8b7a92a9235c0375ef866a708f0e
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = 03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86
+	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
+	source_aarch64 = duolingo-desktop-4.3.2-aarch64.zip::https://github.com/hmlendea/dl-desktop/releases/download/v4.3.2/dl-desktop_4.3.2_linux_arm64.zip
+	sha256sums_aarch64 = 630ed6acef0d2b6b3a8cb7caff51edbf983cf918926895925a1394a4aa2afddd
+	source_x86_64 = duolingo-desktop-4.3.2-x86_64.zip::https://github.com/hmlendea/dl-desktop/releases/download/v4.3.2/dl-desktop_4.3.2_linux_x64.zip
+	sha256sums_x86_64 = 9a52a0459e4b135ac977893b91d7d4281445cd730b21ab944f9be10a8d6901f1
 
 pkgname = duolingo-desktop-bin
