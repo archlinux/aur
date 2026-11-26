@@ -1,0 +1,17 @@
+pkgbase = legitify-bin
+	pkgdesc = Detect and fix misconfigurations and security risks in GitHub and GitLab assets
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://github.com/Legit-Labs/legitify
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = legitify
+	conflicts = legitify
+	options = !debug
+	source_x86_64 = legitify-bin-1.0.11-x86_64.tar.gz::https://github.com/Legit-Labs/legitify/releases/download/v1.0.11/legitify_1.0.11_linux_amd64.tar.gz
+	sha256sums_x86_64 = 90a8df588c7c2a334c8397ac74b614f411adb8cdf14b6472b7a7cfbe7ef57bdd
+	source_aarch64 = legitify-bin-1.0.11-aarch64.tar.gz::https://github.com/Legit-Labs/legitify/releases/download/v1.0.11/legitify_1.0.11_linux_arm64.tar.gz
+	sha256sums_aarch64 = a0d76859fc8f5fe7285d51420b44277eda81501ed226c393083c35290b6c2de2
+
+pkgname = legitify-bin
