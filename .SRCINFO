@@ -1,0 +1,17 @@
+pkgbase = prom-label-proxy-bin
+	pkgdesc = Proxy that enforces a label in PromQL queries
+	pkgver = 0.16.2
+	pkgrel = 1
+	url = https://github.com/prometheus-community/prom-label-proxy
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = prom-label-proxy
+	conflicts = prom-label-proxy
+	options = !debug
+	source_x86_64 = prom-label-proxy-bin-0.16.2-x86_64.tar.gz::https://github.com/prometheus-community/prom-label-proxy/releases/download/v0.16.2/prom-label-proxy-0.16.2.linux-amd64.tar.gz
+	sha256sums_x86_64 = 968c71e3035fb28b3dbc63bcd6e2213a18f2d77f8a6b90e25987a5012131b1e7
+	source_aarch64 = prom-label-proxy-bin-0.16.2-aarch64.tar.gz::https://github.com/prometheus-community/prom-label-proxy/releases/download/v0.16.2/prom-label-proxy-0.16.2.linux-arm64.tar.gz
+	sha256sums_aarch64 = 8883c5573f8fe911594c140e497fc6dded24f35d240643a3a4bc055cd8618068
+
+pkgname = prom-label-proxy-bin
