@@ -1,7 +1,7 @@
 pkgbase = discord-canary-prerelease-patched-electron-bin
-	pkgdesc = Discord Canary with patched Electron and Linux fixes (AVX2 required)
+	pkgdesc = Discord Canary with the latest Electron and better Linux support, plus many QoL features and fixes! (AVX2 required)
 	pkgver = 20261125.213057
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/discord-patched-electron/discord-patched-electron
 	install = discord.install
 	arch = x86_64

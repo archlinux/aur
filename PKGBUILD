@@ -1,8 +1,8 @@
 # Maintainer: he3als <he3als@users.noreply.github.com>
 pkgname=discord-canary-prerelease-patched-electron-bin
 pkgver=20261125.213057
-pkgrel=1
-pkgdesc='Discord Canary with patched Electron and Linux fixes (AVX2 required)'
+pkgrel=2
+pkgdesc='Discord Canary with the latest Electron and better Linux support, plus many QoL features and fixes! (AVX2 required)'
 arch=('x86_64')
 url='https://github.com/discord-patched-electron/discord-patched-electron'
 license=(MIT BSD-3-Clause AGPL-3.0-only GPL-2.0-or-later GPL-3.0-only LGPL-2.1-or-later)
