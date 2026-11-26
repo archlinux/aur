@@ -2,7 +2,7 @@
 # Contributor: Tenshi65535 <wu.junyu.aur@outlook.com>
 # Contributor: ston <2424284164@qq.com>
 pkgname=go-musicfox
-pkgver=4.8.2
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='Command-line Netease Cloud Music written in Go.'
 url='https://github.com/anhoder/go-musicfox'
@@ -17,7 +17,7 @@ optdepends=('mpv: mpv player backend'
 # makedepends=('gcc-objc' 'go')
 pkgsrcdir=${pkgname}-${pkgver}
 source=("$pkgname-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('55f2c9e85022e77cd84346a1567fb06e1916703f9cbd2647c2bb57f9b4672947')
+sha256sums=('258b1e0fe997d34ae24cf9c3f066b52d0b20fdc1cb696a32c3bc7c17c93797b6')
 
 
 build() {
