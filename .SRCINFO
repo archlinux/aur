@@ -1,0 +1,19 @@
+pkgbase = nylon-bin
+	pkgdesc = Self-healing WireGuard mesh
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/encodeous/nylon
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = nylon
+	conflicts = nylon
+	options = !debug
+	source = nylon-bin-0.4.7-LICENSE::https://raw.githubusercontent.com/encodeous/nylon/v0.4.7/LICENSE
+	sha256sums = cdd63acb78334fa2960faac2d54fc3b55f550baeec3a84553aee7af9f0bb5b43
+	source_x86_64 = nylon-bin-0.4.7-x86_64.tar.gz::https://github.com/encodeous/nylon/releases/download/v0.4.7/nylon-linux-amd64.tar.gz
+	sha256sums_x86_64 = bd12fa050e2573a81d827fba239d8d06b3e9fbf4c8d64880d175ba815b341f0a
+	source_aarch64 = nylon-bin-0.4.7-aarch64.tar.gz::https://github.com/encodeous/nylon/releases/download/v0.4.7/nylon-linux-arm64.tar.gz
+	sha256sums_aarch64 = 57ca27807c4363f12f301704809877b1de5e82bc87fdf3cc0e8766789a6db22e
+
+pkgname = nylon-bin
