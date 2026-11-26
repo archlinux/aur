@@ -1,6 +1,6 @@
 pkgbase = python-pymobiledevice3
 	pkgdesc = Pure python3 implementation for working with iDevices
-	pkgver = 11.64.0
+	pkgver = 11.65.0
 	pkgrel = 1
 	url = https://github.com/doronz88/pymobiledevice3
 	arch = any
@@ -62,7 +62,7 @@ pkgbase = python-pymobiledevice3
 	depends = python-traitlets
 	depends = uvicorn
 	depends = asgi-webdav
-	source = python-pymobiledevice3::git+https://github.com/doronz88/pymobiledevice3.git#tag=v11.64.0
-	sha256sums = 0b9d3c797534361c7236fbc5701466bd4c0f6360e0b57727468349c38f04357e
+	source = python-pymobiledevice3::git+https://github.com/doronz88/pymobiledevice3.git#tag=v11.65.0
+	sha256sums = 0e64d8c2bc4213a920cda3c785efbf396593bebfd213d8597e77ef21844e7ffc
 
 pkgname = python-pymobiledevice3
