@@ -5,7 +5,7 @@ _pkgname=dtop
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal dashboard for Docker"
 
-pkgver=0.11.1
+pkgver=0.11.4
 _pkgvername=v${pkgver}
 pkgrel=1
 
@@ -25,9 +25,9 @@ options=('!strip')
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
 source_armv7h=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[2]}.tar.gz")
-sha256sums_x86_64=('1100c9305a0eb517c751eea3c6aeaf0cc877c6981eedc7403727f7be50e0a622')
-sha256sums_aarch64=('18acd0acdf139c5fd09498224edf22682a54c2d9b7962e08746e8ebd53cec4a2')
-sha256sums_armv7h=('283b99661a7c2a5c9173f67e808168e53ecd467d37ffb4b77741047f6bef71c7')
+sha256sums_x86_64=('fda2e7434de8039c73cfccc44662750095f7ddaa4ae87f645d96e9d6fe68ead1')
+sha256sums_aarch64=('f7dee16328eed58171032148c7327e1e82ef1884ed1a9b0fdfdd7724630d2c5e')
+sha256sums_armv7h=('b065e49d08b01235b72ce0131ed25d1733a6ca405e1b2b95ff6cf23b0038634d')
 
 
 case ${CARCH} in
