@@ -1,6 +1,6 @@
 pkgbase = r-qubic
 	pkgdesc = An R package for qualitative biclustering in support of gene co-expression analyses
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/QUBIC
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-qubic
 	optdepends = r-qubicdata
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/QUBIC_1.40.0.tar.gz
-	sha256sums = 349275c7b02c27e8ab0dd724b39fe2f88e0e6000fd3a84d1e151d350f0f17774
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/QUBIC_1.42.0.tar.gz
+	sha256sums = 8cc1be45885114f87161f7cede075424e702db688b50d4a50e7e2b57cbb2efa1
 
 pkgname = r-qubic
