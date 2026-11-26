@@ -2,7 +2,7 @@
 
 pkgname='gui.for.singbox-bin'
 _pkgname='GUI.for.SingBox'
-pkgver='1.27.0'
+pkgver='1.29.0'
 pkgrel=1
 pkgdesc='GUI for SingBox (Desktop optimized with user-space data isolation)'
 arch=('x86_64')
@@ -16,13 +16,13 @@ conflicts=('gui.for.singbox' 'gui-for-singbox' 'gui-for-singbox-bin')
 
 install="gui.for.singbox-bin.install"
 
-source=("${_pkgname}-${pkgver}-linux-amd64.zip::https://github.com/GUI-for-Cores/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.zip"
+source=("${_pkgname}-${pkgver}-linux-amd64.zip::https://github.com/GUI-for-Cores/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-v1.zip"
         "${_pkgname}-${pkgver}-appicon.png::https://raw.githubusercontent.com/GUI-for-Cores/${_pkgname}/v${pkgver}/build/appicon.png"
         "gui-for-singbox.sh"
         "gui-for-singbox.desktop"
         "gui-for-singbox-cap.hook")
 
-sha256sums=('84085dfcd278633bdaa5280e80ca928871094f3c1f52a5821d3e0d74959d9b87'
+sha256sums=('ea4bf0d00afd1dd8fc7c5e58c790f7485a61580ba335a975cf504d121f184ca6'
             '08257d0d21c76a56e48e38105460927293a452ddc6b0b62db401bf5b5b9b7adf'
             'f261006fe1da5969b7afb22e76889ceb0ea6435a1cd3d0f68c0e6bc921f9e7ab'
             'fea47ff434d0dcb92973181e8b8db93c1e3339db1cf7f3db44c7e81e6e1ccf53'
