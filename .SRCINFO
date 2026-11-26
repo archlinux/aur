@@ -1,6 +1,6 @@
 pkgbase = r-alabaster.base
 	pkgdesc = Save Bioconductor Objects to File
-	pkgver = 1.12.1
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/alabaster.base
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = r-alabaster.base
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-alabaster.matrix
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.base_1.12.1.tar.gz
-	md5sums = 1067b05a2eee6d039feacb19f80cdcb8
-	b2sums = 9d9a568c08d5ade86ef498eeaddc6f1a2d3ffb8625a2027d25e45939a5994b3e362249bfda38674eed3c298bd4d01059ce8dedfabb594db0735f494d57753a91
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.base_1.14.0.tar.gz
+	md5sums = 829f9bf0677b7b859f6ae25e57cffaaf
+	b2sums = 17afc87a4e9c4d719c3dcd57d6dbdd25b6534d10da46098fa3fc4692aebf61b5e21ed73d7e27fe4e9487d6276b51015f3b4b2788af92fb83bf259dcece194f96
 
 pkgname = r-alabaster.base
