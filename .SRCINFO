@@ -1,0 +1,17 @@
+pkgbase = prometheus-nats-exporter-bin
+	pkgdesc = Prometheus exporter for NATS metrics
+	pkgver = 0.20.3
+	pkgrel = 1
+	url = https://github.com/nats-io/prometheus-nats-exporter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = prometheus-nats-exporter
+	conflicts = prometheus-nats-exporter
+	options = !debug
+	source_x86_64 = prometheus-nats-exporter-bin-0.20.3-x86_64.tar.gz::https://github.com/nats-io/prometheus-nats-exporter/releases/download/v0.20.3/prometheus-nats-exporter-v0.20.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = be2eab36ebc5f57fdd9ad1c61d4022f4fa436d6339336bea8d5b7587b879bb47
+	source_aarch64 = prometheus-nats-exporter-bin-0.20.3-aarch64.tar.gz::https://github.com/nats-io/prometheus-nats-exporter/releases/download/v0.20.3/prometheus-nats-exporter-v0.20.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7d82dc00a7eb1b14ea7f18ab917dcc350a45dda60ff3af877264aee7b721db58
+
+pkgname = prometheus-nats-exporter-bin
