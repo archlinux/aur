@@ -1,0 +1,20 @@
+pkgbase = ordet-bin
+	pkgdesc = A local-first, distraction-free word processor for the terminal
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/LeonardoAmadeo/Ordet
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ordet
+	conflicts = ordet
+	options = !strip
+	source_x86_64 = ordet-x86_64-0.1.1.tgz::https://github.com/LeonardoAmadeo/Ordet/releases/download/v0.1.1/ordet-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 87c190befc60f1d834fc9122fde69e8ac5ced258552acc81beb779b85e382e4f
+	source_aarch64 = ordet-aarch64-0.1.1.tgz::https://github.com/LeonardoAmadeo/Ordet/releases/download/v0.1.1/ordet-v0.1.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = aa57552368e1569f5e0c77dffc5e10f35fb5284dcad395b20704d32f187e9b2b
+
+pkgname = ordet-bin
