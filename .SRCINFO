@@ -1,0 +1,21 @@
+pkgbase = tmux-agent-sidebar-bin
+	pkgdesc = tmux sidebar that monitors AI coding agents across sessions in real time
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/hiroppy/tmux-agent-sidebar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = tmux-agent-sidebar
+	conflicts = tmux-agent-sidebar
+	options = !debug
+	source = tmux-agent-sidebar-bin-0.13.0-LICENSE::https://raw.githubusercontent.com/hiroppy/tmux-agent-sidebar/v0.13.0/LICENSE
+	sha256sums = 89ebbba6b5ee7cd09e0ecf49375089a2cd197aa59bfde12722911dde690ff833
+	source_x86_64 = tmux-agent-sidebar-bin-0.13.0-x86_64::https://github.com/hiroppy/tmux-agent-sidebar/releases/download/v0.13.0/tmux-agent-sidebar-linux-x86_64
+	sha256sums_x86_64 = e06495a327a074c6e38c3d7697f061bdb6d19f04b67d9fc30137d34d9318e344
+	source_aarch64 = tmux-agent-sidebar-bin-0.13.0-aarch64::https://github.com/hiroppy/tmux-agent-sidebar/releases/download/v0.13.0/tmux-agent-sidebar-linux-aarch64
+	sha256sums_aarch64 = 3e3937468ca2725b5f7fa632ae4c71c3beb453cbc429745d8878f0855098a09a
+
+pkgname = tmux-agent-sidebar-bin
