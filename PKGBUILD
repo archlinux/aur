@@ -485,7 +485,7 @@ package_loom-desktop-git() {
   install=loom-desktop-git.install
 
   install -Dm755 "${srcdir}/target/release/loom" "${pkgdir}/usr/bin/loom"
-  install -Dm644 "${srcdir}/loom-desktop.README.md" \
-    "${pkgdir}/usr/share/doc/loom-desktop/README.md"
+  install -Dm644 "${srcdir}/loom-desktop-git.README.md" \
+    "${pkgdir}/usr/share/doc/loom-desktop-git/README.md"
   _install_license loom-desktop-git
 }
