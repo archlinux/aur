@@ -2,7 +2,7 @@
 # Contributor: Spolzer <132726602+SpolzerMod@users.noreply.github.com>
 
 pkgname=yamusic-rs-bin
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc='Unofficial Yandex Music client written in Rust and Slint (no Electron)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=('yamusic-rs')
 options=('!strip' '!debug')
 source=("yamusic-rs_${pkgver}-1_amd64.deb::${url}/releases/download/v${pkgver}/yamusic-rs_${pkgver}-1_amd64.deb")
 noextract=("yamusic-rs_${pkgver}-1_amd64.deb")
-sha256sums=('1298c45314be2a6108d41e708ddfc180053e8bfa7c8062d9df02acd28793dffa')
+sha256sums=('e2b84e3afd1ccc40e2c2417467db67db08b13ca5ddb8104a4d18da79ec3c0333')
 
 package() {
   local _deb="${srcdir}/yamusic-rs_${pkgver}-1_amd64.deb"
