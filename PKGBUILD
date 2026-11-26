@@ -2,7 +2,7 @@
 
 pkgbase=rivermonad
 pkgname=('rivermonad' 'rivermonad-dotfiles')
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='xmonad-style tiling window manager for the river Wayland compositor'
 url='https://github.com/prietus/rivermonad'
@@ -17,7 +17,7 @@ optdepends=('foot: the default terminal'
             'river-fx: river with rounded corners, translucency, blur, shadows and fades (replaces river)'
             'libnotify: notifications when the configuration fails to compile')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2979ecf2af2feb54b8d36a2808d8410c011654cbeeadfa4663ea5cf6b1acbfc3')
+sha256sums=('c994ef7546713d8aae4d6954443fe0fbf432fde0128472cea09bdb5155edc9c8')
 
 build() {
   cd $pkgbase-$pkgver
