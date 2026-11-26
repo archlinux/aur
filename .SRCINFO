@@ -1,0 +1,17 @@
+pkgbase = s3-proxy-bin
+	pkgdesc = S3 reverse proxy with GET, PUT and DELETE and OpenID Connect or Basic authentication
+	pkgver = 5.3.0
+	pkgrel = 1
+	url = https://github.com/oxyno-zeta/s3-proxy
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = s3-proxy
+	conflicts = s3-proxy
+	options = !debug
+	source_x86_64 = s3-proxy-bin-5.3.0-x86_64.tar.gz::https://github.com/oxyno-zeta/s3-proxy/releases/download/v5.3.0/s3-proxy_5.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 52bc834e6ad7c15c7101f11a0660b2f152e67971cec8a019d9d2c30cb976e67a
+	source_aarch64 = s3-proxy-bin-5.3.0-aarch64.tar.gz::https://github.com/oxyno-zeta/s3-proxy/releases/download/v5.3.0/s3-proxy_5.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d966086cf59cd5cf60e725faf3df4772ef7d31d01e6870a95ba88911e3957690
+
+pkgname = s3-proxy-bin
