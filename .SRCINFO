@@ -1,6 +1,6 @@
 pkgbase = r-rbiopaxparser
 	pkgdesc = Parses BioPax files and represents them in R
-	pkgver = 2.52.0
+	pkgver = 2.54.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rBiopaxParser
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = r-rbiopaxparser
 	optdepends = r-rcurl
 	optdepends = r-rgraphviz
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rBiopaxParser_2.52.0.tar.gz
-	md5sums = eb53e863fbbcfd8e7dbf46f9a3acad24
-	b2sums = c69156a22c2049a79e9bea28af0c802889e2f7f956c2fbb12b27fbcc6768d712193bc5a17906727d76f777b27c4b59bb380654207f157dad76c7efcdd84013aa
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rBiopaxParser_2.54.0.tar.gz
+	md5sums = 5f71440d4bacd515989bd0ca7d6c7a83
+	b2sums = 7663e4d2fed14b955b3c5f456a3641d5056aa29dfad9f42af9fc29e4c9777d72391da97cd016b2a395992d3d8c080521cc1088555170ddc761cb711e9c4bddf5
 
 pkgname = r-rbiopaxparser
