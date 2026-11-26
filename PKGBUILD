@@ -2,7 +2,7 @@
 
 pkgname=fatcat
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc=" FAT filesystems explore, extract, repair, and forensic tool"
 arch=('x86_64' 'x86_64_v3' 'pentium4')
 url="https://github.com/Gregwar/fatcat"
@@ -15,7 +15,7 @@ build() {
   cd ${pkgname}-${pkgver}
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
   make
 }
 
