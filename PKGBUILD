@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction
 pkgname=zcalld
-pkgver=0.4.4
+pkgver=0.4.8
 pkgrel=1
 pkgdesc='Compact Linux AI gateway built on zcall with native zplugin extensions'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ checkdepends=('python')
 optdepends=('systemd: system and user service management' 'zcalld-compat>=0.3.1: privacy, audit history, OAuth accounts and community plugins' 'zcall-gui: optional native desktop interface' 'libsecret: configure Zed credentials through Secret Service')
 backup=('etc/zcalld/config.conf')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/zcalld-$pkgver-source.tar.gz")
-sha256sums=('c8e87b57569d4ff726f0651ae3fbf0bd64d6ceb6ab7994e9386ce44e3d93b273')
+sha256sums=('eb5036e4f3260764bed6af22897b8c97e0226beb8a41a4cd9e58439598b23531')
 
 prepare() {
   cd "$pkgname-$pkgver"
