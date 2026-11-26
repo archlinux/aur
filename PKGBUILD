@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BeadDataPackR
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a6ce93a264202066d8b96bb3ad3ebb67')
-b2sums=('22c6ba4d1c3ca71d2eb60b1fb69f91c444e9741aa7e9416db029489d5edd6397c987592a1b65bd627942aa77d990637565506578b2a4be7af169f13b3d9e4353')
+md5sums=('dba781111dafd902669718630a43f334')
+b2sums=('72033718c268e159f4e41ea37790775bf085024bac5707ffe0f2ad1cb4916c03fba7cdc70efcbc434689d98dd42cfc4c45b0b9910bda9388b97a25bdc2c35146')
 
 build() {
   mkdir build
