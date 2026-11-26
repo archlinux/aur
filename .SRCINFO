@@ -1,7 +1,7 @@
 pkgbase = r-biocmake
 	pkgdesc = CMake for Bioconductor
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.6.0
+	pkgrel = 3
 	url = https://bioconductor.org/packages/biocmake
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = r-biocmake
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biocmake_1.4.0.tar.gz
-	sha256sums = 158c59fd65dca9b5e74e5c4f32a1fbe161e080d1278d99816a802980c653210d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biocmake_1.6.0.tar.gz
+	sha256sums = 4d62c0c6abcb31d29f5093e5f0064fec5de880a1736bf27107d91e0f0fce4d2c
 
 pkgname = r-biocmake
