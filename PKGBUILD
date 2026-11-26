@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=nsh-cli-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Build and run nsh apps (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -21,14 +21,14 @@ source_aarch64=("nsh-$pkgver-aarch64.tar.gz::$url/releases/download/$_tag/nsh-li
         "nsh-gpui-$pkgver-aarch64.tar.gz::$url/releases/download/$_tag/nsh-gpui-linux-arm64.tar.gz"
         "nsh-tui-$pkgver-aarch64.tar.gz::$url/releases/download/$_tag/nsh-tui-linux-arm64.tar.gz")
 sha256sums=('ec75427ad955e3c740f22e7dc3f6db6fc5b2cc1d9135c2af91cece8dd47a2d38'
-            'e951e78966a65af4d7a0bbcd08a4a5eef4f3b6b4adaec3b4b502df7c4fe8b4e6'
+            'a82f31022775cb88267fa57548665c8da7dba4b62f044a4945c17397ff0b99d6'
             '6202f5f0c2894273a3e780d08a8c59c9b73cf358537e47dec1efcdc7bf48a4c3')
-sha256sums_x86_64=('d281bfa3d93d84e9831e1a97dfdb63104329fcc87a0a48c78db5aeabb00c0073'
-                   '9e0b6ad7f9ee1af825304a4f53fcefa412cb0b0f056e0fbb00c412487ff210f6'
-                   'f453fedfa7a93b22bf75e6c429ff6edfa158fda25d3896e0240171806a06a1e2')
-sha256sums_aarch64=('8392ec026bd32d1554b22f5ae8b574abcb746b502bc6ac93bcdca1436fdbbffc'
-                    '1acf2ebc7c3948b1a085f6ddd0bcbfa16d384edd9e644dcc8c1af85432cc066f'
-                    'b8615e3a3399c89e1b5d8d13447b374bc7b320add67687ca385c58b2e7bd97e9')
+sha256sums_x86_64=('04457ad3a53c91b66efcee537968c5af7c90df25cf61c18d51135ecc051e22b3'
+                   '653dd3198fb4d2f680900d982d01582db0202781a197eebe4b6cc0a8aa546845'
+                   'd2b8c19cd839fa224a4910d8981ab0a34a4815cf286ae514acf6a9514661c1ff')
+sha256sums_aarch64=('011099329342bc961c9089de2c7c1ccdd60c0177b77d81284756866c2087ebbb'
+                    '38a7a3bc0d6f69299cfd5acc2fcbf3792934eac4685bce46773e29371cd3ab36'
+                    'd7674f9af244f441405fd8f6ee91e23638bbc1b074f972c5a4b3ab89001b3dde')
 
 package() {
   cd "$srcdir/nsh"
