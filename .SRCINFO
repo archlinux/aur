@@ -1,0 +1,17 @@
+pkgbase = socks5lb-bin
+	pkgdesc = SOCKS5 proxy load balancer and transparent proxy
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/mingcheng/socks5lb
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = socks5lb
+	conflicts = socks5lb
+	options = !debug
+	source_x86_64 = socks5lb-bin-1.3.0-x86_64.tar.gz::https://github.com/mingcheng/socks5lb/releases/download/1.3.0/socks5lb_1.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = edc7ae7d60adf2bf2b3b71e86ac5f337533ed29921d73489d2595745ae491d7c
+	source_aarch64 = socks5lb-bin-1.3.0-aarch64.tar.gz::https://github.com/mingcheng/socks5lb/releases/download/1.3.0/socks5lb_1.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d959e30be55f854cb3d368fc01f2c8a3c5aa0cb353bfa040db4fafe5191b0de6
+
+pkgname = socks5lb-bin
