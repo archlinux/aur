@@ -1,0 +1,15 @@
+[Unit]
+Description=Ait daemon
+
+[Service]
+Type=exec
+WorkingDirectory=%h
+EnvironmentFile=-%h/.config/ait/daemon.env
+ExecStart=/usr/bin/aitd run
+Restart=on-failure
+RestartSec=5s
+KillMode=mixed
+TimeoutStopSec=60s
+
+[Install]
+WantedBy=default.target
