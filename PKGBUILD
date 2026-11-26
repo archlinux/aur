@@ -1,6 +1,6 @@
 # Maintainer: hyperpuncher
 pkgname=spoti-bin
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='lightweight native Spotify client'
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=('spoti')
 options=('!strip')
 source_x86_64=("$pkgname-$pkgver-linux-x64.tar.zst::$url/releases/download/v$pkgver/spoti-linux-x64.tar.zst")
 source_aarch64=("$pkgname-$pkgver-linux-arm64.tar.zst::$url/releases/download/v$pkgver/spoti-linux-arm64.tar.zst")
-sha256sums_x86_64=('74369789157375a5c6ff30c1a949c4798dd77254a57dcca4f4f9f33ad2b4749f')
-sha256sums_aarch64=('94c8ee87555a006daf70e937816598efa6359b5b3b300093d3981e25089dbe8e')
+sha256sums_x86_64=('f0905f3fb2163b78d51d6d74b6b29341ae058a53d3ac4a7573e88a3e534bf9d5')
+sha256sums_aarch64=('e98e11af1fdb6254be7c44a18a168028169cd562f043cfcfab8744a4405153fa')
 
 package() {
 	cd "$srcdir"
