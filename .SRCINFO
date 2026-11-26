@@ -1,0 +1,17 @@
+pkgbase = flowctl-bin
+	pkgdesc = Self-service workflow execution platform
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/cvhariharan/flowctl
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = flowctl
+	conflicts = flowctl
+	options = !debug
+	source_x86_64 = flowctl-bin-0.16.0-x86_64.tar.gz::https://github.com/cvhariharan/flowctl/releases/download/v0.16.0/flowctl_0.16.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5c7981964bfd6b6b3af89f8a52bdd6bb36988aaf4afc9677a842e6b2329d6e20
+	source_aarch64 = flowctl-bin-0.16.0-aarch64.tar.gz::https://github.com/cvhariharan/flowctl/releases/download/v0.16.0/flowctl_0.16.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 27f70dadc02f1fcae7baa4c3c154ce8d3b6be6e6de43061c12dc8956676d4565
+
+pkgname = flowctl-bin
