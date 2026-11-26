@@ -1,0 +1,20 @@
+pkgbase = mithril-bin
+	pkgdesc = IoT static scanner for secrets, SBOMs and CVEs
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/nmatt0/mithril
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = mithril
+	conflicts = mithril
+	options = !debug
+	source_x86_64 = mithril-bin-0.4.0-x86_64.tar.gz::https://github.com/nmatt0/mithril/releases/download/v0.4.0/mithril-v0.4.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e8c62f3b67c85786d75a09d6019eb243a9a2623db611150bbc0d27b0deca66d0
+	source_aarch64 = mithril-bin-0.4.0-aarch64.tar.gz::https://github.com/nmatt0/mithril/releases/download/v0.4.0/mithril-v0.4.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = fb56e5fb72ba057b40867ec6c92bf5f1b7699f5b3c34a04477cd64785e80af6b
+
+pkgname = mithril-bin
