@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pvac
-_pkgver=1.60.0
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.60.0
+pkgver=1.62.0
 pkgrel=1
 pkgdesc='PCA-based gene filtering for Affymetrix arrays'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-pbapply
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('71aa3bb3c096eb1a0ba98c445ca83927f47320c8fe18270503b74be9ce7dec17')
+sha256sums=('0e354df134a6f8dd60dfef3aad81a0f490573da9dd5a45c71a22ffbc3e55adac')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

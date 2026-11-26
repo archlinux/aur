@@ -1,6 +1,6 @@
 pkgbase = r-pvac
 	pkgdesc = PCA-based gene filtering for Affymetrix arrays
-	pkgver = 1.60.0
+	pkgver = 1.62.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pvac
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-pvac
 	optdepends = r-allmll
 	optdepends = r-genefilter
 	optdepends = r-pbapply
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pvac_1.60.0.tar.gz
-	sha256sums = 71aa3bb3c096eb1a0ba98c445ca83927f47320c8fe18270503b74be9ce7dec17
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pvac_1.62.0.tar.gz
+	sha256sums = 0e354df134a6f8dd60dfef3aad81a0f490573da9dd5a45c71a22ffbc3e55adac
 
 pkgname = r-pvac
