@@ -1,0 +1,16 @@
+pkgbase = revsocks-bin
+	pkgdesc = Reverse SOCKS5 implementation in Go
+	pkgver = 2.9
+	pkgrel = 1
+	url = https://github.com/kost/revsocks
+	arch = x86_64
+	license = MIT
+	provides = revsocks
+	conflicts = revsocks
+	options = !debug
+	source = revsocks-bin-2.9-LICENSE::https://raw.githubusercontent.com/kost/revsocks/v2.9/LICENSE
+	sha256sums = 4b33334624bf4ea20b5fdea9f0fbdf92dab348a01d15969e88b85011677eca89
+	source_x86_64 = revsocks-bin-2.9-x86_64::https://github.com/kost/revsocks/releases/download/v2.9/revsocks_linux_amd64
+	sha256sums_x86_64 = 9823c02067a4bdfc7b5d654d598390c41f14bd01dc1bd82c5dd6977023b14394
+
+pkgname = revsocks-bin
