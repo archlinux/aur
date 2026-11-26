@@ -15,8 +15,9 @@ SDK 窗口（`mj_sdk` 的 Qt 登录框 / 协议框 / CEF 面板）在 Wine 下�
 | `/usr/lib/dwproton-azur-patch/revert` | 内部工具：从备份还原 |
 | `/usr/share/libalpm/hooks/90-dwproton-azur-patch.hook` | dwproton-bin 装/升级后自动重新应用 |
 
-两个 `.so` 来自 [suluoMISS/dwproton-11.0-17-azur](https://github.com/suluoMISS/dwproton-11.0-17-azur)
-以 dwproton 11.0-17（Wine 11.0）为基线重新构建的产物。
+两个 `.so` 取自 [suluoMISS/dwproton-11.0-17-azur](https://github.com/suluoMISS/dwproton-11.0-17-azur)
+的 **release `v1`** 资产（该版本以 dwproton 11.0-17 / Wine 11.0 为基线构建），
+校验和与上游发布的 `SHA256SUMS` 一致，并已在 PKGBUILD 中写死。
 
 ## 为什么是「补丁包」而不是重打包 dwproton
 

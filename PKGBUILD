@@ -12,7 +12,7 @@
 
 pkgname=dwproton-azur-patch
 pkgver=11.0_17
-pkgrel=1
+pkgrel=2
 pkgdesc='Wine driver overlay for dwproton: lets Azur Promilia mj_sdk (Qt/CEF) windows render and take input under Wine'
 arch=('x86_64')
 url='https://github.com/suluoMISS/dwproton-11.0-17-azur'
@@ -20,13 +20,15 @@ license=('LGPL-2.1-or-later')
 depends=('bash' 'dwproton-bin')
 install=dwproton-azur-patch.install
 options=(!strip !lto)
-_commit=47606b94e89b04f6a1fc770612410dc55bab2232
-_base="https://raw.githubusercontent.com/suluoMISS/dwproton-11.0-17-azur/${_commit}"
+# 上游发布点：release v1（对应 dwproton 11.0-17）
+_upstream='https://github.com/suluoMISS/dwproton-11.0-17-azur'
+_rel="${_upstream}/releases/download/v1"
+_raw="${_upstream}/raw/v1"
 source=(
-  "win32u.so::${_base}/dist/win32u.so"
-  "winex11.so::${_base}/dist/winex11.so"
-  "UPSTREAM-README.txt::${_base}/dist/README.txt"
-  "LICENSE::${_base}/LICENSE"
+  "win32u.so::${_rel}/win32u.so"
+  "winex11.so::${_rel}/winex11.so"
+  "UPSTREAM-README.txt::${_raw}/dist/README.txt"
+  "LICENSE::${_raw}/LICENSE"
   'dwproton-azur-patch-apply'
   'dwproton-azur-patch-revert'
   '90-dwproton-azur-patch.hook'
