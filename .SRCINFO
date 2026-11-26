@@ -1,6 +1,6 @@
 pkgbase = r-cytoglmm
 	pkgdesc = Conditional Differential Analysis for Flow and Mass Cytometry Experiments
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CytoGLMM
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-cytoglmm
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CytoGLMM_1.20.0.tar.gz
-	sha256sums = 357bb9927f35165a399fbfda8d941dcbfc7e0f2dd1c917b5429271ec43aba1c6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CytoGLMM_1.22.0.tar.gz
+	sha256sums = 0d2d49d57d918d4f8c68eb696042422befc4f239e24aca60e3a39200397bc175
 
 pkgname = r-cytoglmm
