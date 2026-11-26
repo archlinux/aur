@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IsoCorrectoR
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Correction for natural isotope abundance and tracer purity in MS and MS/MS data from stable isotope labeling experiments'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c3e27583d089d4d72d3bf7e27f27b10154d5d2be478d0a949f44732ec2b84dfd')
+sha256sums=('25ec9734a9e83bf697e3fc050cfe9ec9e7b61dcec2ea1c5eca6e879402f0bfc6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
