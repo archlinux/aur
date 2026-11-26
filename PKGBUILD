@@ -10,8 +10,8 @@ _tag=${_ver}-${_type}.${_num}
 
 pkgname=affine-${_type}
 pkgver=${_ver}.${_type}.${_num}
-pkgrel=1
-pkgdesc='A next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.'
+pkgrel=2
+pkgdesc='A next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use. Beta version.'
 arch=('x86_64')
 url='https://affine.pro'
 _pkgname=AFFiNE
@@ -26,7 +26,6 @@ license=(
 )
 provides=(
   "${pkgname}=${pkgver}"
-  "${pkgname}-${_build_type}=${pkgver}"
 )
 conflicts=('affine-bin' 'affine') # TODO: Does it?
 depends=(

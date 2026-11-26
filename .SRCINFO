@@ -1,7 +1,7 @@
 pkgbase = affine-beta
-	pkgdesc = A next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.
+	pkgdesc = A next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use. Beta version.
 	pkgver = 0.27.5.beta.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://affine.pro
 	arch = x86_64
 	license = custom:AFFiNE-LICENSE
@@ -22,7 +22,6 @@ pkgbase = affine-beta
 	depends = hicolor-icon-theme
 	depends = electron43
 	provides = affine-beta=0.27.5.beta.3
-	provides = affine-beta-stable=0.27.5.beta.3
 	conflicts = affine-bin
 	conflicts = affine
 	options = strip
