@@ -1,0 +1,19 @@
+pkgbase = callfs-bin
+	pkgdesc = REST API filesystem with Linux semantics over local, S3 and peer backends
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ebogdum/callfs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = callfs
+	conflicts = callfs
+	options = !debug
+	source = callfs-bin-2.0.0-LICENSE::https://raw.githubusercontent.com/ebogdum/callfs/v2.0.0/LICENSE
+	sha256sums = 05c509d5691d63de36456648800752f8c12682380d133b63636623a92c412a6e
+	source_x86_64 = callfs-bin-2.0.0-x86_64::https://github.com/ebogdum/callfs/releases/download/v2.0.0/callfs-linux-amd64
+	sha256sums_x86_64 = 9fc0713bfd79a0b1fe86aa28a5a376c28e7900d86e33c0a023701d59a44c97bd
+	source_aarch64 = callfs-bin-2.0.0-aarch64::https://github.com/ebogdum/callfs/releases/download/v2.0.0/callfs-linux-arm64
+	sha256sums_aarch64 = d6c3652c65378635e047d67cadc8cbf5c3f819d4a8f8816f6b4391bd2f55ae2a
+
+pkgname = callfs-bin
