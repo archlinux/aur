@@ -1,0 +1,21 @@
+pkgbase = sherif-bin
+	pkgdesc = Opinionated, zero-config linter for TypeScript and JavaScript monorepos
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/QuiiBz/sherif
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = sherif
+	conflicts = sherif
+	options = !debug
+	source = sherif-bin-1.13.0-LICENSE::https://raw.githubusercontent.com/QuiiBz/sherif/v1.13.0/LICENSE
+	sha256sums = 2d800ccfc40dd5ce381fafa02c6d3bf1f2d75c3f4ba4b5a7215b0fe74b98950f
+	source_x86_64 = sherif-bin-1.13.0-x86_64.zip::https://github.com/QuiiBz/sherif/releases/download/v1.13.0/sherif-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 951eac26e499bbf64c2a227058715a343c20323b89e2490f24acea1d3048af9e
+	source_aarch64 = sherif-bin-1.13.0-aarch64.zip::https://github.com/QuiiBz/sherif/releases/download/v1.13.0/sherif-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = eb04a6f77ee3911eec7b5a92645df6cb48a059139d74f5604c6df8c7b714bc6c
+
+pkgname = sherif-bin
