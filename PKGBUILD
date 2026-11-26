@@ -1,6 +1,6 @@
 # Maintainer: Iván Zaera Avellón <ivan.zaera@posteo.net>
 pkgname=peter
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=2
 pkgdesc='A USB based keys manager which integrates with PAM and SSH.'
 arch=('pentium4' 'x86_64')
@@ -26,7 +26,7 @@ install='install.sh'
 source=(
 	"$pkgname-$pkgver.tar.gz::https://codeberg.org/ivan.zaera/$pkgname/archive/$pkgver.tar.gz"
 )
-sha256sums=("eecf00129ddc32c92e7a3da230e4cd36f7e2e0c2c84c7254cb6aeff0bde8a675")
+sha256sums=("a1aaa9337304e8721849ab788229fae6d9a179c65036ba9d7853a7cd8e6228a5")
 
 build() {
 	cd $srcdir/$pkgname
