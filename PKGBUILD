@@ -1,7 +1,7 @@
 # Maintainer: Agil <your-email@example.com>
 
 pkgname=neonctl
-pkgver=9.9.5
+pkgver=9.9.10
 pkgrel=1
 pkgdesc='Neon CLI: manage Neon serverless Postgres from the terminal (provides neon and neonctl)'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('postgresql: native psql client for the --psql flag (an embedded fal
             'libsecret: system keyring access for stored credentials')
 noextract=("$pkgname-$pkgver.tgz")
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('42aeeff7857f2880cac8c725c140302d29b53b392df54c5918e9a10c69f463f3')
+sha256sums=('eab89caf75eedbaedc4f63a7bd2fa4ba9f1860f9a44e18ac618cc7d7937750b3')
 
 package() {
   npm install -g \
