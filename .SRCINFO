@@ -1,0 +1,17 @@
+pkgbase = mihome-pc-bin
+	pkgdesc = Unofficial desktop client for Mi Home devices with a local web UI
+	pkgver = 0.7.38
+	pkgrel = 1
+	url = https://github.com/shallow-seek-nothing/mihome-pc-unofficial
+	arch = any
+	license = PolyForm-Noncommercial-1.0.0
+	makedepends = libarchive
+	depends = python
+	optdepends = chromium: open the local UI in an app window
+	optdepends = xdg-utils: open the local UI in the default browser
+	noextract = mihome-pc_0.7.38_all.deb
+	options = !strip
+	source = mihome-pc_0.7.38_all.deb::https://github.com/shallow-seek-nothing/mihome-pc-unofficial/releases/download/v0.7.38/mihome-pc_0.7.38_all.deb
+	sha256sums = 2de02f2a53b594a5f86e566c1b2d9c54129868db14562507275c63ab15a6f7cc
+
+pkgname = mihome-pc-bin
