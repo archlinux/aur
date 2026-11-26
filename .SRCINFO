@@ -1,6 +1,6 @@
 pkgbase = r-bamsignals
 	pkgdesc = Extract read count signals from bam files
-	pkgver = 1.44.1
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bamsignals
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-bamsignals
 	optdepends = r-rmarkdown
 	optdepends = r-rsamtools
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bamsignals_1.44.1.tar.gz
-	sha256sums = e69033211615fd4f0dbcadec6c18867ecf001f0cf403f1df72036dd872d23b64
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bamsignals_1.46.0.tar.gz
+	sha256sums = 5ad219b640ffae515f5224e1c0d86d9fa3ffd9e47affcc4bd71ef95ae58beb07
 
 pkgname = r-bamsignals
