@@ -12,6 +12,7 @@ pkgbase = keypunch-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	depends = cairo
 	depends = hicolor-icon-theme
 	depends = graphene
 	depends = gtk4
