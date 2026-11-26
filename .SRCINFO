@@ -10,6 +10,7 @@ pkgbase = nwipe
 	depends = libconfig
 	depends = ncurses
 	depends = parted
+	depends = libnvme
 	optdepends = coreutils
 	optdepends = dmidecode
 	optdepends = smartmontools
