@@ -1,29 +1,30 @@
 pkgbase = omapdf-bin
-	pkgdesc = Native Wayland PDF and EPUB reader built with GPUI and MuPDF (portable binary)
-	pkgver = 0.0.4
+	pkgdesc = Native Wayland and X11 PDF and EPUB reader built with GPUI and MuPDF (portable binary)
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/qwlp/omapdf
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	license = AGPL-3.0-only
-	depends = glibc>=2.39
+	depends = glibc>=2.35
 	depends = gcc-libs
+	depends = libxcb
 	depends = wayland
 	depends = vulkan-icd-loader
 	depends = fontconfig
 	optdepends = xdg-desktop-portal: desktop file chooser integration
-	provides = omapdf=0.0.4
+	provides = omapdf=0.0.11
 	conflicts = omapdf
-	noextract = omapdf-0.0.4-x86_64
-	noextract = omapdf-0.0.4-aarch64
+	noextract = omapdf-0.0.11-x86_64
+	noextract = omapdf-0.0.11-aarch64
 	options = !strip
 	options = !debug
-	source = omapdf-0.0.4.tar.gz::https://github.com/qwlp/omapdf/archive/refs/tags/v0.0.4.tar.gz
-	sha256sums = 09ed7b0c733e1254d1bae7cd1bf6c4ace813d53b0600b5a338f76de7170e5d8b
-	source_x86_64 = omapdf-0.0.4-x86_64::https://github.com/qwlp/omapdf/releases/download/v0.0.4/omapdf-linux-x86_64
-	sha256sums_x86_64 = 344eac36d59ecade68bdf45295fbcd616f05e58e0450024f46b231d4c03d01eb
-	source_aarch64 = omapdf-0.0.4-aarch64::https://github.com/qwlp/omapdf/releases/download/v0.0.4/omapdf-linux-aarch64
-	sha256sums_aarch64 = faa222884cc1164516977935ba747e0628961505c9905d5c6b347787d551a4a2
+	source = omapdf-0.0.11.tar.gz::https://github.com/qwlp/omapdf/archive/refs/tags/v0.0.11.tar.gz
+	sha256sums = 0873ecd34883df295a51c2ce3ef2ee256d5cfb3593861964570b8551664aefa2
+	source_x86_64 = omapdf-0.0.11-x86_64::https://github.com/qwlp/omapdf/releases/download/v0.0.11/omapdf-linux-x86_64
+	sha256sums_x86_64 = ca515edf4aa509238f9d5ac6b4a49f8ae8673de2fa642a3708b7f391bb7037bf
+	source_aarch64 = omapdf-0.0.11-aarch64::https://github.com/qwlp/omapdf/releases/download/v0.0.11/omapdf-linux-aarch64
+	sha256sums_aarch64 = c4c1f678622c4b6f22e552cda35f429bc0c5e587fc3f90728652cc9e2160d59f
 
 pkgname = omapdf-bin
