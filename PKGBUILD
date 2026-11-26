@@ -1,9 +1,9 @@
-# Maintainer: Your Name <you at example dot com>
+# Maintainer: Caleb Mignano <swagcalebwolf at gmail dot com>
 
 pkgname=pulsar-mouse-linux-bin
 _pkgname=pulsar-mouse-linux
 pkgver=0.1.34
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration tool (CLI + GTK4/libadwaita GUI) for Pulsar gaming mice (X2A, X2H, Xlite, and more) - prebuilt release"
 arch=('any')
 url="https://github.com/packerlschupfer/pulsar-mouse-linux"
