@@ -3,13 +3,11 @@ pkgname=pawtop
 _pkgname=Pawtop
 pkgdesc="A custom Discord desktop app with PawsomeVencord pre-installed"
 pkgver=3.3.4
-# Reminder for devs: don't forget to update the electron version on pawtop.sh
-pkgrel=1
-electron=electron45
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/enzomtpYT/Pawtop"
 license=('GPL3')
-depends=("${electron}")
+depends=('alsa-lib' 'gtk3' 'nss')
 makedepends=('bun' 'cmake' 'gcc' 'nodejs' 'npm')
 optdepends=(
   'libnotify: Notifications'
@@ -22,15 +20,8 @@ source=("$url/archive/refs/tags/v${pkgver}.tar.gz"
         'pawtop.desktop'
         'pawtop.sh')
 sha256sums=('3ffcf80cdb7ad9540fed80e458f11906d3a8f5c2b50402f6944660abd8023a4a'
-            'a95ff89d3fd1767cb9144ddebb90094bb3d2cdea2c9b0943514ec1cca8716fbf'
-            '246507bd63de7dc6e2d7e6412d52ebd1bb62a5016c98d727e0971b2983314081')
-
-prepare() {
-  cd "$_pkgname-$pkgver"
-
-  # Use system's electron
-  #  sed -i "/linux/s/^/        \"electronDist\": \"\\/usr\\/lib\\/${electron}\",\n/" package.json
-}
+            'b6b5a49e34a7185f16968be64fdc3f3d2254202e6b9ed380d1590fe77b860c4b'
+            'e6ed7a0cdf84a832c3f2d543111516bac00ca622c562c565055c3585edcd28d2')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -42,17 +33,18 @@ build() {
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  case "${CARCH}" in
+    aarch64) _unpacked="linux-arm64-unpacked" ;;
+    *) _unpacked="linux-unpacked" ;;
+  esac
 
   install -d "${pkgdir}/usr/lib/${pkgname}"
-  install -d "${pkgdir}/usr/bin"
+  cp -R "dist/${_unpacked}/." "${pkgdir}/usr/lib/${pkgname}/"
 
-  cp "$_pkgname-$pkgver/dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${pkgname}/"
-  cp "$_pkgname-$pkgver/dist/linux-unpacked/resources/app-update.yml" "${pkgdir}/usr/lib/${pkgname}/"
-  cp -r "$_pkgname-$pkgver/dist/linux-unpacked/resources/arrpc" "${pkgdir}/usr/lib/${pkgname}/"
-  install -Dm755 "./pawtop.sh" "$pkgdir/usr/bin/pawtop"
-
-  install -Dm 644 "pawtop.desktop" "$pkgdir/usr/share/applications/pawtop.desktop"
-  install -Dm 644 "$_pkgname-$pkgver/static/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
-  install -Dm 644 "$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$srcdir/pawtop.sh" "$pkgdir/usr/bin/pawtop"
+  install -Dm644 "$srcdir/pawtop.desktop" "$pkgdir/usr/share/applications/pawtop.desktop"
+  install -Dm644 "static/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
