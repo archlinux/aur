@@ -1,0 +1,18 @@
+pkgbase = koto-bin
+	pkgdesc = Simple, expressive, embeddable programming language
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://github.com/koto-lang/koto
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = koto
+	conflicts = koto
+	options = !debug
+	source = koto-bin-0.16.1-LICENSE::https://raw.githubusercontent.com/koto-lang/koto/v0.16.1/LICENSE
+	sha256sums = 2091eb1338953a55967ef2f830f1eaf4e6ca09b9f890bcf1d53764b0cd4c7224
+	source_x86_64 = koto-bin-0.16.1-x86_64.tar.gz::https://github.com/koto-lang/koto/releases/download/v0.16.1/koto-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d33462909f0d197418601e0eb182e4c880c64dd45af666abb5853a85c830ed80
+
+pkgname = koto-bin
