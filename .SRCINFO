@@ -1,0 +1,16 @@
+pkgbase = skwird-bin
+	pkgdesc = An index of file names kept current, answered over a local socket (its release's build)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://skwir.org
+	install = skwird.install
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	provides = skwird=0.3.0
+	conflicts = skwird
+	source = skwird-0.3.0-linux-x86_64.tar.gz::https://github.com/skwir-org/skwird/releases/download/v0.3.0/skwird-0.3.0-linux-x86_64.tar.gz
+	sha256sums = 7442a9e140f9ad59f079d27ca0d24d1beb0537832f0fded55b382a800f8e5256
+
+pkgname = skwird-bin

@@ -1,0 +1,20 @@
+# skwird's package for Arch (dist/aur/PKGBUILD), as its Debian and RPM
+# packages do (docs/DESIGN.md, decision 11): before it is removed, the
+# system service, where its administrator enabled it, stopped and
+# disabled, so that no link is left to a unit gone; once removed, its
+# index let go of, a list of every name on the machine left behind by no
+# package. Its state and configuration are kept. pacman's hooks make the
+# service's user (sysusers) and tell the service manager of the units.
+
+pre_remove() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl disable skwird-system.service >/dev/null 2>&1 || true
+    if [ -d /run/systemd/system ]; then
+      systemctl stop skwird-system.service || true
+    fi
+  fi
+}
+
+post_remove() {
+  rm -rf /var/cache/skwird
+}
