@@ -18,15 +18,15 @@
 # See DISCLAIMER and port.sh for the conversion steps.
 
 pkgname=workbuddy-intl-agent
-_pkgver=5.11.4.44121853
-_build=0026dff0
-_hostver=5.6.2.40046327
-_hostbuild=c7b525f3
+_pkgver=5.11.7.44923190
+_build=525fde10
+_hostver=5.11.6.44396970
+_hostbuild=0f347fd9
 _electron=37.10.3
-_sandbox=5.13.0
+_sandbox=5.13.3
 _harness=0.2.0-beta.16
 pkgver=${_pkgver}_${_build}
-pkgrel=4
+pkgrel=1
 pkgdesc='AI Agent for everyday office work - WorkBuddy international edition (unofficial Linux port)'
 arch=('x86_64' 'aarch64')
 url='https://www.workbuddy.ai'
@@ -83,15 +83,15 @@ sha256sums=(
   '57d01c547f248e072b3824355de9a1566d0b28b99c47e36d7b467d4e945e3436'  # DISCLAIMER
 )
 sha256sums_x86_64=(
-  '0ac85622e03d1f22645519a1d73861c80badad3cdf14d884ebcd6d6b491aa8b7'
-  '12149ad8c0cd748fd5062d8f62c7827d688d8095427ada99b1ae9e7019897523'
-  '7d025751a9005a182d1c2a99f4362454df494340cab27c8ddb625d9f0dd85785'
+  '0567fcbaffb8473bf654e8916a0421af55db38b49bb6e40f7b17bfdca61ff046'
+  '2eefe5e1e777bc8412b8bfe60b9acb4ccba20595a8a4eedaf120119e3a156de8'
+  '60af8626e5eea884e704f97d25c12b5034863d96e5611cc2b70cfa58dfe131db'
   '834fe6f1a07cecc42ffbd8ef263cc9a1eb08c515457ab1ca0121917cbb88ebe9'
 )
 sha256sums_aarch64=(
-  '0ac85622e03d1f22645519a1d73861c80badad3cdf14d884ebcd6d6b491aa8b7'
-  '561822578435d382a06d0a0b079a4b157f68b588c9fe72d589e2a88b2fd155fa'
-  'b6cde29df99abf3b082cc8f1e10801f279712423c9727fd7386b295c8cb2c50a'
+  '0567fcbaffb8473bf654e8916a0421af55db38b49bb6e40f7b17bfdca61ff046'
+  'd0785c00574c11914b9102936239d4cd29d5faaed8ec480f78cf33c1d0f2e9fd'
+  'fa0677d69b65569ede64cc40843a9c0c58bedcc8344967cb164c84a7f8f7f814'
   '6651fa80faac30d822a9ee3e44f342db26f381110c5da5ef3b931eb8c7d4e704'
 )
 
