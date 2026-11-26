@@ -1,192 +1,380 @@
+From b66d59dbf072c5cbbb0aa8ecb92d9ed46b9d3f7f Mon Sep 17 00:00:00 2001
+From: Dima Pasechnik <dima@pasechnik.info>
+Date: Mon, 23 Nov 2026 17:46:21 -0600
+Subject: [PATCH] Support eclib 20261021 alongside the legacy API
+
+Adapt matrix scalar conversions and modular-symbol constructors and Hecke operators to both APIs. Keep the 20250627 fallback and the existing range of supported system versions.
+
+Based in part on Maximiliano Curia's eclib scalar and PARI signal-header patches for Debian's sagemath package.
+---
+ build/test/test_eclib_meson.py     | 14 +++--
+ src/meson.build                    | 35 +++++++----
+ src/sage/libs/eclib/__init__.pxd   | 37 +++++++-----
+ src/sage/libs/eclib/constructor.py |  9 ++-
+ src/sage/libs/eclib/eclib_compat.h | 94 ++++++++++++++++++++++++++++++
+ src/sage/libs/eclib/homspace.pyx   |  6 +-
+ src/sage/libs/eclib/mat.pxd        |  8 ++-
+ src/sage/libs/eclib/mat.pyx        | 23 ++++++--
+ src/sage/libs/eclib/meson.build    | 10 +++-
+ src/sage/libs/eclib/newforms.pyx   |  2 +-
+ src/sage/libs/eclib/wrap.cpp       |  4 +-
+ 11 files changed, 191 insertions(+), 51 deletions(-)
+ create mode 100644 src/sage/libs/eclib/eclib_compat.h
+
+diff --git a/build/test/test_eclib_meson.py b/build/test/test_eclib_meson.py
+index d2d84b9b4cf..8cd93705ad0 100644
+--- a/build/test/test_eclib_meson.py
++++ b/build/test/test_eclib_meson.py
+@@ -22,7 +22,7 @@ def check_selection(self, system_version, expected, *, option='auto',
+                         arguments=(), windows=False, succeeds=True):
+         source = Path(__file__).resolve().parents[2]
+         dependency = re.search(
+-            r'^ec = dependency\(\n.*?^\)',
++            r'^ec = disabler\(\)\n.*?^if not ec\.found\(\)\n.*?^endif$',
+             (source / 'src/meson.build').read_text(), re.M | re.S,
+         ).group()
+         wrap = configparser.ConfigParser()
+@@ -70,17 +70,17 @@ def check_selection(self, system_version, expected, *, option='auto',
+ 
+     def test_compatible_system(self):
+         # Include the old version reported by some compatible conda packages.
+-        for version in ('20231211', '20250122', '20250627'):
++        for version in ('20231211', '20250122', '20250627', '20261021'):
+             with self.subTest(version=version):
+                 self.check_selection(version, 'pkgconfig ' + version)
+ 
+     def test_incompatible_or_missing_system(self):
+-        for version in ('20231210', '20260422', '20260707', None):
++        for version in ('20231210', '20260422', '20260707', '20261022', None):
+             with self.subTest(version=version):
+                 self.check_selection(version, 'internal 20250627')
+ 
+     def test_disabled(self):
+-        for version in ('20250627', '20260707', None):
++        for version in ('20250627', '20260707', '20261021', None):
+             with self.subTest(version=version):
+                 self.check_selection(version, 'disabled', option='disabled')
+ 
+@@ -88,8 +88,10 @@ def test_enabled(self):
+         self.check_selection('20260707', 'internal 20250627', option='enabled')
+ 
+     def test_forced_fallback(self):
+-        self.check_selection('20250627', 'internal 20250627',
+-                             arguments=('--force-fallback-for=eclib',))
++        for version in ('20250627', '20261021'):
++            for arguments in (('--force-fallback-for=eclib',), ('--wrap-mode=forcefallback',)):
++                with self.subTest(version=version, arguments=arguments):
++                    self.check_selection(version, 'internal 20250627', arguments=arguments)
+ 
+     def test_no_fallback(self):
+         self.check_selection('20260707', 'disabled',
 diff --git a/src/meson.build b/src/meson.build
-index 85c57251b29..b0642c953f3 100644
+index 85c57251b29..4004a0ec40f 100644
 --- a/src/meson.build
 +++ b/src/meson.build
-@@ -199,7 +199,7 @@ zlib = dependency('zlib', version: '>=1.2.11')
- # Use the bundled version until the bindings support that API.
- ec = dependency(
-   'eclib',
+@@ -193,18 +193,31 @@ if not mtx.found()
+ endif
+ png = dependency(['libpng', 'png', 'png16'], version: '>=1.2')
+ zlib = dependency('zlib', version: '>=1.2.11')
+-# We actually want >= 20250122, but the version number is not updated in the pkgconfig
+-# https://github.com/conda-forge/eclib-feedstock/issues/48
+-# Later releases change scalar and the modular-symbols API used by our bindings.
+-# Use the bundled version until the bindings support that API.
+-ec = dependency(
+-  'eclib',
 -  version: ['>=20231211', '<=20250627'],
-+  version: ['>=20231211'],
-   required: get_option('eclib'),
-   # The fallback requires PARI, which is unavailable in our Windows build.
-   allow_fallback: not is_windows,
+-  required: get_option('eclib'),
+-  # The fallback requires PARI, which is unavailable in our Windows build.
+-  allow_fallback: not is_windows,
+-  disabler: true,
++# Probe the October 2026 API separately from the legacy range. Intermediate
++# development snapshots changed the modular-symbols API several times.
++ec = disabler()
++if (
++  not get_option('eclib').disabled()
++  and get_option('wrap_mode') != 'forcefallback'
++  and 'eclib' not in get_option('force_fallback_for')
+ )
++  ec = dependency(
++    'eclib',
++    version: '==20261021',
++    required: false,
++    allow_fallback: false,
++  )
++endif
++if not ec.found()
++  ec = dependency(
++    'eclib',
++    # Some compatible conda packages report 20231211 in their pkg-config file.
++    version: ['>=20231211', '<=20250627'],
++    required: get_option('eclib'),
++    allow_fallback: not is_windows,
++    disabler: true,
++  )
++endif
+ ecm = cc.find_library('ecm', required: false, disabler: true)
+ gmpxx = dependency('gmpxx', required: not is_windows, disabler: true)
+ fflas = dependency(
 diff --git a/src/sage/libs/eclib/__init__.pxd b/src/sage/libs/eclib/__init__.pxd
-index c9ee789d6e9..442ac7fced8 100644
+index c9ee789d6e9..0ed83ddc21f 100644
 --- a/src/sage/libs/eclib/__init__.pxd
 +++ b/src/sage/libs/eclib/__init__.pxd
-@@ -10,7 +10,11 @@ from libcpp.map cimport map
+@@ -10,6 +10,7 @@ from libcpp.map cimport map
  from libcpp.vector cimport vector
  from libcpp.pair cimport pair
  from sage.libs.ntl.types cimport ZZ_c
-+ctypedef ZZ_c bigint
++from sage.libs.gmp.types cimport mpz_ptr, mpz_srcptr
  
-+# Import glibc headers before eclib ones, otherwise the get imported by eclib in the PARI namespace
-+cdef extern from "<setjmp.h>": pass
-+cdef extern from "<signal.h>": pass
  
  # NOTE: eclib used to have specific dependencies, so that they had to
- # be included in a specific order. Although this is no longer the
-@@ -35,11 +39,18 @@ cdef extern from "eclib/symb.h": pass
- cdef extern from "eclib/homspace.h": pass
- cdef extern from "eclib/oldforms.h": pass
- cdef extern from "eclib/newforms.h": pass
-+cdef extern from "eclib/int.h": pass
+@@ -17,6 +18,8 @@ from sage.libs.ntl.types cimport ZZ_c
+ # case, we start by listing all relevant include files in the correct
+ # order.
  
++cdef extern from "<signal.h>": pass
++cdef extern from "<setjmp.h>": pass
+ cdef extern from "eclib/vector.h": pass
+ cdef extern from "eclib/xmod.h": pass
+ cdef extern from "eclib/svector.h": pass
+@@ -39,7 +42,8 @@ cdef extern from "eclib/newforms.h": pass
  
  # Now the actual declarations, where the order no longer matters
-+cdef extern from "eclib/int.h":
-+    cdef cppclass INT:
-+        INT() except +
-+        INT(long) except +
-+    long I2long(INT)
-+
  cdef extern from "eclib/vector.h":
 -    ctypedef int scalar
-+    ctypedef INT scalar
++    cdef cppclass scalar:
++        pass
  
      cdef cppclass vec:
          scalar operator[](long)
-@@ -74,7 +85,6 @@ cdef extern from "eclib/smatrix.h":
+@@ -73,8 +77,9 @@ cdef extern from "eclib/smatrix.h":
+         scalar elem(int, int) const
          svec row(int) const
  
++ctypedef ZZ_c bigint
++
  cdef extern from "eclib/interface.h":
 -    ctypedef ZZ_c bigint
      int I2int(bigint)
  
  cdef extern from "eclib/rat.h":
-@@ -121,19 +131,22 @@ cdef extern from "eclib/descent.h":
+@@ -119,19 +124,21 @@ cdef extern from "eclib/descent.h":
+     cdef cppclass mw:
+         mw(Curvedata* curve, int verb, int pp, int maxr)
  
- cdef extern from "eclib/homspace.h":
-     cdef cppclass homspace:
+-cdef extern from "eclib/homspace.h":
+-    cdef cppclass homspace:
 -        long modulus
-+        long N
-+        scalar modulus
-         int plusflag  # sign
+-        int plusflag  # sign
 -        int cuspidal
- 
+-
 -        homspace(long n, int hp, int hcusp, int verbose)
-+        homspace(long n, scalar hp, int hcusp, int verbose)
++cdef extern from "sage/libs/eclib/eclib_compat.h" namespace "sage_eclib":
++    void scalar_to_mpz(mpz_ptr out, const scalar& value) noexcept
++    scalar scalar_from_mpz(mpz_srcptr value) except +
++    newforms* make_newforms(long level, int verbose)
  
-         int h1dim()
-         int h1cuspdim()
+-        int h1dim()
+-        int h1cuspdim()
 -        mat heckeop(long p, int dual, int display)
-+        mat heckeop(long p, int cuspidal, int dual, int display)
-         vec heckeop_col(long p, int j, int display)
+-        vec heckeop_col(long p, int j, int display)
 -        smat s_heckeop(long p, int dual, int display)
-+        smat s_heckeop(long p, int cuspidal, int dual, int display)
++    cdef cppclass homspace "sage_eclib::Homspace":
++        int plusflag
++        int cuspidal
++        homspace(long level, int sign, int cuspidal, int verbose)
++        long level() const
++        long h1dim() const
++        long h1cuspdim() const
++        mat heckeop(long p, int dual, int verbose) const
++        vec heckeop_col(long p, int j, int verbose) const
++        smat s_heckeop(long p, int dual, int verbose) const
          long h1ncusps()
  
-+cdef extern from "eclib/modulus.h":
-+    T default_modulus[T]()
-+
  cdef extern from "eclib/newforms.h":
-     cdef cppclass newforms:
-         vector[newform] nflist
-@@ -143,7 +156,7 @@ cdef extern from "eclib/newforms.h":
+@@ -143,8 +150,6 @@ cdef extern from "eclib/newforms.h":
          long cuspidal
          long sign
  
 -        newforms(long n, int disp)
-+        newforms(long n, scalar modulus, int disp)
- 
+-
          void createfromcurve(int sign, CurveRed CR, int nap)
          void display()
+         # Here i is the index of the relevant newform in the space,
 diff --git a/src/sage/libs/eclib/constructor.py b/src/sage/libs/eclib/constructor.py
-index 37df4eb935b..6e89225fc5f 100644
+index 37df4eb935b..8fa153212e9 100644
 --- a/src/sage/libs/eclib/constructor.py
 +++ b/src/sage/libs/eclib/constructor.py
-@@ -35,10 +35,9 @@ def CremonaModularSymbols(level, sign=0, cuspidal=False, verbose=0):
+@@ -35,14 +35,13 @@ def CremonaModularSymbols(level, sign=0, cuspidal=False, verbose=0):
          Finished 3-term relations: numrel = 16 ( maxnumrel = 32)
          relmat has 42 nonzero entries (density = 0.0596591)
          Computing kernel...
 -        time to compute kernel =  (... seconds)
 -        rk = 7
-+        dimension = 7
++        ...
          Number of cusps is 2
 -        ncusps = 2
-+        Number of cusps in image(delta) = 2
++        ...
          About to compute matrix of delta
-         delta matrix done: size 2x7.
+-        delta matrix done: size 2x7.
++        delta matrix done: size 2x7...
          About to compute kernel of delta
-diff --git a/src/sage/libs/eclib/homspace.pxd b/src/sage/libs/eclib/homspace.pxd
-index d3600547f1e..fcfefd83eb0 100644
---- a/src/sage/libs/eclib/homspace.pxd
-+++ b/src/sage/libs/eclib/homspace.pxd
-@@ -2,3 +2,4 @@ from sage.libs.eclib cimport homspace
- 
- cdef class ModularSymbols:
-     cdef homspace* H
-+    cdef int cuspidal
+-        done
++        done...
+         Finished constructing homspace.
+         sage: M
+         Cremona Modular Symbols space of dimension 7 for Gamma_0(43) of weight 2 with sign 0
+diff --git a/src/sage/libs/eclib/eclib_compat.h b/src/sage/libs/eclib/eclib_compat.h
+new file mode 100644
+index 00000000000..8f4c8ac79d6
+--- /dev/null
++++ b/src/sage/libs/eclib/eclib_compat.h
+@@ -0,0 +1,94 @@
++#pragma once
++
++#include <signal.h>
++#include <setjmp.h>
++#include <stdexcept>
++#include <gmp.h>
++#include <eclib/newforms.h>
++#if defined(_ECLIB_MODULUS_H) && SCALAR_OPTION == 3
++#include <flint/NTL-interface.h>
++#endif
++
++namespace sage_eclib {
++
++// The 2026 homspace headers include modulus.h. Test the headers actually in
++// use: a newer system install can coexist with the older Meson subproject.
++#ifdef _ECLIB_MODULUS_H
++
++class Homspace : public ::homspace {
++public:
++    const int cuspidal;
++
++    Homspace(long level, int sign, int cusp, int verbose)
++        : ::homspace(level, default_modulus<scalar>(), sign, verbose), cuspidal(cusp) {}
++
++    long level() const { return N; }
++    mat heckeop(long p, int dual, int verbose) const {
++        return ::homspace::heckeop(p, cuspidal, dual, verbose);
++    }
++    smat s_heckeop(long p, int dual, int verbose) const {
++        return ::homspace::s_heckeop(p, cuspidal, dual, verbose);
++    }
++};
++
++inline newforms* make_newforms(long level, int verbose) {
++    return new newforms(level, default_modulus<scalar>(), verbose);
++}
++
++#else
++
++class Homspace : public ::homspace {
++public:
++    using ::homspace::homspace;
++    long level() const { return modulus; }
++};
++
++inline newforms* make_newforms(long level, int verbose) {
++    return new newforms(level, verbose);
++}
++
++#endif
++
++#if defined(_ECLIB_MODULUS_H) && SCALAR_OPTION >= 3  // multiprecision entries
++
++inline void scalar_to_mpz(mpz_ptr out, const scalar& value) {
++    fmpz_t z;
++#if SCALAR_OPTION == 4
++    value.get_fmpz(z);  // INT::get_fmpz initializes its output
++#else
++    fmpz_init(z);
++    fmpz_set_ZZ(z, value);
++#endif
++    fmpz_get_mpz(out, z);
++    fmpz_clear(z);
++}
++
++inline scalar scalar_from_mpz(mpz_srcptr value) {
++    fmpz_t z;
++    fmpz_init(z);
++    fmpz_set_mpz(z, value);
++#if SCALAR_OPTION == 4
++    scalar result(z);
++#else
++    scalar result;
++    fmpz_get_ZZ(result, z);
++#endif
++    fmpz_clear(z);
++    return result;
++}
++
++#else  // machine-integer entries
++
++inline void scalar_to_mpz(mpz_ptr out, scalar value) {
++    mpz_set_si(out, value);
++}
++
++inline scalar scalar_from_mpz(mpz_srcptr value) {
++    if (!(sizeof(scalar) == sizeof(int) ? mpz_fits_sint_p(value) : mpz_fits_slong_p(value)))
++        throw std::overflow_error("integer does not fit in an eclib scalar");
++    return mpz_get_si(value);
++}
++
++#endif
++
++}  // namespace sage_eclib
 diff --git a/src/sage/libs/eclib/homspace.pyx b/src/sage/libs/eclib/homspace.pyx
-index 7087acfed0e..c7d4144fe1a 100644
+index 7087acfed0e..c8bc86fd1df 100644
 --- a/src/sage/libs/eclib/homspace.pyx
 +++ b/src/sage/libs/eclib/homspace.pyx
-@@ -4,7 +4,7 @@ from cysignals.signals cimport sig_on, sig_off
- from cython.operator cimport dereference as deref
+@@ -5,7 +5,7 @@ from cython.operator cimport dereference as deref
  from cython.operator cimport preincrement as inc
  
--from sage.libs.eclib cimport svec, mat, smat
-+from sage.libs.eclib cimport svec, mat, smat, INT, I2long, default_modulus
- from sage.libs.eclib.mat cimport MatrixFactory
+ from sage.libs.eclib cimport svec, mat, smat
+-from sage.libs.eclib.mat cimport MatrixFactory
++from sage.libs.eclib.mat cimport MatrixFactory, scalar_to_integer
  
  from sage.matrix.matrix_space import MatrixSpace
-@@ -50,7 +50,9 @@ cdef class ModularSymbols:
-         if level <= 1:
-             raise ValueError("the level (= %s) must be at least 2" % level)
-         sig_on()
--        self.H = new homspace(level, sign, cuspidal, verbose)
-+        cdef modulus = default_modulus[long]()
-+        self.H = new homspace(level, INT(modulus), sign, verbose)
-+        self.cuspidal = cuspidal
-         sig_off()
- 
-     def __dealloc__(self):
-@@ -86,7 +88,7 @@ cdef class ModularSymbols:
+ from sage.rings.integer_ring import ZZ
+@@ -86,7 +86,7 @@ cdef class ModularSymbols:
              sage: M.level()
              1234
          """
 -        return self.H.modulus
-+        return self.H.N
++        return self.H.level()
  
      # cpdef int dimension(self):
      def dimension(self):
-@@ -150,7 +152,7 @@ cdef class ModularSymbols:
-             sage: M = CremonaModularSymbols(1122, cuspidal=True); M.is_cuspidal()
-             1
-         """
--        return self.H.cuspidal
-+        return self.cuspidal
- 
-     def hecke_matrix(self, long p, dual=False, verbose=False):
-         """
-@@ -206,7 +208,7 @@ cdef class ModularSymbols:
-             True
-         """
-         sig_on()
--        cdef mat M = self.H.heckeop(p, dual, verbose)
-+        cdef mat M = self.H.heckeop(p, self.cuspidal, dual, verbose)
-         sig_off()
-         return MF.new_matrix(M)
- 
-@@ -270,13 +272,13 @@ cdef class ModularSymbols:
-         cdef svec sv
-         d = {}
-         sig_on()
--        cdef smat M = self.H.s_heckeop(p, dual, verbose)
-+        cdef smat M = self.H.s_heckeop(p, self.cuspidal, dual, verbose)
-         sig_off()
-         for i in range(n):
+@@ -276,7 +276,7 @@ cdef class ModularSymbols:
              sv = M.row(i+1)
              it = sv.begin()
              while it != sv.end():
 -                d[(i, deref(it).first-1)] = deref(it).second
-+                d[(i, deref(it).first-1)] = I2long(deref(it).second)
++                d[(i, deref(it).first-1)] = scalar_to_integer(deref(it).second)
                  inc(it)
          MS = MatrixSpace(base_ring, n, sparse=True)
          # The next step is the bottleneck.
+diff --git a/src/sage/libs/eclib/mat.pxd b/src/sage/libs/eclib/mat.pxd
+index 509bd4d0ce8..f59ae525297 100644
+--- a/src/sage/libs/eclib/mat.pxd
++++ b/src/sage/libs/eclib/mat.pxd
+@@ -1,7 +1,13 @@
+-from sage.libs.eclib cimport mat
++from sage.libs.eclib cimport mat, scalar, scalar_to_mpz
++from sage.rings.integer cimport Integer
+ 
+ cdef class Matrix:
+     cdef mat* M
+ 
+ cdef class MatrixFactory:
+     cdef new_matrix(self, mat M)
++
++cdef inline Integer scalar_to_integer(const scalar& s):
++    cdef Integer res = Integer()
++    scalar_to_mpz(res.value, s)
++    return res
 diff --git a/src/sage/libs/eclib/mat.pyx b/src/sage/libs/eclib/mat.pyx
-index 577175d1d08..7792cf4ed5f 100644
+index 577175d1d08..d82dafe5762 100644
 --- a/src/sage/libs/eclib/mat.pyx
 +++ b/src/sage/libs/eclib/mat.pyx
 @@ -2,7 +2,7 @@
@@ -194,7 +382,7 @@ index 577175d1d08..7792cf4ed5f 100644
  """
  
 -from sage.libs.eclib cimport scalar, addscalar
-+from sage.libs.eclib cimport scalar, addscalar, I2long, INT
++from sage.libs.eclib cimport addscalar, scalar_from_mpz
  
  from sage.matrix.matrix_space import MatrixSpace
  from sage.rings.integer_ring import ZZ
@@ -203,7 +391,7 @@ index 577175d1d08..7792cf4ed5f 100644
              i, j = ij
              if 0 < i <= self.M[0].nrows() and 0 < j <= self.M[0].ncols():
 -                return self.M.sub(i, j)
-+                return I2long(self.M.sub(i, j))
++                return int(scalar_to_integer(self.M.sub(i, j)))
              raise IndexError("matrix indices out of range")
          raise IndexError("cannot index into an undefined matrix")
  
@@ -212,67 +400,109 @@ index 577175d1d08..7792cf4ed5f 100644
  ##         return rank(self.M[0])
  
 -    def add_scalar(self, scalar s):
-+    def add_scalar(self, long s):
++    def add_scalar(self, s):
          """
          Return new matrix obtained by adding `s` to each diagonal entry of ``self``.
  
-@@ -162,7 +162,7 @@ cdef class Matrix:
+@@ -161,8 +161,19 @@ cdef class Matrix:
+             sage: w = t.add_scalar(3); print(w.str())
              [3 1]
              [1 2]
++
++        eclib builds with machine-integer entries raise an overflow error for
++        a scalar outside their range. Multiprecision builds preserve it::
++
++            sage: try:
++            ....:     w = t.add_scalar(2**100)
++            ....: except OverflowError:
++            ....:     pass
++            ....: else:
++            ....:     assert w[2, 2] == 2**100 - 1
          """
 -        return new_Matrix(addscalar(self.M[0], s))
-+        return new_Matrix(addscalar(self.M[0], INT(s)))
++        cdef Integer value = Integer(s)
++        return new_Matrix(addscalar(self.M[0], scalar_from_mpz(value.value)))
  
      def charpoly(self, var='x'):
          """
-@@ -222,7 +222,7 @@ cdef class Matrix:
+@@ -222,7 +233,7 @@ cdef class Matrix:
              Ts = MS.element_class(MS, None, False, False)
              for i from 0 <= i < n:
                  for j from 0 <= j < n:
 -                    Mij = Integer(self.M.sub(i+1,j+1))
-+                    Mij = Integer(I2long(self.M.sub(i+1,j+1)))
++                    Mij = scalar_to_integer(self.M.sub(i+1,j+1))
                      if Mij:
                          Ts.set_unsafe(i, j, Mij)
              return Ts
-@@ -231,7 +231,7 @@ cdef class Matrix:
+@@ -231,7 +242,7 @@ cdef class Matrix:
              Td = MS.element_class(MS, None, False, False)
              for i from 0 <= i < n:
                  for j from 0 <= j < n:
 -                    Mij = Integer(self.M.sub(i+1,j+1))
-+                    Mij = Integer(I2long(self.M.sub(i+1,j+1)))
++                    Mij = scalar_to_integer(self.M.sub(i+1,j+1))
                      if Mij:
                          Td.set_unsafe(i, j, Mij)
              return Td
+diff --git a/src/sage/libs/eclib/meson.build b/src/sage/libs/eclib/meson.build
+index 332e39c9c43..3f00e4599d6 100644
+--- a/src/sage/libs/eclib/meson.build
++++ b/src/sage/libs/eclib/meson.build
+@@ -3,6 +3,7 @@ py.install_sources(
+   '__init__.py',
+   'all.py',
+   'constructor.py',
++  'eclib_compat.h',
+   'homspace.pxd',
+   'homspace.pyx',
+   'interface.py',
+@@ -28,7 +29,14 @@ foreach name, pyx : extension_data_cpp
+     subdir: 'sage/libs/eclib',
+     install: true,
+     override_options: ['cython_language=cpp'],
+-    include_directories: [inc_cpython, inc_ext, inc_flint, inc_ntl, inc_rings],
++    include_directories: [
++      inc_cpython,
++      inc_ext,
++      inc_flint,
++      inc_ntl,
++      inc_rings,
++      inc_src,
++    ],
+     dependencies: [py_dep, cysignals, ec, ecl, flint, gmp, ntl],
+   )
+ endforeach
 diff --git a/src/sage/libs/eclib/newforms.pyx b/src/sage/libs/eclib/newforms.pyx
-index 219fb24d03f..e8bbfd4e266 100644
+index 219fb24d03f..c89d42e6a2a 100644
 --- a/src/sage/libs/eclib/newforms.pyx
 +++ b/src/sage/libs/eclib/newforms.pyx
-@@ -189,6 +189,7 @@ cdef class ECModularSymbol:
-         cdef Curvedata CD
-         cdef CurveRed CR
-         cdef int n
-+        cdef modulus = default_modulus[long]()
- 
-         if E.base_field() is not QQ:
-             raise TypeError("the elliptic curve must have coefficients in the rational numbers")
-@@ -215,7 +216,7 @@ cdef class ECModularSymbol:
+@@ -215,7 +215,7 @@ cdef class ECModularSymbol:
              raise ValueError("ECModularSymbol can only be created with signs +1 or 0, not {}".format(sign))
          self.sign = sign
  
 -        self.nfs = new newforms(n, 0)
-+        self.nfs = new newforms(n, INT(modulus), 0)
++        self.nfs = make_newforms(n, 0)
          self.nfs.createfromcurve(sign, CR, nap)
          sig_off()
  
 diff --git a/src/sage/libs/eclib/wrap.cpp b/src/sage/libs/eclib/wrap.cpp
-index 28e6da869b4..3ef95cef89c 100644
+index 28e6da869b4..4fd406fe92a 100644
 --- a/src/sage/libs/eclib/wrap.cpp
 +++ b/src/sage/libs/eclib/wrap.cpp
-@@ -1,6 +1,7 @@
+@@ -1,6 +1,8 @@
  #include <iostream>
  #include <sstream>
++#include <NTL/ZZ.h>
  using namespace std;
-+using bigint = NTL::ZZ;
++typedef NTL::ZZ bigint;
  
  /**************** Miscellaneous functions ****************/
  
+@@ -128,7 +130,7 @@ int mw_process(struct Curvedata* curve, struct mw* m,
+                       const bigint* x, const bigint* y,
+                       const bigint* z, int sat)
+ {
+-  Point P(*curve, *x, *y, *z);
++  Point P(curve, *x, *y, *z);
+   if (!P.isvalid())
+     return 1;
+   m->process(P, sat);
