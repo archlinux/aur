@@ -2,7 +2,7 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgname=gotenberg
-pkgver=9.10.1
+pkgver=9.10.2
 pkgrel=1
 pkgdesc='A developer-friendly API for converting numerous document formats into PDF files, and more!'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
@@ -21,7 +21,7 @@ _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz"
         "$pkgname.env"
         "$pkgname.service")
-sha256sums=('df2c02eb855abf5bd02db4c04b6c542cdbc8e2c6dcc245182dd5248c745e0f3f'
+sha256sums=('2538eaa209aeebf6d43cba14b7c41965ecd80455e879f63e1074e0a77827af48'
             '99449d281a2228da65f976b6d836b0c04e5f5031c750dae74a36cc005ecdc514'
             '1b3567e2fe374ce104150d198de3fe372724d3b8510aba64716e3dcb3b37c50a')
 
