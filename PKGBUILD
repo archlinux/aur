@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ExiMiR
-_pkgver=2.54.0
+_pkgver=2.56.0
 pkgname=r-${_pkgname,,}
-pkgver=2.54.0
+pkgver=2.56.0
 pkgrel=1
 pkgdesc='R functions for the normalization of Exiqon miRNA array data'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-mirna10cdf
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b3dd11b9441d3662f00702dc81347c8ca9322057a512475aeff97e35ef36f1bd')
+sha256sums=('e76f598e35c41e7e73868c1295c42efe5be096a842aac9cb4beec65dea20140f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
