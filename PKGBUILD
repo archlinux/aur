@@ -2,7 +2,7 @@
 # Maintainer: LIghtJUNction <https://github.com/LIghtJUNction>
 pkgname=ztty
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight no_std Rust terminal emulator for X11, XWayland and native Wayland'
 arch=('x86_64')
 url='https://github.com/LIghtJUNction/ztty'
@@ -20,17 +20,17 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver" || return
-    cargo build --frozen --release --features wayland
+    cargo build --frozen --release --features wayland --target-dir target --target "$CARCH-unknown-linux-gnu"
 }
 
 check() {
     cd "$pkgname-$pkgver" || return
-    cargo test --frozen --workspace --lib --features wayland
+    cargo test --frozen --workspace --lib --features wayland --target-dir target --target "$CARCH-unknown-linux-gnu"
 }
 
 package() {
     cd "$pkgname-$pkgver" || return
-    install -Dm755 target/release/ztty "$pkgdir/usr/bin/ztty"
+    install -Dm755 "target/$CARCH-unknown-linux-gnu/release/ztty" "$pkgdir/usr/bin/ztty"
     install -Dm644 assets/ztty.desktop "$pkgdir/usr/share/applications/ztty.desktop"
     sed -i 's|^Exec=.*|Exec=/usr/bin/ztty|' "$pkgdir/usr/share/applications/ztty.desktop"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
