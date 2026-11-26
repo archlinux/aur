@@ -1,6 +1,6 @@
 pkgbase = wikid-bin
 	pkgdesc = A feature-rich terminal wikipedia client
-	pkgver = 3.2.2
+	pkgver = 3.2.3
 	pkgrel = 1
 	url = https://github.com/sharkthakftw/wikid
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wikid-bin
 	provides = wikid
 	conflicts = wikid
 	options = !strip
-	source_x86_64 = wikid-x86_64-3.2.2.tgz::https://github.com/sharkthakftw/wikid/releases/download/v3.2.2/wikid-v3.2.2-x86_64-linux.tar.gz
-	sha256sums_x86_64 = ea247297c3c5d9dc29fc99139e020ccb0a8927c2f3b43ba85c16160634d1c372
+	source_x86_64 = wikid-x86_64-3.2.3.tgz::https://github.com/sharkthakftw/wikid/releases/download/v3.2.3/wikid-v3.2.3-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 37709723f6ad939b9f7170df16b2e423a897373944f934c395ba20bc381d04ce
 
 pkgname = wikid-bin

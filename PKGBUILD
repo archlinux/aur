@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A feature-rich terminal wikipedia client"
 
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ depends=('glibc' 'libgcc')
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('ea247297c3c5d9dc29fc99139e020ccb0a8927c2f3b43ba85c16160634d1c372')
+sha256sums_x86_64=('37709723f6ad939b9f7170df16b2e423a897373944f934c395ba20bc381d04ce')
 
 
 build() {
