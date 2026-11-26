@@ -46,7 +46,7 @@ pkgdesc="Loom: a connected desktop ecosystem built around niri"
 arch=(x86_64 aarch64)
 url="https://github.com/fram446742/loom-niri"
 license=(GPL-3.0-or-later)
-makedepends=(clang git pkgconf rust)
+makedepends=(cairo clang gcc git glib2 gtk4 libadwaita libdisplay-info libdrm libglvnd libinput libpipewire libxkbcommon mesa pango pixman pkgconf rust seatd systemd-libs vulkan-icd-loader wayland)
 
 _app_manifests=(
   loom-portal
