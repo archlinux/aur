@@ -2,7 +2,7 @@
 
 pkgname=panda-re
 pkgver=1.8.85
-pkgrel=3
+pkgrel=4
 pkgdesc='Platform for Architecture-Neutral Dynamic Analysis'
 arch=('x86_64')
 url='https://github.com/panda-re/panda'
@@ -14,6 +14,7 @@ depends=('glib2' 'zlib' 'libpng' 'pixman' 'ncurses' 'gnutls' 'nettle'
          'libepoxy' 'libjpeg-turbo' 'libssh2' 'libseccomp' 'vde2'
          'wireshark-cli' 'libosi-bin' 'libdwarf' 'gcc-libs' 'libatomic' 'systemd-libs' 'abseil-cpp' 'acl'
          'at-spi2-core' 'bluez-libs' 'bzip2' 'cairo' 'curl' 'gdk-pixbuf2'
+         'llvm14' 'virglrenderer'
          'glusterfs' 'gtk3' 'harfbuzz' 'jsoncpp' 'libusb' 'libx11' 'lzo'
          'pango' 'sdl2' 'snappy' 'util-linux-libs' 'vte3')
 makedepends=('clang' 'cmake' 'ninja' 'pkgconf' 'python' 'cargo' 'chrpath'
@@ -26,6 +27,10 @@ makedepends=('clang' 'cmake' 'ninja' 'pkgconf' 'python' 'cargo' 'chrpath'
              'bzip2' 'cairo' 'curl' 'gdk-pixbuf2' 'glusterfs' 'gtk3'
              'harfbuzz' 'jsoncpp' 'libusb' 'libx11' 'lzo' 'pango' 'sdl2'
              'snappy' 'util-linux-libs' 'vte3')
+
+optdepends=('python-numpy: PLOG analysis scripts'
+            'python-pycparser: plugin API generation script'
+            'python-protobuf: PLOG scripts')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/panda-re/panda/archive/refs/tags/v${pkgver}.tar.gz"
         'panda-arch.patch')
