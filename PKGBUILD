@@ -1,15 +1,18 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
-pkgname=pandare2
+pkgname=pandare2-bin
 pkgver=1.0.42
 pkgrel=1
-pkgdesc='Python interface for panda-ng, bundled with the QEMU 11.1 engine'
+pkgdesc='Python interface for panda-ng, bundled with the QEMU 11.1 engine (binary release)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/panda-re/panda-ng'
 license=('MIT AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND Zlib AND BSD-3-Clause AND BSD-2-Clause AND LicenseRef-Public-Domain AND GPL-3.0-or-later WITH GCC-exception-3.1 AND 0BSD AND curl AND LGPL-3.0-or-later AND Apache-2.0')
 depends=('python' 'python-cffi' 'python-yaml' 'glibc>=2.38')
+provides=("pandare2=$pkgver")
+conflicts=('pandare2')
 makedepends=('python-installer')
-optdepends=('python-flask: PyPlugin web interface'
+optdepends=('pandare2: Python API provided by this package'
+            'python-flask: PyPlugin web interface'
             'python-pandare: ioctl faker extras')
 options=('!strip' '!debug')
 noextract=("*.whl")

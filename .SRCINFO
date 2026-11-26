@@ -1,5 +1,5 @@
-pkgbase = pandare2
-	pkgdesc = Python interface for panda-ng, bundled with the QEMU 11.1 engine
+pkgbase = pandare2-bin
+	pkgdesc = Python interface for panda-ng, bundled with the QEMU 11.1 engine (binary release)
 	pkgver = 1.0.42
 	pkgrel = 1
 	url = https://github.com/panda-re/panda-ng
@@ -11,8 +11,11 @@ pkgbase = pandare2
 	depends = python-cffi
 	depends = python-yaml
 	depends = glibc>=2.38
+	optdepends = pandare2: Python API provided by this package
 	optdepends = python-flask: PyPlugin web interface
 	optdepends = python-pandare: ioctl faker extras
+	provides = pandare2=1.0.42
+	conflicts = pandare2
 	noextract = *.whl
 	options = !strip
 	options = !debug
@@ -21,4 +24,4 @@ pkgbase = pandare2
 	source_aarch64 = pandare2-1.0.42-py3-none-manylinux_2_38_aarch64.whl::https://github.com/panda-re/panda-ng/releases/download/v1.0.42/pandare2-1.0.42-py3-none-manylinux_2_38_aarch64.whl
 	sha256sums_aarch64 = 72141708ebf389920d25f0a22a5f9f9f25920e1d2e3c6b03b353c63eae0a671a
 
-pkgname = pandare2
+pkgname = pandare2-bin
