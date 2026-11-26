@@ -1,18 +1,18 @@
 pkgbase = gcx-bin
 	pkgdesc = A CLI for managing Grafana Cloud resources, optimized for agentic usage (prebuilt binary)
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/grafana/gcx
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	provides = gcx=1.8.0
+	provides = gcx=1.9.0
 	conflicts = gcx
 	options = !strip
 	options = !debug
-	source_x86_64 = gcx-bin-1.8.0-x86_64.tar.gz::https://github.com/grafana/gcx/releases/download/v1.8.0/gcx_1.8.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 85e21eeecae4ed2f21a40934bb127f0ec3bc2461f024404a709bf6e448b0e975
-	source_aarch64 = gcx-bin-1.8.0-aarch64.tar.gz::https://github.com/grafana/gcx/releases/download/v1.8.0/gcx_1.8.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 78d4d03a3b2fea6cfde5aceae0d464b5ac7cc3a2b59269437120e0708b56f438
+	source_x86_64 = gcx-bin-1.9.0-x86_64.tar.gz::https://github.com/grafana/gcx/releases/download/v1.9.0/gcx_1.9.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 70fb512fb8f8c47fe60b7d7875c6002ad7bbdcdb8eb8a265b34e9cd841fecc51
+	source_aarch64 = gcx-bin-1.9.0-aarch64.tar.gz::https://github.com/grafana/gcx/releases/download/v1.9.0/gcx_1.9.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 88551fe0b3983693bfd7b31a8b123daed1ad3a3f22637fe13072594907881526
 
 pkgname = gcx-bin
