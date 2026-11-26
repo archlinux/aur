@@ -1,0 +1,48 @@
+post_install() {
+	mkdir -p /etc/systemd/user/graphical-session.target.wants || exit 1
+	for link in \
+		/etc/systemd/user/graphical-session.target.wants/ely-engine@ely-doc.service \
+		/etc/systemd/user/graphical-session.target.wants/ely-engine@ely-table.service \
+		/etc/systemd/user/graphical-session.target.wants/ely-engine@ely-show.service; do
+		ln -sf /usr/lib/systemd/user/ely-engine@.service "$link" || exit 1
+	done
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	local kernels="ely-doc ely-table ely-show"
+	[ -d /run/systemd/system ] || exit 0
+	# In the user's manager; systemd 247 lacks --user -M.
+	as() { runuser -u "$user" -- env XDG_RUNTIME_DIR="$dir" "$@"; }
+	for dir in /run/user/*; do
+		[ -d "$dir" ] || continue
+		uid=${dir##*/}
+		if ! systemctl is-active --quiet "user@$uid.service"; then
+			echo "ely-office: user $uid has no systemd manager; skipped" >&2
+			continue
+		fi
+		user=$(id -nu "$uid") || exit 1
+		for slug in $kernels; do
+			# Whoever started it: the engine itself stops.
+			if ! as systemd-run --user --wait --quiet --collect -p RuntimeMaxSec=60 "/usr/bin/$slug" engine stop; then
+				echo "ely-office: $user's $slug idle engine did not stop; removal stops. Retry: runuser -u $user -- env XDG_RUNTIME_DIR=$dir systemd-run --user --wait /usr/bin/$slug engine stop" >&2
+				exit 1
+			fi
+		done
+		# The units stop claiming a live engine.
+		if ! as systemctl --user stop 'ely-engine@*.service'; then
+			echo "ely-office: $user's engine units did not stop; removal stops" >&2
+			exit 1
+		fi
+	done
+}
+
+post_remove() {
+	[ -e /usr/lib/systemd/user/ely-engine@.service ] || rm -f \
+		/etc/systemd/user/graphical-session.target.wants/ely-engine@ely-doc.service \
+		/etc/systemd/user/graphical-session.target.wants/ely-engine@ely-table.service \
+		/etc/systemd/user/graphical-session.target.wants/ely-engine@ely-show.service
+}
