@@ -1,0 +1,17 @@
+pkgbase = minimock-bin
+	pkgdesc = Mock generation tool for Go
+	pkgver = 3.4.7
+	pkgrel = 1
+	url = https://github.com/gojuno/minimock
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = minimock
+	conflicts = minimock
+	options = !debug
+	source_x86_64 = minimock-bin-3.4.7-x86_64.tar.gz::https://github.com/gojuno/minimock/releases/download/v3.4.7/minimock_3.4.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = 682174067592a2c83f005c6416a9df3434e239250d4034ffffef4b08dfa35a7d
+	source_aarch64 = minimock-bin-3.4.7-aarch64.tar.gz::https://github.com/gojuno/minimock/releases/download/v3.4.7/minimock_3.4.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8707f0f10a618fa920a2214ebc3a594d4542ffc2e1671ceb5625a16fa1749a89
+
+pkgname = minimock-bin
