@@ -6,7 +6,7 @@
 # sit on the same machine without pacman having to pick one.
 
 pkgname=heatsync-tui
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='heat-sorted live multichat in the terminal — twitch, kick + youtube (read-only), real emotes, vim keys'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ options=('!lto')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('fcfb114ce2498183a55b958d83583fb492758b9821c4aa02f61a5e3be0b9db2a')
+sha256sums=('b7e924acd888df39db2b7918b1682a8a34cd5b21ef74f1bfbca97a5694f4e8d5')
 
 prepare() {
   cd "$pkgname-$pkgver"
