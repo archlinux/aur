@@ -1,0 +1,36 @@
+pkgbase = llvm14
+	pkgdesc = LLVM and Clang 14 built from source with a shared libLLVM
+	pkgver = 14.0.6
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	depends = gcc-libs
+	depends = libgcc
+	depends = zlib
+	depends = libxml2
+	depends = libffi
+	depends = ncurses
+	depends = z3
+	depends = libedit
+	depends = libpfm
+	depends = python
+	depends = python-yaml
+	depends = python-pygments
+	depends = perl
+	provides = llvm14=14.0.6
+	provides = clang14=14.0.6
+	conflicts = llvm14
+	conflicts = llvm14-bin
+	options = !debug
+	options = !lto
+	source = llvm-project-14.0.6.src.tar.xz::https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/llvm-project-14.0.6.src.tar.xz
+	source = llvm14-14.0.6-LICENSE.TXT::https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-14.0.6/llvm/LICENSE.TXT
+	sha256sums = 8b3cfd7bc695bd6cea0f37f53f0981f34f87496e79e2529874fd03a2f9dd3a8a
+	sha256sums = 8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee
+
+pkgname = llvm14
