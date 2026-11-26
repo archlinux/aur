@@ -1,7 +1,7 @@
 # Maintainer: Ateles
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=sdrtop-git
-pkgver=0.8.0.r15.g968d9f2
+pkgver=0.8.1.r8.g6277032
 pkgrel=1
 pkgdesc='Terminal monitor for SDR hardware'
 arch=('x86_64' 'aarch64')
