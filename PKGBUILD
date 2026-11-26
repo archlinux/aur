@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=xmapbridge
-_pkgver=1.70.0
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f29c0589cb9eb4b6c02e6e4d53baaa54')
-b2sums=('0801e24562bfa83f4d8575dbd404d9d7195f83de037b1cb760616f2cd4006c291b819299e4f9d1d0fe8327d27dae2cd43c4a95fa8e9ad6009ce722ef4c198c90')
+md5sums=('08bb1abb2f9eb16a1101d800c6d572cd')
+b2sums=('67088245ea93e35a9422eb25323e2052632288a672ca3b693aae8778492b43cd3b9af1624fc0f89381b80772da0cb7814a27d90df032fd1cf40576faed2ce439')
 
 build() {
   mkdir build
