@@ -1,0 +1,17 @@
+pkgbase = bigquery-emulator-bin
+	pkgdesc = BigQuery emulator server
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/goccy/bigquery-emulator
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = bigquery-emulator
+	conflicts = bigquery-emulator
+	options = !debug
+	source_x86_64 = bigquery-emulator-bin-0.8.1-x86_64.tar.gz::https://github.com/goccy/bigquery-emulator/releases/download/v0.8.1/bigquery-emulator_v0.8.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8dbe6d3ebe3e8963523bada4a88a012d6a1bbc2ea779fbdc2e31d2e8c8c51c36
+	source_aarch64 = bigquery-emulator-bin-0.8.1-aarch64.tar.gz::https://github.com/goccy/bigquery-emulator/releases/download/v0.8.1/bigquery-emulator_v0.8.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4c6913619c90b4a8a9378993e797774390289f9c94deba483d2a6db9cefbc8c5
+
+pkgname = bigquery-emulator-bin
