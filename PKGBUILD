@@ -1,6 +1,6 @@
 # Maintainer: Martin Alstrup <martin@rcz.dk>
 pkgname=triforce-oot
-pkgver=0.7.1
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Triforce build tools"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=("triforce::git+https://git.triforceproject.com/triforce/source.git#tag=v
         "VulkanMemoryAllocator-${_vma}.tar.gz::https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/archive/refs/tags/v${_vma}.tar.gz"
         'triforce-oot'
         'triforce-oot.desktop')
-sha256sums=('364675baa853e96c0efb2f56ababdf9a04a0121813604156c355f6d2172a1d2a'
+sha256sums=('b59c6c22edb9f2514adfeaa3bf25624f08adf68de3a6cd34a46edb20c8b3f1cc'
             'c4f6bbe6b5a45c2eb610ca9d231158e313086d5b1a40c9922cb42b597419b14e'
             '77140ae7e5ba3a598f6b3a9be69326a34184d3ae35c85ed263ad3fd4066df0ba'
             '4f37d03357611b1774964bca33950e7f1aa2f99604c9c226196b71fc60dc3a6e')
@@ -57,7 +57,7 @@ package() {
   cp -a nx2 host scripts assets LICENSE readme.md "$tools/"
   cp -a builder/linux "$tools/builder/"
   cp -a gpu/render gpu/vk gpu/compat gpu/third_party "$tools/gpu/"
-  cp -a third_party/{a64-kit,zbic,zstd,opus,kenney_input,smaa,imgui,fonts,fidelityfx,fidelityfx-sdk,renodx,sdl2} "$tools/third_party/"
+  cp -a third_party/{a64-kit,zbic,zstd,opus,kenney_input,smaa,imgui,fonts,fidelityfx,fidelityfx-sdk,renodx,sdl2,reshade_fx,stb_image,renhdrum} "$tools/third_party/"
   # The VERSION file a release's tools carry. nx2/version.py names the build from it (there is no git history here), and
   # nx2/make_game.py writes it into the game folder's triforce_version.txt, which triforce-oot compares to know the game
   # is behind these tools.

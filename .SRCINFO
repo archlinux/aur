@@ -1,6 +1,6 @@
 pkgbase = triforce-oot
 	pkgdesc = Triforce build tools
-	pkgver = 0.7.1
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://triforceproject.com
 	install = triforce-oot.install
@@ -27,11 +27,11 @@ pkgbase = triforce-oot
 	optdepends = python-fonttools: PC controller and keyboard button prompts, drawn at build time
 	optdepends = libnotify: desktop notifications while the game updates from the menu entry
 	optdepends = zenity: error dialogs when started from the menu entry
-	source = triforce::git+https://git.triforceproject.com/triforce/source.git#tag=v0.7.1
+	source = triforce::git+https://git.triforceproject.com/triforce/source.git#tag=v0.8.3
 	source = VulkanMemoryAllocator-3.3.0.tar.gz::https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/archive/refs/tags/v3.3.0.tar.gz
 	source = triforce-oot
 	source = triforce-oot.desktop
-	sha256sums = 364675baa853e96c0efb2f56ababdf9a04a0121813604156c355f6d2172a1d2a
+	sha256sums = b59c6c22edb9f2514adfeaa3bf25624f08adf68de3a6cd34a46edb20c8b3f1cc
 	sha256sums = c4f6bbe6b5a45c2eb610ca9d231158e313086d5b1a40c9922cb42b597419b14e
 	sha256sums = 77140ae7e5ba3a598f6b3a9be69326a34184d3ae35c85ed263ad3fd4066df0ba
 	sha256sums = 4f37d03357611b1774964bca33950e7f1aa2f99604c9c226196b71fc60dc3a6e
