@@ -2,7 +2,7 @@
 
 pkgname=panda-re
 pkgver=1.8.85
-pkgrel=4
+pkgrel=5
 pkgdesc='Platform for Architecture-Neutral Dynamic Analysis'
 arch=('x86_64')
 url='https://github.com/panda-re/panda'
@@ -30,7 +30,12 @@ makedepends=('clang' 'cmake' 'ninja' 'pkgconf' 'python' 'cargo' 'chrpath'
 
 optdepends=('python-numpy: PLOG analysis scripts'
             'python-pycparser: plugin API generation script'
-            'python-protobuf: PLOG scripts')
+            'python-protobuf: PLOG scripts'
+            'python-pandare: Python API and PLOG scripts'
+            'python-pyqt5: coverage GUI scripts'
+            'python-colorama: run_guest.py'
+            'ipython: interactive analysis scripts'
+            'python-psutil: diverge.py')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/panda-re/panda/archive/refs/tags/v${pkgver}.tar.gz"
         'panda-arch.patch')
