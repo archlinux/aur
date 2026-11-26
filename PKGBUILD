@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pdInfoBuilder
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
+pkgver=1.78.0
 pkgrel=1
 pkgdesc='Platform Design Information Package Builder'
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=(
   r-s4vectors
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0b7fe17a89b831480ea6332771b3917a814f6b8903f470964819b8c222cafd1c')
+sha256sums=('894b83d8f8b0025522822d8af5ce9caf30c65f74ad6f464be68468d2fdf0e00f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
