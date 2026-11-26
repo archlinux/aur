@@ -1,6 +1,6 @@
 pkgbase = r-doser
 	pkgdesc = doseR
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/doseR
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-doser
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/doseR_1.28.0.tar.gz
-	sha256sums = a9996a0ab9e4a8249d530703e770daac9acda210c2cfb18fc684d93ee045b901
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/doseR_1.30.0.tar.gz
+	sha256sums = 50d10476566bbbbcc833cc631cd940596244a903e188ccd158777cd0e0756c13
 
 pkgname = r-doser
