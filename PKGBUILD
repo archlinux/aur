@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=frmaTools
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Frozen RMA Tools'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-pd.hugene.1.0.st.v1
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8c612dbac4d7b887eac8dc9c59b5fec8c2d12f193267f75dbcc078c4ec7a0ab8')
+sha256sums=('b8179f906b8f455b7c09038d9361d1e41dc70b67f0acf80d78d2a20d8f730e7a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
