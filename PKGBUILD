@@ -1,39 +1,35 @@
 # Maintainer: Radhey Kalra <radheykalra901@gmail.com>
 pkgname=boxbox-bin
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
-pkgdesc='Desktop file manager for local files and self-hosted BoxBox servers'
+pkgdesc='Native Linux file manager for local files and self-hosted BoxBox servers'
 arch=('x86_64')
 url='https://github.com/jR4dh3y/BoxBox'
 license=('MIT')
-depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator' 'librsvg'
-         'xdg-utils' 'nss' 'alsa-lib' 'libcups' 'libxcomposite' 'libxdamage'
-         'libxrandr' 'libxkbcommon' 'mesa')
-optdepends=('wl-clipboard: Wayland file clipboard'
+depends=('gcc-libs' 'glibc' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11'
+         'vulkan-icd-loader' 'wayland' 'fontconfig' 'freetype2' 'glib2'
+         'xdg-utils' 'hicolor-icon-theme')
+optdepends=('udisks2: disks and removable drives in the sidebar'
+            'gvfs: phones and network locations'
+            'gvfs-smb: SMB shares'
+            'gvfs-mtp: phones over MTP'
             'xclip: X11 file clipboard'
-            'python-gobject: interoperable file cut and copy'
-            'gtk4: interoperable file cut and copy'
-            'ffmpeg: video and audio thumbnails'
+            'ffmpeg: video thumbnails'
             'poppler: PDF thumbnails')
 provides=('boxbox')
 conflicts=('boxbox')
-options=('!strip' '!debug')
-_archive_sha256=00123b7286f07b48fcc73f024d1c84ce6057c555ecc97400446ee451d552a19d
-source=("$url/releases/download/v$pkgver/boxbox-desktop-v$pkgver-linux-amd64.tar.gz"
-        'AppRun' 'boxbox.desktop' 'boxbox.svg')
-sha256sums=("$_archive_sha256"
-            '3ffde00675a52d6f495fdff0ed18f6c032b549a7f8d91ddcf957a5d11507057b'
-            'db028c3b873f6b25c3c794508b87b860b4afd4289b277f40c17666e3937497b3'
-            'c0ed7b2cb1de5e4dc74cf01d60ef429ac6067b3cb2a9c33781240173e47cc96d')
+options=('!debug')
+_archive_sha256=3e896bac170bbc82b752d84bca569ecc351d8a63b1a10c6c97b4d89eb0d71359
+source=("$url/releases/download/v$pkgver/boxbox-desktop-v$pkgver-linux-amd64.tar.gz")
+sha256sums=("$_archive_sha256")
 
 package() {
-  local bundle="boxbox-desktop-v$pkgver-linux-amd64"
-  install -dm755 "$pkgdir/usr/lib/boxbox"
-  cp -a "$srcdir/$bundle/BoxBox" "$pkgdir/usr/lib/boxbox/BoxBox"
-  install -Dm755 AppRun "$pkgdir/usr/lib/boxbox/AppRun"
-  install -dm755 "$pkgdir/usr/bin"
-  ln -s /usr/lib/boxbox/AppRun "$pkgdir/usr/bin/boxbox"
-  install -Dm644 boxbox.desktop "$pkgdir/usr/share/applications/io.boxbox.desktop"
-  install -Dm644 boxbox.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.boxbox.desktop.svg"
-  install -Dm644 "$srcdir/$bundle/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "boxbox-desktop-v$pkgver-linux-amd64"
+  install -Dm755 boxbox "$pkgdir/usr/bin/boxbox"
+  install -dm755 "$pkgdir/usr/share/applications"
+  sed 's|@EXEC@|/usr/bin/boxbox|' io.boxbox.desktop > "$pkgdir/usr/share/applications/io.boxbox.desktop"
+  for size in 16 24 32 48 64 128 256 512; do
+    install -Dm644 "icons/$size.png" "$pkgdir/usr/share/icons/hicolor/${size}x$size/apps/io.boxbox.desktop.png"
+  done
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
