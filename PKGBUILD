@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NOISeq
-_pkgver=2.56.0
+_pkgver=2.58.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ce024ddd917e125dca553569add28855')
-b2sums=('203bc1559af8a14ff15a81b4ae5aa270e01e279c3616624fb4724b5fd9f7167d19c6ea1877b914dae92bb656af270ba99895770243b85aa1df0bfa8db82f74a1')
+md5sums=('57d48eb1907b20cf479315a979633e45')
+b2sums=('b0a0bd015f96b36f7ffc2e2c97e6b1a3b9c9cdc930a1de75c42509474213a20418337f36bafbb6cc4da6b093822be0e95a7f270d38b4cd7bb69426c96b33292c')
 
 build() {
   mkdir build
