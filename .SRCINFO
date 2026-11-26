@@ -1,6 +1,6 @@
 pkgbase = imewlconverter
 	pkgdesc = 深蓝词库转换：一款开源免费的输入法词库转换程序
-	pkgver = 3.6.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/studyzy/imewlconverter
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = imewlconverter
 	conflicts = imewlconverter
 	replaces = imewlconverter-bin
 	replaces = imewlconverter-cli
-	source = imewlconverter-3.6.0.tar.gz::https://github.com/studyzy/imewlconverter/archive/refs/tags/v3.6.0.tar.gz
-	sha256sums = 00534cd8a7698915a752a8f37d1d2f9ee5724e042767917b5e9e712301fee141
+	source = imewlconverter-3.7.0.tar.gz::https://github.com/studyzy/imewlconverter/archive/refs/tags/v3.7.0.tar.gz
+	sha256sums = 541c6fc03db4e0745c9ebd44c8130b4df3c9a82aeb5ab619e60917e5a56d406b
 
 pkgname = imewlconverter
