@@ -1,0 +1,17 @@
+pkgbase = apache_exporter-bin
+	pkgdesc = Prometheus exporter for Apache
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/Lusitaniae/apache_exporter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = apache_exporter
+	conflicts = apache_exporter
+	options = !debug
+	source_x86_64 = apache_exporter-bin-1.1.3-x86_64.tar.gz::https://github.com/Lusitaniae/apache_exporter/releases/download/v1.1.3/apache_exporter-1.1.3.linux-amd64.tar.gz
+	sha256sums_x86_64 = 85fa93e4495d5cc8eaec8d43fe530605f30dd9a08b4e0f4852507207fe86037a
+	source_aarch64 = apache_exporter-bin-1.1.3-aarch64.tar.gz::https://github.com/Lusitaniae/apache_exporter/releases/download/v1.1.3/apache_exporter-1.1.3.linux-arm64.tar.gz
+	sha256sums_aarch64 = 3e9574a9799e7781fbb91a37517518daf87232b2d68ff4c27c9cba78b507e57a
+
+pkgname = apache_exporter-bin
