@@ -1,6 +1,6 @@
 pkgbase = nsky-protondrive-client-bin
 	pkgdesc = Unofficial Proton Drive command-line client with bidirectional folder sync
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/NSky/protondrive-client
 	install = nsky-protondrive-client-bin.install
@@ -17,9 +17,9 @@ pkgbase = nsky-protondrive-client-bin
 	conflicts = nsky-protondrive-client
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/NSky/protondrive-client/releases/download/v0.2.3/protondrive-0.2.3-linux-x64.tar.gz
-	sha256sums_x86_64 = f318ecd989e9550455060c38084999a7f4616a44f7944aea50c3dd91d6150402
-	source_aarch64 = https://github.com/NSky/protondrive-client/releases/download/v0.2.3/protondrive-0.2.3-linux-arm64.tar.gz
-	sha256sums_aarch64 = 76eb5295d99df639922523bbf10f252b604dbd83f61abc23718eeb21f6478af3
+	source_x86_64 = https://github.com/NSky/protondrive-client/releases/download/v0.2.4/protondrive-0.2.4-linux-x64.tar.gz
+	sha256sums_x86_64 = 08b99ee8b2b9518ffcb582463a2e3fa36e089ef5228262bb835f9e34f9ef5037
+	source_aarch64 = https://github.com/NSky/protondrive-client/releases/download/v0.2.4/protondrive-0.2.4-linux-arm64.tar.gz
+	sha256sums_aarch64 = 865765b282bf1fed7cce808c853c85da6fb91874a99526e56dc699aa89223049
 
 pkgname = nsky-protondrive-client-bin
