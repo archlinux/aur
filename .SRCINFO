@@ -1,0 +1,17 @@
+pkgbase = sgpt-bin
+	pkgdesc = Query OpenAI models, generate shell commands and code from the terminal
+	pkgver = 2.21.3
+	pkgrel = 1
+	url = https://github.com/tbckr/sgpt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sgpt
+	conflicts = sgpt
+	options = !debug
+	source_x86_64 = sgpt-bin-2.21.3-x86_64.tar.gz::https://github.com/tbckr/sgpt/releases/download/v2.21.3/sgpt_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = e9a802a63b018a323991237d8243fcea33014c61faee2e9e10569443d72248ac
+	source_aarch64 = sgpt-bin-2.21.3-aarch64.tar.gz::https://github.com/tbckr/sgpt/releases/download/v2.21.3/sgpt_Linux_arm64.tar.gz
+	sha256sums_aarch64 = b3390803d4770c89c80272a32ac5b588647a26de473532d3fc90040c46f23b23
+
+pkgname = sgpt-bin
