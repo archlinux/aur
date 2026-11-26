@@ -1,0 +1,17 @@
+pkgbase = c64uv
+	pkgdesc = Viewer for the C64 Ultimate / Ultimate 64: video and audio streaming, remote keyboard, gamepad, mouse and menu
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/crustovsky/C64UV
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = sdl3
+	depends = curl
+	depends = iputils
+	depends = hicolor-icon-theme
+	options = !debug
+	source = c64uv-0.4.0.tar.gz::https://github.com/crustovsky/C64UV/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = ead06b12ceaec4c39ecef6188ee7df8c028daa862681291722cf95b4f94353d4
+
+pkgname = c64uv
