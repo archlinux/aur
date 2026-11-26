@@ -1,0 +1,19 @@
+pkgbase = oxish-bin
+	pkgdesc = Memory-safe SSH server
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/djc/oxish
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = oxish
+	conflicts = oxish
+	options = !debug
+	source_x86_64 = oxish-bin-0.1.0-x86_64.tar.xz::https://github.com/djc/oxish/releases/download/0.1.0/oxish-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 8cf61f870b81f9c0a575f0229529e8a54c3f7a1a74d951be461cc0a3b1bf6355
+	source_aarch64 = oxish-bin-0.1.0-aarch64.tar.xz::https://github.com/djc/oxish/releases/download/0.1.0/oxish-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 1399e22acfb99811ad82603944921d0d138f5301155b24d24c051fc3bfb4c6a2
+
+pkgname = oxish-bin
