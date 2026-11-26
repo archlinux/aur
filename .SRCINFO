@@ -1,0 +1,17 @@
+pkgbase = openapi-changes-bin
+	pkgdesc = OpenAPI breaking changes detector
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/pb33f/openapi-changes
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = openapi-changes
+	conflicts = openapi-changes
+	options = !debug
+	source_x86_64 = openapi-changes-bin-0.4.4-x86_64.tar.gz::https://github.com/pb33f/openapi-changes/releases/download/v0.4.4/openapi-changes_0.4.4_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 9316c7fbb9bd62ee794ffe07ae97aee43ea4f483226bbb4cf9d07f658439883a
+	source_aarch64 = openapi-changes-bin-0.4.4-aarch64.tar.gz::https://github.com/pb33f/openapi-changes/releases/download/v0.4.4/openapi-changes_0.4.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0ed4b378beecd3f49e5dbdc49cb2ed2503e98aa95eb9b4ecf921173fa7fcb775
+
+pkgname = openapi-changes-bin
