@@ -2,7 +2,7 @@
 pkgname=go-music-dl-bin
 _pkgname="Go Music DL"
 _rpmname=music-dl-desktop-go
-pkgver=1.1.8
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="一个基于 Go 语言的全网音乐搜索与下载工具。支持 CLI 命令行与 Web 服务双模式，内置网易云、QQ、酷狗、Bilibili、汽水音乐等 10+ 个主流平台，支持多源并发搜索与无损音质解析."
 arch=('x86_64')
@@ -16,20 +16,22 @@ depends=(
     'webkit2gtk-4.1'
     'ffmpeg'
 )
-source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_rpmname}-linux-amd64.rpm")
-sha256sums=('333f49496c17fb5eed25a0dc9e3ea7fd89a5c2b7e9b8317955b0476f2e77c28b')
+source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_rpmname}-linux-amd64.deb")
+sha256sums=('90f09dbb064e4edc656f0de6d1d1a48c2deac627c1c2d65283c52386a16d7fec')
 _install_icons() {
-	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
-	while IFS= read -r -d '' _icon; do
-		_ext="${_icon##*.}"
-		_size=$(echo "${_icon%/*}" | grep -oE '[0-9]+x[0-9]+|scalable' | head -1)
-		[[ -z "${_size}" ]] && _size=$([[ "${_ext}" == svg ]] && echo scalable || od -An -tu1 -j16 -N8 "${_icon}" 2>/dev/null | awk '{printf "%dx%d",$1*16777216+$2*65536+$3*256+$4,$5*16777216+$6*65536+$7*256+$8}')
-		[[ "${_size}" =~ ^[0-9]+x[0-9]+$ ]] || _size=scalable
-		_dest=$([[ "${_icon}" == */share/pixmaps/* ]] && echo pixmaps || echo "icons/hicolor/${_size}/apps")
-		install -Dm644 "${_icon}" "${pkgdir}/usr/share/${_dest}/${_name}.${_ext}"
-	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
+	local _s="${1:-$srcdir}" _n="${pkgname%-bin}" _i _e _z
+	while IFS= read -r -d '' _i; do
+		_e=${_i##*.}
+		_z=$(printf %s "${_i%/*}"|grep -oE '[0-9]+x[0-9]+(@[0-9]+x?)?|scalable'|tail -n1)
+		[[ $_z ]] || _z=$([[ $_e == svg ]]&&echo scalable||od -An -tx1 -j16 -N8 "$_i"| \
+		{ read a b c d e f g h; printf %dx%d 0x$a$b$c$d 0x$e$f$g$h; })
+		[[ $_z =~ ^[0-9]+x[0-9]+(@[0-9]+x?)?$ || $_z == scalable ]]||_z=scalable
+		install -Dm644 "$_i" "$pkgdir/usr/share/icons/hicolor/$_z/apps/$_n.$_e"
+	done < <(find "$_s" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' \
+		-o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
+    bsdtar -xf "${srcdir}/data."*
     sed -i -e "
         s/Name=${_rpmname}/Name=${_pkgname}/g
         s/Exec=${_rpmname}/Exec=${pkgname%-bin}/g
