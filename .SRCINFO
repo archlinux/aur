@@ -1,0 +1,27 @@
+pkgbase = superfar
+	pkgdesc = Dual-pane file manager: Directory Opus workflow, Thunar weight, FAR-style function keys
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = https://github.com/crustovsky/superfar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = qt6-base
+	depends = glib2
+	depends = glycin
+	depends = hicolor-icon-theme
+	optdepends = gvfs: trash, mounts, network shares, administrator access
+	optdepends = libarchive: open archives as folders, pack into them
+	optdepends = tumbler: thumbnails and media previews
+	optdepends = poppler: PDF pages in the preview
+	optdepends = ffmpeg: video playback in the preview
+	optdepends = bat: syntax colours in the viewer and the preview
+	optdepends = xdg-terminal-exec: F4 and the command line in your terminal
+	options = !debug
+	source = superfar-0.9.7.tar.gz::https://github.com/crustovsky/superfar/archive/refs/tags/v0.9.7.tar.gz
+	sha256sums = 7a291d253d14deaf9c68924932bb3385b0a2ab2a8c80786459e26b118b71abfb
+
+pkgname = superfar
