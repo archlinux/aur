@@ -11,7 +11,7 @@
 # Von dort wird gepusht — nicht von hier.
 
 pkgname=yakuda-connect
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="WiVRn VR management software with gaming optimization and OpenXR/OpenVR fixes"
 arch=('any')
@@ -40,7 +40,7 @@ conflicts=('yakuda-connect-git')
 # Tag-Format im Repo ist v<version> -> v1.1.2
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Wird von 'updpkgsums' im AUR-Ordner gesetzt — NICHT von Hand eintragen.
-sha256sums=('10a7f7e743abdfb5d46d11c57b2cd04c29d36dfcb1704afc9e2e132e242edb80')
+sha256sums=('fce727c9f2a10fae52ff5925028311ca04fb4705a99296af0473f04745e2a0cb')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
