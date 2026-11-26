@@ -1,6 +1,6 @@
 pkgbase = r-geneplast
 	pkgdesc = Evolutionary and plasticity analysis of orthologous groups
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/geneplast
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-geneplast
 	optdepends = r-rmarkdown
 	optdepends = r-rtn
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/geneplast_1.38.0.tar.gz
-	sha256sums = 5052f450cc47f81b5d577da27c7361f4b822632d597e5ea7c9fb20d86512d556
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/geneplast_1.40.0.tar.gz
+	sha256sums = a4c64de7a89d034324e4d200be8bd37955726134c99ba80ae2c57f679876a0b0
 
 pkgname = r-geneplast
