@@ -1,0 +1,14 @@
+pkgbase = leptosfmt-bin
+	pkgdesc = Formatter for the Leptos view! macro
+	pkgver = 0.1.34
+	pkgrel = 1
+	url = https://github.com/bram209/leptosfmt
+	arch = x86_64
+	license = Apache-2.0
+	provides = leptosfmt
+	conflicts = leptosfmt
+	options = !debug
+	source_x86_64 = leptosfmt-bin-0.1.34-x86_64.tar.gz::https://github.com/bram209/leptosfmt/releases/download/0.1.34/leptosfmt-0.1.34-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 0fc9700082e51e2089a86f117c7b9a7686ae5b69ea53842c6fa9b4c56aa34d8f
+
+pkgname = leptosfmt-bin
