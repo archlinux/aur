@@ -1,7 +1,7 @@
 # Maintainer: Koen Hendriks <info@koenhendriks.nl>
 
 pkgname=vox
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Make your microphone sound better in every app, with switchable voice profiles'
 arch=('x86_64' 'aarch64')
@@ -9,12 +9,12 @@ url='https://github.com/koenhendriks/vox'
 license=('MIT')
 # pipewire-audio goes before x42-plugins-lv2: it provides the lv2-host that
 # x42 asks for, so pacman doesn't pick another provider, such as Audacity.
-depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia' 'qt6-svg' 'qt6-wayland' 'pipewire' 'pipewire-audio'
+depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia' 'qt6-svg' 'qt6-wayland' 'qt6-websockets' 'pipewire' 'pipewire-audio'
          'pipewire-pulse' 'libpulse' 'swh-plugins' 'noise-suppression-for-voice' 'x42-plugins-lv2' 'ffmpeg')
 makedepends=('gcc' 'make')
 _src="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('da9433bb25fdcf60fa22a70066279c368cb7d2949e84bc29da000eb1b078bd0f')
+sha256sums=('d59eaf55d34ce1fe5bbc9645d53473e48b3a2690bad3d86e96f85b11208470b1')
 
 build() {
 	cd "$_src"
