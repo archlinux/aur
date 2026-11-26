@@ -1,0 +1,20 @@
+pkgbase = oxia-bin
+	pkgdesc = Metadata store and coordination system
+	pkgver = 0.16.13
+	pkgrel = 1
+	url = https://github.com/oxia-db/oxia
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = oxia
+	conflicts = oxia
+	options = !debug
+	source = oxia-bin-0.16.13-LICENSE::https://raw.githubusercontent.com/oxia-db/oxia/v0.16.13/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = oxia-bin-0.16.13-x86_64.tar.gz::https://github.com/oxia-db/oxia/releases/download/v0.16.13/oxia-oxia-linux-amd64.tar.gz
+	sha256sums_x86_64 = 36de544e66e460e97dbb6dc5031c874a8a683e63ebaa1221859efd112592f720
+	source_aarch64 = oxia-bin-0.16.13-aarch64.tar.gz::https://github.com/oxia-db/oxia/releases/download/v0.16.13/oxia-oxia-linux-arm64.tar.gz
+	sha256sums_aarch64 = 799f2fc419806ff01abf13920bc2e746312a64f7dbd432fb35487b9ec13d50e8
+
+pkgname = oxia-bin
