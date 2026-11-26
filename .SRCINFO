@@ -1,6 +1,6 @@
 pkgbase = vestige-bin
 	pkgdesc = Long-term memory MCP server for AI agents with deterministic root-cause retrieval
-	pkgver = 6.2.3
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://github.com/samvallad33/vestige
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vestige-bin
 	conflicts = vestige-git
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/samvallad33/vestige/releases/download/v6.2.3/vestige-mcp-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = f2f3336ab0335b4a5f9cbec9be2298ce567167d01d3a276d1342d122a24ce47f
+	source_x86_64 = https://github.com/samvallad33/vestige/releases/download/v7.0.0/vestige-mcp-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2aa6fe87c875552ab20270d1502954987be5ea954573c392e6f810476a695294
 
 pkgname = vestige-bin
