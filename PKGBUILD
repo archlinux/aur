@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ROC
-_pkgver=1.88.0
+_pkgver=1.90.0
 pkgname=r-${_pkgname,,}
-pkgver=1.88.0
+pkgver=1.90.0
 pkgrel=1
 pkgdesc='utilities for ROC, with microarray focus'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('487efc9a6d5cbcbabe116124d2f22ba86d72dd78df93416c67313c1e81d843d9')
+sha256sums=('8edcecd4afc17c97d5e043d8492e7cf50b52fa0c04437988e7d0474338b77770')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
