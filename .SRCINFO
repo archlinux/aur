@@ -1,0 +1,19 @@
+pkgbase = ciphey-bin
+	pkgdesc = Automatically decrypt encryptions without knowing the key or cipher, decode encodings, and crack hashes (prebuilt binary)
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/bee-san/Ciphey
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = ciphey
+	conflicts = ciphey
+	options = !debug
+	source = LICENSE-0.12.1::https://raw.githubusercontent.com/bee-san/Ciphey/v0.12.1/LICENSE
+	sha256sums = 3449bc6bc62a1648dbb60f73b18a879d07ecc2d5d7b6097ebcf9156ed32c3c00
+	source_x86_64 = ciphey-0.12.1-x86_64.tar.gz::https://github.com/bee-san/Ciphey/releases/download/v0.12.1/ciphey-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 1ccc9766224c63c5703414bea2a60adb80ec9730d5afa2b1ecba81101d4c5659
+
+pkgname = ciphey-bin
