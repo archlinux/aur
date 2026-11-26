@@ -1,0 +1,19 @@
+pkgbase = webhook-tester-bin
+	pkgdesc = Test webhooks and HTTP requests
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/tarampampam/webhook-tester
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = webhook-tester
+	conflicts = webhook-tester
+	options = !debug
+	source = webhook-tester-bin-2.3.0-LICENSE::https://raw.githubusercontent.com/tarampampam/webhook-tester/v2.3.0/LICENSE
+	sha256sums = 33566ccd8dc08ccf93dc08d080271dd49dc11a2585f57861d1d0e29f31a43af8
+	source_x86_64 = webhook-tester-bin-2.3.0-x86_64::https://github.com/tarampampam/webhook-tester/releases/download/v2.3.0/webhook-tester-linux-amd64
+	sha256sums_x86_64 = bd1716479bbbfee42beca8514b0e13d1b259e63e89348cd9f8fbc2f97e1f040f
+	source_aarch64 = webhook-tester-bin-2.3.0-aarch64::https://github.com/tarampampam/webhook-tester/releases/download/v2.3.0/webhook-tester-linux-arm64
+	sha256sums_aarch64 = 0ddeea7f72db4a83ff6ca9c0a3a26c29be1f8a06d10d6ea285e077f39571d1d2
+
+pkgname = webhook-tester-bin
