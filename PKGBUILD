@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ecolitk
-_pkgver=1.84.0
+_pkgver=1.86.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-multtest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('44e919aa7acdbd5684b3c747c5afe7bd')
-b2sums=('df6df77e642a2fb7a3a986e55c80567dcdb17959b8affbcd434f953d6bf5053b061faf8b507bf6315c6e04510d119a7b67313c47274e8caf401a59c08eecef79')
+md5sums=('7e1e656e98576907e218fc3f04bc1310')
+b2sums=('8b249ed53841141b216485048c4492cb775cb3fd1263923705a31eb559ef3463042a87190c009f21e6be05aef996a46f947eb2e467470ccfc9946c966d493179')
 
 build() {
   mkdir build
