@@ -1,6 +1,6 @@
 pkgbase = rust-yak
 	pkgdesc = A plugin-based harness for LLMs in Rust
-	pkgver = 0.5.8
+	pkgver = 0.5.9
 	pkgrel = 1
 	url = https://github.com/imjiaoyuan/yak
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = rust-yak
 	makedepends = gcc
 	depends = glibc
 	depends = gcc-libs
-	provides = yak=0.5.8
+	provides = yak=0.5.9
 	conflicts = yak
 	conflicts = yak-bin
 	conflicts = yak-git
 	conflicts = rust-yak-bin
 	conflicts = rust-llm
 	conflicts = rust-llm-bin
-	source = yak-0.5.8.tar.gz::https://github.com/imjiaoyuan/yak/archive/refs/tags/v0.5.8.tar.gz
-	sha256sums = f65f3152d2c9268b2107f81c11d2b3a599eea3ed370ff552849a1e1c4ac37d58
+	source = yak-0.5.9.tar.gz::https://github.com/imjiaoyuan/yak/archive/refs/tags/v0.5.9.tar.gz
+	sha256sums = 9e8534e67ed9843d9e2b38e1b663905b857d2b5bb58f08af4962e4e5321c4a3b
 
 pkgname = rust-yak
