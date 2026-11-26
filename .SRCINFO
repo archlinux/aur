@@ -1,0 +1,19 @@
+pkgbase = clarinet-bin
+	pkgdesc = Write, test and deploy smart contracts for the Stacks blockchain
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/stx-labs/clarinet
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = clarinet
+	conflicts = clarinet
+	options = !debug
+	source = clarinet-bin-4.1.0-LICENSE::https://raw.githubusercontent.com/stx-labs/clarinet/v4.1.0/LICENSE
+	sha256sums = b98fbb37db5b23bc5cfdcd16793206a5a7120a7b01f75374e5e0888376e4691c
+	source_x86_64 = clarinet-bin-4.1.0-x86_64.tar.gz::https://github.com/stx-labs/clarinet/releases/download/v4.1.0/clarinet-linux-x64-musl.tar.gz
+	sha256sums_x86_64 = 7f8697b7e001e0a5c9c60753a765847c6a3c09ffdc7a21b1cc4b273d9f0d915d
+	source_aarch64 = clarinet-bin-4.1.0-aarch64.tar.gz::https://github.com/stx-labs/clarinet/releases/download/v4.1.0/clarinet-linux-arm64-musl.tar.gz
+	sha256sums_aarch64 = b234ced05ca7195603b061467cbfd25f29c93c8b33d522e7c25a68ad23e6dbdd
+
+pkgname = clarinet-bin
