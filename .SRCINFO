@@ -1,6 +1,6 @@
 pkgbase = r-aims
 	pkgdesc = AIMS : Absolute Assignment of Breast Cancer Intrinsic Molecular Subtype
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AIMS
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-aims
 	optdepends = r-breastcancervdx
 	optdepends = r-hgu133a.db
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AIMS_1.44.0.tar.gz
-	sha256sums = f956ad6960d73e49f531228b6e6c134238f3824c95132700ac2f7dd5ff67233f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AIMS_1.46.0.tar.gz
+	sha256sums = bc679158501b394ec9e56d7d69236f8bd5766a79cb71847227b75f9af2401aab
 
 pkgname = r-aims
