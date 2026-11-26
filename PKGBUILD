@@ -3,7 +3,7 @@
 pkgname=python-pandare
 _pkgname=pandare
 pkgver=1.8.85
-pkgrel=2
+pkgrel=3
 pkgdesc='Python interface for PANDA dynamic analysis'
 arch=('any')
 url='https://github.com/panda-re/panda'
@@ -40,6 +40,9 @@ package() {
     purelib=$(python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')
     sed -i 's|system_build = "/usr/local/bin/"|system_build = "/usr/bin/"|' \
         "${pkgdir}${purelib}/pandare/utils.py"
+    # Library-mode plugins must find the same libpanda handle PyPANDA loaded.
+    sed -i 's|        self.panda = self.libpanda_path # Necessary|        environ["PANDA_LIB"] = self.libpanda_path\n        self.panda = self.libpanda_path # Necessary|' \
+        "${pkgdir}${purelib}/pandare/panda.py"
     sed -i \
         -e 's|if build_dir == "/usr/local/bin/":|if build_dir == "/usr/bin/":|' \
         -e 's|# Installed - use /usr/local/lib/panda/plugins|# Installed - use /usr/lib/panda/plugins|' \

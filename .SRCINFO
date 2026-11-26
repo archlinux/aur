@@ -1,7 +1,7 @@
 pkgbase = python-pandare
 	pkgdesc = Python interface for PANDA dynamic analysis
 	pkgver = 1.8.85
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/panda-re/panda
 	arch = any
 	license = GPL-2.0-only
