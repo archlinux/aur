@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=KBoost
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('654f49a9ec937c83c3e01655bb06acd4')
-b2sums=('62fb85f92fe52ec9d5c75778e128ae68a78ae5d7f30ae8f30ba39e537773d37adbd0da3c31195d7b6242f2e30bc724c0d57757ea68a9e96a9c62c4fc9f096414')
+md5sums=('2aaf7b62af2db364e700f1d3b1636530')
+b2sums=('57d6873a2f7405fdb3b837c8b15b3f74577be33e80785fbbb2c1749fb17ed971429b57cea68025cb89f770355223ce2f1017fb268fcd2bf19d224edd91c2b7d4')
 
 build() {
   mkdir build
