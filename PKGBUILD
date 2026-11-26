@@ -4,7 +4,7 @@ pkgname=strata-app
 _pkgname=strata
 _binaryname=strata-desktop
 pkgdesc="Strata Desktop - Local inference engine and GUI for frontier AI models"
-pkgver=0.2.21
+pkgver=0.2.22
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Niko1221/Strata"
@@ -58,7 +58,7 @@ _node_version=24.12.0
 _node_sha256=6159227e0af7d7c3c6bb2fa900452b04a6cb8841a702a79acc613209d70b04d0
 # makepkg's checksums (a git archive of the ref) of the two git sources, which
 # have no upstream digest; they make a moved tag fail the build
-_src_sha256=9b0f9de0efb1688eca8dbf29f033316812193a6b159942bb673e05795d9abe52
+_src_sha256=72dab10be5f67b50b699a6da63c8aec4783e58ad9a5140d065c87a6b708d7537
 _harness_sha256=0828e92122ddbae364d23b85b76ca24dd83de726734d43845a4c1b2c42f399c2
 
 _pbs_file="cpython-${_python_version}_${_pbs_release}-x86_64-unknown-linux-gnu-install_only.tar.gz"
