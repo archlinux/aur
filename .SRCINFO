@@ -1,0 +1,27 @@
+pkgbase = remya-launcher-bin
+	pkgdesc = Application launcher and clipboard history for Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/remyhuang03/remya-launcher
+	arch = x86_64
+	license = LicenseRef-PolyForm-Noncommercial-1.0.0
+	depends = remya-core>=0.3.0
+	depends = gtk3
+	depends = gtk-layer-shell>=0.6
+	depends = inter-font
+	depends = fontconfig
+	depends = ripgrep
+	depends = wl-clipboard
+	depends = wayland
+	depends = libxkbcommon
+	depends = glibc
+	depends = gcc-libs
+	optdepends = noto-fonts-cjk: CJK font coverage
+	provides = remya-launcher=0.1.0
+	conflicts = remya-launcher
+	conflicts = remya-launcher-git
+	options = !strip
+	source = remya_launcher-0.1.0-linux-x86_64.tar.zst::https://github.com/remyhuang03/remya-launcher/releases/download/v0.1.0/remya_launcher-0.1.0-linux-x86_64.tar.zst
+	sha256sums = eed217db3e965ae242041b6349f7c5f19222c2c496bb186c07d2e2faaec73db4
+
+pkgname = remya-launcher-bin
