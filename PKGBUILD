@@ -1,7 +1,7 @@
 # Maintainer: krforshey
 pkgname=cosmic-ext-manager
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='Browse, install, update and remove community COSMIC extensions'
 arch=('x86_64' 'aarch64')
 url='https://github.com/kevinRForshey/CosmicExtensionManager'
@@ -12,7 +12,7 @@ makedepends=('cargo' 'just' 'pkgconf')
 # Rust + C deps (ring) break under makepkg's default LTO flags.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('538070922a28c4d51e2d1e77c4d9264c2424a0c897ca51b4dd87ff9eb5809174')
+sha256sums=('04e0e3a5d8ac7d60e174a6ad4ceec614d03c5aaedcfba91b020e2715624b5028')
 
 prepare() {
   cd "CosmicExtensionManager-$pkgver"

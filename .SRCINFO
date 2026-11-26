@@ -1,7 +1,7 @@
 pkgbase = cosmic-ext-manager
 	pkgdesc = Browse, install, update and remove community COSMIC extensions
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/kevinRForshey/CosmicExtensionManager
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = cosmic-ext-manager
 	depends = vulkan-icd-loader
 	depends = fontconfig
 	options = !lto
-	source = cosmic-ext-manager-0.1.0.tar.gz::https://github.com/kevinRForshey/CosmicExtensionManager/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 538070922a28c4d51e2d1e77c4d9264c2424a0c897ca51b4dd87ff9eb5809174
+	source = cosmic-ext-manager-0.1.1.tar.gz::https://github.com/kevinRForshey/CosmicExtensionManager/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 04e0e3a5d8ac7d60e174a6ad4ceec614d03c5aaedcfba91b020e2715624b5028
 
 pkgname = cosmic-ext-manager
