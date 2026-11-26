@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qcmetrics
-_pkgver=1.50.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc='A Framework for Quality Control'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e45ad0b27adb496000f37cd4b386430dc554bb400cb7715f1bde32731b589b32')
+sha256sums=('a592a916682d5df436024d3bf5f4242a2ca12c282d6b775e317b7bd5ebcad4b5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
