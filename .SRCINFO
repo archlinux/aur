@@ -1,13 +1,13 @@
 pkgbase = r-hmmcopy
 	pkgdesc = Copy number prediction with correction for GC and mappability bias for HTS data
-	pkgver = 1.54.0
+	pkgver = 1.56.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HMMcopy
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = r-data.table
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HMMcopy_1.54.0.tar.gz
-	md5sums = c0f8f0d94ab10a92c2335b96b41f1f00
-	b2sums = 2ea21e9de0e25f7bf9435de246b1be708774b72a93fa56efc1eeed56d4da26ff45b6484a5cb99c1c35b222009f6c6d0fdb0e4246b279f6b07bbea7cea7c88866
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HMMcopy_1.56.0.tar.gz
+	md5sums = bdd342177500aeb63faf1ab31ffc6b2a
+	b2sums = b078144a777e227dce74ae1e5b029c585705baa8a4ce633404ab4ab86fd4d9d2581f36f7237ce158d6b0a8481c8e7b99968d3e50658400d4e6718111993fe67c
 
 pkgname = r-hmmcopy
