@@ -1,0 +1,5 @@
+[rvgit-bin]
+source = "github"
+github = "ririv/rvgit"
+use_latest_release = true
+prefix = "v"
