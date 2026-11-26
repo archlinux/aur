@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowPeaks
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-flowcore
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('677cef8a7d86d1bcdb5d9a2d37c3ef78')
-b2sums=('d5161d0590812da05545dcc4a0d36b8e3fb74b47636af2dfe8f19f64ac670e20204d6fed52d3227516706beb6bbbeef93c665000b56472afc126b9522a187e32')
+md5sums=('71cdcea079eabd50295aec3cb10e31bf')
+b2sums=('8bee6ac582349d626f4cdc520ee4d9cecc5fac76229ed70a3147b8c97d8392b931d7cf26e6a33d7cb88801b98bbf0ddb62b0966a75fe093be295ccf10bbf77fd')
 
 build() {
   mkdir build
