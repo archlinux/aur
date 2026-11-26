@@ -1,16 +1,16 @@
 pkgbase = vylk-bin
 	pkgdesc = Lightweight, low-resource single-binary markdown notes editor
-	pkgver = 3.1.2
+	pkgver = 3.1.3
 	pkgrel = 1
 	url = https://github.com/toxdes/vylk
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = vylk=3.1.2
+	provides = vylk=3.1.3
 	conflicts = vylk
-	source_x86_64 = vylk-3.1.2-x86_64.tar.gz::https://packages.toxdes.com/releases/vylk_3.1.2_amd64.tar.gz
-	sha256sums_x86_64 = b9f6a0dba490d51f3f5846257470248fdc8356f749f3e3ec6da0f793b4c97a57
-	source_aarch64 = vylk-3.1.2-aarch64.tar.gz::https://packages.toxdes.com/releases/vylk_3.1.2_arm64.tar.gz
-	sha256sums_aarch64 = cb54ff7d98662d1a3eb7a999c794d5120e06df828d07b222efdff639d2d4f839
+	source_x86_64 = vylk-3.1.3-x86_64.tar.gz::https://packages.toxdes.com/releases/vylk_3.1.3_amd64.tar.gz
+	sha256sums_x86_64 = 91aea85a5b5f85156071e2588126f9abcb3cc82f0057b9624368494104614b81
+	source_aarch64 = vylk-3.1.3-aarch64.tar.gz::https://packages.toxdes.com/releases/vylk_3.1.3_arm64.tar.gz
+	sha256sums_aarch64 = c54e9af675aa9536022fc5d68bdb1dd986d717c31ce0f5953532585be7b9b476
 
 pkgname = vylk-bin
