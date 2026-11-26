@@ -20,7 +20,7 @@ pkgbase = hydra64
 	conflicts = hydra64-bin
 	source = hydra64-1.0.1.tar.gz::https://github.com/Antidote1911/Hydra64/archive/refs/tags/v1.0.1.tar.gz
 	source = qt-advanced-docking-system-5.1.1.tar.gz::https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/refs/tags/v5.1.1.tar.gz
-	sha256sums = 92fc28b91e3e344da6cc5e5cbc8f7a6a2b5ba72d7bf40a7f3079e881dea9cf1f
+	sha256sums = eff661fae78211376123605ae4a08591226750152900e2034c4409d2e591761f
 	sha256sums = 9ce947acbb1984946f9145c976e42e6984f99b98fb414dd7354a290af6d4ff04
 
 pkgname = hydra64
