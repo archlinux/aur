@@ -1,5 +1,5 @@
 pkgbase = deucessh-git
-	pkgdesc = An SSH client and server library written in C17 (development version)
+	pkgdesc = SSH client and server library (development version)
 	pkgver = 1.0.0.r532.79c3bc8
 	pkgrel = 1
 	url = https://github.com/RealDeuce/DeuceSSH
