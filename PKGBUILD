@@ -4,7 +4,7 @@
 
 pkgname='alice-vision'
 pkgver=3.3.7
-pkgrel=2
+pkgrel=3
 options=('!debug') # debug package is kinda big -- needs investigation!
 pkgdesc="Photogrammetric Computer Vision Framework which provides 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
@@ -99,6 +99,7 @@ build() {
   cd ${srcdir}/AliceVision
 
   local CXXFLAGS="${CXXFLAGS//-Wp,-D_GLIBCXX_ASSERTIONS/}" # causes issues
+  local LDFLAGS="${LDFLAGS//-Wl,--as-needed/}" # Prevents some important symbols from being resolved
 
   cmake \
    	-Bbuild \
