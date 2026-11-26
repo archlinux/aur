@@ -1,0 +1,10 @@
+source: github_release
+repo: M0n7y5/vds-mango
+allow_prerelease: true
+verify_commands:
+  - vdsctl --version
+  - vdsd --help
+  - QT_QPA_PLATFORM=offscreen vds-mango --version
+  - test -f /usr/lib/systemd/system/vdsd.service
+  - test -f /usr/lib/udev/rules.d/72-vds-dualsense-hide.rules
+  - test -f /usr/share/licenses/vds-mango/LICENSE

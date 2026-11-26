@@ -1,0 +1,91 @@
+# shellcheck shell=bash
+_install_service="/usr/share/vds-mango/install-service.sh"
+_uninstall_service="/usr/share/vds-mango/uninstall-service.sh"
+
+_is_systemd_running() {
+	command -v systemctl >/dev/null 2>&1 && [ -d /run/systemd/system ]
+}
+
+_is_udev_running() {
+	command -v udevadm >/dev/null 2>&1 && [ -S /run/udev/control ]
+}
+
+_reload_udev_rules() {
+	if _is_udev_running; then
+		udevadm control --reload-rules || true
+		udevadm trigger --subsystem-match=input || true
+	fi
+}
+
+_install_vdsd_service() {
+	if [ -x "$_install_service" ]; then
+		"$_install_service" --enable --start
+	fi
+}
+
+_stop_vdsd_service() {
+	if [ -x "$_uninstall_service" ]; then
+		"$_uninstall_service" --stop || true
+	fi
+}
+
+_reload_systemd() {
+	if _is_systemd_running; then
+		systemctl daemon-reload || true
+	fi
+}
+
+_ensure_vds_group() {
+	getent group vds >/dev/null 2>&1 || groupadd --system vds
+}
+
+_warn_legacy_config_db() {
+	local db_path="/var/lib/vds/vdsd.db"
+	local message
+
+	[ -f "$db_path" ] || return 0
+	grep -qv '"profile"' "$db_path" || return 0
+	message="vds-mango: $db_path predates 0.3.0 and cannot be read."
+	message="$message Delete it and re-register controllers with vdsctl attach"
+	echo "$message" >&2
+}
+
+_print_next_steps_notice() {
+	cat <<'NOTICE'
+vds-mango: vdsd.service is enabled and started.
+Open vDS Mango from the application menu (or run vds-mango) to finish setup
+and add a controller.
+Log: /var/log/vdsd.log
+Command-line setup: /usr/share/doc/vds-mango/README.md
+NOTICE
+}
+
+post_install() {
+	_reload_udev_rules
+	_ensure_vds_group
+	_install_vdsd_service
+	_print_next_steps_notice
+}
+
+pre_upgrade() {
+	_stop_vdsd_service
+}
+
+post_upgrade() {
+	_reload_udev_rules
+	_ensure_vds_group
+	_warn_legacy_config_db
+	_install_vdsd_service
+	_print_next_steps_notice
+}
+
+pre_remove() {
+	if [ -x "$_uninstall_service" ]; then
+		"$_uninstall_service" --stop --disable || true
+	fi
+}
+
+post_remove() {
+	_reload_systemd
+	_reload_udev_rules
+}
