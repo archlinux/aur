@@ -1,6 +1,6 @@
 pkgbase = r-spatstat.explore
 	pkgdesc = Exploratory Data Analysis for the 'spatstat' Family
-	pkgver = 3.8.3
+	pkgver = 3.8.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spatstat.explore
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = r-spatstat.explore
 	optdepends = r-spatstat
 	optdepends = r-spatstat.linnet
 	optdepends = r-spatstat.model
-	source = https://cran.r-project.org/src/contrib/spatstat.explore_3.8-3.tar.gz
-	sha256sums = b116b5d6146ec60099ca906e2243e2d44bd68dea591e3adb534f73fa6adca5e1
+	source = https://cran.r-project.org/src/contrib/spatstat.explore_3.8-5.tar.gz
+	sha256sums = 2ac0fc8968cfd9f67649181302e83f698a61bb689cf1220b229ddb23e9e6ba8e
 
 pkgname = r-spatstat.explore
