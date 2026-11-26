@@ -1,0 +1,18 @@
+pkgbase = mermerd-bin
+	pkgdesc = Create Mermaid ERD diagrams from existing database tables
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/KarnerTh/mermerd
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = mermerd
+	conflicts = mermerd
+	options = !debug
+	source_x86_64 = mermerd-bin-0.13.0-x86_64.tar.gz::https://github.com/KarnerTh/mermerd/releases/download/v0.13.0/mermerd_0.13.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 20d2f052e34f23dc0b0094fd964bd729b35d6331df41666a7fd5c37e278a1e90
+	source_aarch64 = mermerd-bin-0.13.0-aarch64.tar.gz::https://github.com/KarnerTh/mermerd/releases/download/v0.13.0/mermerd_0.13.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 085b4fb29b94847117c67b9cf5629454362b38ca2ddf68da93719f9d7c88fa32
+
+pkgname = mermerd-bin
