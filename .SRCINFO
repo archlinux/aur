@@ -1,0 +1,17 @@
+pkgbase = nats-surveyor-bin
+	pkgdesc = Monitoring for NATS
+	pkgver = 0.9.14
+	pkgrel = 1
+	url = https://github.com/nats-io/nats-surveyor
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = nats-surveyor
+	conflicts = nats-surveyor
+	options = !debug
+	source_x86_64 = nats-surveyor-bin-0.9.14-x86_64.tar.gz::https://github.com/nats-io/nats-surveyor/releases/download/v0.9.14/nats-surveyor-v0.9.14-linux-amd64.tar.gz
+	sha256sums_x86_64 = c69194745e531e984b8bcb36539b3f4b089c4269658e46a93c271494255d61a1
+	source_aarch64 = nats-surveyor-bin-0.9.14-aarch64.tar.gz::https://github.com/nats-io/nats-surveyor/releases/download/v0.9.14/nats-surveyor-v0.9.14-linux-arm64.tar.gz
+	sha256sums_aarch64 = 400dfbb47a13780d84b8ab749cc890bc1b5b659a7b094b0bf9b6431267509695
+
+pkgname = nats-surveyor-bin
