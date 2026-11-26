@@ -1,0 +1,18 @@
+pkgbase = picolimbo-bin
+	pkgdesc = Lightweight Minecraft limbo server supporting many protocol versions
+	pkgver = 1.15.0+mc26.3
+	pkgrel = 1
+	url = https://github.com/Quozul/PicoLimbo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = picolimbo
+	conflicts = picolimbo
+	options = !debug
+	source_x86_64 = picolimbo-bin-1.15.0+mc26.3-x86_64.tar.gz::https://github.com/Quozul/PicoLimbo/releases/download/v1.15.0+mc26.3/pico_limbo_linux-x86_64-gnu.tar.gz
+	sha256sums_x86_64 = 091d7595738bf07f27299c50a3cc0ac7b1a44e510539141dcd9049e364f4015b
+	source_aarch64 = picolimbo-bin-1.15.0+mc26.3-aarch64.tar.gz::https://github.com/Quozul/PicoLimbo/releases/download/v1.15.0+mc26.3/pico_limbo_linux-aarch64-gnu.tar.gz
+	sha256sums_aarch64 = 891bde2112a153e943479068c5bf21570e59fc8084167332a1979d5aae79d8be
+
+pkgname = picolimbo-bin
