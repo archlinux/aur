@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="ldap-user-manager"
-pkgver=2.2.3
+pkgver=2.3.0
 # upstream renamed the project to luminary in 2.0
 _srcname=luminary
 pkgrel=1
@@ -14,7 +14,7 @@ makedepends=("composer")
 optdepends=("openldap: LDAP server")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wheelybird/$_srcname/archive/refs/tags/v$pkgver.tar.gz"
         "config.env.php")
-sha256sums=('a004d45578e3bbaacd96b52f87ffc29890e16b3aa47df67b1e8d338e6cfe57dd'
+sha256sums=('ffde0cf034010ad64d13511d9b688b2b9dbf7ad1b872155eeab370d976e381b3'
             'f38f5fb62435791422dadca7bf683dc12fe2d482f9594a13a6d33df00b72cf28')
 backup=("etc/webapps/ldap-user-manager/config.env.php")
 options=("!strip")
