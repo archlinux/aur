@@ -3,7 +3,7 @@
 # At release: set pkgver, put the tarball's sha256 in sha256sums, then push this and the generated .SRCINFO
 # (makepkg --printsrcinfo > .SRCINFO) to ssh://aur@aur.archlinux.org/vm-qontrol-bin.git
 pkgname=vm-qontrol-bin
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Create, run and fine-tune QEMU/KVM virtual machines: guided setup, unattended installs, settings that explain themselves"
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=('swtpm: the TPM Windows 11 requires'
             'polkit: one-prompt host changes (host drives, PCI handover, huge pages, nested virtualization)')
 options=('!strip')   # a self-contained .NET bundle: stripping breaks it
 source=("$url/releases/download/v$pkgver/VMQontrol-$pkgver-linux-x64.tar.gz")
-sha256sums=('9e4f530a6f0fbf91190882e45cf1c8407c6f653ca1f077964fbdf4bf1dfba6ad')
+sha256sums=('9598aa69df0b268037285693c92e1519e26ce2b1d4f68f406ddd2452196fc94c')
 noextract=("VMQontrol-$pkgver-linux-x64.tar.gz")
 
 prepare() {
