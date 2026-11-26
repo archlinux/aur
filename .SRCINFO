@@ -1,6 +1,6 @@
 pkgbase = loom-niri-git
 	pkgdesc = Loom: a connected desktop ecosystem built around niri
-	pkgver = r3929.g7989ab3
+	pkgver = r3930.gdea3841
 	pkgrel = 1
 	url = https://github.com/fram446742/loom-niri
 	arch = x86_64
