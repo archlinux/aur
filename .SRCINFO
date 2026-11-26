@@ -1,6 +1,6 @@
 pkgbase = paseo-cli-git
 	pkgdesc = Command-line interface for controlling Paseo AI coding agents (git - built from main)
-	pkgver = 0.13.0.r738.ge114e13de
+	pkgver = 0.13.0.r753.gbe6b5eb16
 	pkgrel = 2
 	url = https://github.com/getpaseo/paseo/tree/main/packages/cli
 	arch = x86_64
