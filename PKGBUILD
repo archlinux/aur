@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GRmetrics
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Calculate growth-rate inhibition (GR) metrics'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-tinytex
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('44cb7fab7d14651c6ae187a0b4065461c0aa06b574f2104057df76aa52d84467')
+sha256sums=('5ee1a2cdc783e57b616a6750747e16211cfb3f2bdf8089dfd321d127739bc16f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
