@@ -4,7 +4,7 @@
 # After tagging a new release: bump pkgver, run `updpkgsums`, then `makepkg --printsrcinfo > .SRCINFO`.
 
 pkgname=micforge
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Microphone processor for PipeWire: voice-only gate, AI noise removal, effects, voice changer and VST3/LV2 plugin hosting"
 arch=('x86_64' 'aarch64')
@@ -13,12 +13,15 @@ license=('GPL-3.0-or-later' 'MIT') # MIT: bundled parts of Steinberg's VST3 SDK
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'pipewire' 'rnnoise' 'lilv' 'hicolor-icon-theme'
          'gcc-libs' 'glibc')
 makedepends=('git' 'lv2')
+optdepends=('xorg-xwayland: windows of VST3 plugins (plugins run fine without it)'
+            'lsp-plugins-lv2: a large set of free plugins to use inside MicForge'
+            'lsp-plugins-vst3: the same plugins as VST3, with their own windows')
 _vst3tag=v3.8.1_build_84
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "vst3_base::git+https://github.com/steinbergmedia/vst3_base.git#tag=$_vst3tag"
         "vst3_pluginterfaces::git+https://github.com/steinbergmedia/vst3_pluginterfaces.git#tag=$_vst3tag"
         "vst3_public_sdk::git+https://github.com/steinbergmedia/vst3_public_sdk.git#tag=$_vst3tag")
-sha256sums=('SKIP'
+sha256sums=('b89056e6790b7a3b39d6d609059d9a4313b38b36f74fcb7d761a5b945a416aa1'
             'SKIP'
             'SKIP'
             'SKIP')
