@@ -1,7 +1,7 @@
 pkgbase = helcanium
 	pkgdesc = Helium Browser with native Wayland Vulkan rendering and Vulkan Video decoding/encoding
 	pkgver = 158.0.8127.36
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/lumexren/vulcanium
 	arch = x86_64
 	license = BSD-3-Clause

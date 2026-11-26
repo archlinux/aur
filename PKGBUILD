@@ -2,7 +2,7 @@
 
 pkgname=helcanium
 pkgver=158.0.8127.36
-pkgrel=4
+pkgrel=5
 _launcher_ver=8
 _manual_clone=0
 _system_clang=1
