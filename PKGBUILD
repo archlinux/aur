@@ -1,4 +1,6 @@
-# Maintainer: Roland Nagy <roliboy@protonmail.com>
+# Maintainer: pusi77 <pusineriandrea+gmail+com>
+# Contributor: pusi77-robot <pusineriandrea+gmail+com>
+# Contributor: Roland Nagy <roliboy@protonmail.com>
 
 pkgname=python-pywhat
 pkgver=5.1.0
@@ -19,7 +21,7 @@ makedepends=(
 optdepends=(
     "python-orjson: faster JSON serialization and deserialization"
 )
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pywhat/pywhat-5.1.0.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pywhat/pywhat-$pkgver.tar.gz")
 sha256sums=("8a6f2b3060f5ce9808802b9ca3eaf91e19c932e4eaa03a4c2e5255d0baad85c4")
 
 build() {
