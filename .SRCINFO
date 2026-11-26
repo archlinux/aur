@@ -1,6 +1,6 @@
 pkgbase = r-osat
 	pkgdesc = Optimal Sample Assignment Tool
-	pkgver = 1.60.0
+	pkgver = 1.62.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OSAT
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = r-osat
 	depends = r
 	optdepends = r-biobase
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/OSAT_1.60.0.tar.gz
-	md5sums = 5d7e6c7e4d9bdc4ffdee23afb98ad50f
-	b2sums = 4f82df21682c199211c003e87bdcfab55f3d22c250e6dc7420c68cfc3c03152d78c48524aea946f1291e8c7a07cca279387b234df088ec438ff8584f72078355
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OSAT_1.62.0.tar.gz
+	md5sums = 5d12fd252c0ff2273c9749c6eabf0899
+	b2sums = 9d52db6933feac8ed1deb6fb4b510a6cfa931f12617f5c1af3bb8ac2111173eda49787609baa18a3b6870981fbd876189f4824ebaf264b93edcefb5086d5f2e4
 
 pkgname = r-osat

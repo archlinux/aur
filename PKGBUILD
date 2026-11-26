@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OSAT
-_pkgver=1.60.0
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5d7e6c7e4d9bdc4ffdee23afb98ad50f')
-b2sums=('4f82df21682c199211c003e87bdcfab55f3d22c250e6dc7420c68cfc3c03152d78c48524aea946f1291e8c7a07cca279387b234df088ec438ff8584f72078355')
+md5sums=('5d12fd252c0ff2273c9749c6eabf0899')
+b2sums=('9d52db6933feac8ed1deb6fb4b510a6cfa931f12617f5c1af3bb8ac2111173eda49787609baa18a3b6870981fbd876189f4824ebaf264b93edcefb5086d5f2e4')
 
 build() {
   mkdir build
