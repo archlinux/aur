@@ -1,0 +1,17 @@
+pkgbase = mindwalk-bin
+	pkgdesc = Replay coding-agent sessions on a 3D map of your codebase
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/cosmtrek/mindwalk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mindwalk
+	conflicts = mindwalk
+	options = !debug
+	source_x86_64 = mindwalk-bin-0.5.0-x86_64.tar.gz::https://github.com/cosmtrek/mindwalk/releases/download/v0.5.0/mindwalk_linux_amd64.tar.gz
+	sha256sums_x86_64 = e9442b9261bcec3d76f4f044a0f95f52ebb32dba0f059587579bab9af6e63b20
+	source_aarch64 = mindwalk-bin-0.5.0-aarch64.tar.gz::https://github.com/cosmtrek/mindwalk/releases/download/v0.5.0/mindwalk_linux_arm64.tar.gz
+	sha256sums_aarch64 = a3991e00e0df984704524dea174293576dbc1d6cfba84ff3afb4898005878b4f
+
+pkgname = mindwalk-bin
