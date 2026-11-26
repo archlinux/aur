@@ -1,7 +1,7 @@
 # Maintainer: Koen Hendriks <info@koenhendriks.nl>
 
 pkgname=vox
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Make your microphone sound better in every app, with switchable voice profiles'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia' 'qt6-svg' 'qt6-wayland' '
 makedepends=('gcc' 'make')
 _src="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('847ede4696ef31a2db4b317622f90d055d8435895257faca527e981cd42bcfa4')
+sha256sums=('da9433bb25fdcf60fa22a70066279c368cb7d2949e84bc29da000eb1b078bd0f')
 
 build() {
 	cd "$_src"
