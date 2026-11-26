@@ -1,6 +1,6 @@
 pkgbase = r-beachmat.hdf5
 	pkgdesc = beachmat bindings for HDF5-backed matrices
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/beachmat.hdf5
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = r-beachmat.hdf5
 	optdepends = r-rhdf5
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/beachmat.hdf5_1.10.0.tar.gz
-	md5sums = bac3066f851527d8982a861525e4d433
-	b2sums = ef56de80c31bf85b0976f3817eb0fad0a6dd774292ca8387d18c6f946204b909331e4ef1cf33f32f4c8ee6613cd3338c2f3b00d94e68a0c7df9e7798110aef66
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/beachmat.hdf5_1.12.0.tar.gz
+	md5sums = 334e53df21ff045ea2dbf4c48d267534
+	b2sums = 7db1518a8553b823acec4ee5642277e56005667b87c2fa2558220c5563875e1372ad162ef4b4430bfc22ad88f430c28fcd7a44cbdb8641cc594cecc1b70565a3
 
 pkgname = r-beachmat.hdf5
