@@ -1,6 +1,6 @@
 pkgbase = r-biomvcclass
 	pkgdesc = Model-View-Controller (MVC) Classes That Use Biobase
-	pkgver = 1.80.0
+	pkgver = 1.82.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BioMVCClass
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-biomvcclass
 	depends = r-graph
 	depends = r-mvcclass
 	depends = r-rgraphviz
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioMVCClass_1.80.0.tar.gz
-	sha256sums = ec1ef172d80879b315cb6bf0b88df0825d252a025d2dfdea001a1b35b75da863
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioMVCClass_1.82.0.tar.gz
+	sha256sums = c4e28c02fe110446e60a2179fd0f829f27886c9cccebbc88348dbd1ddf20c98e
 
 pkgname = r-biomvcclass
