@@ -1,0 +1,21 @@
+pkgbase = elpaudio-mini-git
+	pkgdesc = Simple audio player, written on GameBreaker (git version)
+	pkgver = 0.0.11.r0.gdbf5b80
+	pkgrel = 1
+	url = https://codeberg.org/elpAudio/elpAudioMini
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = gamebreaker-sdl3>=0.1.10b
+	provides = elpaudio-mini
+	conflicts = elpaudio-mini
+	source = git+https://codeberg.org/elpAudio/elpAudioMini.git
+	source = elpaudio-mini.desktop
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = fa6a380c59b8a1afe997febe9b4e602d1104f061b7f70c60fd19d65d3c66e080
+	sha256sums = b5622819086fbbc29c29908f39ca3c8cac50a8d8e1a823892d9ee25daac3007a
+
+pkgname = elpaudio-mini-git

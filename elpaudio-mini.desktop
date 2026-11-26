@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=elpAudioMini
+GenericName=Audio Player
+Comment=Simple audio player, written on GameBreaker
+Exec=elpaudio-mini %f
+Icon=elpaudio-mini
+Terminal=false
+Categories=AudioVideo;Audio;Player;
+MimeType=audio/mpeg;audio/ogg;audio/flac;audio/x-wav;audio/x-mod;
+StartupWMClass=elpAudioMini
