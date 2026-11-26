@@ -1,7 +1,7 @@
 pkgbase = plasma6-applet-quicklaunch
 	pkgdesc = Customizable quicklaunch widget for KDE Plasma 6 panels
 	pkgver = 6.5.80
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/ixnewton/org.kde.plasma.quicklaunch
 	install = plasma6-applet-quicklaunch.install
 	arch = x86_64
@@ -24,6 +24,6 @@ pkgbase = plasma6-applet-quicklaunch
 	source = git+https://github.com/ixnewton/org.kde.plasma.quicklaunch.git#branch=main
 	source = quicklaunch-plugin-path.sh
 	sha256sums = SKIP
-	sha256sums = 5cdbdbbbbfbe97e3697c6ad5e0e793214bee469712b6290c1d6c40cf76d2814a
+	sha256sums = 0378677a389e09fbbe3f07c292530c4bfa1393fb961780e9f14dbce2bd7e258a
 
 pkgname = plasma6-applet-quicklaunch
