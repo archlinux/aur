@@ -1,8 +1,7 @@
-# Maintainer: Il Tuo Nome <tua-email@example.com>
-# Nota: sostituisci TUO_UTENTE con il tuo username GitHub prima di pubblicare su AUR.
+# Maintainer: Federico Paolini <nightranger7@gmail.com>
 
 pkgname=wallcycle
-pkgver=0.2.0
+pkgver=0.2.0a
 pkgrel=1
 pkgdesc="Cross-platform wallpaper slideshow with real-time clock overlay and BT.709 luminance filter (Lazarus/FPC)"
 arch=('x86_64' 'aarch64')
@@ -38,10 +37,7 @@ build() {
   lazbuild --pcp="$lazcfg" --lazarusdir=/usr/lib/lazarus "$srcdir/luipack/uniqueinstance/uniqueinstance_package.lpk"
 
   # 2. Compila il tuo progetto principale
-  lazbuild --pcp="$lazcfg" --lazarusdir=/usr/lib/lazarus -B "$srcdir/wallcycle/WallCycle.lpi"
-
-  cd "$srcdir/wallcycle"
-  lazbuild --pcp="$lazcfg" --widgetset=qt6 --build-mode=Release WallCycle.lpi
+  lazbuild --pcp="$lazcfg" --widgetset=qt6 --lazarusdir=/usr/lib/lazarus -B "$srcdir/wallcycle/WallCycle.lpi"
 }
 
 package() {
