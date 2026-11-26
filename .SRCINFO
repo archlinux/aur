@@ -1,0 +1,14 @@
+pkgbase = noisia-bin
+	pkgdesc = Harmful workload generator for PostgreSQL testing
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/lesovsky/noisia
+	arch = x86_64
+	license = BSD-3-Clause
+	provides = noisia
+	conflicts = noisia
+	options = !debug
+	source_x86_64 = noisia-bin-0.4.0-x86_64.tar.gz::https://github.com/lesovsky/noisia/releases/download/v0.4.0/noisia_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = a70bdd984a81d667dc32e2768b812b1c9739ca0458d1623f655fa866150f5bd3
+
+pkgname = noisia-bin
