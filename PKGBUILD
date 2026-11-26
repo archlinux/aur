@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=abseqR
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Reporting and data analysis functionalities for Rep-Seq datasets of antibody libraries'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e0c275742fa2b1df5e7c3724894aa5a352edcedb0cc5a92b0d10a3fcc23a2aa0')
+sha256sums=('bcff7bd4ecf5ea5112fc6e3ef63196a5c23e6ceb20f0e70894cec893b80b1dcd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
