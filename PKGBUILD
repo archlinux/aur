@@ -2,7 +2,7 @@
 
 pkgname=libpdfium
 pkgver=158.0.8127.88
-pkgrel=1
+pkgrel=2
 pkgdesc='PDF rendering and manipulation library'
 arch=(x86_64)
 url='https://pdfium.googlesource.com/pdfium/'

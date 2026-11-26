@@ -1,7 +1,7 @@
 pkgbase = libpdfium
 	pkgdesc = PDF rendering and manipulation library
 	pkgver = 158.0.8127.88
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pdfium.googlesource.com/pdfium/
 	arch = x86_64
 	license = Apache-2.0
@@ -33,7 +33,7 @@ pkgbase = libpdfium
 	source = buildtools::git+https://chromium.googlesource.com/chromium/src/buildtools.git#commit=64e87f9fbdaf6f53f6cff8f15e4b06f17cead514
 	source = abseil-cpp::git+https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp.git#commit=a00d74bb55b38f213a3c6110b4bcab5bb565bd56
 	source = dragonbox::git+https://chromium.googlesource.com/external/github.com/jk-jeon/dragonbox.git#commit=beeeef91cf6fef89a4d4ba5e95d47ca64ccb3a44
-	source = generate_shim_headers.py::https://github.com/chromium/chromium/raw/refs/tags/158.0.8127.88/tools/generate_shim_headers/generate_shim_headers.py
+	source = generate_shim_headers.py::https://cdn.jsdelivr.net/gh/chromium/chromium@158.0.8127.88/tools/generate_shim_headers/generate_shim_headers.py
 	source = compiler-rt-adjust-paths.patch
 	source = hermetic-python.patch
 	source = increase-fortify-level.patch
