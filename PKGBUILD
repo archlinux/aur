@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SCnorm
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Normalization of single cell RNA-seq data'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e8ff491e96e123f2dfd949d6400dbb37129f1db73c492c3fb13fdbbf16791c36')
+sha256sums=('22619cd5654484e4ec41f1729ea0a958556cbc04409ef8d5dce969e3d8c21861')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
