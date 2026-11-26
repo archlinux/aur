@@ -1,0 +1,20 @@
+pkgbase = terralist-bin
+	pkgdesc = Private Terraform registry for modules and providers
+	pkgver = 0.11.4
+	pkgrel = 1
+	url = https://github.com/terralist/terralist
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	depends = glibc
+	provides = terralist
+	conflicts = terralist
+	options = !debug
+	source = terralist-bin-0.11.4-LICENSE::https://raw.githubusercontent.com/terralist/terralist/v0.11.4/LICENSE
+	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
+	source_x86_64 = terralist-bin-0.11.4-x86_64.zip::https://github.com/terralist/terralist/releases/download/v0.11.4/terralist_linux_amd64.zip
+	sha256sums_x86_64 = dcf14ae57477ff5f02dec2f68f10c5414c8c21815095c1fc4c1968daa14ef9d0
+	source_aarch64 = terralist-bin-0.11.4-aarch64.zip::https://github.com/terralist/terralist/releases/download/v0.11.4/terralist_linux_arm64.zip
+	sha256sums_aarch64 = bbb2a3d3ad3cfac9ab012b855ea2f5f1eadddcfa2b4849ba457bcd8465bf0b1a
+
+pkgname = terralist-bin
