@@ -4,7 +4,7 @@
 
 pkgname=adw-gtk-color-git
 _pkgname=adw-gtk3
-pkgver=6.4.r10.g34a69db
+pkgver=6.5.r4.g47922ed
 pkgrel=1
 pkgdesc="The theme from libadwaita ported to GTK-3 with accent color variants"
 arch=('any')
@@ -79,13 +79,13 @@ build() {
 
 		# 3. Compile GTK3 CSS
 		echo "  Compiling GTK3..."
-		sass --no-source-map -I "$SRC_DIR/sass" "$SRC_DIR/sass/gtk.scss" "$OUT_DIR/gtk-3.0/gtk.css"
-		sass --no-source-map -I "$SRC_DIR/sass" "$SRC_DIR/sass/gtk-dark.scss" "$OUT_DIR/gtk-3.0/gtk-dark.css"
+		/usr/bin/sass --no-source-map -I "$SRC_DIR/sass" "$SRC_DIR/sass/gtk.scss" "$OUT_DIR/gtk-3.0/gtk.css"
+		/usr/bin/sass --no-source-map -I "$SRC_DIR/sass" "$SRC_DIR/sass/gtk-dark.scss" "$OUT_DIR/gtk-3.0/gtk-dark.css"
 
 		# 4. Compile GTK4 CSS
 		echo "  Compiling GTK4..."
 		cp "$SRC_DIR/theme-light/gtk4/libadwaita.css" "$OUT_DIR/gtk-4.0/libadwaita.css"
-		sass --no-source-map -I "$SRC_DIR/sass" "$SRC_DIR/sass/gtk4/libadwaita-tweaks.scss" "$OUT_DIR/gtk-4.0/libadwaita-tweaks.css"
+		/usr/bin/sass --no-source-map -I "$SRC_DIR/sass" "$SRC_DIR/sass/gtk4/libadwaita-tweaks.scss" "$OUT_DIR/gtk-4.0/libadwaita-tweaks.css"
 
 		echo "@import url('libadwaita.css');" >"$OUT_DIR/gtk-4.0/gtk.css"
 		echo "@import url('libadwaita-tweaks.css');" >>"$OUT_DIR/gtk-4.0/gtk.css"
