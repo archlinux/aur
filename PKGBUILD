@@ -1,7 +1,7 @@
 # Maintainer: James LeBaron <jimmleb178@gmail.com>
 
 pkgname=bb-bin
-pkgver=0.49.0
+pkgver=0.50.1
 pkgrel=1
 pkgdesc="Agentic IDE that builds itself"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   'LICENSE'
 )
 noextract=("$pkgname-$pkgver.AppImage")
-sha256sums=('8349ab773715624fec5082739c817d2a15809504699d34b47d3d9dfbe60fc770'
+sha256sums=('7063d187817abaff710afaba039bed78923e464a9006a39231ff04d1764408a8'
             '97cff1674b48743008e9f7e1159174a5cb33a955ca9a545265ccf4a824787d32'
             'd10816aa30183af920bdd789a81b16847bcf3e287e1b3419dd7d85f6e3e8e7b0')
 
