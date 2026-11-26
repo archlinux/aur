@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=variancePartition
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,7 +40,6 @@ checkdepends=(
   r-runit
 )
 optdepends=(
-  r-ballgown
   r-biocgenerics
   r-biocstyle
   r-cowplot
@@ -60,8 +59,8 @@ optdepends=(
   r-zenith
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2864a77efcd8ede6796bfd8199b280e7')
-b2sums=('f852ff0280057219c6db48cbf96f91e2af2ec8b6cdc9fc10aa3a631f494aaac24340d5da154e13bd77c8bd2f87503516391c6d2b13001f4da856802c09ca25f1')
+md5sums=('e620a9a2cb022ce415f8fc805e00541e')
+b2sums=('b5022a0aa2a120d89e09fcec078cfdfa755f35597d9b1ace2f1b13bb8607efee291fb4c5b6198251b5d84983fe13fe748d194156543bb3b5bc2d78627f00d60e')
 
 build() {
   mkdir build
