@@ -1,0 +1,20 @@
+pkgbase = rimage-bin
+	pkgdesc = Image optimization CLI inspired by Squoosh
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/vlad-salone/rimage
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = dav1d
+	depends = glibc
+	depends = libgcc
+	provides = rimage
+	conflicts = rimage
+	options = !debug
+	source_x86_64 = rimage-bin-0.14.0-x86_64.tar.gz::https://github.com/vlad-salone/rimage/releases/download/v0.14.0/rimage-0.14.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 71e5b5b09e61e27ae71d98688216410cf2ccbdd3d5ddc95b0811632c2225fbc2
+	source_aarch64 = rimage-bin-0.14.0-aarch64.tar.gz::https://github.com/vlad-salone/rimage/releases/download/v0.14.0/rimage-0.14.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 35493f0539dd731867107194aa5869588eb8577873fb23ebf506ebe93b659917
+
+pkgname = rimage-bin
