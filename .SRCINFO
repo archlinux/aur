@@ -1,6 +1,6 @@
 pkgbase = wingdrive-nightly
 	pkgdesc = WingDrive desktop file manager, every release including alpha, beta and rc
-	pkgver = 3.8.1
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://wingdrive.org
 	arch = x86_64
@@ -33,9 +33,9 @@ pkgbase = wingdrive-nightly
 	conflicts = wingdrive-bin
 	options = !strip
 	options = !debug
-	source = WingDrive-3.8.1-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v3.8.1/WingDrive-3.8.1-x86_64.AppImage
-	source = LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v3.8.1/LICENSE
-	sha256sums = bc597edc3d94c369762badb251094b3e92df341cf14c730d2709db504ffedd9b
+	source = WingDrive-3.8.2-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v3.8.2/WingDrive-3.8.2-x86_64.AppImage
+	source = LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v3.8.2/LICENSE
+	sha256sums = 46bd89ea9bc6d2ce3827ca2e096a9a8b0c3fd6b034f1aed1b5dc948b49e22b49
 	sha256sums = 57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8
 
 pkgname = wingdrive-nightly
