@@ -1,6 +1,6 @@
 pkgbase = r-matter
 	pkgdesc = A framework for rapid prototyping with file-based data structures
-	pkgver = 2.14.0
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/matter
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = r-matter
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/matter_2.14.0.tar.gz
-	sha256sums = c89bad225c8ec6d65767266a13ea3068a97bf82a4dab41c23fb523c29aa3901a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/matter_2.16.0.tar.gz
+	sha256sums = f966a202815313b1183a5558751e4247fc19a17cc3f35c10a703206041117959
 
 pkgname = r-matter
