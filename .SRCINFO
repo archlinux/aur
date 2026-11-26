@@ -1,0 +1,17 @@
+pkgbase = dendy-bin
+	pkgdesc = NES/Famicom emulator with P2P network multiplayer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/maxpoletaev/dendy
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = dendy
+	conflicts = dendy
+	options = !debug
+	source = dendy-bin-1.0.0-LICENSE::https://raw.githubusercontent.com/maxpoletaev/dendy/v1.0.0/LICENSE.txt
+	sha256sums = 2a1913fab5a013d216064bc216cab36a42e6df1bd5d1b2b9c4df1c3171e48c44
+	source_x86_64 = dendy-bin-1.0.0-x86_64::https://github.com/maxpoletaev/dendy/releases/download/v1.0.0/dendy-linux-amd64
+	sha256sums_x86_64 = 7d3913b1d078ab87538ccf40ece9d5c7d544dc3e3cfa2b49c2312b5549dc1eb9
+
+pkgname = dendy-bin
