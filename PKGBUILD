@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=thinkmeta-concurrenttasks-core
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Scheduler runtime required by the ThinkMeta concurrent-task encoders"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip' '!debug')
 # unchanged: repackaging these bytes would breach it, and -debug would point at
 # symbols no user can obtain anyway.
 source=("samples-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dfec9feffaca9a0ede5370ec045da5cf0f222c4498daf7f88e30e34f0f77c4c7')
+sha256sums=('3381032af63e70b2b4dce5f7b788e43c4648f3d07d66cb05de703066aa2bcddc')
 # The terms say they are provisional and will be replaced by the complete licence,
 # so these bytes can change without a version change. Pin the reviewed text: a
 # rewrite then fails the build instead of shipping under terms nobody read. This
