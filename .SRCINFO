@@ -1,6 +1,6 @@
 pkgbase = x3d-toggle
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/X3D-Toggle/x3d-toggle-main
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -37,7 +37,7 @@ pkgname = x3d-toggle
 
 pkgname = x3d-toggle-gui
 	pkgdesc = GTK4/libadwaita desktop dashboard for X3D Toggle
-	depends = x3d-toggle=2.0.0-1
+	depends = x3d-toggle=2.0.0-2
 	depends = gtk4
 	depends = libadwaita
 	optdepends = lact: AMD GPU clocks, voltages, power limits, and fan curves

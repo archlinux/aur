@@ -3,7 +3,7 @@
 pkgbase=x3d-toggle
 pkgname=('x3d-toggle' 'x3d-toggle-gui')
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/X3D-Toggle/x3d-toggle-main"
 license=('GPL-3.0-or-later')
@@ -23,6 +23,11 @@ options=('!strip' '!lto')
 
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('ee1163b87e35f91b4d3f1481b6b5ea0bf8b4c32f9c681426bf882a3aed695b55')
+
+prepare() {
+    cd "${srcdir}/x3d-toggle-main-${pkgver}"
+    sed -i 's/-target bpf/-g -target bpf/' Makefile
+}
 
 build() {
     cd "${srcdir}/x3d-toggle-main-${pkgver}"
