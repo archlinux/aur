@@ -1,0 +1,22 @@
+pkgbase = flowpipe-bin
+	pkgdesc = Cloud scripting and workflow automation engine
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/turbot/flowpipe
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = flowpipe
+	conflicts = flowpipe
+	options = !debug
+	source = flowpipe-bin-1.2.4-LICENSE::https://raw.githubusercontent.com/turbot/flowpipe/v1.2.4/LICENSE
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	source_x86_64 = flowpipe-bin-1.2.4-x86_64.tar.gz::https://github.com/turbot/flowpipe/releases/download/v1.2.4/flowpipe.linux.amd64.tar.gz
+	sha256sums_x86_64 = f553fc0f9b019c5de8cffa7dcc4c8b2a0fea73708e66afac925a6c2a92b98334
+	source_aarch64 = flowpipe-bin-1.2.4-aarch64.tar.gz::https://github.com/turbot/flowpipe/releases/download/v1.2.4/flowpipe.linux.arm64.tar.gz
+	sha256sums_aarch64 = 09c76600c4558f7b2a9b5f608d5d49d0fafb5f91262bc3b5e46ab6348f9634be
+
+pkgname = flowpipe-bin
