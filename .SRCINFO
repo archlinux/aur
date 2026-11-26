@@ -1,21 +1,39 @@
 pkgbase = python-azure-identity
 	pkgdesc = Microsoft Azure Identity Client Library for Python
-	pkgver = 1.25.2
+	pkgver = 1.27.1
 	pkgrel = 1
-	url = https://github.com/Azure/azure-sdk-for-python
+	url = https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/identity/azure-identity
 	arch = any
 	license = MIT
-	makedepends = python-build
+	checkdepends = python-aiohttp
+	checkdepends = python-certifi
+	checkdepends = python-pytest
+	checkdepends = python-dotenv
+	checkdepends = python-urllib3
+	checkdepends = python-configargparse
+	checkdepends = python-pytest-asyncio
+	checkdepends = glibc
+	checkdepends = libgcc
+	checkdepends = libstdc++
+	checkdepends = zlib
+	checkdepends = icu
+	checkdepends = openssl-3
+	checkdepends = git
 	makedepends = python-setuptools
+	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.9.0
-	depends = python-azure-core>=1.31.0
-	depends = python-cryptography>=2.5.0
-	depends = python-msal>=1.31.0
-	depends = python-msal-extensions>=1.2.0
-	depends = python-typing_extensions>=4.0.0
-	source = python-azure-identity-1.25.2.tar.gz::https://github.com/Azure/azure-sdk-for-python/archive/refs/tags/azure-identity_1.25.2.tar.gz
-	b2sums = fe3ba3370ac85ef724d119b4c175bd8d1d2c557adee6f815f2f81377308635268c51714b210afa46cfc2f497d4f0bd69a9ad73a4645b2eb7ceb0d5df7b7cfdaf
+	depends = python
+	depends = python-azure-core
+	depends = python-cryptography
+	depends = python-msal
+	depends = python-msal-extensions
+	depends = python-typing_extensions
+	noextract = test-proxy-1.0.0-dev.20260521.2-x86_64.tar.gz
+	noextract = test-proxy-1.0.0-dev.20260521.2-aarch64.tar.gz
+	source = azure-identity-1.27.1.tar.gz::https://github.com/Azure/azure-sdk-for-python/archive/refs/tags/azure-identity_1.27.1.tar.gz
+	source = azure-identity-recordings-61e626a4a0.tar.gz::https://github.com/Azure/azure-sdk-assets/archive/refs/tags/python/identity/azure-identity_61e626a4a0.tar.gz
+	sha256sums = 6403af054fdc84aa73a1b992046ad81295f6ce9ff5a084f1a21b3719b2c022a5
+	sha256sums = 48ec0eec49e0b3312614e0faff19e1315b627466064255d13ca6bcc72a8cbd75
 
 pkgname = python-azure-identity
