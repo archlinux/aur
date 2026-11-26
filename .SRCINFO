@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-qt6-datavis3d
 	pkgdesc = Qt6 Data Visualization module (android)
-	pkgver = 6.12.0
+	pkgver = 6.12.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = android-x86-64-qt6-datavis3d
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.12/6.12.0/submodules/qtdatavis3d-everywhere-src-6.12.0.tar.xz
-	sha256sums = 5f79b948eb1e81ff7f69e335b075c1b48953d88f5d97970b537e348dbbaa98dc
+	source = https://download.qt.io/official_releases/qt/6.12/6.12.1/submodules/qtdatavis3d-everywhere-src-6.12.1.tar.xz
+	sha256sums = dddb1c9a752c18ef4d23937076c0322e89bfedd8a9b6c90081c0b9fb5d58fba9
 
 pkgname = android-x86-64-qt6-datavis3d
