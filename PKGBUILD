@@ -2,7 +2,7 @@
 
 pkgname=helcanium-bin
 pkgver=158.0.8127.36
-pkgrel=4
+pkgrel=5
 pkgdesc="Helium Browser with native Wayland Vulkan rendering and Vulkan Video decoding/encoding (prebuilt)"
 arch=('x86_64')
 url="https://github.com/lumexren/vulcanium"
@@ -77,7 +77,7 @@ backup=('etc/helcanium/default-flags.conf')
 options=('!strip')
 source=("https://github.com/lumexren/vulcanium/releases/download/v${pkgver}-${pkgrel}/helcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("helcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('cf688894003214deb4fec23768d4f4298189e8bdeb3c329f46495bd8121785a3')
+sha256sums=('2b44f68aabc31900859a6374d965a7741759b02d7d2bf3746aa6b3d96131b2fa')
 
 package() {
   bsdtar -xf "${srcdir}/helcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" \
