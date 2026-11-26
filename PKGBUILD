@@ -1,8 +1,8 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=pi-ext-rpiv-ask-user-question
-pkgver=2.15.0
-pkgrel=2
+pkgver=2.16.0
+pkgrel=1
 pkgdesc='Structured multiple-choice questions the model can put to the user, for the Pi coding agent'
 arch=('any')
 url='https://github.com/juicesharp/rpiv-mono'
@@ -16,7 +16,7 @@ _npmname=@juicesharp/rpiv-ask-user-question
 _tarball=rpiv-ask-user-question
 
 source=("${_tarball}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_tarball}-${pkgver}.tgz")
-sha256sums=('3b3dfb5f2836e897c2884a70a80afcde2a5370af4ced8a2c927e0ed7bf8fb81f')
+sha256sums=('4105b14ae16008ab1698e15e0e784419af61058488ea90fef4831ad5454023f3')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${_npmname}/latest" | jq -r '.version'
