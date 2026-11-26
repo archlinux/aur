@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Cardinal
-_pkgver=3.14.0
+_pkgver=3.16.0
 pkgname=r-${_pkgname,,}
-pkgver=3.14.0
+pkgver=3.16.0
 pkgrel=1
 pkgdesc='A mass spectrometry imaging toolbox for statistical analysis'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('173f9821cc85bb25309342a41ccf3b5343cafeaa704801c43443a24776b1c648')
+sha256sums=('2f37574f92a258320b64f31c1a6d664397a685191d9a90384ab23336187f93fc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
