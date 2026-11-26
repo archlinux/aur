@@ -22,8 +22,6 @@ license=('MIT')
 provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
 
-depends=('glibc' 'libgcc' 'libstdc++')
-
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
@@ -35,7 +33,7 @@ package() {
 
 	install -Dm755 "${_appname^}.bin" "${pkgdir}/usr/bin/${_appname}"
 
-	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
