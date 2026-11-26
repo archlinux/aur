@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio
-pkgver=0.5.4.2
+pkgver=0.5.4.3
 pkgrel=1
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
@@ -25,6 +25,7 @@ depends=(
     'openimageio'
     'onetbb'
     'openssl'
+    'openxr'
     'python'
     'python-packaging'
     'sdl3'
@@ -69,7 +70,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MrNeRF/LichtFeld-Studio
         "libvterm-${_libvtermcommit}.tar.gz::https://github.com/neovim/libvterm/archive/${_libvtermcommit}.tar.gz"
         "nanobind-${_nanobind_ver}.tar.gz::https://github.com/wjakob/nanobind/archive/refs/tags/v${_nanobind_ver}.tar.gz"
         'lichtfeld-studio.desktop')
-sha256sums=('8d2021d9ea701f616ae9c0f9303f5907e8dd5708c2288eb02c81972843846c44'
+sha256sums=('f517fb8c4fb60c48d838ce44a03e80170fe1079611ce0482284fdf25fc4a7e24'
             'SKIP'
             'f09525eb2a02679be0eb50bc1c294569e8cbaa4b59fb867d606236de2830045f'
             '01f1f0cd0398743c18f33d07ae36ad410bd7f4a1e90683b508504de897d6e629'
