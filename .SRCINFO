@@ -1,0 +1,31 @@
+pkgbase = android-tv-remote-git
+	pkgdesc = Qt desktop remote for Android TV with a native NVIDIA Shield trackpad
+	pkgver = r24.gf6f71ee
+	pkgrel = 1
+	url = https://github.com/ragu-manjegowda/android-tv-remote
+	arch = any
+	license = MIT
+	checkdepends = ttf-dejavu
+	checkdepends = xorg-server-xvfb
+	checkdepends = xorg-xauth
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	depends = python
+	depends = python-aiofiles
+	depends = python-androidtvremote2
+	depends = python-async-timeout
+	depends = python-cryptography
+	depends = python-protobuf
+	depends = python-pyqt6
+	depends = python-qasync
+	depends = python-zeroconf
+	optdepends = qt-solarized: use the system Solarized stylesheets instead of the bundled copies
+	optdepends = android-tools: ADB mouse control for TVs without the Shield trackpad service
+	provides = android-tv-remote
+	conflicts = android-tv-remote
+	source = android-tv-remote::git+https://github.com/ragu-manjegowda/android-tv-remote.git#branch=main
+	sha256sums = SKIP
+
+pkgname = android-tv-remote-git
