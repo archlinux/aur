@@ -1,7 +1,7 @@
 # Maintainer: Braulio Oliveira <brauliobo@gmail.com>
 
 pkgname=zensmu-bin
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Safety-first Rust CLI, live TUI, and unprivileged GUI for AMD Ryzen SMU control and telemetry (prebuilt binary)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ provides=('zensmu')
 conflicts=('zensmu' 'zensmu-git')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/brauliobo/zensmu/releases/download/v${pkgver}/zensmu-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('c56ffcf5f63a8ff5c39c3bc39a88027f21554eb5ef251a7cf84bcb4149cc4c6e')
+sha256sums=('55180bce068b5cb562523e2a9a53a7ca315980d00bca18586f07085739135c5d')
 
 package() {
     local root="${srcdir}/zensmu-v${pkgver}-x86_64-unknown-linux-gnu"
@@ -35,17 +35,31 @@ package() {
     install -Dm755 "${root}/zensmu" "${pkgdir}/usr/bin/zensmu"
     install -Dm755 "${root}/zensmu-gui" "${pkgdir}/usr/bin/zensmu-gui"
 
-    # Systemd boot apply service, user telemetry recorder service, & suspend/hibernate resume hook
+    # Systemd boot apply service, user telemetry recorder & exporter services, & suspend/hibernate resume hook
     install -Dm644 "${root}/packaging/systemd/zensmu-apply.service" \
         "${pkgdir}/usr/lib/systemd/system/zensmu-apply.service"
     install -Dm644 "${root}/packaging/systemd/zensmu-record.service" \
         "${pkgdir}/usr/lib/systemd/user/zensmu-record.service"
+    if [[ -f "${root}/packaging/systemd/zensmu-exporter.service" ]]; then
+        install -Dm644 "${root}/packaging/systemd/zensmu-exporter.service" \
+            "${pkgdir}/usr/lib/systemd/user/zensmu-exporter.service"
+    fi
     install -Dm755 "${root}/packaging/systemd/zensmu-resume" \
         "${pkgdir}/usr/lib/systemd/system-sleep/zensmu-resume"
 
     # PolicyKit policy for unprivileged zensmu-gui -> pkexec /usr/bin/zensmu elevation
     install -Dm644 "${root}/packaging/polkit/org.zensmu.policy" \
         "${pkgdir}/usr/share/polkit-1/actions/org.zensmu.policy"
+
+    # Desktop launcher & SVG application icon
+    if [[ -f "${root}/packaging/desktop/zensmu-gui.desktop" ]]; then
+        install -Dm644 "${root}/packaging/desktop/zensmu-gui.desktop" \
+            "${pkgdir}/usr/share/applications/zensmu-gui.desktop"
+    fi
+    if [[ -f "${root}/packaging/desktop/zensmu.svg" ]]; then
+        install -Dm644 "${root}/packaging/desktop/zensmu.svg" \
+            "${pkgdir}/usr/share/icons/hicolor/scalable/apps/zensmu.svg"
+    fi
 
     # Profile directory
     install -dm755 "${pkgdir}/etc/zensmu"
@@ -58,6 +72,10 @@ package() {
     "${pkgdir}/usr/bin/zensmu" completions bash > "${pkgdir}/usr/share/bash-completion/completions/zensmu"
     "${pkgdir}/usr/bin/zensmu" completions zsh  > "${pkgdir}/usr/share/zsh/site-functions/_zensmu"
     "${pkgdir}/usr/bin/zensmu" completions fish > "${pkgdir}/usr/share/fish/vendor_completions.d/zensmu.fish"
+
+    # Man page
+    install -dm755 "${pkgdir}/usr/share/man/man1"
+    "${pkgdir}/usr/bin/zensmu" manpage > "${pkgdir}/usr/share/man/man1/zensmu.1"
 
     # Documentation & License
     install -Dm644 "${root}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
