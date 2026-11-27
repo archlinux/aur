@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=tldraw-offline-bin
-pkgver=1.24.1
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="A local whiteboard for you and your agents"
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ options=('!strip' '!debug')
 # product still installs itself as tldraw-offline (binary, desktop file, icons).
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/tldraw/tldraw-offline/releases/download/v${pkgver}/tldraw-office-linux-amd64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::https://github.com/tldraw/tldraw-offline/releases/download/v${pkgver}/tldraw-office-linux-arm64.AppImage")
-sha256sums_x86_64=('a34e7af8b31cedb7a7e8d07d59e433f014957fc1d2e22b23e1a577bd1f3b5ce8')
-sha256sums_aarch64=('ffe195d982b9b3799a34c096b9f04c3df007eaf4a2fafb0d3b723c36e98497ad')
+sha256sums_x86_64=('fd2353701b431ed1dfdec1d84fcf7e0d393db80468df006e8bfaf7a5b0d61ea2')
+sha256sums_aarch64=('1b296ee6e0c1b02522de4e98e2d493306c6e9dab5f3960f2cd2445d69277e6b6')
 noextract=(
     "${pkgname}-${pkgver}-x86_64.deb"
     "${pkgname}-${pkgver}-aarch64.AppImage"
