@@ -1,7 +1,7 @@
 # Maintainer: Vikyek
 
 pkgname=paru-wrapper
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Enhanced paru wrapper with modular plugin hooks, local AUR repo management, and VCS migrations"
 arch=('any')
