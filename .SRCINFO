@@ -1,0 +1,26 @@
+pkgbase = archoxide-bin
+	pkgdesc = Keyboard-driven terminal UI for Arch packages, Flatpaks, and AppImages (prebuilt)
+	pkgver = 0.1.0
+	pkgrel = 14
+	url = https://github.com/moheladwy/ArchOxide
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = pacman
+	depends = sudo
+	optdepends = curl: download AppImages over HTTPS
+	optdepends = flatpak: manage Flatpak apps
+	optdepends = fontconfig: discover installed font families
+	optdepends = glib2: open desktop applications with gio
+	optdepends = kitty: launch with the saved terminal font
+	optdepends = yay: search and manage AUR packages
+	provides = archoxide=0.1.0
+	conflicts = archoxide
+	conflicts = archoxide-git
+	options = !strip
+	options = !debug
+	source = https://github.com/moheladwy/ArchOxide/releases/download/archoxide-bin-0.1.0-14/archoxide-0.1.0-14-x86_64.tar.gz
+	sha256sums = bd9540ccfbcfab88a1d0fa6d022fc1c9a11470c44348b9639cd317ee861b0cfa
+
+pkgname = archoxide-bin
