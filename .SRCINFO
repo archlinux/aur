@@ -1,6 +1,6 @@
 pkgbase = ghost-downloader-bin
 	pkgdesc = A multi-threading async downloader with QThread based on PyQt/PySide.多线程下载器,协程下载器
-	pkgver = 4.6
+	pkgver = 4.6.1
 	pkgrel = 1
 	url = https://gd.xychr.com/
 	arch = aarch64
@@ -25,12 +25,12 @@ pkgbase = ghost-downloader-bin
 	optdepends = n-m3u8dl-re
 	provides = ghost-downloader
 	conflicts = ghost-downloader
-	noextract = ghost-downloader-4.6-x86_64.tar.xz
+	noextract = ghost-downloader-4.6.1-x86_64.tar.xz
 	source = ghost-downloader.sh
 	sha256sums = 1ea8181f36e7a4b37f6fbe8c2c9bda7bd92fcc4e7934cedca97eed1826751b67
-	source_aarch64 = ghost-downloader-4.6-aarch64.tar.xz::https://github.com/XiaoYouChR/Ghost-Downloader-3/releases/download/v4.6/Ghost-Downloader-v4.6-Linux-arm64.tar.xz
-	sha256sums_aarch64 = 751bcb6fb8fa88ad695c62a7396b54198f48b67fdb3e7097b6d53b7940013041
-	source_x86_64 = ghost-downloader-4.6-x86_64.tar.xz::https://github.com/XiaoYouChR/Ghost-Downloader-3/releases/download/v4.6/Ghost-Downloader-v4.6-Linux-x86_64.tar.xz
-	sha256sums_x86_64 = 71895caee1e462780d96101d52c6824238e6533e9144b6935c4b60f1bcb57655
+	source_aarch64 = ghost-downloader-4.6.1-aarch64.tar.xz::https://github.com/XiaoYouChR/Ghost-Downloader-3/releases/download/v4.6.1/Ghost-Downloader-v4.6.1-Linux-arm64.tar.xz
+	sha256sums_aarch64 = dd8dbd883f2137808e6eb12374feec742eef84c04b2b2372988dc113f419c962
+	source_x86_64 = ghost-downloader-4.6.1-x86_64.tar.xz::https://github.com/XiaoYouChR/Ghost-Downloader-3/releases/download/v4.6.1/Ghost-Downloader-v4.6.1-Linux-x86_64.tar.xz
+	sha256sums_x86_64 = aacb5a768b5a3da5cc90d752ea9ca3cdb86ccbac8d97f7f2eae5b6f53b2c6821
 
 pkgname = ghost-downloader-bin
