@@ -1,6 +1,6 @@
 pkgbase = durable-actors-bin
 	pkgdesc = Open-source alternative to Cloudflare Durable Objects
-	pkgver = 0.20.2
+	pkgver = 0.21.1
 	pkgrel = 1
 	url = https://github.com/TerseAI/durable-actors
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = durable-actors-bin
 	provides = durable-actors
 	conflicts = durable-actors
 	options = !debug
-	source_x86_64 = durable-actors-bin-0.20.2-x86_64.tar.gz::https://github.com/TerseAI/durable-actors/releases/download/v0.20.2/durable-actors-linux-x64.tar.gz
-	sha256sums_x86_64 = 570a960f2e9e9b51e025a3da5902430d664a598da4e4781c76e2f9cdad3c72b3
-	source_aarch64 = durable-actors-bin-0.20.2-aarch64.tar.gz::https://github.com/TerseAI/durable-actors/releases/download/v0.20.2/durable-actors-linux-arm64.tar.gz
-	sha256sums_aarch64 = 282769550250ca85f3be6b9407610b899f50f6b86a34b9f45ceee6b8432014a6
+	source_x86_64 = durable-actors-bin-0.21.1-x86_64.tar.gz::https://github.com/TerseAI/durable-actors/releases/download/v0.21.1/durable-actors-linux-x64.tar.gz
+	sha256sums_x86_64 = 69a9874769638d012779a000017cdb2918a4ba76d51f820864c34a824b1fa64c
+	source_aarch64 = durable-actors-bin-0.21.1-aarch64.tar.gz::https://github.com/TerseAI/durable-actors/releases/download/v0.21.1/durable-actors-linux-arm64.tar.gz
+	sha256sums_aarch64 = 550d0b36f1bdf42fe5f75ceedd19360e58e774f3b0c2a2a3e2742d1795418174
 
 pkgname = durable-actors-bin
