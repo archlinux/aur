@@ -1,0 +1,25 @@
+pkgbase = vimma-bin
+	pkgdesc = Keyboard-first web browser built on Firefox, with Neovim-style modes and a tmux-style prefix keymap
+	pkgver = 0.1.24
+	pkgrel = 1
+	url = https://github.com/vimma-browser/vimma
+	arch = x86_64
+	license = MPL-2.0
+	depends = alsa-lib
+	depends = dbus
+	depends = gtk3
+	depends = libxt
+	depends = mime-types
+	depends = ttf-font
+	depends = hicolor-icon-theme
+	optdepends = networkmanager: location detection via available Wi-Fi networks
+	optdepends = libpulse: PulseAudio audio (also via pipewire-pulse)
+	optdepends = ffmpeg: H.264, AAC and MP3 playback
+	provides = vimma
+	conflicts = vimma
+	options = !strip
+	options = !debug
+	source_x86_64 = vimma-0.1.24-linux-x86_64.tar.xz::https://github.com/vimma-browser/vimma/releases/download/v0.1.24/vimma-0.1.24-linux-x86_64.tar.xz
+	sha256sums_x86_64 = 30c4f12ae0ff0944b466f5f8a2beeba27c307011e343af1867e208eb62e8f374
+
+pkgname = vimma-bin

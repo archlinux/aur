@@ -1,0 +1,5 @@
+[vimma-bin]
+source = "github"
+github = "vimma-browser/vimma"
+use_latest_release = true
+prefix = "v"
