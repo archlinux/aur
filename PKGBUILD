@@ -1,7 +1,7 @@
 # Maintainer: Pika Kolendo <pikakolendo02[a]gmail.c0m>
 pkgname='multiwfn-dev-bin'
 _pkgname='Multiwfn'
-pkgver=2026.11.13
+pkgver=2026.11.26
 pkgrel=1
 pkgdesc="A program for realizing electronic wavefunction analysis, dev binary version"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('multiwfn-bin')
 install="${pkgname}.install"
 backup=('etc/Multiwfn/settings.ini')
 source=("${url}/misc/${_pkgname}_${pkgver}_bin_Linux.zip")
-sha256sums=('b6da17dd60ea1d91180ac479d7fbdcca11f2764e997f0fc1e46f8cb867b01ce8')
+sha256sums=('068419906d0d59e1ea86c40078a3f0b244aa42022989f50077f95b7ae1ac5016')
 
 package() {
     export LC_ALL="zh_CN.UTF-8"
