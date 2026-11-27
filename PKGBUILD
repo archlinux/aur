@@ -1,4 +1,4 @@
-# Maintainer: Felix2086 <Felix-LIKE@users.noreply.github.com>
+# Maintainer: Felix2086 <Felix1686@users.noreply.github.com>
 #
 # Offline bird-photo identification. Ships the pipeline + eBird seed data
 # read-only under /usr/share/birdid; the /usr/bin/birdid wrapper provisions a
@@ -16,7 +16,7 @@
 # git+file:// override rig, kept for reference).
 
 pkgname=birdid-git
-pkgver=r54.134d583   # placeholder so lint passes; makepkg auto-updates it via pkgver()
+pkgver=r94.81145b0   # makepkg auto-updates it via pkgver(); keep .SRCINFO in sync
 pkgver() {
   cd "$pkgname"
   if desc="$(git describe --long --tags 2>/dev/null)"; then
@@ -28,7 +28,7 @@ pkgver() {
 pkgrel=1
 pkgdesc='Offline bird-photo identification with BioCLIP 2 (eBird/Clements taxonomy, XMP sidecars)'
 arch=('any')
-url='https://github.com/Felix-LIKE/local-bird-id'
+url='https://github.com/Felix1686/local-bird-id'
 license=('MIT')
 depends=(
   'perl-image-exiftool'
@@ -40,7 +40,7 @@ depends=(
 )
 makedepends=('git')
 source=(
-  "$pkgname::git+https://github.com/Felix-LIKE/local-bird-id.git#branch=main"
+  "$pkgname::git+https://github.com/Felix1686/local-bird-id.git#branch=main"
   "birdid-wrapper"
 )
 sha256sums=(
