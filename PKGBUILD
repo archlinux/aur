@@ -4,7 +4,7 @@
 
 pkgname=wootility
 _name=${pkgname^}
-pkgver=5.4.2
+pkgver=5.4.3
 pkgrel=1
 pkgdesc='Utility for configuring Wooting keyboards'
 arch=(x86_64)
@@ -16,7 +16,7 @@ _appimage=$_name-$pkgver.AppImage
 source=("$_appimage::https://api.wooting.io/public/$pkgname/download?os=linux&version=$pkgver"
         70-wooting.rules)
 noextract=($_appimage)
-b2sums=('8aeb4b09531fe0652efb874e3dc1ee9639b80e43ed96030f94afc4eb3941fc15b24be2ce386aa87bff34dabfbbd60d263395be082bc7aee97e68ceed468d3c5b'
+b2sums=('2dd5ea12113d1291cc32de8d94670b16e20bddea490f865410d7c8247c01b41f355466cc2bb20adfee10fa80274ecf2f2227095451a9db06a450644321257453'
         '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
 
 prepare() {
