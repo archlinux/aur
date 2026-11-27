@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=note-gen-bin
 _pkgname=NoteGen
-pkgver=0.39.2
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="A local-first Markdown app that helps you collect scattered information and organize it into clear notes with AI.一款本地优先、以 Markdown 为核心，帮助你收集碎片信息，并借助 AI 将它们整理成清晰笔记的跨平台应用。"
 arch=('x86_64')
@@ -11,12 +11,12 @@ license=('GPL-3.0-or-later')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'gtk3'
-    'gdk-pixbuf2'
-    'webkit2gtk-4.1'
+	'gtk3'
+	'gdk-pixbuf2'
+	'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgname%-bin}-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('ebd3fbc7f1991576c52b9d2828fe4c0647daa293dabdc8b44b65b7fd6ddb2fd7')
+sha256sums=('1b011d06b7585b95298c72dbc0f8357fe548e639ba56c2c7e7e58caae848755d')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
@@ -29,14 +29,14 @@ _install_icons() {
 	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
-    sed -i -e "
-        s/Comment=A Tauri App/Comment=${pkgdesc}/g
-        s/Categories=/Categories=Utility;/g
-    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+	sed -i -e "
+		s/Comment=A Tauri App/Comment=${pkgdesc}/g
+		s/Categories=/Categories=Utility;/g
+	" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-    [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
-    _install_icons
-    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+	install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+	[ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
+	_install_icons
+	install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
