@@ -1,22 +1,22 @@
 pkgbase = hc-tui-bin
 	pkgdesc = Terminal UI for herdr-core (hc): sidebar with live agent status, tabs, splits, local or over SSH (unofficial)
-	pkgver = 0.1.21
+	pkgver = 0.1.22
 	pkgrel = 1
 	url = https://github.com/followcat/hc-tui
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	optdepends = herdr-core: local herdr-core (hc) backend, auto-started by hc-tui (not needed for --remote SSH mode)
-	provides = hc-tui=0.1.21
+	provides = hc-tui=0.1.22
 	conflicts = hc-tui
 	options = !debug
-	source = LICENSE-0.1.21::https://raw.githubusercontent.com/followcat/hc-tui/v0.1.21/LICENSE
-	source = NOTICE-0.1.21::https://raw.githubusercontent.com/followcat/hc-tui/v0.1.21/NOTICE
+	source = LICENSE-0.1.22::https://raw.githubusercontent.com/followcat/hc-tui/v0.1.22/LICENSE
+	source = NOTICE-0.1.22::https://raw.githubusercontent.com/followcat/hc-tui/v0.1.22/NOTICE
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 	sha256sums = 4badbab5f95176783601d5f44a05b9a2c36e9cefd6d3b252c9591d38b0b230cb
-	source_x86_64 = hc-tui-0.1.21-x86_64.tar.gz::https://github.com/followcat/hc-tui/releases/download/v0.1.21/hc-tui-0.1.21-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 58d2c005e68ae87ab103bb18dc5a0922d976df3193852b531287658ead7cef2f
-	source_aarch64 = hc-tui-0.1.21-aarch64.tar.gz::https://github.com/followcat/hc-tui/releases/download/v0.1.21/hc-tui-0.1.21-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 78edfc02421f0e1f37cb05142d8accab3f0f6054c1b6c004f00a860d0127d1cd
+	source_x86_64 = hc-tui-0.1.22-x86_64.tar.gz::https://github.com/followcat/hc-tui/releases/download/v0.1.22/hc-tui-0.1.22-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 407d9267a07889cf4f8b1bf897d1b85ddc229dd7fc2ffb81f2f2cce7a95f9eff
+	source_aarch64 = hc-tui-0.1.22-aarch64.tar.gz::https://github.com/followcat/hc-tui/releases/download/v0.1.22/hc-tui-0.1.22-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 142578d2486512df104d9a792aea2dbb3afce29a62f76f3cc180f3fffdb9eff9
 
 pkgname = hc-tui-bin
