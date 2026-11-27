@@ -2,7 +2,7 @@
 
 pkgname=python-pymobiledevice3
 _pkgname=pymobiledevice3
-pkgver=11.65.0
+pkgver=11.66.1
 pkgrel=1
 pkgdesc='Pure python3 implementation for working with iDevices'
 arch=('any')
@@ -75,7 +75,7 @@ checkdepends=(
   'python-httpx'
 )
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('0e64d8c2bc4213a920cda3c785efbf396593bebfd213d8597e77ef21844e7ffc')
+sha256sums=('ff2ffd2d67eeccf2de81d23c1309916ce6dd8d1c66cebd18110647523da1c637')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
