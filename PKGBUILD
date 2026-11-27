@@ -6,14 +6,14 @@
 
 pkgname=tnef
 pkgdesc="Program for unpacking ms-tnef MIME attachment"
-pkgver=1.4.18
-pkgrel=3
+pkgver=1.5.0
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/verdammelt/tnef"
 license=('GPL')
 makedepends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('fa56dd08649f51b173017911cae277dc4b2c98211721c2a60708bf1d28839922')
+sha256sums=('f148885bf3282845fe110575cc8dbb73983ed83c07b40a44bf5a8ac629b14378')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
