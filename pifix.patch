@@ -1,0 +1,13 @@
+--- test_videorec_audio.c	2026-11-18 13:09:14.000000000 -0600
++++ test_videorec_audio.c	2026-11-27 00:54:54.051437427 -0600
+@@ -19,6 +19,10 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++#ifndef M_PI
++#define M_PI 3.14159265358979323846
++#endif
++
+ #include "emulator/videorec/videorec_audio.h"
+ 
+ /* clk = 48000 * 400 => přesně 400 taktů na vzorek */
