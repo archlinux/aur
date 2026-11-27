@@ -1,0 +1,5 @@
+[fizzbee]
+source = "github"
+github = "fizzbee-io/fizzbee"
+use_latest_release = true
+prefix="v"
