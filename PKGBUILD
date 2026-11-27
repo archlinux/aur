@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netcatty
 _pkgname=Netcatty
-pkgver=1.1.91
+pkgver=1.1.93
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -30,8 +30,8 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('73d80ddf80242e221e253fffa6570def8549ca9c05cbfea03476dc3b29676a40'
-            '03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86'
+sha256sums=('e375596abff9f1fa15e715d5aa020794dc876867be5cb12a8f7827692a2f78d2'
+            '4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b'
             '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_project_dir() {
 	local _d _f _t _bt= _best= _bs=0
@@ -100,7 +100,7 @@ _generate_icons() {
 		install -d "${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps"
 		magick "${_src}" -background none -filter Lanczos -resize "${_s}x${_s}" \
 			-strip -define png:compression-level=9 \
-			"${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps/${pkgname%-git}.png"
+			"${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps/${pkgname}.png"
 	done
 }
 prepare() {
