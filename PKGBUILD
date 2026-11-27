@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=iSEEhub
-_pkgver=1.10.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -38,8 +38,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b9a77167351499afc6b1a5aeed34e22f')
-b2sums=('70c5eea1dbf75390de77214b74d519b29d309fd21f1adb15fb1e80c5775b3a998a0c2805b9ee23002456328b5e5ce304af193eaf8917be78146443e7047669bd')
+md5sums=('54b660962102040bb74870d6d1beba66')
+b2sums=('4fad7b8938eaa6842c158890fdd2fe801cfbe7b8efb25fd5e745117cf857cb7e03672d46d66fbfceb50ecdd841ff155cfd4d41c74bd6b9a77b6047d83ec671f0')
 
 build() {
   mkdir build
