@@ -1,10 +1,7 @@
-# Builds swaygx from the latest commit pushed to GitHub (main).
-# Usage:  makepkg -si
-
 pkgname=swaygx-git
 pkgver=0.6.1.r7.g7ebcee14
 pkgrel=1
-pkgdesc='Sway, but with eye candy (swayfx fork)'
+pkgdesc='SwayGX: Swayfx, but with more eye candy!'
 arch=('x86_64' 'aarch64')
 url='https://github.com/7r1n1t3/swaygx'
 license=('MIT')
