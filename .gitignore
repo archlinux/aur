@@ -1,0 +1,7 @@
+pkg
+src
+
+# Source and Pkg Archives
+studio-link-plugin-linux.zip
+studiolink-plugin-*.pkg.*
+
