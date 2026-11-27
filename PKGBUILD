@@ -1,7 +1,7 @@
 # Maintainer: Leandro Guedes <leanguedes at icloud dot com>
 
 pkgname=kwin-zones
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc='Wayland ext-zones for KWin'
 arch=(x86_64)
@@ -19,7 +19,7 @@ makedepends=(extra-cmake-modules
              vulkan-icd-loader
              wayland-protocols)
 source=(https://invent.kde.org/automotive/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha256sums=('eca1591c33d37a8fc97a4729ad4ec905055d2d8774feccbfe4078392ac1ae711')
+sha256sums=('44420e178f7387ac9f59c2e8366e5ea7894d140f94ea40b68ceda43d221f967e')
 
 build() {
   cmake -B build -S $pkgname-v$pkgver \

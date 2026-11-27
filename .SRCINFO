@@ -1,6 +1,6 @@
 pkgbase = kwin-zones
 	pkgdesc = Wayland ext-zones for KWin
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://invent.kde.org/automotive/kwin-zones
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = kwin-zones
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = wayland
-	source = https://invent.kde.org/automotive/kwin-zones/-/archive/v1.0.12/kwin-zones-v1.0.12.tar.gz
-	sha256sums = eca1591c33d37a8fc97a4729ad4ec905055d2d8774feccbfe4078392ac1ae711
+	source = https://invent.kde.org/automotive/kwin-zones/-/archive/v1.0.13/kwin-zones-v1.0.13.tar.gz
+	sha256sums = 44420e178f7387ac9f59c2e8366e5ea7894d140f94ea40b68ceda43d221f967e
 
 pkgname = kwin-zones
