@@ -1,5 +1,5 @@
 pkgname=mingw-w64-cminpack
-pkgver=1.3.15
+pkgver=1.3.16
 pkgrel=1
 pkgdesc="A C/C++ rewrite of the MINPACK software (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/devernay/cminpack/archive/v${pkgver}.tar.gz")
-sha256sums=('4bcc2fb514809eaa7bfecf2f2f663f3f0988a425ff64615316f5c4ed68757b97')
+sha256sums=('90f717a8e7fb212430d7fe5265ecc7ea24f669e4613e2a920fb9b1d3be9209d1')
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
