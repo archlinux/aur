@@ -1,0 +1,21 @@
+pkgbase = thps2x-recompiled-bin
+	pkgdesc = Native recompilation launcher for Tony Hawk's Pro Skater 2X (Xbox, USA)
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/almost-drowned-rat/THPS2X-Recompiled
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = MIT
+	license = LGPL-2.1-or-later
+	depends = glibc
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	optdepends = zenity: disc image picker when a desktop portal is unavailable
+	optdepends = xdg-desktop-portal: native disc image picker with a desktop portal backend
+	options = staticlibs
+	options = !strip
+	options = !debug
+	source = https://github.com/almost-drowned-rat/THPS2X-Recompiled/releases/download/v2.0.2/THPS2X-Recompiled-v2.0.2-Linux-x86_64.tar.gz
+	sha256sums = 5a3b2ecc1295b5a147f5e731e877f637803de4761101ba23b5733bbba9c8f575
+
+pkgname = thps2x-recompiled-bin
