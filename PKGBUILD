@@ -1,6 +1,6 @@
 # Maintainer: Joel Klinghed <the_jk at spawned dot biz>
 pkgname=maestro-dev
-pkgver=2.12.1
+pkgver=2.13.0
 pkgrel=1
 pkgdesc="End-to-end testing for Mobile and Web apps"
 url="https://maestro.dev"
@@ -11,7 +11,7 @@ provides=('maestro')
 conflicts=('maestro-bin' 'maestro')
 
 source=("maestro-${pkgver}.zip::https://github.com/mobile-dev-inc/maestro/releases/download/cli-${pkgver}/maestro.zip")
-sha256sums=("54dbb0716425626604973cbb374c585ca30272375d9ce15177a1152765ddd9d7")
+sha256sums=("ccc536679ed35e3a84b7e9e5c364f2371204c291fb331fec8c00e3e496dda5ff")
 
 prepare() {
     for f in "${srcdir}"/maestro/lib/maestro-cli-*.jar; do
