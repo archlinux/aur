@@ -1,13 +1,13 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=iso-commander
-pkgver=8.0.3
-pkgrel=2
+pkgver=8.0.4
+pkgrel=1
 pkgdesc='The Fastest ISO Manager on the Planet, written in C++'
 arch=('x86_64')
 url="https://github.com/siyia2/iso-commander"
 license=('GPL-3.0-or-later')
 depends=('readline' 'util-linux')
-makedepends=('gcc' 'make')
+makedepends=('gcc>=15' 'make>=4.3')
 conflicts=('iso-commander-bin')
 optdepends=(
     'ntfsprogs: NTFS formatting for Windows live USB creation'
@@ -15,13 +15,14 @@ optdepends=(
     'parted: GPT partition layout for Windows live USB creation'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('72e2746619214e17ca6a8bb7c18a4cc8')
+md5sums=('445cf2198e855e1306559178718429b8')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    make
+    make CXX=g++
 }
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     install -Dm755 isocmd "${pkgdir}/usr/bin/isocmd"
     install -Dm644 "man/isocmd.1" "${pkgdir}/usr/share/man/man1/isocmd.1"
+    install -Dm644 "man/isocmd.conf.5" "${pkgdir}/usr/share/man/man5/isocmd.conf.5"
 }
