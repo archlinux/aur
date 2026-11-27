@@ -14,7 +14,7 @@
 #   modifiche non ancora rilasciate)
 
 pkgname=klamav-py
-pkgver=0.1.21
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Frontend Python minimale per ClamAV via clamd, erede spirituale di KlamAV 0.22"
 arch=('any')
@@ -28,7 +28,6 @@ optdepends=(
   'clamav: demone clamd, richiesto per la scansione'
   'polkit: aggiornamento database virus da GUI (pkexec systemctl restart del servizio freshclam)'
   'kio: integrazione menu contestuale Dolphin (kbuildsycoca)'
-  'libnotify: notifica desktop se la scansione programmata trova infezioni o fallisce'
 )
 install=klamav-py.install
 # Sorgente git invece dell'archivio di GitHub: l'archivio non è firmato,
@@ -88,18 +87,6 @@ package() {
     "$pkgdir/usr/share/applications/klamav-py.desktop"
   install -Dm644 klamav_py/gui/resources/klamav-py.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/klamav-py.svg"
-
-  # Unit systemd utente per la scansione programmata: sorgente unica in
-  # debian/, condivisa con il .deb. Su Arch non si abilitano in fase di
-  # install, l'hint viene stampato da klamav-py.install.
-  # klamav-scan-notify.service è static (niente [Install]): la attiva solo
-  # OnFailure= di klamav-scan.service.
-  install -Dm644 debian/klamav-py.klamav-scan.user.service \
-    "$pkgdir/usr/lib/systemd/user/klamav-scan.service"
-  install -Dm644 debian/klamav-py.klamav-scan.user.timer \
-    "$pkgdir/usr/lib/systemd/user/klamav-scan.timer"
-  install -Dm644 debian/klamav-py.klamav-scan-notify.user.service \
-    "$pkgdir/usr/lib/systemd/user/klamav-scan-notify.service"
 
   # Man page: l'inglese in man1, l'italiano in it/man1 con lo stesso nome
   # (man sceglie in base alla locale). La compressione la fa makepkg.
