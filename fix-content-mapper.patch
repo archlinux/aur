@@ -1,0 +1,305 @@
+diff --git a/packages/language-server/src/plugins/typescript-go/middleware/diagnostics.ts b/packages/language-server/src/plugins/typescript-go/middleware/diagnostics.ts
+index 4fe6629e5..42d8a31d9 100644
+--- a/packages/language-server/src/plugins/typescript-go/middleware/diagnostics.ts
++++ b/packages/language-server/src/plugins/typescript-go/middleware/diagnostics.ts
+@@ -22,7 +22,6 @@ export const enum TsgoDiagnosticCode {
+     DUPLICATE_IDENTIFIER = 2300,
+     TYPE_X_NOT_ASSIGNABLE_TO_TYPE_Y = 2322,
+     ARG_TYPE_X_NOT_ASSIGNABLE_TO_TYPE_Y = 2345,
+-    NOOP_IN_COMMAS = 2695,
+     NO_OVERLOAD_MATCHES_CALL = 2769,
+     NEVER_READ = 6133,
+     ALL_IMPORTS_UNUSED = 6192,
+@@ -91,9 +90,6 @@ export function transformDiagnostics(
+         if (isReactiveStatementLabel(diagnostic, document, text)) {
+             continue;
+         }
+-        if (isNoopInReactiveStatement(diagnostic, document, text)) {
+-            continue;
+-        }
+         if (isGeneratedDeprecation(diagnostic)) {
+             continue;
+         }
+@@ -107,7 +103,7 @@ export function transformDiagnostics(
+             result.push(...resolveVirtualCodeDiagnostic(diagnostic, virtualCode));
+             continue;
+         }
+-        result.push(adjustMessage(diagnostic, document.isSvelte5));
++        result.push(adjustMessage(diagnostic, document, getTemplateAst));
+     }
+ 
+     return dedupe(result.map(replaceGeneratedNamesInMessages));
+@@ -140,22 +136,6 @@ function isReactiveStatementLabel(diagnostic: Diagnostic, document: Document, te
+     return text.slice(start, end) === '$' && /^\s*:/.test(text.slice(end, end + 20));
+ }
+ 
+-/**
+- * `$: a, b, c` lists dependencies, the comma expressions are intentional.
+- *
+- * Deviation from TS6: there we only ignored identifiers that are `let` variables (via
+- * `getDefinitionAtPosition`) and re-reported the others. Without type information we drop all of
+- * them inside `$:` statements.
+- */
+-function isNoopInReactiveStatement(diagnostic: Diagnostic, document: Document, text: string) {
+-    if (diagnostic.code !== TsgoDiagnosticCode.NOOP_IN_COMMAS) {
+-        return false;
+-    }
+-    const lineStart = document.offsetAt({ line: diagnostic.range.start.line, character: 0 });
+-    const start = document.offsetAt(diagnostic.range.start);
+-    return /^\s*\$:/.test(text.slice(lineStart, start));
+-}
+-
+ /**
+  * Svelte 5: `$on` and the class constructor are deprecated, but the generated code uses them.
+  * The ones in unmapped virtual code are part of 18080, they are dropped in `virtualCodeDiagnostics.ts`.
+@@ -255,7 +235,34 @@ function resolveVirtualCodeDiagnostic(
+ /**
+  * Port of TS6's `adjustIfNecessary`
+  */
+-function adjustMessage(diagnostic: Diagnostic, isSvelte5Plus: boolean): Diagnostic {
++function adjustMessage(
++    diagnostic: Diagnostic,
++    document: Document,
++    getTemplateAst: (() => TemplateAstWalker) | undefined
++): Diagnostic {
++    if (
++        document.isSvelte5 &&
++        diagnostic.code === TsgoDiagnosticCode.TYPE_X_NOT_ASSIGNABLE_TO_TYPE_Y
++    ) {
++        const start = document.offsetAt(diagnostic.range.start);
++        const end = document.offsetAt(diagnostic.range.end);
++        // The mapper maps the generated assignment to the full binding.
++        const name = /^bind:([^\s=]+)/.exec(document.getText().slice(start, end))?.[1];
++        if (name && diagnostic.message.startsWith(`Type '"${name}"' is not assignable to type `)) {
++            const ast = getTemplateAst?.();
++            const found = ast && !ast.parserError && findTemplateNodeAt(ast, start);
++            if (
++                found &&
++                found.node.type === 'Binding' &&
++                found.node.start === start &&
++                found.node.end === end &&
++                found.parent?.type === 'InlineComponent'
++            ) {
++                return { ...diagnostic, message: nonBindableMessage(name) };
++            }
++        }
++    }
++
+     if (
+         diagnostic.code === TsgoDiagnosticCode.ARG_TYPE_X_NOT_ASSIGNABLE_TO_TYPE_Y &&
+         diagnostic.message.includes('ConstructorOfATypedSvelteComponent')
+@@ -267,7 +274,7 @@ function adjustMessage(diagnostic: Diagnostic, isSvelte5Plus: boolean): Diagnost
+                 '\n\nPossible causes:\n' +
+                 '- You use the instance type of a component where you should use the constructor type\n' +
+                 '- Type definitions are missing for this Svelte Component. ' +
+-                (isSvelte5Plus
++                (document.isSvelte5
+                     ? ''
+                     : 'If you are using Svelte 3.31+, use SvelteComponentTyped to add a definition:\n' +
+                       '  import type { SvelteComponentTyped } from "svelte";\n' +
+@@ -287,6 +294,13 @@ function adjustMessage(diagnostic: Diagnostic, isSvelte5Plus: boolean): Diagnost
+     return diagnostic;
+ }
+ 
++export function nonBindableMessage(name: string): string {
++    return (
++        "Cannot use 'bind:' with this property. It is declared as non-bindable inside the component.\n" +
++        `To mark a property as bindable: 'let { ${name} = $bindable() } = $props()'`
++    );
++}
++
+ function dedupe(diagnostics: Diagnostic[]) {
+     const seen = new Set<string>();
+     return diagnostics.filter((diagnostic) => {
+diff --git a/packages/language-server/src/plugins/typescript-go/middleware/virtualCodeDiagnostics.ts b/packages/language-server/src/plugins/typescript-go/middleware/virtualCodeDiagnostics.ts
+index 5d68895da..7d58ac10b 100644
+--- a/packages/language-server/src/plugins/typescript-go/middleware/virtualCodeDiagnostics.ts
++++ b/packages/language-server/src/plugins/typescript-go/middleware/virtualCodeDiagnostics.ts
+@@ -4,7 +4,7 @@ import { TemplateAstWalker } from '../../svelte/TemplateASTLoader';
+ import { TsApiLocationMapper } from '../TsApiLocationMapper';
+ import type { TsApiAccess } from '../TsApiService';
+ import type { tsApiAsync, tsAst } from '../types';
+-import { TsgoDiagnosticCode } from './diagnostics';
++import { nonBindableMessage, TsgoDiagnosticCode } from './diagnostics';
+ import { findSubscriptionUsages, subscriptionOfArgument } from './stores';
+ 
+ /**
+@@ -239,8 +239,7 @@ function relocateNonBindableError(
+                 start: document.positionAt(binding.start),
+                 end: document.positionAt(binding.end)
+             },
+-            "Cannot use 'bind:' with this property. It is declared as non-bindable inside the component.\n" +
+-                `To mark a property as bindable: 'let { ${name} = $bindable() } = $props()'`
++            nonBindableMessage(name)
+         )
+     ];
+ }
+diff --git a/packages/language-server/test/plugins/typescript-go/features/diagnostics/content-mapper-overrides.md b/packages/language-server/test/plugins/typescript-go/features/diagnostics/content-mapper-overrides.md
+index 6d28098cd..5f32202f3 100644
+--- a/packages/language-server/test/plugins/typescript-go/features/diagnostics/content-mapper-overrides.md
++++ b/packages/language-server/test/plugins/typescript-go/features/diagnostics/content-mapper-overrides.md
+@@ -14,5 +14,3 @@
+ -   `fixtures/$$props-usage`, `fixtures/invalid-import`: TS7 resolves imports of missing `.svelte` files through Svelte's ambient `declare module '*.svelte'`, which the TS6 language server blanks out. No 2307, so an `@ts-expect-error` above such an import is unused.
+ -   `fixtures/import-precedence`: TS7 resolves `./x.svelte` to the mapped `x.svelte` before `x.svelte.d.ts` / `x.d.svelte.ts`.
+ -   `fixtures/sveltekit-autotypings`, `fixtures/sveltekit-autotypings-arrow`: a content mapper can't rewrite SvelteKit's `.ts` route files, so `data` is `any`.
+--   `fixtures/transition-options`: TS6 drops 2554 for transitions that require the third (`options`) parameter, using the checker.
+--   `fixtures/reactive-statement-unused-in-comma-list/ignores-unused-let`, `fixtures/reactive-statement-unused-in-comma-list/keeps-legit-const`, `fixtures/reactive-statement-unused-in-comma-list/keeps-legit-import`: TS6 keeps 2695 for non-`let` names in `$:` (using the checker). The middleware drops all of them on `$:` lines, and none in `$: { … }` blocks.
+diff --git a/packages/language-server/test/plugins/typescript-go/middleware/TsgoResponseTransformer.test.ts b/packages/language-server/test/plugins/typescript-go/middleware/TsgoResponseTransformer.test.ts
+index 98aed1f3f..b8924e4aa 100644
+--- a/packages/language-server/test/plugins/typescript-go/middleware/TsgoResponseTransformer.test.ts
++++ b/packages/language-server/test/plugins/typescript-go/middleware/TsgoResponseTransformer.test.ts
+@@ -90,22 +90,18 @@ describe('TsgoResponseTransformer', () => {
+ 
+ {x}{doubled}`;
+ 
+-        it('drops unused `$` labels and comma noops of reactive statements', async () => {
++        it('drops unused reactive labels and keeps comma diagnostics', async () => {
++            const noop = diag(
++                [4, 4, 4, 5],
++                2695,
++                'Left side of comma operator is unused and has no side effects.'
++            );
+             const items = await transformDiagnostics(legacy, [
+-                diag(
+-                    [4, 4, 4, 5],
+-                    2695,
+-                    'Left side of comma operator is unused and has no side effects.'
+-                ),
+-                diag(
+-                    [4, 4, 4, 8],
+-                    2695,
+-                    'Left side of comma operator is unused and has no side effects.'
+-                ),
++                noop,
+                 diag([4, 1, 4, 2], 7028, 'Unused label.', { severity: DiagnosticSeverity.Hint }),
+                 diag([5, 1, 5, 2], 7028, 'Unused label.', { severity: DiagnosticSeverity.Hint })
+             ]);
+-            assert.deepStrictEqual(items, []);
++            assert.deepStrictEqual(items, [noop]);
+         });
+ 
+         it('keeps comma noops outside of reactive statements', async () => {
+diff --git a/packages/language-server/test/plugins/typescript/features/diagnostics/fixtures/reactive-statement-unused-in-comma-list/ignores-unused-let/expected_tsgo_content_mapper.json b/packages/language-server/test/plugins/typescript/features/diagnostics/fixtures/reactive-statement-unused-in-comma-list/ignores-unused-let/expected_tsgo_content_mapper.json
+deleted file mode 100644
+index 87988ebdb..000000000
+--- a/packages/language-server/test/plugins/typescript/features/diagnostics/fixtures/reactive-statement-unused-in-comma-list/ignores-unused-let/expected_tsgo_content_mapper.json
++++ /dev/null
+@@ -1,10 +0,0 @@
+-[
+-    {
+-        "range": { "start": { "line": 13, "character": 8 }, "end": { "line": 13, "character": 9 } },
+-        "severity": 1,
+-        "source": "ts",
+-        "message": "Left side of comma operator is unused and has no side effects.",
+-        "code": 2695,
+-        "tags": [1]
+-    }
+-]
+diff --git a/packages/language-server/test/plugins/typescript/features/diagnostics/fixtures/reactive-statement-unused-in-comma-list/keeps-legit-const/expected_tsgo_content_mapper.json b/packages/language-server/test/plugins/typescript/features/diagnostics/fixtures/reactive-statement-unused-in-comma-list/keeps-legit-const/expected_tsgo_content_mapper.json
+deleted file mode 100644
+index 9dec4be00..000000000
+--- a/packages/language-server/test/plugins/typescript/features/diagnostics/fixtures/reactive-statement-unused-in-comma-list/keeps-legit-const/expected_tsgo_content_mapper.json
++++ /dev/null
+@@ -1,18 +0,0 @@
+-[
+-    {
+-        "range": { "start": { "line": 12, "character": 8 }, "end": { "line": 12, "character": 9 } },
+-        "severity": 1,
+-        "source": "ts",
+-        "message": "Left side of comma operator is unused and has no side effects.",
+-        "code": 2695,
+-        "tags": [1]
+-    },
+-    {
+-        "range": { "start": { "line": 13, "character": 8 }, "end": { "line": 13, "character": 9 } },
+-        "severity": 1,
+-        "source": "ts",
+-        "message": "Left side of comma operator is unused and has no side effects.",
+-        "code": 2695,
+-        "tags": [1]
+-    }
+-]
+diff --git a/packages/language-server/test/plugins/typescript/features/diagnostics/fixtures/reactive-statement-unused-in-comma-list/keeps-legit-import/expected_tsgo_content_mapper.json b/packages/language-server/test/plugins/typescript/features/diagnostics/fixtures/reactive-statement-unused-in-comma-list/keeps-legit-import/expected_tsgo_content_mapper.json
+deleted file mode 100644
+index 1d1d76883..000000000
+--- a/packages/language-server/test/plugins/typescript/features/diagnostics/fixtures/reactive-statement-unused-in-comma-list/keeps-legit-import/expected_tsgo_content_mapper.json
++++ /dev/null
+@@ -1,26 +0,0 @@
+-[
+-    {
+-        "range": { "start": { "line": 2, "character": 22 }, "end": { "line": 2, "character": 32 } },
+-        "severity": 1,
+-        "source": "ts",
+-        "message": "Cannot find module 'whatever' or its corresponding type declarations.",
+-        "code": 2307,
+-        "tags": []
+-    },
+-    {
+-        "range": { "start": { "line": 13, "character": 8 }, "end": { "line": 13, "character": 9 } },
+-        "severity": 1,
+-        "source": "ts",
+-        "message": "Left side of comma operator is unused and has no side effects.",
+-        "code": 2695,
+-        "tags": [1]
+-    },
+-    {
+-        "range": { "start": { "line": 14, "character": 8 }, "end": { "line": 14, "character": 9 } },
+-        "severity": 1,
+-        "source": "ts",
+-        "message": "Left side of comma operator is unused and has no side effects.",
+-        "code": 2695,
+-        "tags": [1]
+-    }
+-]
+diff --git a/packages/language-server/test/plugins/typescript/features/diagnostics/fixtures/transition-options/expected_tsgo_content_mapper.json b/packages/language-server/test/plugins/typescript/features/diagnostics/fixtures/transition-options/expected_tsgo_content_mapper.json
+deleted file mode 100644
+index a1ad17673..000000000
+--- a/packages/language-server/test/plugins/typescript/features/diagnostics/fixtures/transition-options/expected_tsgo_content_mapper.json
++++ /dev/null
+@@ -1,13 +0,0 @@
+-[
+-    {
+-        "range": {
+-            "start": { "line": 10, "character": 8 },
+-            "end": { "line": 10, "character": 20 }
+-        },
+-        "severity": 1,
+-        "source": "ts",
+-        "message": "Expected 3 arguments, but got 2.",
+-        "code": 2554,
+-        "tags": []
+-    }
+-]
+diff --git a/packages/typescript-content-mapper/src/server.ts b/packages/typescript-content-mapper/src/server.ts
+index b881b06b3..5a0403631 100644
+--- a/packages/typescript-content-mapper/src/server.ts
++++ b/packages/typescript-content-mapper/src/server.ts
+@@ -71,7 +71,7 @@ function startServer() {
+             extension = getScriptExtension(scriptTags);
+ 
+             const svelteOptions = await getSvelteCompilerOptions(project, fileName);
+-            const res = svelte2tsx(content, {
++            const res = await svelte2tsx(content, {
+                 typescript,
+                 filename: fileName,
+                 isTsFile: extension === '.ts',
+@@ -183,7 +183,7 @@ interface ProjectContext extends Transformer {
+ }
+ 
+ interface Transformer {
+-    svelte2tsx: typeof svelte2tsxTs7;
++    svelte2tsx: typeof svelte2tsxTs7 | typeof import('svelte2tsx').svelte2tsx;
+     /** undefined: the entry point's default */
+     typescript?: TsFacade;
+ }
+@@ -262,7 +262,9 @@ async function createTransformer(packageJsonPath: string): Promise<Transformer>
+     const [major, minor] = (version ?? '0.0').split('.').map(Number);
+     if (major > 7 || (major === 7 && minor >= 1)) {
+         try {
+-            const typescript = createTsgoFacade({ typescript: path.dirname(packageJsonPath) });
++            const typescript = await createTsgoFacade({
++                typescript: path.dirname(packageJsonPath)
++            });
+             console.warn(`Parsing with TypeScript ${version} (${packageJsonPath})`);
+             return { svelte2tsx: svelte2tsxTs7, typescript };
+         } catch (error) {

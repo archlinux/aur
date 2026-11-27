@@ -3,7 +3,7 @@
 _branch=master
 _pkgname=svelte-language-server
 pkgname=${_pkgname}-git
-pkgver=r1977.aeef5e615
+pkgver=r1986.673e7a817
 pkgrel=1
 pkgdesc='Svelte Language Server, git master build'
 url="https://github.com/sveltejs/language-tools"
@@ -19,8 +19,14 @@ makedepends=(
   git
   pnpm
 )
-source=("${pkgname}::git+${url}.git#branch=${_branch}")
-sha256sums=('SKIP')
+source=(
+  "${pkgname}::git+${url}.git#branch=${_branch}"
+  fix-content-mapper.patch
+)
+sha256sums=(
+  'SKIP'
+  '16ab0afb6c9abb31b2b1e2e9231775e0b1569899b25eb761149337174909d873'
+)
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -28,7 +34,8 @@ pkgver() {
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}"
+  patch -Np1 -i "${srcdir}/fix-content-mapper.patch"
 }
 
 build() {
@@ -41,9 +48,9 @@ build() {
 }
 
 check() {
-  # The TS GO tests need the content mapper, it has no build script
+  # The TypeScript 7 tests need the content mapper.
   cd "${pkgname}/packages/typescript-content-mapper"
-  pnpm exec tsc
+  pnpm build
   cd ../language-server
   pnpm test
 }
