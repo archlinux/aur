@@ -1,13 +1,13 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgbase=fcitx5-lotus
 pkgname=('fcitx5-lotus' 'fcitx5-lotus-openrc' 'fcitx5-lotus-runit')
-pkgver=7.0.1
+pkgver=7.0.2
 pkgrel=1
 pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
 url="https://github.com/LotusInputMethod/fcitx5-lotus"
 license=('GPL-3.0-or-later')
-makedepends=('cmake' 'extra-cmake-modules' 'gcc' 'git' 'python')
+makedepends=('cmake' 'extra-cmake-modules' 'gcc' 'git')
 source=(
     "git+https://github.com/LotusInputMethod/fcitx5-lotus.git#tag=v$pkgver"
 )
@@ -34,7 +34,7 @@ prepare_staging() {
 package_fcitx5-lotus() {
     provides=('fcitx5-lotus')
     conflicts=('fcitx5-lotus')
-    depends=('acl' 'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'libevdev' 'libinput' 'libnotify' 'libxcb' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'python-qtpy' 'python-dbus')
+    depends=('acl' 'dbus' 'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'libevdev' 'libinput' 'libnotify' 'libxcb' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'qt6-base' 'qt6-declarative' 'qt6-svg' 'wayland')
     optdepends=(
         'fcitx5-lotus-openrc: OpenRC init script for fcitx5-lotus'
         'fcitx5-lotus-runit: Runit service for fcitx5-lotus'

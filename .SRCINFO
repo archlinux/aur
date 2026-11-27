@@ -1,6 +1,6 @@
 pkgbase = fcitx5-lotus
 	pkgdesc = Vietnamese input method for fcitx5
-	pkgver = 7.0.1
+	pkgver = 7.0.2
 	pkgrel = 1
 	url = https://github.com/LotusInputMethod/fcitx5-lotus
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = fcitx5-lotus
 	makedepends = extra-cmake-modules
 	makedepends = gcc
 	makedepends = git
-	makedepends = python
-	source = git+https://github.com/LotusInputMethod/fcitx5-lotus.git#tag=v7.0.1
+	source = git+https://github.com/LotusInputMethod/fcitx5-lotus.git#tag=v7.0.2
 	sha256sums = SKIP
 
 pkgname = fcitx5-lotus
 	install = fcitx5-lotus.install
 	depends = acl
+	depends = dbus
 	depends = fcitx5
 	depends = fcitx5-configtool
 	depends = fcitx5-gtk
@@ -29,8 +29,10 @@ pkgname = fcitx5-lotus
 	depends = libstdc++
 	depends = libgcc
 	depends = libudev.so
-	depends = python-qtpy
-	depends = python-dbus
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = wayland
 	optdepends = fcitx5-lotus-openrc: OpenRC init script for fcitx5-lotus
 	optdepends = fcitx5-lotus-runit: Runit service for fcitx5-lotus
 	provides = fcitx5-lotus
