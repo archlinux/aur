@@ -1,7 +1,7 @@
 # Maintainer: Marcel W. Wysocki <maci.stgn@gmail.com>
 
 pkgname=xdg-desktop-portal-generic
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='Generic XDG desktop portal backend for Wayland compositors (experimental, see .install notes)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'clang' 'pkgconf')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         '0001-fix-input-capture-for-deskflow-on-wayland.patch')
-sha256sums=('8ac832c775dcddfea552e50f3349eb9aeaa57bfb427b1a65dafcd3b8364d1cb0'
+sha256sums=('0f5efc01ab3b45fcdc8543154170b468e4b7b9673df9cec4acea3f9a70e4f720'
             '8c6391f10aeaa444dd089062a61ae8132d0166156aced5eec947ac442f29db86')
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-generic
 	pkgdesc = Generic XDG desktop portal backend for Wayland compositors (experimental, see .install notes)
-	pkgver = 2.0.1
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/lamco-admin/xdg-desktop-portal-generic
 	install = xdg-desktop-portal-generic.install
@@ -14,9 +14,9 @@ pkgbase = xdg-desktop-portal-generic
 	depends = pipewire
 	depends = libxkbcommon
 	depends = wayland
-	source = xdg-desktop-portal-generic-2.0.1.tar.gz::https://github.com/lamco-admin/xdg-desktop-portal-generic/archive/refs/tags/v2.0.1.tar.gz
+	source = xdg-desktop-portal-generic-2.0.3.tar.gz::https://github.com/lamco-admin/xdg-desktop-portal-generic/archive/refs/tags/v2.0.3.tar.gz
 	source = 0001-fix-input-capture-for-deskflow-on-wayland.patch
-	sha256sums = 8ac832c775dcddfea552e50f3349eb9aeaa57bfb427b1a65dafcd3b8364d1cb0
+	sha256sums = 0f5efc01ab3b45fcdc8543154170b468e4b7b9673df9cec4acea3f9a70e4f720
 	sha256sums = 8c6391f10aeaa444dd089062a61ae8132d0166156aced5eec947ac442f29db86
 
 pkgname = xdg-desktop-portal-generic
