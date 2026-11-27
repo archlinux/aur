@@ -1,0 +1,23 @@
+pkgbase = loom-cli-git
+	pkgdesc = TUI for finding, downloading and running GGUF models with llama.cpp
+	pkgver = r100.1784678
+	pkgrel = 1
+	url = https://github.com/the-loom-project/loom
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = llama-cpp
+	optdepends = ggml-vulkan: Vulkan GPU backend for llama.cpp
+	optdepends = ggml-cuda: CUDA GPU backend for llama.cpp
+	optdepends = ggml-hip: ROCm GPU backend for llama.cpp
+	optdepends = wl-clipboard: copy commands on Wayland
+	optdepends = xclip: copy commands on X11
+	optdepends = xdg-utils: open model pages in the browser
+	conflicts = loom
+	source = loom::git+https://github.com/the-loom-project/loom.git
+	sha256sums = SKIP
+
+pkgname = loom-cli-git
