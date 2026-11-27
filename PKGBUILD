@@ -9,6 +9,7 @@
 # Contributor (updated Xavier's typeahead patch for 49.0): Kevin MacMartin <prurigro@gmail.com>
 # Contributor (updated Xavier's typeahead patch for 50.0): Daniel Rudolf <archlinux.org@daniel-rudolf.de>
 # Contributor (backspace patch code): Jeremy Bicha <jbicha@debian.org>
+# Contributor (rewrote the typeahead patch for 51.2): Ben Scholzen (DASPRiD) <mail@dasprids.de>
 # Maintainer: Albert Vaca Cintora <albertvaka@gmail.com>
 
 pkgbase=nautilus-typeahead
@@ -17,7 +18,7 @@ pkgname=(
   libnautilus-extension-typeahead
 )
 packager="Albert Vaca Cintora <albertvaka@gmail.com>"
-pkgver=51.1
+pkgver=51.2
 pkgrel=1
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://apps.gnome.org/Nautilus/"
@@ -65,29 +66,32 @@ makedepends=(
 )
 source=(
   "git+https://gitlab.gnome.org/GNOME/nautilus.git#tag=${pkgver/[a-z]/.&}"
-  "git+https://gitlab.gnome.org/GNOME/libgxdp.git#commit=df896e3412b749947bc6f62a91a1aac8e6b6d19b"
+  "git+https://gitlab.gnome.org/GNOME/libgxdp.git#commit=528966b82cfb8c276319aa1436d424b949a274e0"
   "0001-Restore-backspace-for-going-to-parent-folder.patch"
-  "0002-Restore-typeahead-support-for-keyboard-navigation.patch"
+  "0002-Type-ahead-find.patch"
   "post.install"
 )
 b2sums=(
-  '13d7fde576d576c5903f1906263c8bd47e54bedcd88cd297077c4687b74eaef1519c458242ee1cb88ebad871411a44614404f12d21c9a7859d2b064c7e499dd1'
-  'f5bd238c316a55784f97b1b7c8b498d3dfa727375cf8a1bf61f4771e306232b36752df8f61edb8d8c5da7c5e1a7acd8c0e85a53725af56e9b18b8dd1a6f284e0'
-  'b9af0c0c3c9e233d13a1287d5f5fa7b159cff5532ccd589791c4916f34c69cc27755207cbec1c0a87ccce7a273d3e7d3f9c1d756e2a6bedae0124f30a214fef0'
-  '36aa7c865278fae3a9444f367cbe8104e3806bd35b580096a12d8af6e95db40c0d3a93ef7e02b4d2dcc46fd9a2dd8b6706d8089e815ead0efc8c3ed7cb8b672a'
-  '7ba197c2e65108ab49c1795c44264181c3c6b8f7d6641d1b1353690202c915e0aed574f45467924f6fb67a65f9487a3c0e24252633066e25b4d2c0dac3609245'
+    '261d337a8bae32bb6a005f57f874bd075a2644ceecf6de96afc0232ca00861a9e0b64c65b5de5953d9342fde06dec6620151a39aa55281672c3a640e896dcef6'
+    '16c53dd8c0a68a8e85924ac72a651e5c24077b4be561d64807a84e1e94b1e38085cf93bedd7ef9b298d1bd30f3eacafb10c8433a171aae8bc3137fa8199e6edf'
+    'b9af0c0c3c9e233d13a1287d5f5fa7b159cff5532ccd589791c4916f34c69cc27755207cbec1c0a87ccce7a273d3e7d3f9c1d756e2a6bedae0124f30a214fef0'
+    '2828612b727da645c4e7cde2a2ff2b542513d0f52885c4a84ebfd4533d3338d9d3fc650fe0275ee4c5e20da1d16608fa0b6ccbee03aae24a2ec83d26f8fe13b3'
+    '7ba197c2e65108ab49c1795c44264181c3c6b8f7d6641d1b1353690202c915e0aed574f45467924f6fb67a65f9487a3c0e24252633066e25b4d2c0dac3609245'
 )
 
 prepare() {
+  # Do not fail the build if the old patch name is still there
+  rm 0002-Restore-typeahead-support-for-keyboard-navigation.patch || true
+
   cd nautilus
+
+  # Our patches create these files, so they might survive accross builds even after resetting the git repo, which causes the subsequent patch to fail
+  rm src/nautilus-typeahead.c src/nautilus-typeahead.h || true
 
   # Apply typeahead patches
   for p in ../????-*.patch; do
     patch -Np1 -i "$p"
   done
-
-  # Enable typeahead behavior by default
-  gawk -i inplace '/type-ahead-search/{c++;} c==1 && /true/{sub("true", "false"); c++;} 1' data/org.gnome.nautilus.gschema.xml
 }
 
 build() {

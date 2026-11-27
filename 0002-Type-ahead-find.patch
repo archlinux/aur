@@ -1,0 +1,805 @@
+From 378e2bf29b5ab89dc6c279cc7cead38a515936c0 Mon Sep 17 00:00:00 2001
+From: "Ben Scholzen (DASPRiD)" <mail@dasprids.de>
+Date: Fri, 13 Nov 2026 18:05:14 +0100
+Subject: [PATCH] Type-ahead find
+
+Typing in a folder selects the first file whose name starts with what was
+typed, instead of starting a recursive search. A small entry at the bottom
+left of the view shows the query. Switchable through the type-ahead-find
+GSetting, with a switch in Preferences.
+
+Keys reach the entry through gtk_editable_set_input_interceptor(), new in
+GTK 4.24, which runs the entry's own input method on the view itself, so
+dead keys and input methods work although the entry never takes the focus.
+Leaving the focus where it is keeps the view's own navigation and selection
+keys working while a query is up.
+
+Backspace is the one key the view cannot be left to resolve, since the
+window resolves its managed shortcuts, "go to parent folder" among them, in
+the bubble phase. A capture-phase controller on the view takes it while the
+entry is visible and edits the query instead.
+
+The entry goes away a second after the last key, and on anything which is
+not more typing: a click in the view, a key which moves the cursor, Escape,
+the focus leaving the view, or a change of folder or view mode. A query
+which outlives the attention it was typed with would otherwise keep
+Backspace and extend into whatever is typed next.
+
+Matching walks the view's own model, which is already sorted and filtered
+and has expanded folders flattened in place, so it follows the order on
+screen, never lands on a hidden file, and finds items inside expanded
+folders in list view. Names and query are both casefolded and normalized.
+---
+ data/org.gnome.nautilus.gschema.xml           |   5 +
+ po/POTFILES.in                                |   1 +
+ src/meson.build                               |   2 +
+ src/nautilus-files-view.c                     |  21 +
+ src/nautilus-global-preferences.h             |   3 +
+ src/nautilus-preferences-dialog.c             |   5 +
+ src/nautilus-typeahead.c                      | 537 ++++++++++++++++++
+ src/nautilus-typeahead.h                      |  22 +
+ src/resources/style.css                       |   8 +
+ .../ui/nautilus-preferences-dialog.blp        |   6 +
+ 10 files changed, 610 insertions(+)
+ create mode 100644 src/nautilus-typeahead.c
+ create mode 100644 src/nautilus-typeahead.h
+
+diff --git a/data/org.gnome.nautilus.gschema.xml b/data/org.gnome.nautilus.gschema.xml
+index 3c14aa4d5..807a9167e 100644
+--- a/data/org.gnome.nautilus.gschema.xml
++++ b/data/org.gnome.nautilus.gschema.xml
+@@ -82,6 +82,11 @@
+       <summary>Always use the location entry, instead of the pathbar</summary>
+       <description>If set to true, Files will always use a textual input entry for the location toolbar, instead of the pathbar.</description>
+     </key>
++    <key type="b" name="type-ahead-find">
++      <default>true</default>
++      <summary>Jump to the first matching file when typing</summary>
++      <description>If set to true, typing in a folder selects the first file whose name starts with what was typed, or else the first file whose name contains it. If set to false, typing starts a search instead.</description>
++    </key>
+     <key name="recursive-search" enum="org.gnome.nautilus.SpeedTradeoff">
+       <default>'local-only'</default>
+       <summary>Where to perform recursive search</summary>
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+index 67aa5516d..6388e7bd2 100644
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -70,6 +70,7 @@ src/nautilus-sidebar.c
+ src/nautilus-star-cell.c
+ src/nautilus-tag-manager.c
+ src/nautilus-toolbar.c
++src/nautilus-typeahead.c
+ src/nautilus-ui-utilities.c
+ src/nautilus-vfs-file.c
+ src/nautilus-view-controls.c
+diff --git a/src/meson.build b/src/meson.build
+index 2fe4ffbc3..e17c3e591 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -263,6 +263,8 @@ libnautilus_sources = [
+   'nautilus-toolbar.h',
+   'nautilus-trash-monitor.c',
+   'nautilus-trash-monitor.h',
++  'nautilus-typeahead.c',
++  'nautilus-typeahead.h',
+   'nautilus-types.h',
+   'nautilus-ui-utilities.c',
+   'nautilus-ui-utilities.h',
+diff --git a/src/nautilus-files-view.c b/src/nautilus-files-view.c
+index 17b410bd2..d6d312d48 100644
+--- a/src/nautilus-files-view.c
++++ b/src/nautilus-files-view.c
+@@ -73,6 +73,7 @@
+ #include "nautilus-signaller.h"
+ #include "nautilus-tag-manager.h"
+ #include "nautilus-trash-monitor.h"
++#include "nautilus-typeahead.h"
+ #include "nautilus-ui-utilities.h"
+ #include "nautilus-view-info.h"
+ #include "nautilus-view-item.h"
+@@ -236,6 +237,8 @@ struct _NautilusFilesView
+     guint floating_bar_set_passthrough_timeout_id;
+     GtkWidget *floating_bar;
+ 
++    NautilusTypeahead *typeahead;
++
+     /* Exposed menus, for the path bar etc. */
+     GMenuModel *extensions_background_menu;
+     GMenuModel *templates_menu;
+@@ -347,6 +350,15 @@ list_len_is_one (GList *list)
+ /*
+  * Floating Bar code
+  */
++static void
++dismiss_typeahead (NautilusFilesView *self)
++{
++    if (self->typeahead != NULL)
++    {
++        nautilus_typeahead_dismiss (self->typeahead);
++    }
++}
++
+ static void
+ remove_loading_floating_bar (NautilusFilesView *self)
+ {
+@@ -3333,6 +3345,8 @@ nautilus_files_view_dispose (GObject *object)
+     g_clear_object (&self->selection);
+     g_clear_object (&self->model);
+ 
++    self->typeahead = NULL;
++
+     adw_bin_set_child (ADW_BIN (self), NULL);
+     gtk_widget_dispose_template (GTK_WIDGET (self), NAUTILUS_TYPE_FILES_VIEW);
+ 
+@@ -8506,6 +8520,7 @@ load_directory (NautilusFilesView *self,
+     g_assert (NAUTILUS_IS_FILES_VIEW (self));
+     g_assert (NAUTILUS_IS_DIRECTORY (directory));
+ 
++    dismiss_typeahead (self);
+     nautilus_files_view_stop_loading (self);
+ 
+     /* To make navigation feel fast and smooth, avoid blanking the view temporarily.
+@@ -9494,6 +9509,10 @@ nautilus_files_view_init (NautilusFilesView *self)
+                       G_CALLBACK (floating_bar_stop_cb),
+                       self);
+ 
++    self->typeahead = nautilus_typeahead_new (self);
++    gtk_overlay_add_overlay (GTK_OVERLAY (self->overlay),
++                             GTK_WIDGET (self->typeahead));
++
+     self->pending_reveal = g_hash_table_new (NULL, NULL);
+     self->awaiting_acknowledge = g_hash_table_new (NULL, NULL);
+ 
+@@ -9746,6 +9765,8 @@ void
+ nautilus_files_view_change (NautilusFilesView *self,
+                             guint              id)
+ {
++    dismiss_typeahead (self);
++
+     /* Prepare empty page for reuse. It's not destroyed because we own it. */
+     gtk_widget_unparent (self->empty_view_page);
+ 
+diff --git a/src/nautilus-global-preferences.h b/src/nautilus-global-preferences.h
+index ca08bfaa6..9ce0f13ad 100644
+--- a/src/nautilus-global-preferences.h
++++ b/src/nautilus-global-preferences.h
+@@ -115,6 +115,9 @@ typedef enum
+ /* Search behaviour */
+ #define NAUTILUS_PREFERENCES_RECURSIVE_SEARCH "recursive-search"
+ 
++/* Type-ahead find */
++#define NAUTILUS_PREFERENCES_TYPE_AHEAD_FIND "type-ahead-find"
++
+ /* Context menu options */
+ #define NAUTILUS_PREFERENCES_SHOW_DELETE_PERMANENTLY "show-delete-permanently"
+ #define NAUTILUS_PREFERENCES_SHOW_CREATE_LINK "show-create-link"
+diff --git a/src/nautilus-preferences-dialog.c b/src/nautilus-preferences-dialog.c
+index 8ff575cbd..ba21107dd 100644
+--- a/src/nautilus-preferences-dialog.c
++++ b/src/nautilus-preferences-dialog.c
+@@ -42,6 +42,8 @@
+         "show_create_link_row"
+ #define NAUTILUS_PREFERENCES_DIALOG_LIST_VIEW_USE_TREE_WIDGET                  \
+         "use_tree_view_row"
++#define NAUTILUS_PREFERENCES_DIALOG_TYPE_AHEAD_FIND_WIDGET                     \
++        "type_ahead_find_row"
+ 
+ /* toggle group preferences */
+ #define NAUTILUS_PREFERENCES_DIALOG_OPEN_ACTION_TOGGLE_GROUP                   \
+@@ -195,6 +197,9 @@ nautilus_preferences_dialog_setup (GtkBuilder *builder)
+     bind_builder_bool (builder, nautilus_preferences,
+                        NAUTILUS_PREFERENCES_DIALOG_DELETE_PERMANENTLY_WIDGET,
+                        NAUTILUS_PREFERENCES_SHOW_DELETE_PERMANENTLY);
++    bind_builder_bool (builder, nautilus_preferences,
++                       NAUTILUS_PREFERENCES_DIALOG_TYPE_AHEAD_FIND_WIDGET,
++                       NAUTILUS_PREFERENCES_TYPE_AHEAD_FIND);
+ 
+     setup_detailed_date (builder);
+ 
+diff --git a/src/nautilus-typeahead.c b/src/nautilus-typeahead.c
+new file mode 100644
+index 000000000..ea81318e5
+--- /dev/null
++++ b/src/nautilus-typeahead.c
+@@ -0,0 +1,537 @@
++/*
++ * Copyright (C) 2026 The GNOME project contributors
++ *
++ * SPDX-License-Identifier: GPL-3.0-or-later
++ */
++
++#include "nautilus-typeahead.h"
++
++#include <glib/gi18n.h>
++#include <string.h>
++
++#include "nautilus-file.h"
++#include "nautilus-files-view.h"
++#include "nautilus-global-preferences.h"
++#include "nautilus-list-base.h"
++#include "nautilus-view-item.h"
++#include "nautilus-view-model.h"
++
++/* Short on purpose. While the entry is up it takes Backspace away from "go to
++ * parent folder", and the next key extends the query instead of starting a new
++ * one, so anything other than continuous typing should expire it. Dolphin
++ * drops a keyboard search after a second too. */
++#define DISMISS_TIMEOUT_MS 1000
++
++/**
++ * NautilusTypeahead:
++ *
++ * Entry which finds an item in a files view by the start of its name.
++ *
++ * Add it as an overlay child of the view it is constructed for. It stays
++ * hidden until a key typed on that view produces text, and dismisses itself
++ * once typing stops. The view keeps the keyboard focus throughout, so its own
++ * navigation and selection keys go on working while the query is up.
++ */
++struct _NautilusTypeahead
++{
++    AdwBin parent_instance;
++
++    NautilusFilesView *view;
++    GtkWidget *entry;
++
++    guint dismiss_timeout_id;
++    gboolean dismissing;
++};
++
++G_DEFINE_FINAL_TYPE (NautilusTypeahead, nautilus_typeahead, ADW_TYPE_BIN)
++
++/* Casefold before normalizing: casefolding can emit characters which are
++ * themselves not normalized, so normalizing afterwards is what makes a
++ * precomposed name match a decomposed query. */
++static char *
++fold_for_comparison (const char *text)
++{
++    g_autofree char *casefolded = g_utf8_casefold (text, -1);
++
++    return g_utf8_normalize (casefolded, -1, G_NORMALIZE_ALL);
++}
++
++/* Searches from @from, wrapping once, backwards if @step is negative. Prefers
++ * a name starting with @folded_query, and settles for one containing it only
++ * once the whole model has been walked without a better match.
++ *
++ * @model is the view's own sorted and filtered model, so this walks what the
++ * user sees: current sort order, no filtered-out files, and the items of
++ * expanded folders flattened in place. */
++static int
++find_match_position (NautilusViewModel *model,
++                     const char        *folded_query,
++                     guint              from,
++                     int                step)
++{
++    guint n_items = g_list_model_get_n_items (G_LIST_MODEL (model));
++    int contains_query = -1;
++
++    for (guint i = 0; i < n_items; i++)
++    {
++        guint position = (step > 0 ?
++                          (from + i) % n_items :
++                          (from + n_items - i) % n_items);
++        g_autoptr (GtkTreeListRow) row = NULL;
++        g_autoptr (NautilusViewItem) item = NULL;
++        g_autofree char *folded_name = NULL;
++        NautilusFile *file;
++
++        row = g_list_model_get_item (G_LIST_MODEL (model), position);
++
++        if (row == NULL)
++        {
++            continue;
++        }
++
++        item = gtk_tree_list_row_get_item (row);
++
++        if (item == NULL)
++        {
++            continue;
++        }
++
++        file = nautilus_view_item_get_file (item);
++        folded_name = fold_for_comparison (nautilus_file_get_display_name (file));
++
++        if (folded_name == NULL)
++        {
++            continue;
++        }
++
++        if (g_str_has_prefix (folded_name, folded_query))
++        {
++            return (int) position;
++        }
++
++        if (contains_query < 0 && strstr (folded_name, folded_query) != NULL)
++        {
++            contains_query = (int) position;
++        }
++    }
++
++    return contains_query;
++}
++
++static void
++on_dismiss_timeout (gpointer data)
++{
++    NautilusTypeahead *self = data;
++
++    self->dismiss_timeout_id = 0;
++    nautilus_typeahead_dismiss (self);
++}
++
++static void
++arm_dismiss_timeout (NautilusTypeahead *self)
++{
++    g_clear_handle_id (&self->dismiss_timeout_id, g_source_remove);
++    self->dismiss_timeout_id = g_timeout_add_once (DISMISS_TIMEOUT_MS,
++                                                   on_dismiss_timeout,
++                                                   self);
++}
++
++static void
++select_match (NautilusTypeahead *self,
++              guint              from,
++              int                step)
++{
++    const char *query = gtk_editable_get_text (GTK_EDITABLE (self->entry));
++    NautilusViewModel *model;
++    NautilusListBase *list_base;
++    g_autofree char *folded_query = NULL;
++    int position;
++
++    if (self->view == NULL || query == NULL || *query == '\0')
++    {
++        return;
++    }
++
++    model = nautilus_files_view_get_private_model (self->view);
++    list_base = nautilus_files_view_get_private_list_base (self->view);
++
++    if (model == NULL || list_base == NULL ||
++        g_list_model_get_n_items (G_LIST_MODEL (model)) == 0)
++    {
++        return;
++    }
++
++    folded_query = fold_for_comparison (query);
++    position = find_match_position (model, folded_query, from, step);
++
++    if (position < 0)
++    {
++        /* Keep the selection on the last match, so that backspacing back to a
++         * query which does match returns to where the user was. */
++        return;
++    }
++
++    nautilus_list_base_set_cursor (list_base, (guint) position, TRUE, TRUE);
++}
++
++static int
++selected_position (NautilusViewModel *model,
++                   int                step)
++{
++    g_autoptr (GtkBitset) selection = NULL;
++
++    selection = gtk_selection_model_get_selection (GTK_SELECTION_MODEL (model));
++
++    if (gtk_bitset_is_empty (selection))
++    {
++        return -1;
++    }
++
++    return (int) (step > 0 ?
++                  gtk_bitset_get_maximum (selection) :
++                  gtk_bitset_get_minimum (selection));
++}
++
++static void
++cycle_match (NautilusTypeahead *self,
++             int                step)
++{
++    NautilusViewModel *model;
++    guint n_items;
++    int selected;
++    guint from;
++
++    if (self->view == NULL)
++    {
++        return;
++    }
++
++    model = nautilus_files_view_get_private_model (self->view);
++
++    if (model == NULL)
++    {
++        return;
++    }
++
++    n_items = g_list_model_get_n_items (G_LIST_MODEL (model));
++
++    if (n_items == 0)
++    {
++        return;
++    }
++
++    selected = selected_position (model, step);
++
++    if (selected < 0)
++    {
++        from = 0;
++        step = 1;
++    }
++    else
++    {
++        from = (guint) ((selected + step + (int) n_items) % (int) n_items);
++    }
++
++    select_match (self, from, step);
++    arm_dismiss_timeout (self);
++}
++
++static void
++delete_last_character (NautilusTypeahead *self)
++{
++    const char *text = gtk_editable_get_text (GTK_EDITABLE (self->entry));
++    int n_chars = (int) g_utf8_strlen (text, -1);
++
++    gtk_editable_delete_text (GTK_EDITABLE (self->entry), n_chars - 1, n_chars);
++}
++
++static void
++on_entry_changed (GtkEditable       *editable,
++                  NautilusTypeahead *self)
++{
++    const char *text;
++
++    if (self->dismissing)
++    {
++        return;
++    }
++
++    text = gtk_editable_get_text (editable);
++
++    if (text == NULL || *text == '\0')
++    {
++        nautilus_typeahead_dismiss (self);
++
++        return;
++    }
++
++    arm_dismiss_timeout (self);
++    select_match (self, 0, 1);
++}
++
++/* GTK reveals the entry only once its input method has produced text, so the
++ * first keystroke is already in the buffer here. See
++ * gtk_editable_set_input_interceptor(). */
++static void
++on_input_intercepted (GtkEditable       *editable,
++                      NautilusTypeahead *self)
++{
++    gtk_widget_set_visible (GTK_WIDGET (self), TRUE);
++}
++
++static void
++on_focus_leave (GtkEventControllerFocus *controller,
++                NautilusTypeahead       *self)
++{
++    nautilus_typeahead_dismiss (self);
++}
++
++static void
++on_view_pressed (GtkGestureClick   *gesture,
++                 int                n_press,
++                 double             x,
++                 double             y,
++                 NautilusTypeahead *self)
++{
++    nautilus_typeahead_dismiss (self);
++}
++
++/* Keys which move the cursor leave the query describing something other than
++ * what is now selected, so the entry goes away rather than lie about it. */
++static gboolean
++is_navigation_key (guint keyval)
++{
++    switch (keyval)
++    {
++        case GDK_KEY_Up:
++        case GDK_KEY_KP_Up:
++        case GDK_KEY_Down:
++        case GDK_KEY_KP_Down:
++        case GDK_KEY_Left:
++        case GDK_KEY_KP_Left:
++        case GDK_KEY_Right:
++        case GDK_KEY_KP_Right:
++        case GDK_KEY_Home:
++        case GDK_KEY_KP_Home:
++        case GDK_KEY_End:
++        case GDK_KEY_KP_End:
++        case GDK_KEY_Page_Up:
++        case GDK_KEY_KP_Page_Up:
++        case GDK_KEY_Page_Down:
++        case GDK_KEY_KP_Page_Down:
++        case GDK_KEY_Return:
++        case GDK_KEY_ISO_Enter:
++        case GDK_KEY_KP_Enter:
++        {
++            return TRUE;
++        }
++
++        default:
++        {
++            return FALSE;
++        }
++    }
++}
++
++static gboolean
++focus_is_editable (NautilusTypeahead *self)
++{
++    GtkRoot *root = gtk_widget_get_root (GTK_WIDGET (self));
++    GtkWidget *focus = (root != NULL) ? gtk_root_get_focus (root) : NULL;
++
++    return focus != NULL && GTK_IS_EDITABLE (focus);
++}
++
++/* Runs in the capture phase on the view, which is what lets Backspace edit the
++ * query: the window resolves its managed shortcuts, "go to parent folder"
++ * among them, after the key has traveled down to the focused item and back
++ * up. The capture phase outranks a focused text entry too, so an entry which
++ * has the focus somewhere in this window keeps its own Backspace. */
++static gboolean
++on_view_key_pressed (GtkEventControllerKey *controller,
++                     guint                  keyval,
++                     guint                  keycode,
++                     GdkModifierType        state,
++                     NautilusTypeahead     *self)
++{
++    if (!gtk_widget_get_visible (GTK_WIDGET (self)) || focus_is_editable (self))
++    {
++        return GDK_EVENT_PROPAGATE;
++    }
++
++    if (keyval == GDK_KEY_Escape)
++    {
++        nautilus_typeahead_dismiss (self);
++
++        return GDK_EVENT_STOP;
++    }
++
++    if (keyval == GDK_KEY_BackSpace)
++    {
++        delete_last_character (self);
++
++        return GDK_EVENT_STOP;
++    }
++
++    if ((state & GDK_CONTROL_MASK) != 0 &&
++        (keyval == GDK_KEY_g || keyval == GDK_KEY_G))
++    {
++        cycle_match (self, (state & GDK_SHIFT_MASK) != 0 ? -1 : 1);
++
++        return GDK_EVENT_STOP;
++    }
++
++    if (is_navigation_key (keyval))
++    {
++        nautilus_typeahead_dismiss (self);
++    }
++
++    return GDK_EVENT_PROPAGATE;
++}
++
++static void
++update_key_capture (NautilusTypeahead *self)
++{
++    gboolean enabled;
++
++    if (self->view == NULL)
++    {
++        return;
++    }
++
++    enabled = g_settings_get_boolean (nautilus_preferences,
++                                      NAUTILUS_PREFERENCES_TYPE_AHEAD_FIND);
++
++    if (!enabled)
++    {
++        nautilus_typeahead_dismiss (self);
++    }
++
++    gtk_editable_set_input_interceptor (GTK_EDITABLE (self->entry),
++                                        enabled ? GTK_WIDGET (self->view) : NULL);
++}
++
++static void
++nautilus_typeahead_dispose (GObject *object)
++{
++    NautilusTypeahead *self = NAUTILUS_TYPEAHEAD (object);
++
++    g_clear_handle_id (&self->dismiss_timeout_id, g_source_remove);
++
++    if (self->entry != NULL)
++    {
++        gtk_editable_set_input_interceptor (GTK_EDITABLE (self->entry), NULL);
++    }
++
++    g_clear_weak_pointer (&self->view);
++
++    adw_bin_set_child (ADW_BIN (self), NULL);
++    self->entry = NULL;
++
++    G_OBJECT_CLASS (nautilus_typeahead_parent_class)->dispose (object);
++}
++
++static void
++nautilus_typeahead_class_init (NautilusTypeaheadClass *klass)
++{
++    GObjectClass *object_class = G_OBJECT_CLASS (klass);
++
++    object_class->dispose = nautilus_typeahead_dispose;
++}
++
++static void
++nautilus_typeahead_init (NautilusTypeahead *self)
++{
++    self->entry = gtk_entry_new ();
++    gtk_widget_set_size_request (self->entry, 180, -1);
++    gtk_entry_set_icon_from_icon_name (GTK_ENTRY (self->entry),
++                                       GTK_ENTRY_ICON_PRIMARY, "system-search-symbolic");
++    gtk_accessible_update_property (GTK_ACCESSIBLE (self->entry),
++                                    GTK_ACCESSIBLE_PROPERTY_LABEL, _("Type-Ahead Find"),
++                                    -1);
++
++    g_signal_connect (self->entry, "changed",
++                      G_CALLBACK (on_entry_changed), self);
++    g_signal_connect (self->entry, "input-intercepted",
++                      G_CALLBACK (on_input_intercepted), self);
++
++    adw_bin_set_child (ADW_BIN (self), self->entry);
++
++    gtk_widget_add_css_class (GTK_WIDGET (self), "typeahead");
++    gtk_widget_set_halign (GTK_WIDGET (self), GTK_ALIGN_START);
++    gtk_widget_set_valign (GTK_WIDGET (self), GTK_ALIGN_END);
++    gtk_widget_set_margin_start (GTK_WIDGET (self), 6);
++    gtk_widget_set_margin_bottom (GTK_WIDGET (self), 6);
++    gtk_widget_set_visible (GTK_WIDGET (self), FALSE);
++
++    /* The query is typed on the view, never here. Taking neither the focus
++     * nor the pointer keeps the view's own keyboard navigation working, and
++     * leaves a click to whatever the entry is floating over. */
++    gtk_widget_set_can_focus (GTK_WIDGET (self), FALSE);
++    gtk_widget_set_can_target (GTK_WIDGET (self), FALSE);
++}
++
++NautilusTypeahead *
++nautilus_typeahead_new (NautilusFilesView *view)
++{
++    NautilusTypeahead *self = g_object_new (NAUTILUS_TYPE_TYPEAHEAD, NULL);
++    GtkEventController *controller;
++
++    g_set_weak_pointer (&self->view, view);
++
++    controller = gtk_event_controller_key_new ();
++    gtk_event_controller_set_propagation_phase (controller, GTK_PHASE_CAPTURE);
++    g_signal_connect_object (controller, "key-pressed",
++                             G_CALLBACK (on_view_key_pressed), self, 0);
++    gtk_widget_add_controller (GTK_WIDGET (view), controller);
++
++    controller = gtk_event_controller_focus_new ();
++    g_signal_connect_object (controller, "leave",
++                             G_CALLBACK (on_focus_leave), self, 0);
++    gtk_widget_add_controller (GTK_WIDGET (view), controller);
++
++    /* Capture phase, so the press is seen before an item's own gesture can
++     * claim it. The gesture claims nothing itself: a click still selects,
++     * opens, rubber-bands or starts a drag as it did. */
++    controller = GTK_EVENT_CONTROLLER (gtk_gesture_click_new ());
++    gtk_event_controller_set_propagation_phase (controller, GTK_PHASE_CAPTURE);
++    gtk_gesture_single_set_button (GTK_GESTURE_SINGLE (controller), 0);
++    g_signal_connect_object (controller, "pressed",
++                             G_CALLBACK (on_view_pressed), self, 0);
++    gtk_widget_add_controller (GTK_WIDGET (view), controller);
++
++    g_signal_connect_object (nautilus_preferences,
++                             "changed::" NAUTILUS_PREFERENCES_TYPE_AHEAD_FIND,
++                             G_CALLBACK (update_key_capture), self,
++                             G_CONNECT_SWAPPED);
++    update_key_capture (self);
++
++    return self;
++}
++
++/**
++ * nautilus_typeahead_dismiss:
++ * @self: a #NautilusTypeahead
++ *
++ * Clears the query and hides the entry, keeping the matched item selected.
++ *
++ * Safe to call when already dismissed.
++ */
++void
++nautilus_typeahead_dismiss (NautilusTypeahead *self)
++{
++    g_return_if_fail (NAUTILUS_IS_TYPEAHEAD (self));
++
++    if (self->dismissing || self->entry == NULL)
++    {
++        return;
++    }
++
++    self->dismissing = TRUE;
++
++    g_clear_handle_id (&self->dismiss_timeout_id, g_source_remove);
++    gtk_editable_set_text (GTK_EDITABLE (self->entry), "");
++    gtk_widget_set_visible (GTK_WIDGET (self), FALSE);
++
++    self->dismissing = FALSE;
++}
+diff --git a/src/nautilus-typeahead.h b/src/nautilus-typeahead.h
+new file mode 100644
+index 000000000..9f139e2f7
+--- /dev/null
++++ b/src/nautilus-typeahead.h
+@@ -0,0 +1,22 @@
++/*
++ * Copyright (C) 2026 The GNOME project contributors
++ *
++ * SPDX-License-Identifier: GPL-3.0-or-later
++ */
++
++#pragma once
++
++#include "nautilus-types.h"
++
++#include <adwaita.h>
++
++G_BEGIN_DECLS
++
++#define NAUTILUS_TYPE_TYPEAHEAD (nautilus_typeahead_get_type ())
++
++G_DECLARE_FINAL_TYPE (NautilusTypeahead, nautilus_typeahead, NAUTILUS, TYPEAHEAD, AdwBin)
++
++NautilusTypeahead *nautilus_typeahead_new     (NautilusFilesView *view);
++void               nautilus_typeahead_dismiss (NautilusTypeahead *self);
++
++G_END_DECLS
+diff --git a/src/resources/style.css b/src/resources/style.css
+index 4e8aed9c4..5bc342a83 100644
+--- a/src/resources/style.css
++++ b/src/resources/style.css
+@@ -111,6 +111,14 @@
+   opacity: 0.7;
+ }
+ 
++/* Type-ahead find entry */
++.typeahead {
++  padding: 3px;
++  background-color: var(--view-bg-color);
++  box-shadow: inset 0 100px 0 0 color-mix(in srgb, currentColor 10%, transparent);
++  border-radius: 12px;
++}
++
+ /* Floating status bar */
+ .floating-bar {
+   padding: 3px;
+diff --git a/src/resources/ui/nautilus-preferences-dialog.blp b/src/resources/ui/nautilus-preferences-dialog.blp
+index fa03d206a..100c5724d 100644
+--- a/src/resources/ui/nautilus-preferences-dialog.blp
++++ b/src/resources/ui/nautilus-preferences-dialog.blp
+@@ -20,6 +20,12 @@ Adw.PreferencesDialog preferences_dialog {
+         use-underline: true;
+       }
+ 
++      Adw.SwitchRow type_ahead_find_row {
++        title: _("_Type-Ahead Find");
++        subtitle: _("Typing jumps to the first matching file, instead of starting a search");
++        use-underline: true;
++      }
++
+       Adw.ActionRow open_action_row {
+         title: _("_Action to Open Items");
+         use-underline: true;
