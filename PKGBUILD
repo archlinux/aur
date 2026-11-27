@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=kantele
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Settings GUI for the d77 window managers (pwm, wmd77, wasp, spitfire)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-pyqt6' 'python-tomlkit' 'lua54' 'qt6-wayland')
 optdepends=('libnotify: notifications from kantele-shell')
 checkdepends=('python-tomlkit' 'lua54')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ecbaf299f15bfeb06fc6b3eacd4ee96ef4fe4f1addfeab0ba4890d08155ab546')
+sha256sums=('34fcb5d3866b8223e9041adc9e153bca738fe58fd0be01459ac645788749cd3b')
 
 check() {
     cd "$pkgname-$pkgver"
