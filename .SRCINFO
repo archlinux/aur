@@ -1,6 +1,6 @@
 pkgbase = r-tilingarray
 	pkgdesc = Transcript mapping with high-density oligonucleotide tiling arrays
-	pkgver = 1.90.0
+	pkgver = 1.92.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tilingArray
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-tilingarray
 	depends = r-rcolorbrewer
 	depends = r-strucchange
 	depends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tilingArray_1.90.0.tar.gz
-	sha256sums = 57f22f3a5625ec171613ada17a2ef71ed12119377966120973e66c4ce39ee555
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tilingArray_1.92.0.tar.gz
+	sha256sums = 5a61b36302aee376880e148af6dc6030dfd495d90e914faff589c77d6f74f287
 
 pkgname = r-tilingarray
