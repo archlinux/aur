@@ -1,7 +1,7 @@
 # Maintainer: Braulio Oliveira <brauliobo@gmail.com>
 
 pkgname=zensmu-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Safety-first Rust CLI, live TUI, and unprivileged GUI for AMD Ryzen SMU control and telemetry (prebuilt binary)"
 arch=('x86_64')
@@ -13,7 +13,8 @@ depends=(
     'glibc'
 )
 optdepends=(
-    'ryzen_smu-dkms-git: required DKMS kernel module providing /sys/kernel/ryzen_smu_drv (needed on Arch/CachyOS unless built into a custom kernel)'
+    'dkms: automatically build and install bundled ryzen_smu kernel driver on package install/upgrade'
+    'ryzen_smu-dkms-git: standalone AUR DKMS package for ryzen_smu (auto-detected and left untouched if installed)'
     'libglvnd: OpenGL support for zensmu-gui'
     'libxkbcommon: keyboard support for zensmu-gui on Wayland/X11'
     'wayland: native Wayland windowing for zensmu-gui'
@@ -21,9 +22,10 @@ optdepends=(
 )
 provides=('zensmu')
 conflicts=('zensmu' 'zensmu-git')
+install=zensmu.install
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/brauliobo/zensmu/releases/download/v${pkgver}/zensmu-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('55180bce068b5cb562523e2a9a53a7ca315980d00bca18586f07085739135c5d')
+sha256sums=('4c902c8e3fdc75a0d2c822b149b5ed093794bb39d915d5da75198a3a08127721')
 
 package() {
     local root="${srcdir}/zensmu-v${pkgver}-x86_64-unknown-linux-gnu"
@@ -76,6 +78,17 @@ package() {
     # Man page
     install -dm755 "${pkgdir}/usr/share/man/man1"
     "${pkgdir}/usr/bin/zensmu" manpage > "${pkgdir}/usr/share/man/man1/zensmu.1"
+
+    # Bundled ryzen_smu DKMS sources (auto-built/removed by zensmu.install unless external ryzen_smu exists)
+    if [[ -d "${root}/packaging/ryzen_smu-dkms" ]]; then
+        install -dm755 "${pkgdir}/usr/share/zensmu/ryzen_smu-dkms"
+        for f in drv.c smu.c smu.h Makefile LICENSE dkms.conf VERSION; do
+            if [[ -f "${root}/packaging/ryzen_smu-dkms/${f}" ]]; then
+                install -Dm644 "${root}/packaging/ryzen_smu-dkms/${f}" \
+                    "${pkgdir}/usr/share/zensmu/ryzen_smu-dkms/${f}"
+            fi
+        done
+    fi
 
     # Documentation & License
     install -Dm644 "${root}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
