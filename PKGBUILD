@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatstat
-_pkgver=3.6-3
+_pkgver=3.6-4
 pkgname=r-${_pkgname,,}
-pkgver=3.6.3
+pkgver=3.6.4
 pkgrel=1
 pkgdesc='Spatial Point Pattern Analysis, Model-Fitting, Simulation, Tests'
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
   r-spatstat.utils
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a38ae695b1b6e1aeb90cb937da3989fc10e2506389d9fd37c9eb2e8505dedd7b')
+sha256sums=('b0be0d3bf73f3ff47a80287741e0b3bdc1f19fd011eefd3941df1b595a689542')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
