@@ -1,6 +1,6 @@
+asb2m10-surgesynthteam_tuningui/
 dexed/
-dexed-git-*.pkg.tar.xz
-dexed-git-*.pkg.tar.zst
+dexed-git-*.pkg.tar.*
 dexed-git-*.src.tar.gz
 free-audio-clap/
 free-audio-clap-helpers/
@@ -9,12 +9,5 @@ juce-framework-JUCE/
 ODDSound-MTS-ESP/
 pkg/
 src/
-steinbergmedia-vst3_base/
-steinbergmedia-vst3_cmake/
-steinbergmedia-vst3_pluginterfaces/
-steinbergmedia-vst3_public_sdk/
-steinbergmedia-vst3sdk/
-steinbergmedia-vstgui/
-surge-synthesizer-surgesynthteam_tuningui/
 surge-synthesizer-tuning-library/
 surgesynthteam_tuningui/

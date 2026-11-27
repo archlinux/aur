@@ -3,31 +3,33 @@
 
 _pkgname=dexed
 pkgname=$_pkgname-git
-pkgver=1.0.1.r2.g2e182b3
-pkgrel=2
+pkgver=1.1.1.r0.gc314161
+pkgrel=1
 pkgdesc='A software synth closely modelled on the Yamaha DX7 (git version)'
 arch=(x86_64)
 url='https://asb2m10.github.io/dexed'
 license=(GPL-3.0-only)
 groups=(pro-audio vst3-plugins clap-plugins)
 depends=(
-  alsa-lib
-  gcc-libs
   glibc
   hicolor-icon-theme
-  freetype2
+  libgcc
+  libstdc++
 )
 makedepends=(
-  git
+  alsa-lib
   cmake
   curl
-  jack
-  libx11
-  libxrandr
-  libxinerama
-  libxcursor
-  libpng
+  fontconfig
+  freetype2
   gendesk
+  git
+  jack
+  libpng
+  libx11
+  libxcursor
+  libxinerama
+  libxrandr
 )
 optdepends=(
   'jack: backend for standalone'
@@ -38,29 +40,16 @@ provides=($_pkgname)
 conflicts=($_pkgname $_pkgname-clap $_pkgname-docs $_pkgname-standalone $_pkgname-vst3)
 source=(
   "$_pkgname::git+https://github.com/asb2m10/dexed.git"
-  'steinbergmedia-vst3sdk::git+https://github.com/steinbergmedia/vst3sdk.git'
   'surge-synthesizer-tuning-library::git+https://github.com/surge-synthesizer/tuning-library.git'
-  'surge-synthesizer-surgesynthteam_tuningui::git+https://github.com/surge-synthesizer/surgesynthteam_tuningui.git'
+  'asb2m10-surgesynthteam_tuningui::git+https://github.com/asb2m10/surgesynthteam_tuningui'
   'ODDSound-MTS-ESP::git+https://github.com/ODDSound/MTS-ESP.git'
   'juce-framework-JUCE::git+https://github.com/juce-framework/JUCE.git'
   'free-audio-clap-juce-extensions::git+https://github.com/free-audio/clap-juce-extensions.git'
   # clap-juce-extensions
   'free-audio-clap::git+https://github.com/free-audio/clap.git'
   'free-audio-clap-helpers::git+https://github.com/free-audio/clap-helpers.git'
-  # steinbergmedia-vst3sdk
-  'steinbergmedia-vst3_base::git+https://github.com/steinbergmedia/vst3_base.git'
-  'steinbergmedia-vst3_cmake::git+https://github.com/steinbergmedia/vst3_cmake.git'
-  'steinbergmedia-vst3_pluginterfaces::git+https://github.com/steinbergmedia/vst3_pluginterfaces.git'
-  'steinbergmedia-vst3_public_sdk::git+https://github.com/steinbergmedia/vst3_public_sdk.git'
-  'steinbergmedia-vstgui::git+https://github.com/steinbergmedia/vstgui.git'
 )
 b2sums=('SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -78,12 +67,11 @@ prepare() {
   cd $_pkgname
   # prepare git submodule(s)
   git submodule init
-  git config submodule.libs/vst3sdk.url "$srcdir/steinbergmedia-vst3sdk"
-  git config submodule.libs/tuning-library.url "$srcdir/surge-synthesizer-tuning-library"
-  git config submodule.libs/surgesynthteam_tuningui.url "$srcdir/surge-synthesizer-surgesynthteam_tuningui"
-  git config submodule.libs/MTS-ESP.url "$srcdir/ODDSound-MTS-ESP"
-  git config submodule.libs/JUCE.url "$srcdir/juce-framework-JUCE"
-  git config submodule.libs/clap-juce-extensions.url "$srcdir/free-audio-clap-juce-extensions"
+  git submodule set-url libs/tuning-library "$srcdir/surge-synthesizer-tuning-library"
+  git submodule set-url libs/surgesynthteam_tuningui "$srcdir/asb2m10-surgesynthteam_tuningui"
+  git submodule set-url libs/MTS-ESP "$srcdir/ODDSound-MTS-ESP"
+  git submodule set-url libs/JUCE "$srcdir/juce-framework-JUCE"
+  git submodule set-url libs/clap-juce-extensions "$srcdir/free-audio-clap-juce-extensions"
   git -c protocol.file.allow=always submodule update --init
 
   pushd libs/clap-juce-extensions
@@ -92,19 +80,6 @@ prepare() {
   git config submodule.clap-libs/clap-helpers.url "$srcdir/free-audio-clap-helpers"
   git -c protocol.file.allow=always submodule update --init
   popd
-
-  pushd libs/vst3sdk
-  git submodule init
-  git config submodule.base.url "$srcdir/steinbergmedia-vst3_base"
-  git config submodule.cmake.url "$srcdir/steinbergmedia-vst3_cmake"
-  git config submodule.pluginterfaces.url "$srcdir/steinbergmedia-vst3_pluginterfaces"
-  git config submodule.public.sdk.url "$srcdir/steinbergmedia-vst3_public_sdk"
-  git config submodule.vstgui4.url "$srcdir/steinbergmedia-vstgui"
-  git -c protocol.file.allow=always submodule update --init
-  popd
-
-  # any missing submodules? yes, probably
-  git submodule update --init --recursive
 
   # generate desktop file
   gendesk -f -n \
@@ -115,32 +90,32 @@ prepare() {
     --icon "$_pkgname" \
     --genericname "Virtual FM synthesizer"
 
-  # add version to program
-  sed -e "s/DEVBUILD/$pkgver/" -i Source/Dexed.h
   # Disable copying of CLAP/VST3 plugins to ~/.{clap,vst3}
   sed -e "s/COPY_PLUGIN_AFTER_BUILD TRUE/COPY_PLUGIN_AFTER_BUILD FALSE/" \
-    -i Source/CMakeLists.txt
+    -i source/CMakeLists.txt
 }
 
 build() {
   cmake \
     -S $_pkgname \
     -B $_pkgname-build \
-    -Wno-author \
-    -DCMAKE_INSTALL_PREFIX='/usr'
+    -W no-author \
+    -D CMAKE_INSTALL_PREFIX='/usr' \
+    -D BUILD_ID=$pkgver
   cmake --build $_pkgname-build
 }
 
 package() {
+  depends+=(libasound.so libfontconfig.so libfreetype.so)
   cd $_pkgname
   # desktop icon/file
   install -vDm644 assets/ui/dexedIcon.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/dexed.png
   install -vDm644 com.digitalsuburban.Dexed.desktop -t "$pkgdir"/usr/share/applications
 
   # documentation
-  install -vDm644 Documentation/* README.md -t "$pkgdir"/usr/share/doc/$pkgname
+  install -vDm644 doc/* README.md -t "$pkgdir"/usr/share/doc/$pkgname
 
-  cd ../$_pkgname-build/Source/Dexed_artefacts
+  cd ../$_pkgname-build/source/Dexed_artefacts
 
   # vst3
   install -Dm755 VST3/Dexed.vst3/Contents/$(uname -m)-linux/Dexed.so \
