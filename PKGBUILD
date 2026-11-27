@@ -1,6 +1,6 @@
 # Maintainer: huza <huzaifahasif3@gmail.com>
 pkgname=datacraft-bin
-pkgver=0.17.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='Lightweight desktop client for SQL databases (precompiled release)'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ provides=('datacraft')
 conflicts=('datacraft-git')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/javy-fernandez/datacraft/releases/download/v$pkgver/DataCraft-$pkgver-linux-x64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/javy-fernandez/datacraft/releases/download/v$pkgver/DataCraft-$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('e23265d10fd350b1fc03d61f710ca066f2e0267d1e25244228683bc122785fee')
-sha256sums_aarch64=('0f4cde94d1bd7a180f15082bcd6374fe993200c7d98ee5f86c0e2fd79cc36f05')
+sha256sums_x86_64=('6c849d5b67e7fa27b5d71d0aed9b3ebd943c8d687b6f96d8bdb2c68d2165c53d')
+sha256sums_aarch64=('d2c4d7cad6bdac0a2caf8c55579821c827bac097f2dbf5bce7bcb041079c8c83')
 
 package() {
   install -Dm755 "$srcdir/DataCraft/datacraft" "$pkgdir/usr/bin/datacraft"
