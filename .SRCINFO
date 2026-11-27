@@ -1,6 +1,6 @@
 pkgbase = r-cellbaser
 	pkgdesc = Querying annotation data from the high performance Cellbase web
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cellbaseR
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-cellbaser
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cellbaseR_1.36.0.tar.gz
-	sha256sums = 5fb8c7333d0664d09edc67a51c93822f47f01fb329fbb998dbe5d5e9321cce46
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cellbaseR_1.38.0.tar.gz
+	sha256sums = e5cdbbf8d55ea7651ee831d223d9f6231fb15926b7fb17c8b9845f65c2a19dd0
 
 pkgname = r-cellbaser
