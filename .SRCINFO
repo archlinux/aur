@@ -1,6 +1,6 @@
 pkgbase = mornye-git
 	pkgdesc = Desktop music player and library manager built with Flutter and Rust (git version)
-	pkgver = 5.4.0.r32.gc4a1c7b
+	pkgver = 5.4.5.r1.gaf9a4d6
 	pkgrel = 1
 	url = https://github.com/mornyeapp/Mornye
 	arch = x86_64

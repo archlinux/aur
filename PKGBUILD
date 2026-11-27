@@ -2,7 +2,7 @@
 
 pkgname=mornye-git
 _pkgname=mornye
-pkgver=5.4.0.r32.gc4a1c7b
+pkgver=5.4.5.r1.gaf9a4d6
 pkgrel=1
 pkgdesc='Desktop music player and library manager built with Flutter and Rust (git version)'
 arch=('x86_64' 'aarch64')
@@ -82,6 +82,7 @@ prepare() {
   flutter config --no-analytics --enable-linux-desktop
   flutter --version
   flutter pub get
+  dart scripts/gen_l10n.dart
 
   if [[ -f scripts/prepare_flutter_sdk.dart ]]; then
     dart scripts/prepare_flutter_sdk.dart --sdk "${flutter_dir}"
@@ -106,9 +107,23 @@ build() {
 
   # Flutter Linux compiles native plugins with clang++; avoid GCC-only makepkg flags.
   unset CFLAGS CXXFLAGS LDFLAGS
-  export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/usr/src/debug/${pkgname}"
+  # Cargo splits RUSTFLAGS on whitespace; encode arguments so srcdir may contain spaces.
+  local encoded_rustflags="${CARGO_ENCODED_RUSTFLAGS:-}"
+  if [[ -z "${encoded_rustflags}" && -n "${RUSTFLAGS:-}" ]]; then
+    local -a rustflags_array
+    read -r -a rustflags_array <<< "${RUSTFLAGS}"
+    printf -v encoded_rustflags '%s\037' "${rustflags_array[@]}"
+    encoded_rustflags="${encoded_rustflags%$'\037'}"
+  fi
+  [[ -z "${encoded_rustflags}" ]] || encoded_rustflags+=$'\037'
+  encoded_rustflags+="--remap-path-prefix=${srcdir}=/usr/src/debug/${pkgname}"
+  export CARGO_ENCODED_RUSTFLAGS="${encoded_rustflags}"
 
-  bash scripts/build_rust_backend.sh desktop
+  # Native C/C++ dependencies can embed __FILE__ paths independently of rustc.
+  local c_remap
+  printf -v c_remap '%q' "-ffile-prefix-map=${srcdir}=/usr/src/debug/${pkgname}"
+  env CFLAGS="${c_remap}" CXXFLAGS="${c_remap}" CC_SHELL_ESCAPED_FLAGS=1 \
+    bash scripts/build_rust_backend.sh desktop
 
   local git_commit
   git_commit="$(git rev-parse --short=8 HEAD)"
