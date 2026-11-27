@@ -2,34 +2,40 @@
 
 pkgbase=wx-tools
 pkgname=wx-tools
-pkgver=1.2.0
-pkgrel=6
+pkgver=1.2.1
+pkgrel=1
 groups=()
-pkgdesc="wxTools: A Serial Port, UDP, TCP, and WebSocket Debugging Assistant Based on wxWidgets."
+pkgdesc="A Serial Port, UDP, TCP, and WebSocket Debugging Assistant Based on wxWidgets."
 arch=($CARCH)
 url="https://github.com/x-tools-author/wx-tools"
 license=('LicenseRef-wxWindows')
-provides=(${pkgname} wx-tools)
-conflicts=(${pkgname} wx-tools)
+provides=(${pkgname})
+conflicts=(${pkgname})
 depends=(
+    at-spi2-core
     sh
     cairo
-    gcc-libs
     gdk-pixbuf2
     glib2
     glibc
     gtk3
     hicolor-icon-theme
+    libgcc
     libpng
+    libstdc++
     libunwind
     libx11
     libxkbcommon
     pango
     pcre2
+    wayland
+    zlib
 )
 makedepends=(
     git
     cmake
+    fontconfig
+    freetype2
     libiconv
     libnotify
     libmspack
@@ -45,8 +51,9 @@ checkdepends=(
     gtest
 )
 optdepends=()
+options=('!strip' '!debug')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('cf94549cb900141af275b148fc31458d8e6974b762a86a140a11eca6b6a53176')
+sha256sums=('f05e8effd84d7e3fd6a215baf27790ded56896bfa25243e938e22dd4bb926209')
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
@@ -90,5 +97,5 @@ Categories=Development;
 Terminal=false
 Type=Application
 EOF
-    #     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}-${pkgver}/build install
+    # DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
 }
