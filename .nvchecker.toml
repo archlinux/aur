@@ -1,0 +1,5 @@
+[procharbor-bin]
+source = "github"
+github = "shripad-jyothinath/procharbor"
+use_latest_release = true
+prefix = "v"
