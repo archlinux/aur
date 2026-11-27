@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=pikpaktui-bin
-pkgver=0.0.66
+pkgver=0.0.68
 pkgrel=1
 pkgdesc="TUI and CLI client for PikPak cloud storage"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/bengert
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/pikpaktui-x86_64-linux.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/pikpaktui-aarch64-linux.tar.gz")
 sha256sums=('9e388e61362a57c3ae5bc5661089f23ed9ed898fcb3ccf351a4b7fbab64b12d3')
-sha256sums_x86_64=('fa39cf8f690749e1597b31591690f521a9affad49d80d261049815f095f63b5e')
-sha256sums_aarch64=('4d517a6ed2c7fca5fe865c0d17e3f106f3ad5a30a481c94e139c9e00188cf37d')
+sha256sums_x86_64=('3473fcacddac225e07921c18cea93d27e2c0ac3636b283c0734cb15fac5a9d06')
+sha256sums_aarch64=('8c5b483789357187c73caa323ff7539c3c38f64c9a1b4396ccefe5bf0ad646a9')
 
 package() {
   install -Dm755 "pikpaktui" "${pkgdir}/usr/bin/pikpaktui"
