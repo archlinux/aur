@@ -1,6 +1,6 @@
 pkgbase = orca-ade-bin
 	pkgdesc = Next-gen IDE for parallel agentic development
-	pkgver = 1.4.278
+	pkgver = 1.4.279
 	pkgrel = 1
 	url = https://onorca.dev/
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = orca-ade-bin
 	depends = xorg-server-xvfb
 	optdepends = libappindicator-gtk3: system tray indicator
 	optdepends = vulkan-icd-loader: Vulkan backend for GPU-backed features
-	provides = orca-ide=1.4.278
+	provides = orca-ide=1.4.279
 	conflicts = orca-ide
 	conflicts = orca-ide-bin
 	conflicts = onorca-bin
@@ -53,11 +53,11 @@ pkgbase = orca-ade-bin
 	conflicts = stably-orca-git
 	options = !strip
 	options = !debug
-	source = LICENSE-1.4.278::https://raw.githubusercontent.com/stablyai/orca/v1.4.278/LICENSE
+	source = LICENSE-1.4.279::https://raw.githubusercontent.com/stablyai/orca/v1.4.279/LICENSE
 	sha512sums = faaf3b47b8ad4018071f90277e350ec5a6f393f0b43cf7f8d8ce94ac5553a57c94476ed282491e6899da0543fcdecd08598931e3ef1bb06ca8aaa388da13e70f
-	source_x86_64 = https://github.com/stablyai/orca/releases/download/v1.4.278/orca-ide_1.4.278_amd64.deb
-	sha512sums_x86_64 = bf2324fa93720b43dfe7be4306020073c5c7340474038bd342a263b8aa6940f2a7efc661f62c7d8b5602fc5d24794d748e87c902dee88987fc89e340f971bd76
-	source_aarch64 = https://github.com/stablyai/orca/releases/download/v1.4.278/orca-ide_1.4.278_arm64.deb
-	sha512sums_aarch64 = 37c4d4249b4e1e8322be704760caa8f99e6783418c65f71b0be8295b04863029426bc4c2e54f48c61e24deb034b62452ba958e3919bfb8ecc5deb10c86ff75bd
+	source_x86_64 = https://github.com/stablyai/orca/releases/download/v1.4.279/orca-ide_1.4.279_amd64.deb
+	sha512sums_x86_64 = d55c625e9a5ceeb0b85dd6d2bb4522a28b9f9931eedaaa8b046d75520e6f896c3b5913e5b2db87bcf55d8cc97f6914e81613cce4cec8c123a1f7181e5c9bc16b
+	source_aarch64 = https://github.com/stablyai/orca/releases/download/v1.4.279/orca-ide_1.4.279_arm64.deb
+	sha512sums_aarch64 = 691638a06f5404dfc44dbfec66dca55aa05b9468ef515c1a476614804255b79e7be57fa1bba4cf18311531905a6519f7331632a5f84afc09305ee26f663e0693
 
 pkgname = orca-ade-bin
