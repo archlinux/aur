@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=blockmodeling
-_pkgver=1.1.8
+_pkgver=1.1.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-sna
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8c89178ad36be80e43b5c7d3f7956bbd')
-b2sums=('5a4912988ed453062c3d521fbdc35bc035b2153185a7f6be3c46ea00073f6b17921b2399dbe957448ced845878fc08c6e10898756702f5aca4324d80a5774317')
+md5sums=('5face1332bb274eb5aabf11a65563aa1')
+b2sums=('af159a6504a27976921eec6a03296c1c7bc07d9ec8cf822fefc161dbb1433c6bb9e957e2adf866a638a178ff311fd2fab4860b5178322ae8666ca11272467cc3')
 
 build() {
   mkdir build
