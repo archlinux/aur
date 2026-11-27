@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=checkpwn-rs
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Check Have I Been Pwned for breached accounts and passwords"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('77e1b33240919fe6a8f334e86b795c792029a3a1e16fbd37276445407be05f21')
+sha256sums=('4fcb2e44568a76af8dce753aad6761bc5bc71e9ca07223a200355d996323d013')
 
 prepare() {
   cd "checkpwn-${pkgver}"
