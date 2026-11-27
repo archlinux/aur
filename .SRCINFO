@@ -1,6 +1,6 @@
 pkgbase = electerm
 	pkgdesc = Free and open-sourced terminal/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice client.
-	pkgver = 5.15.0
+	pkgver = 5.20.0
 	pkgrel = 1
 	url = https://electerm.org/
 	arch = aarch64
@@ -14,11 +14,11 @@ pkgbase = electerm
 	makedepends = jq
 	depends = electron44
 	conflicts = electerm
-	source = electerm-5.15.0.tar.gz::https://github.com/electerm/electerm/archive/refs/tags/v5.15.0.tar.gz
+	source = electerm-5.20.0.tar.gz::https://github.com/electerm/electerm/archive/refs/tags/v5.20.0.tar.gz
 	source = electerm.js
 	source = electerm.sh
-	sha256sums = 068e1cd7e8318b672b70c5b5fc3fe56704110b63eae4539179af2b128a66292f
-	sha256sums = b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b
+	sha256sums = 4c72f86472145b8505a8f2791dd6b38849e65b6c9b5bc56e1e530584d127825b
+	sha256sums = 4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b
 	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
 
 pkgname = electerm

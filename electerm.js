@@ -11,16 +11,24 @@ try {
 	const isEntry = (p) => {
 		if (typeof p !== 'string' || p.startsWith('--')) return false;
 		const base = path.basename(p);
-		return base === 'app.asar' || base === 'app';
+		return base === 'app' || base === 'app.asar' || base === 'app.asar.unpacked';
 	};
-	const resolveAppDir = () => {
-		if (process.env._APPDIR) return process.env._APPDIR;
+	const getAppArg = () => {
 		for (let i = 0; i < argv.length; i++) {
-			if (argv[i] === '--app' && i + 1 < argv.length) return path.dirname(argv[i + 1]);
-			if (argv[i].startsWith('--app=') && argv[i].length > 6) return path.dirname(argv[i].slice(6));
+			if (argv[i] === '--app' && i + 1 < argv.length) return argv[i + 1];
+			if (typeof argv[i] === 'string' && argv[i].startsWith('--app=') && argv[i].length > 6) return argv[i].slice(6);
 		}
-		for (let i = 1; i < argv.length; i++) if (isEntry(argv[i])) return path.dirname(argv[i]);
 		return null;
+	};
+	const hasAppArg = argv.some((a) => a === '--app' || (typeof a === 'string' && a.startsWith('--app=')));
+	const resolveAppDir = () => {
+		if (process.env._APPDIR && fs.existsSync(process.env._APPDIR)) return process.env._APPDIR;
+		const appArg = getAppArg();
+		if (appArg && fs.existsSync(appArg)) return path.dirname(appArg);
+		for (let i = 1; i < argv.length; i++) if (isEntry(argv[i]) && fs.existsSync(argv[i])) return path.dirname(argv[i]);
+		const selfDir = path.dirname(__filename);
+		if (fs.existsSync(selfDir)) return selfDir;
+		return process.env._APPDIR || (appArg ? path.dirname(appArg) : null);
 	};
 	const appDir = resolveAppDir(); if (!appDir) throw new Error('cannot resolve appDir; set _APPDIR explicitly');
 	if (debug) console.log('[app-override] appDir=' + appDir);
@@ -30,10 +38,20 @@ try {
 		});
 	}
 	if (!process.env.ELECTRON_IS_DEV && !process.env.NODE_ENV) {
-		for (let i = 1; i < argv.length; i++) {
+		let hit = null;
+		const appArg = getAppArg();
+		if (appArg && isEntry(appArg)) hit = appArg;
+		else for (let i = 1; i < argv.length; i++) if (isEntry(argv[i])) { hit = argv[i]; break; }
+		if (hit) {
+			console.log('[app-override] packaged app detected (' + hit + '), forcing production env');
+			process.env.ELECTRON_IS_DEV = '0', process.env.NODE_ENV = 'production';
+		}
+	}
+	if (!hasAppArg && !process.env._APPDIR_NO_ARGV_CLEANUP) {
+		for (let i = argv.length - 1; i >= 1; i--) {
 			if (isEntry(argv[i])) {
-				console.log('[app-override] packaged app detected, forcing production env');
-				process.env.ELECTRON_IS_DEV = '0', process.env.NODE_ENV = 'production';
+				if (debug) console.log('[app-override] strip positional entry: ' + argv[i]);
+				argv.splice(i, 1);
 				break;
 			}
 		}
