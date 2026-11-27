@@ -1,6 +1,6 @@
 pkgbase = lean-ctx-bin
 	pkgdesc = LeanCTX Engine — open-source Context Gateway for AI Systems. Context selection, supported controls, and evidence through local integration paths. (pre-built binary)
-	pkgver = 3.12.7
+	pkgver = 3.12.8
 	pkgrel = 1
 	url = https://leanctx.com
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = lean-ctx-bin
 	depends = onnxruntime
 	provides = lean-ctx
 	conflicts = lean-ctx
-	source_x86_64 = lean-ctx-3.12.7-x86_64.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.12.7/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 95b13d66213f0e07265055e750ced63801d20df541c308960cf7b04a6096ca2d
-	source_aarch64 = lean-ctx-3.12.7-aarch64.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.12.7/lean-ctx-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 621e0ff6571e19113e460e024822a82d16835ec4b82160df65129e171eb6da25
+	source_x86_64 = lean-ctx-3.12.8-x86_64.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.12.8/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b41db28384b5182e3d12b8326271b86a8c025534bd48ac8729f94f5d80728f1d
+	source_aarch64 = lean-ctx-3.12.8-aarch64.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.12.8/lean-ctx-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 443033af4f853cace98b6470c55da5cbea02cecdd7ab40c7dfb95cb5f73e6c15
 
 pkgname = lean-ctx-bin
