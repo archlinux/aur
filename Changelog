@@ -1,14 +1,28 @@
 -------------------------------------------------------
  Changelog    : kea_config
- Tags         : 6.6.0 ➙ 6.6.4
-              : 2026-09-06 ➙ 2026-10-08
+ Tags         : 6.6.1 ➙ 6.9.0
+              : 2026-09-09 ➙ 2026-11-27
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-10-08   : 6.6.4
+ 2026-11-27   : 6.9.0
+              - **6.9.0**
+                - kea-ctrl has been dropped in kea upstream (functionality is incorporated in kea-dhcp4).
+                - Config: Now uses files for passwords - be sure to copy all the password files
+                  kea-auth-primary.pw, kea-auth-backup.pw and kea-auth-standby.pw files to every server.
+                - Config Changes
+                    - socket_dir has been removed (no longer needed)
+                    - auth_user - no longer per server, it now belongs in global_variables section.
+                - Convenience: provide files needed to build kea-git.
+                  The version in AUR is out of date, and we our systemd unit files are more up to date.
+                - Switch logging to use systemd journal instead of /var/log/kea
+                - auth_server_password peer passwords can be randomly generated if empty or -random-
+                - kea now requires the control user to be in a file not in the config
+
+ 2026-10-08   : 6.6.4, origin/master
               - 6.6.4 Readme update
 
- 2026-10-08   : 6.6.3, origin/master
+ 2026-10-08   : 6.6.3
               - 6.6.3 Documentation on `readthedocs <https://kea-config.readthedocs.io>`
 
  2026-09-09   : 6.6.2
@@ -18,8 +32,3 @@
  2026-09-09   : 6.6.1
               - **6.6.1**
                 * Use meson to run the tests
-
- 2026-09-06   : 6.6.0
-              - **6.6.0**
-            
-                * FIx copy /paste error in meson.build (/usr/share/...)
