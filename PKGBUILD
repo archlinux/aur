@@ -5,7 +5,7 @@
 
 pkgname=yogurt-appimage
 _pkgname=yogurt
-pkgver=0.3.79
+pkgver=0.3.80
 pkgrel=1
 pkgdesc='Private AI meeting notes that stay on your computer (AppImage)'
 arch=(x86_64)
@@ -30,7 +30,7 @@ source=(
   "LICENSE-$pkgver::https://raw.githubusercontent.com/FrigadeHQ/yogurt/v$pkgver/LICENSE"
 )
 noextract=("$_appimage")
-sha256sums=('428caaa4c26154b754e3df2916718cf6179b7b69d2379eb31abb0db8c94f3b55'
+sha256sums=('de4a5b6945a253c69a8c62628483b90cec76dc9f7f79acf0beebe30f6d81cb79'
             '5c7f0de8bbe8ee8a29540939bfdd83adf000e8c2817587d618c9637347dd34ec')
 
 prepare() {
