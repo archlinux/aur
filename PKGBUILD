@@ -3,7 +3,7 @@
 # Development package: builds the latest commit on the main branch.
 
 pkgname=micforge-git
-pkgver=0.2.1.r0.g0000000
+pkgver=0.2.2.r0.g0000000
 pkgrel=1
 pkgdesc="Microphone processor for PipeWire: voice-only gate, AI noise removal, effects, voice changer and VST3/LV2 plugin hosting (git version)"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ pkgver() {
   if git describe --tags --long >/dev/null 2>&1; then
     git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   else
-    printf "0.2.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf "0.2.2.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   fi
 }
 
