@@ -1,8 +1,8 @@
 # Maintainer: mafuzyk <mafuzyk@gmail.com>
 
 pkgname=koral-bin-nightly
-_tag=2.0.0-alpha.1
-pkgver=2.0.0alpha1
+_tag=2.0.0-alpha.2
+pkgver=2.0.0alpha2
 pkgrel=1
 pkgdesc="A GPU-accelerated Rust terminal emulator (2.0 alpha / nightly pre-release)"
 arch=('x86_64')
@@ -32,7 +32,7 @@ provides=('koral')
 conflicts=('koral' 'koral-bin')
 options=('!debug')
 source=("koral-${_tag}.tar.gz::${url}/releases/download/v${_tag}/koral-x86_64-linux.tar.gz")
-sha256sums=('00db9fa3ad9a44439be9e44850963f2aadae9cc65d38123e48e6ba7b6b875259')
+sha256sums=('aa0a1d311af48af7291d1dd12b6f67ff1743ccb766892c33a274f4b81d667163')
 
 package() {
   install -Dm755 koral "$pkgdir/usr/bin/koral"
