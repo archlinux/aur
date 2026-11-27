@@ -1,6 +1,6 @@
 # Maintainer: toxdes <hi@toxdes.com>
 pkgname=glesha
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='Encrypted archives and indexed cloud backups'
 arch=('x86_64' 'aarch64')
