@@ -2,7 +2,7 @@
 
 pkgbase=computer-use-linux
 pkgname=('computer-use-linux' 'gnome-shell-extension-computer-use-linux')
-pkgver=0.7.62
+pkgver=0.7.64
 pkgrel=1
 pkgdesc="Control a real Linux desktop from any MCP host (AT-SPI, portals, multi-compositor window targeting)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 checkdepends=('dbus' 'python-gobject')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'gnome-indicator-test.patch')
-sha256sums=('7d26bb7bb4402319b23a2bc5976336331b7681a0756f9b9b5b91138b0467d0cd'
+sha256sums=('0d1db75d048c4d6a2c26838cded9643b680fad07be31d8685fed8fde25c2fe53'
             '3ee3fdbc16683dff37f012ae0f2a73954db3da3c67a226a1ee3776a811e1bf0d')
 
 _uuid=computer-use-linux@avifenesh.dev
@@ -46,12 +46,13 @@ build() {
 
 check() {
     cd "${pkgbase}-${pkgver}"
+    export CARGO_PROFILE_DEV_DEBUG=0
     export RUSTUP_TOOLCHAIN=stable
 
     # The KWin backend tests spawn a private dbus-daemon (see checkdepends).
     # The AT-SPI fixture fails here: the a11y bus uses dbus-broker, which
     # starts the registry as a user unit that the desktop already runs.
-    cargo test --frozen --release -- \
+    cargo test --frozen -- \
         --skip background_text_and_keys_reach_an_atspi_element_without_focus
 }
 
