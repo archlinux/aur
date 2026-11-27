@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDNAinRNAseqData
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('87ed69e00fb51d49dfcb152b9361f136')
-b2sums=('13a20f2bbbf25481e19232313ffee89febab915786ba8abe71a83358b1f0c83459b67809030ca88bdd606a156f2bd7d63f7d6417d40cef98b191cfd0ee314b3a')
+md5sums=('36ec4f102bdd757fcffc3b5e84c81574')
+b2sums=('ccccbfa4aabc2c48eb189afd5fd2027d6cbcb3ef97729e53e865b1959ccad75b5c6c7f50139b9355043483fa696cfcc19b4ef73efad948d2bc8a0830aafb6478')
 
 build() {
   mkdir build
