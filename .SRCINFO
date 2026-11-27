@@ -1,6 +1,6 @@
 pkgbase = openbot
 	pkgdesc = Local-first desktop workspace for persistent AI teammates.
-	pkgver = 0.80.0
+	pkgver = 0.81.0
 	pkgrel = 1
 	url = https://openbot.run
 	arch = x86_64
@@ -50,24 +50,24 @@ pkgbase = openbot
 	optdepends = nodejs: Local scripts API command-line client
 	optdepends = numactl: upstream x86_64 remote-desktop runtime
 	optdepends = socat: workspace isolation for Claude agents
-	provides = openbot=0.80.0
-	provides = openbot-desktop=0.80.0
-	provides = openbot-cli=0.80.0
-	provides = openbot-bin=0.80.0
+	provides = openbot=0.81.0
+	provides = openbot-desktop=0.81.0
+	provides = openbot-cli=0.81.0
+	provides = openbot-bin=0.81.0
 	conflicts = openbot-bin
 	conflicts = openbot-desktop
 	conflicts = openbot-cli
-	noextract = OpenBot-0.80.0-x86_64.AppImage
-	noextract = OpenBot-0.80.0-arm64.AppImage
+	noextract = OpenBot-0.81.0-x86_64.AppImage
+	noextract = OpenBot-0.81.0-arm64.AppImage
 	options = !strip
 	options = !debug
-	source = openbot-LICENSE-0.80.0::https://raw.githubusercontent.com/nightly-labs/openbot/v0.80.0/LICENSE
-	source = openbot-NOTICE-0.80.0::https://raw.githubusercontent.com/nightly-labs/openbot/v0.80.0/NOTICE
+	source = openbot-LICENSE-0.81.0::https://raw.githubusercontent.com/nightly-labs/openbot/v0.81.0/LICENSE
+	source = openbot-NOTICE-0.81.0::https://raw.githubusercontent.com/nightly-labs/openbot/v0.81.0/NOTICE
 	b2sums = be7e2f7213f7ff6da53ad0557d9b4cd8028a85295f79efeec460e9a0d373612f241bf9cdfa3084181e4c40f36cbcf77a4ffd6241d454f5f20cf3c2446036f2bf
 	b2sums = e81ef6a7200ae602399e4f7040d91018179f253f31fc739b4e784e5a0ffe83e227f48a779956159da913a9615f1962a2d411499197174721c1838852165934b0
-	source_x86_64 = OpenBot-0.80.0-x86_64.AppImage::https://github.com/nightly-labs/openbot/releases/download/v0.80.0/OpenBot-0.80.0-x86_64.AppImage
-	b2sums_x86_64 = 95433196294c5d2fe4e4ccabc012d72b9696756586614c6edbf2574cc597f02a8a03eaad82e22a20a182adf895dae3054ef9c31b99b2c5d4cf68e33ff2f905d3
-	source_aarch64 = OpenBot-0.80.0-arm64.AppImage::https://github.com/nightly-labs/openbot/releases/download/v0.80.0/OpenBot-0.80.0-arm64.AppImage
-	b2sums_aarch64 = 5601df8785e260feec4179faca96a7748375d982a8645e55a90c757a7f5edaa0320d27adb402803706592690842a9637db0c360ea6657651fa4beb003f4de93f
+	source_x86_64 = OpenBot-0.81.0-x86_64.AppImage::https://github.com/nightly-labs/openbot/releases/download/v0.81.0/OpenBot-0.81.0-x86_64.AppImage
+	b2sums_x86_64 = 48b7749e053a43da450c3596c9f3d6136bc2f33981df70f84e38ca1792bd760ec5f930fb77d0bbcdc496101c0ada98b0d324cfb29839f1b315f2334da0522f88
+	source_aarch64 = OpenBot-0.81.0-arm64.AppImage::https://github.com/nightly-labs/openbot/releases/download/v0.81.0/OpenBot-0.81.0-arm64.AppImage
+	b2sums_aarch64 = a8a02d9c560cad829105931d5253047a43d0dbbe8551545fc07f08b4ff208b2429a7da894918432d8d51d626a9c4a2ab8cbec5a22b7bff0ac104d8f3fe422a13
 
 pkgname = openbot
