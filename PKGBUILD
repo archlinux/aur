@@ -1,7 +1,7 @@
 # Maintainer: Sivasubramanian Ramanathan <sivasub987@gmail.com>
 
 pkgname=learnharness-bin
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Agent harness for adaptive teaching, practice, and a knowledge graph"
 arch=('x86_64')
@@ -53,7 +53,7 @@ sha256sums=(
   '6cf253fe5b5dcc88329faa24391249b996518ed6ba394980da945981b2981927'
   '0382ce601f83691cc1cb922ecadd4985eceb8fd382de1d11902d911cacd1b98c'
 )
-sha256sums_x86_64=('9d1ee7c105ef9ccbcca07f8cda7425bab7802c6b9f00dcef713a25d24e052084')
+sha256sums_x86_64=('365509b339c6d19191b6f8fcc30bf61dd3b4c874214fb0486eede1ee105326d6')
 
 package() {
   local resources="${pkgdir}/opt/LearnHarness/resources"
