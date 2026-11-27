@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=5.15.0.r0.gc35b34f
+pkgver=5.20.0.r0.gde1237e
 _electronversion=44
 _nodeversion=24
 pkgrel=1
 pkgdesc="Free and open-sourced terminal/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice client."
 arch=(
-    'aarch64'
-    'x86_64'
+	'aarch64'
+	'x86_64'
 )
 url="https://electerm.html5beta.com/"
 _ghurl="https://github.com/electerm/electerm"
@@ -15,24 +15,24 @@ license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
-    "electron${_electronversion}"
+	"electron${_electronversion}"
 )
 makedepends=(
-    'npm'
-    'git'
-    'nvm'
-    'gendesk'
-    'python-setuptools'
-    'jq'
+	'npm'
+	'git'
+	'nvm'
+	'gendesk'
+	'python-setuptools'
+	'jq'
 )
 source=(
-    "${pkgname//-/.}::git+${_ghurl}.git"
-    "${pkgname%-git}.js"
-    "${pkgname%-git}.sh"
+	"${pkgname//-/.}::git+${_ghurl}.git"
+	"${pkgname%-git}.js"
+	"${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b'
-            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
+			'4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b'
+			'739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -90,50 +90,55 @@ _set_npm_build_env() {
 	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
 	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
 }
+_generate_icons() {
+	local _sizes=(16 24 32 48 64 96 128 256 512 1024) _src="$(_get_project_dir)/node_modules/@${pkgname}/${pkgname}-resource/build-res/linux/1024x1024.png" _s
+	for _s in "${_sizes[@]}"; do
+		install -d "${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps"
+		magick "${_src}" -background none -filter Lanczos -resize "${_s}x${_s}" \
+			-strip -define png:compression-level=9 \
+			"${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps/${pkgname%-git}.png"
+	done
+}
 prepare() {
-    cd "$(_get_project_dir)"
-    _get_electron_version
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-git}/g
-    " "${srcdir}/${pkgname%-git}.sh"
-    gendesk -q -f -n \
-        --pkgname="${pkgname%-git}" \
-        --pkgdesc="${pkgdesc}" \
-        --categories="System" \
-        --name="${pkgname%-git}" \
-        --exec="${pkgname%-git} %U"
-    _ensure_local_nvm
-    _set_electron_build_env
-    _set_npm_build_env
-    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
-    find ./ -type f -name "package-lock.json" -exec rm {} +
-    export NODE_ENV=development
-    npm config set legacy-peer-deps true
-    npm install --legacy-peer-deps
-    npm add -D node-gyp --legacy-peer-deps
+	cd "$(_get_project_dir)"
+	_get_electron_version
+	sed -i -e "
+		s/@electronversion@/${_electronversion}/g
+		s/@appname@/${pkgname%-git}/g
+	" "${srcdir}/${pkgname%-git}.sh"
+	gendesk -q -f -n \
+		--pkgname="${pkgname%-git}" \
+		--pkgdesc="${pkgdesc}" \
+		--categories="System" \
+		--name="${pkgname%-git}" \
+		--exec="${pkgname%-git} %U"
+	_ensure_local_nvm
+	_set_electron_build_env
+	_set_npm_build_env
+	jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
+	find ./ -type f -name "package-lock.json" -exec rm {} +
+	export NODE_ENV=development
+	npm config set legacy-peer-deps true
+	npm install --legacy-peer-deps
+	npm add -D node-gyp --legacy-peer-deps
 }
 build() {
-    cd "$(_get_project_dir)"
-    _ensure_local_nvm
-    _set_electron_build_env
-    _set_npm_build_env
-    export NODE_ENV=production
-    npm run clean
-    npm run compile
-    npm run prepare-file
-    WORKFLOW_NAME=linux-pkgbuild npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config src/build/electron-builder.json"
-    _delete_other_arch_files
+	cd "$(_get_project_dir)"
+	_ensure_local_nvm
+	_set_electron_build_env
+	_set_npm_build_env
+	export NODE_ENV=production
+	npm run clean
+	npm run compile
+	npm run prepare-file
+	WORKFLOW_NAME=linux-pkgbuild npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config src/build/electron-builder.json"
+	_delete_other_arch_files
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
-    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
-	for _icons in "${_icon_sizes[@]}";do
-		install -Dm644 "$(_get_project_dir)/node_modules/@electerm/electerm-resource/build-res/linux/${_icons}.png" \
-			"${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
-	done
-    install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+	install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+	_generate_icons
+	install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+	install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
