@@ -19,11 +19,12 @@
 
 pkgname=anirust
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 _mpv=0.41.0
 _nvh=n13.0.19.0
 _rife=r9_mod_v33
 _riferepo=https://github.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan
+_rife_asset="$pkgname-$pkgver-rife"
 pkgdesc='Desktop client for Anixart with a player of its own'
 arch=('x86_64' 'aarch64')
 url='https://github.com/mrfrok/AniRust'
@@ -43,13 +44,13 @@ options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "mpv-$_mpv.tar.gz::https://github.com/mpv-player/mpv/archive/refs/tags/v$_mpv.tar.gz"
         "nv-codec-headers-$_nvh.tar.gz::https://github.com/FFmpeg/nv-codec-headers/archive/refs/tags/$_nvh.tar.gz")
-source_x86_64=("librife-$_rife.so::$_riferepo/releases/download/$_rife/librife_linux_x86-64.so"
-               "rife-v4.6.param::$_riferepo/raw/master/models/rife-v4.6_ensembleFalse/flownet.param"
-               "rife-v4.6.bin::$_riferepo/raw/master/models/rife-v4.6_ensembleFalse/flownet.bin"
-               "rife-v4.26.param::$_riferepo/raw/master/models/rife-v4.26_ensembleFalse/flownet.param"
-               "rife-v4.26.bin::$_riferepo/raw/master/models/rife-v4.26_ensembleFalse/flownet.bin"
-               "LICENSE-RIFE-plugin::$_riferepo/raw/master/LICENSE"
-               "LICENSE-RIFE::https://github.com/hzwer/Practical-RIFE/raw/main/LICENSE"
+source_x86_64=("$_rife_asset-plugin.so::$_riferepo/releases/download/$_rife/librife_linux_x86-64.so"
+               "$_rife_asset-v4.6.param::$_riferepo/raw/master/models/rife-v4.6_ensembleFalse/flownet.param"
+               "$_rife_asset-v4.6.bin::$_riferepo/raw/master/models/rife-v4.6_ensembleFalse/flownet.bin"
+               "$_rife_asset-v4.26.param::$_riferepo/raw/master/models/rife-v4.26_ensembleFalse/flownet.param"
+               "$_rife_asset-v4.26.bin::$_riferepo/raw/master/models/rife-v4.26_ensembleFalse/flownet.bin"
+               "$_rife_asset-plugin.LICENSE::$_riferepo/raw/master/LICENSE"
+               "$_rife_asset-models.LICENSE::https://github.com/hzwer/Practical-RIFE/raw/main/LICENSE"
                "anirust-$pkgver-mlrt.tar.gz::$url/releases/download/v$pkgver/anirust-$pkgver-mlrt-linux-x86_64.tar.gz")
 
 prepare() {
@@ -82,13 +83,13 @@ package() {
 
   if [ "$CARCH" = x86_64 ]; then
     local rife="$pkgdir/usr/lib/anirust/rife"
-    install -Dm644 "librife-$_rife.so" "$rife/librife.so"
-    install -Dm644 rife-v4.6.param "$rife/models/rife-v4.6_ensembleFalse/flownet.param"
-    install -Dm644 rife-v4.6.bin "$rife/models/rife-v4.6_ensembleFalse/flownet.bin"
-    install -Dm644 rife-v4.26.param "$rife/models/rife-v4.26_ensembleFalse/flownet.param"
-    install -Dm644 rife-v4.26.bin "$rife/models/rife-v4.26_ensembleFalse/flownet.bin"
-    install -Dm644 LICENSE-RIFE-plugin "$pkgdir/usr/share/licenses/$pkgname/LICENSE-RIFE-plugin"
-    install -Dm644 LICENSE-RIFE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-RIFE"
+    install -Dm644 "$srcdir/$_rife_asset-plugin.so" "$rife/librife.so"
+    install -Dm644 "$srcdir/$_rife_asset-v4.6.param" "$rife/models/rife-v4.6_ensembleFalse/flownet.param"
+    install -Dm644 "$srcdir/$_rife_asset-v4.6.bin" "$rife/models/rife-v4.6_ensembleFalse/flownet.bin"
+    install -Dm644 "$srcdir/$_rife_asset-v4.26.param" "$rife/models/rife-v4.26_ensembleFalse/flownet.param"
+    install -Dm644 "$srcdir/$_rife_asset-v4.26.bin" "$rife/models/rife-v4.26_ensembleFalse/flownet.bin"
+    install -Dm644 "$srcdir/$_rife_asset-plugin.LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-RIFE-plugin"
+    install -Dm644 "$srcdir/$_rife_asset-models.LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-RIFE"
 
     cp -r "$srcdir/mlrt" "$pkgdir/usr/lib/anirust/mlrt"
     chmod -R u=rwX,go=rX "$pkgdir/usr/lib/anirust/mlrt"
