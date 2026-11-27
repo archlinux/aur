@@ -1,10 +1,10 @@
 pkgbase = crux-shell-git
 	pkgdesc = A personal QuickShell desktop shell for Hyprland
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/teezlabs/crux-shell
 	arch = any
-	license = GPL-3.0-or-later
+	license = custom
 	depends = quickshell
 	depends = matugen
 	depends = brightnessctl
