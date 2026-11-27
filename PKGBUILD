@@ -1,6 +1,6 @@
 # Maintainer: novesce <120620395+novesce@users.noreply.github.com>
 pkgname=avernella-bin
-pkgver=0.1+git75.1e71aed
+pkgver=0.1+git76.d4aaebc
 pkgrel=1
 pkgdesc='Native Linux client for LINE, packaged from the Avernella Ubuntu release'
 arch=('x86_64')
@@ -15,9 +15,9 @@ optdepends=('ffmpeg: video playback and recording'
             'zbar: scanning QR images')
 provides=("avernella=$pkgver")
 conflicts=('avernella')
-_deb='avernella_0.1+git75.1e71aed_amd64.deb'
-source=("https://github.com/novesce/avernella-packaging/releases/download/avernella-1e71aed000ad133e94c3aa1e068c0423eeddf2df/$_deb")
-sha256sums=('d521c2956687c2708a95a97586f0677f9191a507f1ff1178d957201c9b43838b')
+_deb='avernella_0.1+git76.d4aaebc_amd64.deb'
+source=("https://github.com/novesce/avernella-packaging/releases/download/avernella-d4aaebce551217585572a58bc142979689720ea8/$_deb")
+sha256sums=('a98e06db5c3b03ac658048099294c35140253f4412ba1251edb698a1f4c2188d')
 noextract=("$_deb")
 options=('!strip' '!debug')
 
