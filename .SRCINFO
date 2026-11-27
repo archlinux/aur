@@ -1,7 +1,7 @@
 pkgbase = scuffed-stat-tracker-alpha-bin
 	pkgdesc = Overwatch personal stats tracker for Scuffed Crew (capture daemon and desktop app), alpha builds
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://github.com/FrozenTear/scuffed-crew
 	install = scuffed-stat-tracker.install
 	arch = x86_64
@@ -34,12 +34,12 @@ pkgbase = scuffed-stat-tracker-alpha-bin
 	options = !strip
 	options = !debug
 	source = scuffed-stat-tracker-seed-tessdata
-	source = LICENSE-MIT::https://raw.githubusercontent.com/FrozenTear/scuffed-crew/stat-tracker-v0.6.0/LICENSE-MIT
-	source = LICENSE-APACHE::https://raw.githubusercontent.com/FrozenTear/scuffed-crew/stat-tracker-v0.6.0/LICENSE-APACHE
+	source = LICENSE-MIT::https://raw.githubusercontent.com/FrozenTear/scuffed-crew/stat-tracker-v0.6.1/LICENSE-MIT
+	source = LICENSE-APACHE::https://raw.githubusercontent.com/FrozenTear/scuffed-crew/stat-tracker-v0.6.1/LICENSE-APACHE
 	sha256sums = 976824c0c583ba2066d72eb1d5215961e7066cfc61dd7e09b700a6b446c49c15
 	sha256sums = f06096d72781572a2e19344e81d3a235f99b495480d2f2f8b3be703bb286dfef
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	source_x86_64 = scuffed-stat-tracker-0.6.0.tar.gz::https://github.com/FrozenTear/scuffed-crew/releases/download/stat-tracker-v0.6.0/scuffed-stat-tracker-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 0e9f5ad89bea63573f3a875e0306735f315dc4a964b6da9a65210ea8e8f5cf5b
+	source_x86_64 = scuffed-stat-tracker-0.6.1.tar.gz::https://github.com/FrozenTear/scuffed-crew/releases/download/stat-tracker-v0.6.1/scuffed-stat-tracker-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 685267eb665b6f580f08695dc777b9f834856882312feec3ce6734de401b9ada
 
 pkgname = scuffed-stat-tracker-alpha-bin
