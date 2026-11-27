@@ -6,7 +6,7 @@
 # and publishes it on AUR as kalliope-bin (.github/workflows/aur.yml). See docs/releasing.md.
 
 pkgname=kalliope-bin
-pkgver=0.5
+pkgver=0.6
 # A test of the release workflow, 0.0-test.N, is written 0.0_test.N here: pkgver cannot contain "-".
 _version=${pkgver//_/-}
 pkgrel=1
@@ -31,7 +31,7 @@ provides=('kalliope')
 conflicts=('kalliope')
 options=('!strip' '!debug')
 source=("$url/releases/download/v$_version/kalliope-$_version-linux-x86_64.tar.gz")
-sha256sums=('30a57b9d29ee76881160f31c22eb9fa10ea660a220496d7df15075ff0dee1c90')
+sha256sums=('048261de1fe571ae4c990b63266a613f10bcd5d11c2d31e249f24bbcd11cd50a')
 
 package() {
   cd "kalliope-$_version-linux-x86_64"
