@@ -8,7 +8,7 @@ pkgdesc="Use your Android phone as a webcam on Linux"
 arch=('x86_64')
 url="https://github.com/LunarKittyy/Telescope"
 license=('AGPL-3.0-only')
-depends=('v4l2loopback-dkms')
+depends=('fuse3' 'v4l2loopback-dkms')
 optdepends=(
   'android-tools: USB connection to Android phones'
   'linux-headers: DKMS build for the standard Arch kernel'
@@ -31,7 +31,7 @@ sha256sums=(
   '5458b4c1f967897fe75076e1c9be20e73c72e974113f115fb5b04951828f229c'
   '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
   '46d6f8b33572053efb5be34db75de58a2b70f319c02b7fc020439b0228b957dc'
-  'c82a1085fece25905fe09566550372b66107af0cda29ca88d137ca4b449a600c'
+  '0a074aa7031985103d0e29e6d0be7aa7320b654c1cdbd5c99c0c98bce23cabc6'
   'c1c79c95b0b96d1bf98b5d8183e5843fa85c70d0f99cc08caae71fe015f56b45'
 )
 
