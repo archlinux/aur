@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sodam-git
 _pkgname=SodaM
-pkgver=0.4.0.r11.gc7d0631
+pkgver=0.4.1.r1.g6fbb561
 pkgrel=1
 pkgdesc="Native Qishui Music desktop client built with GPUI."
 arch=('any')
@@ -13,9 +13,9 @@ conflicts=("${pkgname%-git}")
 depends=(
 	'glibc'
 	'alsa-lib'
-    'libxkbcommon-x11'
-    'dbus'
-    'hicolor-icon-theme'
+	'libxkbcommon-x11'
+	'dbus'
+	'hicolor-icon-theme'
 )
 makedepends=(
 	'git'
@@ -46,23 +46,30 @@ _set_rust_build_env() {
 	export CARGO_PROFILE_RELEASE_STRIP=symbols
 	mkdir -p "${HOME}" "${CARGO_HOME}"
 }
+_generate_icons() {
+	local _sizes=(16 24 32 48 64 96 128 256 512 1024) _src="$(_get_project_dir)/crates/${pkgname%-git}/assets/brand/${pkgname%-git}-icon-macos.png" _s
+	for _s in "${_sizes[@]}"; do
+		install -d "${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps"
+		magick "${_src}" -background none -filter Lanczos -resize "${_s}x${_s}" \
+			-strip -define png:compression-level=9 \
+			"${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps/${pkgname%-git}.png"
+	done
+}
 prepare() {
 	cd "$(_get_project_dir)"
-    sed -i "s/\/usr\/bin\///g" "packaging/arch/${pkgname%-git}.desktop"
-    _set_rust_build_env
-    rustup toolchain install stable
+	sed -i "s/\/usr\/bin\///g" "packaging/arch/${pkgname%-git}.desktop"
+	_set_rust_build_env
+	rustup toolchain install stable
 	rustup default stable
 }
 build() {
 	cd "$(_get_project_dir)"
 	_set_rust_build_env
-    cargo build --release --locked --workspace
+	cargo build --release --locked --workspace
 }
 package() {
 	install -Dm755 "$(_get_project_dir)/target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-    install -Dm755 "$(_get_project_dir)/crates/sodam/assets/brand/sodam-logo-tray.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname%-git}.png"
-	install -Dm755 "$(_get_project_dir)/crates/sodam/assets/brand/sodam-logo.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
-    install -Dm755 "$(_get_project_dir)/crates/sodam/assets/brand/sodam-icon-macos.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname%-git}.png"
-    install -Dm755 "$(_get_project_dir)/crates/sodam/assets/brand/sodam-logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
+	_generate_icons
+	install -Dm755 "$(_get_project_dir)/crates/${pkgname%-git}/assets/brand/${pkgname%-git}-logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
 	install -Dm755 "$(_get_project_dir)/packaging/arch/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications/"
 }

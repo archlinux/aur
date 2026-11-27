@@ -1,6 +1,6 @@
 pkgbase = sodam-git
 	pkgdesc = Native Qishui Music desktop client built with GPUI.
-	pkgver = 0.4.0.r11.gc7d0631
+	pkgver = 0.4.1.r1.g6fbb561
 	pkgrel = 1
 	url = https://sodahub-org.github.io/sodam
 	arch = any
