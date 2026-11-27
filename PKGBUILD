@@ -1,5 +1,5 @@
 pkgname=stalker-gamma-cli-bin
-pkgver=1.45.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc="a cli to install Stalker Anomaly and the GAMMA mod pack (appimage)"
 arch=('x86_64' 'aarch64')
@@ -9,8 +9,8 @@ options=(!strip)
 depends=('fuse2')
 source_x86_64=("stalker-gamma+linux.x64-${pkgver}.AppImage::https://github.com/FaithBeam/stalker-gamma-cli/releases/download/${pkgver}/stalker-gamma+linux.x64.AppImage")
 source_aarch64=("stalker-gamma+linux.arm64-${pkgver}.AppImage::https://github.com/FaithBeam/stalker-gamma-cli/releases/download/${pkgver}/stalker-gamma+linux.arm64.AppImage")
-sha256sums_x86_64=('6066b886e0943e8bd4b0e5365da9f6fd5107f36ec357cc5eaaa931658162af37')
-sha256sums_aarch64=('5defce7ef79c2d512597bc6eec7d180c4b345cf6bcece810660fa606ae741d0b')
+sha256sums_x86_64=('f4cad33373baa619f814e54c6a897860d963e355e327d97130d7a992899ee519')
+sha256sums_aarch64=('56944540bc421b7fe1d140af2048672ad29b2a08033c2dddc62d56be665e67b1')
 
 package() {
   install -Dm755 stalker-gamma+linux.*.AppImage "${pkgdir}/usr/bin/stalker-gamma"
