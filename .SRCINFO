@@ -1,0 +1,45 @@
+pkgbase = nythera-lib-git
+	pkgdesc = Shared infrastructure for Nythera Shell and Files
+	pkgver = 0.1.0.r17.gbc201312d9aa
+	pkgrel = 2
+	url = https://github.com/Nythera-Dev/NytheraLib
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = stb
+	makedepends = toml11>=4.4
+	makedepends = toml11<5
+	makedepends = wayland-protocols
+	depends = cairo
+	depends = curl
+	depends = fontconfig
+	depends = freetype2
+	depends = glib2
+	depends = glibc
+	depends = harfbuzz
+	depends = libgcc
+	depends = libglvnd
+	depends = libjxl
+	depends = librsvg
+	depends = libstdc++
+	depends = libwebp
+	depends = libxkbcommon
+	depends = md4c
+	depends = nlohmann-json
+	depends = pango
+	depends = tomlplusplus
+	depends = wayland
+	depends = zlib
+	provides = nythera-lib=0.1.0
+	provides = libnythera_lib.so
+	conflicts = nythera-lib
+	options = !debug
+	source = nythera-lib::git+https://github.com/Nythera-Dev/NytheraLib.git#branch=testing
+	sha256sums = SKIP
+
+pkgname = nythera-lib-git
