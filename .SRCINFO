@@ -1,7 +1,7 @@
 pkgbase = tclint-git
 	pkgdesc = A collection of Tcl CLI tools: linter, formatter, language server
 	pkgver = 0.8.0.r6.g04b377d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nmoroze/tclint
 	arch = any
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = tclint-git
 	depends = python-voluptuous
 	provides = tclint
 	conflicts = tclint
-	source = tclint-git-0.8.0.r6.g04b377d::git+https://github.com/nmoroze/tclint.git
+	source = tclint-git::git+https://github.com/nmoroze/tclint.git
 	sha256sums = SKIP
 
 pkgname = tclint-git

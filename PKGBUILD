@@ -2,7 +2,7 @@
 
 pkgname=tclint-git
 pkgver=0.8.0.r6.g04b377d
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of Tcl CLI tools: linter, formatter, language server"
 arch=('any')
 url="https://github.com/nmoroze/tclint"
@@ -11,21 +11,21 @@ depends=('python>=3.10' 'python-ply' 'python-pathspec' 'python-importlib-metadat
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-setuptools-scm' 'git')
 provides=('tclint')
 conflicts=('tclint')
-source=("${pkgname}-${pkgver}::git+https://github.com/nmoroze/tclint.git")
+source=("${pkgname}::git+https://github.com/nmoroze/tclint.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
