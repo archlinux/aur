@@ -1,6 +1,6 @@
 pkgbase = vgshell-git
 	pkgdesc = Desktop shell for Hyprland, built on Quickshell (development version)
-	pkgver = 0.1.4.r633.gea7fc14
+	pkgver = 0.1.4.r752.ge64939b
 	pkgrel = 1
 	url = https://github.com/vanillagreencom/vgshell
 	install = vgshell-git.install
@@ -10,7 +10,7 @@ pkgbase = vgshell-git
 	makedepends = qt6-shadertools
 	depends = greetd
 	depends = glibc
-	depends = vgshell-quickshell>=0.3.2.r7.g2b4501a-4
+	depends = vgshell-quickshell>=0.3.2.r7.g2b4501a-6
 	depends = hyprland>=0.57.0
 	depends = bash
 	depends = coreutils
@@ -105,7 +105,6 @@ pkgbase = vgshell-git
 	optdepends = imv: opens a saved screenshot from its Capture notification
 	optdepends = satty: edits a saved screenshot from its Capture notification
 	optdepends = mpv: plays a saved recording from its Capture notification
-	optdepends = nautilus: shows a saved recording in its folder from its Capture notification
 	optdepends = google-chrome: opens a calendar day in a Google Chrome profile
 	optdepends = brave-bin: opens a calendar day in a Brave profile
 	optdepends = vivaldi: opens a calendar day in a Vivaldi profile

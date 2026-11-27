@@ -5,7 +5,7 @@
 # this file and on ../vgshell/PKGBUILD. makepkg rewrites pkgver from pkgver().
 
 pkgname=vgshell-git
-pkgver=0.1.4.r633.gea7fc14
+pkgver=0.1.4.r752.ge64939b
 pkgrel=1
 pkgdesc='Desktop shell for Hyprland, built on Quickshell (development version)'
 arch=('any')
@@ -14,7 +14,7 @@ license=('MIT AND OFL-1.1 AND ISC AND Apache-2.0 AND CC-BY-SA-4.0')
 depends=(
   'greetd'
   'glibc'
-  'vgshell-quickshell>=0.3.2.r7.g2b4501a-4'
+  'vgshell-quickshell>=0.3.2.r7.g2b4501a-6'
   'hyprland>=0.57.0'
   'bash'
   'coreutils'
@@ -111,7 +111,6 @@ optdepends=(
   'imv: opens a saved screenshot from its Capture notification'
   'satty: edits a saved screenshot from its Capture notification'
   'mpv: plays a saved recording from its Capture notification'
-  'nautilus: shows a saved recording in its folder from its Capture notification'
   'google-chrome: opens a calendar day in a Google Chrome profile'
   'brave-bin: opens a calendar day in a Brave profile'
   'vivaldi: opens a calendar day in a Vivaldi profile'
