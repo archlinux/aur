@@ -12,7 +12,7 @@
 # is an absolute symlink — safe by design.
 
 pkgname=c0wrk-zabbius-git
-pkgver=0.17.0.r12.gad7f33c
+pkgver=0.17.0.r40.g718c3fbb
 pkgrel=1
 pkgdesc='Desktop AI coding-agent built with Wails (Go + React) — CPU flavor, git build'
 arch=(x86_64 aarch64)
@@ -34,7 +34,7 @@ options=(!strip)
 # `wails` is NOT a makedepend: build() compiles the CLI from source at the
 # version the wails/v2 library pins in go.mod (v2.16.0).
 source=(
-  'c0wrk::git+https://github.com/zabbius/c0wrk.git#commit=ad7f33c41e601a050e7c2f3af4d1ec9d8666dd1b'
+  'c0wrk::git+https://github.com/zabbius/c0wrk.git#commit=718c3fbb695475eaaea0141f9ec1e0fa3d82aae4'
   'c0wrk.desktop'
 )
 sha256sums=(
