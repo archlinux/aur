@@ -1,6 +1,0 @@
-[parmetis]
-source = 'debianpkg'
-debianpkg = 'parmetis'
-suite='sid'
-from_pattern='-'
-to_pattern='+p'
