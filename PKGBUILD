@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BiocHubsShiny
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-shinytest2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0c5f2b955050974b86959a8c68a07634')
-b2sums=('7856c3a418219214408ac5d07d43c16777c37e55c4368b8bdb2ed7c6c5d8fa04455b5ac73cca1ee4dec2ba8718c963f3b7f46e87edfe8f1b419feb69d5184c83')
+md5sums=('74b460b18cdf732dda22112c55aa9ece')
+b2sums=('a1cd9f4236317093214cc316ae97d1250c319aeb99895e2c622c1e016c6d35073373fd9a58f859bf602ec0bc1f54be39e3846daacc5d83527cb1233f8f7cb100')
 
 build() {
   mkdir build
