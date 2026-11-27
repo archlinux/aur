@@ -1,6 +1,6 @@
 pkgbase = manis-pocket-bin
 	pkgdesc = Manis Pocket clipboard manager and P2P sync client (GPUI)
-	pkgver = 2.7.143
+	pkgver = 2.7.144
 	pkgrel = 1
 	url = https://github.com/kaigedong/Manis-Pocket
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = manis-pocket-bin
 	depends = freetype2
 	depends = fontconfig
 	depends = vulkan-icd-loader
-	provides = manis-pocket=2.7.143
+	provides = manis-pocket=2.7.144
 	conflicts = manis-pocket
 	conflicts = manis-pocket-wayland
 	conflicts = manis-pocket-wayland-git
 	options = !debug
 	options = !strip
-	source_x86_64 = manis-pocket-2.7.143-1-x86_64.pkg.tar.zst::https://github.com/kaigedong/Manis-Pocket/releases/download/build-2.7.143/manis-pocket-2.7.143-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 7157d82576af5513ffa1464f86824c301d54ea608e43b791472dc9438668a258
+	source_x86_64 = manis-pocket-2.7.144-1-x86_64.pkg.tar.zst::https://github.com/kaigedong/Manis-Pocket/releases/download/build-2.7.144/manis-pocket-2.7.144-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 8e7244b693c8350bfbbe4e94c42ee468fe8f549324c9874e0fe7abd1ca57c9e2
 
 pkgname = manis-pocket-bin
