@@ -1,8 +1,8 @@
 # Maintainer: Remy Huang <me@remya.top>
 pkgname=remya-launcher-bin
 _app_id=remya_launcher
-_upstream_ver=0.1.0
-pkgver=0.1.0
+_upstream_ver=0.1.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Application launcher and clipboard history for Hyprland"
 arch=('x86_64')
@@ -26,7 +26,7 @@ conflicts=('remya-launcher' 'remya-launcher-git')
 optdepends=('noto-fonts-cjk: CJK font coverage')
 options=('!strip')
 source=("${_app_id}-${_upstream_ver}-linux-x86_64.tar.zst::${url}/releases/download/v${_upstream_ver}/${_app_id}-${_upstream_ver}-linux-x86_64.tar.zst")
-sha256sums=('eed217db3e965ae242041b6349f7c5f19222c2c496bb186c07d2e2faaec73db4')
+sha256sums=('bcb3dc113842df65b22d6847dd805ced22574dbe25070e8014022b86f4189b23')
 
 package() {
   cd "${srcdir}/${_app_id}-${_upstream_ver}-linux-x86_64"
