@@ -3,14 +3,14 @@
 pkgname=motrix-git
 _debname="app.${pkgname%-git}.native"
 _pkgname=Motrix
-pkgver=2.4.2.r2.g3d1d924
+pkgver=2.4.7.r4.gd488364
 _electronversion=45
 _nodeversion=24
 pkgrel=1
 pkgdesc="A full-featured download manager that supports downloading HTTP, FTP, BitTorrent, Magnet, etc."
 arch=(
-    'aarch64'
-    'x86_64'
+	'aarch64'
+	'x86_64'
 )
 url="https://motrix.app/"
 _ghurl="https://github.com/agalwood/Motrix"
@@ -18,42 +18,52 @@ _giteeurl="https://gitee.com/mirrors/motrix"
 license=('MIT')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=(
-    "${pkgname%-git}"
-    "${pkgname%-git}-bin"
+	"${pkgname%-git}"
+	"${pkgname%-git}-bin"
 )
 depends=(
-    "electron${_electronversion}"
+	"electron${_electronversion}"
 )
 makedepends=(
-    'git'
-    'pnpm'
-    'npm'
-    'nvm'
-    'jq'
-    'rustup'
+	'git'
+	'pnpm'
+	'npm'
+	'nvm'
+	'jq'
+	'rustup'
 )
 optdepends=(
-    'ffmpeg'
+	'ffmpeg'
 )
 source=(
-    "${pkgname//-/.}::git+${_ghurl}.git"
-    "${pkgname%-git}.js"
-    "${pkgname%-git}.sh"
+	"${pkgname//-/.}::git+${_ghurl}.git"
+	"${pkgname%-git}.js"
+	"${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+            '4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b'
+            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_project_dir() {
-	local d
-	while IFS= read -r d; do
-		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
-	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+	local _d _f _t _bt= _best= _bs=0
+	while IFS= read -r _d; do
+		_t=$(jq -er '((.dependencies // {}) + (.devDependencies // {}) + (.optionalDependencies // {}) + (.peerDependencies // {})) as $a
+			| select([$a | keys[] | select(test("^(electron|@electron-forge/|@electron/)"))] | length > 0)
+			| if (.devDependencies // {}) | has("@electron-forge/cli") then "electron-forge"
+			elif (.devDependencies // {}) | has("electron-builder") then "electron-builder"
+			elif (.devDependencies // {}) | has("electron-packager") then "electron-packager"
+			elif (.build | type) == "object" then "electron-builder" else "" end' "${_d}/package.json" 2>/dev/null) || continue
+		for _f in "${_d}"/forge.config.*; do [[ -e ${_f} ]] && _t=electron-forge; done
+		for _f in "${_d}"/electron-builder.{yml,yaml,json,json5,toml}; do [[ -e ${_f} ]] && _t=electron-builder; done
+		(( 1 + (${#_t} > 0) > _bs )) && { _best=${_d}; _bt=${_t}; _bs=$((1 + (${#_t} > 0))); }
+	done < <(find "${srcdir}" \( -name '.*' -o -name node_modules \) -prune -o -type f -name package.json -printf '%h\n' 2>/dev/null)
+	[[ -n ${_best} ]] || { echo "ERROR: no package.json depending on electron under ${srcdir}" >&2; return 1; }
+	[[ ${1} == tool ]] && printf '%s\n' "${_bt}" || printf '%s\n' "${_best}"
 }
 pkgver() {
 	cd "$(_get_project_dir)" || return 1
-	local _t=$(git tag --list --sort=-v:refname | grep -m1 -E '^v?[0-9]+(\.[0-9]+)+$' || :)
-	local _n=$(git rev-list --count "${_t:+$_t..}HEAD") _s=$(git rev-parse --short=7 HEAD)
-	[[ -n $_t ]] && printf '%s.r%s.g%s\n' "${_t#v}" "$_n" "$_s" || printf 'r%s.%s\n' "$_n" "$_s"
+	local _t=$(git tag --list --sort=-v:refname | grep -m1 -E '^v?[0-9]+(\.[0-9]+)+(-[0-9A-Za-z][0-9A-Za-z.-]*)?$' || :)
+	local _n=$(git rev-list --count "${_t:+$_t..}HEAD") _s=$(git rev-parse --short=7 HEAD) _v=${_t#v}; _v=${_v//-/_}
+	[[ -n $_t ]] && printf '%s.r%s.g%s\n' "$_v" "$_n" "$_s" || printf 'r%s.%s\n' "$_n" "$_s"
 }
 _ensure_local_nvm() {
 	local NVM_DIR="${srcdir}/.nvm"
@@ -70,6 +80,16 @@ _get_electron_version() {
 	_v=${_v:-$(grep -hoE 'electron[@":][^0-9]*[0-9]+\.[0-9.]+' "$(_get_project_dir)"/*lock* 2>/dev/null | grep -oE '[0-9]+\.[0-9.]+' | head -1 | sed 's/\..*//')}
 	[[ "$_v" =~ ^[0-9] ]] || return 1
 	(( ${_v} == _electronversion )) && echo -e "\033[1;32mElectron version: ${_v}\033[0m" || echo -e "\033[1;31mElectron version: ${_v} (expected ${_electronversion})\033[0m"
+}
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 _set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -121,60 +141,65 @@ _set_rust_build_env() {
 	export CARGO_PROFILE_RELEASE_STRIP=symbols
 	mkdir -p "${HOME}" "${CARGO_HOME}"
 }
+_generate_icons() {
+	local _sizes=(16 24 32 48 64 96 128 256) _src="$(_get_project_dir)/build/256x256.png" _s
+	for _s in "${_sizes[@]}"; do
+		install -d "${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps"
+		magick "${_src}" -background none -filter Lanczos -resize "${_s}x${_s}" \
+			-strip -define png:compression-level=9 \
+			"${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps/${pkgname%-git}.png"
+	done
+}
 prepare() {
-    cd "$(_get_project_dir)"
-    _get_electron_version
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-git}/g
-    " "${srcdir}/${pkgname%-git}.sh" "${srcdir}/${pkgname%-git}.js"
-    _ensure_local_nvm
-    _set_electron_build_env
-    _set_pnpm_build_env
-    _set_rust_build_env
-    sed -i -e "
-        s/Exec=start-${pkgname%-git}/Exec=${pkgname%-git}/g
-        s/Icon=${_debname}/Icon=${pkgname%-git}/g
-    " "flatpak/${_debname}.desktop"
-    sed -i "s/${_debname}/${pkgname%-git}/g" "flatpak/${_debname}.metainfo.xml"
-    rustup update stable
-    rustup default stable
-    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
-    export NODE_ENV=development
-    export MOTRIX_SKIP_ENGINE_FETCH=1
-    pnpm install
-    node node_modules/electron/install.js
+	cd "$(_get_project_dir)"
+	_get_electron_version
+	sed -i -e "
+		s/@electronversion@/${_electronversion}/g
+		s/@appname@/${pkgname%-git}/g
+	" "${srcdir}/${pkgname%-git}.sh"
+	_ensure_local_nvm
+	_set_electron_build_env
+	_set_pnpm_build_env
+	_set_rust_build_env
+	sed -i -e "
+		s/Exec=start-${pkgname%-git}/Exec=${pkgname%-git}/g
+		s/Icon=${_debname}/Icon=${pkgname%-git}/g
+	" "flatpak/${_debname}.desktop"
+	sed -i "s/${_debname}/${pkgname%-git}/g" "flatpak/${_debname}.metainfo.xml"
+	rustup update stable
+	rustup default stable
+	export NODE_ENV=development
+	export MOTRIX_SKIP_ENGINE_FETCH=1
+	pnpm install
+	node node_modules/electron/install.js
 }
 build() {
-    cd "$(_get_project_dir)"
-    _ensure_local_nvm
-    _set_electron_build_env
-    _set_pnpm_build_env
-    _set_rust_build_env
-    export	NODE_ENV=production
-    declare -A _arch_map=( [x86_64]=x64 [aarch64]=arm64 [armv7h]=armv7l )
-    local _arch="${_arch_map[${CARCH}]:-x64}"
-    local _rust_target="${CARCH/x86_64/x86_64-unknown-linux-musl}"
-    _rust_target="${_rust_target/aarch64/aarch64-unknown-linux-musl}"
-    pnpm run fetch:engine --platform linux --arch "${_arch}"
-    pnpm run build:builtin
-    [[ "${_rust_target}" == *"-linux-musl" ]] && rustup target add "${_rust_target}"
-    pnpm run build:native-host -- --platform linux --arch "${_arch}"
-    pnpm run build:finalize-fs -- --platform linux --arch "${_arch}"
-    pnpm run build:electron
-    pnpm run stage:electron -- --platform linux --arch "${_arch}"
-    pnpm exec electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}"
-    rm -rf "$(_get_app_dir)/resources/default_app.asar"
+	cd "$(_get_project_dir)"
+	_ensure_local_nvm
+	_set_electron_build_env
+	_set_pnpm_build_env
+	_set_rust_build_env
+	export	NODE_ENV=production
+	declare -A _arch_map=( [x86_64]=x64 [aarch64]=arm64 [armv7h]=armv7l )
+	local _arch="${_arch_map[${CARCH}]:-x64}"
+	local _rust_target="${CARCH/x86_64/x86_64-unknown-linux-musl}"
+	_rust_target="${_rust_target/aarch64/aarch64-unknown-linux-musl}"
+	pnpm run fetch:engine --platform linux --arch "${_arch}"
+	pnpm run build:builtin
+	[[ "${_rust_target}" == *"-linux-musl" ]] && rustup target add "${_rust_target}"
+	pnpm run build:native-host -- --platform linux --arch "${_arch}"
+	pnpm run build:finalize-fs -- --platform linux --arch "${_arch}"
+	pnpm run build:electron
+	pnpm run stage:electron -- --platform linux --arch "${_arch}"
+	pnpm exec electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}"
+	_delete_other_arch_files
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+	install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+	install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
-    rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
-    install -Dm644 "$(_get_project_dir)/flatpak/${_debname}.desktop" \
-        "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
-    install -Dm644 "$(_get_project_dir)/flatpak/${_debname}.metainfo.xml" \
-        "${pkgdir}/usr/share/metainfo/${pkgname%-git}.metainfo.xml"
-    install -Dm644 "$(_get_project_dir)/build/256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
-    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm644 "$(_get_project_dir)/flatpak/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+	install -Dm644 "$(_get_project_dir)/flatpak/${_debname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-git}.metainfo.xml"
+	_generate_icons
+	install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
