@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=untix
-pkgver=5.1.2
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="GTK4 + LibAdwaita client for WebUntis"
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=('meson' 'ninja' 'glib2-devel' 'gettext')
 # called untis and timetable on the AUR before; same files
 conflicts=('untis' 'timetable')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b37d4134ae8e125508bf1b68d0992b494f2021e75fcf8578582c8940dcdd3c34')
+sha256sums=('56a31a3587070f3f1bc307ad7e00b85e182eaa31e6c176eef0511adcb70bfc45')
 
 prepare() {
   # The About dialog reads the version from src/api.py, and upstream does not

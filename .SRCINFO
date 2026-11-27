@@ -1,6 +1,6 @@
 pkgbase = untix
 	pkgdesc = GTK4 + LibAdwaita client for WebUntis
-	pkgver = 5.1.2
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://codeberg.org/ostfriese4/untix
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = untix
 	depends = hicolor-icon-theme
 	conflicts = untis
 	conflicts = timetable
-	source = untix-5.1.2.tar.gz::https://codeberg.org/ostfriese4/untix/archive/v5.1.2.tar.gz
-	sha256sums = b37d4134ae8e125508bf1b68d0992b494f2021e75fcf8578582c8940dcdd3c34
+	source = untix-5.2.0.tar.gz::https://codeberg.org/ostfriese4/untix/archive/v5.2.0.tar.gz
+	sha256sums = 56a31a3587070f3f1bc307ad7e00b85e182eaa31e6c176eef0511adcb70bfc45
 
 pkgname = untix
