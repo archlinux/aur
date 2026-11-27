@@ -1,13 +1,13 @@
 # Maintainer: Pavel Olizko <contact@nolight.dev>
 
-# Rendered every night from aur/sonora-nightly-bin/PKGBUILD in github.com/sonorahq/sonora by its
+# Rendered every night from packaging/aur/sonora-nightly-bin/PKGBUILD in github.com/sonorahq/sonora by its
 # nightly workflow, which overwrites any change made in the AUR repository.
 
 pkgname=sonora-nightly-bin
 _pkgname=sonora
-pkgver=0.50.3.nightly.20261126
+pkgver=0.50.3.nightly.20261127
 pkgrel=1
-_commit=7502ea0e4f7ed14b3f1d2a115e265c01c457f26e
+_commit=f40e59b2213a0b1ae6157f2646cb82b48e16042d
 pkgdesc='A native, familiar music streaming client (nightly build of main)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sonorahq/sonora'
@@ -27,9 +27,9 @@ source=("${_pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz"
         "sonora-build-${pkgver}.json::${url}/releases/download/nightly-build/sonora-build.json")
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/nightly-build/sonora-nightly-x86_64-unknown-linux-gnu")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/nightly-build/sonora-nightly-aarch64-unknown-linux-gnu")
-sha256sums=('de0fef9a603cd4ffe10be7f344f3117302b42f1ab7930a1a0867f4e742676569' 'dc0eb6611078abb6708d4b7ac71495a60ba01c799d0341ef89ac4584c313ff7b')
-sha256sums_x86_64=('1e05cbacea90372af823147c1b26952a13cdd646eac7a2ff7c1df8ae2d438f73')
-sha256sums_aarch64=('3626c99c94a6e2278a0252b1f817e67387095e2f6296ea418664d6117f5c49c3')
+sha256sums=('dac1c8efb5983b600eba0aceabb6cecc00aced91b9020d37b73b0b13d8764100' '0c9c8483f984462bbf84735e9a7d26fdee2fa86119fe601aacf44cfb5c20149d')
+sha256sums_x86_64=('3b40206e34730ead989de37453ea02a4ee6cf597a8c166f7d9695b061eb5e641')
+sha256sums_aarch64=('c72fdd8324d1aad1c91799885e4adc8dbc2fdf0f74cf73f3dacb370fcae01e3d')
 
 package() {
   cd "${_pkgname}-${_commit}"
@@ -62,7 +62,7 @@ package() {
   done
 
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 THIRD-PARTY.md "${pkgdir}/usr/share/licenses/${pkgname}/THIRD-PARTY.md"
+  install -Dm644 docs/THIRD-PARTY.md "${pkgdir}/usr/share/licenses/${pkgname}/THIRD-PARTY.md"
   install -Dm644 assets/fonts/LICENSE.txt \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.Inter"
   install -Dm644 assets/icons/LICENSE \
