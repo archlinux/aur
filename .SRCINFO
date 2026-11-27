@@ -1,7 +1,7 @@
 pkgbase = picocrypt-ng-bin
 	pkgdesc = A very small, very simple, yet very secure encryption tool. (GUI)
-	pkgver = 2.18
-	pkgrel = 2
+	pkgver = 3.0
+	pkgrel = 1
 	url = https://github.com/Picocrypt-NG/Picocrypt-NG
 	arch = x86_64
 	arch = aarch64
@@ -14,12 +14,12 @@ pkgbase = picocrypt-ng-bin
 	options = !debug
 	source = picocrypt.desktop
 	sha256sums = d06954953bafc0fd9bb5edf609dff65ec0f0d95d971d096df7d72abe6e830e99
-	source_x86_64 = https://github.com/Picocrypt-NG/Picocrypt-NG/releases/download/2.18/Picocrypt-NG
-	source_x86_64 = https://github.com/Picocrypt-NG/Picocrypt-NG/releases/download/2.18/Picocrypt-NG.sigstore.json
+	source_x86_64 = https://github.com/Picocrypt-NG/Picocrypt-NG/releases/download/3.0/Picocrypt-NG
+	source_x86_64 = https://github.com/Picocrypt-NG/Picocrypt-NG/releases/download/3.0/Picocrypt-NG.sigstore.json
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/Picocrypt-NG/Picocrypt-NG/releases/download/2.18/Picocrypt-NG-arm64
-	source_aarch64 = https://github.com/Picocrypt-NG/Picocrypt-NG/releases/download/2.18/Picocrypt-NG-arm64.sigstore.json
+	source_aarch64 = https://github.com/Picocrypt-NG/Picocrypt-NG/releases/download/3.0/Picocrypt-NG-arm64
+	source_aarch64 = https://github.com/Picocrypt-NG/Picocrypt-NG/releases/download/3.0/Picocrypt-NG-arm64.sigstore.json
 	sha256sums_aarch64 = SKIP
 	sha256sums_aarch64 = SKIP
 
