@@ -5,11 +5,11 @@
 # `lightforge`.
 
 pkgname=lightforge-bin
-pkgver=1.0.0beta.13
+pkgver=1.0.0beta.14
 pkgrel=1
 # See the note in the `lightforge` PKGBUILD for why the version loses its
 # hyphen here.
-_tag=v1.0.0-beta.13
+_tag=v1.0.0-beta.14
 pkgdesc='Install, update and play World of Warcraft on Linux, and a home for all your other Battle.net games'
 arch=('x86_64')
 url='https://github.com/LightforgeProject/lightforge'
@@ -28,9 +28,9 @@ conflicts=('lightforge')
 # builds an empty `-debug` package out of what it does not find.
 options=('!debug' '!strip')
 source=("lightforge-${_tag#v}-x86_64-linux.tar.gz::$url/releases/download/$_tag/lightforge-${_tag#v}-x86_64-linux.tar.gz")
-# Of the tarball attached to the v1.0.0-beta.13 release, as published in its
+# Of the tarball attached to the v1.0.0-beta.14 release, as published in its
 # SHA256SUMS. Regenerate with `updpkgsums` if the artifacts are ever rebuilt.
-sha256sums=('633190c0de5a374dbfaa645d5a64225d09c2fc476ca5036d8e680d255ee28bf0')
+sha256sums=('d878e592b5794b6fb57fb73ae944a5ab90237c2bc86216a6c892d61cd9faf14c')
 _srcdir="lightforge-${_tag#v}"
 
 package() {

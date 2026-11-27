@@ -1,6 +1,6 @@
 pkgbase = lightforge-bin
 	pkgdesc = Install, update and play World of Warcraft on Linux, and a home for all your other Battle.net games
-	pkgver = 1.0.0beta.13
+	pkgver = 1.0.0beta.14
 	pkgrel = 1
 	url = https://github.com/LightforgeProject/lightforge
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = lightforge-bin
 	optdepends = lib32-vulkan-icd-loader: 32-bit runtime for Battle.net (needs multilib)
 	optdepends = mangohud: the in-game overlay Lightforge can enable per game
 	optdepends = xdg-desktop-portal-impl: the file and folder pickers
-	provides = lightforge=1.0.0beta.13
+	provides = lightforge=1.0.0beta.14
 	conflicts = lightforge
 	options = !debug
 	options = !strip
-	source = lightforge-1.0.0-beta.13-x86_64-linux.tar.gz::https://github.com/LightforgeProject/lightforge/releases/download/v1.0.0-beta.13/lightforge-1.0.0-beta.13-x86_64-linux.tar.gz
-	sha256sums = 633190c0de5a374dbfaa645d5a64225d09c2fc476ca5036d8e680d255ee28bf0
+	source = lightforge-1.0.0-beta.14-x86_64-linux.tar.gz::https://github.com/LightforgeProject/lightforge/releases/download/v1.0.0-beta.14/lightforge-1.0.0-beta.14-x86_64-linux.tar.gz
+	sha256sums = d878e592b5794b6fb57fb73ae944a5ab90237c2bc86216a6c892d61cd9faf14c
 
 pkgname = lightforge-bin
