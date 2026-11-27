@@ -7,7 +7,7 @@
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
 pkgname=icaclient
-pkgver=26.04.10.1
+pkgver=26.08.0.225
 pkgrel=1
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)"
 arch=(x86_64 aarch64)
@@ -17,7 +17,8 @@ depends=(alsa-lib curl gst-plugins-base-libs libc++ libc++abi
          libsecret libvorbis libxaw libxml2-legacy libxp
          openssl speex)
 optdepends=('webkit2gtk: provides libwebkit2gtk-4.0 ABI; required for selfservice and the wfica connection dialog'
-            'libsoup: provides libsoup-2.4 ABI; required for selfservice and the wfica connection dialog')
+            'libsoup: provides libsoup-2.4 ABI; required for selfservice and the wfica connection dialog'
+            'bind: needed to log in with e-mail address')
 conflicts=('bin32-citrix-client' 'citrix-client')
 options=(!strip)
 backup=('opt/Citrix/ICAClient/config/appsrv.ini'
@@ -45,8 +46,8 @@ sha256sums=('643427b6e04fc47cd7d514af2c2349948d3b45f536c434ba8682dcb1d4314736'
             'a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4'
             '0e3a6c7cf7fa9eee7dcde7356e90ffa1cb312bffc0813a0bf123d2f918dc369d'
             '739da3fca95d07fc3076522acc6b6c1b12b988047bd2fb3c87e37231e49f2e1f')
-sha256sums_x86_64=('8c0a22cad4a4cda802cb5d3bb09b89779d20f68ba5e454b86485354c557356b5')
-sha256sums_aarch64=('4e65c1d449a2a9f21905135cc02418fbe434bc23705cad26dbe81ef4b3b9bd54')
+sha256sums_x86_64=('4231d4c2550656f89ca05b53d70543391dbf7a0c18bc44b4f85184758c5cbaa0')
+sha256sums_aarch64=('bbcf1e8c76b655c4f9d46ec72b62de1c7fc4f8d7222f40fb57928092afb1c7c3')
 install=citrix-client.install
 
 package() {
