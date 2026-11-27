@@ -1,7 +1,7 @@
 pkgbase = trilium-next
 	pkgdesc = A hierarchical note taking application
 	pkgver = 0.107.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TriliumNext/Trilium
 	arch = x86_64
 	license = AGPL-3.0-only
