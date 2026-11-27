@@ -1,0 +1,560 @@
+diff --git a/config/Makefile.am b/config/Makefile.am
+index 565c3eb..f27d6bc 100644
+--- a/config/Makefile.am
++++ b/config/Makefile.am
+@@ -29,10 +29,9 @@
+ 
+ EXTRA_DIST=cefnetd.conf.def cefnetd.fib.def csmgrd.conf.def plugin.conf.def default-private-key.pem default-public-key.pem ccninfo_rt-private-key.pem ccninfo_rt-public-key.pem ccninfo_user-private-key.pem ccninfo_user-public-key.pem conpubd.conf.def 88-cefore.conf.def
+ CEF_CONF=cefnetd.conf cefnetd.fib csmgrd.conf plugin.conf default-private-key default-public-key ccninfo_rt-private-key ccninfo_rt-public-key ccninfo_user-private-key ccninfo_user-public-key conpubd.conf 88-cefore.conf
+-INSTALLDIR=$(CEFORE_DIR_PATH)cefore
+-CCNINFORTDIR=$(CEFORE_DIR_PATH)cefore/.ccninfo
+-CCNINFOUSERDIR=$(HOME)/.ccninfo
+-SYSCTLINSTALLDIR=/etc/sysctl.d
++INSTALLDIR=$(DESTDIR)$(sysconfdir)/cefore
++CCNINFORTDIR=$(DESTDIR)$(sysconfdir)/cefore/.ccninfo
++SYSCTLINSTALLDIR=$(DESTDIR)/etc/sysctl.d
+ 
+ default all: $(CEF_CONF)
+ 
+@@ -135,15 +134,15 @@ ccninfo_user-public-key: ccninfo_user-public-key.pem
+ 
+ install:
+ 	@if [ ! -d $(INSTALLDIR) ]; then \
+-		mkdir $(INSTALLDIR); \
++		mkdir -p $(INSTALLDIR); \
+ 	fi
+ 
+ 	@if [ ! -d $(CCNINFORTDIR) ]; then \
+-		mkdir $(CCNINFORTDIR); \
++		mkdir -p $(CCNINFORTDIR); \
+ 	fi
+ 
+-	@if [ ! -d $(CCNINFOUSERDIR) ]; then \
+-		mkdir $(CCNINFOUSERDIR); \
++	@if [ ! -d $(SYSCTLINSTALLDIR) ]; then \
++		mkdir -p $(SYSCTLINSTALLDIR); \
+ 	fi
+ 
+ 	@if [ ! -f $(INSTALLDIR)/cefnetd.conf ]; then \
+@@ -170,23 +169,18 @@ install:
+ 	@if [ ! -f $(CCNINFORTDIR)/ccninfo_rt-public-key ]; then \
+ 		cp -p ccninfo_rt-public-key $(CCNINFORTDIR)/ccninfo_rt-public-key; \
+ 	fi
+-	@if [ ! -f $(CCNINFOUSERDIR)/$ccninfo_user-private-key ]; then \
+-		cp -p ccninfo_user-private-key $(CCNINFOUSERDIR)/ccninfo_user-private-key; \
+-	fi
+-	@if [ ! -f $(CCNINFOUSERDIR)/ccninfo_user-public-key ]; then \
+-		cp -p ccninfo_user-public-key $(CCNINFOUSERDIR)/ccninfo_user-public-key; \
+-	fi
+ 	@if [ ! -f $(INSTALLDIR)/conpubd.conf ]; then \
+ 		cp -p conpubd.conf $(INSTALLDIR)/conpubd.conf; \
+ 	fi
+ 	-@if [ ! -f $(SYSCTLINSTALLDIR)/88-cefore.conf ] && [ ! $(build_vendor) = apple ]; then \
+ 		cp -p 88-cefore.conf $(SYSCTLINSTALLDIR)/88-cefore.conf; \
+-		sysctl -p $(SYSCTLINSTALLDIR)/88-cefore.conf; \
++		if [ -z "$(DESTDIR)" ]; then \
++			sysctl -p $(SYSCTLINSTALLDIR)/88-cefore.conf; \
++		fi; \
+ 	fi
+ 
+ 
+ uninstall:
+-	for i in $(CEF_CONF) ""; do test -z "$$i" || rm -f $(CCNINFOUSERDIR)/$$i; done
+ 	for i in $(CEF_CONF) ""; do test -z "$$i" || rm -f $(CCNINFORTDIR)/$$i; done
+ 	for i in $(CEF_CONF) ""; do test -z "$$i" || rm -f $(INSTALLDIR)/$$i; done
+ 	for i in $(CEF_CONF) ""; do test -z "$$i" || rm -f $(SYSCTLINSTALLDIR)/$$i; done
+diff --git a/config/cefnetd.conf.def b/config/cefnetd.conf.def
+index 66da015..6855ab1 100644
+--- a/config/cefnetd.conf.def
++++ b/config/cefnetd.conf.def
+@@ -244,13 +244,13 @@
+ #
+ # cefore encryption key pair for validation
+ #
+-#PATH_PRIVATE_KEY=/usr/local/cefore/default-private-key
+-#PATH_PUBLIC_KEY=/usr/local/cefore/default-public-key
++#PATH_PRIVATE_KEY=/etc/cefore/default-private-key
++#PATH_PUBLIC_KEY=/etc/cefore/default-public-key
+ 
+ #
+ # Specify the file containing the KeyID list to load when cefnetd starts.
+ #
+-#PATH_KEYID_LIST=/usr/local/cefore/keyid.list
++#PATH_KEYID_LIST=/etc/cefore/keyid.list
+ 
+ #
+ # cefore validation mode
+diff --git a/config/conpubd.conf.def b/config/conpubd.conf.def
+index 7dc79f4..e642393 100644
+--- a/config/conpubd.conf.def
++++ b/config/conpubd.conf.def
+@@ -87,7 +87,7 @@
+ #
+ #CEFNETD_PORT_NUM=9695
+ 
+-#CONT_INFO_RESTORE_DIR=/usr/local/cefore/restore
++#CONT_INFO_RESTORE_DIR=/etc/cefore/restore
+ 
+ #CONT_INFO_RESTORE_FILE=conpubcont.restore
+ 
+diff --git a/doc/Configuration.md b/doc/Configuration.md
+index be2f060..0bd5283 100644
+--- a/doc/Configuration.md
++++ b/doc/Configuration.md
+@@ -1,6 +1,6 @@
+ # Cefore Configurations
+ 
+-This document summarizes the configuration files used for Cefore. During the cefnetd installation, the sample configuration files (all commented out) are created in the path of "$CEFORE_DIR/cefore". The default for the environment variable CEFORE_DIR is "/usr/local". The configuration file is created only if the configuration file does not exist in the specified path. If the configuration file already exists in the specified path, that file is not changed.
++This document summarizes the configuration files used for Cefore. During the cefnetd installation, the sample configuration files (all commented out) are created in the path of "$CEFORE_DIR/cefore". The default configuration directory is "/etc/cefore". The configuration file is created only if the configuration file does not exist in the specified path. If the configuration file already exists in the specified path, that file is not changed.
+ Daemons such as cefnetd and tools such as cefgetfile can also specify the path where the configuration file is located at startup by using the "-d config_file_dir" option (See "1.1. Startup Option for Daemons and Tools" in Daemon document). This "-d config_file_dir" option takes precedence over the environment variable CEFORE_DIR. That is, daemons started with the "-d config_file_dir" option use the configuration file in the path specified by "-d config_file_dir".
+ 
+ ## 1. cefnetd.conf
+@@ -24,7 +24,7 @@ cefnetd.conf describes the cefnetd parameter settings. The parameters must be in
+ | LOCAL_SOCK_ID | UNIX domain socket ID. <br> Usually it is not necessary to change it. | 0 |
+ | CCNINFO_ACCESS_POLICY | CCNinfo access policy <br> 0: Allow all <br> 1: Request/Reply message forward only <br> 2: Deny all | 0 |
+ | CCNINFO_FULL_DISCOVERY | Permission of "Full discovery request" <br> 0: Deny <br> 1: Allow <br> 2: Allow if approved <br> | 0 |
+-| CCNINFO_VALID_ALG | Validation algorithm to attach to CCNinfo Reply messages if requested. <br> Specify either crc32c, rsa-sha256, or None. None means no validation attached to CCNinfo Reply messages. <br> If CCNINFO_VALID_ALG=rsa-sha256 is specified, both private and public keys are located in: <br> /usr/local/cefore/.ccninfo | crc32c |
++| CCNINFO_VALID_ALG | Validation algorithm to attach to CCNinfo Reply messages if requested. <br> Specify either crc32c, rsa-sha256, or None. None means no validation attached to CCNinfo Reply messages. <br> If CCNINFO_VALID_ALG=rsa-sha256 is specified, both private and public keys are located in: <br> /etc/cefore/.ccninfo | crc32c |
+ | CCNINFO_SHA256_KEY_PRFX | Prefix name of secret/public keys. <br> Secret key name: specified prefix_name"-private-key" <br> Public key name: specified prefix_name"-public-key" | ccninfo_rt |
+ | CCNINFO_REPLY_TIMEOUT | PIT lifetime on "Full discovery request" (sec). <br> Range: 2 to 5 (sec.) | 4 |
+ | FORWARDING_INFO_STRATEGY | Forwarding strategy when sending Interest messages. <br> 0: Forward using one longest prefix match FIB entry <br> 1: Forward using all longest prefix match FIB entries | 0 |
+@@ -49,7 +49,7 @@ For link-local addresses, the IP address must be followed (in []) by the "%" (pe
+ cefnetd.key specifies, for each URI, the public and private keys to use for the validation of the Interest and Content Objects in the form "URI Private_key Public_key". Both keys follow PEM format.
+ By default, only one line is provided to apply the pre-installed private and public keys to all URIs. These keys are prepared in the same path with the path of cefnetd.key. The matching between a URI and the URI described in the cefnetd.key is conducted by the longest prefix match same as FIB.
+ 
+-> *ccnx:/ &nbsp;/usr/local/cefore/default-private-key &nbsp;/usr/local/cefore/default-public-key*
++> *ccnx:/ &nbsp;/etc/cefore/default-private-key &nbsp;/etc/cefore/default-public-key*
+ 
+ The public and private keys distributed here are common to all cefore packages and do not make any sense in terms of Interest/Content Object validation. For this reason, it is recommended that you re-create the default private and public keys as needed and distribute the re-created or per-URI public keys to the communicating cefore nodes.
+ The following example shows how to specify the public and private keys to be used for each URI. The order of the URIs are not relevant with the processing. Internally, the content name and the prefix specified in cefnetd.key are matched with the longest forward match.
+diff --git a/src/cefnetd/Makefile.am b/src/cefnetd/Makefile.am
+index a9bfe51..0acc21d 100644
+--- a/src/cefnetd/Makefile.am
++++ b/src/cefnetd/Makefile.am
+@@ -49,7 +49,7 @@ endif # CACHE_ENABLE
+ 
+ 
+ # set bin programs
+-bin_PROGRAMS=$(CEF_NETD_BIN_PROGRAM)
++sbin_PROGRAMS=$(CEF_NETD_BIN_PROGRAM)
+ 
+ # set cefnetd option
+ cefnetd_LDFLAGS=-L$(top_srcdir)/src/lib/ -L$(top_srcdir)/src/plugin/ -L$(top_srcdir)/src/dlplugin/fwd_strategy/ -lpthread
+@@ -105,8 +105,5 @@ CEF_NETD_CFLAGS+=-DCefC_INTEREST_RETURN
+ endif # INTEREST_RETURN_ENABLE
+ 
+ 
+-DESTDIR=$(CEFORE_DIR_PATH)
+-bindir=sbin
+-
+ install-exec-hook:
+-	chmod +s $(DESTDIR)$(bindir)/cefctrl
++	chmod +s $(DESTDIR)$(sbindir)/cefctrl
+diff --git a/src/cefnetd/cef_netd.c b/src/cefnetd/cef_netd.c
+index f09c93e..e6dbc55 100644
+--- a/src/cefnetd/cef_netd.c
++++ b/src/cefnetd/cef_netd.c
+@@ -6160,7 +6160,7 @@ cefnetd_config_read (
+ 	int 	res;
+ 	double 	res_dbl;
+ 	int		IR_enabled = 0;
+-	char	keyid_list_path[PATH_MAX] = "/usr/local/cefore/keyid.list";
++	char	keyid_list_path[PATH_MAX] = "/etc/cefore/keyid.list";
+ 	int		validkey_table_size = CefC_Default_ValidKey_Table_Size;
+ 	int		validation_mode = CefC_ValidMode_InBand;
+ 
+diff --git a/src/conpubd/conpubd/Makefile.am b/src/conpubd/conpubd/Makefile.am
+index cc37602..1c734f7 100644
+--- a/src/conpubd/conpubd/Makefile.am
++++ b/src/conpubd/conpubd/Makefile.am
+@@ -44,7 +44,7 @@ CONPUBD_CFLAGS+=-DCefC_Debug -g
+ endif # CEFDBG_ENABLE
+ 
+ # set bin programs
+-bin_PROGRAMS=$(CONPUBD_BIN_PROGRAM)
++sbin_PROGRAMS=$(CONPUBD_BIN_PROGRAM)
+ 
+ # set conpubd option
+ conpubd_LDFLAGS = $(AM_LDFLAGS)
+@@ -73,8 +73,5 @@ conpubctrl_LDADD += -lpthread -ldl
+ conpubctrl_CFLAGS = $(CONPUBD_CFLAGS) -Wall -O2 -fPIC
+ conpubctrl_SOURCES = conpubctrl.c
+ 
+-DESTDIR=$(CEFORE_DIR_PATH)
+-bindir=sbin
+-
+ install-exec-hook:
+-	chmod +s $(DESTDIR)$(bindir)/conpubctrl
++	chmod +s $(DESTDIR)$(sbindir)/conpubctrl
+diff --git a/src/conpubd/conpubd/conpubd.c b/src/conpubd/conpubd/conpubd.c
+index 86dc5c8..9a61340 100644
+--- a/src/conpubd/conpubd/conpubd.c
++++ b/src/conpubd/conpubd/conpubd.c
+@@ -96,15 +96,15 @@ static CsmgrT_Stat_Handle 	stat_hdl = CsmgrC_Invalid;	/* CS stat handle			*/
+ static int					conpubd_cntent_load_stat = 0;
+ 														/* content load stat			*/
+ static int 					conpubd_running_f 	= 1;
+-static char 				conpub_conf_dir[PATH_MAX] = {"/usr/local/cefore"};
+-static char 				conpub_contdef_dir[PATH_MAX] = {"/usr/local/cefore"};
++static char 				conpub_conf_dir[PATH_MAX] = {"/etc/cefore"};
++static char 				conpub_contdef_dir[PATH_MAX] = {"/etc/cefore"};
+ static char 				root_user_name[CefC_Csmgr_User_Len] = {"root"};
+ static char 				conpub_local_sock_name[PATH_MAX] = {0};
+ static pthread_mutex_t 		conpub_cnt_mutex = PTHREAD_MUTEX_INITIALIZER;
+ 
+ static uint64_t Intial_free_mem_mega = 0;
+ 
+-static char 				conpub_contdef_path[PATH_MAX] = {"/usr/local/cefore/conpubcont.def"};
++static char 				conpub_contdef_path[PATH_MAX] = {"/etc/cefore/conpubcont.def"};
+ 
+ /* Work areas */
+ static CefT_CcnMsg_MsgBdy* Cob_prames_p = NULL;
+diff --git a/src/conpubd/plugin/filesystem_cache/filesystem_cache.c b/src/conpubd/plugin/filesystem_cache/filesystem_cache.c
+index b4160d4..2cc2407 100644
+--- a/src/conpubd/plugin/filesystem_cache/filesystem_cache.c
++++ b/src/conpubd/plugin/filesystem_cache/filesystem_cache.c
+@@ -115,7 +115,7 @@ typedef struct {
+  ****************************************************************************************/
+ 
+ static FscT_Cache_Handle* 		cobpub_hdl = NULL;
+-static char 					conpub_conf_dir[PATH_MAX] = {"/usr/local/cefore"};
++static char 					conpub_conf_dir[PATH_MAX] = {"/etc/cefore"};
+ static CsmgrT_Stat_Handle 		conpub_stat_hdl;
+ 
+ static pthread_mutex_t 			conpub_fsc_cs_mutex = PTHREAD_MUTEX_INITIALIZER;
+diff --git a/src/conpubd/plugin/mem_cache/mem_cache.c b/src/conpubd/plugin/mem_cache/mem_cache.c
+index 252e868..04ab103 100644
+--- a/src/conpubd/plugin/mem_cache/mem_cache.c
++++ b/src/conpubd/plugin/mem_cache/mem_cache.c
+@@ -111,7 +111,7 @@ typedef struct CefT_Mem_Hash {
+  ****************************************************************************************/
+ 
+ static MemT_Cache_Handle* 		cobpub_hdl = NULL;
+-static char 					conpub_conf_dir[PATH_MAX] = {"/usr/local/cefore"};
++static char 					conpub_conf_dir[PATH_MAX] = {"/etc/cefore"};
+ static CefT_Mem_Hash* 			mem_hash_tbl = NULL;
+ static CsmgrT_Stat_Handle 		conpub_stat_hdl;
+ 
+diff --git a/src/csmgrd/csmgrd/Makefile.am b/src/csmgrd/csmgrd/Makefile.am
+index e9a7be8..aa5aabc 100644
+--- a/src/csmgrd/csmgrd/Makefile.am
++++ b/src/csmgrd/csmgrd/Makefile.am
+@@ -44,7 +44,7 @@ CSMGRD_CFLAGS+=-DCefC_Debug -g
+ endif # CEFDBG_ENABLE
+ 
+ # set bin programs
+-bin_PROGRAMS=$(CSMGRD_BIN_PROGRAM)
++sbin_PROGRAMS=$(CSMGRD_BIN_PROGRAM)
+ 
+ # set csmgrd option
+ csmgrd_LDFLAGS = $(AM_LDFLAGS)
+@@ -75,8 +75,5 @@ csmgrctrl_LDADD+=-ldl -lpthread
+ csmgrctrl_CFLAGS = $(CSMGRD_CFLAGS) -Wall -O2 -fPIC
+ csmgrctrl_SOURCES = csmgrctrl.c
+ 
+-DESTDIR=$(CEFORE_DIR_PATH)
+-bindir=sbin
+-
+ install-exec-hook:
+-	chmod +s $(DESTDIR)$(bindir)/csmgrctrl
++	chmod +s $(DESTDIR)$(sbindir)/csmgrctrl
+diff --git a/src/csmgrd/csmgrd/csmgrd.c b/src/csmgrd/csmgrd/csmgrd.c
+index a65385a..a12967b 100644
+--- a/src/csmgrd/csmgrd/csmgrd.c
++++ b/src/csmgrd/csmgrd/csmgrd.c
+@@ -112,7 +112,7 @@ static int xpthread_mutex_lock (const char* pname, int pline, pthread_mutex_t *m
+  ****************************************************************************************/
+ 
+ static uint8_t 				csmgrd_running_f = 0;
+-static char 				csmgr_conf_dir[PATH_MAX] = {"/usr/local/cefore"};
++static char 				csmgr_conf_dir[PATH_MAX] = {"/etc/cefore"};
+ static char 				root_user_name[CefC_Csmgr_User_Len] = {"root"};
+ static char 				csmgr_local_sock_name[PATH_MAX] = {0};
+ 
+diff --git a/src/csmgrd/plugin/filesystem_cache/filesystem_cache.c b/src/csmgrd/plugin/filesystem_cache/filesystem_cache.c
+index 4ca6a43..7f0affa 100644
+--- a/src/csmgrd/plugin/filesystem_cache/filesystem_cache.c
++++ b/src/csmgrd/plugin/filesystem_cache/filesystem_cache.c
+@@ -110,7 +110,7 @@ static FscT_Cache_Handle* hdl = NULL;						/* FileSystemCache Handle	*/
+ static CsmgrdT_Content_Entry* cobs_arr = NULL;
+ int fsc_compare_name (const void *a, const void *b);
+ 
+-static char csmgr_conf_dir[PATH_MAX] = {"/usr/local/cefore"};
++static char csmgr_conf_dir[PATH_MAX] = {"/etc/cefore"};
+ 
+ static pthread_mutex_t 			fsc_comn_buff_mutex[FscC_Max_Buff];
+ static sem_t*					fsc_comn_buff_sem;
+diff --git a/src/csmgrd/plugin/mem_cache/mem_cache.c b/src/csmgrd/plugin/mem_cache/mem_cache.c
+index 92e50a6..f66dc62 100644
+--- a/src/csmgrd/plugin/mem_cache/mem_cache.c
++++ b/src/csmgrd/plugin/mem_cache/mem_cache.c
+@@ -134,7 +134,7 @@ typedef struct CefT_Mem_Hash {
+  ****************************************************************************************/
+ 
+ static MemT_Cache_Handle* 		hdl = NULL;
+-static char 					csmgr_conf_dir[PATH_MAX] = {"/usr/local/cefore"};
++static char 					csmgr_conf_dir[PATH_MAX] = {"/etc/cefore"};
+ static CefT_Mem_Hash* 			mem_hash_tbl = NULL;
+ static uint32_t 				mem_tabl_max = CefC_Default_Cache_Capacity;
+ static pthread_mutex_t 			mem_comn_buff_mutex[MemC_Max_Buff];
+diff --git a/src/include/cefore/cef_define.h b/src/include/cefore/cef_define.h
+index 366a18f..1fb8ecc 100644
+--- a/src/include/cefore/cef_define.h
++++ b/src/include/cefore/cef_define.h
+@@ -80,7 +80,7 @@
+ 
+ /*************** User Directry 	****************/
+ #define CefC_CEFORE_DIR					"CEFORE_DIR"
+-#define CefC_CEFORE_DIR_DEF				"/usr/local/cefore"
++#define CefC_CEFORE_DIR_DEF				"/etc/cefore"
+ #define CefC_CEFORE_USER_DIR			"CEFORE_USER_DIR"
+ 
+ /*************** Clock	 		****************/
+diff --git a/src/lib/cef_client.c b/src/lib/cef_client.c
+index df55335..b967770 100644
+--- a/src/lib/cef_client.c
++++ b/src/lib/cef_client.c
+@@ -67,7 +67,7 @@
+ static uint64_t nowtus = 0;
+ static char cef_lsock_name[PATH_MAX];
+ static char cbd_lsock_name[PATH_MAX];
+-static char cef_conf_dir[PATH_MAX] = {"/usr/local/cefore"};
++static char cef_conf_dir[PATH_MAX] = {"/etc/cefore"};
+ static int  cef_port_num = CefC_Default_PortNum;
+ static unsigned char* work_buff = NULL;
+ 
+diff --git a/src/lib/cef_valid.c b/src/lib/cef_valid.c
+index 5ebc155..d7051b3 100644
+--- a/src/lib/cef_valid.c
++++ b/src/lib/cef_valid.c
+@@ -1598,8 +1598,8 @@ cef_valid_read_conf (
+ 	char	buff[BUFSIZ_1K];
+ 	FILE	*fp;
+ 	char	ccn_uri[] = { "ccnx:/" };
+-	char	pprv_key[PATH_MAX] = { "/usr/local/cefore/default-private-key" };
+-	char	ppub_key[PATH_MAX] = { "/usr/local/cefore/default-public-key" };
++	char	pprv_key[PATH_MAX] = { "/etc/cefore/default-private-key" };
++	char	ppub_key[PATH_MAX] = { "/etc/cefore/default-public-key" };
+ 	int 	res = -1;
+ 	unsigned char t_name[CefC_Max_Length];
+ 	CefT_Keys* 	key_entry;
+diff --git a/tools/ccninfo/Makefile.am b/tools/ccninfo/Makefile.am
+index 2e2dec3..a7a754d 100644
+--- a/tools/ccninfo/Makefile.am
++++ b/tools/ccninfo/Makefile.am
+@@ -48,9 +48,6 @@ if CEFDBG_ENABLE
+ ccninfo_CFLAGS+=-DCefC_Debug -g
+ endif # CEFDBG_ENABLE
+ 
+-DESTDIR=$(CEFORE_DIR_PATH)
+-bindir=bin
+-
+ install-exec-hook:
+ 	chmod +s $(DESTDIR)$(bindir)/$(bin_PROGRAMS)
+ 
+diff --git a/tools/cefgetchunk/Makefile.am b/tools/cefgetchunk/Makefile.am
+index 29d137c..71d9a3e 100644
+--- a/tools/cefgetchunk/Makefile.am
++++ b/tools/cefgetchunk/Makefile.am
+@@ -47,9 +47,6 @@ if CEFDBG_ENABLE
+ cefgetchunk_CFLAGS+=-DCefC_Debug
+ endif # CEFDBG_ENABLE
+ 
+-DESTDIR=$(CEFORE_DIR_PATH)
+-bindir=bin
+-
+ install-exec-hook:
+ 	chmod +s $(DESTDIR)$(bindir)/$(bin_PROGRAMS)
+ 
+diff --git a/tools/cefgetfile/Makefile.am b/tools/cefgetfile/Makefile.am
+index e941f51..a6435db 100644
+--- a/tools/cefgetfile/Makefile.am
++++ b/tools/cefgetfile/Makefile.am
+@@ -47,9 +47,6 @@ if CEFDBG_ENABLE
+ cefgetfile_CFLAGS+=-DCefC_Debug
+ endif # CEFDBG_ENABLE
+ 
+-DESTDIR=$(CEFORE_DIR_PATH)
+-bindir=bin
+-
+ install-exec-hook:
+ 	chmod +s $(DESTDIR)$(bindir)/$(bin_PROGRAMS)
+ 
+diff --git a/tools/cefgetstream/Makefile.am b/tools/cefgetstream/Makefile.am
+index 2552911..e702e51 100644
+--- a/tools/cefgetstream/Makefile.am
++++ b/tools/cefgetstream/Makefile.am
+@@ -47,8 +47,5 @@ if CEFDBG_ENABLE
+ cefgetstream_CFLAGS+=-DCefC_Debug
+ endif # CEFDBG_ENABLE
+ 
+-DESTDIR=$(CEFORE_DIR_PATH)
+-bindir=bin
+-
+ install-exec-hook:
+ 	chmod +s $(DESTDIR)$(bindir)/$(bin_PROGRAMS)
+diff --git a/tools/cefpubfile/Makefile.am b/tools/cefpubfile/Makefile.am
+index 2e8df3b..eefea95 100644
+--- a/tools/cefpubfile/Makefile.am
++++ b/tools/cefpubfile/Makefile.am
+@@ -47,8 +47,5 @@ if CEFDBG_ENABLE
+ cefpubfile_CFLAGS+=-DCefC_Debug
+ endif # CEFDBG_ENABLE
+ 
+-DESTDIR=$(CEFORE_DIR_PATH)
+-bindir=bin
+-
+ install-exec-hook:
+ 	chmod +s $(DESTDIR)$(bindir)/$(bin_PROGRAMS)
+diff --git a/tools/cefputfile/Makefile.am b/tools/cefputfile/Makefile.am
+index ccb716e..5577b03 100644
+--- a/tools/cefputfile/Makefile.am
++++ b/tools/cefputfile/Makefile.am
+@@ -47,8 +47,5 @@ if CEFDBG_ENABLE
+ cefputfile_CFLAGS+=-DCefC_Debug
+ endif # CEFDBG_ENABLE
+ 
+-DESTDIR=$(CEFORE_DIR_PATH)
+-bindir=bin
+-
+ install-exec-hook:
+ 	chmod +s $(DESTDIR)$(bindir)/$(bin_PROGRAMS)
+diff --git a/tools/cefputstream/Makefile.am b/tools/cefputstream/Makefile.am
+index 36fcb0d..1aef577 100644
+--- a/tools/cefputstream/Makefile.am
++++ b/tools/cefputstream/Makefile.am
+@@ -47,8 +47,5 @@ if CEFDBG_ENABLE
+ cefputstream_CFLAGS+=-DCefC_Debug
+ endif # CEFDBG_ENABLE
+ 
+-DESTDIR=$(CEFORE_DIR_PATH)
+-bindir=bin
+-
+ install-exec-hook:
+ 	chmod +s $(DESTDIR)$(bindir)/$(bin_PROGRAMS)
+diff --git a/tools/cefsubfile/Makefile.am b/tools/cefsubfile/Makefile.am
+index 11734bc..9509fa9 100644
+--- a/tools/cefsubfile/Makefile.am
++++ b/tools/cefsubfile/Makefile.am
+@@ -47,9 +47,6 @@ if CEFDBG_ENABLE
+ cefsubfile_CFLAGS+=-DCefC_Debug
+ endif # CEFDBG_ENABLE
+ 
+-DESTDIR=$(CEFORE_DIR_PATH)
+-bindir=bin
+-
+ install-exec-hook:
+ 	chmod +s $(DESTDIR)$(bindir)/$(bin_PROGRAMS)
+ 
+diff --git a/tools/conpub/Makefile.am b/tools/conpub/Makefile.am
+index ec38e97..8be3968 100644
+--- a/tools/conpub/Makefile.am
++++ b/tools/conpub/Makefile.am
+@@ -116,8 +116,6 @@ endif # CEFDBG_ENABLE
+ 
+ 
+ 
+-DESTDIR=$(CEFORE_DIR_PATH)
+-bindir=bin
+ 
+ ###############################################################################################
+ ###############################################################################################
+diff --git a/tools/csmgr/Makefile.am b/tools/csmgr/Makefile.am
+index 89555f8..c93b5b1 100644
+--- a/tools/csmgr/Makefile.am
++++ b/tools/csmgr/Makefile.am
+@@ -50,5 +50,3 @@ if CEFDBG_ENABLE
+ csmgrstatus_CFLAGS+=-DCefC_Debug
+ endif # CEFDBG_ENABLE
+ 
+-DESTDIR=$(CEFORE_DIR_PATH)
+-bindir=bin
+diff --git a/utils/Makefile.am b/utils/Makefile.am
+index 67ac001..c41fabb 100644
+--- a/utils/Makefile.am
++++ b/utils/Makefile.am
+@@ -33,7 +33,7 @@ CEF_UTIL=cefnetdstart cefnetdstop cefstatus cefroute cefvalidkey
+ CEF_MEM_UTIL = get_memory_info.sh
+ CEF_MEM_UTIL_MACOS = get_memory_info_macos.sh
+ SH=/bin/sh
+-INSTALLDIR=$(CEFORE_DIR_PATH)bin
++INSTALLDIR=$(DESTDIR)$(CEFORE_DIR_PATH)bin
+ 
+ # check csmgrd
+ if CSMGR_ENABLE
+@@ -137,6 +137,9 @@ conpubdstop: conpubdstop.sh
+ endif # CONPUB_ENABLE
+ 
+ install:
++	@if [ ! -d $(INSTALLDIR) ]; then \
++		mkdir -p $(INSTALLDIR); \
++	fi
+ 	for i in $(CEF_UTIL) $(CEF_BWSTAT_UTIL) ""; do test -z "$$i" || install $$i $(INSTALLDIR); done
+ 	if [ $(build_vendor) = apple ]; then \
+ 		test -z $(CEF_MEM_UTIL_MACOS) || install $(CEF_MEM_UTIL_MACOS) $(INSTALLDIR)/$(CEF_MEM_UTIL); \
+diff --git a/utils/cefnetdstart.sh b/utils/cefnetdstart.sh
+index 3c39d8f..2bf2ee2 100755
+--- a/utils/cefnetdstart.sh
++++ b/utils/cefnetdstart.sh
+@@ -28,7 +28,7 @@
+ #
+ 
+ # check the minimal installation
+-CONFIGFILE=/usr/local/cefore/cefnetd.conf
++CONFIGFILE=/etc/cefore/cefnetd.conf
+ if [ ! -f ${CONFIGFILE} ]
+ then
+ 	echo "ERROR: missing ${CONFIGFILE}"
+@@ -42,7 +42,7 @@ then
+ 	exit 1
+ fi
+ 
+-export DYLD_LIBRARY_PATH=/usr/local/lib:$DYLD_LIBRARY_PATH
++export DYLD_LIBRARY_PATH=/usr/lib:$DYLD_LIBRARY_PATH
+ 
+ # start cefnetd
+ cefnetd $@ &
+diff --git a/utils/conpubdstart.sh b/utils/conpubdstart.sh
+index dcb21ca..49d29ad 100755
+--- a/utils/conpubdstart.sh
++++ b/utils/conpubdstart.sh
+@@ -34,7 +34,7 @@ then
+ 	exit 1
+ fi
+ 
+-PATH_CONFIG=/usr/local/cefore
++PATH_CONFIG=/etc/cefore
+ CS_MODE=0
+ if [ "$1" = "-d" ];
+ then
+@@ -54,7 +54,7 @@ then
+   exit 1;
+ fi;
+ 
+-export DYLD_LIBRARY_PATH=/usr/local/lib:$DYLD_LIBRARY_PATH
++export DYLD_LIBRARY_PATH=/usr/lib:$DYLD_LIBRARY_PATH
+ 
+ # start conpubd
+ conpubd $@ &
+diff --git a/utils/csmgrdstart.sh b/utils/csmgrdstart.sh
+index ee939ad..c36cb61 100755
+--- a/utils/csmgrdstart.sh
++++ b/utils/csmgrdstart.sh
+@@ -34,7 +34,7 @@ then
+ 	exit 1
+ fi
+ 
+-PATH_CONFIG=/usr/local/cefore
++PATH_CONFIG=/etc/cefore
+ CS_MODE=0
+ if [ "$1" = "-d" ]
+ then
+@@ -54,7 +54,7 @@ then
+   exit 1;
+ fi;
+ 
+-export DYLD_LIBRARY_PATH=/usr/local/lib:$DYLD_LIBRARY_PATH
++export DYLD_LIBRARY_PATH=/usr/lib:$DYLD_LIBRARY_PATH
+ 
+ # start csmgrd
+ csmgrd $@ &

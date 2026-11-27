@@ -1,0 +1,37 @@
+_cefore_notice() {
+    cat <<'NOTICE'
+Cefore does not ship a key pair. Generate one before starting cefnetd:
+
+  sudo openssl genpkey -algorithm RSA -out /etc/cefore/default-private-key
+  sudo openssl rsa -pubout -in /etc/cefore/default-private-key \
+       -out /etc/cefore/default-public-key
+  sudo chmod 600 /etc/cefore/default-private-key
+
+cefnetd and ccninfo read the private key, so run them as root
+(e.g. sudo cefnetdstart, sudo ccninfo ...).
+
+cefnetdstart prints nothing when cefnetd fails to start. Check
+/tmp/cefnetd_<port>_0.log (default: /tmp/cefnetd_9695_0.log).
+
+CCNINFO_VALID_ALG=rsa-sha256 additionally needs
+/etc/cefore/.ccninfo/ccninfo_rt-{private,public}-key and
+~/.ccninfo/ccninfo_user-{private,public}-key.
+
+To use csmgrd (or conpubd) as the Content Store, set CS_MODE=2 (or 3)
+in /etc/cefore/cefnetd.conf, and start csmgrd before cefnetd.
+
+csmgrd needs larger socket buffers. Example tuning is in
+/usr/share/doc/cefore/88-cefore.conf:
+  Apply until reboot:  sudo sysctl -p /usr/share/doc/cefore/88-cefore.conf
+  Apply permanently:   copy it to /etc/sysctl.d/ and run sudo sysctl --system
+NOTICE
+}
+
+post_install() {
+    _cefore_notice
+}
+
+post_upgrade() {
+    [ -f /etc/cefore/default-private-key ] && return
+    _cefore_notice
+}

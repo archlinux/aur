@@ -1,0 +1,20 @@
+pkgbase = cefore
+	pkgdesc = ICN platform using CCNx-1.0 messages (RFC8569/RFC8609)
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/cefore/cefore
+	install = cefore.install
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = openssl
+	backup = etc/cefore/cefnetd.conf
+	backup = etc/cefore/cefnetd.fib
+	backup = etc/cefore/csmgrd.conf
+	backup = etc/cefore/plugin.conf
+	backup = etc/cefore/conpubd.conf
+	source = cefore-0.12.1.tar.gz::https://github.com/cefore/cefore/archive/refs/tags/v0.12.1.tar.gz
+	source = cefore-fix-destdir.patch
+	sha256sums = b5a2fcad6e3f634df0f383b1c72432301330db6a47d64be2e6c0caade1726b7e
+	sha256sums = 0d9a3f73a6b8bd5418a58c47a5353a8055a3789a8ed226a6e472588bd0439a07
+
+pkgname = cefore
