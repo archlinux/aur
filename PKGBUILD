@@ -3,14 +3,14 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname="spcasm"
-pkgver="2.0.0"
+pkgver="2.0.1"
 pkgrel=1
 pkgdesc="Modern SPC700 toolchain"
 arch=("x86_64" "aarch64" "riscv64")
 url="https://codeberg.org/filmroellchen/spcasm"
 license=("BSD-2-Clause")
 source=("spcasm::${url}/archive/v${pkgver}.tar.gz")
-b2sums=("fcb797608681b5890e62e3fcb9c6cb0c36639dd43a30096866b43a94820419bf8021cf92d45171f4be19f5b8c17635fb31feb1fb31b1c25864ebe2368b933375")
+b2sums=("39baa88de5cf09d49f23d299e1f39d0790ba0a3e7873595dbbd89f083f04eb73592d3278cd4c9882fc49dd2d9ec36fc501c09b33a590a62a2a71d96dfb2326d1")
 provides=("sapemu" "brr")
 conflicts=("spcasm-git" "spcasm-bin")
 
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/spcasm"
-	cargo build --locked --offline --workspace --profile=spcasm-release --features human-panic
+	RUSTFLAGS='' cargo build --locked --offline --workspace --profile=spcasm-release --features human-panic
 }
 
 package() {
@@ -48,5 +48,5 @@ check() {
 	target/spcasm-release/spcasm --version
 	target/spcasm-release/brr --version
 
-	cargo --locked --offline test --workspace
+	RUSTFLAGS='' cargo --locked --offline test --workspace
 }
