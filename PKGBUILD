@@ -6,7 +6,7 @@
 
 set -u
 pkgname=tesseract
-pkgver=5.5.4
+pkgver=5.5.5
 pkgrel=1
 pkgdesc='An OCR program'
 pkgdesc+=' (32-bit)'
@@ -25,10 +25,11 @@ depends=(
 depends=("${depends[@]/#/lib32-}")
 depends+=("${pkgname}>=${pkgver}")
 provides=("lib${pkgname}.so=${pkgver}")
+options=('!debug')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}_only_target_libraries.patch")
-sha256sums=('a8dbf8b8c8ee427ff6ad1d99116502feaf59440af1adb893caf60a6576826cf4'
+sha256sums=('b02cf6f37cfc95be5bf7e4b2d39e51997b1ac41f7beb4e2bd16777bb67561c79'
             'cebf0b3f6768ad483ad224f3b7d12ebfcb9a6002828d8133e85d14d4129bfd2c')
 
 _name="${pkgname}"
