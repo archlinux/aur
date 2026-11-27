@@ -1,0 +1,24 @@
+pkgbase = icl-bin
+	pkgdesc = Interactive Common Lisp: an enhanced REPL with editing, completion, browser UI and notebooks (prebuilt)
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://github.com/atgreen/icl
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zstd
+	optdepends = sbcl: default Lisp implementation (required for profiling and coverage)
+	optdepends = ccl: alternative Lisp implementation
+	optdepends = ecl: alternative Lisp implementation
+	optdepends = clisp: alternative Lisp implementation
+	optdepends = abcl: alternative Lisp implementation
+	optdepends = roswell: use a Roswell-managed Lisp environment
+	provides = icl=1.26.0
+	conflicts = icl
+	noextract = icl-1.26.0-1_amd64.deb
+	options = !strip
+	options = !debug
+	source = icl-1.26.0-1_amd64.deb::https://github.com/atgreen/icl/releases/download/v1.26.0/icl_1.26.0-1_amd64.deb
+	sha256sums = 8f41c8cd4840b502de2ac45db4173be6e0ba8bca4296cf29961cc1a35fa84379
+
+pkgname = icl-bin
