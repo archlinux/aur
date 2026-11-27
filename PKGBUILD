@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ext-camera
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Camera application for the COSMIC™ desktop environment"
 arch=('x86_64' 'aarch64')
-url="https://github.com/cosmic-utils/cosmic-ext-camera"
+url="https://github.com/cosmic-ext-orbit/cosmic-ext-camera"
 license=('GPL-3.0-or-later')
 depends=(
   'cosmic-icon-theme'
@@ -50,6 +50,8 @@ build() {
   CFLAGS+=" -ffat-lto-objects"
   CXXFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_PROFILE_RELEASE_LTO=true
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
   just build-release --frozen
 }
 
