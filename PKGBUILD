@@ -4,7 +4,7 @@
 # Contributor: Jessy Williams <jessy at jessywilliams dot com>
 
 pkgname=mnamer
-pkgver=2.7.2
+pkgver=2.8.0
 pkgrel=2
 pkgdesc='A media organization tool'
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
   'python-teletype')
 makedepends=('python-build' 'python-setuptools-scm' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('dd35f6ca1f6424663235e082855993cffabea781b31f897846e798f98ef6b693')
+sha256sums=('2eab239344fd12ba1d61b87b45d34f359b0844a08fc92f260012f6cd35aa9ca8')
 
 build() {
   cd "${pkgname}-${pkgver}"
