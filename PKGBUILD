@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=open-pdf-studio-bin
 _pkgname=Open.PDF.Studio
-pkgver=2026.48.28
+pkgver=2026.48.29
 pkgrel=1
 pkgdesc="a lightweight, native desktop application that provides professional-grade PDF annotation, markup, and editing tools without subscriptions, telemetry, or bloatware. "
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
 	'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('d92ca76815831cc502350e76aba55ae93feac3b77f668de7f5e15a3a7a0bb948')
+sha256sums=('750d12c7c8769ae0ba741c63ebcb95bacf2201cf29e8a8a2756563abfe7e4fce')
 _install_icons() {
 	local _s="${1:-$srcdir}" _n="${pkgname%-bin}" _i _e _z
 	while IFS= read -r -d '' _i; do
