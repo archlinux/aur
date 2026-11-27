@@ -1,6 +1,6 @@
 pkgbase = kokon-bin
 	pkgdesc = Kokon creates and edits images from a sentence, privately on your own GPU, with Qwen-Image 2.1 via stable-diffusion.cpp. Everything runs on this PC.
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://kokon.app
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = kokon-bin
 	optdepends = cuda: Runtime for NVIDIA GPUs
 	provides = kokon
 	conflicts = kokon
-	noextract = Kokon_0.12.1_amd64.deb
+	noextract = Kokon_0.13.0_amd64.deb
 	options = !strip
-	source = https://github.com/GabrieleLozupone/kokon/releases/download/v0.12.1/Kokon_0.12.1_amd64.deb
-	b2sums = 59263e3f69de0cafd472c6f57710b9e8684a56f61828fa68dd5f8a61cf993ef1179cee2e7f6b608291eb5ced201fc784c2a7631ab5dcf67420142f069e92e381
+	source = https://github.com/GabrieleLozupone/kokon/releases/download/v0.13.0/Kokon_0.13.0_amd64.deb
+	b2sums = f145e736d97ec7a7497a544d31b67e3bf6a41fc956168d8375e9d7a72a88379e90d72c858f3bea6829fc29783f0e09c155d9607ceeb39531f85b617046468018
 
 pkgname = kokon-bin
