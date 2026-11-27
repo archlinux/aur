@@ -1,0 +1,20 @@
+[Unit]
+Description=Kitesurf browser engine for AI agents (CDP on 127.0.0.1)
+Documentation=https://github.com/cloudflare/kitesurf
+
+[Service]
+Type=exec
+# Optional settings: copy /usr/share/doc/kitesurf-engine-git/kitesurf-engine.env
+# to ~/.config/kitesurf-engine/env and edit it.
+EnvironmentFile=-%E/kitesurf-engine/env
+ExecStart=/usr/bin/kitesurf-engine
+Restart=on-failure
+RestartSec=5
+# Miniflare re-raises SIGTERM after a clean shutdown.
+SuccessExitStatus=143
+# Page isolates add up when many navigations run in parallel.
+MemoryMax=4G
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=default.target

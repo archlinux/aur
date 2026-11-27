@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!kitesurf-engine.mjs
+!kitesurf-engine.service
+!kitesurf-engine.env
