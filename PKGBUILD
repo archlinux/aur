@@ -1,6 +1,6 @@
 # Maintainer: Yves Gugger <yves@pounce.ch>
 pkgname=lean-ctx
-pkgver=3.12.7
+pkgver=3.12.8
 pkgrel=1
 pkgdesc="LeanCTX Engine — open-source Context Gateway for AI Systems. Context selection, supported controls, and evidence through local integration paths."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'gcc')
 # resolver finds it — no manual install, no runtime download.
 depends=('gcc-libs' 'onnxruntime')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v$pkgver/lean-ctx-$pkgver-source.tar.gz")
-sha256sums=('e5ec3bef7257e33bd171f4a71f233a719bc8072ea963014044190e5f9f473f85')
+sha256sums=('94bc455c6014a74e992d4e8cfe123f5d85a776f59473559e8a891b98442c401d')
 
 prepare() {
   cd "$pkgname-$pkgver/rust"
