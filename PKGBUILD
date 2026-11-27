@@ -3,14 +3,14 @@
 pkgname=tgs2png-git
 _pkgname=tgs2png
 pkgver=0.3.0.r16.20260923.181f60d
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert Telegram's animated stickers in TGS format into series of PNG images."
 url="https://github.com/zevlg/tgs2png"
 depends=(libpng rlottie)
 makedepends=(git cmake)
 arch=(x86_64)
 license=(GPL3)
-provides=("tgs2png=${pkgver}")
+provides=('tgs2png')
 conflicts=(tgs2png)
 source=("git+https://github.com/zevlg/tgs2png")
 sha256sums=('SKIP')
