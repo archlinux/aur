@@ -3,7 +3,7 @@
 
 _pkgname=rustingstrata
 pkgname="${_pkgname}-bin"
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Pure-Rust inference engine for Qwen GGUF models. Precompiled binaries"
 url="https://github.com/RustingStudio/RustingStrata"
@@ -18,9 +18,9 @@ source=(
   "LICENSE.md::https://raw.githubusercontent.com/RustingStudio/RustingStrata/refs/heads/main/LICENSE.md"
 )
 source_x86_64=("${_pkgname%}-${pkgver}-${pkgrel}"::"${url}/releases/download/v${pkgver}/rustingstrata-linux-$CARCH")
-sha256sums=('fb94fa7e2e9b408f50e45ef830ee97c6ea822320e15c7f7e363d46bbdf078c69'
+sha256sums=('09b89f2c4ae9e02d86d5c2c949a5a2422a0dee8708ae64f4ef4457c2e453f4d6'
             '4c9f9033588ba45efa888d96a6d3d7354a075300a984722acf28013b9c8c4e57')
-sha256sums_x86_64=('24e11f419ce09e058f6e286e2cae964de569188d76587211cda3852087c4aaa1')
+sha256sums_x86_64=('f8fdf36b7885371ae7b186f8d178605d67d1ed2cec6fb5bdbdf74112071fece4')
 
 
 package() {
