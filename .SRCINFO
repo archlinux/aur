@@ -1,6 +1,6 @@
 pkgbase = oba-live-tool-git
 	pkgdesc = Douyin Store / Jiumian Baiying / Douyin Group Buying / Xiaohongshu / Video Account / Kuaishou Store / Taobao Live Streaming Tools.
-	pkgver = 1.6.1.r24.g47c8b67
+	pkgver = 1.6.3.r12.g6462cc5
 	pkgrel = 1
 	url = https://github.com/qiutongxue/oba-live-tool
 	arch = any
@@ -12,11 +12,13 @@ pkgbase = oba-live-tool-git
 	makedepends = pnpm
 	makedepends = jq
 	depends = electron36
-	provides = oba-live-tool=1.6.1
+	provides = oba-live-tool=1.6.3
 	conflicts = oba-live-tool
 	source = oba-live-tool.git::git+https://github.com/qiutongxue/oba-live-tool
+	source = oba-live-tool.js
 	source = oba-live-tool.sh
 	sha256sums = SKIP
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = 4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b
+	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
 
 pkgname = oba-live-tool-git
