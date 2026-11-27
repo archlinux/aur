@@ -1,7 +1,7 @@
 # Maintainer: Kozika <kozikakkozika+aur at gmail dot com>
 
 pkgname=luma-bin
-pkgver=3.0.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Official Frida GUI for interactive dynamic instrumentation (prebuilt binary)'
 arch=('x86_64')
@@ -56,7 +56,7 @@ provides=('luma')
 conflicts=('luma')
 options=('!strip')
 source=("${pkgname}-${pkgver}.deb::https://github.com/frida/luma/releases/download/${pkgver}/luma-${pkgver}-ubuntu-26.04-x86_64.deb")
-sha256sums=('014d99f8a4dcfe458c1e66aa57bd9e629b38f739e1d9de6a3e85c0e42d68210f')
+sha256sums=('3c4d58198547d0110366c566a1b03cb19dd16bab726d58d72b1e17ceebc9d6ff')
 
 package() {
   bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.deb" -C "${srcdir}" data.tar.zst
