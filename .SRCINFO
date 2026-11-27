@@ -1,0 +1,23 @@
+pkgbase = mz800emu-git
+	pkgdesc = MZ-Sharp Emulator Suite (git version)
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/michalhucik/mz800emu
+	arch = x86_64
+	license = gpl-3.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = doxygen
+	makedepends = base-devel
+	depends = sdl3
+	depends = glib2
+	depends = json-glib
+	depends = curl
+	depends = zlib
+	depends = libglvnd
+	source = git+https://github.com/michalhucik/mz800emu.git
+	sha256sums = SKIP
+
+pkgname = mz800emu-git
