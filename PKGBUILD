@@ -1,7 +1,7 @@
 # Maintainer: agzes <agzes0@proton.me>
 pkgname=totray
 _pkgname=ToTray
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="AutoRun and Tray Manager for Hyprland."
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 makedepends=('cargo' 'pkgconf')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v.$pkgver.tar.gz")
-sha256sums=('82a2c384e038779142fecd073b6b0838b524e404ddfc24416ca22176d6769945')
+sha256sums=('fc349d5cb85a9a775b9f14602565770d4cadba251aa546a2bc1f06d96e9e82ac')
 
 prepare() {
   cd "$_pkgname-v.$pkgver"
