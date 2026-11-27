@@ -5,7 +5,7 @@
 
 _pkgname="trilium"
 pkgname="$_pkgname-next-git"
-pkgver=0.104.0.r73.ge832275
+pkgver=0.107.0.r1122.gec6a675
 pkgrel=1
 pkgdesc="A hierarchical note taking application"
 url="https://github.com/TriliumNext/Trilium"
@@ -44,10 +44,26 @@ _electron_env() {
   local _electron_version=$(grep -Pom1 '^\s*"electron":\s*"\K[0-9.]+' "$srcdir/$_pkgsrc/apps/desktop/package.json")
   : ${_electron_version:?}
 
-  export SYSTEM_ELECTRON_VERSION=$(LC_ALL=C pacman -Si "electron${_electron_version%%.*}" | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])')
+  local _electron_package="electron${_electron_version%%.*}"
+
+  # look for electron in repositories
+  export SYSTEM_ELECTRON_VERSION=$(
+    LC_ALL=C pacman -Si "$_electron_package" "${_electron_package}-bin" 2> /dev/null \
+      | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])'
+  )
+
+  # look in installed packages
+  if [ -z "${SYSTEM_ELECTRON_VERSION}" ]; then
+    SYSTEM_ELECTRON_VERSION=$(
+      LC_ALL=C pacman -Qi "$_electron_package" "${_electron_package}-bin" 2> /dev/null \
+        | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])'
+    )
+  fi
+
+  # make sure electron package was found
   : ${SYSTEM_ELECTRON_VERSION:?}
 
-  export ELECTRON_VERSION=$(sed -E 's&\..*&&' <<< "${SYSTEM_ELECTRON_VERSION%%.*}")
+  export ELECTRON_VERSION="${SYSTEM_ELECTRON_VERSION%%.*}"
   : ${ELECTRON_VERSION:?}
 }
 
