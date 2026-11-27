@@ -1,6 +1,6 @@
 pkgbase = arcane-cli
 	pkgdesc = Official command line interface for Arcane, modern Docker management
-	pkgver = 3.1.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/getarcaneapp/arcane
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = arcane-cli
 	license = BSD-3-Clause
 	makedepends = go
 	depends = glibc
-	source = arcane-3.1.1.tar.gz::https://github.com/getarcaneapp/arcane/archive/refs/tags/v3.1.1.tar.gz
-	sha256sums = 437f66a6008a2a867d1f5fe077b6eed3e969d8ddc4e8ee15db91714258e058d6
+	source = arcane-3.2.0.tar.gz::https://github.com/getarcaneapp/arcane/archive/refs/tags/v3.2.0.tar.gz
+	sha256sums = 81ee9fc24ab86bbabbfa04e8a9f388c9e8e31ad3de4a2b122126ee4c7704f6d9
 
 pkgname = arcane-cli
