@@ -10,4 +10,8 @@ post_install() {
 post_upgrade() {
     udevadm control --reload-rules
     udevadm trigger --subsystem-match=input
+    # Restart only already-running instances so an upgrade doesn't keep the old binary.
+    for u in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $1}'); do
+      systemctl --user --machine="$u@.host" try-restart z13gui-plus.service 2>/dev/null || true
+    done
 }

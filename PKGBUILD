@@ -1,6 +1,6 @@
 # Maintainer: aic0d3r <funforfreeapps@gmail.com>
 pkgname=z13gui-plus-bin
-pkgver=2.8.1
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='Z13GUI+ GTK4 overlay companion for z13ctl-plus'
 arch=('x86_64')
@@ -11,13 +11,14 @@ provides=('z13gui-plus')
 conflicts=('z13gui-plus')
 install=z13gui-plus-bin.install
 source=("https://github.com/aic0d3r/z13gui-plus/releases/download/v${pkgver}/z13gui-plus_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('2fac58349047de7e5d4201d56d7042f45cee983a24c1c0fba0a29ec54a358e32')
+sha256sums=('0284b2ce9f448f034c5ebe05d53e22bb33366f5dc404153e369f149ba83a0493')
 
 package() {
     install -Dm755 "z13gui-plus"                               "${pkgdir}/usr/bin/z13gui-plus"
     install -Dm644 "LICENSE"                                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "contrib/z13gui-plus.service"               "${pkgdir}/usr/lib/systemd/user/z13gui-plus.service"
     install -Dm644 "contrib/io.github.aic0d3r.z13gui_plus.desktop" "${pkgdir}/usr/share/applications/io.github.aic0d3r.z13gui_plus.desktop"
+    install -Dm644 "assets/icon.svg"                           "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.aic0d3r.z13gui_plus.svg"
     install -d "${pkgdir}/usr/share/kglobalaccel"
     ln -s "../applications/io.github.aic0d3r.z13gui_plus.desktop" "${pkgdir}/usr/share/kglobalaccel/io.github.aic0d3r.z13gui_plus.desktop"
     install -Dm644 "contrib/70-z13gui-plus-gamepad.rules"      "${pkgdir}/usr/lib/udev/rules.d/70-z13gui-plus-gamepad.rules"
