@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=navop-bin
 _pkgname=Navop
-pkgver=0.24.2
+pkgver=0.24.3
 pkgrel=1
 pkgdesc="A native, all-in-one workspace for databases, SSH, SFTP, terminals, remote desktop, monitoring, and AI."
 arch=(
@@ -25,8 +25,8 @@ makedepends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.tar.gz")
-sha256sums_aarch64=('1a3d9b7cd9b373b2c3064cec5b31d9bf7097bce255831ae43323fd7980caab86')
-sha256sums_x86_64=('6a91d860d21aecd5685067d08807b94d97b3ebc81605fe69c037b06460fd74d7')
+sha256sums_aarch64=('8738fae933644589762f5969c7a3122aa0f3c4979e74e7a113d0d344b8fc8a77')
+sha256sums_x86_64=('5bda67a664f7b43ec82b374e49c4a4d5382e633db391d973c9f6bde5219e5848')
 _generate_icons() {
 	local _sizes=(16 24 32 48 64 96 128 256 512) _src="${srcdir}/usr/share/icons/hicolor/512x515/apps/${pkgname%-bin}.png" _s
 	for _s in "${_sizes[@]}"; do
