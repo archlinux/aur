@@ -11,6 +11,6 @@ pkgbase = go-music-dl-bin
 	provides = go-music-dl=1.1.7
 	conflicts = go-music-dl
 	source = go-music-dl-1.1.7.deb::https://github.com/guohuiyuan/go-music-dl/releases/download/v1.1.7/music-dl-desktop-go-linux-amd64.deb
-	sha256sums = 90f09dbb064e4edc656f0de6d1d1a48c2deac627c1c2d65283c52386a16d7fec
+	sha256sums = 6eab9c3a49854b1c2abe69bb52adaad299d67ee483b5175676f4614f8ca5c33a
 
 pkgname = go-music-dl-bin

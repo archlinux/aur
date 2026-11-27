@@ -12,12 +12,12 @@ license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'gtk3'
-    'webkit2gtk-4.1'
-    'ffmpeg'
+	'gtk3'
+	'webkit2gtk-4.1'
+	'ffmpeg'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_rpmname}-linux-amd64.deb")
-sha256sums=('90f09dbb064e4edc656f0de6d1d1a48c2deac627c1c2d65283c52386a16d7fec')
+sha256sums=('6eab9c3a49854b1c2abe69bb52adaad299d67ee483b5175676f4614f8ca5c33a')
 _install_icons() {
 	local _s="${1:-$srcdir}" _n="${pkgname%-bin}" _i _e _z
 	while IFS= read -r -d '' _i; do
@@ -31,15 +31,15 @@ _install_icons() {
 		-o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
-    bsdtar -xf "${srcdir}/data."*
-    sed -i -e "
-        s/Name=${_rpmname}/Name=${_pkgname}/g
-        s/Exec=${_rpmname}/Exec=${pkgname%-bin}/g
-        s/Icon=${_rpmname}/Icon=${pkgname%-bin}/g
-    " "${srcdir}/usr/share/applications/${_rpmname}.desktop"
+	bsdtar -xf "${srcdir}/data."*
+	sed -i -e "
+		s/Name=${_rpmname}/Name=${_pkgname}/g
+		s/Exec=${_rpmname}/Exec=${pkgname%-bin}/g
+		s/Icon=${_rpmname}/Icon=${pkgname%-bin}/g
+	" "${srcdir}/usr/share/applications/${_rpmname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/usr/bin/${_rpmname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    _install_icons
-    install -Dm644 "${srcdir}/usr/share/applications/${_rpmname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+	install -Dm755 "${srcdir}/usr/bin/${_rpmname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+	_install_icons
+	install -Dm644 "${srcdir}/usr/share/applications/${_rpmname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
