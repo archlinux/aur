@@ -1,6 +1,6 @@
 pkgbase = t3-code-cli-bin
 	pkgdesc = Self-contained T3 Code server and command-line interface
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/Geequlim/aur-packages/tree/main/packages/t3-code-cli-bin
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = t3-code-cli-bin
 	depends = glibc
 	depends = gcc-libs
 	options = !strip
-	source = LICENSE-0.1.12::https://raw.githubusercontent.com/pingdotgg/t3code/v0.1.12/LICENSE
+	source = LICENSE-0.1.13::https://raw.githubusercontent.com/pingdotgg/t3code/v0.1.13/LICENSE
 	sha256sums = 935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43
-	source_x86_64 = https://github.com/pingdotgg/t3code/releases/download/v0.1.12/t3-0.1.12-linux-x64.tar.gz
-	sha256sums_x86_64 = 9ba3db46e3554fb9970fd5ede9e823c2f6d6f6763f40340bd4c8ef6b09501c54
-	source_aarch64 = https://github.com/pingdotgg/t3code/releases/download/v0.1.12/t3-0.1.12-linux-arm64.tar.gz
-	sha256sums_aarch64 = 29cfbab19117aa436f1700382afb9cfe5d7ef47609cabba9356271a0bca5ad98
+	source_x86_64 = https://github.com/pingdotgg/t3code/releases/download/v0.1.13/t3-0.1.13-linux-x64.tar.gz
+	sha256sums_x86_64 = 64e0f8446d3f618b157d4e5a0a6808ab3c8bf1a1b3e44eab3100e554be05e5d7
+	source_aarch64 = https://github.com/pingdotgg/t3code/releases/download/v0.1.13/t3-0.1.13-linux-arm64.tar.gz
+	sha256sums_aarch64 = c553c17db07030d032808989427db5022bf04027ebcec2218c69fb1a5fa1377f
 
 pkgname = t3-code-cli-bin
