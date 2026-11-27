@@ -1,6 +1,6 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=python-rdflib-sqlalchemy-git
-pkgver=0.5.4.r12.g00822e5
+pkgver=0.5.4.r19.g1bd2dc4
 pkgrel=1
 pkgdesc="rdflib extension adding SQLAlchemy as an AbstractSQLStore back-end store"
 arch=('any')
