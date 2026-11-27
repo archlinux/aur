@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=kurocat-bin
-pkgver=1.5.2
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Ultra-lightweight keyboard & mouse desktop cat pet, with full-state key capture and 2.5D head tracking"
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ source_x86_64=("${_deb_x86_64}::https://github.com/chanke17/KuroCat/releases/dow
 source_aarch64=("${_deb_aarch64}::https://github.com/chanke17/KuroCat/releases/download/v${pkgver}/KuroCat-Linux-arm64.deb")
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
 sha256sums=('58bfcd4bbdaf17f433e1fee161351e6ca4135d18ae2d46178eafabb0d5a56be9')
-sha256sums_x86_64=('11e0456d3d49d00b7111af2b6debb415a972a57e43d98c885f2a9fa24549c8e3')
-sha256sums_aarch64=('6100cd6c97d4845c2259359d5a6f89f4a76ae2c3acb02f77222136580e50eec5')
+sha256sums_x86_64=('16f26d96dc393d5c18ecc1db7cfb17b3fa6548ac13418ce0134ea3337ba8c223')
+sha256sums_aarch64=('ce1b491740d640b5ced843c3e785d19a7a2ccb81d68c93e091c59c846e2fb682')
 
 package() {
   local deb_var="_deb_${CARCH}"
