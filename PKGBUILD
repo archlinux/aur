@@ -2,7 +2,7 @@
 
 pkgname=lightdm-slick-greeter-mint-theme
 _pkgname=slick-greeter
-pkgver=2.2.7
+pkgver=2.2.12
 pkgrel=1
 pkgdesc="A slick-looking LightDM greeter. With additional options enabled"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
     'gtk3'
     'libcanberra'
     'libxext'
-    'lightdm-guest'
+#    'lightdm-guest'
     'mint-themes'
     'pixman'
     'python-gobject'
@@ -44,7 +44,7 @@ source=(
     "${_pkgname}.conf"
 )
 sha256sums=(
-    'f685da6ca9d97329b4b200077d12db0ad4f9964d4515479e6c00bba721ab0626'
+    '8bbd423515e432ba5c90c439c41c5480e8585e2ae5dbe44d1d538bcb180f0f38'
     '6ce9dda9e5f343e142926e7ed7aa127137214b823362653745cfe1f9d56c4492'
 )
 
