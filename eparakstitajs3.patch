@@ -2,7 +2,7 @@ diff --color --unified --recursive --text usr/share/applications/eparakstitajs3.
 --- usr/share/applications/eparakstitajs3.desktop.orig	2026-08-11 21:48:49.512450328 +0300
 +++ usr/share/applications/eparakstitajs3.desktop	2026-08-11 21:50:33.002450328 +0300
 @@ -4,7 +4,7 @@
- Icon=/usr/share/eparakstitajs3/eparakstitajs3.xpm
+ Icon=eparakstitajs3
  Type=Application
  Categories=Application;Viewer;
 -Exec=/usr/bin/eparakstitajs3 %F
