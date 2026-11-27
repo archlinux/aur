@@ -1,6 +1,6 @@
 pkgbase = cc-pane-bin
 	pkgdesc = Web version of CC-Panes, a multi-instance split-pane manager for Claude Code
-	pkgver = 0.13.2
+	pkgver = 0.13.4
 	pkgrel = 1
 	url = https://github.com/wuxiran/cc-pane
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = cc-pane-bin
 	provides = cc-pane
 	conflicts = cc-pane
 	options = !debug
-	source = cc-pane-bin-0.13.2-LICENSE::https://raw.githubusercontent.com/wuxiran/cc-pane/v0.13.2/LICENSE
+	source = cc-pane-bin-0.13.4-LICENSE::https://raw.githubusercontent.com/wuxiran/cc-pane/v0.13.4/LICENSE
 	sha256sums = 4e2b851b4f15c6ae5e92074b5019d25a4df77458dec9eed43747c052fc4bd385
-	source_x86_64 = cc-pane-bin-0.13.2-x86_64.tar.gz::https://github.com/wuxiran/cc-pane/releases/download/v0.13.2/cc-panes-web_0.13.2_linux-x86_64.tar.gz
-	sha256sums_x86_64 = b3b46605d77ddaf8736b4715c748e1e799f8492d5ef11ab02903ee673b0101ad
-	source_aarch64 = cc-pane-bin-0.13.2-aarch64.tar.gz::https://github.com/wuxiran/cc-pane/releases/download/v0.13.2/cc-panes-web_0.13.2_linux-aarch64.tar.gz
-	sha256sums_aarch64 = 25a30cff429e6656031153536116ed8d7a7997e539f8b6a0fd847d95ca613d9b
+	source_x86_64 = cc-pane-bin-0.13.4-x86_64.tar.gz::https://github.com/wuxiran/cc-pane/releases/download/v0.13.4/cc-panes-web_0.13.4_linux-x86_64.tar.gz
+	sha256sums_x86_64 = 79dfd9bc0b3f62c7b8e7a90cc024e05f196fde2cdb1527459faa35876d39b55e
+	source_aarch64 = cc-pane-bin-0.13.4-aarch64.tar.gz::https://github.com/wuxiran/cc-pane/releases/download/v0.13.4/cc-panes-web_0.13.4_linux-aarch64.tar.gz
+	sha256sums_aarch64 = b1a36c29ac8a4641e302fff7ae600a04715c922d027b887b45bf088cb916bf73
 
 pkgname = cc-pane-bin
