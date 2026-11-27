@@ -2,7 +2,7 @@
 
 _pkgname='aquilum'
 pkgname="${_pkgname}-bin"
-pkgver=0.3.30
+pkgver=0.3.31
 pkgrel=1
 pkgdesc="Fast local-first Markdown knowledge base with live preview, search, graph, Dataview, book reader, and MCP"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('AGPL-3.0-only')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/Aquilum_${pkgver}_amd64.deb")
-sha256sums_x86_64=('8a7633ee5a0bedf689af0a0de9d49b2cf2f0429b7db9b6e29fd0bc417b874ab0')
+sha256sums_x86_64=('9a023024e6640cfd2c1780fbf117f505905d3e20ceb19cf6855fc9e1369295e0')
 makedepends=('libarchive')
 depends=(
     'gst-plugins-base'     # Provides libgstvideo-1.0.so.0
