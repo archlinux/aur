@@ -1,7 +1,7 @@
-# TEMPLATE ONLY: approved release source and checksum are required for each release.
-# Source/checksum approval is required before even metadata generation proceeds.
+# Use approved release-source.conf for publication or an isolated local
+# candidate-source.conf for native testing. Both modes verify source hashes.
 pkgname=pivra
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 # Prevent makepkg from generating a separate pivra-debug package.
 options=('!debug')
@@ -39,19 +39,39 @@ _cache_setup() {
 release_commit=''
 release_url=''
 release_sha256=''
-if [[ ! -r "$_recipe_dir/release-source.conf" ]]; then
-  printf '%s\n' 'BLOCKED: approved release-source.conf is missing; this is not a publishable AUR recipe.' >&2
+_source_archive="pivra-$pkgver.tar.gz"
+_source_config=release-source.conf
+if [[ -e "$_recipe_dir/candidate-source.conf" ]]; then
+  if [[ -e "$_recipe_dir/release-source.conf" ]]; then
+    printf '%s\n' 'BLOCKED: release and local candidate configurations cannot coexist.' >&2
+    return 1 2>/dev/null || exit 1
+  fi
+  _source_config=candidate-source.conf
+fi
+if [[ ! -r "$_recipe_dir/$_source_config" ]]; then
+  printf '%s\n' 'BLOCKED: approved release-source.conf or isolated candidate-source.conf is required.' >&2
   return 1 2>/dev/null || exit 1
 fi
-# Trusted packaging configuration, never downloaded or derived from moving dev.
+# Trusted, local configuration generated from an exact commit.
 # shellcheck source=/dev/null
-source "$_recipe_dir/release-source.conf"
-if [[ ! $release_commit =~ ^[0-9a-f]{40}$ || ! $release_sha256 =~ ^[0-9a-f]{64}$ ||
-      $release_url != "https://github.com/onbeskarakterli/Pivra/archive/$release_commit.tar.gz" ]]; then
-  printf '%s\n' 'BLOCKED: approved immutable commit URL and real archive SHA-256 are required.' >&2
+source "$_recipe_dir/$_source_config" || { return 1 2>/dev/null || exit 1; }
+if [[ ! $release_commit =~ ^[0-9a-f]{40}$ || ! $release_sha256 =~ ^[0-9a-f]{64}$ ]]; then
+  printf '%s\n' 'BLOCKED: full immutable commit and real archive SHA-256 are required.' >&2
   return 1 2>/dev/null || exit 1
 fi
-source=("pivra-$pkgver.tar.gz::$release_url" 'collect-licenses.py')
+if [[ $_source_config == candidate-source.conf ]]; then
+  if [[ -n $release_url || ! -f "$_recipe_dir/$_source_archive" ]]; then
+    printf '%s\n' 'BLOCKED: local candidate requires its local archive and an empty URL.' >&2
+    return 1 2>/dev/null || exit 1
+  fi
+else
+  if [[ $release_url != "https://github.com/onbeskarakterli/Pivra/archive/$release_commit.tar.gz" ]]; then
+    printf '%s\n' 'BLOCKED: approved immutable GitHub commit archive URL is required.' >&2
+    return 1 2>/dev/null || exit 1
+  fi
+  _source_archive+="::$release_url"
+fi
+source=("$_source_archive" 'collect-licenses.py')
 sha256sums=("$release_sha256" 'e0bad72c99f4629b0668f59450e53a75022ea746efe57191ab8da34fb5cf1201')
 
 prepare() {
@@ -149,8 +169,8 @@ package() {
     "$pkgdir/usr/share/doc/pivra/corresponding-source/pivra-$pkgver.tar.gz" || return 1
   install -Dm644 "$_recipe_dir/PKGBUILD" \
     "$pkgdir/usr/share/doc/pivra/corresponding-source/PKGBUILD" || return 1
-  install -Dm644 "$_recipe_dir/release-source.conf" \
-    "$pkgdir/usr/share/doc/pivra/corresponding-source/release-source.conf" || return 1
+  install -Dm644 "$_recipe_dir/$_source_config" \
+    "$pkgdir/usr/share/doc/pivra/corresponding-source/$_source_config" || return 1
   install -Dm644 "$srcdir/collect-licenses.py" \
     "$pkgdir/usr/share/doc/pivra/corresponding-source/collect-licenses.py" || return 1
   install -d "$pkgdir/usr/share/licenses/pivra/video-adapter" \
@@ -161,7 +181,7 @@ package() {
   install -Dm644 docs/diagnostics/VIDEO_ADAPTER_REBUILD.md \
     "$pkgdir/usr/share/doc/pivra/corresponding-source/VIDEO_ADAPTER_REBUILD.md" || return 1
   local doc
-  for doc in PIVRA_V0.2.7_RELEASE_NOTES.md PIVRA_V0.2.7_RC_VALIDATION.md; do
+  for doc in "PIVRA_V${pkgver}_RELEASE_NOTES.md" "PIVRA_V${pkgver}_RC_VALIDATION.md"; do
     install -Dm644 "docs/releases/$doc" "$pkgdir/usr/share/doc/pivra/$doc" || return 1
   done
 }
