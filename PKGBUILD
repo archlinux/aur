@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=artMS
-_pkgver=1.29.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.29.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Analytical R tools for Mass Spectrometry'
 arch=('any')
@@ -51,7 +51,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f02249bf657a2d47c71fb970ae06dea7ff58b29e716834de35580415e3040016')
+sha256sums=('b9bab4b3153e85202106ade8f067d1573ca09a63f8eb4044630a6e0f6e9e7349')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
