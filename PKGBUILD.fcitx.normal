@@ -15,8 +15,8 @@ _branch=fcitx
 
 pkgbase=mozc
 pkgname=("fcitx-$pkgbase")
-pkgver=3.34.6239.2
-pkgrel=2
+pkgver=3.35.6354.2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')

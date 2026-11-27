@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
-	pkgver = 3.34.6239.2
-	pkgrel = 2
+	pkgver = 3.35.6354.2
+	pkgrel = 1
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary
@@ -15,6 +15,7 @@ pkgbase = mozc-with-jp-dict
 	makedepends = libibus
 	makedepends = rustup
 	makedepends = unzip
+	makedepends = cmake
 	options = !lto
 	source = git+https://github.com/fcitx/mozc.git#commit=f18c2845d724fcf6bb8c923f127c7fcc5ec9b2ec
 	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=907b837bcb378143d924ece26c201b5f7ab275f5
@@ -46,7 +47,7 @@ pkgname = ibus-mozc-with-jp-dict
 	depends = ibus>=1.4.1
 	depends = qt6-base
 	depends = libibus
-	provides = ibus-mozc=3.34.6239.2
+	provides = ibus-mozc=3.35.6354.2
 	conflicts = fcitx
 	conflicts = fcitx-configtool
 	conflicts = ibus-mozc
@@ -65,7 +66,7 @@ pkgname = fcitx5-mozc-with-jp-dict
 	depends = fcitx5-qt
 	depends = hicolor-icon-theme
 	optdepends = fcitx5-configtool
-	provides = fcitx5-mozc=3.34.6239.2
+	provides = fcitx5-mozc=3.35.6354.2
 	conflicts = fcitx-mozc
 	conflicts = fcitx5-mozc
 	conflicts = fcitx
@@ -79,5 +80,5 @@ pkgname = emacs-mozc-with-jp-dict
 	depends = emacs
 	depends = glibc
 	depends = gcc-libs
-	provides = emacs-mozc=3.34.6239.2
+	provides = emacs-mozc=3.35.6354.2
 	conflicts = emacs-mozc

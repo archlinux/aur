@@ -84,11 +84,15 @@ function pkgrel() {
         sed -i 's|^pkgrel=.*$|pkgrel='"${PKGREL}"'|' $f
     done
 }
+
 if [[ "$UPDATED_FLAG" == "1" ]]; then
     ./partial-clone.sh
     echo "Change Detected."
     #./update-submodule.sh
     CURRENT_PKGVER=$(grep "pkgver=" PKGBUILD|cut -f2 -d"=")
+    mkdir -p tmp
+    rm -rf tmp/mozc
+    git clone mozc tmp/mozc
     PKGVER=$(pkgver)
     if [[ "$CURRENT_PKGVER" == "$PKGVER" ]];then
         pkgrel
