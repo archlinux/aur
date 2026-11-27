@@ -2,7 +2,7 @@
 
 pkgname=libfprint-fte3600-git
 # makepkg replaces this bootstrap value with pkgver() from the committed HEAD.
-pkgver=1.94.100.r97
+pkgver=1.94.100.r99
 pkgrel=1
 pkgdesc='libfprint with FTE3600 SPI fingerprint support, DKMS glue, and toolkit'
 arch=(x86_64)
@@ -75,6 +75,8 @@ check() {
 
   python -W error::ResourceWarning -W error::RuntimeWarning -m unittest discover \
     -s "$srcdir/libfprint/toolkit/tests" -p 'test_core_unit.py' -v
+  python -W error::ResourceWarning -W error::RuntimeWarning -m unittest discover \
+    -s "$srcdir/libfprint/toolkit/tests" -p 'test_power_guard.py' -v
   dbus-run-session -- python -W error::ResourceWarning -W error::RuntimeWarning -m unittest discover \
     -s "$srcdir/libfprint/toolkit/tests" -p 'test_dbus_e2e.py' -v
   desktop-file-validate "$srcdir/libfprint/toolkit/data/org.freedesktop.libfprint.Fte3600Toolkit.desktop"
@@ -94,6 +96,8 @@ package() {
     install -Dm644 "$file" "$pkgdir/usr/src/fte3600-0.2/${file##*/}"
   done
   install -Dm755 "$srcdir/libfprint/scripts/fte3600-device-allow.sh" "$pkgdir/usr/bin/fte3600-device-allow"
+  install -Dm755 "$srcdir/libfprint/scripts/fte3600-power-guard.py" "$pkgdir/usr/bin/fte3600-power-guard"
+  install -Dm644 "$srcdir/libfprint/config/systemd/fte3600-power-guard.service" "$pkgdir/usr/lib/systemd/system/fte3600-power-guard.service"
   install -Dm755 "$srcdir/libfprint/scripts/fte3600-pair.py" "$pkgdir/usr/libexec/fte3600-pair"
   install -Dm644 "$srcdir/libfprint/config/modprobe.d/fte3600-acpi-spidev.conf" "$pkgdir/usr/lib/modprobe.d/fte3600-acpi-spidev.conf"
   install -Dm644 "$srcdir/libfprint/config/udev/70-fte3600-acpi-spidev.rules" "$pkgdir/usr/lib/udev/rules.d/70-fte3600-acpi-spidev.rules"

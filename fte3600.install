@@ -7,6 +7,7 @@ post_install() {
     'Install chip firmware if required, then restart fprintd.service.' \
     'Identify the chip with: sudo fte3600-tool probe /dev/spidevB.C' \
     'Verify setup & manage fingerprints with: fte3600-toolkit doctor / fte3600-toolkit-gui' \
+    'Optional (combo power-button reader): sudo systemctl enable --now fte3600-power-guard.service' \
     'See packaging/README.md in the source repository for instructions.'
 }
 post_upgrade() { post_install; }
