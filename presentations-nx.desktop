@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 Type=Application
 InitialPreference=10
 GenericName=Presentation
@@ -70,7 +69,7 @@ Comment=The Presentations software lets you design any kind of presentation - ev
 Comment[de]=Presentations lässt Sie beliebige Präsentationen gestalten - mit Effekten, Animationen und Transitionen. 
 Comment[ru]=Presentations позволяет создавать все виды презентаций и добавлять в них специальные эффекты, анимацию и переходы.
 Terminal=false
-Categories=Application;Office;Presentation;
+Categories=Office;Presentation;
 MimeType=application/x-prdx;application/x-prvx;application/x-prsx;application/x-prd;application/x-prv;application/x-prs;application/ppt;application/mspowerpoint;application/vnd.ms-powerpoint;application/vnd.openxmlformats-officedocument.presentationml.presentation;application/vnd.ms-powerpoint.presentation.macroenabled.12;application/vnd.openxmlformats-officedocument.presentationml.template;application/vnd.ms-powerpoint.template.macroEnabled.12;application/vnd.ms-powerpoint.slideshow.macroenabled.12;application/vnd.openxmlformats-officedocument.presentationml.slideshow;
 
 Version=1.0
