@@ -1,0 +1,19 @@
+pkgbase = pgbook-bin
+	pkgdesc = Postgres Book in the terminal, one topic at a time
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pgbook.dev
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pgbook
+	conflicts = pgbook
+	options = !debug
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/pgrundev/pgbook/v0.2.0/LICENSE
+	sha256sums = 8245eafbbc7856840bd5b5e90ed15c607029c39f5c867bb09dd78cfa932ea990
+	source_x86_64 = pgbook-bin-0.2.0-x86_64.tar.gz::https://github.com/pgrundev/pgbook/releases/download/v0.2.0/pgbook_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1ef8f0f87b963dadd40ef0b6aee20310fa86962449802118f10127a3dd9ce570
+	source_aarch64 = pgbook-bin-0.2.0-aarch64.tar.gz::https://github.com/pgrundev/pgbook/releases/download/v0.2.0/pgbook_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ae9297f8b13e427c3e03506c0314b369850a32e78585dd947311d03bdf8a234d
+
+pkgname = pgbook-bin
