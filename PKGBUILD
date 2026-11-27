@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=pinky-bin
-pkgver=2026.1127.5
+pkgver=2026.1128.1
 pkgrel=1
 pkgdesc="Let AI agents use an Android phone or iPhone, with you approving the risky steps: drives the phone over MCP, records every run, and brings its own adb"
 arch=('x86_64')
@@ -30,7 +30,7 @@ _deb="pinky_${pkgver}_amd64.deb"
 source=("${_deb}::https://github.com/DIYgod/pinky/releases/download/v${pkgver}/${_deb}"
         "pinky-LICENSE::https://raw.githubusercontent.com/DIYgod/pinky/v${pkgver}/LICENSE")
 noextract=("${_deb}")
-sha256sums=('3813b0cfcce35954191f8d3b70a74de5d49c3aff09225b6a85b9487f6fc7426f'
+sha256sums=('335d451ae7d6b8771f97184b4c5238032a53c258d1af7b8fedd673b8e49ad0f2'
             'c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c')
 
 package() {
