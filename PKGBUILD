@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=isomiRs
-_pkgver=1.36.1
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,12 +42,11 @@ optdepends=(
   r-org.mm.eg.db
   r-pheatmap
   r-rmarkdown
-  r-targetscan.hs.eg.db
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1a0255ce19a5ad3f7a22c5c64a816bd2')
-b2sums=('4abc2b8e23389821bd10e0d5cd1c3d3690498e4ef0206c7144020a6f9f67135ea26ff3e7e7f0b83cd350f3f806d025d2809e88e4085a06c080ed8e3b4a94c5cf')
+md5sums=('85684c3426a1728d37fcf4a8793878c1')
+b2sums=('58c900471fd56792fbc02f9af6a569c1e5c9baf71d0709be763f086ff8328fabdbc8f25c0760a9897733147274513e8a64e4da3708d5071a812547ef911ac72e')
 
 build() {
   mkdir build
