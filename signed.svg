@@ -1,6 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect width="64" height="64" rx="14" fill="#FFD60A"/>
-  <path d="M14 42 C18 28 22 20 24 23 C26 26 19 40 23 40 C27 40 29 30 33 30 C37 30 31 38 35 38 C39 38 42 33 50 30"
-        fill="none" stroke="#1c1c1e" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M14 49 L50 49" fill="none" stroke="#1c1c1e" stroke-width="3" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <title>Signed</title>
+  <desc>A document seen from the front: a pale page with lines of text, a signature on the signing line, and a sign-here tab, each piece with a hard shadow.</desc>
+  <defs>
+    <linearGradient id="main" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#7aa2f7"/>
+      <stop offset="1" stop-color="#8faef6"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(256 256) scale(1.2) translate(-256 -256)">
+    <!-- The page; one hard shadow, as Hype's slides. -->
+    <rect x="96" y="86" width="300" height="340" rx="20" fill="#0e0e14" transform="translate(0 8)"/>
+    <rect x="96" y="86" width="300" height="340" rx="20" fill="#c0caf5"/>
+    <g fill="#565f89">
+      <rect x="132" y="126" width="196" height="16" rx="8"/>
+      <rect x="132" y="162" width="228" height="16" rx="8" opacity=".55"/>
+    </g>
+    <!-- The signature on its line. -->
+    <path d="M136 336C150 290 166 238 184 250C202 262 170 330 190 332C210 334 218 276 240 276C262 276 236 318 258 318C280 318 292 290 334 270" fill="none" stroke="url(#main)" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="132" y="360" width="200" height="12" rx="6" fill="#565f89"/>
+    <!-- Sign-here tab sticking out past the page. -->
+    <path d="M344 344L370 322H438Q450 322 450 334V378Q450 390 438 390H370Z" fill="#0e0e14" stroke="#0e0e14" stroke-width="8" stroke-linejoin="round" transform="translate(0 8)"/>
+    <path d="M344 344L370 322H438Q450 322 450 334V378Q450 390 438 390H370Z" fill="#bb9af7" stroke="#bb9af7" stroke-width="8" stroke-linejoin="round"/>
+    <rect x="384" y="350" width="44" height="12" rx="6" fill="#0e0e14" opacity=".35"/>
+  </g>
 </svg>
