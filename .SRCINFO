@@ -1,16 +1,20 @@
 pkgbase = eparaksts-token-signing
 	pkgdesc = eParaksts browser plugins
-	pkgver = 2.3.10
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://www.eparaksts.lv
 	install = eparaksts.install
 	arch = x86_64
 	groups = eparaksts
 	license = LGPL-2.1-or-later
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openssl-3
 	depends = pcsclite
-	depends = qt5-base
+	depends = qt6-base
 	optdepends = latvia-eid-middleware: libraries for Latvia eID cards
-	source = https://www.eparaksts.lv/files/ep3updates/debian/pool/eparaksts/e/eparaksts-token-signing/eparaksts-token-signing_2.3.10_amd64.deb
-	sha512sums = 91e38c613d9729b59fc42d33b6817580d1bbdc1696fee5c0717ba6f141bbabac269d7525c6fc44964fe3596a04cf75f20cd95ca4e8e4da6ab5d98d286ca554fe
+	source = https://www.eparaksts.lv/files/ep3updates/debian/pool/eparaksts/e/eparaksts-token-signing/eparaksts-token-signing_2.4.1_amd64.deb
+	sha512sums = 7335321cd6b00ac9d1ba02915535f98776b77cb7a70440e21b42fd9c49ba967201cc0e1d47a67451d8324699b149e1062201897f9c958b9ae5d0d5e92315bddc
 
 pkgname = eparaksts-token-signing
