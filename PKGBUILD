@@ -1,6 +1,6 @@
 # Maintainer: Federico Paolini <nightranger7@gmail.com>
 
-pkgname=wallcycle
+pkgname=wallcycle-git
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="Cross-platform wallpaper slideshow with real-time clock overlay and BT.709 luminance filter (Lazarus/FPC)"
