@@ -1,6 +1,6 @@
 pkgbase = whycodes-bin
 	pkgdesc = A fast, provider-independent AI coding agent for the terminal that works with hosted APIs
-	pkgver = 0.6.38
+	pkgver = 0.6.39
 	pkgrel = 1
 	url = https://github.com/whycorporation/whycodes
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = whycodes-bin
 	provides = whycodes
 	conflicts = whycodes
 	options = !debug
-	source_x86_64 = whycodes-bin-0.6.38-x86_64.tar.gz::https://github.com/whycorporation/whycodes/releases/download/v0.6.38/whycodes-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 1b69d8f6395f4478514d79c775bc6692076d44fac3bc88101329767827532001
+	source_x86_64 = whycodes-bin-0.6.39-x86_64.tar.gz::https://github.com/whycorporation/whycodes/releases/download/v0.6.39/whycodes-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e9e628117a3484249d1293466693bef0fb8791f39a85ef29ba13c1b12590140d
 
 pkgname = whycodes-bin
