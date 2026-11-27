@@ -6,7 +6,7 @@
 pkgname=gamemaker-lts2026-bin
 
 # Version
-pkgver=2026.1.0.27
+pkgver=2026.1.1.34
 pkgrel=1
 
 # Generic
@@ -34,13 +34,13 @@ conflicts=('gamemaker-lts2026')
 options=(!strip)
 
 # Sources
-# https://gms.yoyogames.com/GameMaker-LTS2026-2026.1.0.27.deb
+# https://gms.yoyogames.com/GameMaker-LTS2026-2026.1.1.34.deb
 source=(
     "https://gms.yoyogames.com/GameMaker-LTS2026-${pkgver}.deb"
     "LICENSE.txt"    
 )
 sha256sums=(
-    'da1484bed5588e5565c00914bd9e9aaff85cdebb397631c4b572aa272cf225e1'
+    '23ebe15f9d08641e56139186fbcac76d0beab34aedd0cdfc8d9cc1d2e76d2701'
     '9ebe45546ac7bb43156c62f42947ccaf660f96cd4fcc684f42df49754aaeac51'
 )
 
