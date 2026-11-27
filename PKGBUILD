@@ -6,7 +6,7 @@
 # scripts/aur-files.sh vX.Y.Z in an Arch container, or makepkg from a copy.
 
 pkgname=emobie
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Compact emoji palette with macros and optional text expansion"
 arch=('x86_64')
@@ -28,7 +28,9 @@ optdepends=(
   'acl: setfacl for instant keyboard access after Grant without logout'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b48edbb6e3a7c922864ce457b95f3c5c1325efd0bb2727631dfba5a789130022')
+sha256sums=('417507bc7148f77ccbc89e5a0bbae48a4267daa4b2ef512aae6d8b97dd586dfa')
+
+conflicts+=('uq<0.3.41')  # uq-compat: from uQ's compat/family.toml
 
 prepare() {
   cd "$pkgname-$pkgver"
