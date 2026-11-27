@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=open-idea-bin
-pkgver=0.1.53
+pkgver=0.1.54
 pkgrel=1
 pkgdesc="An open-source IDE inspired by IntelliJ IDEA, rebuilt in Rust"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('openidea' 'open-idea')
 conflicts=('openidea' 'open-idea')
 options=('!strip' '!debug')
 source_x86_64=("OpenIDEA_${pkgver}_amd64.deb::https://github.com/l0ng-ai/openidea/releases/download/v${pkgver}/OpenIDEA_${pkgver}_amd64.deb")
-sha256sums_x86_64=('a13b3ba574acee3e29d0eb79783ccac50224f90f947dad40868cd8f78c41682b')
+sha256sums_x86_64=('5fca5442dad5e5820f8fa7ee1c4d7b2ee3333a047f58269210e837e4c3a06b3e')
 
 package() {
     local _deb="OpenIDEA_${pkgver}_amd64.deb"
