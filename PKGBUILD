@@ -3,7 +3,7 @@
 
 pkgauthor=vimma-browser
 pkgname=vimma-bin
-pkgver=0.1.24
+pkgver=0.1.25
 pkgrel=1
 pkgdesc="Keyboard-first web browser built on Firefox, with Neovim-style modes and a tmux-style prefix keymap"
 
@@ -22,7 +22,7 @@ conflicts=('vimma')
 options=('!strip' '!debug')
 
 source_x86_64=("vimma-${pkgver}-linux-${arch[0]}.tar.xz::https://github.com/vimma-browser/vimma/releases/download/v${pkgver}/vimma-${pkgver}-linux-${arch[0]}.tar.xz")
-sha256sums_x86_64=('30c4f12ae0ff0944b466f5f8a2beeba27c307011e343af1867e208eb62e8f374')
+sha256sums_x86_64=('7b7d6edc2fd68e4bbcd777f9a81e72fb0ddcc15f2111e384714edaddac897647')
 
 package() {
   install -d "$pkgdir/opt" "$pkgdir/usr/bin" "$pkgdir/usr/share/applications"
