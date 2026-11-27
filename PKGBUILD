@@ -1,6 +1,6 @@
 # Maintainer: enesehs <enesehs@protonmail.com>
 pkgname=konvert-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Fast, lightweight, native right-click file converter and optimizer for Linux (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ provides=('konvert')
 conflicts=('konvert')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/konvert-v$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/konvert-v$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('a9dacfd512dd7d7a96a778efd7dabae11176c65b8823bbf0ba0f9ef66b8b7b3b')
-sha256sums_aarch64=('c508b8b97c4d69c9374a3b3a250c20035f8542c73c180a9cb0470089d0e71091')
+sha256sums_x86_64=('6a9bfa07e8ae20126f346e8799fac849b0575fc030098de04cce2ef35c1bb09b')
+sha256sums_aarch64=('210d53eddf4aa36c26aed8dd2b874f8c838d5617aee425ef1144812669eeac8b')
 
 package() {
     local pkg_dir="$srcdir/konvert-v${pkgver}-linux-${CARCH}"
