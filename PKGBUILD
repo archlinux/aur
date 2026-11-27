@@ -23,8 +23,8 @@ provides=('konvert')
 conflicts=('konvert')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/konvert-v$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/konvert-v$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('4e4802ba8d55864c5f516fde8493d0fea3b3dda120505537d45aae2177e6f348')
-sha256sums_aarch64=('4a802aa71f727f210662bd763bf31b426363fbf66dd8486db091a3fbf66edbab')
+sha256sums_x86_64=('a9dacfd512dd7d7a96a778efd7dabae11176c65b8823bbf0ba0f9ef66b8b7b3b')
+sha256sums_aarch64=('c508b8b97c4d69c9374a3b3a250c20035f8542c73c180a9cb0470089d0e71091')
 
 package() {
     local pkg_dir="$srcdir/konvert-v${pkgver}-linux-${CARCH}"
