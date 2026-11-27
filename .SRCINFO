@@ -1,6 +1,6 @@
 pkgbase = r-distributions3
 	pkgdesc = Probability Distributions as S3 Objects
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=distributions3
 	arch = x86_64
@@ -13,19 +13,20 @@ pkgbase = r-distributions3
 	checkdepends = r-testthat
 	depends = r-rlang
 	optdepends = r-cowplot
-	optdepends = r-crch
 	optdepends = r-ggplot2
+	optdepends = r-hypergeo
 	optdepends = r-knitr
 	optdepends = r-numderiv
 	optdepends = r-poissonbinomial
+	optdepends = r-pscl
 	optdepends = r-revdbayes
 	optdepends = r-rmarkdown
 	optdepends = r-scoringrules
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-vctrs
-	source = https://cran.r-project.org/src/contrib/distributions3_0.3.0.tar.gz
-	md5sums = 0ef77e79507896f8e21fc23fe3bb950c
-	b2sums = ca50c7def8f15c08a16bcee2cd4ae7bb2292d43ae95805f702c7081ad8eae80fba62883f82c5c1df22cf8d9f131898f4ef5a7c3110a9d12050804869b0ca851c
+	source = https://cran.r-project.org/src/contrib/distributions3_0.3.1.tar.gz
+	md5sums = 960720cd7539e97303f4e3e9763b5389
+	b2sums = 8204970cc10570eae87db59c3da68ba01692504e51beb596aa4b2ba68642867858132796bc855fe3be4915a34c91749e3fa8efe31ae7312acda39352e944f989
 
 pkgname = r-distributions3

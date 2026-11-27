@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=distributions3
-_pkgver=0.3.0
+_pkgver=0.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,11 +22,12 @@ checkdepends=(
 )
 optdepends=(
   r-cowplot
-  r-crch
   r-ggplot2
+  r-hypergeo
   r-knitr
   r-numderiv
   r-poissonbinomial
+  r-pscl
   r-revdbayes
   r-rmarkdown
   r-scoringrules
@@ -35,8 +36,8 @@ optdepends=(
   r-vctrs
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0ef77e79507896f8e21fc23fe3bb950c')
-b2sums=('ca50c7def8f15c08a16bcee2cd4ae7bb2292d43ae95805f702c7081ad8eae80fba62883f82c5c1df22cf8d9f131898f4ef5a7c3110a9d12050804869b0ca851c')
+md5sums=('960720cd7539e97303f4e3e9763b5389')
+b2sums=('8204970cc10570eae87db59c3da68ba01692504e51beb596aa4b2ba68642867858132796bc855fe3be4915a34c91749e3fa8efe31ae7312acda39352e944f989')
 
 build() {
   mkdir build
