@@ -1,6 +1,6 @@
 pkgbase = mz800emu-git
 	pkgdesc = MZ-Sharp Emulator Suite (git version)
-	pkgver = 2.0
+	pkgver = v2.0.2.preview.r150.ge2ce1b2
 	pkgrel = 1
 	url = https://github.com/michalhucik/mz800emu
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = mz800emu-git
 	depends = curl
 	depends = zlib
 	depends = libglvnd
+	conflicts = mz800emu
 	source = git+https://github.com/michalhucik/mz800emu.git
 	sha256sums = SKIP
 
