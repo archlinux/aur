@@ -1,7 +1,7 @@
 # Maintainer: Rubonnek <wilson.e.alvarez@rubonnek.com>
 pkgname=hledger-flow-bin
 _gitname=${pkgname%-bin}
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="An hledger/ledger-cli workflow focusing on automated statement import and classification"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
 	"https://github.com/apauley/${_gitname}/releases/download/v${pkgver}/hledger-flow-linux-x64.tar.gz"
 )
 sha256sums=(
-	"245f706abb2053632004c900bfa982ba1000ef6f0eea2b7be22cc2a60be7c452"
+	"33455ee02feb555e23bc5a4773658a1e6d128364a79ce8fd166e2e6ae5a9c919"
 )
 
 package() {

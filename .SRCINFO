@@ -1,13 +1,13 @@
 pkgbase = hledger-flow-bin
 	pkgdesc = An hledger/ledger-cli workflow focusing on automated statement import and classification
-	pkgver = 0.20.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/apauley/hledger-flow
 	arch = x86_64
 	license = GPL-3.0
 	depends = hledger
 	options = !debug
-	source = https://github.com/apauley/hledger-flow/releases/download/v0.20.0/hledger-flow-linux-x64.tar.gz
-	sha256sums = 245f706abb2053632004c900bfa982ba1000ef6f0eea2b7be22cc2a60be7c452
+	source = https://github.com/apauley/hledger-flow/releases/download/v0.21.0/hledger-flow-linux-x64.tar.gz
+	sha256sums = 33455ee02feb555e23bc5a4773658a1e6d128364a79ce8fd166e2e6ae5a9c919
 
 pkgname = hledger-flow-bin
