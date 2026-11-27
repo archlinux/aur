@@ -1,0 +1,17 @@
+pkgbase = floema
+	pkgdesc = Terminal emulator for Linux where every command is a living capsule, a Genoma app in Bioma's style
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AkusenArcade/Floema
+	arch = any
+	license = MIT
+	license = OFL-1.1
+	depends = genoma>=0.1.26
+	depends = hicolor-icon-theme
+	depends = fontconfig
+	optdepends = xdg-terminal-exec: Floema as the desktop's terminal, switched in its settings
+	optdepends = libnotify: commands that end unseen, told
+	source = floema-1.0.0.tar.gz::https://github.com/AkusenArcade/Floema/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 885365af36419cf851e8ad347f285b099173fce91d0872d6748b8c64be00a10e
+
+pkgname = floema
