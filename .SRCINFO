@@ -1,6 +1,6 @@
 pkgbase = g3mtool
 	pkgdesc = Command-line tool for modding GameMaker games
-	pkgver = 1.3.4
+	pkgver = 1.3.7
 	pkgrel = 1
 	url = https://github.com/y114git/G3MTool
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = g3mtool
 	depends = dotnet-runtime
 	options = !debug
 	options = !strip
-	source = G3MTool-2026.11.19.tar.gz::https://github.com/y114git/G3MTool/archive/refs/tags/2026.11.19.tar.gz
-	sha256sums = a1b1c5ff041af0fe358ba0f763088748e2141ab70c724d96b3e92ebc3378b8ab
+	source = G3MTool-2026.11.25.tar.gz::https://github.com/y114git/G3MTool/archive/refs/tags/2026.11.25.tar.gz
+	sha256sums = 2ffe688d1cd06b7cb940d14ba57b6252a82b35a79e3b87f252297a78694f1ef1
 
 pkgname = g3mtool
