@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.4.15
+pkgver=0.4.16
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults: Hornero Signal themes, compositor, terminal, GTK/Qt, fonts, XDG handlers"
 arch=('any')
@@ -65,7 +65,7 @@ optdepends=(
 # AUR chroot builds identical to local packaging/ builds.
 install=hornero-config.install
 backup=('etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf')
-source=("config::git+https://github.com/HorneroOS/config.git#commit=f1df5de923445a39f888940ebf69bc09454809a4")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=23bfebb75d6f7ca1cc044ebcb824f2d0c9af75d3")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -187,9 +187,11 @@ package() {
   install -Dm644 "$stage/.config/environment.d/20-hornero-session.conf" \
     "$pkgdir/etc/skel/.config/environment.d/20-hornero-session.conf"
 
-  # Hyprland's factory config imports modules from the user's XDG config
-  # directory. Seed new accounts with that complete profile so the first
-  # compositor session does not start with missing-source errors.
+  # Hyprland's factory entrypoint prefers /etc/xdg/hypr/hyprland.lua.d/ for
+  # immutable factory modules (so pacman upgrades reach existing users) while
+  # loading *-user.lua overlays and fallback modules from ~/.config/hypr/.
+  # Seed new accounts with the full tree so non-packaged / fallback runs stay
+  # complete and user override hooks exist from the first session.
   mkdir -p "$pkgdir/etc/skel/.config"
   cp -a "$stage/.config/hypr" "$pkgdir/etc/skel/.config/"
 
