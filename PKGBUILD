@@ -1,6 +1,6 @@
 # Maintainer: enesehs <enesehs@protonmail.com>
 pkgname=konvert
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Fast, lightweight, native right-click file converter and optimizer for Linux (Dolphin, Nautilus, Nemo, Thunar)"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=(
     'oxipng: Lossless PNG optimization'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('30fa8fed13d87e8e84d4e2144d3b0e4ed35a315c8bd0c80f61ffff7709cac5d4')
+sha256sums=('e32ef7c54cd3618c5bc43457cce345d90cfb409a821f76a49b95636e47164e6d')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

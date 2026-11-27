@@ -1,6 +1,6 @@
 pkgbase = konvert
 	pkgdesc = Fast, lightweight, native right-click file converter and optimizer for Linux (Dolphin, Nautilus, Nemo, Thunar)
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/enesehs/konvert
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = konvert
 	optdepends = libreoffice-fresh: DOCX/UDF to PDF conversion (soffice)
 	optdepends = potrace: Vector tracing for SVG output
 	optdepends = oxipng: Lossless PNG optimization
-	source = konvert-0.5.0.tar.gz::https://github.com/enesehs/konvert/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 30fa8fed13d87e8e84d4e2144d3b0e4ed35a315c8bd0c80f61ffff7709cac5d4
+	source = konvert-0.5.1.tar.gz::https://github.com/enesehs/konvert/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = e32ef7c54cd3618c5bc43457cce345d90cfb409a821f76a49b95636e47164e6d
 
 pkgname = konvert
