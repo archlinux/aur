@@ -2,7 +2,7 @@
 # Maintainer: BUR4KBEY <rectfc@gmail.com>
 
 pkgname='shelf-cli-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='CLI for shelf, publish HTML pages and docs and get a link back'
 url='https://github.com/BUR4KBEY/shelf'
@@ -12,13 +12,13 @@ provides=('shelf')
 conflicts=('shelf-bin' 'shelf-git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/BUR4KBEY/shelf/releases/download/v${pkgver}/shelf_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('390a93252eca0821752ac6a45accb82a65b662e09213b8c91f38a548e39118c1')
+sha256sums_aarch64=('aef76f2dc77d1f9883e5f4913bc38d5ec1ed4e9fe7b46c7cbc41156a831be64a')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/BUR4KBEY/shelf/releases/download/v${pkgver}/shelf_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('a75e04c34a5baf63eaa1d72a2339d3e408a5c8fe1147ed586b3422380022eab4')
+sha256sums_armv7h=('04d98ca7a43d7f5f686a330024d970520297872e654740481c7890ed890d8895')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/BUR4KBEY/shelf/releases/download/v${pkgver}/shelf_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('74ee63688c0b32f12d68e1f4ef57287a6a3efa1d4b8b4e24f590ce5fab537c59')
+sha256sums_x86_64=('8333ef431e622be4738a5d5be77f9a54327423e444c4edf184a3d19037e58b04')
 
 package() {
   install -Dm755 "./shelf" "${pkgdir}/usr/bin/shelf"
