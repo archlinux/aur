@@ -1,0 +1,5 @@
+[rassumfrassum]
+source = "github"
+github = "joaotavora/rassumfrassum"
+use_latest_tag = true
+prefix = "v"
