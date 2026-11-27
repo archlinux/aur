@@ -1,0 +1,19 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    "*.install",
+]
+SPDX-FileCopyrightText = "2026 koh11235813"
+SPDX-License-Identifier = "0BSD"
+
+# The patch modifies upstream cefore sources, so it stays under their license.
+[[annotations]]
+path = "cefore-fix-destdir.patch"
+SPDX-FileCopyrightText = [
+    "2016-2025 National Institute of Information and Communications Technology (NICT)",
+    "2026 koh11235813",
+]
+SPDX-License-Identifier = "BSD-3-Clause"
