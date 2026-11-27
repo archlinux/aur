@@ -1,8 +1,8 @@
 # Maintainer: @aardbol
 pkgname=picocrypt-ng-cli-bin
 _pkgname=Picocrypt-NG-cli
-pkgver=2.18
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc="A very small, very simple, yet very secure encryption tool. (CLI)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Picocrypt-NG/Picocrypt-NG"
