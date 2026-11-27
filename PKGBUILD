@@ -1,8 +1,8 @@
 # Maintainer: Santiago Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=cinnamon-doc
-pkgver=6.6.7
-_pkgver=zena
+pkgver=6.8.4
+_pkgver=mint27
 pkgrel=1
 pkgdesc='Code documentation for various Cinnamon components.'
 arch=('any')
