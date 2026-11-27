@@ -1,6 +1,6 @@
 pkgbase = kick-lite
 	pkgdesc = A lightweight Kick.com livestream and replay player
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/mucahit-sahin/kick-linux
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = kick-lite
 	depends = mpv
 	depends = libglvnd
 	depends = hicolor-icon-theme
-	source = kick-lite-0.2.0.tar.gz::https://github.com/mucahit-sahin/kick-linux/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 12788822b30cb07c8de1354f29a433f558267bb17312d200ae2bc72df6221988
+	source = kick-lite-0.3.0.tar.gz::https://github.com/mucahit-sahin/kick-linux/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 8aafe005d8a1d80eb082fcc1d7842563e3ba9bb90b155d8ad516f06fe2bd5f83
 
 pkgname = kick-lite

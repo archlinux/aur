@@ -1,6 +1,6 @@
 # Maintainer: Mücahit Şahin <mucahitsahin786@gmail.com>
 pkgname=kick-lite
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A lightweight Kick.com livestream and replay player'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk4' 'libadwaita' 'mpv' 'libglvnd' 'hicolor-icon-theme')
 # mpv provides libmpv and libglvnd provides libEGL/libGL, all needed at link time.
 makedepends=('rust' 'cargo' 'pkgconf' 'gtk4' 'libadwaita' 'mpv' 'libglvnd')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('12788822b30cb07c8de1354f29a433f558267bb17312d200ae2bc72df6221988')
+sha256sums=('8aafe005d8a1d80eb082fcc1d7842563e3ba9bb90b155d8ad516f06fe2bd5f83')
 
 build() {
   cd "$srcdir/kick-linux-$pkgver"
