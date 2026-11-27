@@ -4,7 +4,7 @@
 # .github/workflows/packaging.yml for every new version before it goes to the AUR (S034); 'SKIP'
 # keeps a local makepkg working. .SRCINFO is generated, not kept here.
 pkgname=hitokoto
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A native, single-file hybrid Markdown editor"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "hitokoto.desktop"
 )
 sha256sums=(
-    'b9327fad89a8f9c446a3490b9200d52d63ac4b1e529be965cd04d57bc5b8ebd1'
+    '8df9931baf675b1a44c2a6ae64eaf134fe57f3a5e616bf39eae5f8a60caa93df'
     '6e780a4fce0fc06cb349b88a8976bb2793cdbe949f60afb0573de375083659b6'
 )
 
