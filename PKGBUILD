@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kettu-bin
 _pkgname=Kettu
-pkgver=0.1.26
+pkgver=0.1.29
 _electronversion=44
 pkgrel=1
 pkgdesc="All your coding agents, side by side in one window that looks good and feels right."
 arch=(
-    'aarch64'
-    'x86_64'
+	'aarch64'
+	'x86_64'
 )
 url="https://www.kettu.sh"
 _ghurl="https://github.com/KettuAI/Kettu"
@@ -16,11 +16,11 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
 	"electron${_electronversion}"
-    'nodejs'
-    'python'
-    'python-gobject'
-    'git'
-    'github-cli'
+	'nodejs'
+	'python'
+	'python-gobject'
+	'git'
+	'github-cli'
 )
 source=(
 	"${pkgname%-bin}.js"
@@ -28,10 +28,10 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-x86_64.AppImage")
-sha256sums=('b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b'
+sha256sums=('4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b'
             '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
-sha256sums_aarch64=('9f544b329526e942e2f6cb64b31222320b5cf76d1a9fc83d9f73b54bb89174b3')
-sha256sums_x86_64=('2287c82dedd1280daca4a4fe5e79164cfcf627e721f0855f0fa6ae7f00a22827')
+sha256sums_aarch64=('c520ae7673fdc98bf4a165050067a2e813c8986b4be6f778800e5bcb9a91aedf')
+sha256sums_x86_64=('25d35795deb4be554fa5e2d3d9971253a4f4a90c2906d9f1399ebc1cc14f3945')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -65,7 +65,7 @@ prepare() {
 	"${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
 	_check_electron_version
 	sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "$(_get_app_dir)/${pkgname%-bin}.desktop"
-    find "$(_get_app_dir)/resources" -type d -exec chmod 755 {} +
+	find "$(_get_app_dir)/resources" -type d -exec chmod 755 {} +
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
