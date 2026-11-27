@@ -1,6 +1,6 @@
 # Maintainer: Parham Alvani <parham.alvani at gmail dot com>
 pkgname=pasadizo-bin
-pkgver=1.15.0_alpha.14_pasadizo.3
+pkgver=1.15.0_alpha.14_pasadizo.5
 pkgrel=1
 pkgdesc='Proxy platform derived from sing-box, for a home gateway on a lossy, filtered line'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -9,13 +9,13 @@ license=('GPL-3.0-or-later')
 provides=('pasadizo')
 conflicts=('pasadizo')
 backup=('etc/pasadizo/config.json')
-_version='1.15.0-alpha.14-pasadizo.3'
+_version='1.15.0-alpha.14-pasadizo.5'
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${_version}/pasadizo-${_version}-linux-amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${_version}/pasadizo-${_version}-linux-arm64.tar.gz")
 source_armv7h=("${pkgname}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${_version}/pasadizo-${_version}-linux-armv7.tar.gz")
-sha256sums_x86_64=('822888acd167db4944b05677e60a65bba79989e3a525ce08b877ea73e9713e4a')
-sha256sums_aarch64=('5fc360f4a12b8056411b7e55111fcea51e6d3cb04a3a7036a3b5fd420655c775')
-sha256sums_armv7h=('dec2033d22a2c4939c5da509582e17ef00c2ee8375bcef0fe7afadc104dc79f6')
+sha256sums_x86_64=('1317b56c6bce64bc07757ea42000e289631979275014f922fa8baaf036d0fee3')
+sha256sums_aarch64=('e48e27d0035fbef93df3474a6132e9f2816d02160998ea0fe3e6db5d7b2582d7')
+sha256sums_armv7h=('1a69a6476cae27c81c63ce7365a7fb60d5ee4605fd550246a98bbd29d2560990')
 
 package() {
   install -Dm755 "./pasadizo" "${pkgdir}/usr/bin/pasadizo"

@@ -1,6 +1,6 @@
 pkgbase = pasadizo-bin
 	pkgdesc = Proxy platform derived from sing-box, for a home gateway on a lossy, filtered line
-	pkgver = 1.15.0_alpha.14_pasadizo.3
+	pkgver = 1.15.0_alpha.14_pasadizo.5
 	pkgrel = 1
 	url = https://github.com/pasadizo-net/pasadizo
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = pasadizo-bin
 	provides = pasadizo
 	conflicts = pasadizo
 	backup = etc/pasadizo/config.json
-	source_x86_64 = pasadizo-bin-1.15.0_alpha.14_pasadizo.3-x86_64.tar.gz::https://github.com/pasadizo-net/pasadizo/releases/download/v1.15.0-alpha.14-pasadizo.3/pasadizo-1.15.0-alpha.14-pasadizo.3-linux-amd64.tar.gz
-	sha256sums_x86_64 = 822888acd167db4944b05677e60a65bba79989e3a525ce08b877ea73e9713e4a
-	source_aarch64 = pasadizo-bin-1.15.0_alpha.14_pasadizo.3-aarch64.tar.gz::https://github.com/pasadizo-net/pasadizo/releases/download/v1.15.0-alpha.14-pasadizo.3/pasadizo-1.15.0-alpha.14-pasadizo.3-linux-arm64.tar.gz
-	sha256sums_aarch64 = 5fc360f4a12b8056411b7e55111fcea51e6d3cb04a3a7036a3b5fd420655c775
-	source_armv7h = pasadizo-bin-1.15.0_alpha.14_pasadizo.3-armv7h.tar.gz::https://github.com/pasadizo-net/pasadizo/releases/download/v1.15.0-alpha.14-pasadizo.3/pasadizo-1.15.0-alpha.14-pasadizo.3-linux-armv7.tar.gz
-	sha256sums_armv7h = dec2033d22a2c4939c5da509582e17ef00c2ee8375bcef0fe7afadc104dc79f6
+	source_x86_64 = pasadizo-bin-1.15.0_alpha.14_pasadizo.5-x86_64.tar.gz::https://github.com/pasadizo-net/pasadizo/releases/download/v1.15.0-alpha.14-pasadizo.5/pasadizo-1.15.0-alpha.14-pasadizo.5-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1317b56c6bce64bc07757ea42000e289631979275014f922fa8baaf036d0fee3
+	source_aarch64 = pasadizo-bin-1.15.0_alpha.14_pasadizo.5-aarch64.tar.gz::https://github.com/pasadizo-net/pasadizo/releases/download/v1.15.0-alpha.14-pasadizo.5/pasadizo-1.15.0-alpha.14-pasadizo.5-linux-arm64.tar.gz
+	sha256sums_aarch64 = e48e27d0035fbef93df3474a6132e9f2816d02160998ea0fe3e6db5d7b2582d7
+	source_armv7h = pasadizo-bin-1.15.0_alpha.14_pasadizo.5-armv7h.tar.gz::https://github.com/pasadizo-net/pasadizo/releases/download/v1.15.0-alpha.14-pasadizo.5/pasadizo-1.15.0-alpha.14-pasadizo.5-linux-armv7.tar.gz
+	sha256sums_armv7h = 1a69a6476cae27c81c63ce7365a7fb60d5ee4605fd550246a98bbd29d2560990
 
 pkgname = pasadizo-bin
