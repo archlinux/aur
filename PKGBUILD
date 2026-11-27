@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NetSAM
-_pkgver=1.52.1
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.1
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='Network Seriation And Modularization'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a48fabe3be61879ef293e25d872c70bebe8c9345b34443d658bb015ce53449b9')
+sha256sums=('346817e3641bc9b022f92570c9bb86df72a81d84c8c23fdc4923728c2ec74e5e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
