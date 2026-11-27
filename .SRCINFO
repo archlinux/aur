@@ -1,6 +1,6 @@
 pkgbase = hid-logitech-k400plus-dkms
 	pkgdesc = Modified hid-logitech-hidpp kernel module, providing native multitouch support for Logitech K400 Plus touchpad.
-	pkgver = 0.2
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://lore.kernel.org/linux-input/20260824180425.55809-1-dmitriy.geels@gmail.com/
 	arch = any
@@ -15,6 +15,6 @@ pkgbase = hid-logitech-k400plus-dkms
 	sha256sums = 636cbdb38fe87cd4decc0661a1ef818987411563fea2f032c01c04d1b7e44d80
 	sha256sums = a6a0420ad9c35682369dca6de9540c36cac4c85f5b103c60f607c2f068fafef7
 	sha256sums = 4be699aa8f7c833d839f538529566d5e0d566ed3776eabe9dd428676fcca96e1
-	sha256sums = 32f93b967cd7da542968d37caa5ab0ef5d269c2c6fd80da128da461fc4fb9875
+	sha256sums = 2f7b09978f91847fab25b8e35ab91cc7e454ddb14f4fd56030547bee62d993c4
 
 pkgname = hid-logitech-k400plus-dkms
