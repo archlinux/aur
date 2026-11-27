@@ -3,8 +3,8 @@
 
 pkgbase=dxvk-bin
 pkgname=('dxvk-bin')
-pkgver=3.1.1
-_githubver=$pkgver
+pkgver=3.2.0
+_githubver=3.2
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 which allows running 3D applications on Linux using Wine (Windows DLL binary files)"
 url="https://github.com/doitsujin/dxvk"
@@ -16,7 +16,7 @@ options=(!strip)
 source=("https://github.com/doitsujin/dxvk/releases/download/v$_githubver/dxvk-$_githubver.tar.gz"
 "setup_dxvk.sh"
 )
-sha256sums=('40565b4a724aadc4433fa4e010b4b23916d9b1f1baeee64e17186db94f54e608'
+sha256sums=('17449ed21602377971289eb2984750699825ac1bac3bbfa2426b2bba0f355692'
             '2ca9ece1b6c36446e9f6955d3d03ab72b173c8f85539a2848febc51b38be705e')
 
 package_dxvk-bin () {
