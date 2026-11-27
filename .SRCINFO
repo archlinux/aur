@@ -1,19 +1,19 @@
 pkgbase = agentero-cli-bin
 	pkgdesc = Headless Vault and Catalog CLI for Agentero (official binary)
-	pkgver = 0.18.4
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://github.com/poco-ai/Agentero
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	depends = gcc-libs
-	provides = agentero-cli=0.18.4
+	provides = agentero-cli=0.19.1
 	conflicts = agentero-cli
 	options = !strip
 	options = !debug
-	source = https://github.com/poco-ai/Agentero/releases/download/v0.18.4/agentero-cli-0.18.4-x86_64-unknown-linux-gnu.tar.gz
-	source = LICENSE-0.18.4::https://github.com/poco-ai/Agentero/raw/refs/tags/v0.18.4/LICENSE
-	sha256sums = 9fc0fabf1763d4053383bb8170dad2b633eedeb2de0895d8a093bd965e49f39d
+	source = https://github.com/poco-ai/Agentero/releases/download/v0.19.1/agentero-cli-0.19.1-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE-0.19.1::https://github.com/poco-ai/Agentero/raw/refs/tags/v0.19.1/LICENSE
+	sha256sums = e160579ed9a64a69fb8877b0ecdcb483f81fd3136631bdc17a207aafbdcae0b1
 	sha256sums = f2b7f0cc6fb11f63654ac171d46640de6a8f63407a1a9fa77181a5c43a841fcf
 
 pkgname = agentero-cli-bin
