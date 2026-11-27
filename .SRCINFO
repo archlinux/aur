@@ -1,6 +1,6 @@
 pkgbase = r-dropletutils
 	pkgdesc = Utilities for Handling Single-Cell Droplet Data
-	pkgver = 1.32.1
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DropletUtils
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = r-dropletutils
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DropletUtils_1.32.1.tar.gz
-	sha256sums = 7eb51272528522fcd23ea142f6642cb27794c79632e7a7f58f77b572cd809a7c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DropletUtils_1.34.0.tar.gz
+	sha256sums = 6b998ba01e699b25b3d7d3f501bf03d24571dfe8b79780cc19afb679d76b09c4
 
 pkgname = r-dropletutils
