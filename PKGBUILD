@@ -4,7 +4,7 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=uq
-pkgver=0.3.46
+pkgver=0.3.47
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 # The uq-hyprland-pin this release's config/hypr/base.lua is tested with: equal to
@@ -61,7 +61,7 @@ backup=(etc/pam.d/uq-greetd etc/pam.d/uq-greeter etc/pam.d/uq-lock etc/pam.d/uq-
 # (so its checksum) can change. The release workflow uploads exactly this file and prints its sum.
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; update it with pkgver at each release (docs/releasing.md).
-sha256sums=('d5ceca2600e4cbbbe990454681f9a73ae88ea3ec2564a0defc2a4da33cb7a30b')
+sha256sums=('1685aff1a4636ec868ba3787746107e512b1691a3b15d5b3a826083f3180a67a')
 
 conflicts+=('bindle<0.1.47' 'kyko<1.3.3' 'oysterav<0.5.0' 'uqbit<0.6.1' 'uqview<0.1.6')  # uq-compat: from uQ's compat/family.toml
 
@@ -136,6 +136,13 @@ package() {
   install -Dm644 packaging/greeter/greeter.toml "$pkgdir/etc/uq/greeter.toml"
   install -Dm644 packaging/greeter/greetd-uq.conf "$pkgdir/usr/lib/systemd/system/greetd.service.d/uq.conf"
   install -Dm644 packaging/tmpfiles/uq-greeter.conf "$pkgdir/usr/lib/tmpfiles.d/uq-greeter.conf"
+  # The greeter user gets no PipeWire, WirePlumber or portals (it plays no sound and opens no files).
+  for u in pipewire.socket pipewire.service pipewire-pulse.socket pipewire-pulse.service \
+      wireplumber.service xdg-desktop-portal.service xdg-desktop-portal-gtk.service \
+      xdg-desktop-portal-hyprland.service xdg-document-portal.service xdg-permission-store.service; do
+    install -Dm644 packaging/greeter/not-for-greeter.conf \
+      "$pkgdir/usr/lib/systemd/user/$u.d/uq-not-for-greeter.conf"
+  done
   # The boot and shutdown banner (off until enabled: systemctl enable uq-banner-boot uq-banner-shutdown).
   install -Dm755 packaging/banner/uq-banner "$pkgdir/usr/lib/uq/uq-banner"
   install -Dm644 packaging/banner/uq-banner-boot.service "$pkgdir/usr/lib/systemd/system/uq-banner-boot.service"
