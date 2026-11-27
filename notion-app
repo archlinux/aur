@@ -4,10 +4,8 @@ XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
 # Allow users to override command-line options
 if [[ -f $XDG_CONFIG_HOME/notion-flags.conf ]]; then
-    NOTION_USER_FLAGS="$(grep -v '^#' $XDG_CONFIG_HOME/notion-flags.conf)"
+    NOTION_USER_FLAGS="$(grep -v '^#' "$XDG_CONFIG_HOME/notion-flags.conf")"
 fi
 
 # Launch
-APP_DIR=/usr/lib/notion-app
-cd "$APP_DIR" || exit 1
-exec electron43 "$APP_DIR/app.asar" $NOTION_USER_FLAGS "$@" # https://wiki.archlinux.org/title/Electron_package_guidelines#Using_the_system_electron
+exec /usr/bin/electron45 /usr/lib/notion-app/app.asar --class=Notion $NOTION_USER_FLAGS "$@"

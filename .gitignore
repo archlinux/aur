@@ -6,3 +6,8 @@
 *.pkg.tar
 *.pkg.tar.zst
 *.tar
+*.filez
+*.commit
+*.part0
+*.commitmeta
+*.superblock
