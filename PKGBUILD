@@ -2,8 +2,8 @@
 
 pkgname=dux-qt-base-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.4.73
-pkgrel=4
+pkgver=0.4.74
+pkgrel=1
 # no qt version pins: they deadlock pacman -Syu against makepkg on every qt bump
 _qtver_x86_64=6.12.1
 _qtver_aarch64=6.12.1
@@ -36,8 +36,8 @@ source_x86_64=("$_pkgname-$pkgver-qt$_qtver_x86_64-x86_64.tar.zst::$_urlrel/$_pk
 source_aarch64=("$_pkgname-$pkgver-qt$_qtver_aarch64-aarch64.tar.zst::$_urlrel/$_pkgname-$pkgver-qt$_qtver_aarch64-aarch64.tar.zst")
 sha256sums=('e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118'
             '1b3782ccad7b8614100cda30d3faf42fc39f2e97932908c543005053b654ca68')
-sha256sums_x86_64=('cd614837950b050e1ac8c1ed4717d653f027e4034c3466eaf6dfe02a2f34055e')
-sha256sums_aarch64=('c346298b22d0a0d9c8f620837bc5af18aac76811a1021dd7362846f0d92aaa90')
+sha256sums_x86_64=('a971c6fb709619175915058a82f56fe9fba500917727524d69adf836536ce619')
+sha256sums_aarch64=('2c0ce79ddf4c14b00ad82e4549ff1fd8ac685ab6747ea5544fe93582c8f358cf')
 
 package() {
 	cp -a "$srcdir/usr" "$pkgdir/"
