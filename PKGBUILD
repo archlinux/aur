@@ -1,7 +1,7 @@
 # Maintainer: leeteral <kneesdev@naver.com>
 
 pkgname=pelton-bin
-pkgver=2026.4.6
+pkgver=2026.4.8
 pkgrel=1
 pkgdesc="Open-source cross-platform desktop email client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('pelton')
 conflicts=('pelton')
 
 source=("Pelton-v${pkgver}-linux-amd64.deb::https://github.com/peltonapp/Pelton/releases/download/v${pkgver}/Pelton-v${pkgver}-linux-amd64.deb")
-sha256sums=('288c9e208bdfb4be9ce36267b87765139eda0943f2bdcacea10f44d6ffd1c906')
+sha256sums=('641c371e1dc22c2f0e8d358697c7d612e0f1d5a6a82e32721de5309150d47e2d')
 
 package() {
     tar -xzf data.tar.gz -C "$pkgdir"
