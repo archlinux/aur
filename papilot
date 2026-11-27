@@ -1,0 +1,3 @@
+#!/bin/sh
+export PAPILOT_DESKTOP_PACKAGE_UPDATES=1
+exec /opt/Papilot/papilot "$@"

@@ -1,0 +1,34 @@
+pkgbase = papilot-bin
+	pkgdesc = A desktop workspace for reading and editing LaTeX papers
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://papilot.ai
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = git
+	depends = gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = mesa
+	depends = nss
+	depends = util-linux-libs
+	depends = xdg-utils
+	optdepends = texlive-bin: compile manuscripts with TeX Live
+	optdepends = texlive-binextra: build manuscripts with latexmk
+	provides = papilot=0.14.1
+	conflicts = papilot
+	noextract = Papilot-0.14.1-linux-amd64.deb
+	options = !strip
+	options = !debug
+	source = https://github.com/PapilotAI/papilot/releases/download/v0.14.1/Papilot-0.14.1-linux-amd64.deb
+	source = papilot
+	source = LICENSE
+	sha256sums = e3761704ab3e254d96dafecbce47a36ea9b688e07054db44aa5727cb702703dc
+	sha256sums = ad622fa0b5b6747d3b3c366cacde6b390a0ac491e414be4e2a9a8ab67a8e5d27
+	sha256sums = 65b0962d74726bf248ac48e02f7e794422146edd860786fd84f6d647e78c26f7
+
+pkgname = papilot-bin
