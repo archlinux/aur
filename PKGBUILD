@@ -4,7 +4,7 @@
 # (binary + LICENSE + .desktop + icons), i.e. releases after v0.2.2.
 
 pkgname=archtoys-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="PowerToys-style tools for Linux: color picker, text extractor, screen ruler (precompiled binary)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("archtoys=${pkgver}")
 conflicts=('archtoys')
 options=('!debug')
 source=("archtoys-linux-x86_64-v${pkgver}.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v${pkgver}/archtoys-linux-x86_64.tar.gz")
-sha256sums=('1856b99027e3dc72e5b4344ca3296dfa8383b0dfaa525bc006b00f2991bf5ea8')
+sha256sums=('dbf3b914673d3a0ffd4c10d25587e7d3362cc1a8f3e60ab3d613cfdd36fea086')
 
 package() {
   cd "${srcdir}"
