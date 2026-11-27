@@ -1,0 +1,5 @@
+[jose-bin]
+source = "github"
+github = "nao1215/jose"
+use_latest_release = true
+prefix = "v"

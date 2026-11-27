@@ -1,0 +1,19 @@
+pkgbase = jose-bin
+	pkgdesc = CLI tool for JOSE (JSON Object Signing and Encryption)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/nao1215/jose
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = jose
+	conflicts = jose
+	options = !strip
+	source = jose-0.5.0-checksums.txt::https://github.com/nao1215/jose/releases/download/v0.5.0/checksums.txt
+	sha256sums = 49be20741ba2986bfac7ca4377d70802ee937b19ffd6950400fbfc72b8fcf410
+	source_x86_64 = jose-0.5.0-x86_64.tgz::https://github.com/nao1215/jose/releases/download/v0.5.0/jose_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = c05d70e64b3c0edcfd67d34b7884625295d69a1124f2bd5ee67b32a85c2a7ebe
+	source_aarch64 = jose-0.5.0-aarch64.tgz::https://github.com/nao1215/jose/releases/download/v0.5.0/jose_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1f765bdd505bcf637f44e1001704a6eecfceda476c965add1b0335ced53b58a2
+
+pkgname = jose-bin
