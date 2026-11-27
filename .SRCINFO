@@ -1,21 +1,22 @@
 pkgbase = mudlet-bin
 	pkgdesc = ⚔️ A cross-platform, open source, and super fast MUD client with scripting in Lua.
-	pkgver = 5.1.1
+	pkgver = 5.1.2
 	pkgrel = 1
 	url = https://www.mudlet.org
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = qt6-declarative
 	depends = hicolor-icon-theme
+	depends = python
 	optdepends = ttf-bitstream-vera: default font
 	optdepends = ttf-ubuntu-font-family: default font
 	optdepends = noto-fonts-emoji: emoji font support
-	provides = mudlet=5.1.1
+	provides = mudlet=5.1.2
 	conflicts = mudlet
 	options = !strip
-	source = mudlet-5.1.1.tar::https://github.com/Mudlet/Mudlet/releases/download/Mudlet-5.1.1/Mudlet-5.1.1-linux-x64.AppImage.tar
+	source = mudlet-5.1.2.tar::https://github.com/Mudlet/Mudlet/releases/download/Mudlet-5.1.2/Mudlet-5.1.2-linux-x64.AppImage.tar
 	source = mudlet.sh
-	sha256sums = 52fe5f54fd4918b275e7c8e87b951de597cc9cd297a8bbb739d4f012a4c9b4aa
+	sha256sums = ea90b0fdd9b8cf4c293c0e78751e0f632a71dc041032b28ca4f0792ab45408bd
 	sha256sums = 216b754c5be3b7d33ebc915743a3bc4d6663a63b0a07468c88cc26bf20908cb4
 
 pkgname = mudlet-bin
