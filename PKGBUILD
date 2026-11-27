@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SemDist
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Information Accretion-based Function Predictor Evaluation'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-gosemsim
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('38c5c6f0e54f9264e27d35ee77268a1eab87eb4a937dd25879d89087c99f87dc')
+sha256sums=('2d4617125e0361e3241f0ac1ae8ced19040fc04acd30516dec1b4cf231f9bd7e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
