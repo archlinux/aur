@@ -2,4 +2,4 @@
 source = "git"
 git = "https://github.com/chen08209/FlClash.git"
 prefix = "v"
-exclude_regex = ".*(pre).*"
+exclude_regex = ".*(pre|rs).*"
