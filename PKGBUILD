@@ -2,7 +2,7 @@
 
 pkgname=homemesh-git
 _name=homemesh
-pkgver=0.8.1.r34.gc64cc5e
+pkgver=0.8.2.r37.gb7a1cf1
 pkgrel=1
 pkgdesc='Open the home folders of your other computers in any file manager; pair them with a code (development version)'
 arch=('any')
