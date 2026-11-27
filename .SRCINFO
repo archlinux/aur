@@ -1,11 +1,12 @@
 pkgbase = uuyc-bin
 	pkgdesc = 网易UU远程官方 Linux 客户端 (NetEase UU Remote)
-	pkgver = 4.48.6.41668
+	pkgver = 4.48.7.27441
 	pkgrel = 1
 	url = https://uuyc.163.com/
 	install = uuyc-bin.install
 	arch = x86_64
 	license = LicenseRef-proprietary
+	makedepends = icoutils
 	depends = ca-certificates
 	depends = cairo
 	depends = dbus
@@ -13,6 +14,7 @@ pkgbase = uuyc-bin
 	depends = freetype2
 	depends = glib2
 	depends = glibc
+	depends = hicolor-icon-theme
 	depends = libatomic
 	depends = libdrm
 	depends = libglvnd
@@ -37,18 +39,21 @@ pkgbase = uuyc-bin
 	depends = xcb-util-wm
 	depends = xkeyboard-config
 	depends = zstd
+	optdepends = alsa-lib: ALSA audio backend fallback
 	optdepends = apparmor: load the bundled WebView profile when unprivileged user namespaces are restricted
 	optdepends = ibus: input method support while ibus runs
-	optdepends = libva: hardware video decoding
-	optdepends = nvidia-utils: NVENC hardware encoding
+	optdepends = intel-media-driver: VA-API hardware video acceleration on Intel GPUs (Broadwell+)
+	optdepends = libva: VA-API hardware video decoding
+	optdepends = libva-mesa-driver: VA-API hardware video acceleration on AMD GPUs
+	optdepends = nvidia-utils: NVENC/NVDEC hardware video encoding and decoding
 	optdepends = qt5-translations: Qt UI strings in non-English locales
 	optdepends = xdg-desktop-portal: native file dialogs for the xdgdesktopportal Qt platform theme
 	provides = uuyc
 	conflicts = uuyc
 	options = !debug
-	source = uuyc-bin-4.48.6.41668.deb::https://api.nrd.nie.163.com/api/v1/release/dl/8?channel=gwqd
+	source = uuyc-bin-4.48.7.27441.deb::https://api.nrd.nie.163.com/api/v1/release/dl/8?channel=gwqd
 	source = uuyc.tmpfiles
-	sha256sums = ceec564f9e80c891d1e3b586e7e1520a98e6c3e98997400c8e5fb63f145bf07a
+	sha256sums = 7be456e8012bfcca8d0dad0863265a3bd2756d6c4c0ca7ba13cc65c1ef64cd00
 	sha256sums = adfd1827cd771b0153d973870c38b1a17dad59362c7eeb7fc19d6b43f4c43449
 
 pkgname = uuyc-bin

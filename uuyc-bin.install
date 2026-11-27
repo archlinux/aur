@@ -9,6 +9,11 @@ _uuyc_reload() {
   return 0
 }
 
+_uuyc_apparmor() {
+  [[ -x /usr/lib/uuyc/webview-apparmor ]] || return 0
+  /usr/lib/uuyc/webview-apparmor "$1" 2>/dev/null || true
+}
+
 _uuyc_stop() {
   [[ -d /run/systemd/system ]] || return 0
   systemctl stop uuyc.socket uuyc.service 2>/dev/null || true
@@ -26,6 +31,7 @@ _uuyc_start() {
 }
 
 post_install() {
+  _uuyc_apparmor configure
   _uuyc_reload
   _uuyc_start
   echo 'uuyc: start the client from a normal desktop user (网易UU远程 in the menu).'
@@ -38,11 +44,13 @@ pre_upgrade() {
 }
 
 post_upgrade() {
+  _uuyc_apparmor configure
   _uuyc_reload
   _uuyc_start
 }
 
 pre_remove() {
+  _uuyc_apparmor remove
   _uuyc_stop
   [[ -d /run/systemd/system ]] && systemctl disable uuyc.socket 2>/dev/null
   _uuyc_stop_clients
