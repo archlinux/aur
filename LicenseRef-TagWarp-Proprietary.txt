@@ -1,0 +1,45 @@
+Copyright 2026 develOseven
+
+# Acceptance of Terms
+
+By downloading, installing, or using TagWarp alpha, you agree to these Terms of Service. If you do not agree to these terms, do not use the Program.
+
+# License Grant
+
+We grant you a non-exclusive, non-transferable, revocable license to use TagWarp alpha according to the terms outlined below:
+
+    This license grants you the right to use TagWarp alpha only for personal purposes.
+
+You may not:
+
+    Reverse engineer, decompile, disassemble, modify, or adapt the Program in any way except for using our intended extension points.
+    Use the Program for illegal activities.
+    Distribute, sublicense, or permit third-party use of the Program.
+    Circumvent or interfere with any security features of the Program.
+    Use the Program for any commercial purposes.
+
+# Intellectual Property and Ownership
+
+We retain full ownership of TagWarp alpha, including its name, logo, and all associated intellectual property, as well as any modifications or updates to the software. Your license to use the program does not transfer any ownership rights. We reserve the right to grant licenses to third parties.
+
+# Disclaimer of Warranty
+
+The software is provided “as is”, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall
+the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings
+in the software. We do not guarantee that the software will meet your requirements or be error-free. You assume all risks associated with using the program.
+
+# Limitation of Liability
+
+To the maximum extent permitted by law, we are not liable for any damages, whether direct or indirect, resulting from your use or inability to use the program. This includes any data loss, corruption, or disruptions caused by the program’s operation. In no case will our liability exceed the price paid for the software. We are not responsible for any consequential, incidental, or special damages, even if we were advised of the possibility of such damages.
+
+# Termination
+
+We reserve the right to terminate your license or access to the Program if you violate these Terms. Upon termination, you must immediately cease all use of the Program and uninstall it from your devices.
+
+# Changes to the Terms
+
+We may update these Terms of Service periodically. Continued use of the Program after such changes are posted constitutes your acceptance of the revised Terms.
+
+# Governing Law
+
+These Terms are governed by the laws of the French Republic. Any disputes will be resolved in the courts of the French Republic.

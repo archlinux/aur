@@ -1,0 +1,15 @@
+pkgbase = tagwarp-appimage
+	pkgdesc = File Tagging Manager
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://tagwarp.com
+	arch = x86_64
+	license = LicenseRef-TagWarp-Proprietary
+	options = !strip
+	options = !debug
+	source = https://tagwarp.com/downloads/TagWarp-1.3.0-alpha-x86_64.AppImage
+	source = LicenseRef-TagWarp-Proprietary.txt
+	sha256sums = 7da9ff2a4c6b73ce78dfdd5321d909844c320f568bd9a6066a0b7048aecdc86f
+	sha256sums = 6647c68fb5ec860cb27a3599441d9a96e67dd2230b79800d65701435afaca32c
+
+pkgname = tagwarp-appimage
