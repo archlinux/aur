@@ -1,8 +1,7 @@
 # Maintainer: koh11235813 <koh11235813@gmail.com>
-# Contributor: togatoga <>
 pkgname='karukan'
 pkgver='0.1.0'
-pkgrel=4
+pkgrel=5
 pkgdesc="Japanese Input Method System for Linux, Neural Kana-Kanji Conversion Engine + fcitx5 IME"
 arch=('x86_64')
 url="https://github.com/togatoga/karukan"
