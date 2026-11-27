@@ -2,7 +2,7 @@
 
 pkgname=lem-webview-nightly
 pkgver=nightly.latest.r0.g96b8faa57
-pkgrel=1
+pkgrel=2
 pkgdesc="Common Lisp editor/IDE with Webview GUI frontend (nightly build)"
 arch=('x86_64')
 url="https://github.com/lem-project/lem"
@@ -28,11 +28,7 @@ build() {
 
 package() {
   cd "${pkgname}"
-  install -dm755 "${pkgdir}/opt/lem-webview-nightly"
-  cp -r . "${pkgdir}/opt/lem-webview-nightly/"
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -s /opt/lem-webview-nightly/lem "${pkgdir}/usr/bin/lem"
-
+  install -Dm755 lem "${pkgdir}/usr/bin/lem"
   install -Dm644 scripts/install/lem-webview.desktop \
     "${pkgdir}/usr/share/applications/lem-webview.desktop"
   sed -i 's|/usr/local/bin/lem|/usr/bin/lem|' \

@@ -1,7 +1,7 @@
 pkgbase = lem-webview-nightly
 	pkgdesc = Common Lisp editor/IDE with Webview GUI frontend (nightly build)
 	pkgver = nightly.latest.r0.g96b8faa57
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lem-project/lem
 	arch = x86_64
 	license = MIT
