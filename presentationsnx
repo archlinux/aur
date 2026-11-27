@@ -1,2 +1,11 @@
 #!/bin/sh
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        *.[Pp][Rr][Ss]|*.[Pp][Pp][Ss]|*.[Pp][Pp][Ss][Xx])
+            exec /usr/share/officenx/presentations "-S\"$1\""
+            ;;
+    esac
+fi
+
 exec /usr/share/officenx/presentations "$@"
