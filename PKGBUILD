@@ -3,7 +3,7 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 _pkgname=annotate
-_pkgver=1.90.0
+_pkgver=1.92.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,9 +28,9 @@ optdepends=(
   r-biocstyle
   r-biostrings
   r-genefilter
+  r-genomicranges
   r-go.db
   r-hgu95av2.db
-  r-humanchrloc
   r-iranges
   r-knitr
   r-org.hs.eg.db
@@ -40,10 +40,11 @@ optdepends=(
   r-rgraphviz
   r-runit
   r-tkwidgets
+  r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('005b6691c7fbc0a173d704dc644fc37a')
-b2sums=('37e345f7a95ba6ef49392af2b6a5e6dd10da607e25889f8f8277afa91c22822f0f07e300d4b0a81c4c3e78375f1dc81bba579968cc5bd4d556b5929d882c6bdd')
+md5sums=('09ae9be724216a3681c3b3ad76af30ac')
+b2sums=('26d1832faf3067c5c15aa28b038d62492e1450c7d564fc85c5d67ea2f118f11742d7f17cab608bdd8299fb505d40450fb236d02767e8a2305781a88288c20c02')
 
 build() {
   mkdir build
