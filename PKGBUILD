@@ -1,12 +1,12 @@
 # Maintainer: Axel H. <noirbizarre@gmail.com>
 #
-# Source package. `0.6.1` and `116de2484eaf07771532614c57477f0fbdf8ca4f79882c86ac1b398d94d309d6` are substituted by
+# Source package. `0.7.0` and `3a54d05f08020573f150f309d34aca9878357416c1f849154abb62f8157d17a5` are substituted by
 # .github/workflows/aur.yaml from the published release, and the result is
 # pushed to the AUR. Edit this template, never the PKGBUILD in the AUR
 # repository: that one is regenerated at every release.
 
 pkgname=over
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A git-based file overlay manager (dotfiles as overlays)"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,8 @@ license=('MIT')
 # zlib because libgit2 links the system one rather than bundling it: the
 # binaries really do need libz.so.1, and namcap errors on a needed library
 # left undeclared.
-depends=('gcc-libs' 'glibc' 'zlib')
+# Native Git implements diff, commit and configured filter execution at runtime.
+depends=('gcc-libs' 'git' 'glibc' 'zlib')
 
 # cmake, because `git2` is built with the `vendored` feature (vendored-libgit2
 # + vendored-openssl) — libgit2 and OpenSSL are compiled from source rather
@@ -39,7 +40,7 @@ conflicts=('over-bin')
 options=('!lto' '!debug')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('116de2484eaf07771532614c57477f0fbdf8ca4f79882c86ac1b398d94d309d6')
+sha256sums=('3a54d05f08020573f150f309d34aca9878357416c1f849154abb62f8157d17a5')
 
 prepare() {
 	cd "$pkgname-$pkgver"

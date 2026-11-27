@@ -1,6 +1,6 @@
 pkgbase = over
 	pkgdesc = A git-based file overlay manager (dotfiles as overlays)
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/noirbizarre/over
 	arch = x86_64
@@ -9,12 +9,13 @@ pkgbase = over
 	makedepends = cargo
 	makedepends = cmake
 	depends = gcc-libs
+	depends = git
 	depends = glibc
 	depends = zlib
 	conflicts = over-bin
 	options = !lto
 	options = !debug
-	source = over-0.6.1.tar.gz::https://github.com/noirbizarre/over/archive/0.6.1.tar.gz
-	sha256sums = 116de2484eaf07771532614c57477f0fbdf8ca4f79882c86ac1b398d94d309d6
+	source = over-0.7.0.tar.gz::https://github.com/noirbizarre/over/archive/0.7.0.tar.gz
+	sha256sums = 3a54d05f08020573f150f309d34aca9878357416c1f849154abb62f8157d17a5
 
 pkgname = over
