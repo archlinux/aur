@@ -1,6 +1,6 @@
 pkgbase = bigtext-bin
 	pkgdesc = Editor and log viewer for very large files
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/erkinbek/bigtext
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = bigtext-bin
 	provides = bigtext
 	conflicts = bigtext
 	options = !debug
-	source = bigtext-bin-0.14.0-LICENSE::https://raw.githubusercontent.com/erkinbek/bigtext/v0.14.0/LICENSE
+	source = bigtext-bin-0.15.0-LICENSE::https://raw.githubusercontent.com/erkinbek/bigtext/v0.15.0/LICENSE
 	sha256sums = 1abe148c0be194a1fcdb711bc2668141a2db0fa6a03974698ff27905448966bf
-	source_x86_64 = bigtext-bin-0.14.0-x86_64.tar.gz::https://github.com/erkinbek/bigtext/releases/download/v0.14.0/bigtext-linux-x64.tar.gz
-	sha256sums_x86_64 = 089792cfb5f1c88e5930a96c88cfdde5ba8540fe3bceff6abfa00e6ebdc522ba
+	source_x86_64 = bigtext-bin-0.15.0-x86_64.tar.gz::https://github.com/erkinbek/bigtext/releases/download/v0.15.0/bigtext-linux-x64.tar.gz
+	sha256sums_x86_64 = 56356b9bcfa0d1be1f0b2c70d790479dedc45b55e09e6b03dfc088cdd8bcbfdc
 
 pkgname = bigtext-bin
