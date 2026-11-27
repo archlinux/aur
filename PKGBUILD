@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=oxideterm-bin
 _pkgname=OxideTerm
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="AI-native workspace for local shells and remote machines.Zero Webview, zero OpenSSL, zero telemetry, and no app subscription."
 arch=(
-    'aarch64'
-    'x86_64'
+	'aarch64'
+	'x86_64'
 )
 url="https://oxideterm.app/"
 _ghurl="https://github.com/AnalyseDeCircuit/oxideterm"
@@ -14,20 +14,20 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'gstreamer'
-    'alsa-lib'
-    'libxkbcommon'
-    'gst-plugins-base-libs'
-    'dbus'
-    'libxcb'
-    'libxkbcommon-x11'
-    'libappindicator'
-    'libayatana-appindicator'
+	'gstreamer'
+	'alsa-lib'
+	'libxkbcommon'
+	'gst-plugins-base-libs'
+	'dbus'
+	'libxcb'
+	'libxkbcommon-x11'
+	'libappindicator'
+	'libayatana-appindicator'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_x64.deb")
-sha256sums_aarch64=('3131c523739c95e451dbf34f88567ca0dfb52814a85c801880832836f55e2243')
-sha256sums_x86_64=('a82232e42146cb55b9550029940e68f87c4b27a15a83dc914feca9a073a623ed')
+sha256sums_aarch64=('2ea572fc43d5816274b85e89383e138b274e3e58e91d5b47f0c0c0365c9f3b1f')
+sha256sums_x86_64=('3242a29dc74d7f4b9afffa31e6b45ec89d866f3ae496f19db26d4835d2756e09')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
@@ -40,17 +40,17 @@ _install_icons() {
 	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
-    bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}-native/${pkgname%-bin}-native/g" "${srcdir}/usr/share/applications/com.${pkgname%-bin}.app.desktop"
-    local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x86_64 || echo aarch64)
+	bsdtar -xf "${srcdir}/data."*
+	sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/com.${pkgname%-bin}.app.desktop"
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x86_64 || echo aarch64)
 	find "${srcdir}/opt/${pkgname%-bin}" -type f \
 		\( -name '*darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
 		-prune -exec rm -rf {} +
 }
 package() {
-    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
-    cp -a "${srcdir}/opt/${pkgname%-bin}/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}-native" "${pkgdir}/usr/bin/${pkgname%-bin}-native"
-    _install_icons
-    install -Dm644 "${srcdir}/usr/share/applications/com.${pkgname%-bin}.app.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+	install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
+	cp -a "${srcdir}/opt/${pkgname%-bin}/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}-native" "${pkgdir}/usr/bin/${pkgname%-bin}-native"
+	_install_icons
+	install -Dm644 "${srcdir}/usr/share/applications/com.${pkgname%-bin}.app.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
