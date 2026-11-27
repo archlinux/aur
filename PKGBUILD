@@ -1,46 +1,42 @@
-# Maintainer: Jacob Errington <archlinux@mail.jerrington.me>
+# Maintainer: TheElevatedOne <adam.mlady@elevated.ovh>
+
 pkgname=beluga-git
-pkgver=v0.8.1.r190.3d50c74
+_pkgname=beluga
+pkgver=1.2.0_r1_ga5d34a4
 pkgrel=1
-pkgdesc="Beluga is a functional programming language designed for reasoning about formal systems. It features direct support for object-level binding constructs using higher order abstract syntax and treats contexts as first class objects."
-arch=(x86_64)
-url="http://complogic.cs.mcgill.ca/beluga/"
-license=('GPL')
-groups=()
-depends=(ocaml ulex camlp4 ocaml-extlib)
-makedepends=(git omake)
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
-source=('git+https://github.com/Beluga-lang/Beluga.git#branch=master')
-noextract=()
-md5sums=('SKIP')
-optdepends=('rlwrap: nice line wrapping')
+pkgdesc='File manager written with plain GTK 4, a rewrite of KDE Dolphin without Qt or KDE Frameworks (git version)'
+arch=('x86_64' 'aarch64')
+url='https://github.com/TheElevatedOne/beluga'
+license=('GPL-2.0-or-later')
+depends=('gcc-libs' 'glibc' 'glib2' 'gtk4' 'gdk-pixbuf2' 'pango' 'cairo' 'libarchive' 'ffmpeg')
+makedepends=('git' 'cmake' 'pkgconf' 'gettext')
+optdepends=('udisks2: drives and partitions in the Places panel'
+            'tumbler: previews of videos and documents'
+            'gvfs: network locations such as sftp:// and smb://'
+            'xdg-desktop-portal: Beluga as the file chooser of other programs'
+            'polkit: View › Act as Administrator (with a polkit agent)')
+provides=('beluga')
+conflicts=('beluga')
+source=("$_pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/Beluga"
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
-
-prepare() {
-    mv "$srcdir/Beluga" "$srcdir/${pkgname%-git}"
-    cd "$srcdir/${pkgname%-git}"
+  cd "$_pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/_/g'
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
-    make
-}
-
-check() {
-    :
+  cmake -B build -S "$_pkgname" \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBELUGA_FFMPEG=ON \
+    -Wno-dev
+  cmake --build build
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
-    mkdir -p "$pkgdir/usr/bin"
-    cp bin/beluga "$pkgdir/usr/bin/beluga"
+  DESTDIR="$pkgdir" cmake --install build
+  cd "$_pkgname"
+  install -Dm644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
