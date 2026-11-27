@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggmanh
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5b5da1cde85353e5ef8d1357c4eb33cc')
-b2sums=('c77e9ee99fad1a5f92ab43bd7eb1b4ddfe6d2fec0388ce53d37acb99d04e22e588d3989f0a05813bde13fd12fc146e1a5e8468e2d0b035d4c7ba98da233d91eb')
+md5sums=('f3f5281a614bcfa1070a31c51fa24511')
+b2sums=('16d0c88e3cf85bcbbdb1f92490a9b999e25f7fd1d090234d08ccef90f92634898bab3d4a932b8f3bd45e108849f57d3dd33cb6fefb6afacace02fc97775ac2f8')
 
 build() {
   mkdir build
