@@ -3,8 +3,8 @@ pkgname=pulsar-git
 _pkgname=Pulsar
 _debname="dev.${pkgname%-git}_edit.${_pkgname}"
 pkgver=1.131.2.r149.g524932a
-_electronversion=32
-_nodeversion=20
+_electronversion=37
+_nodeversion=22
 pkgrel=1
 pkgdesc="A Community-led Hyper-Hackable Text Editor, Forked from Atom, built on Electron."
 arch=('any')
@@ -14,78 +14,102 @@ license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
-    "electron${_electronversion}"
-    'nodejs'
-    'python-packaging'
-    'ruby'
-    'python'
-    'python-typing_extensions'
-    'perl'
-    'libsecret'
-    'libxkbfile'
+	"electron${_electronversion}"
+	'nodejs'
+	'python-packaging'
+	'ruby'
+	'python'
+	'python-typing_extensions'
+	'perl'
+	'libsecret'
+	'libxkbfile'
 )
 makedepends=(
-    'npm'
-    'nvm'
-    'git'
-    'yarn'
-    'jq'
-    'python-setuptools'
-    'python'
-    'python-setuptools'
-    'openssl'
-    'libssh2'
-    'libx11'
-    'libxkbfile'
-    'libsecret'
-    'libxkbcommon'
-    'ncurses'
-    'libffi'
-    'bzip2'
-    'zlib'
-    'tk'
-    'sqlite'
+	'npm'
+	'nvm'
+	'git'
+	'yarn'
+	'jq'
+	'python-setuptools'
+	'python'
+	'python-setuptools'
+	'openssl'
+	'libssh2'
+	'libx11'
+	'libxkbfile'
+	'libsecret'
+	'libxkbcommon'
+	'ncurses'
+	'libffi'
+	'bzip2'
+	'zlib'
+	'tk'
+	'sqlite'
 )
 source=(
-    "${pkgname%-git}.git::git+${_ghurl}"
-    "${pkgname%-git}.sh"
+	"${pkgname%-git}.git::git+${_ghurl}"
+	"${pkgname%-git}.js"
+	"${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+            '4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b'
+            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_project_dir() {
-	local d
-	while IFS= read -r d; do
-		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
-	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+	local _d _f _t _bt= _best= _bs=0
+	while IFS= read -r _d; do
+		_t=$(jq -er '((.dependencies // {}) + (.devDependencies // {}) + (.optionalDependencies // {}) + (.peerDependencies // {})) as $a
+			| select([$a | keys[] | select(test("^(electron|@electron-forge/|@electron/)"))] | length > 0)
+			| if (.devDependencies // {}) | has("@electron-forge/cli") then "electron-forge"
+			elif (.devDependencies // {}) | has("electron-builder") then "electron-builder"
+			elif (.devDependencies // {}) | has("electron-packager") then "electron-packager"
+			elif (.build | type) == "object" then "electron-builder" else "" end' "${_d}/package.json" 2>/dev/null) || continue
+		for _f in "${_d}"/forge.config.*; do [[ -e ${_f} ]] && _t=electron-forge; done
+		for _f in "${_d}"/electron-builder.{yml,yaml,json,json5,toml}; do [[ -e ${_f} ]] && _t=electron-builder; done
+		(( 1 + (${#_t} > 0) > _bs )) && { _best=${_d}; _bt=${_t}; _bs=$((1 + (${#_t} > 0))); }
+	done < <(find "${srcdir}" \( -name '.*' -o -name node_modules \) -prune -o -type f -name package.json -printf '%h\n' 2>/dev/null)
+	[[ -n ${_best} ]] || { echo "ERROR: no package.json depending on electron under ${srcdir}" >&2; return 1; }
+	[[ ${1} == tool ]] && printf '%s\n' "${_bt}" || printf '%s\n' "${_best}"
 }
 pkgver() {
-    cd "$(_get_project_dir)"
-    set -o pipefail
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$(_get_project_dir)" || return 1
+	local _t=$(git tag --list --sort=-v:refname | grep -m1 -E '^v?[0-9]+(\.[0-9]+)+(-[0-9A-Za-z][0-9A-Za-z.-]*)?$' || :)
+	local _n=$(git rev-list --count "${_t:+$_t..}HEAD") _s=$(git rev-parse --short=7 HEAD) _v=${_t#v}; _v=${_v//-/_}
+	[[ -n $_t ]] && printf '%s.r%s.g%s\n' "$_v" "$_n" "$_s" || printf 'r%s.%s\n' "$_n" "$_s"
 }
 _ensure_local_nvm() {
-    local NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodeversion}"
-    nvm use "${_nodeversion}"
+	local NVM_DIR="${srcdir}/.nvm"
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+	nvm install "${_nodeversion}"
+	nvm use "${_nodeversion}"
 }
 _get_app_dir() {
-	find "${srcdir}" -type d -name "*-unpacked" -print 2>/dev/null | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _get_electron_version() {
-	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
-		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
-	[[ -z "${_elec_ver}" ]] && return 1
-	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	local _v=$(find "$(_get_project_dir)" -name package.json ! -path '*/node_modules/*' -exec jq -r '.. | (.electron? // empty) | strings' {} + 2>/dev/null | sed 's/^[^0-9]*//' | grep -E '^[0-9]' | head -1 | sed 's/\..*//')
+	_v=${_v:-$(grep -hoE 'electron[@":][^0-9]*[0-9]+\.[0-9.]+' "$(_get_project_dir)"/*lock* 2>/dev/null | grep -oE '[0-9]+\.[0-9.]+' | head -1 | sed 's/\..*//')}
+	[[ "$_v" =~ ^[0-9] ]] || return 1
+	(( ${_v} == _electronversion )) && echo -e "\033[1;32mElectron version: ${_v}\033[0m" || echo -e "\033[1;31mElectron version: ${_v} (expected ${_electronversion})\033[0m"
 }
-_set_build_env() {
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+}
+_set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export ELECTRON_BUILDER_OFFLINE=true
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+}
+_set_yarn_build_env() {
 	export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
@@ -95,16 +119,8 @@ _set_build_env() {
 	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
 	export COREPACK_HOME="${HOME}/.corepack"
 	export npm_config_registry="${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}"
-	export PYTHON=/usr/bin/python3
-	export npm_config_python=/usr/bin/python3
-	export npm_config_build_from_source=true
-	export JOBS="$(nproc)"
-	export CC=/usr/bin/gcc
-	export CXX=/usr/bin/g++
-	export CFLAGS="${CFLAGS:-} -w"
-	export CXXFLAGS="${CXXFLAGS:-} -w"
 	local _yarnver _yarnmajor=0
-	_yarnver="$(node -p "require('./package.json').packageManager?.split('@')[1]?.split('-')[0] || ''" 2>/dev/null)"
+	_yarnver="$(node -p "try { require('./package.json').packageManager?.split('@')[1]?.split('-')[0] || '' } catch { '' }" 2>/dev/null || true)"
 	_yarnmajor="${_yarnver%%.*}"
 	_yarnmajor="${_yarnmajor:-0}"
 	if [[ "${_yarnmajor}" -ge 2 ]] 2>/dev/null || [[ -f .yarnrc.yml ]]; then
@@ -119,7 +135,12 @@ _set_build_env() {
 		export YARN_HTTP_TIMEOUT=600000
 		export YARN_HTTP_RETRY=5
 		export YARN_NPM_REGISTRY_SERVER="${YARN_NPM_REGISTRY_SERVER:-${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}}"
-		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${COREPACK_HOME}"
+		local _yarnhome="${HOME}/.yarn/install"
+		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${COREPACK_HOME}" "${_yarnhome}"
+		if [[ -n "${_yarnver}" ]]; then
+			npm install -g "@yarnpkg/cli-dist@${_yarnver}" --prefix "${_yarnhome}" --registry "${npm_config_registry}"
+			export PATH="${_yarnhome}/bin:${PATH}"
+		fi
 	else
 		export YARN_GLOBAL_FOLDER="${HOME}/.yarn/global"
 		export YARN_LINK_FOLDER="${HOME}/.yarn/link"
@@ -130,74 +151,79 @@ _set_build_env() {
 		export YARN_IGNORE_ENGINES=true
 		export YARN_PRODUCTION=false
 		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${YARN_LINK_FOLDER}" "${YARN_TEMP_FOLDER}" "${COREPACK_HOME}"
+		export YARN_REGISTRY="${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}"
 	fi
 	local _reg="${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}"
 	_reg="${_reg%/}"
-	if [[ -f .yarnrc ]]; then
-		sed -i "s|^registry .*|registry \"${_reg}\"|" .yarnrc
+	if [[ -f yarn.lock ]] && grep -q 'registry.yarnpkg.com' yarn.lock; then
+		sed -i "s|https://registry.yarnpkg.com/|${_reg}/|g" yarn.lock
 	fi
 }
+_generate_icons() {
+	local _sizes=(16 24 32 48 64 96 128 256 512 1024) _src="$(_get_project_dir)/resources/app-icons/beta.png" _s
+	for _s in "${_sizes[@]}"; do
+		install -d "${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps"
+		magick "${_src}" -background none -filter Lanczos -resize "${_s}x${_s}" \
+			-strip -define png:compression-level=9 \
+			"${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps/${pkgname%-git}.png"
+	done
+}
 prepare() {
-    cd "$(_get_project_dir)"
-    _get_electron_version
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_pkgname}/
-    " "${srcdir}/${pkgname%-git}.sh"
-    _ensure_local_nvm
-    _set_build_env
-    sed -i -e "
-        /'appimage'/d
-        /'deb'/d
-        /'rpm'/d
-        s/'tar.gz'/'dir'/g
-        /^let options = {/a\\  electronDist: '${ELECTRON_DIST}',
-    " script/electron-builder.js
-    # Fix: less/dist is needed at runtime for less-cache to compile stylesheets
-    sed -i 's/"!\*\*\/less\/dist"/\/\/ "!**\/less\/dist"/' script/electron-builder.js
-    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
-    sed -i "s/${_debname}/${pkgname%-git}/g" "resources/linux/${_debname}.metainfo.xml"
-    sed -i -e "
-        s/<\%\= appName \%>/${_pkgname}/g
-        s/<\%\= description \%>/${pkgdesc}/g
-        s/<\%\= installDir \%>\/bin\/<\%\= appFileName \%> --no-sandbox/${pkgname%-git}/
-        s/<\%\= iconPath \%>/${pkgname%-git}/
-    " "resources/linux/${pkgname%-git}.desktop.in"
-    git submodule update --depth=1 --init --recursive
-    find "$(_get_project_dir)" -type f -name "yarn.lock" -exec rm -rf {} +
-    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
-    export NODE_ENV=development
-    yarn install --ignore-engines
+	cd "$(_get_project_dir)"
+	_get_electron_version
+	sed -i -e "
+		s/@electronversion@/${_electronversion}/g
+		s/@appname@/${pkgname%-git}/g
+	" "${srcdir}/${pkgname%-git}.sh"
+	_ensure_local_nvm
+	_set_electron_build_env
+	_set_yarn_build_env
+	sed -i -e "
+		/'appimage'/d
+		/'deb'/d
+		/'rpm'/d
+		s/'tar.gz'/'dir'/g
+		/^let options = {/a\\  electronDist: '${ELECTRON_DIST}',
+	" script/electron-builder.js
+	# Fix: less/dist is needed at runtime for less-cache to compile stylesheets
+	sed -i 's/"!\*\*\/less\/dist"/\/\/ "!**\/less\/dist"/' script/electron-builder.js
+	jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
+	sed -i "s/${_debname}/${pkgname%-git}/g" "resources/linux/${_debname}.metainfo.xml"
+	sed -i -e "
+		s/<\%\= appName \%>/${_pkgname}/g
+		s/<\%\= description \%>/${pkgdesc}/g
+		s/<\%\= installDir \%>\/bin\/<\%\= appFileName \%> --no-sandbox/${pkgname%-git}/
+		s/<\%\= iconPath \%>/${pkgname%-git}/
+	" "resources/linux/${pkgname%-git}.desktop.in"
+	git submodule update --depth=1 --init --recursive
+	find "$(_get_project_dir)" -type f -name "yarn.lock" -exec rm -rf {} +
+	export NODE_ENV=development
+	yarn install --ignore-engines
 }
 build() {
-    cd "$(_get_project_dir)"
-    _ensure_local_nvm
-    _set_build_env
-    export NODE_ENV=production
-    export TMPDIR="${srcdir}"
-    yarn build
-    yarn build:apm
-    # Fix: git-utils binding.gyp missing net.c on Linux (causes undefined symbol: git_net_url_dispose)
-    # net.c is only in Windows sources but netops.c (in common sources) calls git_net_url_dispose from net.c
-    sed -i "/netops\.c/a\\        'deps/libgit2/src/net.c'," ppm/node_modules/git-utils/binding.gyp
-    cd ppm/node_modules/git-utils && npm rebuild
-    cd "$(_get_project_dir)"
-    yarn dist
+	cd "$(_get_project_dir)"
+	_ensure_local_nvm
+	_set_electron_build_env
+	_set_yarn_build_env
+	export NODE_ENV=production
+	export TMPDIR="${srcdir}"
+	yarn build
+	yarn build:apm
+	# Fix: git-utils binding.gyp missing net.c on Linux (causes undefined symbol: git_net_url_dispose)
+	# net.c is only in Windows sources but netops.c (in common sources) calls git_net_url_dispose from net.c
+	sed -i "/netops\.c/a\\        'deps/libgit2/src/net.c'," ppm/node_modules/git-utils/binding.gyp
+	cd ppm/node_modules/git-utils && npm rebuild
+	cd "$(_get_project_dir)"
+	yarn dist
+	_delete_other_arch_files
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	local _app_dir="$(_get_app_dir)"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
-    rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
-    local _src="$(_get_project_dir)"
-    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 384x384)
-	for _icons in "${_icon_sizes[@]}";do
-		install -Dm644 "${_src}/resources/icons/${_icons}.png" \
-			"${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
-	done
-    install -Dm644 "${_src}/resources/linux/${pkgname%-git}.desktop.in" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
-    install -Dm644 "${_src}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+	install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+	_generate_icons
+	install -Dm644 "$(_get_project_dir)/resources/linux/${pkgname%-git}.desktop.in" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+	install -Dm644 "$(_get_project_dir)/resources/linux/${_debname}.metainfo.xml" -t "${pkgdir}/usr/share/metainfo/${pkgname%-git}.metainfo.xml"
+	install -Dm644 "$(_get_project_dir)/resources/linux/${pkgname%-git}.metainfo.xml" -t "${pkgdir}/usr/share/metainfo/${pkgname%-git}.metainfo.xml"
+	install -Dm644 "$(_get_project_dir)/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
