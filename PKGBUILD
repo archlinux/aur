@@ -1,7 +1,7 @@
 # Maintainer: Sphericalkat <aur@kat.bio>
 
 pkgname=wheatley-cli
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Self-hosted, always-on personal AI assistant: daemon, CLI, and dashboard'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm')
 provides=('wheatley')
 source=("https://github.com/SphericalKat/wheatley/releases/download/v${pkgver}/wheatley-ai-cli-${pkgver}.tgz")
 noextract=("wheatley-ai-cli-${pkgver}.tgz")
-sha256sums=('70894463dc649bec5b1c208f1552b26af76084e80ab17b225955944d9b50e302')
+sha256sums=('edf40dcac98be9e94408d5892efd3fd47f2d42af156686927cea62c1eb583fd0')
 
 package() {
   npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/wheatley-ai-cli-${pkgver}.tgz"
