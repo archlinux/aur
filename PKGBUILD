@@ -6,7 +6,7 @@ _vui_commit=8dc96c204bf0554476063974fa66b6cba6abd19c
 
 pkgname=open-wallpaper-engine
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
 url=https://github.com/waywallen/open-wallpaper-engine
@@ -71,7 +71,8 @@ build() {
     # error: private field 'frame_index_' is not used [-Werror,-Wunused-private-field]
     CXXFLAGS+=" -Wno-error=undefined-var-template -Wno-error=unused-private-field"
 
-    lito -C "$pkgname" build --profile plain --use-env-flags
+    lito -C "$pkgname" build --profile plain --use-env-flags \
+        --features waywallen
 }
 package() {
     lito -C "$pkgname" install --profile plain --no-build --prefix="$pkgdir/usr" \
