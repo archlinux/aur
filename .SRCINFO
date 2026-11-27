@@ -1,7 +1,7 @@
 pkgbase = telescope-webcam-bin
 	pkgdesc = Use your Android phone as a webcam on Linux
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LunarKittyy/Telescope
 	arch = x86_64
 	license = AGPL-3.0-only
