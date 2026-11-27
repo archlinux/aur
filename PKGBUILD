@@ -3,7 +3,7 @@
 pkgbase=lucide-font
 pkgname=({eot,ttf,woff,woff2}-"${pkgbase}")
 _fontname=Lucide
-pkgver=1.81.0
+pkgver=1.82.0
 pkgrel=1
 pkgdesc='Beautiful & consistent icon toolkit made by the community.'
 arch=("any")
@@ -11,24 +11,24 @@ url="https://lucide.dev"
 _ghurl="https://github.com/lucide-icons/lucide"
 license=('ISC')
 source=(
-    "${pkgbase}-${pkgver}.zip::${_ghurl}/releases/download/${pkgver}/${pkgbase}-${pkgver}.zip"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/lucide-icons/lucide/${pkgver}/LICENSE"
+	"${pkgbase}-${pkgver}.zip::${_ghurl}/releases/download/${pkgver}/${pkgbase}-${pkgver}.zip"
+	"LICENSE-${pkgver}::https://raw.githubusercontent.com/lucide-icons/lucide/${pkgver}/LICENSE"
 )
-sha256sums=('17f7712eb5d8ca66a8de8b5bd35c971b7c0b617d9d7ba7be4d344a29f0ef3116'
+sha256sums=('2b9b3d15bdea80fa358f972d4cf3e65c387fbb23fec5a40088f76d44208f4cb7'
             'b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57')
 function _package {
-    local _pkgname=$1
-    local ext="${_pkgname%%-*}"
-    cd "${srcdir}/${pkgbase}"
-    local fonts=("${pkgbase%-font}.${ext}")
-    local installdir="${ext^^}"
-    install -Dm755 -d "${pkgdir}/usr/share/fonts/${installdir}"
-    local font
-    for font in "${fonts[@]}"; do
-        install -Dm644 "${font}" "${pkgdir}/usr/share/fonts/${installdir}"
-    done
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	local _pkgname=$1
+	local ext="${_pkgname%%-*}"
+	cd "${srcdir}/${pkgbase}"
+	local fonts=("${pkgbase%-font}.${ext}")
+	local installdir="${ext^^}"
+	install -Dm755 -d "${pkgdir}/usr/share/fonts/${installdir}"
+	local font
+	for font in "${fonts[@]}"; do
+		install -Dm644 "${font}" "${pkgdir}/usr/share/fonts/${installdir}"
+	done
+	install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 for _pkgname in "${pkgname[@]}"; do
-    eval "function package_${_pkgname}() { _package ${_pkgname}; }"
+	eval "function package_${_pkgname}() { _package ${_pkgname}; }"
 done
