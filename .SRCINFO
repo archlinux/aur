@@ -1,0 +1,50 @@
+pkgbase = libfprint-fte3600-git
+	pkgdesc = libfprint with FTE3600 SPI fingerprint support, DKMS glue, and toolkit
+	pkgver = 1.94.100.r94
+	pkgrel = 1
+	url = https://github.com/wings1848/libfprint-fte3600
+	install = fte3600.install
+	arch = x86_64
+	groups = fprint
+	license = LGPL-2.1-or-later
+	license = GPL-2.0-only
+	license = MIT
+	checkdepends = umockdev
+	checkdepends = dbus
+	checkdepends = desktop-file-utils
+	makedepends = cairo
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = ninja
+	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = libgcc
+	depends = glib2
+	depends = glibc
+	depends = libgudev
+	depends = libgusb
+	depends = openssl
+	depends = pixman
+	depends = dkms
+	depends = python
+	depends = python-gobject
+	optdepends = fprintd: enrollment and authentication service
+	optdepends = linux-headers: build the module for the standard Arch kernel
+	optdepends = linux-lts-headers: build the module for the LTS kernel
+	optdepends = gtk4: desktop GUI (fte3600-toolkit-gui)
+	optdepends = libadwaita: desktop GUI (fte3600-toolkit-gui)
+	optdepends = libnotify: desktop notifications during enrollment/verification
+	optdepends = libpulse: audio cues via paplay
+	provides = libfprint=1.94.100.r94
+	provides = libfprint-2.so=2-64
+	conflicts = libfprint
+	conflicts = libfprint-fte3600-personal-git
+	options = !lto
+	source = libfprint::git+https://github.com/wings1848/libfprint-fte3600.git#branch=main
+	sha256sums = SKIP
+
+pkgname = libfprint-fte3600-git
