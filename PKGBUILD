@@ -1,41 +1,54 @@
 # Maintainer: Dexoron <main@dexoron.tech>
 pkgname=codemotion-bin
-pkgver=0.0.9.4
+pkgver=0.0.12_alpha
 pkgrel=1
-pkgdesc="CodeMotion - IDE for web-developers (binary)"
+pkgdesc="Web-focused code editor and IDE for web developers"
 arch=('x86_64')
 url="https://github.com/cdmtn/CodeMotion"
 license=('MIT')
 depends=(
+  'c-ares'
+  'ffmpeg'
   'gtk3'
-  'libnotify'
-  'nss'
+  'http-parser'
+  'libevent'
+  'libvpx'
+  'libxslt'
   'libxss'
-  'libxtst'
-  'xdg-utils'
-  'at-spi2-core'
-  'util-linux'
-  'libsecret'
+  'minizip'
+  'nss'
+  're2'
+  'snappy'
+  'libnotify'
+  'libappindicator-gtk3'
 )
 provides=('codemotion')
 conflicts=('codemotion')
 options=('!strip' '!debug')
 
+_upstreamver=0.0.12-alpha
 source=(
-  "codemotion-${pkgver}.tar.gz::https://github.com/cdmtn/CodeMotion/releases/download/v${pkgver}/codemotion-app-0.0.9-alpha.dev.tar.gz"
-  "codemotion.desktop"
+  "codemotion-${_upstreamver}.pacman::https://github.com/cdmtn/CodeMotion/releases/download/v0.0.12/codemotion-${_upstreamver}.pacman"
+  "LICENSE::https://raw.githubusercontent.com/cdmtn/CodeMotion/v0.0.12/LICENSE"
 )
-sha256sums=('8d22ced35388fd2b31c9e8fde786aee7c92b58c486a9d0291027f0846ce3b60c'
-  '1d14cc45fad1a7018f04fb691b069edcee84ef1a0b35971c50d08514bb85ff82')
+sha256sums=(
+  '8d02c1c6822661abf9b5507e9ab4ca4fdeb50a7300b629129529a89c8d66ffbe'
+  '97593e59237bde01858ef0b56db70649c8b14675a3768e39b448070c42a7189e'
+)
 
 package() {
-  install -dm755 "${pkgdir}/opt/codemotion"
-  cp -r "${srcdir}/codemotion-app-0.0.9-alpha.dev/"* "${pkgdir}/opt/codemotion/"
+  bsdtar -xf "$srcdir/codemotion-${_upstreamver}.pacman" -C "$pkgdir" \
+    --exclude '.PKGINFO' \
+    --exclude '.MTREE' \
+    --exclude '.INSTALL'
 
-  chmod 4755 "${pkgdir}/opt/codemotion/chrome-sandbox"
+  chmod 4755 "$pkgdir/opt/CodeMotion/chrome-sandbox"
 
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -s /opt/codemotion/codemotion-app "${pkgdir}/usr/bin/codemotion"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/codemotion" <<'EOF'
+#!/bin/sh
+exec /opt/CodeMotion/codemotion-app "$@"
+EOF
 
-  install -Dm644 "${srcdir}/codemotion.desktop" "${pkgdir}/usr/share/applications/codemotion.desktop"
+  install -Dm644 "$srcdir/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
