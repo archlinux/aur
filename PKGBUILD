@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=agentrq-bin
-pkgver=0.19.4
+pkgver=0.19.11
 pkgrel=1
 pkgdesc="Human-in-the-loop realtime task manager for AI agents"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/agentrq_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/agentrq_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('ee5fa0f460b1ba383dd54cbd5044c11456da086f7c84feba7d575d694698d591')
-sha256sums_aarch64=('9ca15c357ff3cc10666c4a6e890fe45958642b3c2365e1e31e0710e2434ed08d')
+sha256sums_x86_64=('b3b968db38c6dc3361a70ba68ae867c683b58f9cbe21ffa116a84e82c8feb8b6')
+sha256sums_aarch64=('d450e20e9fda3f3ea3439d92d16d3b7f9b757ad006a4e7aba9a6af9f2c108a48')
 
 package() {
   local _dir
