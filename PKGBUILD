@@ -1,13 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 
-# PKGBUILD for building on the Open Build Service.
-#
-# OBS build VMs have no network, so every source has to be present in the
-# package's OBS sources before the build starts. This consumes the Debian
-# native tarball that release builds commit to debs/ - it carries the complete
-# source tree - instead of fetching a GitHub tarball the way aur/PKGBUILD does.
-#
-# Keep pkgver in step with debian/changelog: it names the tarball.
+# release.sh updates the GitHub tag archive and checksum for each AUR release.
 
 pkgname=mx-packageinstaller
 pkgver=26.10
@@ -22,9 +15,7 @@ optdepends=("paru: AUR helper for AUR tab operations and Snap setup (snapd is bu
 source=("https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.10.tar.gz")
 sha256sums=('965485300ab1ec41f9235f9aaf13618efe9896ee0322985e090020c87b07775b')
 
-# dpkg-source packed this tarball from a directory called "src", so that - not
-# ${pkgname}-${pkgver} - is what it unpacks to.
-_srcdir="mx-packageinstaller-26.10"
+_srcdir="${pkgname}-${pkgver}"
 
 build() {
   cd "${srcdir}/${_srcdir}"
