@@ -1,14 +1,18 @@
 pkgbase = gridplayer-appimage
 	pkgdesc = Simple VLC-based media player that can play multiple videos at the same time.
-	pkgver = 0.5.5
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/vzhd1701/gridplayer
+	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-or-later
-	provides = gridplayer=0.5.5
+	depends = hicolor-icon-theme
+	provides = gridplayer=0.6.0
 	conflicts = gridplayer
 	options = !strip
-	source = gridplayer-0.5.5-x86_64.AppImage::https://github.com/vzhd1701/gridplayer/releases/download/v0.5.5/GridPlayer-0.5.5-x86_64.AppImage
-	sha256sums = 0d04c55bfb494de879f18a83f5b061726ae25533662b42109400f7e6463444eb
+	source_aarch64 = gridplayer-0.6.0-aarch64.AppImage::https://github.com/vzhd1701/gridplayer/releases/download/v0.6.0/GridPlayer-0.6.0-aarch64.AppImage
+	sha256sums_aarch64 = abfeb9405172d5ee9124024beaaec57b80a0e5b1ccdae5dfeebeacc4ace00653
+	source_x86_64 = gridplayer-0.6.0-x86_64.AppImage::https://github.com/vzhd1701/gridplayer/releases/download/v0.6.0/GridPlayer-0.6.0-x86_64.AppImage
+	sha256sums_x86_64 = 5f105360f7bce75c6189772b56f993b024759f8fe3c5a67cb0bcbfafcb34f949
 
 pkgname = gridplayer-appimage
