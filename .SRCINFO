@@ -1,6 +1,6 @@
 pkgbase = hedos-bin
 	pkgdesc = A terminal shelf for the local AI models already on your machine
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/theiskaa/hedos
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = hedos-bin
 	provides = hedos
 	conflicts = hedos
 	options = !debug
-	source_x86_64 = hedos-bin-1.6.1-x86_64.tar.xz::https://github.com/theiskaa/hedos/releases/download/v1.6.1/hedos-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 14efc11708724282cf72a5aab2ccf6e019cad656f5413d0adce3a1d9f3d2d81f
-	source_aarch64 = hedos-bin-1.6.1-aarch64.tar.xz::https://github.com/theiskaa/hedos/releases/download/v1.6.1/hedos-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 22f2fce1ca54a4179aaece13a91a1e0d17c31bd96b260347d9cae6d0778f052c
+	source_x86_64 = hedos-bin-1.6.2-x86_64.tar.xz::https://github.com/theiskaa/hedos/releases/download/v1.6.2/hedos-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 1e174c75267fb120434ad34f22aae383b78093aab66ef3e1ecbd6a88c603dca5
+	source_aarch64 = hedos-bin-1.6.2-aarch64.tar.xz::https://github.com/theiskaa/hedos/releases/download/v1.6.2/hedos-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = bbde31feea536973538f057f9696a56642bc5e668471a38a98158038a2e4afd4
 
 pkgname = hedos-bin
