@@ -1,21 +1,21 @@
 pkgbase = ears-llm-bin
 	pkgdesc = OpenAI-compatible transcript clean-up server for ears, backed by llama.cpp
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/dvjn/ears
 	install = ears-llm-bin.install
 	arch = x86_64
 	license = MIT
-	depends = llama-cpp=0.6.0
-	depends = ggml=0.26.0
+	depends = vulkan-icd-loader
 	depends = gcc-libs
 	depends = glibc
-	optdepends = ggml-cuda: NVIDIA GPU acceleration
-	optdepends = ggml-vulkan: Vulkan GPU acceleration
+	optdepends = nvidia-utils: Vulkan driver for NVIDIA GPUs
+	optdepends = vulkan-radeon: Vulkan driver for AMD GPUs
+	optdepends = vulkan-intel: Vulkan driver for Intel GPUs
 	provides = ears-llm
 	conflicts = ears-llm
 	options = !debug
-	source = https://github.com/dvjn/ears/releases/download/v0.3.0/ears-llm-0.3.0-x86_64.tar.gz
-	sha256sums = a4f5cf73353033bfd332698473b23b03cabea1218a33c71e131f9feb48f8c310
+	source = https://github.com/dvjn/ears/releases/download/v0.4.0/ears-llm-0.4.0-x86_64.tar.gz
+	sha256sums = aee0724c6e1fcdef789b125cde3e03d0d9f2087c55b9160babfe79b7583c5415
 
 pkgname = ears-llm-bin
