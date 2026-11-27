@@ -1,6 +1,6 @@
 pkgbase = r-seqarray
 	pkgdesc = Data management of large-scale whole-genome sequence variant calls
-	pkgver = 1.52.1
+	pkgver = 1.54.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SeqArray
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-seqarray
 	optdepends = r-runit
 	optdepends = r-snprelate
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SeqArray_1.52.1.tar.gz
-	sha256sums = 608110b51203c4de34fcf5d9248efa2e4007c15a2db05098108b6694fb914d03
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SeqArray_1.54.0.tar.gz
+	sha256sums = acf345244d1da70fc39f64c9db8b6dbce6607ee02ed02f06d28149c181a7a03c
 
 pkgname = r-seqarray
