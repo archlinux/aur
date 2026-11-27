@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=arcane-cli-bin
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Official command line interface for Arcane, modern Docker management (prebuilt)'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
@@ -14,10 +14,10 @@ source_x86_64=("arcane-cli-${pkgver}-x86_64.tar.gz::${_release}/arcane-cli_linux
 source_aarch64=("arcane-cli-${pkgver}-aarch64.tar.gz::${_release}/arcane-cli_linux_arm64.tar.gz")
 source_armv7h=("arcane-cli-${pkgver}-armv7h.tar.gz::${_release}/arcane-cli_linux_armv7.tar.gz")
 source_riscv64=("arcane-cli-${pkgver}-riscv64.tar.gz::${_release}/arcane-cli_linux_riscv64.tar.gz")
-sha256sums_x86_64=('acde64dd421f991c258dd9ef6cee4500e0ea3c1a4472b0e76ef5fbb647259d61')
-sha256sums_aarch64=('b3c74b45ebfe3a729b67ad0cdfa6b6667b75a8612d7b3a2af1e62181dede4642')
-sha256sums_armv7h=('3b2cad7832f797d5d404888e9b4e57b5ca08821d953564686a534f6ae8b2b9c7')
-sha256sums_riscv64=('c4a82757ea2fd394f5194de84547651c81fad6b3a291e82be347da067ce59a76')
+sha256sums_x86_64=('527adef65cca258b29783898615d6b1d1edbebd6511c70f626456fd148895bde')
+sha256sums_aarch64=('3513d28a917b1baabfa6a3e5dba4a828b871af222148008c410e94eec8c7ea49')
+sha256sums_armv7h=('652066817a5aa6a0afea5ee7e15fcde685c4676dcfcd106cda560cb8be174bd8')
+sha256sums_riscv64=('c36034b9385642566bbdf3738ca97ae9be3fd3f6f4f4bc06bdd7f9355e856c63')
 
 build() {
   for shell in bash fish zsh; do
