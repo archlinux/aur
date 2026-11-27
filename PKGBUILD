@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=axonops-workbench-bin
 _pkgname=AxonOps.Workbench
-pkgver=1.2.5
+pkgver=1.2.6
 _electronversion=44
 pkgrel=1
 pkgdesc="A powerful, free, and open-source desktop application designed specifically for Cassandra developers and DBAs."
 arch=(
-    'aarch64'
-    'x86_64'
+	'aarch64'
+	'x86_64'
 )
 url="https://axonops.com/"
 _ghurl="https://github.com/axonops/axonops-workbench-cassandra"
@@ -15,24 +15,24 @@ license=('Apache-2.0')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}"
-    'libsecret'
-    'python'
-    'nodejs'
+	"electron${_electronversion}"
+	'libsecret'
+	'python'
+	'nodejs'
 )
 options=(
-    '!emptydirs'
+	'!emptydirs'
 )
 source=(
-    "${pkgname%-bin}.js"
-    "${pkgname%-bin}.sh"
+	"${pkgname%-bin}.js"
+	"${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
-sha256sums=('b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b'
+sha256sums=('4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b'
             '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
-sha256sums_aarch64=('17d7f27f72c61072c13951f8503149a31e3cc9d81a9d7dd68b5a92cc547e2757')
-sha256sums_x86_64=('09f4719fb469f27a352f162db2d308bc4e7b0063a64475ac40335a4f0a9fc7e8')
+sha256sums_aarch64=('33a0eb2c49818414641ef70eaa7dcb6c8d32ebe398af61bd662c8882251bf78d')
+sha256sums_x86_64=('33d0b702530c29839553ed9f1d5f2a8f7552e498c2a950d08a92964002677ea3')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -68,22 +68,22 @@ _delete_other_arch_files() {
 	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 prepare() {
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
-    bsdtar -xf "${srcdir}/data."*
-    _check_electron_version
-    sed -i -e "
-        s/\"\/opt\/${_pkgname//./ }\/${pkgname%-bin}\"/${pkgname%-bin}/g
-        s/\/usr\/share\/icons\/hicolor\/256x256\/apps\/${pkgname%-bin}.png/${pkgname%-bin}/g
-    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    _delete_other_arch_files
+	sed -i -e "
+		s/@electronversion@/${_electronversion}/g
+		s/@appname@/${pkgname%-bin}/g
+	" "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
+	bsdtar -xf "${srcdir}/data."*
+	_check_electron_version
+	sed -i -e "
+		s/\"\/opt\/${_pkgname//./ }\/${pkgname%-bin}\"/${pkgname%-bin}/g
+		s/\/usr\/share\/icons\/hicolor\/256x256\/apps\/${pkgname%-bin}.png/${pkgname%-bin}/g
+	" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+	_delete_other_arch_files
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+	install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    _install_icons
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+	_install_icons
+	install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
