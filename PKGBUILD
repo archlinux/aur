@@ -1,13 +1,14 @@
 pkgname=jsrf-launcher-bin
-pkgver=3k
+pkgver=v3k
 pkgrel=1
+epoch=1
 pkgdesc='Launcher for native recompilation of Jet Set Radio Future (Xbox)'
 arch=('x86_64')
 url='https://github.com/Miggas/JSRF-Recomp'
 license=('MIT')
 depends=('bash' 'coreutils' 'curl' 'glibc' 'gzip' 'sdl2-compat' 'tar' 'unzip' 'util-linux')
 options=('!strip')
-_tag="launcher-v${pkgver}"
+_tag="launcher-${pkgver}"
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${_tag}/jsrf_launcher-linux.tar.gz"
   "${pkgname}-${pkgver}-source.tar.gz::https://codeload.github.com/Miggas/JSRF-Recomp/tar.gz/refs/tags/${_tag}"
