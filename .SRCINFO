@@ -1,6 +1,6 @@
 pkgbase = cline-desktop-bin
 	pkgdesc = Cline AI coding agent.
-	pkgver = 0.0.50
+	pkgver = 0.0.51
 	pkgrel = 1
 	url = https://cline.bot/
 	arch = aarch64
@@ -11,13 +11,13 @@ pkgbase = cline-desktop-bin
 	depends = webkit2gtk-4.1
 	depends = libayatana-indicator
 	depends = libappindicator
-	provides = cline-desktop=0.0.50
+	provides = cline-desktop=0.0.51
 	conflicts = cline-desktop
 	conflicts = cline-cli
 	options = !strip
-	source_aarch64 = cline-desktop-0.0.50-aarch64.rpm::https://github.com/cline/cline/releases/download/desktop-v0.0.50/Cline_0.0.50_aarch64.rpm
-	sha256sums_aarch64 = 0b5286f5e2cfaeb5da431ab0f488ca7a85552d7b4b0ef900b15b8e75dc0b0e64
-	source_x86_64 = cline-desktop-0.0.50-x86_64.rpm::https://github.com/cline/cline/releases/download/desktop-v0.0.50/Cline_0.0.50_x86_64.rpm
-	sha256sums_x86_64 = 2d90fed05fe2b63b58466ead273bc36dd3abdcc6c6ecea3a97c99309a0e8aff8
+	source_aarch64 = cline-desktop-0.0.51-aarch64.deb::https://github.com/cline/cline/releases/download/desktop-v0.0.51/Cline_0.0.51_arm64.deb
+	sha256sums_aarch64 = 0b616c496c9e7df91d593809330eb1218a85f2dee95955b46c188620c920e3ab
+	source_x86_64 = cline-desktop-0.0.51-x86_64.deb::https://github.com/cline/cline/releases/download/desktop-v0.0.51/Cline_0.0.51_amd64.deb
+	sha256sums_x86_64 = f7d9e7043a6d87db491922475edc88ccdc15ecf19c8a65e990abcd40885629da
 
 pkgname = cline-desktop-bin
