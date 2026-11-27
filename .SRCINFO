@@ -1,8 +1,8 @@
 pkgbase = examine-git
 	pkgdesc = A system information viewer for the COSMIC™ Desktop
-	pkgver = 1.0.0.r33.g8a237c1
+	pkgver = 2.0.0.r21.gab61dfa
 	pkgrel = 1
-	url = https://github.com/cosmic-utils/examine
+	url = https://github.com/cosmic-ext-orbit/cosmic-ext-examine
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -12,8 +12,9 @@ pkgbase = examine-git
 	depends = hicolor-icon-theme
 	depends = libxkbcommon
 	provides = examine
+	provides = cosmic-ext-examine
 	conflicts = examine
-	source = git+https://github.com/cosmic-utils/examine.git
+	source = git+https://github.com/cosmic-ext-orbit/cosmic-ext-examine.git
 	sha256sums = SKIP
 
 pkgname = examine-git
