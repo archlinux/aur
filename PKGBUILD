@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scifer
-_pkgver=1.6.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,6 +10,8 @@ arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
+  r-basilisk
+  r-basilisk.utils
   r-biostrings
   r-data.table
   r-decipher
@@ -17,9 +19,12 @@ depends=(
   r-flowcore
   r-ggplot2
   r-gridextra
+  r-here
   r-kableextra
   r-knitr
   r-plyr
+  r-pwalign
+  r-reticulate
   r-rlang
   r-rmarkdown
   r-sangerseqr
@@ -31,13 +36,14 @@ checkdepends=(
   r-testthat
 )
 optdepends=(
+  r-biocbaseutils
   r-biocstyle
   r-fs
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('92ff7394e0644ff2533e941cd2bf52bd')
-b2sums=('05b987ad730db1846feaceb81ceecabe447550b9245c7195439f8c86cd4d88f7ee3d83c971c5c3fa75de41a6446df5513808ed19f4070c1ed16c7f4b75c426b9')
+md5sums=('15d153fe4f5ab6ff70a52eab1c946d2f')
+b2sums=('d403f59aab661bd4a4c9c4f0996243b47ece164f3832fc350e23cc5803816deb01823596220f8bf5d4fd8cbba66751af3994198b5b11db31caf859ccaedd6d6a')
 
 build() {
   mkdir build
