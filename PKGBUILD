@@ -2,7 +2,7 @@
 
 pkgname=libfprint-fte3600-git
 # makepkg replaces this bootstrap value with pkgver() from the committed HEAD.
-pkgver=1.94.100.r94
+pkgver=1.94.100.r95
 pkgrel=1
 pkgdesc='libfprint with FTE3600 SPI fingerprint support, DKMS glue, and toolkit'
 arch=(x86_64)
