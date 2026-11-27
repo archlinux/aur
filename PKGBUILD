@@ -1,8 +1,8 @@
 # Maintainer: Remy Huang <me@remya.top>
 pkgname=remya-screen-capture-bin
 _app_id=remya_screen_capture
-_upstream_ver=0.4.0
-pkgver=0.4.0
+_upstream_ver=0.4.1
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Screen capture, recording and editing for Hyprland"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip')
 provides=("remya-screen-capture=${pkgver}")
 conflicts=('remya-screen-capture' 'remya-screen-capture-git')
 source=("${_app_id}-${_upstream_ver}-linux-x86_64.tar.zst::${url}/releases/download/v${_upstream_ver}/${_app_id}-${_upstream_ver}-linux-x86_64.tar.zst")
-sha256sums=('853f1dcade6b00d53d643f17abcf4475990803bc82f04b46e51b801807190216')
+sha256sums=('22bd86b7ce89402db94bfcbe50af8877e36f505dfb38841d6005b04901d38f15')
 
 package() {
   cd "${srcdir}/${_app_id}-${_upstream_ver}-linux-x86_64"
