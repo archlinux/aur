@@ -1,0 +1,7 @@
+pkg/*
+src/*
+
+# Source and Package files
+studio-link-standalone-v*-stable-linux.tar.gz
+studiolink-standalone-bin-*.pkg.*
+

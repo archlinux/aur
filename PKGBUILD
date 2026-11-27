@@ -1,29 +1,28 @@
 # Maintainer: Oliver Rümpelein <arch@pheerai.de>
 pkgname=studiolink-standalone-bin
-pkgver=21.07.0
+pkgver=26.11.0
 pkgrel=1
 pkgdesc="A SIP application to create high quality Audio over IP (AoIP) connections."
 arch=('x86_64')
 url="https://studio-link.de"
-license=('custom')
-depends=('alsa-lib' 'libpulse' 'hicolor-icon-theme')
+license=('MIT')
+depends=('libpulse' 'hicolor-icon-theme')
 optdepends=('libva-intel-driver: For Intel VA support'
-            'upower: For detection of some devices')
-source=("https://download.studio.link/releases/v${pkgver}-stable/linux/studio-link-standalone-v${pkgver}.tar.gz"
-    "LICENSE"
-    "studiolink.desktop"
-    "studiolink.svg")
-sha512sums=('412ac5bface3c86b8463a6354a957198d8288fe8e15a5ed55ef863420b2cea61507c5d063636282785c09e843e6da7871092aeddebe3220925c8c868277934bc'
+  'upower: For detection of some devices')
+source=("https://download.studio.link/releases/v${pkgver}-stable/studio-link-standalone-v${pkgver}-stable-linux.tar.gz"
+  "LICENSE"
+  "studiolink.desktop"
+  "studiolink.svg")
+sha512sums=('5fc02f16bb1d7348063b73bad7cf95efa73cff98bcd4b7381ed3a3f2e637415e6a05f8f395f6bfe7bc2971708b8a3b32437bc59fa01285b5659d3fede60ec570'
             'a3c168d3605190b7de36707a42d1450a22bd0d0b50b52bb4e0a8b169c1035f04f58dca8227d8557f9f0cc574d18323780efa035fd6cd57c3bb35d69a3c517937'
             '2e80376c6ac640da556fa7861d54b44378c18d19a20257e5eef03d72e9c4554d4894c8e6b6168e672bd43e9272071859bcdcf65c75f5006c20c0d689b8080133'
             '3aae487ecddedf17f83f0719c33770f9cb3998681ea3fb39b5c304245c73fdfd7604aee3fff1f54c11ad93256ab778eb3f3467e71c870e8dba8eab43cc2ceef6')
 
-package()
-{
-    install -Dm755 ${srcdir}/studio-link-standalone-v${pkgver} ${pkgdir}/usr/bin/studiolink
-    install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/studiolink-standalone-bin/LICENSE"
+package() {
+  install -Dm755 ${srcdir}/studio-link-standalone-v${pkgver} ${pkgdir}/usr/bin/studiolink
+  install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/studiolink-standalone-bin/LICENSE"
 
-    # freedesktop.org compatibility
-    install -Dm644 ${srcdir}/studiolink.desktop ${pkgdir}/usr/share/applications/studiolink.desktop
-    install -Dm644 ${srcdir}/studiolink.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/studiolink.svg
+  # freedesktop.org compatibility
+  install -Dm644 ${srcdir}/studiolink.desktop ${pkgdir}/usr/share/applications/studiolink.desktop
+  install -Dm644 ${srcdir}/studiolink.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/studiolink.svg
 }
