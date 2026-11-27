@@ -1,9 +1,13 @@
 post_install() {
-    # Load the uinput module immediately
-    modprobe uinput || true
-    # Reload udev rules to apply the permissions instantly
+    # Load the new rule before uinput emits its device event.
     udevadm control --reload-rules
-    udevadm trigger --name-match=uinput
+
+    # Load the uinput module immediately. It may already be loaded.
+    modprobe uinput || true
+
+    # Reprocess the device so udev/logind apply access for the active session,
+    # including when the module was already loaded before installation.
+    udevadm trigger --action=add --name-match=uinput
 }
 
 post_upgrade() {
