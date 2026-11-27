@@ -1,0 +1,5 @@
+[tclint]
+source = "github"
+github = "nmoroze/tclint"
+use_latest_tag = true
+prefix = "v"
