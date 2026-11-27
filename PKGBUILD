@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=gogg-bin
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A multiplatform game file downloader for GOG"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/habedi/
 source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::${_dl}/gogg-linux-amd64.zip")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::${_dl}/gogg-linux-arm64.zip")
 sha256sums=('dc49155c3d9e9284a51a392dbb130a66d873fe2279c870cce3311c16a8b34330')
-sha256sums_x86_64=('5e288d3bada56bd40573230eb0d8c3cf0d6fc324e527f483824162959bf1a141')
-sha256sums_aarch64=('eda7d96b818fcc9b23964fa39dfb9e84cbf0d0c722e855793e7bab0d037dae17')
+sha256sums_x86_64=('0dd742b3f001918cf414fffbd2289513ab855f932e02164c19e5296edaf9d568')
+sha256sums_aarch64=('8d4abe82f41b7e4fc616193c46f0a4752b3e37acff7eeb2f62675256f4aad08a')
 
 package() {
   install -Dm755 "gogg" "${pkgdir}/usr/bin/gogg"
