@@ -1,6 +1,6 @@
 pkgbase = deslop-please-bin
 	pkgdesc = Opinionated linter that removes sloppy code
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/deterministic-machines/deslop-please
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = deslop-please-bin
 	provides = deslop-please
 	conflicts = deslop-please
 	options = !debug
-	source = deslop-please-bin-0.1.5-LICENSE::https://raw.githubusercontent.com/deterministic-machines/deslop-please/v0.1.5/LICENSE
+	source = deslop-please-bin-0.1.6-LICENSE::https://raw.githubusercontent.com/deterministic-machines/deslop-please/v0.1.6/LICENSE
 	sha256sums = 712b84686e2ebda4ae628ceee0c96e176eab413a7e9f730ad72bb0a2612f5a25
-	source_x86_64 = deslop-please-bin-0.1.5-x86_64.tar.gz::https://github.com/deterministic-machines/deslop-please/releases/download/v0.1.5/deslop-please-x86_64-unknown-linux-musl-v0.1.5.tar.gz
-	sha256sums_x86_64 = f063862159d6f77818b67420ecb05d700bfb8f92b478cf7a8727843276cc6b0f
-	source_aarch64 = deslop-please-bin-0.1.5-aarch64.tar.gz::https://github.com/deterministic-machines/deslop-please/releases/download/v0.1.5/deslop-please-aarch64-unknown-linux-musl-v0.1.5.tar.gz
-	sha256sums_aarch64 = 05cd671476cecbb196c9eace2dd2f097199f8cfb554791c27c1c5e3a0717fbb7
+	source_x86_64 = deslop-please-bin-0.1.6-x86_64.tar.gz::https://github.com/deterministic-machines/deslop-please/releases/download/v0.1.6/deslop-please-x86_64-unknown-linux-musl-v0.1.6.tar.gz
+	sha256sums_x86_64 = 64a6b59c249188c2b2d69e0eb9e1298afe8f7321bdf9313640ea54e1f423a236
+	source_aarch64 = deslop-please-bin-0.1.6-aarch64.tar.gz::https://github.com/deterministic-machines/deslop-please/releases/download/v0.1.6/deslop-please-aarch64-unknown-linux-musl-v0.1.6.tar.gz
+	sha256sums_aarch64 = dba3ba5e34b6f309441108353e5ea50160899c946a8db249bdaaf2ba761e0e65
 
 pkgname = deslop-please-bin
