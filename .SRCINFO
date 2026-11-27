@@ -1,6 +1,6 @@
 pkgbase = sift-reader-bin
 	pkgdesc = Read the web, aloud, with Kokoro (prebuilt)
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/sarrietav-dev/sift
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = sift-reader-bin
 	conflicts = sift-reader
 	options = !debug
 	options = !strip
-	source = sift-0.1.9-x86_64.tar.zst::https://github.com/sarrietav-dev/sift/releases/download/v0.1.9/sift-0.1.9-x86_64.tar.zst
-	sha256sums = f32c4e192dbb4a05410533bd389281867b5a973522fcc1402f7660ee0bd8fba4
+	source = sift-0.2.0-x86_64.tar.zst::https://github.com/sarrietav-dev/sift/releases/download/v0.2.0/sift-0.2.0-x86_64.tar.zst
+	sha256sums = be4df4694360f8e962c3057911b522074fc640ec292fb54fd1d7b2202030e02d
 
 pkgname = sift-reader-bin
