@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=goProfiles
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc='goProfiles: an R package for the statistical analysis of functional profiles'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-org.hs.eg.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('afc43b924d367bf0fddb874b12aa5e6ebb3a34c03c68325c6029899a7f82bb1f')
+sha256sums=('d8ce6e7cb7bf746e81757bfbb048cd274ce2eb90dbc018d23aa1e0ee0dc0e6b5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
