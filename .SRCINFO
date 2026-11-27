@@ -1,6 +1,6 @@
 pkgbase = r-seqvartools
 	pkgdesc = Tools for variant data
-	pkgver = 1.50.1
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SeqVarTools
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-seqvartools
 	optdepends = r-biocstyle
 	optdepends = r-runit
 	optdepends = r-stringr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SeqVarTools_1.50.1.tar.gz
-	sha256sums = 20105e8ab61d0ff534f3cdb34e8609cf4646c9d68f255081b7d617ddffe47395
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SeqVarTools_1.52.0.tar.gz
+	sha256sums = 1d37d08d51d4230ea7aee201fbd152f96c843c7f26dac5287b77f35b8ea84b26
 
 pkgname = r-seqvartools
