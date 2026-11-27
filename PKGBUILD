@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=memdoor-bin
-pkgver=1.840.0
+pkgver=1.841.0
 pkgrel=1
 pkgdesc='Coding and automation agent in a single CLI binary (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source_aarch64=("memdoor-$pkgver-linux-aarch64::$url/releases/download/v$pkgver/
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
             '182b73e682f24ade914f975bf86bae425d780dc827b3d2c064cb24e076f432d4'
             '80e972df8932d0f4ba65262205adfea89d0b32724a61316307d70e0b7f0bbe96')
-sha256sums_x86_64=('8b12514e8e5e9d85a7abd94f8acece4427ce9c18bc016b382b96c3899324973e')
-sha256sums_aarch64=('ff40fe66cbfc1b982b07a2ebe0a81f6c3df862f4d791a5a2048f2e51375bd9c0')
+sha256sums_x86_64=('17834abcb87cbb0c3f648ebfedfc6507a37cde6a6f9e45068aa0040c7ae89d1a')
+sha256sums_aarch64=('92da4d857417cc296cc1e3a903067a493d7f772c64a0fd080610fbc2a871318b')
 
 package() {
   install -Dm755 "$srcdir/memdoor-$pkgver-linux-$CARCH" "$pkgdir/usr/bin/memdoor"
