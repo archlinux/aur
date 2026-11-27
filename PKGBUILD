@@ -2,7 +2,7 @@
 
 pkgname=pi-coding-agent-bin
 _pkgname=pi-coding-agent
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Coding agent CLI with read, bash, edit, write tools and session management (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -26,9 +26,9 @@ source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/earendi
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${_tag}/pi-linux-x64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/${_tag}/pi-linux-arm64.tar.gz")
 
-sha256sums=('0457f5bcec3b3b211605dfb5d1a49042fd638f3686a410fe099c24a25af13c48')
-sha256sums_x86_64=('3c7f00715eb512e165c0da8cad314d73c83b54d5bf7748be4adc618fc8357b68')
-sha256sums_aarch64=('afde641d6c5904d26960ddb4223bf563b0860cf1a0ebc443b85deff67d048753')
+sha256sums=('4780a6e9d4b2213784027092b8f305d49059728495fab1ddb93f3c6fb8b283c7')
+sha256sums_x86_64=('42f7ed67e83f727fe51dd2746d50dc45c7d1784159a9518296a282402ac68f4a')
+sha256sums_aarch64=('cd209cfc90fb94fb4b00ccd785a8d64a4a154f924e52f88febeb6cf36d5c9a24')
 
 package() {
     install -d "${pkgdir}/opt"
