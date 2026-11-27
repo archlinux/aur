@@ -3,12 +3,12 @@
 
 # This PKGBUILD is just a lightly modified version of
 # https://gitlab.archlinux.org/packaging/packages/linux
-# maintained by Heftig for the 'linux' package in the Arch 'Core' repo. 
+# maintained by Heftig for the 'linux' package in the Arch 'Core' repo.
 
 pkgbase=linux-stub
-pkgver=7.3.5.arch1
+pkgver=7.3.6.arch1
 pkgrel=1
-#pkgdesc
+# pkgdesc
   _oldpkgdesc='Linux'
   _newpkgdesc="with initramfs dependency made optional and CONFIG_DEV_BLK_NVME=y"
   pkgdesc="$_oldpkgdesc, $_newpkgdesc."
@@ -61,17 +61,17 @@ validpgpkeys=(
 )
 
 # https://www.kernel.org/pub/linux/kernel/v7.x/sha256sums.asc
-# https://gitlab.archlinux.org/packaging/packages/linux/blob/7.3.5.arch1-1/PKGBUILD
-sha256sums=('8f293f83d54f0b7b9be56863ebc5e4ea79d73e530b4ae55c572be97ef39f0990'
+# https://gitlab.archlinux.org/packaging/packages/linux/blob/7.3.6.arch1-1/PKGBUILD
+sha256sums=('8183d475a76a0faffa92d6cd500af421f589dfd0300a0f1060bb875e11d45723'
             'SKIP'
-            'ab8cc9a56046bfdcbe8741283cb642fcb1ab25de4ac2b66fe655dd34e3ddc3b6'
+            'e76df8ca615ad71eb9cc214b8293202287a4efb1136098972a832d2ce72a02bf'
             'SKIP')
-sha256sums_x86_64=('75366b057ddfafeb2c02a902aebdcbeb36ddcd56de74c82b1eadf4fac308555a')
-b2sums=('333bad17d6e6ae06935b08e8715cc617f59c0fdbab52dd1026a16b1125c8e693482946dc46f5b6e1f7c24a3919ddc44a8dd39f045dcb3d2da8b8001c113f13c0'
+sha256sums_x86_64=('4f1c75c66623f09b80c4adcafd998377fea51ae962c26e0a30656e3edd873069')
+b2sums=('78da05b71d4fb975d759e7e9f74917531fc06b0740cdf9eab69b1d7b838d6a0cc19a087a629bb41eb4ae77f9ca745cd309e4d90911e4b74347016a059b3fac02'
         'SKIP'
-        'b4517a6cf6abb495af1df4884f66ffe79833fa8fe2cae08a00a88ee2ae508c3e68ce1f028faedf9dfcd0c8e687bbd7f9df5ed701417b9e23058f178256975f02'
+        '5ca895061b555f0561546525f1ab213fe27c1ba7e6a0bbe0f4c6bc7b135db707bd8162d47d107bf2ec862a09b34f970a3b151c6267540d3b20366e102e3421e7'
         'SKIP')
-b2sums_x86_64=('9862de977018fa89882f29a794cf73acfe410d3f4ff9a0a2b9529847af48a1b847887c8c75cf14beffcc5a5199895aa17c4319c047b8129f16d3964474081943')
+b2sums_x86_64=('717e22962ab421d31fed9e50f9c82e58dc749a76823fb540b8e4830b467aa8d38ace5121105d70d6c6ef317551bcf7b796cdc15e6c896df9d62225c320b77262')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -84,7 +84,7 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  #Applying patchs
+  # Applying patchs
     local src
     for src in "${source[@]}"; do
       src="${src%%::*}"
@@ -142,7 +142,7 @@ _package() {
 
   # Add the vmlinuz to /boot/
     install -Dm644 "$_imagename" "$pkgdir/boot/vmlinuz-$pkgbase"
-  
+
   # Systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
     install -Dm644 "$_imagename" "$modulesdir/vmlinuz"
@@ -172,7 +172,6 @@ _package-headers() {
     zlib
     zstd
   )
-  provides=(LINUX-HEADERS)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -194,43 +193,43 @@ _package-headers() {
     if [[ $(scripts/config -s CONFIG_HAVE_STACK_VALIDATION) = y ]]; then
       install -Dt "$builddir/tools/objtool" tools/objtool/objtool
     fi
-     
+
     if [[ $(scripts/config -s CONFIG_DEBUG_INFO_BTF_MODULES) = y ]]; then
       install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
     fi
-    
+
     echo "Installing headers..."
       cp -t "$builddir" -a include
       cp -t "$builddir/arch/$karch" -a arch/$karch/include
       install -Dt "$builddir/arch/$karch/kernel" -m644 arch/$karch/kernel/asm-offsets.s
-    
+
     # idk :')
       install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
       install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
-    
+
     # https://bugs.archlinux.org/task/13146
       install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
-    
+
     # https://bugs.archlinux.org/task/20402
       install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
       install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
       install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
-    
+
     # https://bugs.archlinux.org/task/71392
       install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
-    
+
   echo "Installing KConfig files..."
     find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
-    
+
     if [[ $(scripts/config -s CONFIG_RUST) = y ]]; then
       echo "Installing Rust files..."
         install -Dt "$builddir/rust" -m644 rust/*.rmeta
         install -Dt "$builddir/rust" rust/*.so
     fi
-  
+
   echo "Installing unstripped VDSO..."
     make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install link=  # Suppress build-id symlinks
-  
+
   echo "Removing unneeded architectures..."
     local arch
     for arch in "$builddir"/arch/*/; do
@@ -238,16 +237,16 @@ _package-headers() {
       echo "Removing $(basename "$arch")"
       rm -r "$arch"
     done
-  
+
   echo "Removing documentation..."
     rm -r "$builddir/Documentation"
-  
+
   echo "Removing broken symlinks..."
     find -L "$builddir" -type l -printf 'Removing %P\n' -delete
-  
+
   echo "Removing loose objects..."
     find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
-  
+
   echo "Stripping build tools..."
     local file
     while read -rd '' file; do
