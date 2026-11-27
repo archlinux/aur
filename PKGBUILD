@@ -1,7 +1,7 @@
 # Maintainer: Cyril <cyrwae[at]hotmail[dot]com>
 pkgname=python-olca-ipc
 _name=${pkgname#python-}
-pkgver=2.6.3
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="API for communicating with an openLCA IPC server"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MPL2')
 depends=(python-requests python-olca-schema)
 makedepends=(python-build python-installer python-wheel)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
-sha256sums=('a5ab8d4ddfe1e47e07fbff0640812b6e55a3ebb9aaf3487a73f71eef9e862328')
+sha256sums=('264324dfd4457fa281cfeaba954ff56ec5fa37cbf79f056037926c15b15b93de')
 
 build() {
     cd ${_name//-/_}-${pkgver}

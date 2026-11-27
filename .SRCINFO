@@ -1,6 +1,6 @@
 pkgbase = python-olca-ipc
 	pkgdesc = API for communicating with an openLCA IPC server
-	pkgver = 2.6.3
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/GreenDelta/olca-ipc.py
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-olca-ipc
 	makedepends = python-wheel
 	depends = python-requests
 	depends = python-olca-schema
-	source = https://files.pythonhosted.org/packages/source/o/olca_ipc/olca_ipc-2.6.3.tar.gz
-	sha256sums = a5ab8d4ddfe1e47e07fbff0640812b6e55a3ebb9aaf3487a73f71eef9e862328
+	source = https://files.pythonhosted.org/packages/source/o/olca_ipc/olca_ipc-2.7.0.tar.gz
+	sha256sums = 264324dfd4457fa281cfeaba954ff56ec5fa37cbf79f056037926c15b15b93de
 
 pkgname = python-olca-ipc
