@@ -1,7 +1,7 @@
 pkgbase = python36
 	pkgdesc = Major release 3.6 of the Python high-level programming language
 	pkgver = 3.6.15
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.python.org/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python36
 	depends = expat
 	depends = bzip2
 	depends = gdbm
-	depends = openssl
+	depends = openssl-1.1
 	depends = libffi
 	depends = zlib
 	optdepends = tk: for tkinter

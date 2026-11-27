@@ -3,14 +3,14 @@
 
 pkgname=python36
 pkgver=3.6.15
-pkgrel=7
+pkgrel=8
 _pybasever=3.6
 _pymajver=3
 pkgdesc="Major release 3.6 of the Python high-level programming language"
 arch=('i686' 'x86_64' 'arm' 'pentium4')
 license=('custom')
 url="http://www.python.org/"
-depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
+depends=('expat' 'bzip2' 'gdbm' 'openssl-1.1' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz alignment.patch sinpi-rename.patch)
@@ -41,6 +41,8 @@ prepare() {
 build() {
   cd "${srcdir}/Python-${pkgver}"
 
+  export CPPFLAGS="-I/usr/include/openssl-1.1 ${CPPFLAGS:-}"
+  export LDFLAGS="-L/usr/lib/openssl-1.1 ${LDFLAGS:-}"
   CFLAGS=-DOPENSSL_NO_SSL2 ./configure --prefix=/usr \
               --enable-shared \
               --with-threads \
