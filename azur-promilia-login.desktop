@@ -1,9 +1,17 @@
 [Desktop Entry]
 Type=Application
-Name=蓝色星原：旅谣（桥接登录）
-Comment=登录失效时使用：登录面板显示在 Linux 原生窗口
+Name=Azur Promilia (Bridge Login)
+Name[zh_CN]=蓝色星原：旅谣（桥接登录）
+Name[zh_TW]=藍色星原：旅謠（橋接登入）
+GenericName=Game Login
+GenericName[zh_CN]=登录辅助
+GenericName[zh_TW]=登入輔助
+Comment=Use when the login session expired: the SDK panel is shown in a native Linux window
+Comment[zh_CN]=登录失效时使用：登录面板显示在 Linux 原生窗口
+Comment[zh_TW]=登入失效時使用：登入面板顯示在 Linux 原生視窗
 Exec=azur-promilia --bridge
 Icon=azur-promilia
 Terminal=false
 Categories=Game;RolePlaying;
-Keywords=azur;promilia;login;蓝色星原;
+Keywords=azur;promilia;login;蓝色星原;藍色星原;
+StartupNotify=true
