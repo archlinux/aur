@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=condiments
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Differential Topology, Progression and Differentiation'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('17b76d1092947074ee4761cb0c7ff41cadc3ee134388b6a5201fbb30c41f81a7')
+sha256sums=('26456009d8071eea7afdfe99160343c82b76c5b119136e7042b010f2ccbff191')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
