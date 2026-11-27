@@ -5,7 +5,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.7.356.r0.ga19b3747ea
+pkgver=v1.7.3519.r7397.g51e3036
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 arch=(x86_64)
@@ -79,7 +79,7 @@ install=pcsx2-git.install
 
 pkgver() {
     cd pcsx2
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() 
