@@ -3,7 +3,7 @@
 # Contributor: Josh <moc tod liamg ta suoecal>
 
 pkgname=duo_unix
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Login utility and PAM module for Duo Security two-factor authentication'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -15,7 +15,7 @@ backup=('etc/duo/login_duo.conf' 'etc/duo/pam_duo.conf')
 source=("https://dl.duosecurity.com/duo_unix-${pkgver}.tar.gz")
 
 # https://www.duosecurity.com/docs/checksums#duounix
-sha1sums=('5bbe5dbdebac2292046c8bb12b7f85801197d859')
+sha1sums=('017f030d5c4795a442abbbbfe3ff74c976526447')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
