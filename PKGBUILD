@@ -7,7 +7,7 @@
 # Zach Ward & Beth Randall   They have been there from my best day to my worst
 # And everyone else who I did'nt mention by name    You are all important to me
 pkgname=radegast-ng
-pkgver=2.54
+pkgver=2.55
 pkgrel=1
 pkgdesc="Lightweight client for connecting to Second Life and OpenSim worlds"
 arch=('i686' 'x86_64')
@@ -19,11 +19,12 @@ makedepends=('dos2unix' 'recode')
 
 source=(https://github.com/cinderblocks/radegast/releases/download/Legacy%2F${pkgver}/Radegast_x64_${pkgver}.tbz
         radegast.desktop radegast)
-sha256sums=('571cad84536448a64905f5dac64826ae2869cbf86be479cd965560f464fb26ef'
-            '8f599f04f263361cd45f7af53cfae633881bfa92ba3f806a0ca675d1ee131567'
+sha256sums=('013061fae15f10f1e4a83caaa4eae8b9fd440cadb1ec45bf5efd27ac2a2524f1'
+	    '8f599f04f263361cd45f7af53cfae633881bfa92ba3f806a0ca675d1ee131567'
             '73cdc80cc4abeb6ba368b09285ff5120ffeb6052a0a5e5ac0febf08c38bb0e96')
 package() {
   cd ../src/
+#
   find . -type d -print0 | xargs -0 chmod 755
   find . -type f -print0 | xargs -0 chmod 644
   install -dm755 "${pkgdir}"/usr/share/Radegast
