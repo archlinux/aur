@@ -3,7 +3,7 @@
 
 pkgname=python36
 pkgver=3.6.15
-pkgrel=8
+pkgrel=9
 _pybasever=3.6
 _pymajver=3
 pkgdesc="Major release 3.6 of the Python high-level programming language"
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'arm' 'pentium4')
 license=('custom')
 url="http://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl-1.1' 'libffi' 'zlib')
-makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
+makedepends=('tk' 'sqlite' 'bluez-libs')
 optdepends=('tk: for tkinter' 'sqlite')
 source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz alignment.patch sinpi-rename.patch)
 sha256sums=('6e28d7cdd6dd513dd190e49bca3972e20fcf455090ccf2ef3f1a227614135d91' SKIP SKIP)
@@ -35,7 +35,6 @@ prepare() {
   rm -rf Modules/expat
   rm -rf Modules/zlib
   rm -rf Modules/_ctypes/{darwin,libffi}*
-  rm -rf Modules/_decimal/libmpdec
 }
 
 build() {
@@ -50,7 +49,6 @@ build() {
               --enable-ipv6 \
               --with-system-expat \
               --with-dbmliborder=gdbm:ndbm \
-              --with-system-libmpdec \
               --with-system-ffi \
               --enable-loadable-sqlite-extensions \
               --without-ensurepip
