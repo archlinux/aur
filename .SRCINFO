@@ -1,6 +1,6 @@
 pkgbase = goanime
 	pkgdesc = Search, stream and download anime, movies and TV shows from the terminal
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/alvarorichard/GoAnime
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = goanime
 	depends = mpv
 	optdepends = ffmpeg: embed subtitles in downloads and upscale videos
 	optdepends = discord: Discord Rich Presence
-	source = goanime-2.0.3::https://github.com/alvarorichard/GoAnime/releases/download/v2.0.3/goanime-linux-amd64
-	sha256sums = 9a732c3b1cd2037abef83dfad84da565c6a11026f18d3af7bad530d084376705
+	source = goanime-2.0.4::https://github.com/alvarorichard/GoAnime/releases/download/v2.0.4/goanime-linux-amd64
+	sha256sums = c27ab8e60cf7d0580b5b6f78307d966a48e8e960341de4b84c5414c9baff48bf
 
 pkgname = goanime
