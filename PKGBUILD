@@ -2,7 +2,7 @@
 
 pkgname=mornye-bin
 _pkgname=mornye
-pkgver=5.4.0
+pkgver=5.4.5
 pkgrel=1
 pkgdesc='Desktop music player and library manager built with Flutter and Rust'
 arch=('x86_64' 'aarch64')
@@ -40,8 +40,8 @@ conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/mornyeapp/Mornye-Desktop/releases/download/v${pkgver}/Mornye-v${pkgver}-linux-amd64.deb")
 source_aarch64=("https://github.com/mornyeapp/Mornye-Desktop/releases/download/v${pkgver}/Mornye-v${pkgver}-linux-arm64.deb")
-sha256sums_x86_64=('b605f8eac520225beade755bfe4ea5c734e5558c2c41a1e9aed240f92aab8b69')
-sha256sums_aarch64=('a3edec0d66a772e9b4d4f719cd16480e7ace624bbf79d884f56d4decf759d447')
+sha256sums_x86_64=('da097cc588201f282bb27a138c207761e23c275eaa2f144a6cff4622287a52b2')
+sha256sums_aarch64=('6e44d8be236c336357894b47d0f7e59ac24939a98a596b3a153268a4b06aa1af')
 
 package() {
   bsdtar -xf "${srcdir}"/data.tar.* -C "${pkgdir}"
