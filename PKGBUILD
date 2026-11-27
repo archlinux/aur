@@ -1,6 +1,6 @@
 # Maintainer: aic0d3r <funforfreeapps@gmail.com>
 pkgname=z13ctl-plus-bin
-pkgver=2.6.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc='z13ctl fork (co-installable with upstream): CLI and daemon for RGB, fan curves, TDP, battery and tablet control on the 2025 ASUS ROG Flow Z13'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('z13ctl-plus')
 optdepends=('ryzen_smu-dkms-git: SMU access for CPU undervolting (Strix Halo Curve Optimizer requires the amkillam fork of ryzen_smu)')
 install=z13ctl-plus-bin.install
 source=("https://github.com/aic0d3r/z13ctl-plus/releases/download/v${pkgver}/z13ctl-plus_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('f95c6d4ea99e6f305df052110decc9af258fba64eb5fb71a015d1f91de9dcd7a')
+sha256sums=('d5752fa4d450f867f7df774de284eedee3ff95371900e77a32adfc810a9e42c6')
 
 package() {
     install -Dm755 "z13ctl-plus"                                    "${pkgdir}/usr/bin/z13ctl-plus"

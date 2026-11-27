@@ -4,12 +4,15 @@ post_install() {
     echo ">>> z13ctl-plus installed. Its daemon is disabled so it can coexist with upstream."
     echo ">>> After disabling any other Z13 daemon, enable this one with:"
     echo ">>>   systemctl --user enable --now z13ctl-plus.socket z13ctl-plus.service"
+    echo ">>> Check the setup with: z13ctl-plus doctor"
 }
 
 post_upgrade() {
+    # setup reuses the group and undervolt choice saved in /etc/z13ctl-plus/setup.conf.
     z13ctl-plus setup
-    echo ""
-    echo ">>> z13ctl-plus upgraded. If its daemon is enabled, reload and restart it:"
-    echo ">>>   systemctl --user daemon-reload"
-    echo ">>>   systemctl --user restart z13ctl-plus.service"
+    # Reload units and restart only an already-running daemon so the new binary is used.
+    for u in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $1}'); do
+      systemctl --user --machine="$u@.host" daemon-reload 2>/dev/null || true
+      systemctl --user --machine="$u@.host" try-restart z13ctl-plus.service 2>/dev/null || true
+    done
 }
