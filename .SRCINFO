@@ -1,6 +1,6 @@
 pkgbase = rsstig-bin
 	pkgdesc = An unconventional terminal RSS/Atom reader
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/indium114/rsstig
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = rsstig-bin
 	provides = rsstig
 	conflicts = rsstig
 	options = !debug
-	source = rsstig-bin-0.2.1-LICENSE::https://raw.githubusercontent.com/indium114/rsstig/0.2.1/LICENSE
+	source = rsstig-bin-0.2.2-LICENSE::https://raw.githubusercontent.com/indium114/rsstig/0.2.2/LICENSE
 	sha256sums = 6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e
-	source_x86_64 = rsstig-bin-0.2.1-x86_64::https://github.com/indium114/rsstig/releases/download/0.2.1/rsstig_Linux_x86_64
-	sha256sums_x86_64 = f063b317fce3ab68ef0b3d8082384314449e21f5dfe976534c105526eb698a4a
-	source_aarch64 = rsstig-bin-0.2.1-aarch64::https://github.com/indium114/rsstig/releases/download/0.2.1/rsstig_Linux_arm64
-	sha256sums_aarch64 = d3de10214648c7f3ec09e2ead3b57f6bb2b20eef9abd177c1d3216cc9aa85a58
+	source_x86_64 = rsstig-bin-0.2.2-x86_64::https://github.com/indium114/rsstig/releases/download/0.2.2/rsstig_Linux_x86_64
+	sha256sums_x86_64 = 1a26415ded27a855858dc9b53a93d743cad3fd1960ff5994a19e7efaf93b134b
+	source_aarch64 = rsstig-bin-0.2.2-aarch64::https://github.com/indium114/rsstig/releases/download/0.2.2/rsstig_Linux_arm64
+	sha256sums_aarch64 = 10a66e4f57250b34f2a47879d587e91ef0c312bff35e3ccaff869c894fe41879
 
 pkgname = rsstig-bin
