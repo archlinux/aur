@@ -6,7 +6,7 @@ _appname=mdd
 pkgname=${_gitname}-bin
 pkgdesc="Real Markdown, right in your terminal"
 
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,8 +30,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
 sha256sums=('b15ddd96556c96772b6689cac4c2c53f6424420f2d5264a61e087031a893ed99'
             '30c5c6791b321d00ab79f1acc16cf45e970f19ca47df93e90ac83dd09b5052bd')
-sha256sums_x86_64=('0902559cb2c3120f605d73f5518002e7db76ea24e4d3f54d6c3377ab095b6fd7')
-sha256sums_aarch64=('a8c212cdc001d49f8b9a7cff1eeb58dd137c92bb21ba44451ec4469e58906464')
+sha256sums_x86_64=('a05abd288d6a2c818f15d0f750136997ee34cd79e85ebbc69712cab602a54a73')
+sha256sums_aarch64=('e9052549476a14d470a6bfcd293c6bc08e42538a3f34cd4069c23cd81b2fecda')
 
 
 package() {
