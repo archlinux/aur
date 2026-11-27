@@ -1,7 +1,7 @@
 # Maintainer: oysterAV contributors
 # shellcheck disable=SC2034
 pkgname=oysterav
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Linux security orchestrator: oyst-cli backend + oysterAV GTK4 GUI"
 arch=('any')
@@ -30,7 +30,9 @@ optdepends=(
   'uq: security tile and Settings page in the uQ desktop'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b4d13eb59ba249904978f45e80ef26fb08576c028792e67a6c859ca267267b3b')
+sha256sums=('21a182423237c4625761a168111dc2e36bb2e27b5d7924edbea587f6c1444d0c')
+
+conflicts+=('uq<0.3.41')  # uq-compat: from uQ's compat/family.toml
 
 build() {
   cd "oysterAV-$pkgver"
