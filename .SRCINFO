@@ -1,6 +1,6 @@
 pkgbase = tokless-bin
 	pkgdesc = Set up coding agents with tools and unified instructions quickly
-	pkgver = 1.0.16
+	pkgver = 1.0.17
 	pkgrel = 1
 	url = https://github.com/HoangP8/tokless
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = tokless-bin
 	provides = tokless
 	conflicts = tokless
 	options = !debug
-	source = tokless-bin-1.0.16-LICENSE::https://raw.githubusercontent.com/HoangP8/tokless/v1.0.16/LICENSE
+	source = tokless-bin-1.0.17-LICENSE::https://raw.githubusercontent.com/HoangP8/tokless/v1.0.17/LICENSE
 	sha256sums = fc3da431c0e6225cc9f28425fa7b6f22b0f1e0a4a14821d2e600469643928a83
-	source_x86_64 = tokless-bin-1.0.16-x86_64::https://github.com/HoangP8/tokless/releases/download/v1.0.16/tokless-linux-x64
-	sha256sums_x86_64 = 4967b5915afdb45b628bae283047e9f5636ee4f4249d63b05f6b2921bb9de332
-	source_aarch64 = tokless-bin-1.0.16-aarch64::https://github.com/HoangP8/tokless/releases/download/v1.0.16/tokless-linux-arm64
-	sha256sums_aarch64 = 6ee1a0d325409d41ec91d6cd7d843cfed55e7a5f1afc06203aeae547ac092418
+	source_x86_64 = tokless-bin-1.0.17-x86_64::https://github.com/HoangP8/tokless/releases/download/v1.0.17/tokless-linux-x64
+	sha256sums_x86_64 = faceb0139e1f9bfad2a6e3d6d05739b619c947d8e41fa283ca6ea87dcbe86d7f
+	source_aarch64 = tokless-bin-1.0.17-aarch64::https://github.com/HoangP8/tokless/releases/download/v1.0.17/tokless-linux-arm64
+	sha256sums_aarch64 = 33f4c172c15a5e98fce024d7370787a8b9a4714467cd7a2e9640c06c84ff594c
 
 pkgname = tokless-bin
