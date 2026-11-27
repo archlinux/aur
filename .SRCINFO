@@ -1,12 +1,12 @@
 pkgbase = mint-themes-libadwaita
 	pkgdesc = libadwaita theme stylesheets for mint-themes
-	pkgver = 2.4.3
+	pkgver = 2.4.6
 	pkgrel = 1
 	url = https://github.com/linuxmint/mint-themes
 	arch = any
 	license = GPL-3.0-or-later
 	license = LGPL-2.1-or-later
-	makedepends = mint-themes=2.4.3
+	makedepends = mint-themes=2.4.6
 	makedepends = sassc
 	makedepends = python
 	makedepends = pkgconf

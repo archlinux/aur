@@ -10,7 +10,7 @@
 # so there is no per-release CSS to ship. On a libadwaita minor bump: raise
 # _adw_minor and pkgrel, rebuild.
 pkgname=mint-themes-libadwaita
-pkgver=2.4.3
+pkgver=2.4.6
 pkgrel=1
 pkgdesc='libadwaita theme stylesheets for mint-themes'
 url="https://github.com/linuxmint/mint-themes"
@@ -19,7 +19,7 @@ license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
 _adw_minor=10
 # pacman compares epochs: repo libadwaita is versioned 1:1.x, so the bounds carry 1:.
 # >=1:1.10 and <1:1.11 together mean "the 1.10 series"; bump both with _adw_minor.
-makedepends=('mint-themes=2.4.3' 'sassc' 'python' 'pkgconf' 'glib2-devel'
+makedepends=("mint-themes=$pkgver" 'sassc' 'python' 'pkgconf' 'glib2-devel'
              "libadwaita>=1:1.$_adw_minor"
              "libadwaita<1:1.$((_adw_minor + 1))")
 optdepends=(
