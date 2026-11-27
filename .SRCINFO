@@ -1,6 +1,6 @@
 pkgbase = r-seqsqc
 	pkgdesc = A bioconductor package for sample quality check with next generation sequencing data
-	pkgver = 1.34.0
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SeqSQC
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = r-seqsqc
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SeqSQC_1.34.0.tar.gz
-	md5sums = 6e20d3ae8acfad9dcb4a47cd62f6d2c3
-	b2sums = b65da787617ef5f608945f00669ee57049670c708bb6008641cf7460e95464c9f738cdfe79231c7a846ccb45dcb80e8304e9a16c2c1ec598e8a8a6ecaa7f873e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SeqSQC_1.36.0.tar.gz
+	md5sums = d35e7cebd3232d180102cd7f3f70c2ae
+	b2sums = 48936d473f212185aa90a0b3c9932bde858e33a69d419eff9a360ea448ae13b1797907cfb67fa14239b3d2da06810657b5b4c245baa0de8c4e42d31fdcfcbb79
 
 pkgname = r-seqsqc
