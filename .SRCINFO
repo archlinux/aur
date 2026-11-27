@@ -1,6 +1,6 @@
 pkgbase = mark-bin
 	pkgdesc = Sync your markdown files with Confluence pages
-	pkgver = 17.3.1
+	pkgver = 17.4.0
 	pkgrel = 1
 	url = https://github.com/kovetskiy/mark
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = mark-bin
 	provides = mark
 	conflicts = mark
 	options = !debug
-	source_x86_64 = mark-bin-17.3.1-x86_64.tar.gz::https://github.com/kovetskiy/mark/releases/download/v17.3.1/mark_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 9f6b4072eb450dffe47ad57c2e628d4b7c70e670c2ca6e93f86d5c9bccb182df
-	source_aarch64 = mark-bin-17.3.1-aarch64.tar.gz::https://github.com/kovetskiy/mark/releases/download/v17.3.1/mark_Linux_arm64.tar.gz
-	sha256sums_aarch64 = ce55d6d058d99dc1d2158604e76d777c49a6d515e09e3c4227987289add73710
+	source_x86_64 = mark-bin-17.4.0-x86_64.tar.gz::https://github.com/kovetskiy/mark/releases/download/v17.4.0/mark_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 2906b994df64e7eea9d0757912b160d04ee34f7812df10aaa31aacf3ebc5276a
+	source_aarch64 = mark-bin-17.4.0-aarch64.tar.gz::https://github.com/kovetskiy/mark/releases/download/v17.4.0/mark_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 7197bd93c80ea7345d01670b097b401f05272441dc5c336065e68fb2a234197e
 
 pkgname = mark-bin
