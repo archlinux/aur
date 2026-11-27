@@ -1,6 +1,6 @@
 # Maintainer: vani-tty1 <giovannirafanan609@gmail.com>
 pkgname=velocity-speedtest
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A simple speedtest app"
 arch=('x86_64' 'aarch64')
@@ -19,11 +19,10 @@ makedepends=(
   'blueprint-compiler'
   'meson'
   'ninja'
-  'glib2-devel'
 )
 
 source=("velocity-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('af8854b74db82fd834b9c12957e0a9d56256761669c598edbc4ede08768a504a')
+sha256sums=('87912b3e76ff6dfa79e04abad6195aa621cc1dcb0aac94a4f99b9d2c738eceae')
 
 build() {
   cd "velocity-${pkgver}"

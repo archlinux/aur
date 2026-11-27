@@ -1,6 +1,6 @@
 pkgbase = velocity-speedtest
 	pkgdesc = A simple speedtest app
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/vani-tty1/velocity
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = velocity-speedtest
 	depends = libsoup3
 	depends = json-glib
 	options = !debug
-	source = velocity-0.4.1.tar.gz::https://github.com/vani-tty1/velocity/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = af8854b74db82fd834b9c12957e0a9d56256761669c598edbc4ede08768a504a
+	source = velocity-0.5.0.tar.gz::https://github.com/vani-tty1/velocity/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 87912b3e76ff6dfa79e04abad6195aa621cc1dcb0aac94a4f99b9d2c738eceae
 
 pkgname = velocity-speedtest
