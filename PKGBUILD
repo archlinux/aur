@@ -13,6 +13,8 @@ makedepends=(cargo git pkgconf)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 checkdepends=(dbus)
+# libdeflate-sys builds C code: GCC LTO objects cannot be linked by rustc's lld
+options=(!lto)
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 

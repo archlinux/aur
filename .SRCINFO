@@ -17,6 +17,7 @@ pkgbase = bentwire-git
 	optdepends = espeak-ng: speech output
 	provides = bentwire
 	conflicts = bentwire
+	options = !lto
 	source = bentwire::git+https://github.com/mschabhuettl/bentwire.git
 	sha256sums = SKIP
 
