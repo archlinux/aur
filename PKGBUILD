@@ -1,7 +1,7 @@
 # Maintainer: MikolajQ
 
 pkgname=homemesh
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Open the home folders of your other computers in any file manager; pair them with a code'
 arch=('any')
@@ -19,12 +19,24 @@ optdepends=('gvfs: open the computers in Nautilus, Nemo, Thunar and Caja'
 options=('!strip' '!debug')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1e0987ffaa1e2a9426186ae9d74f660c8f7b5c89b2e975c329e1c8c0b50b6554')
+sha256sums=('faa3310593c8c3e33f1756098f7c3de605cab94a79ec79b9a14d0bc338bb5bb5')
 
 check() {
   cd "$pkgname-$pkgver"
-  # Without real pairing between sshd instances: that is tested before each release.
-  HOMEMESH_QUICK_TESTS=1 python -m unittest discover -s tests -q
+  # The full suite (make test: 160 tests, real sshd instances) runs before
+  # every release. Here only whether this system's Python loads every
+  # module and the helpers parse: a fraction of a second. The window needs
+  # a display, so it is checked by compileall in package() alone.
+  python - <<'EOF'
+import ast, importlib, pkgutil
+import homemesh
+for module in pkgutil.iter_modules(homemesh.__path__):
+    if module.name not in ("__main__", "gui"):
+        importlib.import_module(f"homemesh.{module.name}")
+for script in ("helper/homemesh-helper", "helper/homemesh-route"):
+    with open(script, encoding="utf-8") as source:
+        ast.parse(source.read(), script)
+EOF
 }
 
 package() {
