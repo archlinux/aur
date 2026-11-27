@@ -1,6 +1,6 @@
 pkgbase = r-intercellar
 	pkgdesc = InterCellar: an R-Shiny app for interactive analysis and exploration of cell-cell communication in single-cell transcriptomics
-	pkgver = 2.18.0
+	pkgver = 2.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/InterCellar
 	arch = any
@@ -50,7 +50,7 @@ pkgbase = r-intercellar
 	optdepends = r-processx
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/InterCellar_2.18.0.tar.gz
-	sha256sums = a15381c33f7bf9b420960755e94fee237d182578f13453bf59aaa3766d73c82d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/InterCellar_2.20.0.tar.gz
+	sha256sums = d4080c2f58560210afe8bac66709574857f1e6174489eb776048e01bfd50d5ac
 
 pkgname = r-intercellar
