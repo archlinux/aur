@@ -2,7 +2,7 @@
 # Maintainer: wquintal <williamquintal95@gmail.com>
 
 pkgname='logviewer-bin'
-pkgver=0.1.21
+pkgver=0.1.22
 pkgrel=1
 pkgdesc='CLI log client for multiple sources (Splunk, K8s, Docker, etc)'
 url='https://github.com/estran-studio/logviewer'
@@ -12,10 +12,10 @@ provides=('logviewer')
 conflicts=('logviewer')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/estran-studio/logviewer/releases/download/v${pkgver}/logviewer_Linux_arm64.tar.gz")
-sha256sums_aarch64=('877c98ac7485b818cbc03dffe804f530ce11eba7bcf3b0239c54d8e73d43a493')
+sha256sums_aarch64=('a52e5073827f4b74d9ed919a82d096a022a0158c416e63caf99b3bf8c1631e1d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/estran-studio/logviewer/releases/download/v${pkgver}/logviewer_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('e9f6b5bbd4ba9d2d31a19d53fef78f911c27555ef838d081ea7d0f373fff337e')
+sha256sums_x86_64=('ca8ea5b52c63b0cb8306f2b81ff4b308c77f009bf48ffd83043e852900616068')
 
 package() {
   install -Dm755 "./logviewer" "${pkgdir}/usr/bin/logviewer"
