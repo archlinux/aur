@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=adSplit
-_pkgver=1.82.0
+_pkgver=1.84.0
 pkgname=r-${_pkgname,,}
-pkgver=1.82.0
+pkgver=1.84.0
 pkgrel=1
 pkgdesc='Annotation-Driven Clustering'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0854109af8dd60b50bae1e910b776247d70abacc98bffc14a84f0d0121c631b9')
+sha256sums=('ae26d9303590aed56deece949ba0c4518907ed4a661a6700a3749c92c71395cb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
