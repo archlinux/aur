@@ -1,12 +1,13 @@
 # Maintainer: Martin Kopecký <kopecky@thekrew.app>
 pkgname=spot-git
-pkgver=0.8.5.r0.g8e5fb9c
+pkgver=0.9.0.r0.g996dad3
 pkgrel=1
 pkgdesc='TOML+CSS dialog runtime for Wayland (layer-shell overlays), built from git'
 arch=('x86_64')
 url='https://github.com/KopyTKG/spot'
 license=('MIT')
 depends=('glibc' 'gtk4' 'gtk4-layer-shell')
+optdepends=('wl-clipboard: submit.copy')
 makedepends=('git' 'go')
 provides=('spot')
 conflicts=('spot' 'spot-bin')
@@ -24,11 +25,14 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}" GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   go build -ldflags "-X main.version=$pkgver" -o spot .
+  # Static, and so not pie: the mod host's sandbox grants it nothing but itself.
+  CGO_ENABLED=0 GOFLAGS="-trimpath -mod=readonly -modcacherw" go build -buildmode=exe -o spot-mod-host ./cmd/spot-mod-host
 }
 
 package() {
   cd "$pkgname"
   install -Dm755 spot "$pkgdir/usr/bin/spot"
+  install -Dm755 spot-mod-host "$pkgdir/usr/bin/spot-mod-host"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/spot/README.md"
   # examples/ has a demo/ subdirectory, which `install -t ... examples/*` would refuse
