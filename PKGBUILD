@@ -5,8 +5,8 @@
 # Contributor: liberodark
 
 pkgname=frostwire
-pkgver=7.1.5
-_build=338
+pkgver=7.1.6
+_build=339
 pkgrel=1
 pkgdesc='An easy to use cloud downloader, BitTorrent client'
 arch=('any')
@@ -16,7 +16,7 @@ depends=('bash' 'java-runtime')
 makedepends=('gendesk' 'git' 'gradle' 'java-environment')
 source=("git+https://github.com/frostwire/frostwire.git#tag=${pkgname}-desktop-${pkgver}-build-${_build}"
         "${pkgname}.sh")
-sha256sums=('cc55db1853ff62e06ac37dc3936d9ca5bacc114bd7b4f7b03da6dd103b9fdd32'
+sha256sums=('14066bd47f8e5a75cface2ed3ba2818dd2bc398f1a465a486e321a88331d05bc'
             '40b5ba9e018022270c57b7cc7e11124b7829d2a50035dc07382e60409e2e0152')
 
 prepare() {
