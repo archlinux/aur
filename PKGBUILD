@@ -1,7 +1,7 @@
 # Maintainer: bobo <https://aur.archlinux.org/account/bobosingle>
 
 pkgname=manis-pocket-bin
-pkgver=2.7.142
+pkgver=2.7.143
 pkgrel=1
 pkgdesc='Manis Pocket clipboard manager and P2P sync client (GPUI)'
 arch=('x86_64')
@@ -14,9 +14,9 @@ conflicts=('manis-pocket' 'manis-pocket-wayland' 'manis-pocket-wayland-git')
 options=('!debug' '!strip')
 _upstream_pkgrel=1
 source_x86_64=(
-  "manis-pocket-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst::https://github.com/kaigedong/Manis-Pocket/releases/download/build-2.7.142/manis-pocket-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst"
+  "manis-pocket-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst::https://github.com/kaigedong/Manis-Pocket/releases/download/build-2.7.143/manis-pocket-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst"
 )
-sha256sums_x86_64=('ce7a6c9a5cd06e0dee0e7140828614dcbf04c5298a083ac9472b62678fb66a8a')
+sha256sums_x86_64=('7157d82576af5513ffa1464f86824c301d54ea608e43b791472dc9438668a258')
 
 package() {
   install -Dm755 "$srcdir/usr/bin/manis-pocket" \
