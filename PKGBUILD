@@ -6,7 +6,7 @@
 # and publishes it on AUR as kalliope-bin (.github/workflows/aur.yml). See docs/releasing.md.
 
 pkgname=kalliope-bin
-pkgver=0.2
+pkgver=0.3
 # A test of the release workflow, 0.0-test.N, is written 0.0_test.N here: pkgver cannot contain "-".
 _version=${pkgver//_/-}
 pkgrel=1
@@ -14,23 +14,24 @@ pkgdesc='Type, and be heard in video calls: a local voice through a virtual micr
 arch=('x86_64')
 url='https://github.com/SANSEVIERIA-OU/kalliope'
 license=('LicenseRef-SANSEVIERIA-1.1')
-# Linked: glibc, gcc-libs, fontconfig. Loaded at run time: libxkbcommon always, then wayland or
-# the X11 libraries for the window, and libpipewire for the virtual microphone. ONNX Runtime and
-# the voice models come in the tarball (lib/, share/kalliope/): nothing is downloaded.
-depends=('glibc' 'gcc-libs' 'fontconfig' 'libxkbcommon' 'qt6-base' 'qt6-wayland' 'python-gobject' 'libadwaita')
+# One Slint window on every desktop, drawn by Skia on the CPU: no toolkit, no scripting runtime, no GPU driver. Linked: glibc, gcc-libs,
+# fontconfig. Loaded at run time for the window: libxkbcommon, libwayland-client (Wayland), libX11, libX11-xcb, libXcursor, libXi and
+# libxkbcommon-x11 (X11). All are required: the window falls back to X11 where Wayland is missing, and a missing X11 library stops it
+# (a desktop already has them all). libpipewire is the virtual microphone and records a personal voice; libopus reads Opus voice
+# messages (WhatsApp, Telegram) to make a voice from; libdbus asks the desktop's file chooser (portal) for the file to import, with zenity
+# as the fallback. ONNX Runtime and the voice models come in the tarball
+# (lib/, share/kalliope/): nothing is downloaded. tools/test_packaging.py checks this list against the binary and the CI.
+depends=('glibc' 'gcc-libs' 'fontconfig' 'libxkbcommon' 'libxkbcommon-x11' 'wayland' 'libx11' 'libxcursor' 'libxi')
 optdepends=(
-  'libpipewire: the virtual microphone'
-  'wayland: the window on Wayland'
-  'libx11: the window on X11'
-  'libxcursor: the window on X11'
-  'libxi: the window on X11'
-  'libxkbcommon-x11: the window on X11'
+  'libpipewire: the virtual microphone, and recording a personal voice'
+  'opus: making a personal voice from WhatsApp and Telegram voice messages'
+  'dbus: the desktop file chooser to import a recording (zenity otherwise)'
 )
 provides=('kalliope')
 conflicts=('kalliope')
 options=('!strip' '!debug')
 source=("$url/releases/download/v$_version/kalliope-$_version-linux-x86_64.tar.gz")
-sha256sums=('050a53e2bd2fd27d279675893a00f4ac3ca525b63430b2983526fdeaedd0257e')
+sha256sums=('674b598ea68c18ed4758b4994b486b6018d2bb996ee87b6605d3161ca5e0d739')
 
 package() {
   cd "kalliope-$_version-linux-x86_64"
