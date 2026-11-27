@@ -1,6 +1,6 @@
 pkgbase = r-meshes
 	pkgdesc = MeSH Enrichment and Semantic analyses
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/meshes
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-meshes
 	optdepends = r-knitr
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/meshes_1.38.0.tar.gz
-	sha256sums = 128002d49c1f53cca95a6ba13b6ffb0d26fdedd8b864e66315b2269d3b228461
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/meshes_1.40.0.tar.gz
+	sha256sums = c39fbae7be21e60fe9911885afbaedefd107633acfeccb484f862551a3d2fdb5
 
 pkgname = r-meshes
