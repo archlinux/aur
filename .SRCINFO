@@ -1,13 +1,13 @@
 pkgbase = ketesa
 	pkgdesc = A Matrix administration panel using react-admin
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/etkecc/ketesa
 	arch = any
 	license = Apache-2.0
 	optdepends = nginx: reverse-proxy
 	optdepends = httpd: reverse-proxy
-	source = ketesa-1.5.1.tar.gz::https://github.com/etkecc/ketesa/releases/download/v1.5.1/ketesa.tar.gz
-	sha512sums = da8dc04f77d198ec426ea3276881707d28ac7adbefe3e95c7aaaec3ee7092353b5880038d5ebd3f366c92f31ec28bcab74a33bd10ef53a9ab154b951b1abbcb7
+	source = ketesa-1.5.2.tar.gz::https://github.com/etkecc/ketesa/releases/download/v1.5.2/ketesa.tar.gz
+	sha512sums = f52ad974f111b5a6c314329aab36add3d3728908fc0aa8654b77b8fe510c3d9114d6ab5d2f5c7f72989e8bc383c837d6147c3accde6ad21cf953af5c5b360d7e
 
 pkgname = ketesa
