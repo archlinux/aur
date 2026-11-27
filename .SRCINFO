@@ -1,6 +1,6 @@
 pkgbase = vtium-git
 	pkgdesc = Terminal for the Linux console, drawn through KMS/DRM (git main)
-	pkgver = 0.1.0alpha.11.r0.g373d0cd
+	pkgver = 0.1.0alpha.12.r0.g794dd89
 	pkgrel = 1
 	url = https://github.com/vtium/vtium
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgname = vtium-git
 	optdepends = vtium-fonts: the rest of vtium's catalog of font sets, and the fonts they draw with
 	optdepends = kbd: console fonts, which vconsole.conf's FONT= and vtium.conf's font-name can name
 	optdepends = kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon
-	provides = vtium=0.1.0alpha.11.r0.g373d0cd
+	provides = vtium=0.1.0alpha.12.r0.g794dd89
 	conflicts = vtium
 	backup = etc/pam.d/vtium
 	backup = etc/vtium/fonts/console/cullet-mono.vtfrit
