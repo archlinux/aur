@@ -109,8 +109,8 @@
 #   vtium-fonts wait until the person activates them.
 
 pkgname=vtium-fonts
-_tag=v0.1.0-alpha.11
-pkgver=0.1.0alpha.11
+_tag=v0.1.0-alpha.12
+pkgver=0.1.0alpha.12
 pkgrel=1
 pkgdesc='vtium font set catalog, and the fonts its font sets draw with'
 arch=('any')

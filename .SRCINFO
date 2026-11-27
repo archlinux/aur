@@ -1,6 +1,6 @@
 pkgbase = vtium-fonts
 	pkgdesc = vtium font set catalog, and the fonts its font sets draw with
-	pkgver = 0.1.0alpha.11
+	pkgver = 0.1.0alpha.12
 	pkgrel = 1
 	url = https://github.com/vtium/vtium
 	arch = any
@@ -74,7 +74,7 @@ pkgbase = vtium-fonts
 	backup = etc/vtium/fonts/scripts/noto-thai-lao.vtfrit
 	backup = etc/vtium/fonts/scripts/noto-vietnamese.vtfrit
 	backup = etc/vtium/fonts/small/tiny5.vtfrit
-	source = vtium::git+https://github.com/vtium/vtium.git#tag=v0.1.0-alpha.11?signed
+	source = vtium::git+https://github.com/vtium/vtium.git#tag=v0.1.0-alpha.12?signed
 	source = https://web.archive.org/web/20261105221733id_/https://int10h.org/oldschool-pc-fonts/download/oldschool_pc_font_pack_v2.2_linux.zip
 	source = https://github.com/svofski/glasstty/raw/845410289199833ca0d5d7697d06e1780bfe3715/Glass_TTY_VT220.ttf
 	source = glasstty-LICENSE::https://github.com/svofski/glasstty/raw/845410289199833ca0d5d7697d06e1780bfe3715/LICENSE
