@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=R4GE
+Comment=Race in Ridge Racer Type 4 using your own disc image
+Exec=r4ge
+Icon=r4ge
+Terminal=false
+Categories=Game;SportsGame;
