@@ -1,15 +1,15 @@
 pkgbase = kwin-scripts-krohnkite
 	pkgdesc = A dynamic tiling extension for KWin
-	pkgver = 0.9.9.2
-	pkgrel = 4
+	pkgver = 0.9.11.0
+	pkgrel = 1
 	url = https://codeberg.org/anametologin/krohnkite
 	arch = any
 	license = MIT
 	noextract = krohnkite.kwinscript
-	source = https://codeberg.org/anametologin/krohnkite/archive/0.9.9.2.tar.gz
-	source = https://codeberg.org/anametologin/Krohnkite/releases/download/0.9.9.2/krohnkite.kwinscript
-	sha256sums = 618a5d7b6b552026b6ed4db62422f3ec82969e989d4b5d9c816c405e4924e138
-	sha256sums = 42f7f66531d366c74b5fc860381da3517ccb4cdccd1f80c122fcab6e9a8fcf7e
+	source = https://codeberg.org/anametologin/krohnkite/archive/0.9.11.0.tar.gz
+	source = https://codeberg.org/anametologin/Krohnkite/releases/download/0.9.11.0/krohnkite.kwinscript
+	sha256sums = 105c062ed4fb53631e97a346923f26f3d039c4f82c98d158e8b07cc51ff41a96
+	sha256sums = 1a8d99bf55dbf30d3af704ba7951a895aeee1d16e7da5a7bfe1d2db8215f6fa7
 
 pkgname = kwin-scripts-krohnkite
 	depends = kwin
