@@ -1,6 +1,6 @@
 pkgbase = cosmic-applet-manager-git
 	pkgdesc = Browse, install, update and remove community COSMIC extensions
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/kevinRForshey/CosmicAppletManager
 	arch = x86_64
@@ -17,6 +17,9 @@ pkgbase = cosmic-applet-manager-git
 	depends = wayland
 	depends = vulkan-icd-loader
 	depends = fontconfig
+	optdepends = flatpak: sandboxed installs (the default)
+	optdepends = flatpak-builder: sandboxed installs (the default)
+	optdepends = python: sandboxed installs and Flatpak packaging
 	provides = cosmic-applet-manager
 	conflicts = cosmic-applet-manager
 	options = !lto
