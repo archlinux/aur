@@ -1,0 +1,5 @@
+[antifennel]
+source = "git"
+git = "https://git.sr.ht/~technomancy/antifennel"
+use_max_tag = true
+prefix = "v"
