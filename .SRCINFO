@@ -1,6 +1,6 @@
 pkgbase = mapstick
 	pkgdesc = Unofficial navigation map updater for Hyundai, Kia and Genesis: downloads the firmware onto a USB drive
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/MikolajQ/mapstick
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = mapstick
 	optdepends = libx11: run on X11
 	optdepends = libxcursor: cursor themes on X11
 	options = !lto
-	source = mapstick-0.1.0.tar.gz::https://github.com/MikolajQ/mapstick/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = f77d9b28c27b8074ba222fbb20330e2c524a11441619811e7ed0ab75a800704f
+	source = mapstick-0.1.1.tar.gz::https://github.com/MikolajQ/mapstick/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 19887a9e66c52a1a53370ec03c516a42bc9a0bc06a7e3774bba580b91408bf40
 
 pkgname = mapstick
