@@ -1,0 +1,15 @@
+post_install() {
+  cat <<'MSG'
+==> puppetxr is installed but not the active OpenXR runtime. Either run apps with
+      XR_RUNTIME_JSON=/usr/share/openxr/1/puppetxr.json <app>
+    or make it your default (undo by removing the link):
+      mkdir -p ~/.config/openxr/1
+      ln -sf /usr/share/openxr/1/puppetxr.json ~/.config/openxr/1/active_runtime.json
+MSG
+}
+
+post_remove() {
+  cat <<'MSG'
+==> If you linked ~/.config/openxr/1/active_runtime.json to puppetxr, remove that link.
+MSG
+}
