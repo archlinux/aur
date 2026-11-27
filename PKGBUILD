@@ -1,6 +1,6 @@
 # Maintainer: Rinne <aur@rinne.in>
 pkgname=your-szu-life-git
-pkgver=0.18.0.r1f9cb87
+pkgver=0.18.2.r99d77e1
 pkgrel=1
 pkgdesc="泥深 - 你的SZU助手"
 arch=('x86_64')
