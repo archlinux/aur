@@ -1,7 +1,7 @@
 # Maintainer: vii <coderdayton14 at gmail dot com>
 
 pkgname=nightcap
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='Android x86-64 Roblox compatibility runtime for Linux'
 arch=('x86_64')
