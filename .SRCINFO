@@ -1,6 +1,6 @@
 pkgbase = kalliope-bin
 	pkgdesc = Type, and be heard in video calls: a local voice through a virtual microphone
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/SANSEVIERIA-OU/kalliope
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = kalliope-bin
 	conflicts = kalliope
 	options = !strip
 	options = !debug
-	source = https://github.com/SANSEVIERIA-OU/kalliope/releases/download/v0.4/kalliope-0.4-linux-x86_64.tar.gz
-	sha256sums = 999119d2f99979b57f2f7d0535c65b2f0c6b63a7b26de7684f6dccf837a2fe26
+	source = https://github.com/SANSEVIERIA-OU/kalliope/releases/download/v0.5/kalliope-0.5-linux-x86_64.tar.gz
+	sha256sums = 30a57b9d29ee76881160f31c22eb9fa10ea660a220496d7df15075ff0dee1c90
 
 pkgname = kalliope-bin
