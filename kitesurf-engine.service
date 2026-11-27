@@ -4,7 +4,7 @@ Documentation=https://github.com/cloudflare/kitesurf
 
 [Service]
 Type=exec
-# Optional settings: copy /usr/share/doc/kitesurf-engine-git/kitesurf-engine.env
+# Optional settings: copy /usr/share/doc/kitesurf-git/kitesurf-engine.env
 # to ~/.config/kitesurf-engine/env and edit it.
 EnvironmentFile=-%E/kitesurf-engine/env
 ExecStart=/usr/bin/kitesurf-engine

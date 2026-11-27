@@ -3,7 +3,7 @@
 pkgname=kitesurf-git
 _pkgname=kitesurf
 pkgver=0.0.5.r400.gb9b904e
-pkgrel=1
+pkgrel=2
 pkgdesc="Kitesurf, Cloudflare's browser engine for AI agents"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cloudflare/kitesurf"
@@ -25,7 +25,7 @@ source=("$_pkgname::git+$url.git"
         'kitesurf-engine.env')
 sha256sums=('SKIP'
             '753b12f5832f7fe4b7ed782db835f6385a517382ad488584531b546a88760e87'
-            'cf02e9ff0104c22d7386752cb24add061acc60597780bb1e9fab80e01954d61d'
+            'df0d22cc2bc3437212e4bf8a354734926de6df0bd8743a2e8b599eafe16c27e8'
             'a98b303f3fc50fc34db501b90aa47903f34cc7921a58963f282f2ab13e894d79')
 
 _clidir=packages/kitesurf-cli
