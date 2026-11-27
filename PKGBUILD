@@ -1,10 +1,10 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=senpi
-pkgver=2026.11.26
+pkgver=2026.11.27
 pkgrel=1
 _npmver=${pkgver//_/-}
-_gitver=2026.11.26
+_gitver=2026.11.27
 pkgdesc='Opinionated coding agent CLI based on pi'
 arch=('x86_64' 'aarch64')
 url='https://github.com/code-yeongyu/senpi'
@@ -24,7 +24,7 @@ source=(
   "$pkgname-$_npmver-LICENSE::https://raw.githubusercontent.com/code-yeongyu/senpi/v$_gitver/LICENSE"
 )
 noextract=("$pkgname-$_npmver.tgz")
-sha256sums=('3246426574436e29de532b288538af89bb84e3913998e168359c8deac008195b'
+sha256sums=('ffbe47527e29857308872d1af1172b5b2a0da17f023b4c78e7dab32be1cd60ef'
             'b572487f123bf259487f7dab25923af16fecd08ed7a2c50964f393282dba883c')
 
 build() {
