@@ -1,0 +1,5 @@
+[zam-web]
+source = "github"
+github = "az4521/Zam"
+use_latest_release = true
+prefix = "v"
