@@ -20,7 +20,7 @@ dir=$(echo $pkgver|cut -d. -f1,2,4)
 source_x86_64=("https://download.teamdrive.net/${pkgver}/TMDR/linux-x86_64/Install-TeamDrive-${pkgver}_TMDR.run")
 
 
-sha256sums=('b81c4e2573b8478ce69a0ba66f5a493ecd73dbb8a94fe92fa33b1f5f14b8fb2c')
+sha256sums=('f9624d67c6bfb1e7c1e8e09329971046919dab3fb2aca506fc165c3efceab984')
 sha256sums_x86_64=('394890fc6488a773de640ffe708214277269f47e3f7bd2ea1d82ec2f8c028c7d')
 
 options=(!strip)
