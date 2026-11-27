@@ -1,6 +1,6 @@
 pkgbase = micforge-git
 	pkgdesc = Microphone processor for PipeWire: voice-only gate, AI noise removal, effects, voice changer and VST3/LV2 plugin hosting (git version)
-	pkgver = 0.2.2.r0.g0000000
+	pkgver = 0.3.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/stuartw-source/micforge
 	arch = x86_64
