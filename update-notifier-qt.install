@@ -1,16 +1,19 @@
 post_install() {
     systemctl daemon-reload
 
-    # Enable system monitor service
-    systemctl enable update-notifier-monitor.service
+    # Enable and start system monitor service
+    systemctl enable --now update-notifier-monitor.service
 
     echo "==> Update Notifier Qt services configured"
-    echo "==> System monitor will start on next boot"
+    echo "==> System monitor is running"
     echo "==> Tray icon will auto-start for all users on login"
 }
 
 post_upgrade() {
     systemctl daemon-reload
+
+    # Restart only if already running
+    systemctl try-restart update-notifier-monitor.service
 }
 
 pre_remove() {
