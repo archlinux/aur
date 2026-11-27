@@ -1,12 +1,12 @@
 pkgbase = r-charport
 	pkgdesc = ALTREP String Interoperability
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=charport
 	arch = x86_64
 	license = MIT
 	depends = r
-	source = https://cran.r-project.org/src/contrib/charport_0.2.0.tar.gz
-	sha256sums = 3765851bc0a68dcaccb2fde79c7cb3c45bdee716fbce78dccc9e87a15302a6d3
+	source = https://cran.r-project.org/src/contrib/charport_0.3.0.tar.gz
+	sha256sums = 033a3214d4721c4f3707bffd8bbace207190c4249eb0d661a83cb6586b72847d
 
 pkgname = r-charport
