@@ -1,6 +1,6 @@
 pkgbase = compresso-bin
-	pkgdesc = A free and open-sourced cross-platform video compression app powered by FFmpeg.
-	pkgver = 4.2.0
+	pkgdesc = Convert any video/image/audio into a tiny size. 100% free & open-source.
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/codeforreal1/compressO
 	arch = x86_64
@@ -9,9 +9,11 @@ pkgbase = compresso-bin
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = ffmpeg
-	provides = compresso=4.2.0
+	depends = gifski
+	depends = pngquant
+	provides = compresso=4.3.0
 	conflicts = compresso
-	source = compresso-4.2.0.deb::https://github.com/codeforreal1/compressO/releases/download/4.2.0/CompressO_4.2.0_amd64.deb
-	sha256sums = 9ef6023e712dc9de17d0b543bacf801142ba0bd28dfcb7cc3cefd058e2c4128e
+	source = compresso-4.3.0.deb::https://github.com/codeforreal1/compressO/releases/download/4.3.0/CompressO_4.3.0_amd64.deb
+	sha256sums = c6f9d191b368d122c7a63d214c6892ecab9c4bf97a7723db29bdc60f8be0957c
 
 pkgname = compresso-bin
