@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orca-ide-bin
 _pkgname=Orca
-pkgver=1.4.277
+pkgver=1.4.278
 _electronversion=43
 pkgrel=1
 pkgdesc="ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription."
 arch=(
-    'aarch64'
-    'x86_64'
+	'aarch64'
+	'x86_64'
 )
 url="https://onorca.dev/"
 _ghurl="https://github.com/stablyai/orca"
@@ -15,30 +15,30 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}"
-    'nodejs'
-    'python'
-    'python-gobject'
-    'github-cli'
-    'npm'
-    'vulkan-icd-loader'
+	"electron${_electronversion}"
+	'nodejs'
+	'python'
+	'python-gobject'
+	'github-cli'
+	'npm'
+	'vulkan-icd-loader'
 )
 options=(
-    '!emptydirs'
-    '!strip'
+	'!emptydirs'
+	'!strip'
 )
 source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/stablyai/orca/v${pkgver}/LICENSE"
-    "${pkgname%-bin}.js"
-    "${pkgname%-bin}.sh"
+	"LICENSE-${pkgver}::https://raw.githubusercontent.com/stablyai/orca/v${pkgver}/LICENSE"
+	"${pkgname%-bin}.js"
+	"${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3'
-            'd0f201d4e9b0690ccfbe9034779bf95a7a92996cef63a957bf15ea11c7d83236'
-            '6295de105284c8d173a862217d76eee1610dad92dd5543f3f9e6a08a6a77929a')
-sha256sums_aarch64=('abc65fe8f7f3f7b7be69f1ca0ec45b2cc6c622b7e8422e3e5c1811e7aa844e54')
-sha256sums_x86_64=('46fb018af43fa9e47b4a4c9f681a66ecc871d231be896298301cd0e2c2e8d952')
+			'4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b'
+			'739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
+sha256sums_aarch64=('4dfe1c93819194c0111a2f7d9608745a1d95aa81d32e8a359cb14437ea1b1b92')
+sha256sums_x86_64=('d2503e0cfcf32a0ddc928a5c943ea7dc6d7c2fde749b59ba18719f7a001fb84f')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
