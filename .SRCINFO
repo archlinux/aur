@@ -1,7 +1,7 @@
 pkgbase = shotori-clipboard-uri-list
 	pkgdesc = Screenshot tool fork: the clipboard also offers text/uri-list and text/html so X11 clients can paste large images
 	pkgver = 0.19.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/go1em/shotori
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = shotori-clipboard-uri-list
 	conflicts = shotori
 	conflicts = shotori-git
 	conflicts = shotori-bin
-	source = https://github.com/go1em/shotori/releases/download/v0.19.1-clipboard2/shotori-v0.19.1-clipboard2-x86_64.tar.gz
-	sha256sums = 79d9c953fdd0c5028917a2ecf7e241e5cc08485a3c706c3890a8ddd60e1d0f68
+	source = https://github.com/go1em/shotori/releases/download/v0.19.1-clipboard3/shotori-v0.19.1-clipboard3-x86_64.tar.gz
+	sha256sums = 3efbd45e93054b589eb9b18b346da153e022f04351a43a7e621a54240d003c4d
 
 pkgname = shotori-clipboard-uri-list
