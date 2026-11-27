@@ -1,13 +1,14 @@
 # Maintainer: Matthias Schabhüttl <matthias@matthiasschabhuettl.com>
 pkgname=bentwire-git
 _pkgname=bentwire
-pkgver=0.2.2.r0.g18536da
+pkgver=0.3.0.r0.g3099151
 pkgrel=1
 pkgdesc='Desktop characters (Microsoft Agent and Office Assistant formats) for Wayland (development version)'
 arch=(x86_64)
 url='https://github.com/mschabhuettl/bentwire'
 license=('MIT OR Apache-2.0' 'LGPL-2.1-or-later')
 depends=(alsa-lib glibc libgcc libxkbcommon)
+optdepends=('espeak-ng: speech output')
 makedepends=(cargo git pkgconf)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
