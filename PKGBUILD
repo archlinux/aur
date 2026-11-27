@@ -1,13 +1,14 @@
 # Maintainer: Tino Gohl <tuvbunn2@googlemail.com>
 pkgname=tinox-bin
 pkgver=2.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Native, statically typed programming language with an LLVM backend, garbage collection, and concurrency support (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/subnix-work/tinox"
 license=('MIT' 'Apache-2.0')
-depends=('glibc' 'gc' 'openssl' 'llvm' 'gcc' 'xz' 'bzip2')
+depends=('glibc' 'openssl' 'llvm' 'gcc' 'xz' 'bzip2')
 optdepends=(
+  'gc: only for TINOX_GC=boehm builds',
   'clang: tinox repl / dev-mode on-the-fly runtime recompilation'
   'sqlite: DB feature with driver = "sqlite" in tinox.toml'
   'postgresql-libs: DB feature with driver = "postgres" in tinox.toml'

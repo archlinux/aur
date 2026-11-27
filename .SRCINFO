@@ -1,18 +1,18 @@
 pkgbase = tinox-bin
 	pkgdesc = Native, statically typed programming language with an LLVM backend, garbage collection, and concurrency support (prebuilt binary)
 	pkgver = 2.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/subnix-work/tinox
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
 	depends = glibc
-	depends = gc
 	depends = openssl
 	depends = llvm
 	depends = gcc
 	depends = xz
 	depends = bzip2
+	optdepends = gc: only for TINOX_GC=boehm builds,
 	optdepends = clang: tinox repl / dev-mode on-the-fly runtime recompilation
 	optdepends = sqlite: DB feature with driver = "sqlite" in tinox.toml
 	optdepends = postgresql-libs: DB feature with driver = "postgres" in tinox.toml
