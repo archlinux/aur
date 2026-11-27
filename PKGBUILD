@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=keggorthology
-_pkgver=2.64.0
+_pkgver=2.66.0
 pkgname=r-${_pkgname,,}
-pkgver=2.64.0
+pkgver=2.66.0
 pkgrel=1
 pkgdesc='graph support for KO, KEGG Orthology'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-rbgl
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d7662410f50ad15b0c3345c8c37b263df52ece73c2cf126be93cf6242b55a0cc')
+sha256sums=('0e9a84b436f4503f8620497a15a7bdc458ad3da052a94eb8f47c012fe6d559c2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
