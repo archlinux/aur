@@ -4,13 +4,13 @@
 pkgname=scuffed-stat-tracker-bin
 _tag=stat-tracker-v0.6.0
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Overwatch personal stats tracker for Scuffed Crew (capture daemon and desktop app)"
 arch=('x86_64')
 url="https://github.com/FrozenTear/scuffed-crew"
 license=('MIT' 'Apache-2.0')
-depends=('glibc' 'libgcc' 'libstdc++' 'zlib' 'bash' 'openssl' 'mesa' 'wayland' 'gtk3' 'glib2' 'gdk-pixbuf2'
-         'libx11' 'libxtst' 'libxinerama' 'libxkbcommon' 'xdg-desktop-portal')
+depends=('glibc' 'libgcc' 'libstdc++' 'zlib' 'bash' 'openssl-3' 'mesa' 'wayland' 'gtk3' 'glib2' 'gdk-pixbuf2'
+         'libx11' 'libxtst' 'libxinerama' 'libxkbcommon' 'libxkbcommon-x11' 'xdg-desktop-portal')
 optdepends=(
   'wl-clipboard: Copy buttons on Wayland'
   'xclip: Copy buttons on X11'
