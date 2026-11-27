@@ -3,7 +3,7 @@ _pkgname=@appium/storage-plugin
 _scope="${_pkgname%%/*}"
 _name="${_pkgname##*/}"
 pkgname="nodejs-${_scope//@/}-$_name"
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Appium plugin for server-side file storage"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_name-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('f474946f175bd927c8fdace7a87c86186506c5593db356f4188542437e5ae664')
+sha256sums=('7faec8cce74a11880bed473eed194d16a1583bd75c8a78d6c239debf0e860e0a')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
