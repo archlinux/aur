@@ -1,7 +1,7 @@
 # Maintainer: Alex Indigo <ai@aegis.one>
 
 pkgname=qt6-imvqml
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Qt Quick image pipeline with an isolated decoder'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glib2' 'glibc' 'libgcc' 'libstdc++' 'libvips' 'libwebp' 'qt6-base' 'qt
 makedepends=('cmake' 'mpv' 'ninja')
 optdepends=('mpv: optional video frame capture')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('975c0c7e9bfe8e0c6796af85d11162cfab92d0eaf5e8ada09e86eb5d94628cad')
+sha256sums=('59cc363fa25b52e860148b1c113c1c321efe339dde07a4242ceeae1022f13ca3')
 
 build() {
     cmake -S "imvqml-$pkgver" -B build -G Ninja \
