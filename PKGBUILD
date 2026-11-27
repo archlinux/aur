@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FilterFFPE
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='FFPE Artificial Chimeric Read Filter for NGS data'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('aaa3775a26eb2e5c80ed368440ceeb8c135c2a9dfb62f0c7e2020a219ae02d43')
+sha256sums=('6856a991370b381e7dfde1280effc4056c8005101bdb0319d714075f76aef8bf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
