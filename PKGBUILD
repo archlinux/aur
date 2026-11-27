@@ -3,7 +3,7 @@
 # Maintainer: Joshua Taillon <jat255 AT gmail DOT com>
 pkgname=python-hyperspy
 pkgshort=hyperspy
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
@@ -22,9 +22,9 @@ depends=('python'
          'python-pint>=0.10'
          'python-prettytable>=2.3'
          'python-yaml'
-         'python-rosettasciio>=0.12.0'
+         'python-rosettasciio>=0.16.0'
          'python-scipy>=1.10.0'
-         'python-sympy>=1.10'
+         'python-sympy>=1.14'
          'python-tqdm>=4.59.0'
          'python-traits>=7.0.0'
          )
@@ -35,13 +35,13 @@ optdepends=('python-numba>=0.58: speed'
             'ipython: ipython>8.0'
             'python-ipyparallel: ipython'
             'python-scikit-learn>=1.6.0: machine learning features'
-            'python-scikit-image>=0.19: image processing features'
+            'python-scikit-image>=0.20.0: image processing features'
             'python-hyperspy-gui-ipywidgets>=2.1.0: GUI components for Jupyter' # AUR
             'python-hyperspy-gui-traitsui>=2.1.0: GUI components for desktop' # AUR     
             'python-ipympl: GUI components for Jupyter'
              )
 
-makedepends=('python-setuptools>=64'
+makedepends=('python-setuptools>=77'
              'python-setuptools-scm>=8'
              'python-wheel'
              'python-build'
@@ -74,4 +74,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('a027d75686918ff6dbefb958208b555747aa18e785a3989bda0d38f3b83d4afa')
+sha256sums=('a846c9fe16383f038a3472e7aaf4e63410e22fa4c4b5572eb40b17f3cd9a974f')
