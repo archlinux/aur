@@ -1,0 +1,25 @@
+pkgbase = cremniy
+	pkgdesc = Integrated low-level development environment with code editor, HEX editor and disassembler
+	pkgver = 0.4.0
+	pkgrel = 2
+	url = https://github.com/munirov/cremniy
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = http-parser
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-svg
+	depends = libgit2
+	depends = hicolor-icon-theme
+	provides = cremniy
+	conflicts = cremniy-bin
+	conflicts = cremniy-git
+	source = cremniy::git+https://github.com/munirov/cremniy.git#tag=v0.4.0
+	sha256sums = SKIP
+
+pkgname = cremniy
