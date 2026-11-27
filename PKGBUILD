@@ -1,7 +1,7 @@
 # Maintainer: RainyPixel <me@bobchenkov.ru>
 
 pkgname=wallpaper-engine-kde-plugin-git
-pkgver=0.8.0.r760.g97fb7c6
+pkgver=0.9.0.r762.gf470d34
 pkgrel=1
 pkgdesc="Wallpaper Engine integration for KDE Plasma 6 (native C++, no Python)"
 arch=('x86_64')
@@ -15,9 +15,11 @@ depends=(
     'gst-libav'
     'mpv'
     'ffmpeg'
+    'freetype2'
+    'libpulse'
+    'qt6-5compat'
     'qt6-declarative'
     'qt6-multimedia'
-    'qt6-websockets'
     'qt6-webchannel'
     'qt6-webengine'
     'lz4'
@@ -25,7 +27,7 @@ depends=(
 )
 makedepends=(
     'git'
-    'cmake'
+    'cmake>=3.22.1'
     'ninja'
     'extra-cmake-modules'
     'vulkan-headers'
@@ -40,7 +42,10 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    printf "0.8.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    local version
+    version=$(sed -n 's/^X-KDE-PluginInfo-Version=//p' plugin/metadata.desktop)
+    [[ -n $version ]] || return 1
+    printf '%s.r%s.g%s' "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

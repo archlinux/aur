@@ -1,12 +1,12 @@
 pkgbase = wallpaper-engine-kde-plugin-git
 	pkgdesc = Wallpaper Engine integration for KDE Plasma 6 (native C++, no Python)
-	pkgver = 0.8.0.r760.g97fb7c6
+	pkgver = 0.9.0.r762.gf470d34
 	pkgrel = 1
 	url = https://github.com/RainyPixel/wallpaper-engine-kde-plugin
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = git
-	makedepends = cmake
+	makedepends = cmake>=3.22.1
 	makedepends = ninja
 	makedepends = extra-cmake-modules
 	makedepends = vulkan-headers
@@ -17,9 +17,11 @@ pkgbase = wallpaper-engine-kde-plugin-git
 	depends = gst-libav
 	depends = mpv
 	depends = ffmpeg
+	depends = freetype2
+	depends = libpulse
+	depends = qt6-5compat
 	depends = qt6-declarative
 	depends = qt6-multimedia
-	depends = qt6-websockets
 	depends = qt6-webchannel
 	depends = qt6-webengine
 	depends = lz4
