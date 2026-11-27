@@ -1,6 +1,6 @@
 # Maintainer: vmvarela <vmvarela@gmail.com>
 pkgname=ztd
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Local task system for humans and agents"
 arch=('x86_64' 'aarch64')
@@ -11,13 +11,13 @@ conflicts=("${pkgname}")
 
 source=("LICENSE::https://raw.githubusercontent.com/vmvarela/ztd/v${pkgver}/LICENSE"
         "ztd.1.gz::https://github.com/vmvarela/ztd/releases/download/v${pkgver}/ztd.1.gz")
-sha256sums=('1c220f59f6056d71b2f088d26b1e706e37a0710d62ad75e24ae796f8e1794a18' 'dfd23999e017988f329a919fa933ac9e89acdf568ea76570b4ec2f0e293fd52e')
+sha256sums=('1c220f59f6056d71b2f088d26b1e706e37a0710d62ad75e24ae796f8e1794a18' 'f84d914bbb9c67b78505bc269fd52028557f04336dba190f9d4e48030e6b1b95')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/vmvarela/ztd/releases/download/v${pkgver}/ztd-x86_64-linux")
-sha256sums_x86_64=('dd19c31111e9d828344c80b45c88d846ddca194bf858ca77c37b85ab9ffd868e')
+sha256sums_x86_64=('8fe024547b1f46b410d136444f15d55a6e40e2a148e791ac831e28b65508466e')
 
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/vmvarela/ztd/releases/download/v${pkgver}/ztd-aarch64-linux")
-sha256sums_aarch64=('f1199bc17395d71e09ebc3b749623572d8a38e48ec2f1889a90c1ff40bc9093c')
+sha256sums_aarch64=('6e04d659941f886db45ef9e57d88f3059225e2d593e1e6d65154934685f83393')
 
 package() {
     install -Dm755 "${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname}"
