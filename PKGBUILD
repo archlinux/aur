@@ -1,7 +1,7 @@
 # Maintainer: Wendy Labs Inc. <support@wendy.dev>
 pkgname=wendy-agent
-_pkgver=2026.11.15-074641
-_pkgtag=2026.11.15-074641
+_pkgver=2026.11.27-165438
+_pkgtag=2026.11.27-165438
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Wendy Agent - Runs on target devices for remote debugging and deployment"
@@ -24,8 +24,8 @@ source_x86_64=("${pkgname}-${_pkgver}-x86_64.tar.gz::https://github.com/wendylab
 source_aarch64=("${pkgname}-${_pkgver}-aarch64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/${_pkgtag}/wendy-agent-linux-arm64-${_pkgver}.tar.gz")
 
 # Checksums will be updated by CI
-sha256sums_x86_64=('f648ac43674ba17910505c049a1b6ac710813e21afbaa443279c151841c525c5')
-sha256sums_aarch64=('be9cf6560ae87e9c8f0f1fa9c96844b5b4bd332f7b7ca81b022fa90fb7cb3e31')
+sha256sums_x86_64=('cc659d98e9ac8f74795f8950b14ed63f538f0682bde46e6df4df10295f229c7d')
+sha256sums_aarch64=('994a9f7fef007da8bd7adc3fecf6e762541647e5c531c6239bfb811a500de129')
 
 package() {
     cd "${srcdir}"
@@ -77,6 +77,8 @@ WorkingDirectory=/var/lib/wendy-agent
 ExecStart=/usr/bin/wendy-agent
 Restart=always
 RestartSec=2
+# A child killed for memory must not stop the agent.
+OOMPolicy=continue
 LimitNOFILE=65536
 
 [Install]
