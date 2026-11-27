@@ -8,6 +8,7 @@ url="https://github.com/michalhucik/mz800emu"
 license=('gpl-3.0')
 depends=('sdl3' 'glib2' 'json-glib' 'curl' 'zlib' 'libglvnd')
 makedepends=('cmake' 'ninja' 'pkgconf' 'git' 'doxygen' 'base-devel')
+conflicts=('mz800emu')
 source=("git+https://github.com/michalhucik/mz800emu.git")
 sha256sums=('SKIP')
 
@@ -20,8 +21,11 @@ pkgver() {
 build() {
 	cd mz800emu
 	mkdir -p build && cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-	-Wno-dev -G Ninja
+	cmake .. -G Ninja -DSDL_TEST=ON \
+	-DSDL_SHARED=ON \
+	-DSDL_STATIC=OFF \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-Wno-dev
 	cmake --build .
 }
 
