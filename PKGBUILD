@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=annaffy
-_pkgver=1.84.0
+_pkgver=1.86.0
 pkgname=r-${_pkgname,,}
-pkgver=1.84.0
+pkgver=1.86.0
 pkgrel=1
 pkgdesc='Annotation tools for Affymetrix biological metadata'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-tcltk
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d8a7827375d0a49ba3f35346724b6094532357062fd44b32dd9b9e63f981f01e')
+sha256sums=('b06166ea10550bcd4848911e2bf096a52e566480e5b02ca17bf43f0e38b333ca')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
