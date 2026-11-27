@@ -1,0 +1,38 @@
+From f6c315298a75fc1f35838b76734438ebd181d3c2 Mon Sep 17 00:00:00 2001
+From: claudecode <hockinglee@gmail.com>
+Date: Fri, 27 Nov 2026 17:39:29 +0800
+Subject: [PATCH] build: drop lints that Rust 1.100 removed
+
+Rust 1.100 turned `no_mangle_generic_items` into a hard error and
+removed `elided_lifetimes_in_associated_constant`. Naming them in
+`[workspace.lints.rust]` while `renamed_and_removed_lints` is denied
+fails every crate's build on that toolchain.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ Cargo.toml | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index e6ecbc6..e44b9fd 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -184,7 +184,6 @@ dropping_copy_types                     = "deny"
+ dropping_references                     = "deny"
+ duplicate_macro_attributes              = "deny"
+ dyn_drop                                = "deny"
+-elided_lifetimes_in_associated_constant = "deny"
+ ellipsis_inclusive_range_patterns       = "deny"
+ exported_private_dependencies           = "deny"
+ for_loops_over_fallibles                = "deny"
+@@ -210,7 +209,6 @@ legacy_derive_helpers                   = "deny"
+ map_unit_fn                             = "deny"
+ mixed_script_confusables                = "deny"
+ named_arguments_used_positionally       = "deny"
+-no_mangle_generic_items                 = "deny"
+ non_camel_case_types                    = "deny"
+ non_fmt_panics                          = "deny"
+ non_shorthand_field_patterns            = "deny"
+-- 
+2.56.1
+

@@ -8,7 +8,7 @@
 _pkgname=clipcat
 pkgname=clipcat-perf
 pkgver=0.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A clipboard manager (patched for large clip histories)"
 arch=('x86_64')
 url="https://github.com/xrelkd/clipcat"
@@ -23,11 +23,13 @@ source=(
   '0001-perf-crates-base-keep-clips-listable-without-their-p.patch'
   '0002-perf-crates-server-load-only-the-clips-history-keeps.patch'
   '0003-build-drop-the-git2-dependency-from-build-metadata.patch'
+  '0004-build-drop-lints-that-Rust-1.100-removed.patch'
 )
 sha256sums=('3d20e3bbe7b5b7ac478e10e1892d3978a99f4573ed118574b4d441820cff3d7f'
             'a9ac4502327cc3e422ea6a777929042f66b09a98d89b2b17f8697640697956f8'
             'fabdc32e4c09d5950f9694d47e48dd87d55721f697a9ea55d957d71a5c8cfbe1'
-            'fad0d68e267e1f45ad2014c36b17db0bc48c54fa862fbf2d9d8c3e3c47a4af48')
+            'fad0d68e267e1f45ad2014c36b17db0bc48c54fa862fbf2d9d8c3e3c47a4af48'
+            '19476e2a03a1d7500afc842dc894e719706993d341a83b29e91b375a849d0880')
 
 prepare() {
   cd "$_pkgname-$pkgver"
