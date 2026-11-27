@@ -1,6 +1,6 @@
 pkgbase = r-goexpress
 	pkgdesc = Visualise microarray and RNAseq data using gene ontology annotations
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GOexpress
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-goexpress
 	depends = r-rcurl
 	depends = r-stringr
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOexpress_1.46.0.tar.gz
-	sha256sums = 934edc5d5aea2ffd101d4517240086aad52e08bac2e21e7c9deceddcef718132
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOexpress_1.48.0.tar.gz
+	sha256sums = 9cddbf93d894fe55e64265c057121e64f33714a9ed24a92a20938286b53d44fc
 
 pkgname = r-goexpress
