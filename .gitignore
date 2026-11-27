@@ -1,0 +1,7 @@
+pkg/
+src/
+
+# Source and Package Archives
+studio-link-plugin-onair-linux.zip
+studiolink-onair-plugin-*.pkg.*
+

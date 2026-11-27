@@ -1,15 +1,15 @@
 pkgbase = studiolink-onair-plugin
 	pkgdesc = LV2 Plugin for studiolink's on-air service
-	pkgver = 21.07.0
+	pkgver = 26.11.0
 	pkgrel = 1
 	url = https://studio-link.de
 	arch = x86_64
-	license = custom
-	depends = openssl
-	depends = zlib
-	source = https://download.studio.link/releases/v21.07.0-stable/linux/studio-link-plugin-onair.zip
+	license = MIT
+	depends = libgcc_s.so
+	depends = libstdc++.so
+	source = https://download.studio.link/releases/v26.11.0-stable/studio-link-plugin-onair-linux.zip
 	source = LICENSE
-	sha512sums = 3c32747da640f90840da12b12c14bd269f4da1963938116adbefc69c2488afbfb0c0315bd09fc3bc56ce034d4e36f3770dd5b659f98e5a4cea2d339382db265a
-	sha512sums = a3c168d3605190b7de36707a42d1450a22bd0d0b50b52bb4e0a8b169c1035f04f58dca8227d8557f9f0cc574d18323780efa035fd6cd57c3bb35d69a3c517937
+	sha512sums = 271acf1827af36fc13e4a6dba12738930f697673aa3fb198601ddb637cd4a02aa85d2d02e8e7fafe496006628a17766a91486aaf916dfa6a803f00b37a3aceb7
+	sha512sums = 84e946ad3264e4dbbf0949a048b97be2ef5bced6638693902b128bc50e74c366dd39d46626c1432721b2ca399590bc13d6b9406cc115d1c4f8997d688bb88231
 
 pkgname = studiolink-onair-plugin

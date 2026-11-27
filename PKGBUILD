@@ -1,21 +1,25 @@
 # Maintainer: Oliver Rümpelein <arch@pheerai.de>
 pkgname=studiolink-onair-plugin
-pkgver=21.07.0
+pkgver=26.11.0
 pkgrel=1
 pkgdesc="LV2 Plugin for studiolink's on-air service"
 arch=('x86_64')
 url="https://studio-link.de"
-license=('custom')
-depends=('openssl' 'zlib')
-source=("https://download.studio.link/releases/v${pkgver}-stable/linux/studio-link-plugin-onair.zip"
-        "LICENSE")
-sha512sums=('3c32747da640f90840da12b12c14bd269f4da1963938116adbefc69c2488afbfb0c0315bd09fc3bc56ce034d4e36f3770dd5b659f98e5a4cea2d339382db265a'
-            'a3c168d3605190b7de36707a42d1450a22bd0d0b50b52bb4e0a8b169c1035f04f58dca8227d8557f9f0cc574d18323780efa035fd6cd57c3bb35d69a3c517937')
+license=('MIT')
+depends=('libgcc_s.so' 'libstdc++.so')
+source=("https://download.studio.link/releases/v${pkgver}-stable/studio-link-plugin-onair-linux.zip"
+  "LICENSE")
+sha512sums=('271acf1827af36fc13e4a6dba12738930f697673aa3fb198601ddb637cd4a02aa85d2d02e8e7fafe496006628a17766a91486aaf916dfa6a803f00b37a3aceb7'
+            '84e946ad3264e4dbbf0949a048b97be2ef5bced6638693902b128bc50e74c366dd39d46626c1432721b2ca399590bc13d6b9406cc115d1c4f8997d688bb88231')
 
-package()
-{
-    install -Dm755 ${srcdir}/studio-link-onair.lv2/studio-link-onair.so ${pkgdir}/usr/lib/lv2/studio-link-onair.lv2/studio-link-onair.so
-    install -Dm644 ${srcdir}/studio-link-onair.lv2/studio-link-onair.ttl ${pkgdir}/usr/lib/lv2/studio-link-onair.lv2/studio-link-onair.ttl
-    install -Dm644 ${srcdir}/studio-link-onair.lv2/manifest.ttl ${pkgdir}/usr/lib/lv2/studio-link-onair.lv2/manifest.ttl
-    install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/studiolink-onair-plugin/LICENSE"
+package() {
+  mkdir -p ${pkgdir}/usr/lib/lv2/
+  cp -R ${srcdir}/studio-link-onair.lv2 ${pkgdir}/usr/lib/lv2/studio-link-onair.lv2
+
+  mkdir -p ${pkgdir}/usr/lib/vst3/
+  cp -R ${srcdir}/StudioLinkOnAir.vst3 ${pkgdir}/usr/lib/vst3/StudioLinkOnAir.vst3
+
+  install -Dm755 ${srcdir}/StudioLinkOnAir.clap ${pkgdir}/usr/lib/clap/StudioLinkOnAir.clap
+
+  install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/studiolink-onair-plugin/LICENSE"
 }
