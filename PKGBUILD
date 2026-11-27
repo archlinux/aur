@@ -2,7 +2,7 @@
 # Contributor: Steven Seifried <gitlab@canox.net>
 _pkgname=tuxedo-drivers
 pkgname=tuxedo-drivers-dkms
-pkgver=4.25.0
+pkgver=4.25.2
 pkgrel=1
 pkgdesc="TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface"
 url="https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers"
@@ -28,9 +28,9 @@ provides=('tuxedo-keyboard'
           'ite_829x')
 conflicts=('tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
 source=($pkgname-$pkgver.tar.gz::https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz dkms.conf)
-sha256sums=('96c7f16bf573952cb87d9c3070c1ae532e5018ce52e7fa1d47422f5e2c1e29b9'
+sha256sums=('a3cccf7f9c40fe212084096e663d5318d0f5dbdd598245432b0b16845ebd2d85'
             '0b1f2ceb729b1944504d1227e39b202159076846aaa38f8b6237b9535e543a21')
-sha512sums=('5cff5b361c5e98eb5b3552de7d919394bd2bda047751388611ef151e66147e88d0d4f55c1703d0fae9b7685a4860f1bf2bea4cfa347134d72d9a3f06b3157d4d'
+sha512sums=('0ab81a7a9acef86ea4419d2b41c38ffb4984e3d44716f4e1e0d609f92968b36320b97e4d149ec7153196e4dd0ac9fbf32dfc3d7ed6f9df056ba53f2e7eb1c7a1'
             'dda443b5966221a355fecdae7a2eb23346666cbcf93707d2fff660a32ec75cee592ae211c8d22e55413d530f59e8667292a0346d8bf6b2d280b45f3bc09efafd')
 
 package() {
