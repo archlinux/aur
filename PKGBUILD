@@ -2,7 +2,7 @@
 pkgname=looksyk-desktop
 _pkgnameshort=looksyk
 pkgver=1.49.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown centric, fast and local personal knowledge platform"
 arch=("x86_64")
 url="https://sebastianrzk.codeberg.page/looksyk"
@@ -49,5 +49,5 @@ package() {
 
 	install -D -m755 "backend/target/release/looksyk" "${pkgdir}/usr/lib/${_pkgnameshort}/looksyk"
 	
-	ln -s "/usr/lib/${_pkgnameshort}/looksyk-tauri" "${pkgdir}/usr/bin/looksyk"
+	ln -s "/usr/lib/${_pkgnameshort}/looksyk" "${pkgdir}/usr/bin/looksyk"
 }
