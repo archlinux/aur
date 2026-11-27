@@ -1,7 +1,7 @@
 # Maintainer: Rinne <aur@rinne.in>
 
 pkgname=openzwork-electron-bin
-pkgver=3.18.2+openzwork.4
+pkgver=4.0.0+openzwork.1
 pkgrel=1
 pkgdesc="AI coding workbench with a desktop app, browser UI and terminal agent"
 arch=('x86_64')
@@ -14,10 +14,10 @@ conflicts=('openzwork')
 options=('!strip')
 
 _electronversion=44
-_archive="OpenZWork-3.18.2+openzwork.4-linux-x64.pkg.tar.zst"
-source_x86_64=("${_archive}::https://github.com/BlueSkyXN/OpenZWork/releases/download/v3.18.2%2Bopenzwork.4/OpenZWork-3.18.2%2Bopenzwork.4-linux-x64.pkg.tar.zst")
+_archive="OpenZWork-4.0.0+openzwork.1-linux-x64.pkg.tar.zst"
+source_x86_64=("${_archive}::https://github.com/BlueSkyXN/OpenZWork/releases/download/v4.0.0%2Bopenzwork.1/OpenZWork-4.0.0%2Bopenzwork.1-linux-x64.pkg.tar.zst")
 noextract=("${_archive}")
-sha256sums_x86_64=('292eb3393184957ad036aaada4159e558b00db4c1bf067dc02e6d7c725ff8860')
+sha256sums_x86_64=('afc6183c9968f99892f5f26176cf33172a477a86f2355d8e818cd4087a234496')
 
 _find_app_dir() {
   find "${srcdir}" -type f -name resources.pak -exec dirname {} + | head -n 1
