@@ -2,10 +2,10 @@
 pkgname=enroll
 _app_id="org.cosmic_utils.$pkgname"
 pkgver=1.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI application for fingerprint management designed for COSMIC DE."
 arch=('x86_64' 'aarch64')
-url="https://cosmic-utils.org/enroll"
+url="https://cosmic-ext-orbit.github.io/enroll"
 license=('MPL-2.0')
 depends=(
   'fprintd'
@@ -24,7 +24,7 @@ checkdepends=(
   'appstream'
   'desktop-file-utils'
 )
-source=("git+https://github.com/cosmic-utils/enroll.git#tag=v$pkgver")
+source=("git+https://github.com/cosmic-ext-orbit/enroll.git#tag=v$pkgver")
 sha256sums=('97e69255974953786529e35031cc294bb18356f9d957c80bd7bdc5c94675358a')
 
 prepare() {
@@ -39,6 +39,8 @@ prepare() {
 build() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_PROFILE_RELEASE_LTO=true
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
   just build-release --frozen
 }
 

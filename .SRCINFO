@@ -1,8 +1,8 @@
 pkgbase = enroll
 	pkgdesc = GUI application for fingerprint management designed for COSMIC DE.
 	pkgver = 1.2.12
-	pkgrel = 1
-	url = https://cosmic-utils.org/enroll
+	pkgrel = 2
+	url = https://cosmic-ext-orbit.github.io/enroll
 	arch = x86_64
 	arch = aarch64
 	license = MPL-2.0
@@ -17,7 +17,7 @@ pkgbase = enroll
 	depends = libgcc
 	depends = libxkbcommon
 	depends = polkit
-	source = git+https://github.com/cosmic-utils/enroll.git#tag=v1.2.12
+	source = git+https://github.com/cosmic-ext-orbit/enroll.git#tag=v1.2.12
 	sha256sums = 97e69255974953786529e35031cc294bb18356f9d957c80bd7bdc5c94675358a
 
 pkgname = enroll
