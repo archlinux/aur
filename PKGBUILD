@@ -1,7 +1,7 @@
 # Maintainer: logan_reed <liulingzhang.work@icloud.com>
 
 pkgname=orca-ide
-pkgver=1.4.278
+pkgver=1.4.279
 pkgrel=1
 pkgdesc="Next-gen IDE for parallel agentic development"
 arch=('x86_64' 'aarch64')
@@ -22,11 +22,11 @@ options=('!strip' '!debug')
 # 旧缓存，故不需要 :: 别名。
 # LICENSE 走 main 而非 v${pkgver}：deb 不含上游 MIT 全文，旧 tag 删除会断构建
 source=("LICENSE::https://raw.githubusercontent.com/stablyai/orca/main/LICENSE")
-source_x86_64=("https://github.com/stablyai/orca/releases/download/v1.4.278/orca-ide_1.4.278_amd64.deb")
-source_aarch64=("https://github.com/stablyai/orca/releases/download/v1.4.278/orca-ide_1.4.278_arm64.deb")
+source_x86_64=("https://github.com/stablyai/orca/releases/download/v1.4.279/orca-ide_1.4.279_amd64.deb")
+source_aarch64=("https://github.com/stablyai/orca/releases/download/v1.4.279/orca-ide_1.4.279_arm64.deb")
 b2sums=('fdce4a5f4313d37ca3f4a68dc9c31a242cd7f0fb7eae5a9764b9ca79b9316d328d2374154443338f9addc9134490c95fd1973c79c307d5f228f0f37dd6e3fa45')
-b2sums_x86_64=('d9fa6fe35a22b054bff3a64e0e37a47fb0ea8272571e8a90028b0767d98feb3e4013e407772dde61d16fc8e73c7a4436eb1b2b5b120344dd6b1f6342cd0acdf7')
-b2sums_aarch64=('2670151c5e273fb28ac32473396b4301f3750cb6d6bf9e9a2b51aaca5478b06fe801da3d2e2dfa5fda01d2953e99487ca0a6bdb3a49a31ec3e3fd7ecb803bbb5')
+b2sums_x86_64=('7493922c76f825a513545763a3c2960056d3858e930be7f16476d0323cee67e7b87e74bf97480e002da08e207335081379e7d827799e91f0e1a5ed19157fefb1')
+b2sums_aarch64=('f49602f23b14c86185e4fd1a03c6ba5a45c890f563a32e18dc991348d6cacb3c72a656e84ddf2fc6aaf799d27d31256d5be4bf319a2f0a34b599f42a8a4be9db')
 
 package() {
     bsdtar --no-same-owner -xf data.tar.xz -C "${pkgdir}/"
