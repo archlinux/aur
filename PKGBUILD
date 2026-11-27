@@ -1,7 +1,7 @@
 # Maintainer: Nakanomk <56832666+Nakanomk@users.noreply.github.com>
 
 pkgname=seekey
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Wayland keyboard visualizer with floating key bubbles'
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=(
   'gtk4-layer-shell'
   'json-glib'
   'libevdev'
+  'libinput>=1.19'
   'ncurses'
   'pango'
 )
@@ -30,7 +31,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   '70-seekey-input.rules'
 )
-sha256sums=('135d5b57823651929da11658eeeba3028e079ab391a128bcdf47e35f1ac12ead'
+sha256sums=('bd6e2d73b6fa175f1be413a47e80fe68f25349e6f4a19cdf044da67fc276f9db'
             'b570a8b92fc07b934e8aff5bf723a7e07e4494ab01c11ce87fa7b67c3f5ec4d1')
 
 build() {
