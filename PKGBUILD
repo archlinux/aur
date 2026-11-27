@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="The best diff viewer ever made"
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('932fac21461fc9cb4541f31e557b74cb9584b4891da6a1693aa6c94f36a614a9')
-sha256sums_aarch64=('53a85e1c7b57218ce9148dfcd1fe880aec2ca61e35e99f9b73862dbb755b9425')
+sha256sums_x86_64=('bff4b9f9ddb4bebf099f0e8e0393cf720f3c0b58a9cd3f58d19996b781d52a27')
+sha256sums_aarch64=('2a63a90dbde396872bcad3547b6eedd454a0e0a86e59d424b005b0ed5610242d')
 
 
 package() {
