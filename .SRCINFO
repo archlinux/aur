@@ -1,0 +1,20 @@
+pkgbase = pgboxdb-bin
+	pkgdesc = Lightweight Postgres for AI agents: thousands of isolated databases in one runtime (formerly PGX)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pgboxdb.com/
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	license = PostgreSQL
+	depends = gcc-libs
+	depends = glibc
+	provides = pgboxdb
+	conflicts = pgboxdb
+	options = !debug
+	source_x86_64 = pgboxdb-bin-0.2.0-x86_64.tar.gz::https://github.com/pgrundev/pgboxdb/releases/download/v0.2.0/pgboxdb-0.2.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 72fcf76dde297084f146f9fa3475c49de3e77dd1213fcbb6a02d45f0f656cdba
+	source_aarch64 = pgboxdb-bin-0.2.0-aarch64.tar.gz::https://github.com/pgrundev/pgboxdb/releases/download/v0.2.0/pgboxdb-0.2.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 74bcdcd73115c7ae180c8356e37b1152efee0194301df7cc21685a6cc5611884
+
+pkgname = pgboxdb-bin
