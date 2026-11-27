@@ -5,7 +5,7 @@
 # Caleb Maclennan <caleb@alerque.com>
 pkgname=electron46-bin
 _mainver=46.0.0
-_betaver=alpha.13
+_betaver=alpha.14
 pkgver="${_mainver}${_betaver//./}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
@@ -50,10 +50,10 @@ source_x86_64=(
 	"${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_mainver}-${_betaver}/electron-v${_mainver}-${_betaver}-linux-x64.zip"
 )
 sha256sums=('3721240f57668b7ed7970b7fc2dcb9a548acf4956a5b1406d0193af296b8ffad')
-sha256sums_aarch64=('1f3549b3e32d33e6d830b55bbb9c08a6e61a163dd17ab5e50042e6f50d793f38'
-                    'ee71429729850a3c865b28b2d0bc54854037881f462e72ecc62f9430fe94d203')
-sha256sums_x86_64=('58f53a77c0df114ef8bd489f3f4646fdef6bfa80cb330c679e1f40b8ef51036c'
-                   '76befefc458a4148bd4ae9b654f97558cdc2f591673d7b37438928676eeabbc3')
+sha256sums_aarch64=('8e9d32493d623fbb37354d6c27c1ec3c0dfc4ecad0e6fe6d3651a32bb9d79daf'
+                    'f4dac993583f1d85225648212647d6580b0c20de1e7234de83d47874dcbf27ce')
+sha256sums_x86_64=('34790567fbfe8472b4f8c80ce0ecf3645cb9da5a33987a343ac9ed8fa4d01330'
+                   'a2055c370b1444c3e491fd40753f90cae9777fd4f06f78772cff0368754530cf')
 prepare() {
 	sed -i "s/@ELECTRON@/${pkgname%-bin}/g" "${srcdir}/${pkgname%-bin}.sh"
 	install -Dm755 -d "${srcdir}/${pkgname%-bin}"
