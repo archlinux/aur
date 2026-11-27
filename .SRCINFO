@@ -1,16 +1,16 @@
 pkgbase = openapi-bin
 	pkgdesc = CLI for working with OpenAPI, Swagger, Arazzo and Overlay documents (prebuilt)
-	pkgver = 1.28.0
+	pkgver = 1.28.1
 	pkgrel = 1
 	url = https://github.com/speakeasy-api/openapi
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = openapi=1.28.0
+	provides = openapi=1.28.1
 	conflicts = openapi
-	source_x86_64 = openapi-1.28.0-x86_64.tar.gz::https://github.com/speakeasy-api/openapi/releases/download/v1.28.0/openapi_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 7a2a6b4d971b47b5c7e6ee8fe4272e6d4e62708fadd7cca7c756d832e232b783
-	source_aarch64 = openapi-1.28.0-aarch64.tar.gz::https://github.com/speakeasy-api/openapi/releases/download/v1.28.0/openapi_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 99690742e5b2e5395db64bfb81bda9d5c0af7587ebf97503fbeee7082aa3712c
+	source_x86_64 = openapi-1.28.1-x86_64.tar.gz::https://github.com/speakeasy-api/openapi/releases/download/v1.28.1/openapi_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 72a3ce7f2c3c0be1f090c8b1f6ce63cdab1d79e30e97593e8a9d18a712d0d4e9
+	source_aarch64 = openapi-1.28.1-aarch64.tar.gz::https://github.com/speakeasy-api/openapi/releases/download/v1.28.1/openapi_Linux_arm64.tar.gz
+	sha256sums_aarch64 = cfb6bdfe92d4fd7dba2b8d4026927cb5103cfdeea141292a0d5a236820c20c38
 
 pkgname = openapi-bin
