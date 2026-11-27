@@ -1,0 +1,17 @@
+pkgbase = flet-mcp
+	pkgdesc = Flet MCP server for LLM agents
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://flet.dev
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-fastmcp
+	source = flet-mcp-1.1.4.tar.gz::https://files.pythonhosted.org/packages/fb/b1/701e1d65677ad5f48f3f111cf882169b9f9605ea3af4298f1e9b22d2e52f/flet_mcp-1.1.4.tar.gz
+	sha256sums = ad9ab65346249f7c8087cb9ebb76feda8991fd65c67c31fa95ad98025e6bd34c
+
+pkgname = flet-mcp
