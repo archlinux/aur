@@ -2,14 +2,14 @@
 _name=android-tv-remote
 pkgname=$_name-git
 pkgver=r24.gf6f71ee
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt desktop remote for Android TV with a native NVIDIA Shield trackpad'
 arch=(any)
 url="https://github.com/ragu-manjegowda/$_name"
 license=(MIT)
-depends=(python python-aiofiles python-androidtvremote2 python-async-timeout
-         python-cryptography python-protobuf python-pyqt6 python-qasync python-zeroconf)
-makedepends=(git python-build python-installer python-uv-build)
+depends=(python python-aiofiles 'python-androidtvremote2>=0.3.3' python-async-timeout
+         python-cryptography python-protobuf python-pyqt6 python-qasync python-zeroconf systemd)
+makedepends=(git python-build python-installer 'python-setuptools>=77.0.3')
 checkdepends=(ttf-dejavu xorg-server-xvfb xorg-xauth)
 optdepends=('qt-solarized: use the system Solarized stylesheets instead of the bundled copies'
             'android-tools: ADB mouse control for TVs without the Shield trackpad service')
@@ -31,9 +31,13 @@ build() {
 check() {
   cd "$srcdir/$_name"
   local testhome="$srcdir/test-home"
+  local testenv="$srcdir/test-venv"
   mkdir -p "$testhome"
-  HOME="$testhome" PYTHONPATH="$PWD/src" PYTHONNOUSERSITE=1 QT_QPA_PLATFORM=xcb QT_QPA_PLATFORMTHEME=generic \
-    xvfb-run -a -s '-screen 0 1920x1080x24 -nolisten tcp' python -B -m unittest discover -s tests -t .
+  python -Im venv --clear --without-pip --system-site-packages "$testenv"
+  "$testenv/bin/python" -Im installer dist/*.whl
+  HOME="$testhome" QT_QPA_PLATFORM=xcb QT_QPA_PLATFORMTHEME=generic \
+    xvfb-run -a -s '-screen 0 1920x1080x24 -nolisten tcp' \
+    "$testenv/bin/python" -IB -m unittest discover -s tests -t .
 }
 
 package() {
@@ -42,5 +46,5 @@ package() {
     --compile-bytecode=0 --compile-bytecode=1 --compile-bytecode=2 dist/*.whl
   install -Dm644 "packaging/linux/$_name.desktop" "$pkgdir/usr/share/applications/$_name.desktop"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 src/android_tv_remote/ui/themes/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.qt-solarized"
+  install -Dm644 src/ui/themes/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.qt-solarized"
 }
