@@ -1,7 +1,7 @@
 pkgname=thps2x-recompiled-bin
 pkgver=2.0.2
-pkgrel=1
-pkgdesc="Native recompilation launcher for Tony Hawk's Pro Skater 2X (Xbox, USA)"
+pkgrel=2
+pkgdesc="Native static recompilation and launcher for Tony  Hawk's Pro Skater 2X (Xbox, USA)"
 arch=('x86_64')
 url='https://github.com/almost-drowned-rat/THPS2X-Recompiled'
 license=('GPL-3.0-or-later' 'MIT' 'LGPL-2.1-or-later')
