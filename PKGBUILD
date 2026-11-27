@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.279
+pkgver=1.4.280
 pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=(
   'alsa-lib'
   'at-spi2-core'
   'dbus'
-  'electron43'
+  'electron45'
   'gcc-libs'
   'gdk-pixbuf2'
   'glibc'
@@ -57,12 +57,12 @@ options=('!strip' '!debug')
 install=stably-orca.install
 
 _pnpmver=12.18.0
-_electronmajor=43
+_electronmajor=45
 # GitHub tag archives are mutable: a retag keeps the same URL and silently
 # changes the payload, so pin the peeled commit of tag v$pkgver instead.
 # Version bumps must resolve `git ls-remote $url "refs/tags/v<ver>^{}"` and
 # update _commit together with pkgver and the source checksum.
-_commit=e14481f4e55cc316357f19e4f605218b02110ef1
+_commit=16dc39cfb7ba5b16c88eef510a6141e223ece0be
 source=(
   "$pkgname-$pkgver-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "pnpm-$_pnpmver.tgz::https://registry.npmjs.org/pnpm/-/pnpm-$_pnpmver.tgz"
@@ -83,10 +83,10 @@ source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
 sha256sums=(
-  '706b7cf43760dc4d4bbdbd5bd67cb864a558b89e35e43a7a0cb9c9189e2aa61b'
+  '4ba024e1ce9294e79c531f4e3e689225ab959852dc48c12eccf00fdda6fece76'
   '29d1d7d99bf6ec6d0a3dbb0ec5656f0d16e997e8be676ca45c581d11cb71f753'
-  'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
-  '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
+  '44631efb6f8fbe5356304c93437c33d008dd94653222732234ad41efb23c52a4'
+  '408f13e3c31e84cd268be94241954e25ca06d6fafa1fe563d06f68485ca5b281'
   '77a10524dc1b971fecd99a5be47b13f93021b0882495ed32a37d12a2f7fed835'
   '0d262438d6ca1de562db33ba8373ccc08298f3fdfa18209864d4189bddfaf742'
   'd423881ade5704432cbe9afea626438991a1dcda3dda3ed18811e1b3fd721e1e'
@@ -365,7 +365,7 @@ JS
   done
   "${pnpm[@]}" run ensure:electron-runtime
 
-  # System Electron resolves process.resourcesPath to /usr/lib/electron43/resources.
+  # System Electron resolves process.resourcesPath under its own install directory.
   # Orca's packaged assets live under /usr/lib/stably-orca instead.
   python - <<'PY'
 from pathlib import Path
