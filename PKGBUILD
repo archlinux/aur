@@ -1,7 +1,7 @@
 # Maintainer: Braulio Oliveira <brauliobo@gmail.com>
 
 pkgname=zensmu-git
-pkgver=0.3.0.r0.g79ef29b
+pkgver=0.3.1.r0.g4d538d3
 pkgrel=1
 pkgdesc="Safety-first Rust CLI, live TUI, and unprivileged GUI for AMD Ryzen SMU control and telemetry"
 arch=('x86_64')
@@ -13,7 +13,8 @@ depends=(
     'glibc'
 )
 optdepends=(
-    'ryzen_smu-dkms-git: required DKMS kernel module providing /sys/kernel/ryzen_smu_drv (needed on Arch/CachyOS unless built into a custom kernel)'
+    'dkms: automatically build and install bundled ryzen_smu kernel driver on package install/upgrade'
+    'ryzen_smu-dkms-git: standalone AUR DKMS package for ryzen_smu (auto-detected and left untouched if installed)'
     'libglvnd: OpenGL support for zensmu-gui'
     'libxkbcommon: keyboard support for zensmu-gui on Wayland/X11'
     'wayland: native Wayland windowing for zensmu-gui'
@@ -26,8 +27,12 @@ makedepends=(
 )
 provides=('zensmu')
 conflicts=('zensmu' 'zensmu-bin')
-source=("${pkgname}::git+https://github.com/brauliobo/zensmu.git")
-sha256sums=('SKIP')
+install=zensmu.install
+source=(
+    "${pkgname}::git+https://github.com/brauliobo/zensmu.git"
+    "ryzen_smu::git+https://github.com/amkillam/ryzen_smu.git"
+)
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -97,6 +102,28 @@ package() {
     # Man page
     install -dm755 "${pkgdir}/usr/share/man/man1"
     "${pkgdir}/usr/bin/zensmu" manpage > "${pkgdir}/usr/share/man/man1/zensmu.1"
+
+    # Bundled ryzen_smu DKMS sources (auto-built/removed by zensmu.install unless external ryzen_smu exists)
+    if [[ -d "${srcdir}/ryzen_smu" ]]; then
+        local smu_rev smu_sha smu_ver
+        smu_rev="$(git -C "${srcdir}/ryzen_smu" rev-list --count HEAD)"
+        smu_sha="$(git -C "${srcdir}/ryzen_smu" rev-parse --short=7 HEAD)"
+        smu_ver="0.1.7.r${smu_rev}.g${smu_sha}"
+        install -dm755 "${pkgdir}/usr/share/zensmu/ryzen_smu-dkms"
+        for f in drv.c smu.c smu.h Makefile LICENSE; do
+            install -Dm644 "${srcdir}/ryzen_smu/${f}" \
+                "${pkgdir}/usr/share/zensmu/ryzen_smu-dkms/${f}"
+        done
+        printf '%s\n' "${smu_ver}" > "${pkgdir}/usr/share/zensmu/ryzen_smu-dkms/VERSION"
+        cat > "${pkgdir}/usr/share/zensmu/ryzen_smu-dkms/dkms.conf" <<EOF
+PACKAGE_NAME="ryzen_smu"
+PACKAGE_VERSION="${smu_ver}"
+MAKE[0]="make -C \$kernel_source_dir M=\$dkms_tree/\$PACKAGE_NAME/\$PACKAGE_VERSION/build modules"
+BUILT_MODULE_NAME[0]="ryzen_smu"
+DEST_MODULE_LOCATION[0]="/kernel/drivers/ryzen_smu"
+AUTOINSTALL="yes"
+EOF
+    fi
 
     # Documentation & License
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"

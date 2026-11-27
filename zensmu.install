@@ -1,0 +1,128 @@
+_zensmu_dkms_install() {
+    local bundled_dir="/usr/share/zensmu/ryzen_smu-dkms"
+    local modload_conf="/etc/modules-load.d/ryzen_smu.conf"
+
+    if [[ ! -f "${bundled_dir}/dkms.conf" || ! -f "${bundled_dir}/VERSION" ]]; then
+        return 0
+    fi
+
+    local smu_ver
+    smu_ver="$(tr -d ' \t\r\n' < "${bundled_dir}/VERSION")"
+    [[ -n "${smu_ver}" ]] || return 0
+
+    # Leave externally installed ryzen_smu DKMS packages (e.g. ryzen_smu-dkms-git) untouched.
+    local dir
+    for dir in /usr/src/ryzen_smu-*; do
+        [[ -d "${dir}" ]] || continue
+        if [[ ! -f "${dir}/.zensmu-managed" ]]; then
+            command -v modprobe >/dev/null 2>&1 && modprobe ryzen_smu >/dev/null 2>&1 || true
+            return 0
+        fi
+    done
+
+    # Clean up older zensmu-managed DKMS versions on upgrade.
+    if command -v dkms >/dev/null 2>&1; then
+        for dir in /usr/src/ryzen_smu-*; do
+            [[ -f "${dir}/.zensmu-managed" ]] || continue
+            local old_ver="${dir#/usr/src/ryzen_smu-}"
+            if [[ "${old_ver}" != "${smu_ver}" ]]; then
+                dkms remove -m ryzen_smu -v "${old_ver}" --all >/dev/null 2>&1 || true
+                rm -rf "${dir}"
+            fi
+        done
+    fi
+
+    # Skip if the running kernel ships ryzen_smu natively outside DKMS.
+    if command -v modinfo >/dev/null 2>&1 && modinfo -n ryzen_smu >/dev/null 2>&1; then
+        local mod_path
+        mod_path="$(modinfo -n ryzen_smu 2>/dev/null || true)"
+        case "${mod_path}" in
+            */dkms/*|*/extra/*|"") ;;
+            *)
+                command -v modprobe >/dev/null 2>&1 && modprobe ryzen_smu >/dev/null 2>&1 || true
+                return 0
+                ;;
+        esac
+    fi
+
+    if ! command -v dkms >/dev/null 2>&1; then
+        echo "zensmu: 'dkms' not found; install dkms + kernel headers and run 'sudo zensmu driver install' to build ryzen_smu." >&2
+        return 0
+    fi
+
+    local target_dir="/usr/src/ryzen_smu-${smu_ver}"
+    mkdir -p "${target_dir}"
+    local f
+    for f in drv.c smu.c smu.h Makefile LICENSE dkms.conf VERSION; do
+        if [[ -f "${bundled_dir}/${f}" ]]; then
+            cp -f "${bundled_dir}/${f}" "${target_dir}/${f}"
+        fi
+    done
+    printf '%s\n' "${smu_ver}" > "${target_dir}/.zensmu-managed"
+
+    if [[ ! -f "${modload_conf}" ]]; then
+        mkdir -p /etc/modules-load.d
+        printf '# Managed by zensmu\nryzen_smu\n' > "${modload_conf}"
+    fi
+
+    dkms status -m ryzen_smu -v "${smu_ver}" 2>/dev/null | grep -q "ryzen_smu" || \
+        dkms add -m ryzen_smu -v "${smu_ver}" >/dev/null 2>&1 || true
+
+    if dkms build -m ryzen_smu -v "${smu_ver}" && dkms install -m ryzen_smu -v "${smu_ver}" --force; then
+        if command -v modprobe >/dev/null 2>&1; then
+            if ! modprobe ryzen_smu >/dev/null 2>&1; then
+                echo "zensmu: built & installed ryzen_smu/${smu_ver} via DKMS, but 'modprobe ryzen_smu' did not load (check 'zensmu driver status')." >&2
+            fi
+        fi
+    else
+        echo "zensmu: ryzen_smu/${smu_ver} DKMS build could not complete (missing kernel headers for $(uname -r)?). Run 'sudo zensmu driver install' to finish." >&2
+    fi
+}
+
+_zensmu_dkms_remove() {
+    local found_managed=0
+    local dir
+    for dir in /usr/src/ryzen_smu-*; do
+        if [[ -f "${dir}/.zensmu-managed" ]]; then
+            found_managed=1
+            break
+        fi
+    done
+
+    if [[ "${found_managed}" == "1" ]]; then
+        if command -v modprobe >/dev/null 2>&1; then
+            modprobe -r ryzen_smu >/dev/null 2>&1 || true
+        fi
+        for dir in /usr/src/ryzen_smu-*; do
+            [[ -f "${dir}/.zensmu-managed" ]] || continue
+            local ver="${dir#/usr/src/ryzen_smu-}"
+            if command -v dkms >/dev/null 2>&1; then
+                dkms remove -m ryzen_smu -v "${ver}" --all >/dev/null 2>&1 || true
+            fi
+            rm -rf "${dir}"
+        done
+    fi
+
+    local modload_conf="/etc/modules-load.d/ryzen_smu.conf"
+    if [[ -f "${modload_conf}" ]] && grep -q '^# Managed by zensmu' "${modload_conf}" 2>/dev/null; then
+        rm -f "${modload_conf}"
+    fi
+}
+
+post_install() {
+    if command -v systemctl >/dev/null 2>&1 && [[ -d /run/systemd/system ]]; then
+        systemctl daemon-reload >/dev/null 2>&1 || true
+    fi
+    _zensmu_dkms_install
+}
+
+post_upgrade() {
+    if command -v systemctl >/dev/null 2>&1 && [[ -d /run/systemd/system ]]; then
+        systemctl daemon-reload >/dev/null 2>&1 || true
+    fi
+    _zensmu_dkms_install
+}
+
+pre_remove() {
+    _zensmu_dkms_remove
+}
