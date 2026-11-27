@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ipdDb
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='IPD IMGT/HLA and IPD KIR database for Homo sapiens'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2618f6f5679ba37c1ce47f74545bab28db6ce44badea1c51518caf75d977d261')
+sha256sums=('fc447892cec4a04db3570507a616d056a9e3c4739b97178c52f61ef21ce1f47f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
