@@ -1,6 +1,6 @@
 pkgbase = gcx-git
 	pkgdesc = A CLI for managing Grafana Cloud resources, optimized for agentic usage (VCS, builds the main branch)
-	pkgver = 1.9.0.r0.g7893f84
+	pkgver = 1.9.1.r1.g8d35e19
 	pkgrel = 1
 	url = https://github.com/grafana/gcx
 	arch = x86_64
