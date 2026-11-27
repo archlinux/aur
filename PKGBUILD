@@ -1,7 +1,7 @@
 # Maintainer: maintuner <zackmelan>
 _deb_base_name=outline
 pkgname=outline-client-appimage-git
-pkgver=1.21.0
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=('binutils' 'wget')
 
 source=("${_deb_base_name}.deb::https://s3.amazonaws.com/outline-releases/client/linux/stable/outline-client_amd64.deb")
 
-md5sums=('55e408bc260decb0f0d1821bd4781356')
+md5sums=('037bb262f4331897e0abf2e72d06a327')
 
 options=('!strip')
 
