@@ -1,6 +1,6 @@
 pkgbase = mingle-bin
 	pkgdesc = Bring your agent companion into the chat apps you already use: it runs on your machine, no server needed
-	pkgver = 0.4.13
+	pkgver = 0.4.14
 	pkgrel = 1
 	url = https://github.com/earayu/Mingle
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = mingle-bin
 	optdepends = nodejs: run the scripts that come with the agents by hand
 	provides = mingle
 	conflicts = mingle
-	noextract = mingle_0.4.13_amd64.deb
-	noextract = mingle_0.4.13_arm64.deb
+	noextract = mingle_0.4.14_amd64.deb
+	noextract = mingle_0.4.14_arm64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = mingle_0.4.13_amd64.deb::https://github.com/earayu/Mingle/releases/download/v0.4.13/mingle_0.4.13_amd64.deb
-	sha256sums_x86_64 = fe55bed4246a0dccf9b6d9168189a76a6a3fa6d12b542f1f4153fe014d92075c
-	source_aarch64 = mingle_0.4.13_arm64.deb::https://github.com/earayu/Mingle/releases/download/v0.4.13/mingle_0.4.13_arm64.deb
-	sha256sums_aarch64 = e3b96f9daac35aa607aaaae7f596474e1a8ab737ab245f995b54567a62ded302
+	source_x86_64 = mingle_0.4.14_amd64.deb::https://github.com/earayu/Mingle/releases/download/v0.4.14/mingle_0.4.14_amd64.deb
+	sha256sums_x86_64 = ce4ec6e5a2b21d36752dc132bd8b33d3799f9fdd30295d61b86c299783f0329d
+	source_aarch64 = mingle_0.4.14_arm64.deb::https://github.com/earayu/Mingle/releases/download/v0.4.14/mingle_0.4.14_arm64.deb
+	sha256sums_aarch64 = ce56497c85d695b89dcd6ea76560076ed85deb0fa4171515b184fff0c22cbeb2
 
 pkgname = mingle-bin
