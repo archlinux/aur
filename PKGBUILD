@@ -4,7 +4,7 @@
 # Registry), without compiling anything. The binary is built on Ubuntu 22.04 (glibc 2.35) and
 # runs on Arch.
 pkgname=projetor-missa-bin
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Projects Catholic Mass slides (ODP/PPTX song files) from a .missa file, with a visual editor (Portuguese UI)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=("projetor-missa-linux-x86_64-${pkgver}.tar.gz::${_packages}/projetor-mis
         "LICENSE-${pkgver}::${_raw}/LICENSE"
         "icone-${pkgver}.svg::${_raw}/site/imagens/icone.svg")
 # Refresh with `updpkgsums` after publishing a new version.
-sha256sums=('1cf6267837fb2f6e47771f665fd142fd83cd5de9d7cf6394a2c86fb1785e7bdb'
+sha256sums=('ff4310eb0e462a5d5929cb4cab4655b21eb953e803346c686edb002d6de3f637'
             '13e593b3091e033c99ce73387dc6d333160ac60c02a5ee54d1c984b6113ccbfe'
             'c34712e19ce4b032b6dc7165e14ebc122421f5154ae6bde517bc88b9d1b59454')
 

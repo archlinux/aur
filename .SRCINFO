@@ -1,6 +1,6 @@
 pkgbase = projetor-missa-bin
 	pkgdesc = Projects Catholic Mass slides (ODP/PPTX song files) from a .missa file, with a visual editor (Portuguese UI)
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://gitlab.com/denisfalqueto/projetor-missa
 	arch = x86_64
@@ -25,10 +25,10 @@ pkgbase = projetor-missa-bin
 	conflicts = projetor-missa
 	options = !strip
 	options = !debug
-	source = projetor-missa-linux-x86_64-1.5.0.tar.gz::https://gitlab.com/api/v4/projects/denisfalqueto%2Fprojetor-missa/packages/generic/projetor-missa/v1.5.0/projetor-missa-linux-x86_64.tar.gz
-	source = LICENSE-1.5.0::https://gitlab.com/denisfalqueto/projetor-missa/-/raw/v1.5.0/LICENSE
-	source = icone-1.5.0.svg::https://gitlab.com/denisfalqueto/projetor-missa/-/raw/v1.5.0/site/imagens/icone.svg
-	sha256sums = 1cf6267837fb2f6e47771f665fd142fd83cd5de9d7cf6394a2c86fb1785e7bdb
+	source = projetor-missa-linux-x86_64-1.6.0.tar.gz::https://gitlab.com/api/v4/projects/denisfalqueto%2Fprojetor-missa/packages/generic/projetor-missa/v1.6.0/projetor-missa-linux-x86_64.tar.gz
+	source = LICENSE-1.6.0::https://gitlab.com/denisfalqueto/projetor-missa/-/raw/v1.6.0/LICENSE
+	source = icone-1.6.0.svg::https://gitlab.com/denisfalqueto/projetor-missa/-/raw/v1.6.0/site/imagens/icone.svg
+	sha256sums = ff4310eb0e462a5d5929cb4cab4655b21eb953e803346c686edb002d6de3f637
 	sha256sums = 13e593b3091e033c99ce73387dc6d333160ac60c02a5ee54d1c984b6113ccbfe
 	sha256sums = c34712e19ce4b032b6dc7165e14ebc122421f5154ae6bde517bc88b9d1b59454
 
