@@ -1,6 +1,6 @@
 pkgbase = qt6-mpvqml
 	pkgdesc = Qt6 QML video player element backed by libmpv
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/alexindigo/mpvqml
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = qt6-mpvqml
 	depends = qt6-declarative
 	depends = mpv
 	conflicts = qt6-mpvqml-git
-	source = qt6-mpvqml-0.3.0.tar.gz::https://github.com/alexindigo/mpvqml/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = ce15ef421edfb770befbe801529b2073d4f93ee5581122c6d0d1cd3ec03acfc9
+	source = qt6-mpvqml-0.3.1.tar.gz::https://github.com/alexindigo/mpvqml/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 6c6e05c0bbdbe557b83791c83fc6c8a216153e31772b92cd593a7d414ad9859a
 
 pkgname = qt6-mpvqml
