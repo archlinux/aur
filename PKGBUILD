@@ -2,7 +2,7 @@
 
 pkgname=wattpdl
 _name=wattpdl
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Download Wattpad stories as offline .txt/.docx/.epub/.md/.pdf files with a Rich CLI'
 arch=('any')
@@ -29,7 +29,7 @@ checkdepends=(
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 # Run `updpkgsums` to fill this in after editing pkgver
-sha256sums=('8141cea28cb41cfdf79580f7d129b5cfd3821a1a9c7617567dc9fff7a4d157eb')
+sha256sums=('89b730162d443716cc592064196b6fddcb6bff6bedf028a339e149fa923ece6a')
 
 build() {
   cd "${_name}-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = wattpdl
 	pkgdesc = Download Wattpad stories as offline .txt/.docx/.epub/.md/.pdf files with a Rich CLI
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/nekonaru/wattpdl
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = wattpdl
 	depends = python-ebooklib
 	depends = python-reportlab
 	depends = python-pillow
-	source = https://files.pythonhosted.org/packages/source/w/wattpdl/wattpdl-2.0.0.tar.gz
-	sha256sums = 8141cea28cb41cfdf79580f7d129b5cfd3821a1a9c7617567dc9fff7a4d157eb
+	source = https://files.pythonhosted.org/packages/source/w/wattpdl/wattpdl-2.0.1.tar.gz
+	sha256sums = 89b730162d443716cc592064196b6fddcb6bff6bedf028a339e149fa923ece6a
 
 pkgname = wattpdl
