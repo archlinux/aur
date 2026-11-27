@@ -3,7 +3,7 @@
 # Karere. Build recipe: https://github.com/riccardomarotti/karere/tree/main/packaging/karere-bin
 
 pkgname=karere-bin
-pkgver=4.6.3
+pkgver=4.6.4
 pkgrel=1
 pkgdesc='Native GTK4/libadwaita WhatsApp client (prebuilt from upstream releases)'
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=("$_archive::https://github.com/riccardomarotti/karere/releases/download/
 
 # Deliberate placeholder: the release workflow MUST replace this with the
 # SHA256 of the published binary, and verify it, before pushing to AUR.
-sha256sums=('521e016d4790fcd98e82afcc34ca8ebadbfde30df11505210b5f9b9cdd9fbde8')
+sha256sums=('bbc59e111746173cc30ee51ca6fa5caa283c32fd971f8694aea5c9bdade58231')
 
 package() {
   install -d "$pkgdir"
