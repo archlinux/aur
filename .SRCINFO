@@ -1,6 +1,6 @@
 pkgbase = r-experimenthub
 	pkgdesc = Client to access ExperimentHub resources
-	pkgver = 3.2.2
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ExperimentHub
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-experimenthub
 	optdepends = r-hubpub
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ExperimentHub_3.2.2.tar.gz
-	sha256sums = a969202a6bb2169a4e3790f1fed9668a7f7df6d3cf776b17ef8fe95a92798208
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ExperimentHub_3.4.0.tar.gz
+	sha256sums = f3e50c451ec842fcbf2aca66cb624f0256288ec523b99385ebcc74e290269a18
 
 pkgname = r-experimenthub
