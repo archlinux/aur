@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.4.16
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults: Hornero Signal themes, compositor, terminal, GTK/Qt, fonts, XDG handlers"
 arch=('any')
@@ -65,7 +65,7 @@ optdepends=(
 # AUR chroot builds identical to local packaging/ builds.
 install=hornero-config.install
 backup=('etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf')
-source=("config::git+https://github.com/HorneroOS/config.git#commit=23bfebb75d6f7ca1cc044ebcb824f2d0c9af75d3")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=ddd533567d7cb72331fb2eab5277b3bb964a11c9")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
