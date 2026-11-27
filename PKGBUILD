@@ -1,7 +1,7 @@
 # Maintainer: Christopher Patrick Fair <christopherpatrickfair@gmail.com>
 pkgname=newscid-bin
-pkgver=2.1.2
-pkgrel=2
+pkgver=2.1.3
+pkgrel=1
 pkgdesc="Chess Information Database (Scid v4 compatible) — prebuilt binary"
 arch=('x86_64')
 url="https://github.com/chrisfair/newscid"
@@ -21,7 +21,7 @@ source_x86_64=(
     "https://github.com/chrisfair/newscid/releases/download/v${pkgver}/newscid-${pkgver}-${pkgrel}-linux-x86_64.tar.gz.asc"
 )
 sha256sums_x86_64=(
-    '5327167b4d7227df85ee330ec8c87f9fe947524faee3fd85fc09a3200b2c849e'
+    '2ce1e493d67c0ab8238e942f5148abed0b75f51fe01fb29947f15e67417ee6e2'
     'SKIP'
 )
 
