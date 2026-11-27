@@ -1,12 +1,12 @@
 # Maintainer: Tino Gohl <tuvbunn2@googlemail.com>
 pkgname=jgrep-bin
 pkgver=1.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="grep for JSON with jq-style filter expressions (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/subnix-work/jgrep-tinox"
 license=('Apache-2.0')
-depends=('glibc' 'gc' 'zlib' 'openssl')
+depends=('glibc' 'zlib' 'openssl')
 provides=("jgrep=$pkgver")
 conflicts=('jgrep')
 # jgrep-bin and jgrep install the same binary at /usr/bin/jgrep.
