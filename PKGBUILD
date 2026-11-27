@@ -1,7 +1,7 @@
 # Maintainer: Victor Coscrato <vcoscrato@users.noreply.github.com>
 
 pkgname=speshell-git
-pkgver=r28.g6bc6188
+pkgver=r29.gf6acf4e
 pkgrel=1
 pkgdesc="A desktop shell built with Quickshell: a bar and its panels, a launcher, and animated themes"
 arch=('any')
@@ -32,7 +32,6 @@ optdepends=(
   'hyprsunset: night light'
   'hyprshutdown: closing apps gracefully on logging out of Hyprland'
   'tailscale: Tailscale in the Network panel'
-  'curl: downloading the dictation model'
   'paru: AUR packages in speshell system (or yay)'
   'brightnessctl: brightness and keyboard backlight controls, and dimming on idle'
   'power-profiles-daemon: the system power profile following the power mode'
@@ -48,7 +47,7 @@ optdepends=(
   'tesseract: copy text tool (with a tesseract-data package per language)'
   'wf-recorder: record tool'
   'pipewire-audio: dictation tool, recording the microphone'
-  'whisper-cpp: dictation tool'
+  'whisper-cpp: dictation tool, its speech server'
   'wl-clipboard: clipboard capture, copy actions, and the tools'
   'wtype: dictation tool, typing the text'
   'zbar: scan code tool'
