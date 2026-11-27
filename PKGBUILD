@@ -6,55 +6,57 @@
 # Contributor: Linus Karlsson <linus@zozs.se>
 
 pkgname=poncho-wonky
+_pkgname=ponchowonky
 _upstream=patchwork
-pkgver=5.7.1
+pkgver=5.7.2
 pkgrel=1
 pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB),fork of patchwork"
 arch=('x86_64')
-url="https://github.com/soapdog/patchwork"
+_repo="soapdog/patchwork"
+url="https://github.com/${_repo}"
 license=('AGPL3')
 depends=('libxtst' 'libxext' 'libxkbfile' 'libsodium' 'libxss' 'gtk4' 'alsa-lib' 'nss' 'electron39')
-makedepends=('nodejs' 'npm')
 replaces=('ssb-patchwork')
 options=(!strip)
-source=(
-"${url}/archive/v${pkgver}.tar.gz"
-'run.sh'
-"${pkgname}.desktop"
-)
+_appimage="${pkgname}-${pkgver}.AppImage"
+source=("${_appimage}::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage"
+               "https://raw.githubusercontent.com/${_repo}/refs/heads/master/LICENSE"
+              )
+noextract=("${_appimage}")
+sha256sums=('dd0891234094acc52d37d7fea820b6f1578c87c9bcbd17f35baa5f2519c6a4eb'
+            '76a97c878c9c7a8321bb395c2b44d3fe2f8d81314d219b20138ed0e2dddd5182')
 
-sha256sums=('197c6242ddc05fdf713f4879bc7fcee22fbf4a90cb69fdb7421fcf9619384557'
-            'e1518685a1c37abd0a801d0a2872c4e05eb27434402bb9d304c5db8323f4c3a8'
-            '4a2f989a64555eaea5eab06a01bdcafd2618b8ff2b69c5a14481aa71a245a95e')
-
+prepare() {
+    chmod +x "${_appimage}"
+    ./"${_appimage}" --appimage-extract
+}
 
 build() {
-    cd "${srcdir}/${_upstream}-${pkgver}"
-
-    # Remove postinstall script that rebuilds for Electron
-    # Instead we just build correctly the first time
-    sed -i '/postinstall/d' package.json
-
-    # Electron's version.
-    export npm_config_target=$(electron39 -v)
-    # The architecture of Electron, can be ia32 or x64.
-    export npm_config_arch=x64
-    export npm_config_target_arch=x64
-    # Download headers for Electron.
-    export npm_config_disturl=https://nodejs.org/dist
-    # Tell node-pre-gyp that we are building for Electron.
-    export npm_config_runtime=electron
-    # Install all dependencies, and store cache to ~/.electron-gyp.
-    HOME=~/.electron-gyp npm install --only=production --allow-git=all
+    # Adjust .desktop so it will work outside of AppImage container
+    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
+        "squashfs-root/${_pkgname}.desktop"
+    # Fix permissions; .AppImage permissions are 700 for all directories
+    chmod -R a-x+rX squashfs-root/usr
 }
 
 package() {
-    cd "${srcdir}/${_upstream}-${pkgver}"
-    install -d "${pkgdir}/opt/${pkgname}"
-    cp -a * "${pkgdir}/opt/${pkgname}"
-    install -D assets/icon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    # AppImage
+    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
-    cd "${srcdir}"
-    install -D run.sh "${pkgdir}/usr/bin/${pkgname}"
-    install -D "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop" 
+    # Desktop file
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
+            "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+    # Icon images
+    install -dm755 "${pkgdir}/usr/share/"
+    cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+
+    # Symlink executable
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+
+    # Symlink license
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
+    ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
