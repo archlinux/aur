@@ -1,0 +1,15 @@
+pkgbase = quectop-git
+	pkgdesc = Lightweight Linux resource monitor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/toxdes/quectop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	provides = quectop=0.1.0
+	conflicts = quectop
+	source = git+https://github.com/toxdes/quectop.git#branch=main
+	sha256sums = SKIP
+
+pkgname = quectop-git
