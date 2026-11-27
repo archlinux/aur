@@ -1,6 +1,6 @@
 pkgbase = bentwire-bin
 	pkgdesc = Desktop characters (Microsoft Agent and Office Assistant formats) for Wayland (release binaries)
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/mschabhuettl/bentwire
 	arch = x86_64
@@ -10,10 +10,11 @@ pkgbase = bentwire-bin
 	depends = glibc
 	depends = libgcc
 	depends = libxkbcommon
-	provides = bentwire=0.2.2
+	optdepends = espeak-ng: speech output
+	provides = bentwire=0.3.0
 	conflicts = bentwire
 	options = !debug
-	source_x86_64 = https://github.com/mschabhuettl/bentwire/releases/download/v0.2.2/bentwire-0.2.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b7963033b635e97f1b80453f6cc22db53156d533f7299dc2d4b59e33b738a4a0
+	source_x86_64 = https://github.com/mschabhuettl/bentwire/releases/download/v0.3.0/bentwire-0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 8ccfe89f2be42d0a94dca61050ed0cfcf330f49bd500e19447ceab24ddbce329
 
 pkgname = bentwire-bin
