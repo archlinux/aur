@@ -1,0 +1,21 @@
+pkgbase = simplenote-electron-git
+	pkgdesc = The simplest way to keep notes.
+	pkgver = 2.27.2_md_editor_wysiwyg.1.r128.gc27bf5e
+	pkgrel = 1
+	url = https://app.simplenote.com
+	arch = any
+	license = GPL-2.0-only
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = jq
+	makedepends = yarn
+	depends = electron34
+	source = simplenote-electron.git::git+https://github.com/Automattic/simplenote-electron.git
+	source = simplenote-electron.js
+	source = simplenote-electron.sh
+	sha256sums = SKIP
+	sha256sums = 4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b
+	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
+
+pkgname = simplenote-electron-git
