@@ -1,0 +1,46 @@
+_preserve_system_config() {
+  local cfg=/etc/xdg/kb-indicator-rs/config.toml
+  local keep=/etc/xdg/kb-indicator-rs/config.toml.keep
+  # Пакет не ставит config.toml файлом: если пользователь положил туда свой,
+  # обновление не должно его стирать.
+  if [ -f "$cfg" ] && [ ! -e "$keep" ]; then
+    cp -a "$cfg" "$keep"
+  fi
+}
+
+_restore_system_config() {
+  local cfg=/etc/xdg/kb-indicator-rs/config.toml
+  local keep=/etc/xdg/kb-indicator-rs/config.toml.keep
+  if [ -f "$keep" ]; then
+    if [ -e "$cfg" ]; then
+      rm -f "$keep"
+    else
+      mv -f "$keep" "$cfg"
+    fi
+  fi
+}
+
+post_install() {
+  cat <<'MSG'
+Запуск:
+
+  * автозапуск при входе в LXQt — /etc/xdg/autostart/kb-indicator-rs.desktop;
+  * разовый запуск — команда `kb-indicator-rs` в терминале.
+
+Иконка появится в трее (StatusNotifier-хост: lxqt-panel, waybar).
+
+Пример конфига лежит в /etc/xdg/kb-indicator-rs/config.toml.example.
+Копировать его не обязательно: значения по умолчанию в программе те же.
+Кладите свой конфиг в ~/.config/kb-indicator-rs/config.toml — там
+достаточно только изменяемых ключей.
+MSG
+}
+
+pre_upgrade() {
+  _preserve_system_config
+}
+
+post_upgrade() {
+  _restore_system_config
+  post_install
+}
