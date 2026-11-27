@@ -22,8 +22,21 @@ sha256sums=('d6fcc6865f2d153214a0d0623c143036d78596790c57fd4650f9ed02809f54b2')
 
 prepare() {
   cd "$srcdir"
-  # The SquashFS starts after the runtime in this checksum-pinned AppImage.
-  unsquashfs -no-progress -offset 944632 "$_appimage" \
+  local elf_header section_start section_size section_count
+  elf_header=$(LC_ALL=C readelf --file-header "$_appimage") || return 1
+  section_start=$(awk '/Start of section headers:/ {print $5}' <<< "$elf_header")
+  section_size=$(awk '/Size of section headers:/ {print $5}' <<< "$elf_header")
+  section_count=$(awk '/Number of section headers:/ {print $5}' <<< "$elf_header")
+  if [[ ! $section_start =~ ^[1-9][0-9]*$ ||
+        ! $section_size =~ ^[1-9][0-9]*$ ||
+        ! $section_count =~ ^[1-9][0-9]*$ ]]; then
+    error "Could not locate the SquashFS payload in $_appimage"
+    return 1
+  fi
+
+  # The Type 2 AppImage payload starts after the runtime's ELF section table.
+  local offset=$((section_start + section_size * section_count))
+  unsquashfs -no-progress -offset "$offset" "$_appimage" \
     ninja-gaiden-black.desktop ninja-gaiden-black.png usr/share/licenses/NinjaGaidenBlack
 }
 
