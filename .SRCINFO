@@ -1,6 +1,6 @@
 pkgbase = r-memes
 	pkgdesc = motif matching, comparison, and de novo discovery using the MEME Suite
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/memes
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = r-memes
 	optdepends = r-pmcmrplus
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/memes_1.20.0.tar.gz
-	sha256sums = bfd5ad3fba625053e4cbad1db622afa711805d0c7413b706c44195ebba0d30a7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/memes_1.22.0.tar.gz
+	sha256sums = 1a21a36b87bad1e5e3a200fb45c0bd227d6469036c50ab45fbe0a1677ca743cc
 
 pkgname = r-memes
