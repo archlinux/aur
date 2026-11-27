@@ -1,6 +1,6 @@
 # Maintainer: Akusen <akudesyn@gmail.com>
 pkgname=floema
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Terminal emulator for Linux where every command is a living capsule, a Genoma app in Bioma's style"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('genoma>=0.1.26' 'hicolor-icon-theme' 'fontconfig')
 optdepends=('xdg-terminal-exec: Floema as the desktop'"'"'s terminal, switched in its settings'
             'libnotify: commands that end unseen, told')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('885365af36419cf851e8ad347f285b099173fce91d0872d6748b8c64be00a10e')
+sha256sums=('010c1347b9d17f3a42b8bbe7064138e17734d0305ccf5dbb498b529b7c003a16')
 
 package() {
   cd "Floema-$pkgver"
