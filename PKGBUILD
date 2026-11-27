@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail dote com>
 pkgname=owasp-core-ruleset
 _name=coreruleset
-pkgver=4.30.0
+pkgver=4.31.0
 pkgrel=1
 pkgdesc="OWASP ModSecurity Core Rule Set"
 arch=('any')
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
 	"mod_security_recommended.conf::${_modsec_url}/modsecurity.conf-recommended"
 	"${_modsec_url}/unicode.mapping"
         "${pkgname}.install")
-sha256sums=('6f220e263ec1d74e29f44f7fd25b8c50c0ca7dd9e2e4f44f4bffa590142cff41'
+sha256sums=('95b93a43a0edc115a4cb30a1f136e2be3e770794bdde3f245262245949428307'
             '948df7acd4a56556ebf249fe8c50723424f16780f291ca61d6b6ac62b5bc6356'
             '5e4500ef82e45c49d8edd9513648939710d6c8cc2d5997513b32866dc5d9be23'
             '185172d4dafa4c1cc2fad1748801326d6bb4270d441c717daac1f7184f746b1f')
