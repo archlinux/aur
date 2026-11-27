@@ -1,6 +1,6 @@
 pkgbase = hongguo-desktop-bin
 	pkgdesc = 红果短剧桌面版（预编译 AppImage）
-	pkgver = 0.2.183
+	pkgver = 0.2.184
 	pkgrel = 1
 	url = https://github.com/aston314/hongguo-tv-releases
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = hongguo-desktop-bin
 	conflicts = hongguo-desktop
 	options = !strip
 	options = !debug
-	source = https://github.com/aston314/hongguo-tv-releases/releases/download/linux-v0.2.183-test.1/hongguo-desktop-0.2.183-x86_64.AppImage
-	sha256sums = da1d5aac14315642e1903ed45716966fb450ef4275d5403286fabb74c4737aa4
+	source = https://github.com/aston314/hongguo-tv-releases/releases/download/linux-v0.2.184-test.1/hongguo-desktop-0.2.184-x86_64.AppImage
+	sha256sums = 2d87332e2414df5d51f0192a38578c824eb5f3f4e4e007638c5d470a9bef1015
 
 pkgname = hongguo-desktop-bin
