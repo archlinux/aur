@@ -1,5 +1,5 @@
 pkgname=throne-sysqt-bin
-pkgver=1.4.2
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box) not pack the Qt libraries"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_aarch64=(
 )
 sha256sums=('1d7019ed30127fb3c7219016ed9e08bdc4809c65af13d2b02e59eed87a69082d'
             'ba44fe899a7ae34474a497a797299587d1e286e7a574578804083220caefe1bb')
-sha256sums_x86_64=('6d3ad386e27bc90de4b5ebf400735166de11e7a99f7ae75e1704be89a247e28b')
-sha256sums_aarch64=('a72b0205e8a3cacfdaee5288a583ed6ce2c9c89704c7932d8e079d4e8cf7da3e')
+sha256sums_x86_64=('dc83a28649b318836e7fa268931176f56ea5af2bf1e2c17db864c83050f639e2')
+sha256sums_aarch64=('8a3ecddbdce5be8ac712f4f8ca0da9129d8b95021a39e52aa223432faee57966')
 
 prepare() {
   cd "$srcdir"
