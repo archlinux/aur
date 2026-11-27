@@ -1,12 +1,12 @@
 pkgbase = zam-web
 	pkgdesc = Zam Matrix Client for Web.
-	pkgver = 1.67.16
+	pkgver = 1.67.17
 	pkgrel = 1
 	url = https://matrix.crafty.moe/
 	arch = any
 	license = GPL-3.0-only
 	makedepends = npm
-	source = Zam-1.67.16.tar.gz::https://github.com/az4521/Zam/archive/refs/tags/v1.67.16.tar.gz
-	sha256sums = b7b61370cb1a10932f6d1b8ccb6ebfc7ffe2de61bad04d72e38575c27f5db765
+	source = Zam-1.67.17.tar.gz::https://github.com/az4521/Zam/archive/refs/tags/v1.67.17.tar.gz
+	sha256sums = 2760dd3841cb640b208388d1d6b4cd9f97005f28cff62511fbee547303203ea6
 
 pkgname = zam-web
