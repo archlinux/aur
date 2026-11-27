@@ -1,6 +1,6 @@
 pkgbase = r-rfpred
 	pkgdesc = Assign rfPred functional prediction scores to a missense variants list
-	pkgver = 1.50.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rfPred
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-rfpred
 	depends = r-iranges
 	depends = r-rsamtools
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rfPred_1.50.0.tar.gz
-	sha256sums = 4059589ac59be2c278165c7c4b994a2c334952d8d95e596b5299faa880ac6a5b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rfPred_1.52.0.tar.gz
+	sha256sums = 82017475799152df053b12e4fcf315278becc57c29a4b7cfaa60aa108385fc28
 
 pkgname = r-rfpred
