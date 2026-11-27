@@ -1,0 +1,40 @@
+pkgbase = libfprint-fte3600-bin
+	pkgdesc = Prebuilt libfprint with FTE3600 SPI fingerprint support, DKMS glue, and toolkit
+	pkgver = 1.94.100.r97
+	pkgrel = 1
+	url = https://github.com/wings1848/libfprint-fte3600
+	install = fte3600.install
+	arch = x86_64
+	groups = fprint
+	license = LGPL-2.1-or-later
+	license = GPL-2.0-only
+	license = MIT
+	depends = libgcc
+	depends = glib2
+	depends = glibc
+	depends = libgudev
+	depends = libgusb
+	depends = openssl
+	depends = pixman
+	depends = dkms
+	depends = python
+	depends = python-gobject
+	optdepends = fprintd: enrollment and authentication service
+	optdepends = linux-headers: build the module for the standard Arch kernel
+	optdepends = linux-lts-headers: build the module for the LTS kernel
+	optdepends = gtk4: desktop GUI (fte3600-toolkit-gui)
+	optdepends = libadwaita: desktop GUI (fte3600-toolkit-gui)
+	optdepends = libnotify: desktop notifications during enrollment/verification
+	optdepends = libpulse: audio cues via paplay
+	provides = libfprint=1.94.100.r97
+	provides = libfprint-2.so=2-64
+	conflicts = libfprint
+	conflicts = libfprint-fte3600-git
+	conflicts = libfprint-fte3600-personal-git
+	noextract = libfprint-fte3600-v1.94.100.r97-x86_64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = libfprint-fte3600-v1.94.100.r97-x86_64.pkg.tar.zst::https://github.com/wings1848/libfprint-fte3600/releases/download/v1.94.100.r97/libfprint-fte3600-v1.94.100.r97-x86_64.pkg.tar.zst
+	sha256sums = 4ddb3f15d7f7872df46efc9ce9d346cd161729358be2b66c8691709968f6eb7d
+
+pkgname = libfprint-fte3600-bin
