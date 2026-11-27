@@ -1,6 +1,6 @@
 pkgbase = spitfire
 	pkgdesc = Tiling Wayland compositor with a live-reloadable Lua config, in the spirit of dwm
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/dani-77/spitfire
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = spitfire
 	optdepends = greetd: use spitfire as a login-screen session
 	options = !lto
 	backup = etc/xdg-desktop-portal/spitfire-portals.conf
-	source = spitfire-0.7.0.tar.gz::https://github.com/dani-77/spitfire/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = 070ac35dfe8704855b5f072cefb0e7e38b1e773bd768120dac79c0779aca4191
+	source = spitfire-0.8.0.tar.gz::https://github.com/dani-77/spitfire/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 2c24c5b5d947b0c63303d53bd5e9324ecf8ba9d1fd095d6c11e07b91b723c9f9
 
 pkgname = spitfire
