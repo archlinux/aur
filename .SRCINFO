@@ -1,7 +1,7 @@
 pkgbase = ttf-libron
 	pkgdesc = Serif typeface tuned for digital reading and e-readers (Readerly fork)
 	pkgver = 0.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nicoverbruggen/libron
 	arch = any
 	license = OFL-1.1

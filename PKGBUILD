@@ -2,7 +2,7 @@
 
 pkgname=ttf-libron
 pkgver=0.32
-pkgrel=1
+pkgrel=2
 pkgdesc="Serif typeface tuned for digital reading and e-readers (Readerly fork)"
 arch=('any')
 url="https://github.com/nicoverbruggen/libron"
@@ -16,7 +16,7 @@ sha256sums=('41686314e349fd80326149b9d7d791ffb7cb547a5e8356dae819831b47b1fd9f'
             'd14a8638c40c1e1a02458b9f46860030b88cc27ac1cae65f18aa943b69495718')
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" "$srcdir"/Libron-*.ttf
+  install -Dm644 -t "$pkgdir/usr/share/fonts/$pkgname" "$srcdir"/Libron-*.ttf
 
   install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "COPYRIGHT-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
