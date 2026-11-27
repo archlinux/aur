@@ -1,6 +1,6 @@
 pkgbase = brygge
 	pkgdesc = Carries version-control history between systems: decodes Git, Mercurial, Subversion and CVS into a verifiable IR (built from source)
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/prikk-vcs/brygge
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = brygge
 	depends = glibc
 	depends = gcc-libs
 	optdepends = subversion: decode a local SVN repository (dump files need nothing)
-	source = brygge-0.9.0.tar.gz::https://github.com/prikk-vcs/brygge/archive/refs/tags/0.9.0.tar.gz
-	sha256sums = 089945d6daea95b3dc180e1aa19275bfe792c30ab22e8f6eeec1f4071c8017d7
+	source = brygge-0.10.0.tar.gz::https://github.com/prikk-vcs/brygge/archive/refs/tags/0.10.0.tar.gz
+	sha256sums = 7df9ec85e0dddb3761ee8ca84a54f60bf31c70511c2d451e8476e751c42ba8f2
 
 pkgname = brygge
