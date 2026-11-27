@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ctl
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI for COSMIC Desktop configuration management"
 arch=('x86_64' 'aarch64')
-url="https://github.com/cosmic-utils/cosmic-ctl"
+url="https://github.com/cosmic-ext-orbit/cosmic-ctl"
 license=('GPL-3.0-or-later')
 depends=('libgcc')
 makedepends=('cargo')
@@ -21,6 +21,8 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export CARGO_PROFILE_RELEASE_LTO=true
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
   cargo build --frozen --release
 }
 
