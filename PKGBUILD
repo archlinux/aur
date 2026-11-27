@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OncoScore
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='A tool to identify potentially oncogenic genes'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7aebee9e5736a8d4238a7e06498cd680b6e2da7ba145db4065082bb5643d0129')
+sha256sums=('234451cbce8d01af6024120dba1b337b0d1765c40cc61cc85447b754597cf0d4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
