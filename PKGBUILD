@@ -39,7 +39,9 @@ build() {
 package() {
 	cd "udon-$pkgname-v$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	chmod +x "$pkgdir"/usr/lib/python3.14/site-packages/udon/udon.py 
+	chmod +x "$pkgdir"/usr/lib/python3.*/site-packages/udon/udon.py
+	mkdir "$pkgdir"/usr/bin
+	ln -s /usr/lib/python3.14/site-packages/udon/udon.py "$pkgdir"/usr/bin/udon
 }
 
 
