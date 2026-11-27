@@ -25,6 +25,6 @@ pkgbase = konvert
 	optdepends = potrace: Vector tracing for SVG output
 	optdepends = oxipng: Lossless PNG optimization
 	source = konvert-0.5.0.tar.gz::https://github.com/enesehs/konvert/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 7ba13cb5cb6256ff59d8e1b8f098d7bc5fa64b217114cdacf460fd3f12cd2ea8
+	sha256sums = 30fa8fed13d87e8e84d4e2144d3b0e4ed35a315c8bd0c80f61ffff7709cac5d4
 
 pkgname = konvert

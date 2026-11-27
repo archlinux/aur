@@ -21,7 +21,7 @@ optdepends=(
     'oxipng: Lossless PNG optimization'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7ba13cb5cb6256ff59d8e1b8f098d7bc5fa64b217114cdacf460fd3f12cd2ea8')
+sha256sums=('30fa8fed13d87e8e84d4e2144d3b0e4ed35a315c8bd0c80f61ffff7709cac5d4')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
