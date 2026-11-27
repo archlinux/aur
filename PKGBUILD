@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDRimport
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,14 +13,12 @@ depends=(
   r-assertthat
   r-bumpymatrix
   r-checkmate
-  r-coregx
   r-data.table
   r-futile.logger
   r-gdrutils
   r-magrittr
   r-multiassayexperiment
   r-openxlsx
-  r-pharmacogx
   r-qs2
   r-readxl
   r-rio
@@ -36,15 +34,17 @@ checkdepends=(
 )
 optdepends=(
   r-biocstyle
+  r-coregx
   r-gdrstyle
   r-gdrtestdata
   r-knitr
+  r-pharmacogx
   r-purrr
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4e0ffcc86650277b520974df909d4362')
-b2sums=('c4f0907fdcdf1853c4c278834d0d6ca6f4262cfa8e4414d774c2706a0984a61e43dc4ccc1b1e1c6dc9248085437c769ff22c0cddd8249cf18af67158aa162498')
+md5sums=('2971d5dbf48fdf7f90beece3b1580bdd')
+b2sums=('f2ce0d0ed763422149964f43e76bc8092334ed93267afa9e5310e0a7bec998e252c4f37c89941eb7b2a4c07853145855f7e1f93c3cd831ad177c670bbdc0b67e')
 
 build() {
   mkdir build
