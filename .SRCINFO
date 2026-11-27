@@ -1,6 +1,6 @@
 pkgbase = remya-launcher
 	pkgdesc = Application launcher and clipboard history for Hyprland
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/remyhuang03/remya-launcher
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = remya-launcher
 	conflicts = remya-launcher-bin
 	conflicts = remya-launcher-git
 	options = !strip
-	source = remya-launcher-0.1.0.tar.gz::https://github.com/remyhuang03/remya-launcher/archive/refs/tags/v0.1.0.tar.gz
+	source = remya-launcher-0.1.1.tar.gz::https://github.com/remyhuang03/remya-launcher/archive/refs/tags/v0.1.1.tar.gz
 	source = remya-core-0.3.0.tar.gz::https://github.com/remyhuang03/remya-core/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 97a1739270346cdcf93387f60ebe1bd2c99029ebedee651d5ac11f8ceab3a11a
+	sha256sums = 4718eb3c00526f3255506fbd85b0a36b8c4675f720ae249ea24d8b91ab94840b
 	sha256sums = 7d6446827dde819e21c6029e5aa8af732dc12753c79b990d474b29bc5b7a22b7
 
 pkgname = remya-launcher

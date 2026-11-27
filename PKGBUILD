@@ -1,8 +1,8 @@
 # Maintainer: Remy Huang <me@remya.top>
 pkgname=remya-launcher
 _app_id=remya_launcher
-_upstream_ver=0.1.0
-pkgver=0.1.0
+_upstream_ver=0.1.1
+pkgver=0.1.1
 pkgrel=1
 _core_ver=0.3.0
 pkgdesc="Application launcher and clipboard history for Hyprland"
@@ -37,7 +37,7 @@ source=(
   "remya-launcher-${_upstream_ver}.tar.gz::${url}/archive/refs/tags/v${_upstream_ver}.tar.gz"
   "remya-core-${_core_ver}.tar.gz::https://github.com/remyhuang03/remya-core/archive/refs/tags/v${_core_ver}.tar.gz"
 )
-sha256sums=('97a1739270346cdcf93387f60ebe1bd2c99029ebedee651d5ac11f8ceab3a11a'
+sha256sums=('4718eb3c00526f3255506fbd85b0a36b8c4675f720ae249ea24d8b91ab94840b'
             '7d6446827dde819e21c6029e5aa8af732dc12753c79b990d474b29bc5b7a22b7')
 
 prepare() {
