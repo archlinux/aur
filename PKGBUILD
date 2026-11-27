@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CoGAPS
-_pkgver=3.32.0
+_pkgver=3.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,9 +42,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-openmp.patch")
-md5sums=('81193ab59a3e9833a9f54fdb5c0277f7'
+md5sums=('abb6bd9214de54ea7fe5d3fb030e5ccc'
          '7bbd2f800d95d2a4a9c81526b637e772')
-b2sums=('22b65c42a3434dd8345a66847a2cf57a96df167dfa00fcf9441bb4212648be632441c6fd45ba029f9ea5bdf5ad9ca668ada882bad0c93a15af9c82ce9b48ad01'
+b2sums=('6ad99a4fe4d2e2338dc736f4595b45e162501886d3ec9812a5fd4a43fb7b06999cc2317ca6a0ec70103cd51240ff9dc8428e004c39692676d1ffab9615ddcc15'
         '1c794cab3dab46e4e50461c0d533f3a524940210dee7b27662421082a9f198e0faa7286a1d441299857cb064940a88f24767d88c1988216c22c330c97605737e')
 
 prepare() {
