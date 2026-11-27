@@ -1,9 +1,9 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=whiplash
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="Xmonad-style Wayland compositor with a Haskell brain and a TOML config"
+pkgdesc="Xmonad-style Wayland compositor and X11 WM with a Haskell brain"
 arch=('x86_64' 'aarch64')
 url="https://github.com/dani-77/whiplash"
 license=('MIT')
@@ -17,9 +17,10 @@ optdepends=(
   'xdg-desktop-portal-gtk: default portal backend (file dialogs, etc.)'
   'libnotify: config errors shown as notifications'
 )
-backup=('etc/xdg-desktop-portal/whiplash-portals.conf')
+backup=('etc/xdg-desktop-portal/whiplash-portals.conf'
+        'etc/xdg/whiplash-x11/xdg-desktop-portal/whiplash-portals.conf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5ec9d7b1e744217876a3a3782d6a94a6605998e6110081e9602ee0b096ae829d')
+sha256sums=('5aa3fbd6482499158ff2207eefb5d35a7a3ddc0b69ce8b82aabc1e85745ef271')
 
 build() {
     cd "$pkgname-$pkgver"
