@@ -1,6 +1,6 @@
 pkgbase = mole-cli-bin
 	pkgdesc = Deep clean and optimize your Linux desktop (CLI)
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/tw93/Mole
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = mole-cli-bin
 	conflicts = mole-cli
 	options = !strip
 	options = !debug
-	source_x86_64 = mole-0.7.1-linux-x86_64.tar.gz::https://github.com/tw93/Mole/releases/download/V0.7.1-linux/mole-0.7.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 4a06624d3060387b4b136976667571e7e1668849e51ff4b1aded94969dac2b6c
-	source_aarch64 = mole-0.7.1-linux-aarch64.tar.gz::https://github.com/tw93/Mole/releases/download/V0.7.1-linux/mole-0.7.1-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 8ae39d43f9131b2f4763ae94f03013365b894c891fcd25798f61b8845a27775f
+	source_x86_64 = mole-0.8.0-linux-x86_64.tar.gz::https://github.com/tw93/Mole/releases/download/V0.8.0-linux/mole-0.8.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 0cf1065b5f2b9ec73184d2fae85429b4ba36e9a02c1f70956bd5e6b94d079405
+	source_aarch64 = mole-0.8.0-linux-aarch64.tar.gz::https://github.com/tw93/Mole/releases/download/V0.8.0-linux/mole-0.8.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = fcbd7b2712dbdeeac8a3e69e9286e954afb00dfa7254fa2724ed5783fd9f5fa9
 
 pkgname = mole-cli-bin
