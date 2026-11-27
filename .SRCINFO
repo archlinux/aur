@@ -1,0 +1,25 @@
+pkgbase = gpcal
+	pkgdesc = A simple calculator built with GPUI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/shenjiangqiu/gpcal
+	install = gpcal.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = fontconfig
+	depends = freetype2
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libx11
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	options = !lto
+	options = !debug
+	source = gpcal-0.1.0.tar.gz::https://github.com/shenjiangqiu/gpcal/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 2d7e69b0c774c5bb5aa278f3ca9c820e3414a50738b9dcf05c43981a930f2c1b
+
+pkgname = gpcal
