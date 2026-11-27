@@ -1,6 +1,6 @@
 pkgbase = contexere-bin
 	pkgdesc = One place for the skills, keys and memory of every AI agent you use
-	pkgver = 0.8.7
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/fajarhide/contexere
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = contexere-bin
 	provides = contexere
 	conflicts = contexere
 	options = !debug
-	source = contexere-bin-0.8.7-LICENSE::https://raw.githubusercontent.com/fajarhide/contexere/v0.8.7/LICENSE
+	source = contexere-bin-0.9.0-LICENSE::https://raw.githubusercontent.com/fajarhide/contexere/v0.9.0/LICENSE
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	source_x86_64 = contexere-bin-0.8.7-x86_64.tar.gz::https://github.com/fajarhide/contexere/releases/download/v0.8.7/omni-v0.8.7-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 419ae909fd086df7c94367a5473d22eaf260c7282c53d99767181882448090d1
-	source_aarch64 = contexere-bin-0.8.7-aarch64.tar.gz::https://github.com/fajarhide/contexere/releases/download/v0.8.7/omni-v0.8.7-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 8e63b527b194dc0317a9cc0770dcbc7b6be0b3dbd6f380dbc73123db82d72ec8
+	source_x86_64 = contexere-bin-0.9.0-x86_64.tar.gz::https://github.com/fajarhide/contexere/releases/download/v0.9.0/contexere-v0.9.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 5683cd57fe20f902948e310df14d0bfee121c39932fab068ad6eea0ce018b4d7
+	source_aarch64 = contexere-bin-0.9.0-aarch64.tar.gz::https://github.com/fajarhide/contexere/releases/download/v0.9.0/contexere-v0.9.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 05a9c43da378eb40d208a79667ce69c037dc363b134c5b9ceea9442401fa9979
 
 pkgname = contexere-bin
