@@ -1,6 +1,6 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/greeter>
 pkgname=hornero-greeter
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='HorneroOS SDDM greeter theme on Hornero Signal (generative horizon, offline)'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=('qt6-multimedia: play an opt-in video background'
 # Named "$pkgname" so the checkout lands at "${srcdir}/$pkgname";
 # package() below only ever reads from there, so AUR chroot builds
 # behave exactly like local packaging/ builds.
-source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#commit=dc5596e5440c10b20f7f7df3700541f4013e1491")
+source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#commit=7fd27741d90022b22f5649857f6cfb4524ef94e7")
 sha256sums=('SKIP')
 
 package() {
