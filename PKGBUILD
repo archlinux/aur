@@ -4,7 +4,7 @@
 : "${_with_audio:=false}" # audio visualizer (PipeWire + fftw), beta
 
 pkgname="wpets"
-pkgver=6.2.0
+pkgver=6.2.1
 pkgrel=1
 pkgdesc="A Wayland overlay that displays an animated virtual pet reacting to keyboard input"
 url='https://github.com/furudbat/wayland-vpets'
@@ -14,6 +14,9 @@ arch=('x86_64' 'aarch64')
 depends=(
   'systemd-libs' # libudev
   'wayland'
+  #'glibc'
+  #'libstdc++'
+  #'bash'
 )
 makedepends=(
   'cmake'
@@ -26,7 +29,7 @@ fi
 
 _pkgsrc="wayland-vpets-$pkgver"
 source=("$_pkgsrc.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0e1a9958be1b8c6f19b274153a5155f19079a03fb59946a78d579a9fb0cd8dd7')
+sha256sums=('25c19b5e8ab57125ae979cee8870034a90494cad0cf121502ca281d54050f0b4')
 
 build() {
   # map $srcdir in __FILE__ strings like makepkg's debug option does (no $srcdir refs)
