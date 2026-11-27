@@ -2,7 +2,7 @@
 
 pkgname='zuban-bin'
 pkgdesc='Python Type Checker / Language Server (binary version)'
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 url='https://zubanls.com'
 arch=(x86_64)
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-bin}")
 options=('!debug')
 source_x86_64=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/${pkgname%-bin}/${pkgname%-bin}-${pkgver}-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl")
 noextract=("${source_x86_64[0]##*/}")
-sha256sums_x86_64=('bda3d37d174f7db703d18ad0d6e7a1584349964d297a2cd3329d9556908fba98')
+sha256sums_x86_64=('478f1e337d0398962b831de3270c6b8c88cc5d61bbf8d92f36ace7239c4b653f')
 
 package() {
   python -m installer --destdir="$pkgdir" ${pkgname%-bin}-${pkgver}-*.whl
