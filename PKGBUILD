@@ -4,7 +4,7 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=kyko
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 pkgdesc="Drop-down terminal for uQ and other Wayland desktops"
@@ -25,7 +25,9 @@ options=(!lto)
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; SKIP until the first release, then update it with
 # pkgver at each release.
-sha256sums=('b78ab7819c93518e8559ff535d563c500257cfdfe3581c9ad2114484eb39358c')
+sha256sums=('0b6c2c0b5ee8929445d644b209c8a83024f616ae48d622d6189db6c756693fee')
+
+conflicts+=('uq<0.3.41')  # uq-compat: from uQ's compat/family.toml
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"

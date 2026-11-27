@@ -1,6 +1,6 @@
 pkgbase = kyko
 	pkgdesc = Drop-down terminal for uQ and other Wayland desktops
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/kyko
 	arch = x86_64
@@ -17,8 +17,9 @@ pkgbase = kyko
 	optdepends = less: Ctrl+Shift+H shows the scrollback in a pager
 	optdepends = libcanberra: terminal.bell = "sound"
 	optdepends = unicode-character-database: Ctrl+Shift+U finds characters by name
+	conflicts = uq<0.3.41
 	options = !lto
-	source = kyko-1.3.3.tar.gz::https://github.com/asafelobotomy/kyko/releases/download/v1.3.3/kyko-1.3.3.tar.gz
-	sha256sums = b78ab7819c93518e8559ff535d563c500257cfdfe3581c9ad2114484eb39358c
+	source = kyko-1.3.4.tar.gz::https://github.com/asafelobotomy/kyko/releases/download/v1.3.4/kyko-1.3.4.tar.gz
+	sha256sums = 0b6c2c0b5ee8929445d644b209c8a83024f616ae48d622d6189db6c756693fee
 
 pkgname = kyko
