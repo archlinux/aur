@@ -11,9 +11,11 @@ EOF
 }
 
 post_upgrade() {
-    echo "==> z13-tablet-kit upgraded. As your user, reload and restart it:"
-    echo "      systemctl --user daemon-reload"
-    echo "      systemctl --user restart z13-tablet-switch.service z13-touch-scroll.service"
+    # Reload units and restart only already-running services so the new code is used.
+    for u in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $1}'); do
+      systemctl --user --machine="$u@.host" daemon-reload 2>/dev/null || true
+      systemctl --user --machine="$u@.host" try-restart z13-tablet-switch.service z13-touch-scroll.service 2>/dev/null || true
+    done
 }
 
 pre_remove() {
