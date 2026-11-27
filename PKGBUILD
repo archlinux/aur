@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=triproxy-bin
 _pkgname=TriProxy
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="A modern multi-core proxy client: unified lifecycle management for Mihomo, sing-box and Xray."
 arch=('x86_64')
@@ -10,14 +10,14 @@ license=('GPL-3.0-or-later')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'gtk3'
-    'gdk-pixbuf2'
-    'webkit2gtk-4.1'
-    'libayatana-indicator'
-    'libappindicator'
+	'gtk3'
+	'gdk-pixbuf2'
+	'webkit2gtk-4.1'
+	'libayatana-indicator'
+	'libappindicator'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64-full.deb")
-sha256sums=('94452ca39397a25e34c47aca722d42942e2f6667cf18ad637d0da7e7ad5b2571')
+sha256sums=('a738b0940ea26cba64f841db073614fa2ee93368712a69edd259312f7b69de02')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
@@ -30,15 +30,15 @@ _install_icons() {
 	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
-    bsdtar -xf "${srcdir}/data."*
-    sed -i -e "
-        s/Exec=${pkgname%-bin}-app/Exec=${pkgname%-bin}/g
-        s/Icon=${pkgname%-bin}-app/Icon=${pkgname%-bin}/g
-    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+	bsdtar -xf "${srcdir}/data."*
+	sed -i -e "
+		s/Exec=${pkgname%-bin}-app/Exec=${pkgname%-bin}/g
+		s/Icon=${pkgname%-bin}-app/Icon=${pkgname%-bin}/g
+	" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}-app" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
-    _install_icons
-    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+	install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}-app" "${pkgdir}/usr/bin/${pkgname%-bin}"
+	[ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
+	_install_icons
+	install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
