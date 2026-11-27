@@ -4,7 +4,7 @@ pkgname='nunchuk-desktop-appimage'
 _pkgname='nunchuk-desktop'
 __pkgname='nunchuk-linux'
 ___pkgname='nunchuk'
-pkgver=2.9.5
+pkgver=2.9.6
 pkgrel=1
 pkgdesc="Desktop bitcoin wallet with multisig, hardware, nfc and air-gapped key support"
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=('bitbox-udev: Udev rules for Bitbox hardware wallet support'
 provides=('nunchuk-qt')
 options=('!strip')
 source=("https://github.com/nunchuk-io/$_pkgname/releases/download/$pkgver/$__pkgname-v$pkgver-$arch.AppImage")
-sha256sums=('8e7784ca31b305ec20cbf94ed0a2cd256d6e9df83eb75cec22ccb5ec364c1202')
+sha256sums=('6408beebf6539383735563b9d7ff3ab11970ee2453f861bc65bc0f7025457858')
 
 #validpgpkeys=('8C8ECD3F660CA53CD878792A6E38A462ED2EF525') # Ta Tat Tai (Nunchuk binary release signing key) <tatattai@gmail.com>
 #asc doesn't contain a detached signature, makepkg expects a detached signature
