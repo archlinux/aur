@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=dijo-1995parham
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Scriptable, curses-based, digital habit tracker"
 arch=('x86_64')
@@ -10,10 +10,17 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0bf48058a9ac8403e990e36d44240a97f9f2414a6f4da8fbd4d2a9bf37e381d5')
+sha256sums=('35e5a9c05b617230f1a456b0fb12be7a627cdd6e1a757eb40bf50e9f5f37dd5f')
+
+prepare() {
+  cd dijo-$pkgver
+  # the tag does not carry the release version, so set it on the man page
+  sed -i "s/^\.TH .*/.TH DIJO 1 \"$(date -u -d "@${SOURCE_DATE_EPOCH}" +'%B %d, %Y')\" dijo-$pkgver/" dijo.1
+}
 
 build() {
   cd dijo-$pkgver
+  export DIJO_VERSION="$pkgver"
   cargo build --release --locked
 }
 
