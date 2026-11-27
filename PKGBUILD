@@ -1,25 +1,24 @@
 # Maintainer: dvjn <git@dvjn.dev>
 pkgname=ears-stt-bin
-pkgver=0.3.0
+pkgver=0.4.0 # x-release-please-version
 pkgrel=1
 pkgdesc="OpenAI-compatible speech-to-text server for ears, backed by whisper.cpp"
 arch=('x86_64')
 url="https://github.com/dvjn/ears"
 license=('MIT')
-# Built against these exact versions (see built-with.txt in the release):
-# whisper.cpp's C structs change between releases without a soname bump, so
-# a newer whisper-cpp waits for the next ears-stt release.
-depends=('whisper-cpp=1.9.5' 'ggml=0.26.0' 'ffmpeg' 'gcc-libs' 'glibc')
+# whisper.cpp and ggml are built in statically; the GPU is used through Vulkan.
+depends=('vulkan-icd-loader' 'ffmpeg' 'gcc-libs' 'glibc')
 optdepends=(
-    'ggml-cuda: NVIDIA GPU acceleration'
-    'ggml-vulkan: Vulkan GPU acceleration'
+    'nvidia-utils: Vulkan driver for NVIDIA GPUs'
+    'vulkan-radeon: Vulkan driver for AMD GPUs'
+    'vulkan-intel: Vulkan driver for Intel GPUs'
 )
 provides=('ears-stt')
 conflicts=('ears-stt')
 options=('!debug')
 install=ears-stt-bin.install
 source=("$url/releases/download/v$pkgver/ears-stt-$pkgver-x86_64.tar.gz")
-sha256sums=('4d014232feb0421c9308ed5e416138a9fd1bc78b4541800f12c9da00820b66bc')
+sha256sums=('9a3bb2be93dd969be3bdf9128f54992cd12a03a1727ec85294cd458a61be53ed')
 
 package() {
     cd "ears-stt-$pkgver-x86_64"

@@ -1,22 +1,22 @@
 pkgbase = ears-stt-bin
 	pkgdesc = OpenAI-compatible speech-to-text server for ears, backed by whisper.cpp
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/dvjn/ears
 	install = ears-stt-bin.install
 	arch = x86_64
 	license = MIT
-	depends = whisper-cpp=1.9.5
-	depends = ggml=0.26.0
+	depends = vulkan-icd-loader
 	depends = ffmpeg
 	depends = gcc-libs
 	depends = glibc
-	optdepends = ggml-cuda: NVIDIA GPU acceleration
-	optdepends = ggml-vulkan: Vulkan GPU acceleration
+	optdepends = nvidia-utils: Vulkan driver for NVIDIA GPUs
+	optdepends = vulkan-radeon: Vulkan driver for AMD GPUs
+	optdepends = vulkan-intel: Vulkan driver for Intel GPUs
 	provides = ears-stt
 	conflicts = ears-stt
 	options = !debug
-	source = https://github.com/dvjn/ears/releases/download/v0.3.0/ears-stt-0.3.0-x86_64.tar.gz
-	sha256sums = 4d014232feb0421c9308ed5e416138a9fd1bc78b4541800f12c9da00820b66bc
+	source = https://github.com/dvjn/ears/releases/download/v0.4.0/ears-stt-0.4.0-x86_64.tar.gz
+	sha256sums = 9a3bb2be93dd969be3bdf9128f54992cd12a03a1727ec85294cd458a61be53ed
 
 pkgname = ears-stt-bin
