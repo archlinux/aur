@@ -2,7 +2,7 @@
 # Recipe based on the upstream packaging/aur/nightcap-git by vii <coderdayton14 at gmail dot com>
 
 pkgname=nightcap-git
-pkgver=0.5.4.r482.g5584d6f
+pkgver=0.5.5.r493.g017354a
 pkgrel=1
 pkgdesc='Android x86-64 Roblox compatibility runtime for Linux'
 arch=('x86_64')
