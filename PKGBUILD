@@ -2,7 +2,7 @@
 
 pkgname=aspia-router-bin
 _pkgname=${pkgname%-bin}
-pkgver=3.4.3
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="Remote desktop control and file transfer tool (router, official binary)"
 url="https://aspia.org/"
@@ -19,7 +19,7 @@ provides=(aspia-router)
 conflicts=(aspia-router)
 options=(!debug !strip)
 source_x86_64=("https://github.com/dchapyshev/aspia/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch}.deb")
-sha256sums_x86_64=('0881731d977cd899c7f6de8db804ad1cf814db18ebe9b17bc69510edf976fd3b')
+sha256sums_x86_64=('fb40875ec26eeff97e8580f77c0cf872c613598a8719ad8678a453203ab81c99')
 
 package() {
   cd "${srcdir}"
