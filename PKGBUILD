@@ -3,7 +3,7 @@
 pkgname=tidal-dl-ng
 _pkgname=${pkgname//-/_}
 pkgver=0.33.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A tool for downloading music and albums from TIDAL'
 arch=(any)
 url='https://archive.org/details/tidal_dl_ng-0.33.0.tar'
@@ -37,15 +37,18 @@ source=(
     "tidal-dl-ng"
     "tidal-dl-ng-gui"
     "tidal-dl-ng.desktop"
+    "fix-update-check-and-search.patch"
 )
 sha256sums=('ace332c674fbb959cc6e7ebbf0316da80bb8f9473954519ca862348f1a659e97'
             '1d2f9b06b7bba762f9a8770b163e001e5044a38b9d5befa8ea44fa3c98bcf172'
             'ecdc2868d0df9fa41e3bca50f3f0bcfede7543b54700f45b2095b9662da6dd9c'
-            'd31967428982ea704f7111959faa821772ddcc5290f06350b4209615d08c27d0')
+            'd31967428982ea704f7111959faa821772ddcc5290f06350b4209615d08c27d0'
+            '0acf6f728735745fbe15e6dd08e56ee93ffbea6f2807e7fba1acd99fc5831eab')
 
 prepare() {
     cd "$_pkgname-$pkgver"
     rm -rf dist
+    patch -Np1 -i "$srcdir/fix-update-check-and-search.patch"
 }
 
 build() {

@@ -1,0 +1,22 @@
+--- a/tidal_dl_ng/__init__.py
++++ b/tidal_dl_ng/__init__.py
+@@ -141,5 +141,5 @@
+     latest_info: ReleaseLatest = latest_version_information()
+     version_current: str = f"v{__version__}"
+ 
+-    result = version_current not in [latest_info.version, "v0.0.0"]
++    result = latest_info.version not in [version_current, "v0.0.0"]
+     return result, latest_info
+--- a/tidal_dl_ng/helper/tidal.py
++++ b/tidal_dl_ng/helper/tidal.py
+@@ -119,6 +119,10 @@
+         tmp_done: bool = True
+ 
+         for key, value in tmp_result.items():
++            # Skip "top_hit", it is a single object and not a list
++            if not isinstance(value, list):
++                continue
++
+             # Append pagination results, if there are any
+             if offset == 0:
+                 result = tmp_result
