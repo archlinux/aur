@@ -1,6 +1,6 @@
 pkgbase = openmausbot-bin
 	pkgdesc = Local-first chat app for running a team of AI agents
-	pkgver = 0.1.182
+	pkgver = 0.1.184
 	pkgrel = 1
 	url = https://github.com/milind-soni/OpenMausBot
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = openmausbot-bin
 	conflicts = openmausbot
 	options = !debug
 	options = !strip
-	source = OpenMausBot-0.1.182-amd64.deb::https://github.com/milind-soni/OpenMausBot/releases/download/v0.1.182/OpenMausBot-0.1.182-amd64.deb
-	sha256sums = aa41d17ff91ece91c9b2d727f7d58ec7c7ef629dc380dcf805a346c4a976a549
+	source = OpenMausBot-0.1.184-amd64.deb::https://github.com/milind-soni/OpenMausBot/releases/download/v0.1.184/OpenMausBot-0.1.184-amd64.deb
+	sha256sums = b48500f25cce0b52bd82e8fd32e05d20d0c520c7a0d8030dac534a0f6578bf69
 
 pkgname = openmausbot-bin
