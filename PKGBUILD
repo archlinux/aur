@@ -1,7 +1,7 @@
 # Maintainer: Wisbendji Fimerlus <archledger236@gmail.com>
 # Generated from packaging/arch/PKGBUILD by scripts/arch-git-pkgbuild.py:
 # edit that recipe, then run the script (CI checks this file is current).
-# The nightly channel (docs/adr/0037-nightly-channel.md): builds main.
+# The nightly channel (docs/architecture/adr/0037-nightly-channel.md): builds main.
 pkgbase=irlume-git
 pkgname=(irlume-git irlume-kcm-git)
 pkgver=0.16.0
@@ -162,8 +162,13 @@ package_irlume-git() {
     # The machine-API contract, beside the engine that implements it: a consumer
     # validating our JSON should never have to guess which schema this build speaks.
     install -Dm0644 schemas/machine-api-v1.schema.json "$pkgdir/usr/share/irlume/schemas/machine-api-v1.schema.json"
-    install -Dm0644 docs/MACHINE-API.md "$pkgdir/usr/share/doc/$pkgname/MACHINE-API.md"
-    install -Dm0644 docs/INTEGRATION.md "$pkgdir/usr/share/doc/$pkgname/INTEGRATION.md"
+    local docdir=docs/reference
+    # Released tags from before the docs move still use the flat layout.
+    if [[ ! -d $docdir ]]; then
+        docdir=docs
+    fi
+    install -Dm0644 "$docdir/MACHINE-API.md" "$pkgdir/usr/share/doc/$pkgname/MACHINE-API.md"
+    install -Dm0644 "$docdir/INTEGRATION.md" "$pkgdir/usr/share/doc/$pkgname/INTEGRATION.md"
 }
 
 package_irlume-kcm-git() {
