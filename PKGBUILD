@@ -1,6 +1,6 @@
 # Maintainer: mrFrok <https://github.com/mrFrok>
 pkgname=lfff
-pkgver=3.7.1
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="Free, open-source firmware flasher for Android A/B devices — CLI + GUI"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ source=(
   "lfff-gui.desktop::https://raw.githubusercontent.com/mrFrok/LibreFastbootFirmwareFlasher/main/lfff-gui.desktop"
   "lfff-gui.svg::https://raw.githubusercontent.com/mrFrok/LibreFastbootFirmwareFlasher/main/lfff-gui.svg"
 )
-sha256sums=('33be4a032d17418c4d1639f0632e83cc2d851b2814d86df02c8e97e62e97ba36' 'SKIP' 'SKIP')
+sha256sums=('2c45f56ab5b35a8f588b75bae2a19ddb2826f81ca776c08e8ce018f86368c15c' 'SKIP' 'SKIP')
 
 prepare() {
   cd "LibreFastbootFirmwareFlasher-$pkgver"
