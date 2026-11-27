@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=sccore
-_pkgver=1.0.7
+_pkgver=1.0.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5cfdb7d383d5e8ab6e8003aacc1193aa')
-b2sums=('ab004932c9d67938a770e19bb0906a27e8e819e8f74bae8fda1fec6d24c3a9b0918c42ebeabc11819696700f554e7c002bdd666c328c9983c8c1ab1e8d519ffc')
+md5sums=('786b8fc6b84ea9bacc9fb5d10f0c121d')
+b2sums=('1567207655fb60182e61f41608a46a041dd4bc373f0c73f9feea3766145eed31580d216c18c7b4071c836a1b6500a98d656c38e16dc96375e812e1811946fe10')
 
 build() {
   mkdir build
