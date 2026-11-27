@@ -2,7 +2,7 @@
 pkgname=aurora-player-git
 _pkgname=Aurora
 _zhsname='极光播放器'
-pkgver=0.10.0.r0.g0afceda
+pkgver=0.10.1.r26.gabd0596
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -29,8 +29,8 @@ source=(
 	"${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'b2190e52307557102005cf35ba6fdc921487428224761ecbc554d4dd91764c2b'
-            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
+			'4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b'
+			'739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
