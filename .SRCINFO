@@ -1,6 +1,6 @@
 pkgbase = r-tadcompare
 	pkgdesc = TADCompare: Identification and characterization of differential TADs
-	pkgver = 1.22.2
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TADCompare
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-tadcompare
 	optdepends = r-rmarkdown
 	optdepends = r-spectraltad
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TADCompare_1.22.2.tar.gz
-	sha256sums = a151950c6dcef0c40fbcbf7ffc3d882c649e8ba25fb4973d0b6c615a16131f3d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TADCompare_1.24.0.tar.gz
+	sha256sums = a19dd749850bc40d9defb7d286b84a3e3520138c848bf635d16fbf2cb8458af8
 
 pkgname = r-tadcompare
