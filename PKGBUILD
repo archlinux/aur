@@ -2,7 +2,7 @@
 
 pkgname=wasp-d77
 _name=wasp
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Lua-configurable Wayland compositor based on dwl/wlroots"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ optdepends=(
 )
 backup=('etc/xdg-desktop-portal/wasp-portals.conf')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('332c31868414bb67e48db9c32e4e6038cd848dd946479004a8cb9acf3077379a')
+sha256sums=('1d5826accf67e78f8cf30c27743077235e2b96aa6feacc7689f17c469e5862e3')
 
 build() {
     cd "$_name-$pkgver"
