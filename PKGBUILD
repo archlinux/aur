@@ -1,8 +1,7 @@
 # Maintainer: Sphericalkat <aur@kat.bio>
 
 pkgname=wheatley-cli
-_npmname=cli
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Self-hosted, always-on personal AI assistant: daemon, CLI, and dashboard'
 arch=('any')
@@ -11,12 +10,12 @@ license=('ISC')
 depends=('nodejs>=26.13.1')
 makedepends=('npm')
 provides=('wheatley')
-source=("https://registry.npmjs.org/@wheatley-ai/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-noextract=("${_npmname}-${pkgver}.tgz")
-sha256sums=('be4aee1d92e41899f580845f79af8bbcd30c9de2977e780c37b731db048bf92d')
+source=("https://github.com/SphericalKat/wheatley/releases/download/v${pkgver}/wheatley-ai-cli-${pkgver}.tgz")
+noextract=("wheatley-ai-cli-${pkgver}.tgz")
+sha256sums=('70894463dc649bec5b1c208f1552b26af76084e80ab17b225955944d9b50e302')
 
 package() {
-  npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${_npmname}-${pkgver}.tgz"
+  npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/wheatley-ai-cli-${pkgver}.tgz"
 
   # npm can leave directories world-writable and gives every file to the build user.
   find "${pkgdir}/usr" -type d -exec chmod 755 {} +

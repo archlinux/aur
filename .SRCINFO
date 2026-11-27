@@ -1,6 +1,6 @@
 pkgbase = wheatley-cli
 	pkgdesc = Self-hosted, always-on personal AI assistant: daemon, CLI, and dashboard
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/SphericalKat/wheatley
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = wheatley-cli
 	makedepends = npm
 	depends = nodejs>=26.13.1
 	provides = wheatley
-	noextract = cli-0.3.0.tgz
-	source = https://registry.npmjs.org/@wheatley-ai/cli/-/cli-0.3.0.tgz
-	sha256sums = be4aee1d92e41899f580845f79af8bbcd30c9de2977e780c37b731db048bf92d
+	noextract = wheatley-ai-cli-0.4.0.tgz
+	source = https://github.com/SphericalKat/wheatley/releases/download/v0.4.0/wheatley-ai-cli-0.4.0.tgz
+	sha256sums = 70894463dc649bec5b1c208f1552b26af76084e80ab17b225955944d9b50e302
 
 pkgname = wheatley-cli
