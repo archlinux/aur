@@ -1,6 +1,6 @@
 pkgbase = jwtd-bin
 	pkgdesc = Decode and pretty-print JSON Web Tokens with syntax highlighting
-	pkgver = 5.8.0
+	pkgver = 5.9.0
 	pkgrel = 1
 	url = https://github.com/webcodr/jwtd
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = jwtd-bin
 	license = MIT
 	provides = jwtd
 	conflicts = jwtd
-	source = LICENSE-5.8.0::https://raw.githubusercontent.com/webcodr/jwtd/v5.8.0/LICENSE
+	source = LICENSE-5.9.0::https://raw.githubusercontent.com/webcodr/jwtd/v5.9.0/LICENSE
 	sha256sums = e7d4d4a62b2b6a2b38cf9aa43f4e4613a63a261a4444d9dd89d5b89d6cebf7aa
-	source_x86_64 = jwtd-5.8.0-x86_64.tar.gz::https://github.com/webcodr/jwtd/releases/download/v5.8.0/jwtd-linux-amd64.tar.gz
-	sha256sums_x86_64 = 8ae8946a7139f2b3887e875439068def8e295ae3c4178c3c010f216b57905b0c
-	source_aarch64 = jwtd-5.8.0-aarch64.tar.gz::https://github.com/webcodr/jwtd/releases/download/v5.8.0/jwtd-linux-arm64.tar.gz
-	sha256sums_aarch64 = c026ff1e5fd8cfa581c450a19ec52cda114c2798b54b29b62fb5a24bc3212461
+	source_x86_64 = jwtd-5.9.0-x86_64.tar.gz::https://github.com/webcodr/jwtd/releases/download/v5.9.0/jwtd-linux-amd64.tar.gz
+	sha256sums_x86_64 = 4e2aeab2f8face82ccdae55bdb8c6f3eda69a26023c6638a5051a647939074e6
+	source_aarch64 = jwtd-5.9.0-aarch64.tar.gz::https://github.com/webcodr/jwtd/releases/download/v5.9.0/jwtd-linux-arm64.tar.gz
+	sha256sums_aarch64 = 96a871246e5618714f5363094a4d7468f306e69c0dd752ab2a64d648d244d965
 
 pkgname = jwtd-bin
