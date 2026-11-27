@@ -1,0 +1,51 @@
+pkgbase = nythera-files-git
+	pkgdesc = Nythera Files native Wayland file manager
+	pkgver = 0.1.0.r23.gd3f8a4a12531
+	pkgrel = 3
+	url = https://github.com/Nythera-Dev/Nythera-Files
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = nythera-lib-git>=0.1.0
+	depends = nythera-lib-git<0.2.0
+	depends = libnythera_lib.so
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = jemalloc
+	depends = libarchive>=3.4.0
+	depends = libgcc
+	depends = libstdc++
+	depends = libxkbcommon
+	depends = polkit
+	depends = shared-mime-info
+	depends = tomlplusplus
+	depends = wayland
+	depends = xz
+	depends = zlib
+	optdepends = gvfs: Wastebin (trash://), removable media mounting, and remote filesystem support
+	optdepends = gvfs-afc: Apple mobile device browsing
+	optdepends = gvfs-dnssd: DNS-SD network service discovery
+	optdepends = gvfs-gphoto2: digital camera browsing
+	optdepends = gvfs-smb: SMB/CIFS network share browsing
+	optdepends = gvfs-mtp: MTP device browsing
+	optdepends = gvfs-nfs: NFS network share browsing
+	optdepends = polkit-gnome: graphical Polkit authentication in sessions without an agent
+	optdepends = udisks2: removable drive discovery and unmounting
+	optdepends = ffmpeg: video stills, embedded audio artwork, and media metadata
+	optdepends = ffmpegthumbnailer: filmstrip borders for video thumbnails
+	optdepends = poppler: first-page PDF thumbnails and metadata
+	optdepends = fzf: fuzzy filename search
+	optdepends = ripgrep: search plain-text file contents
+	optdepends = ripgrep-all: search extracted document and archive contents
+	provides = nythera-files=0.1.0
+	conflicts = nythera-files
+	options = !debug
+	source = nythera-files::git+https://github.com/Nythera-Dev/Nythera-Files.git#branch=testing
+	sha256sums = SKIP
+
+pkgname = nythera-files-git
