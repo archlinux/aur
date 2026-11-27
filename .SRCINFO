@@ -1,6 +1,6 @@
 pkgbase = augenblick
 	pkgdesc = Fullscreen eye-blink overlay for X11 and Wayland
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/x71c9/augenblick
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = augenblick
 	license = MIT
 	makedepends = rust
 	depends = glibc
-	source = augenblick-0.6.2.tar.gz::https://codeload.github.com/x71c9/augenblick/tar.gz/refs/tags/v0.6.2
-	sha256sums = e0c458853e70f1eb0eef9ce970394a6ec37be500b1cfed9a350aaede7404b631
+	source = augenblick-0.6.3.tar.gz::https://codeload.github.com/x71c9/augenblick/tar.gz/refs/tags/v0.6.3
+	sha256sums = 7e9abe9f06c4d65e7a2e506f04748163a2911757b22fe4715e7cff77276e8e7a
 
 pkgname = augenblick
