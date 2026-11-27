@@ -1,0 +1,4 @@
+/canmonitor/
+/pkg/
+/src/
+*.pkg.tar.zst
