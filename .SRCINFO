@@ -11,7 +11,27 @@ pkgbase = kitesurf-git
 	makedepends = nodejs>=22
 	makedepends = npm
 	makedepends = python
+	depends = gcc-libs
+	depends = glibc
+	depends = ca-certificates
+	depends = nodejs>=22
+	optdepends = org.freedesktop.secrets: store the Cloudflare OAuth login (e.g. KWallet, gnome-keyring)
+	optdepends = kitty: Kitty graphics mode (or Ghostty; use --mode=ansi in other terminals)
+	provides = kitesurf
+	provides = kitesurf-cli
+	provides = kitesurf-engine
+	provides = kitesurf-cli-git
+	provides = kitesurf-engine-git
+	conflicts = kitesurf
+	conflicts = kitesurf-cli
+	conflicts = kitesurf-engine
+	conflicts = kitesurf-cli-git
+	conflicts = kitesurf-engine-git
+	replaces = kitesurf-cli-git
+	replaces = kitesurf-engine-git
 	options = !lto
+	options = !strip
+	options = !debug
 	source = kitesurf::git+https://github.com/cloudflare/kitesurf.git
 	source = kitesurf-engine.mjs
 	source = kitesurf-engine.service
@@ -21,25 +41,4 @@ pkgbase = kitesurf-git
 	sha256sums = cf02e9ff0104c22d7386752cb24add061acc60597780bb1e9fab80e01954d61d
 	sha256sums = a98b303f3fc50fc34db501b90aa47903f34cc7921a58963f282f2ab13e894d79
 
-pkgname = kitesurf-cli-git
-	pkgdesc = Terminal client for Kitesurf, Cloudflare's browser engine for AI agents
-	depends = gcc-libs
-	depends = glibc
-	depends = ca-certificates
-	optdepends = org.freedesktop.secrets: store the Cloudflare OAuth login (e.g. KWallet, gnome-keyring)
-	optdepends = kitty: Kitty graphics mode (or Ghostty; use --mode=ansi in other terminals)
-	optdepends = kitesurf-engine: run the engine locally (KITESURF_SERVER=http://127.0.0.1:8787)
-	provides = kitesurf
-	provides = kitesurf-cli
-	conflicts = kitesurf
-	conflicts = kitesurf-cli
-
-pkgname = kitesurf-engine-git
-	pkgdesc = Kitesurf browser engine for AI agents, run locally as a CDP server and systemd user service
-	depends = nodejs>=22
-	depends = glibc
-	optdepends = kitesurf-cli: view pages from the local engine in the terminal
-	provides = kitesurf-engine
-	conflicts = kitesurf-engine
-	options = !strip
-	options = !debug
+pkgname = kitesurf-git

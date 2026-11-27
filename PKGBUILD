@@ -1,7 +1,6 @@
 # Maintainer: Lam Duc Trung <vn dot trungld at gmail dot com>
 
-pkgbase=kitesurf-git
-pkgname=('kitesurf-cli-git' 'kitesurf-engine-git')
+pkgname=kitesurf-git
 _pkgname=kitesurf
 pkgver=0.0.5.r400.gb9b904e
 pkgrel=1
@@ -10,9 +9,16 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/cloudflare/kitesurf"
 license=('Apache-2.0')
 makedepends=('cargo' 'git' 'nodejs>=22' 'npm' 'python')
-# makepkg's -flto makes GCC emit LTO bytecode for the CLI's vendored C code (libdbus, aws-lc),
-# which rustc's default linker, rust-lld, cannot read: the link fails with undefined symbols.
-options=('!lto')
+depends=('gcc-libs' 'glibc' 'ca-certificates' 'nodejs>=22')
+optdepends=('org.freedesktop.secrets: store the Cloudflare OAuth login (e.g. KWallet, gnome-keyring)'
+            'kitty: Kitty graphics mode (or Ghostty; use --mode=ansi in other terminals)')
+provides=('kitesurf' 'kitesurf-cli' 'kitesurf-engine' 'kitesurf-cli-git' 'kitesurf-engine-git')
+conflicts=('kitesurf' 'kitesurf-cli' 'kitesurf-engine' 'kitesurf-cli-git' 'kitesurf-engine-git')
+replaces=('kitesurf-cli-git' 'kitesurf-engine-git')
+# !lto: makepkg's -flto makes GCC emit LTO bytecode for the CLI's vendored C code (libdbus, aws-lc),
+# which rustc's default linker, rust-lld, cannot read. !strip/!debug: workerd and the sharp
+# addon come prebuilt from npm.
+options=('!lto' '!strip' '!debug')
 source=("$_pkgname::git+$url.git"
         'kitesurf-engine.mjs'
         'kitesurf-engine.service'
@@ -111,38 +117,21 @@ build() {
   printf '%s\n' "$pkgver" > VERSION
 }
 
-package_kitesurf-cli-git() {
-  pkgdesc="Terminal client for Kitesurf, Cloudflare's browser engine for AI agents"
-  depends=('gcc-libs' 'glibc' 'ca-certificates')
-  optdepends=('org.freedesktop.secrets: store the Cloudflare OAuth login (e.g. KWallet, gnome-keyring)'
-              'kitty: Kitty graphics mode (or Ghostty; use --mode=ansi in other terminals)'
-              'kitesurf-engine: run the engine locally (KITESURF_SERVER=http://127.0.0.1:8787)')
-  provides=('kitesurf' 'kitesurf-cli')
-  conflicts=('kitesurf' 'kitesurf-cli')
-
-  cd "$_pkgname/$_clidir"
+package() {
+  # --- CLI ---
+  cd "$srcdir/$_pkgname/$_clidir"
   install -Dm755 target/release/kitesurf "$pkgdir/usr/bin/kitesurf"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 ../../LICENSE ../../NOTICE -t "$pkgdir/usr/share/licenses/$pkgname/"
-}
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README-cli.md"
 
-package_kitesurf-engine-git() {
-  pkgdesc="Kitesurf browser engine for AI agents, run locally as a CDP server and systemd user service"
-  depends=('nodejs>=22' 'glibc')
-  optdepends=('kitesurf-cli: view pages from the local engine in the terminal')
-  provides=('kitesurf-engine')
-  conflicts=('kitesurf-engine')
-  # workerd and the sharp addon come prebuilt from npm.
-  options=('!strip' '!debug')
-
+  # --- Engine ---
   local _lib="$pkgdir/usr/lib/kitesurf-engine"
-  install -d "$_lib" "$pkgdir/usr/bin"
+  install -d "$_lib"
   cp -a "$srcdir/engine/." "$_lib/"
   install -Dm755 "$srcdir/kitesurf-engine.mjs" "$_lib/kitesurf-engine.mjs"
   ln -s /usr/lib/kitesurf-engine/kitesurf-engine.mjs "$pkgdir/usr/bin/kitesurf-engine"
-
   install -Dm644 "$srcdir/kitesurf-engine.service" "$pkgdir/usr/lib/systemd/user/kitesurf-engine.service"
   install -Dm644 "$srcdir/kitesurf-engine.env" "$pkgdir/usr/share/doc/$pkgname/kitesurf-engine.env"
+
   install -Dm644 "$srcdir/$_pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "$srcdir/$_pkgname/LICENSE" "$srcdir/$_pkgname/NOTICE" \
     -t "$pkgdir/usr/share/licenses/$pkgname/"
