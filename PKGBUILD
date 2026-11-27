@@ -1,6 +1,6 @@
 # Maintainer: Kaarel <github.com/kaareloun>
 pkgname=lookout
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A fast, good-looking system monitor with Rosé Pine themes, an htop replacement with a GUI"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11' 'libxcursor' 'libxi' 'libxrandr')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6632dec302f001f6e3f294ad19bf61a037d895af0847292e98c833aa0deed188')
+sha256sums=('906cb132480cedbde9b23d971be9743a4d70d20a594f0a083d185f81325768e3')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -38,6 +38,8 @@ package() {
     install -Dm644 "assets/icons/lookout-$s.png" "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/lookout.png"
   done
   install -Dm644 assets/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/lookout.svg"
+  # Some launchers look in pixmaps only.
+  install -Dm644 assets/icons/lookout-256.png "$pkgdir/usr/share/pixmaps/lookout.png"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
