@@ -1,6 +1,6 @@
 pkgbase = canmonitor-git
 	pkgdesc = CAN bus monitor built with Fyne on top of gocan v2
-	pkgver = 1.0.2.r4.gcc28faf
+	pkgver = 1.0.2.r5.gd9fc92d
 	pkgrel = 1
 	url = https://github.com/roffe/canmonitor
 	arch = x86_64
@@ -11,14 +11,15 @@ pkgbase = canmonitor-git
 	makedepends = libxrandr
 	makedepends = libxinerama
 	makedepends = libxi
+	depends = glibc
 	depends = libusb
 	depends = libftdi
 	depends = libgl
 	depends = libxkbcommon
 	depends = wayland
-	depends = hicolor-icon-theme
 	provides = canmonitor
 	conflicts = canmonitor
+	options = !debug
 	source = git+https://github.com/roffe/canmonitor.git
 	sha256sums = SKIP
 

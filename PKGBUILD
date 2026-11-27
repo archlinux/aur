@@ -1,15 +1,16 @@
 # Maintainer: Joakim Roffe <joakim@roffe.nu>
 pkgname=canmonitor-git
-pkgver=1.0.2.r4.gcc28faf
+pkgver=1.0.2.r5.gd9fc92d
 pkgrel=1
 pkgdesc="CAN bus monitor built with Fyne on top of gocan v2"
 arch=('x86_64')
 url="https://github.com/roffe/canmonitor"
 license=('MIT')
-depends=('libusb' 'libftdi' 'libgl' 'libxkbcommon' 'wayland' 'hicolor-icon-theme')
+depends=('glibc' 'libusb' 'libftdi' 'libgl' 'libxkbcommon' 'wayland')
 makedepends=('git' 'go' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi')
 provides=('canmonitor')
 conflicts=('canmonitor')
+options=('!debug')
 source=("git+https://github.com/roffe/canmonitor.git")
 sha256sums=('SKIP')
 
