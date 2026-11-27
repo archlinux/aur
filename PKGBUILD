@@ -2,10 +2,10 @@
 pkgname=cosmic-ext-applet-minimon
 _app_id=io.github.cosmic_utils.minimon-applet
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A COSMIC applet for displaying CPU/Memory/Network/Disk/GPU usage in the Panel or Dock."
 arch=('x86_64' 'aarch64')
-url="https://github.com/cosmic-utils/cosmic-ext-applet-minimon"
+url="https://github.com/cosmic-ext-orbit/cosmic-ext-applet-minimon"
 license=('GPL-3.0-or-later')
 depends=(
   'cosmic-applets'
@@ -33,6 +33,8 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_PROFILE_RELEASE_LTO=true
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
   just build-release --frozen
 }
 
