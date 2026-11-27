@@ -3,6 +3,14 @@ post_install() {
   echo ">>> W terminalu: homemesh enable, potem homemesh pair."
 }
 
+post_upgrade() {
+  if [ "$(vercmp "$2" 0.8.0)" -lt 0 ]; then
+    echo ">>> HomeMesh 0.8: połączone komputery mogą otworzyć tu terminal i uruchamiać polecenia"
+    echo ">>> (domyślnie przy udostępnianym całym katalogu domowym, tak jak dotąd przez ssh)."
+    echo ">>> Jeśli tego nie chcesz: „Wyłącz” w oknie HomeMesh albo homemesh share terminal off"
+  fi
+}
+
 pre_remove() {
   if [ -e /etc/ssh/sshd_config.d/10-homemesh.conf ]; then
     echo ">>> HomeMesh: udostępnianie jest nadal włączone (sshd tylko z kluczami)."
