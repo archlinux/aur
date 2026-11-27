@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-ja
 	pkgdesc = Japanese language pack for Firefox Nightly
-	pkgver = 163.0a1.20261126.193150
+	pkgver = 163.0a1.20261127.095122
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-ja
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-ja-163.0a1.20261126.193150.xpi
-	source = firefox-nightly-i18n-ja-163.0a1.20261126.193150.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-163.0a1.ja.langpack.xpi
-	sha256sums = cb5ede1001a1d1857d436d89a53e0b621ef71c6cb4fcff9d317a5c94b480fe50
+	noextract = firefox-nightly-i18n-ja-163.0a1.20261127.095122.xpi
+	source = firefox-nightly-i18n-ja-163.0a1.20261127.095122.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-163.0a1.ja.langpack.xpi
+	sha256sums = 6fac19747277d46d8e66358e82ce938bc5a8be0f8d8ac057e6c039d92f31170b
 
 pkgname = firefox-nightly-i18n-ja
