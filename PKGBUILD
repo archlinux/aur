@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=skykeep
-pkgver=0.1.44
+pkgver=0.1.45
 pkgrel=1
 pkgdesc="Native iCloud apps: Notes, Reminders, Calendar, Contacts, Drive and Photos, offline and in sync"
 arch=('x86_64')
@@ -13,21 +13,16 @@ license=('GPL-3.0-only')
 # videos: base and good for the elements, libav for H.264 and HEVC.
 depends=('cairo' 'dbus' 'gdk-pixbuf2' 'glib2' 'glibc' 'gst-libav'
          'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugins-good' 'gstreamer'
-         'gtk3' 'hicolor-icon-theme' 'libgcc' 'libheif' 'libpipewire' 'libsoup3'
-         'webkit2gtk-4.1')
-# clang: bindgen needs libclang for the PipeWire bindings.
-makedepends=('rust' 'nodejs' 'npm' 'pkgconf' 'clang')
+         'gtk3' 'hicolor-icon-theme' 'libgcc' 'libheif' 'libsoup3' 'webkit2gtk-4.1')
+makedepends=('rust' 'nodejs' 'npm' 'pkgconf')
 # The keyring is spoken to over D-Bus, so it needs a Secret Service, not libsecret.
 optdepends=('org.freedesktop.secrets: stay signed in'
-            'fuse3: iCloud Drive and Photos as folders in the file manager'
-            'usbmuxd: the iPhone as camera and microphone over the cable'
-            'gst-plugin-va: the iPhone camera decoded on the graphics chip'
-            'gst-plugins-bad: the iPhone camera decoded on the graphics chip')
+            'fuse3: iCloud Drive and Photos as folders in the file manager')
 # !lto: makepkg's -flto=auto turns the C and assembly in ring and sqlite into
 # bitcode that links to nothing. !debug: the release profile strips symbols.
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cf42b3c0858dc75f378b75f7a094699b5f75895c47153a8144af075b2d652cb9')
+sha256sums=('da605c4178a10b85d0fa0aedc5a5fd004322aeefb3a072d3a7e4cbd3f249b758')
 
 prepare() {
   cd "Skykeep-${pkgver}"
@@ -83,10 +78,4 @@ package() {
     -t "$pkgdir/usr/share/dbus-1/services"
   install -Dm644 "packaging/$_id.krunner.desktop" \
     -t "$pkgdir/usr/share/krunner/dbusplugins"
-
-  # the iPhone camera as a webcam: the setup the app runs through pkexec, and
-  # its polkit action
-  install -Dm755 packaging/linux/iphone-camera-setup -t "$pkgdir/usr/lib/skykeep"
-  install -Dm644 "packaging/linux/$_id.iphone-camera.policy" \
-    -t "$pkgdir/usr/share/polkit-1/actions"
 }
