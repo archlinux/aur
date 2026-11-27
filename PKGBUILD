@@ -6,14 +6,16 @@
 # _reltag carries the real GitHub tag because pkgver must be
 # makepkg-safe (no hyphens), while tags use hyphens (v0.2.0-preview2).
 pkgname=horneroctl-bin
-_reltag=horneroctl-v0.2.0-preview52
-pkgver=0.2.0_preview52
+_reltag=horneroctl-v0.2.0-preview58
+pkgver=0.2.0_preview58
 pkgrel=1
 pkgdesc='HorneroOS system CLI (native binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/HorneroOS/hornero'
 license=('MIT')
-options=('!strip')
+depends=('glibc' 'sqlite' 'gcc-libs')
+provides=('horneroctl')
+conflicts=('horneroctl')
 optdepends=(
   'pacman-contrib: repository update checks via checkupdates (package check/updates/status)'
   'fakeroot: required by checkupdates when run as a regular user'
@@ -50,9 +52,20 @@ source_aarch64=(
 # weaken signature verification to work around a missing key; see
 # docs/RELEASE_SIGNING.md.
 validpgpkeys=('FCFBEE43925AB5429362278AE59EAB44AA2498DC')
-sha256sums_x86_64=('8e457c420b4c05e2cf3b933f72a6a6bd0343eca27e3c78d8eea21b2bd93e0550' '1d70ec12a61ca865ac4c8002d83c097b5c3b01c1674d9cbbcee173e757304418')
-sha256sums_aarch64=('3b460fee5019d5cb91a48203aa84fe19600b72b820b7bd21e00da477b201a338' '69987287e1ec5c5fb767232e3b297e82be97b9d9af4a3a598475ee6f8a726423')
+sha256sums_x86_64=('8ac9b7db6f77195de69b8f2239072aca2164ccf91e828ac2065df0076472371c' '26f4df17934fa30f180d875c47f9e263b479bad19469fa9326d567cd774f33a9')
+sha256sums_aarch64=('726b4a23c0524336db3c6752df440dd56b60495076c87ece15fcac863414975f' '0de46cb09adeaf63ec65f0230c3776ab46b5ce4783669179bdd08dd0b8fd1a10')
 
 package() {
   install -Dm755 "${srcdir}/horneroctl-${pkgver}" "${pkgdir}/usr/bin/horneroctl"
+  if [[ -f "${srcdir}/LICENSE" ]]; then
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  fi
+  if "${pkgdir}/usr/bin/horneroctl" completions bash >/dev/null 2>&1; then
+    install -Dm644 <("${pkgdir}/usr/bin/horneroctl" completions bash) \
+      "${pkgdir}/usr/share/bash-completion/completions/horneroctl"
+    install -Dm644 <("${pkgdir}/usr/bin/horneroctl" completions zsh) \
+      "${pkgdir}/usr/share/zsh/site-functions/_horneroctl"
+    install -Dm644 <("${pkgdir}/usr/bin/horneroctl" completions fish) \
+      "${pkgdir}/usr/share/fish/vendor_completions.d/horneroctl.fish"
+  fi
 }
