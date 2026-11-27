@@ -1,0 +1,13 @@
+pkgbase = zoyi_gui
+	pkgdesc = Desktop app for the ZOYI ZT703S and ZT706S scopemeters running OpenOSC firmware
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/fletto2/zoyi_gui
+	arch = any
+	license = MIT
+	depends = qt6-base
+	depends = qt6-serialport
+	source = zoyi_gui-0.1.4.tar.gz::https://github.com/fletto2/zoyi_gui/archive/v0.1.4.tar.gz
+	sha256sums = df003d57ef4defe0fa99acff08b231a61284a75281f53b86ef7c46987ab0e36a
+
+pkgname = zoyi_gui
