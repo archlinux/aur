@@ -1,6 +1,6 @@
 pkgbase = hope-agent-bin
 	pkgdesc = Local-first AI assistant desktop app — cross-device sessions, IM channel routing
-	pkgver = 0.75.0
+	pkgver = 0.76.0
 	pkgrel = 1
 	url = https://github.com/shiwenwen/hope-agent
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = hope-agent-bin
 	conflicts = hope-agent
 	options = !strip
 	options = !debug
-	source_x86_64 = hope-agent-0.75.0-x86_64.deb::https://github.com/shiwenwen/hope-agent/releases/download/v0.75.0/Hope.Agent_0.75.0_amd64.deb
-	sha256sums_x86_64 = c35f59efeca6a4d4d7e39113bd54995ee3e569bf31f845aa5935ebcac84ec222
-	source_aarch64 = hope-agent-0.75.0-aarch64.deb::https://github.com/shiwenwen/hope-agent/releases/download/v0.75.0/Hope.Agent_0.75.0_arm64.deb
-	sha256sums_aarch64 = ecd432f63b4952b95bdc82fe81dac9977c1c3b0298af7aa411509d41dbe19e6d
+	source_x86_64 = hope-agent-0.76.0-x86_64.deb::https://github.com/shiwenwen/hope-agent/releases/download/v0.76.0/Hope.Agent_0.76.0_amd64.deb
+	sha256sums_x86_64 = 78b61fb3c81c62625a495ae8f3ee78b67aed25fbf79294c945efce7961bfc627
+	source_aarch64 = hope-agent-0.76.0-aarch64.deb::https://github.com/shiwenwen/hope-agent/releases/download/v0.76.0/Hope.Agent_0.76.0_arm64.deb
+	sha256sums_aarch64 = 0519b24feae7479937e91258ce0c9fec01d419b2351137aa776891480d86e484
 
 pkgname = hope-agent-bin
