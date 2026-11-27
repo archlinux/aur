@@ -4,12 +4,14 @@
 # system that is already installed. Installed this way it lives in /usr/bin
 # and updates with the AUR: Bindle's own self-update (`bindleup`'s Bindle
 # stage) only replaces the copy `bindle first-login install` puts in
-# /usr/local/bin, and only reports a packaged one. The release workflow
+# /usr/local/bin, and only reports a packaged one. Bindle's `bindle` module
+# installs this package once an AUR helper is in, and points /usr/local/bin
+# at it. The release workflow
 # writes the published copy (version and checksum filled in, plus .SRCINFO)
 # into its `aur` artifact.
 
 pkgname=bindle
-pkgver=0.1.46
+pkgver=0.1.51
 pkgrel=1
 pkgdesc='Fresh-install setup wizard and system updater (bindleUP) for Arch Linux'
 arch=('x86_64')
@@ -24,7 +26,9 @@ optdepends=('snapper: a snapshot before each apply or update, and undo'
 # Rust does its own LTO; makepkg's C/C++ LTO flags break the cxx-qt objects.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('91e776c5a07c64b433ae5e8b9f22730f068ca383446c538bac82b80cd3001a26')
+sha256sums=('0f573afb675f4219a598305958103f8554086123d240a3b676031273c3378266')
+
+conflicts+=('uq<0.3.41')  # uq-compat: from uQ's compat/family.toml
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -38,11 +42,9 @@ build() {
   cargo build --release --frozen -p bindle-cli -p bindle-gui
 }
 
-check() {
-  cd "$pkgname-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
-  cargo test --release --frozen --workspace --exclude bindle-gui
-}
+# No check(): every tag's tests passed in CI before its release, and Bindle installs
+# this package during setup (catalog module `bindle`), where a second, test build of
+# the whole workspace would double the wait.
 
 package() {
   cd "$pkgname-$pkgver"
