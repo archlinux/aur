@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rowel-bin
 _pkgname=Rowel
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Free Offline-first Password Manager."
 arch=('x86_64')
@@ -11,14 +11,14 @@ license=('GPL-3.0-or-later')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'gtk3'
-    'gdk-pixbuf2'
-    'webkit2gtk-4.1'
-    'libayatana-indicator'
-    'libappindicator'
+	'gtk3'
+	'gdk-pixbuf2'
+	'webkit2gtk-4.1'
+	'libayatana-indicator'
+	'libappindicator'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('60de565706532eba0b54e836505a57a5d17493d1d730a00c76f01a24f3b617fb')
+sha256sums=('9b2075f7fc6c2d11ab7de18397337d8973500d76338a43f68094c329359570ea')
 _install_icons() {
 	local _s="${1:-$srcdir}" _n="${pkgname%-bin}" _i _e _z
 	while IFS= read -r -d '' _i; do
@@ -32,12 +32,12 @@ _install_icons() {
 		-o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
-    bsdtar -xf "${srcdir}/data."*
-    sed -i "s/Categories=/Categories=System;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+	bsdtar -xf "${srcdir}/data."*
+	sed -i "s/Categories=/Categories=System;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-    [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
-    _install_icons
-    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+	install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+	[ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
+	_install_icons
+	install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
