@@ -1,10 +1,10 @@
 # Maintainer: Ivan Potiienko <contact@xxanqw.pp.ua>
 pkgname=waypin
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A clipboard viewer for Wayland/X11 with GTK3, written in Rust"
 arch=('x86_64')
-url="https://github.com/xxanqw/waypin"
+url="https://github.com/komparator147477/waypin"
 license=('GPL3')
 depends=('gtk3' 'gdk-pixbuf2' 'gtk-layer-shell' 'wl-clipboard')
 makedepends=('cargo' 'git')
@@ -15,11 +15,18 @@ install="$pkgname.install"
 # directives, so it can be installed unconditionally.
 optdepends=(
   'hyprland: for the global-shortcut background daemon'
+  'xclip: for X11 sessions'
   'systemd: for the background daemon service'
   'xdg-desktop-portal-hyprland: for Hyprland GlobalShortcuts portal support'
 )
-source=("git+https://github.com/xxanqw/waypin.git#branch=restoring")
+source=("git+${url}.git#branch=restoring")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname"
+  # The 0.2.0 source still records 0.1.8 for waypin in Cargo.lock.
+  sed -i '/^name = "waypin"$/{n;s/^version = "0\.1\.8"$/version = "'"$pkgver"'"/;}' Cargo.lock
+}
 
 build() {
   cd "$pkgname"

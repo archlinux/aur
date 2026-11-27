@@ -1,8 +1,8 @@
 pkgbase = waypin
 	pkgdesc = A clipboard viewer for Wayland/X11 with GTK3, written in Rust
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/xxanqw/waypin
+	url = https://github.com/komparator147477/waypin
 	install = waypin.install
 	arch = x86_64
 	license = GPL3
@@ -13,9 +13,10 @@ pkgbase = waypin
 	depends = gtk-layer-shell
 	depends = wl-clipboard
 	optdepends = hyprland: for the global-shortcut background daemon
+	optdepends = xclip: for X11 sessions
 	optdepends = systemd: for the background daemon service
 	optdepends = xdg-desktop-portal-hyprland: for Hyprland GlobalShortcuts portal support
-	source = git+https://github.com/xxanqw/waypin.git#branch=restoring
+	source = git+https://github.com/komparator147477/waypin.git#branch=restoring
 	sha256sums = SKIP
 
 pkgname = waypin
