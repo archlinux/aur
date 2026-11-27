@@ -1,6 +1,6 @@
 pkgbase = r-lace
 	pkgdesc = Longitudinal Analysis of Cancer Evolution (LACE)
-	pkgver = 2.16.0
+	pkgver = 2.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/LACE
 	arch = any
@@ -47,7 +47,7 @@ pkgbase = r-lace
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/LACE_2.16.0.tar.gz
-	sha256sums = cd691f118bc959f9c9f4a10478355bddbe228e9baf8128e8c4b4d4d9bd274c1d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LACE_2.18.0.tar.gz
+	sha256sums = 5a72217476c61c1e92ad961007b62a104ce8048720ac3849ea07f18453634e65
 
 pkgname = r-lace
