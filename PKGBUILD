@@ -1,7 +1,7 @@
 # Maintainer: Federico Paolini <nightranger7@gmail.com>
 
-pkgname=wallcycle-git
-pkgver=0.2.0a
+pkgname=wallcycle
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Cross-platform wallpaper slideshow with real-time clock overlay and BT.709 luminance filter (Lazarus/FPC)"
 arch=('x86_64' 'aarch64')
@@ -33,16 +33,20 @@ build() {
   local lazcfg="$srcdir/lazarus-cfg"
   mkdir -p "$lazcfg"
 
-  # 1. Compila e registra il pacchetto TUniqueInstance (senza --add-package-link)
-  lazbuild --pcp="$lazcfg" --lazarusdir=/usr/lib/lazarus "$srcdir/luipack/uniqueinstance/uniqueinstance_package.lpk"
+  # 1. Compila e registra il pacchetto TUniqueInstance per Qt6
+  lazbuild --pcp="$lazcfg" --lazarusdir=/usr/lib/lazarus --widgetset=qt6 \
+    "$srcdir/luipack/uniqueinstance/uniqueinstance_package.lpk"
 
-  # 2. Compila il tuo progetto principale
-  lazbuild --pcp="$lazcfg" --widgetset=qt6 --lazarusdir=/usr/lib/lazarus -B "$srcdir/wallcycle/WallCycle.lpi"
+  # 2. Compila il progetto principale direttamente con widgetset Qt6 in modalità Release
+  cd "$srcdir/wallcycle"
+  lazbuild --pcp="$lazcfg" --lazarusdir=/usr/lib/lazarus --widgetset=qt6 \
+    --build-mode=Release -B WallCycle.lpi
 }
 
 package() {
   cd "$srcdir/wallcycle"
   install -Dm755 "bin/WallCycle" "$pkgdir/usr/bin/wallcycle"
   install -Dm644 "wallcycle.desktop" "$pkgdir/usr/share/applications/wallcycle.desktop"
+  install -Dm644 "wallcycle.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/wallcycle.png"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
