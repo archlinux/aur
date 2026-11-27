@@ -2,7 +2,7 @@
 
 pkgname=shorin-pac-git
 _pkgname=shorin-pac
-pkgver=r47.ba7ed17
+pkgver=r48.d2f7b73
 pkgrel=1
 pkgdesc="Simple fzf-based TUI to install/remove pacman, AUR and Flatpak packages on Arch, with AI-assisted AUR review and leftover cleanup"
 arch=('any')
