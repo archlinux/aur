@@ -2,7 +2,7 @@
 
 pkgname=homemesh-git
 _name=homemesh
-pkgver=0.8.0.r31.g7d656d6
+pkgver=0.8.1.r34.gc64cc5e
 pkgrel=1
 pkgdesc='Open the home folders of your other computers in any file manager; pair them with a code (development version)'
 arch=('any')
@@ -37,8 +37,20 @@ pkgver() {
 
 check() {
   cd "$_name"
-  # Without real pairing between sshd instances: that is tested before each release.
-  HOMEMESH_QUICK_TESTS=1 python -m unittest discover -s tests -q
+  # The full suite (make test: 160 tests, real sshd instances) runs before
+  # every release. Here only whether this system's Python loads every
+  # module and the helpers parse: a fraction of a second. The window needs
+  # a display, so it is checked by compileall in package() alone.
+  python - <<'EOF'
+import ast, importlib, pkgutil
+import homemesh
+for module in pkgutil.iter_modules(homemesh.__path__):
+    if module.name not in ("__main__", "gui"):
+        importlib.import_module(f"homemesh.{module.name}")
+for script in ("helper/homemesh-helper", "helper/homemesh-route"):
+    with open(script, encoding="utf-8") as source:
+        ast.parse(source.read(), script)
+EOF
 }
 
 package() {
