@@ -4,22 +4,22 @@
 
 pkgbase=libdxvk
 pkgname=('libdxvk' 'lib32-libdxvk')
-pkgver=3.1.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux"
 arch=(x86_64)
 url="https://github.com/doitsujin/dxvk"
 license=(Zlib)
-_depends=(glibc sdl2 sdl3 glfw vulkan-icd-loader)
-_32depends=(lib32-glibc lib32-sdl2 lib32-sdl3 lib32-vulkan-icd-loader)
+_depends=(glibc sdl2 sdl3 glfw vulkan-icd-loader libdisplay-info)
+_32depends=(lib32-glibc lib32-sdl2 lib32-sdl3 lib32-vulkan-icd-loader lib32-libdisplay-info)
 makedepends=(git glslang meson ${_depends[@]} ${_32depends[@]})
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/Joshua-Ashton/mingw-directx-headers.git"
 	"git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-	"git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git"
+	"git+https://github.com/doitsujin/libdisplay-info.git"
 	"git+https://github.com/doitsujin/dxbc-spirv.git")
-sha256sums=('a186af690b633ca3b14037e56649d1b7135e07d0b53657976330f3ab462b2a6c'
+sha256sums=('28291d3d8fba982e3156271304e6d8aaaa9374adcdfc9a0b14cd5b1ae2c44a79'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -44,14 +44,12 @@ prepare() {
 build() {
 	cd "$srcdir"
 	arch-meson -Dbuild_id=true \
-	--force-fallback-for=libdisplay-info \
 	"$pkgname" build
 
 	meson compile -C build
 
 	CFLAGS+=" -m32" CXXFLAGS+=" -m32" \
 	LDFLAGS+=" -m32" arch-meson -Dbuild_id=true \
-	--force-fallback-for=libdisplay-info \
 	--pkg-config-path='/usr/lib32/pkgconfig' \
 	-Dnative_glfw=disabled \
 	--libdir=lib32 \
@@ -68,6 +66,7 @@ package_libdxvk() {
 
 	meson install -C build --destdir "$pkgdir"
 	install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	rm -rf "${pkgdir}/usr/include/libdisplay-info" "${pkgdir}/usr/lib/pkgconfig"
 }
 
 package_lib32-libdxvk() {
@@ -78,5 +77,5 @@ package_lib32-libdxvk() {
 
 	install -Dm644 "${pkgname:6}"/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 	meson install -C build32 --destdir "$pkgdir"
-	rm -rf "${pkgdir}/usr/include"
+	rm -rf "${pkgdir}/usr/include" "${pkgdir}/usr/lib32/pkgconfig"
 }
