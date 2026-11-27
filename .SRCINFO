@@ -1,6 +1,6 @@
 pkgbase = mz800emu
 	pkgdesc = Sharp MZ-800+ emulator suite
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/michalhucik/mz800emu
 	arch = x86_64
@@ -12,11 +12,9 @@ pkgbase = mz800emu
 	depends = minizip-ng
 	depends = curl
 	conflicts = mz800emu-git
-	source = https://github.com/michalhucik/mz800emu/archive/refs/tags/v2.0.6.tar.gz
-	source = logo.png
-	source = mz800.desktop
-	sha256sums = bc3adb9a12fcb24258648161f6ecc7286226d3a151b3c456bd401aa2f8261f08
-	sha256sums = 63363e88ed44738ea6e1cb464e5cbe85408b5f0560f9554afd155f3ed7f39d90
-	sha256sums = 6a3fd61e8d0e3e74b62267c1cae30eb8cf7239aa0148457c6db0d68793135025
+	source = https://github.com/michalhucik/mz800emu/archive/refs/tags/v2.0.7.tar.gz
+	source = pifix.patch
+	sha256sums = 1d5f7c51147dc26482b7cef0c60d1d778d044abcab37eeec8f42a24fac80ef51
+	sha256sums = SKIP
 
 pkgname = mz800emu
