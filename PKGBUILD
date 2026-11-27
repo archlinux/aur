@@ -1,7 +1,7 @@
 # Maintainer: guohw <go1em>
 pkgname=shotori-clipboard-uri-list
 pkgver=0.19.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Screenshot tool fork: the clipboard also offers text/uri-list and text/html so X11 clients can paste large images"
 arch=('x86_64')
 url="https://github.com/go1em/shotori"
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('gcc-libs' 'libxcb' 'libxau' 'libxdmcp' 'libxkbcommon')
 provides=('shotori')
 conflicts=('shotori' 'shotori-git' 'shotori-bin')
-source=("$url/releases/download/v0.19.1-clipboard3/shotori-v0.19.1-clipboard3-x86_64.tar.gz")
-sha256sums=('3efbd45e93054b589eb9b18b346da153e022f04351a43a7e621a54240d003c4d')
+source=("$url/releases/download/v0.19.1-clipboard4/shotori-v0.19.1-clipboard4-x86_64.tar.gz")
+sha256sums=('436a1549fd4b6a060f186c687b0d8ce35bc126d069ff1205e8a441371753fd7c')
 
 package() {
   install -Dm755 shotori "$pkgdir/usr/bin/shotori"
