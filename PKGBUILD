@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=attract
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc="Methods to Find the Gene Expression Modules that Represent the Drivers of Kauffman's Attractor Landscape"
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-illuminahumanv1.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4ccdf186d1c588fdd1a4f203b5b946aadc66990f464a0d763bbd19a21b2ed496')
+sha256sums=('cc75674b9ad7270cefefb0f6f6f46902316abc4ab7efe61f2669782d02364c0a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
