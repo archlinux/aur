@@ -1,7 +1,7 @@
 # Maintainer: FTE3600 Linux contributors
 
 pkgname=libfprint-fte3600-bin
-pkgver=1.94.100.r97
+pkgver=1.94.100.r99
 pkgrel=1
 pkgdesc='Prebuilt libfprint with FTE3600 SPI fingerprint support, DKMS glue, and toolkit'
 arch=(x86_64)
@@ -26,7 +26,7 @@ source=(
   "libfprint-fte3600-v${pkgver}-x86_64.pkg.tar.zst::https://github.com/wings1848/libfprint-fte3600/releases/download/v${pkgver}/libfprint-fte3600-v${pkgver}-x86_64.pkg.tar.zst"
 )
 noextract=("libfprint-fte3600-v${pkgver}-x86_64.pkg.tar.zst")
-sha256sums=('4ddb3f15d7f7872df46efc9ce9d346cd161729358be2b66c8691709968f6eb7d')
+sha256sums=('79165471debd3a81282beb2b2ddac46262a3ed950a11ecb0c428f44cc8b45436')
 
 package() {
   bsdtar --no-same-owner -xpf "$srcdir/libfprint-fte3600-v${pkgver}-x86_64.pkg.tar.zst" \
