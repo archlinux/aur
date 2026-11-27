@@ -1,6 +1,6 @@
 pkgbase = silverscreen-bin
 	pkgdesc = Native GTK4 YouTube client that plays videos with MPV (precompiled binary)
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/XSilverTH/SilverScreen
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = silverscreen-bin
 	depends = hicolor-icon-theme
 	provides = silverscreen
 	conflicts = silverscreen
-	source = silverscreen-bin-0.3.0.tar.zst::https://github.com/XSilverTH/SilverScreen/releases/download/v0.3.0/silverscreen-v0.3.0-x86_64.tar.zst
-	sha256sums = e7c491ed30d79e8cfa6ffdcb5c2e4ef20ee09446b00dfc7357e2748745efd048
+	source = silverscreen-bin-0.4.0.tar.zst::https://github.com/XSilverTH/SilverScreen/releases/download/v0.4.0/silverscreen-v0.4.0-x86_64.tar.zst
+	sha256sums = 5456cb419026dc68b3976ede9e4b0311087c1c1f79a6078d8ef745534b40d028
 
 pkgname = silverscreen-bin
