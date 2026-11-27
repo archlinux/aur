@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=logchef-bin
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="Self-hosted log analytics for ClickHouse, VictoriaLogs and Grafana Loki"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/logchef_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/logchef_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('0054ab129527a546cf1dae7711be0b3357fd1a4aff382b887f909ba1885edfdc')
-sha256sums_aarch64=('8ac6ab4bc8a7446b63529e6b6ca57bf5397f5eb879024b924f983af8bb7ca5cb')
+sha256sums_x86_64=('07f7cd3624d221c2a650d825d44c34dfb46be26ed44008ada661f9f8380b00bc')
+sha256sums_aarch64=('bd0895c4609b0242402e3a517e1051d50e3b57f250afdfcbcc26dd4c25a47ded')
 
 package() {
   install -Dm755 "logchef" "${pkgdir}/usr/bin/logchef"

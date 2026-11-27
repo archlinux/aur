@@ -1,6 +1,6 @@
 pkgbase = logchef-bin
 	pkgdesc = Self-hosted log analytics for ClickHouse, VictoriaLogs and Grafana Loki
-	pkgver = 2.8.2
+	pkgver = 2.8.3
 	pkgrel = 1
 	url = https://github.com/mr-karan/logchef
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = logchef-bin
 	provides = logchef
 	conflicts = logchef
 	options = !debug
-	source_x86_64 = logchef-bin-2.8.2-x86_64.tar.gz::https://github.com/mr-karan/logchef/releases/download/v2.8.2/logchef_2.8.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 0054ab129527a546cf1dae7711be0b3357fd1a4aff382b887f909ba1885edfdc
-	source_aarch64 = logchef-bin-2.8.2-aarch64.tar.gz::https://github.com/mr-karan/logchef/releases/download/v2.8.2/logchef_2.8.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 8ac6ab4bc8a7446b63529e6b6ca57bf5397f5eb879024b924f983af8bb7ca5cb
+	source_x86_64 = logchef-bin-2.8.3-x86_64.tar.gz::https://github.com/mr-karan/logchef/releases/download/v2.8.3/logchef_2.8.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 07f7cd3624d221c2a650d825d44c34dfb46be26ed44008ada661f9f8380b00bc
+	source_aarch64 = logchef-bin-2.8.3-aarch64.tar.gz::https://github.com/mr-karan/logchef/releases/download/v2.8.3/logchef_2.8.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = bd0895c4609b0242402e3a517e1051d50e3b57f250afdfcbcc26dd4c25a47ded
 
 pkgname = logchef-bin
