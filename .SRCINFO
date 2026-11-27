@@ -1,6 +1,6 @@
 pkgbase = qt6-imvqml
 	pkgdesc = Qt Quick image pipeline with an isolated decoder
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/alexindigo/imvqml
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = qt6-imvqml
 	depends = qt6-imageformats
 	depends = kimageformats
 	optdepends = mpv: optional video frame capture
-	source = qt6-imvqml-0.1.3.tar.gz::https://github.com/alexindigo/imvqml/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = caac59a0ac9d32868c872d7ff952a829bb3fd9631026ad3dc6b55a762fba809d
+	source = qt6-imvqml-0.1.4.tar.gz::https://github.com/alexindigo/imvqml/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 975c0c7e9bfe8e0c6796af85d11162cfab92d0eaf5e8ada09e86eb5d94628cad
 
 pkgname = qt6-imvqml
