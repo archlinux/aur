@@ -1,6 +1,6 @@
 pkgbase = qrx
 	pkgdesc = CLI tool to capture a screen region, decode any QR code found, and copy the result to clipboard.
-	pkgver = 0.4.6
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/x71c9/qrx
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = qrx
 	license = MIT
 	makedepends = rust
 	depends = glibc
-	source = qrx-0.4.6.tar.gz::https://codeload.github.com/x71c9/qrx/tar.gz/refs/tags/v0.4.6
-	sha256sums = 6af939fc1a5e188ef4d9c6c52f3c3632ec48283b209dc3d935bc796e317c2ffa
+	source = qrx-0.5.0.tar.gz::https://codeload.github.com/x71c9/qrx/tar.gz/refs/tags/v0.5.0
+	sha256sums = b2962840409636ff2036d40fc9820a88adf7a212067b0b43d4e1a435fbdefe35
 
 pkgname = qrx
