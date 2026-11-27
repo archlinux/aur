@@ -1,6 +1,6 @@
 pkgbase = spot-git
 	pkgdesc = TOML+CSS dialog runtime for Wayland (layer-shell overlays), built from git
-	pkgver = 0.8.3.r0.g6668db8
+	pkgver = 0.8.4.r0.gb3fafb4
 	pkgrel = 1
 	url = https://github.com/KopyTKG/spot
 	arch = x86_64
