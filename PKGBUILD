@@ -3,7 +3,7 @@
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=26.3.1.3
+pkgver=26.3.1.5
 pkgrel=1
 pkgdesc="Media relay for RTP sessions (Sipwise proxy)"
 arch=('x86_64')
@@ -54,7 +54,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archi
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "10-kmod.conf")
-sha256sums=('a7b8d9261fc84422ff99db49795e81fbf7485a20e6aacdf5a7e7231572eab040'
+sha256sums=('5167b61c1b54c4d7514744948803edebf77313aa5726b9a4f8837b61427ce2ca'
             '9ee6664c7368cc0466d813c199c997ac4889eb0e72f7f0b51149510cf0ae0b3e'
             '50330c2dd7c3f3fcb4dd0ed947cbc08139a1255199885299646ebefc48f5f34f'
             '342781f68382a10521dfe2eb1c0527e7f1bab18435995ea41da8eb57ca7d7e9d')
