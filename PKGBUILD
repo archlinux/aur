@@ -1,4 +1,4 @@
-# Maintainer: Felix2086 <Felix-LIKE@users.noreply.github.com>
+# Maintainer: Felix2086 <Felix1686@users.noreply.github.com>
 #
 # python-pybioclip is the only dependency of the offline bird-ID pipeline
 # (birdid-git) that is missing from the official repos and the AUR. The rest
