@@ -1,0 +1,17 @@
+pkgbase = quectop-hub-bin
+	pkgdesc = Dashboard and data collector for quectop probes
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/toxdes/quectop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = quectop
+	provides = quectop-hub=0.1.0
+	conflicts = quectop-hub
+	source_x86_64 = quectop-hub-0.1.0-x86_64.tar.gz::https://packages.toxdes.com/releases/quectop-hub_0.1.0_amd64.tar.gz
+	sha256sums_x86_64 = 0de271a1c66dd485ce8d9099cc2178ac6dfc5a4258afedca2e5e9c35f4b7c498
+	source_aarch64 = quectop-hub-0.1.0-aarch64.tar.gz::https://packages.toxdes.com/releases/quectop-hub_0.1.0_arm64.tar.gz
+	sha256sums_aarch64 = cf9582514b9d85fb770410ce24a1b619395a1365e31a5b1cf7178b3f956d72cb
+
+pkgname = quectop-hub-bin
