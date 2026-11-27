@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=qrypad-bin
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="SQL scratchpad for the terminal"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/qrypad_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/qrypad_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('148af92ac2d455f900a82c880f16123dd5f1143fb4fcbbf9a72054f6eaee75da')
-sha256sums_aarch64=('2214d381833353169549cb5474ae58ade91e917c7cb8c8101105d1202daae73c')
+sha256sums_x86_64=('c39ed452a4974b6895e8b86972f6d04c7856d0c1941bf6c970e081bb014dea65')
+sha256sums_aarch64=('2412e2496e850e61d614b937a786fe6e1eba58b36244cdce390a3a0b939cd031')
 
 package() {
   install -Dm755 "qrypad" "${pkgdir}/usr/bin/qrypad"

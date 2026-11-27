@@ -1,6 +1,6 @@
 pkgbase = qrypad-bin
 	pkgdesc = SQL scratchpad for the terminal
-	pkgver = 1.9.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/wheelibin/qrypad
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = qrypad-bin
 	provides = qrypad
 	conflicts = qrypad
 	options = !debug
-	source_x86_64 = qrypad-bin-1.9.1-x86_64.tar.gz::https://github.com/wheelibin/qrypad/releases/download/v1.9.1/qrypad_1.9.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 148af92ac2d455f900a82c880f16123dd5f1143fb4fcbbf9a72054f6eaee75da
-	source_aarch64 = qrypad-bin-1.9.1-aarch64.tar.gz::https://github.com/wheelibin/qrypad/releases/download/v1.9.1/qrypad_1.9.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2214d381833353169549cb5474ae58ade91e917c7cb8c8101105d1202daae73c
+	source_x86_64 = qrypad-bin-1.10.0-x86_64.tar.gz::https://github.com/wheelibin/qrypad/releases/download/v1.10.0/qrypad_1.10.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = c39ed452a4974b6895e8b86972f6d04c7856d0c1941bf6c970e081bb014dea65
+	source_aarch64 = qrypad-bin-1.10.0-aarch64.tar.gz::https://github.com/wheelibin/qrypad/releases/download/v1.10.0/qrypad_1.10.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2412e2496e850e61d614b937a786fe6e1eba58b36244cdce390a3a0b939cd031
 
 pkgname = qrypad-bin
