@@ -1,7 +1,7 @@
 # Maintainer: Rockykln <contact@rockykln.com>
 pkgname=podctl-bin
 _pkgname=podctl
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Linux control suite for AirPods — daemon, CLI, tray icon and case-open popup"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ provides=('podctl')
 conflicts=('podctl' 'podctl-git')
 source_x86_64=("${_pkgname}-${pkgver}-x86_64-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/podctl-${pkgver}-x86_64-linux-musl.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/podctl-${pkgver}-aarch64-linux-musl.tar.gz")
-sha256sums_x86_64=('e2a8b65a63ef05528234400c911fc1f47fa69c297c4d28cccc43bd586c87f547')
-sha256sums_aarch64=('b38c83f639390a14bb949cc267bd2a71b1a4729d39e195523a9fb0d9b753b853')
+sha256sums_x86_64=('5af6d3a722c63a8942f844e4b8bcf847b829a6b69cb061082e70f460150d05a1')
+sha256sums_aarch64=('fc496b057424408373ccaa86311a23e75666932c5c1541e748a3e4e0bf30a9b0')
 options=('!strip')   # musl-static binary, already stripped by release workflow
 
 package() {
