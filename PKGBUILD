@@ -2,7 +2,7 @@
 # The release workflow sets pkgver and publishes this file to the AUR on every
 # release tag, so the AUR version never falls behind the latest tag.
 pkgname=nefervox-git
-pkgver=0.2.0.r0.g12a7118
+pkgver=0.2.1.r0.gdadc03b
 pkgrel=1
 pkgdesc='Push-to-talk dictation for Wayland: speak, then the transcript is typed into the focused window (git version)'
 arch=('x86_64' 'aarch64')

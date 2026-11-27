@@ -1,6 +1,6 @@
 pkgbase = nefervox-git
 	pkgdesc = Push-to-talk dictation for Wayland: speak, then the transcript is typed into the focused window (git version)
-	pkgver = 0.2.0.r0.g12a7118
+	pkgver = 0.2.1.r0.gdadc03b
 	pkgrel = 1
 	url = https://git.bnema.dev/nefervox
 	arch = x86_64
