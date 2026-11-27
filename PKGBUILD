@@ -23,8 +23,8 @@ source=(
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('b447fcf4d3324c011ff9459c339b43d5f7acb10defa1a96b23ca9dc0cf7d9851'
-            '4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b'
-            '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
+			'4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b'
+			'739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
