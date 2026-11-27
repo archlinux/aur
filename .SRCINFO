@@ -1,6 +1,6 @@
 pkgbase = chatbox-git
 	pkgdesc = A desktop client for ChatGPT, Claude and other LLM.
-	pkgver = 1.24.4.r1886.g75bb935
+	pkgver = 1.24.4.r39.g446bcf4
 	pkgrel = 1
 	url = https://chatboxai.app/
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = chatbox-git
 	source = chatbox.js
 	source = chatbox.sh
 	sha256sums = SKIP
-	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	sha256sums = 4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b
+	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
 
 pkgname = chatbox-git
