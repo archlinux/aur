@@ -1,6 +1,6 @@
 pkgbase = md2pdf-alchemy
 	pkgdesc = Convert Markdown to PDF, with customizable JSON5 styles and bundled fonts
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/alchemy/md2pdf
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = md2pdf-alchemy
 	license = Bitstream-Vera
 	makedepends = go
 	depends = glibc
-	provides = md2pdf=0.3.0
+	provides = md2pdf=0.4.0
 	conflicts = md2pdf
 	conflicts = md2pdf-git
 	options = !debug
-	source = md2pdf-0.3.0.tar.gz::https://github.com/alchemy/md2pdf/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 3e61e3628cb636fe5169666845d8be2f4502460bf3905ca5a9e65089260e0567
+	source = md2pdf-0.4.0.tar.gz::https://github.com/alchemy/md2pdf/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 2435335df9ccd1d4c6415e832b1afd468fe9679254551e09faf6b8b4788f83e0
 
 pkgname = md2pdf-alchemy
