@@ -1,13 +1,13 @@
 # Maintainer: loooph <loooph@gmx.de>
 pkgname=obs-shaderfilter-git
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="enables custom shaders for OBS sources"
 arch=('x86_64')
 url="https://github.com/exeldro/obs-shaderfilter/"
 license=('Unlicense')
 depends=(obs-studio)
-makedepends=(git cmake)
+makedepends=(git cmake simde)
 _basename=${pkgname%-git}
 provides=("$_basename")
 conflicts=("$_basename")
