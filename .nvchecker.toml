@@ -1,0 +1,5 @@
+[telegram-tdlib]
+source = "github"
+github = "g000sha256/TDLib"
+use_latest_tag = true
+prefix = "v"
