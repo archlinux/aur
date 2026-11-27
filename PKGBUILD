@@ -1,5 +1,5 @@
 pkgname=ngbrecomp-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Ninja Gaiden Black Recompiled, packaged from the official Linux AppImage'
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip' '!debug')
 _appimage="ngbrecomp-$pkgver.AppImage"
 source=("$_appimage::$url/releases/download/v$pkgver/NinjaGaidenBlack-x86_64.AppImage")
 noextract=("$_appimage")
-sha256sums=('d6fcc6865f2d153214a0d0623c143036d78596790c57fd4650f9ed02809f54b2')
+sha256sums=('8c62fe8933ace0a7fdefb8c7d1071bd5124631ec825018abab2570048522863b')
 
 prepare() {
   cd "$srcdir"
