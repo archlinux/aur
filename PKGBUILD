@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=fast-anything-bin
-pkgver=0.8.7
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="Don't rewrite it in Rust"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/fast-anything-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/fast-anything-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('4ed748cffa0cd43116a33d44ad1a4851db09482c98ec8d4c3363828af12d1d04')
-sha256sums_aarch64=('52a97b890484ebcc4085f492631b23475ef87d014f603c25f07eaee877965b86')
+sha256sums_x86_64=('d44d7636d6199ba101ebcae62906c7b7864f0d92931d0c430c2622ebe850da48')
+sha256sums_aarch64=('99922e5d37fdcfcec4447a310235ba0ea187af49dc2e6223ada697834869db27')
 
 package() {
   local _dir
