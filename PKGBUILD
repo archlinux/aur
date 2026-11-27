@@ -1,6 +1,6 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/greeter>
 pkgname=hornero-greeter-greetd
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='HorneroOS graphical greeter for greetd on Hornero Signal (Qt6/QML, cage)'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ depends=('greetd' 'cage' 'qt6-base' 'qt6-declarative' 'qt6-wayland' 'ttf-ibm-ple
 makedepends=('cmake' 'git' 'ninja' 'qt6-tools')
 # Named "$pkgname" so the checkout lands at "${srcdir}/$pkgname", like
 # the SDDM theme package; build functions only read from there.
-source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#commit=dc5596e5440c10b20f7f7df3700541f4013e1491")
+source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#commit=7fd27741d90022b22f5649857f6cfb4524ef94e7")
 sha256sums=('SKIP')
 install=hornero-greeter-greetd.install
 
