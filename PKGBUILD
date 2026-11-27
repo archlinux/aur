@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=1667-bin
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="Full-screen terminal environment for writing fiction with language models"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tgz::${_dl}/1667-ai-linux-x64-${pkgver}.tgz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tgz::${_dl}/1667-ai-linux-arm64-${pkgver}.tgz")
-sha256sums_x86_64=('f09b5d6338dda841236e4d154b93228c3dba98b62285b9ead4e3b0dc14c1336f')
-sha256sums_aarch64=('2aac2298a729c5cdad682e481bedc81100cfaa935885714a37e24fa7ca37cf53')
+sha256sums_x86_64=('0bcc500e3d0ddb5708883f8270895422dcbc358272f5948ac3874783af9292e6')
+sha256sums_aarch64=('68627ea8a7e964c589f2049ecce493f3137acbfeacdf602994a7f47e31e49413')
 
 package() {
   install -Dm755 "package/bin/1667" "${pkgdir}/usr/bin/1667"
