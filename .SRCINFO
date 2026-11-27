@@ -1,16 +1,18 @@
 pkgbase = knowte-bin
-	pkgdesc = A note taking application that allows you to quickly and easily organize and find your notes.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.0.1
+	pkgdesc = A note taking application that allows you to quickly and easily organize and find your notes.
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/digimezzo/knowte
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron17
-	provides = knowte=3.0.1
+	depends = electron43
+	provides = knowte=3.1.0
 	conflicts = knowte
-	source = knowte-3.0.1.pacman::https://github.com/digimezzo/knowte/releases/download/v3.0.1/Knowte-3.0.1.pacman
+	source = knowte-3.1.0.pacman::https://github.com/digimezzo/knowte/releases/download/v3.1.0/Knowte-3.1.0.pacman
+	source = knowte.js
 	source = knowte.sh
-	sha256sums = b4b67da2ea2c686e21d58d932356b4809b98d912e0fe4ca18a8e30f69412b2dd
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = e6da48cdbe2e7fc9e4be6c21e963339ed0b23efe76fa02d9298101064b1efe3a
+	sha256sums = 4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b
+	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
 
 pkgname = knowte-bin
