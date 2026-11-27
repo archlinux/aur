@@ -1,0 +1,22 @@
+pkgbase = allo
+	pkgdesc = A friendly, free, and open source font family
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/joshpuckett/allo
+	arch = any
+	license = OFL-1.1
+	source = https://github.com/joshpuckett/allo/releases/download/v1.0.3/Allo-1.0.3.zip
+	sha256sums = f8915aeb3ffe2f41ab92d044d932bf2f48e68c1b853b46c42805038d576bdfae
+
+pkgname = otf-allo
+	provides = allo=1.0.3
+	provides = otf-allo-font
+	replaces = otf-allo-text
+
+pkgname = woff2-allo
+	provides = allo=1.0.3
+	provides = woff2-allo-text
+
+pkgname = ttf-allo
+	provides = allo=1.0.3
+	provides = ttf-allo-text
