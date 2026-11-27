@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.83
-pkgver=1.0.0beta83
+_tag=v1.0.0-beta.84
+pkgver=1.0.0beta84
 pkgrel=1
 pkgdesc="Desktop shell for niri, Hyprland and Umbriel: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -115,7 +115,7 @@ install=bioma-shell.install
 # but one switched off here must not come back with the next update.
 backup=('etc/xdg/autostart/bioma.desktop')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('cd9988455d6db9bb77db1388fe21cece88ade2777d419e5fda908200711af6e1')
+sha256sums=('1f5bdc760f6bce21fc3766c6741c9438507b361563ee9f85c7624e6c630d95bb')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
