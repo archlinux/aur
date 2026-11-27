@@ -1,6 +1,6 @@
 pkgbase = rclone-manager
 	pkgdesc = User-friendly GUI for Rclone
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/Zarestia-Dev/rclone-manager
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = rclone-manager
 	optdepends = fuse3: for mounting remote filesystems
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/v0.3.6/RClone.Manager_0.3.6_amd64.deb
-	sha256sums_x86_64 = bb360c7b18f16cf71d961d4c96aec33a5361a6a77dd9d913b5689f85709036c4
-	source_aarch64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/v0.3.6/RClone.Manager_0.3.6_arm64.deb
-	sha256sums_aarch64 = ff85bd0190ee3b66d152b4084ff90faabf6185e92698671d75ad05dd84a80248
+	source_x86_64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/v0.3.7/RClone.Manager_0.3.7_amd64.deb
+	sha256sums_x86_64 = a66a3c28b3566722c2c0806c077f2a43793e4f95241bd7df88d53d9189028be1
+	source_aarch64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/v0.3.7/RClone.Manager_0.3.7_arm64.deb
+	sha256sums_aarch64 = 1ff5d68bbdcccb3e2fcf7c5f77eb6630f2fbc2f8c110d714867f9312fcd5ced8
 
 pkgname = rclone-manager
