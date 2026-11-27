@@ -1,13 +1,13 @@
 pkgbase = foundry-cli-bin
 	pkgdesc = Foundry DevOps automation CLI
 	pkgver = 0.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shpitdev/foundry-cli
 	install = foundry-cli-bin.install
 	arch = x86_64
 	license = LicenseRef-proprietary
 	makedepends = github-cli
-	optdepends = nodejs>=26: foundry-cli-ts and foundry-cli superrepo
+	optdepends = nodejs>=24.15.0: Node.js 24.15 or later for foundry-cli-ts and foundry-cli superrepo
 	provides = foundry-cli
 	conflicts = foundry-cli
 	options = !strip
