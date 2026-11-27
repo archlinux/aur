@@ -40,10 +40,13 @@ export STEAM_COMPAT_DATA_PATH="$PREFIX_DIR"
 export STEAM_COMPAT_CLIENT_INSTALL_PATH="${STEAM_COMPAT_CLIENT_INSTALL_PATH:-$HOME/.steam/steam}"
 export WINEDEBUG="${AZUR_WINEDEBUG:--all}"
 
-# DXVK 帧率监控：默认与 An Anime Game Launcher 相同
-#   fps + 帧时间曲线 + DXVK 版本 + GPU 负载
-# 想精简可设 AZUR_DXVK_HUD=fps，或设 0 完全关闭
-export DXVK_HUD="${AZUR_DXVK_HUD:-fps,frametimes,version,gpuload}"
+# 本地可选配置（不随包分发）：~/.config/azur-promilia/env
+# 例如写入：export AZUR_DXVK_HUD="fps,frametimes,version,gpuload"
+AZUR_CONF="${XDG_CONFIG_HOME:-$HOME/.config}/azur-promilia/env"
+[ -f "$AZUR_CONF" ] && . "$AZUR_CONF"
+
+# 帧率监控默认关闭；设置 AZUR_DXVK_HUD 才启用（fps / fps,frametimes,version,gpuload …）
+[ -n "${AZUR_DXVK_HUD:-}" ] && export DXVK_HUD="$AZUR_DXVK_HUD"
 
 # 可选 MangoHud（更详细的帧时间曲线）：AZUR_MANGOHUD=1
 RUN=()
@@ -84,7 +87,7 @@ case "$MODE" in
   AZUR_GAME_ROOT    游戏根目录（默认 ~/Games/AzurPromilia）
   AZUR_PROTON       Proton 可执行文件（默认 compatibilitytools.d/dwproton/proton）
   AZUR_BRIDGE_DIR   桥接目录（默认 /usr/share/azur-promilia）
-  AZUR_DXVK_HUD     DXVK 覆盖层（默认 fps,frametimes,version,gpuload；设 0 关闭）
+  AZUR_DXVK_HUD     DXVK 覆盖层（默认关闭；如 fps,frametimes,version,gpuload）
   AZUR_MANGOHUD     设 1 用 MangoHud 替代 DXVK HUD
 EOF
         ;;
