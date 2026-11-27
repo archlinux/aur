@@ -5,7 +5,7 @@ pkgname=deskew-git
 _name=deskew
 _user=galfar
 pkgrel=1
-pkgver=1.35.r2.g16ee75a
+pkgver=1.35.r19.g8912a14
 pkgdesc="A command-line program for automatically straightening images"
 arch=("x86_64" "aarch64")
 url="https://galfar.vevb.net/deskew"
@@ -19,7 +19,7 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "${_name}"
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --match 'v[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
