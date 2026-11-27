@@ -1,6 +1,6 @@
 pkgbase = archtoys
 	pkgdesc = PowerToys-style tools for Linux: color picker, text extractor, screen ruler
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/Mujtaba1i/Archtoys
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = archtoys
 	optdepends = tesseract: Text Extractor (Archtoys can also install it when you turn it on)
 	optdepends = tesseract-data-eng: English for Text Extractor
 	optdepends = tesseract-data-osd: lets Text Extractor find the writing system by itself
-	source = archtoys-0.9.0.tar.gz::https://github.com/Mujtaba1i/Archtoys/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = ef7061962af876ebdde61635518fa461820ae92dd5f21b68340f6f2368eb9e40
+	source = archtoys-0.9.1.tar.gz::https://github.com/Mujtaba1i/Archtoys/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 41cbfefa7d8f627b8fa11c12d85a8fbbb38fc3090f05b0cb3f74236fb4e5406b
 
 pkgname = archtoys
