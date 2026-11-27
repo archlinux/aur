@@ -1,6 +1,6 @@
 pkgbase = railpack-bin
 	pkgdesc = Zero-config builder that turns application code into container images
-	pkgver = 0.43.1
+	pkgver = 0.44.0
 	pkgrel = 1
 	url = https://github.com/railwayapp/railpack
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = railpack-bin
 	provides = railpack
 	conflicts = railpack
 	options = !debug
-	source_x86_64 = railpack-bin-0.43.1-x86_64.tar.gz::https://github.com/railwayapp/railpack/releases/download/v0.43.1/railpack-v0.43.1-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 7a3849a68b2f142dcd9cfae68c91c5d5cb3bab4b1e749fc796cd9190a3811ea0
+	source_x86_64 = railpack-bin-0.44.0-x86_64.tar.gz::https://github.com/railwayapp/railpack/releases/download/v0.44.0/railpack-v0.44.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 50b55b6762321c4eb2a2b8850ea0ffcb70b3250f1a2b15519b4901b17ce09411
 
 pkgname = railpack-bin
