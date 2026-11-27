@@ -1,0 +1,21 @@
+pkgbase = 7zipl-bin
+	pkgdesc = 7-Zip File Manager for Linux with a plain GTK 4 interface, using the system 7-Zip library (prebuilt)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/TheElevatedOne/7zipl
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	depends = 7zip
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = libgcc
+	depends = libstdc++
+	provides = 7zipl=0.1.0
+	conflicts = 7zipl
+	options = !debug
+	options = !strip
+	source_x86_64 = https://github.com/TheElevatedOne/7zipl/releases/download/0.1.0/7zipl-0.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = add35ca71d7a2cc1494539a712a64739555588fc57c42bff7f3456d54d8a4436
+
+pkgname = 7zipl-bin
