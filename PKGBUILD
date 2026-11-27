@@ -1,6 +1,6 @@
 # Maintainer: Joakim Roffe <joakim@roffe.nu>
 pkgname=canmonitor-git
-pkgver=1.0.2.r5.gd9fc92d
+pkgver=1.0.3.r0.ge4f5116
 pkgrel=1
 pkgdesc="CAN bus monitor built with Fyne on top of gocan v2"
 arch=('x86_64')
