@@ -1,0 +1,24 @@
+pkgbase = 7zipl-git
+	pkgdesc = 7-Zip File Manager for Linux with a plain GTK 4 interface, using the system 7-Zip library (git version)
+	pkgver = 0.1.0_r1_g3f13d97
+	pkgrel = 1
+	url = https://github.com/TheElevatedOne/7zipl
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = 7zip
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = libgcc
+	depends = libstdc++
+	provides = 7zipl
+	conflicts = 7zipl
+	source = 7zipl::git+https://github.com/TheElevatedOne/7zipl.git
+	sha256sums = SKIP
+
+pkgname = 7zipl-git
