@@ -1,7 +1,7 @@
 # Maintainer: Matthias Schabhüttl <matthias@matthiasschabhuettl.com>
 pkgname=bentwire-bin
 _pkgname=bentwire
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Desktop characters (Microsoft Agent and Office Assistant formats) for Wayland (release binaries)'
 arch=(x86_64)
@@ -12,7 +12,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=(!debug)
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('a5c933f13aa5ce6bb9c5761fddb768864424d7afd1279706ba163f97ad72911b')
+sha256sums_x86_64=('b7963033b635e97f1b80453f6cc22db53156d533f7299dc2d4b59e33b738a4a0')
 
 package() {
   cd "$_pkgname-$pkgver-$CARCH-unknown-linux-gnu"
