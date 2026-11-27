@@ -5,7 +5,7 @@
 
 pkgname=mnamer
 pkgver=2.8.0
-pkgrel=2
+pkgrel=1
 pkgdesc='A media organization tool'
 arch=('any')
 url='https://github.com/jkwill87/mnamer'

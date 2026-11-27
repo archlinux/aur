@@ -1,7 +1,7 @@
 pkgbase = mnamer
 	pkgdesc = A media organization tool
 	pkgver = 2.8.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/jkwill87/mnamer
 	arch = any
 	license = MIT
