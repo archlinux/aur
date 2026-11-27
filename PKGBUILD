@@ -15,12 +15,12 @@ arch=('x86_64')
 _repo="soapdog/patchwork"
 url="https://github.com/${_repo}"
 license=('AGPL3')
-depends=('libxtst' 'libxext' 'libxkbfile' 'libsodium' 'libxss' 'gtk4' 'alsa-lib' 'nss' 'electron39')
+depends=('libxtst' 'libxext' 'libxkbfile' 'libsodium' 'libxss' 'gtk4' 'alsa-lib' 'nss')
 replaces=('ssb-patchwork')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage"
-               "https://raw.githubusercontent.com/${_repo}/refs/heads/master/LICENSE"
+               "${url}/raw/v${pkgver}/LICENSE"
               )
 noextract=("${_appimage}")
 sha256sums=('dd0891234094acc52d37d7fea820b6f1578c87c9bcbd17f35baa5f2519c6a4eb'
