@@ -1,14 +1,14 @@
 # Maintainer: Axel H. <noirbizarre@gmail.com>
 #
-# Prebuilt binary package. `0.6.1`, `37dfc2d57ccb296e3cd726aeaa9f198ce66090e84b0427d161df17c819882b34` and
-# `87d005aafc57074be92518cacdb6bcccab5520e9df6dc97aff206bfaed956e36` are substituted by .github/workflows/aur.yaml from the
+# Prebuilt binary package. `0.7.0`, `7603e6722b0a8ceef8cdd8a8dcfc896cdd6fd43d6afd30f001f2603aed3d75f1` and
+# `d5bad7127b492a80aa4c0b2d6c8d50fd07b03472ba94ff61810ed985711c85ce` are substituted by .github/workflows/aur.yaml from the
 # published release assets, and the result is pushed to the AUR. Edit this
 # template, never the PKGBUILD in the AUR repository: that one is
 # regenerated at every release.
 
 pkgname=over-bin
 _pkgname=over
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A git-based file overlay manager (dotfiles as overlays) (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,8 @@ license=('MIT')
 # What the published binaries actually link. libgit2 and OpenSSL are
 # vendored into them, so they are absent here — but zlib and libgcc_s are
 # not, and namcap reports an error for every needed library left undeclared.
-depends=('gcc-libs' 'glibc' 'zlib')
+# Native Git implements diff, commit and configured filter execution at runtime.
+depends=('gcc-libs' 'git' 'glibc' 'zlib')
 
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -33,8 +34,8 @@ options=('!strip' '!debug')
 # and the musl build exists for the systems that are not this one.
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/over_${pkgver}_linux-amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/$pkgver/over_${pkgver}_linux-arm64.tar.gz")
-sha256sums_x86_64=('37dfc2d57ccb296e3cd726aeaa9f198ce66090e84b0427d161df17c819882b34')
-sha256sums_aarch64=('87d005aafc57074be92518cacdb6bcccab5520e9df6dc97aff206bfaed956e36')
+sha256sums_x86_64=('7603e6722b0a8ceef8cdd8a8dcfc896cdd6fd43d6afd30f001f2603aed3d75f1')
+sha256sums_aarch64=('d5bad7127b492a80aa4c0b2d6c8d50fd07b03472ba94ff61810ed985711c85ce')
 
 # Fetched separately because the release archive carries no licence file, and
 # MIT is not one of the licences Arch keeps in /usr/share/licenses/common —
