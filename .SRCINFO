@@ -1,0 +1,16 @@
+pkgbase = xiaomi-region-detector
+	pkgdesc = Detect the firmware region of a Xiaomi device from its build number (CLI)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/user14923929/XiaomiRegionDetector
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	optdepends = android-tools: read the build number from a device with "xrd useadb"
+	source = xiaomi-region-detector-1.0.0.tar.gz::https://github.com/user14923929/XiaomiRegionDetector/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = cade1f8eb5a524455cc2adae2d55cd5c2daf08ffa9afd64dedcdc56a72dea496
+
+pkgname = xiaomi-region-detector
