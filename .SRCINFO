@@ -1,0 +1,22 @@
+pkgbase = reshadelinux-bin
+	pkgdesc = Installs the official ReShade runtime for Wine and Proton games
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/asafelobotomy/reshadelinux
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = bash
+	depends = curl
+	depends = git
+	depends = 7zip
+	depends = yad
+	depends = hicolor-icon-theme
+	optdepends = libnotify: desktop notifications when an install finishes
+	provides = reshadelinux
+	conflicts = reshadelinux
+	options = !strip
+	options = !debug
+	source = reshadelinux-1.4.1-x86_64.AppImage::https://github.com/asafelobotomy/reshadelinux/releases/download/v1.4.1/reshadelinux-1.4.1-x86_64.AppImage
+	sha256sums = 974b66a99d9c3447161a111a61deca49381d587330494dedc627107e64ec0bae
+
+pkgname = reshadelinux-bin
