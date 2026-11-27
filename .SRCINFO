@@ -1,4 +1,4 @@
-pkgbase = wallcycle
+pkgbase = wallcycle-git
 	pkgdesc = Cross-platform wallpaper slideshow with real-time clock overlay and BT.709 luminance filter (Lazarus/FPC)
 	pkgver = 0.2.0a
 	pkgrel = 1
@@ -23,4 +23,4 @@ pkgbase = wallcycle
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = wallcycle
+pkgname = wallcycle-git
