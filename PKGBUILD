@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SimFFPE
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='NGS Read Simulator for FFPE Tissue'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d1b5a773d504139dfb5447f759bb85a3b58e3053144a3472a99ff965dd0db4b9')
+sha256sums=('ae5640a5ba31239aecd9118540cac93517fa7830269488cec5b5fe4313a693cd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
