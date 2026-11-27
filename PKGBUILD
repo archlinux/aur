@@ -1,11 +1,11 @@
 # Maintainer: Teez <dmedoro13@gmail.com>
 pkgname=crux-shell-git
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A personal QuickShell desktop shell for Hyprland"
 arch=('any')
 url="https://github.com/teezlabs/crux-shell"
-license=('custom')
+license=('GPL-3.0-or-later')
 depends=(
   'quickshell'
   'matugen'
