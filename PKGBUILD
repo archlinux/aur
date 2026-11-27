@@ -2,7 +2,7 @@
 
 pkgname=rassumfrassum-git
 pkgver=0.3.3.r8.g7ab6bf4
-pkgrel=1
+pkgrel=2
 pkgdesc="LSP/JSONRPC multiplexer for connecting one LSP client to multiple servers"
 arch=('any')
 url="https://github.com/joaotavora/rassumfrassum"
@@ -11,21 +11,21 @@ depends=('python>=3.10')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'git')
 provides=('rassumfrassum')
 conflicts=('rassumfrassum')
-source=("${pkgname}-${pkgver}::git+https://github.com/joaotavora/rassumfrassum.git")
+source=("${pkgname}::git+https://github.com/joaotavora/rassumfrassum.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
