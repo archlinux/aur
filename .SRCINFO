@@ -1,7 +1,7 @@
 pkgbase = atmosphera-git
 	pkgdesc = Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell (git version)
 	pkgver = 0.6.0.r0.g0000000
-	pkgrel = 15
+	pkgrel = 16
 	url = https://github.com/alexindigo/atmosphera
 	install = atmosphera-git.install
 	arch = any
@@ -10,15 +10,12 @@ pkgbase = atmosphera-git
 	depends = quickshell
 	depends = qt6-dbusqml>=1.1.0
 	depends = qt6-configqml>=0.5.5
+	depends = qt6-mpvqml>=0.3.0
+	depends = qt6-imvqml>=0.1.6
 	depends = qt6-pipewirespectrum
 	depends = qt6-xdgiconqml-git
-	depends = imagemagick
 	depends = brightnessctl
-	depends = ffmpeg
 	depends = qt6-multimedia
-	depends = qt6-imageformats
-	depends = libwebp
-	depends = libheif
 	depends = python
 	depends = python-dbus
 	depends = python-gobject
