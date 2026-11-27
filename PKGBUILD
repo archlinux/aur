@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=colab-playground-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Desktop app for the Google Colab CLI with GPU sessions, cost guards and port forwarding"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/colab-playground-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('e7f4c6cd4bcc2c13f9540587f50cffb6d88636a66e868627a3238618fb918dce')
+sha256sums_x86_64=('42baa20e761012520741c4338d4bb2d14e21a4a96c09a4fe8bbe8411913eddb4')
 
 package() {
   install -Dm755 "colab-playground-x86_64-unknown-linux-gnu/colab-playground" "${pkgdir}/usr/bin/colab-playground"
