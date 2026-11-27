@@ -1,15 +1,16 @@
 # Maintainer: Ryan Kes <ryan@andthensome.nl>
 #
 # Binary package: the release job already produces a Bun-compiled,
-# self-contained Linux binary per arch (see openspec/changes/
-# add-os-packaging/design.md) and this just places it, plus the man
+# self-contained Linux binary per arch (see
+# openspec/changes/archive/2026-09-01-add-os-packaging/design.md)
+# and this just places it, plus the man
 # page. No build() step, no makedepends -- there is nothing to compile.
 #
 # source= points at github.com release assets, never the internal forge
 # -- that instance returns a 404 on anonymous fetches even for public
 # repos, confirmed on the now-archived scaffold-arch-package.
 pkgname=washy-washy-cli-bin
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Turns a JSON chart of laundry piles into a phone PDF and a printable PDF"
 arch=('x86_64' 'aarch64')
@@ -56,10 +57,10 @@ source_aarch64=(
 # against. Not updpkgsums: it resolves $CARCH from the machine running
 # it, so a single-arch runner can only ever correctly checksum its own
 # arch. See rules/packaging.md.
-sha256sums_x86_64=('de5da02f68dbea6a1e013ec0588367a4fbbb19bdfa574bf5094f161f3fca52a6'
-                    '1d2cc524c63c738155d123a15d437a6829fd6728af265d8db3235b19efca5c50')
-sha256sums_aarch64=('8191d473102f4e4b8e9e909a2c1d16782cda83206ba9116b864147738dc63d5a'
-                    '1d2cc524c63c738155d123a15d437a6829fd6728af265d8db3235b19efca5c50')
+sha256sums_x86_64=('8e95aeb5fb1095c3221b765ab0afb6bfde9047d67e774d3a9159a8b58903ff2c'
+                    '3fb7f87599db1a671e84b5fb5bdefa8233eaddf404ac998e1abde5d3218350b4')
+sha256sums_aarch64=('bbfc710216455fe2e57550ed2b267861f9a423aa8c1dde32624a5f1ae3540da3'
+                    '3fb7f87599db1a671e84b5fb5bdefa8233eaddf404ac998e1abde5d3218350b4')
 
 # No LICENSE install: this PKGBUILD lives alone in the AUR git repo, with
 # nothing else from the upstream checkout beside it, and it isn't in
