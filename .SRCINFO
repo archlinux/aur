@@ -1,6 +1,6 @@
 pkgbase = sshpilot-bin
 	pkgdesc = SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.
-	pkgver = 6.4.4
+	pkgver = 6.5.2
 	pkgrel = 1
 	url = https://github.com/mfat/sshpilot
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = sshpilot-bin
 	provides = sshpilot
 	conflicts = sshpilot
 	options = !strip
-	source_x86_64 = sshpilot-bin-6.4.4-1-x86_64.deb::https://github.com/mfat/sshpilot/releases/download/v6.4.4/sshpilot_6.4.4-1_amd64.deb
-	sha256sums_x86_64 = c8fa5e5e2e31a4e76af9addb9115f807b0be6ff24864c1ea792c7daf60b2b42e
-	source_aarch64 = sshpilot-bin-6.4.4-1-aarch64.deb::https://github.com/mfat/sshpilot/releases/download/v6.4.4/sshpilot_6.4.4-1_arm64.deb
-	sha256sums_aarch64 = b91d3dcbd62b8ad5f4f9bb85a43f4e753c43f403e600b7e69f1195e004a7632a
+	source_x86_64 = sshpilot-bin-6.5.2-1-x86_64.deb::https://github.com/mfat/sshpilot/releases/download/v6.5.2/sshpilot_6.5.2-1_amd64.deb
+	sha256sums_x86_64 = 9315cbc70f48ed0c251c520077007c8afd9123af612f641590071f35f93bd6ee
+	source_aarch64 = sshpilot-bin-6.5.2-1-aarch64.deb::https://github.com/mfat/sshpilot/releases/download/v6.5.2/sshpilot_6.5.2-1_arm64.deb
+	sha256sums_aarch64 = 9edd1d7aa13bfd6c7f7d2e097bec861759d2a6f991bb015873df96c3b7bca0ca
 
 pkgname = sshpilot-bin
 	depends = gtk4
