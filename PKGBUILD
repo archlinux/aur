@@ -112,6 +112,9 @@ prepare() {
   ./target/$TARGET/release/dict-to-mozc -D 1 -n -P 12 -N 10 -i ./id.def -f ${srcdir}/mecab-user-dict-seed.20200910.csv >> all-dict.txt
   msg '5. Duplicate data will be removed.'
 
+  # ビルドエラー対策
+  sed "/へいろーこんばっとえぼるぶど.*\<.*>/d" all-dict.txt -i
+
   # 読み、表記による重複チェック。件数を抑制するために、品詞IDを無視し、読みと表記のみで重複チェック。
   awk 'BEGIN{FS="\t";OFS="\t"}{if (!a[$1,$5]++) {print $0}}' all-dict.txt|sort > finish-dict-pre.txt
   # 「ろっ」「ろっき」からはじまる単語が多いと、「ろっき」の入力ができないエラー抑止のため一括削除
