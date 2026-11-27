@@ -1,7 +1,7 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=iso-commander-bin
 pkgver=8.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc='The Fastest ISO Manager on the Planet, written in C++'
 arch=('x86_64')
 url="https://github.com/siyia2/iso-commander"
