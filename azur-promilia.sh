@@ -48,6 +48,53 @@ AZUR_CONF="${XDG_CONFIG_HOME:-$HOME/.config}/azur-promilia/env"
 # 帧率监控默认关闭；设置 AZUR_DXVK_HUD 才启用（fps / fps,frametimes,version,gpuload …）
 [ -n "${AZUR_DXVK_HUD:-}" ] && export DXVK_HUD="$AZUR_DXVK_HUD"
 
+# X11 客户端槽位预检：Xwayland 默认 256 个连接，泄漏后新客户端会连不上，
+# 表现为启动器「秒退」且日志里刷 "Maximum number of clients reached"。
+x11_client_count() {
+    local xp
+    xp="$(pgrep -x Xwayland | head -1)" || return 0
+    [ -n "$xp" ] || return 0
+    lsof -p "$xp" 2>/dev/null | grep -c 'X11-unix' || true
+}
+
+x11_preflight() {
+    local n limit
+    n="$(x11_client_count)"
+    n="${n:-0}"
+    limit="${AZUR_X11_MAX_CLIENTS:-240}"
+    if [ "$n" -ge "$limit" ]; then
+        cat >&2 <<EOF
+警告：X11 客户端连接数已达 $n（阈值 $limit），Xwayland 的名额快用完了。
+
+  再启动很可能直接「秒退」，日志里会出现：
+      Maximum number of clients reached
+
+  这通常是之前用 kill -9 强杀 Wine/CEF 进程留下的半死连接。
+  修复办法（会断开本会话里所有 X11 客户端，Wayland 应用不受影响）：
+
+      azur-promilia --fix-x
+
+EOF
+        [ "${AZUR_X11_PREFLIGHT:-warn}" = "strict" ] && exit 2
+    fi
+    return 0
+}
+
+fix_xwayland() {
+    local xp i
+    xp="$(pgrep -x Xwayland | head -1)"
+    [ -n "$xp" ] || die "没有运行中的 Xwayland"
+    echo "重启 Xwayland（pid=$xp）……"
+    kill "$xp" 2>/dev/null
+    for i in $(seq 1 15); do
+        sleep 1
+        [ -n "$(pgrep -x Xwayland | head -1)" ] && break
+    done
+    xp="$(pgrep -x Xwayland | head -1)"
+    [ -n "$xp" ] || die "Xwayland 没有自动重启，请注销后重新登录"
+    echo "新 Xwayland pid=$xp，当前连接数：$(x11_client_count)"
+}
+
 # 可选 MangoHud（更详细的帧时间曲线）：AZUR_MANGOHUD=1
 RUN=()
 if [ "${AZUR_MANGOHUD:-0}" = "1" ]; then
@@ -60,9 +107,11 @@ MODE="${1:-}"
 case "$MODE" in
     "")
         # 无参数：常规启动
+        x11_preflight
         exec ${RUN[@]+"${RUN[@]}"} "$PROTON" run "$LAUNCHER_WIN"
         ;;
     --bridge|bridge)
+        x11_preflight
         [ -f "$BRIDGE_DIR/run.py" ] || die "找不到桥接：$BRIDGE_DIR/run.py"
         command -v python3 >/dev/null || die "需要 python3"
         exec ${RUN[@]+"${RUN[@]}"} python3 "$BRIDGE_DIR/run.py" --game "$GAME_DIR" -- \
@@ -70,6 +119,9 @@ case "$MODE" in
         ;;
     --restore)
         exec python3 "$BRIDGE_DIR/run.py" --game "$GAME_DIR" --restore
+        ;;
+    --fix-x|--fix-xwayland)
+        fix_xwayland
         ;;
     --check)
         exec python3 "$BRIDGE_DIR/run.py" --game "$GAME_DIR" --check
@@ -82,6 +134,7 @@ case "$MODE" in
   --bridge       桥接登录：登录面板显示在 Linux 原生窗口（登录失效时用）
   --restore      把游戏目录里的官方 SDK 还原（桥接异常退出后使用）
   --check        检查游戏目录、SDK 哈希、桥接与 PyQt6
+  --fix-x        重启 Xwayland，清理泄漏的 X11 连接（启动「秒退」时用）
 
 环境变量：
   AZUR_GAME_ROOT    游戏根目录（默认 ~/Games/AzurPromilia）
@@ -89,6 +142,8 @@ case "$MODE" in
   AZUR_BRIDGE_DIR   桥接目录（默认 /usr/share/azur-promilia）
   AZUR_DXVK_HUD     DXVK 覆盖层（默认关闭；如 fps,frametimes,version,gpuload）
   AZUR_MANGOHUD     设 1 用 MangoHud 替代 DXVK HUD
+  AZUR_X11_MAX_CLIENTS   预检阈值（默认 240）
+  AZUR_X11_PREFLIGHT     warn（默认，只警告）或 strict（直接拒绝启动）
 EOF
         ;;
     *) die "未知参数：$MODE（用 --help 查看用法）" ;;

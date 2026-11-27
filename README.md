@@ -73,3 +73,18 @@ git push aur master
 - 登录态由登录器持有，**换了 prefix 或清理了 `Y:\AzurPromilia\AppData` 就要重新桥接登录一次**
 - 桥接期间强杀进程会让官方 `union_pcsdk.dll` 留在被替换状态，用 `--restore` 修
 - 内存占用较高（游戏常驻约 5G+），小内存机器建议关掉浏览器
+
+## 故障排查：启动器「秒退」
+
+日志里刷 `Maximum number of clients reached` 时，是 **X11 客户端槽位耗尽**（Xwayland 默认 256 个连接）。
+常见成因是用 `kill -9` 强杀 Wine/CEF 进程，留下对端已死但未回收的连接。
+
+```bash
+azur-promilia --fix-x     # 重启 Xwayland，清空连接（会断开本会话所有 X11 客户端）
+```
+
+启动脚本在连接数超过阈值（默认 240）时会提前打印警告，而不是让游戏莫名其妙「秒退」。
+阈值可用 `AZUR_X11_MAX_CLIENTS` 调整；设 `AZUR_X11_PREFLIGHT=strict` 可直接拒绝启动。
+
+> 为什么启动器不自动重启 Xwayland：重启会**连带杀掉会话里所有 X11 客户端**
+> （其它 Wine 程序、X11 应用），副作用不该由一个游戏启动器替用户决定。
