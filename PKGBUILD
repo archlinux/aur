@@ -1,32 +1,74 @@
-# Maintainer: AlexanderGhosty <byck.sash@gmail.com>
+# Maintainer: Vladimir B (Dexoron) <main@dexoron.tech>
+# Contributor: AlexanderGhosty <byck.sash@gmail.com>
 pkgname=cremniy-bin
-_pkgname=cremniy
-pkgver=0.1.3
-pkgrel=1
+pkgver=0.4.0
+pkgrel=2
 pkgdesc="Integrated low-level development environment with code editor, HEX editor and disassembler"
 arch=('x86_64')
 url="https://github.com/munirov/cremniy"
 license=('GPL-3.0-only')
-depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt6-base')
-makedepends=('patchelf')
-provides=('cremniy')
-conflicts=('cremniy')
-options=('!strip')
-source=(
-  "${_pkgname}-linux-${pkgver}.tar.gz::https://github.com/munirov/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux.tar.gz"
-  "${_pkgname}.desktop::https://raw.githubusercontent.com/munirov/${_pkgname}/v${pkgver}/${_pkgname}.desktop"
-  "${_pkgname}.svg::https://raw.githubusercontent.com/munirov/${_pkgname}/v${pkgver}/docs/cremniy_icon_stroke.svg"
-  "LICENSE::https://raw.githubusercontent.com/munirov/${_pkgname}/v${pkgver}/LICENSE"
+depends=(
+  'gcc-libs'
+  'glibc'
+  'hicolor-icon-theme'
+  'libglvnd'
+  'libx11'
+  'libxcb'
+  'zlib'
+  'fontconfig'
+  'freetype2'
+  'libpng'
+  'e2fsprogs'
+  'libgpg-error'
 )
-sha256sums=('c17ca3a042c00bb1122c47ab577d0f5de37e70d717b33cd7804849eefbda0496'
-            'e96d7a9cadbb2dff2aa1abd925d560c9ae3933fc0842aed32505c8e2ef1c2992'
-            'f6c30476d8fce0ca8ab15dfbf538a53fd46ad243b69f8e5b389693a84ed22873'
-            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
+provides=('cremniy')
+conflicts=('cremniy' 'cremniy-git')
+options=('!strip')
+
+source=(
+  "cremniy-${pkgver}.AppImage::https://github.com/munirov/cremniy/releases/download/v${pkgver}/cremniy-linux-v${pkgver}.AppImage"
+  "cremniy.desktop::https://raw.githubusercontent.com/munirov/cremniy/v${pkgver}/cremniy.desktop"
+  "LICENSE::https://raw.githubusercontent.com/munirov/cremniy/v${pkgver}/LICENSE"
+)
+
+sha256sums=(
+  'd67fc8310619b59f326abcf2a53e0305f9c135aaab1c3c1c58b4a376e785b940'
+  '55233cb64c4e907fc2c0582d6a6d02370c08f5ea19966bf08a02b67dd3a8d70f'
+  '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+)
+
+prepare() {
+  chmod +x "cremniy-${pkgver}.AppImage"
+  "./cremniy-${pkgver}.AppImage" --appimage-extract
+}
 
 package() {
-  install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  patchelf --remove-rpath "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 "${srcdir}/${_pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d "$pkgdir/opt/cremniy"
+  cp -a "$srcdir/squashfs-root/usr" "$pkgdir/opt/cremniy/"
+
+  find "$pkgdir/opt/cremniy" -type d -exec chmod 755 {} +
+  find "$pkgdir/opt/cremniy" -type f -perm /111 -exec chmod 755 {} +
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/cremniy" <<'EOF'
+#!/bin/sh
+export QT_QPA_PLATFORM=xcb
+export QT_QPA_PLATFORM_PLUGIN_PATH=/opt/cremniy/usr/plugins/platforms
+exec /opt/cremniy/usr/bin/cremniy "$@"
+EOF
+
+  install -Dm644 "$srcdir/cremniy.desktop" \
+    "$pkgdir/usr/share/applications/cremniy.desktop"
+  sed -i '1{/^#!/d;}' "$pkgdir/usr/share/applications/cremniy.desktop"
+  sed -i 's|^Icon=.*|Icon=cremniy|' "$pkgdir/usr/share/applications/cremniy.desktop"
+
+  install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/256x256/apps/cremniy.png" \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/cremniy.png"
+
+  install -Dm644 "$srcdir/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm -f "$pkgdir/opt/cremniy/usr/share/applications/cremniy.desktop"
+  rm -f "$pkgdir/opt/cremniy/usr/share/icons/hicolor/256x256/apps/cremniy.png"
+
+  find "$pkgdir/opt/cremniy" -type d -empty -delete
 }
