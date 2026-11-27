@@ -3,7 +3,7 @@
 **mdink** is a compact **native Rust** Markdown to PDF converter with six coordinated themes and custom colors. PDFs are generated directly: **no browser or external runtime is required**. Fonts are embedded in the executable.
 
 > This file mirrors the upstream README of the tagged release:
-> <https://github.com/davide-leva/mdink/blob/v1.0.0/README.md>
+> <https://github.com/davide-leva/mdink/blob/v1.1.0/README.md>
 > The canonical copy is the one in the upstream repository.
 
 ## Installation
@@ -101,10 +101,26 @@ Headings, accents, borders, alternating table rows, code and quote backgrounds, 
 
 Use a six-digit hexadecimal color, with or without `#`. Quote values containing `#` in the shell. If both `--theme` and `--color` are provided, the custom color determines the entire palette.
 
+## Optional document features
+
+Each feature is disabled unless its flag is supplied:
+
+- `--toc` inserts a clickable table of contents with page numbers for level 1 and 2 headings; level 2 entries are indented.
+- `--bookmarks` adds hierarchical PDF bookmarks for headings.
+- `--page-breaks` interprets a standalone `<!-- pagebreak -->` line as a page break. Without the flag it remains literal text.
+- `--header "Text"` adds a centered header. `--footer "Page {page} of {pages}"` replaces the default page-number footer; placeholders are expanded per page. Text must fit on one line.
+- `--code-theme dark` selects a dark syntax-highlighting palette and background. `--code-theme light` selects the default palette.
+
+For example:
+
+```sh
+mdink report.md --toc --bookmarks --page-breaks --header "Project report" --footer "Page {page} of {pages}" --code-theme dark
+```
+
 ## Supported Markdown
 
 - H1–H6 headings, paragraphs, bold, italic and combined emphasis.
-- Strikethrough, clickable external links, autolinks, nested blockquotes and horizontal rules.
+- Strikethrough, clickable external links and links to headings, autolinks, nested blockquotes and horizontal rules.
 - Ordered, unordered and nested lists, and task checkboxes.
 - Tables with column alignment, wrapped text and repeated headers across pages. Oversized cells are split without losing text.
 - Local images, HTTP/HTTPS images, `file:///` URLs and embedded data URIs.
@@ -112,17 +128,21 @@ Use a six-digit hexadecimal color, with or without `#`. Quote values containing 
 - Explicit line breaks using `<br>`, `<br/>` or `<br />`, including inside tables.
 - Footnotes using `[^note]`, collected at the end of the document.
 
-**Code blocks do not have syntax highlighting.** They use a monospace font and a theme-colored background. A language after the opening fence is accepted but does not color the code. Long lines wrap to fit the page. `<br />` inside code remains literal text.
+Fenced code blocks with a recognized language (for example ` ```rust `) use syntax highlighting. Unknown or omitted languages are rendered as plain monospace text. Long lines wrap to fit the page; `<br />` inside code remains literal text.
+
+Use ` ```mermaid ` fences to render Mermaid diagrams as vector graphics. Rendering is performed locally using a Rust Mermaid renderer; support for Mermaid syntax depends on that renderer. The renderer detects some malformed diagrams and reports an error without replacing existing output; Mermaid syntax coverage and validation are not complete.
+
+Links such as `[Details](#details)` navigate to headings in the PDF. Heading anchors use lowercase text, replace whitespace with hyphens, remove punctuation, and add `-1`, `-2`, etc. for duplicates. URL-encoded Unicode fragments are supported. Links to missing headings have no PDF destination.
 
 Image paths are resolved relative to the Markdown file's directory. For filenames containing spaces, use `![description](<image with spaces.png>)`. Supported formats: **PNG, JPEG, GIF, WebP, BMP and SVG**. Animations are rendered as static images. Images are scaled proportionally to fit the page. Missing or invalid images stop conversion. Remote image requests have a 30-second timeout and a 64 MiB size limit per image. AVIF is not included in the native version.
 
 Noto Sans (regular, bold, italic and bold italic), Noto Sans Mono, and Noto Sans Symbols fonts are compressed inside the executable. PDF font embedding includes only the glyphs actually used. Latin, Greek, Cyrillic and numerous symbols are covered; CJK and all emoji are not guaranteed. Missing glyphs produce an explicit English error instead of silently rendering empty squares. The [font license](native/fonts/LICENSE) is included in the repository and distribution archive.
 
-Raw HTML is rendered as text, except for `<br>` tags. LaTeX formulas, Mermaid diagrams, CSS and custom HTML are not interpreted. The native layout keeps the project's visual style; it is not a browser layout engine. PDFs contain selectable text, external links and page numbers. PDF/UA compliance is not claimed.
+Raw HTML is rendered as text, except for `<br>` tags. LaTeX formulas, CSS and custom HTML are not interpreted. The native layout keeps the project's visual style; it is not a browser layout engine. PDFs contain selectable text, external links and page numbers. PDF/UA compliance is not claimed.
 
 ## Keeping the executable small
 
-The release profile uses size optimization (`opt-level = "z"`), LTO, one code generation unit, stripped symbols and `panic = "abort"`. Fonts are losslessly compressed. Syntax highlighting, a JavaScript runtime, a browser and AVIF codecs are excluded. Measure the resulting artifacts with:
+The release profile uses size optimization (`opt-level = "z"`), LTO, one code generation unit, stripped symbols and `panic = "abort"`. Fonts are losslessly compressed. A JavaScript runtime, a browser and AVIF codecs are excluded. Measure the resulting artifacts with:
 
 ```sh
 wc -c dist/mdink

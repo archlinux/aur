@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=mdink
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Compact, browser-free Markdown-to-PDF CLI with six themes and custom colors'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cargo' 'gcc')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'LICENSE')
-sha256sums=('37ec6214c26017747749ed3ca4df179b98eed42b935ceb8c154704d1e3cdeb15'
+sha256sums=('ebb7bc6db4b37ca2c296c88f01083e36048e6233bc38bf12f60d74f11fbb9ac9'
             'a05a32fb37772cc1e5ab364cfec90ea5dad2efcaae51e1106b085451e7987149')
 
 prepare() {
