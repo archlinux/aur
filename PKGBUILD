@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=STexampleData
-_pkgver=1.20.1
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9596febfbf4445c250ec92ff536796f9')
-b2sums=('0c93d3f7afefc462483be8af4e2e31079af4b439d35e094c6d8bc6ac5919fdac4ffcb810bae1988df8c40833c3194072608fdebd4a472c9cb311196c1159ec56')
+md5sums=('9c9a523600106bdb4b5b77b5c72a0671')
+b2sums=('508a5782ddd19670fe2271228290860cd6cfa2e3417603e5b6d43134a69449349e8e055ff45ab1d3d8aaee7400c2aed7761b1abdfab784f9f80b887913d5e8e5')
 
 build() {
   mkdir build
