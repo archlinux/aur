@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SCArray.sat
-_pkgver=1.12.1
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('93551f3e75110d40d1e8df4179d5cb7d')
-b2sums=('fe881f98454c5cb19a008e75370e312a60700177a5719f156775ae3b36be5855cd0342f420e88c837250c6323d6e094206b2d3e5be7980dfa29b90c7ff03b516')
+md5sums=('8e4043f6ba92f65c293f407c14237f46')
+b2sums=('ecdd5c25058268ac69763643251a4d77814d787b04acab25e8e52bf27b00a5dbb82e098a1108861332762df9e4cd27f16e4a61a988073a86de2dc0023b5a1def')
 
 build() {
   mkdir build
