@@ -1,7 +1,7 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=workbuddy
-pkgver=5.6.2.40046327_c7b525f3
+pkgver=5.11.6.44396970_0f347fd9
 pkgrel=1
 pkgdesc="腾讯云代码助手推出的 AI Agent 办公工具"
 arch=('x86_64' 'aarch64')
