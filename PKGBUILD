@@ -1,7 +1,7 @@
 # Maintainer: thenomadcode <thenomadcodeinfo@gmail.com>
 
 pkgname=stably-orca-bin
-pkgver=1.4.279
+pkgver=1.4.280
 pkgrel=1
 pkgdesc="Stably AI Orca - Electron-based agentic coding IDE (prebuilt AppImage)"
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/v
 source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/orca-linux-arm64.AppImage")
 sha256sums=('99a4d39e313a217f68cae6eb5e5437f2522da037b99de989291e34524484795c'
             '05728d7dfad97b6b8d6b10dc3859fff566334500e480df4c5c8372491cf4f172')
-sha256sums_x86_64=('72a0cd5f5cb09c69b0d998ca255dfe35aa4bf7f22145f2d218b92393cb70cd5a')
-sha256sums_aarch64=('f55277a193e4f6c8266b7eaba7961649730a342fbb0854715638a42f63c99b52')
+sha256sums_x86_64=('7fa4d975bdd151787bb12537908464f87695ecc3f1c26cf553220ee86d3c06c2')
+sha256sums_aarch64=('34db076dbf51c89f01a73db9ef6a17c42bb99124e95de197ef579f2cdd9faae6')
 noextract=("${pkgname}-${pkgver}-x86_64.AppImage" "${pkgname}-${pkgver}-aarch64.AppImage")
 
 prepare() {
