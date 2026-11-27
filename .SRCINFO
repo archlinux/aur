@@ -1,6 +1,6 @@
 pkgbase = defguard-client
 	pkgdesc = Defguard VPN Multi-Factor Authentication Desktop Client
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 6
 	url = https://github.com/DefGuard/client
 	install = defguard-client.install
@@ -14,7 +14,7 @@ pkgbase = defguard-client
 	depends = pango
 	depends = webkit2gtk-4.1
 	depends = systemd-resolvconf
-	source_x86_64 = https://github.com/DefGuard/client/releases/download/v2.2.1/defguard-client_2.2.1_amd64.deb
-	sha256sums_x86_64 = fb745ea5ccb46cc3b8573477fc70bc5522b713e905ade71725657ea1492de70f
+	source_x86_64 = https://github.com/DefGuard/client/releases/download/v2.2.2/defguard-client_2.2.2_amd64.deb
+	sha256sums_x86_64 = 2f0afe795718be19cbc768e9e926dbaf692ace9d688b624bdf8630b6c831067e
 
 pkgname = defguard-client
