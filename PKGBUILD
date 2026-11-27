@@ -2,13 +2,13 @@
 _name=android-tv-remote
 pkgname=$_name-git
 pkgver=r24.gf6f71ee
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt desktop remote for Android TV with a native NVIDIA Shield trackpad'
 arch=(any)
 url="https://github.com/ragu-manjegowda/$_name"
 license=(MIT)
-depends=(python python-aiofiles 'python-androidtvremote2>=0.3.3' python-async-timeout
-         python-cryptography python-protobuf python-pyqt6 python-qasync python-zeroconf systemd)
+depends=(hicolor-icon-theme python python-aiofiles 'python-androidtvremote2>=0.3.3' python-async-timeout
+         python-cryptography python-protobuf python-pyqt6 python-qasync python-zeroconf qt6-svg systemd)
 makedepends=(git python-build python-installer 'python-setuptools>=77.0.3')
 checkdepends=(ttf-dejavu xorg-server-xvfb xorg-xauth)
 optdepends=('qt-solarized: use the system Solarized stylesheets instead of the bundled copies'
@@ -45,6 +45,7 @@ package() {
   python -I -m installer --destdir="$pkgdir" --prefix=/usr \
     --compile-bytecode=0 --compile-bytecode=1 --compile-bytecode=2 dist/*.whl
   install -Dm644 "packaging/linux/$_name.desktop" "$pkgdir/usr/share/applications/$_name.desktop"
+  install -Dm644 "src/ui/icons/$_name.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_name.svg"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 src/ui/themes/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.qt-solarized"
 }
