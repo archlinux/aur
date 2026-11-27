@@ -1,6 +1,6 @@
 pkgbase = configarr-bin
 	pkgdesc = Sync TRaSH Guides and custom configs with Sonarr and Radarr
-	pkgver = 1.39.2
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://github.com/raydak-labs/configarr
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = configarr-bin
 	provides = configarr
 	conflicts = configarr
 	options = !debug
-	source = configarr-bin-1.39.2-LICENSE::https://raw.githubusercontent.com/raydak-labs/configarr/v1.39.2/LICENSE
+	source = configarr-bin-1.40.0-LICENSE::https://raw.githubusercontent.com/raydak-labs/configarr/v1.40.0/LICENSE
 	sha256sums = 3c2c95ba9cd306762be1d3636575c0051b076831d197d9d3be9d1000c622025d
-	source_x86_64 = configarr-bin-1.39.2-x86_64.tar.xz::https://github.com/raydak-labs/configarr/releases/download/v1.39.2/configarr-linux-x64.tar.xz
-	sha256sums_x86_64 = e01cc3be067d1e438c1b4b13c7d979da025438d747afbc8bf4089ce056668ef1
-	source_aarch64 = configarr-bin-1.39.2-aarch64.tar.xz::https://github.com/raydak-labs/configarr/releases/download/v1.39.2/configarr-linux-arm64.tar.xz
-	sha256sums_aarch64 = f03b0b534d962bb3e4fb441000b7062c6bb67cc5911426bd692989482f3ad3c0
+	source_x86_64 = configarr-bin-1.40.0-x86_64.tar.xz::https://github.com/raydak-labs/configarr/releases/download/v1.40.0/configarr-linux-x64.tar.xz
+	sha256sums_x86_64 = 896d50b15d909d865eb7c4d5b3c0a59361358d203820c4a044d6b9736260ef0b
+	source_aarch64 = configarr-bin-1.40.0-aarch64.tar.xz::https://github.com/raydak-labs/configarr/releases/download/v1.40.0/configarr-linux-arm64.tar.xz
+	sha256sums_aarch64 = f0d50d34ef4aab49714a43c321cc772da1da432cf214eaa3d43017f769945ad9
 
 pkgname = configarr-bin
