@@ -5,12 +5,13 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Sébastien Luttringer
 # Contributor: Drew DeVault
+# Contributor: Fabiano Furtado <fusca14 <at> gmail.com>
 
 _freenginx=freenginx
 _pkgbase=nginx
 pkgbase=freenginx-mainline
 pkgname=(freenginx-mainline freenginx-mainline-src)
-pkgver=1.31.4
+pkgver=1.31.6
 pkgrel=1
 arch=('x86_64')
 url='https://freenginx.org'
@@ -37,7 +38,7 @@ validpgpkeys=(
   '13C82A63B603576156E30A4EA0EA981B66B0D967' # Konstantin Pavlov <thresh@nginx.com>
 )
 
-sha512sums=('e70fe4ca6b07538fcc2f18b428ab3c2dac574477ed815e6c92d25c2c267b2af29af06489b0e4ec1d7ce8d37a48d78c033393d208013ca9562101e24fe2b2138c'
+sha512sums=('8b7b6ea9dac0515723899cb15c6bcf84c35517df90d3663e0072e397126432ff7d98362d405da9a8b7acfdcb9ef024ee0199b241688b161f661c923e37281578'
             'SKIP'
             'ca7d8666177d31b6c4924e9ab44ddf3d5b596b51da04d38da002830b03bd176d49354bbdd2a496617d57f44111ad59833296af87d03ffe3fca6b99327a7b4c3c'
             '2f4dfcfa711b8bcbc5918ba635f5e430ef7132e66276261ade62bb1cba016967432c8dce7f84352cb8b07dc7c6b18f09177aa3eb92c8e358b2a106c8ca142fe9')
