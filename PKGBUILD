@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=mongodb_exporter-bin
-pkgver=0.54.0
+pkgver=0.55.0
 pkgrel=1
 pkgdesc="Prometheus exporter for MongoDB"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/mongodb_exporter-${pkgver}.linux-amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/mongodb_exporter-${pkgver}.linux-arm64.tar.gz")
-sha256sums_x86_64=('84e5c8145f4e78df2915f5aa8f3ccddbfd1b817d6a29db5a27525bb68b4095b4')
-sha256sums_aarch64=('79cb0d5137cc439d9ad385fe23667273d4f9c5a960c33141ed99b85e28172552')
+sha256sums_x86_64=('82c6b65725495c28893f2df32e85ad99e9060b4abad283f35c16fa2f31a9dcd8')
+sha256sums_aarch64=('1dcdb21af6c964253ad08f01a686fa93ac9417f59d2fa0de75b8117c979b93f3')
 
 package() {
   local _dir
