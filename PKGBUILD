@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 pkgname=kwiklook
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Quick previews of files from Dolphin'
 arch=('x86_64')
@@ -42,7 +42,7 @@ optdepends=(
 makedepends=('cmake' 'extra-cmake-modules' 'kcontacts' 'kcalendarcore')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # After pushing a new tag: updpkgsums, then makepkg --printsrcinfo > .SRCINFO
-sha256sums=('ee183dee2c6fc2e6bb19c1de7b99c332223c0e83df973754db36f865b657e3b5')
+sha256sums=('982974a770c351c3027739307281bcb14f1efe0eb370a9293a470f2957462aed')
 
 build() {
   cmake -B build -S "KwikLook-$pkgver" \
