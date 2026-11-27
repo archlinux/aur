@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=telert
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Alerts when commands finish, code runs or system events happen"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-beautifulsoup4' 'python-ping3' 'python-psutil' 'python-requests')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/t/telert/telert-${pkgver}.tar.gz")
-sha256sums=('3e629699feb370e52bf5127322d4ea199dcbb8e1721eccee8037c41dba831182')
+sha256sums=('96d6f0dd09cd955ffb2567ef6e7bc37ce93dfbaf21318d25e93b5b3d16d57b6e')
 
 build() {
   cd "telert-${pkgver}"
