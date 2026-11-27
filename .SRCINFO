@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
 	pkgver = 3.34.6239.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary
@@ -16,24 +16,24 @@ pkgbase = mozc-with-jp-dict
 	makedepends = rustup
 	makedepends = unzip
 	options = !lto
-	source = git+https://github.com/fcitx/mozc.git#commit=fa32b33d4cdd0443b05d9680f07fbd1a1ae21971
-	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=40a2fb008014165bad78d0dd1363c757c2dbd81e
+	source = git+https://github.com/fcitx/mozc.git#commit=f18c2845d724fcf6bb8c923f127c7fcc5ec9b2ec
+	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=907b837bcb378143d924ece26c201b5f7ab275f5
 	source = git+https://github.com/phoepsilonix/dict-to-mozc.git#tag=v0.6.30
-	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20260428/small_lex.zip
-	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20260428/core_lex.zip
-	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20260428/notcore_lex.zip
+	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20261015/small_lex.zip
+	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20261015/core_lex.zip
+	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20261015/notcore_lex.zip
 	source = LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL
 	source = https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/seed/mecab-unidic-user-dict-seed.20200910.csv.xz
 	source = LICENSE-MeCab-unidic-Neologd::https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/COPYING
 	source = https://github.com/phoepsilonix/mecab-ipadic-neologd/raw/refs/heads/master/seed/mecab-user-dict-seed.20200910.csv.xz
 	source = LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
 	source = fcitx5-mozc-conf.patch
-	sha512sums = efa54487d199b54d76626e2352176851a625caf802ecd172d6d4d4791af5f1074c4069b9d380e8594a0b1c7cd0a9941880fd77e12f096837a39f0c1af29e7f8b
-	sha512sums = 2ae1ca46c1ef1276bcb7ad30f120ac9f9fb269cc54d6e5abe8774957f01fbf2b21ac8f0434851de29acf2542a09dbe9e0adba82637d2a24e0d4b0eb36a2cd0b3
+	sha512sums = 35dee68e7e44cbe3a48cf19845655f8d7fd7445e90071b82ab5d5ba38643383995261b56d00328141dd5fa688eea3098bf11e2a1002d2b62dc17c724c174f3b1
+	sha512sums = 8e98c215b62bdebc8795b2d418faa8e1fc05db057a387f2c6bbfd1478e4ac094de2c0c0e8a3f1890aa566d6708fac075ec19580ab7afea1ae57586956a44bb1d
 	sha512sums = e913bb48b6358eea4ca67397de03d48b8db073a634d078df48a0c13be31a0d52fa73c8390712bf2af28f5c2af4a540282d817658356e5fa996e592044574c3b3
-	sha512sums = bece72a09c37abd49d0f6963db656f2e4e1666059ec6d1082fb91126525e1b1c71438a7ee766d096bae7a7975bbe48371e57eb3b1ff03adbb872e72ac2edea90
-	sha512sums = efce91101e7736485e0f842f92029ddb3e802deab2c2f5310f92e2b00ca4d2dade859fc726692c5e09410376eb02d9ce1392041ed18629404c2843c24230376c
-	sha512sums = ef806b73acd6170f9a3f7d28c576b99ffed4866c1013918fdcc8792795e488242fad23c6dfb5a4cd3311c259b5d2eb9238e549fee8e0aab96ee266ab5812b08a
+	sha512sums = d69203b3c1b866b7b3c0c4102b69a24ca51ef37f8ddde25f89b6c6d22b05eab7ee2fc5a4fb61b71d3d4b4287a6164f16fdc803935c3ceff2b7d902137a79e8ed
+	sha512sums = bf5765a8bf95f153a83d9e6409544592622d65e66a67238140cf041af9c071831a99dad97d0293030a0e01c5c892d0efea377565f158c77ebf99d9e268caab53
+	sha512sums = d92bf6e046ee1bf681d70eeccd27a10a950d5a4725c9d47d8fd63525b5b272e869e7f133cfeccd6d03087ac8017aa09b8cc736ce9043d5a22b90e62b20300e0c
 	sha512sums = 1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca
 	sha512sums = 3bdbda066130043e2e6403a8196a13b78a35313fc8797769eb8f76033349f420c68ac50a3e0604836c2cb577179f3e123af64a4e45aa05d14575f46707383d28
 	sha512sums = 44b228264547c4628599b5888bd177dc3ddb845094a0acebcd3d7d7665e2cda8861f7210f80f0f40531f46581f565aab3489a6a2ff3aa75c058d552b23ea8d6e
