@@ -3,7 +3,7 @@
 # Upstream: https://github.com/ProxyShard/ShardBrowser
 
 pkgname=shardx-launcher-bin
-pkgver=2.1.4
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="ShardX anti-detect browser launcher"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip')
 source=("${pkgname%-bin}.AppImage::https://github.com/ProxyShard/ShardBrowser/releases/download/v${pkgver}/ShardBrowser.Launcher_${pkgver}_amd64.AppImage"
         "shardx-launcher.desktop")
 sha256sums=(
-            '75de6f53db4682148ca54cf6532ee25060826a98d152ad8712dbc8707e4cbe5d'
+            '9eec98fc3addc261c73a767675dc86f971972ec516ac41e207c6fa6bfd60737c'
             '3617af983c16d6d999f45bac141ff218656ad05ffc20146ad8a2b3a597150f5e'
 )
 
