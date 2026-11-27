@@ -2,7 +2,7 @@
 # Contributor: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=python-social-auth-core
-pkgver=7.2.0 # renovate: datasource=github-tags depName=python-social-auth/social-core
+pkgver=7.3.0 # renovate: datasource=github-tags depName=python-social-auth/social-core
 pkgrel=1
 pkgdesc='Python Social Auth core component'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
   'python-wheel'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('6af9aa968c50f94b9a33c4fcef6b01ffcf7d212c4fcca2db2ae755ed82be2868')
+sha256sums=('635beb2f1998b9ef4f74ecfdd7ab9891aa42fda90ef738326540e553f4ecc412')
 
 build() {
   cd social-core-"${pkgver}"
