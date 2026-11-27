@@ -1,6 +1,6 @@
 pkgbase = r-riboseqr
 	pkgdesc = Analysis of sequencing data from ribosome profiling experiments
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/riboSeqR
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-riboseqr
 	optdepends = r-biocgenerics
 	optdepends = r-biocstyle
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/riboSeqR_1.46.0.tar.gz
-	sha256sums = 5b80aa072cd8dcf8cc8451c2e3b1ece67d69266826fdf3f61382f3d83da694c2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/riboSeqR_1.48.0.tar.gz
+	sha256sums = 3168a66ef1407213d13a0ecf3e70ad07b8dc19e24424ea9fe024977e298cb490
 
 pkgname = r-riboseqr
