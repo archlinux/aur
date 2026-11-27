@@ -2,7 +2,7 @@
 
 pkgname=minimax-code
 _pkgname='@minimax-ai/code'
-pkgver=0.7.10
+pkgver=0.8.0
 pkgrel=1
 # upstream optionalDependencies pin
 _better_sqlite3_ver=12.11.1
