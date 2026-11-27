@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=coddy-agent-bin
-pkgver=1.4.45
+pkgver=1.4.49
 pkgrel=1
 pkgdesc="General-purpose agent with a console TUI and an ACP server"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/coddy-p
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/coddy_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/coddy_${pkgver}_linux_arm64.tar.gz")
 sha256sums=('c3e1be9b60cb2797323867b2cc7edd00d68ed96acc0efd6e82138b9af73cccfd')
-sha256sums_x86_64=('5757fe1a2894a951052025e61058ad457ff168d05c6b7bd35c6cdc398c44895a')
-sha256sums_aarch64=('c02460e032585e05567bbd374b4ecddd8fc16e28c9d3f27fd16fc34649523e26')
+sha256sums_x86_64=('3e55495a8e794fa3c4371cd016aa324c77e7e25682e051ef42411b1147672ec2')
+sha256sums_aarch64=('c20919d76100b029b732a6f59889e0120c73b91639b20b3c5cfa469932137ba3')
 
 package() {
   install -Dm755 "coddy" "${pkgdir}/usr/bin/coddy"
