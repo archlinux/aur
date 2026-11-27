@@ -4,7 +4,7 @@ pkgver=1.0.0.alpha.2.r26.g0879260
 pkgrel=1
 pkgdesc="Simplifies the installation and management of AppImages"
 arch=('x86_64' 'aarch64')
-url="https://github.com/cosmic-utils/app-hub"
+url="https://github.com/cosmic-ext-orbit/app-hub"
 license=('MIT')
 depends=(
   'hicolor-icon-theme'
@@ -18,7 +18,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/cosmic-utils/app-hub.git')
+source=('git+https://github.com/cosmic-ext-orbit/app-hub.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
   cd app-hub
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 
   # Set StartupWMClass
   desktop-file-edit --set-key=StartupWMClass --set-value=com.app_hub.AppHub \
@@ -39,6 +39,8 @@ prepare() {
 build() {
   cd app-hub
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_PROFILE_RELEASE_LTO=true
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
   just build-release --frozen
 }
 
