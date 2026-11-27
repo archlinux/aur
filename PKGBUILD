@@ -1,8 +1,8 @@
 # Maintainer: Remy Huang <me@remya.top>
 pkgname=remya-screen-capture
 _app_id=remya_screen_capture
-_upstream_ver=0.4.0
-pkgver=0.4.0
+_upstream_ver=0.4.1
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Screen capture, recording and editing for Hyprland"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('clang' 'cmake' 'fvm' 'ninja' 'rustup' 'wayland-protocols')
 conflicts=('remya-screen-capture-bin' 'remya-screen-capture-git')
 source=("remya-screen-capture-${_upstream_ver}.tar.gz::${url}/archive/refs/tags/v${_upstream_ver}.tar.gz"
         "remya-core-${_core_ver}.tar.gz::https://github.com/remyhuang03/remya-core/archive/refs/tags/v${_core_ver}.tar.gz")
-sha256sums=('7af45b2be0015c19eba926094293d78905dc0d6dc39148f2475acb4c3d47817a'
+sha256sums=('3a0a157058570c9c1eab5cfb1c4d691b57434e4ee69774ee62ea966a89cab521'
             '7d6446827dde819e21c6029e5aa8af732dc12753c79b990d474b29bc5b7a22b7')
 
 prepare() {
