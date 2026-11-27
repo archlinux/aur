@@ -1,6 +1,6 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=c-icap
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc='Implementation of an ICAP server'
 depends=('brotli' 'bzip2' 'db' 'libldap' 'lmdb' 'openssl' 'pcre2' 'zlib' 'zstd')
@@ -12,7 +12,7 @@ source=("http://downloads.sourceforge.net/project/c-icap/c-icap/0.6.x/c_icap-${p
         'c-icap.tmpfiles'
         'c-icap.sysusers'
         'c-icap.logrotate')
-sha256sums=('82e457b3f234d56f537c70ec76a1d51ce8f6a55522592f2df07fc2557856f184'
+sha256sums=('7d0e70c6226a3e51b4832bcfdee8d398e687ecb7bb139a9e37f9c6eea8fd02db'
             '313ae1b3ff52597158d3a914702d60b16248a8fb8f934e91644f63ad373e6375'
             'f13158c82b0ef625d3d142811eaf100de01ab09d8d82b66282f1d80bc78d10dd'
             'c903eb86e6968b9d3bd0a9ad3335e8ce76a718b6217251e9dd7e66d5cf1ac94a'
