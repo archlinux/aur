@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pi-harness-bin
 _pkgname=Pi-Harness
-pkgver=2.4.18
+pkgver=2.4.19
 _electronversion=44
 pkgrel=1
 pkgdesc="Operational Superset Harness and Desktop Control Plane for Pi Coding Agent."
@@ -11,23 +11,23 @@ license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
-    'nodejs'
-    'npm'
-    'python'
-    'python-packaging'
+	"electron${_electronversion}"
+	'nodejs'
+	'npm'
+	'python'
+	'python-packaging'
 )
 options=(
-    '!strip'
-    '!emptydirs'
+	'!strip'
+	'!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
-    "${pkgname%-bin}.js"
-    "${pkgname%-bin}.sh"
+	"${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+	"${pkgname%-bin}.js"
+	"${pkgname%-bin}.sh"
 )
-sha256sums=('92ca7b218149cc467059fb4184728217698110efe9d2fc935e62b9bda136e65e'
-            '03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86'
+sha256sums=('ac7d41f4e91b23c67790a410fed27e66135888811b3ca37ae80d2d2f03c5c1bc'
+            '4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b'
             '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
@@ -64,22 +64,22 @@ _delete_other_arch_files() {
 	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 prepare() {
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
-    rm -rf "${srcdir}/squashfs-root"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    _check_electron_version
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "$(_get_app_dir)/${pkgname%-bin}.desktop"
-    find "$(_get_app_dir)/resources" -type d -perm 700 -exec chmod 755 {} +
-    _delete_other_arch_files
+	sed -i -e "
+		s/@electronversion@/${_electronversion}/g
+		s/@appname@/${pkgname%-bin}/g
+	" "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
+	rm -rf "${srcdir}/squashfs-root"
+	chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+	"${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+	_check_electron_version
+	sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "$(_get_app_dir)/${pkgname%-bin}.desktop"
+	find "$(_get_app_dir)/resources" -type d -perm 700 -exec chmod 755 {} +
+	_delete_other_arch_files
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+	install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    _install_icons
-    install -Dm644 "$(_get_app_dir)/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+	_install_icons
+	install -Dm644 "$(_get_app_dir)/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
