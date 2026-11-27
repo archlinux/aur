@@ -1,7 +1,7 @@
 pkgbase = visual-studio-code-electron-bin
 	pkgdesc = Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications.
 	pkgver = 1.148.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.visualstudio.com/
 	arch = aarch64
 	arch = armv7h
@@ -16,6 +16,7 @@ pkgbase = visual-studio-code-electron-bin
 	depends = gcc-libs>=8.1.0
 	depends = openssl-3
 	depends = ripgrep
+	depends = nodejs
 	optdepends = gvfs: For move to trash functionality
 	optdepends = libdbusmenu-glib: For KDE global menu
 	provides = visual-studio-code
@@ -29,7 +30,7 @@ pkgbase = visual-studio-code-electron-bin
 	options = !strip
 	source = visual-studio-code-electron.js
 	source = visual-studio-code-electron.sh
-	sha256sums = 03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86
+	sha256sums = 4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b
 	sha256sums = 3211b90722e2c34c51d41c31726eb6f7c3cecbb6d215c4a281e47b264ba6239e
 	source_aarch64 = visual-studio-code-electron-1.148.0-aarch64.rpm::https://update.code.visualstudio.com/1.148.0/linux-rpm-arm64/stable
 	sha256sums_aarch64 = 8180ffb2166f197b7bd2d3610abae439a2d0608d4a36fe15f31fd851b0f360bb

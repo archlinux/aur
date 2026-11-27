@@ -6,7 +6,7 @@ pkgname="${_pkgname}-electron-bin"
 _debname=com.microsoft.VSCode
 pkgver=1.148.0
 _electronversion=43
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications."
 arch=(
     'aarch64'
@@ -40,6 +40,7 @@ depends=(
     'gcc-libs>=8.1.0'
     'openssl-3'
     'ripgrep'
+    'nodejs'
 )
 optdepends=(
     'gvfs: For move to trash functionality'
@@ -55,7 +56,7 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://update.code.visualstudio.com/${pkgver}/linux-rpm-arm64/stable")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://update.code.visualstudio.com/${pkgver}/linux-rpm-armhf/stable")
 source_x86_64=("${pkgname%-bin}-${pkgver}-${CARCH}.rpm::https://update.code.visualstudio.com/${pkgver}/linux-rpm-x64/stable")
-sha256sums=('03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86'
+sha256sums=('4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b'
             '3211b90722e2c34c51d41c31726eb6f7c3cecbb6d215c4a281e47b264ba6239e')
 sha256sums_aarch64=('8180ffb2166f197b7bd2d3610abae439a2d0608d4a36fe15f31fd851b0f360bb')
 sha256sums_armv7h=('f75166dee05f859a05e2cfb811e25b7fbe38d3dba9621f8081de56af944f900d')
@@ -75,16 +76,14 @@ _check_electron_version() {
 	(( _v == _electronversion )) && c=32 || c=31
 	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
 }
-_install_icons() {
-	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
-	while IFS= read -r -d '' _icon; do
-		_ext="${_icon##*.}"
-		_size=$(echo "${_icon%/*}" | grep -oE '[0-9]+x[0-9]+|scalable' | head -1)
-		[[ -z "${_size}" ]] && _size=$([[ "${_ext}" == svg ]] && echo scalable || od -An -tu1 -j16 -N8 "${_icon}" 2>/dev/null | awk '{printf "%dx%d",$1*16777216+$2*65536+$3*256+$4,$5*16777216+$6*65536+$7*256+$8}')
-		[[ "${_size}" =~ ^[0-9]+x[0-9]+$ ]] || _size=scalable
-		_dest=$([[ "${_icon}" == */share/pixmaps/* ]] && echo pixmaps || echo "icons/hicolor/${_size}/apps")
-		install -Dm644 "${_icon}" "${pkgdir}/usr/share/${_dest}/${_name}.${_ext}"
-	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
+_generate_icons() {
+	local _sizes=(16 24 32 48 64 96 128 256 512 1024) _src="$(_get_app_dir)/resources/app/resources/linux/code.png" _s
+	for _s in "${_sizes[@]}"; do
+		install -d "${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps"
+		magick "${_src}" -background none -filter Lanczos -resize "${_s}x${_s}" \
+			-strip -define png:compression-level=9 \
+			"${pkgdir}/usr/share/icons/hicolor/${_s}x${_s}/apps/${pkgname%-bin}.png"
+	done
 }
 prepare() {
     _check_electron_version
@@ -116,7 +115,7 @@ package() {
     install -Dm644 "${srcdir}/usr/share/applications/${_debname}.UrlHandler.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}-UrlHandler.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/mime/packages/${_appname}-workspace.xml" "${pkgdir}/usr/share/mime/packages/${pkgname%-bin}-workspace.xml"
-    _install_icons
+    _generate_icons
     install -Dm644 "${srcdir}/usr/share/bash-completion/completions/${_appname}" -t "${pkgdir}/usr/share/bash-completion/completions"
     install -Dm644 "${srcdir}/usr/share/zsh/site-functions/_${_appname}" -t "${pkgdir}/usr/share/zsh/vendor-completions/"
     install -Dm644 "${srcdir}/usr/share/${_appname}/resources/app/licenses/"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
