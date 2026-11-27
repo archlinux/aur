@@ -1,0 +1,7 @@
+pkg/*
+src/*
+
+# Pkgs and Source archives
+studio-link-standalone-v*-stable-linuxjack.tar.gz
+studiolink-standalone-jack-bin-*.pkg.*
+
