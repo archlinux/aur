@@ -2,7 +2,7 @@
 _name=android-tv-remote
 pkgname=$_name-git
 pkgver=r24.gf6f71ee
-pkgrel=3
+pkgrel=4
 pkgdesc='Qt desktop remote for Android TV with a native NVIDIA Shield trackpad'
 arch=(any)
 url="https://github.com/ragu-manjegowda/$_name"
@@ -46,6 +46,7 @@ package() {
     --compile-bytecode=0 --compile-bytecode=1 --compile-bytecode=2 dist/*.whl
   install -Dm644 "packaging/linux/$_name.desktop" "$pkgdir/usr/share/applications/$_name.desktop"
   install -Dm644 "src/ui/icons/$_name.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_name.svg"
+  install -Dm644 "src/ui/icons/$_name-light.svg" "$pkgdir/usr/share/icons/Solarized-FLAT-Blue/scalable/apps/$_name.svg"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 src/ui/themes/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.qt-solarized"
 }

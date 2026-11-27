@@ -1,7 +1,7 @@
 pkgbase = android-tv-remote-git
 	pkgdesc = Qt desktop remote for Android TV with a native NVIDIA Shield trackpad
 	pkgver = r24.gf6f71ee
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ragu-manjegowda/android-tv-remote
 	arch = any
 	license = MIT
