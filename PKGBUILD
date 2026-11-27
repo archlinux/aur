@@ -5,11 +5,11 @@
 
 pkgname=anker-launcher-bin
 _pkgname=anker-launcher
-pkgver=0.1.33
+pkgver=0.1.34
 pkgrel=1
 pkgdesc="Desktop client for AnkerGames (upstream AppImage)"
 arch=('x86_64')
-url="https://github.com/zororver/anker-launcher"
+url="https://ankergames.net/launcher"
 license=('LicenseRef-proprietary')
 # The AppImage bundles WebKitGTK, GTK3, GLib, libsoup, aria2, and ludusavi;
 # these are the base system libraries needed to run the AppRun runtime and launcher.
@@ -18,9 +18,9 @@ optdepends=('xdg-utils: desktop integration and browser URL opening')
 provides=("anker-launcher=${pkgver}")
 conflicts=('anker-launcher')
 options=('!strip' '!debug')
-source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/AnkerLauncher-${pkgver}-x86_64.AppImage")
+source=("${pkgname}-${pkgver}.AppImage::https://ankergames.net/api/v1/launcher-files/v${pkgver}/AnkerLauncher-${pkgver}-x86_64.AppImage")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums=('4d4650725bc46c70ee4b2b2a67b39c2cac7a7ef88d1b1895663a2413b38cdc43')
+sha256sums=('fc14628571f381bae17911d5c72fa9016ae42593c1cac3fbe43ae7fd72da32fc')
 
 prepare() {
   chmod +x "$srcdir/${pkgname}-${pkgver}.AppImage"
