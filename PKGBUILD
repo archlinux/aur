@@ -1,6 +1,6 @@
 pkgname=ibus-areca-git
 _pkgname=ibus-areca
-pkgver=r84.b510ad8
+pkgver=r86.501e263
 pkgrel=1
 pkgdesc='Areca Vietnamese input method for IBus using the Bamboo engine'
 arch=('x86_64')
