@@ -2,7 +2,7 @@
 
 pkgname=libfprint-fte3600-git
 # makepkg replaces this bootstrap value with pkgver() from the committed HEAD.
-pkgver=1.94.100.r95
+pkgver=1.94.100.r97
 pkgrel=1
 pkgdesc='libfprint with FTE3600 SPI fingerprint support, DKMS glue, and toolkit'
 arch=(x86_64)
@@ -22,10 +22,10 @@ optdepends=(
 makedepends=(cairo git glib2-devel gobject-introspection meson ninja python python-build python-installer python-setuptools)
 checkdepends=(umockdev dbus desktop-file-utils)
 provides=("libfprint=$pkgver" 'libfprint-2.so=2-64')
-conflicts=(libfprint libfprint-fte3600-personal-git)
+conflicts=(libfprint libfprint-fte3600-bin libfprint-fte3600-personal-git)
 install=fte3600.install
-# Meson enables LTO for production and disables it for linker-wrapped tests.
-# Do not inject a second -flto through makepkg's global compiler flags.
+# Disable LTO to keep local source builds fast on low-power CPUs and avoid
+# GCC LTO interactions with linker-wrapped unit tests.
 options=(!lto)
 
 source=("libfprint::git+https://github.com/wings1848/libfprint-fte3600.git#branch=main")
@@ -51,7 +51,7 @@ build() {
     --prefix=/usr
     --libdir=lib
     --buildtype=release
-    -Db_lto=true
+    -Db_lto=false
     -Dwerror=true
     -Ddrivers=all
     -Dgtk-examples=false

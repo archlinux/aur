@@ -1,6 +1,6 @@
 pkgbase = libfprint-fte3600-git
 	pkgdesc = libfprint with FTE3600 SPI fingerprint support, DKMS glue, and toolkit
-	pkgver = 1.94.100.r95
+	pkgver = 1.94.100.r97
 	pkgrel = 1
 	url = https://github.com/wings1848/libfprint-fte3600
 	install = fte3600.install
@@ -39,9 +39,10 @@ pkgbase = libfprint-fte3600-git
 	optdepends = libadwaita: desktop GUI (fte3600-toolkit-gui)
 	optdepends = libnotify: desktop notifications during enrollment/verification
 	optdepends = libpulse: audio cues via paplay
-	provides = libfprint=1.94.100.r95
+	provides = libfprint=1.94.100.r97
 	provides = libfprint-2.so=2-64
 	conflicts = libfprint
+	conflicts = libfprint-fte3600-bin
 	conflicts = libfprint-fte3600-personal-git
 	options = !lto
 	source = libfprint::git+https://github.com/wings1848/libfprint-fte3600.git#branch=main
