@@ -2,7 +2,7 @@
 # Maintainer: bnema <b at bnema dot dev>
 
 pkgname='nefervox-bin'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Push-to-talk dictation for Wayland: speak, then the transcript is typed into the focused window'
 url='https://git.bnema.dev/nefervox'
@@ -14,10 +14,10 @@ depends=('glibc' 'vulkan-icd-loader' 'vulkan-driver' 'pipewire-audio' 'ttf-dejav
 optdepends=('wl-clipboard: clipboard output and fallback when typing fails' 'xdg-utils: open the browser for nefervox login chatgpt')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://git.bnema.dev/nefervox/releases/download/v${pkgver}/nefervox_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('d6241e3b7460f0a9646edf9030a280a2b40b5487cc0a9bae3637e23e327a2f88')
+sha256sums_aarch64=('3ccfbe4419870109e102f5fdbbe3c5b3bf9899e510154ad2e7776478af4ad5c5')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://git.bnema.dev/nefervox/releases/download/v${pkgver}/nefervox_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('91a9cc7aa37e4f8dfd193c66efb08573d0bcc24c7cef66774d83a5e467a90d43')
+sha256sums_x86_64=('54f0886ad6c336e082d66f141db711dc4bfb04330cd7b9b1a33c7478cd3fadf5')
 
 package() {
   install -Dm755 ./nefervox "${pkgdir}/usr/bin/nefervox"
