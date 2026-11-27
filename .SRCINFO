@@ -1,0 +1,30 @@
+pkgbase = hghub
+	pkgdesc = Plug-in media player
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/Minireel/HGhub
+	arch = x86_64
+	license = PolyForm-Noncommercial-1.0.0
+	makedepends = rust
+	makedepends = git
+	makedepends = cargo-tauri
+	makedepends = pnpm
+	makedepends = nodejs
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgcc_s.so
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = hghub
+	conflicts = hghub
+	options = !debug
+	options = !strip
+	options = !lto
+	source = hghub::git+https://github.com/Minireel/HGhub#tag=v0.0.4
+	sha256sums = 01ee7323681ad1c0fcb2e562f5067f78b0019937d03e6e67f88d16e86453c300
+
+pkgname = hghub
