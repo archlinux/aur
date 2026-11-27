@@ -1,14 +1,14 @@
 pkgbase = nodejs-appium-chromium-driver
 	pkgdesc = Appium 2.x driver for Chromium-based browsers that work with Chromedriver
-	pkgver = 5.0.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/appium-chromium-driver
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = nodejs-appium-chromium-driver-5.0.0.tgz
-	source = nodejs-appium-chromium-driver-5.0.0.tgz::https://registry.npmjs.org/appium-chromium-driver/-/appium-chromium-driver-5.0.0.tgz
-	sha256sums = d7adc8621600cad189e5a9820a2833c48f58aaff536ce54ec52aaaab10cdf554
+	noextract = nodejs-appium-chromium-driver-5.1.0.tgz
+	source = nodejs-appium-chromium-driver-5.1.0.tgz::https://registry.npmjs.org/appium-chromium-driver/-/appium-chromium-driver-5.1.0.tgz
+	sha256sums = 3de31d9d63e28ea12299a0644204322c165b29947dac34bbc82b8555a5a0ed1a
 
 pkgname = nodejs-appium-chromium-driver
