@@ -1,0 +1,27 @@
+pkgbase = puppetxr-bin
+	pkgdesc = OpenXR simulator runtime: simulated headset and controllers driven by keyboard and mouse (prebuilt)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/FlexW/puppetxr
+	install = puppetxr.install
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	optdepends = vulkan-icd-loader: Vulkan apps
+	optdepends = libglvnd: OpenGL apps
+	optdepends = libx11: mirror window on X11
+	optdepends = libxcursor: mirror window on X11
+	optdepends = libxi: mirror window on X11
+	optdepends = libxrandr: mirror window on X11
+	optdepends = wayland: mirror window on Wayland
+	optdepends = libxkbcommon: keyboard input on Wayland
+	optdepends = fontconfig: UI fonts
+	optdepends = openxr: OpenXR loader for apps
+	provides = puppetxr=0.2.0
+	conflicts = puppetxr
+	options = !strip
+	options = !debug
+	source = https://github.com/FlexW/puppetxr/releases/download/v0.2.0/puppetxr-0.2.0-linux-x86_64.tar.gz
+	sha256sums = 1572bd09be3d4614fa291b865720415263216d1424045a7c7a53f9e904ea1464
+
+pkgname = puppetxr-bin
