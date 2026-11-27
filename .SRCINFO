@@ -1,6 +1,6 @@
 pkgbase = python-specklepy
 	pkgdesc = The Python SDK for Speckle
-	pkgver = 2026.8.1
+	pkgver = 2026.9.3
 	pkgrel = 1
 	url = https://github.com/specklesystems/specklepy
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-specklepy
 	depends = python-pydantic
 	depends = python-pydantic-settings
 	depends = python-ujson
-	source = https://files.pythonhosted.org/packages/source/s/specklepy/specklepy-2026.8.1.tar.gz
-	sha256sums = d0d1c56b09b06b3f744879f7cf27b3495977cef010435f8850f4e1eb4d38263a
+	source = https://files.pythonhosted.org/packages/source/s/specklepy/specklepy-2026.9.3.tar.gz
+	sha256sums = 27569d74d94a36e0c4998a489935e73fcc06fc6680ca258a14b52ed0bf4b0432
 
 pkgname = python-specklepy
