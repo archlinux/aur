@@ -1,7 +1,7 @@
 # Maintainer: MingxuanGame <MingxuanGame@outlook.com>
 
 pkgname=g0v0-git
-pkgver=2026.1111.1.r72.gf126890
+pkgver=2026.1111.1.r81.g66bd46a
 pkgrel=1
 pkgdesc="g0v0! -- free and open rhythm experience! (a community project based on osu!lazer codebase)"
 arch=(x86_64 aarch64)
