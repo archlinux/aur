@@ -1,6 +1,6 @@
 pkgbase = r-seq2pathway
 	pkgdesc = a novel tool for functional gene-set (or termed as pathway) analysis of next-generation sequencing data
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/seq2pathway
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-seq2pathway
 	depends = r-gsa
 	depends = r-seq2pathway.data
 	depends = r-wgcna
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/seq2pathway_1.44.0.tar.gz
-	sha256sums = e86a32846f6e7caf140e123b46fe98194b79fc2eafe6ca4def563dbea657ad79
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/seq2pathway_1.46.0.tar.gz
+	sha256sums = 3ccf26e58177bee22b64feabf6e765c39356984933c259a1cf3dc2d193bde02c
 
 pkgname = r-seq2pathway
