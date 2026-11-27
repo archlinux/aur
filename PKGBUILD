@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=meow-rs-bin
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="Rust implementation of the mihomo (Clash Meta) proxy kernel"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/meow-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/meow-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('688778d86557b71e952812644e092c91b8e5f3ed1ac98a0dbb097bfb6023f328')
-sha256sums_aarch64=('7e0080f3a15d7b26f64297a926c960aab9a3c6428e0bd6883d6efa4b17aee62f')
+sha256sums_x86_64=('026b29702521b0c168a579de2822bb0106c726355e926612b31da5fd5759e39f')
+sha256sums_aarch64=('7b6578c1e088710cdca8f29fd1dca7b41b49c37693f33440d34d493bfee4ac3b')
 
 package() {
   local _dir
