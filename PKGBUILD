@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scDDboost
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cc882f2ac84ac1d18ffe47d8e1844fe9')
-b2sums=('e0c2c6d36bc01023b9dd4f2160bb34892d6c86a1a548be6dfe2b6e5f3f70d48ceb72e2c36632d8c8b9aa262091c4f3ad2a2abf26f7043f3d66e63feb3b24f9cd')
+md5sums=('879bcde5add2c8cc271df031fb63ab17')
+b2sums=('187acb2ef717912271b84003bee3910a2b80006f17da3be8acc7991e9301552cb166b053a7f0c87b87a74ba870e262756ba9c40094c690b331e19c0e66f6c719')
 
 build() {
   mkdir build
