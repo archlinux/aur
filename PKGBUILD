@@ -1,7 +1,7 @@
 # Maintainer: Carlos Prieto Ortiz <prietus@live.com>
 
 pkgname=hasklets
-pkgver=0.1.8.0
+pkgver=0.1.8.1
 pkgrel=1
 pkgdesc='Desktop widgets for Wayland (weather, system, media, music servers, disks, processes, calendar, journal, backups) in Haskell'
 url='https://github.com/prietus/hasklets'
@@ -20,7 +20,7 @@ makedepends=('ghc' 'ghc-static' 'cabal-install' 'gobject-introspection')
 # The C parts of the libraries end up in archives that GHC links, without LTO.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a0a4e441bd059c17968af9248d31fbe4d33db3056efc7e8ffb4c2e1033e9033a')
+sha256sums=('49be4c72c6f85caf85a29191789504a7dde3dc65f56d739f0989e73091baf892')
 
 # Arch's haskell-* packages (cabal-install itself depends on some) are
 # registered in GHC's global package database, so cabal would pick them
