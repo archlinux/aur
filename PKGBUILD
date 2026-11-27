@@ -2,7 +2,7 @@
 pkgname=lotti-bin
 _pkgname=Lotti
 _debname="com.matthiasn.${pkgname%-bin}"
-pkgver=1.1.109+4499
+pkgver=1.1.110+4500
 pkgrel=1
 pkgdesc="A private logbook with a staff of personal AI assistants. Agents read what you record and propose what to do next — you approve the changes. End-to-end encrypted sync between your own devices — servers only ever see ciphertext. Local AI optional."
 arch=('x86_64')
@@ -12,28 +12,28 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'pango'
-    'gdk-pixbuf2'
-    'mpv'
-    'gtk3'
-    'libkeybinder3'
-    'libsecret'
-    'libepoxy'
-    'cairo'
-    'at-spi2-core'
-    'harfbuzz'
-    'libxmu'
-    'gstreamer'
-    'gst-plugins-base-libs'
-    'ffmpeg'
+	'pango'
+	'gdk-pixbuf2'
+	'mpv'
+	'gtk3'
+	'libkeybinder3'
+	'libsecret'
+	'libepoxy'
+	'cairo'
+	'at-spi2-core'
+	'harfbuzz'
+	'libxmu'
+	'gstreamer'
+	'gst-plugins-base-libs'
+	'ffmpeg'
 )
 source=(
-    #"${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${_pkgver}-x86_64.AppImage"
-    "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/${pkgver}/linux.x64.tar.gz"
-    "${pkgname%-bin}.sh"
+	#"${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${_pkgver}-x86_64.AppImage"
+	"${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/${pkgver}/linux.x64.tar.gz"
+	"${pkgname%-bin}.sh"
 )
-sha256sums=('df19de92db50029dfa33c93571d81e1186e8c1dd135acef865342ac5314cfe36'
-            'd7002fa1a9ae60749490e982fa8a4f4622f7381b02559f5b014df033c0773a3c')
+sha256sums=('7b9f9e971bd41a8fb9706474f485e28d6de6e3bdacf5b522bce00034d6c8054a'
+			'd7002fa1a9ae60749490e982fa8a4f4622f7381b02559f5b014df033c0773a3c')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
@@ -46,28 +46,28 @@ _install_icons() {
 	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
-    sed -i -e "
-        s/@appname@/${pkgname%-bin}/g
-        s/@runname@/parecord/g
-    " "${srcdir}/${pkgname%-bin}.sh"
-    #if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
-    #    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    #fi
-    #if [ -d "${srcdir}/squashfs-root" ];then
-    #    rm -rf "${srcdir}/squashfs-root"
-    #fi
-    #"${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    #sed -i "s/Icon=${_debname}/Icon=${pkgname%-bin}/g" "${srcdir}/squashfs-root/usr/share/applications/${_debname}.desktop"
-    #sed -i "s/${_debname}/${pkgname%-bin}/g" "${srcdir}/squashfs-root/usr/share/metainfo/${_debname}.metainfo.xml"
-    #ln -sf "/usr/bin/ffmpeg" "${srcdir}/squashfs-root/usr/bin/${pkgname%-bin}"
-    sed -i "s/Icon=${_debname}/Icon=${pkgname%-bin}/g" "${srcdir}/share/applications/${_debname}.desktop"
+	sed -i -e "
+		s/@appname@/${pkgname%-bin}/g
+		s/@runname@/parecord/g
+	" "${srcdir}/${pkgname%-bin}.sh"
+	#if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+	#    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+	#fi
+	#if [ -d "${srcdir}/squashfs-root" ];then
+	#    rm -rf "${srcdir}/squashfs-root"
+	#fi
+	#"${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+	#sed -i "s/Icon=${_debname}/Icon=${pkgname%-bin}/g" "${srcdir}/squashfs-root/usr/share/applications/${_debname}.desktop"
+	#sed -i "s/${_debname}/${pkgname%-bin}/g" "${srcdir}/squashfs-root/usr/share/metainfo/${_debname}.metainfo.xml"
+	#ln -sf "/usr/bin/ffmpeg" "${srcdir}/squashfs-root/usr/bin/${pkgname%-bin}"
+	sed -i "s/Icon=${_debname}/Icon=${pkgname%-bin}/g" "${srcdir}/share/applications/${_debname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    #cp -a "${srcdir}/squashfs-root/usr/"{bin,lib} "${pkgdir}/usr"
-    #install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "${srcdir}/"{data,lib,"${pkgname%-bin}"} "${pkgdir}/usr/lib/${pkgname%-bin}"
-    _install_icons
-    #install -Dm644 "${srcdir}/squashfs-root/usr/share/metainfo/${_debname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.metainfo.xml"
+	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+	#cp -a "${srcdir}/squashfs-root/usr/"{bin,lib} "${pkgdir}/usr"
+	#install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+	install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	cp -a "${srcdir}/"{data,lib,"${pkgname%-bin}"} "${pkgdir}/usr/lib/${pkgname%-bin}"
+	_install_icons
+	#install -Dm644 "${srcdir}/squashfs-root/usr/share/metainfo/${_debname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.metainfo.xml"
 }
