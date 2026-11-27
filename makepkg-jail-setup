@@ -13,6 +13,7 @@ profile makepkg-jail-setup flags=(enforce,attach_disconnected) {
   pivot_root,
 
   capability sys_admin,
+  capability dac_override,
   capability sys_chroot,
   capability setuid,
   capability setgid,
