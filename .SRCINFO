@@ -1,6 +1,6 @@
 pkgbase = r-erssa
 	pkgdesc = Empirical RNA-seq Sample Size Analysis
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ERSSA
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-erssa
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ERSSA_1.30.0.tar.gz
-	sha256sums = 6479b9e88620c77cb5f96fe7839d052e4b6f8f5057b7452b2562b7a78891f2a4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ERSSA_1.32.0.tar.gz
+	sha256sums = ed8a596ecc24d9d5630b8a43cab8fb666a0e08a3eb65891e128a37577ca290a8
 
 pkgname = r-erssa
