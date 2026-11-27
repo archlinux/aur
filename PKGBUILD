@@ -1,7 +1,7 @@
 # Maintainer: M0n7y5 <17201053+M0n7y5@users.noreply.github.com>
 
 pkgname=vds-mango
-pkgver=0.5.0beta1
+pkgver=0.5.0beta2
 pkgrel=1
 pkgdesc="Bluetooth DualSense as a virtual USB one: haptics, adaptive triggers, speaker and microphone"
 arch=('x86_64')
@@ -20,7 +20,7 @@ install=vds-mango.install
 _tag=${pkgver/[[:alpha:]]/-&}
 _src=$pkgname-$_tag
 source=("$_src.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('82366c1ec92acdeaf8285dfb031320a08f52d90a016abe9c1ec69c9ec82bbb6f')
+sha256sums=('82a640fa6b4eb8ba92426161f05504120fd03efd688395bc22b4a3e38c4711b5')
 
 build() {
 	cmake -S "$_src" -B build \
