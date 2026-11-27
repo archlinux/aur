@@ -1,6 +1,6 @@
 pkgbase = bt-dualboot-sync
 	pkgdesc = Sync Bluetooth pairing keys from Linux to Windows on a dualboot machine
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/vhrabar/bt-dualboot
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = bt-dualboot-sync
 	provides = bt-dualboot
 	conflicts = bt-dualboot
 	conflicts = bt-dualboot-ng
-	source = bt-dualboot-sync-0.1.3.tar.gz::https://github.com/vhrabar/bt-dualboot/archive/v0.1.3.tar.gz
-	sha256sums = 46da5d6b55538b00a2930c74bc085b7792b8d622c34e5b21b772f6b74e3b9aa0
+	source = bt-dualboot-sync-0.1.4.tar.gz::https://github.com/vhrabar/bt-dualboot/archive/v0.1.4.tar.gz
+	sha256sums = 1d19d394f61b3d90f6373028f91df0ec4e2938f2b9c8104efda96305ce9172b1
 
 pkgname = bt-dualboot-sync

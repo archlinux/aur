@@ -1,7 +1,7 @@
 # Maintainer: Vedran Hrabar <vedran.hrabar@outlook.com>
 
 pkgname=bt-dualboot-sync
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Sync Bluetooth pairing keys from Linux to Windows on a dualboot machine"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling'
 provides=('bt-dualboot')
 conflicts=('bt-dualboot' 'bt-dualboot-ng')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('46da5d6b55538b00a2930c74bc085b7792b8d622c34e5b21b772f6b74e3b9aa0')
+sha256sums=('1d19d394f61b3d90f6373028f91df0ec4e2938f2b9c8104efda96305ce9172b1')
 
 _srcname="bt-dualboot-$pkgver"
 
