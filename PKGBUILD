@@ -1,7 +1,7 @@
 # Maintainer: Humblemonk <humblemonk@gmail.com>
 
 pkgname=rogctl
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='Battery status, settings and panel widgets for ASUS mice'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 depends=('libgcc' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6a7c1057ec7793c6537e2d456c4a147260d8b60426e656645e72e6ca7987eb3e')
+sha256sums=('862a4cd028b7912a274e86a3db95b639cbba0beffa3d467dca46099895357e4e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
