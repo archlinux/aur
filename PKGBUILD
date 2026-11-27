@@ -1,19 +1,19 @@
 # Maintainer: Bagas Sanjaya <bagasdotme@gmail.com>
 pkgname=kryoptic
-pkgver=1.5.4
-pkgrel=3
+pkgver=1.5.5
+pkgrel=1
 pkgdesc="A PKCS #11 software token written in Rust"
 arch=('x86_64')
 url="https://github.com/latchset/kryoptic"
 license=('Apache-2.0')
 depends=('brotli' 'glibc' 'zlib' 'zstd' 'sqlite' 'openssl')
-makedepends=('rust' 'cargo' 'pandoc' 'clang-libs' 'clang')
+makedepends=('rust' 'cargo' 'go-md2man' 'clang-libs' 'clang')
 backup=('etc/kryoptic/token.conf')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
 	"pin-cargo-lock.patch"
 	"token.conf")
-sha256sums=('bfa39be18e95f54009dfbd4e74a59a73c425b1cd1cc6236b3143f63141c41c03'
-            '938002e2499c6ac517a6fff40d1c38a839c261dc721bd193e4bd3bbd6c525253'
+sha256sums=('8ccc273c58d8ec901f86a6eb4cd1cf258b4c7e83826d92f2c10190893b5d98c5'
+            '39e74f68d08a2761d7a5179d093799c831671bfa533f1200a913ea85b18537fc'
             '84ab4485a53f12cfa385109756f44d0269f27ec056f82e2f8cba91301abe15a1')
 
 _features="standard,pqc"
@@ -33,14 +33,10 @@ build() {
 
 	# manpages
 	cd ../
-	pandoc -s -t man doc/kryoptic.conf.man.md -o kryoptic.conf.5
-	gzip kryoptic.conf.5
-	pandoc -s -t man doc/kryoptic.man.md -o kryoptic.7
-	gzip kryoptic.7
-	pandoc -s -t man tools/softhsm/softhsm_migrate.man.md -o softhsm_migrate.1
-	gzip softhsm_migrate.1
-	pandoc -s -t man tools/otp/kryoptic_otp.man.md -o kryoptic_otp.1
-	gzip kryoptic_otp.1
+	go-md2man -in doc/kryoptic.conf.man.md | gzip - > kryoptic.conf.5.gz
+	go-md2man -in doc/kryoptic.man.md | gzip - > kryoptic.7.gz
+	go-md2man -in tools/softhsm/softhsm_migrate.man.md | gzip - > softhsm_migrate.1.gz
+	go-md2man -in tools/otp/kryoptic_otp.man.md | gzip - > kryoptic_otp.1.gz
 }
 
 check() {
