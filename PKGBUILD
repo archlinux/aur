@@ -5,8 +5,8 @@
 # template there, not this copy.
 
 pkgname=atomic-agent-desktop-bin
-pkgver=0.0.10
-_version=0.0.10
+pkgver=0.0.11
+_version=0.0.11
 pkgrel=1
 pkgdesc='Desktop app for Atomic Agent: starts the bundled agent locally and gives it a chat window (https://atomicagent.io)'
 arch=('x86_64' 'aarch64')
@@ -24,18 +24,18 @@ options=('!strip' '!debug')
 
 # The release's deb of each architecture, repacked: electron-builder makes the deb and the rpm,
 # and the AUR package comes from the same files.
-_base='https://github.com/AtomicBot-ai/atomic-agent/releases/download/desktop-v0.0.10'
-source_x86_64=("${_base}/Atomic-Agent-0.0.10-amd64.deb")
-source_aarch64=("${_base}/Atomic-Agent-0.0.10-arm64.deb")
-sha256sums_x86_64=('d8de7ba1bb3e34b4e16f1b73f637e8201a2c001042630450915f77297c2a95ca')
-sha256sums_aarch64=('ecdd64513b85468e980bee415611eea21c85082c26a3d9c72492dfa42ea6cc45')
-noextract=('Atomic-Agent-0.0.10-amd64.deb' 'Atomic-Agent-0.0.10-arm64.deb')
+_base='https://github.com/AtomicBot-ai/atomic-agent/releases/download/desktop-v0.0.11'
+source_x86_64=("${_base}/Atomic-Agent-0.0.11-amd64.deb")
+source_aarch64=("${_base}/Atomic-Agent-0.0.11-arm64.deb")
+sha256sums_x86_64=('9aeef4c8cb1d9fd41a4b708ea7000b3d0f14bb6dd1d1e37018d7c52b186e10b8')
+sha256sums_aarch64=('3343a2586d86ba803093a8bdbd52ce2a08d82690d22e3ebcbc67b6b6d4c9a644')
+noextract=('Atomic-Agent-0.0.11-amd64.deb' 'Atomic-Agent-0.0.11-arm64.deb')
 
 package() {
   local deb
   case "${CARCH}" in
-    x86_64) deb='Atomic-Agent-0.0.10-amd64.deb' ;;
-    aarch64) deb='Atomic-Agent-0.0.10-arm64.deb' ;;
+    x86_64) deb='Atomic-Agent-0.0.11-amd64.deb' ;;
+    aarch64) deb='Atomic-Agent-0.0.11-arm64.deb' ;;
   esac
 
   # The deb's data archive as it is: /opt/Atomic Agent (electron-builder's layout, which the app's
