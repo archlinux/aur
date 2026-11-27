@@ -4,7 +4,7 @@
 # After tagging a new release: bump pkgver, run `updpkgsums`, then `makepkg --printsrcinfo > .SRCINFO`.
 
 pkgname=micforge
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Microphone processor for PipeWire: voice-only gate, AI noise removal, effects, voice changer and VST3/LV2 plugin hosting"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "vst3_base::git+https://github.com/steinbergmedia/vst3_base.git#tag=$_vst3tag"
         "vst3_pluginterfaces::git+https://github.com/steinbergmedia/vst3_pluginterfaces.git#tag=$_vst3tag"
         "vst3_public_sdk::git+https://github.com/steinbergmedia/vst3_public_sdk.git#tag=$_vst3tag")
-sha256sums=('4ac765724fa19451216cd0ed03580cd6990a27cec433c293c4454e9c59b05889'
+sha256sums=('aee59187fdbe832b510b82c99c83c196eb5a7ffe3778e83ea73bfc3ca58fc470'
             'SKIP'
             'SKIP'
             'SKIP')

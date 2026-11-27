@@ -1,6 +1,6 @@
 pkgbase = micforge
 	pkgdesc = Microphone processor for PipeWire: voice-only gate, AI noise removal, effects, voice changer and VST3/LV2 plugin hosting
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/stuartw-source/micforge
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = micforge
 	optdepends = xorg-xwayland: windows of VST3 plugins (plugins run fine without it)
 	optdepends = lsp-plugins-lv2: a large set of free plugins to use inside MicForge
 	optdepends = lsp-plugins-vst3: the same plugins as VST3, with their own windows
-	source = micforge-0.2.1.tar.gz::https://github.com/stuartw-source/micforge/archive/refs/tags/v0.2.1.tar.gz
+	source = micforge-0.2.2.tar.gz::https://github.com/stuartw-source/micforge/archive/refs/tags/v0.2.2.tar.gz
 	source = vst3_base::git+https://github.com/steinbergmedia/vst3_base.git#tag=v3.8.1_build_84
 	source = vst3_pluginterfaces::git+https://github.com/steinbergmedia/vst3_pluginterfaces.git#tag=v3.8.1_build_84
 	source = vst3_public_sdk::git+https://github.com/steinbergmedia/vst3_public_sdk.git#tag=v3.8.1_build_84
-	sha256sums = 4ac765724fa19451216cd0ed03580cd6990a27cec433c293c4454e9c59b05889
+	sha256sums = aee59187fdbe832b510b82c99c83c196eb5a7ffe3778e83ea73bfc3ca58fc470
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
