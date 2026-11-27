@@ -2,13 +2,13 @@
 
 pkgname=luxtide-git
 _name=luxtide
-pkgver=2.0.0.r26.g9fec51a
+pkgver=2.0.0.r29.gb6a1ee0
 pkgrel=1
 pkgdesc='Automatic screen brightness that follows the sun, for DDC/CI monitors and laptop panels (development version)'
 arch=('any')
 url='https://github.com/MikolajQ/luxtide'
 license=('MIT')
-depends=('gtk4' 'python' 'python-gobject')
+depends=('gtk4' 'python' 'python-cairo' 'python-gobject')
 # fakeroot and make are part of base-devel, which AUR packages usually take
 # for granted; listed so that an AUR helper installs them where it is missing.
 makedepends=('git' 'fakeroot' 'make')
@@ -37,7 +37,20 @@ pkgver() {
 
 check() {
   cd "$_name"
-  python -m unittest discover -s tests -q
+  # The tests (make test) run before every push. Here only whether this
+  # system's Python loads every module and the scripts parse: a fraction of
+  # a second. The settings window needs a display, so it is left to
+  # compileall.
+  python - <<'EOF'
+import ast, importlib, pkgutil
+import luxtide
+for module in pkgutil.walk_packages(luxtide.__path__, "luxtide."):
+    if not module.name.startswith("luxtide.gui"):
+        importlib.import_module(module.name)
+for script in ("bin/luxtide", "bin/dim", "bin/luxtide-settings"):
+    with open(script, encoding="utf-8") as source:
+        ast.parse(source.read(), script)
+EOF
 }
 
 package() {

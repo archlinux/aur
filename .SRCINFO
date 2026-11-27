@@ -1,6 +1,6 @@
 pkgbase = luxtide-git
 	pkgdesc = Automatic screen brightness that follows the sun, for DDC/CI monitors and laptop panels (development version)
-	pkgver = 2.0.0.r26.g9fec51a
+	pkgver = 2.0.0.r29.gb6a1ee0
 	pkgrel = 1
 	url = https://github.com/MikolajQ/luxtide
 	install = luxtide.install
@@ -11,6 +11,7 @@ pkgbase = luxtide-git
 	makedepends = make
 	depends = gtk4
 	depends = python
+	depends = python-cairo
 	depends = python-gobject
 	optdepends = ddcutil: external monitors over DDC/CI
 	optdepends = gnome-shell-extension-appindicator: tray icon on GNOME
