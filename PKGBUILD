@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SpotClean
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('aaf6ac019202d5b038da85fe24285b12')
-b2sums=('6911345b5164da294edc628da5211cd921a61b4ce4923af5dfe95826aff14a940fbb46b053575d79d5cfe23f42a84abc3960b7df4c79115b35ef2a6ccd075ba5')
+md5sums=('58476db5429b4f7c805176666461a78c')
+b2sums=('4d1ca776b872de69179e4642394642045f12fc1085c5ad5de572279f827e7aae0d348d54488fb57ca4aba8be2e5e05e377d8cd54687f66b00bf47bfac2163e2d')
 
 build() {
   mkdir build
