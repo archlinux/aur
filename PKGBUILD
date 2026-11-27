@@ -2,7 +2,7 @@
 
 _pkgname=pvsneslib
 pkgname=${_pkgname}-git
-pkgver=r2013.e090f001
+pkgver=r2062.0d68f8e6
 pkgrel=1
 pkgdesc="A free/libre toolchain to program the SNES using assembler and C"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 source=("git+$url" "pvsneslib.sh" "flag_specification_improvement.patch" "tcc_cflags_separation.patch" "gfx4snes_fprintf_format_security.patch")
 sha256sums=('SKIP'
             'eb64a9c09c62dc51c449c4a1fbfb1a085c94a41fc8349bfc3d3f52e15a271ed2'
-            '3974962cb71093db79bd48f374dc7f0d114e11f6495cbae896e21ddd03fb1fb2'
+            'd8eb049cbba64a5714573a022d9d67579503a5c61432ad63af1a075f6f5c9fef'
             'c390aacd307129e4e512d0a38e17805639caeff683b7bde6d66daa70ea2fd3b6'
             'a6d8799dea5ea31bfbb98e55e2b32d508ae17e3dcc26fe00c0d8c23be38d64e3')
 
