@@ -3,7 +3,7 @@
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=kamailio
-pkgver=6.1.5
+pkgver=6.1.6
 pkgrel=1
 pkgdesc="SIP Server for large VoIP and real-time communication platforms"
 arch=('x86_64')
@@ -45,7 +45,7 @@ install="${pkgname}.install"
 source=("https://www.kamailio.org/pub/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}_src.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('444f0ca03ec3581a19f5a616d8b35ddcd3ab3471967c94a6a2742ee7b41fac2c'
+sha256sums=('38e36b9425afcfffbfc149d8480d9191f0419487f2b5e0369a7b77b4611aea05'
             'cbc0d7510a52791cb2016d91df9543433f3b8467efec196ed06d025ba5f8a0fa'
             'fa4f7683608efa70493d7d16c6bce922c4d640abcb110da0c622e81efb433e3c')
 
