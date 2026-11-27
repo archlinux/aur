@@ -1,6 +1,6 @@
 # Maintainer: Akusen <akudesyn@gmail.com>
 pkgname=rizoma
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="File manager for Linux, a Genoma app in Bioma's style"
 arch=('any')
@@ -8,14 +8,14 @@ url="https://github.com/AkusenArcade/Rizoma"
 license=('MIT')
 # genoma reads, copies and draws all of it; the thumbnails other programs make
 # come from theirs.
-depends=('genoma>=0.1.25' 'hicolor-icon-theme' 'shared-mime-info')
+depends=('genoma>=0.1.27' 'hicolor-icon-theme' 'shared-mime-info')
 optdepends=('udisks2: drives mounted and ejected'
             'bubblewrap: other programs'"'"' thumbnailers, sandboxed'
             'ffmpegthumbnailer: thumbnails of videos'
             'poppler-glib: thumbnails of PDFs'
             'xdg-terminal-exec: the desktop'"'"'s own terminal')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a842dd24c1e11a2b9e4d62e4e53db775a50aeb6a46ec24da2630dd5448ef3aa4')
+sha256sums=('529ba67ea297dd758f3a8e43555663b1dbdfb26a3ab57bb8492a3c6fa1a20d9c')
 
 package() {
   cd "Rizoma-$pkgver"
