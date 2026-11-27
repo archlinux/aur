@@ -2,7 +2,7 @@
 
 _pkgname=kiri
 pkgname=kwin-kiri
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='Scrollable tiling KWin script in the style of niri (Karousel fork)'
 arch=(x86_64 i686 aarch64 armv7h)
@@ -15,7 +15,7 @@ makedepends=('cmake' 'extra-cmake-modules' 'git' 'vulkan-headers')
 
 _pkgver="${pkgver/./_}"
 source=("$_pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cf4a5b1baef29971ba38e03f1d06f29802d45853fd646db158f8f6c26597fbf7')
+sha256sums=('b3dc15ce8fe5a0f48250bb08f63ab5d5bc25925864c1e7db3e5d93bb0f3b7c3c')
 
 build() {
     cmake -S "$srcdir/${_pkgname}_${_pkgver}/effect-cpp" \
