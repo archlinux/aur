@@ -1,6 +1,6 @@
 pkgbase = sonora-tui-bin
 	pkgdesc = A terminal music player for TIDAL, Spotify, Apple Music, Deezer, YouTube Music, Subsonic
-	pkgver = 0.21.0
+	pkgver = 0.21.1
 	pkgrel = 1
 	url = https://github.com/ColinTenaguillo/sonora-tui
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = sonora-tui-bin
 	provides = sonora-tui
 	conflicts = sonora-tui
 	options = !debug
-	source_x86_64 = sonora-tui-bin-0.21.0-x86_64.tar.xz::https://github.com/ColinTenaguillo/sonora-tui/releases/download/v0.21.0/sonora-tui-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 1cb256a3741295cc5b935e715fa69fb6082c799b9f6bac18878f97ea8b4f14cf
-	source_aarch64 = sonora-tui-bin-0.21.0-aarch64.tar.xz::https://github.com/ColinTenaguillo/sonora-tui/releases/download/v0.21.0/sonora-tui-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = d33dececbe9bebbf7ce345b618f41404c7b3d7c26cc812cecdf3dc4d75ce02a9
+	source_x86_64 = sonora-tui-bin-0.21.1-x86_64.tar.xz::https://github.com/ColinTenaguillo/sonora-tui/releases/download/v0.21.1/sonora-tui-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 703d5a7596903f2b68899bd55c63953e9286515f0de8c6078733d8ff1c9239bf
+	source_aarch64 = sonora-tui-bin-0.21.1-aarch64.tar.xz::https://github.com/ColinTenaguillo/sonora-tui/releases/download/v0.21.1/sonora-tui-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 52b01cd9d54b777441ca7c2530bf0e84ee29222e11871da97cd8a8461d4c29f9
 
 pkgname = sonora-tui-bin
