@@ -1,6 +1,6 @@
 pkgbase = cromma-code-bin
 	pkgdesc = The playful desktop terminal for Claude Code and Codex: watch agents work as a game and dispatch worker bees
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://cromma.ai/code
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = cromma-code-bin
 	optdepends = nvidia-utils: NVIDIA GPU support
 	provides = crommacode
 	conflicts = crommacode
-	noextract = crommacode-1.0.3.deb
+	noextract = crommacode-1.0.4.deb
 	options = !strip
 	options = !debug
-	source = crommacode-1.0.3.deb::https://dl.cromma.ai/code/artifacts/1.0.3/CrommaCode-1.0.3-linux-amd64.deb
-	sha256sums = 6998c33393d1eb6d3cb052495fed3dae988c29fe9ed3c9e3eebfcd2cb57ee6b6
+	source = crommacode-1.0.4.deb::https://dl.cromma.ai/code/artifacts/1.0.4/CrommaCode-1.0.4-linux-amd64.deb
+	sha256sums = 28063dc515b9f79be1fee4e8fb78929968efe068e915686933301bdb8792145f
 
 pkgname = cromma-code-bin
