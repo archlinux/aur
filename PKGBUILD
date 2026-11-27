@@ -1,11 +1,11 @@
 # Maintainer: Marlon Kranz <dev@marlonkranz.com>
 pkgname=cast-helper-git
 _pkgname=cast-helper
-pkgver=0.2.0.r2.ga739714
+pkgver=0.2.1.r0.gcfcf3c8
 pkgrel=1
 pkgdesc="Chromecast and AirPlay mirroring and media playback, shared by the Dux Shell Cast plugin and other apps (latest master)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/Conava/dux-cast"
+url="https://github.com/Conava/cast-helper"
 license=('MIT')
 depends=('glibc' 'avahi' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugin-pipewire' 'gst-plugin-va')
 makedepends=('go' 'git')

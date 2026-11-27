@@ -1,8 +1,8 @@
 pkgbase = cast-helper-git
 	pkgdesc = Chromecast and AirPlay mirroring and media playback, shared by the Dux Shell Cast plugin and other apps (latest master)
-	pkgver = 0.2.0.r2.ga739714
+	pkgver = 0.2.1.r0.gcfcf3c8
 	pkgrel = 1
-	url = https://github.com/Conava/dux-cast
+	url = https://github.com/Conava/cast-helper
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -19,9 +19,9 @@ pkgbase = cast-helper-git
 	optdepends = gst-libav: converting videos
 	optdepends = libheif: HEIC photos
 	optdepends = doubletake-bin: AirPlay mirroring
-	provides = cast-helper=0.2.0
+	provides = cast-helper=0.2.1
 	conflicts = cast-helper
-	source = cast-helper-git::git+https://github.com/Conava/dux-cast.git
+	source = cast-helper-git::git+https://github.com/Conava/cast-helper.git
 	sha256sums = SKIP
 
 pkgname = cast-helper-git
