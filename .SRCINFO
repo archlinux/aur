@@ -1,0 +1,14 @@
+pkgbase = domainager
+	pkgdesc = Domain management CLI for multiple registrars (Namecheap, Cloudflare, Njalla)
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://git.sr.ht/~drzoidberg/domainager
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = domainager-1.0.3.tar.gz::https://git.sr.ht/~drzoidberg/domainager/archive/v1.0.3.tar.gz
+	sha256sums = bdc9a1804f5dc9bcc2d7ea05c26873c237f64bff18b5990537ac0901bf45053f
+
+pkgname = domainager
