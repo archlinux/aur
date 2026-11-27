@@ -1,0 +1,19 @@
+pkgbase = embargo-bin
+	pkgdesc = Mask secrets and personal data in Go logs, JSON and text
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/nao1215/embargo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = embargo
+	conflicts = embargo
+	options = !strip
+	source = embargo-0.21.0-checksums.txt::https://github.com/nao1215/embargo/releases/download/v0.21.0/checksums.txt
+	sha256sums = 93b9a92813016d8cc94aabbff957fb2038b6d7553826366c5120d087b79b2bb6
+	source_x86_64 = embargo-0.21.0-x86_64.tgz::https://github.com/nao1215/embargo/releases/download/v0.21.0/embargo_0.21.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 876ee91ce4588e55a75bb171840ef53b8b55e744388e3a744aa30e9473969817
+	source_aarch64 = embargo-0.21.0-aarch64.tgz::https://github.com/nao1215/embargo/releases/download/v0.21.0/embargo_0.21.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ec3d242644b7b539a0d8a3fdf06dbfa88e64bb9455a34c35cf44246564897583
+
+pkgname = embargo-bin
