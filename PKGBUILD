@@ -2,7 +2,7 @@
 
 pkgname=homemesh-git
 _name=homemesh
-pkgver=0.6.0.r18.g967ef99
+pkgver=0.6.1.r23.geacd142
 pkgrel=1
 pkgdesc='Open the home folders of your other computers in any file manager; pair them with a code (development version)'
 arch=('any')
@@ -37,7 +37,8 @@ pkgver() {
 
 check() {
   cd "$_name"
-  python -m unittest discover -s tests -q
+  # Without real pairing between sshd instances: that is tested before each release.
+  HOMEMESH_QUICK_TESTS=1 python -m unittest discover -s tests -q
 }
 
 package() {
