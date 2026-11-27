@@ -1,6 +1,6 @@
 # Maintainer: Ulises Jeremias <ulisescf.24@gmail.com>
 pkgname=veasel-desktop-bin
-pkgver=0.108.1.next.0
+pkgver=0.109.1.next.0
 pkgrel=1
 pkgdesc="Veasel Code Desktop application (Focus and World)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/veasel-labs/veasel/${_tag}/LICENSE"
 )
 sha256sums=(
-  '3d806be67dae6cbeab1046a2b76e7877204feb41d4521a4c20dcccb493719d6f'
+  '9e5169aa9d39422a24868aae34922256b7ecb12631f6b1ce94cc7e46e9055142'
   'e150ff1e9cd21b388ec966f3d77ed4731e86e4731b17f127e879f72ff5b2e3d5'
 )
 
