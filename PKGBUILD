@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=csaw
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='ChIP-Seq Analysis with Windows'
 arch=('x86_64')
@@ -42,7 +42,7 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8d355376701371726fe94fa7f50c7f2f76ac912e8b20fcd23ecf9ccd996f09b3')
+sha256sums=('286cbc80b2881fdb45800051b3328880c87a17935bd50624aabe16be5b6db118')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
