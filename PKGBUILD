@@ -3,14 +3,14 @@
 _pkgname=firedragon
 __pkgname=$_pkgname
 _rdns=org.garudalinux.$__pkgname
-_pkgver=13.13.2
+_pkgver=13.14.0
 _branding=dr460nized
-_gentoo=firefox-160-patches-02.tar.xz
+_gentoo=firefox-161-patches-01.tar.xz
 _gentoo_exclude=(0014-bgo-940031-wasm-support-firefox-155.patch)
 
 pkgname=$__pkgname
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 epoch=2
 pkgdesc="FireDragon is a cross-platform, feature-rich and privacy-focused web browser"
 url="https://gitlab.com/garuda-linux/firedragon/firedragon13"
@@ -84,8 +84,8 @@ install=$_pkgname.install
 noextract=($_gentoo)
 source=($_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
   https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo)
-sha256sums=('bf7af509f1b85fda655bc3f04cb2ca9d1abbee3e48f0eb2c662594913ee0005b'
-  '97eecbcc2ffa265402f5cb2ae42d46007c17ce2f37fa57523037002b6a1b13f2')
+sha256sums=('52a2010318f439f859898b349618d44e80aa886689c045e9e9d05088e6c4f112'
+  '1581b48d63f7da35f78d6bd25eb039761cf814de5d5d0a08fd5dc7b7e915be02')
 
 prepare() {
   mkdir -p mozbuild pnpm
