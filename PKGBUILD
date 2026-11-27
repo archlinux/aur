@@ -1,7 +1,7 @@
 # Maintainer: Victor Coscrato <vcoscrato@users.noreply.github.com>
 
 pkgname=speshell-git
-pkgver=r26.g66e0b85
+pkgver=r28.g6bc6188
 pkgrel=1
 pkgdesc="A desktop shell built with Quickshell: a bar and its panels, a launcher, and animated themes"
 arch=('any')
@@ -60,9 +60,7 @@ source=("speshell::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  if [ -d speshell ]; then
-    cd speshell
-  fi
+  cd speshell
   printf 'r%s.g%s' \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=7 HEAD)"
