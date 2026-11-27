@@ -1,7 +1,7 @@
 # Maintainer: Jan Fader <jan.fader@web.de>
 
 pkgname=python-ansibug
-pkgver=0.3.2
+pkgver=0.4.0
 _name=${pkgname#python-}
 pkgrel=1
 pkgdesc='Debug Adapter Protocol for Ansible'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python3' 'ansible-core' 'python-debugpy' 'python-argcomplete')
 makedepends=(python-build python-installer python-wheel)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
-sha256sums=('4278552e588a1a8aa88c37857abb485f313ed4aab8e637cc8302a8d7f8744dce')
+sha256sums=('5b8cb4ca23dbcba2ae120bd6e9156d5e1109e589920f3f99a3fbd6a15deb1925')
 
 build() {
     cd $_name-$pkgver
