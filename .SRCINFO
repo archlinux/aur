@@ -1,19 +1,19 @@
 pkgbase = novadeck-bin
 	pkgdesc = Desktop terminal for running Claude Code, Codex and Antigravity side by side, with one Inbox for when they need you.
-	pkgver = 1.13.3
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://novadeck.dev
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = electron45
 	depends = python
-	provides = novadeck=1.13.3
+	provides = novadeck=1.15.1
 	conflicts = novadeck
-	source = novadeck-1.13.3-x86_64.AppImage::https://github.com/novadeck-org/novadeck/releases/download/v1.13.3/novadeck-linux-x86_64.AppImage
+	source = novadeck-1.15.1-x86_64.AppImage::https://github.com/novadeck-org/novadeck/releases/download/v1.15.1/novadeck-linux-x86_64.AppImage
 	source = novadeck.js
 	source = novadeck.sh
-	sha256sums = 0831767fa3cdada82d024284c53cab9154166e6a915ee9928e0ef7d5c73752a0
-	sha256sums = 03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86
+	sha256sums = 535d3f5f6e6e13d41f416aa1311d882b9b22036786773c36260f42bee90f629f
+	sha256sums = 4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b
 	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
 
 pkgname = novadeck-bin
