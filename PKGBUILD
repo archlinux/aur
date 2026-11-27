@@ -2,7 +2,7 @@
 
 pkgname=wljoywake
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Wayland idle inhibit on joystick input'
 arch=(x86_64)
 url='https://github.com/nowrep/wljoywake'
@@ -11,10 +11,17 @@ depends=(wayland systemd-libs glibc)
 makedepends=(meson wayland-protocols)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   wljoywake.service
-  wljoywake.rules)
+  wljoywake.rules
+  layer-shell-surface.patch)
 b2sums=('3086de8b5e2d25dea9fc01e88297d4f4e67c14bd4b914e721cf3435197e6893a171d89acc8e4a90457b3100b968a8dc11f992d49bda2f17375a3049d39999529'
         'afadeb0db12dd9c2f2d523ab63c4ee9ac2b4d3d10b9b24ad787e2fc740b8ba299f85883523caf5a669d73776f02bed31d8b9814235ed451ddb0f80e1f4aed8e5'
-        '206b579afb71939bc5f70d9a498df410ce03965ca23e195e09da17c7a250a279eb27ba49fb199f9abeeafe8d6cccc6b6d22221d763c70057d1e311854ec16e99')
+        '206b579afb71939bc5f70d9a498df410ce03965ca23e195e09da17c7a250a279eb27ba49fb199f9abeeafe8d6cccc6b6d22221d763c70057d1e311854ec16e99'
+        'e3b1e091fbab47a15f239159f1a1af80a1f5b0ce87009a9a8f29f79ceaecd0b556ec85e7b1bad7c5bd408111510078b01c54ae7881efb9e5e1efe3d4b121aedb')
+
+prepare() {
+  # inhibitor on a bare surface is ignored by sway >= 1.11 and river
+  patch -d wljoywake-$pkgver -Np1 -i ../layer-shell-surface.patch
+}
 
 build() {
   arch-meson wljoywake-$pkgver build
