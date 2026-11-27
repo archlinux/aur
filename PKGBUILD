@@ -7,7 +7,7 @@ _vecgltf_commit=573de6bd6f4be883e5a5c8c8085621455c062491
 _vrento_commit=ecf0509f10ce61f124e787777f87b026ab5b6d43
 
 pkgname=waywallen
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
@@ -32,7 +32,7 @@ else
     makedepends+=(git-lfs qt6-shadertools)
     source+=("git+https://github.com/hypengw/QmlMaterial.git#commit=$_qml_material_commit")
 fi
-sha256sums=('71413ce91c2ff9b15738be9dd029c790cda85735fbc42accca1a5a45f0f3d379'
+sha256sums=('c2a0154cd7ee3a28307ba6ef9dcd757003248010f87a68e32b613d01280132e9'
             '03c85e20d4a80e20552f6f2e6655409d68ebaac554dd0044e4c0b150a386f355'
             '9d6a8347f623fd1eac1b527585a5344305084cdb266f54af4e9da61b5108f5e3'
             '77faa4eee4ecea3eef6a1848d3c22e6cececbe68e33f4f9ed9cff4f8fc7d605d'
