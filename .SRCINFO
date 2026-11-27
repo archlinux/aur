@@ -1,6 +1,6 @@
 pkgbase = zensmu-git
 	pkgdesc = Safety-first Rust CLI, live TUI, and unprivileged GUI for AMD Ryzen SMU control and telemetry
-	pkgver = 0.2.0.r0.g44aa45b
+	pkgver = 0.3.0.r0.g79ef29b
 	pkgrel = 1
 	url = https://github.com/brauliobo/zensmu
 	arch = x86_64

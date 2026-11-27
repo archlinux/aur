@@ -1,7 +1,7 @@
 # Maintainer: Braulio Oliveira <brauliobo@gmail.com>
 
 pkgname=zensmu-git
-pkgver=0.2.0.r0.g44aa45b
+pkgver=0.3.0.r0.g79ef29b
 pkgrel=1
 pkgdesc="Safety-first Rust CLI, live TUI, and unprivileged GUI for AMD Ryzen SMU control and telemetry"
 arch=('x86_64')
@@ -62,17 +62,25 @@ package() {
     install -Dm755 "target/release/zensmu" "${pkgdir}/usr/bin/zensmu"
     install -Dm755 "target/release/zensmu-gui" "${pkgdir}/usr/bin/zensmu-gui"
 
-    # Systemd boot apply service, user telemetry recorder service, & suspend/hibernate resume hook
+    # Systemd boot apply service, user telemetry recorder & exporter services, & suspend/hibernate resume hook
     install -Dm644 "packaging/systemd/zensmu-apply.service" \
         "${pkgdir}/usr/lib/systemd/system/zensmu-apply.service"
     install -Dm644 "packaging/systemd/zensmu-record.service" \
         "${pkgdir}/usr/lib/systemd/user/zensmu-record.service"
+    install -Dm644 "packaging/systemd/zensmu-exporter.service" \
+        "${pkgdir}/usr/lib/systemd/user/zensmu-exporter.service"
     install -Dm755 "packaging/systemd/zensmu-resume" \
         "${pkgdir}/usr/lib/systemd/system-sleep/zensmu-resume"
 
     # PolicyKit policy for unprivileged zensmu-gui -> pkexec /usr/bin/zensmu elevation
     install -Dm644 "packaging/polkit/org.zensmu.policy" \
         "${pkgdir}/usr/share/polkit-1/actions/org.zensmu.policy"
+
+    # Desktop launcher & SVG application icon
+    install -Dm644 "packaging/desktop/zensmu-gui.desktop" \
+        "${pkgdir}/usr/share/applications/zensmu-gui.desktop"
+    install -Dm644 "packaging/desktop/zensmu.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/zensmu.svg"
 
     # Profile directory
     install -dm755 "${pkgdir}/etc/zensmu"
@@ -82,9 +90,13 @@ package() {
         "${pkgdir}/usr/share/bash-completion/completions" \
         "${pkgdir}/usr/share/zsh/site-functions" \
         "${pkgdir}/usr/share/fish/vendor_completions.d"
-    "target/release/zensmu" completions bash > "${pkgdir}/usr/share/bash-completion/completions/zensmu"
-    "target/release/zensmu" completions zsh  > "${pkgdir}/usr/share/zsh/site-functions/_zensmu"
-    "target/release/zensmu" completions fish > "${pkgdir}/usr/share/fish/vendor_completions.d/zensmu.fish"
+    "${pkgdir}/usr/bin/zensmu" completions bash > "${pkgdir}/usr/share/bash-completion/completions/zensmu"
+    "${pkgdir}/usr/bin/zensmu" completions zsh  > "${pkgdir}/usr/share/zsh/site-functions/_zensmu"
+    "${pkgdir}/usr/bin/zensmu" completions fish > "${pkgdir}/usr/share/fish/vendor_completions.d/zensmu.fish"
+
+    # Man page
+    install -dm755 "${pkgdir}/usr/share/man/man1"
+    "${pkgdir}/usr/bin/zensmu" manpage > "${pkgdir}/usr/share/man/man1/zensmu.1"
 
     # Documentation & License
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
