@@ -1,0 +1,12 @@
+post_install() {
+    echo "── 蓝色星原：旅谣 启动器 ──────────────────────────"
+    echo "  首次使用（登录失效时）：azur-promilia --bridge"
+    echo "  日常启动：            azur-promilia"
+    echo "  异常后还原 SDK：      azur-promilia --restore"
+    echo "  游戏目录默认：        ~/Games/AzurPromilia"
+    echo "────────────────────────────────────────────────"
+}
+
+post_upgrade() {
+    post_install
+}

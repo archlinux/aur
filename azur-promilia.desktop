@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=蓝色星原：旅谣
+Comment=启动蓝色星原：旅谣（Linux / dwproton）
+Exec=azur-promilia
+Icon=applications-games
+Terminal=false
+Categories=Game;RolePlaying;
+Keywords=azur;promilia;蓝色星原;

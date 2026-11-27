@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=蓝色星原：旅谣（桥接登录）
+Comment=登录失效时使用：登录面板显示在 Linux 原生窗口
+Exec=azur-promilia --bridge
+Icon=applications-games
+Terminal=false
+Categories=Game;RolePlaying;
+Keywords=azur;promilia;login;蓝色星原;
