@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ADAMgui
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Activity and Diversity Analysis Module Graphical User Interface'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-markdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e399ad9cf0726422e4e8bc81232008fe3e09ce2a57055ef154bcace27abb51d2')
+sha256sums=('0c5f8821a5cf61f5d74af124156e6071f46cd587bf3a8e2182ed645e65d7d19a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
