@@ -3,7 +3,7 @@
 _pkgauthor=mostlygeek
 _pkgname=llama-swap
 pkgname=${_pkgname}-bin
-pkgver=276
+pkgver=277
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Model swapping for llama.cpp (or any local OpenAPI compatible server)"
@@ -26,8 +26,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
 sha256sums=('6f3e2963bb44a83dcba2ff4523dc28d22d30aeb1e59ace3767e85145027bd124'
             '685ccad3805b8b071490fb7b19ac5c616d144b48eac37a17fe89b68fcd13d04f')
-sha256sums_x86_64=('37493a0f725e407a3a96cf26927cc04c3e544b9a55a1141e267510901f74aef8')
-sha256sums_aarch64=('fb69b157a6bc4bcd2ed721bd991e7d160561598a575cf26e25e11563d455f55b')
+sha256sums_x86_64=('4491652acd9d43c6858a3bdc41a6dfd45b991aef75f654f227da689ff1c08d40')
+sha256sums_aarch64=('4386abb6a1c29bfe598a37442eb3f6d755280dbcdd3196cdcf47f8beb4f9eccb')
 
 
 package() {
