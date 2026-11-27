@@ -1,7 +1,7 @@
 pkgbase = newscid-bin
 	pkgdesc = Chess Information Database (Scid v4 compatible) — prebuilt binary
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = https://github.com/chrisfair/newscid
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -15,9 +15,9 @@ pkgbase = newscid-bin
 	conflicts = newscid
 	options = !strip
 	validpgpkeys = 72258688D0C74A460621B38B0EBAF09296D92C11
-	source_x86_64 = newscid-2.1.1-linux-x86_64.tar.gz::https://github.com/chrisfair/newscid/releases/download/v2.1.1/newscid-2.1.1-linux-x86_64.tar.gz
-	source_x86_64 = newscid-2.1.1-linux-x86_64.tar.gz.asc::https://github.com/chrisfair/newscid/releases/download/v2.1.1/newscid-2.1.1-linux-x86_64.tar.gz.asc
-	sha256sums_x86_64 = 8c17829838396b50fa4b83416119cc29400518eff8e68f6c5ff6d5d00eb347a9
+	source_x86_64 = newscid-2.1.2-linux-x86_64.tar.gz::https://github.com/chrisfair/newscid/releases/download/v2.1.2/newscid-2.1.2-linux-x86_64.tar.gz
+	source_x86_64 = newscid-2.1.2-linux-x86_64.tar.gz.asc::https://github.com/chrisfair/newscid/releases/download/v2.1.2/newscid-2.1.2-linux-x86_64.tar.gz.asc
+	sha256sums_x86_64 = 8c541378790617135bf24444cb9f99f8a4ae9275fdd6d2300685f89268944a34
 	sha256sums_x86_64 = SKIP
 
 pkgname = newscid-bin
