@@ -1,7 +1,7 @@
 # Maintainer: MikolajQ
 
 pkgname=homemesh
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Open the home folders of your other computers in any file manager; pair them with a code'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('gvfs: open the computers in Nautilus, Nemo, Thunar and Caja'
 options=('!strip' '!debug')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('faa3310593c8c3e33f1756098f7c3de605cab94a79ec79b9a14d0bc338bb5bb5')
+sha256sums=('89dfa285d4646bacc4a8b978154ad772ca1fafa92aa6d178b10e4716e54635a9')
 
 check() {
   cd "$pkgname-$pkgver"
