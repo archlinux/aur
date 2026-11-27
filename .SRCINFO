@@ -1,6 +1,6 @@
 pkgbase = groma-bin
 	pkgdesc = Keep your architecture as Markdown in Git
-	pkgver = 0.7.8
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/mrlesk/groma.md
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = groma-bin
 	provides = groma
 	conflicts = groma
 	options = !debug
-	source = groma-bin-0.7.8-LICENSE::https://raw.githubusercontent.com/mrlesk/groma.md/v0.7.8/LICENSE
+	source = groma-bin-0.8.0-LICENSE::https://raw.githubusercontent.com/mrlesk/groma.md/v0.8.0/LICENSE
 	sha256sums = b97c251e502d39094c7110c14f1c912d5b0cd30c4b03cd30b4f7a9f776960c48
-	source_x86_64 = groma-bin-0.7.8-x86_64::https://github.com/mrlesk/groma.md/releases/download/v0.7.8/groma-bun-linux-x64-baseline
-	sha256sums_x86_64 = bd7a83d04c75b7406d4107022ef3e6cc6959315fe4aa2efce6cea4367fe1162d
-	source_aarch64 = groma-bin-0.7.8-aarch64::https://github.com/mrlesk/groma.md/releases/download/v0.7.8/groma-bun-linux-arm64
-	sha256sums_aarch64 = b67d8d3aedc1ed2ee1e1b05d513e7b5cd014280aa3fda09b8db4bb414fc6024c
+	source_x86_64 = groma-bin-0.8.0-x86_64::https://github.com/mrlesk/groma.md/releases/download/v0.8.0/groma-bun-linux-x64-baseline
+	sha256sums_x86_64 = c40675ccd7c41372fbef98fbb1d708ff7089e8ea8602ad56618061f2b2a85808
+	source_aarch64 = groma-bin-0.8.0-aarch64::https://github.com/mrlesk/groma.md/releases/download/v0.8.0/groma-bun-linux-arm64
+	sha256sums_aarch64 = 9d21e821544bd61ed910403e49662e34f30c9e9159920889d743e13fdb809f83
 
 pkgname = groma-bin
