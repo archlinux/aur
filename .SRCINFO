@@ -1,6 +1,6 @@
 pkgbase = mineradio-vision-git
 	pkgdesc = Learning-purpose fork of Mineradio with Kugou/Qishui/Spotify integration, LiquidGlass visuals and modular architecture.
-	pkgver = 3.3.5.r0.g0541f6e
+	pkgver = 3.3.6.r0.g062c292
 	pkgrel = 1
 	url = https://github.com/moli-lihuashi/Mineradio-Vision
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mineradio-vision-git
 	makedepends = git
 	makedepends = jq
 	depends = electron44
-	provides = mineradio-vision=3.3.5
+	provides = mineradio-vision=3.3.6
 	conflicts = mineradio-vision
 	options = !strip
 	options = !emptydirs
@@ -19,7 +19,7 @@ pkgbase = mineradio-vision-git
 	source = mineradio-vision.js
 	source = mineradio-vision.sh
 	sha256sums = SKIP
-	sha256sums = 03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86
+	sha256sums = 4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b
 	sha256sums = 739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97
 
 pkgname = mineradio-vision-git

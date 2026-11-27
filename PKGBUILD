@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mineradio-vision-git
 _pkgname=Mineradio-Vision
-pkgver=3.3.5.r0.g0541f6e
+pkgver=3.3.6.r0.g062c292
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -12,26 +12,26 @@ license=('GPL-3.0-or-later')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
-    "electron${_electronversion}"
+	"electron${_electronversion}"
 )
 makedepends=(
-    'gendesk'
-    'bun'
-    'nvm'
-    'git'
-    'jq'
+	'gendesk'
+	'bun'
+	'nvm'
+	'git'
+	'jq'
 )
 source=(
-    "${pkgname%-git}.git::git+${url}"
-    "${pkgname%-git}.js"
-    "${pkgname%-git}.sh"
+	"${pkgname%-git}.git::git+${url}"
+	"${pkgname%-git}.js"
+	"${pkgname%-git}.sh"
 )
 options=(
-    '!strip'
-    '!emptydirs'
+	'!strip'
+	'!emptydirs'
 )
 sha256sums=('SKIP'
-            '03d27412abc18434c4b7935b8cb69bcbd70c96ec7c118cf2a521369c0e083a86'
+            '4e629b50633624a4092c6d105aa2300bb0b1c7d979599a843b4468d903886f3b'
             '739eaf5396ac7f1373d907904f068e8a10a18ef91af7c35ca05adbff46322c97')
 _get_project_dir() {
 	local _d _f _t _bt= _best= _bs=0
@@ -113,41 +113,41 @@ _generate_icons() {
 	done
 }
 prepare() {
-    cd "$(_get_project_dir)"
-    _get_electron_version
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-git}/g
-    " "${srcdir}/${pkgname%-git}.sh"
-    gendesk -q -f -n \
-        --pkgname="${pkgname%-git}" \
-        --pkgdesc="${pkgdesc}" \
-        --categories="Development" \
-        --name="${_pkgname}" \
-        --exec="${pkgname%-git} %U"
-    _ensure_local_nvm
-    _set_electron_build_env
-    _set_bun_build_env
-    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
-    sed -i "s/\['use-angle', 'd3d11'\]/['use-angle', 'gl']/g" desktop/main.js
-    sed -i "s|const APP_ICON_ICO = path.join(__dirname, '..', 'build', 'icon.ico');|const APP_ICON_ICO = path.join(__dirname, '..', 'build', 'icon.png');|g" desktop/main.js
-    sed -i "s/const APP_USER_MODEL_ID = _BETA_META.appUserModelId || 'com.mineradio.desktop';/const APP_USER_MODEL_ID = '${pkgname%-git}';/g" desktop/main.js
-    rm -f package-lock.json
-    bun install
+	cd "$(_get_project_dir)"
+	_get_electron_version
+	sed -i -e "
+		s/@electronversion@/${_electronversion}/g
+		s/@appname@/${pkgname%-git}/g
+	" "${srcdir}/${pkgname%-git}.sh"
+	gendesk -q -f -n \
+		--pkgname="${pkgname%-git}" \
+		--pkgdesc="${pkgdesc}" \
+		--categories="Development" \
+		--name="${_pkgname}" \
+		--exec="${pkgname%-git} %U"
+	_ensure_local_nvm
+	_set_electron_build_env
+	_set_bun_build_env
+	jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
+	sed -i "s/\['use-angle', 'd3d11'\]/['use-angle', 'gl']/g" desktop/main.js
+	sed -i "s|const APP_ICON_ICO = path.join(__dirname, '..', 'build', 'icon.ico');|const APP_ICON_ICO = path.join(__dirname, '..', 'build', 'icon.png');|g" desktop/main.js
+	sed -i "s/const APP_USER_MODEL_ID = _BETA_META.appUserModelId || 'com.mineradio.desktop';/const APP_USER_MODEL_ID = '${pkgname%-git}';/g" desktop/main.js
+	rm -f package-lock.json
+	bun install
 }
 build() {
-    cd "$(_get_project_dir)"
-    _ensure_local_nvm
-    _set_electron_build_env
-    _set_bun_build_env
-    bunx electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}"
-    _delete_other_arch_files
+	cd "$(_get_project_dir)"
+	_ensure_local_nvm
+	_set_electron_build_env
+	_set_bun_build_env
+	bunx electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}"
+	_delete_other_arch_files
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+	install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+	install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
-    install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    _generate_icons
-    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+	_generate_icons
+	install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
