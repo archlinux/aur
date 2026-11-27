@@ -12,7 +12,7 @@ pkgbase = cursebreaker-bin
 	conflicts = cursebreaker
 	conflicts = cursebreaker-git
 	source = https://github.com/AcidWeb/CurseBreaker/releases/download/v5.0.0/CurseBreaker-linux.gz
-	source = LICENSE-5.0.0::https://github.com/AcidWeb/CurseBreaker/raw/master/LICENSE.txt
+	source = LICENSE-5.0.0::https://github.com/AcidWeb/CurseBreaker/raw/v5.0.0/LICENSE.txt
 	sha256sums = 81c101593cc903b61f15eca481b792c527680e1bc6ee8a52b85ff436b833d337
 	sha256sums = c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271
 

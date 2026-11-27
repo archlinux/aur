@@ -10,7 +10,7 @@ depends=('glibc' 'zlib' 'gcc-libs')
 provides=('cursebreaker')
 conflicts=('cursebreaker' 'cursebreaker-git')
 source=("${url}/releases/download/v${pkgver}/CurseBreaker-linux.gz"
-        "LICENSE-${pkgver}::${url}/raw/master/LICENSE.txt")
+        "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE.txt")
 sha256sums=('81c101593cc903b61f15eca481b792c527680e1bc6ee8a52b85ff436b833d337'
             'c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271')
 
