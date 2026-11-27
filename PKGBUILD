@@ -1,7 +1,7 @@
 # Maintainer: MikolajQ
 
 pkgname=homemesh
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Open the home folders of your other computers in any file manager; pair them with a code'
 arch=('any')
@@ -19,11 +19,12 @@ optdepends=('gvfs: open the computers in Nautilus, Nemo, Thunar and Caja'
 options=('!strip' '!debug')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7794eee85f849c8ac37539396e31b72be717720452281910e275247bff934cf4')
+sha256sums=('b0d1c48194e5643404800fb58b009ffa4f81c4ef268c4b8a38740f63ee467d3d')
 
 check() {
   cd "$pkgname-$pkgver"
-  python -m unittest discover -s tests -q
+  # Without real pairing between sshd instances: that is tested before each release.
+  HOMEMESH_QUICK_TESTS=1 python -m unittest discover -s tests -q
 }
 
 package() {
