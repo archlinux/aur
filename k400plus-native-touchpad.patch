@@ -1,0 +1,442 @@
+From 39228711f600ddad8c5eb269dc65b9f9b5143a8a Mon Sep 17 00:00:00 2001
+From: Dmitriy Geels <dmitriy.geels@gmail.com>
+Date: Mon, 24 Aug 2026 00:40:19 +0200
+Subject: [PATCH v4] HID: logitech-hidpp: add native touchpad support for K400
+ Plus
+
+The Logitech K400 Plus (WPID 0x404d) exposes its touchpad through the
+HID++ TouchpadRawXY feature, but currently operates as an emulated mouse.
+
+Add support for the native raw touchpad reports by creating a separate
+multitouch input device while leaving the keyboard and physical button
+reports on the existing HID input device.
+
+The K400 Plus reports an area range of zero. Do not expose
+ABS_MT_PRESSURE when the TouchpadRawXY feature reports no contact area,
+as a permanently zero pressure value causes userspace to treat contacts
+as hovering rather than touching.
+
+This enables native touchpad handling, including multitouch gestures and
+two-finger scrolling.
+
+This is an AI-assisted patch.
+
+Signed-off-by: Dmitriy Geels <dmitriy.geels@gmail.com>
+---
+Changes in v4:
+- Rebase onto the current HID for-next branch.
+- Do not advertise clickpad buttons on the separate K400 Plus touchpad
+  device; physical button events remain on the existing HID input.
+- Use a stable K400 Plus touchpad name, independent of receiver naming
+  and the longer HID++ firmware product name.
+- Publish the touchpad input pointer only after successful registration and
+  use READ_ONCE() in the raw event path.
+- Keep the existing WTP input pointer path unchanged and clean up allocation
+  failures. The touchpad name no longer needs a separate allocation.
+
+ drivers/hid/hid-logitech-hidpp.c | 211 ++++++++++++++++++++++---------
+ 1 file changed, 153 insertions(+), 58 deletions(-)
+
+diff --git a/drivers/hid/hid-logitech-hidpp.c b/drivers/hid/hid-logitech-hidpp.c
+index 27d83b8bbaaf..7b52c88506a1 100644
+--- a/drivers/hid/hid-logitech-hidpp.c
++++ b/drivers/hid/hid-logitech-hidpp.c
+@@ -64,6 +64,7 @@ MODULE_PARM_DESC(disable_tap_to_click,
+ #define HIDPP_QUIRK_CLASS_K400			BIT(2)
+ #define HIDPP_QUIRK_CLASS_G920			BIT(3)
+ #define HIDPP_QUIRK_CLASS_K750			BIT(4)
++#define HIDPP_QUIRK_CLASS_KBD_WTP		BIT(5)
+ 
+ /* bits 2..20 are reserved for classes */
+ /* #define HIDPP_QUIRK_CONNECT_EVENTS		BIT(21) disabled */
+@@ -2931,11 +2932,13 @@ static int hidpp_ff_init(struct hidpp_device *hidpp,
+ #define WTP_MANUAL_RESOLUTION				39
+ 
+ struct wtp_data {
++	struct input_dev *input;
+ 	u16 x_size, y_size;
+ 	u8 finger_count;
+ 	u8 mt_feature_index;
+ 	u8 button_feature_index;
+ 	u8 maxcontacts;
++	u8 area_range;
+ 	bool flip_y;
+ 	unsigned int resolution;
+ };
+@@ -2947,8 +2950,8 @@ static int wtp_input_mapping(struct hid_device *hdev, struct hid_input *hi,
+ 	return -1;
+ }
+ 
+-static void wtp_populate_input(struct hidpp_device *hidpp,
+-			       struct input_dev *input_dev)
++static int wtp_populate_input(struct hidpp_device *hidpp,
++			      struct input_dev *input_dev)
+ {
+ 	struct wtp_data *wd = hidpp->private_data;
+ 
+@@ -2962,22 +2965,31 @@ static void wtp_populate_input(struct hidpp_device *hidpp,
+ 	input_set_abs_params(input_dev, ABS_MT_POSITION_Y, 0, wd->y_size, 0, 0);
+ 	input_abs_set_res(input_dev, ABS_MT_POSITION_Y, wd->resolution);
+ 
+-	/* Max pressure is not given by the devices, pick one */
+-	input_set_abs_params(input_dev, ABS_MT_PRESSURE, 0, 50, 0, 0);
++	/*
++	 * The driver exposes contact area as pressure.  Do not advertise a
++	 * pressure axis when the device does not report contact area; userspace
++	 * may otherwise interpret a permanently-zero pressure value as hover.
++	 */
++	if (wd->area_range)
++		input_set_abs_params(input_dev, ABS_MT_PRESSURE, 0, 50, 0, 0);
+ 
+-	input_set_capability(input_dev, EV_KEY, BTN_LEFT);
++	/* The K400 Plus reports its physical button on the HID input. */
++	if (!(hidpp->quirks & HIDPP_QUIRK_CLASS_KBD_WTP)) {
++		input_set_capability(input_dev, EV_KEY, BTN_LEFT);
+ 
+-	if (hidpp->quirks & HIDPP_QUIRK_WTP_PHYSICAL_BUTTONS)
+-		input_set_capability(input_dev, EV_KEY, BTN_RIGHT);
+-	else
+-		__set_bit(INPUT_PROP_BUTTONPAD, input_dev->propbit);
++		if (hidpp->quirks & HIDPP_QUIRK_WTP_PHYSICAL_BUTTONS)
++			input_set_capability(input_dev, EV_KEY, BTN_RIGHT);
++		else
++			__set_bit(INPUT_PROP_BUTTONPAD, input_dev->propbit);
++	}
+ 
+-	input_mt_init_slots(input_dev, wd->maxcontacts, INPUT_MT_POINTER |
+-		INPUT_MT_DROP_UNUSED);
++	return input_mt_init_slots(input_dev, wd->maxcontacts, INPUT_MT_POINTER |
++				   INPUT_MT_DROP_UNUSED);
+ }
+ 
+ static void wtp_touch_event(struct hidpp_device *hidpp,
+-	struct hidpp_touchpad_raw_xy_finger *touch_report)
++			    struct input_dev *input,
++			    struct hidpp_touchpad_raw_xy_finger *touch_report)
+ {
+ 	struct wtp_data *wd = hidpp->private_data;
+ 	int slot;
+@@ -2986,41 +2998,47 @@ static void wtp_touch_event(struct hidpp_device *hidpp,
+ 		/* no actual data */
+ 		return;
+ 
+-	slot = input_mt_get_slot_by_key(hidpp->input, touch_report->finger_id);
++	slot = input_mt_get_slot_by_key(input, touch_report->finger_id);
+ 
+-	input_mt_slot(hidpp->input, slot);
+-	input_mt_report_slot_state(hidpp->input, MT_TOOL_FINGER,
+-					touch_report->contact_status);
++	input_mt_slot(input, slot);
++	input_mt_report_slot_state(input, MT_TOOL_FINGER,
++				   touch_report->contact_status);
+ 	if (touch_report->contact_status) {
+-		input_event(hidpp->input, EV_ABS, ABS_MT_POSITION_X,
+-				touch_report->x);
+-		input_event(hidpp->input, EV_ABS, ABS_MT_POSITION_Y,
+-				wd->flip_y ? wd->y_size - touch_report->y :
+-					     touch_report->y);
+-		input_event(hidpp->input, EV_ABS, ABS_MT_PRESSURE,
+-				touch_report->area);
++		input_event(input, EV_ABS, ABS_MT_POSITION_X,
++			    touch_report->x);
++		input_event(input, EV_ABS, ABS_MT_POSITION_Y,
++			    wd->flip_y ? wd->y_size - touch_report->y :
++			    touch_report->y);
++
++		if (wd->area_range)
++			input_event(input, EV_ABS, ABS_MT_PRESSURE,
++				    touch_report->area);
+ 	}
+ }
+ 
+ static void wtp_send_raw_xy_event(struct hidpp_device *hidpp,
++		struct input_dev *input,
+ 		struct hidpp_touchpad_raw_xy *raw)
+ {
+ 	int i;
+ 
+ 	for (i = 0; i < 2; i++)
+-		wtp_touch_event(hidpp, &(raw->fingers[i]));
++		wtp_touch_event(hidpp, input, &raw->fingers[i]);
+ 
+ 	if (raw->end_of_frame &&
+-	    !(hidpp->quirks & HIDPP_QUIRK_WTP_PHYSICAL_BUTTONS))
+-		input_event(hidpp->input, EV_KEY, BTN_LEFT, raw->button);
++	    !(hidpp->quirks &
++	      (HIDPP_QUIRK_WTP_PHYSICAL_BUTTONS |
++	       HIDPP_QUIRK_CLASS_KBD_WTP)))
++		input_event(input, EV_KEY, BTN_LEFT, raw->button);
+ 
+ 	if (raw->end_of_frame || raw->finger_count <= 2) {
+-		input_mt_sync_frame(hidpp->input);
+-		input_sync(hidpp->input);
++		input_mt_sync_frame(input);
++		input_sync(input);
+ 	}
+ }
+ 
+-static int wtp_mouse_raw_xy_event(struct hidpp_device *hidpp, u8 *data)
++static int wtp_mouse_raw_xy_event(struct hidpp_device *hidpp,
++				  struct input_dev *input, u8 *data)
+ {
+ 	struct wtp_data *wd = hidpp->private_data;
+ 	u8 c1_area = ((data[7] & 0xf) * (data[7] & 0xf) +
+@@ -3054,7 +3072,7 @@ static int wtp_mouse_raw_xy_event(struct hidpp_device *hidpp, u8 *data)
+ 		.button = data[0] & 0x01,
+ 	};
+ 
+-	wtp_send_raw_xy_event(hidpp, &raw);
++	wtp_send_raw_xy_event(hidpp, input, &raw);
+ 
+ 	return 1;
+ }
+@@ -3065,8 +3083,16 @@ static int wtp_raw_event(struct hid_device *hdev, u8 *data, int size)
+ 	struct wtp_data *wd = hidpp->private_data;
+ 	struct hidpp_report *report = (struct hidpp_report *)data;
+ 	struct hidpp_touchpad_raw_xy raw;
++	struct input_dev *input;
+ 
+-	if (!wd || !hidpp->input)
++	if (!wd)
++		return 1;
++
++	if (hidpp->quirks & HIDPP_QUIRK_CLASS_KBD_WTP)
++		input = READ_ONCE(wd->input);
++	else
++		input = hidpp->input;
++	if (!input)
+ 		return 1;
+ 
+ 	switch (data[0]) {
+@@ -3077,16 +3103,16 @@ static int wtp_raw_event(struct hid_device *hdev, u8 *data, int size)
+ 			return 1;
+ 		}
+ 		if (hidpp->quirks & HIDPP_QUIRK_WTP_PHYSICAL_BUTTONS) {
+-			input_event(hidpp->input, EV_KEY, BTN_LEFT,
+-					!!(data[1] & 0x01));
+-			input_event(hidpp->input, EV_KEY, BTN_RIGHT,
+-					!!(data[1] & 0x02));
+-			input_sync(hidpp->input);
++			input_event(input, EV_KEY, BTN_LEFT,
++				    !!(data[1] & 0x01));
++			input_event(input, EV_KEY, BTN_RIGHT,
++				    !!(data[1] & 0x02));
++			input_sync(input);
+ 			return 0;
+ 		} else {
+ 			if (size < 21)
+ 				return 1;
+-			return wtp_mouse_raw_xy_event(hidpp, &data[7]);
++			return wtp_mouse_raw_xy_event(hidpp, input, &data[7]);
+ 		}
+ 	case REPORT_ID_HIDPP_LONG:
+ 		/* size is already checked in hidpp_raw_event. */
+@@ -3095,7 +3121,7 @@ static int wtp_raw_event(struct hid_device *hdev, u8 *data, int size)
+ 			return 1;
+ 		hidpp_touchpad_raw_xy_event(hidpp, data + 4, &raw);
+ 
+-		wtp_send_raw_xy_event(hidpp, &raw);
++		wtp_send_raw_xy_event(hidpp, input, &raw);
+ 		return 0;
+ 	}
+ 
+@@ -3108,6 +3134,9 @@ static int wtp_get_config(struct hidpp_device *hidpp)
+ 	struct hidpp_touchpad_raw_info raw_info = {0};
+ 	int ret;
+ 
++	if (wd->x_size)
++		return 0;
++
+ 	ret = hidpp_root_get_feature(hidpp, HIDPP_PAGE_TOUCHPAD_RAW_XY,
+ 		&wd->mt_feature_index);
+ 	if (ret)
+@@ -3122,6 +3151,7 @@ static int wtp_get_config(struct hidpp_device *hidpp)
+ 	wd->x_size = raw_info.x_size;
+ 	wd->y_size = raw_info.y_size;
+ 	wd->maxcontacts = raw_info.maxcontacts;
++	wd->area_range = raw_info.area_range;
+ 	wd->flip_y = raw_info.origin == TOUCHPAD_RAW_XY_ORIGIN_LOWER_LEFT;
+ 	wd->resolution = raw_info.res;
+ 	if (!wd->resolution)
+@@ -3145,22 +3175,27 @@ static int wtp_allocate(struct hid_device *hdev, const struct hid_device_id *id)
+ 	return 0;
+ };
+ 
++static int wtp_enable_raw_mode(struct hidpp_device *hidpp)
++{
++	struct wtp_data *wd = hidpp->private_data;
++
++	return hidpp_touchpad_set_raw_report_state(hidpp,
++						  wd->mt_feature_index,
++						  true, true);
++}
++
+ static int wtp_connect(struct hid_device *hdev)
+ {
+ 	struct hidpp_device *hidpp = hid_get_drvdata(hdev);
+-	struct wtp_data *wd = hidpp->private_data;
+ 	int ret;
+ 
+-	if (!wd->x_size) {
+-		ret = wtp_get_config(hidpp);
+-		if (ret) {
+-			hid_err(hdev, "Can not get wtp config: %d\n", ret);
+-			return ret;
+-		}
++	ret = wtp_get_config(hidpp);
++	if (ret) {
++		hid_err(hdev, "cannot get WTP config: %d\n", ret);
++		return ret;
+ 	}
+ 
+-	return hidpp_touchpad_set_raw_report_state(hidpp, wd->mt_feature_index,
+-			true, true);
++	return wtp_enable_raw_mode(hidpp);
+ }
+ 
+ /* ------------------------------------------------------------------------- */
+@@ -4063,15 +4098,20 @@ static int hidpp_input_mapped(struct hid_device *hdev, struct hid_input *hi,
+ }
+ 
+ 
+-static void hidpp_populate_input(struct hidpp_device *hidpp,
+-				 struct input_dev *input)
++static int hidpp_populate_input(struct hidpp_device *hidpp,
++				struct input_dev *input)
+ {
++	int ret;
++
+ 	hidpp->input = input;
+ 
+-	if (hidpp->quirks & HIDPP_QUIRK_CLASS_WTP)
+-		wtp_populate_input(hidpp, input);
+-	else if (hidpp->quirks & HIDPP_QUIRK_CLASS_M560)
++	if (hidpp->quirks & HIDPP_QUIRK_CLASS_WTP) {
++		ret = wtp_populate_input(hidpp, input);
++		if (ret)
++			return ret;
++	} else if (hidpp->quirks & HIDPP_QUIRK_CLASS_M560) {
+ 		m560_populate_input(hidpp, input);
++	}
+ 
+ 	if (hidpp->quirks & HIDPP_QUIRK_HIDPP_WHEELS)
+ 		hidpp10_wheel_populate_input(hidpp, input);
+@@ -4081,6 +4121,8 @@ static void hidpp_populate_input(struct hidpp_device *hidpp,
+ 
+ 	if (hidpp->quirks & HIDPP_QUIRK_HIDPP_REPROG_CONTROLS_BTNS)
+ 		hidpp20_reprog_controls_populate_input(hidpp, input);
++
++	return 0;
+ }
+ 
+ static int hidpp_input_configured(struct hid_device *hdev, struct hid_input *hidinput)
+@@ -4109,9 +4151,7 @@ static int hidpp_input_configured(struct hid_device *hdev, struct hid_input *hid
+ 		}
+ 	}
+ 
+-	hidpp_populate_input(hidpp, input);
+-
+-	return 0;
++	return hidpp_populate_input(hidpp, input);
+ }
+ 
+ static int hidpp_raw_hidpp_event(struct hidpp_device *hidpp, u8 *data,
+@@ -4273,6 +4313,9 @@ static int hidpp_raw_event(struct hid_device *hdev, struct hid_report *report,
+ 
+ 	if (hidpp->quirks & HIDPP_QUIRK_CLASS_WTP)
+ 		return wtp_raw_event(hdev, data, size);
++	else if ((hidpp->quirks & HIDPP_QUIRK_CLASS_KBD_WTP) &&
++		 data[0] == REPORT_ID_HIDPP_LONG)
++		return wtp_raw_event(hdev, data, size);
+ 	else if (hidpp->quirks & HIDPP_QUIRK_CLASS_M560)
+ 		return m560_raw_event(hdev, data, size);
+ 
+@@ -4481,7 +4524,50 @@ static void hidpp_connect_event(struct work_struct *work)
+ 		return;
+ 	}
+ 
+-	if (hidpp->quirks & HIDPP_QUIRK_CLASS_WTP) {
++	if (hidpp->quirks & HIDPP_QUIRK_CLASS_KBD_WTP) {
++		struct wtp_data *wd = hidpp->private_data;
++
++		if (!wd->input) {
++			ret = wtp_get_config(hidpp);
++			if (ret) {
++				hid_err(hdev, "cannot get WTP config: %d\n", ret);
++				return;
++			}
++
++			input = hidpp_allocate_input(hdev);
++			if (!input) {
++				hid_err(hdev, "cannot allocate touchpad input device\n");
++				return;
++			}
++
++			/* This quirk is specific to the K400 Plus (WPID 0x404d). */
++			input->name = "Logitech K400 Plus Touchpad";
++
++			ret = wtp_populate_input(hidpp, input);
++			if (ret) {
++				hid_err(hdev,
++					"cannot initialize touchpad input device: %d\n",
++					ret);
++				input_free_device(input);
++				return;
++			}
++
++			ret = input_register_device(input);
++			if (ret) {
++				hid_err(hdev,
++					"cannot register touchpad input device: %d\n",
++					ret);
++				input_free_device(input);
++				return;
++			}
++
++			WRITE_ONCE(wd->input, input);
++		}
++
++		ret = wtp_enable_raw_mode(hidpp);
++		if (ret)
++			return;
++	} else if (hidpp->quirks & HIDPP_QUIRK_CLASS_WTP) {
+ 		ret = wtp_connect(hdev);
+ 		if (ret)
+ 			return;
+@@ -4572,7 +4658,12 @@ static void hidpp_connect_event(struct work_struct *work)
+ 		return;
+ 	}
+ 
+-	hidpp_populate_input(hidpp, input);
++	ret = hidpp_populate_input(hidpp, input);
++	if (ret) {
++		hidpp->input = NULL;
++		input_free_device(input);
++		return;
++	}
+ 
+ 	ret = input_register_device(input);
+ 	if (ret) {
+@@ -4712,7 +4803,8 @@ static int hidpp_probe(struct hid_device *hdev, const struct hid_device_id *id)
+ 	    hidpp_application_equals(hdev, HID_GD_KEYBOARD))
+ 		hidpp->quirks |= HIDPP_QUIRK_HIDPP_CONSUMER_VENDOR_KEYS;
+ 
+-	if (hidpp->quirks & HIDPP_QUIRK_CLASS_WTP) {
++	if (hidpp->quirks &
++	    (HIDPP_QUIRK_CLASS_WTP | HIDPP_QUIRK_CLASS_KBD_WTP)) {
+ 		ret = wtp_allocate(hdev, id);
+ 		if (ret)
+ 			return ret;
+@@ -4843,6 +4935,9 @@ static const struct hid_device_id hidpp_devices[] = {
+ 	{ /* Keyboard logitech K400 */
+ 	  LDJ_DEVICE(0x4024),
+ 	  .driver_data = HIDPP_QUIRK_CLASS_K400 },
++	{ /* Wireless Touch Keyboard Logitech K400 Plus */
++	  LDJ_DEVICE(0x404d),
++	  .driver_data = HIDPP_QUIRK_CLASS_KBD_WTP },
+ 	{ /* Solar Keyboard Logitech K750 */
+ 	  LDJ_DEVICE(0x4002),
+ 	  .driver_data = HIDPP_QUIRK_CLASS_K750 },
+-- 
+2.56.1
+
