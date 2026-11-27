@@ -3,7 +3,7 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 pkgname=vnote-bin
 _pkgname=VNote
-pkgver=4.15.1
+pkgver=4.15.2
 pkgrel=1
 pkgdesc="A Qt-based, free and open source note-taking application, focusing on Markdown now."
 arch=('x86_64')
@@ -13,29 +13,29 @@ license=('LGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'nss'
-    'freetype2'
-    'fribidi'
-    'alsa-lib'
-    'libx11'
-    'qt6-declarative'
-    'libxcb'
-    'qt6-webengine'
-    'qt6-svg'
-    'qt6-5compat'
-    'qt6-webchannel'
+	'nss'
+	'freetype2'
+	'fribidi'
+	'alsa-lib'
+	'libx11'
+	'qt6-declarative'
+	'libxcb'
+	'qt6-webengine'
+	'qt6-svg'
+	'qt6-5compat'
+	'qt6-webchannel'
 )
 options=(
-    '!strip'
-    '!emptydirs'
-    '!staticlibs'
+	'!strip'
+	'!emptydirs'
+	'!staticlibs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage"
-    "${pkgname%-bin}.sh"
+	"${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage"
+	"${pkgname%-bin}.sh"
 )
-sha256sums=('c5ea9356905f8c851e85fa63eec1f8e1e1432f8f8d504193b294936006632ae0'
-            'b7809c741076bf1cefd65d9a2c3b9d32e12e7cff606d2b5552007c4291d8e65d')
+sha256sums=('befc26f7ee068f25fa7b24881cabf785fc1d1a4ab2e26c2eeb07ef5e5950f900'
+			'b7809c741076bf1cefd65d9a2c3b9d32e12e7cff606d2b5552007c4291d8e65d')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
@@ -48,20 +48,20 @@ _install_icons() {
 	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
-    sed -i -e "
-        s/@appname@/${pkgname%-bin}/g
-        s/@runname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+	sed -i -e "
+		s/@appname@/${pkgname%-bin}/g
+		s/@runname@/${pkgname%-bin}/g
+	" "${srcdir}/${pkgname%-bin}.sh"
+	chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
 	rm -rf "${srcdir}/squashfs-root"
-    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    find "${srcdir}/squashfs-root" -type d -perm 700 -exec chmod 755 {} +
-    find "${srcdir}/squashfs-root/usr/share/doc" -type f -perm 777 -exec chmod 444 {} +
+	"${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+	find "${srcdir}/squashfs-root" -type d -perm 700 -exec chmod 755 {} +
+	find "${srcdir}/squashfs-root/usr/share/doc" -type f -perm 777 -exec chmod 444 {} +
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "${srcdir}/squashfs-root/usr/." "${pkgdir}/usr/lib/${pkgname%-bin}"
-    _install_icons
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+	install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	cp -a "${srcdir}/squashfs-root/usr/." "${pkgdir}/usr/lib/${pkgname%-bin}"
+	_install_icons
+	install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
