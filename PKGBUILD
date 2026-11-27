@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=iSEEpathways
-_pkgver=1.6.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('70332037d24dba5f6dc216ebcb965fd0')
-b2sums=('82b3a5b681ff2d03288a1f8f6e1c8ee971d14dd33c6e1ea4e41135580eb88f5572e40cf6efd0babfeab1d382b79bb870c67d5f236fa2a6135cadbe9fae81f94a')
+md5sums=('ef3abd9e653d62902862413363f7c95c')
+b2sums=('ddfe5d5375cf71f569d8a54ef571eb9be83cc219856b872efe149c98fecd1f1cb12a10da197e0cb093df6b972f2045ef4f2df2dbc0605dd90def53fe3e4822a9')
 
 build() {
   mkdir build
