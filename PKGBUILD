@@ -1,5 +1,5 @@
 pkgname=rea-agents
-pkgver=6.8.0
+pkgver=6.10.1
 pkgrel=1
 pkgdesc="Reverse engineer anything from your terminal or agent with one CLI and MCP server"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   'chromium: browser and web capture analysis'
 )
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('8d542ec76a9cb350584b60a6c9c088706ff812d5bb5b094c20c95b6dc25698bb')
+sha256sums=('e8cf08c9fa954e998fc8868c23fa8e5f518cdb9553488ec227b31a3bb6903150')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = rea-agents
 	pkgdesc = Reverse engineer anything from your terminal or agent with one CLI and MCP server
-	pkgver = 6.8.0
+	pkgver = 6.10.1
 	pkgrel = 1
 	url = https://github.com/morluto/rea
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = rea-agents
 	optdepends = pwndbg: optional recorded-crash debugging
 	optdepends = mitmproxy: native mitmproxy capture imports
 	optdepends = chromium: browser and web capture analysis
-	noextract = rea-agents-6.8.0.tgz
-	source = rea-agents-6.8.0.tgz::https://registry.npmjs.org/rea-agents/-/rea-agents-6.8.0.tgz
-	sha256sums = 8d542ec76a9cb350584b60a6c9c088706ff812d5bb5b094c20c95b6dc25698bb
+	noextract = rea-agents-6.10.1.tgz
+	source = rea-agents-6.10.1.tgz::https://registry.npmjs.org/rea-agents/-/rea-agents-6.10.1.tgz
+	sha256sums = e8cf08c9fa954e998fc8868c23fa8e5f518cdb9553488ec227b31a3bb6903150
 
 pkgname = rea-agents
