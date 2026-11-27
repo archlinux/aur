@@ -5,7 +5,7 @@
 ################################################################################
 pkgbase='freenginx'
 pkgname=($pkgbase $pkgbase'-src')
-pkgver='1.30.2'
+pkgver='1.30.3'
 pkgrel=1
 _prefix_relative='etc/'$pkgbase
 _prefix_full='/'$_prefix_relative
@@ -22,7 +22,7 @@ source=($url'/download/'$pkgbase'-'$pkgver'.tar.gz'{,'.asc'}
         'nginx.c.patch'
         'ngx_setproctitle.c.patch')
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-sha512sums=('c8e06a8281cf9192dc1a0537172fd5c9003aad557974e1f0c883e894e1d7db508392a466ca56753fe680750ead2e1462fb6bd2741a78a45739f437869944917d'
+sha512sums=('e884b1e06bf801d9e2d1b9005f47c25acbace426c8cfcc7c2ff74b6533f34aa8c3287c193294b8d2d315d2134eb97b058aeac1a80fe78984268039b05e7e84c4'
             'SKIP'
             '2fb3e090e0b44ed9dadf2dee11a045bf422ba80f427ff642e478c533cf756c9727a2bfafbb8e034ef45192699afb6e34fc662a7899e18808cb51ca02f3f30464'
             '24f5ee73b0e9d8775d36aa250d63401abd7c9d474babd6acc197a4e995eb6e668b15d08794145f3d5acd0a77b854be3e3d2cbc0e0f3e1b416b877baa95dc0f0f'
