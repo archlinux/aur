@@ -1,6 +1,6 @@
 pkgbase = servonaut
 	pkgdesc = Manage AWS, Hetzner, OVH and custom servers from one TUI
-	pkgver = 2.34.0
+	pkgver = 2.35.0
 	pkgrel = 1
 	url = https://github.com/zb-ss/servonaut
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = servonaut
 	depends = python-textual
 	optdepends = python-numpy: voice input
 	optdepends = python-requests: headless account sign-in
-	source = https://files.pythonhosted.org/packages/source/s/servonaut/servonaut-2.34.0.tar.gz
-	sha256sums = 372db7c5a5863337190825eae6da1f6ab85961e2ff0a4b4cf3e5e26a2913a4e5
+	source = https://files.pythonhosted.org/packages/source/s/servonaut/servonaut-2.35.0.tar.gz
+	sha256sums = aab280a0b3d69311292fa1ceaee8624e9346612ec880fe7b1aaf3e025eab7aa5
 
 pkgname = servonaut

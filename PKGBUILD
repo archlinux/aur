@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=servonaut
-pkgver=2.34.0
+pkgver=2.35.0
 pkgrel=1
 pkgdesc="Manage AWS, Hetzner, OVH and custom servers from one TUI"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/s/servonaut/servonaut-${pkgver}.tar.gz")
-sha256sums=('372db7c5a5863337190825eae6da1f6ab85961e2ff0a4b4cf3e5e26a2913a4e5')
+sha256sums=('aab280a0b3d69311292fa1ceaee8624e9346612ec880fe7b1aaf3e025eab7aa5')
 
 build() {
   cd "servonaut-${pkgver}"
