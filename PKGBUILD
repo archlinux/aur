@@ -6,7 +6,7 @@ pkgdesc='The Fastest ISO Manager on the Planet, written in C++'
 arch=('x86_64')
 url="https://github.com/siyia2/iso-commander"
 license=('GPL-3.0-or-later')
-depends=('readline' 'util-linux')
+depends=('util-linux')
 makedepends=('gcc>=15' 'make>=4.3')
 conflicts=('iso-commander-bin')
 optdepends=(

@@ -7,7 +7,6 @@ pkgbase = iso-commander
 	license = GPL-3.0-or-later
 	makedepends = gcc>=15
 	makedepends = make>=4.3
-	depends = readline
 	depends = util-linux
 	optdepends = ntfsprogs: NTFS formatting for Windows live USB creation
 	optdepends = dosfstools: FAT32 formatting for Windows live USB creation
