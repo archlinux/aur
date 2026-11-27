@@ -1,0 +1,14 @@
+pkgbase = helix-mono
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/HelixDB/helix-mono
+	arch = any
+	license = OFL-1.1
+	source = HelixMono-1.0.zip::https://github.com/HelixDB/helix-mono/releases/download/v1.0/HelixMono-1.0.zip
+	sha256sums = f163b110b1d9fd87fcf5fed69fd20491b8b46170bffd93d4e1db0df5548fdb80
+
+pkgname = ttf-helix-mono
+	pkgdesc = Monospace typeface by HelixDB (TTF format)
+
+pkgname = woff2-helix-mono
+	pkgdesc = Monospace typeface by HelixDB (WOFF2 format, for the web)
