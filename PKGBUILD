@@ -97,8 +97,11 @@ package_vtium-git() {
 # The console's features while VTIUM_FEATURES is unset, and the default of
 # hwaccel: the build for an ordinary desktop or laptop, with right-to-left
 # text, seat mode through libseat and logind, the frame filters that draw a
-# look's effects, and the GPU path on by default (ADR-1500 D8).
-_features='images logind gpu bidi libseat filters'
+# look's effects, faster scrolling on the CPU (scroll-pan), the privilege
+# split that runs most of vtium without root (split), and the GPU path on by
+# default (ADR-1500 D8). With split, make install also stages the sysusers
+# file vtium-split.conf, which creates the accounts the split runs as.
+_features='images logind gpu bidi libseat filters scroll-pan split'
 _hwaccel=on
 
 # Everything below is the same in vtium-git/PKGBUILD and vtium/PKGBUILD;
