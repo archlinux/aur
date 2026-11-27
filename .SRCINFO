@@ -1,6 +1,6 @@
 pkgbase = oh-my-ztty-bin
 	pkgdesc = Lean Project Z terminal workspace with zsh presets and explicit AI tools
-	pkgver = 0.2.5
+	pkgver = 0.2.17
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/oh-my-ztty
 	arch = x86_64
@@ -16,15 +16,7 @@ pkgbase = oh-my-ztty-bin
 	depends = openssh
 	depends = glibc
 	depends = gcc-libs
-	depends = libx11
-	depends = libxft
-	depends = libxrender
-	depends = fontconfig
-	depends = freetype2
-	depends = harfbuzz
-	depends = libglvnd
-	depends = wayland
-	depends = libxkbcommon
+	depends = ztty
 	depends = hicolor-icon-theme
 	optdepends = neovim>=0.11: native Ink editor profile
 	optdepends = ripgrep: editor file and text search
@@ -35,17 +27,17 @@ pkgbase = oh-my-ztty-bin
 	optdepends = xdg-utils: open terminal hyperlinks
 	optdepends = rsync: ssmcp workspace synchronization
 	optdepends = nodejs: optional ssmcp browser tools
-	provides = oh-my-ztty=0.2.5
+	provides = oh-my-ztty=0.2.17
 	conflicts = oh-my-ztty
 	options = !strip
 	options = !debug
 	source = oh-my-ztty.desktop
 	source = README.archlinux
 	sha256sums = 775c292e77996d9e32c78963909ddce7eb836c612e88195721a1a5befcec8690
-	sha256sums = 8cdff13beef76595d6d8c740c6f6873189c0c1f5e74f116dda0305100b6af099
-	source_x86_64 = https://github.com/LIghtJUNction/oh-my-ztty/releases/download/v0.2.5/oh-my-ztty-0.2.5-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 79d58efac183069e9d50701374fc76dc9938d96d69c9a58d35252a629129a388
-	source_aarch64 = https://github.com/LIghtJUNction/oh-my-ztty/releases/download/v0.2.5/oh-my-ztty-0.2.5-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 40cdf0fe1cb714d141fcab4328f98f8d73a789a485b112ed6a95cb36dcb6f3b5
+	sha256sums = edc4d7941882692b9f828ac57a15a3213658ab2ba810dce30985baed9f9a3cdb
+	source_x86_64 = https://github.com/LIghtJUNction/oh-my-ztty/releases/download/v0.2.17/oh-my-ztty-0.2.17-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a09c1bfbf662c9fbc9df5afc3f8bb7577e5fbb6384a078294664ffa0234080c0
+	source_aarch64 = https://github.com/LIghtJUNction/oh-my-ztty/releases/download/v0.2.17/oh-my-ztty-0.2.17-linux-aarch64.tar.gz
+	sha256sums_aarch64 = db8bc038a691138b1e0309c9c9fa7d546158bb56f31e6d6e665b0616323936be
 
 pkgname = oh-my-ztty-bin

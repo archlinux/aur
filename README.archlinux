@@ -1,13 +1,13 @@
 oh-my-ztty on Arch Linux
 ========================
 
-Run `omztty terminal` to open the bundled terminal, or `omztty shell` to use
+Run `omztty terminal` to open the system-packaged ztty terminal, or `omztty shell` to use
 its zsh preset in an existing terminal. `omztty doctor` checks the installation.
 No background service starts during package installation.
 
-The package owns /usr/lib/oh-my-ztty and /usr/bin/omztty. Bundled component
-commands remain private to the suite, so separately installed ztty, ssmcp,
-zdot and zfetch packages can coexist. If a previous per-user installation
+The package owns /usr/lib/oh-my-ztty and /usr/bin/omztty. The terminal comes from the separate ztty package. Other bundled component
+commands remain private to the suite, so separate ssmcp, zdot and zfetch
+packages can coexist. If a previous per-user installation
 appears first in PATH, use /usr/bin/omztty to select this package explicitly.
 
 Configuration is adopted only when you request it as your ordinary user:
