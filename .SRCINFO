@@ -1,0 +1,23 @@
+pkgbase = jsrf-launcher-bin
+	pkgdesc = Launcher for native recompilation of Jet Set Radio Future (Xbox)
+	pkgver = 3k
+	pkgrel = 1
+	url = https://github.com/Miggas/JSRF-Recomp
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = curl
+	depends = glibc
+	depends = gzip
+	depends = sdl2-compat
+	depends = tar
+	depends = unzip
+	depends = util-linux
+	options = !strip
+	source = jsrf-launcher-bin-3k.tar.gz::https://github.com/Miggas/JSRF-Recomp/releases/download/launcher-v3k/jsrf_launcher-linux.tar.gz
+	source = jsrf-launcher-bin-3k-source.tar.gz::https://codeload.github.com/Miggas/JSRF-Recomp/tar.gz/refs/tags/launcher-v3k
+	sha256sums = 7330235aed066af831528ab94aceacfeab483063db149a44c82349884670564b
+	sha256sums = c49318548ee095ec674e85f9ed2e743670f0535580e9b3e30d28fb8a8e62d08e
+
+pkgname = jsrf-launcher-bin
