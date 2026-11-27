@@ -1,12 +1,11 @@
 pkgbase = ygrep-bin
 	pkgdesc = grep for YAML with jq-style filter expressions (prebuilt binary)
 	pkgver = 1.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/subnix-work/jgrep-tinox
 	arch = x86_64
 	license = Apache-2.0
 	depends = glibc
-	depends = gc
 	depends = zlib
 	depends = openssl
 	provides = ygrep=1.0.21

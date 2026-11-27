@@ -1,12 +1,12 @@
 # Maintainer: Tino Gohl <tuvbunn2@googlemail.com>
 pkgname=ygrep-bin
 pkgver=1.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="grep for YAML with jq-style filter expressions (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/subnix-work/jgrep-tinox"
 license=('Apache-2.0')
-depends=('glibc' 'gc' 'zlib' 'openssl')
+depends=('glibc' 'zlib' 'openssl')
 provides=("ygrep=$pkgver")
 conflicts=('ygrep')
 # ygrep is byte-identical to jgrep (same binary, behavior switches on
