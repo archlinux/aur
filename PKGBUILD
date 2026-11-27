@@ -1,12 +1,12 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=agent-browser
 pkgver=0.45.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Headless browser automation CLI for AI agents"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vercel-labs/agent-browser"
 license=('Apache-2.0')
-depends=('nodejs')
+optdepends=('npm: plugins added from npm (agent-browser plugin add)')
 makedepends=('npm' 'jq')
 options=('!debug')
 # Since 0.45.0 the native CLI ships as a per-platform npm package, not inside the main tarball
