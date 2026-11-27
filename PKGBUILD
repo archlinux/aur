@@ -1,7 +1,7 @@
 # Maintainer: Marlon Kranz <dev@marlonkranz.com>
 pkgname=cast-helper-bin
 _pkgname=cast-helper
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Chromecast and AirPlay mirroring and media playback, shared by the Dux Shell Cast plugin and other apps (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/Conava/cast-helper/v
 source_x86_64=("$_pkgname-$pkgver-x86_64::$url/releases/download/v$pkgver/$_pkgname-x86_64")
 source_aarch64=("$_pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/$_pkgname-aarch64")
 sha256sums=('fb33b89e664985fce73ca1a81265b63c3d741593ef8a4dd94f70d00490a5fdd1')
-sha256sums_x86_64=('4dd3ffbd281ab2cbf3952e7a7590a38a66b5e2f99b282c5d6da6dbcf248004c0')
-sha256sums_aarch64=('8c4e6858c6951dd699cc718001e452a08e5afda0a55182994f3b67c4857b5889')
+sha256sums_x86_64=('5f5468b8523503635160e51a00905fe62fb64f27904306ede0bc0f21bc177a2f')
+sha256sums_aarch64=('2a69b037704f93388da4b842a171b2973a3793f417504755c430c6e02b894e9c')
 
 package() {
   install -Dm755 "$_pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/$_pkgname"
