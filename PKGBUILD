@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=apComplex
-_pkgver=2.78.0
+_pkgver=2.80.0
 pkgname=r-${_pkgname,,}
-pkgver=2.78.0
+pkgver=2.80.0
 pkgrel=1
 pkgdesc='Estimate protein complex membership using AP-MS protein data'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9fc9a783d0dcf70d498941280e88e430dbcf6ab592e3dead31a47273ff663cff')
+sha256sums=('daa1f5111ffdb0590bdfc3eb37349dbcf07f44c50a716599bbafb057bf96873e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
