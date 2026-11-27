@@ -3,8 +3,8 @@
 # shellcheck disable=SC2034,SC2154
 pkgbase="lucidglyph"
 pkgname=("lucidglyph" "fontconfig-curated-defaults")
-pkgver=0.16.0
-pkgrel=2
+pkgver=0.16.1
+pkgrel=1
 arch=("any")
 pkgdesc="Carefully tuned adjustments designed to improve font rendering on Linux systems packaged for Arch Linux."
 url="https://github.com/maximilionus/lucidglyph"
@@ -15,7 +15,7 @@ source=(
 )
 validpgpkeys=("265281061734E45F2BF0489803E9CD3D5C5D378E")
 sha512sums=(
-  "41fac46c8025e4373dda6499107cdc01c53672973726e7858e394e80c344a1f3c5e79145570ddd95f9c9fec360ede99c647e00bf8f8edefc3dbaf7890f7e2f8f"
+  "41f33304b92f78a73a8a9d244bb6fc7d221402e828691270cbc49c22538924ec19eb40b4f99908be9272c8643883346eb7479e1452f30d52813284851512c382"
   "61710d5e1ad93d8853ec05e3c8c912fd631bf1b424f32da0cb846bda021b069716d95aa14d59da2c206e57a61316c8ef00e9a4f589771c2f8e6b4a0c89fc8776"
 )
 

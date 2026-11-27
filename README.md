@@ -32,13 +32,13 @@ makepkg --sign --key 265281061734E45F2BF0489803E9CD3D5C5D378E
 Install only the rendering adjustments:
 
 ```sh
-sudo pacman -U ./lucidglyph-0.16.0-2-any.pkg.tar.zst
+sudo pacman -U ./lucidglyph-0.16.1-1-any.pkg.tar.zst
 ```
 
 Install the curated family preferences and their required fonts:
 
 ```sh
-sudo pacman -U ./fontconfig-curated-defaults-0.16.0-2-any.pkg.tar.zst
+sudo pacman -U ./fontconfig-curated-defaults-0.16.1-1-any.pkg.tar.zst
 ```
 
 These packages can be selected separately. The companion's required font packages are installed automatically when needed. `makepkg -si` installs both packages from this split recipe; use the explicit commands above when selecting only one.
