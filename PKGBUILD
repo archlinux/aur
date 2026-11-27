@@ -1,5 +1,5 @@
 pkgname=strength-coach-for-garmin
-pkgver=5.3.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc='Sync your devices and track your strength training'
 arch=('x86_64')
@@ -14,7 +14,6 @@ sha256sums=(
 )
 
 depends=('libnotify' 'sudo' 'webkit2gtk-4.1' 'xdg-utils' 'zlib-ng-compat')
-optdepends=('rclone: export to Dropbox and OneDrive')
 makedepends=('mold' 'npm' 'pnpm' 'python-toml' 'python-yaml' 'rust' 'sccache')
 
 conflicts=('garmin-tracker-rs' 'strength-tracker-rs')
