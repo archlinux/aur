@@ -1,6 +1,6 @@
 pkgbase = r-omicsviewer
 	pkgdesc = Interactive and explorative visualization of SummarizedExperssionSet or ExpressionSet using omicsViewer
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/omicsViewer
 	arch = any
@@ -42,8 +42,8 @@ pkgbase = r-omicsviewer
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-unittest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/omicsViewer_1.16.0.tar.gz
-	md5sums = 2fdf431922e0e5fcd3dd33dc864e2ef1
-	b2sums = ffa734e47a58e995a46b4501dee092f0a758457dcaf4e75384d28b5959d7768ebfb92f2f9cc8d51d00bcd5c868e6f731f6a5ff9e35058918aca0d32341c72ee6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/omicsViewer_1.18.0.tar.gz
+	md5sums = d7895b80035e746ad7a34a9bc1e4aea9
+	b2sums = 5eac19f63427076b464a0c08288d2d4f65f06bb5b1802250c69094bf3aa93fbc4b904515a27efe64f58d3593619cde630a26f83cc61bf0ca259a9c2e03a87dd1
 
 pkgname = r-omicsviewer
