@@ -1,6 +1,6 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=appium
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Cross-platform automation framework for all kinds of apps"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('4aab952a46fa1966691b41cc8b2623fb3c2187415e335cbeed08dd5fbd9a52ff')
+sha256sums=('7db80d25a2247b276ca8304bcb20659d909c0d74ce9526aedd0d828342e74966')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
