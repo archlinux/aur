@@ -1,16 +1,17 @@
 # Maintainer: Matthias Schabhüttl <matthias@matthiasschabhuettl.com>
 pkgname=bentwire
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Desktop characters (Microsoft Agent and Office Assistant formats) for Wayland'
 arch=(x86_64)
 url='https://github.com/mschabhuettl/bentwire'
 license=('MIT OR Apache-2.0' 'LGPL-2.1-or-later')
 depends=(alsa-lib glibc libgcc libxkbcommon)
+optdepends=('espeak-ng: speech output')
 makedepends=(cargo pkgconf)
 checkdepends=(dbus)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7445a18e892f469f62ea44ff616adc13be58e0acda16f8fdafbb183f9cadd12e')
+sha256sums=('a65ee0f3c2287ec7a4bc49a465ea245d5b674c93c86fea52237dcf0d28ec1c9b')
 
 prepare() {
   cd "$pkgname-$pkgver"
