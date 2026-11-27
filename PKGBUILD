@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=daftar-bin
-pkgver=0.33.0
+pkgver=0.34.1
 pkgrel=1
 pkgdesc="A native GTK app and a command line for an Obsidian vault in a Git repository"
 arch=(x86_64)
@@ -17,7 +17,7 @@ provides=('daftar' 'daftar-cli')
 conflicts=('daftar' 'daftar-cli' 'daftar-cli-bin')
 source=("https://github.com/parham-alvani/notes-linux/releases/download/v${pkgver}/daftar-${pkgver}-x86_64.tar.gz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/parham-alvani/notes-linux/v${pkgver}/LICENSE")
-sha256sums=('da41012f4b3d5e5b1d58236c4616d11a6bc4db3e99bd838ef5676daacfb5e766'
+sha256sums=('4e9b8de1c4e2ea37580603b9f436e66b7b5a64f365c61495207c4f458118b112'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
@@ -26,4 +26,11 @@ package() {
   install -Dm644 me.parham1995.notes.desktop "$pkgdir/usr/share/applications/me.parham1995.notes.desktop"
   install -Dm644 me.parham1995.notes.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/me.parham1995.notes.png"
   install -Dm644 "LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # The completions call daftar-cli back, so they follow its commands and the vault's notes.
+  local cli="$pkgdir/usr/bin/daftar-cli"
+  install -d "$pkgdir/usr/share/bash-completion/completions" "$pkgdir/usr/share/zsh/site-functions" "$pkgdir/usr/share/fish/vendor_completions.d"
+  "$cli" completions bash > "$pkgdir/usr/share/bash-completion/completions/daftar-cli"
+  "$cli" completions zsh > "$pkgdir/usr/share/zsh/site-functions/_daftar-cli"
+  "$cli" completions fish > "$pkgdir/usr/share/fish/vendor_completions.d/daftar-cli.fish"
+  "$cli" man --dir "$pkgdir/usr/share/man/man1"
 }
