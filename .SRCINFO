@@ -1,0 +1,16 @@
+pkgbase = quectop-bin
+	pkgdesc = Lightweight Linux resource monitor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/toxdes/quectop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = quectop=0.1.0
+	conflicts = quectop
+	source_x86_64 = quectop-0.1.0-x86_64.tar.gz::https://packages.toxdes.com/releases/quectop_0.1.0_amd64.tar.gz
+	sha256sums_x86_64 = 2250575678a1567465b14fa857366b28342cce943771050184d8681bf414378e
+	source_aarch64 = quectop-0.1.0-aarch64.tar.gz::https://packages.toxdes.com/releases/quectop_0.1.0_arm64.tar.gz
+	sha256sums_aarch64 = 93bd914846048d2b1c7123e4e1dceaf3fa185b2b4c6552255514d3cf329af9e3
+
+pkgname = quectop-bin
