@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=oneiromancer
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Reverse engineering assistant using a locally running LLM"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f9609544f1e499f0265276eff20ec87c1505fc0b93790f3939bc1d36d2cc95c1')
+sha256sums=('0249ab0a38e78e49e492d5ebc90eab18f4d6a92aa50f1c27ff40786a1ccc28e2')
 
 prepare() {
   cd "oneiromancer-${pkgver}"
