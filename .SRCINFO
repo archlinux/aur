@@ -1,0 +1,14 @@
+pkgbase = flashkit-md
+	pkgdesc = Read, write, and inspect Mega Drive / 32X cartridges with FlashKit MD
+	pkgver = 0.1.0.r5.g3aa95b9
+	pkgrel = 1
+	url = https://github.com/MairusuPawa/flashkit-md-for-linux
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python
+	depends = python-pyserial
+	source = flashkit-md::git+https://github.com/MairusuPawa/flashkit-md-for-linux.git#branch=main
+	sha256sums = SKIP
+
+pkgname = flashkit-md
