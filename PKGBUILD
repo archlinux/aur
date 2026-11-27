@@ -1,8 +1,7 @@
 # Maintainer: koh11235813 <koh11235813@gmail.com>
-# Contributor: shinya-saita <>
 pkgname='bokuchi'
 pkgver='1.2.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, cross-platform Markdown editor"
 arch=('x86_64')
 url="https://github.com/Bokuchi-Editor/bokuchi"
