@@ -39,11 +39,22 @@ export STEAM_COMPAT_DATA_PATH="$PREFIX_DIR"
 export STEAM_COMPAT_CLIENT_INSTALL_PATH="${STEAM_COMPAT_CLIENT_INSTALL_PATH:-$HOME/.steam/steam}"
 export WINEDEBUG="${AZUR_WINEDEBUG:--all}"
 
+# DXVK 帧率监控：默认显示 fps；AZUR_DXVK_HUD 可换成 fps,frametimes,gpu 或 0 关闭
+export DXVK_HUD="${AZUR_DXVK_HUD:-fps}"
+
+# 可选 MangoHud（更详细的帧时间曲线）：AZUR_MANGOHUD=1
+RUN=()
+if [ "${AZUR_MANGOHUD:-0}" = "1" ]; then
+    command -v mangohud >/dev/null || die "AZUR_MANGOHUD=1 但未安装 mangohud"
+    RUN=(mangohud)
+fi
+
 case "${1:-}" in
     --bridge|bridge)
         [ -f "$BRIDGE_DIR/run.py" ] || die "找不到桥接：$BRIDGE_DIR/run.py"
         command -v python3 >/dev/null || die "需要 python3"
-        exec python3 "$BRIDGE_DIR/run.py" --game "$GAME_DIR" -- "$PROTON" run "$LAUNCHER_WIN"
+        exec ${RUN[@]+"${RUN[@]}"} python3 "$BRIDGE_DIR/run.py" --game "$GAME_DIR" -- \
+            "$PROTON" run "$LAUNCHER_WIN"
         ;;
     --restore)
         exec python3 "$BRIDGE_DIR/run.py" --game "$GAME_DIR" --restore
@@ -61,9 +72,11 @@ case "${1:-}" in
   --check        检查游戏目录、SDK 哈希、桥接与 PyQt6
 
 环境变量：
-  AZUR_GAME_ROOT  游戏根目录（默认 ~/Games/AzurPromilia）
-  AZUR_PROTON     Proton 可执行文件（默认 compatibilitytools.d/dwproton/proton）
-  AZUR_BRIDGE_DIR 桥接目录（默认 /usr/share/azur-promilia）
+  AZUR_GAME_ROOT    游戏根目录（默认 ~/Games/AzurPromilia）
+  AZUR_PROTON       Proton 可执行文件（默认 compatibilitytools.d/dwproton/proton）
+  AZUR_BRIDGE_DIR   桥接目录（默认 /usr/share/azur-promilia）
+  AZUR_DXVK_HUD     DXVK 覆盖层（默认 fps；可设 fps,frametimes,gpu 或 0 关闭）
+  AZUR_MANGOHUD     设 1 用 MangoHud 替代 DXVK HUD
 EOF
         ;;
     *) die "未知参数：$1（用 --help 查看用法）" ;;

@@ -1,7 +1,7 @@
 pkgbase = azur-promilia-launcher
 	pkgdesc = 蓝色星原：旅谣 Linux 启动器（dwproton + azur 补丁 + SDK 桥接登录）
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/puji4810/azur-sdk-qt
 	install = azur-promilia-launcher.install
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = azur-promilia-launcher
 	source = azur-promilia.sh
 	source = azur-promilia.desktop
 	source = azur-promilia-login.desktop
+	source = azur-promilia.png
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

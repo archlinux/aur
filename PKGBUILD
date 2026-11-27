@@ -1,7 +1,7 @@
 # Maintainer: eon <eon@localhost>
 pkgname=azur-promilia-launcher
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="蓝色星原：旅谣 Linux 启动器（dwproton + azur 补丁 + SDK 桥接登录）"
 arch=('x86_64')
 url="https://github.com/puji4810/azur-sdk-qt"
@@ -13,8 +13,10 @@ install=azur-promilia-launcher.install
 source=("azur-sdk-qt::git+https://github.com/puji4810/azur-sdk-qt.git"
         "azur-promilia.sh"
         "azur-promilia.desktop"
-        "azur-promilia-login.desktop")
+        "azur-promilia-login.desktop"
+        "azur-promilia.png")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -43,4 +45,6 @@ package() {
         "$pkgdir/usr/share/applications/azur-promilia.desktop"
     install -Dm644 "$srcdir/azur-promilia-login.desktop" \
         "$pkgdir/usr/share/applications/azur-promilia-login.desktop"
+    install -Dm644 "$srcdir/azur-promilia.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/azur-promilia.png"
 }
