@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GO.db
-_pkgver=3.23.1
+_pkgver=3.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-dbi
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b9848764614f05b19038754dc6baa78d')
-b2sums=('fb697c8ed706342298b5681c3bc131b9353ff51e7f1997b0806d9be350e2a4971b08c9863bdd3ec80a247dfba7734a727dd029bf364ad385e054a3ed112cd626')
+md5sums=('75dd686e4eaffd59852a89e947da3fe8')
+b2sums=('419e8e24ced160cd66d48812a36371fc9689b39bf44f007fb629b3f7e8f078d56c3c289a45a68eb5c12b996d02ac584b7f256e1c49fef8651e7b5505ca517ab2')
 
 build() {
   mkdir build
