@@ -20,9 +20,10 @@ die() { echo "错误：$*" >&2; exit 1; }
 [ -d "$PREFIX_DIR" ] || die "找不到 prefix：$PREFIX_DIR"
 
 # 找到已安装的启动器（版本目录会随更新变化）
-LAUNCHER="$(find "$GAME_ROOT/drive/AzurPromilia" -maxdepth 2 -name launcher.exe -printf '%h\n' 2>/dev/null | sort -V | tail -1)"
+LAUNCHER="$(find "$GAME_ROOT/drive/AzurPromilia" -maxdepth 2 -name launcher.exe -printf '%p\n' 2>/dev/null | sort -V | tail -1)"
 [ -n "$LAUNCHER" ] || die "找不到 launcher.exe"
 LAUNCHER_WIN="Y:${LAUNCHER#"$GAME_ROOT/drive"}"
+LAUNCHER_WIN="${LAUNCHER_WIN//\//\\}"
 
 # X11 授权（Xwayland 的 xauth 文件名每次会话都不同，必须动态取）
 if [ -z "${XAUTHORITY:-}" ]; then
@@ -49,7 +50,13 @@ if [ "${AZUR_MANGOHUD:-0}" = "1" ]; then
     RUN=(mangohud)
 fi
 
-case "${1:-}" in
+MODE="${1:-}"
+
+case "$MODE" in
+    "")
+        # 无参数：常规启动
+        exec ${RUN[@]+"${RUN[@]}"} "$PROTON" run "$LAUNCHER_WIN"
+        ;;
     --bridge|bridge)
         [ -f "$BRIDGE_DIR/run.py" ] || die "找不到桥接：$BRIDGE_DIR/run.py"
         command -v python3 >/dev/null || die "需要 python3"
@@ -79,5 +86,5 @@ case "${1:-}" in
   AZUR_MANGOHUD     设 1 用 MangoHud 替代 DXVK HUD
 EOF
         ;;
-    *) die "未知参数：$1（用 --help 查看用法）" ;;
+    *) die "未知参数：$MODE（用 --help 查看用法）" ;;
 esac

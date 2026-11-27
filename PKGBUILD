@@ -1,7 +1,7 @@
 # Maintainer: eon <eon@localhost>
 pkgname=azur-promilia-launcher
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="蓝色星原：旅谣 Linux 启动器（dwproton + azur 补丁 + SDK 桥接登录）"
 arch=('x86_64')
 url="https://github.com/puji4810/azur-sdk-qt"
