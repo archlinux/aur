@@ -2,7 +2,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ontoProc
-_pkgver=2.6.0
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -46,8 +46,8 @@ optdepends=(
   r-magick
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2e7d35cc300c4ca8189b45cfb2886c2d')
-b2sums=('5d4293ddd30e0859086dfe72b3ad1d40ff8dbfc7f6f5e23e3d111bf15405da1393c1ff51a4b705247a9354bd69de99b778f7c63cf2d51951ad869f910bc920d6')
+md5sums=('d5d660bc1b05e55ab6870eddcb99cacb')
+b2sums=('0651958e7a0a5231f7a880126c27b0e4f49e589455e51fdc4b5033c32fffb8116c2b1f29ece06881ed0f681a6ff82999a1cf5fa408960123f32aeaf7e8b0dd48')
 
 build() {
   mkdir build
