@@ -1,0 +1,17 @@
+# rweb as a systemd user service, as the AUR package rweb-bin installs it (/usr/lib/systemd/user).
+[Unit]
+Description=rweb, a web client for Rex
+# If your Rex server runs as a user service, start after it:
+After=rex.service
+Wants=rex.service
+
+[Service]
+ExecStart=/usr/bin/rweb tailscale
+# rweb waits for Tailscale and Rex by itself; this restarts it only if it stops.
+Restart=always
+RestartSec=5
+UMask=0077
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,19 @@
+pkgbase = rweb-bin
+	pkgdesc = Web client for Rex terminal sessions, reached through Tailscale Serve or SSH
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/lexlapax/rweb
+	arch = x86_64
+	license = MIT
+	optdepends = tailscale: to reach it with rweb tailscale
+	optdepends = openssh: to check the release signature, and for rweb ssh
+	provides = rweb
+	conflicts = rweb
+	options = !strip
+	options = !debug
+	source = https://github.com/lexlapax/rweb/releases/download/v0.2.0/rweb-0.2.0-linux-x86_64.tar.gz
+	source = rweb.service
+	sha256sums = 6c07756d32edfb13d8a8f1f8d0ea73d82a58ac1681a04fe2292f51cf8c6f6a27
+	sha256sums = c3e1e5c05d6a55ad92a5fa597acafadb24de298a2bbf748f5a1a9875e5bbedf7
+
+pkgname = rweb-bin
