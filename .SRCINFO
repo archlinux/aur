@@ -1,6 +1,6 @@
 pkgbase = r-gostats
 	pkgdesc = Tools for manipulating GO and microarrays
-	pkgver = 2.78.0
+	pkgver = 2.80.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GOstats
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-gostats
 	optdepends = r-runit
 	optdepends = r-sparsem
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOstats_2.78.0.tar.gz
-	sha256sums = 31a5e0d5573a48aeb701c9551fdfe7cf457b16f8098ea40d48f893a8d36f0b43
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOstats_2.80.0.tar.gz
+	sha256sums = b10beeac1e6051cbdf3358b3e1f6c5d27c50561cf5a8517ae387f383ce10fde6
 
 pkgname = r-gostats
