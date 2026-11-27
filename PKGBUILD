@@ -1,7 +1,7 @@
 # Maintainer: vii <coderdayton14 at gmail dot com>
 
 pkgname=nightcap-bin
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='Android x86-64 Roblox compatibility runtime for Linux (prebuilt)'
 arch=('x86_64')
@@ -45,7 +45,7 @@ _archive="nightcap-${pkgver}-1-${CARCH}.pkg.tar.zst"
 source=("${_archive}::https://github.com/CoderDayton/nightcap/releases/download/v${pkgver}/${_archive}")
 noextract=("${_archive}")
 # Replace with the checksum published beside the release asset.
-sha256sums=('f25e5f829e612180c7c12b83a360e9f8b7065bd72c3451bb20110a1e7de76e58')
+sha256sums=('1cb2b79724b845041de49e3d74a14b32097541faa9109b220223f8076292f86e')
 
 package() {
   bsdtar -xf "${srcdir}/${_archive}" -C "${pkgdir}" usr
