@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=hghub
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Plug-in media player"
 arch=($CARCH)
@@ -32,7 +32,7 @@ backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-sha256sums=('01ee7323681ad1c0fcb2e562f5067f78b0019937d03e6e67f88d16e86453c300')
+sha256sums=('b970714eafcc1a576fc929c793afaacc6f779f750ac5e0bb3b6f310701437993')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
