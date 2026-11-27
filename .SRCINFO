@@ -1,7 +1,7 @@
 pkgbase = drill-search
 	pkgdesc = Very fast file searcher without indexing
-	pkgver = 125
-	pkgrel = 2
+	pkgver = 190
+	pkgrel = 1
 	epoch = 1
 	url = https://drill.software
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = drill-search
 	provides = drill
 	conflicts = drill-search-cli
 	conflicts = drill-search-gtk
-	source = Drill-rust-release-45868342744-1.tar.gz::https://github.com/yatima1460/Drill/archive/refs/tags/rust-release-45868342744-1.tar.gz
+	source = Drill-rust-release-46007387143-1.tar.gz::https://github.com/yatima1460/Drill/archive/refs/tags/rust-release-46007387143-1.tar.gz
 	source = drill.desktop
-	sha256sums = f93bda919c9a8b69ad384259f479649422a7ecb1ee4c27cae0f7db24a53b9982
+	sha256sums = ca60f0bf153ff50f12d336729fe976948c07b6070990a88adc11bf1aef367846
 	sha256sums = 4b60e933f70b8114ef01abe00f893e9dc3ed7ec390f7bb1fb3dfac65b212ebf6
 
 pkgname = drill-search
