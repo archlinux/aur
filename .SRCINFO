@@ -1,7 +1,7 @@
 pkgbase = pi
 	pkgdesc = AI coding agent for the terminal — minimal, extensible and optimized for tool use
-	pkgver = 1.6.1
-	pkgrel = 2
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/earendil-works/pi
 	arch = x86_64
 	arch = aarch64
@@ -14,9 +14,9 @@ pkgbase = pi
 	optdepends = ripgrep: system-provided backend for the grep tool
 	options = !strip
 	options = !debug
-	source = pi-1.6.1.tar.gz::https://github.com/earendil-works/pi/archive/refs/tags/v1.6.1.tar.gz
-	source = pi-ai-1.6.1.tgz::https://registry.npmjs.org/@earendil-works/pi-ai/-/pi-ai-1.6.1.tgz
-	sha256sums = 01b8996e16ba14a309d1f1468acb7ca32174acef162a3a3994acdc446f119207
-	sha256sums = 192c407bd69c06358c68519aa6290adc8362b132bee9117480c7604456d5073b
+	source = pi-1.7.0.tar.gz::https://github.com/earendil-works/pi/archive/refs/tags/v1.7.0.tar.gz
+	source = pi-ai-1.7.0.tgz::https://registry.npmjs.org/@earendil-works/pi-ai/-/pi-ai-1.7.0.tgz
+	sha256sums = 764a15b547d6658ae97b3a003e735422fe6e2a4a4dea2da77dffc2c60b99c2c9
+	sha256sums = d0dd546e7c7c1dfdab6582be8a177ed1184cc857b6a876d3ef576a1cc8088a12
 
 pkgname = pi
