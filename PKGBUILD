@@ -1,6 +1,6 @@
 # Maintainer: Twilight0 <https://github.com/Twilight0>
 pkgname=nouveau-utils
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Userspace dynamic frequency governor, CLI management tool, and interactive TUI for Nouveau"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
 provides=('nouveau-utils')
 backup=('etc/nouveau-dynclockd.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Twilight0/nouveau-utils/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9b65c9629b4ebb154cf8f511449f89241372b8fcd472fb0c1cfb1067c8b87054')
+sha256sums=('0ec4556dd516469a21c27d55dd733f6bc2eca1e25de530e22215a40028ec733f')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
