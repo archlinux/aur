@@ -3,7 +3,7 @@
 pkgname=so-novel-bin
 _pkgname=so-novel
 _appdir=sonovel
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='Universal web content extraction and ebook export tool (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ conflicts=('so-novel' 'sonovel')
 options=('!strip')
 source_x86_64=("sonovel-linux_x64-${pkgver}.tar.gz::https://github.com/freeok/so-novel/releases/download/v${pkgver}/sonovel-linux_x64.tar.gz")
 source_aarch64=("sonovel-linux_arm64-${pkgver}.tar.gz::https://github.com/freeok/so-novel/releases/download/v${pkgver}/sonovel-linux_arm64.tar.gz")
-sha256sums_x86_64=('094516fd4c1a7ce731cadcae470ab4bd3b2bcea98f761c73eec5f09977561dd6')
-sha256sums_aarch64=('37d8ebe7345f22eb0080c091c1223a826237693e998e8dff945f9a52d61f124d')
+sha256sums_x86_64=('533ef9d892564b9a6470ab7bb624c668e3c76b3e008d4a56cc8244a5619f2a29')
+sha256sums_aarch64=('50d8b2b001a65673513a53a2886941e04b9ecab8b02f3af47660f840bb835b5a')
 
 package() {
   local bundle_dir
