@@ -1,7 +1,7 @@
 # Maintainer: hup2c <huping@cmict.chinamobile.com>
 
 pkgname=motty-bin
-pkgver=0.4.36
+pkgver=0.4.37
 pkgrel=1
 pkgdesc='SSH, SFTP, port forwarding, VNC/RDP and AI assistant in one native window'
 arch=('x86_64' 'aarch64')
@@ -35,8 +35,8 @@ source=('LICENSE')
 source_x86_64=("${_upstream}-${pkgver}-linux-amd64.tar.gz::${_release}/${_upstream}-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_upstream}-${pkgver}-linux-arm64.tar.gz::${_release}/${_upstream}-${pkgver}-linux-arm64.tar.gz")
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('230550968ecbe40b5efe083ea916c87e3ff6fb86a13f8698c1e2bfe1bd886666')
-sha256sums_aarch64=('b61bbd49e4e47eed8e8f32ee4a3aad8b0daafe0e40791f346b79c2609ac39a95')
+sha256sums_x86_64=('94f5951fd8df5891c5ba1607ffa48ef5719d6d6c3a1d0cb8b0394de09930f570')
+sha256sums_aarch64=('2e2effcdd63499ea10232525ae46efa3cb257e6ba07050dbece75b41420250ff')
 
 package() {
   if [[ $CARCH == 'x86_64' ]]; then
