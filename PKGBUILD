@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=vinyl-player
 _app_id=page.codeberg.M23Snezhok.Vinyl
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Elegant music player"
 arch=('x86_64')
 url="https://codeberg.org/M23Snezhok/Vinyl"
@@ -24,7 +24,7 @@ checkdepends=(
 )
 optdepends=('gst-plugins-bad')
 source=("git+https://codeberg.org/M23Snezhok/Vinyl.git#tag=v$pkgver")
-sha256sums=('7bd6f7ca7c5d9d01432967f2c84cd6a54b5912d8f93b21f35f3d334f7eaf1590')
+sha256sums=('2c2b931ec36fb80ebcf5be32ed1b718ab0477dffb70e5a49a5515025c6854a9d')
 
 prepare() {
   cd Vinyl
@@ -36,6 +36,8 @@ build() {
   cd Vinyl
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export CARGO_PROFILE_RELEASE_LTO=true
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
   cargo build --frozen --release
 }
 
