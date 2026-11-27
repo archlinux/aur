@@ -5,7 +5,7 @@ pkgver=0.2.0
 pkgrel=1
 pkgdesc="Chromecast and AirPlay mirroring and media playback, shared by the Dux Shell Cast plugin and other apps (prebuilt binary)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/Conava/dux-cast"
+url="https://github.com/Conava/cast-helper"
 license=('MIT')
 depends=('glibc' 'avahi' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugin-pipewire' 'gst-plugin-va')
 optdepends=('gst-plugins-good: more formats and photos'
@@ -15,7 +15,7 @@ optdepends=('gst-plugins-good: more formats and photos'
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
-source=("LICENSE-$pkgver::https://raw.githubusercontent.com/Conava/dux-cast/v$pkgver/LICENSE")
+source=("LICENSE-$pkgver::https://raw.githubusercontent.com/Conava/cast-helper/v$pkgver/LICENSE")
 source_x86_64=("$_pkgname-$pkgver-x86_64::$url/releases/download/v$pkgver/$_pkgname-x86_64")
 source_aarch64=("$_pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/$_pkgname-aarch64")
 sha256sums=('fb33b89e664985fce73ca1a81265b63c3d741593ef8a4dd94f70d00490a5fdd1')
