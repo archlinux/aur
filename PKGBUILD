@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sRACIPE
-_pkgver=2.4.0
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
-pkgver=2.4.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Systems biology tool to simulate gene regulatory circuits'
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('63123ef131a834fb1774bf67866d304daeed4a236c1b1470e6a464ea49e8a9c0')
+sha256sums=('314f01ec1a06dd5e9f711b4a39934162d7df1e3e455992168b1dffd8eaa84298')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
