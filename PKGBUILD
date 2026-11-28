@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.280
+pkgver=1.4.281
 pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
@@ -62,7 +62,7 @@ _electronmajor=45
 # changes the payload, so pin the peeled commit of tag v$pkgver instead.
 # Version bumps must resolve `git ls-remote $url "refs/tags/v<ver>^{}"` and
 # update _commit together with pkgver and the source checksum.
-_commit=16dc39cfb7ba5b16c88eef510a6141e223ece0be
+_commit=6d1c1d05c733b7ba27685e586c5b0e9927803654
 source=(
   "$pkgname-$pkgver-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "pnpm-$_pnpmver.tgz::https://registry.npmjs.org/pnpm/-/pnpm-$_pnpmver.tgz"
@@ -83,7 +83,7 @@ source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
 sha256sums=(
-  '4ba024e1ce9294e79c531f4e3e689225ab959852dc48c12eccf00fdda6fece76'
+  'd5fe533f1abe5c7fb011caeba1dd11033760573c18446f69c838bd8f7f304743'
   '29d1d7d99bf6ec6d0a3dbb0ec5656f0d16e997e8be676ca45c581d11cb71f753'
   '44631efb6f8fbe5356304c93437c33d008dd94653222732234ad41efb23c52a4'
   '408f13e3c31e84cd268be94241954e25ca06d6fafa1fe563d06f68485ca5b281'
