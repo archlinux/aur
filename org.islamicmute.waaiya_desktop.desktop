@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Waaiya
+Name[ar]=واعية
+Comment=Removes musical instruments from the sound of every app, keeps speech and Quran recitation
+Comment[ar]=يزيل المعازف من صوت كل التطبيقات ويُبقي الكلام والتلاوة
+Exec=waaiya-desktop
+Icon=org.islamicmute.waaiya_desktop
+Terminal=false
+Categories=AudioVideo;Audio;
+StartupWMClass=org.islamicmute.waaiya_desktop
