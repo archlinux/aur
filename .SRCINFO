@@ -1,0 +1,16 @@
+pkgbase = octet-bin
+	pkgdesc = Fast, extensible coding agent with multimodal inputs
+	pkgver = 0.10.7
+	pkgrel = 1
+	url = https://github.com/skaft-software/octet
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = octet
+	conflicts = octet
+	options = !debug
+	source_x86_64 = octet-bin-0.10.7-x86_64.tgz::https://github.com/skaft-software/octet/releases/download/v0.10.7/octet-linux-x64-gnu-0.10.7.tgz
+	sha256sums_x86_64 = 57b56f1384eebfabbc902ea44ae5f5d32d6b9e6e88afe1d44eeaaf6ef3589456
+
+pkgname = octet-bin
