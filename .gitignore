@@ -1,0 +1,7 @@
+/*.tar.xz
+/*.tar.gz
+/*.tar.zst
+/pkg
+/src
+/lem-webview-*
+/lem-sdl3-nightly

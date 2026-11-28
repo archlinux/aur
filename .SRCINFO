@@ -1,0 +1,34 @@
+pkgbase = lem-sdl3-nightly
+	pkgdesc = Common Lisp editor/IDE with SDL3 frontend (nightly build)
+	pkgver = nightly.latest.r0.g96b8faa57
+	pkgrel = 1
+	url = https://github.com/lem-project/lem
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = qlot
+	makedepends = sbcl
+	makedepends = sdl3
+	makedepends = sdl3_image
+	makedepends = sdl3_ttf
+	makedepends = enchant
+	makedepends = tree-sitter
+	depends = sbcl
+	depends = sdl3
+	depends = sdl3_image
+	depends = sdl3_ttf
+	depends = enchant
+	depends = tree-sitter
+	optdepends = libvterm: for integrated terminal
+	optdepends = fd: for fuzzy file search
+	conflicts = lem
+	conflicts = lem-nightly
+	conflicts = lem-webview
+	conflicts = lem-webview-nightly
+	conflicts = lem-sdl2
+	options = !strip
+	source = lem-sdl3-nightly::git+https://github.com/lem-project/lem.git#tag=nightly-latest
+	sha256sums = SKIP
+
+pkgname = lem-sdl3-nightly
