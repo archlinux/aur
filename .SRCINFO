@@ -1,0 +1,18 @@
+pkgbase = ghch-bin
+	pkgdesc = Generate a changelog from git history, tags and merged pull requests
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/Songmu/ghch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = ghch
+	conflicts = ghch
+	options = !debug
+	source_x86_64 = ghch-bin-0.11.0-x86_64.tar.gz::https://github.com/Songmu/ghch/releases/download/v0.11.0/ghch_v0.11.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 61044e9e56ccf4fa5bf1064aeab0a4173df5efc7403dcf397336d593e5363a74
+	source_aarch64 = ghch-bin-0.11.0-aarch64.tar.gz::https://github.com/Songmu/ghch/releases/download/v0.11.0/ghch_v0.11.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9431632b5807900c54f01bc77bd4c19c094518d50d2bb57813ee5d613afbf44b
+
+pkgname = ghch-bin
