@@ -10,7 +10,7 @@
 # Keep pkgver in step with debian/changelog: it names the tarball.
 
 pkgname=custom-toolbox
-pkgver=26.11.1
+pkgver=26.11.2
 # Must stay >= the AUR package's pkgrel (currently 26.09.5-2). A repo package
 # blocks AUR helpers from updating it, so a lower pkgrel here would pin users
 # to a downgrade. Do not "tidy" this back to 1.
@@ -22,12 +22,12 @@ license=('GPL3')
 depends=('qt6-base' 'qt6-declarative' 'polkit')
 makedepends=('cmake' 'ninja' 'qt6-declarative' 'qt6-tools')
 backup=('etc/custom-toolbox/custom-toolbox.conf')
-source=("https://github.com/MX-Linux/custom-toolbox/archive/refs/tags/26.11.1.tar.gz")
-sha256sums=('9722e42f9f89ca7fd90851526ec178c78c5a2049c5d98e0b1d5085c8b1217448')
+source=("https://github.com/MX-Linux/custom-toolbox/archive/refs/tags/26.11.2.tar.gz")
+sha256sums=('7a56be8303a778478901bdcb2a29af99c4bc83a83a750caed4b06d05b83f449d')
 
 # dpkg-source packed this tarball from a directory called "src", so that - not
 # ${pkgname}-${pkgver} - is what it unpacks to.
-_srcdir="custom-toolbox-26.11.1"
+_srcdir="custom-toolbox-26.11.2"
 
 build() {
     cd "${srcdir}/${_srcdir}"
