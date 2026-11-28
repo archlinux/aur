@@ -1,0 +1,17 @@
+pkgbase = pgcapture-bin
+	pkgdesc = Scalable change data capture for PostgreSQL
+	pkgver = 0.0.70
+	pkgrel = 1
+	url = https://github.com/replicase/pgcapture
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = pgcapture
+	conflicts = pgcapture
+	options = !debug
+	source = pgcapture-bin-0.0.70-LICENSE::https://raw.githubusercontent.com/replicase/pgcapture/v0.0.70/LICENSE
+	sha256sums = 43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1
+	source_x86_64 = pgcapture-bin-0.0.70-x86_64::https://github.com/replicase/pgcapture/releases/download/v0.0.70/pgcapture-linux-amd64
+	sha256sums_x86_64 = af20eb75f21d3a7f16b1c92c5e6cd31de797196e7af611d5edd8575f7d805248
+
+pkgname = pgcapture-bin
