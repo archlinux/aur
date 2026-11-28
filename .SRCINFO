@@ -1,0 +1,25 @@
+pkgbase = spive2d-bin
+	pkgdesc = Simple Spine and Live2D viewer
+	pkgver = 0.1.65
+	pkgrel = 1
+	url = https://github.com/lmmtrr/spive2d
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgcc
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = spive2d
+	conflicts = spive2d
+	options = !debug
+	source = spive2d-bin-0.1.65-LICENSE::https://raw.githubusercontent.com/lmmtrr/spive2d/v0.1.65/LICENSE
+	sha256sums = 4754d4563318ebc537c98652331d7832b64cad539ed0be9e27154b1fb6ba5e0c
+	source_x86_64 = spive2d-bin-0.1.65-x86_64::https://github.com/lmmtrr/spive2d/releases/download/v0.1.65/spive2d_linux_x64
+	sha256sums_x86_64 = 9c1a931d9f7e7fd496d50ebb5d60f04ad1f7406aded10aff7d2da1dccb9a6ca0
+
+pkgname = spive2d-bin
