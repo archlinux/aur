@@ -1,0 +1,19 @@
+pkgbase = akca-bin
+	pkgdesc = Web security scanner
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/akha-security/akca
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = akca
+	conflicts = akca
+	options = !debug
+	source = akca-bin-0.3.2-LICENSE::https://raw.githubusercontent.com/akha-security/akca/v0.3.2/LICENSE
+	sha256sums = f4d9b0aad8ff9e650f5890fa3eeb7c1311479cab901f8a9b416a2d9acaf54266
+	source_x86_64 = akca-bin-0.3.2-x86_64::https://github.com/akha-security/akca/releases/download/v0.3.2/akca-linux-amd64
+	sha256sums_x86_64 = 96c29274966c3676263b3e6670df2988b52c77046e4cf0a1aa24b7f0d19e3912
+	source_aarch64 = akca-bin-0.3.2-aarch64::https://github.com/akha-security/akca/releases/download/v0.3.2/akca-linux-arm64
+	sha256sums_aarch64 = dd47354ae8ec2d98efe931c940b1afcd9ce5daa680a8f5d4dd4315db7e0a77b1
+
+pkgname = akca-bin
