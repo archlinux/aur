@@ -1,0 +1,19 @@
+pkgbase = chat-tails-bin
+	pkgdesc = Chat server backed by Tailscale
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/bscott/chat-tails
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = chat-tails
+	conflicts = chat-tails
+	options = !debug
+	source = chat-tails-bin-0.3.0-LICENSE::https://raw.githubusercontent.com/bscott/chat-tails/v0.3.0/LICENSE
+	sha256sums = faf83f923152d51e78985749324b2a833e333b48bfbc7c97b7d22d4f51476d8c
+	source_x86_64 = chat-tails-bin-0.3.0-x86_64::https://github.com/bscott/chat-tails/releases/download/v0.3.0/chat-tails-linux-amd64
+	sha256sums_x86_64 = 9817a4f762f21e706a1ea54396e7a3813607425c12deba584139fbcba86786c8
+	source_aarch64 = chat-tails-bin-0.3.0-aarch64::https://github.com/bscott/chat-tails/releases/download/v0.3.0/chat-tails-linux-arm64
+	sha256sums_aarch64 = 2b363172a0143e984d8903453bc78c10b4edff4825da14cb97ff8d12aed6c5f1
+
+pkgname = chat-tails-bin
