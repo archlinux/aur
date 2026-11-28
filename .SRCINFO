@@ -1,0 +1,16 @@
+pkgbase = bivac-bin
+	pkgdesc = Backup interface for volumes attached to containers
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/camptocamp/bivac
+	arch = x86_64
+	license = Apache-2.0
+	provides = bivac
+	conflicts = bivac
+	options = !debug
+	source = bivac-bin-2.5.1-LICENSE::https://raw.githubusercontent.com/camptocamp/bivac/2.5.1/LICENSE
+	sha256sums = c71ebd6f1eed65f8522b9ce8d88dd899d42126ad9e2ca77877bc8774258130d0
+	source_x86_64 = bivac-bin-2.5.1-x86_64.zip::https://github.com/camptocamp/bivac/releases/download/2.5.1/bivac_2.5.1_linux_amd64.zip
+	sha256sums_x86_64 = 54266bef392d59c06746264884c55ffbdce3381bfbc62ccdfe65153df9a1b9c1
+
+pkgname = bivac-bin
