@@ -1,0 +1,14 @@
+pkgbase = keplearn-bin
+	pkgdesc = Fast symbolic regression
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = https://github.com/owls-on-wires/keplearn
+	arch = x86_64
+	license = MIT
+	provides = keplearn
+	conflicts = keplearn
+	options = !debug
+	source_x86_64 = keplearn-bin-2.1.3-x86_64.tar.gz::https://github.com/owls-on-wires/keplearn/releases/download/v2.1.3/keplearn-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 24f7aa9e7af3b0f937a9229c2c5fb8b6b9a223928addde2185db9a028c5dbaa8
+
+pkgname = keplearn-bin
