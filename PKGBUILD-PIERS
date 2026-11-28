@@ -1,0 +1,48 @@
+# Maintainer: acidicX
+pkgname=kodi-addon-inputstream-adaptive-any
+pkgver=22.3.24
+pkgrel=1
+pkgdesc="Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture"
+_koditarget=Piers
+_gitname=inputstream.adaptive
+_kodiver=22.0rc2
+arch=('any')
+url="https://github.com/xbmc/${_gitname}"
+license=('GPL')
+groups=('kodi')
+makedepends=('cmake' 'git' 'patch')
+provides=('kodi-addon-inputstream-adaptive')
+conflicts=('kodi-addon-inputstream-adaptive' 'kodi-addon-inputstream-adaptive-19');
+depends=('kodi')
+source=("https://github.com/xbmc/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
+        "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
+)
+sha512sums=('a10e4f73f4bd974815d0e0f514152b49281dc7f691175f1a2715eae92f792cf88c4235e1e166e43f68c7174a9779e8f32fe823b715dcab816236c5cdb3ff80a6'
+        'b8ec981bc9df50a2cedd933fa97aa305c7c2766bc87eed3d1df914fe4374dc3ddbb5c76a144b467555e2bc4d1e4924d0f036f79ce30548e1203c168af9d7b99c')
+
+prepare() {
+        cd ${_gitname}-${pkgver}-${_koditarget}
+}
+
+build() {
+        mkdir -p "${_gitname}-${pkgver}-${_koditarget}/build"
+        cd "${_gitname}-${pkgver}-${_koditarget}/build"
+
+        cmake \
+                -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
+                -D CMAKE_INSTALL_PREFIX=/usr \
+                -D CMAKE_INSTALL_LIBDIR=/usr/lib/kodi \
+                -D CMAKE_BUILD_TYPE=Release \
+                -D BUILD_SHARED_LIBS=1 \
+                -D ADDONS_TO_BUILD=${_gitname} \
+                -D ADDONS_SRC_PREFIX=../.. \
+                ../../xbmc-${_kodiver}-${_koditarget}/cmake/addons
+        make
+}
+
+package() {
+        cd "${_gitname}-${pkgver}-${_koditarget}/build"
+        install -d "${pkgdir}/usr"
+        mv .install/lib "${pkgdir}/usr/"
+        mv .install/share "${pkgdir}/usr/"
+}
