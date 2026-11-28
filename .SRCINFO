@@ -1,6 +1,6 @@
 pkgbase = linkerd-edge-bin
 	pkgdesc = Ultralight, security-first service mesh for Kubernetes
-	pkgver = 26.11.2
+	pkgver = 26.11.3
 	pkgrel = 1
 	url = https://linkerd.io/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = linkerd-edge-bin
 	conflicts = linkerd-edge-recommended-bin
 	options = !debug
 	options = !strip
-	source_x86_64 = linkerd-26.11.2-x86_64::https://github.com/linkerd/linkerd2/releases/download/edge-26.11.2/linkerd2-cli-edge-26.11.2-linux-amd64
-	sha256sums_x86_64 = 4596473d74406298eb5c0123cf710d2834b726487996a9e8fa8859ccda3b360e
-	source_aarch64 = linkerd-26.11.2-aarch64::https://github.com/linkerd/linkerd2/releases/download/edge-26.11.2/linkerd2-cli-edge-26.11.2-linux-arm64
-	sha256sums_aarch64 = d51d5195f46f80f16695f56030f51c09cbf27b49f3eb39b74a885abaddb3411b
+	source_x86_64 = linkerd-26.11.3-x86_64::https://github.com/linkerd/linkerd2/releases/download/edge-26.11.3/linkerd2-cli-edge-26.11.3-linux-amd64
+	sha256sums_x86_64 = 474466af61cb16b1d411032e75fe758055c8f31354bbd54be658ea8ff9055cb0
+	source_aarch64 = linkerd-26.11.3-aarch64::https://github.com/linkerd/linkerd2/releases/download/edge-26.11.3/linkerd2-cli-edge-26.11.3-linux-arm64
+	sha256sums_aarch64 = 8ba38645ea8958fb763e7b040f8dc9c0074ed4eff61b1fc0cc2022c5452c7b3e
 
 pkgname = linkerd-edge-bin
