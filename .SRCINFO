@@ -1,17 +1,16 @@
 pkgbase = dochint
 	pkgdesc = A macro processor for authoring HTML documents.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://marianicolae.com/software/dochint/
 	arch = any
 	license = Apache-2.0 OR CC-BY-4.0
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-maturin
 	depends = python
-	depends = python-latex2mathml
 	depends = python-pybtex
-	source = https://marianicolae.com/files/software/dochint-v1.0.3.tar.gz
-	sha256sums = 500377fc60584e91a22475769289e5ef791ff4c4760ffc54383eda511f1893e8
+	source = https://marianicolae.com/files/software/dochint-v1.0.4.tar.gz
+	sha256sums = 0077c62698d174691c1fa2f4b7a7825a7bcd128a69e7ed706c31c14b4e2032b1
 
 pkgname = dochint
