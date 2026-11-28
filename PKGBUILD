@@ -10,11 +10,9 @@ url="https://github.com/Toni500github/oshot"
 license=('BSD-3-Clause')
 depends=(
   'libx11'
-  'libxcb'
+  'libxrandr'
   'libpng'
-  'glfw'
-  'tesseract'
-  'tesseract-data-eng'
+  'sdl3'
   'zbar'
   'libappindicator-gtk3'
 )
