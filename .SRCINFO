@@ -1,0 +1,25 @@
+pkgbase = astroburst-bin
+	pkgdesc = Astronomical image processor built on WebGPU
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/samuelkriegerbonini-dev/AstroBurst
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgcc
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	depends = xz
+	provides = astroburst
+	conflicts = astroburst
+	options = !debug
+	source = astroburst-bin-0.9.1-LICENSE::https://raw.githubusercontent.com/samuelkriegerbonini-dev/AstroBurst/v0.9.1/LICENSE
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = astroburst-bin-0.9.1-x86_64.tar.gz::https://github.com/samuelkriegerbonini-dev/AstroBurst/releases/download/v0.9.1/astroburst-0.9.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f03aff668f03e6335e0d9da2bfd55c9f196236521d9231fda9a585aca0faff19
+
+pkgname = astroburst-bin
