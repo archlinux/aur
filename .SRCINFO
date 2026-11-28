@@ -1,10 +1,10 @@
 pkgbase = wayland-display-info
 	pkgdesc = Daemon that keeps /var/cache/wayland-display-info/display-info up to date using wlr-output-management
 	pkgver = 1.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/acrion/wayland-display-info
 	install = wayland-display-info.install
-	arch = any
+	arch = x86_64
 	license = AGPL3
 	makedepends = wayland
 	makedepends = gcc
