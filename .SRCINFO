@@ -1,0 +1,17 @@
+pkgbase = sloglint-bin
+	pkgdesc = Ensure consistent code style when using log/slog
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/go-simpler/sloglint
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	provides = sloglint
+	conflicts = sloglint
+	options = !debug
+	source_x86_64 = sloglint-bin-0.12.0-x86_64.tar.gz::https://github.com/go-simpler/sloglint/releases/download/v0.12.0/sloglint_0.12.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 250385cbbf517809dc352ccbb8d44ca8f9ab1f9eb18b1fbf92c5f6f76aeaa41a
+	source_aarch64 = sloglint-bin-0.12.0-aarch64.tar.gz::https://github.com/go-simpler/sloglint/releases/download/v0.12.0/sloglint_0.12.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ac7aad2234f2375200dc4e06ca2eecac565be184a7ffdf39739e20ccb999b52d
+
+pkgname = sloglint-bin
