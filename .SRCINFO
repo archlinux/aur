@@ -1,0 +1,19 @@
+pkgbase = chantools-bin
+	pkgdesc = Tools for lnd and Lightning Network channel recovery
+	pkgver = 0.14.3
+	pkgrel = 1
+	url = https://github.com/lightninglabs/chantools
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = chantools
+	conflicts = chantools
+	options = !debug
+	source = chantools-bin-0.14.3-LICENSE::https://raw.githubusercontent.com/lightninglabs/chantools/v0.14.3/LICENSE
+	sha256sums = 2e3b565e46f6b49853dc0e4be0e839316c7f07557e91bd50f9aa35f8d2220a61
+	source_x86_64 = chantools-bin-0.14.3-x86_64.tar.gz::https://github.com/lightninglabs/chantools/releases/download/v0.14.3/chantools-linux-amd64-v0.14.3.tar.gz
+	sha256sums_x86_64 = 920a7a426211e714a91cba490a366b983b1d5fd10902d101b131c2111f0833bf
+	source_aarch64 = chantools-bin-0.14.3-aarch64.tar.gz::https://github.com/lightninglabs/chantools/releases/download/v0.14.3/chantools-linux-arm64-v0.14.3.tar.gz
+	sha256sums_aarch64 = 967686a63a796b8f7c68340f9c298a5531253a30d25241da6f00dd27d48018e7
+
+pkgname = chantools-bin
