@@ -1,0 +1,10 @@
+post_install() {
+  echo "==> Run 'allot bar install' to put allot on the Omarchy bar,"
+  echo "    and 'allot claude setup' to connect Claude Code."
+}
+
+post_upgrade() {
+  # The shell holds on to the widget it loaded; it picks up the new one on
+  # its next start.
+  echo "==> Run 'allot bar install' (or 'omarchy restart shell') to load the new bar widget."
+}
