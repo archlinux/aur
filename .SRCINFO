@@ -1,0 +1,19 @@
+pkgbase = pysentry-bin
+	pkgdesc = Scan Python dependencies for known vulnerabilities
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/nyudenkov/pysentry
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = pysentry
+	conflicts = pysentry
+	options = !debug
+	source_x86_64 = pysentry-bin-0.5.0-x86_64.tar.gz::https://github.com/nyudenkov/pysentry/releases/download/v0.5.0/pysentry-linux-x64.tar.gz
+	sha256sums_x86_64 = bd4b00d01cfda1475a9f1806d539fbdfff697af25ba2b53ffc5de587fffced0f
+	source_aarch64 = pysentry-bin-0.5.0-aarch64.tar.gz::https://github.com/nyudenkov/pysentry/releases/download/v0.5.0/pysentry-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9fbaff0d5a7ea7edff13cea73fd25e3b36b83e9a36e388b306c8cf3578c4a183
+
+pkgname = pysentry-bin
