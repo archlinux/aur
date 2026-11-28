@@ -1,0 +1,23 @@
+pkgbase = flipflop-bin
+	pkgdesc = Local file sharing between nearby devices
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/andunieee/flipflop
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = dbus
+	depends = fontconfig
+	depends = freetype2
+	depends = glibc
+	depends = libgcc
+	depends = libglvnd
+	depends = libstdc++
+	provides = flipflop
+	conflicts = flipflop
+	options = !debug
+	source = flipflop-bin-0.2.5-LICENSE::https://raw.githubusercontent.com/andunieee/flipflop/v0.2.5/LICENSE
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = flipflop-bin-0.2.5-x86_64.tar.gz::https://github.com/andunieee/flipflop/releases/download/v0.2.5/flipflop-linux-x86_64-v0.2.5.tar.gz
+	sha256sums_x86_64 = bffb371568f7996d4baf9e6185e14867929996107c558e730169552fe2611ce2
+
+pkgname = flipflop-bin
