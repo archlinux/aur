@@ -1,7 +1,7 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 
 pkgname=claude-cage-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Isolated Claude development workspace with a local virtual machine'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
 provides=("claude-cage=$pkgver")
 conflicts=('claude-cage')
 source=("Cage-${pkgver}-linux-amd64.deb::${url}/releases/download/v${pkgver}/Cage-${pkgver}-linux-amd64.deb")
-sha256sums=('8cb831548e7c37691b382cb8b9ee7f63cce4b17cc7f38f649e2ce4dc1117249d')
+sha256sums=('7861f04bd7d62c75bb1dc6b31dbd55b48b0ec555ccaa7188d26179d097d8309b')
 
 prepare() {
   bsdtar -xf "Cage-${pkgver}-linux-amd64.deb" -C "$srcdir" 'data.tar.*'
