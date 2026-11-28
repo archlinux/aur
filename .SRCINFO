@@ -1,0 +1,17 @@
+pkgbase = k8sec-bin
+	pkgdesc = Manage Kubernetes Secrets easily
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/dtan4/k8sec
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = k8sec
+	conflicts = k8sec
+	options = !debug
+	source_x86_64 = k8sec-bin-0.9.0-x86_64.tar.gz::https://github.com/dtan4/k8sec/releases/download/v0.9.0/k8sec_linux_amd64.tar.gz
+	sha256sums_x86_64 = 768458a76af177f7e0feb5c221a8ad21611057df76caecf6c42763bdade40fe5
+	source_aarch64 = k8sec-bin-0.9.0-aarch64.tar.gz::https://github.com/dtan4/k8sec/releases/download/v0.9.0/k8sec_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6a475ce118b919dac8a4d44a69e6a1556f4bc4c7ff1bd98d05768ff483b44ff4
+
+pkgname = k8sec-bin
