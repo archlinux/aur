@@ -2,7 +2,7 @@
 
 pkgname=beluga-git
 _pkgname=beluga
-pkgver=1.2.0_r3_g4adbe51
+pkgver=1.2.0_r4_g5c9cea7
 pkgrel=1
 pkgdesc='File manager written with plain GTK 4, a rewrite of KDE Dolphin without Qt or KDE Frameworks (git version)'
 arch=('x86_64' 'aarch64')
