@@ -1,0 +1,19 @@
+pkgbase = python-geoarrow-types
+	pkgdesc = Minimal GeoArrow type definitions
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/geoarrow/geoarrow-python/tree/main/geoarrow-types
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pyarrow
+	checkdepends = python-numpy
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = geoarrow-types-0.4.1.tar.gz::https://github.com/geoarrow/geoarrow-python/archive/refs/tags/geoarrow-types-0.4.1.tar.gz
+	sha256sums = f70fe26c96409b865e556bd0bbf40f0cd3f8836f29a97d9dfb27eeddbb2366ba
+
+pkgname = python-geoarrow-types
