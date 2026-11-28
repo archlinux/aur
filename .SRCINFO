@@ -1,6 +1,6 @@
 pkgbase = r-datavisualizations
 	pkgdesc = Visualizations of High-Dimensional Data
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=DataVisualizations
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = r-datavisualizations
 	optdepends = r-signal
 	optdepends = r-vioplot
 	optdepends = r-viridis
-	source = https://cran.r-project.org/src/contrib/DataVisualizations_1.4.0.tar.gz
-	sha256sums = 0ca92815176873dde104a74f117fa6ce2f36c06d7ba9dcf8b89a455e34dd53bb
+	source = https://cran.r-project.org/src/contrib/DataVisualizations_1.5.0.tar.gz
+	sha256sums = 79f5553d080f6aa0ee7ab33104d1ee692f849b6aaeb09579f0234478276528a2
 
 pkgname = r-datavisualizations

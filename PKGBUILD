@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DataVisualizations
-_pkgver=1.4.0
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Visualizations of High-Dimensional Data'
 arch=('x86_64')
@@ -47,7 +47,7 @@ optdepends=(
   r-viridis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0ca92815176873dde104a74f117fa6ce2f36c06d7ba9dcf8b89a455e34dd53bb')
+sha256sums=('79f5553d080f6aa0ee7ab33104d1ee692f849b6aaeb09579f0234478276528a2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
