@@ -1,0 +1,30 @@
+pkgbase = obs-async-audio-filter
+	pkgdesc = This filter aims to fix audio glitches caused by asynchronous audio of the source
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/norihiro/obs-async-audio-filter
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = simde
+	depends = glibc
+	depends = libgcc
+	depends = libsamplerate
+	depends = obs-studio
+	depends = qt6-base
+	source = git+https://github.com/norihiro/obs-async-audio-filter.git#tag=0.6.0
+	source = git+https://github.com/libsndfile/libsamplerate.git#tag=0.2.2
+	sha256sums = fd1b91e730267cd07bfab74561d1b35f3306a0d4f2c0cb3b8c0c56942a880585
+	sha256sums = f2d8de20d607298f16cceb8ec38a87b07fb1dad344aef9957777f999e3466f43
+
+pkgname = obs-async-audio-filter
+	depends = glibc
+	depends = libgcc
+	depends = libsamplerate
+	depends = obs-studio
+	depends = qt6-base
+	depends = libgcc_s.so
+	depends = libsamplerate.so
+	depends = libstdc++.so
