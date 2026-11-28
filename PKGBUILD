@@ -75,6 +75,7 @@ package() {
     "$pkgdir/etc/xdg/autostart/io.narl.proton-drive-linux-tray.desktop"
   install -Dm644 packaging/io.narl.proton-drive-linux.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.narl.proton-drive-linux.svg"
+  install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/scalable/status" crates/pdfs-gui/resources/icons/tray/*.svg
 
   # systemd user unit for the auto-mount daemon; enabled per user, not by pacman.
   install -Dm644 packaging/proton-drive.service \
