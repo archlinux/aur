@@ -1,0 +1,19 @@
+pkgbase = mcp-1c-bin
+	pkgdesc = MCP server for 1C:Enterprise configurations and BSL code generation
+	pkgver = 1.24.7
+	pkgrel = 1
+	url = https://github.com/feenlace/mcp-1c
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mcp-1c
+	conflicts = mcp-1c
+	options = !debug
+	source = mcp-1c-bin-1.24.7-LICENSE::https://raw.githubusercontent.com/feenlace/mcp-1c/v1.24.7/LICENSE
+	sha256sums = 3683c196c497b7ebe29f36a6dad5044a1cef73162e0ef934904fdfce311ee8e5
+	source_x86_64 = mcp-1c-bin-1.24.7-x86_64::https://github.com/feenlace/mcp-1c/releases/download/v1.24.7/mcp-1c-linux-amd64
+	sha256sums_x86_64 = 93a575305dfbcf34851091fee08ab5312a77d4c97e489c4d767af7be852829fe
+	source_aarch64 = mcp-1c-bin-1.24.7-aarch64::https://github.com/feenlace/mcp-1c/releases/download/v1.24.7/mcp-1c-linux-arm64
+	sha256sums_aarch64 = ae15a9796686fcd42cd5cc996d4417745648db8f3a1838e5e6ab4bd1ad2f0559
+
+pkgname = mcp-1c-bin
