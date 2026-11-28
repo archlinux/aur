@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=wirecat-tg-cli
 _pkgname=@wirecat/tg-cli
-pkgver=0.137.0
+pkgver=0.138.0
 pkgrel=1
 pkgdesc='Personal-account Telegram CLI and MCP server for agents'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('ffmpeg: audio and video conversion')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/WireCatLabs/tg-cli/archive/refs/tags/v${pkgver}.tar.gz"
         'wirecat-tg')
-sha256sums=('3f8a00d5024cc72763f56ce5596316721fc6e06e142d69ac0ffe5a096739052c'
+sha256sums=('1711b35dbc8b0b9cf88fe2bfbdec95d0a676bb8bafaaf28800e1a6d2c3b529a4'
             '2b43fca302985ce034b1be423cf1524297d272a29f2c401e9695577c7a0b94fb')
 
 latestver() {
