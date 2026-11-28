@@ -1,0 +1,4 @@
+# The service account owns its config directory: the channel builder saves
+# channels.yaml there. The example config is copied only when none exists.
+d /etc/whatson 0755 whatson whatson -
+C /etc/whatson/channels.yaml 0644 whatson whatson - /usr/share/whatson/channels.yaml

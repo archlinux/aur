@@ -1,0 +1,20 @@
+post_install() {
+    cat <<'EOF'
+==> whatsOn: edit /etc/whatson/channels.yaml for your library, then
+        whatson --config /etc/whatson/channels.yaml --check-config
+        systemctl enable --now whatson.service whatson-index.timer
+    The units wait for /media. If your library is mounted elsewhere, name
+    its mount points in a drop-in:
+        systemctl edit whatson whatson-index
+    The web interface is on port 3000. Its home page has the install lines
+    for the native clients this server offers.
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+==> whatsOn: the running service keeps the old build until it restarts.
+    Restart it when no one is watching (the home page shows active streams):
+        systemctl restart whatson
+EOF
+}

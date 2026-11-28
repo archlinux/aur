@@ -1,0 +1,2 @@
+# whatsOn service account. Its home is the state directory.
+u whatson - "whatsOn" /var/lib/whatson
