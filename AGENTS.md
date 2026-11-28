@@ -43,7 +43,9 @@ Collect the external `NEEDED` sonames of every ELF shipped in the deb:
 
 Then check both directions:
 
-- **Missing deps:** every external soname must be provided by an entry in `depends` or by a package that `depends` already pulls in — verify with `pacman -Si`, not assumption. Do not rely on makepkg soname auto-deps (this pacman adds none to the built package) or on transitive coverage: Arch's `libayatana-appindicator` does *not* depend on `libayatana-indicator`, yet `libtray_plugin.so` needs `libayatana-indicator3.so.7`.
+- **Missing deps:** every external soname must be provided by an entry in `depends` or by a package that `depends` already pulls in — verify with `pacman -Si`, not assumption. Do not rely on makepkg soname auto-deps (this pacman adds none to the built package). Before 0.9.4+2026112701, `libtray_plugin.so` needed `libayatana-indicator3.so.7`, which Arch's `libayatana-appindicator` did not pull in.
 - **Redundant deps:** every `depends` entry must map to a `NEEDED` soname or another concrete requirement; drop the rest. Precedents: `libkeybinder3` dropped in 0.9.1+2026102409 (zero references in any ELF), `quickjs-c-bridge-git` dropped same version (QuickJS statically linked into `librust_api.so` via rquickjs; the plugin `.so` is gone from the deb).
+
+In 0.9.4+2026112701 the deb dropped `libtray_plugin.so`. The remaining ELFs need GTK 3 and libsecret. None link to the Ayatana or libdbusmenu libraries, so the package now declares `gtk3` and `libsecret` directly.
 
 The deb's own `Depends:` field is a weak Debian-name signal only; the ELF audit is authoritative. Bundled `libdartjni.so` needing `libjvm.so` is an Android leftover nothing loads — ignore it, it is not a dependency.
