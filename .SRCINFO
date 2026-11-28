@@ -1,0 +1,17 @@
+pkgbase = autospec-bin
+	pkgdesc = CLI for spec-driven development
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/ariel-frischer/autospec
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = autospec
+	conflicts = autospec
+	options = !debug
+	source_x86_64 = autospec-bin-0.12.1-x86_64.tar.gz::https://github.com/ariel-frischer/autospec/releases/download/v0.12.1/autospec_0.12.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = d67db241e92e544c8c53ea5a3d38135908e7a801e22b7c87201ecb1add7ac24b
+	source_aarch64 = autospec-bin-0.12.1-aarch64.tar.gz::https://github.com/ariel-frischer/autospec/releases/download/v0.12.1/autospec_0.12.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8a9a636bc051a904d2f30d7e6290da0221a393eaf884805f2d4a95d3557025a6
+
+pkgname = autospec-bin
