@@ -1,0 +1,17 @@
+pkgbase = bough-bin
+	pkgdesc = Record what Claude Code, Codex and Pi do
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/nickelsec/bough
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = bough
+	conflicts = bough
+	options = !debug
+	source_x86_64 = bough-bin-0.8.0-x86_64.tar.gz::https://github.com/nickelsec/bough/releases/download/v0.8.0/bough_v0.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0b8933b9ceaa7019b5accf6866b631a7210fae4d900b79aa53cb838470c341df
+	source_aarch64 = bough-bin-0.8.0-aarch64.tar.gz::https://github.com/nickelsec/bough/releases/download/v0.8.0/bough_v0.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = f8c950fe04f04d9e8aa8b64e94d2360aa98bcb7e952c5bcc0783eec8349715b8
+
+pkgname = bough-bin
