@@ -1,0 +1,20 @@
+pkgbase = goma-gateway-bin
+	pkgdesc = Lightweight API gateway and reverse proxy with declarative config
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/jkaninda/goma-gateway
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = goma-gateway
+	conflicts = goma-gateway
+	options = !debug
+	source = goma-gateway-bin-1.2.2-LICENSE::https://raw.githubusercontent.com/jkaninda/goma-gateway/v1.2.2/LICENSE
+	sha256sums = d169aff893994b0d4292add0b443c1b9dd48349a0702a49dd6741162bc8db285
+	source_x86_64 = goma-gateway-bin-1.2.2-x86_64.tar.gz::https://github.com/jkaninda/goma-gateway/releases/download/v1.2.2/goma-v1.2.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = 867b696daf79df18cd8032b4d563bc8dcfdc129a7e80cf6653fda3d44b46449d
+	source_aarch64 = goma-gateway-bin-1.2.2-aarch64.tar.gz::https://github.com/jkaninda/goma-gateway/releases/download/v1.2.2/goma-v1.2.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7c8fc8b2a87d751e4d6e6f680ae7db9249ccc3e26429fb65104a0dd313d42553
+
+pkgname = goma-gateway-bin
