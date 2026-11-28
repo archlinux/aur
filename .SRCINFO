@@ -1,0 +1,19 @@
+pkgbase = openagentd-bin
+	pkgdesc = Local coding agent with a desktop app
+	pkgver = 3.63.1
+	pkgrel = 1
+	url = https://github.com/lthoangg/OpenAgentd
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = openagentd
+	conflicts = openagentd
+	options = !debug
+	source_x86_64 = openagentd-bin-3.63.1-x86_64.tar.gz::https://github.com/lthoangg/OpenAgentd/releases/download/v3.63.1/openagentd-3.63.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 460603cdaedc27fd2344cd011226b9f3ceaac9248ece4d1700bf04ed95c41bb6
+	source_aarch64 = openagentd-bin-3.63.1-aarch64.tar.gz::https://github.com/lthoangg/OpenAgentd/releases/download/v3.63.1/openagentd-3.63.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 644dbadb721aad7ff422d41870832c40576d173db41f2a277ce61fcffb0e2531
+
+pkgname = openagentd-bin
