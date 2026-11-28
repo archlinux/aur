@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=whiplash
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Xmonad-style Wayland compositor and X11 WM with a Haskell brain"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=(
 backup=('etc/xdg-desktop-portal/whiplash-portals.conf'
         'etc/xdg/whiplash-x11/xdg-desktop-portal/whiplash-portals.conf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5aa3fbd6482499158ff2207eefb5d35a7a3ddc0b69ce8b82aabc1e85745ef271')
+sha256sums=('c79a3c7033409d3a10a69cdf3e3ee45f2f9f8f257685f87befe31130e1c5857b')
 
 build() {
     cd "$pkgname-$pkgver"

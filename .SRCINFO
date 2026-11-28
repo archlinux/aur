@@ -1,6 +1,6 @@
 pkgbase = whiplash
 	pkgdesc = Xmonad-style Wayland compositor and X11 WM with a Haskell brain
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/dani-77/whiplash
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = whiplash
 	optdepends = libnotify: config errors shown as notifications
 	backup = etc/xdg-desktop-portal/whiplash-portals.conf
 	backup = etc/xdg/whiplash-x11/xdg-desktop-portal/whiplash-portals.conf
-	source = whiplash-0.4.0.tar.gz::https://github.com/dani-77/whiplash/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 5aa3fbd6482499158ff2207eefb5d35a7a3ddc0b69ce8b82aabc1e85745ef271
+	source = whiplash-0.4.1.tar.gz::https://github.com/dani-77/whiplash/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = c79a3c7033409d3a10a69cdf3e3ee45f2f9f8f257685f87befe31130e1c5857b
 
 pkgname = whiplash
