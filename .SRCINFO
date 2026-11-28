@@ -1,0 +1,18 @@
+pkgbase = mergetopus-bin
+	pkgdesc = Orchestrator to untangle complex merges
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/mwallner/mergetopus
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = mergetopus
+	conflicts = mergetopus
+	options = !debug
+	source = mergetopus-bin-0.8-LICENSE::https://raw.githubusercontent.com/mwallner/mergetopus/v0.8/LICENSE.txt
+	sha256sums = 62d6ceca9ba4061371748920ddfe841407711f31ab5755ee2b4f83fe07c9d580
+	source_x86_64 = mergetopus-bin-0.8-x86_64.tar.gz::https://github.com/mwallner/mergetopus/releases/download/v0.8/mergetopus-linux-x64.tar.gz
+	sha256sums_x86_64 = 6de05728d968a6a24a074244fb699d1dc1ded78f75455123885d3de1411ca003
+
+pkgname = mergetopus-bin
