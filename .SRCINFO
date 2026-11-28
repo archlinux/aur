@@ -1,0 +1,21 @@
+pkgbase = maple-bin
+	pkgdesc = Local proxy for the Maple private AI chat service
+	pkgver = 3.4.10
+	pkgrel = 1
+	url = https://github.com/MaplePrivacyLabs/Maple
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = maple
+	conflicts = maple
+	options = !debug
+	source = maple-bin-3.4.10-LICENSE::https://raw.githubusercontent.com/MaplePrivacyLabs/Maple/v3.4.10/LICENSE
+	sha256sums = 076f3390f6342f51a64feadb9cd84d4ca41f56ebc6c2f9f1fe98fa255d853ad8
+	source_x86_64 = maple-bin-3.4.10-x86_64.tar.gz::https://github.com/MaplePrivacyLabs/Maple/releases/download/v3.4.10/maple-proxy-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 8a49a411e0a93e5a63b64968f6247771a6886af6207d1a4bb30ec78fa8d15b3b
+	source_aarch64 = maple-bin-3.4.10-aarch64.tar.gz::https://github.com/MaplePrivacyLabs/Maple/releases/download/v3.4.10/maple-proxy-linux-aarch64.tar.gz
+	sha256sums_aarch64 = fe18b53e9fff7baeb6972a6969bf323981c1c3c462166ca2faf6c0b4d9bf593f
+
+pkgname = maple-bin
