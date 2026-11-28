@@ -1,0 +1,17 @@
+pkgbase = gofofa-bin
+	pkgdesc = Command-line tool for the FOFA API
+	pkgver = 0.2.29
+	pkgrel = 1
+	url = https://github.com/FofaInfo/GoFOFA
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gofofa
+	conflicts = gofofa
+	options = !debug
+	source_x86_64 = gofofa-bin-0.2.29-x86_64.tar.gz::https://github.com/FofaInfo/GoFOFA/releases/download/v0.2.29/fofa_0.2.29_linux_amd64.tar.gz
+	sha256sums_x86_64 = b6c672ce2b4c4337d7d244f99dd959173e58d9c9a731d3f2f48ca968ac413502
+	source_aarch64 = gofofa-bin-0.2.29-aarch64.tar.gz::https://github.com/FofaInfo/GoFOFA/releases/download/v0.2.29/fofa_0.2.29_linux_arm64.tar.gz
+	sha256sums_aarch64 = 62970b0c1d9e8e659b09493a8f49b9d0b3a9fce5020b3ac22eb9f4f72c970455
+
+pkgname = gofofa-bin
