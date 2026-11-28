@@ -1,0 +1,17 @@
+pkgbase = zkar-bin
+	pkgdesc = Java serialization protocol analysis tool
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/phith0n/zkar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = zkar
+	conflicts = zkar
+	options = !debug
+	source_x86_64 = zkar-bin-1.6.0-x86_64.tar.gz::https://github.com/phith0n/zkar/releases/download/v1.6.0/zkar_1.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e49072e4d17acd0adba97093fcdc2809b37411bb280051d85a7cd51fc0e5c278
+	source_aarch64 = zkar-bin-1.6.0-aarch64.tar.gz::https://github.com/phith0n/zkar/releases/download/v1.6.0/zkar_1.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 828295f42d0db7553d2132e9967dbc56882adb0492ad1c57b6c1d8ed04a3dad0
+
+pkgname = zkar-bin
