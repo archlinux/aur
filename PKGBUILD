@@ -1,6 +1,6 @@
 # Maintainer: adelmonte
 pkgname=langis-gui
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 _langisver=0.1.1
 pkgdesc='A native Signal desktop client for Linux on the langis library, drawn with egui (unofficial)'
@@ -15,7 +15,7 @@ optdepends=('noto-fonts-emoji: color emoji'
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "langis-$_langisver.tar.gz::https://github.com/adelmonte/langis/archive/v$_langisver.tar.gz")
-sha256sums=('30cdd7773ef31909603fd6b695534b1691034e8b67271c5e9cd920e55506923d'
+sha256sums=('fbec3682fcab926d35c4bb14c7411790338a7632b4bb6eae2079c8506d7134f1'
             '94215f411e4a86cd914b44549b6fc0b6663ed4dbdcb72132134a01a72150cf04')
 
 prepare() {
