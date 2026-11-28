@@ -1,0 +1,19 @@
+pkgbase = reostream-bin
+	pkgdesc = Reolink camera proxy serving RTSP and HTTP for NVRs
+	pkgver = 0.2.12
+	pkgrel = 1
+	url = https://github.com/VoltTech21/reostream
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = reostream
+	conflicts = reostream
+	options = !debug
+	source = reostream-bin-0.2.12-LICENSE::https://raw.githubusercontent.com/VoltTech21/reostream/v0.2.12/LICENSE
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = reostream-bin-0.2.12-x86_64::https://github.com/VoltTech21/reostream/releases/download/v0.2.12/reostream-linux-amd64
+	sha256sums_x86_64 = 507acac9a323bf4ff8438bfd6f829d0b25a2dfc7f4b3c94cb8878da3ca9b50d6
+	source_aarch64 = reostream-bin-0.2.12-aarch64::https://github.com/VoltTech21/reostream/releases/download/v0.2.12/reostream-linux-arm64
+	sha256sums_aarch64 = 5515547d21fb99fc84d76b5e4bcc87dd0bc25ba6078f802345047b36ace1f6fd
+
+pkgname = reostream-bin
