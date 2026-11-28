@@ -1,6 +1,6 @@
 pkgbase = jj-bond-bin
 	pkgdesc = jujutsu TUI
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/TD-Sky/jj-bond
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = jj-bond-bin
 	options = !strip
 	options = !lto
 	options = !debug
-	source_x86_64 = jj-bond-bin-x86_64-0.1.9.zip::https://github.com/TD-Sky/jj-bond/releases/download/v0.1.9/jj-bond-x86_64-unknown-linux-musl.zip
-	sha256sums_x86_64 = cf34dca0c8f11ed2dab1a419285da7cb7949cc66e03b32a0c5aad8a28abeb3d4
-	source_aarch64 = jj-bond-bin-aarch64-0.1.9.zip::https://github.com/TD-Sky/jj-bond/releases/download/v0.1.9/jj-bond-aarch64-unknown-linux-musl.zip
-	sha256sums_aarch64 = a0690ef4e6a0a7804424bcbdfb25c9b7cf2e08dc4aad3124f64da194f043d042
+	source_x86_64 = jj-bond-bin-x86_64-0.1.10.zip::https://github.com/TD-Sky/jj-bond/releases/download/v0.1.10/jj-bond-x86_64-unknown-linux-musl.zip
+	sha256sums_x86_64 = d8cf7b7532023118687bc4523b5f056847d436a21de44f25e5673064150c1572
+	source_aarch64 = jj-bond-bin-aarch64-0.1.10.zip::https://github.com/TD-Sky/jj-bond/releases/download/v0.1.10/jj-bond-aarch64-unknown-linux-musl.zip
+	sha256sums_aarch64 = d8309aafb7ea9609846e53e63c73d5acdb2f3c9ac2e583ffbd415c33dd9a7c7c
 
 pkgname = jj-bond-bin
