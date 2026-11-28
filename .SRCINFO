@@ -1,0 +1,17 @@
+pkgbase = holos-bin
+	pkgdesc = Docker Compose-like tool for KVM/QEMU virtual machines
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/zeroecco/holos
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = holos
+	conflicts = holos
+	options = !debug
+	source_x86_64 = holos-bin-0.7.1-x86_64.tar.gz::https://github.com/zeroecco/holos/releases/download/v0.7.1/holos_0.7.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = dc5c53f752f9ff52ccc6855f22af39d3e60a321936e99caf7d60b6f4eae1c7c7
+	source_aarch64 = holos-bin-0.7.1-aarch64.tar.gz::https://github.com/zeroecco/holos/releases/download/v0.7.1/holos_0.7.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = a84a758dd0328e33e3ac404039efe898268b08e45fbbf343e8eaf16477796adf
+
+pkgname = holos-bin
