@@ -1,0 +1,21 @@
+pkgbase = mihoro-bin
+	pkgdesc = Mihomo command-line client for Linux
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/spencerwooo/mihoro
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = mihoro
+	conflicts = mihoro
+	options = !debug
+	source = mihoro-bin-0.14.0-LICENSE::https://raw.githubusercontent.com/spencerwooo/mihoro/v0.14.0/LICENSE
+	sha256sums = 8f1b3eb04872ec2dc84d626283b91d0da29d2341017948680428803a7818c922
+	source_x86_64 = mihoro-bin-0.14.0-x86_64.tar.gz::https://github.com/spencerwooo/mihoro/releases/download/v0.14.0/mihoro-v0.14.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7cb55db40ff2faad583593f1c527f5d292656ee0915fe3bcff1001c5972b434a
+	source_aarch64 = mihoro-bin-0.14.0-aarch64.tar.gz::https://github.com/spencerwooo/mihoro/releases/download/v0.14.0/mihoro-v0.14.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8aa977e6da619719ecacab60295b835c19a3975c1e4562e2d8f6813b79f4861d
+
+pkgname = mihoro-bin
