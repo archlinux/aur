@@ -1,0 +1,19 @@
+pkgbase = pigeons-bin
+	pkgdesc = Peer-to-peer messaging that always finds its way home
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/n0-computer/pigeons
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = pigeons
+	conflicts = pigeons
+	options = !debug
+	source = pigeons-bin-0.2.4-LICENSE::https://raw.githubusercontent.com/n0-computer/pigeons/v0.2.4/LICENSE-APACHE
+	sha256sums = 5e753045ba863ff5eb120a2ab75118d9d596f1ecd9371456eab0da1173876ae9
+	source_x86_64 = pigeons-bin-0.2.4-x86_64.tar.gz::https://github.com/n0-computer/pigeons/releases/download/v0.2.4/pigeons-v0.2.4-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 15c2fce476e5ecb79c8f2034033eac5cb136fee0ab5ca5a51881cf55658514be
+	source_aarch64 = pigeons-bin-0.2.4-aarch64.tar.gz::https://github.com/n0-computer/pigeons/releases/download/v0.2.4/pigeons-v0.2.4-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 001ca075c06b94c80a358f942467438edbbb478ad708bb9506bff3e3d2f81d2a
+
+pkgname = pigeons-bin
