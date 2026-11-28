@@ -1,0 +1,19 @@
+pkgbase = snolc-bin
+	pkgdesc = Modular userspace proxy
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/owenewans/snolc
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = glibc
+	depends = libgcc
+	provides = snolc
+	conflicts = snolc
+	options = !debug
+	source_x86_64 = snolc-bin-0.0.4-x86_64.tar.gz::https://github.com/owenewans/snolc/releases/download/v0.0.4/snolc-0.0.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4f1348df00e6d41efb2660a4ea249b887aa218c894c57069df28babeab438ccc
+	source_aarch64 = snolc-bin-0.0.4-aarch64.tar.gz::https://github.com/owenewans/snolc/releases/download/v0.0.4/snolc-0.0.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 13374354416a43fcc68b26c6532a841ab1c2c822d311d6827f594ffbd2d93395
+
+pkgname = snolc-bin
