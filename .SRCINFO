@@ -1,0 +1,17 @@
+pkgbase = speedwagon-bin
+	pkgdesc = Download Apple platform simulators without Xcode or macOS
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/timsutton/speedwagon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = speedwagon
+	conflicts = speedwagon
+	options = !debug
+	source_x86_64 = speedwagon-bin-0.2.0-x86_64.tar.gz::https://github.com/timsutton/speedwagon/releases/download/v0.2.0/speedwagon_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5e48bcee0449e7a1be9835f069e699fe268eeee540e9e7fe397aa004466d853e
+	source_aarch64 = speedwagon-bin-0.2.0-aarch64.tar.gz::https://github.com/timsutton/speedwagon/releases/download/v0.2.0/speedwagon_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = bbec55e92ec3ac9f1dbedde9d1ad0866f04ce4606f6aff1dee1527e748b83446
+
+pkgname = speedwagon-bin
