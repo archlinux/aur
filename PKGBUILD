@@ -49,6 +49,7 @@ check() {
 package() {
   cd "psi-${pkgver}"
   make install \
+    HARDENING_CFLAGS="$_hardening_cflags" \
     DESTDIR="$pkgdir" \
     PREFIX=/usr \
     INCLUDEDIR=/usr/include \
