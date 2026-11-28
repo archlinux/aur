@@ -1,6 +1,6 @@
 pkgbase = kvt-rusty-teams-bin
 	pkgdesc = Native Microsoft Teams client in Rust (KVT build)
-	pkgver = 0.6.1.kvt.2
+	pkgver = 0.6.1.kvt.3
 	pkgrel = 1
 	url = https://git.kvt.nl/ict/rusty-teams
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = kvt-rusty-teams-bin
 	conflicts = rusty-teams-git
 	options = !strip
 	options = !debug
-	source = rusty-teams-0.6.1-kvt.2-linux-x86_64.tar.gz::https://git.kvt.nl/api/v1/projects/ict/rusty-teams/releases/v0.6.1-kvt.2/assets/rusty-teams-0.6.1-kvt.2-linux-x86_64.tar.gz
-	sha256sums = f809e1a6e933defcc437c22cf293cc5b854480481caef47895744c64a50d18d0
+	source = rusty-teams-0.6.1-kvt.3-linux-x86_64.tar.gz::https://git.kvt.nl/api/v1/projects/ict/rusty-teams/releases/v0.6.1-kvt.3/assets/rusty-teams-0.6.1-kvt.3-linux-x86_64.tar.gz
+	sha256sums = 6992fb73f2a53e972e606eda37b3f5dbb4491195f15ebd885a9a4a92526f82e0
 
 pkgname = kvt-rusty-teams-bin

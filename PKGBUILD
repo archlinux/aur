@@ -2,9 +2,9 @@
 # fills pkgver, _tag and sha256sums from the release on git.kvt.nl and pushes it
 # with a generated .SRCINFO. Do not edit those three lines by hand in the AUR.
 pkgname=kvt-rusty-teams-bin
-pkgver=0.6.1.kvt.2
+pkgver=0.6.1.kvt.3
 pkgrel=1
-_tag=v0.6.1-kvt.2
+_tag=v0.6.1-kvt.3
 pkgdesc='Native Microsoft Teams client in Rust (KVT build)'
 arch=('x86_64')
 url='https://git.kvt.nl/ict/rusty-teams'
@@ -15,7 +15,7 @@ provides=('rusty-teams')
 conflicts=('rusty-teams' 'rusty-teams-bin' 'rusty-teams-git')
 options=('!strip' '!debug')
 source=("rusty-teams-${_tag#v}-linux-x86_64.tar.gz::https://git.kvt.nl/api/v1/projects/ict/rusty-teams/releases/${_tag}/assets/rusty-teams-${_tag#v}-linux-x86_64.tar.gz")
-sha256sums=('f809e1a6e933defcc437c22cf293cc5b854480481caef47895744c64a50d18d0')
+sha256sums=('6992fb73f2a53e972e606eda37b3f5dbb4491195f15ebd885a9a4a92526f82e0')
 
 package() {
   cd "rusty-teams-${_tag#v}-linux-x86_64"
