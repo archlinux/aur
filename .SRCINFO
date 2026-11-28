@@ -1,0 +1,23 @@
+pkgbase = sprocket-bin
+	pkgdesc = Bioinformatics workflow engine for WDL
+	pkgver = 0.34.1
+	pkgrel = 1
+	url = https://github.com/stjude-rust-labs/sprocket
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	depends = zlib
+	provides = sprocket
+	conflicts = sprocket
+	options = !debug
+	source = sprocket-bin-0.34.1-LICENSE::https://raw.githubusercontent.com/stjude-rust-labs/sprocket/v0.34.1/LICENSE-APACHE
+	sha256sums = 7a655546058e1099a447bb59a6f6128eb1b62fc0852b5f5daa89a43f891579d6
+	source_x86_64 = sprocket-bin-0.34.1-x86_64.tar.gz::https://github.com/stjude-rust-labs/sprocket/releases/download/v0.34.1/sprocket-v0.34.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7f55df97d455ae9f16ea369cb4216258704c39705e10958d9de855424f8ee805
+	source_aarch64 = sprocket-bin-0.34.1-aarch64.tar.gz::https://github.com/stjude-rust-labs/sprocket/releases/download/v0.34.1/sprocket-v0.34.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9236cc2b5e89c59d74f1daf5246b599ce5a1c8efcd88d457090271693fa1e7f0
+
+pkgname = sprocket-bin
