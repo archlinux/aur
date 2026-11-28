@@ -1,0 +1,17 @@
+pkgbase = kessoku-bin
+	pkgdesc = Parallel dependency injection code generator for Go
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/mazrean/kessoku
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kessoku
+	conflicts = kessoku
+	options = !debug
+	source_x86_64 = kessoku-bin-1.2.0-x86_64.tar.gz::https://github.com/mazrean/kessoku/releases/download/v1.2.0/kessoku_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 42257f1a64b4f0f134a183df5450a165f9a06ab1348f1d2a839af0a988505dec
+	source_aarch64 = kessoku-bin-1.2.0-aarch64.tar.gz::https://github.com/mazrean/kessoku/releases/download/v1.2.0/kessoku_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 92d844658ac2eef08c584540e6afb54d8a291ab58e9778c58c466dc538d630bd
+
+pkgname = kessoku-bin
