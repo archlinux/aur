@@ -2,14 +2,14 @@
 
 pkgname=filen-menubar-bin
 _pkgname=filen-menubar
-pkgver=0.1.37
+pkgver=0.1.38
 pkgrel=1
 pkgdesc="Lightweight system tray app for Filen cloud sync"
 arch=('x86_64')
 url="https://github.com/philippgerard/filen-menubar"
 license=('MIT' 'AGPL-3.0-only')
 # Arch equivalents of the .deb's Depends: libgtk-3-0, libwebkit2gtk-4.1-0,
-# libayatana-appindicator3-1. The patched sync backend is bundled and needs no
+# libayatana-appindicator3-1. The sync backends are bundled and need no
 # system Node.js or separately installed Filen CLI.
 depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
 provides=("${_pkgname}=${pkgver}")
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Filen.Men
         "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 # .deb is an ar archive; unpack it explicitly in package().
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('690804b43f72c19cde917aef3c1754d0386dd015f3826a403655d2e0fba11999'
+sha256sums=('6cc47a672eb16834be2748c906164838625d94c6754d628380bc8dfd2cf2b31a'
             '63d3d5dbe2ed4b855613bc1d0cdaa541583985329fd66b4179f937eb55ded130')
 
 package() {
@@ -41,8 +41,23 @@ package() {
     }
     chmod 755 "$_runtime"
 
-    [[ ! -e "${pkgdir}/usr/bin/filen-menubar-cli" ]] || {
-        echo "==> bundled runtime must remain app-private, not be installed on PATH" >&2
+    local _rust_cli="${pkgdir}/usr/lib/Filen Menubar/filen-cli/filen-cli-rs"
+    local _rust_licenses="${pkgdir}/usr/lib/Filen Menubar/licenses/filen-cli-rs"
+    # The AUR renderer also accepts older releases that bundled only Classic.
+    if [[ -e "$_rust_cli" || -d "$_rust_licenses" ]]; then
+        [[ -f "$_rust_cli" && -x "$_rust_cli" ]] || {
+            echo "==> bundled Rust CLI was missing or not executable" >&2
+            return 1
+        }
+        local notice
+        for notice in AGPL-3.0.txt README.md RUST-STDLIB.html THIRD_PARTY_NOTICES.txt; do
+            install -Dm644 "$_rust_licenses/$notice" \
+                "${pkgdir}/usr/share/licenses/${pkgname}/filen-cli-rs/$notice"
+        done
+    fi
+
+    [[ ! -e "${pkgdir}/usr/bin/filen-menubar-cli" && ! -e "${pkgdir}/usr/bin/filen-cli-rs" ]] || {
+        echo "==> bundled backends must be app-private" >&2
         return 1
     }
 
