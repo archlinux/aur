@@ -1,19 +1,34 @@
 pkgbase = r-cardx
 	pkgdesc = Extra Analysis Results Data Utilities
-	pkgver = 0.3.4
-	pkgrel = 4
+	pkgver = 0.3.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=cardx
 	arch = any
 	license = Apache-2.0
-	depends = r>=4.2
-	depends = r-cards>=0.7.0
-	depends = r-cli>=3.6.1
-	depends = r-dplyr>=1.2.0
-	depends = r-glue>=1.6.2
-	depends = r-lifecycle>=1.0.3
-	depends = r-rlang>=1.1.1
-	depends = r-tidyr>=1.3.0
-	source = https://cran.r-project.org/src/contrib/cardx_0.3.4.tar.gz
-	b2sums = 55d8e42c6e9c2a370b4fdd742eb9a7294c285c24e55eedea1fc2fc8095ec159caa8b14d316db414e359d8b2572f9e5610bc726af4dbcbcd1aa66d69d9f37be30
+	depends = r-cards
+	depends = r-cli
+	depends = r-dplyr
+	depends = r-glue
+	depends = r-lifecycle
+	depends = r-rlang
+	depends = r-tidyr
+	optdepends = r-aod
+	optdepends = r-broom
+	optdepends = r-broom.helpers
+	optdepends = r-broom.mixed
+	optdepends = r-car
+	optdepends = r-effectsize
+	optdepends = r-emmeans
+	optdepends = r-geepack
+	optdepends = r-ggsurvfit
+	optdepends = r-lme4
+	optdepends = r-parameters
+	optdepends = r-smd
+	optdepends = r-survey
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/cardx_0.3.5.tar.gz
+	md5sums = f279851133eee35fd455426b833383bb
+	b2sums = 6564c017f59ef9efcd81c946a9f05e005c487a5f4e50d8c69fdd0cb6c06d3c7e769793c1bf879a4cc9e2c57beb6e547252fb360da4cb7f8f020bfa90dcb230fe
 
 pkgname = r-cardx
