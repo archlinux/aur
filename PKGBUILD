@@ -10,7 +10,7 @@
 # versions and checksums deliberately do not live in this source repository.
 
 pkgname=thumbgrid-bin
-pkgver=2026.11.2
+pkgver=2026.11.5
 pkgrel=1
 # pkgrel of the upstream thumbgrid release asset being repackaged.
 _srcrel=1
@@ -35,7 +35,7 @@ provides=('thumbgrid')
 conflicts=('thumbgrid')
 options=('!strip' '!debug')
 source=("thumbgrid-$pkgver-$_srcrel-x86_64.pkg.tar.zst::https://github.com/do-i/thumbgrid/releases/download/v$pkgver/thumbgrid-$pkgver-$_srcrel-x86_64.pkg.tar.zst")
-sha256sums=('3520dfd7c3b837a18b0677553588831978eb4617443baf8df4e465efd6b2c1f2')
+sha256sums=('e267117efceef6f9e4d2bd8c3662fc08541b949d40d7ccfdc5eb9cf2ab9a5c7c')
 
 package() {
   # The download is itself a complete pacman package; unpack it as-is and
