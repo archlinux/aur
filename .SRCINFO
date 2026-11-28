@@ -1,0 +1,18 @@
+pkgbase = haqq-bin
+	pkgdesc = HAQQ blockchain node
+	pkgver = 1.9.6
+	pkgrel = 1
+	url = https://github.com/haqq-network/haqq
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = haqq
+	conflicts = haqq
+	options = !debug
+	source_x86_64 = haqq-bin-1.9.6-x86_64.tar.gz::https://github.com/haqq-network/haqq/releases/download/v1.9.6/haqq_1.9.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2c64d1591b8a22015d76aba6f5cf3f55344d907b71d997f2bbb57983a44d1110
+	source_aarch64 = haqq-bin-1.9.6-aarch64.tar.gz::https://github.com/haqq-network/haqq/releases/download/v1.9.6/haqq_1.9.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 829b2ebea914a13b5d33998e1060e7ae1c17c4fa560f4032ef6d974edff3b683
+
+pkgname = haqq-bin
