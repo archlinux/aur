@@ -1,0 +1,16 @@
+pkgbase = screp-bin
+	pkgdesc = StarCraft: Brood War replay parser
+	pkgver = 1.13.9
+	pkgrel = 1
+	url = https://github.com/icza/screp
+	arch = x86_64
+	license = Apache-2.0
+	provides = screp
+	conflicts = screp
+	options = !debug
+	source = screp-bin-1.13.9-LICENSE::https://raw.githubusercontent.com/icza/screp/v1.13.9/LICENSE
+	sha256sums = c23b3fbf15dd74754fb5ee05d04bd1ea3fb8867a89c5f8610a16bac832bfaf36
+	source_x86_64 = screp-bin-1.13.9-x86_64.tar.gz::https://github.com/icza/screp/releases/download/v1.13.9/screp-v1.13.9-linux-amd64.tar.gz
+	sha256sums_x86_64 = 873c95ee5b985aae1f25139af69fc214dce14623b4bb8c5e9c9a90ca79bfc7ae
+
+pkgname = screp-bin
