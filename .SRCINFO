@@ -1,0 +1,17 @@
+pkgbase = sato-bin
+	pkgdesc = Convert ARM or CloudFormation templates into Terraform
+	pkgver = 0.1.52
+	pkgrel = 1
+	url = https://github.com/JamesWoolfenden/sato
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = sato
+	conflicts = sato
+	options = !debug
+	source_x86_64 = sato-bin-0.1.52-x86_64.tar.gz::https://github.com/JamesWoolfenden/sato/releases/download/v0.1.52/sato_0.1.52_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5004baea176dea2d5649b5e1a8d506137a276c0278740e5f48df9f701bf2ccc1
+	source_aarch64 = sato-bin-0.1.52-aarch64.tar.gz::https://github.com/JamesWoolfenden/sato/releases/download/v0.1.52/sato_0.1.52_linux_arm64.tar.gz
+	sha256sums_aarch64 = 09a51412764fe9c9cdf6733d78cdf88f3018d65897fa83ad21f5334ff9db1560
+
+pkgname = sato-bin
