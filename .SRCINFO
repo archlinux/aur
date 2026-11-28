@@ -1,0 +1,14 @@
+pkgbase = secretless-broker-bin
+	pkgdesc = Connect apps to services without handling secrets
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/cyberark/secretless-broker
+	arch = x86_64
+	license = Apache-2.0
+	provides = secretless-broker
+	conflicts = secretless-broker
+	options = !debug
+	source_x86_64 = secretless-broker-bin-2.0.0-x86_64.tar.gz::https://github.com/cyberark/secretless-broker/releases/download/v2.0.0/secretless-broker_2.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7d7c88cfdcb704a94b9cc5547298eb010ac760a98f7f85b7d8bd0f746ac2d571
+
+pkgname = secretless-broker-bin
