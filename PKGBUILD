@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
-pkgver=1.2.131.r1.g4f960dde
+pkgver=1.2.132.r0.ge831e01c
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
