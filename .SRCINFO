@@ -1,0 +1,17 @@
+pkgbase = warden-bin
+	pkgdesc = Secure gateway connecting AI agents to enterprise systems
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://github.com/stephnangue/warden
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	provides = warden
+	conflicts = warden
+	options = !debug
+	source_x86_64 = warden-bin-0.22.0-x86_64.tar.gz::https://github.com/stephnangue/warden/releases/download/v0.22.0/warden_0.22.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4676d21f063504108201440f17b5a3b9d6b7b10d17029a009a906493a76db7fd
+	source_aarch64 = warden-bin-0.22.0-aarch64.tar.gz::https://github.com/stephnangue/warden/releases/download/v0.22.0/warden_0.22.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = f8c673cbb3bcd7f19d8957d87145e7f0e25836e73bb96d874aa9cf9ca882111d
+
+pkgname = warden-bin
