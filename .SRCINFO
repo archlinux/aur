@@ -1,0 +1,16 @@
+pkgbase = l3afd-bin
+	pkgdesc = Control plane for eBPF programs
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/l3af-project/l3afd
+	arch = x86_64
+	license = Apache-2.0
+	provides = l3afd
+	conflicts = l3afd
+	options = !debug
+	source = l3afd-bin-2.1.0-LICENSE::https://raw.githubusercontent.com/l3af-project/l3afd/v2.1.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = l3afd-bin-2.1.0-x86_64.zip::https://github.com/l3af-project/l3afd/releases/download/v2.1.0/l3afd-v2.1.0-linux-x86_64.zip
+	sha256sums_x86_64 = 08b987f90fbd26d39ee21b4f624dac2a85d77d0a0915fd82efba28dad99e91b3
+
+pkgname = l3afd-bin
