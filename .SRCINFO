@@ -1,0 +1,19 @@
+pkgbase = reddit-migrate-bin
+	pkgdesc = Transfer your Reddit account data between accounts
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nileshnk/reddit-migrate
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = reddit-migrate
+	conflicts = reddit-migrate
+	options = !debug
+	source = reddit-migrate-bin-1.0.0-LICENSE::https://raw.githubusercontent.com/nileshnk/reddit-migrate/v1.0.0/LICENCE
+	sha256sums = 9987753365cabbf5c0358b2adfca39ad69e5a50fc07ae1afe985f7bb827b0787
+	source_x86_64 = reddit-migrate-bin-1.0.0-x86_64.zip::https://github.com/nileshnk/reddit-migrate/releases/download/v1.0.0/reddit-migrate-1.0.0-linux-amd64.zip
+	sha256sums_x86_64 = 46202946540f0ee7f0b20ab9dbb11fa2a5aa19cb61f6fa7726e04ddf09ebdf68
+	source_aarch64 = reddit-migrate-bin-1.0.0-aarch64.zip::https://github.com/nileshnk/reddit-migrate/releases/download/v1.0.0/reddit-migrate-1.0.0-linux-arm64.zip
+	sha256sums_aarch64 = 30f290cb923cee9b46adc5739a93b0d034d99c581d8255b8ef4366d37bbe1dd8
+
+pkgname = reddit-migrate-bin
