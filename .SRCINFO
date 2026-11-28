@@ -1,0 +1,19 @@
+pkgbase = tfclean-bin
+	pkgdesc = Remove applied moved and import blocks from Terraform code
+	pkgver = 0.0.20
+	pkgrel = 1
+	url = https://github.com/takaishi/tfclean
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tfclean
+	conflicts = tfclean
+	options = !debug
+	source = tfclean-bin-0.0.20-LICENSE::https://raw.githubusercontent.com/takaishi/tfclean/v0.0.20/LICENSE
+	sha256sums = 15470a3e7a0cbec86da29df9485a17e9bd113d6730411d1446c483d0c8ffab4a
+	source_x86_64 = tfclean-bin-0.0.20-x86_64.tar.gz::https://github.com/takaishi/tfclean/releases/download/v0.0.20/tfclean_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 99451de90798df6ab6bf35737629434e70cb84d0f7b4cb88f10b2e8d40bfeab1
+	source_aarch64 = tfclean-bin-0.0.20-aarch64.tar.gz::https://github.com/takaishi/tfclean/releases/download/v0.0.20/tfclean_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 6b8ba574ec0c71d4876bc76933c0be2ac948054db990aab1336a52a5696bb962
+
+pkgname = tfclean-bin
