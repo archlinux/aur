@@ -1,6 +1,6 @@
 # atmosphera-niri
 
-AUR meta package: [Atmosphera](https://github.com/alexindigo/atmosphera) shell on niri.
+AUR meta package: [Atmosphera](https://github.com/atmosphera-dev/atmosphera) shell on niri.
 
 Pulls in everything needed for an Atmosphera session on niri:
 
