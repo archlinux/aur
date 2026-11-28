@@ -1,7 +1,7 @@
 pkgbase = wisp-shell
 	pkgdesc = Small Linux shell written in C++17 with Lua 5.4 embedded for config and structured pipelines
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Hinikaa/wisp
 	install = wisp-shell.install
 	arch = x86_64
@@ -14,6 +14,6 @@ pkgbase = wisp-shell
 	depends = glibc
 	optdepends = luarocks: package management via the pkg builtin
 	source = wisp-3.3.0.tar.gz::https://github.com/Hinikaa/wisp/archive/refs/tags/v3.3.0.tar.gz
-	sha256sums = 1de3f78b955f29a0d0e01fd57b747737f41e0dd0b28b1a0db9f66081b9d04570
+	sha256sums = 765c87c8b698d80f39fdb43ac2866927d8e65c49279159f037e2fc9f0e7321de
 
 pkgname = wisp-shell
