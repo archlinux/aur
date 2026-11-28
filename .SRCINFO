@@ -1,0 +1,21 @@
+pkgbase = wasi-vfs-bin
+	pkgdesc = Virtual filesystem layer for WASI
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/kateinoigakukun/wasi-vfs
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = wasi-vfs
+	conflicts = wasi-vfs
+	options = !debug
+	source = wasi-vfs-bin-0.6.3-LICENSE::https://raw.githubusercontent.com/kateinoigakukun/wasi-vfs/v0.6.3/LICENSE
+	sha256sums = 268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5
+	source_x86_64 = wasi-vfs-bin-0.6.3-x86_64.zip::https://github.com/kateinoigakukun/wasi-vfs/releases/download/v0.6.3/wasi-vfs-cli-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = c9ee8179f6f0882abc37024fbe0cd678311aa8a29083fa364915ed4d29a69485
+	source_aarch64 = wasi-vfs-bin-0.6.3-aarch64.zip::https://github.com/kateinoigakukun/wasi-vfs/releases/download/v0.6.3/wasi-vfs-cli-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = ef71666d26215121f7c49c1713ee029aa5ebe6ea41722013b41d488288cb0186
+
+pkgname = wasi-vfs-bin
