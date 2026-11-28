@@ -3,7 +3,7 @@
 _name=allo
 pkgbase=${_name}
 pkgname=(otf-${_name} woff2-${_name} ttf-${_name})
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A friendly, free, and open source font family'
 arch=(any)
@@ -11,7 +11,7 @@ url="https://github.com/joshpuckett/${_name}"
 license=(OFL-1.1)
 _archive=Allo-$pkgver
 source=("$url/releases/download/v$pkgver/$_archive.zip")
-sha256sums=('fe3d70e07fda3c4e3590b27367cf0b8603d84e7f926334dbe095020ced381472')
+sha256sums=('772977ae6b38d9de871ddd4d78e2ef75d3228db24ab7e7cc11d4f7dbabfdd2b1')
 
 package_otf-allo() {
 	cd "$_archive"
