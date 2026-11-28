@@ -1,0 +1,18 @@
+pkgbase = z80dasm-git
+	pkgdesc = Disassembler for the Zilog Z80 microprocessor
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/lvitals/z80dasm
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	provides = z80dasm
+	conflicts = z80dasm
+	source = git+https://github.com/lvitals/z80dasm
+	b2sums = SKIP
+
+pkgname = z80dasm-git
