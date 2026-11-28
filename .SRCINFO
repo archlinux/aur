@@ -1,0 +1,20 @@
+pkgbase = goeland-bin
+	pkgdesc = Turn RSS and Atom feeds into email digests
+	pkgver = 0.29.2
+	pkgrel = 1
+	url = https://github.com/slurdge/goeland
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = goeland
+	conflicts = goeland
+	options = !debug
+	source = goeland-bin-0.29.2-LICENSE::https://raw.githubusercontent.com/slurdge/goeland/v0.29.2/LICENSE
+	sha256sums = 5f58f9f89cccb9dbc3e358596b8215847994244110068e10553243f4f49e6780
+	source_x86_64 = goeland-bin-0.29.2-x86_64::https://github.com/slurdge/goeland/releases/download/v0.29.2/goeland_linux_amd64
+	sha256sums_x86_64 = e80b0dd1a2d6bc951549b5098a60aa81ec299ec5cd93853de30057f7c2b03e63
+	source_aarch64 = goeland-bin-0.29.2-aarch64::https://github.com/slurdge/goeland/releases/download/v0.29.2/goeland_linux_arm64
+	sha256sums_aarch64 = 4951089b863de05eb2dfb8661baf8f24c696ac8944da8b2f1b9973007dbaf85e
+
+pkgname = goeland-bin
