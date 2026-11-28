@@ -1,0 +1,21 @@
+pkgbase = pgsqlite-bin
+	pkgdesc = PostgreSQL protocol adapter for SQLite databases
+	pkgver = 0.0.22
+	pkgrel = 1
+	url = https://github.com/erans/pgsqlite
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = pgsqlite
+	conflicts = pgsqlite
+	options = !debug
+	source = pgsqlite-bin-0.0.22-LICENSE::https://raw.githubusercontent.com/erans/pgsqlite/v0.0.22/LICENSE
+	sha256sums = acd34784810d12a656fca2173ba8e0256d91f24037c205932193be75157d2db8
+	source_x86_64 = pgsqlite-bin-0.0.22-x86_64.tar.gz::https://github.com/erans/pgsqlite/releases/download/v0.0.22/pgsqlite-linux-amd64.tar.gz
+	sha256sums_x86_64 = b7cad35e1f2d73e651582f610ae998abe3a6e7d25d79fe7b930f6d389c7298cf
+	source_aarch64 = pgsqlite-bin-0.0.22-aarch64.tar.gz::https://github.com/erans/pgsqlite/releases/download/v0.0.22/pgsqlite-linux-arm64.tar.gz
+	sha256sums_aarch64 = 93e86addd0cfc8963afd7738d7c16e7df9e45704f8c5fc080470a68c50b81bd7
+
+pkgname = pgsqlite-bin
