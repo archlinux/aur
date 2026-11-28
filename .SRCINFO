@@ -1,0 +1,17 @@
+pkgbase = wacrawl-bin
+	pkgdesc = Archive and search your WhatsApp history locally
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/openclaw/wacrawl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = wacrawl
+	conflicts = wacrawl
+	options = !debug
+	source_x86_64 = wacrawl-bin-0.5.1-x86_64.tar.gz::https://github.com/openclaw/wacrawl/releases/download/v0.5.1/wacrawl_0.5.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0ae3e4e3a892f884e4f08ec8cf37ccf934b1fc261a26a3084d98e0420bbc80e6
+	source_aarch64 = wacrawl-bin-0.5.1-aarch64.tar.gz::https://github.com/openclaw/wacrawl/releases/download/v0.5.1/wacrawl_0.5.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 353197b4eb0e53732c783713e85977d2006d94106095ef0d5bf2964a70d3d18e
+
+pkgname = wacrawl-bin
