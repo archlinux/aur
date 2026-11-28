@@ -1,0 +1,16 @@
+pkgbase = nyagos-bin
+	pkgdesc = Hybrid command-line shell
+	pkgver = 4.4.20_2
+	pkgrel = 1
+	url = https://github.com/nyaosorg/nyagos
+	arch = x86_64
+	license = BSD-3-Clause
+	provides = nyagos
+	conflicts = nyagos
+	options = !debug
+	source = nyagos-bin-4.4.20_2-LICENSE::https://raw.githubusercontent.com/nyaosorg/nyagos/4.4.20_2/LICENSE
+	sha256sums = dc1d73784773435691df02c39734fdb07eafdeb05aa3778d7f416841314e0453
+	source_x86_64 = nyagos-bin-4.4.20_2-x86_64.zip::https://github.com/nyaosorg/nyagos/releases/download/4.4.20_2/nyagos-4.4.20_2-linux-amd64.zip
+	sha256sums_x86_64 = ecd3516173a4910e6878c1913334635e39698836bb0b13e32d66fea04f841800
+
+pkgname = nyagos-bin
