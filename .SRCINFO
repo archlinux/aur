@@ -1,0 +1,17 @@
+pkgbase = gcsproxy-bin
+	pkgdesc = Reverse proxy for Google Cloud Storage
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/daichirata/gcsproxy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gcsproxy
+	conflicts = gcsproxy
+	options = !debug
+	source_x86_64 = gcsproxy-bin-0.8.0-x86_64.tar.gz::https://github.com/daichirata/gcsproxy/releases/download/v0.8.0/gcsproxy-0.8.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 225934a44865f49c0f3ca783d27957795001af6438adda2cc795a0091025ea2d
+	source_aarch64 = gcsproxy-bin-0.8.0-aarch64.tar.gz::https://github.com/daichirata/gcsproxy/releases/download/v0.8.0/gcsproxy-0.8.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 195b05ef350c453662e341243abd4c8510da177974221f1276c6a7a5ac43c396
+
+pkgname = gcsproxy-bin
