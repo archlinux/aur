@@ -1,0 +1,21 @@
+pkgbase = mcp-cpp-bin
+	pkgdesc = MCP server for large C and C++ codebases
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/mpsm/mcp-cpp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = mcp-cpp
+	conflicts = mcp-cpp
+	options = !debug
+	source = mcp-cpp-bin-0.2.2-LICENSE::https://raw.githubusercontent.com/mpsm/mcp-cpp/v0.2.2/LICENSE
+	sha256sums = 384c868c4bd77dd3d4262f03e7742630787665187bcbad5b946437c434c863ec
+	source_x86_64 = mcp-cpp-bin-0.2.2-x86_64::https://github.com/mpsm/mcp-cpp/releases/download/v0.2.2/mcp-cpp-server-linux-x86_64
+	sha256sums_x86_64 = 555535c69a5087420ea283e323ff07c587d37a0a38c92b72e3765a898e83cfb4
+	source_aarch64 = mcp-cpp-bin-0.2.2-aarch64::https://github.com/mpsm/mcp-cpp/releases/download/v0.2.2/mcp-cpp-server-linux-aarch64
+	sha256sums_aarch64 = dffb360c33008da0293f43a54039b3faa70d404b7cb1617a2bfd9d18775be6e7
+
+pkgname = mcp-cpp-bin
