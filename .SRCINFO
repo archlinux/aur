@@ -1,0 +1,20 @@
+pkgbase = lalmax-bin
+	pkgdesc = Streaming media server with SRT, WebRTC, WHIP/WHEP, HLS and GB28181
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/q191201771/lalmax
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = lalmax
+	conflicts = lalmax
+	options = !debug
+	source = lalmax-bin-0.3.6-LICENSE::https://raw.githubusercontent.com/q191201771/lalmax/v0.3.6/LICENSE
+	sha256sums = 37ef0fa1df7926353747ba43dd3d59fac502f1f8fe1a68c0eb9429afb5a6b8fc
+	source_x86_64 = lalmax-bin-0.3.6-x86_64.tar.gz::https://github.com/q191201771/lalmax/releases/download/v0.3.6/lalmax-v0.3.6-linux-amd64.tar.gz
+	sha256sums_x86_64 = 10f4cd79606ef86ccdff2c4ffc9021d22e71ab65ebe5cbaa66437687f183d150
+	source_aarch64 = lalmax-bin-0.3.6-aarch64.tar.gz::https://github.com/q191201771/lalmax/releases/download/v0.3.6/lalmax-v0.3.6-linux-arm64.tar.gz
+	sha256sums_aarch64 = c2f8b15de7e8d67efcff557b40e8e82da788017fe2019b0650e4d19856d2e1e7
+
+pkgname = lalmax-bin
