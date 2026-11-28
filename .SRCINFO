@@ -1,0 +1,17 @@
+pkgbase = airstore-bin
+	pkgdesc = Filesystem for AI agents
+	pkgver = 0.1.153
+	pkgrel = 1
+	url = https://github.com/beam-cloud/airstore
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = glibc
+	provides = airstore
+	conflicts = airstore
+	options = !debug
+	source = airstore-bin-0.1.153-LICENSE::https://raw.githubusercontent.com/beam-cloud/airstore/v0.1.153/LICENSE
+	sha256sums = 46778e949d4881992df5d2a4bfa2b91ba2a17fdb9c8e8f07f2d178886f3be52c
+	source_x86_64 = airstore-bin-0.1.153-x86_64.tar.gz::https://github.com/beam-cloud/airstore/releases/download/v0.1.153/airstore-0.1.153-linux-amd64.tar.gz
+	sha256sums_x86_64 = ac3eb0d090f189662d096fb7faa34198e23176c3822a94a2f534f151ba516a8c
+
+pkgname = airstore-bin
