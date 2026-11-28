@@ -1,8 +1,8 @@
 # Maintainer: temidaradev <temidaradev@proton.me>
 pkgname=kopuz-nightly
 # pkgver cannot hold the tag's "-", so the release's own version rides in _version.
-_version=1.0.1-nightly.20261127
-pkgver=1.0.1_nightly.20261127
+_version=1.0.1-nightly.20261128
+pkgver=1.0.1_nightly.20261128
 pkgrel=1
 pkgdesc="A modern music player, built nightly from the latest development code"
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
 options=('!lto')
 source=("kopuz-nightly-$_version.tar.gz::https://github.com/Kopuz-org/kopuz/archive/refs/tags/v$_version.tar.gz")
 # Filled in at publish time from the tag's source tarball.
-sha256sums=('375273af76176e10bc8b8a22aa20f0f65247fac9abaff1e6a78e4204d44507bf')
+sha256sums=('412169e619341dbddad830339e3a5b37e6e884a895dcbc57cdcf5a087f17c890')
 
 prepare() {
     cd "kopuz-$_version"
