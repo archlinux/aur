@@ -1,7 +1,7 @@
 pkgbase = llama-prism-rocm-bin
 	pkgdesc = llama.cpp Prism fork - LLM inference in C/C++ (prebuilt ROCm / HIP binaries for AMD GPUs)
 	pkgver = b12232
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PrismML-Eng/llama.cpp
 	arch = x86_64
 	license = MIT
