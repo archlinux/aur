@@ -1,0 +1,17 @@
+pkgbase = stackdriver_exporter-bin
+	pkgdesc = Prometheus exporter for Google Stackdriver
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = https://github.com/prometheus-community/stackdriver_exporter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = stackdriver_exporter
+	conflicts = stackdriver_exporter
+	options = !debug
+	source_x86_64 = stackdriver_exporter-bin-0.19.0-x86_64.tar.gz::https://github.com/prometheus-community/stackdriver_exporter/releases/download/v0.19.0/stackdriver_exporter-0.19.0.linux-amd64.tar.gz
+	sha256sums_x86_64 = c2f930545dce5d275310a00f332d45a1810601d966698e1f14606faf23e59516
+	source_aarch64 = stackdriver_exporter-bin-0.19.0-aarch64.tar.gz::https://github.com/prometheus-community/stackdriver_exporter/releases/download/v0.19.0/stackdriver_exporter-0.19.0.linux-arm64.tar.gz
+	sha256sums_aarch64 = 056b59ef73e3fd715e5b79606a09e182e902ce8b6f4307801d69be170fe101b5
+
+pkgname = stackdriver_exporter-bin
