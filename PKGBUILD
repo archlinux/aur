@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="MOB³ is a compact, self-contained browser for the terminal"
 
-pkgver=6.3.0
+pkgver=6.4.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,11 +29,11 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[0]}.tar.gz")
 source_i686=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[1]}.tar.gz")
 source_aarch64=("${_appname}-${arch[2]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[2]}.tar.gz")
-sha256sums=('a1aae0c5c2fc82e8a800718a3319485a6347a4cec82414f0c93a4854b3802a1a'
+sha256sums=('a7828ac430cb21bd86af2108603bca71ed02489413393ad358325ef0f46fed46'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
-sha256sums_x86_64=('7eada102b7476970008a9c5d6b8b1fcda863028f89db73af2daec69ab5c5c1aa')
-sha256sums_i686=('d4cdf6fb5b6e4fa5b2db0a6f6b7b93365367efeb40d080d6b18ab4b767225621')
-sha256sums_aarch64=('01a4f2bfd587788712dbaba46a634c4af812dc3fb160c879b5adf1d18e55f000')
+sha256sums_x86_64=('568a19449a4ada5bf7e1bbe815d0c0b0ce9804a3625c2a9d64a383a39a9f3ca5')
+sha256sums_i686=('b229ef3d48cd9b9bb4f19cecc0f22f35f2e1e740b18a774d4fa6da625a488c9e')
+sha256sums_aarch64=('52e794047da26a4344736bd93930fa3704168369d14dd5a91f67d71dc70c25ae')
 
 
 package() {
