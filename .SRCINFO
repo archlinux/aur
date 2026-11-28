@@ -1,0 +1,16 @@
+pkgbase = etchdns-bin
+	pkgdesc = DNS proxy with WebAssembly plugins
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/DNSCrypt/EtchDNS
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = etchdns
+	conflicts = etchdns
+	options = !debug
+	source_x86_64 = etchdns-bin-0.9.0-x86_64.tar.gz::https://github.com/DNSCrypt/EtchDNS/releases/download/0.9.0/etchdns-0.9.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a1689d8ec1f190eb3c75e6b8317426a98eea649dfbc03e8e62a207f9c2aa52a9
+
+pkgname = etchdns-bin
