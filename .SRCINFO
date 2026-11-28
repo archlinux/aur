@@ -1,0 +1,17 @@
+pkgbase = gitbackup-bin
+	pkgdesc = Back up Bitbucket, GitHub, GitLab and Forgejo repositories
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/amitsaha/gitbackup
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gitbackup
+	conflicts = gitbackup
+	options = !debug
+	source_x86_64 = gitbackup-bin-1.3.1-x86_64.tar.gz::https://github.com/amitsaha/gitbackup/releases/download/v1.3.1/gitbackup_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 3a7727d21d081e05c9f7c6babcc23edac455dfd9371d0b7c7783aae6346db91a
+	source_aarch64 = gitbackup-bin-1.3.1-aarch64.tar.gz::https://github.com/amitsaha/gitbackup/releases/download/v1.3.1/gitbackup_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d5467455b02dd4a39981a759deb216a7361db52dc311d068fd0e519f96d54c93
+
+pkgname = gitbackup-bin
