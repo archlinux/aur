@@ -1,0 +1,20 @@
+pkgbase = brain0-bin
+	pkgdesc = Black box recorder for AI-written code
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/Brain0-ai/brain0
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = brain0
+	conflicts = brain0
+	options = !debug
+	source = brain0-bin-0.1.6-LICENSE::https://raw.githubusercontent.com/Brain0-ai/brain0/v0.1.6/LICENSE
+	sha256sums = c85fb09b3dc75305abeea468ced98ec287889024900223bb162831a9d3f07de1
+	source_x86_64 = brain0-bin-0.1.6-x86_64.tgz::https://github.com/Brain0-ai/brain0/releases/download/v0.1.6/brain0-cli-linux-x64-0.1.6.tgz
+	sha256sums_x86_64 = b7cd3857148acaf6d77cf87bc05e6fc9d0e30f7da0b065b411800c2fca8e4220
+	source_aarch64 = brain0-bin-0.1.6-aarch64.tgz::https://github.com/Brain0-ai/brain0/releases/download/v0.1.6/brain0-cli-linux-arm64-0.1.6.tgz
+	sha256sums_aarch64 = d412fa05bd3fb7308378dab9955ff5f83927ed4564f9752fd43ad72f77625cea
+
+pkgname = brain0-bin
