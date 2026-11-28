@@ -1,51 +1,43 @@
 # Maintainer: Santiago Burgos <santiago.burgos1089@gmail.com>
 # Contributor: Manuel Hüsers <aur@huesers.de>
-# Many options will remain here as leftovers in case the packaging in Github resumes once again
 
 pkgname=mintlocale
-pkgver=1.6.6
+pkgver=1.6.10
 pkgrel=1
 pkgdesc="Language and locale selection tool"
 arch=('any')
 url='https://github.com/linuxmint/mintlocale'
-_url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=(
-    'accountsservice' 
+    'accountsservice'
     'gdk-pixbuf2'
     'glib2'
     'gtk3'
     'iso-flag-png'
+    'mint-translations'
     'python'
     'python-cairo'
     'python-gobject'
     'xapp'
 )
-source=("${pkgname}-${pkgver}.tar.xz::${_url}/${pkgname}_${pkgver}.tar.xz"
-        "im_apt_check.patch"
-        "install_remove_apt_check.patch")
-sha256sums=('57279b03c29add5cbfac645239f30ebe2dc158b16e01c6fb996e0e1d9022f958'
-            '7f4e08b59ada49931cbac7b8e99871a622a03b44bbc34b3d74dc0e3c7a3e3cda'
-            'dd01db12b2c9f8d834f491292464a1c6c2b13237d173f10dea7397e7c96d1d95')
+source=("${pkgname}-${pkgver}.tar.xz::http://packages.linuxmint.com/pool/main/m/${pkgname}_${pkgver}.tar.xz")
+sha256sums=('2866fc34a8626cf9da591205f178fbac843e39075e821170ce5e48389b2259df')
 
-## Packaging via Linuxmint repository
 prepare() {
     cd "${pkgname}"
-
-    # Remove the im desktop file and executable from this package,
-    # this is done since input methods are handled differently on Arch
-    rm -f 'usr/share/applications/mintlocale-im.desktop'
-    rm -f 'usr/bin/mintlocale-im'
-
-    #Added checking of APT in mintlocale so application can show proper configuration 
-    #Patching "im.py" file
-    patch -Np1 -i ../im_apt_check.patch
-    #Patching "install_remove.py" file
-    patch -Np1 -i ../install_remove_apt_check.patch
-
+    # Input methods are configured differently on Arch; drop the APT-based tool.
+    rm -rf usr/bin/mintlocale-im \
+           usr/share/applications/mintlocale-im.desktop \
+           usr/share/icons/hicolor/*/apps/mintlocale-im.* \
+           usr/lib/linuxmint/mintlocale/im.py \
+           usr/lib/linuxmint/mintlocale/ImConfig \
+           usr/share/linuxmint/mintlocale/im.ui \
+           usr/share/linuxmint/mintlocale/iminfo \
+           usr/share/linuxmint/adjustments
+    find usr/share/icons -type d -empty -delete
 }
 
 package() {
-    cd ${pkgname}
-    cp -r usr "$pkgdir"
+    cd "${pkgname}"
+    cp -r usr "${pkgdir}"
 }
