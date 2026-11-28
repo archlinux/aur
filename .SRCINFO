@@ -1,0 +1,20 @@
+pkgbase = flowscope-bin
+	pkgdesc = Privacy-first SQL lineage engine
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/pondpilot/flowscope
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = flowscope
+	conflicts = flowscope
+	options = !debug
+	source_x86_64 = flowscope-bin-0.9.2-x86_64.tar.gz::https://github.com/pondpilot/flowscope/releases/download/v0.9.2/flowscope-v0.9.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6238670ca6786aa042a8a9c8428a7004632555a5b5f61f7a0f5973bab04a9382
+	source_aarch64 = flowscope-bin-0.9.2-aarch64.tar.gz::https://github.com/pondpilot/flowscope/releases/download/v0.9.2/flowscope-v0.9.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8542faf81081300ff37fc54bbc842c4dea64a070221ef082562c2a1bca57ae9a
+
+pkgname = flowscope-bin
