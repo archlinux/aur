@@ -1,0 +1,20 @@
+pkgbase = easypaint-gtk3
+	pkgdesc = A simple bitmap graphics editor (GTK 3 port)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/sfs-pra/EasyPaint
+	arch = x86_64
+	license = MIT
+	makedepends = gettext
+	depends = gtk3
+	depends = giflib
+	depends = libwebp
+	optdepends = libcups: printing to CUPS printers
+	conflicts = easypaint-gtk
+	conflicts = easypaint-gtk4
+	options = !debug
+	options = !lto
+	source = EasyPaint-gtk3-v0.2.0.tar.gz::https://github.com/sfs-pra/EasyPaint/archive/refs/tags/gtk3-v0.2.0.tar.gz
+	sha256sums = d7e7424fd6dc01c6f9479134806c9127437cbf6c40fbae32295f59ba17c46be2
+
+pkgname = easypaint-gtk3
