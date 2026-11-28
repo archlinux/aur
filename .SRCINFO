@@ -1,0 +1,21 @@
+pkgbase = termpair-bin
+	pkgdesc = View and control terminals from your browser with end-to-end encryption
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/cs01/termpair
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = termpair
+	conflicts = termpair
+	options = !debug
+	source = termpair-bin-1.2.0-LICENSE::https://raw.githubusercontent.com/cs01/termpair/v1.2.0/LICENSE
+	sha256sums = 5465d224581419d98095529e5aa924ff8c1c41b9f7b9d92f5ab8b4ca8bd1359c
+	source_x86_64 = termpair-bin-1.2.0-x86_64.tar.gz::https://github.com/cs01/termpair/releases/download/v1.2.0/termpair-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 191f8a35d859271ebe5ab63aeedbf0d05218b7da2eb5461a085134112cca81a2
+	source_aarch64 = termpair-bin-1.2.0-aarch64.tar.gz::https://github.com/cs01/termpair/releases/download/v1.2.0/termpair-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2964344ca7d8af9bd2e1810a7d4a2b8c7c0b74fae88c68b418a5dc53532a2647
+
+pkgname = termpair-bin
