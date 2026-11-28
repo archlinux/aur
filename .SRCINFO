@@ -1,0 +1,14 @@
+pkgbase = rosalind-bin
+	pkgdesc = Reusable genomic evidence for research and analysis tools
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/logannye/rosalind
+	arch = x86_64
+	license = Apache-2.0
+	provides = rosalind
+	conflicts = rosalind
+	options = !debug
+	source_x86_64 = rosalind-bin-0.1.0-x86_64.tar.gz::https://github.com/logannye/rosalind/releases/download/v0.1.0/rosalind-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 5072a18e83c7e87a406c2e0665f8de675bd68d446c86ba49a48771d0b089517c
+
+pkgname = rosalind-bin
