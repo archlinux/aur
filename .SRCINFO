@@ -1,6 +1,6 @@
 pkgbase = vrcs-bin
 	pkgdesc = Real-time caption, translation, learning and AI tool for VRChat
-	pkgver = 0.4.2
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/Dreaminko/VRCS
 	arch = x86_64
@@ -27,10 +27,10 @@ pkgbase = vrcs-bin
 	optdepends = xdg-utils: opening external links and log directories
 	provides = vrcs
 	conflicts = vrcs
-	noextract = VRCS-0.4.2-linux-x86_64.deb
+	noextract = VRCS-0.4.4-linux-x86_64.deb
 	options = !strip
 	options = !debug
-	source = VRCS-0.4.2-linux-x86_64.deb::https://github.com/Dreaminko/VRCS/releases/download/0.4.2/VRCS-0.4.2-linux-x86_64.deb
-	sha256sums = 36fe8b082dd9309b1413b68a0a8bdfa11981b0c2b1c9c657ec31b6de9d348f62
+	source = VRCS-0.4.4-linux-x86_64.deb::https://github.com/Dreaminko/VRCS/releases/download/0.4.4/VRCS-0.4.4-linux-x86_64.deb
+	sha256sums = 31e1c1718811378314f561d64244b7c0d133779b9578eba7129dfa1aab98cbe2
 
 pkgname = vrcs-bin
