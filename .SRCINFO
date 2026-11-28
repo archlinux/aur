@@ -1,0 +1,22 @@
+pkgbase = claude-view-bin
+	pkgdesc = Monitor many Claude Code sessions at once
+	pkgver = 0.46.3
+	pkgrel = 1
+	url = https://github.com/tombelieber/claude-view
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = claude-view
+	conflicts = claude-view
+	options = !debug
+	source = claude-view-bin-0.46.3-LICENSE::https://raw.githubusercontent.com/tombelieber/claude-view/v0.46.3/LICENSE
+	sha256sums = 84bb8429236392333e09419d32ed6c5ce537d9039818c7a9cc85ffc30f6a232c
+	source_x86_64 = claude-view-bin-0.46.3-x86_64.tar.gz::https://github.com/tombelieber/claude-view/releases/download/v0.46.3/claude-view-linux-x64.tar.gz
+	sha256sums_x86_64 = 206d826e8e3dd5a2867f9ee1bed101700617876ef2077bb3cf22c784ce4e652d
+	source_aarch64 = claude-view-bin-0.46.3-aarch64.tar.gz::https://github.com/tombelieber/claude-view/releases/download/v0.46.3/claude-view-linux-arm64.tar.gz
+	sha256sums_aarch64 = 6aa18b7e94a609ef33a1c3a701789894a010bf2f4a677cf2a12fc35d82177b0e
+
+pkgname = claude-view-bin
