@@ -1,0 +1,12 @@
+pkgbase = radiotop-bin
+	pkgdesc = Linux desktop internet-radio browser and player
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/mikelexp/RadioTop
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	source = https://github.com/mikelexp/RadioTop/releases/download/v0.9.3/radiotop-0.9.3-linux-x86_64.tar.gz
+	sha256sums = e643aa8103509d9864347aa79310b7baf1bec18c454ee690d0fee3fc87f0fec9
+
+pkgname = radiotop-bin
