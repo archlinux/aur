@@ -1,0 +1,21 @@
+pkgbase = causal-memory-bin
+	pkgdesc = MCP server that records decision and outcome relationships for AI agents
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/JingxuanC/causal-memory
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = causal-memory
+	conflicts = causal-memory
+	options = !debug
+	source = causal-memory-bin-0.10.0-LICENSE::https://raw.githubusercontent.com/JingxuanC/causal-memory/v0.10.0/LICENSE
+	sha256sums = 012b02b89568f2943aa06c76a94db5c63f7669034cdff24eaf34ec9c1dd12c0e
+	source_x86_64 = causal-memory-bin-0.10.0-x86_64.tar.gz::https://github.com/JingxuanC/causal-memory/releases/download/v0.10.0/causal-memory-v0.10.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 87f667d290b8ae5d5a2286db78b349ac207d78e27609f272cec1e2bd609b71b9
+	source_aarch64 = causal-memory-bin-0.10.0-aarch64.tar.gz::https://github.com/JingxuanC/causal-memory/releases/download/v0.10.0/causal-memory-v0.10.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 09e01a6c34402cc896076accb2870f784539763bf146a288f1ff951965d07ae8
+
+pkgname = causal-memory-bin
