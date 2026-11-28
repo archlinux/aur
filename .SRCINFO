@@ -1,6 +1,6 @@
 pkgbase = wallcycle-git
 	pkgdesc = Cross-platform wallpaper slideshow with real-time clock overlay and BT.709 luminance filter (Lazarus/FPC)
-	pkgver = 0.2.0
+	pkgver = 0.3.6.1
 	pkgrel = 1
 	url = https://github.com/nightranger73/WallCycle
 	arch = x86_64
