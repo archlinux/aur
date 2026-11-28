@@ -12,7 +12,7 @@
 # thirdparty/mpv.py -> mpv), not a verified dependency audit.
 
 pkgname=yuki-iptv
-pkgver=261004.0
+pkgver=261128.0
 pkgrel=1
 pkgdesc="IPTV player with EPG support, based on mpv and Qt"
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
 )
 makedepends=('make' 'gettext')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/itachi-re/yuki-iptv/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('09d25cfc427b631421587efc032fe0c163926c0f257554fbc30897ab9cffa3eb')
+sha256sums=('10b941b1279d2cec21e2a20c8b59ca784cd341857818b5e5264ef0d1cb139447')
 
 # The Makefile compiles po/*.po -> usr/share/locale/*/LC_MESSAGES/*.mo
 # in-place inside the source tree (same thing debian/rules gets for free
