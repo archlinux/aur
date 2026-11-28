@@ -1,0 +1,17 @@
+pkgbase = d2vm-bin
+	pkgdesc = Build virtual machine images from a Dockerfile or Docker image
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/linka-cloud/d2vm
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = d2vm
+	conflicts = d2vm
+	options = !debug
+	source_x86_64 = d2vm-bin-0.4.0-x86_64.tar.gz::https://github.com/linka-cloud/d2vm/releases/download/v0.4.0/d2vm_v0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9f2096bc7850367d063cbcf2da8ded6c5a23e70a9b0ecfdde150b2fbc9b8bd2f
+	source_aarch64 = d2vm-bin-0.4.0-aarch64.tar.gz::https://github.com/linka-cloud/d2vm/releases/download/v0.4.0/d2vm_v0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = bb8a6c96557fba67b42a34a0777a65fd91af46fff523611b2cc9e28f801117c6
+
+pkgname = d2vm-bin
