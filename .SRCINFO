@@ -1,0 +1,17 @@
+pkgbase = go-bind-plugin-bin
+	pkgdesc = Generate APIs for exported Go plugin symbols
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/wendigo/go-bind-plugin
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = go-bind-plugin
+	conflicts = go-bind-plugin
+	options = !debug
+	source_x86_64 = go-bind-plugin-bin-0.4.1-x86_64.tar.gz::https://github.com/wendigo/go-bind-plugin/releases/download/v0.4.1/go-bind-plugin_0.4.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = ed05990c41ca3e29c9601465af19ab5f638adf59e8c10aa3bd82f048f1c9a078
+	source_aarch64 = go-bind-plugin-bin-0.4.1-aarch64.tar.gz::https://github.com/wendigo/go-bind-plugin/releases/download/v0.4.1/go-bind-plugin_0.4.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9fc8bb0d96772471a94df595ec6f97c0948220dba79b6101a5e93e646aeba376
+
+pkgname = go-bind-plugin-bin
