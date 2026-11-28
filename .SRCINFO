@@ -1,0 +1,18 @@
+pkgbase = aurl-bin
+	pkgdesc = Turn any OpenAPI, Swagger or GraphQL API into a CLI command
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ShawnPana/aurl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = aurl
+	conflicts = aurl
+	options = !debug
+	source_x86_64 = aurl-bin-0.1.0-x86_64.tar.gz::https://github.com/ShawnPana/aurl/releases/download/v0.1.0/aurl_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 96a9308dcede9183d2b22566684ca1cb821fe1e1ea2345a2e8f87b871afc09fd
+	source_aarch64 = aurl-bin-0.1.0-aarch64.tar.gz::https://github.com/ShawnPana/aurl/releases/download/v0.1.0/aurl_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8745dd349db666e0b18e28a977916e27fe0fac0fd4b99d82278561d05c5334f4
+
+pkgname = aurl-bin
