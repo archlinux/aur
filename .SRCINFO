@@ -1,0 +1,17 @@
+pkgbase = frigate-notify-bin
+	pkgdesc = Event notifications for Frigate NVR
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/0x2142/frigate-notify
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = frigate-notify
+	conflicts = frigate-notify
+	options = !debug
+	source_x86_64 = frigate-notify-bin-0.5.4-x86_64.zip::https://github.com/0x2142/frigate-notify/releases/download/v0.5.4/frigate-notify_Linux_amd64.zip
+	sha256sums_x86_64 = 944b180e8b3eb53a6ef2a794f49e1d413e40099ad25a0f4c815978f83d5c7663
+	source_aarch64 = frigate-notify-bin-0.5.4-aarch64.zip::https://github.com/0x2142/frigate-notify/releases/download/v0.5.4/frigate-notify_Linux_arm64.zip
+	sha256sums_aarch64 = d939b8af57c06b31e5580563e397ec855e67850562401a56563fd05cb80f59b9
+
+pkgname = frigate-notify-bin
