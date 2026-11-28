@@ -1,0 +1,17 @@
+pkgbase = xsd2go-bin
+	pkgdesc = Generate Go XML parsers from XSD schemas
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/GoComply/xsd2go
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	provides = xsd2go
+	conflicts = xsd2go
+	options = !debug
+	source_x86_64 = xsd2go-bin-0.1.11-x86_64.tar.gz::https://github.com/GoComply/xsd2go/releases/download/v0.1.11/xsd2go_0.1.11_linux_amd64.tar.gz
+	sha256sums_x86_64 = 59e640289dcf796c1241e821f7cba3419e0ef47bbb96b66c0f21cddb3b49f081
+	source_aarch64 = xsd2go-bin-0.1.11-aarch64.tar.gz::https://github.com/GoComply/xsd2go/releases/download/v0.1.11/xsd2go_0.1.11_linux_arm64.tar.gz
+	sha256sums_aarch64 = 790e1bcec7b2b0b526a76f732c63eb496606f3b1255a747febe662e7e05217f7
+
+pkgname = xsd2go-bin
