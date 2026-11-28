@@ -8,10 +8,10 @@ pkgdesc="A tea drawing timer for the gnome-shell"
 arch=('any')
 url="https://github.com/zeners/gnome-shell-teatime"
 license=('GPL')
-depends=('gnome-shell>=1:47')
+depends=('gnome-shell>=1:51')
 makedepends=('git' 'intltool' 'glib2' 'gnome-common')
 source=("git+${url}")
-pkgver=47.0.r0.g
+pkgver=51.0.r0.g
 pkgver() {
   cd "$srcdir/$_gitname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
