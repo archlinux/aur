@@ -1,0 +1,19 @@
+pkgbase = procoder-bin
+	pkgdesc = Senior-developer discipline for AI coding agents
+	pkgver = 3.9.5
+	pkgrel = 1
+	url = https://github.com/azrtydxb/procoder
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = procoder
+	conflicts = procoder
+	options = !debug
+	source = procoder-bin-3.9.5-LICENSE::https://raw.githubusercontent.com/azrtydxb/procoder/v3.9.5/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = procoder-bin-3.9.5-x86_64::https://github.com/azrtydxb/procoder/releases/download/v3.9.5/procoder-linux-amd64
+	sha256sums_x86_64 = 09c84640ab66026096ea556964cf462acc77af9bd0467c2d5c89f0425f3a23fe
+	source_aarch64 = procoder-bin-3.9.5-aarch64::https://github.com/azrtydxb/procoder/releases/download/v3.9.5/procoder-linux-arm64
+	sha256sums_aarch64 = ea8f32622078c7989c0e7cefda9642e709548c17f641c756ffbe5c1d0ef56807
+
+pkgname = procoder-bin
