@@ -1,0 +1,18 @@
+pkgbase = poenskelisten-bin
+	pkgdesc = Self-hosted wishlist sharing and gift coordination
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/aunefyren/poenskelisten
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	provides = poenskelisten
+	conflicts = poenskelisten
+	options = !debug
+	source_x86_64 = poenskelisten-bin-2.7.0-x86_64.tar.gz::https://github.com/aunefyren/poenskelisten/releases/download/v2.7.0/poenskelisten-v2.7.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = dd1db87094be4f5af6c579feccb3602f0925ede57da428f2079c972ad1688ba5
+	source_aarch64 = poenskelisten-bin-2.7.0-aarch64.tar.gz::https://github.com/aunefyren/poenskelisten/releases/download/v2.7.0/poenskelisten-v2.7.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = db69e11a9a6bf22af176c2db1669c72fa0314998926125903bf555b50c18e5d0
+
+pkgname = poenskelisten-bin
