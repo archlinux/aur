@@ -1,0 +1,17 @@
+pkgbase = tenderly-cli-bin
+	pkgdesc = Smart contract error tracking, monitoring and alerting
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/Tenderly/tenderly-cli
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = tenderly-cli
+	conflicts = tenderly-cli
+	options = !debug
+	source_x86_64 = tenderly-cli-bin-1.7.1-x86_64.tar.gz::https://github.com/Tenderly/tenderly-cli/releases/download/v1.7.1/tenderly_1.7.1_Linux_amd64.tar.gz
+	sha256sums_x86_64 = 7d9b3bb96d0bd69cca4bb4478965655140ee0e5a7de1df3a4da743dee418902e
+	source_aarch64 = tenderly-cli-bin-1.7.1-aarch64.tar.gz::https://github.com/Tenderly/tenderly-cli/releases/download/v1.7.1/tenderly_1.7.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 99fe6008ae5b48b033b2efd7aa31bd267c1751200afcc384c11410189f1240bb
+
+pkgname = tenderly-cli-bin
