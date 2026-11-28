@@ -5,7 +5,7 @@ pkgname=(
     'python-slint-git'
     'slint-cpp-git'
     'slint-tools-git')
-pkgver=1.18.0.r70.gceadeb9da9
+pkgver=1.18.0.r1902.g02bb0be28a
 pkgrel=1
 pkgdesc='Declarative GUI toolkit to build native user interfaces (git version)'
 license=('GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0')
@@ -26,13 +26,12 @@ makedepends=(
     'python-installer'
     'python-maturin'
     'python-setuptools'
-    'python-wheel'
-    'systemd-libs')
+    'python-wheel')
 source=('git+https://github.com/slint-ui/slint.git'
         '010-slint-cpp-disable-jemalloc.patch'
         '020-slint-allow-python-maturin-0.14.1.patch')
 sha256sums=('SKIP'
-            'd9cc59bca0c5b8cc0c4fc61deedfa5cf2e810a63f317fb65e649ce862d4abaa8'
+            '71dcdc7a70ac1f370621d54a620917ca9235a4ab0dbb485a546786023b8074a2'
             '784edbc91e7f5c6e9fcc650a652d30f7f1027a115e657a96b719b0e46f78f988')
 
 prepare () {
@@ -131,12 +130,8 @@ package_python-slint-git() {
         'freetype2'
         'glibc'
         'libgcc'
-        'libinput'
         'libstdc++'
-        'libxkbcommon'
-        'mesa'
-        'python'
-        'systemd-libs')
+        'python')
    optdepends=(
         'libgl: for Skia OpenGL renderer backend'
         'vulkan-icd-loader: for Skia Vulkan renderer backend')
