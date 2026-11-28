@@ -1,0 +1,19 @@
+pkgbase = azure-devops-exporter-bin
+	pkgdesc = Prometheus exporter for Azure DevOps
+	pkgver = 26.10.0
+	pkgrel = 1
+	url = https://github.com/webdevops/azure-devops-exporter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = azure-devops-exporter
+	conflicts = azure-devops-exporter
+	options = !debug
+	source = azure-devops-exporter-bin-26.10.0-LICENSE::https://raw.githubusercontent.com/webdevops/azure-devops-exporter/26.10.0/LICENSE
+	sha256sums = bcdcdd5d04d627a4a545ce7a97e4cf38747d7b839a61185e9a5c085a0bbdba35
+	source_x86_64 = azure-devops-exporter-bin-26.10.0-x86_64::https://github.com/webdevops/azure-devops-exporter/releases/download/26.10.0/azure-devops-exporter.linux.amd64
+	sha256sums_x86_64 = de137b3588fa1140fd5be05551e9a642e99941087efc371f0b593ed395dbb36d
+	source_aarch64 = azure-devops-exporter-bin-26.10.0-aarch64::https://github.com/webdevops/azure-devops-exporter/releases/download/26.10.0/azure-devops-exporter.linux.arm64
+	sha256sums_aarch64 = 252ee175621414897d4a00cc6623ead74aa3e1281fdf2acf6fb44b29f0685136
+
+pkgname = azure-devops-exporter-bin
