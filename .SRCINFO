@@ -1,0 +1,17 @@
+pkgbase = boring-registry-bin
+	pkgdesc = Simple Terraform provider and module registry
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://github.com/boring-registry/boring-registry
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = boring-registry
+	conflicts = boring-registry
+	options = !debug
+	source_x86_64 = boring-registry-bin-0.20.0-x86_64.tar.gz::https://github.com/boring-registry/boring-registry/releases/download/v0.20.0/boring-registry_0.20.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c579e35a23786ee2e62c3d4d2ba5effa4427c2ddd11c50da145c3e8e67485fc7
+	source_aarch64 = boring-registry-bin-0.20.0-aarch64.tar.gz::https://github.com/boring-registry/boring-registry/releases/download/v0.20.0/boring-registry_0.20.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = da7381f4b4bf948e733ff367b1778fa88b93627f7bdf3ed2220c20562de08c30
+
+pkgname = boring-registry-bin
