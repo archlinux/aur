@@ -1,6 +1,6 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=skillshare-bin
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc='Sync skills across all AI CLI tools with one command'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('skillshare')
 conflicts=('skillshare')
 source_x86_64=("${url}/releases/download/v${pkgver}/skillshare_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/skillshare_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('de93ffe99bcb833e23058424aa1fdcd096f291dbf4aa4146ddfdbb0a9929defe')
-sha256sums_aarch64=('9c4ffd07f46fba8a5f6199e1c5739a0e7b9e26aaab2049eaad9908599ccc63de')
+sha256sums_x86_64=('0bd5955f3bfaaa705817bd7a4240e4a86027e500422f098481c440a5efd0a7a6')
+sha256sums_aarch64=('77dcb6962b14e9792c6ba75ced7c6edb4f33a240347fb8d1aaf6414566a4a138')
 
 package() {
     install -Dm755 skillshare "$pkgdir/usr/bin/skillshare"
