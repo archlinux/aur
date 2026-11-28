@@ -1,0 +1,20 @@
+pkgbase = xrdebug-bin
+	pkgdesc = Lightweight real-time debugger with a web interface
+	pkgver = 3.0.5
+	pkgrel = 1
+	url = https://github.com/xrdebug/xrdebug
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = xrdebug
+	conflicts = xrdebug
+	options = !debug
+	source = xrdebug-bin-3.0.5-LICENSE::https://raw.githubusercontent.com/xrdebug/xrdebug/v3.0.5/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = xrdebug-bin-3.0.5-x86_64.tar.gz::https://github.com/xrdebug/xrdebug/releases/download/v3.0.5/xrdebug-v3.0.5-linux-amd64.tar.gz
+	sha256sums_x86_64 = b2ee6252ddff584a738804f0a366a416d787432452d45e09afd117f77605ca42
+	source_aarch64 = xrdebug-bin-3.0.5-aarch64.tar.gz::https://github.com/xrdebug/xrdebug/releases/download/v3.0.5/xrdebug-v3.0.5-linux-arm64.tar.gz
+	sha256sums_aarch64 = 40f7c08bc0d9f82f6b8777e17668c156b9c73eb0e7105056bb142cf6201532a6
+
+pkgname = xrdebug-bin
