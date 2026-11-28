@@ -1,6 +1,6 @@
 pkgbase = accolade
 	pkgdesc = Screenplay editor for Fountain, with PDF/HTML/FDX export
-	pkgver = 0.14.1
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/LaPingvino/accolade
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = accolade
 	depends = libxkbcommon
 	depends = wayland
 	conflicts = accolade-git
-	source = accolade-0.14.1.tar.gz::https://github.com/LaPingvino/accolade/archive/refs/tags/v0.14.1.tar.gz
-	sha256sums = 8c70f6eb148c6e62b47484a7b6dcff86fa84207ebecd74f69aa991503022c7fb
+	source = accolade-0.15.0.tar.gz::https://github.com/LaPingvino/accolade/archive/refs/tags/v0.15.0.tar.gz
+	sha256sums = 2d8dabace0612537311557da2f45ea97aca6407ffc80636902815b1e15d98e73
 
 pkgname = accolade

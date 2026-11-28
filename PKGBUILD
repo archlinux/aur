@@ -1,6 +1,6 @@
 # Maintainer: Joop Kiefte <ikojba at gmail dot com>
 pkgname=accolade
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Screenplay editor for Fountain, with PDF/HTML/FDX export"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc' 'hicolor-icon-theme' 'libgl' 'libx11' 'libxcursor' 'libxrandr' 
 makedepends=('go' 'pkgconf' 'mesa')
 conflicts=('accolade-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8c70f6eb148c6e62b47484a7b6dcff86fa84207ebecd74f69aa991503022c7fb')
+sha256sums=('2d8dabace0612537311557da2f45ea97aca6407ffc80636902815b1e15d98e73')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -26,7 +26,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -buildvcs=false"
   # accessibility: screen readers (AT-SPI2, Orca) through the Fyne fork
   go build -tags accessibility -ldflags "-linkmode=external -X main.version=$pkgver" -o accolade .
 }
