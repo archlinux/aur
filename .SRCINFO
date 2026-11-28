@@ -1,0 +1,16 @@
+pkgbase = herdr-navigator-bin
+	pkgdesc = Fuzzy navigator for herdr workspaces, agents and sessions
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/thanhdat77/herdr-navigator
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = herdr-navigator
+	conflicts = herdr-navigator
+	options = !debug
+	source_x86_64 = herdr-navigator-bin-0.3.6-x86_64.tar.gz::https://github.com/thanhdat77/herdr-navigator/releases/download/v0.3.6/herdr-navigator-linux-x86_64.tar.gz
+	sha256sums_x86_64 = ae3c37621cd8b5f777806780b1b1f9312c5f7cfa3c6e343df23b268c46409430
+
+pkgname = herdr-navigator-bin
