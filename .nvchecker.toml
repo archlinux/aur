@@ -1,0 +1,5 @@
+[pixl-bin]
+source = "github"
+github = "programmersd21/pixl"
+use_latest_release = true
+prefix = "v"

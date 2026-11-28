@@ -1,0 +1,21 @@
+pkgbase = pixl-bin
+	pkgdesc = Native rust image processing engine and cli
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/programmersd21/pixl
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	provides = pixl
+	conflicts = pixl
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/programmersd21/pixl/v0.1.0/README.md
+	source = LICENSE-MIT-0.1.0::https://raw.githubusercontent.com/programmersd21/pixl/v0.1.0/LICENSE-MIT
+	source = LICENSE-APACHE-0.1.0::https://raw.githubusercontent.com/programmersd21/pixl/v0.1.0/LICENSE-APACHE
+	sha256sums = 7be4f26936539c341326761d722cfaa1c70f10733c40ff5547da98bd28bc06a0
+	sha256sums = 3295d06d27d43c68c4d2b9dbbf6a07b5abe209a827957159640fae2835527eef
+	sha256sums = baf802b7cd01e7d491078ae4f77208f9d310f99d335f0165f4e491e73e41584c
+	source_x86_64 = pixl-x86_64-0.1.0::https://github.com/programmersd21/pixl/releases/download/v0.1.0/pixl-linux-x86_64
+	sha256sums_x86_64 = ac5e9ee28d8708875cb3c20fd7193c3304c92668bb18f7cd26c8ae74f256f97c
+
+pkgname = pixl-bin
