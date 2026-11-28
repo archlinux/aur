@@ -1,0 +1,21 @@
+pkgbase = skilllite-bin
+	pkgdesc = Lightweight sandboxed self-evolution engine for AI agent skills
+	pkgver = 0.1.30
+	pkgrel = 1
+	url = https://github.com/EXboys/skilllite
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = skilllite
+	conflicts = skilllite
+	options = !debug
+	source = skilllite-bin-0.1.30-LICENSE::https://raw.githubusercontent.com/EXboys/skilllite/v0.1.30/LICENSE
+	sha256sums = 043dcb176e45d50f486d8e436fbb7419314c5b8664dbd92b5e3a8fd20a4dad09
+	source_x86_64 = skilllite-bin-0.1.30-x86_64.tar.gz::https://github.com/EXboys/skilllite/releases/download/v0.1.30/skilllite-linux-x64.tar.gz
+	sha256sums_x86_64 = 77ab563af5e69c156df1a39bb96ec67687cf652d8e945fb02ce81ae714ce50ba
+	source_aarch64 = skilllite-bin-0.1.30-aarch64.tar.gz::https://github.com/EXboys/skilllite/releases/download/v0.1.30/skilllite-linux-arm64.tar.gz
+	sha256sums_aarch64 = 63d4a439b95e6998bb2eb1f02e4685a511b92350d07ca2f027f2b2c49ea58798
+
+pkgname = skilllite-bin
