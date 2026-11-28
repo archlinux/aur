@@ -1,0 +1,21 @@
+pkgbase = fungi-bin
+	pkgdesc = Turn your devices into a personal app platform
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/enbop/fungi
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = fungi
+	conflicts = fungi
+	options = !debug
+	source = fungi-bin-0.8.1-LICENSE::https://raw.githubusercontent.com/enbop/fungi/v0.8.1/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = fungi-bin-0.8.1-x86_64.tar.gz::https://github.com/enbop/fungi/releases/download/v0.8.1/fungi-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f7e314615184bee103ee015d581f09e4bb1e4871a6b565690ef04dfc0c5663a7
+	source_aarch64 = fungi-bin-0.8.1-aarch64.tar.gz::https://github.com/enbop/fungi/releases/download/v0.8.1/fungi-linux-aarch64.tar.gz
+	sha256sums_aarch64 = c94250a06a89065a495aff2c012ec76a814cfd21b6a57f50fc98baa93496f5bd
+
+pkgname = fungi-bin
