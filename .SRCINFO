@@ -1,0 +1,19 @@
+pkgbase = goplaces-bin
+	pkgdesc = Google Places command-line client
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/openclaw/goplaces
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = goplaces
+	conflicts = goplaces
+	options = !debug
+	source = goplaces-bin-0.5.0-LICENSE::https://raw.githubusercontent.com/openclaw/goplaces/v0.5.0/LICENSE
+	sha256sums = 14293556b79940745123d0160c71d27ed0e9fe9b8a848093f3ed78f4853caafe
+	source_x86_64 = goplaces-bin-0.5.0-x86_64.tar.gz::https://github.com/openclaw/goplaces/releases/download/v0.5.0/goplaces_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 42dd360021c0c273f180fadbbf3690aae036c76b87b34178582d07196863c2a2
+	source_aarch64 = goplaces-bin-0.5.0-aarch64.tar.gz::https://github.com/openclaw/goplaces/releases/download/v0.5.0/goplaces_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 132e51e5cd6241bfd519567e1dcb376dffb3de83288a736894a48fa1987a4d6a
+
+pkgname = goplaces-bin
