@@ -1,6 +1,6 @@
 pkgbase = dsh-bin
 	pkgdesc = DeepSeek Harness: Everything is a Plugin
-	pkgver = 0.2.3_alpha.2
+	pkgver = 0.2.3_alpha.3
 	pkgrel = 1
 	url = https://github.com/deepseek-ai/deepseek-harness
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = dsh-bin
 	conflicts = deepseek-harness-git
 	conflicts = deepseek-harness-bin
 	options = !strip
-	source = dsh-0.2.3_alpha.2.tgz::https://registry.npmjs.org/@deepseek-ai/dsh/-/dsh-0.2.3-alpha.2.tgz
-	sha256sums = 9900793a077ffa6c9794f7349c7c69120cd6a24dec4163837a7256167e61d250
+	source = dsh-0.2.3_alpha.3.tgz::https://registry.npmjs.org/@deepseek-ai/dsh/-/dsh-0.2.3-alpha.3.tgz
+	sha256sums = f1e2f139538f7e15fdf65880bee213171dfb60dd27e7225722d77227c18aec4c
 
 pkgname = dsh-bin
