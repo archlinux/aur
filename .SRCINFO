@@ -1,0 +1,19 @@
+pkgbase = containerd-shim-spin-bin
+	pkgdesc = containerd shim for running Spin applications
+	pkgver = 0.27.2
+	pkgrel = 1
+	url = https://github.com/spinframework/containerd-shim-spin
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = containerd-shim-spin
+	conflicts = containerd-shim-spin
+	options = !debug
+	source = containerd-shim-spin-bin-0.27.2-LICENSE::https://raw.githubusercontent.com/spinframework/containerd-shim-spin/v0.27.2/LICENSE
+	sha256sums = f8e3418f698c578b0b21b0b1a109e792365d36a88780b215bf4370e8ec22b285
+	source_x86_64 = containerd-shim-spin-bin-0.27.2-x86_64.tar.gz::https://github.com/spinframework/containerd-shim-spin/releases/download/v0.27.2/containerd-shim-spin-v2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = b5f1418603852e886fcf2da3fff275afff9c7ea13dc07a61421d6e61c717306c
+	source_aarch64 = containerd-shim-spin-bin-0.27.2-aarch64.tar.gz::https://github.com/spinframework/containerd-shim-spin/releases/download/v0.27.2/containerd-shim-spin-v2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 64e15410280de889ca8e868b6956b81d94425aca191b6aeb4af9637596ec4776
+
+pkgname = containerd-shim-spin-bin
