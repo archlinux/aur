@@ -1,0 +1,17 @@
+pkgbase = nodepassdash-bin
+	pkgdesc = Web dashboard for managing NodePass
+	pkgver = 4.0.8
+	pkgrel = 1
+	url = https://github.com/NodePassProject/NodePassDash
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	provides = nodepassdash
+	conflicts = nodepassdash
+	options = !debug
+	source_x86_64 = nodepassdash-bin-4.0.8-x86_64.tar.gz::https://github.com/NodePassProject/NodePassDash/releases/download/v4.0.8/NodePassDash_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6bc6a8a1868710665a904e086f8f33ac8785ad1bd8c812a90777ed77ef0a0b5f
+	source_aarch64 = nodepassdash-bin-4.0.8-aarch64.tar.gz::https://github.com/NodePassProject/NodePassDash/releases/download/v4.0.8/NodePassDash_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 82de7394de89e011afbf18c7ac6cad2dda1163149765ce54cff6d05b7c836ddf
+
+pkgname = nodepassdash-bin
