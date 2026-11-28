@@ -1,6 +1,6 @@
 pkgbase = lianwalld-bin
 	pkgdesc = LianWall daemon - built-in Vulkan image/video wallpaper engine
-	pkgver = 6.0.1
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = https://github.com/Yueosa/lianwall
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = lianwalld-bin
 	optdepends = mpvpaper>=1.9: optional external video backend
 	optdepends = nvidia-utils: NVIDIA VRAM monitoring
 	optdepends = rocm-smi-lib: AMD VRAM monitoring
-	provides = lianwalld=6.0.1
+	provides = lianwalld=6.0.2
 	conflicts = lianwalld
 	options = !strip
 	options = !debug
-	source = https://github.com/Yueosa/lianwall/releases/download/v6.0.1/lianwalld_6.0.1_linux_x86_64
-	sha256sums = 49edf992a1294885be274f32e5fa59c4ff09910f0e422b7802f7b5aeefc94232
+	source = https://github.com/Yueosa/lianwall/releases/download/v6.0.2/lianwalld_6.0.2_linux_x86_64
+	sha256sums = d8041f17af358b17ee749d939d7d0b351aa409399300c8b395a66ec0f6d6cf13
 
 pkgname = lianwalld-bin

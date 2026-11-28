@@ -1,6 +1,6 @@
 # Maintainer: Lian <yichengxin7@gmail.com>
 pkgname=lianwalld-bin
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 pkgdesc="LianWall daemon - built-in Vulkan image/video wallpaper engine"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('awww>=0.12.1: optional external image backend'
 provides=("lianwalld=$pkgver")
 conflicts=('lianwalld')
 source=("https://github.com/Yueosa/lianwall/releases/download/v${pkgver}/lianwalld_${pkgver}_linux_x86_64")
-sha256sums=('49edf992a1294885be274f32e5fa59c4ff09910f0e422b7802f7b5aeefc94232')
+sha256sums=('d8041f17af358b17ee749d939d7d0b351aa409399300c8b395a66ec0f6d6cf13')
 
 package() {
     install -Dm755 "lianwalld_${pkgver}_linux_x86_64" "$pkgdir/usr/bin/lianwalld"
