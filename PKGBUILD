@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=kktypr-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Terminal touch typing academy and developer code syntax trainer in pure Rust"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/kktypr-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('425916f0198a0ec697b3bf7b32163608f6472045083612a05db06e265c26dab8')
+sha256sums_x86_64=('b082bdf9fc7c7543f49a7fd350cc715cf741f4ea6974e5d100c25b3c788b8097')
 
 package() {
   cd "kktypr-${pkgver}-x86_64-unknown-linux-gnu"
