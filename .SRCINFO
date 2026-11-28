@@ -1,0 +1,23 @@
+pkgbase = mkdbg-bin
+	pkgdesc = Hardware debugging and crash forensics for Cortex-M, SoCs and Linux kernels
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/JialongWang1201/mkdbg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = systemd-libs
+	depends = zlib
+	provides = mkdbg
+	conflicts = mkdbg
+	options = !debug
+	source = mkdbg-bin-1.0.3-LICENSE::https://raw.githubusercontent.com/JialongWang1201/mkdbg/v1.0.3/LICENSE
+	sha256sums = c34b9129357e217b827f19742eb334fe3a3321b1af0d3acaf91ae631daeecb92
+	source_x86_64 = mkdbg-bin-1.0.3-x86_64::https://github.com/JialongWang1201/mkdbg/releases/download/v1.0.3/mkdbg-native-linux-x86_64
+	sha256sums_x86_64 = bf757f80bc1677b79fff16892dc891bf41bf9bd442cc49ab174eb4f1c316595c
+	source_aarch64 = mkdbg-bin-1.0.3-aarch64::https://github.com/JialongWang1201/mkdbg/releases/download/v1.0.3/mkdbg-native-linux-arm64
+	sha256sums_aarch64 = cfe8f528a01464853aab75c73fca22c079eef84562b8b4683f09586fb702a5ce
+
+pkgname = mkdbg-bin
