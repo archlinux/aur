@@ -1,7 +1,7 @@
 # Maintainer: jwr1
 
 pkgname=interstellar-bin
-pkgver=0.11.4
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='An app for Mbin/Lemmy/PieFed, connecting you to the fediverse.'
 arch=(x86_64 aarch64)
@@ -14,8 +14,8 @@ conflicts=(interstellar)
 options=(!debug)
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/interstellar-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/interstellar-linux-aarch64.tar.gz")
-sha256sums_x86_64=('7f5ad995e2b4bf71928db1d841f3322160effd5b08994b9de60b6417a4158689')
-sha256sums_aarch64=('efa3718aab8eb30da3276c1832154279683ed501a41390b2229760d642aff229')
+sha256sums_x86_64=('7075d986a8a05d85096981964c9185206324a0db414466e651783d4868e0d37b')
+sha256sums_aarch64=('9738d161f1c8be37c24945f810db8a680a487fcfb31b280a69b55bc102a02c2b')
 
 prepare() {
 	# Remove unneeded .tar.gz file from source directory (it has already been extracted).
