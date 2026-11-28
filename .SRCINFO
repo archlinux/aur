@@ -1,0 +1,23 @@
+pkgbase = wayfinder-maps-bin
+	pkgdesc = Planetary visualization tool
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/rengwu/wayfinder-maps
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	provides = wayfinder-maps
+	conflicts = wayfinder-maps
+	options = !debug
+	source = wayfinder-maps-bin-0.2.3-LICENSE::https://raw.githubusercontent.com/rengwu/wayfinder-maps/v0.2.3/LICENSE
+	sha256sums = 76e0cfe61e6462ba36fdc9a03a0ceb55fbbcc5e4531b976d8ac33ca35b05f27c
+	source_x86_64 = wayfinder-maps-bin-0.2.3-x86_64.tar.gz::https://github.com/rengwu/wayfinder-maps/releases/download/v0.2.3/wayfinder-maps_0.2.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 39c227796c46f01b02b5cbb9722096cf3db17c9fd4a182505aa433b9cd438ef3
+	source_aarch64 = wayfinder-maps-bin-0.2.3-aarch64.tar.gz::https://github.com/rengwu/wayfinder-maps/releases/download/v0.2.3/wayfinder-maps_0.2.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = a8a4abd450c9b19a8a3966278814e72be7d7eb64609f13457c65c75f5b05ad3f
+
+pkgname = wayfinder-maps-bin
