@@ -1,0 +1,17 @@
+pkgbase = horenso-bin
+	pkgdesc = Command wrapper that reports the result
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/Songmu/horenso
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = horenso
+	conflicts = horenso
+	options = !debug
+	source_x86_64 = horenso-bin-0.11.0-x86_64.tar.gz::https://github.com/Songmu/horenso/releases/download/v0.11.0/horenso_v0.11.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = c2d63d811659b9038409f7396ce4c31f5dac2b85531884149658feb21e508f21
+	source_aarch64 = horenso-bin-0.11.0-aarch64.tar.gz::https://github.com/Songmu/horenso/releases/download/v0.11.0/horenso_v0.11.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1bb069a5f62d969eff36fba801ecafcc3b59562da61592b7c548807f23d0db25
+
+pkgname = horenso-bin
