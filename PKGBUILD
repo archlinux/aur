@@ -1,6 +1,6 @@
 # Maintainer: agony <27015 at riseup dot net>
 pkgname=memos-bin
-pkgver=26.11.2
+pkgver=26.11.3
 pkgrel=1
 pkgdesc="Privacy-first, lightweight note-taking service (prebuilt)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -23,9 +23,9 @@ sha256sums=('dadc85262cec40d1344736b57da50814194ff721ab98012c09cd9d35c4b8582a'
             'eaf0d053c5673176c730085493db4d63b15e212e101fc02c9f9236f8f91abf20'
             'ed17b9db8aadd8518a3da01e45b5445a819bdb0f7ccd8bc1acc9f52cc02964fc'
             '0e0b2a4e83ecb837055a59ee19c869586b2c74abeaa3b7a43fff95c19bd34e4d')
-sha256sums_x86_64=('2ad926ccd237e516f61097316c44f856a0b667f3e0de9b388982f39900c2e7ab')
-sha256sums_aarch64=('2bea69a133782ca4dea41f6606bb8850eb32e44db9d7f0aa3d8e8d88b02e07a4')
-sha256sums_armv7h=('1212476a6e41b3681d3978e80978cabe009e1e6334dbe632c93901084c4a737c')
+sha256sums_x86_64=('971f68a2ecd5ab97a42d058deec8b2e91a52eb43de7d3128b16b7b04fa5b5590')
+sha256sums_aarch64=('96a31f7a22a30b2a1164b3242467fdc1c2f21b0342599b5337b91729a04793e1')
+sha256sums_armv7h=('018733e446940e75c42b8deeeaabd5871a8214af2295395db086b1e591a7dcb0')
 
 package() {
   install -Dm755 memos "$pkgdir/usr/bin/memos"
