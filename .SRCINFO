@@ -1,0 +1,16 @@
+pkgbase = tty2web-bin
+	pkgdesc = Share your terminal as a web application
+	pkgver = 3.0.4
+	pkgrel = 1
+	url = https://github.com/kost/tty2web
+	arch = x86_64
+	license = MIT
+	provides = tty2web
+	conflicts = tty2web
+	options = !debug
+	source = tty2web-bin-3.0.4-LICENSE::https://raw.githubusercontent.com/kost/tty2web/v3.0.4/LICENSE
+	sha256sums = e39bbc2f63ff573718a3a5b0eb793b42cb26a8b90d6bf3d6ef969c8754d0c532
+	source_x86_64 = tty2web-bin-3.0.4-x86_64::https://github.com/kost/tty2web/releases/download/v3.0.4/tty2web_linux_amd64
+	sha256sums_x86_64 = fa93ffcb57014769865e12ebf7e93350b89ba9509a35304d79f7358e880d10fa
+
+pkgname = tty2web-bin
