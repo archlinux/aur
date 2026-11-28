@@ -1,0 +1,17 @@
+pkgbase = rtty-bin
+	pkgdesc = Terminal in the browser over WebSocket
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/skanehira/rtty
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = rtty
+	conflicts = rtty
+	options = !debug
+	source_x86_64 = rtty-bin-0.4.0-x86_64.tar.gz::https://github.com/skanehira/rtty/releases/download/v0.4.0/rtty_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = e44128f93e3a92f0c043cf892e3342623e6be820cfd8cf248a716a4efde1dc8e
+	source_aarch64 = rtty-bin-0.4.0-aarch64.tar.gz::https://github.com/skanehira/rtty/releases/download/v0.4.0/rtty_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 556f68c6c60eb71dabcd409eed6c70d52ad195471b051ea5f57bf8aab093a0e7
+
+pkgname = rtty-bin
