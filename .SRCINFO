@@ -1,0 +1,19 @@
+pkgbase = squeez-bin
+	pkgdesc = Hook-based token compressor for AI coding CLIs
+	pkgver = 1.50.0
+	pkgrel = 1
+	url = https://github.com/claudioemmanuel/squeez
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = squeez
+	conflicts = squeez
+	options = !debug
+	source = squeez-bin-1.50.0-LICENSE::https://raw.githubusercontent.com/claudioemmanuel/squeez/v1.50.0/LICENSE
+	sha256sums = 0ad859ba49ea50268b7cc3f2e9e670fd9b724a6df1b949c263d6f35a173ba087
+	source_x86_64 = squeez-bin-1.50.0-x86_64::https://github.com/claudioemmanuel/squeez/releases/download/v1.50.0/squeez-linux-x86_64
+	sha256sums_x86_64 = 20e3b0eaec5be5e5f79128e311399597829cac50d0fe28782fadeb811c6bed0c
+	source_aarch64 = squeez-bin-1.50.0-aarch64::https://github.com/claudioemmanuel/squeez/releases/download/v1.50.0/squeez-linux-aarch64
+	sha256sums_aarch64 = 6fc4ac3669c083c6d87d1e1e12df562c41149704f0abeb05e106e01d774a66c1
+
+pkgname = squeez-bin
