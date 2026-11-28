@@ -1,0 +1,21 @@
+pkgbase = rsvelte-bin
+	pkgdesc = Rust-powered Svelte compiler and tooling
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://github.com/baseballyama/rsvelte
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = rsvelte
+	conflicts = rsvelte
+	options = !debug
+	source = rsvelte-bin-0.7.6-LICENSE::https://raw.githubusercontent.com/baseballyama/rsvelte/v0.7.6/LICENSE
+	sha256sums = 04c19e133e48dab0970673da2ae83eed4ebbd7b511a5ff380fc184b8d8368ba0
+	source_x86_64 = rsvelte-bin-0.7.6-x86_64.tar.gz::https://github.com/baseballyama/rsvelte/releases/download/v0.7.6/rsvelte-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ce6cd89b5ea0b5c8b522be46c15d6fc1f4478395b055052cabfbea808671b145
+	source_aarch64 = rsvelte-bin-0.7.6-aarch64.tar.gz::https://github.com/baseballyama/rsvelte/releases/download/v0.7.6/rsvelte-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ffc46a6c07edbf656cefd0e263b64401f2de7e6b9d14c014e0ff98b80321b9e5
+
+pkgname = rsvelte-bin
