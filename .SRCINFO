@@ -1,0 +1,17 @@
+pkgbase = faynosync-bin
+	pkgdesc = Self-hosted update server for desktop apps
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = https://github.com/ku9nov/faynoSync
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = faynosync
+	conflicts = faynosync
+	options = !debug
+	source_x86_64 = faynosync-bin-2.10.0-x86_64.tar.gz::https://github.com/ku9nov/faynoSync/releases/download/v2.10.0/faynoSync_v2.10.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6e750f60794581a04412b47e1c494ff362e7e81314d6c925c27e0f8bd1068135
+	source_aarch64 = faynosync-bin-2.10.0-aarch64.tar.gz::https://github.com/ku9nov/faynoSync/releases/download/v2.10.0/faynoSync_v2.10.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 443b3926cf284b42f28ac6dc2dd14cab6bfe8949a5d5432a342ac9573864f237
+
+pkgname = faynosync-bin
