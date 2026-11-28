@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=syspass-cli
-pkgver=0.11.1
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="CLI client for sysPass"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(glibc libgcc openssl)
 makedepends=(cargo git)
 options=(!lto)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('77902be0cec3fc8fbac2f59f7bd49b9df343eaf831d9ae49c9643c979dbc0bc4')
+sha256sums=('d2eeae04f5e6ab7b3480545b4826b5d7dc2d367ee6df5f86481e2c69d92d6f4d')
 
 prepare() {
   cd "$pkgname-$pkgver"
