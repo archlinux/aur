@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-all-in-one-clipboard-bin
 	pkgdesc = A powerful, integrated clipboard manager for GNOME Shell.
-	pkgver = 31
+	pkgver = 32
 	pkgrel = 1
 	url = https://github.com/NiffirgkcaJ/all-in-one-clipboard
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = gnome-shell-extension-all-in-one-clipboard-bin
 	depends = gnome-shell
 	provides = gnome-shell-extension-all-in-one-clipboard
 	conflicts = gnome-shell-extension-all-in-one-clipboard
-	noextract = gnome-shell-extension-all-in-one-clipboard-bin-31.zip
-	source = gnome-shell-extension-all-in-one-clipboard-bin-31.zip::https://github.com/NiffirgkcaJ/all-in-one-clipboard/releases/download/v31/all-in-one-clipboard@NiffirgkcaJ.github.com.zip
-	sha256sums = 3ea73b690fc2703b56fadd259462777e1512ef8f6c68cf0c8f9c062ef5b62ff5
+	noextract = gnome-shell-extension-all-in-one-clipboard-bin-32.zip
+	source = gnome-shell-extension-all-in-one-clipboard-bin-32.zip::https://github.com/NiffirgkcaJ/all-in-one-clipboard/releases/download/v32/all-in-one-clipboard@NiffirgkcaJ.github.com.zip
+	sha256sums = f8374454810664d356abdfb32fc33d202093eb5eda01df8387892657da528ea3
 
 pkgname = gnome-shell-extension-all-in-one-clipboard-bin
