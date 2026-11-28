@@ -1,6 +1,6 @@
 pkgbase = holyarrs-bin
 	pkgdesc = One self-hosted app for your shows, movies and music
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/HolyArrs/HolyArrs
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = holyarrs-bin
 	provides = holyarrs
 	conflicts = holyarrs
 	options = !debug
-	source_x86_64 = holyarrs-bin-1.3.5-x86_64.tar.gz::https://github.com/HolyArrs/HolyArrs/releases/download/1.3.5/holyarrs_1.3.5_linux_amd64.tar.gz
-	sha256sums_x86_64 = 845d4489d6b78164edd7f2021efc43a9aaf80fb6d8d50c6bbdd09be81c7e1cb5
-	source_aarch64 = holyarrs-bin-1.3.5-aarch64.tar.gz::https://github.com/HolyArrs/HolyArrs/releases/download/1.3.5/holyarrs_1.3.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = 5f31b0f29a757d421ed72fcd963bd565928ba40839992c1f84a0d27513d83b2e
+	source_x86_64 = holyarrs-bin-1.3.6-x86_64.tar.gz::https://github.com/HolyArrs/HolyArrs/releases/download/1.3.6/holyarrs_1.3.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 990a3f8f845a338356f968d5df7e31c3c5818d58127bd35142639c136cf2e844
+	source_aarch64 = holyarrs-bin-1.3.6-aarch64.tar.gz::https://github.com/HolyArrs/HolyArrs/releases/download/1.3.6/holyarrs_1.3.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = dfda64b6972521c5fe4a8d70824308400e26b254e70e50043296588a104f21ed
 
 pkgname = holyarrs-bin
