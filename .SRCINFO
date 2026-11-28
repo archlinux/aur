@@ -1,0 +1,17 @@
+pkgbase = ticker-wall-bin
+	pkgdesc = Scalable stock ticker tape display
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/massive-com/ticker-wall
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = ticker-wall
+	conflicts = ticker-wall
+	options = !debug
+	source = ticker-wall-bin-0.0.3-LICENSE::https://raw.githubusercontent.com/massive-com/ticker-wall/v0.0.3/LICENSE
+	sha256sums = 124c056b2db6e8bb6eb18ecdf54b331bedeaa867333606df54d6ebdb9122c409
+	source_x86_64 = ticker-wall-bin-0.0.3-x86_64.tar.gz::https://github.com/massive-com/ticker-wall/releases/download/v0.0.3/tickerwall-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 632a0cccc523f8cc84a1a23af2f23bcb5e897895fc4a9eb0d9c1b55c299de875
+
+pkgname = ticker-wall-bin
