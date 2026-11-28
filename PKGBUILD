@@ -2,7 +2,7 @@
 
 pkgname=lem
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Common Lisp editor/IDE with ncurses frontend'
 arch=('x86_64')
 url='https://github.com/lem-project/lem'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('sbcl' 'ncurses')
 makedepends=('git' 'make' 'qlot' 'sbcl' 'ncurses')
 optdepends=('libvterm: for integrated terminal' 'fd: for fuzzy file search')
-conflicts=('lem-webview' 'lem-webview-nightly' 'lem-nightly')
+conflicts=('lem-webview' 'lem-webview-nightly' 'lem-nightly' 'lem-sdl2' 'lem-sdl3-nightly')
 options=('!strip')
 source=("${pkgname}-${pkgver}::git+https://github.com/lem-project/lem.git#tag=v${pkgver}")
 sha256sums=('a59fe4b3f9f214b7e8e308649a60f94b4acbde695f2aaa73fbb0444ce67b89b1')
