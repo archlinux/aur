@@ -1,7 +1,7 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 _pkgname=appium-espresso-driver
 pkgname="nodejs-$_pkgname"
-pkgver=11.0.1
+pkgver=11.0.2
 pkgrel=1
 pkgdesc="Espresso integration for Appium"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('32d93b753e5f7a745ace86d7ea7bc3703b091d55e64317f22ebd1f69e5e5c4c9')
+sha256sums=('714074b4fa8f1c49aa3162f521879424253a5af45bbfef9b42811df8ce1efd3e')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
