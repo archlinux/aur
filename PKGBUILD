@@ -3,7 +3,7 @@
 # Contributor: Ray Del Rosario <michael@raydelrosario.com>
 
 pkgname=infracost
-pkgver=0.10.50
+pkgver=0.10.51
 pkgrel=1
 pkgdesc='Cloud cost estimates for Terraform'
 url='https://github.com/infracost/infracost'
@@ -15,7 +15,7 @@ depends=('glibc')
 makedepends=('go' 'git' 'gcc')
 # checkdepends=('git' 'terraform')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7f165f7a3d1de79ef60ce809c11880426298f8aba6c80301f7f69aeb3c96e095')
+sha256sums=('9c82775a27d4a8dd9b4a5a5267ac18abb26ad88a4e19cd40d9a1bed139a1f553')
 
 prepare() {
 	cd "$pkgname-$pkgver"
