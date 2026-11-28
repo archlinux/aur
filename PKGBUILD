@@ -1,7 +1,7 @@
 # Maintainer: Srinivasan Rangarajan <srinivasanr at gmail dot com>
 pkgname=raea-bin
 _pkgname=raea
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Render Anything Engine: videos, motion graphics, 3D and games as React and TypeScript, rendered on your GPU"
 arch=('x86_64')
@@ -31,7 +31,7 @@ options=('!strip' '!debug')
 install=$pkgname.install
 source=("$_pkgname-$pkgver-linux-x86_64.tar.gz::https://github.com/shinyobjectz/raea/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/shinyobjectz/raea/v$pkgver/LICENSE")
-sha256sums=('451e1812cda3829a9746a6d2f1fb2bba6d3a5eea3c63b51801619ab14190414c'
+sha256sums=('2c2f2bfe9be8ec3470ff27c6d5f699b36f81b55a5f05d3a5aab49a23e946637a'
             'fe3ce8198545420f93b83a2fd02e6fff4a4414ffcb2309df50878adf39d1c392')
 
 package() {
