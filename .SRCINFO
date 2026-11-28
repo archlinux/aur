@@ -1,0 +1,14 @@
+pkgbase = rewinged-bin
+	pkgdesc = Self-hosted winget package source
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/jantari/rewinged
+	arch = x86_64
+	license = MIT
+	provides = rewinged
+	conflicts = rewinged
+	options = !debug
+	source_x86_64 = rewinged-bin-0.15.0-x86_64.zip::https://github.com/jantari/rewinged/releases/download/v0.15.0/rewinged_0.15.0_linux_amd64.zip
+	sha256sums_x86_64 = 6ad47f8b5731a192d715fb09e78a5cc93c30515ba581c29df1026ecfe5006d81
+
+pkgname = rewinged-bin
