@@ -1,0 +1,17 @@
+pkgbase = perles-bin
+	pkgdesc = Terminal UI kanban and query tool for Beads issue tracking
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/zjrosen/perles
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = perles
+	conflicts = perles
+	options = !debug
+	source_x86_64 = perles-bin-0.9.0-x86_64.tar.gz::https://github.com/zjrosen/perles/releases/download/v0.9.0/perles_0.9.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b111a143cf79e6da307f5b254777cc5ed930ec50c380fd29127655849a8ef96d
+	source_aarch64 = perles-bin-0.9.0-aarch64.tar.gz::https://github.com/zjrosen/perles/releases/download/v0.9.0/perles_0.9.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 52822a14cdbc63cfea62c6f12ebf688145b93763f0e25fd6822271f814b88b22
+
+pkgname = perles-bin
