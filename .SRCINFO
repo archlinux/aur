@@ -1,6 +1,6 @@
 pkgbase = coddy-agent-bin
 	pkgdesc = General-purpose agent with a console TUI and an ACP server
-	pkgver = 1.4.49
+	pkgver = 1.4.52
 	pkgrel = 1
 	url = https://github.com/coddy-project/coddy-agent
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = coddy-agent-bin
 	provides = coddy-agent
 	conflicts = coddy-agent
 	options = !debug
-	source = coddy-agent-bin-1.4.49-LICENSE::https://raw.githubusercontent.com/coddy-project/coddy-agent/1.4.49/LICENSE
+	source = coddy-agent-bin-1.4.52-LICENSE::https://raw.githubusercontent.com/coddy-project/coddy-agent/1.4.52/LICENSE
 	sha256sums = c3e1be9b60cb2797323867b2cc7edd00d68ed96acc0efd6e82138b9af73cccfd
-	source_x86_64 = coddy-agent-bin-1.4.49-x86_64.tar.gz::https://github.com/coddy-project/coddy-agent/releases/download/1.4.49/coddy_1.4.49_linux_amd64.tar.gz
-	sha256sums_x86_64 = 3e55495a8e794fa3c4371cd016aa324c77e7e25682e051ef42411b1147672ec2
-	source_aarch64 = coddy-agent-bin-1.4.49-aarch64.tar.gz::https://github.com/coddy-project/coddy-agent/releases/download/1.4.49/coddy_1.4.49_linux_arm64.tar.gz
-	sha256sums_aarch64 = c20919d76100b029b732a6f59889e0120c73b91639b20b3c5cfa469932137ba3
+	source_x86_64 = coddy-agent-bin-1.4.52-x86_64.tar.gz::https://github.com/coddy-project/coddy-agent/releases/download/1.4.52/coddy_1.4.52_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5ce032fbf19a0632ce2e59fcee92c33f194057740a7092dc412467215b3329a2
+	source_aarch64 = coddy-agent-bin-1.4.52-aarch64.tar.gz::https://github.com/coddy-project/coddy-agent/releases/download/1.4.52/coddy_1.4.52_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0ade507ce6c994a6e95bed9a9ea2eaa284a6eb6423849a9273af01277fc4c7f9
 
 pkgname = coddy-agent-bin
