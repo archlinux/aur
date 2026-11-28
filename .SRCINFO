@@ -1,0 +1,20 @@
+pkgbase = ai-distiller-bin
+	pkgdesc = Extract essential public APIs, types and structure from large codebases for AI
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/janreges/ai-distiller
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = ai-distiller
+	conflicts = ai-distiller
+	options = !debug
+	source = ai-distiller-bin-1.5.0-LICENSE::https://raw.githubusercontent.com/janreges/ai-distiller/v1.5.0/LICENSE
+	sha256sums = 9ed20aece3cd03984e231cd26b4d0dc0847f34507f148e668eac0fd29a2ab9c9
+	source_x86_64 = ai-distiller-bin-1.5.0-x86_64.tar.gz::https://github.com/janreges/ai-distiller/releases/download/v1.5.0/aid-linux-amd64-v1.5.0.tar.gz
+	sha256sums_x86_64 = e72b8c89545513389b8c97ab34c77fdfb006cbd701e7e4ba5bc397ed1bcb0908
+	source_aarch64 = ai-distiller-bin-1.5.0-aarch64.tar.gz::https://github.com/janreges/ai-distiller/releases/download/v1.5.0/aid-linux-arm64-v1.5.0.tar.gz
+	sha256sums_aarch64 = 0a7c4fe536778b322aeadff04d4719d8baf6fa24aad56a058e1814d3ecc36c41
+
+pkgname = ai-distiller-bin
