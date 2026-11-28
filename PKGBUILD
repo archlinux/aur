@@ -7,7 +7,7 @@
 # then push to the AUR repo.
 
 pkgname=ttymap
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Scriptable globe for the terminal — Mapbox Vector Tiles rendered as Unicode Braille'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ makedepends=('cargo')
 # lua_* symbol comes back undefined at link time.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('54bd19b1f49bceee29967ab5802c5f38b5160c3acb3c83cf47932b3571b218b7')
+sha256sums=('b94d58e862b71a6c40180e634f209317a909cd1623c55246f26d6d40abb5f339')
 
 prepare() {
   cd "$pkgname-$pkgver"
