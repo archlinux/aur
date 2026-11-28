@@ -2,7 +2,7 @@
 
 pkgname=beluga-bin
 _pkgname=beluga
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='File manager written with plain GTK 4, a rewrite of KDE Dolphin without Qt or KDE Frameworks (prebuilt)'
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('beluga')
 options=('!debug' '!strip')
 # Release tags have no "v" prefix. Run updpkgsums after the release is published.
 source_x86_64=("$url/releases/download/$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
-sha256sums_x86_64=('1f804d0f14a25f222fb30394d2fffc21089114b5da70888bfa4ad07d7ae06d2b')
+sha256sums_x86_64=('b6faa554dd12b588b33fe90a1a4d6e5428ad78d7c268307d14520dcccf0a1372')
 
 package() {
   cd "$_pkgname-$pkgver-linux-$CARCH"

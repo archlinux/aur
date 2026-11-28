@@ -1,6 +1,6 @@
 pkgbase = beluga-bin
 	pkgdesc = File manager written with plain GTK 4, a rewrite of KDE Dolphin without Qt or KDE Frameworks (prebuilt)
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/TheElevatedOne/beluga
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = beluga-bin
 	optdepends = gvfs: network locations such as sftp:// and smb://
 	optdepends = xdg-desktop-portal: Beluga as the file chooser of other programs
 	optdepends = polkit: View › Act as Administrator (with a polkit agent)
-	provides = beluga=1.3.1
+	provides = beluga=1.4.0
 	conflicts = beluga
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/TheElevatedOne/beluga/releases/download/1.3.1/beluga-1.3.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 1f804d0f14a25f222fb30394d2fffc21089114b5da70888bfa4ad07d7ae06d2b
+	source_x86_64 = https://github.com/TheElevatedOne/beluga/releases/download/1.4.0/beluga-1.4.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = b6faa554dd12b588b33fe90a1a4d6e5428ad78d7c268307d14520dcccf0a1372
 
 pkgname = beluga-bin
