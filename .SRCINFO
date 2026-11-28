@@ -1,0 +1,19 @@
+pkgbase = datanymizer-bin
+	pkgdesc = Database anonymizer with flexible rules
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/datanymizer/datanymizer
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = datanymizer
+	conflicts = datanymizer
+	options = !debug
+	source = datanymizer-bin-0.7.4-LICENSE::https://raw.githubusercontent.com/datanymizer/datanymizer/v0.7.4/LICENSE
+	sha256sums = 56880028a25c8329423a0ec2c62c834e8c39836cc38fc734c3643a973f7ee62d
+	source_x86_64 = datanymizer-bin-0.7.4-x86_64.tar.gz::https://github.com/datanymizer/datanymizer/releases/download/v0.7.4/pg_datanymizer-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 28953d57111c7ff47abb79283d24e9ef71c00a410ca5f6d53234e1077a26db7d
+
+pkgname = datanymizer-bin
