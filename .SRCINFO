@@ -1,0 +1,19 @@
+pkgbase = gocsv-bin
+	pkgdesc = Command-line CSV processing utility
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://github.com/aotimme/gocsv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gocsv
+	conflicts = gocsv
+	options = !debug
+	source = gocsv-bin-1.0.9-LICENSE::https://raw.githubusercontent.com/aotimme/gocsv/v1.0.9/LICENSE
+	sha256sums = a881934e68c810d9f959fd8ff069a3717372b0f914cf6130c84f83d6ef4420c5
+	source_x86_64 = gocsv-bin-1.0.9-x86_64.zip::https://github.com/aotimme/gocsv/releases/download/v1.0.9/gocsv-linux-amd64.zip
+	sha256sums_x86_64 = becf1002c71a09b25087cdc61e2afa66e5cd96acd5bee3e73eee1b4279125b77
+	source_aarch64 = gocsv-bin-1.0.9-aarch64.zip::https://github.com/aotimme/gocsv/releases/download/v1.0.9/gocsv-linux-arm64.zip
+	sha256sums_aarch64 = 18c81ceec39f492169e853c7fc9f8d50b22b79981f420f72f2d46188dbdea083
+
+pkgname = gocsv-bin
