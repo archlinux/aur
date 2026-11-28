@@ -1,0 +1,17 @@
+pkgbase = palpo-bin
+	pkgdesc = Matrix homeserver
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/palpo-im/palpo
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = postgresql-libs
+	provides = palpo
+	conflicts = palpo
+	options = !debug
+	source_x86_64 = palpo-bin-0.6.0-x86_64.tar.gz::https://github.com/palpo-im/palpo/releases/download/v0.6.0/palpo-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7773ba7908ec934849322af51a5d24e877139006a4f759c4b6865de506e220d1
+
+pkgname = palpo-bin
