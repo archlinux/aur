@@ -1,0 +1,17 @@
+pkgbase = goris-bin
+	pkgdesc = Search images with Google reverse image search
+	pkgver = 3.0.5
+	pkgrel = 1
+	url = https://github.com/tanaikech/goris
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = goris
+	conflicts = goris
+	options = !debug
+	source = goris-bin-3.0.5-LICENSE::https://raw.githubusercontent.com/tanaikech/goris/v3.0.5/LICENCE
+	sha256sums = 8a987fab43e922f7eaf2fd7a1e2cc442c6d68234187d43b231a324c2f39348b6
+	source_x86_64 = goris-bin-3.0.5-x86_64::https://github.com/tanaikech/goris/releases/download/v3.0.5/goris_linux_amd64
+	sha256sums_x86_64 = ed3147fe48678acf4ec6afeeba919509650940d0014211c68a1407e0fc7055e5
+
+pkgname = goris-bin
