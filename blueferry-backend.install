@@ -1,0 +1,16 @@
+_blueferry_reload_bluetooth_unit() {
+  # The package's own ALPM hook is not visible until after its first
+  # transaction. Arch's systemd helper safely skips chroots.
+  /usr/share/libalpm/scripts/systemd-hook daemon-reload-system
+}
+
+post_install() {
+  _blueferry_reload_bluetooth_unit
+  /usr/share/libalpm/scripts/systemd-hook restart bluetooth.service
+}
+
+post_upgrade() {
+  # An existing 70-blueferry-restart-bluetooth hook performs the one
+  # post-transaction restart after the upgraded drop-in is installed.
+  _blueferry_reload_bluetooth_unit
+}

@@ -1,0 +1,81 @@
+pkgbase = blueferry
+	pkgdesc = BlueFerry Bluetooth bridge from iPhone to Linux
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/erikwb/blueferry
+	arch = any
+	license = GPL-2.0-or-later
+	checkdepends = appstream
+	checkdepends = bandit
+	checkdepends = desktop-file-utils
+	checkdepends = gtk4
+	checkdepends = libadwaita
+	checkdepends = kirigami
+	checkdepends = libsecret
+	checkdepends = mypy
+	checkdepends = python-cryptography
+	checkdepends = python-coverage
+	checkdepends = python-dbus
+	checkdepends = python-gobject
+	checkdepends = python-hypothesis
+	checkdepends = python-phonenumbers
+	checkdepends = python-regex>=2022.10.31
+	checkdepends = python-pytest
+	checkdepends = python-textual>=8.0
+	checkdepends = python-typer>=0.12
+	checkdepends = pyside6
+	checkdepends = qt6-declarative
+	checkdepends = quickshell
+	checkdepends = ruff
+	makedepends = dbus
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = blueferry-0.9.1.tar.gz::https://github.com/erikwb/blueferry/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 7f6266b6b48086773b17c0c3f934b529c644c4f731f40e6198fd50908c871c73
+
+pkgname = blueferry-backend
+	pkgdesc = iPhone Bluetooth bridge backend, daemon, CLI, and terminal client
+	install = blueferry-backend.install
+	depends = bluez>=5.86
+	depends = bluez-obex
+	depends = bluez-utils
+	depends = git
+	depends = libsecret
+	depends = org.freedesktop.secrets
+	depends = polkit
+	depends = python
+	depends = python-cryptography>=42
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-phonenumbers
+	depends = python-regex>=2022.10.31
+	depends = python-textual>=8.0
+	depends = python-typer>=0.12
+	depends = systemd
+	optdepends = ofono: experimental phone calls (off by default)
+	optdepends = wl-clipboard: copy one-time codes on Wayland (BLUEFERRY_OTP_AUTOCOPY)
+	optdepends = xclip: copy one-time codes on X11 (BLUEFERRY_OTP_AUTOCOPY)
+	optdepends = xsel: copy one-time codes on X11 (BLUEFERRY_OTP_AUTOCOPY)
+	provides = blueferry-tui
+	conflicts = blueferry-tui
+
+pkgname = blueferry-gtk
+	pkgdesc = GTK4/libadwaita client for BlueFerry
+	depends = blueferry-backend=0.9.1-1
+	depends = gtk4
+	depends = libadwaita>=1.5
+	depends = python-gobject
+
+pkgname = blueferry-qt
+	pkgdesc = Qt/KDE client for BlueFerry
+	depends = blueferry-backend=0.9.1-1
+	depends = kirigami
+	depends = pyside6
+	depends = qqc2-desktop-style
+
+pkgname = blueferry-quickshell
+	pkgdesc = Quickshell client for BlueFerry
+	depends = blueferry-backend=0.9.1-1
+	depends = quickshell
