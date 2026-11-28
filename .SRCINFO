@@ -1,0 +1,21 @@
+pkgbase = cclens-bin
+	pkgdesc = Inspect your Claude Code usage
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/lambdalisue/cclens
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = cclens
+	conflicts = cclens
+	options = !debug
+	source = cclens-bin-0.5.0-LICENSE::https://raw.githubusercontent.com/lambdalisue/cclens/v0.5.0/LICENSE
+	sha256sums = b33f1865cc7966843924cc0dfec6acf95f52da6a1a4d355d6a6b26f43b924511
+	source_x86_64 = cclens-bin-0.5.0-x86_64.tar.gz::https://github.com/lambdalisue/cclens/releases/download/v0.5.0/cclens-v0.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 073d74433279d7a5516f656a9bc0030471a5852aba405b87df3a8e9609319c06
+	source_aarch64 = cclens-bin-0.5.0-aarch64.tar.gz::https://github.com/lambdalisue/cclens/releases/download/v0.5.0/cclens-v0.5.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 48a593c1ce996baa40f685d902a2c1d96080db8d093d2539bcdd8ef253441794
+
+pkgname = cclens-bin
