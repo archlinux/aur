@@ -1,0 +1,18 @@
+pkgbase = httpgenerator-bin
+	pkgdesc = Generate .http files from OpenAPI specifications
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/christianhelle/httpgenerator
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = httpgenerator
+	conflicts = httpgenerator
+	options = !debug
+	source = httpgenerator-bin-1.1.0-LICENSE::https://raw.githubusercontent.com/christianhelle/httpgenerator/1.1.0/LICENSE
+	sha256sums = da1ca04cae4a2dc97d8cff1738e2ce3d4576bb9799cf7e997d833273e926c200
+	source_x86_64 = httpgenerator-bin-1.1.0-x86_64.tar.gz::https://github.com/christianhelle/httpgenerator/releases/download/1.1.0/httpgenerator-1.1.0-linux-x64.tar.gz
+	sha256sums_x86_64 = acba46604a14d66a7c623d0d4c3a91bcf342312120021545074519d26d5dfeea
+
+pkgname = httpgenerator-bin
