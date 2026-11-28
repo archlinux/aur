@@ -1,6 +1,6 @@
 pkgbase = i2pchat-bin
 	pkgdesc = P2P (peer-to-peer) chat client over I2P network (GUI version)
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/MetanoicArmor/I2PChat
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = i2pchat-bin
 	conflicts = i2pchat
 	conflicts = i2pchat-ng-git
 	options = !strip
-	source_x86_64 = I2PChat-linux-x86_64-v1.7.0.zip::https://github.com/MetanoicArmor/I2PChat/releases/download/v1.7.0/I2PChat-linux-x86_64-v1.7.0.zip
-	source_x86_64 = icon.png::https://github.com/MetanoicArmor/I2PChat/raw/v1.7.0/icon.png
-	sha256sums_x86_64 = 6350e27059514c30e64283372034d7b100b56276ebff8f611434a087ca20ac41
+	source_x86_64 = I2PChat-linux-x86_64-v1.7.1.zip::https://github.com/MetanoicArmor/I2PChat/releases/download/v1.7.1/I2PChat-linux-x86_64-v1.7.1.zip
+	source_x86_64 = icon.png::https://github.com/MetanoicArmor/I2PChat/raw/v1.7.1/icon.png
+	sha256sums_x86_64 = d8b2a49ff6d0c74e60cd5d063d4ed69991a450b959abdfb1a335fad0023a2fb8
 	sha256sums_x86_64 = 2f27e90c85949ec4eabeaac6d12bca1449f679dbb10e4e9f07925e33b7d008b8
-	source_aarch64 = I2PChat-linux-aarch64-v1.7.0.zip::https://github.com/MetanoicArmor/I2PChat/releases/download/v1.7.0/I2PChat-linux-aarch64-v1.7.0.zip
-	source_aarch64 = icon.png::https://github.com/MetanoicArmor/I2PChat/raw/v1.7.0/icon.png
-	sha256sums_aarch64 = 22e9f45feeecb4fad218610fb9b1a7c05936fb285376701d35c16b312f34df61
+	source_aarch64 = I2PChat-linux-aarch64-v1.7.1.zip::https://github.com/MetanoicArmor/I2PChat/releases/download/v1.7.1/I2PChat-linux-aarch64-v1.7.1.zip
+	source_aarch64 = icon.png::https://github.com/MetanoicArmor/I2PChat/raw/v1.7.1/icon.png
+	sha256sums_aarch64 = 581f7b5b16397f28cfd1dd1011b7d9c6f36c7c00b222c5975e4a73d9e7b9dbb3
 	sha256sums_aarch64 = 2f27e90c85949ec4eabeaac6d12bca1449f679dbb10e4e9f07925e33b7d008b8
 
 pkgname = i2pchat-bin

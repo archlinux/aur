@@ -1,7 +1,7 @@
 # Maintainer: Vade <72322348+MetanoicArmor@users.noreply.github.com>
 # Checksums: ./packaging/refresh-checksums.sh vX.Y.Z
 pkgname=i2pchat-bin
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="P2P (peer-to-peer) chat client over I2P network (GUI version)"
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,9 @@ source_x86_64=("I2PChat-linux-x86_64-v${pkgver}.zip::${url}/releases/download/v$
                "${_icon}")
 source_aarch64=("I2PChat-linux-aarch64-v${pkgver}.zip::${url}/releases/download/v${pkgver}/I2PChat-linux-aarch64-v${pkgver}.zip"
                 "${_icon}")
-sha256sums_x86_64=('6350e27059514c30e64283372034d7b100b56276ebff8f611434a087ca20ac41'
+sha256sums_x86_64=('d8b2a49ff6d0c74e60cd5d063d4ed69991a450b959abdfb1a335fad0023a2fb8'
                    '2f27e90c85949ec4eabeaac6d12bca1449f679dbb10e4e9f07925e33b7d008b8')
-sha256sums_aarch64=('22e9f45feeecb4fad218610fb9b1a7c05936fb285376701d35c16b312f34df61'
+sha256sums_aarch64=('581f7b5b16397f28cfd1dd1011b7d9c6f36c7c00b222c5975e4a73d9e7b9dbb3'
                     '2f27e90c85949ec4eabeaac6d12bca1449f679dbb10e4e9f07925e33b7d008b8')
 
 package() {
