@@ -1,0 +1,17 @@
+pkgbase = aws-sso-creds-bin
+	pkgdesc = Get temporary AWS SSO credentials from an SSO profile
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/jaxxstorm/aws-sso-creds
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = aws-sso-creds
+	conflicts = aws-sso-creds
+	options = !debug
+	source_x86_64 = aws-sso-creds-bin-2.1.1-x86_64.tar.gz::https://github.com/jaxxstorm/aws-sso-creds/releases/download/v2.1.1/aws-sso-creds-v2.1.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = ac4198eb3e0af5c878949054e01de2ac51bd84cb13df1037f44398a66721995e
+	source_aarch64 = aws-sso-creds-bin-2.1.1-aarch64.tar.gz::https://github.com/jaxxstorm/aws-sso-creds/releases/download/v2.1.1/aws-sso-creds-v2.1.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = beee60dd3573f361adf83fc119f8e2f85660b1551abfacca902070856dfe7143
+
+pkgname = aws-sso-creds-bin
