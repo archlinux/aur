@@ -1,0 +1,19 @@
+pkgbase = phanalist-bin
+	pkgdesc = Fast static analyzer for PHP
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/denzyldick/phanalist
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = phanalist
+	conflicts = phanalist
+	options = !debug
+	source = phanalist-bin-1.2.1-LICENSE::https://raw.githubusercontent.com/denzyldick/phanalist/v1.2.1/LICENSE
+	sha256sums = c15554520c83e43cc1d8040ac822bfa1fe45f9461cc6770297c63f9836e4c02b
+	source_x86_64 = phanalist-bin-1.2.1-x86_64.tar.gz::https://github.com/denzyldick/phanalist/releases/download/v1.2.1/phanalist-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = debbf9f9ee871b421e6d4fe66d16a9e5d8039ebbf3d48005a6199933380acb6a
+
+pkgname = phanalist-bin
