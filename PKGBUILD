@@ -1,7 +1,7 @@
 _dnr_rulesets_ver=6.1.1
 
 pkgname=firefox-extension-adguard
-pkgver=5.6.1
+pkgver=5.6.2
 #_tag=v${pkgver%.*}+${pkgver##*.}.build.20251216080045
 _tag=v$pkgver
 pkgrel=1
@@ -13,7 +13,7 @@ groups=("firefox-addons")
 makedepends=("corepack" "git" "jq" "nodejs-lts-jod")
 source=("AdguardBrowserExtension-$pkgver.tar.gz::https://github.com/AdguardTeam/AdguardBrowserExtension/archive/refs/tags/$_tag.tar.gz"
         "dnr-rulesets-$_dnr_rulesets_ver.tar.gz::https://github.com/AdguardTeam/tsurlfilter/releases/download/dnr-rulesets-v$_dnr_rulesets_ver/dnr-rulesets.tgz")
-sha256sums=('bb9bea32c7db5ea312b8ebe776210b1735eb75dfcd8a80c40560216676bafbb3'
+sha256sums=('d83217dbadbe73f7c4f94420df8e1c84f63fd768c0abbbad5db6a51b894887a7'
             'aeb196a424398b7d947d912e3c1118c2d7e284192dd4d8c2e58e6cc49e0a0148')
 noextract=("dnr-rulesets-$_dnr_rulesets_ver.tar.gz")
 _version=${_tag//+/-}
