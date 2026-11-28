@@ -1,7 +1,7 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from GLM 5.3 Flash.
+# Created with assistance from Hy4 flash Free.
 pkgname=dxvk-clang-v4-bin
-pkgver=3.1.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="Argonforge Clang-built DXVK for x86-64-v4 (prebuilt)"
 arch=('x86_64')
@@ -9,11 +9,11 @@ url="https://github.com/argonforge/dxvk-builds"
 license=('MIT')
 depends=('vulkan-icd-loader')
 options=('!strip')
-source=("dxvk-3.1.1-x86-64-v4.tar.zst::https://github.com/argonforge/dxvk-builds/releases/download/v3.1.1/dxvk-3.1.1-x86-64-v4.tar.zst")
-sha256sums=('SKIP')
+source=("dxvk-3.2-x86-64-v4.tar.zst::https://github.com/argonforge/dxvk-builds/releases/download/v3.2/dxvk-3.2-x86-64-v4.tar.zst")
+sha256sums=('a3d9463555d696404898070bf3968bf11015aaff81a58242fe2a64ec51fe2711')
 package() {
   cd "${srcdir}"
-  bsdtar xf dxvk-3.1.1-x86-64-v4.tar.zst -C "${pkgdir}"
+  bsdtar xf dxvk-3.2-x86-64-v4.tar.zst -C "${pkgdir}"
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" << 'EOF'
 MIT License
 
