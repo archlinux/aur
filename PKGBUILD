@@ -1,21 +1,41 @@
-# Maintainer: Kaan Gültekin <kaangultekin01[at]gmail[dot]com>
+# Maintainer: Kaan Gültekin <kaan[at]kaangultekin[dot]net>
+#
+# Generated from packaging/aur/PKGBUILD in https://github.com/GamehunterKaan/AutoPWN-Suite
+# by .github/workflows/publish-aur.yml, which fills in the version and the PyPI sdist digest.
+# Send changes there as a pull request; edits pushed only to the AUR are overwritten.
 
 pkgname=python-autopwn-suite
-_pyname=autopwn-suite
-pkgver=2.1.5
+_name=autopwn_suite
+pkgver=2.10.0
 pkgrel=1
-pkgdesc="AutoPWN Suite is a project for scanning vulnerabilities and exploiting systems automatically."
-url="https://auto.pwnspot.com"
-arch=("any")
-depends=("python" "python-requests" "python-rich" "python-nmap" "python-bs4" "python-distro" "nmap")
-makedepends=("python-setuptools")
-license=("EULA")
-source=("${_pyname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/a/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha512sums=('SKIP')
+pkgdesc="Automated vulnerability scanning and exploitation tool"
+arch=('any')
+url="https://github.com/GamehunterKaan/AutoPWN-Suite"
+license=('Apache-2.0')
+depends=(
+  'nmap'
+  'python'
+  'python-beautifulsoup4'
+  'python-cryptography'
+  'python-distro'
+  'python-flask'
+  'python-flask-cors'
+  'python-requests'
+  'python-rich'
+  'python-urllib3'
+  'python-werkzeug'
+)
+makedepends=('python-build' 'python-installer' 'python-poetry-core')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('23362521d1bb428e1c301eeaa17d767fe242f47b344359bd91fbd9a19cccb22c')
+
+build() {
+  cd "${_name}-${pkgver}"
+  # The project pins its build backend exactly; build with Arch's poetry-core instead.
+  python -m build --wheel --no-isolation --skip-dependency-check
+}
 
 package() {
-	cd "${srcdir}/${_pyname}-${pkgver}"
-	sed -i "s/[0-9]\.[0-9]\.[0-9]/${pkgver}/g" autopwn_suite/autopwn.py
-	python setup.py install -O1 --root="${pkgdir}"
-	install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+  cd "${_name}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
