@@ -1,0 +1,18 @@
+pkgbase = formualizer-bin
+	pkgdesc = Embeddable spreadsheet engine that parses and evaluates Excel workbooks
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/PSU3D0/formualizer
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = formualizer
+	conflicts = formualizer
+	options = !debug
+	source_x86_64 = formualizer-bin-0.15.0-x86_64.tar.gz::https://github.com/PSU3D0/formualizer/releases/download/v0.15.0/formualizer-cli-v0.15.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 21fab17e2337be778323f514ab905e125e22c3cd98cc4a0f8c7d22541d11fd35
+	source_aarch64 = formualizer-bin-0.15.0-aarch64.tar.gz::https://github.com/PSU3D0/formualizer/releases/download/v0.15.0/formualizer-cli-v0.15.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 07b6fe5c22f89566e260bcc76f695e79c1ac974ca88c7d1c225a505041e8e20e
+
+pkgname = formualizer-bin
