@@ -1,11 +1,15 @@
 pkgbase = python-bundlewrap
 	pkgdesc = Config management with Python
 	pkgver = 5.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bundlewrap.org
 	arch = any
-	license = GPL-3.0.only
+	license = GPL-3.0-only
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-bcrypt
 	depends = python-cryptography
@@ -17,7 +21,7 @@ pkgbase = python-bundlewrap
 	depends = python-requests>=1.0.0
 	depends = python-tomlkit
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/b/bundlewrap/bundlewrap-5.2.0.tar.gz
-	sha512sums = 1ac993ebdbfbce65b37ecfc29580e3cc5ee7a8b5037f074050ba3a4028e1b6cafa29543d0913e2e52e2da6706654cb1e1703c5809f506d68443e3f759ab61c20
+	source = https://github.com/bundlewrap/bundlewrap/archive/refs/tags/5.2.0.tar.gz
+	sha512sums = 33a0ab2ae946b0ea8f046c83afc98d2b30804c1f5ced4f6fe6f56841c0b4e7f1ccb255b5b1abe69b3349075561618f78880d6da25c3f7bc8474028fa2b2ae93e
 
 pkgname = python-bundlewrap

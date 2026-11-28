@@ -1,16 +1,15 @@
-# Copyright (C) 2019 Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the CC0 1.0 License.
 # Maintainer: Zoe Wetzel <aur@commanderred.xyz>
+# Contributor: Zoe Wetzel <aur@commanderred.xyz>
+# Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 
-pkgname=python-bundlewrap
 _pkgname=bundlewrap
+pkgname=python-${_pkgname}
 pkgver=5.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Config management with Python"
 arch=('any')
 url='https://bundlewrap.org'
-license=('GPL-3.0.only')
+license=('GPL-3.0-only')
 depends=(
   'python'
   'python-bcrypt'
@@ -23,17 +22,28 @@ depends=(
   'python-requests>=1.0.0'
   'python-tomlkit'
 )
-makedepends=('python-setuptools')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=('python-pytest')
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('1ac993ebdbfbce65b37ecfc29580e3cc5ee7a8b5037f074050ba3a4028e1b6cafa29543d0913e2e52e2da6706654cb1e1703c5809f506d68443e3f759ab61c20')
+source=("https://github.com/bundlewrap/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('33a0ab2ae946b0ea8f046c83afc98d2b30804c1f5ced4f6fe6f56841c0b4e7f1ccb255b5b1abe69b3349075561618f78880d6da25c3f7bc8474028fa2b2ae93e')
 
 build() {
-  cd "$srcdir/bundlewrap-$pkgver"
-  python3 setup.py build
+  cd "${_pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${_pkgname}-${pkgver}"
+  python -m pytest tests/unit
 }
 
 package() {
-  cd "$srcdir/bundlewrap-$pkgver"
-  python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "${_pkgname}-${pkgver}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
