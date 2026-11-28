@@ -1,0 +1,17 @@
+pkgbase = tagpr-bin
+	pkgdesc = Create release pull requests and tag them when merged
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://github.com/Songmu/tagpr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tagpr
+	conflicts = tagpr
+	options = !debug
+	source_x86_64 = tagpr-bin-1.22.0-x86_64.tar.gz::https://github.com/Songmu/tagpr/releases/download/v1.22.0/tagpr_v1.22.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 65b8f5177055bcee533455153dd8b5521bf233c732f2b2a7176ab7344b31cf21
+	source_aarch64 = tagpr-bin-1.22.0-aarch64.tar.gz::https://github.com/Songmu/tagpr/releases/download/v1.22.0/tagpr_v1.22.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3997c5d5d5bff4b9ed2ce82240cef70dc935acf5d44e6a4871f16813fca74fe4
+
+pkgname = tagpr-bin
