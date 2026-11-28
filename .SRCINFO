@@ -1,0 +1,17 @@
+pkgbase = sysl-bin
+	pkgdesc = System specification language
+	pkgver = 0.792.0
+	pkgrel = 1
+	url = https://github.com/anz-bank/sysl
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = sysl
+	conflicts = sysl
+	options = !debug
+	source_x86_64 = sysl-bin-0.792.0-x86_64.tar.gz::https://github.com/anz-bank/sysl/releases/download/v0.792.0/sysl_0.792.0_linux-amd64.tar.gz
+	sha256sums_x86_64 = 2fac2dfa62b66ec12b930d253ca0ab9e265e2c852dc8d7b08404207b89b8fa92
+	source_aarch64 = sysl-bin-0.792.0-aarch64.tar.gz::https://github.com/anz-bank/sysl/releases/download/v0.792.0/sysl_0.792.0_linux-arm64.tar.gz
+	sha256sums_aarch64 = ba91ae304bfcff50c039a29b0d2723f2af7f2970fe5b1df0f41b4a271d8d0658
+
+pkgname = sysl-bin
