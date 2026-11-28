@@ -1,0 +1,21 @@
+pkgbase = zihuan-next-bin
+	pkgdesc = Customizable AI agent platform
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/FredYakumo/zihuan-next
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openssl-3
+	depends = xz
+	provides = zihuan-next
+	conflicts = zihuan-next
+	options = !debug
+	source = zihuan-next-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/FredYakumo/zihuan-next/v0.1.0/LICENSE
+	sha256sums = 4df3c306dddaaf4baffdff5ca820cc679ac8cd6dc263c6a74517783e42fa7a3b
+	source_x86_64 = zihuan-next-bin-0.1.0-x86_64.tar.xz::https://github.com/FredYakumo/zihuan-next/releases/download/v0.1.0/zihuan_next-v0.1.0-Linux-x86_64-cpu.tar.xz
+	sha256sums_x86_64 = e5b77473259745310102c0a73b334dead64eea5d1a43e11dc20dd6615be79ed9
+
+pkgname = zihuan-next-bin
