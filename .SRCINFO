@@ -1,0 +1,17 @@
+pkgbase = gh-infra-bin
+	pkgdesc = Declarative GitHub infrastructure management via YAML
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/babarot/gh-infra
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gh-infra
+	conflicts = gh-infra
+	options = !debug
+	source_x86_64 = gh-infra-bin-0.21.0-x86_64.tar.gz::https://github.com/babarot/gh-infra/releases/download/v0.21.0/gh-infra_linux_amd64.tar.gz
+	sha256sums_x86_64 = ff0e5228d83fca85ff9ddfd27c861efbdb79ca3fcc076c81a598b23b03639c78
+	source_aarch64 = gh-infra-bin-0.21.0-aarch64.tar.gz::https://github.com/babarot/gh-infra/releases/download/v0.21.0/gh-infra_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5b2f9147bbb9d80c6e948720ec53bcf463256e1ad3b532ca8d062be46d1a4d7b
+
+pkgname = gh-infra-bin
