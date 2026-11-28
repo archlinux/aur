@@ -1,0 +1,19 @@
+pkgbase = mikrotik-exporter-bin
+	pkgdesc = Prometheus exporter for MikroTik devices
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://github.com/nshttpd/mikrotik-exporter
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	provides = mikrotik-exporter
+	conflicts = mikrotik-exporter
+	options = !debug
+	source = mikrotik-exporter-bin-1.0.11-LICENSE::https://raw.githubusercontent.com/nshttpd/mikrotik-exporter/1.0.11/LICENSE
+	sha256sums = 3e50d567e122051889d9e8edccf7cbcf39345243b8253e298551d08d9b64f49d
+	source_x86_64 = mikrotik-exporter-bin-1.0.11-x86_64::https://github.com/nshttpd/mikrotik-exporter/releases/download/1.0.11/mikrotik-exporter_linux_amd64
+	sha256sums_x86_64 = 427da58b434de23df27d94d09d7fcc386445a89445a251418b06e593e7a4f4e1
+	source_aarch64 = mikrotik-exporter-bin-1.0.11-aarch64::https://github.com/nshttpd/mikrotik-exporter/releases/download/1.0.11/mikrotik-exporter_linux_arm64
+	sha256sums_aarch64 = 1a3dca8bef3b2cccac85b6cd00d5d3f0d6cb40ff729d9d450c6add83edb5311f
+
+pkgname = mikrotik-exporter-bin
