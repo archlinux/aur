@@ -1,0 +1,20 @@
+pkgbase = engraph-bin
+	pkgdesc = Local knowledge graph for AI agents
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://github.com/devwhodevs/engraph
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
+	provides = engraph
+	conflicts = engraph
+	options = !debug
+	source = engraph-bin-1.7.2-LICENSE::https://raw.githubusercontent.com/devwhodevs/engraph/v1.7.2/LICENSE
+	sha256sums = f41ff89c13b823de1d255e5cb885752b0f576b01737baed0c54144345045cff9
+	source_x86_64 = engraph-bin-1.7.2-x86_64.tar.gz::https://github.com/devwhodevs/engraph/releases/download/v1.7.2/engraph-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 3942d553d82c8f7587d76f8a942562d04716726531538262761fb663fd8c14ab
+
+pkgname = engraph-bin
