@@ -1,0 +1,18 @@
+pkgbase = josim-bin
+	pkgdesc = Superconductor circuit simulator
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/JoeyDelp/JoSIM
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = josim
+	conflicts = josim
+	options = !debug
+	source_x86_64 = josim-bin-3.1.0-x86_64.tar.gz::https://github.com/JoeyDelp/JoSIM/releases/download/v3.1.0/JoSIM-v3.1.0-linux-x64-rhel6.tar.gz
+	sha256sums_x86_64 = ddb1eec2d577defd20c552dbdac2bd194b4d427fc340e69c8e071b5ebbb3a17a
+	source_aarch64 = josim-bin-3.1.0-aarch64.tar.gz::https://github.com/JoeyDelp/JoSIM/releases/download/v3.1.0/JoSIM-v3.1.0-linux-arm64-rhel7.tar.gz
+	sha256sums_aarch64 = 2153cfbc5e7b908fcdfe6aab63366e4c60ba03d4a0afaac44175b5c73aa370e3
+
+pkgname = josim-bin
