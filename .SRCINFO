@@ -1,0 +1,19 @@
+pkgbase = books-for-bots-bin
+	pkgdesc = Convert EPUBs into navigable Markdown for LLM agents
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/prime-radiant-inc/books-for-bots
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = books-for-bots
+	conflicts = books-for-bots
+	options = !debug
+	source_x86_64 = books-for-bots-bin-0.1.1-x86_64.tar.gz::https://github.com/prime-radiant-inc/books-for-bots/releases/download/v0.1.1/books-for-bots-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b01b8432c8ba6e7275895861427be1d7d3ac8e83199e63009b1aa6fe58e8043d
+	source_aarch64 = books-for-bots-bin-0.1.1-aarch64.tar.gz::https://github.com/prime-radiant-inc/books-for-bots/releases/download/v0.1.1/books-for-bots-v0.1.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = c32f423dc9e09ad228ee223cde184f4a1cae7fd333f302145141190cc43e6ce0
+
+pkgname = books-for-bots-bin
