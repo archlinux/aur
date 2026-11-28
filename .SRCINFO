@@ -1,6 +1,6 @@
 pkgbase = proxy-scraper-checker-bin
 	pkgdesc = Scrapes HTTP, SOCKS4 and SOCKS5 proxies from public sources and checks which ones work
-	pkgver = 4212
+	pkgver = 4220
 	pkgrel = 1
 	url = https://github.com/monosans/proxy-scraper-checker
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = proxy-scraper-checker-bin
 	provides = proxy-scraper-checker
 	conflicts = proxy-scraper-checker
 	options = !debug
-	source_x86_64 = proxy-scraper-checker-bin-4212-x86_64.zip::https://github.com/monosans/proxy-scraper-checker/releases/download/build-4212/proxy-scraper-checker-binary-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = 9d4f57c93e73267e40932f3c89aa3cf5d72f38dcc194f148f478a4e7707d1c10
-	source_aarch64 = proxy-scraper-checker-bin-4212-aarch64.zip::https://github.com/monosans/proxy-scraper-checker/releases/download/build-4212/proxy-scraper-checker-binary-aarch64-unknown-linux-gnu.zip
-	sha256sums_aarch64 = f1f11517879b51d315f32f470b8122412b2ff87ea1a4f98078fcc8210c340ec9
+	source_x86_64 = proxy-scraper-checker-bin-4220-x86_64.zip::https://github.com/monosans/proxy-scraper-checker/releases/download/build-4220/proxy-scraper-checker-binary-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = b92deae9e9dc388a13dd36130ff65bbb1516e156a3f985db85a0e851404e438a
+	source_aarch64 = proxy-scraper-checker-bin-4220-aarch64.zip::https://github.com/monosans/proxy-scraper-checker/releases/download/build-4220/proxy-scraper-checker-binary-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 1c09c692846b28ba20823316863981b68e1b21490fe31599a36164d8a64f500f
 
 pkgname = proxy-scraper-checker-bin
