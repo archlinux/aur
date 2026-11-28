@@ -1,0 +1,18 @@
+pkgbase = ec2-metadatafs-bin
+	pkgdesc = Mount AWS EC2 instance metadata as files
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/jszwedko/ec2-metadatafs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = ec2-metadatafs
+	conflicts = ec2-metadatafs
+	options = !debug
+	source_x86_64 = ec2-metadatafs-bin-2.0.1-x86_64.tar.gz::https://github.com/jszwedko/ec2-metadatafs/releases/download/2.0.1/ec2-metadatafs_2.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3c5e5a13f54712422ebdf80f89bfc2a6bcc24e3ccb8a552de33cd1a932d33031
+	source_aarch64 = ec2-metadatafs-bin-2.0.1-aarch64.tar.gz::https://github.com/jszwedko/ec2-metadatafs/releases/download/2.0.1/ec2-metadatafs_2.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = c2e11ed366d138060336cf1a700a4a94a10a0b775f98ce0fe155e7a628e49acb
+
+pkgname = ec2-metadatafs-bin
