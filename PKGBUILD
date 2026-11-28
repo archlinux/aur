@@ -1,7 +1,7 @@
 # Maintainer: Fabrice Aneche <akh@inair.space>
 
 pkgname=rp2350sim
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="RP2350 emulator with a headless runner and a Shirei desktop UI"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=(
 # When bumping pkgver, run `updpkgsums` and
 # `makepkg --printsrcinfo > .SRCINFO` before updating the AUR.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/akhenakh/rp2350sim/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('eca05757985b1da9a3e2abd2c052f43a81c1d2fc3050c63c23d9c4f99c372851')
+sha256sums=('6f5427e4cc80e02a5fee469a356571535a152a9590f2117586871d2dc906b92e')
 
 build() {
   cd "$pkgname-$pkgver"
