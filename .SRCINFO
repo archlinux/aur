@@ -1,0 +1,35 @@
+pkgbase = python-datafusion
+	pkgdesc = Python bindings for Apache DataFusion, an extensible query engine using Apache Arrow
+	pkgver = 54.1.0
+	pkgrel = 1
+	url = https://github.com/apache/datafusion-python
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	checkdepends = python-arro3-core
+	checkdepends = python-nanoarrow
+	checkdepends = python-numpy
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-timeout
+	checkdepends = python-pytest
+	makedepends = python-maturin
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = rust
+	makedepends = protobuf
+	makedepends = git
+	depends = python
+	depends = python-cloudpickle
+	depends = python-pyarrow
+	depends = zstd
+	depends = libgcc
+	depends = glibc
+	options = !lto
+	source = datafusion::git+https://github.com/apache/datafusion-python.git#tag=54.1.0
+	source = git+https://github.com/apache/arrow-testing.git#commit=5bab2f264a23f5af68f69ea93d24ef1e8e77fc88
+	source = git+https://github.com/apache/parquet-testing.git#commit=e13af117de7c4f0a4d9908ae3827b3ab119868f3
+	sha256sums = 226a7208430a455aebd510a51e79dc0dc9269a3a629188ba41c9232485be7c09
+	sha256sums = 2bd54336f1a7c8dcef3bd73678d14e705df432b1decfb3369cdaed3e85b50d6c
+	sha256sums = 3d01d5a56e689507fadd04b5ea3d08b7467b89a0b4bdb045894bb9eef2875334
+
+pkgname = python-datafusion
