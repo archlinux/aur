@@ -1,0 +1,21 @@
+pkgbase = watt-bin
+	pkgdesc = CPU frequency and power management utility
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/NotAShelf/watt
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	depends = glibc
+	depends = libgcc
+	provides = watt
+	conflicts = watt
+	options = !debug
+	source = watt-bin-1.4.0-LICENSE::https://raw.githubusercontent.com/NotAShelf/watt/v1.4.0/LICENSE
+	sha256sums = dc85005949e0479365d7828d938e0ecbe46990076ee90166f4c6f062c515ecae
+	source_x86_64 = watt-bin-1.4.0-x86_64::https://github.com/NotAShelf/watt/releases/download/v1.4.0/watt-linux-amd64
+	sha256sums_x86_64 = 295cdbebda0f04301a00d9fedd0152ebd3ff02812682e56aa49c04cc487b259d
+	source_aarch64 = watt-bin-1.4.0-aarch64::https://github.com/NotAShelf/watt/releases/download/v1.4.0/watt-linux-arm64
+	sha256sums_aarch64 = e321b0ca573263b7ff81ec3cfac6fb6d91ee19a2d8dfde01427357b7caf7fd22
+
+pkgname = watt-bin
