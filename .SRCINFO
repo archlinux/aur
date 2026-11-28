@@ -1,6 +1,6 @@
 pkgbase = yogurt-appimage
 	pkgdesc = Private AI meeting notes that stay on your computer (AppImage)
-	pkgver = 0.3.82
+	pkgver = 0.3.83
 	pkgrel = 1
 	url = https://yogurt.so
 	arch = x86_64
@@ -17,12 +17,12 @@ pkgbase = yogurt-appimage
 	provides = yogurt
 	conflicts = yogurt
 	conflicts = yogurt-bin
-	noextract = yogurt-0.3.82.AppImage
+	noextract = yogurt-0.3.83.AppImage
 	options = !strip
 	options = !debug
-	source = yogurt-0.3.82.AppImage::https://github.com/FrigadeHQ/yogurt/releases/download/v0.3.82/Yogurt-linux-x86_64.AppImage
-	source = LICENSE-0.3.82::https://raw.githubusercontent.com/FrigadeHQ/yogurt/v0.3.82/LICENSE
-	sha256sums = a70bad703fd2ad43de8c941a35ad68960a5af6a4b29ced5f226b955c5da587b1
+	source = yogurt-0.3.83.AppImage::https://github.com/FrigadeHQ/yogurt/releases/download/v0.3.83/Yogurt-linux-x86_64.AppImage
+	source = LICENSE-0.3.83::https://raw.githubusercontent.com/FrigadeHQ/yogurt/v0.3.83/LICENSE
+	sha256sums = 03db3f1c9c481f0dead706070f46be7bf6ab233d36af55f2e00dc4473d679ea3
 	sha256sums = 5c7f0de8bbe8ee8a29540939bfdd83adf000e8c2817587d618c9637347dd34ec
 
 pkgname = yogurt-appimage
