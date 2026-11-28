@@ -1,0 +1,17 @@
+pkgbase = chaitin-cli-bin
+	pkgdesc = Command-line interface for Chaitin security products
+	pkgver = 2611.0.1
+	pkgrel = 1
+	url = https://github.com/chaitin/chaitin-cli
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = chaitin-cli
+	conflicts = chaitin-cli
+	options = !debug
+	source_x86_64 = chaitin-cli-bin-2611.0.1-x86_64.tar.gz::https://github.com/chaitin/chaitin-cli/releases/download/v2611.0.1/chaitin-cli_v2611.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5b8c95c8ec0281dc4b131f9291b30d0cca1379895763338273af790bcc5be92a
+	source_aarch64 = chaitin-cli-bin-2611.0.1-aarch64.tar.gz::https://github.com/chaitin/chaitin-cli/releases/download/v2611.0.1/chaitin-cli_v2611.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = eb6f44497a55c3f71203068769d2161c30570937ee5d18af5a779651be4415b0
+
+pkgname = chaitin-cli-bin
