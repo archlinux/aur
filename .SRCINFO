@@ -1,0 +1,17 @@
+pkgbase = transmission-telegram-bin
+	pkgdesc = Control Transmission through a Telegram bot
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/pyed/transmission-telegram
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = transmission-telegram
+	conflicts = transmission-telegram
+	options = !debug
+	source_x86_64 = transmission-telegram-bin-2.2.1-x86_64.tar.gz::https://github.com/pyed/transmission-telegram/releases/download/v2.2.1/transmission-telegram_v2.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8b672cb107daacaf110172015b0a78b247d50659eb1780c935a5b7c283e82982
+	source_aarch64 = transmission-telegram-bin-2.2.1-aarch64.tar.gz::https://github.com/pyed/transmission-telegram/releases/download/v2.2.1/transmission-telegram_v2.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = f9bba1b144157134a39f5bf0f5c850ec4cacab3593f21d83edc840480a444f8e
+
+pkgname = transmission-telegram-bin
