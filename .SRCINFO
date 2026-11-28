@@ -1,0 +1,20 @@
+pkgbase = seqfu2-bin
+	pkgdesc = Sequence FASTX utilities
+	pkgver = 1.29.0
+	pkgrel = 1
+	url = https://github.com/telatin/seqfu2
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	provides = seqfu2
+	conflicts = seqfu2
+	options = !debug
+	source = seqfu2-bin-1.29.0-LICENSE::https://raw.githubusercontent.com/telatin/seqfu2/v1.29.0/LICENSE
+	sha256sums = 309aad96b89443a5d7eb0b52cc5708cc256f3074fad0a489a620e1ab225f6e54
+	source_x86_64 = seqfu2-bin-1.29.0-x86_64::https://github.com/telatin/seqfu2/releases/download/v1.29.0/seqfu-linux-x86_64
+	sha256sums_x86_64 = ae2430020120edafa2f456eb9cb992863a72c538b514f5a9cf963f5aae590fd2
+	source_aarch64 = seqfu2-bin-1.29.0-aarch64::https://github.com/telatin/seqfu2/releases/download/v1.29.0/seqfu-linux-aarch64
+	sha256sums_aarch64 = 5600f41708574c04b3f4ab48ed8ec6ecbe92c065c6eaa64cc5ed8615092818e9
+
+pkgname = seqfu2-bin
