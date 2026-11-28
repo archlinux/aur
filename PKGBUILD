@@ -13,10 +13,10 @@
 # package, so it stays private to Ragtime.
 
 pkgname=ragtime
-_tag=v0.3.1-beta
+_tag=v0.4.0-beta
 _sotto=aa44cdb69e30fe5feb5666db3bde4ab3a5d1e031
 _rnnoise=6cbfd53eb348a8d394e0757b4025c6ded34eb2b6
-pkgver=0.3.1beta
+pkgver=0.4.0beta
 pkgrel=1
 pkgdesc='Chat and file transfer over HF with Data2G'
 arch=(x86_64 aarch64)
@@ -28,7 +28,7 @@ optdepends=('data2g: data2g-host, the modem Ragtime talks to (can also run on an
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz"
         "git+https://github.com/baitisj/sotto.git#commit=$_sotto"
         "git+https://github.com/xiph/rnnoise.git#commit=$_rnnoise")
-sha256sums=('365c4630c53cc86cec4c61fbeefbc370d084424056ad6b084ad912729478f876'
+sha256sums=('b93a2eb40aaa226b9c9798f04cca5be93051695966b96fb4f8bff6e78fe16679'
             SKIP
             SKIP)
 
