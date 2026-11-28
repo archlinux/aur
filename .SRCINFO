@@ -1,0 +1,17 @@
+pkgbase = old-man-yells-at-bin
+	pkgdesc = Make Abe yell at stuff
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/oncilla/old-man-yells-at
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = old-man-yells-at
+	conflicts = old-man-yells-at
+	options = !debug
+	source_x86_64 = old-man-yells-at-bin-0.1.2-x86_64.tar.gz::https://github.com/oncilla/old-man-yells-at/releases/download/v0.1.2/old-man-yells-at_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 728d81ac3686e6fd058b1a1cd9b37fdea46afc69b492d64c3a23a039fd80cbdb
+	source_aarch64 = old-man-yells-at-bin-0.1.2-aarch64.tar.gz::https://github.com/oncilla/old-man-yells-at/releases/download/v0.1.2/old-man-yells-at_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ebcafad5c25c20c1b8e6dbd176832dea8bcf49f4f86b27981999f3e76cb346e6
+
+pkgname = old-man-yells-at-bin
