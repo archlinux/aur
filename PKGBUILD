@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSVA
-_pkgver=2.6.15
+_pkgver=3.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,6 +10,8 @@ arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
 depends=(
+  r-annotate
+  r-annotationdbi
   r-biobase
   r-biocgenerics
   r-biocparallel
@@ -21,6 +23,7 @@ depends=(
   r-iranges
   r-matrixgenerics
   r-memuse
+  r-rhdf5
   r-s4arrays
   r-s4vectors
   r-singlecellexperiment
@@ -30,11 +33,17 @@ depends=(
   r-summarizedexperiment
 )
 optdepends=(
+  r-arrow
+  r-batchtools
   r-biocstyle
   r-bluster
   r-data.table
+  r-dbi
+  r-doparallel
+  r-duckdb
   r-edger
   r-experimenthub
+  r-foreach
   r-future
   r-genefilter
   r-ggplot2
@@ -44,6 +53,7 @@ optdepends=(
   r-knitr
   r-limma
   r-org.hs.eg.db
+  r-parallelly
   r-patchwork
   r-plotly
   r-promises
@@ -61,8 +71,8 @@ optdepends=(
   r-tenxvisiumdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('60363e233c2b2bcd8683f5352f820815')
-b2sums=('0fbf35f290ddb473f591f8ddaa50e408cd082f76438e5584ccbf179ee27749de50d95d9dc1d4a6582b08ab8bc5528af0a760fc49a617d18ce8c2ebb037fcddb8')
+md5sums=('3ae13808434d2cebbac9c33fb4057aaa')
+b2sums=('24d02fbb55c89f019a1e9b34785cdfaabac16db465cfdc78aacb171dd19a142ba3b759f35ca268ec181cb77fec0d6585faaef8f55dc5fe8ed93ca097c1922dce')
 
 build() {
   mkdir build
