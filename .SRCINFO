@@ -1,0 +1,21 @@
+pkgbase = issuerd-bin
+	pkgdesc = Fast Keycloak-compatible IAM server
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/issuerd/issuerd
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = krb5
+	depends = libgcc
+	depends = openssl-3
+	provides = issuerd
+	conflicts = issuerd
+	options = !debug
+	source_x86_64 = issuerd-bin-0.2.9-x86_64.tar.gz::https://github.com/issuerd/issuerd/releases/download/v0.2.9/issuerd_0.2.9_linux_amd64.tar.gz
+	sha256sums_x86_64 = b53e55b11e3d336730d3ca6cdb5ebbdde99459554aae599fb36221eb53be5782
+	source_aarch64 = issuerd-bin-0.2.9-aarch64.tar.gz::https://github.com/issuerd/issuerd/releases/download/v0.2.9/issuerd_0.2.9_linux_arm64.tar.gz
+	sha256sums_aarch64 = 01dd887306053fa42fd05e7aca488c28e815f64f9aac3b6ea0f7725d1c7c579b
+
+pkgname = issuerd-bin
