@@ -1,6 +1,6 @@
 pkgbase = csskit-bin
 	pkgdesc = Refreshing CSS: formatter, minifier, linter and more
-	pkgver = 0.0.41
+	pkgver = 0.0.42
 	pkgrel = 1
 	url = https://csskit.rs/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = csskit-bin
 	license = MIT
 	provides = csskit
 	conflicts = csskit
-	source = csskit-bin-0.0.41-LICENSE::https://raw.githubusercontent.com/csskit/csskit/v0.0.41/LICENSE
+	source = csskit-bin-0.0.42-LICENSE::https://raw.githubusercontent.com/csskit/csskit/v0.0.42/LICENSE
 	sha256sums = e95c4e4987388738cf61cd047d63188f5918b3bdfc83ab47d2090debc1c0f577
-	source_x86_64 = csskit-0.0.41-x86_64::https://github.com/csskit/csskit/releases/download/v0.0.41/csskit-linux-x64
-	sha256sums_x86_64 = 0c76d12ecdefcfc029fdf2497f0f6d0a75baf42a1656c30af5799ab595a6b6ec
-	source_aarch64 = csskit-0.0.41-aarch64::https://github.com/csskit/csskit/releases/download/v0.0.41/csskit-linux-arm64
-	sha256sums_aarch64 = 33f1e112b5a6f6a78b1775714f9b59bb60d4d85e5dcdb2f29ac78acfbd8f73b4
+	source_x86_64 = csskit-0.0.42-x86_64::https://github.com/csskit/csskit/releases/download/v0.0.42/csskit-linux-x64
+	sha256sums_x86_64 = 6b4c94a69f980a59e893d56e3aa692ecdb30adc06b70d374e2a505ed3aef6207
+	source_aarch64 = csskit-0.0.42-aarch64::https://github.com/csskit/csskit/releases/download/v0.0.42/csskit-linux-arm64
+	sha256sums_aarch64 = 0fae1969e9f7ac40c44ec5713f34a4a340f273d1ec378c4f42465e101f171e0f
 
 pkgname = csskit-bin
