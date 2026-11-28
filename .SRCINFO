@@ -1,0 +1,18 @@
+pkgbase = make-look-scanned-bin
+	pkgdesc = Make PDFs look scanned
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/overflowy/make-look-scanned
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	provides = make-look-scanned
+	conflicts = make-look-scanned
+	options = !debug
+	source_x86_64 = make-look-scanned-bin-1.1.0-x86_64.tar.gz::https://github.com/overflowy/make-look-scanned/releases/download/v1.1.0/make-look-scanned_linux_amd64.tar.gz
+	sha256sums_x86_64 = afb683a62d2d26f4e26be28fe502c00aa32eda0d006ec8353678274fca3685ef
+	source_aarch64 = make-look-scanned-bin-1.1.0-aarch64.tar.gz::https://github.com/overflowy/make-look-scanned/releases/download/v1.1.0/make-look-scanned_linux_arm64.tar.gz
+	sha256sums_aarch64 = d921f1b8c483d10802e98be9269a337f4ee8e26669025b55529188c138ad9aeb
+
+pkgname = make-look-scanned-bin
