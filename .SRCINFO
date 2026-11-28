@@ -1,0 +1,17 @@
+pkgbase = gebug-bin
+	pkgdesc = Debug Dockerized Go applications
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/moshebe/gebug
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = gebug
+	conflicts = gebug
+	options = !debug
+	source_x86_64 = gebug-bin-1.0.7-x86_64.tar.gz::https://github.com/moshebe/gebug/releases/download/v1.0.7/gebug_1.0.7_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = d206656e7961d82e601044f1ecb7b6df4895d9cd5cd54a58522af4f1e55dcb6b
+	source_aarch64 = gebug-bin-1.0.7-aarch64.tar.gz::https://github.com/moshebe/gebug/releases/download/v1.0.7/gebug_1.0.7_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 7416843d50a5feba71dcb2f1b34c84889c3888737316b31455220b2546f29303
+
+pkgname = gebug-bin
