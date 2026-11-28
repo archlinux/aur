@@ -1,0 +1,21 @@
+pkgbase = llmcc-bin
+	pkgdesc = Multi-depth architecture views of code for understanding and generation
+	pkgver = 0.2.65
+	pkgrel = 1
+	url = https://github.com/allenanswerzq/llmcc
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = llmcc
+	conflicts = llmcc
+	options = !debug
+	source = llmcc-bin-0.2.65-LICENSE::https://raw.githubusercontent.com/allenanswerzq/llmcc/v0.2.65/LICENSE
+	sha256sums = d17f227e4df5da1600391338865ce0f3055211760a36688f816941d58232d8dc
+	source_x86_64 = llmcc-bin-0.2.65-x86_64::https://github.com/allenanswerzq/llmcc/releases/download/v0.2.65/llmcc-linux-x64
+	sha256sums_x86_64 = 063e8e3d8414f6b4f73c8953cefffbef5f80eb109a6565d39d838f6c68430e01
+	source_aarch64 = llmcc-bin-0.2.65-aarch64::https://github.com/allenanswerzq/llmcc/releases/download/v0.2.65/llmcc-linux-arm64
+	sha256sums_aarch64 = 02a2d57c5d33d45cc2d66fcd3536a3577019d3d821886c588c12aa4a58596680
+
+pkgname = llmcc-bin
