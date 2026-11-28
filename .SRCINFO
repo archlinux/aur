@@ -1,0 +1,17 @@
+pkgbase = floe-bin
+	pkgdesc = Encrypted peer-to-peer file transfer with no accounts or uploads
+	pkgver = 1.12.7
+	pkgrel = 1
+	url = https://github.com/jannskiee/floe
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = floe
+	conflicts = floe
+	options = !debug
+	source_x86_64 = floe-bin-1.12.7-x86_64.tar.gz::https://github.com/jannskiee/floe/releases/download/v1.12.7/floe_1.12.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0175e78e53918b4f93afc335db2c353ae0a6e16571b3ed796eceeac4e0e4715a
+	source_aarch64 = floe-bin-1.12.7-aarch64.tar.gz::https://github.com/jannskiee/floe/releases/download/v1.12.7/floe_1.12.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = 70c248d8b25fea94a39fd0832babd9b4f973a2f7dcc0e74372be49e3c1c42dab
+
+pkgname = floe-bin
