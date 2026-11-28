@@ -1,0 +1,20 @@
+pkgbase = osu-collect-bin
+	pkgdesc = osu!collector collection downloader and updater
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/uwuclxdy/osu-collect
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openssl-3
+	provides = osu-collect
+	conflicts = osu-collect
+	options = !debug
+	source = osu-collect-bin-0.6.1-LICENSE::https://raw.githubusercontent.com/uwuclxdy/osu-collect/v0.6.1/LICENSE-APACHE
+	sha256sums = 429c026d4b5ffeb625f1277ee0fd65d5a7b2808a7ea6399dd0f4534373c58ec5
+	source_x86_64 = osu-collect-bin-0.6.1-x86_64::https://github.com/uwuclxdy/osu-collect/releases/download/v0.6.1/osu-collect-linux-x64
+	sha256sums_x86_64 = 7624fb53d6737a1cb489ad9e36ffa9291f5aa6153c83fbe2ec65b8d9e6205272
+
+pkgname = osu-collect-bin
