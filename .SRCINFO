@@ -1,0 +1,17 @@
+pkgbase = telegram-mcp-bin
+	pkgdesc = Telegram MCP server for dialogs, messages and drafts
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/chaindead/telegram-mcp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = telegram-mcp
+	conflicts = telegram-mcp
+	options = !debug
+	source_x86_64 = telegram-mcp-bin-0.2.1-x86_64.tar.gz::https://github.com/chaindead/telegram-mcp/releases/download/v0.2.1/telegram-mcp_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 94bf9c1b1f7af621f5f86ef3e592d3f30f046a296eb38aad61743d1801126939
+	source_aarch64 = telegram-mcp-bin-0.2.1-aarch64.tar.gz::https://github.com/chaindead/telegram-mcp/releases/download/v0.2.1/telegram-mcp_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c6fcf11b0fa8b8209b694ba26695c83814fabdc6b3442a968b6dbae85418fc47
+
+pkgname = telegram-mcp-bin
