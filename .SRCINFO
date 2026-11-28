@@ -1,0 +1,24 @@
+pkgbase = ur22c-control
+	pkgdesc = Terminal mixer, DSP effect editor, and PipeWire multi-bus setup for the Steinberg UR22C
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ray-powered/ur22c-control
+	install = ur22c-control.install
+	arch = any
+	license = GPL-3.0-or-later AND MIT
+	depends = python
+	depends = python-rtmidi
+	optdepends = pipewire: PipeWire multi-bus audio routing
+	optdepends = wireplumber: WirePlumber virtual loopback endpoint management
+	optdepends = sudo: switch USB Configuration 1/2 from urmixer settings
+	optdepends = ur22c-dkms: patched snd-usb-audio kernel module for USB Configuration 2
+	source = ur22c-control-0.1.0.tar.gz::https://github.com/ray-powered/ur22c-control/archive/refs/tags/v0.1.0.tar.gz
+	source = ur22c-control.install
+	source = urmixer.desktop
+	source = urfx.desktop
+	sha256sums = 3375424db3ccd195922951637cc9c93d0fac960d4b1e83ab85b7e57543ad5af0
+	sha256sums = 47f20928aa00a94e69cd5249f5ef75b104676522b879585950c9cfad604c6671
+	sha256sums = 8b094fc370198083a51d26df777ed43f94fec348f636d9e93925ea3ab4c909dd
+	sha256sums = 1297a17967839ce6a4c5b070032ef40be58a5a5fa57a4bc6e60c354da7e766e8
+
+pkgname = ur22c-control

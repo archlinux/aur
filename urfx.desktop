@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=UR22C FX Editor
+GenericName=DSP Effect Editor
+Comment=Terminal DSP effect and Sweet Spot preset editor for the Steinberg UR22C
+Exec=urfx
+Icon=audio-card
+Terminal=true
+Categories=AudioVideo;Audio;Mixer;
+Keywords=Steinberg;UR22C;dspMixFx;FX;EQ;

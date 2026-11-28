@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=UR22C Mixer
+GenericName=Audio Interface Mixer
+Comment=Terminal hardware mixer for the Steinberg UR22C
+Exec=urmixer
+Icon=audio-card
+Terminal=true
+Categories=AudioVideo;Audio;Mixer;
+Keywords=Steinberg;UR22C;dspMixFx;ALSA;

@@ -1,0 +1,14 @@
+post_install() {
+    cat <<'EOF'
+==> Optional setup for UR22C 6-out / 8-in multi-bus mode (USB Configuration 2):
+    1. Ensure your kernel includes the UR22C snd-usb-audio quirk (or install ur22c-dkms).
+    2. Enable vendor mode as root (or toggle Card mode in `urmixer` Settings 'S'):
+         sudo /usr/share/ur22c-control/udev/vendor-config.sh on
+    3. Install the PipeWire / WirePlumber multi-bus split as your regular user:
+         ur22c-pipewire-install --now
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
