@@ -3,39 +3,29 @@
 
 pkgname=streamripper
 epoch=1
-_pkgver=1.64.6
-pkgver=1.64.6+56+a5597af
-pkgrel=2
+pkgver=1.68.3
+pkgrel=1
 pkgdesc="Records and splits streaming mp3 into tracks"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-url="https://streamripper.sourceforge.net"
+url="https://github.com/Ashus/streamripper"
 license=('GPL')
 depends=('glib2' 'libmad' 'faad2' 'libvorbis')
-makedepends=('git')
-_commit='a5597af77b942b97cacb207929043c9aac0b756e'
-source=("git+https://github.com/Magentron/streamripper#commit=${_commit}"
-        'fixheaderbufsize.patch')
-sha256sums=('be6711fa28351a8f2165cff41b7afd253ccbf910cf342d253c53511a37966e60'
-            '8f11597db7c59bea23c0f648483b5af4af3d652962290e63a24ce6e0e6712cba')
-
-pkgver() {
-  local _rel_commit='6e5f5fecd31f45eacf630443d91eea6f850dcab1'
-  cd "${pkgname}"
-  printf "%s+%s+%s" "${_pkgver}" "$(( `git rev-list --count ${_commit}` - `git rev-list --count ${_rel_commit}` ))" "`git rev-parse --short ${_commit}`"
-}
+makedepends=('cmake')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('51ef60dec7e334358ef9271fe8d8055f0bbc2e383e4dcd4b33ca5cfeaef9b4e4')
 
 prepare() {
-  cd "${pkgname}"
-  patch -Np1 -i ../fixheaderbufsize.patch
+  mkdir build
 }
 
 build() {
-  cd "${pkgname}"
-  ./configure --prefix=/usr
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ../${pkgname}-${pkgver}
   make
 }
 
 package() {
-  cd "${pkgname}"
+  cd build
   make DESTDIR="$pkgdir" install
 }
+
