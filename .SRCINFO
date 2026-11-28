@@ -1,0 +1,19 @@
+pkgbase = boflink-bin
+	pkgdesc = Linker for Beacon Object Files
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/MEhrn00/boflink
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	depends = glibc
+	depends = libgcc
+	provides = boflink
+	conflicts = boflink
+	options = !debug
+	source_x86_64 = boflink-bin-0.6.3-x86_64.tar.gz::https://github.com/MEhrn00/boflink/releases/download/v0.6.3/boflink-v0.6.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9e4e88185ceee61cfc959dfd572ed22619301b76db47a357ebc9b766364f9c00
+	source_aarch64 = boflink-bin-0.6.3-aarch64.tar.gz::https://github.com/MEhrn00/boflink/releases/download/v0.6.3/boflink-v0.6.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f18491cdaa2f56d90050f649e6dc97ec1564a5c86101b2e565aaf46dbe78835e
+
+pkgname = boflink-bin
