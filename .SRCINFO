@@ -1,0 +1,19 @@
+pkgbase = diesel-guard-bin
+	pkgdesc = Lint dangerous Postgres migration patterns in Diesel and SQLx
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/ayarotsky/diesel-guard
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = diesel-guard
+	conflicts = diesel-guard
+	options = !debug
+	source_x86_64 = diesel-guard-bin-0.12.0-x86_64.tar.xz::https://github.com/ayarotsky/diesel-guard/releases/download/v0.12.0/diesel-guard-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 8f2ada3d3ca806e20bff15a20a46431f736c1a57d23f8bba615dfe1d6262c7a5
+	source_aarch64 = diesel-guard-bin-0.12.0-aarch64.tar.xz::https://github.com/ayarotsky/diesel-guard/releases/download/v0.12.0/diesel-guard-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 40c5954e634ff64fa46b7dea52ac2bc0a3e0369535583664f1038a47e8239607
+
+pkgname = diesel-guard-bin
