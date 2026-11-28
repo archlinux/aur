@@ -1,0 +1,19 @@
+pkgbase = tapo-rest-bin
+	pkgdesc = Unofficial REST API to control Tapo devices
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/ClementNerma/tapo-rest
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = tapo-rest
+	conflicts = tapo-rest
+	options = !debug
+	source = tapo-rest-bin-0.5.1-LICENSE::https://raw.githubusercontent.com/ClementNerma/tapo-rest/v0.5.1/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = tapo-rest-bin-0.5.1-x86_64.tgz::https://github.com/ClementNerma/tapo-rest/releases/download/v0.5.1/tapo-rest-x86_64-unknown-linux-musl.tgz
+	sha256sums_x86_64 = 27de68d1db5c6a5826be3ee6716c1afa0430f978704f2e49818827a4eed1c4b2
+	source_aarch64 = tapo-rest-bin-0.5.1-aarch64.tgz::https://github.com/ClementNerma/tapo-rest/releases/download/v0.5.1/tapo-rest-aarch64-unknown-linux-musl.tgz
+	sha256sums_aarch64 = 9258192eb5b6f1c63a36eedc2a948ecf5e03a2cdab4acfa4dc05fd218ff43d49
+
+pkgname = tapo-rest-bin
