@@ -1,0 +1,17 @@
+pkgbase = restoredrill-bin
+	pkgdesc = Verify that PostgreSQL and MySQL backups actually restore
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/ahmadpiran/restoredrill
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = restoredrill
+	conflicts = restoredrill
+	options = !debug
+	source_x86_64 = restoredrill-bin-0.4.4-x86_64.tar.gz::https://github.com/ahmadpiran/restoredrill/releases/download/v0.4.4/restoredrill_0.4.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5c9d4ce3528d6622e390348d30081d4841e854fcdab21186e8521854b19f276c
+	source_aarch64 = restoredrill-bin-0.4.4-aarch64.tar.gz::https://github.com/ahmadpiran/restoredrill/releases/download/v0.4.4/restoredrill_0.4.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = c0214786bd14570e58eb22bc4626f6aa1266dc1985ed7d4fff378e674744bb81
+
+pkgname = restoredrill-bin
