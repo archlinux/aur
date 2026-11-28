@@ -1,0 +1,19 @@
+pkgbase = lumon-bin
+	pkgdesc = Mysterious and important terminal work simulator
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/terminaltrove/lumon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lumon
+	conflicts = lumon
+	options = !debug
+	source = lumon-bin-3.0.0-LICENSE::https://raw.githubusercontent.com/terminaltrove/lumon/v3.0.0/LICENSE
+	sha256sums = b2a208ce180d0a6a63632e47088a075933c6585e5b53e39d8e6e33ac221cb2ae
+	source_x86_64 = lumon-bin-3.0.0-x86_64::https://github.com/terminaltrove/lumon/releases/download/v3.0.0/lumon_linux_amd64
+	sha256sums_x86_64 = 43a15023ec552f0128ece70e03a6ca88bc4e49b74680a72f23acf115092e538b
+	source_aarch64 = lumon-bin-3.0.0-aarch64::https://github.com/terminaltrove/lumon/releases/download/v3.0.0/lumon_linux_arm64
+	sha256sums_aarch64 = 2d86e342ecb8d4ab27f615f9adae627a8aaf4e4938eab6fc9bcbddadc5aa96c3
+
+pkgname = lumon-bin
