@@ -1,0 +1,18 @@
+pkgbase = ecschedule-bin
+	pkgdesc = Manage Amazon ECS scheduled tasks
+	pkgver = 0.21.1
+	pkgrel = 1
+	url = https://github.com/Songmu/ecschedule
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = ecschedule
+	conflicts = ecschedule
+	options = !debug
+	source_x86_64 = ecschedule-bin-0.21.1-x86_64.tar.gz::https://github.com/Songmu/ecschedule/releases/download/v0.21.1/ecschedule_v0.21.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = ced802aa69a1be2a2510d59db679bbfbca7647f97d19e23247ba508b86746e8d
+	source_aarch64 = ecschedule-bin-0.21.1-aarch64.tar.gz::https://github.com/Songmu/ecschedule/releases/download/v0.21.1/ecschedule_v0.21.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = a1aafeb8ae4dcf9adc89443d230c0eca22556ed8549ee6c7554df9bdd105f554
+
+pkgname = ecschedule-bin
