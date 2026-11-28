@@ -1,6 +1,6 @@
 pkgbase = fastbrowse
 	pkgdesc = Browser automation with cited answers, structured output and code-controlled credentials and authorization
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/agent-labs-dev/fastbrowse
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = fastbrowse
 	optdepends = chromium: a local browser for --local
 	optdepends = google-chrome: a local browser for --local
 	options = !lto
-	source = https://files.pythonhosted.org/packages/source/f/fastbrowse/fastbrowse-0.12.0.tar.gz
-	sha256sums = 5514a5e3349c36ef444ed854a41d19a9d354067a0385873f31b5114b71ccf6da
+	source = https://files.pythonhosted.org/packages/source/f/fastbrowse/fastbrowse-0.12.1.tar.gz
+	sha256sums = c7a5faf4199d752ab2961f534a6ee2af31d11667cbdba5ff54c2b890637ab308
 
 pkgname = fastbrowse
