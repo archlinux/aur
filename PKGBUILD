@@ -1,7 +1,7 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 
 pkgname=pdfalto
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='PDF to XML ALTO file converter'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libtiff' 'freetype2' 'icu' 'libpng14' 'libxml2' 'zlib' 'fontconfig' 'l
 makedepends=('cmake' 'gcc12' 'git')
 source=("pdfalto-${pkgver}.tar.gz::https://github.com/kermitt2/pdfalto/archive/refs/tags/v${pkgver}.tar.gz"
         "pdfalto-libpaper-from-system.patch")
-md5sums=('74eaf4236cbac1d19fbcfaf821ac9f85'
+md5sums=('e84ea4cd6741d41027a6d796650c5c3b'
          'f5af9f957d51267405017f1b3be20877')
 
 prepare()
@@ -19,7 +19,7 @@ prepare()
 	cd "$srcdir"/$pkgname-$pkgver
 
 	# submodules don't work in the tarball, fetch directly
-	git clone https://github.com/lfoppiano/xpdf-4.05.git
+	git clone https://github.com/lfoppiano/xpdf.git xpdf-4.06
 	
 	# libpaper missing, linking against the system library -lpaper
 	patch -Np1 -i "$srcdir/pdfalto-libpaper-from-system.patch"
