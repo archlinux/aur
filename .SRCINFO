@@ -1,6 +1,6 @@
 pkgbase = paca-bin
 	pkgdesc = Non-profit, community-owned and free forever: an AI-native, open-source alternative to Jira, Trello, ClickUp & Monday, where humans and AI agents work as equals on the same Scrum board
-	pkgver = 0.22.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/Paca-AI/paca
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = paca-bin
 	provides = paca
 	conflicts = paca
 	options = !debug
-	source = paca-bin-0.22.0-LICENSE::https://raw.githubusercontent.com/Paca-AI/paca/v0.22.0/LICENSE
+	source = paca-bin-0.22.1-LICENSE::https://raw.githubusercontent.com/Paca-AI/paca/v0.22.1/LICENSE
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = paca-bin-0.22.0-x86_64.tar.gz::https://github.com/Paca-AI/paca/releases/download/v0.22.0/paca-acp-bridge_0.22.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 994350ddca0cbe8090896e1bce4ea635679680a887b7720ea1c2284417e26479
-	source_aarch64 = paca-bin-0.22.0-aarch64.tar.gz::https://github.com/Paca-AI/paca/releases/download/v0.22.0/paca-acp-bridge_0.22.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 8de0abf9abb87f9a718b8fa5bbfb255979baf96157132e07fec2635e3a5dba03
+	source_x86_64 = paca-bin-0.22.1-x86_64.tar.gz::https://github.com/Paca-AI/paca/releases/download/v0.22.1/paca-acp-bridge_0.22.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0409b7c6762e2cbda3e21e711a3a859b34683ff59e2b8736364b771a6722fc12
+	source_aarch64 = paca-bin-0.22.1-aarch64.tar.gz::https://github.com/Paca-AI/paca/releases/download/v0.22.1/paca-acp-bridge_0.22.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 69d9868277b68522a5b04f61fc6e578baab01d616c5f2d4cb5831acb7ff3cd87
 
 pkgname = paca-bin
