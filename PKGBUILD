@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=simona
-_pkgver=1.6.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,6 +14,7 @@ depends=(
   perl
   r-circlize
   r-complexheatmap
+  r-fastmatch
   r-getoptlong
   r-globaloptions
   r-igraph
@@ -48,8 +49,8 @@ optdepends=(
   r-uniprotkeywords
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0ec4ab17b45b0e4e753a9e3507a76360')
-b2sums=('37944f78282569739c984b1ad2e7957656d4180380af08433c973434d6a3f87facbbe59cef3b7c270327f44e3775ecf986f0a14d1b291ec72593a4a9551b6114')
+md5sums=('de7bcf157e9bf6dae7a76bb91f2a6f3e')
+b2sums=('ab5a3be0ed6a98e01dc9f984ab2e9c9037a092703a5a25ecc1513672a91476ba2375ede97bc71aa55bb35ebc5ec28e942c275c5bb4416bf36a920332d71b6d62')
 
 build() {
   mkdir build
