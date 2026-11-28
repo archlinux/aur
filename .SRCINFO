@@ -1,0 +1,19 @@
+pkgbase = ggsrun-bin
+	pkgdesc = Google Drive CLI and MCP server
+	pkgver = 5.3.21
+	pkgrel = 1
+	url = https://github.com/tanaikech/ggsrun
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ggsrun
+	conflicts = ggsrun
+	options = !debug
+	source = ggsrun-bin-5.3.21-LICENSE::https://raw.githubusercontent.com/tanaikech/ggsrun/v5.3.21/LICENCE
+	sha256sums = 8a987fab43e922f7eaf2fd7a1e2cc442c6d68234187d43b231a324c2f39348b6
+	source_x86_64 = ggsrun-bin-5.3.21-x86_64::https://github.com/tanaikech/ggsrun/releases/download/v5.3.21/ggsrun_linux_amd64
+	sha256sums_x86_64 = 30e3d562b6297dc04ddb1c04d4d5ea3d3902f013197198df6eb2cd7cba5f5f06
+	source_aarch64 = ggsrun-bin-5.3.21-aarch64::https://github.com/tanaikech/ggsrun/releases/download/v5.3.21/ggsrun_linux_arm64
+	sha256sums_aarch64 = 27771b89ca61b8fff2f3f3e408aad21561d3263e01b7ae91a4f10ea208286924
+
+pkgname = ggsrun-bin
