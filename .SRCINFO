@@ -1,0 +1,17 @@
+pkgbase = presse-bin
+	pkgdesc = PDF processing CLI
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/SimonBure/presse
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = presse
+	conflicts = presse
+	options = !debug
+	source_x86_64 = presse-bin-0.4.0-x86_64.tar.xz::https://github.com/SimonBure/presse/releases/download/v0.4.0/presse-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = febdd46c0ea2b4c87d2833aee4f8c6900daf6d297e18d0907546ef17773f7a2a
+	source_aarch64 = presse-bin-0.4.0-aarch64.tar.xz::https://github.com/SimonBure/presse/releases/download/v0.4.0/presse-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 09202892c2ce248d60f8220cb6dfea8740b6af49b7a1f8872ccc27f615d2c83c
+
+pkgname = presse-bin
