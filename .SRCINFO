@@ -1,0 +1,20 @@
+pkgbase = olaf-bin
+	pkgdesc = Lightweight, portable acoustic fingerprinting system
+	pkgver = 3.3.3
+	pkgrel = 1
+	url = https://github.com/JorenSix/Olaf
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	provides = olaf
+	conflicts = olaf
+	options = !debug
+	source = olaf-bin-3.3.3-LICENSE::https://raw.githubusercontent.com/JorenSix/Olaf/v3.3.3/LICENSE
+	sha256sums = d11d906d7e29af95d28b051cd89a064bb25ae27a5c407c9994626c47e13bdc8f
+	source_x86_64 = olaf-bin-3.3.3-x86_64.tar.gz::https://github.com/JorenSix/Olaf/releases/download/v3.3.3/olaf_cli-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a9c2c38aa9076cf3a7eeb3ecfeb51a493d54d1c6f740bb49aa0ae71166209946
+	source_aarch64 = olaf-bin-3.3.3-aarch64.tar.gz::https://github.com/JorenSix/Olaf/releases/download/v3.3.3/olaf_cli-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 12f0355c5e28427c78332b0f1671782d1457b7ce9ebcc658d82d71d4823fa386
+
+pkgname = olaf-bin
