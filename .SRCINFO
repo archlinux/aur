@@ -1,0 +1,17 @@
+pkgbase = geocheck-bin
+	pkgdesc = Check where the internet thinks you are and how directly you reach it
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/remnawave/geocheck
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = geocheck
+	conflicts = geocheck
+	options = !debug
+	source_x86_64 = geocheck-bin-0.3.0-x86_64.tar.gz::https://github.com/remnawave/geocheck/releases/download/v0.3.0/geocheck_linux_amd64.tar.gz
+	sha256sums_x86_64 = eca33bbee3c2c3ea7ade85f9a61ef4c7471a8334eb8f0a715e844aef865307d9
+	source_aarch64 = geocheck-bin-0.3.0-aarch64.tar.gz::https://github.com/remnawave/geocheck/releases/download/v0.3.0/geocheck_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1badce683fd901b4052a78b833d536b851cf1f5952d82bc985c875e37a153267
+
+pkgname = geocheck-bin
