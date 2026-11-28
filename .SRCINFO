@@ -1,0 +1,17 @@
+pkgbase = benchi-bin
+	pkgdesc = Benchmark any tool from the command line
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/ConduitIO/benchi
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = benchi
+	conflicts = benchi
+	options = !debug
+	source_x86_64 = benchi-bin-0.4.1-x86_64.tar.gz::https://github.com/ConduitIO/benchi/releases/download/v0.4.1/benchi_0.4.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 829842d4db3fcf63f1d8e138bb7d83837616089103e08e07b3e9d056ea35af81
+	source_aarch64 = benchi-bin-0.4.1-aarch64.tar.gz::https://github.com/ConduitIO/benchi/releases/download/v0.4.1/benchi_0.4.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = b3af8499bebd01158ca26c3b330b59a829632c7a27dfd23a4109ba153e90e99b
+
+pkgname = benchi-bin
