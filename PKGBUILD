@@ -1,8 +1,8 @@
 # Maintainer: amitpadhan525 <amitpadhan525@gmail.com>
 
 pkgname=quickshare-cli
-pkgver=0.2.0.beta.5
-_tagver=0.2.0-beta.5
+pkgver=0.2.0.beta.6
+_tagver=0.2.0-beta.6
 pkgrel=1
 pkgdesc="Cross-platform Quick Share CLI compatible with Android, Windows 11, and Linux"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('go')
 provides=('quickshare')
 conflicts=('quickshare')
 source=("${pkgname}-${_tagver}.tar.gz::${url}/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('dbba04566bf923c72a2c0c73f71b43f65e74e80afb35b0328507ed0f484742c8')
+sha256sums=('bfd06f78de48098feea9822aad411c2968042db8506f25a42b0b9b71677c6668')
 
 prepare() {
   cd "${pkgname}-${_tagver}"
