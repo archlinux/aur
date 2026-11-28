@@ -1,0 +1,17 @@
+pkgbase = gapic-showcase-bin
+	pkgdesc = Demo API showcasing Google generated API client features
+	pkgver = 0.45.0
+	pkgrel = 1
+	url = https://github.com/googleapis/gapic-showcase
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = gapic-showcase
+	conflicts = gapic-showcase
+	options = !debug
+	source = gapic-showcase-bin-0.45.0-LICENSE::https://raw.githubusercontent.com/googleapis/gapic-showcase/v0.45.0/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = gapic-showcase-bin-0.45.0-x86_64.tar.gz::https://github.com/googleapis/gapic-showcase/releases/download/v0.45.0/gapic-showcase-0.45.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = d269ddfe0f6662fad5a5cef446e1932b40f686f93cc487baaff789446b8b9af8
+
+pkgname = gapic-showcase-bin
