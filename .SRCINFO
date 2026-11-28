@@ -1,6 +1,6 @@
 pkgbase = fast-anything-bin
 	pkgdesc = Don't rewrite it in Rust
-	pkgver = 0.8.9
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/EL4CTEO/fast-anything
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = fast-anything-bin
 	provides = fast-anything
 	conflicts = fast-anything
 	options = !debug
-	source_x86_64 = fast-anything-bin-0.8.9-x86_64.tar.gz::https://github.com/EL4CTEO/fast-anything/releases/download/v0.8.9/fast-anything-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = d44d7636d6199ba101ebcae62906c7b7864f0d92931d0c430c2622ebe850da48
-	source_aarch64 = fast-anything-bin-0.8.9-aarch64.tar.gz::https://github.com/EL4CTEO/fast-anything/releases/download/v0.8.9/fast-anything-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 99922e5d37fdcfcec4447a310235ba0ea187af49dc2e6223ada697834869db27
+	source_x86_64 = fast-anything-bin-0.9.0-x86_64.tar.gz::https://github.com/EL4CTEO/fast-anything/releases/download/v0.9.0/fast-anything-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 34d870022b873c4e8dbb800ab8e89c0a054d1a1b8ed121167f7bf4c486f42fbb
+	source_aarch64 = fast-anything-bin-0.9.0-aarch64.tar.gz::https://github.com/EL4CTEO/fast-anything/releases/download/v0.9.0/fast-anything-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0c6b101ed771132540f209f955229d297866155acd3c437bae27adc02d6f060a
 
 pkgname = fast-anything-bin
