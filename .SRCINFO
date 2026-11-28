@@ -1,0 +1,19 @@
+pkgbase = wado-bin
+	pkgdesc = Wado programming language
+	pkgver = 0.0.40
+	pkgrel = 1
+	url = https://github.com/wado-lang/wado
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = wado
+	conflicts = wado
+	options = !debug
+	source_x86_64 = wado-bin-0.0.40-x86_64.tar.gz::https://github.com/wado-lang/wado/releases/download/v0.0.40/wado-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 8424798abcc289317da01b9587410ab4215ebd9d303ff04fa4262a132e3b5275
+	source_aarch64 = wado-bin-0.0.40-aarch64.tar.gz::https://github.com/wado-lang/wado/releases/download/v0.0.40/wado-linux-aarch64.tar.gz
+	sha256sums_aarch64 = d1c9e2852a7150989aec830b90c54bfb12f73cb9a93a0739196b5183217f466c
+
+pkgname = wado-bin
