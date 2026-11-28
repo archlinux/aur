@@ -1,0 +1,22 @@
+pkgbase = grate-bin
+	pkgdesc = SQL script migration runner
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/grate-devs/grate
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = grate
+	conflicts = grate
+	options = !debug
+	source = grate-bin-2.3.0-LICENSE::https://raw.githubusercontent.com/grate-devs/grate/2.3.0/LICENSE
+	sha256sums = 8e39e87db4d52cc59406e7da7be49f7f88161144d5d85966d2754fdd938349fd
+	source_x86_64 = grate-bin-2.3.0-x86_64.zip::https://github.com/grate-devs/grate/releases/download/2.3.0/grate-linux-x64-self-contained-2.3.0.zip
+	sha256sums_x86_64 = b0fe4cfd5fac4721d8284a56f668c6df6bd2aef1f3b68d9f65c0274db8bd8c8b
+	source_aarch64 = grate-bin-2.3.0-aarch64.zip::https://github.com/grate-devs/grate/releases/download/2.3.0/grate-linux-arm64-self-contained-2.3.0.zip
+	sha256sums_aarch64 = f2a02b2e4475c22966ea5d70881bba988677111d7d7b0f2f589c784421b3d9c7
+
+pkgname = grate-bin
