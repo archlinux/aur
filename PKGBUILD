@@ -2,8 +2,8 @@
 # Created with assistance from Hy4 flash Free.
 
 pkgname=zxc-full
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Asymmetric lossless compression library for ultra-fast decode (development: CLI + C library + headers + CMake — source build)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hellobertrand/zxc"
@@ -14,7 +14,7 @@ conflicts=('zxc')
 makedepends=('cmake' 'gcc')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v${pkgver}/zxc-${pkgver}.tar.gz")
-sha256sums=('7e833f3f74dfbbe0bb466976b11fd575be3a83f843720d83ba1e810e05f5a3d0')
+sha256sums=('3a73fee64e3da8f59c0551d5d75884414d1a56ce8826ab3650d91f2e75d1529c')
 
 # makepkg's `lto` option appends -flto=auto to CFLAGS and its safe_strip_lto pass
 # then runs `strip -R .gnu.lto_*` over installed .a files. Upstream only emits fat
