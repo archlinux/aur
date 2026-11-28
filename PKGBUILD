@@ -2,7 +2,7 @@
 
 pkgname=haguichi-git
 _pkgname=haguichi
-pkgver=1.5.4.r30.g24c2e0a
+pkgver=1.5.5.r0.g7ec5321
 pkgrel=1
 pkgdesc="Provides a user friendly GUI to control the Hamachi client on Linux (development version)"
 arch=(x86_64)
