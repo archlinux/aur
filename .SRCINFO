@@ -1,6 +1,6 @@
 pkgbase = vize-bin
 	pkgdesc = Fast Vue.js toolchain
-	pkgver = 0.805.0
+	pkgver = 0.812.0
 	pkgrel = 1
 	url = https://github.com/ubugeeei-prod/vize
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = vize-bin
 	provides = vize
 	conflicts = vize
 	options = !debug
-	source = vize-bin-0.805.0-LICENSE::https://raw.githubusercontent.com/ubugeeei-prod/vize/v0.805.0/LICENSE
+	source = vize-bin-0.812.0-LICENSE::https://raw.githubusercontent.com/ubugeeei-prod/vize/v0.812.0/LICENSE
 	sha256sums = 4e599bb8d73f48717952dab7ac683101cb21cb0584ab7bb3b851d80be82d726f
-	source_x86_64 = vize-bin-0.805.0-x86_64.tar.gz::https://github.com/ubugeeei-prod/vize/releases/download/v0.805.0/vize-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b9e4ec5287a82870a3c05ba9c5bc1564a7dc670b0bd0c7dcfe2c2558c745ab15
-	source_aarch64 = vize-bin-0.805.0-aarch64.tar.gz::https://github.com/ubugeeei-prod/vize/releases/download/v0.805.0/vize-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 848c1ee707c29c0faba61044018988f5219fbb6cae3120c9257ac658a8f37d11
+	source_x86_64 = vize-bin-0.812.0-x86_64.tar.gz::https://github.com/ubugeeei-prod/vize/releases/download/v0.812.0/vize-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 204962138a5d50e89b396574f68b79d06f7e489ab15a442ab7c62221ef989e83
+	source_aarch64 = vize-bin-0.812.0-aarch64.tar.gz::https://github.com/ubugeeei-prod/vize/releases/download/v0.812.0/vize-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7092ef83bf778a7eb047a86a23b6a85b5dd3a8254a2095843465ebc07bee8344
 
 pkgname = vize-bin
