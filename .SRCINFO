@@ -1,0 +1,14 @@
+pkgbase = wirez-bin
+	pkgdesc = Redirect a program's TCP and UDP traffic to a SOCKS5 proxy
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/v-byte-cpu/wirez
+	arch = x86_64
+	license = MIT
+	provides = wirez
+	conflicts = wirez
+	options = !debug
+	source_x86_64 = wirez-bin-0.1.0-x86_64.tar.gz::https://github.com/v-byte-cpu/wirez/releases/download/v0.1.0/wirez_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 202eeade6b8099d67be24f61ecdd1e4771d6bc84bb21647d6a3b725d8a0e4c4f
+
+pkgname = wirez-bin
