@@ -1,0 +1,17 @@
+pkgbase = reckoner-bin
+	pkgdesc = Declaratively install and manage multiple Helm chart releases
+	pkgver = 6.3.1
+	pkgrel = 1
+	url = https://github.com/FairwindsOps/reckoner
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = reckoner
+	conflicts = reckoner
+	options = !debug
+	source_x86_64 = reckoner-bin-6.3.1-x86_64.tar.gz::https://github.com/FairwindsOps/reckoner/releases/download/v6.3.1/reckoner_6.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = e507637f6c8e052c88ef19567c2b9ca7b5e9dbf05fb40b652804111493bb27da
+	source_aarch64 = reckoner-bin-6.3.1-aarch64.tar.gz::https://github.com/FairwindsOps/reckoner/releases/download/v6.3.1/reckoner_6.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7f17ffea008c321624b4c89ee860ed6bfb5f4e563857405c5717f5d2e21db481
+
+pkgname = reckoner-bin
