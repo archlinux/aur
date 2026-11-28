@@ -1,0 +1,19 @@
+pkgbase = slacrawl-bin
+	pkgdesc = Slack command-line client with a SQLite backend
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/openclaw/slacrawl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = slacrawl
+	conflicts = slacrawl
+	options = !debug
+	source = slacrawl-bin-0.12.0-LICENSE::https://raw.githubusercontent.com/openclaw/slacrawl/v0.12.0/LICENSE
+	sha256sums = 021abf1cacb291c2b0be92ab078d6c336f859f1bec9a3a3afbc039362971e31e
+	source_x86_64 = slacrawl-bin-0.12.0-x86_64.tar.gz::https://github.com/openclaw/slacrawl/releases/download/v0.12.0/slacrawl_0.12.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0a8f75d3a563ba4c0387d05f4ebd26cfb5d9c82f22f78968f5d69f0b4a28ecc1
+	source_aarch64 = slacrawl-bin-0.12.0-aarch64.tar.gz::https://github.com/openclaw/slacrawl/releases/download/v0.12.0/slacrawl_0.12.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0fb1fa51438c35e5e1a5a64458122e06202f8bdc716b6db4cb0f9d9d48e2f295
+
+pkgname = slacrawl-bin
