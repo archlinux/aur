@@ -3,7 +3,7 @@
 # Contributor: Lindasy Zhou <i@lin.moe>
 
 pkgname=memos
-pkgver=26.11.2
+pkgver=26.11.3
 pkgrel=1
 pkgdesc='Privacy-first, lightweight note-taking service'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         'memos-sysusers.conf'
         'memos-tmpfiles.conf'
         'memos.conf')
-sha256sums=('ac87da6b57c65a04930479bd137caf24f2e5a507e9ed90268d9a542f9434517f'
+sha256sums=('9ada20b49539394e64746fff321d3380a0db5b51559b7052a75d60c60f84e773'
             '0c7d5102f95e7348c4791e2c919b3664c1124469c5174349c81153894affe2dd'
             'eaf0d053c5673176c730085493db4d63b15e212e101fc02c9f9236f8f91abf20'
             'ed17b9db8aadd8518a3da01e45b5445a819bdb0f7ccd8bc1acc9f52cc02964fc'
