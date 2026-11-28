@@ -1,0 +1,17 @@
+pkgbase = go-money-bin
+	pkgdesc = Self-hosted personal finance manager
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/ft-t/go-money
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = go-money
+	conflicts = go-money
+	options = !debug
+	source_x86_64 = go-money-bin-1.8.0-x86_64.tar.gz::https://github.com/ft-t/go-money/releases/download/v1.8.0/go-money-server_1.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4f3f42db58393d7f51cae10d4f84e4e6a3c0090530b4ed6bae2f5aeae7da201f
+	source_aarch64 = go-money-bin-1.8.0-aarch64.tar.gz::https://github.com/ft-t/go-money/releases/download/v1.8.0/go-money-server_1.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 824ddb46d980eda854e6f06cface861cf19626c934db359541e3b250126dd980
+
+pkgname = go-money-bin
