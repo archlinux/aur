@@ -1,6 +1,6 @@
 pkgbase = git-tree-bin
 	pkgdesc = Local-first visual Git client for macOS, Windows and Linux
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://gittree.app
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = git-tree-bin
 	provides = gittree
 	conflicts = git-tree
 	options = !strip
-	source_x86_64 = git-tree-x86_64-3.1.1.deb::https://github.com/git-tree-app/gittree/releases/download/v3.1.1/Git-Tree-Linux.deb
-	sha256sums_x86_64 = 46a898526d4e5c585a216dd1855a4657091cd681776649670cec1df4603a6259
+	source_x86_64 = git-tree-x86_64-3.1.2.deb::https://github.com/git-tree-app/gittree/releases/download/v3.1.2/Git-Tree-Linux.deb
+	sha256sums_x86_64 = 08634955df9d2000772b046084a2075acca9aa0cdf11c18b8e21e5e8298b7433
 
 pkgname = git-tree-bin
