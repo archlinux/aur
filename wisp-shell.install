@@ -1,0 +1,9 @@
+post_install() {
+    echo ">>> To use wisp as your login shell, add /usr/bin/wisp to /etc/shells"
+    echo ">>> and run: chsh -s /usr/bin/wisp"
+    echo ">>> Example config: /usr/share/doc/wisp-shell/example-init.lua"
+}
+
+post_upgrade() {
+    post_install
+}
