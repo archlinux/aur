@@ -1,13 +1,13 @@
 pkgbase = pi-ext-goal
 	pkgdesc = Autonomous goal loop for the Pi coding agent: keeps working until the goal is verified complete
-	pkgver = 0.55.7
+	pkgver = 0.55.9
 	pkgrel = 1
 	url = https://github.com/narumiruna/pi-extensions
 	install = pi-ext-goal.install
 	arch = any
 	license = MIT
 	makedepends = npm
-	source = pi-goal-0.55.7.tgz::https://registry.npmjs.org/@narumitw/pi-goal/-/pi-goal-0.55.7.tgz
-	sha256sums = 6fd42b83431010edc7d6eb7c577b5841f53e469ead5beb0669501c7e2ec99c0d
+	source = pi-goal-0.55.9.tgz::https://registry.npmjs.org/@narumitw/pi-goal/-/pi-goal-0.55.9.tgz
+	sha256sums = 480c9dfe7972dd7c869794cb6fe678ba7de2c09f3ad48a8910f9b215f48bff0d
 
 pkgname = pi-ext-goal
