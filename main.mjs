@@ -37,10 +37,20 @@ const linkCli = (userData) => {
   try {
     const version = readFileSync(join(import.meta.dirname, "opencode-cli.version"), "utf8").trim()
     if (!version) return
-    const link = join(userData, "cli", stageDir(version), "opencode-cli")
-    if (existsSync(link)) return
-    mkdirSync(dirname(link), { recursive: true })
-    symlinkSync(join(import.meta.dirname, "opencode-cli"), link)
+    const dir = join(userData, "cli", stageDir(version))
+    const link = join(dir, "opencode-cli")
+    if (!existsSync(link)) {
+      mkdirSync(dir, { recursive: true })
+      symlinkSync(join(import.meta.dirname, "opencode-cli"), link)
+    }
+    // The CLI runs `warp-install.sh` from next to its own executable; keep the
+    // installer beside the staged CLI too, or the WARP install button fails.
+    const installer = join(import.meta.dirname, "warp-install.sh")
+    const installerLink = join(dir, "warp-install.sh")
+    if (existsSync(installer) && !existsSync(installerLink)) {
+      mkdirSync(dir, { recursive: true })
+      symlinkSync(installer, installerLink)
+    }
   } catch {}
 }
 

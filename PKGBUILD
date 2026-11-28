@@ -1,7 +1,7 @@
 # Maintainer: Arthur Simão <arthursimao312@gmail.com>
 pkgname=gambiarra-infinite-bin
-pkgver=1.0.2
-pkgrel=2
+pkgver=4.3.0
+pkgrel=1
 pkgdesc="GambiarraInfinite V4 - AI coding desktop app (LarpCode/OpenCode rebrand)"
 arch=('x86_64')
 url="https://github.com/ArthurSimin/GambiarraInfinite"
@@ -25,7 +25,7 @@ options=('!strip' '!debug')
 #
 # The version string is what the CLI reports on /api/info; the desktop app reads
 # opencode-cli.version and only reuses the background service when the two match.
-_cliver=0.0.0-local-202611241429
+_cliver=4.3.0
 _cliasset=gambiarra-infinite-cli-linux-x64.zst
 
 source=(
@@ -33,6 +33,7 @@ source=(
   "gambiarra-infinite-desktop-${pkgver}.tar.zst::${url}/releases/download/v${pkgver}/gambiarra-infinite-desktop-${pkgver}.tar.zst"
   "${_cliasset}::${url}/releases/download/v${pkgver}/${_cliasset}"
   "main.mjs"
+  "warp-install.sh"
 )
 # The CLI asset is a raw single-file zstd stream, not a tarball: skip makepkg's
 # auto-extraction and unpack it by hand in package().
@@ -40,9 +41,10 @@ noextract=("${_cliasset}")
 makedepends=('zstd')
 # LICENSE
 sha256sums=('SKIP'
-            'fc5640965ef6693b9dadd39f7c579856966e5c8922f25ecbd78cd902c7e83b22'
-            '99100fb333ed214250754f8bec9e7e3de97201c8e255f2782cb3a93dac540148'
-            '8891bc8930d3f1aba8a0a464f53f52cc89c672c0d37c8a699287d5b1d15f70d5')
+            '4cfe65103f770fc3e0717ce2e611ee75feefb0e3c5b0a10985fe9a437003e91f'
+            'b28c4ca161224e5245ab8eeeaf66ae58552e7cd1d56138b1d82938f48f8fce1f'
+            'bff20d5bda7f4d022aa4e1700115891932125fe66da40650f5964d71f286ffd5'
+            'e148e36d4c71598747c32bcb9b54fc7ae9e478fce1d6efba03ec9513bdaf42da')
 
 package() {
   local _appdir="${pkgdir}/usr/lib/gambiarra-infinite"
@@ -74,6 +76,12 @@ package() {
   install -Dm644 "${srcdir}/main.mjs" "${_appdir}/main.mjs"
   sed -i 's#"main": "./out/main/index.js"#"main": "./main.mjs"#' "${_appdir}/package.json"
   grep -q '"main": "./main.mjs"' "${_appdir}/package.json"
+
+  # --- native Cloudflare WARP installer (the notice's install button) ---
+  # Also shipped from the AUR repo so installer fixes do not require a new
+  # payload. It must sit next to the CLI: the CLI runs it relative to its own
+  # executable, and main.mjs symlinks it into the staged CLI directory.
+  install -Dm755 "${srcdir}/warp-install.sh" "${_appdir}/warp-install.sh"
 
   # --- launcher ---
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/gambiarra-infinite" <<'EOF'
