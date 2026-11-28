@@ -1,0 +1,21 @@
+pkgbase = bacon-ls-bin
+	pkgdesc = Rust language server using Bacon diagnostics
+	pkgver = 0.32.0
+	pkgrel = 1
+	url = https://github.com/crisidev/bacon-ls
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = bacon-ls
+	conflicts = bacon-ls
+	options = !debug
+	source = bacon-ls-bin-0.32.0-LICENSE::https://raw.githubusercontent.com/crisidev/bacon-ls/0.32.0/LICENSE
+	sha256sums = 7d74806e0916f695769589c651d23e52ceb7cb99f58e53832cb5e08585ac0d88
+	source_x86_64 = bacon-ls-bin-0.32.0-x86_64.tar.gz::https://github.com/crisidev/bacon-ls/releases/download/0.32.0/bacon-ls-0.32.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2250c39466a84be4adbc8c249c871cea6f8715e9fb0236aba57ae16134aa7e3d
+	source_aarch64 = bacon-ls-bin-0.32.0-aarch64.tar.gz::https://github.com/crisidev/bacon-ls/releases/download/0.32.0/bacon-ls-0.32.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e7bb148fb15c831c393a22f7ffdd48ef1b6fa9e4290ba3fce4fd09a91cd3ade5
+
+pkgname = bacon-ls-bin
