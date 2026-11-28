@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.l3afpad</id>
+  <launchable type="desktop-id">l3afpad.desktop</launchable>
+  <name>L3afpad</name>
+  <summary>Simple text editor with Markdown tools</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
+  <description>
+    <p>
+      L3afpad is a simple GTK text editor that emphasizes simplicity. It starts up quickly and
+      requires few libraries.
+    </p>
+    <p>
+      This build (l3afpad-md) adds syntax highlighting, Markdown formatted editing, preview,
+      split view and HTML export, Paste as Markdown, and an emoji chooser.
+    </p>
+  </description>
+  <url type="bugtracker">https://github.com/sfs-pra/l3afpad-md/issues</url>
+  <url type="homepage">https://github.com/sfs-pra/l3afpad-md</url>
+</component>
