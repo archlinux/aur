@@ -7,7 +7,7 @@
 
 pkgname=kimi-work-intl-bin
 pkgver=3.2.29
-pkgrel=1
+pkgrel=2
 _prefix='/opt/kimi-work-intl'
 pkgdesc='Kimi Work desktop client, international build pinned to the overseas region'
 arch=('x86_64')
@@ -44,7 +44,7 @@ noextract=("kimi_${pkgver}.exe")
 sha256sums=(
   '85e9c4268a8ee267755f0f3faa4b7cd957db27d57d0c22d53cb2c691d34f0ec2'
   '817e0d47bca30dfb87aa2e9df40fb94ba1d3704305d2b6b0f2b4359e4ab7e304'
-  '38a68601a2d405307d9450247dbf09e92547ecc35ad72dc8ffdd7cfb09a6aa05'
+  '7d8d45288ddc4cf56ad07b3eaa9ab2c72b39afd441479c9dabb1dcde52c824c4'
   'dc2c12c5fff0b616dd983b6fb07f426dcefa1167e0d05bbc807fc7346da0ef9b'
   '3f7d7bbc4b0f443344755ac0dee7d5752e3c51018134467f8748b0862b86f41a'
   'ab973d8d007cfed09bf051378baf4fd220f545a5533ab5e9269aad8674e7f468'
@@ -115,6 +115,8 @@ prepare() {
 
   node "${srcdir}/patch-region.js" "${srcdir}/app" overseas kimi-desktop-intl
   grep -qF 'return "overseas";' "${srcdir}/app/out/main/index.js"
+  # 上游自带 1 处 return "overseas" 字面量；区域判定与设备区域两个 getter 各 1 处。
+  [ "$(grep -cF 'return "overseas";' "${srcdir}/app/out/main/index.js")" -ge 3 ]
   grep -qE '_0x[0-9a-f]+ = null, _0x[0-9a-f]+ = "overseas";' \
     "${srcdir}/app/out/main/index.js"
   grep -qF '(process.env["KIMI_WORK_RESOURCES"] || process[' \

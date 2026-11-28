@@ -39,10 +39,24 @@ function replaceOnce(re, replacement, label) {
 
 // 1. 区域判定 getter：原实现依次返回手动设置、设备区域和上次生效值。
 //    直接固定成常量，后续所有域名/环境判断都会拿到同一个区域。
+//    同时记下设备区域变量名，供下面的设备区域 getter 使用。
+let deviceVar = null;
 replaceOnce(
-  /function (_0x[0-9a-f]+)\(\) \{\n  if \(_0x[0-9a-f]+\) return _0x[0-9a-f]+;\n  if \(_0x[0-9a-f]+\) return _0x[0-9a-f]+;\n  return _0x[0-9a-f]+;\n\}/g,
-  (match, name) => `function ${name}() {\n  return "${region}";\n}`,
+  /function (_0x[0-9a-f]+)\(\) \{\n  if \((_0x[0-9a-f]+)\) return \2;\n  if \((_0x[0-9a-f]+)\) return \3;\n  return (_0x[0-9a-f]+);\n\}/g,
+  (match, name, manualVar, devVar) => {
+    deviceVar = devVar;
+    return `function ${name}() {\n  return "${region}";\n}`;
+  },
   '区域判定函数'
+);
+
+// 1b. 设备/账号区域 getter：登录页 URL 与认证流程直接读设备/账号上报的区域，
+//     不经过上面的判定函数；不固定它，zh-CN 机器上的 intl 包在登录前仍会拿到
+//     china 的登录域名。3.2.29 里该函数体只有一行 return。
+replaceOnce(
+  new RegExp(`function (_0x[0-9a-f]+)\\(\\) \\{\\n  return ${deviceVar};\\n\\}`, 'g'),
+  (match, name) => `function ${name}() {\n  return "${region}";\n}`,
+  '设备区域 getter'
 );
 
 // 2. 启动时恢复 RegionState 的种子值。初始化函数会把持久化的
