@@ -1,0 +1,37 @@
+pkgbase = x4vrmod
+	pkgdesc = Unofficial VR mod for native Linux X4: Foundations (not affiliated with Egosoft)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Patola/X4VRMOD
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = LicenseRef-x4vrmod-linking-exception
+	license = Apache-2.0
+	license = MIT
+	makedepends = cmake
+	makedepends = gettext
+	makedepends = git
+	makedepends = python
+	makedepends = python-pillow
+	makedepends = vulkan-headers
+	depends = bash
+	depends = gamescope
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libstdc++
+	depends = openxr
+	depends = qt6-base
+	depends = vulkan-icd-loader
+	depends = zlib
+	optdepends = gamemode: the launcher offers it, for a few more frames per second
+	optdepends = qt6-translations: Qt's own buttons in the launcher's language
+	options = !debug
+	source = x4vrmod::git+https://github.com/Patola/X4VRMOD.git#tag=v1.0.0
+	source = OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git#commit=64f2b37c8c6da3d83c9b4d11865ba1fb752cb8ec
+	source = x4vrmod-1.0.0-packaging.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = abe1e2d5aad2ddace8d623a86fce6f590c733500c4aa18d75f898e72a4e96353
+
+pkgname = x4vrmod

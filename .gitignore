@@ -1,0 +1,6 @@
+# Only the package recipe: makepkg leaves source clones, src/, pkg/ and built packages here.
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.patch

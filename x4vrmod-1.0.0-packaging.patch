@@ -1,0 +1,62 @@
+diff --git a/cmake/x4vr_openxr_loader.cmake b/cmake/x4vr_openxr_loader.cmake
+index 22a3946..12eb323 100644
+--- a/cmake/x4vr_openxr_loader.cmake
++++ b/cmake/x4vr_openxr_loader.cmake
+@@ -42,8 +42,12 @@ if(X4VR_BUNDLE_OPENXR_LOADER AND (TARGET OpenXR::headers OR OPENXR_HEADER_DIR))
+             -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+             -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+             -DCMAKE_INSTALL_LIBDIR=lib
++            # Where the loader looks for runtime manifests besides /etc/xdg: /etc, as in a
++            # system's loader, not this build's install folder.
++            -DCMAKE_INSTALL_SYSCONFDIR=/etc
+             -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+-            "-DCMAKE_SHARED_LINKER_FLAGS=-static-libstdc++ -static-libgcc"
++            # The build's own LDFLAGS kept (a package's hardening: full RELRO, namcap).
++            "-DCMAKE_SHARED_LINKER_FLAGS=$ENV{LDFLAGS} -static-libstdc++ -static-libgcc"
+             -DCMAKE_DISABLE_FIND_PACKAGE_JsonCpp=ON
+             -DBUILD_WITH_SYSTEM_JSONCPP=OFF
+             -DDYNAMIC_LOADER=ON
+diff --git a/launcher/CMakeLists.txt b/launcher/CMakeLists.txt
+index 9f7ec08..751e722 100644
+--- a/launcher/CMakeLists.txt
++++ b/launcher/CMakeLists.txt
+@@ -13,10 +13,15 @@ add_library(x4vrmod_core STATIC
+     ${X4VR_VERSION_FILE})
+ add_dependencies(x4vrmod_core x4vr_version)
+ target_include_directories(x4vrmod_core PUBLIC core)
+-target_compile_definitions(x4vrmod_core PRIVATE
+-    X4VRMOD_SOURCE_DIR="${CMAKE_SOURCE_DIR}"
+-    X4VRMOD_BUILD_DIR="${CMAKE_BINARY_DIR}"
+-    X4VRMOD_PREFIX="${CMAKE_INSTALL_PREFIX}")
++target_compile_definitions(x4vrmod_core PRIVATE X4VRMOD_PREFIX="${CMAKE_INSTALL_PREFIX}")
++# Started from this build tree, the launcher runs the mod from it (the "build tree" layout). A
++# package turns it off: it never runs from there, and then no build path is left in its binaries.
++option(X4VR_DEV_LAYOUT "The launcher, started from this build tree, runs the mod from it" ON)
++if(X4VR_DEV_LAYOUT)
++    target_compile_definitions(x4vrmod_core PRIVATE
++        X4VRMOD_SOURCE_DIR="${CMAKE_SOURCE_DIR}"
++        X4VRMOD_BUILD_DIR="${CMAKE_BINARY_DIR}")
++endif()
+ target_link_libraries(x4vrmod_core PUBLIC ${CMAKE_DL_LIBS})
+ # OpenXR: headers at build time, loader dlopen'd at run time, as in the layer.
+ if(TARGET OpenXR::headers OR OPENXR_HEADER_DIR)
+diff --git a/launcher/core/checks.cpp b/launcher/core/checks.cpp
+index 08e5ce0..d84d1fe 100644
+--- a/launcher/core/checks.cpp
++++ b/launcher/core/checks.cpp
+@@ -45,6 +45,7 @@ Layout detect_layout(const std::string &home) {
+         l.locale_dir = zip + "/locale";
+         return l;
+     }
++#ifdef X4VRMOD_BUILD_DIR // X4VR_DEV_LAYOUT: off in packages
+     if (here == X4VRMOD_BUILD_DIR "/launcher" || here == X4VRMOD_BUILD_DIR "/tests") {
+         l.kind = LayoutKind::Dev;
+         l.data_dir = X4VRMOD_SOURCE_DIR;
+@@ -58,6 +59,7 @@ Layout detect_layout(const std::string &home) {
+         l.locale_dir = X4VRMOD_BUILD_DIR "/locale";
+         return l;
+     }
++#endif
+     l.kind = LayoutKind::Package;
+     l.data_dir = X4VRMOD_PREFIX "/share/x4vrmod";
+     l.extension_dir = l.data_dir + "/extension/x4vrmod";
