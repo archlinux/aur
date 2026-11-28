@@ -1,11 +1,11 @@
 # Maintainer: Pavel Olizko <contact@nolight.dev>
 
-# Rendered on every stable release from aur/sonora-bin/PKGBUILD in github.com/sonorahq/sonora by
+# Rendered on every stable release from packaging/aur/sonora-bin/PKGBUILD in github.com/sonorahq/sonora by
 # its release workflow, which overwrites any change made in the AUR repository.
 
 pkgname=sonora-bin
 _pkgname=sonora
-pkgver=0.50.3
+pkgver=0.51.0
 pkgrel=1
 pkgdesc='A native, familiar music streaming client'
 arch=('x86_64' 'aarch64')
@@ -25,14 +25,27 @@ options=('!strip' '!debug')
 source=("${url}/archive/refs/tags/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-x86_64-unknown-linux-gnu")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-aarch64-unknown-linux-gnu")
-sha256sums=('8e1a1af03675cacbea6e42538b87564f2493120fc56377ed2afbfde710092571')
-sha256sums_x86_64=('ff08641f4c076e5b5b986ca10da6afa8e154a6ae6d15b6d13ae41dac8534d020')
-sha256sums_aarch64=('5661845ce1d16456376dae6682c814576b1e0e94c10ed94425b1059a068dbafb')
+sha256sums=('af7b15060010f966630666214a21a1b7004c39d8c9a9c3e02e8510425960f5fa')
+sha256sums_x86_64=('5f5d19de73f6b2fcf001e5d412015bb7710fddecb54a6dc5599c4ffaaca455b1')
+sha256sums_aarch64=('1e37b512fa6e5295e12ff08305c499afd1e8454ae80f4e76baa003015188a7e1')
 
 package() {
   cd "${_pkgname}-${pkgver}"
 
   install -Dm755 "${srcdir}/${_pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
+
+  # The executable prints its own completion scripts, so they always match its commands.
+  local shell
+  for shell in bash zsh fish; do
+    "${pkgdir}/usr/bin/${_pkgname}" completions "${shell}" > "${srcdir}/completion.${shell}"
+  done
+  install -Dm644 "${srcdir}/completion.bash" \
+    "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm644 "${srcdir}/completion.zsh" \
+    "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm644 "${srcdir}/completion.fish" \
+    "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+
   install -Dm644 assets/linux/sonora.desktop \
     "${pkgdir}/usr/share/applications/sonora.desktop"
   install -Dm644 assets/linux/sonora.svg \
@@ -46,7 +59,7 @@ package() {
   done
 
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm644 THIRD-PARTY.md "${pkgdir}/usr/share/licenses/${_pkgname}/THIRD-PARTY.md"
+  install -Dm644 docs/THIRD-PARTY.md "${pkgdir}/usr/share/licenses/${_pkgname}/THIRD-PARTY.md"
   install -Dm644 assets/fonts/LICENSE.txt \
     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.Inter"
   install -Dm644 assets/icons/LICENSE \

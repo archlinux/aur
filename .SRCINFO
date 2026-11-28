@@ -1,6 +1,6 @@
 pkgbase = sonora-bin
 	pkgdesc = A native, familiar music streaming client
-	pkgver = 0.50.3
+	pkgver = 0.51.0
 	pkgrel = 1
 	url = https://github.com/sonorahq/sonora
 	arch = x86_64
@@ -22,15 +22,15 @@ pkgbase = sonora-bin
 	optdepends = pipewire-alsa: audio output through PipeWire
 	optdepends = pulseaudio-alsa: audio output through PulseAudio
 	optdepends = webkit2gtk-4.1: sign in to YouTube Music through a browser window
-	provides = sonora=0.50.3
+	provides = sonora=0.51.0
 	conflicts = sonora
 	options = !strip
 	options = !debug
-	source = https://github.com/sonorahq/sonora/archive/refs/tags/v0.50.3/sonora-0.50.3.tar.gz
-	sha256sums = 8e1a1af03675cacbea6e42538b87564f2493120fc56377ed2afbfde710092571
-	source_x86_64 = sonora-0.50.3-x86_64::https://github.com/sonorahq/sonora/releases/download/v0.50.3/sonora-v0.50.3-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = ff08641f4c076e5b5b986ca10da6afa8e154a6ae6d15b6d13ae41dac8534d020
-	source_aarch64 = sonora-0.50.3-aarch64::https://github.com/sonorahq/sonora/releases/download/v0.50.3/sonora-v0.50.3-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = 5661845ce1d16456376dae6682c814576b1e0e94c10ed94425b1059a068dbafb
+	source = https://github.com/sonorahq/sonora/archive/refs/tags/v0.51.0/sonora-0.51.0.tar.gz
+	sha256sums = af7b15060010f966630666214a21a1b7004c39d8c9a9c3e02e8510425960f5fa
+	source_x86_64 = sonora-0.51.0-x86_64::https://github.com/sonorahq/sonora/releases/download/v0.51.0/sonora-v0.51.0-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 5f5d19de73f6b2fcf001e5d412015bb7710fddecb54a6dc5599c4ffaaca455b1
+	source_aarch64 = sonora-0.51.0-aarch64::https://github.com/sonorahq/sonora/releases/download/v0.51.0/sonora-v0.51.0-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 1e37b512fa6e5295e12ff08305c499afd1e8454ae80f4e76baa003015188a7e1
 
 pkgname = sonora-bin
