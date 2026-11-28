@@ -1,14 +1,15 @@
 # Maintainer: zoidby
 
 pkgname=quake3e-git
-pkgver=r2378.4b2b0729
+pkgver=r2687.dec793de
 pkgrel=1
 provides=('quake3')
 pkgdesc="Improved Quake III Arena Engine"
 url="https://github.com/ec-/Quake3e"
 license=('GPL')
 arch=('x86_64' 'aarch64')
-makedepends=('git' 'sdl2')
+depends=('sdl2')
+makedepends=('git')
 source=('git+https://github.com/ec-/Quake3e.git'
 'quake3e.desktop'
 'quake3e.png')
