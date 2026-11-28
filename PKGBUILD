@@ -11,7 +11,7 @@ _appname=(stax st)
 pkgname=${_cratename}
 pkgdesc="The fastest stacked-branch workflow for Git"
 
-pkgver=0.121.0
+pkgver=0.122.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -29,7 +29,7 @@ provides=("${_appname[@]}")
 conflicts=("${_appname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('ced4b23d0eb4157b522f27636c4e9d2ef3568eca6cebfd275650435e8c4dc343')
+sha256sums=('2f6c4e7b9aaca3d924d7668bac643c222a74e4b9e698391bfb40fd9aaeef6b48')
 
 
 build() {
