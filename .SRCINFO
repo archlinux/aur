@@ -1,6 +1,6 @@
 pkgbase = mc-router-bin
 	pkgdesc = Route Minecraft client connections to backend servers by requested address
-	pkgver = 1.57.0
+	pkgver = 1.57.1
 	pkgrel = 1
 	url = https://github.com/itzg/mc-router
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = mc-router-bin
 	provides = mc-router
 	conflicts = mc-router
 	options = !debug
-	source_x86_64 = mc-router-bin-1.57.0-x86_64.tar.gz::https://github.com/itzg/mc-router/releases/download/v1.57.0/mc-router_1.57.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7cdd5352d9cf09168d762cd70d8be2648987028fd3d80336f0f7db92aeb1265e
-	source_aarch64 = mc-router-bin-1.57.0-aarch64.tar.gz::https://github.com/itzg/mc-router/releases/download/v1.57.0/mc-router_1.57.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 90c6457e6b262b5ec0b2609d2703db8ce452c03f4b2cf51a38cc41285e52e934
+	source_x86_64 = mc-router-bin-1.57.1-x86_64.tar.gz::https://github.com/itzg/mc-router/releases/download/v1.57.1/mc-router_1.57.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = cb7677e689a3f44ec0a737ac20ccccc22e8ff62b532514c304b246d3daaba9ef
+	source_aarch64 = mc-router-bin-1.57.1-aarch64.tar.gz::https://github.com/itzg/mc-router/releases/download/v1.57.1/mc-router_1.57.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 20d68747d4ab0563fe336c05e9b47805369ca245c3aefaf3e439318bfd481d54
 
 pkgname = mc-router-bin
