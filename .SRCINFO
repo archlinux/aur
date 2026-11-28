@@ -1,0 +1,18 @@
+pkgbase = skillspec-bin
+	pkgdesc = Make AI agent skills followable, testable and provable
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/modiqo/skillspec
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = skillspec
+	conflicts = skillspec
+	options = !debug
+	source = skillspec-bin-0.2.2-LICENSE::https://raw.githubusercontent.com/modiqo/skillspec/v0.2.2/LICENSE-APACHE
+	sha256sums = 4adf88f072b989df98ff8f5082c02bfd667f63f098d6677443e93d527abd97d0
+	source_x86_64 = skillspec-bin-0.2.2-x86_64.tar.gz::https://github.com/modiqo/skillspec/releases/download/v0.2.2/skillspec-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 90042dddb04ea4eee30005c09af74b49abe08995d4583cb24de3f1ad8c501228
+
+pkgname = skillspec-bin
