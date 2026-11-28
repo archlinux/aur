@@ -1,6 +1,6 @@
 pkgbase = mark-shot
 	pkgdesc = Native screenshot, annotation and recording tool
-	pkgver = 0.2.0
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/jswysnemc/mark-shot
 	arch = x86_64
@@ -30,7 +30,8 @@ pkgbase = mark-shot
 	optdepends = noto-fonts-cjk: CJK fonts
 	optdepends = xdg-desktop-portal: portal capture
 	conflicts = mark-shot-bin
-	source = mark-shot::git+https://github.com/jswysnemc/mark-shot.git#commit=3c0d339bc77f7bb56d8fa3633cd07c691601dbf7
+	options = !debug
+	source = mark-shot::git+https://github.com/jswysnemc/mark-shot.git#commit=b5716094cf8ca8aa1a24f1c03edc3788e52ad5ff
 	sha256sums = SKIP
 
 pkgname = mark-shot
