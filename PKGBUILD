@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=future-os-bin
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="AI agent for the terminal and beyond"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/futureg
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/FutureOS_${pkgver}_linux_x86_64-cli.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/FutureOS_${pkgver}_linux_aarch64-cli.tar.gz")
 sha256sums=('b20ef48ed582c0f4b39c29f81217fedfb0fd836c7bd7448eccf28fb27a2e786d')
-sha256sums_x86_64=('30adbc1abee742a0121b867e33894a1ced960985fb4865743edd4ecc4c5124f7')
-sha256sums_aarch64=('2c597520b1298b11f3392fa6c69a9aa53ee127243317ee0090de995476886ecd')
+sha256sums_x86_64=('7f307e2160166c2fa4a70bcecaa9c8b8aa02c771f4ca5d40b6cb0a4f5af51d2c')
+sha256sums_aarch64=('092e7a4484f43a842618cc17d4e586e82a58357582b480da7806726549b5f172')
 
 package() {
   install -Dm755 "future" "${pkgdir}/usr/bin/future"
