@@ -1,0 +1,17 @@
+pkgbase = claude-code-statusline-pro-bin
+	pkgdesc = Feature-rich statusline for Claude Code
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://github.com/Wangnov/claude-code-statusline-pro
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = claude-code-statusline-pro
+	conflicts = claude-code-statusline-pro
+	options = !debug
+	source_x86_64 = claude-code-statusline-pro-bin-4.1.1-x86_64.tar.xz::https://github.com/Wangnov/claude-code-statusline-pro/releases/download/v4.1.1/claude-code-statusline-pro-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 380d60464dbd7c1056cf4b77a5b2704bb240aa525bb1a768166816f6c4f1db79
+	source_aarch64 = claude-code-statusline-pro-bin-4.1.1-aarch64.tar.xz::https://github.com/Wangnov/claude-code-statusline-pro/releases/download/v4.1.1/claude-code-statusline-pro-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = 33f1279d8d7076b84aaff51a5dbe97ffa79b88a6478ca6cc8caa08041fae282d
+
+pkgname = claude-code-statusline-pro-bin
