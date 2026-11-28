@@ -1,0 +1,17 @@
+pkgbase = gcccode-bin
+	pkgdesc = AI coding agent compatible with multiple LLMs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nearmetips/GCCcode
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = gcccode
+	conflicts = gcccode
+	options = !debug
+	source_x86_64 = gcccode-bin-0.1.0-x86_64.tar.gz::https://github.com/nearmetips/GCCcode/releases/download/v0.1.0/gcccode_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b3baefc4534ea186af2f513c8ef13733b251af96da79da87838eef3b082ff407
+	source_aarch64 = gcccode-bin-0.1.0-aarch64.tar.gz::https://github.com/nearmetips/GCCcode/releases/download/v0.1.0/gcccode_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 859b3a82ebfec28c939af980958405d06f8cb3826d11aa1104e9bbd120fe8e2e
+
+pkgname = gcccode-bin
