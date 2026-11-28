@@ -1,0 +1,19 @@
+pkgbase = codeany-bin
+	pkgdesc = AI-powered terminal coding agent
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/codeany-ai/codeany
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = codeany
+	conflicts = codeany
+	options = !debug
+	source = codeany-bin-1.0.1-LICENSE::https://raw.githubusercontent.com/codeany-ai/codeany/v1.0.1/LICENSE
+	sha256sums = c60d393a1a1fd5bf5aafff95894408f9b3f1ee0a674f7a93b06f629b98149ab6
+	source_x86_64 = codeany-bin-1.0.1-x86_64.tar.gz::https://github.com/codeany-ai/codeany/releases/download/v1.0.1/codeany_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7893382f1fcff304fff2b05e78c52af6171c0c6be3bdb31dbb378c8d1ad872f2
+	source_aarch64 = codeany-bin-1.0.1-aarch64.tar.gz::https://github.com/codeany-ai/codeany/releases/download/v1.0.1/codeany_linux_arm64.tar.gz
+	sha256sums_aarch64 = f88204e93584fd7ea3bd0367e22acd1d13e3c8040d29a3342bc4e337a5a4aebe
+
+pkgname = codeany-bin
