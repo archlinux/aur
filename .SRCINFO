@@ -1,0 +1,17 @@
+pkgbase = terminal-space-program-bin
+	pkgdesc = Terminal orbital-mechanics rocket simulator
+	pkgver = 0.70.0
+	pkgrel = 1
+	url = https://github.com/jasonfen/terminal-space-program
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = terminal-space-program
+	conflicts = terminal-space-program
+	options = !debug
+	source_x86_64 = terminal-space-program-bin-0.70.0-x86_64.tar.gz::https://github.com/jasonfen/terminal-space-program/releases/download/v0.70.0/terminal-space-program-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1eeb5e6438cfab5627d8842539fc8a0ca7f04aa79142238fe9b6178eeac434ed
+	source_aarch64 = terminal-space-program-bin-0.70.0-aarch64.tar.gz::https://github.com/jasonfen/terminal-space-program/releases/download/v0.70.0/terminal-space-program-linux-arm64.tar.gz
+	sha256sums_aarch64 = 903eee7b3e9b8c6907e0e36861ae264092f799ad79f82be87cc14f3bb3cad461
+
+pkgname = terminal-space-program-bin
