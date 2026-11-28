@@ -1,0 +1,21 @@
+pkgbase = sslx-bin
+	pkgdesc = Inspect, grade and manage TLS certificates from the terminal
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/glincker/sslx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = sslx
+	conflicts = sslx
+	options = !debug
+	source = sslx-bin-0.3.1-LICENSE::https://raw.githubusercontent.com/glincker/sslx/v0.3.1/LICENSE
+	sha256sums = 8cd2efd2d2a32bf562c0172171bdf49afe5031d33d2cc3d0672363798f9fa52a
+	source_x86_64 = sslx-bin-0.3.1-x86_64::https://github.com/glincker/sslx/releases/download/v0.3.1/sslx-linux-x86_64
+	sha256sums_x86_64 = 1b8c0eb88d92794ad440dd76c6a80e5b7f7d49fd34197a3bb96157a42d4db2fd
+	source_aarch64 = sslx-bin-0.3.1-aarch64::https://github.com/glincker/sslx/releases/download/v0.3.1/sslx-linux-aarch64
+	sha256sums_aarch64 = 0c7273278661e9d53b9b92b4f17cfe88ad500f2f6aaf987c6d00a28cb04045e0
+
+pkgname = sslx-bin
