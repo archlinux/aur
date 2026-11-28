@@ -1,0 +1,17 @@
+pkgbase = loopers-oss-bin
+	pkgdesc = Firewall for AI agents
+	pkgver = 2.25.2
+	pkgrel = 1
+	url = https://github.com/try-loopers/loopers-oss
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = loopers-oss
+	conflicts = loopers-oss
+	options = !debug
+	source_x86_64 = loopers-oss-bin-2.25.2-x86_64.tar.gz::https://github.com/try-loopers/loopers-oss/releases/download/v2.25.2/loopers_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 19e4d949df84fb5d22c35ceb10fcd6079927535d2a92cb0ccb1d3de4e4fa47a9
+	source_aarch64 = loopers-oss-bin-2.25.2-aarch64.tar.gz::https://github.com/try-loopers/loopers-oss/releases/download/v2.25.2/loopers_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 3a1b2c115ba93bac86062e3ad477b4855db9eaef25b09034063f30d8964581c6
+
+pkgname = loopers-oss-bin
