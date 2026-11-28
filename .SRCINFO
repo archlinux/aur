@@ -1,0 +1,17 @@
+pkgbase = keirouter-bin
+	pkgdesc = Self-hostable AI gateway
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/mydisha/keirouter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = keirouter
+	conflicts = keirouter
+	options = !debug
+	source_x86_64 = keirouter-bin-0.4.0-x86_64.tar.gz::https://github.com/mydisha/keirouter/releases/download/v0.4.0/keirouter_v0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 47c3af99b4ca17dd49964480ee5c39c64336db93a10abe7b3e9a3d7aa5d26dff
+	source_aarch64 = keirouter-bin-0.4.0-aarch64.tar.gz::https://github.com/mydisha/keirouter/releases/download/v0.4.0/keirouter_v0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0f62a1981652d09f69b644c315699954b43f7f2ffa8254ad06e48091c409811f
+
+pkgname = keirouter-bin
