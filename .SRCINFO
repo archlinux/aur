@@ -1,0 +1,18 @@
+pkgbase = taladb-bin
+	pkgdesc = Embedded vector and document database for local-first AI applications
+	pkgver = 0.13.3
+	pkgrel = 1
+	url = https://github.com/taladb/taladb
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = taladb
+	conflicts = taladb
+	options = !debug
+	source = taladb-bin-0.13.3-LICENSE::https://raw.githubusercontent.com/taladb/taladb/v0.13.3/LICENSE-APACHE
+	sha256sums = 58e11a20b7b3739f069c4705e9d7d5bd5cb9d34805572c8c6e996658f7f49ef4
+	source_x86_64 = taladb-bin-0.13.3-x86_64.tar.gz::https://github.com/taladb/taladb/releases/download/v0.13.3/taladb-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 403c159a8411e2d48aa81edc9ce7a265afb26397cd01b25115993699fe9279e2
+
+pkgname = taladb-bin
