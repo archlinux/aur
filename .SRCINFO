@@ -1,0 +1,14 @@
+pkgbase = helm-exporter-bin
+	pkgdesc = Export Helm stats in Prometheus format
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/sstarcher/helm-exporter
+	arch = x86_64
+	license = Apache-2.0
+	provides = helm-exporter
+	conflicts = helm-exporter
+	options = !debug
+	source_x86_64 = helm-exporter-bin-1.4.0-x86_64.tar.gz::https://github.com/sstarcher/helm-exporter/releases/download/1.4.0/helm-exporter_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5f15f3d9533143f6e9c28cd5cc04893bda2a3c5107912c349cbecdac112c38d8
+
+pkgname = helm-exporter-bin
