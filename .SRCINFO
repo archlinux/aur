@@ -1,0 +1,19 @@
+pkgbase = harness9-bin
+	pkgdesc = Local-first AI agent
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ZhangShenao/harness9
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = harness9
+	conflicts = harness9
+	options = !debug
+	source = harness9-bin-2.0.0-LICENSE::https://raw.githubusercontent.com/ZhangShenao/harness9/v2.0.0/LICENSE
+	sha256sums = 5a1201bcde46cca602d94cfa8b8c8823269f2b97547d3d323b984b43a65b1940
+	source_x86_64 = harness9-bin-2.0.0-x86_64.tar.gz::https://github.com/ZhangShenao/harness9/releases/download/v2.0.0/harness9_2.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b20e6e31a38558c21ed8cb4fbd7e3130a5a06be92ba2535cdf41cff4354bfed8
+	source_aarch64 = harness9-bin-2.0.0-aarch64.tar.gz::https://github.com/ZhangShenao/harness9/releases/download/v2.0.0/harness9_2.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2d2a62e8475e89eb3be21cd35b011c347fc4f8624cec35a643a0d072fc667aaa
+
+pkgname = harness9-bin
