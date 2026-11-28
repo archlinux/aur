@@ -1,0 +1,17 @@
+pkgbase = agent-vm-bin
+	pkgdesc = Run AI agents in safe VMs scoped to a local folder
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/sylvinus/agent-vm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = agent-vm
+	conflicts = agent-vm
+	options = !debug
+	source_x86_64 = agent-vm-bin-0.3.1-x86_64.tar.gz::https://github.com/sylvinus/agent-vm/releases/download/v0.3.1/agent-vm-0.3.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = a20e5d7cf5989fd7ad4559159e09fb55ada4a7fab8564b0334ecca4ed9110d3b
+	source_aarch64 = agent-vm-bin-0.3.1-aarch64.tar.gz::https://github.com/sylvinus/agent-vm/releases/download/v0.3.1/agent-vm-0.3.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = c032a705941c77055ef01f5eefaf083f89343d31ea5f166919a338f2ddf40c94
+
+pkgname = agent-vm-bin
