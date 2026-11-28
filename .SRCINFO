@@ -1,0 +1,16 @@
+pkgbase = git-mirror-bin
+	pkgdesc = Mirror external repositories to GitLab, GitHub and more
+	pkgver = 0.14.18
+	pkgrel = 1
+	url = https://github.com/bachp/git-mirror
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = git-mirror
+	conflicts = git-mirror
+	options = !debug
+	source_x86_64 = git-mirror-bin-0.14.18-x86_64.tar.gz::https://github.com/bachp/git-mirror/releases/download/v0.14.18/git-mirror-v0.14.18-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 95298efebb75e522c709bd6a1453fad522254bceb80184f24696eedf3bf6e579
+
+pkgname = git-mirror-bin
