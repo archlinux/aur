@@ -1,6 +1,6 @@
 # Maintainer: Geequlim <geequlim at gmail dot com>
 pkgname=thirtyfile-bin
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Self-hosted file manager with a Windows File Explorer-style web interface'
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ source=(
 )
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4' 'c52f473870a3de1cd69bd0c1bfdaa9f7ab9311b0dad67faafce0d503b10c7558' '0bb4a0d1b7ddfa1e1cfc63dac968f98b3d44d5595d23f4204be93391c1216e88' '405fd58517be07ff8fd74c26d5c8507280af9b787e526d90d9281556b5059d91' '0e71c018bb6e44e3ae4bd423222b7af0d2e246192221ddc7d5bfad3f71628e5f')
 source_x86_64=("https://github.com/ThirtyFile/ThirtyFile/releases/download/v${pkgver}/thirtyfile-${pkgver}-linux-amd64")
-sha256sums_x86_64=('dbe7ae39ce6686835e0c09cd4a4290542a39adda377d23a544710290cb77e92c')
+sha256sums_x86_64=('8e2b7bb47ef51e3f61988e95af4699f2cb89ab7d52ee65984ab87595a7647c34')
 source_aarch64=("https://github.com/ThirtyFile/ThirtyFile/releases/download/v${pkgver}/thirtyfile-${pkgver}-linux-arm64")
-sha256sums_aarch64=('7f8e1a84bf7ebf322da0f3152a1fe024d3289d5e68c4d58a2db90f28f61fa438')
+sha256sums_aarch64=('9a09ceb9ad9d6e317a07725b9f7fef89108e2cfe7946446d7997bbb650509f80')
 noextract=("thirtyfile-${pkgver}-linux-amd64" "thirtyfile-${pkgver}-linux-arm64")
 
 package() {
