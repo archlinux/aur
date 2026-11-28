@@ -1,0 +1,17 @@
+pkgbase = yoloai-bin
+	pkgdesc = Run AI coding agents in sandboxes
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/kstenerud/yoloai
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = yoloai
+	conflicts = yoloai
+	options = !debug
+	source_x86_64 = yoloai-bin-0.12.0-x86_64.tar.gz::https://github.com/kstenerud/yoloai/releases/download/v0.12.0/yoloai_0.12.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0c53ad9a19291a12a287fc055d886516d007c9854768d7c18308f2230667b37c
+	source_aarch64 = yoloai-bin-0.12.0-aarch64.tar.gz::https://github.com/kstenerud/yoloai/releases/download/v0.12.0/yoloai_0.12.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3fad0630350568c5659db7c238335b13c95fad4532c3bbd36377ea82bc030dad
+
+pkgname = yoloai-bin
