@@ -8,7 +8,7 @@
 # The stress test plugin is not built or packaged.
 
 pkgname=veiland
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Wayland screen locker with process-isolated GPU plugins"
 arch=('x86_64' 'aarch64')
@@ -53,7 +53,7 @@ backup=('etc/pam.d/veiland' 'etc/pam.d/veiland-fingerprint')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # sha256 of the v$pkgver GitHub release tarball. Regenerate on each bump:
 #   curl -sL "$url/archive/refs/tags/v$pkgver.tar.gz" | sha256sum
-sha256sums=('dcab2996bf1f9e31625f9b84f4ec6b764d555c25aecd69f3c395680da5f297d5')
+sha256sums=('713c1cc8e21e8bc14cad5b2d9927bc5ee428db0775ac121c86a3f44f7e2cbad3')
 
 # The real set, as -p flags shared by build() and check().
 _crates=(
