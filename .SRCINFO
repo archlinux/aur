@@ -1,0 +1,19 @@
+pkgbase = adrs-bin
+	pkgdesc = Architectural Decision Record tool
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/joshrotenberg/adrs
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = adrs
+	conflicts = adrs
+	options = !debug
+	source_x86_64 = adrs-bin-0.13.0-x86_64.tar.xz::https://github.com/joshrotenberg/adrs/releases/download/v0.13.0/adrs-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 15dee3fb41f22d1e511ad3bfe3ca03969bb8259ba7ce6f1b8040cba7c0ec8b04
+	source_aarch64 = adrs-bin-0.13.0-aarch64.tar.xz::https://github.com/joshrotenberg/adrs/releases/download/v0.13.0/adrs-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = d006a2d78e0de24750e4b0a03ad973e6eab61120af684222dcc4acb0089b44ac
+
+pkgname = adrs-bin
