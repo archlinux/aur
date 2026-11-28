@@ -1,0 +1,17 @@
+pkgbase = ddns-watchdog-bin
+	pkgdesc = Dynamic DNS client for DNSPod, AliDNS, Cloudflare and Huawei Cloud
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/y1jiong/ddns-watchdog
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = ddns-watchdog
+	conflicts = ddns-watchdog
+	options = !debug
+	source_x86_64 = ddns-watchdog-bin-2.0.1-x86_64.tar.xz::https://github.com/y1jiong/ddns-watchdog/releases/download/v2.0.1/ddns-watchdog-client-2.0.1-linux-amd64.tar.xz
+	sha256sums_x86_64 = 52e9c7bf78896f0a341624dbf51af66f2a0eb825726af67079d2ab3d52973201
+	source_aarch64 = ddns-watchdog-bin-2.0.1-aarch64.tar.xz::https://github.com/y1jiong/ddns-watchdog/releases/download/v2.0.1/ddns-watchdog-client-2.0.1-linux-arm64.tar.xz
+	sha256sums_aarch64 = 9b8d12c12495cbe261fc672e3da85963ffffddc2c115538ebd4c7b98dba43cba
+
+pkgname = ddns-watchdog-bin
