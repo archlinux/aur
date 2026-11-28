@@ -1,0 +1,17 @@
+pkgbase = mailtrap-local-bin
+	pkgdesc = Local email sandbox and catcher with SMTP, web UI and JSON API
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/mailtrap/mailtrap-local
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mailtrap-local
+	conflicts = mailtrap-local
+	options = !debug
+	source_x86_64 = mailtrap-local-bin-0.5.1-x86_64.tar.gz::https://github.com/mailtrap/mailtrap-local/releases/download/v0.5.1/mailtrap-local_0.5.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = b01e5d915b6e4a53a469dbba3f1fd53b88b56c002c20efe011686b16e86fff9d
+	source_aarch64 = mailtrap-local-bin-0.5.1-aarch64.tar.gz::https://github.com/mailtrap/mailtrap-local/releases/download/v0.5.1/mailtrap-local_0.5.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9e089ff04d089b359e4ea6d116665d67a6b469a46beefeddcb190a5bc48ad2a2
+
+pkgname = mailtrap-local-bin
