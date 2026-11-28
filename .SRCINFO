@@ -1,0 +1,17 @@
+pkgbase = adguarddnscli-bin
+	pkgdesc = Client for AdGuard DNS
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/AdguardTeam/AdGuardDNSCLI
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = adguarddnscli
+	conflicts = adguarddnscli
+	options = !debug
+	source_x86_64 = adguarddnscli-bin-0.2.1-x86_64.tar.gz::https://github.com/AdguardTeam/AdGuardDNSCLI/releases/download/v0.2.1/AdGuardDNSCLI_linux_amd64.tar.gz
+	sha256sums_x86_64 = 92d9406e961957b383cc056c821f4c04ae2967715b385b1eb9f71a531e698255
+	source_aarch64 = adguarddnscli-bin-0.2.1-aarch64.tar.gz::https://github.com/AdguardTeam/AdGuardDNSCLI/releases/download/v0.2.1/AdGuardDNSCLI_linux_arm64.tar.gz
+	sha256sums_aarch64 = ba589b425148e342728e70ddfa8721b0433fd0e423649b8c3f12394fda2a9b8b
+
+pkgname = adguarddnscli-bin
