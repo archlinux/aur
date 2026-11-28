@@ -12,7 +12,7 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=100.1.2
+pkgver=100.1.3
 _tag=
 pkgrel=1
 
@@ -21,7 +21,10 @@ pkgdesc="Professional-grade cinematic Matrix rain renderer for serious terminal 
 # musl packages only (v3/v4), so the binary package tracks x86_64.
 arch=('x86_64')
 url="https://github.com/oxyzenQ/cosmostrix"
-license=('AGPL3')
+# NIGHT-cafe-4: the AUR metadata renders the dual-license disclosure
+# (pacman -Si / the AUR web page show this verbatim) - the same clean
+# expression LICENSE_LINE renders on -V since night-ux-orion-2.
+license=('AGPL-3.0-only OR Commercial')
 
 # The release binary is a fully static musl executable: no dynamic libc
 # or libgcc linkage, so glibc/gcc-libs are not runtime dependencies.
