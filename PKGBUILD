@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=flashmq-git
-pkgver=1.26.2.r38.gb7059ba
+pkgver=1.27.3.r32.g550ce5c
 pkgrel=1
 pkgdesc="FlashMQ is a light-weight MQTT broker/server, designed to take good advantage of multi-CPU environments"
 arch=($CARCH)
@@ -42,7 +42,8 @@ build() {
     sed --in-place 's#DESTINATION "/lib#DESTINATION "/usr/lib#' CMakeLists.txt
     cmake -B build \
         -DCMAKE_BUILD_TYPE=Release \
-        -G Ninja
+        -G Ninja \
+        -Wno-author
 
     ninja -C build
 
