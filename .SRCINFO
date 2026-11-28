@@ -1,6 +1,6 @@
 pkgbase = crossfyre-toolchain-bin
 	pkgdesc = Recon and vulnerability scanning engines with live dashboards for finding subdomains, open ports
-	pkgver = 0.1.47
+	pkgver = 0.1.48
 	pkgrel = 1
 	url = https://github.com/clickswave/crossfyre-toolchain
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = crossfyre-toolchain-bin
 	options = !strip
 	options = !debug
 	options = !emptydirs
-	source = crossfyre-toolchain-bin-0.1.47-LICENSE::https://raw.githubusercontent.com/clickswave/crossfyre-toolchain/v0.1.47/LICENSE
+	source = crossfyre-toolchain-bin-0.1.48-LICENSE::https://raw.githubusercontent.com/clickswave/crossfyre-toolchain/v0.1.48/LICENSE
 	sha256sums = 153d5b1a5996146d0aa1594b1418c467220291e00931c3e0383515ad5779c9be
-	source_x86_64 = crossfyre-toolchain-bin-0.1.47-x86_64.tar.gz::https://github.com/clickswave/crossfyre-toolchain/releases/download/v0.1.47/crossfyre-toolchain-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = e5f05d949fc4763ba0715e9efe684f4d0df674470685b9f2fe02bc6552152024
-	source_aarch64 = crossfyre-toolchain-bin-0.1.47-aarch64.tar.gz::https://github.com/clickswave/crossfyre-toolchain/releases/download/v0.1.47/crossfyre-toolchain-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = f68a296c95ad3d550bc0afe6dd01eb15e49fd86e03d9659ded06a97ccc0edbcf
+	source_x86_64 = crossfyre-toolchain-bin-0.1.48-x86_64.tar.gz::https://github.com/clickswave/crossfyre-toolchain/releases/download/v0.1.48/crossfyre-toolchain-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3b0664f1285d998edc78fa734ef7ac1e53e04f321296e82f0822beaa93d0be21
+	source_aarch64 = crossfyre-toolchain-bin-0.1.48-aarch64.tar.gz::https://github.com/clickswave/crossfyre-toolchain/releases/download/v0.1.48/crossfyre-toolchain-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 52fb0d4e6c71f80d87d391dfcb279d605740436d0745d1c0bdad7e6e0d7e0a2b
 
 pkgname = crossfyre-toolchain-bin
