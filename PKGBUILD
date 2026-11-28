@@ -21,7 +21,7 @@ _sudachidict_date=20261015
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=3.35.6354.2
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -107,13 +107,12 @@ prepare() {
   cp ${srcdir}/mozc/src/data/dictionary_oss/id.def ./
   ./target/$TARGET/release/dict-to-mozc -D 1 -s -i ./id.def -f all.csv > all-dict.txt
   msg '3. Convert MeCab-unidic-Neologd to Mozc System Dictionary format. It may take some time...'
+  sed -E "/(&lt;\/div&gt;|<\/div>|<br >|<hr >)/d" ${srcdir}/mecab-unidic-user-dict-seed.20200910.csv -i
   ./target/$TARGET/release/dict-to-mozc -D 1 -n -i ./id.def -f ${srcdir}/mecab-unidic-user-dict-seed.20200910.csv >> all-dict.txt
   msg '4. Convert MeCab-ipadic-Neologd to Mozc System Dictionary format. It may take some time...'
+  sed -E "/(&lt;\/div&gt;|<\/div>|<br >|<hr >)/d" ${srcdir}/mecab-user-dict-seed.20200910.csv -i
   ./target/$TARGET/release/dict-to-mozc -D 1 -n -P 12 -N 10 -i ./id.def -f ${srcdir}/mecab-user-dict-seed.20200910.csv >> all-dict.txt
   msg '5. Duplicate data will be removed.'
-
-  # ビルドエラー対策
-  sed "/へいろーこんばっとえぼるぶど.*\<.*>/d" all-dict.txt -i
 
   # 読み、表記による重複チェック。件数を抑制するために、品詞IDを無視し、読みと表記のみで重複チェック。
   awk 'BEGIN{FS="\t";OFS="\t"}{if (!a[$1,$5]++) {print $0}}' all-dict.txt|sort > finish-dict-pre.txt
@@ -158,6 +157,8 @@ build() {
       --host_copt="-Wno-uninitialized" --verbose_failures \
       --nostart_end_lib \
       package
+      #--sandbox_debug \
+
 }
 
 install_mozc-with-jp-dict-common() {
