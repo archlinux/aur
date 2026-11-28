@@ -1,0 +1,30 @@
+pkgbase = lem-sdl2
+	pkgdesc = Common Lisp editor/IDE with SDL2 frontend
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/lem-project/lem
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = qlot
+	makedepends = sbcl
+	makedepends = sdl2-compat
+	makedepends = sdl2_image
+	makedepends = sdl2_ttf
+	depends = sbcl
+	depends = sdl2-compat
+	depends = sdl2_image
+	depends = sdl2_ttf
+	optdepends = libvterm: for integrated terminal
+	optdepends = fd: for fuzzy file search
+	conflicts = lem
+	conflicts = lem-nightly
+	conflicts = lem-webview
+	conflicts = lem-webview-nightly
+	conflicts = lem-sdl3-nightly
+	options = !strip
+	source = lem-sdl2-2.3.0::git+https://github.com/lem-project/lem.git#tag=v2.3.0
+	sha256sums = a59fe4b3f9f214b7e8e308649a60f94b4acbde695f2aaa73fbb0444ce67b89b1
+
+pkgname = lem-sdl2
