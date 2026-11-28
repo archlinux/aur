@@ -1,6 +1,6 @@
 pkgbase = chronytop
 	pkgdesc = TUI for chrony NTP time server monitoring
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/geerlingguy/chronytop
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = chronytop
 	makedepends = go
 	depends = glibc
 	conflicts = chronytop-bin
-	source = https://github.com/geerlingguy/chronytop/archive/v0.6.1/chronytop-0.6.1.tar.gz
-	sha512sums = 4ce924947246b320df636ff7767c1c32d876364b4d9b126c69d78b531ebed5b1b525ec63318067ed62020d8711666d38bec2cc53010f6338753074012d9eb24f
-	b2sums = dc34f67d6f516bdbed7d47a9d7c4124f9aa6a29f20946c5eb88d71919c36ea9eb4d1d1aea074790477325bdf51bef2ca207a9e221ae1528d1f3fa1607f2e1147
+	source = https://github.com/geerlingguy/chronytop/archive/v0.6.2/chronytop-0.6.2.tar.gz
+	sha512sums = 057e517bbbead30279dd5fc455b88f4d0246632b00581ca45ef78f2573ae0acbe09ff145aa22172e010e0126fb7c12a34fc6af5c05c4208644d1e6d1bd74732e
+	b2sums = 632eb405437c67b8560fad6af53268d2e286c461eafb717a44c138b6bb67e028d48a5c17abb3049c0f7df904e05fa700f228b4f1338abc2bc1cd074597b30f18
 
 pkgname = chronytop
