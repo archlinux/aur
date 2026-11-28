@@ -1,0 +1,19 @@
+pkgbase = gh-issue-sync-bin
+	pkgdesc = Sync GitHub issues to work with them locally
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/mitsuhiko/gh-issue-sync
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = gh-issue-sync
+	conflicts = gh-issue-sync
+	options = !debug
+	source = gh-issue-sync-bin-0.3.0-LICENSE::https://raw.githubusercontent.com/mitsuhiko/gh-issue-sync/v0.3.0/LICENSE
+	sha256sums = a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2
+	source_x86_64 = gh-issue-sync-bin-0.3.0-x86_64::https://github.com/mitsuhiko/gh-issue-sync/releases/download/v0.3.0/gh-issue-sync-linux-amd64
+	sha256sums_x86_64 = 095749599f9d6c81d91765bd16b14d5c76215fd1d3ef6bccf5d005efb2d9b84e
+	source_aarch64 = gh-issue-sync-bin-0.3.0-aarch64::https://github.com/mitsuhiko/gh-issue-sync/releases/download/v0.3.0/gh-issue-sync-linux-arm64
+	sha256sums_aarch64 = ca86c002640426b2282cc947a5b34da3e51c91e62423c3996085587110704785
+
+pkgname = gh-issue-sync-bin
