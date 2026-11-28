@@ -1,0 +1,16 @@
+pkgbase = bose-connect-cli
+	pkgdesc = Control Bose Bluetooth headphones and speakers from the command line
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/airvzxf/bose-connect-app-linux
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	depends = bluez
+	depends = gcc-libs
+	depends = glibc
+	source = bose-connect-cli-0.8.0.tar.gz::https://github.com/airvzxf/bose-connect-app-linux/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 115c6625bfd74c48cf889b30fd268a6fffc511a2eb09ccce7c45cc7d5da0e430
+
+pkgname = bose-connect-cli
