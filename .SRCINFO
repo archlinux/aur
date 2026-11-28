@@ -1,0 +1,16 @@
+pkgbase = uhyve-bin
+	pkgdesc = Specialized hypervisor for Hermit unikernels
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/hermit-os/uhyve
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = uhyve
+	conflicts = uhyve
+	options = !debug
+	source_x86_64 = uhyve-bin-0.10.1-x86_64.tar.gz::https://github.com/hermit-os/uhyve/releases/download/v0.10.1/uhyve-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = aaeda2529441ef33152210b41a46a2ffc1a1494e9f7e74de323a3c8e04adb2b7
+
+pkgname = uhyve-bin
