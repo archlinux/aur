@@ -4,8 +4,7 @@
 
 pkgname=libpamac-full
 _pkgname=libpamac
-pkgver=11.7.4.3.gc7efe92
-_commit=c7efe923f980a3f5966f376bd6d6e6146539a970
+pkgver=12.0.0
 pkgrel=1
 epoch=1
 pkgdesc='Library for Pamac package manager based on libalpm - flatpak and snap support enabled'
@@ -28,8 +27,8 @@ makedepends=('vala' 'meson' 'gobject-introspection')
 options=(!emptydirs)
 provides=($_pkgname)
 conflicts=('libpamac-aur' 'libpamac-flatpak' $_pkgname 'libpamac-full-dev')
-source=("git+${url}.git#commit=${_commit}")
-sha256sums=('4b297f6195cc248107ca5f9f21325a0992ba5d1260c7fb077b6c65c44af302b4')
+source=("git+${url}.git#tag=${pkgver}")
+sha256sums=('051e1101ef03b3ff161d6f934f49dfdc46e6661f6dfeabcc01879e189ee9979d')
 install='pamac.install'
 
 _srcdir="$_pkgname"
