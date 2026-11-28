@@ -1,0 +1,16 @@
+pkgbase = terrier-bin
+	pkgdesc = Scan images and containers for files matching specific hashes
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/heroku/terrier
+	arch = x86_64
+	license = Apache-2.0
+	provides = terrier
+	conflicts = terrier
+	options = !debug
+	source = terrier-bin-0.0.2-LICENSE::https://raw.githubusercontent.com/heroku/terrier/0.0.2/LICENSE
+	sha256sums = f6c08262403b9d3989012cbf192f3a9f946ce9c0c27dab126346de3808a2b3d7
+	source_x86_64 = terrier-bin-0.0.2-x86_64::https://github.com/heroku/terrier/releases/download/0.0.2/terrier-linux-amd64
+	sha256sums_x86_64 = d1e24779fa2aa2111cec044d6594da612e97a97fccd3b22bcdd421e00640a8f4
+
+pkgname = terrier-bin
