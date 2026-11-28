@@ -1,0 +1,17 @@
+pkgbase = voxeldash-bin
+	pkgdesc = Dashboard for Minecraft and Hytale servers
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/gnmyt/VoxelDash
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = voxeldash
+	conflicts = voxeldash
+	options = !debug
+	source = voxeldash-bin-1.2.1-LICENSE::https://raw.githubusercontent.com/gnmyt/VoxelDash/v1.2.1/LICENSE
+	sha256sums = 46b0459a67869928fc7d1dcfacb5ae6d3c1f769f32fba02482074de5ea6afa72
+	source_x86_64 = voxeldash-bin-1.2.1-x86_64.tar.gz::https://github.com/gnmyt/VoxelDash/releases/download/v1.2.1/voxeldash-one-1.2.1-linux-x64.tar.gz
+	sha256sums_x86_64 = 2e2401916d119bfe19fc1c57dd6b2b42b74484357126107177ccf6c0db209bc4
+
+pkgname = voxeldash-bin
