@@ -1,0 +1,4 @@
+[caishen]
+source = "git"
+git = "https://github.com/visorcraft/CaiShen.git"
+prefix = "v"
