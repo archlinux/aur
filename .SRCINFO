@@ -1,0 +1,17 @@
+pkgbase = fullsend-bin
+	pkgdesc = Autonomous agentic engineering CLI
+	pkgver = 0.57.1
+	pkgrel = 1
+	url = https://github.com/fullsend-ai/fullsend
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = fullsend
+	conflicts = fullsend
+	options = !debug
+	source_x86_64 = fullsend-bin-0.57.1-x86_64.tar.gz::https://github.com/fullsend-ai/fullsend/releases/download/v0.57.1/fullsend_0.57.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = ee159b9609ebe24497a0381d5a6f4c42d898f669fba111ec547ec0d3a6334be0
+	source_aarch64 = fullsend-bin-0.57.1-aarch64.tar.gz::https://github.com/fullsend-ai/fullsend/releases/download/v0.57.1/fullsend_0.57.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = b20d6a3986bfb596c705a830c5e9df0f97c69dcb7b9e432eb1291c5ad4761c3a
+
+pkgname = fullsend-bin
