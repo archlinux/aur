@@ -1,6 +1,6 @@
 pkgbase = pinshot
 	pkgdesc = Lightweight Wayland screenshot, screen-pinning, scrolling capture and GIF tool for GNOME Shell
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/dgxz99/pinshot
 	install = pinshot.install
@@ -24,7 +24,15 @@ pkgbase = pinshot
 	optdepends = libnotify: desktop notifications
 	conflicts = pinshot-bin
 	conflicts = pinshot-git
-	source = pinshot-0.1.1.tar.gz::https://github.com/dgxz99/pinshot/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = c2b229d6bae79d0ea931eb8d309c05980b19893dc204378f061feae3d84d56c8
+	source = pinshot-0.2.0.tar.gz::https://github.com/dgxz99/pinshot/archive/refs/tags/v0.2.0.tar.gz
+	source = ppocrv5-mobile-det.onnx::https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_det_onnx/resolve/main/inference.onnx
+	source = ppocrv5-mobile-det.yml::https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_det_onnx/resolve/main/inference.yml
+	source = ppocrv5-mobile-rec.onnx::https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_rec_onnx/resolve/main/inference.onnx
+	source = ppocrv5-mobile-rec.yml::https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_rec_onnx/resolve/main/inference.yml
+	sha256sums = 2eaf163eee37b1d68bed24c6301ec9c6ccf5bdbe653e40d92c654b5f47f419b5
+	sha256sums = a431985659dc921974177a95adcfbb90fd9e51989a5e04d70d0b75f597b6e61d
+	sha256sums = 98069072e1b6b37d727fd9d9f11725faa46d6ea0de012f2ed26caea011c37699
+	sha256sums = da72dc72ca4dc220df0dfde68c1dedc31c58d3e76a25871122e5056227d50092
+	sha256sums = 5dfeb2777f6d0db8177d8128a8acfcf6e6276dc4ac73ea3bf0dc06d6a5e85d8e
 
 pkgname = pinshot
