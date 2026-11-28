@@ -1,0 +1,16 @@
+pkgbase = govpp-bin
+	pkgdesc = Go toolset for FD.io VPP
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/FDio/govpp
+	arch = x86_64
+	license = Apache-2.0
+	provides = govpp
+	conflicts = govpp
+	options = !debug
+	source = govpp-bin-0.13.0-LICENSE::https://raw.githubusercontent.com/FDio/govpp/v0.13.0/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = govpp-bin-0.13.0-x86_64.tar.gz::https://github.com/FDio/govpp/releases/download/v0.13.0/govpp_0.13.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 63cf1c0687510c26bc93f3f7b4e4df21bcd7894252911737becfb5ce626756e8
+
+pkgname = govpp-bin
