@@ -1,0 +1,19 @@
+pkgbase = reminal-bin
+	pkgdesc = Access the windows, desktops and terminals of your machines from any browser
+	pkgver = 3.22.25
+	pkgrel = 1
+	url = https://github.com/harshalgajjar/Reminal
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = reminal
+	conflicts = reminal
+	options = !debug
+	source = reminal-bin-3.22.25-LICENSE::https://raw.githubusercontent.com/harshalgajjar/Reminal/v3.22.25/LICENSE
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = reminal-bin-3.22.25-x86_64.tar.gz::https://github.com/harshalgajjar/Reminal/releases/download/v3.22.25/reminal_3.22.25_linux_amd64.tar.gz
+	sha256sums_x86_64 = 719d1abc8ca6632dbd1b7baa726bff3127c56d8c1b4f10c19dae8b3ab2e3453c
+	source_aarch64 = reminal-bin-3.22.25-aarch64.tar.gz::https://github.com/harshalgajjar/Reminal/releases/download/v3.22.25/reminal_3.22.25_linux_arm64.tar.gz
+	sha256sums_aarch64 = 780c4725696cb971b1fd7932c790e9ccc50c28e68e87f98c41a2acc5b45672c8
+
+pkgname = reminal-bin
