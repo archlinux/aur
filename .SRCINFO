@@ -1,0 +1,19 @@
+pkgbase = gomodjail-bin
+	pkgdesc = Experimental jail for Go modules
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/AkihiroSuda/gomodjail
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = gomodjail
+	conflicts = gomodjail
+	options = !debug
+	source = gomodjail-bin-2.0.1-LICENSE::https://raw.githubusercontent.com/AkihiroSuda/gomodjail/v2.0.1/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = gomodjail-bin-2.0.1-x86_64.tar.gz::https://github.com/AkihiroSuda/gomodjail/releases/download/v2.0.1/gomodjail-v2.0.1.linux-amd64.tar.gz
+	sha256sums_x86_64 = b46073f6ecde744f3f263d8885385032f8b798aa319dd48b9978f75115e53244
+	source_aarch64 = gomodjail-bin-2.0.1-aarch64.tar.gz::https://github.com/AkihiroSuda/gomodjail/releases/download/v2.0.1/gomodjail-v2.0.1.linux-arm64.tar.gz
+	sha256sums_aarch64 = 1da276fd541c08b7a971fe09043c0922fd53f032740755debabf16c136677218
+
+pkgname = gomodjail-bin
