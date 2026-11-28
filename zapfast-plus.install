@@ -1,0 +1,28 @@
+print_zapfast_post_install() {
+  cat <<'EOF2'
+zapfast setup:
+
+  Launch it and, on the phone, open WhatsApp > Linked devices > Link a
+  device, then point the camera at the code (or link with your phone
+  number instead). The chats sync to a local archive on the first link.
+
+  Keep your desktop keyring unlocked so ZapFast Plus can open its
+  encrypted archive. On Linux this needs a Secret Service provider
+  (GNOME Keyring or KeePassXC with Secret Service enabled).
+
+  This is ZapFast Plus, a personal fork. It installs the same `zapfast`
+  binary, launcher entry and state folder as the upstream package, so the
+  two cannot be installed together.
+
+Repo: https://github.com/lucasapolinarioo/zapfast-plus
+Chat: https://discord.gg/8MnXbuKWaq
+EOF2
+}
+
+post_install() {
+  print_zapfast_post_install
+}
+
+post_upgrade() {
+  print_zapfast_post_install
+}
