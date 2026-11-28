@@ -1,0 +1,17 @@
+pkgbase = mempool-dumpster-bin
+	pkgdesc = Dump mempool transactions to Parquet and CSV
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/flashbots/mempool-dumpster
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mempool-dumpster
+	conflicts = mempool-dumpster
+	options = !debug
+	source_x86_64 = mempool-dumpster-bin-1.4.1-x86_64.tar.gz::https://github.com/flashbots/mempool-dumpster/releases/download/v1.4.1/mempool-dumpster_1.4.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = ea060428a8c1b8bcfa49c224643db6722aba9b80cf356a27fb0d008fffdf623a
+	source_aarch64 = mempool-dumpster-bin-1.4.1-aarch64.tar.gz::https://github.com/flashbots/mempool-dumpster/releases/download/v1.4.1/mempool-dumpster_1.4.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = c684518ff1c9bd306d1da086daf8aef200b4279781195660bfc4b41c3894e13d
+
+pkgname = mempool-dumpster-bin
