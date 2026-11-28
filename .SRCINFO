@@ -1,0 +1,21 @@
+pkgbase = kurpod-bin
+	pkgdesc = Encrypted file storage server with plausible deniability
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/srv1n/kurpod
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = kurpod
+	conflicts = kurpod
+	options = !debug
+	source = kurpod-bin-0.1.6-LICENSE::https://raw.githubusercontent.com/srv1n/kurpod/v0.1.6/LICENSE
+	sha256sums = 24bfbf384639b4bbbc253a296db3d3baf982c3c57c1bf4d70f0882fcf71e55b3
+	source_x86_64 = kurpod-bin-0.1.6-x86_64.tar.gz::https://github.com/srv1n/kurpod/releases/download/v0.1.6/kurpod-v0.1.6-linux-x86_64.tar.gz
+	sha256sums_x86_64 = b0128393e54b1372f1c775fa4ec40a7d44373cca69e03a9880a7285d6727ed07
+	source_aarch64 = kurpod-bin-0.1.6-aarch64.tar.gz::https://github.com/srv1n/kurpod/releases/download/v0.1.6/kurpod-v0.1.6-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9b2633843b43647560ed9a030ea444830f2dd7e5d1865801515230b6925c7a23
+
+pkgname = kurpod-bin
