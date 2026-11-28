@@ -1,6 +1,6 @@
 pkgbase = xalgorix-bin
 	pkgdesc = AI penetration testing agent that exploit-verifies every finding
-	pkgver = 4.6.210
+	pkgver = 4.6.212
 	pkgrel = 1
 	url = https://github.com/xalgorix/xalgorix
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = xalgorix-bin
 	provides = xalgorix
 	conflicts = xalgorix
 	options = !debug
-	source = xalgorix-bin-4.6.210-LICENSE::https://raw.githubusercontent.com/xalgorix/xalgorix/v4.6.210/LICENSE
+	source = xalgorix-bin-4.6.212-LICENSE::https://raw.githubusercontent.com/xalgorix/xalgorix/v4.6.212/LICENSE
 	sha256sums = d93b22599cc72433177e2abee8d77d80bca664120af7c6a70a5d4ae2a12bbd44
-	source_x86_64 = xalgorix-bin-4.6.210-x86_64::https://github.com/xalgorix/xalgorix/releases/download/v4.6.210/xalgorix-linux-amd64
-	sha256sums_x86_64 = 6e8b36936c1dab65bbe459be0b5cf2592bd1b904c7a6cd47370ed67fdff6a860
-	source_aarch64 = xalgorix-bin-4.6.210-aarch64::https://github.com/xalgorix/xalgorix/releases/download/v4.6.210/xalgorix-linux-arm64
-	sha256sums_aarch64 = 55f7a969310dbda2fc166157413494882d2741536bd99bb324cc17289164a7a3
+	source_x86_64 = xalgorix-bin-4.6.212-x86_64::https://github.com/xalgorix/xalgorix/releases/download/v4.6.212/xalgorix-linux-amd64
+	sha256sums_x86_64 = 1235724ae8d11ef7bc32bdab3b97187f329ffadb602d34cff1ab4f7e70a6801e
+	source_aarch64 = xalgorix-bin-4.6.212-aarch64::https://github.com/xalgorix/xalgorix/releases/download/v4.6.212/xalgorix-linux-arm64
+	sha256sums_aarch64 = d7ce4071d614aaab22d77a94b76fc581ea57b3b5cba13d4352e6cad1a663c740
 
 pkgname = xalgorix-bin
