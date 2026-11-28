@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="network-sandbox-engine"
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A Linux engine for deterministic nftables firewall testing inside isolated network namespaces"
 
@@ -30,7 +30,7 @@ optdepends=()
 source=("git+${_url_github}.git#tag=${_git_version}")
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/${_git_version}.tar.gz")
-sha256sums=('e9b54c19abc962978107ab62e5b7f455c374d5015ff8b377aae1f941477dc715')
+sha256sums=('955597f1b6d9ae91eb164c5a39db8212fa106e2aa84aee3acf3bb56810955f95')
 
 build() {
 	cd "${srcdir}/${_git_name}/" || exit
