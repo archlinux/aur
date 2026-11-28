@@ -1,0 +1,27 @@
+pkgbase = rp6502-bin
+	pkgdesc = Emulator for the RP6502 Picocomputer
+	pkgver = 0.44
+	pkgrel = 1
+	url = https://github.com/picocomputer/rp6502
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	depends = glibc
+	depends = libgcc
+	depends = libglvnd
+	depends = libpulse
+	depends = libstdc++
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	provides = rp6502
+	conflicts = rp6502
+	options = !debug
+	source = rp6502-bin-0.44-LICENSE::https://raw.githubusercontent.com/picocomputer/rp6502/v0.44/LICENSE
+	sha256sums = b81e26bbde4758d5c7d2c15bb25028fcc7d04504c4769da267f10d6ba1b1989b
+	source_x86_64 = rp6502-bin-0.44-x86_64.tar.gz::https://github.com/picocomputer/rp6502/releases/download/v0.44/rp6502-0.44-linux-x86_64.tar.gz
+	sha256sums_x86_64 = ac1ec9c5653721e630e00238b311fe791c05a5bc8ee6ca3d904b951de45e3680
+	source_aarch64 = rp6502-bin-0.44-aarch64.tar.gz::https://github.com/picocomputer/rp6502/releases/download/v0.44/rp6502-0.44-linux-aarch64.tar.gz
+	sha256sums_aarch64 = c25883a5137ea1bc9611cddb6b4cd3b2a94ded49f013de23c7fc1dc35a664643
+
+pkgname = rp6502-bin
