@@ -1,0 +1,17 @@
+pkgbase = fault-bin
+	pkgdesc = Language for building system dynamic models
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Fault-lang/Fault
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = fault
+	conflicts = fault
+	options = !debug
+	source_x86_64 = fault-bin-1.1.0-x86_64.tar.gz::https://github.com/Fault-lang/Fault/releases/download/v1.1.0/fault_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = dda4d7df39a93a0b3ced5c9e1b68c58fde0e5667bdcdc96d98434691b990ca03
+	source_aarch64 = fault-bin-1.1.0-aarch64.tar.gz::https://github.com/Fault-lang/Fault/releases/download/v1.1.0/fault_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ff0584117536841523802f14cf416e7632d33e94f77fd169d3e997bfa3447df4
+
+pkgname = fault-bin
