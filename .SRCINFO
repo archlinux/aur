@@ -1,0 +1,17 @@
+pkgbase = rutis-bin
+	pkgdesc = Plugin runtime where AI agents write and hot-reload their own plugins
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://github.com/arcships/rutis
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = rutis
+	conflicts = rutis
+	options = !debug
+	source_x86_64 = rutis-bin-0.23.0-x86_64.tar.gz::https://github.com/arcships/rutis/releases/download/v0.23.0/rutis-host-0.23.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = ce82acd61dc29bdba30b5f3c2e19c092313822cc46c15c0f7e91007d2329bbde
+	source_aarch64 = rutis-bin-0.23.0-aarch64.tar.gz::https://github.com/arcships/rutis/releases/download/v0.23.0/rutis-host-0.23.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 9a0df44a7b844b2a941a5c5860866c73477bbf12b4ec65f3bfaa42fb2453fa07
+
+pkgname = rutis-bin
