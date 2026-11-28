@@ -1,7 +1,7 @@
 # Maintainer: Fred Mitchell <fred at atomlogik dot de>
 
 pkgname=slit-scan
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Streaming slit-scan animations from images, videos and a camera"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('gtkmm-4.0' 'opencv' 'yaml-cpp' 'libzip' 'ffmpeg' 'freetype2'
 # find_package(OpenCV) fails without them at build time.
 makedepends=('cmake' 'ninja' 'vtk' 'hdf5')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2b8e9254a284f442de28b39ffba0a25ad7bc97073227ac3a77e74b20a81a04fe')
+sha256sums=('33b0eda6c0f8d5bc65c8293008de87266a7c760b92adc47296c52ae3c845d02d')
 
 build() {
   cmake --fresh -B build -S "$pkgname-cpp-$pkgver" -G Ninja \

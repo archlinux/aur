@@ -1,6 +1,6 @@
 pkgbase = slit-scan
 	pkgdesc = Streaming slit-scan animations from images, videos and a camera
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/flajann2/slit-scan-cpp
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = slit-scan
 	depends = libsigc++-3.0
 	depends = gcc-libs
 	depends = glibc
-	source = slit-scan-0.2.2.tar.gz::https://github.com/flajann2/slit-scan-cpp/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 2b8e9254a284f442de28b39ffba0a25ad7bc97073227ac3a77e74b20a81a04fe
+	source = slit-scan-0.2.3.tar.gz::https://github.com/flajann2/slit-scan-cpp/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 33b0eda6c0f8d5bc65c8293008de87266a7c760b92adc47296c52ae3c845d02d
 
 pkgname = slit-scan
