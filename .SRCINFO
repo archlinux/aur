@@ -1,0 +1,21 @@
+pkgbase = agentsmith-bin
+	pkgdesc = Model-agnostic operating harness for AI agents
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/PromptPartner/agentsmith
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	provides = agentsmith
+	conflicts = agentsmith
+	options = !debug
+	source = agentsmith-bin-0.6.0-LICENSE::https://raw.githubusercontent.com/PromptPartner/agentsmith/v0.6.0/LICENSE
+	sha256sums = 36f2a62d8e883159fb6743cd04db4a40728d91640c2398a2782eec5d8f7dd3b7
+	source_x86_64 = agentsmith-bin-0.6.0-x86_64.tar.gz::https://github.com/PromptPartner/agentsmith/releases/download/v0.6.0/agentsmith-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5189929aeb83787eda4b375f322e7188db1c182efc0f70152481bc427d29bacd
+	source_aarch64 = agentsmith-bin-0.6.0-aarch64.tar.gz::https://github.com/PromptPartner/agentsmith/releases/download/v0.6.0/agentsmith-linux-arm64.tar.gz
+	sha256sums_aarch64 = ba772630693fd5aa6d9c40077c5e1337b1891df48f52429d2d33bc1d4b9431f1
+
+pkgname = agentsmith-bin
