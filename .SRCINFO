@@ -1,0 +1,19 @@
+pkgbase = parlay-bin
+	pkgdesc = Enrich SBOMs with data from third-party services
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/snyk/parlay
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = parlay
+	conflicts = parlay
+	options = !debug
+	source = parlay-bin-0.11.0-LICENSE::https://raw.githubusercontent.com/snyk/parlay/v0.11.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = parlay-bin-0.11.0-x86_64.tar.gz::https://github.com/snyk/parlay/releases/download/v0.11.0/parlay_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 2654d8e91c53f8e264f439684f657fc0139a8c13d842c30aa4f12c9cc9be1243
+	source_aarch64 = parlay-bin-0.11.0-aarch64.tar.gz::https://github.com/snyk/parlay/releases/download/v0.11.0/parlay_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8ad5a108f7bec951eae639ba6bb9bdb1e94416472f91e34429a8a94743552522
+
+pkgname = parlay-bin
