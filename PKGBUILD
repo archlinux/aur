@@ -2,7 +2,7 @@
 
 pkgname=termmark
 pkgver=1.0.0
-pkgrel=14
+pkgrel=20
 pkgdesc="Minimal C++ Markdown viewer for the terminal (with leaf-style table rendering)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ishanawal/TermMark"
@@ -12,7 +12,7 @@ makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'termmark-tables.patch')
 sha256sums=('525193e4dce145df0ac638500883ccc6d272651b5cac2d321ef9da778cbf82f3'
-            '4ffc7f5db26da08b3b8f52255a4a23d3ddc43a21f6f8c7853bbbe7e4b7c1b44d')
+            '8fb00c86974416b44be5786131700a7297eb1d25c330a2c4d4b98fe0bea372cb')
 
 prepare() {
     cd "TermMark-$pkgver"
@@ -33,7 +33,7 @@ check() {
 package() {
     install -Dm755 build/termmark "$pkgdir/usr/bin/termmark"
     install -Dm644 "TermMark-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    for doc in README.md README.ru.md CHANGELOG.md; do
+    for doc in README.md README.ru.md CHANGELOG.md CHANGELOG.ru.md; do
         install -Dm644 "TermMark-$pkgver/$doc" "$pkgdir/usr/share/doc/$pkgname/$doc"
     done
     install -Dm644 "TermMark-$pkgver/examples/highlighting.md" "$pkgdir/usr/share/doc/$pkgname/examples/highlighting.md"

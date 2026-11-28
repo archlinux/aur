@@ -1,7 +1,7 @@
 From e2d42df3ec437b6d440778cdde01e0a9b2e993b9 Mon Sep 17 00:00:00 2001
 From: Ishan Awal <67328850+ishanawal@users.noreply.github.com>
 Date: Tue, 5 Aug 2025 17:23:55 +0545
-Subject: [PATCH 01/29] Update README.md - added brew instructions for
+Subject: [PATCH 01/38] Update README.md - added brew instructions for
  installation
 
 ---
@@ -33,7 +33,7 @@ index 5e77b76..5bad322 100644
 From aecc13c11e5ae51ca9569f48c9e4b50c9657a652 Mon Sep 17 00:00:00 2001
 From: Ishan Awal <67328850+ishanawal@users.noreply.github.com>
 Date: Tue, 5 Aug 2025 17:39:43 +0545
-Subject: [PATCH 02/29] Update README.md - Updated username
+Subject: [PATCH 02/38] Update README.md - Updated username
 
 ---
  README.md | 6 +++---
@@ -77,7 +77,7 @@ index 5bad322..1098ec8 100644
 From befa03fe1f4f7016c73b1b771bba8416273ae5e8 Mon Sep 17 00:00:00 2001
 From: Ishan Awal <67328850+ishanawal@users.noreply.github.com>
 Date: Mon, 2 Feb 2026 10:13:20 +0545
-Subject: [PATCH 03/29] Update headings in README for consistency
+Subject: [PATCH 03/38] Update headings in README for consistency
 
 ---
  README.md | 20 ++++++++++----------
@@ -174,7 +174,7 @@ index 1098ec8..336712e 100644
 From 0a52fe92229cd82855a90dc85aff729d52a45fa0 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 16:52:42 +0300
-Subject: [PATCH 04/29] Render tables like leaf
+Subject: [PATCH 04/38] Render tables like leaf
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -576,7 +576,7 @@ index 4fd429a..9b28f5c 100644
 From 7b51bae2f42e07be746b9747e5a57f890b65cd9d Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 17:03:33 +0300
-Subject: [PATCH 05/29] Render code blocks like leaf
+Subject: [PATCH 05/38] Render code blocks like leaf
 
 - Closed Unicode frame with right border and line-number gutter
 - Measure lines by terminal display width instead of bytes
@@ -674,7 +674,7 @@ index 9b28f5c..8dda26c 100644
 From 699393a6337d64fc09ef21f7cf999c046388cba6 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 17:05:37 +0300
-Subject: [PATCH 06/29] Fit tables and code blocks to 80 columns when stdout is
+Subject: [PATCH 06/38] Fit tables and code blocks to 80 columns when stdout is
  not a terminal
 
 Like leaf: piped output (less, cat) is laid out for 80 columns instead of
@@ -737,7 +737,7 @@ index 8dda26c..1765dd1 100644
 From 924a2cd5fad0a27693899d37da73b072641500b5 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 17:30:20 +0300
-Subject: [PATCH 07/29] Interactive --watch view with table of contents
+Subject: [PATCH 07/38] Interactive --watch view with table of contents
 
 On a terminal, --watch now opens a full-screen view on the alternate screen
 instead of printing the whole document (which left only its tail visible):
@@ -1131,7 +1131,7 @@ index 4494fa1..ede7167 100644
 From 25b1bae2137a739513d14086decb6593496b431d Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 17:46:50 +0300
-Subject: [PATCH 08/29] Search in the --watch view
+Subject: [PATCH 08/38] Search in the --watch view
 
 - / or Ctrl+F opens a search prompt in the status bar (Enter find, Esc cancel)
 - case-insensitive, Unicode aware (Cyrillic etc.)
@@ -1432,7 +1432,7 @@ index ede7167..2fa16cd 100644
 From 50aa77320cf69c18888715f51fa17e2f431330cc Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 18:13:07 +0300
-Subject: [PATCH 09/29] Parse and lay out Markdown text like leaf
+Subject: [PATCH 09/38] Parse and lay out Markdown text like leaf
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -2396,7 +2396,7 @@ index 0000000..67aeec1
 From 1a4a6621444bd3eafefa1a87c585e8629efbbd22 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 18:13:07 +0300
-Subject: [PATCH 10/29] Add AGENTS.md
+Subject: [PATCH 10/38] Add AGENTS.md
 
 ---
  AGENTS.md | 95 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -2511,7 +2511,7 @@ index 0000000..90c667b
 From 1f18f6e64b36b63f9845fc874d712daf73f56bb1 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 18:15:53 +0300
-Subject: [PATCH 11/29] Close emphasis at the end of a delimiter run
+Subject: [PATCH 11/38] Close emphasis at the end of a delimiter run
 
 "**b *c***" gave bold "b *c" and a stray "*"; the bold closer is the end of
 the "***" run, so the first "*" closes the italic.
@@ -2553,7 +2553,7 @@ index 67aeec1..e090f9c 100644
 From 64e076da0d5b16362d866da6928cb14e6cc10fb6 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 18:57:51 +0300
-Subject: [PATCH 12/29] Add a standalone syntax highlighter (C99)
+Subject: [PATCH 12/38] Add a standalone syntax highlighter (C99)
 
 include/highlight/highlight.h + src/highlight/highlight.c: one line at a
 time, no dependencies, meant to be reusable outside TermMark (e.g. in
@@ -3018,7 +3018,7 @@ index 0000000..8b9bf52
 From eba3d0c20e941db9634ceda953897d1138fd3951 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 18:57:51 +0300
-Subject: [PATCH 13/29] Reflow paragraphs, front matter, code highlighting
+Subject: [PATCH 13/38] Reflow paragraphs, front matter, code highlighting
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -3546,7 +3546,7 @@ index e090f9c..3f2ef4d 100644
 From 95d6a5270036fd9305de10d2c44cf7814876998e Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 18:57:51 +0300
-Subject: [PATCH 14/29] AGENTS.md: highlighter, reflow, front matter
+Subject: [PATCH 14/38] AGENTS.md: highlighter, reflow, front matter
 
 ---
  AGENTS.md | 28 ++++++++++++++++++++--------
@@ -3620,7 +3620,7 @@ index 90c667b..fe55c21 100644
 From 35856ef3e90fd5b2d1aae5a87b7bd953f82abecb Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 19:04:12 +0300
-Subject: [PATCH 15/29] highlight: in sh, numbers only as words of their own
+Subject: [PATCH 15/38] highlight: in sh, numbers only as words of their own
 
 "/tmp/log-2.txt" no longer shows a number.
 ---
@@ -3663,7 +3663,7 @@ index 8b9bf52..d0d34ae 100644
 From d784a166401a706f89a0d5811f1eb91a94d75960 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 19:04:12 +0300
-Subject: [PATCH 16/29] =?UTF-8?q?Add=20examples/=D0=BF=D0=BE=D0=B4=D1=81?=
+Subject: [PATCH 16/38] =?UTF-8?q?Add=20examples/=D0=BF=D0=BE=D0=B4=D1=81?=
  =?UTF-8?q?=D0=B2=D0=B5=D1=82=D0=BA=D0=B0.md:=20syntax=20highlighting=20sa?=
  =?UTF-8?q?mple?=
 MIME-Version: 1.0
@@ -3809,7 +3809,7 @@ index 0000000..d0fa5f8
 From 5e896391fc9a6885edfe73686d55c2f604b19f5c Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 19:13:21 +0300
-Subject: [PATCH 17/29] highlight: commands and function names
+Subject: [PATCH 17/38] highlight: commands and function names
 
 New span kind HL_FUNCTION (added at the end, existing values unchanged):
 - sh: the first word of a command, at the line start and after && || | ;
@@ -4215,7 +4215,7 @@ index d0d34ae..169a5f5 100644
 From 7ae7489a70fcc3e148233bb245883724ef067497 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 19:13:21 +0300
-Subject: [PATCH 18/29] examples: rename to highlighting.md, add a command
+Subject: [PATCH 18/38] examples: rename to highlighting.md, add a command
  block
 
 ---
@@ -4260,7 +4260,7 @@ index d0fa5f8..caec38d 100644
 From 8929b4390adf89dd05c95dabd68c60f46de4bc0c Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 19:25:13 +0300
-Subject: [PATCH 19/29] Colors of leaf's default theme
+Subject: [PATCH 19/38] Colors of leaf's default theme
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -4731,7 +4731,7 @@ index 2fa16cd..fd0faa8 100644
 From 8b260435031936e251648306ae8d56a57edc50ec Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 19:25:13 +0300
-Subject: [PATCH 20/29] AGENTS.md: theme colors
+Subject: [PATCH 20/38] AGENTS.md: theme colors
 
 ---
  AGENTS.md | 5 ++++-
@@ -4767,7 +4767,7 @@ index b76b30b..6272082 100644
 From 76bd74128d55099367481b6af6cc15498cc52217 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 19:43:49 +0300
-Subject: [PATCH 21/29] Link marker and string quotes like leaf
+Subject: [PATCH 21/38] Link marker and string quotes like leaf
 
 Links get a "#" marker in leaf's link icon color; in code blocks the quotes of strings take the text color and only the content is green.
 ---
@@ -4829,7 +4829,7 @@ index b062a6c..9286a19 100644
 From 835a42a3de5ec43f7c611c22fcebb35ab0b114e5 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 19:43:49 +0300
-Subject: [PATCH 22/29] Ctrl+E in --watch opens an editor; --editor option
+Subject: [PATCH 22/38] Ctrl+E in --watch opens an editor; --editor option
 
 Like leaf's Ctrl+E, simplified: the pager steps aside, the editor runs in
 the same terminal, and the view comes back and reloads when it exits.
@@ -5211,7 +5211,7 @@ index 3f2ef4d..bdc3676 100644
 From 5f222001335d18f1ab6b3812aafbbbdb3c7b806c Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 19:43:49 +0300
-Subject: [PATCH 23/29] AGENTS.md: Ctrl+E and source lines
+Subject: [PATCH 23/38] AGENTS.md: Ctrl+E and source lines
 
 ---
  AGENTS.md | 8 ++++++--
@@ -5243,7 +5243,7 @@ index 6272082..c9f34e6 100644
 From 6dc18aadaafa381032cbbbe909ffaf349d03f8cd Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 19:59:23 +0300
-Subject: [PATCH 24/29] Ctrl+E: pick an installed editor, say when none is
+Subject: [PATCH 24/38] Ctrl+E: pick an installed editor, say when none is
  found
 
 Without --editor, $VISUAL or $EDITOR, the first installed of nano, mcedit,
@@ -5346,7 +5346,7 @@ index ce25a7c..5827cc1 100644
 From e328b14dc34eb84db5479e437e089eeee34e77fd Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 19:59:23 +0300
-Subject: [PATCH 25/29] AGENTS.md: editor fallback
+Subject: [PATCH 25/38] AGENTS.md: editor fallback
 
 ---
  AGENTS.md | 2 +-
@@ -5372,7 +5372,7 @@ index c9f34e6..a2702c5 100644
 From aeb92065bbc8e62ccb437b4202fdbc70b65a21e4 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 20:09:58 +0300
-Subject: [PATCH 26/29] Document the changes: README, README.ru.md,
+Subject: [PATCH 26/38] Document the changes: README, README.ru.md,
  CHANGELOG.md
 
 README.md describes the current features, options, --watch keys, the
@@ -5827,7 +5827,7 @@ index 0000000..e4172b3
 From 5f7b74e5ae5968fc50fedd38f8d0f7756bb05342 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 20:09:58 +0300
-Subject: [PATCH 27/29] AGENTS.md: keep README, README.ru.md and CHANGELOG.md
+Subject: [PATCH 27/38] AGENTS.md: keep README, README.ru.md and CHANGELOG.md
  up to date
 
 ---
@@ -5854,7 +5854,7 @@ index a2702c5..ee18b4d 100644
 From 460145167786ce178291dd3148d9bcb5a6af5df3 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 20:11:58 +0300
-Subject: [PATCH 28/29] AGENTS.md: build the package patch from v1.0.0
+Subject: [PATCH 28/38] AGENTS.md: build the package patch from v1.0.0
 
 ---
  AGENTS.md | 7 ++++---
@@ -5887,7 +5887,7 @@ index ee18b4d..b6e2761 100644
 From 78b6e33339e80d55ef4585415024d249137946c6 Mon Sep 17 00:00:00 2001
 From: sfslinux <sfslinux@gmail.com>
 Date: Sat, 21 Nov 2026 20:20:13 +0300
-Subject: [PATCH 29/29] AGENTS.md: make it fit for upstream
+Subject: [PATCH 29/38] AGENTS.md: make it fit for upstream
 
 Drop the local packaging section and the local tmp/ convention (builds and
 scratch files go in the ignored build/ directory), describe leaf as the
@@ -5980,6 +5980,1764 @@ index b6e2761..7f2a706 100644
 -
 -cmake is not installed on the host, so the package is built in a clean container:
 -`archlinux:base-devel` with `pacman -S cmake`, then `makepkg` as a normal user.
+-- 
+2.52.0
+
+
+From e2084b01274ca3cc83cc0fb4d6e2372524a66481 Mon Sep 17 00:00:00 2001
+From: sfslinux <sfslinux@gmail.com>
+Date: Sat, 21 Nov 2026 20:45:20 +0300
+Subject: [PATCH 30/38] highlight: SPDX license line, so copies elsewhere keep
+ it
+
+---
+ include/highlight/highlight.h | 4 +++-
+ src/highlight/highlight.c     | 2 +-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/include/highlight/highlight.h b/include/highlight/highlight.h
+index b2179df..df02ea6 100644
+--- a/include/highlight/highlight.h
++++ b/include/highlight/highlight.h
+@@ -1,4 +1,6 @@
+-/* highlight: a small syntax highlighter for one line at a time. C99, no dependencies.
++/* SPDX-License-Identifier: MIT (from TermMark, https://github.com/ishanawal/TermMark)
++ *
++ * highlight: a small syntax highlighter for one line at a time. C99, no dependencies.
+  *
+  * Finds keywords, strings, comments, numbers, names (keys, shell variables, sections) and
+  * commands/functions in sh, C/C++, Python, JavaScript, JSON, YAML and INI. It only reports
+diff --git a/src/highlight/highlight.c b/src/highlight/highlight.c
+index 0a437c5..68555af 100644
+--- a/src/highlight/highlight.c
++++ b/src/highlight/highlight.c
+@@ -1,4 +1,4 @@
+-/* See highlight.h. */
++/* SPDX-License-Identifier: MIT (from TermMark). See highlight.h. */
+ #include "highlight/highlight.h"
+ 
+ #include <ctype.h>
+-- 
+2.52.0
+
+
+From 145bc3549ea71e31a805c104a25dfb1b2dcda869 Mon Sep 17 00:00:00 2001
+From: sfslinux <sfslinux@gmail.com>
+Date: Sat, 21 Nov 2026 22:39:26 +0300
+Subject: [PATCH 31/38] highlight: Markdown
+
+HL_LANG_MARKDOWN (.md, .markdown, .mkd, .mdown; fence name "md"):
+headings and setext underlines as keywords, code spans and fenced code as
+strings, emphasis as names, links/images/footnote references as functions
+with their URLs as comments, list/quote/task/table markers and rules as
+numbers, HTML tags and comments as comments. Fenced code and HTML comments
+carry over lines through the state. Added at the end of hl_lang, so the
+other values do not change.
+---
+ CHANGELOG.md                  |   4 +-
+ README.md                     |   2 +-
+ README.ru.md                  |   2 +-
+ include/highlight/highlight.h |   8 +-
+ src/highlight/highlight.c     | 197 +++++++++++++++++++++++++++++++++-
+ tests/highlight_test.cpp      |  19 ++++
+ 6 files changed, 224 insertions(+), 8 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index be2ee2c..2a116dc 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -7,8 +7,8 @@ Rendering follows [leaf](https://github.com/RivoLink/leaf) (`leaf --inline`).
+ 
+ ### Added
+ 
+-- Syntax highlighting in code blocks for sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML
+-  and INI: keywords, strings, comments, numbers, names (keys, variables, sections) and
++- Syntax highlighting in code blocks for sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML,
++  INI and Markdown: keywords, strings, comments, numbers, names (keys, variables, sections) and
+   commands/functions. The highlighter (`include/highlight/highlight.h`,
+   `src/highlight/highlight.c`) is a standalone C99 module that other programs can reuse.
+ - `--watch` is a full-screen viewer on a terminal: scrolling, table of contents (`t`), jumps to
+diff --git a/README.md b/README.md
+index 1c3ddd3..129fc7a 100644
+--- a/README.md
++++ b/README.md
+@@ -16,7 +16,7 @@ The layout and colors follow [leaf](https://github.com/RivoLink/leaf): when in d
+ - **Lists**: nested (`•`, `◦`, `▸`), ordered lists keep their start number, task lists (`☐`, `☑`)
+ - **Blockquotes** with a `▏` bar, multi-line
+ - **Tables** with Unicode borders, column alignment, Unicode/CJK/emoji widths, fitted to the terminal width with word-wrapped cells
+-- **Code blocks** in a frame with line numbers and **syntax highlighting** for sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML and INI
++- **Code blocks** in a frame with line numbers and **syntax highlighting** for sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI and Markdown
+ - **YAML front matter** shown as a table, like leaf
+ - Colors of leaf's default theme (24-bit)
+ 
+diff --git a/README.ru.md b/README.ru.md
+index e4172b3..d2e7a90 100644
+--- a/README.ru.md
++++ b/README.ru.md
+@@ -16,7 +16,7 @@
+ - **Списки**: вложенные (`•`, `◦`, `▸`), нумерация с любого числа, задачи (`☐`, `☑`)
+ - **Цитаты** с полосой `▏`, в несколько строк
+ - **Таблицы** с рамкой из линий, выравниванием столбцов, правильной шириной кириллицы, иероглифов и эмодзи; подгоняются под ширину терминала, текст в ячейках переносится
+-- **Блоки кода** в рамке с номерами строк и **подсветкой синтаксиса** для sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML и INI
++- **Блоки кода** в рамке с номерами строк и **подсветкой синтаксиса** для sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI и Markdown
+ - **YAML-заголовок** в начале файла выводится таблицей, как в leaf
+ - Цвета темы leaf по умолчанию (24-битные)
+ 
+diff --git a/include/highlight/highlight.h b/include/highlight/highlight.h
+index df02ea6..caf11fe 100644
+--- a/include/highlight/highlight.h
++++ b/include/highlight/highlight.h
+@@ -3,8 +3,8 @@
+  * highlight: a small syntax highlighter for one line at a time. C99, no dependencies.
+  *
+  * Finds keywords, strings, comments, numbers, names (keys, shell variables, sections) and
+- * commands/functions in sh, C/C++, Python, JavaScript, JSON, YAML and INI. It only reports
+- * spans; the caller decides
++ * commands/functions in sh, C/C++, Python, JavaScript, JSON, YAML, INI and Markdown. It only
++ * reports spans; the caller decides
+  * how they look: TermMark turns them into ANSI colors, an editor can turn them into text tags
+  * (for example GtkTextTag in l3afpad).
+  *
+@@ -36,7 +36,9 @@ typedef enum {
+     HL_LANG_JS,     /* JavaScript and TypeScript */
+     HL_LANG_JSON,
+     HL_LANG_YAML,
+-    HL_LANG_INI     /* also .conf, .desktop, TOML */
++    HL_LANG_INI,    /* also .conf, .desktop, TOML */
++    HL_LANG_MARKDOWN /* headings = keyword, code = string, emphasis = name, links = function
++                        (their URL = comment), list/quote/table markers = number */
+ } hl_lang;
+ 
+ typedef enum {
+diff --git a/src/highlight/highlight.c b/src/highlight/highlight.c
+index 68555af..c0757cb 100644
+--- a/src/highlight/highlight.c
++++ b/src/highlight/highlight.c
+@@ -5,7 +5,8 @@
+ #include <string.h>
+ 
+ /* Values of *state between lines. */
+-enum { IN_CODE = 0, IN_BLOCK_COMMENT, IN_TRIPLE_DOUBLE, IN_TRIPLE_SINGLE, IN_TEMPLATE };
++enum { IN_CODE = 0, IN_BLOCK_COMMENT, IN_TRIPLE_DOUBLE, IN_TRIPLE_SINGLE, IN_TEMPLATE,
++       IN_MD_FENCE_BACKTICK, IN_MD_FENCE_TILDE, IN_MD_HTML_COMMENT };
+ 
+ static const char *const sh_words[] = {
+     "if", "then", "else", "elif", "fi", "for", "while", "until", "do", "done", "case", "esac",
+@@ -106,6 +107,194 @@ static void ini_line(const char *line, size_t len, out_t *out) {
+     }
+ }
+ 
++/* Markdown spans inside a line: code, emphasis, links, autolinks, HTML, table pipes. */
++static void md_inline(const char *line, size_t len, size_t i, int *state, out_t *out) {
++    while (i < len) {
++        const char c = line[i];
++        const char prev = i > 0 ? line[i - 1] : ' ';
++        size_t j, k, run;
++
++        if (c == '\\' && i + 1 < len) { /* escaped character */
++            i += 2;
++            continue;
++        }
++        if (c == '`') { /* code span: closed by a run of the same length */
++            for (run = i; run < len && line[run] == '`'; ++run) {}
++            for (j = run; j < len;) {
++                if (line[j] != '`') { ++j; continue; }
++                for (k = j; k < len && line[k] == '`'; ++k) {}
++                if (k - j == run - i) break;
++                j = k;
++            }
++            if (j < len) {
++                emit(out, i, j + (run - i), HL_STRING);
++                i = j + (run - i);
++            } else {
++                i = run;
++            }
++            continue;
++        }
++        if (c == '<' && i + 3 < len && memcmp(line + i, "<!--", 4) == 0) {
++            j = find(line, len, i + 4, "-->");
++            emit(out, i, j < len ? j + 3 : len, HL_COMMENT);
++            if (j >= len) {
++                *state = IN_MD_HTML_COMMENT;
++                return;
++            }
++            i = j + 3;
++            continue;
++        }
++        if (c == '<' && i + 1 < len && (isalpha((unsigned char)line[i + 1]) || line[i + 1] == '/')) {
++            for (j = i + 1; j < len && line[j] != '>' && line[j] != ' ' && line[j] != '<'; ++j) {}
++            if (j < len && line[j] == '>' && (memchr(line + i, ':', j - i) || memchr(line + i, '@', j - i))) {
++                emit(out, i, j + 1, HL_FUNCTION); /* autolink <https://...> */
++                i = j + 1;
++                continue;
++            }
++            for (j = i + 1; j < len && line[j] != '>'; ++j) {}
++            if (j < len) {
++                emit(out, i, j + 1, HL_COMMENT); /* HTML tag */
++                i = j + 1;
++                continue;
++            }
++        }
++        if (c == '[' || (c == '!' && i + 1 < len && line[i + 1] == '[')) { /* links and images */
++            size_t open = c == '!' ? i + 1 : i, depth = 0;
++            for (j = open; j < len; ++j) {
++                if (line[j] == '\\') ++j;
++                else if (line[j] == '[') ++depth;
++                else if (line[j] == ']' && --depth == 0) break;
++            }
++            if (j < len && j + 1 < len && line[j + 1] == '(') {
++                for (k = j + 2; k < len && line[k] != ')'; ++k) {}
++                if (k < len) {
++                    emit(out, i, j + 1, HL_FUNCTION);
++                    emit(out, j + 1, k + 1, HL_COMMENT);
++                    i = k + 1;
++                    continue;
++                }
++            }
++            if (j < len && (line[open + 1] == '^' || (j + 1 < len && line[j + 1] == '['))) {
++                if (j + 1 < len && line[j + 1] == '[') /* [text][ref] */
++                    for (j = j + 1; j < len && line[j] != ']'; ++j) {}
++                if (j < len) {
++                    emit(out, i, j + 1, HL_FUNCTION); /* reference link or footnote [^1] */
++                    i = j + 1;
++                    continue;
++                }
++            }
++        }
++        if (c == '*' || c == '_' || c == '~') { /* emphasis, strong, strikethrough */
++            for (run = i; run < len && line[run] == c && run - i < 3; ++run) {}
++            const size_t n = run - i;
++            const int intraword = c == '_' && is_ident(prev);
++            if (!intraword && run < len && line[run] != ' ' && (c != '~' || n == 2)) {
++                for (j = run + 1; j + n <= len; ++j) {
++                    if (memcmp(line + j, line + i, n) == 0 && line[j - 1] != ' '
++                        && (c != '_' || j + n >= len || !is_ident(line[j + n]))) {
++                        emit(out, i, j + n, HL_NAME);
++                        break;
++                    }
++                }
++                if (j + n <= len) {
++                    i = j + n;
++                    continue;
++                }
++            }
++            i = run;
++            continue;
++        }
++        if (c == '|')
++            emit(out, i, i + 1, HL_NUMBER); /* table pipe */
++        ++i;
++    }
++}
++
++/* Markdown, one line: block markers first, then the spans. */
++static void md_line(const char *line, size_t len, int *state, out_t *out) {
++    size_t s = 0, i, j;
++    int listed = 0;
++
++    while (s < len && s < 3 && line[s] == ' ') ++s;
++    if (*state == IN_MD_FENCE_BACKTICK || *state == IN_MD_FENCE_TILDE) {
++        const char fence = *state == IN_MD_FENCE_BACKTICK ? '`' : '~';
++        for (j = s; j < len && line[j] == fence; ++j) {}
++        emit(out, 0, len, HL_STRING);
++        if (j - s >= 3 && skip_space(line, len, j) == len) *state = IN_CODE;
++        return;
++    }
++    if (*state == IN_MD_HTML_COMMENT) {
++        j = find(line, len, 0, "-->");
++        emit(out, 0, j < len ? j + 3 : len, HL_COMMENT);
++        if (j >= len) return;
++        *state = IN_CODE;
++        md_inline(line, len, j + 3, state, out);
++        return;
++    }
++    if (s + 2 < len && (line[s] == '`' || line[s] == '~') && line[s + 1] == line[s] && line[s + 2] == line[s]) {
++        emit(out, 0, len, HL_STRING);
++        *state = line[s] == '`' ? IN_MD_FENCE_BACKTICK : IN_MD_FENCE_TILDE;
++        return;
++    }
++    for (j = s; j < len && line[j] == '#' && j - s < 7; ++j) {}
++    if (j > s && j - s <= 6 && (j == len || line[j] == ' ' || line[j] == '\t')) {
++        emit(out, s, len, HL_KEYWORD); /* # Heading */
++        return;
++    }
++    if (s < len && strchr("-*_=", line[s])) { /* rule, or the underline of a heading */
++        size_t marks = 0;
++        for (j = s; j < len && (line[j] == line[s] || line[j] == ' ' || line[j] == '\t'); ++j)
++            if (line[j] == line[s]) ++marks;
++        if (j == len && (marks >= 3 || (line[s] == '=' && marks >= 1))) {
++            emit(out, s, len, line[s] == '=' ? HL_KEYWORD : HL_NUMBER);
++            return;
++        }
++    }
++    if (s < len && (line[s] == '|' || line[s] == ':' || line[s] == '-')) { /* table separator row */
++        int pipe = 0, dash = 0;
++        for (j = s; j < len && strchr("|:- \t", line[j]); ++j) {
++            pipe |= line[j] == '|';
++            dash |= line[j] == '-';
++        }
++        if (j == len && pipe && dash) {
++            emit(out, s, len, HL_NUMBER);
++            return;
++        }
++    }
++    if (s < len && line[s] == '[') { /* [label]: https://... */
++        j = find(line, len, s, "]:");
++        if (j < len && line[s + 1] != '^') {
++            emit(out, s, j + 2, HL_FUNCTION);
++            emit(out, j + 2, len, HL_COMMENT);
++            return;
++        }
++    }
++    i = s;
++    while (i < len && line[i] == '>') { /* quote markers */
++        emit(out, i, i + 1, HL_NUMBER);
++        i = skip_space(line, len, i + 1);
++    }
++    for (j = i; j < len && (line[j] == ' ' || line[j] == '\t'); ++j) {}
++    if (j + 1 < len && strchr("-*+", line[j]) && line[j + 1] == ' ') { /* - item */
++        emit(out, j, j + 1, HL_NUMBER);
++        i = j + 2;
++        listed = 1;
++    } else {
++        size_t d = j;
++        while (d < len && isdigit((unsigned char)line[d]) && d - j < 9) ++d;
++        if (d > j && d + 1 < len && (line[d] == '.' || line[d] == ')') && line[d + 1] == ' ') { /* 1. item */
++            emit(out, j, d + 1, HL_NUMBER);
++            i = d + 2;
++            listed = 1;
++        }
++    }
++    if (listed && i + 3 < len && line[i] == '[' && strchr(" xX", line[i + 1]) && line[i + 2] == ']' && line[i + 3] == ' ') {
++        emit(out, i, i + 3, HL_NUMBER); /* [ ] task */
++        i += 4;
++    }
++    md_inline(line, len, i, state, out);
++}
++
+ size_t hl_line(hl_lang lang, const char *line, size_t len, int *state, hl_span *spans, size_t max_spans) {
+     out_t out = {spans, max_spans, 0};
+     size_t i = 0;
+@@ -117,6 +306,10 @@ size_t hl_line(hl_lang lang, const char *line, size_t len, int *state, hl_span *
+         ini_line(line, len, &out);
+         return out.count;
+     }
++    if (lang == HL_LANG_MARKDOWN) {
++        md_line(line, len, state, &out);
++        return out.count;
++    }
+ 
+     /* Finish what the previous line left open. */
+     if (*state != IN_CODE) {
+@@ -305,6 +498,8 @@ hl_lang hl_lang_from_name(const char *name) {
+         {"yaml", HL_LANG_YAML}, {"yml", HL_LANG_YAML},
+         {"ini", HL_LANG_INI}, {"conf", HL_LANG_INI}, {"cfg", HL_LANG_INI}, {"toml", HL_LANG_INI},
+         {"desktop", HL_LANG_INI}, {"service", HL_LANG_INI}, {"properties", HL_LANG_INI},
++        {"md", HL_LANG_MARKDOWN}, {"markdown", HL_LANG_MARKDOWN}, {"mkd", HL_LANG_MARKDOWN},
++        {"mdown", HL_LANG_MARKDOWN},
+     };
+     if (!name) return HL_LANG_NONE;
+     size_t len = 0;
+diff --git a/tests/highlight_test.cpp b/tests/highlight_test.cpp
+index 169a5f5..93ffaa9 100644
+--- a/tests/highlight_test.cpp
++++ b/tests/highlight_test.cpp
+@@ -76,6 +76,25 @@ int main() {
+     CHECK(marked(HL_LANG_INI, "Name = \"TermMark\"") == "[V:Name] = [S:\"TermMark\"]");
+     CHECK(marked(HL_LANG_INI, "; comment") == "[C:; comment]");
+ 
++    CHECK(hl_lang_from_filename("README.md") == HL_LANG_MARKDOWN);
++    CHECK(marked(HL_LANG_MARKDOWN, "# Title") == "[K:# Title]");
++    CHECK(marked(HL_LANG_MARKDOWN, "Text **bold** and *it* and `code`, 2 * 3, snake_case") ==
++          "Text [V:**bold**] and [V:*it*] and [S:`code`], 2 * 3, snake_case");
++    CHECK(marked(HL_LANG_MARKDOWN, "- [ ] see [link](http://x.y)") == "[N:-] [N:[ ]] see [F:[link]][C:(http://x.y)]");
++    CHECK(marked(HL_LANG_MARKDOWN, "> a <https://e.com> <b>") == "[N:>] a [F:<https://e.com>] [C:<b>]");
++    CHECK(marked(HL_LANG_MARKDOWN, "| a |") == "[N:|] a [N:|]");
++    CHECK(marked(HL_LANG_MARKDOWN, "|:--|--:|") == "[N:|:--|--:|]");
++    CHECK(marked(HL_LANG_MARKDOWN, "[ref]: https://r") == "[F:[ref]:][C: https://r]");
++    CHECK(marked(HL_LANG_MARKDOWN, "[t][ref] x[^1]") == "[F:[t][ref]] x[F:[^1]]");
++    {
++        int state = 0; // fenced code and HTML comments go on over the following lines
++        CHECK(marked(HL_LANG_MARKDOWN, "```sh", state) == "[S:```sh]");
++        CHECK(marked(HL_LANG_MARKDOWN, "# no heading", state) == "[S:# no heading]");
++        CHECK(marked(HL_LANG_MARKDOWN, "```", state) == "[S:```]" && state == 0);
++        CHECK(marked(HL_LANG_MARKDOWN, "<!-- a", state) == "[C:<!-- a]");
++        CHECK(marked(HL_LANG_MARKDOWN, "b --> *c*", state) == "[C:b -->] [V:*c*]" && state == 0);
++    }
++
+     CHECK(marked(HL_LANG_NONE, "if x") == "if x");
+ 
+     if (failures == 0) std::cout << "highlight_test: all checks passed\n";
+-- 
+2.52.0
+
+
+From 67610253ddadb4755d881499b79bdec21884202a Mon Sep 17 00:00:00 2001
+From: sfslinux <sfslinux@gmail.com>
+Date: Wed, 25 Nov 2026 09:26:04 +0300
+Subject: [PATCH 32/38] Code fences of any length, and ~~~ fences
+
+A ```` fence took its fourth backtick for the language, and a ``` line inside
+closed the block. Fences are now 3 or more backticks or tildes, closed by a
+run of the same character at least as long (CommonMark).
+---
+ CHANGELOG.md                  |  2 ++
+ README.md                     |  2 +-
+ README.ru.md                  |  2 +-
+ src/parser/MarkdownParser.cpp | 37 ++++++++++++++++++++++++++++-------
+ tests/parser_test.cpp         |  8 ++++++++
+ 5 files changed, 42 insertions(+), 9 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 2a116dc..f703041 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -45,4 +45,6 @@ Rendering follows [leaf](https://github.com/RivoLink/leaf) (`leaf --inline`).
+ - Each source line of a paragraph was printed as a separate paragraph.
+ - `2 * 3` and `snake_case_names` were turned into italics.
+ - Code spans containing backticks, and an unclosed code fence lost their content.
++- Code fences of four or more backticks: the extra backticks were taken for the language and a
++  ``` line inside closed the block. `~~~` fences now work too.
+ - The horizontal rule read an uninitialized terminal size when output was piped.
+diff --git a/README.md b/README.md
+index 129fc7a..baebc25 100644
+--- a/README.md
++++ b/README.md
+@@ -16,7 +16,7 @@ The layout and colors follow [leaf](https://github.com/RivoLink/leaf): when in d
+ - **Lists**: nested (`•`, `◦`, `▸`), ordered lists keep their start number, task lists (`☐`, `☑`)
+ - **Blockquotes** with a `▏` bar, multi-line
+ - **Tables** with Unicode borders, column alignment, Unicode/CJK/emoji widths, fitted to the terminal width with word-wrapped cells
+-- **Code blocks** in a frame with line numbers and **syntax highlighting** for sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI and Markdown
++- **Code blocks** (```` ``` ```` or `~~~` fences, longer fences may hold ```` ``` ```` lines) in a frame with line numbers and **syntax highlighting** for sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI and Markdown
+ - **YAML front matter** shown as a table, like leaf
+ - Colors of leaf's default theme (24-bit)
+ 
+diff --git a/README.ru.md b/README.ru.md
+index d2e7a90..c37d220 100644
+--- a/README.ru.md
++++ b/README.ru.md
+@@ -16,7 +16,7 @@
+ - **Списки**: вложенные (`•`, `◦`, `▸`), нумерация с любого числа, задачи (`☐`, `☑`)
+ - **Цитаты** с полосой `▏`, в несколько строк
+ - **Таблицы** с рамкой из линий, выравниванием столбцов, правильной шириной кириллицы, иероглифов и эмодзи; подгоняются под ширину терминала, текст в ячейках переносится
+-- **Блоки кода** в рамке с номерами строк и **подсветкой синтаксиса** для sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI и Markdown
++- **Блоки кода** (ограждения ```` ``` ```` или `~~~`, внутри более длинного ограждения можно писать ```` ``` ````) в рамке с номерами строк и **подсветкой синтаксиса** для sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI и Markdown
+ - **YAML-заголовок** в начале файла выводится таблицей, как в leaf
+ - Цвета темы leaf по умолчанию (24-битные)
+ 
+diff --git a/src/parser/MarkdownParser.cpp b/src/parser/MarkdownParser.cpp
+index 24e541d..19ff081 100644
+--- a/src/parser/MarkdownParser.cpp
++++ b/src/parser/MarkdownParser.cpp
+@@ -164,6 +164,24 @@ static int indentOf(const std::string& line) {
+     return indent;
+ }
+ 
++// Length of the code fence (3 or more ` or ~) starting at `first`, 0 if there is none.
++// A ``` line whose rest holds a backtick is inline code, not a fence (CommonMark).
++static size_t fenceOpen(const std::string& line, size_t first, char& mark) {
++    if (first == std::string::npos || (line[first] != '`' && line[first] != '~')) return 0;
++    mark = line[first];
++    const size_t end = line.find_first_not_of(mark, first);
++    const size_t length = (end == std::string::npos ? line.size() : end) - first;
++    if (length < 3 || (mark == '`' && end != std::string::npos && line.find('`', end) != std::string::npos)) return 0;
++    return length;
++}
++
++// The block opened by `length` x `mark` ends at a line of at least as many, and nothing else.
++static bool fenceCloses(const std::string& line, size_t first, char mark, size_t length) {
++    char m;
++    const size_t run = fenceOpen(line, first, m);
++    return run >= length && m == mark && line.find_first_not_of(" \t", first + run) == std::string::npos;
++}
++
+ std::vector<Token> parseMarkdown(const std::string& input) {
+     std::vector<Token> tokens;
+ 
+@@ -181,10 +199,14 @@ std::vector<Token> parseMarkdown(const std::string& input) {
+     std::vector<std::string> footnotes;
+     {
+         std::istringstream scan(input);
+-        bool code = false;
++        size_t code = 0; // length of the open fence
++        char mark = 0;
+         for (std::string line; std::getline(scan, line);) {
+-            if (line.find_first_not_of(" \t") != std::string::npos && line.compare(line.find_first_not_of(" \t"), 3, "```") == 0) code = !code;
+-            else if (!code && std::regex_match(line, match, footnoteRegex) && !footnoteNumbers.count(match[1])) {
++            const size_t first = line.find_first_not_of(" \t");
++            if (code) {
++                if (fenceCloses(line, first, mark, code)) code = 0;
++            } else if (!(code = fenceOpen(line, first, mark))
++                       && std::regex_match(line, match, footnoteRegex) && !footnoteNumbers.count(match[1])) {
+                 footnotes.push_back(match[2]);
+                 footnoteNumbers[match[1]] = static_cast<int>(footnotes.size());
+             }
+@@ -202,6 +224,8 @@ std::vector<Token> parseMarkdown(const std::string& input) {
+     std::istringstream stream(input);
+     std::string line, codeLang, codeBuffer;
+     bool inCodeBlock = false, hardBreak = false;
++    size_t fenceLength = 0; // the open code fence: length and character
++    char fenceMark = 0;
+     size_t lineNo = 0, codeStart = 0; // lines read so far; first line of the open code block
+ 
+     // YAML front matter ("---" ... "---" at the very top) becomes a table filling the width, like
+@@ -274,10 +298,9 @@ std::vector<Token> parseMarkdown(const std::string& input) {
+         ++lineNo;
+         if (!line.empty() && line.back() == '\r') line.pop_back();
+         const size_t firstChar = line.find_first_not_of(" \t");
+-        const bool fence = firstChar != std::string::npos && line.compare(firstChar, 3, "```") == 0;
+ 
+         if (inCodeBlock) {
+-            if (fence) {
++            if (fenceCloses(line, firstChar, fenceMark, fenceLength)) {
+                 inCodeBlock = false;
+                 tokens.push_back(Token{TokenType::CodeBlock, CodeBlockToken{codeLang, codeBuffer}, codeStart});
+             } else {
+@@ -299,10 +322,10 @@ std::vector<Token> parseMarkdown(const std::string& input) {
+             continue;
+         }
+ 
+-        if (fence) {
++        if ((fenceLength = fenceOpen(line, firstChar, fenceMark))) {
+             inCodeBlock = true;
+             codeStart = lineNo;
+-            codeLang = line.substr(firstChar + 3);
++            codeLang = line.substr(firstChar + fenceLength);
+             trim(codeLang);
+             codeBuffer.clear();
+             continue;
+diff --git a/tests/parser_test.cpp b/tests/parser_test.cpp
+index bdc3676..0019214 100644
+--- a/tests/parser_test.cpp
++++ b/tests/parser_test.cpp
+@@ -116,6 +116,14 @@ int main() {
+         auto t = parseMarkdown("```sh\necho hi\n");
+         CHECK(t.size() == 1 && as<CodeBlockToken>(t[0]).code == "echo hi\n");
+     }
++    { // a longer fence holds ``` lines; its fourth backtick is not a language; ~~~ fences
++        auto t = parseMarkdown("````\n```\nx\n```\n````\n\n~~~py\ny\n~~~~\n");
++        CHECK(t.size() == 2);
++        CHECK(as<CodeBlockToken>(t[0]).lang == "" && as<CodeBlockToken>(t[0]).code == "```\nx\n```\n");
++        CHECK(as<CodeBlockToken>(t[1]).lang == "py" && as<CodeBlockToken>(t[1]).code == "y\n");
++        auto inl = parseMarkdown("```a``` b\n");
++        CHECK(inl.size() == 1 && inl[0].type == TokenType::Paragraph);
++    }
+ 
+     if (failures == 0) std::cout << "parser_test: all checks passed\n";
+     return failures == 0 ? 0 : 1;
+-- 
+2.52.0
+
+
+From 578d303d1248b95b71e26ec3e75cdf4b13a25b94 Mon Sep 17 00:00:00 2001
+From: sfslinux <sfslinux@gmail.com>
+Date: Wed, 25 Nov 2026 10:18:34 +0300
+Subject: [PATCH 33/38] highlight: diff/patch and Makefiles
+
+diff: file headers, @@ hunks, added, removed and changed lines, notes.
+Makefile: directives, special targets, assigned and used variables
+($(...), ${...}, $@), targets, recipe commands, strings and comments.
+Makefiles are found by name (Makefile, Makefile.am, GNUmakefile, Kbuild).
+Code blocks are highlighted before their tabs become spaces, so recipe
+lines are recognized.
+---
+ CHANGELOG.md                  |   2 +-
+ README.md                     |   2 +-
+ README.ru.md                  |   2 +-
+ examples/highlighting.md      |  35 +++++++++
+ include/highlight/highlight.h |  10 ++-
+ src/highlight/highlight.c     | 144 ++++++++++++++++++++++++++++++++++
+ src/renderer/Renderer.cpp     |  16 ++--
+ tests/highlight_test.cpp      |  24 +++++-
+ 8 files changed, 222 insertions(+), 13 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index f703041..bb84721 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -8,7 +8,7 @@ Rendering follows [leaf](https://github.com/RivoLink/leaf) (`leaf --inline`).
+ ### Added
+ 
+ - Syntax highlighting in code blocks for sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML,
+-  INI and Markdown: keywords, strings, comments, numbers, names (keys, variables, sections) and
++  INI, Markdown, diff/patch and Makefiles: keywords, strings, comments, numbers, names (keys, variables, sections) and
+   commands/functions. The highlighter (`include/highlight/highlight.h`,
+   `src/highlight/highlight.c`) is a standalone C99 module that other programs can reuse.
+ - `--watch` is a full-screen viewer on a terminal: scrolling, table of contents (`t`), jumps to
+diff --git a/README.md b/README.md
+index baebc25..851c76c 100644
+--- a/README.md
++++ b/README.md
+@@ -16,7 +16,7 @@ The layout and colors follow [leaf](https://github.com/RivoLink/leaf): when in d
+ - **Lists**: nested (`•`, `◦`, `▸`), ordered lists keep their start number, task lists (`☐`, `☑`)
+ - **Blockquotes** with a `▏` bar, multi-line
+ - **Tables** with Unicode borders, column alignment, Unicode/CJK/emoji widths, fitted to the terminal width with word-wrapped cells
+-- **Code blocks** (```` ``` ```` or `~~~` fences, longer fences may hold ```` ``` ```` lines) in a frame with line numbers and **syntax highlighting** for sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI and Markdown
++- **Code blocks** (```` ``` ```` or `~~~` fences, longer fences may hold ```` ``` ```` lines) in a frame with line numbers and **syntax highlighting** for sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI, Markdown, diff and Makefiles
+ - **YAML front matter** shown as a table, like leaf
+ - Colors of leaf's default theme (24-bit)
+ 
+diff --git a/README.ru.md b/README.ru.md
+index c37d220..1a501ab 100644
+--- a/README.ru.md
++++ b/README.ru.md
+@@ -16,7 +16,7 @@
+ - **Списки**: вложенные (`•`, `◦`, `▸`), нумерация с любого числа, задачи (`☐`, `☑`)
+ - **Цитаты** с полосой `▏`, в несколько строк
+ - **Таблицы** с рамкой из линий, выравниванием столбцов, правильной шириной кириллицы, иероглифов и эмодзи; подгоняются под ширину терминала, текст в ячейках переносится
+-- **Блоки кода** (ограждения ```` ``` ```` или `~~~`, внутри более длинного ограждения можно писать ```` ``` ````) в рамке с номерами строк и **подсветкой синтаксиса** для sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI и Markdown
++- **Блоки кода** (ограждения ```` ``` ```` или `~~~`, внутри более длинного ограждения можно писать ```` ``` ````) в рамке с номерами строк и **подсветкой синтаксиса** для sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI, Markdown, diff и Makefile
+ - **YAML-заголовок** в начале файла выводится таблицей, как в leaf
+ - Цвета темы leaf по умолчанию (24-битные)
+ 
+diff --git a/examples/highlighting.md b/examples/highlighting.md
+index caec38d..f681394 100644
+--- a/examples/highlighting.md
++++ b/examples/highlighting.md
+@@ -104,6 +104,41 @@ Exec=termmark %f
+ Terminal=true
+ ```
+ 
++## diff
++
++Заголовки файлов — ключевые слова, диапазоны `@@` — функции, добавленные строки — строки,
++удалённые — имена:
++
++```diff
++diff --git a/hello.c b/hello.c
++--- a/hello.c
+++++ b/hello.c
++@@ -1,3 +1,3 @@ int main(void)
++ #include <stdio.h>
++-int main() { puts("hi"); }
+++int main(void) { puts("hello"); return 0; }
++\ No newline at end of file
++```
++
++## Makefile
++
++```make
++# сборка
++CFLAGS ?= -O2 -Wall
++SRC := $(wildcard *.c)
++
++.PHONY: all clean
++all: hello
++
++hello: $(SRC:.c=.o)
++	@$(CC) $(CFLAGS) -o $@ $^
++	echo "готово" # конец
++
++ifeq ($(DEBUG),1)
++CFLAGS += -g
++endif
++```
++
+ ## Без подсветки
+ 
+ Блок без языка и блок с неизвестным языком выводятся как есть:
+diff --git a/include/highlight/highlight.h b/include/highlight/highlight.h
+index caf11fe..17d2250 100644
+--- a/include/highlight/highlight.h
++++ b/include/highlight/highlight.h
+@@ -3,7 +3,8 @@
+  * highlight: a small syntax highlighter for one line at a time. C99, no dependencies.
+  *
+  * Finds keywords, strings, comments, numbers, names (keys, shell variables, sections) and
+- * commands/functions in sh, C/C++, Python, JavaScript, JSON, YAML, INI and Markdown. It only
++ * commands/functions in sh, C/C++, Python, JavaScript, JSON, YAML, INI, Markdown, diff and
++ * Makefiles. It only
+  * reports spans; the caller decides
+  * how they look: TermMark turns them into ANSI colors, an editor can turn them into text tags
+  * (for example GtkTextTag in l3afpad).
+@@ -37,8 +38,10 @@ typedef enum {
+     HL_LANG_JSON,
+     HL_LANG_YAML,
+     HL_LANG_INI,    /* also .conf, .desktop, TOML */
+-    HL_LANG_MARKDOWN /* headings = keyword, code = string, emphasis = name, links = function
++    HL_LANG_MARKDOWN, /* headings = keyword, code = string, emphasis = name, links = function
+                         (their URL = comment), list/quote/table markers = number */
++    HL_LANG_DIFF,   /* file headers = keyword, hunks = function, added = string, removed = name */
++    HL_LANG_MAKE    /* directives = keyword, variables = name, targets and recipe commands = function */
+ } hl_lang;
+ 
+ typedef enum {
+@@ -60,7 +63,8 @@ typedef struct {
+  * case-insensitive; text after the first space is ignored. HL_LANG_NONE if unknown. */
+ hl_lang hl_lang_from_name(const char *name);
+ 
+-/* Language from a file name by its extension ("x.c", "conf.ini", ".bashrc"). */
++/* Language from a file name by its extension ("x.c", "conf.ini", ".bashrc"), and Makefiles
++ * by name ("Makefile", "Makefile.am", "GNUmakefile", "Kbuild"). */
+ hl_lang hl_lang_from_filename(const char *path);
+ 
+ /* Highlights `line` (`len` bytes, without the newline). Writes at most `max_spans` spans in
+diff --git a/src/highlight/highlight.c b/src/highlight/highlight.c
+index c0757cb..9abeeac 100644
+--- a/src/highlight/highlight.c
++++ b/src/highlight/highlight.c
+@@ -210,6 +210,137 @@ static void md_inline(const char *line, size_t len, size_t i, int *state, out_t
+     }
+ }
+ 
++static int starts(const char *line, size_t len, const char *prefix) {
++    const size_t n = strlen(prefix);
++    return len >= n && memcmp(line, prefix, n) == 0;
++}
++
++/* Unified, context and normal diffs and git patches: file headers = keyword, hunks = function,
++ * added lines = string, removed = name, changed (context diffs) = number, notes = comment. */
++static void diff_line(const char *line, size_t len, out_t *out) {
++    static const char *const headers[] = {"diff ", "index ", "Index: ", "--- ", "+++ ", "*** ", "===",
++        "new file mode", "deleted file mode", "old mode", "new mode", "similarity index", "rename from",
++        "rename to", NULL};
++    static const char *const notes[] = {"\\ ", "Only in ", "Binary files ", "Files ", "Common subdirectories", NULL};
++    const char *const *p;
++    if (starts(line, len, "@@")) { /* "@@ -1,4 +1,5 @@ function": the ranges only */
++        const size_t end = find(line, len, 2, "@@");
++        emit(out, 0, end < len ? end + 2 : len, HL_FUNCTION);
++        return;
++    }
++    if (starts(line, len, "***************")) {
++        emit(out, 0, len, HL_FUNCTION);
++        return;
++    }
++    for (p = headers; *p; ++p) {
++        if (starts(line, len, *p)) {
++            emit(out, 0, len, HL_KEYWORD);
++            return;
++        }
++    }
++    for (p = notes; *p; ++p) {
++        if (starts(line, len, *p)) {
++            emit(out, 0, len, HL_COMMENT);
++            return;
++        }
++    }
++    if (len && (line[0] == '+' || line[0] == '>')) emit(out, 0, len, HL_STRING);
++    else if (len && (line[0] == '-' || line[0] == '<')) emit(out, 0, len, HL_NAME);
++    else if (len && line[0] == '!') emit(out, 0, len, HL_NUMBER);
++}
++
++static const char *const make_words[] = {
++    "include", "-include", "sinclude", "ifeq", "ifneq", "ifdef", "ifndef", "else", "endif", "define",
++    "endef", "export", "unexport", "override", "undefine", "private", "vpath", NULL};
++
++/* End of the make variable at `i`: $(...) and ${...} (nested), $@, $<, $$ and other single
++ * characters. `i` if there is none. */
++static size_t make_var_end(const char *line, size_t len, size_t i) {
++    if (line[i] != '$' || i + 1 >= len || line[i + 1] == ' ' || line[i + 1] == '\t') return i;
++    if (line[i + 1] == '(' || line[i + 1] == '{') {
++        const char open = line[i + 1], close = open == '(' ? ')' : '}';
++        int depth = 0;
++        for (size_t j = i + 1; j < len; ++j) {
++            if (line[j] == open) ++depth;
++            else if (line[j] == close && --depth == 0) return j + 1;
++        }
++        return len;
++    }
++    return i + 2;
++}
++
++/* Variables and comments from `i` on; in recipes also strings, and "#" only as a word. */
++static void make_rest(const char *line, size_t len, size_t i, int recipe, out_t *out) {
++    while (i < len) {
++        const char c = line[i];
++        size_t end;
++        if (c == '\\' && i + 1 < len) { /* \# is no comment, \$ no variable */
++            i += 2;
++            continue;
++        }
++        if (c == '#' && (!recipe || line[i - 1] == ' ' || line[i - 1] == '\t')) {
++            emit(out, i, len, HL_COMMENT);
++            return;
++        }
++        if ((end = make_var_end(line, len, i)) > i) {
++            emit(out, i, end, HL_NAME);
++            i = end;
++            continue;
++        }
++        if (recipe && (c == '"' || c == '\'')) {
++            end = string_end(line, len, i, c, c == '"');
++            emit(out, i, end, HL_STRING);
++            i = end;
++            continue;
++        }
++        ++i;
++    }
++}
++
++/* Makefiles: directives and special targets = keyword, variables (assigned and used) = name,
++ * targets and the command of a recipe line = function. */
++static void make_line(const char *line, size_t len, out_t *out) {
++    size_t i, end, j;
++    if (len && line[0] == '\t') { /* a recipe line: a shell command after @ - + */
++        for (i = 1; i < len && (line[i] == '@' || line[i] == '-' || line[i] == '+'); ++i) {}
++        i = skip_space(line, len, i);
++        for (end = i; end < len && !strchr(" \t;|&()<>`\"'$#", line[end]); ++end) {}
++        emit(out, i, end, HL_FUNCTION);
++        make_rest(line, len, end, 1, out);
++        return;
++    }
++    i = skip_space(line, len, 0);
++    for (;;) { /* directives; "export X = 1" goes on to the assignment */
++        for (end = i; end < len && (is_ident(line[end]) || line[end] == '-'); ++end) {}
++        if (end == i || !is_keyword(make_words, line + i, end - i) || (end < len && line[end] != ' ' && line[end] != '\t' && line[end] != '(')) break;
++        emit(out, i, end, HL_KEYWORD);
++        i = skip_space(line, len, end);
++    }
++    /* "NAME = value" (also := ::= ?= += !=) or "targets: prerequisites", whichever comes first */
++    for (j = i; j < len && line[j] != '#'; ++j) {
++        if ((end = make_var_end(line, len, j)) > j) {
++            j = end - 1;
++            continue;
++        }
++        if (line[j] == '=' || (line[j] == ':' && (starts(line + j, len - j, ":=") || starts(line + j, len - j, "::=")))
++            || ((line[j] == '?' || line[j] == '+' || line[j] == '!') && j + 1 < len && line[j + 1] == '=')) {
++            for (end = j; end > i && (line[end - 1] == ' ' || line[end - 1] == '\t'); --end) {}
++            if (!memchr(line + i, '$', end - i)) emit(out, i, end, HL_NAME);
++            else make_rest(line, end, i, 0, out);
++            make_rest(line, len, j + 1, 0, out);
++            return;
++        }
++        if (line[j] == ':') {
++            for (end = j; end > i && (line[end - 1] == ' ' || line[end - 1] == '\t'); --end) {}
++            if (memchr(line + i, '$', end - i)) make_rest(line, end, i, 0, out);
++            else emit(out, i, end, line[i] == '.' && i + 1 < len && isupper((unsigned char)line[i + 1]) ? HL_KEYWORD : HL_FUNCTION);
++            make_rest(line, len, j + 1, 0, out);
++            return;
++        }
++    }
++    make_rest(line, len, i, 0, out);
++}
++
+ /* Markdown, one line: block markers first, then the spans. */
+ static void md_line(const char *line, size_t len, int *state, out_t *out) {
+     size_t s = 0, i, j;
+@@ -310,6 +441,14 @@ size_t hl_line(hl_lang lang, const char *line, size_t len, int *state, hl_span *
+         md_line(line, len, state, &out);
+         return out.count;
+     }
++    if (lang == HL_LANG_DIFF) {
++        diff_line(line, len, &out);
++        return out.count;
++    }
++    if (lang == HL_LANG_MAKE) {
++        make_line(line, len, &out);
++        return out.count;
++    }
+ 
+     /* Finish what the previous line left open. */
+     if (*state != IN_CODE) {
+@@ -500,6 +639,8 @@ hl_lang hl_lang_from_name(const char *name) {
+         {"desktop", HL_LANG_INI}, {"service", HL_LANG_INI}, {"properties", HL_LANG_INI},
+         {"md", HL_LANG_MARKDOWN}, {"markdown", HL_LANG_MARKDOWN}, {"mkd", HL_LANG_MARKDOWN},
+         {"mdown", HL_LANG_MARKDOWN},
++        {"diff", HL_LANG_DIFF}, {"patch", HL_LANG_DIFF}, {"rej", HL_LANG_DIFF}, {"udiff", HL_LANG_DIFF},
++        {"make", HL_LANG_MAKE}, {"makefile", HL_LANG_MAKE}, {"mk", HL_LANG_MAKE}, {"mak", HL_LANG_MAKE},
+     };
+     if (!name) return HL_LANG_NONE;
+     size_t len = 0;
+@@ -515,5 +656,8 @@ hl_lang hl_lang_from_filename(const char *path) {
+     const char *slash = strrchr(path, '/');
+     const char *base = slash ? slash + 1 : path;
+     const char *dot = strrchr(base, '.');
++    /* Makefile, makefile, GNUmakefile, Makefile.am, Makefile.in, Kbuild */
++    if (!strncmp(base, "Makefile", 8) || !strncmp(base, "makefile", 8) || !strncmp(base, "GNUmakefile", 11)
++        || !strcmp(base, "Kbuild")) return HL_LANG_MAKE;
+     return dot ? hl_lang_from_name(dot + 1) : HL_LANG_NONE;
+ }
+diff --git a/src/renderer/Renderer.cpp b/src/renderer/Renderer.cpp
+index 9286a19..9a3639a 100644
+--- a/src/renderer/Renderer.cpp
++++ b/src/renderer/Renderer.cpp
+@@ -422,9 +422,10 @@ void renderTokens(const std::vector<Token>& tokens) {
+                 using namespace termstyle;
+ 
+                 const std::string lang = content.lang.empty() ? "code" : content.lang;
+-                std::vector<std::string> lines;
++                std::vector<std::string> lines, raws; // tabs shown as 4 spaces; highlighted with tabs (Makefile recipes)
+                 std::istringstream iss(content.code);
+                 for (std::string line; std::getline(iss, line);) {
++                    raws.push_back(line);
+                     for (size_t p; (p = line.find('\t')) != std::string::npos;) line.replace(p, 1, "    ");
+                     lines.push_back(line);
+                 }
+@@ -460,7 +461,7 @@ void renderTokens(const std::vector<Token>& tokens) {
+                 };
+ 
+                 for (size_t n = 0; n < lines.size(); ++n) {
+-                    const std::string& line = lines[n];
++                    const std::string& line = raws[n];
+                     std::vector<int> kinds(line.size(), 0);
+                     hl_span spans[256];
+                     const size_t count = hl_line(syntax, line.data(), line.size(), &syntaxState, spans, 256);
+@@ -479,20 +480,23 @@ void renderTokens(const std::vector<Token>& tokens) {
+                             }
+                         }
+                     }
++                    std::vector<int> shown; // kinds of the shown line, where each tab became 4 spaces
++                    for (size_t b = 0; b < line.size(); ++b) shown.insert(shown.end(), line[b] == '\t' ? 4 : 1, kinds[b]);
++                    const std::string& text = lines[n];
+                     size_t i = 0;
+                     do {
+                         size_t start = i, pieceWidth = 0, cw;
+-                        while (i < line.size()) {
+-                            size_t len = nextChar(line, i, cw);
++                        while (i < text.size()) {
++                            size_t len = nextChar(text, i, cw);
+                             if (pieceWidth + cw > width && pieceWidth > 0) break;
+                             i += len;
+                             pieceWidth += cw;
+                         }
+                         std::string num = start == 0 ? std::to_string(n + 1) : "";
+                         std::cout << theme::CODE_FRAME << "│" << std::string(numWidth - num.size(), ' ') << num
+-                                  << "│ " << RESET << paint(line, kinds, start, i)
++                                  << "│ " << RESET << paint(text, shown, start, i)
+                                   << std::string(width - pieceWidth, ' ') << theme::CODE_FRAME << " │" << RESET << "\n";
+-                    } while (i < line.size());
++                    } while (i < text.size());
+                 }
+ 
+                 std::cout << theme::CODE_FRAME << "└" << rule(numWidth) << "┴" << rule(width + 2) << "┘" << RESET << "\n\n";
+diff --git a/tests/highlight_test.cpp b/tests/highlight_test.cpp
+index 93ffaa9..13133af 100644
+--- a/tests/highlight_test.cpp
++++ b/tests/highlight_test.cpp
+@@ -34,7 +34,29 @@ int main() {
+     CHECK(hl_lang_from_name("brainfuck") == HL_LANG_NONE);
+     CHECK(hl_lang_from_filename("/etc/x/app.YML") == HL_LANG_YAML);
+     CHECK(hl_lang_from_filename("/home/u/.bashrc") == HL_LANG_SH);
+-    CHECK(hl_lang_from_filename("Makefile") == HL_LANG_NONE);
++    CHECK(hl_lang_from_filename("/src/Makefile.am") == HL_LANG_MAKE);
++    CHECK(hl_lang_from_filename("rules.mk") == HL_LANG_MAKE);
++    CHECK(hl_lang_from_filename("fix.patch") == HL_LANG_DIFF);
++    CHECK(hl_lang_from_name("diff") == HL_LANG_DIFF);
++    CHECK(hl_lang_from_filename("notes.txt") == HL_LANG_NONE);
++
++    CHECK(marked(HL_LANG_DIFF, "diff --git a/x b/x") == "[K:diff --git a/x b/x]");
++    CHECK(marked(HL_LANG_DIFF, "--- a/x") == "[K:--- a/x]");
++    CHECK(marked(HL_LANG_DIFF, "@@ -1,2 +1,3 @@ int main()") == "[F:@@ -1,2 +1,3 @@] int main()");
++    CHECK(marked(HL_LANG_DIFF, "+added") == "[S:+added]");
++    CHECK(marked(HL_LANG_DIFF, "-removed") == "[V:-removed]");
++    CHECK(marked(HL_LANG_DIFF, " context") == " context");
++    CHECK(marked(HL_LANG_DIFF, "\\ No newline at end of file") == "[C:\\ No newline at end of file]");
++
++    CHECK(marked(HL_LANG_MAKE, "CFLAGS ?= -O2 $(EXTRA) # opt") == "[V:CFLAGS] ?= -O2 [V:$(EXTRA)] [C:# opt]");
++    CHECK(marked(HL_LANG_MAKE, "export PREFIX := /usr") == "[K:export] [V:PREFIX] := /usr");
++    CHECK(marked(HL_LANG_MAKE, "all: $(OBJS) main.o") == "[F:all]: [V:$(OBJS)] main.o");
++    CHECK(marked(HL_LANG_MAKE, ".PHONY: all clean") == "[K:.PHONY]: all clean");
++    CHECK(marked(HL_LANG_MAKE, "ifeq ($(CC),gcc)") == "[K:ifeq] ([V:$(CC)],gcc)");
++    CHECK(marked(HL_LANG_MAKE, "\t@$(CC) -o $@ \"a b\" $(patsubst %.c,%.o,$(SRC))") ==
++          "\t@[V:$(CC)] -o [V:$@] [S:\"a b\"] [V:$(patsubst %.c,%.o,$(SRC))]");
++    CHECK(marked(HL_LANG_MAKE, "\tgcc -c a.c -o a#b # done") == "\t[F:gcc] -c a.c -o a#b [C:# done]");
++    CHECK(marked(HL_LANG_MAKE, "%.o: %.c") == "[F:%.o]: %.c");
+ 
+     CHECK(marked(HL_LANG_SH, "if [ -f \"$f\" ]; then echo 'x' # done") ==
+           "[K:if] [ -f [S:\"$f\"] ]; [K:then] [F:echo] [S:'x'] [C:# done]");
+-- 
+2.52.0
+
+
+From 7a5315d50522545b4797ebbf7719f6e626293e05 Mon Sep 17 00:00:00 2001
+From: sfslinux <sfslinux@gmail.com>
+Date: Wed, 25 Nov 2026 19:30:41 +0300
+Subject: [PATCH 34/38] highlight: shell sessions
+
+HL_LANG_CONSOLE (console, shell-session, terminal): "$ " or "# " lines
+highlighted as sh after a dimmed prompt, output lines plain. hl_lang_guess()
+takes a block without a language that starts with a "$ " prompt for one;
+the renderer uses it.
+---
+ CHANGELOG.md                  |  3 ++-
+ README.md                     |  2 +-
+ README.ru.md                  |  2 +-
+ include/highlight/highlight.h |  8 +++++++-
+ src/highlight/highlight.c     | 21 +++++++++++++++++++++
+ src/renderer/Renderer.cpp     |  3 ++-
+ tests/highlight_test.cpp      | 12 ++++++++++++
+ 7 files changed, 46 insertions(+), 5 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index bb84721..86e7f61 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -8,7 +8,8 @@ Rendering follows [leaf](https://github.com/RivoLink/leaf) (`leaf --inline`).
+ ### Added
+ 
+ - Syntax highlighting in code blocks for sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML,
+-  INI, Markdown, diff/patch and Makefiles: keywords, strings, comments, numbers, names (keys, variables, sections) and
++  INI, Markdown, diff/patch, Makefiles and shell sessions (`console`, or a block without a
++  language that starts with a `$ ` prompt): keywords, strings, comments, numbers, names (keys, variables, sections) and
+   commands/functions. The highlighter (`include/highlight/highlight.h`,
+   `src/highlight/highlight.c`) is a standalone C99 module that other programs can reuse.
+ - `--watch` is a full-screen viewer on a terminal: scrolling, table of contents (`t`), jumps to
+diff --git a/README.md b/README.md
+index 851c76c..1e813cb 100644
+--- a/README.md
++++ b/README.md
+@@ -16,7 +16,7 @@ The layout and colors follow [leaf](https://github.com/RivoLink/leaf): when in d
+ - **Lists**: nested (`•`, `◦`, `▸`), ordered lists keep their start number, task lists (`☐`, `☑`)
+ - **Blockquotes** with a `▏` bar, multi-line
+ - **Tables** with Unicode borders, column alignment, Unicode/CJK/emoji widths, fitted to the terminal width with word-wrapped cells
+-- **Code blocks** (```` ``` ```` or `~~~` fences, longer fences may hold ```` ``` ```` lines) in a frame with line numbers and **syntax highlighting** for sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI, Markdown, diff and Makefiles
++- **Code blocks** (```` ``` ```` or `~~~` fences, longer fences may hold ```` ``` ```` lines) in a frame with line numbers and **syntax highlighting** for sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI, Markdown, diff, Makefiles and shell sessions (`$ ` prompts)
+ - **YAML front matter** shown as a table, like leaf
+ - Colors of leaf's default theme (24-bit)
+ 
+diff --git a/README.ru.md b/README.ru.md
+index 1a501ab..3e84b29 100644
+--- a/README.ru.md
++++ b/README.ru.md
+@@ -16,7 +16,7 @@
+ - **Списки**: вложенные (`•`, `◦`, `▸`), нумерация с любого числа, задачи (`☐`, `☑`)
+ - **Цитаты** с полосой `▏`, в несколько строк
+ - **Таблицы** с рамкой из линий, выравниванием столбцов, правильной шириной кириллицы, иероглифов и эмодзи; подгоняются под ширину терминала, текст в ячейках переносится
+-- **Блоки кода** (ограждения ```` ``` ```` или `~~~`, внутри более длинного ограждения можно писать ```` ``` ````) в рамке с номерами строк и **подсветкой синтаксиса** для sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI, Markdown, diff и Makefile
++- **Блоки кода** (ограждения ```` ``` ```` или `~~~`, внутри более длинного ограждения можно писать ```` ``` ````) в рамке с номерами строк и **подсветкой синтаксиса** для sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI, Markdown, diff, Makefile и сеансов оболочки (строки с `$ `)
+ - **YAML-заголовок** в начале файла выводится таблицей, как в leaf
+ - Цвета темы leaf по умолчанию (24-битные)
+ 
+diff --git a/include/highlight/highlight.h b/include/highlight/highlight.h
+index 17d2250..9f16665 100644
+--- a/include/highlight/highlight.h
++++ b/include/highlight/highlight.h
+@@ -41,7 +41,9 @@ typedef enum {
+     HL_LANG_MARKDOWN, /* headings = keyword, code = string, emphasis = name, links = function
+                         (their URL = comment), list/quote/table markers = number */
+     HL_LANG_DIFF,   /* file headers = keyword, hunks = function, added = string, removed = name */
+-    HL_LANG_MAKE    /* directives = keyword, variables = name, targets and recipe commands = function */
++    HL_LANG_MAKE,   /* directives = keyword, variables = name, targets and recipe commands = function */
++    HL_LANG_CONSOLE /* a shell session: "$ command" (or "# command") lines as sh, the prompt = comment;
++                       output lines left plain */
+ } hl_lang;
+ 
+ typedef enum {
+@@ -63,6 +65,10 @@ typedef struct {
+  * case-insensitive; text after the first space is ignored. HL_LANG_NONE if unknown. */
+ hl_lang hl_lang_from_name(const char *name);
+ 
++/* Language of a code block that names none, from its text (`len` bytes): HL_LANG_CONSOLE if
++ * its first non-blank line starts with a "$ " prompt, else HL_LANG_NONE. */
++hl_lang hl_lang_guess(const char *code, size_t len);
++
+ /* Language from a file name by its extension ("x.c", "conf.ini", ".bashrc"), and Makefiles
+  * by name ("Makefile", "Makefile.am", "GNUmakefile", "Kbuild"). */
+ hl_lang hl_lang_from_filename(const char *path);
+diff --git a/src/highlight/highlight.c b/src/highlight/highlight.c
+index 9abeeac..7521a7e 100644
+--- a/src/highlight/highlight.c
++++ b/src/highlight/highlight.c
+@@ -427,6 +427,19 @@ static void md_line(const char *line, size_t len, int *state, out_t *out) {
+ }
+ 
+ size_t hl_line(hl_lang lang, const char *line, size_t len, int *state, hl_span *spans, size_t max_spans) {
++    if (lang == HL_LANG_CONSOLE) { /* "$ " or "# " then a command; other lines are its output */
++        size_t n = 0;
++        if (len >= 2 && (line[0] == '$' || line[0] == '#') && line[1] == ' ' && max_spans) {
++            spans[0].start = 0;
++            spans[0].length = 1;
++            spans[0].kind = HL_COMMENT;
++            n = 1 + hl_line(HL_LANG_SH, line + 2, len - 2, state, spans + 1, max_spans - 1);
++            for (size_t i = 1; i < n; ++i) spans[i].start += 2;
++        } else {
++            *state = 0;
++        }
++        return n;
++    }
+     out_t out = {spans, max_spans, 0};
+     size_t i = 0;
+     const char *const *words = lang == HL_LANG_SH ? sh_words : lang == HL_LANG_C ? c_words
+@@ -640,6 +653,8 @@ hl_lang hl_lang_from_name(const char *name) {
+         {"md", HL_LANG_MARKDOWN}, {"markdown", HL_LANG_MARKDOWN}, {"mkd", HL_LANG_MARKDOWN},
+         {"mdown", HL_LANG_MARKDOWN},
+         {"diff", HL_LANG_DIFF}, {"patch", HL_LANG_DIFF}, {"rej", HL_LANG_DIFF}, {"udiff", HL_LANG_DIFF},
++        {"console", HL_LANG_CONSOLE}, {"shell-session", HL_LANG_CONSOLE}, {"sh-session", HL_LANG_CONSOLE},
++        {"terminal", HL_LANG_CONSOLE}, {"shellsession", HL_LANG_CONSOLE},
+         {"make", HL_LANG_MAKE}, {"makefile", HL_LANG_MAKE}, {"mk", HL_LANG_MAKE}, {"mak", HL_LANG_MAKE},
+     };
+     if (!name) return HL_LANG_NONE;
+@@ -651,6 +666,12 @@ hl_lang hl_lang_from_name(const char *name) {
+     return HL_LANG_NONE;
+ }
+ 
++hl_lang hl_lang_guess(const char *code, size_t len) {
++    size_t i = 0;
++    while (i < len && (code[i] == ' ' || code[i] == '\t' || code[i] == '\n' || code[i] == '\r')) ++i;
++    return i + 1 < len && code[i] == '$' && code[i + 1] == ' ' ? HL_LANG_CONSOLE : HL_LANG_NONE;
++}
++
+ hl_lang hl_lang_from_filename(const char *path) {
+     if (!path) return HL_LANG_NONE;
+     const char *slash = strrchr(path, '/');
+diff --git a/src/renderer/Renderer.cpp b/src/renderer/Renderer.cpp
+index 9a3639a..f76f2e7 100644
+--- a/src/renderer/Renderer.cpp
++++ b/src/renderer/Renderer.cpp
+@@ -443,7 +443,8 @@ void renderTokens(const std::vector<Token>& tokens) {
+                           << rule(numWidth + width - std::min(width, displayWidth(lang))) << "┐" << RESET << "\n";
+ 
+                 // Syntax colors per byte from the highlight module (0 = plain), base16-ocean like leaf.
+-                const hl_lang syntax = hl_lang_from_name(content.lang.c_str());
++                const hl_lang syntax = content.lang.empty() ? hl_lang_guess(content.code.data(), content.code.size())
++                                                            : hl_lang_from_name(content.lang.c_str());
+                 int syntaxState = 0;
+                 static const char* colors[] = {theme::CODE_TEXT, theme::SYNTAX_KEYWORD, theme::SYNTAX_STRING, theme::SYNTAX_COMMENT,
+                                                theme::SYNTAX_NUMBER, theme::SYNTAX_NAME, theme::SYNTAX_FUNCTION};
+diff --git a/tests/highlight_test.cpp b/tests/highlight_test.cpp
+index 13133af..9647557 100644
+--- a/tests/highlight_test.cpp
++++ b/tests/highlight_test.cpp
+@@ -58,6 +58,18 @@ int main() {
+     CHECK(marked(HL_LANG_MAKE, "\tgcc -c a.c -o a#b # done") == "\t[F:gcc] -c a.c -o a#b [C:# done]");
+     CHECK(marked(HL_LANG_MAKE, "%.o: %.c") == "[F:%.o]: %.c");
+ 
++    CHECK(marked(HL_LANG_CONSOLE, "$ grep -w aufs /proc/filesystems") == "[C:$] [F:grep] -w aufs /proc/filesystems");
++    CHECK(marked(HL_LANG_CONSOLE, "nodev   aufs") == "nodev   aufs");
++    CHECK(marked(HL_LANG_CONSOLE, "$ mount | grep 'aufs on /mnt'") == "[C:$] [F:mount] | [F:grep] [S:'aufs on /mnt']");
++    CHECK(marked(HL_LANG_CONSOLE, "# pacman -S aufs") == "[C:#] [F:pacman] -S aufs");
++    CHECK(hl_lang_from_name("console") == HL_LANG_CONSOLE);
++    {
++        const std::string session = "\n$ ls\nfile\n", text = "nodev aufs\n", mathy = "$x$ and $y$";
++        CHECK(hl_lang_guess(session.data(), session.size()) == HL_LANG_CONSOLE);
++        CHECK(hl_lang_guess(text.data(), text.size()) == HL_LANG_NONE);
++        CHECK(hl_lang_guess(mathy.data(), mathy.size()) == HL_LANG_NONE);
++    }
++
+     CHECK(marked(HL_LANG_SH, "if [ -f \"$f\" ]; then echo 'x' # done") ==
+           "[K:if] [ -f [S:\"$f\"] ]; [K:then] [F:echo] [S:'x'] [C:# done]");
+     CHECK(marked(HL_LANG_SH, "cp $HOME/a ${DIR}/b-if file2") == "[F:cp] [V:$HOME]/a [V:${DIR}]/b-if file2");
+-- 
+2.52.0
+
+
+From 8403dec280c28a9c1cc772a7e3fca5554629c80e Mon Sep 17 00:00:00 2001
+From: sfslinux <sfslinux@gmail.com>
+Date: Thu, 26 Nov 2026 08:46:37 +0300
+Subject: [PATCH 35/38] Files in CP1251, KOI8-R or CP866: recognized and
+ converted to UTF-8
+
+A file that is not valid UTF-8 is read in each of the three charsets and the one with the most Cyrillic letters wins, a capital inside a lower case word and symbols where letters would be counting against (as l3afpad does). No new dependencies: the tables are built in.
+---
+ CMakeLists.txt          |   2 +
+ include/utils/FileIO.h  |   6 ++-
+ src/utils/FileIO.cpp    | 103 ++++++++++++++++++++++++++++++++++++++--
+ tests/encoding_test.cpp |  19 ++++++++
+ 4 files changed, 124 insertions(+), 6 deletions(-)
+ create mode 100644 tests/encoding_test.cpp
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7896d4b..87c8bdf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -19,3 +19,5 @@ add_executable(parser_test tests/parser_test.cpp src/parser/MarkdownParser.cpp)
+ add_test(NAME parser COMMAND parser_test)
+ add_executable(highlight_test tests/highlight_test.cpp src/highlight/highlight.c)
+ add_test(NAME highlight COMMAND highlight_test)
++add_executable(encoding_test tests/encoding_test.cpp src/utils/FileIO.cpp)
++add_test(NAME encoding COMMAND encoding_test)
+diff --git a/include/utils/FileIO.h b/include/utils/FileIO.h
+index 8e4641d..cbdae86 100644
+--- a/include/utils/FileIO.h
++++ b/include/utils/FileIO.h
+@@ -2,5 +2,7 @@
+ #include <string>
+ 
+ namespace utils {
+-    std::string readFile(const std::string& path);
+-}
+\ No newline at end of file
++    std::string readFile(const std::string& path); // in UTF-8, see toUtf8
++    // UTF-8 as it is; anything else read as the single-byte Cyrillic charset it looks most like.
++    std::string toUtf8(const std::string& bytes);
++}
+diff --git a/src/utils/FileIO.cpp b/src/utils/FileIO.cpp
+index 7182bab..565792b 100644
+--- a/src/utils/FileIO.cpp
++++ b/src/utils/FileIO.cpp
+@@ -1,18 +1,113 @@
+-#include "utils/TermStyle.h"
++#include "utils/FileIO.h"
++#include <cstdint>
+ #include <fstream>
+ #include <sstream>
+ #include <stdexcept>
+ 
+ namespace utils {
++    namespace {
++        // Bytes 0x80-0xFF of the single-byte Cyrillic charsets.
++        const uint16_t cp1251[128] = {
++        0x0402, 0x0403, 0x201A, 0x0453, 0x201E, 0x2026, 0x2020, 0x2021, 0x20AC, 0x2030, 0x0409, 0x2039, 0x040A, 0x040C, 0x040B, 0x040F,
++        0x0452, 0x2018, 0x2019, 0x201C, 0x201D, 0x2022, 0x2013, 0x2014, 0xFFFD, 0x2122, 0x0459, 0x203A, 0x045A, 0x045C, 0x045B, 0x045F,
++        0x00A0, 0x040E, 0x045E, 0x0408, 0x00A4, 0x0490, 0x00A6, 0x00A7, 0x0401, 0x00A9, 0x0404, 0x00AB, 0x00AC, 0x00AD, 0x00AE, 0x0407,
++        0x00B0, 0x00B1, 0x0406, 0x0456, 0x0491, 0x00B5, 0x00B6, 0x00B7, 0x0451, 0x2116, 0x0454, 0x00BB, 0x0458, 0x0405, 0x0455, 0x0457,
++        0x0410, 0x0411, 0x0412, 0x0413, 0x0414, 0x0415, 0x0416, 0x0417, 0x0418, 0x0419, 0x041A, 0x041B, 0x041C, 0x041D, 0x041E, 0x041F,
++        0x0420, 0x0421, 0x0422, 0x0423, 0x0424, 0x0425, 0x0426, 0x0427, 0x0428, 0x0429, 0x042A, 0x042B, 0x042C, 0x042D, 0x042E, 0x042F,
++        0x0430, 0x0431, 0x0432, 0x0433, 0x0434, 0x0435, 0x0436, 0x0437, 0x0438, 0x0439, 0x043A, 0x043B, 0x043C, 0x043D, 0x043E, 0x043F,
++        0x0440, 0x0441, 0x0442, 0x0443, 0x0444, 0x0445, 0x0446, 0x0447, 0x0448, 0x0449, 0x044A, 0x044B, 0x044C, 0x044D, 0x044E, 0x044F,
++        };
++        const uint16_t koi8r[128] = {
++        0x2500, 0x2502, 0x250C, 0x2510, 0x2514, 0x2518, 0x251C, 0x2524, 0x252C, 0x2534, 0x253C, 0x2580, 0x2584, 0x2588, 0x258C, 0x2590,
++        0x2591, 0x2592, 0x2593, 0x2320, 0x25A0, 0x2219, 0x221A, 0x2248, 0x2264, 0x2265, 0x00A0, 0x2321, 0x00B0, 0x00B2, 0x00B7, 0x00F7,
++        0x2550, 0x2551, 0x2552, 0x0451, 0x2553, 0x2554, 0x2555, 0x2556, 0x2557, 0x2558, 0x2559, 0x255A, 0x255B, 0x255C, 0x255D, 0x255E,
++        0x255F, 0x2560, 0x2561, 0x0401, 0x2562, 0x2563, 0x2564, 0x2565, 0x2566, 0x2567, 0x2568, 0x2569, 0x256A, 0x256B, 0x256C, 0x00A9,
++        0x044E, 0x0430, 0x0431, 0x0446, 0x0434, 0x0435, 0x0444, 0x0433, 0x0445, 0x0438, 0x0439, 0x043A, 0x043B, 0x043C, 0x043D, 0x043E,
++        0x043F, 0x044F, 0x0440, 0x0441, 0x0442, 0x0443, 0x0436, 0x0432, 0x044C, 0x044B, 0x0437, 0x0448, 0x044D, 0x0449, 0x0447, 0x044A,
++        0x042E, 0x0410, 0x0411, 0x0426, 0x0414, 0x0415, 0x0424, 0x0413, 0x0425, 0x0418, 0x0419, 0x041A, 0x041B, 0x041C, 0x041D, 0x041E,
++        0x041F, 0x042F, 0x0420, 0x0421, 0x0422, 0x0423, 0x0416, 0x0412, 0x042C, 0x042B, 0x0417, 0x0428, 0x042D, 0x0429, 0x0427, 0x042A,
++        };
++        const uint16_t cp866[128] = {
++        0x0410, 0x0411, 0x0412, 0x0413, 0x0414, 0x0415, 0x0416, 0x0417, 0x0418, 0x0419, 0x041A, 0x041B, 0x041C, 0x041D, 0x041E, 0x041F,
++        0x0420, 0x0421, 0x0422, 0x0423, 0x0424, 0x0425, 0x0426, 0x0427, 0x0428, 0x0429, 0x042A, 0x042B, 0x042C, 0x042D, 0x042E, 0x042F,
++        0x0430, 0x0431, 0x0432, 0x0433, 0x0434, 0x0435, 0x0436, 0x0437, 0x0438, 0x0439, 0x043A, 0x043B, 0x043C, 0x043D, 0x043E, 0x043F,
++        0x2591, 0x2592, 0x2593, 0x2502, 0x2524, 0x2561, 0x2562, 0x2556, 0x2555, 0x2563, 0x2551, 0x2557, 0x255D, 0x255C, 0x255B, 0x2510,
++        0x2514, 0x2534, 0x252C, 0x251C, 0x2500, 0x253C, 0x255E, 0x255F, 0x255A, 0x2554, 0x2569, 0x2566, 0x2560, 0x2550, 0x256C, 0x2567,
++        0x2568, 0x2564, 0x2565, 0x2559, 0x2558, 0x2552, 0x2553, 0x256B, 0x256A, 0x2518, 0x250C, 0x2588, 0x2584, 0x258C, 0x2590, 0x2580,
++        0x0440, 0x0441, 0x0442, 0x0443, 0x0444, 0x0445, 0x0446, 0x0447, 0x0448, 0x0449, 0x044A, 0x044B, 0x044C, 0x044D, 0x044E, 0x044F,
++        0x0401, 0x0451, 0x0404, 0x0454, 0x0407, 0x0457, 0x040E, 0x045E, 0x00B0, 0x2219, 0x00B7, 0x221A, 0x2116, 0x00A4, 0x25A0, 0x00A0,
++        };
++
++        bool validUtf8(const std::string& s) {
++            for (size_t i = 0; i < s.size();) {
++                const unsigned char c = s[i];
++                const size_t n = c < 0x80 ? 1 : (c >> 5) == 6 ? 2 : (c >> 4) == 14 ? 3 : (c >> 3) == 30 ? 4 : 0;
++                if (!n || i + n > s.size()) return false;
++                for (size_t k = 1; k < n; ++k) {
++                    if ((static_cast<unsigned char>(s[i + k]) >> 6) != 2) return false;
++                }
++                i += n;
++            }
++            return true;
++        }
++
++        void appendUtf8(std::string& out, uint16_t c) {
++            if (c < 0x80) {
++                out += static_cast<char>(c);
++            } else if (c < 0x800) {
++                out += static_cast<char>(0xC0 | c >> 6);
++                out += static_cast<char>(0x80 | (c & 0x3F));
++            } else {
++                out += static_cast<char>(0xE0 | c >> 12);
++                out += static_cast<char>(0x80 | (c >> 6 & 0x3F));
++                out += static_cast<char>(0x80 | (c & 0x3F));
++            }
++        }
++
++        // How much `bytes` read with `table` look like Russian etc.: Cyrillic letters count, a
++        // capital inside a lower case word ("пРИВЕТ": KOI8-R read as CP1251) and symbols where
++        // letters are expected count against. As l3afpad does it.
++        long cyrillicScore(const std::string& bytes, const uint16_t* table) {
++            long score = 0;
++            bool prevLower = false;
++            for (unsigned char b : bytes) {
++                const uint16_t c = b < 0x80 ? b : table[b - 0x80];
++                const bool cyrillic = c >= 0x400 && c <= 0x45F;
++                const bool lower = cyrillic && (c >= 0x430);
++                if (cyrillic) {
++                    ++score;
++                    if (!lower && prevLower) score -= 10;
++                } else if (c >= 0x80 && c != 0xA0) {
++                    score -= 5;
++                }
++                prevLower = lower;
++            }
++            return score;
++        }
++    }
++
++    // shortcut: a file that is not UTF-8 is taken for Cyrillic (CP1251, KOI8-R or CP866,
++    // whichever reads best); add Latin-1 and the like if such files turn up.
++    std::string toUtf8(const std::string& bytes) {
++        if (validUtf8(bytes)) return bytes;
++        const uint16_t* best = cp1251;
++        for (const uint16_t* table : {koi8r, cp866}) {
++            if (cyrillicScore(bytes, table) > cyrillicScore(bytes, best)) best = table;
++        }
++        std::string out;
++        out.reserve(bytes.size() * 2);
++        for (unsigned char b : bytes) appendUtf8(out, b < 0x80 ? b : best[b - 0x80]);
++        return out;
++    }
++
+     std::string readFile(const std::string& path) {
+-        std::ifstream file(path);
++        std::ifstream file(path, std::ios::binary);
+         if (!file.is_open()) {
+             throw std::runtime_error("Failed to open file: " + path);
+         }
+ 
+         std::stringstream buffer;
+         buffer << file.rdbuf();
+-        return buffer.str();
++        return toUtf8(buffer.str());
+     }
+ }
+-
+diff --git a/tests/encoding_test.cpp b/tests/encoding_test.cpp
+new file mode 100644
+index 0000000..b3c6f97
+--- /dev/null
++++ b/tests/encoding_test.cpp
+@@ -0,0 +1,19 @@
++// File encoding checks. Build and run: cmake --build build && ctest --test-dir build
++#include "utils/FileIO.h"
++#include <iostream>
++
++static int failures = 0;
++#define CHECK(cond) \
++    do { if (!(cond)) { std::cerr << __FILE__ << ":" << __LINE__ << ": CHECK failed: " #cond "\n"; ++failures; } } while (0)
++
++int main() {
++    const std::string text = "# \xd0\x9f\xd1\x80\xd0\xb8\xd0\xb2\xd0\xb5\xd1\x82, \xd0\xbc\xd0\xb8\xd1\x80!\n"; // "# Привет, мир!"
++    CHECK(utils::toUtf8(text) == text);                                   // UTF-8 stays
++    CHECK(utils::toUtf8("plain *ascii*") == "plain *ascii*");
++    CHECK(utils::toUtf8("# \xcf\xf0\xe8\xe2\xe5\xf2, \xec\xe8\xf0!\n") == text); // CP1251
++    CHECK(utils::toUtf8("# \xf0\xd2\xc9\xd7\xc5\xd4, \xcd\xc9\xd2!\n") == text); // KOI8-R
++    CHECK(utils::toUtf8("# \x8f\xe0\xa8\xa2\xa5\xe2, \xac\xa8\xe0!\n") == text); // CP866
++
++    if (failures == 0) std::cout << "encoding_test: all checks passed\n";
++    return failures == 0 ? 0 : 1;
++}
+-- 
+2.52.0
+
+
+From 9460ba3764cffd84886102eadb7964cacec31adc Mon Sep 17 00:00:00 2001
+From: sfslinux <sfslinux@gmail.com>
+Date: Thu, 26 Nov 2026 08:46:49 +0300
+Subject: [PATCH 36/38] HTML comments not shown; GitHub alerts like leaf
+
+Lines of <!-- ... --> (also over several lines, such as l3afpad's <!-- toc --> markers) end the open block and are skipped, as CommonMark's HTML blocks; comments inside the text are dropped. "> [!NOTE]" (TIP, IMPORTANT, WARNING, CAUTION, any case) alone on a quote's first line makes it an alert: a bold "[i] Note" title and the bar in leaf's color for it.
+---
+ include/parser/MarkdownParser.h |  1 +
+ include/utils/TermStyle.h       |  5 +++++
+ src/parser/MarkdownParser.cpp   | 33 +++++++++++++++++++++++++++++----
+ src/renderer/Renderer.cpp       | 16 ++++++++++++++--
+ tests/parser_test.cpp           | 14 ++++++++++++++
+ 5 files changed, 63 insertions(+), 6 deletions(-)
+
+diff --git a/include/parser/MarkdownParser.h b/include/parser/MarkdownParser.h
+index 2bd3731..6d7463a 100644
+--- a/include/parser/MarkdownParser.h
++++ b/include/parser/MarkdownParser.h
+@@ -44,6 +44,7 @@ struct ParagraphToken {
+ 
+ struct QuoteToken {
+     std::vector<InlineToken> content;
++    std::string alert; // GitHub alert ("> [!NOTE]"): NOTE, TIP, IMPORTANT, WARNING or CAUTION; else empty
+ };
+ 
+ struct ListItem {
+diff --git a/include/utils/TermStyle.h b/include/utils/TermStyle.h
+index 7af02d1..acdd4c6 100644
+--- a/include/utils/TermStyle.h
++++ b/include/utils/TermStyle.h
+@@ -64,6 +64,11 @@ namespace theme {
+     constexpr const char* LINK_ICON       = "\033[38;2;85;148;235m";
+     constexpr const char* QUOTE_MARKER    = "\033[38;2;75;80;148m";
+     constexpr const char* QUOTE_TEXT      = "\033[38;2;148;148;195m";
++    constexpr const char* ALERT_NOTE      = "\033[38;2;88;152;238m";
++    constexpr const char* ALERT_TIP       = "\033[38;2;95;200;148m";
++    constexpr const char* ALERT_IMPORTANT = "\033[38;2;200;160;225m";
++    constexpr const char* ALERT_WARNING   = "\033[38;2;210;180;120m";
++    constexpr const char* ALERT_CAUTION   = "\033[38;2;218;95;95m";
+     constexpr const char* LIST_1          = "\033[38;2;95;200;148m";
+     constexpr const char* LIST_2          = "\033[38;2;138;155;200m";
+     constexpr const char* LIST_3          = "\033[38;2;168;168;185m";
+diff --git a/src/parser/MarkdownParser.cpp b/src/parser/MarkdownParser.cpp
+index 19ff081..f76a048 100644
+--- a/src/parser/MarkdownParser.cpp
++++ b/src/parser/MarkdownParser.cpp
+@@ -134,6 +134,14 @@ std::vector<InlineToken> parseInline(const std::string& text) {
+                 continue;
+             }
+         }
++        if (text.compare(pos, 4, "<!--") == 0) { // an HTML comment is not shown
++            const size_t end = text.find("-->", pos + 4);
++            if (end != std::string::npos) {
++                pos = end + 3;
++                if (pos < text.size() && text[pos] == ' ' && !tokens.empty() && !tokens.back().text.empty() && tokens.back().text.back() == ' ') ++pos;
++                continue;
++            }
++        }
+         if (c == '<') { // autolink <https://...>
+             const size_t end = text.find('>', pos);
+             const std::string url = end == std::string::npos ? "" : text.substr(pos + 1, end - pos - 1);
+@@ -192,6 +200,7 @@ std::vector<Token> parseMarkdown(const std::string& input) {
+     std::regex listRegex(R"(^(\s*)(?:[-*+]|(\d{1,9})[.)])\s+(.*))");
+     std::regex footnoteRegex(R"(^\[\^([^\]]+)\]:\s*(.*))");
+     std::regex tableSeparatorRegex(R"(^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)*\|?\s*$)");
++    std::regex alertRegex(R"(^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*$)", std::regex::icase);
+     std::smatch match;
+ 
+     // Footnote definitions first, so references above them already know their numbers.
+@@ -223,7 +232,7 @@ std::vector<Token> parseMarkdown(const std::string& input) {
+ 
+     std::istringstream stream(input);
+     std::string line, codeLang, codeBuffer;
+-    bool inCodeBlock = false, hardBreak = false;
++    bool inCodeBlock = false, hardBreak = false, inComment = false;
+     size_t fenceLength = 0; // the open code fence: length and character
+     char fenceMark = 0;
+     size_t lineNo = 0, codeStart = 0; // lines read so far; first line of the open code block
+@@ -309,6 +318,14 @@ std::vector<Token> parseMarkdown(const std::string& input) {
+             continue;
+         }
+ 
++        // Lines of an HTML comment ("<!-- toc -->" and such) are not shown and end the open block,
++        // as CommonMark's HTML blocks do.
++        if (inComment || (firstChar != std::string::npos && line.compare(firstChar, 4, "<!--") == 0)) {
++            inComment = line.find("-->", inComment ? 0 : firstChar + 4) == std::string::npos;
++            open = Block::None;
++            continue;
++        }
++
+         const Block prev = open;
+         open = Block::None;
+         // Separator before a line that continues a block: a space when reflowing, else the
+@@ -384,11 +401,19 @@ std::vector<Token> parseMarkdown(const std::string& input) {
+ 
+         if (std::regex_match(line, match, quoteRegex)) {
+             if (prev == Block::Quote) {
+-                text += join + match[1].str();
++                text += (text.empty() ? "" : join) + match[1].str(); // empty after an alert's "[!NOTE]"
+                 std::get<QuoteToken>(tokens.back().data).content = parseInline(text);
+             } else {
+-                text = match[1].str();
+-                tokens.push_back(Token{TokenType::Quote, QuoteToken{parseInline(text)}});
++                // GitHub alert: "> [!NOTE]" alone on the first line
++                std::smatch alert;
++                const std::string first = match[1].str();
++                std::string kind;
++                if (std::regex_match(first, alert, alertRegex)) {
++                    kind = alert[1].str();
++                    for (auto& ch : kind) ch = static_cast<char>(std::toupper(static_cast<unsigned char>(ch)));
++                }
++                text = kind.empty() ? first : "";
++                tokens.push_back(Token{TokenType::Quote, QuoteToken{parseInline(text), kind}});
+             }
+             open = Block::Quote;
+             continue;
+diff --git a/src/renderer/Renderer.cpp b/src/renderer/Renderer.cpp
+index f76f2e7..76502d3 100644
+--- a/src/renderer/Renderer.cpp
++++ b/src/renderer/Renderer.cpp
+@@ -304,8 +304,20 @@ void renderTokens(const std::vector<Token>& tokens) {
+ 
+             else if constexpr (std::is_same_v<T, QuoteToken>) {
+                 using namespace termstyle;
+-                const std::string bar = std::string(theme::QUOTE_MARKER) + "▏ " + RESET;
+-                printWrapped(styledString(content.content, std::string(ITALIC) + theme::QUOTE_TEXT), bar, bar);
++                // GitHub alerts as leaf shows them: a bold "[i] Note" title, the bar in the alert's color
++                struct Alert { const char *kind, *icon, *title, *color; };
++                static const Alert alerts[] = {
++                    {"NOTE", "[i]", "Note", theme::ALERT_NOTE}, {"TIP", "[*]", "Tip", theme::ALERT_TIP},
++                    {"IMPORTANT", "[!]", "Important", theme::ALERT_IMPORTANT},
++                    {"WARNING", "[!]", "Warning", theme::ALERT_WARNING}, {"CAUTION", "[x]", "Caution", theme::ALERT_CAUTION},
++                };
++                const Alert* alert = nullptr;
++                for (const auto& a : alerts) {
++                    if (content.alert == a.kind) alert = &a;
++                }
++                const std::string bar = std::string(alert ? alert->color : theme::QUOTE_MARKER) + "▏ " + RESET;
++                if (alert) std::cout << bar << BOLD << alert->color << alert->icon << " " << alert->title << RESET << "\n";
++                if (!content.content.empty()) printWrapped(styledString(content.content, std::string(ITALIC) + theme::QUOTE_TEXT), bar, bar);
+                 std::cout << "\n";
+             }
+ 
+diff --git a/tests/parser_test.cpp b/tests/parser_test.cpp
+index 0019214..992fb97 100644
+--- a/tests/parser_test.cpp
++++ b/tests/parser_test.cpp
+@@ -124,6 +124,20 @@ int main() {
+         auto inl = parseMarkdown("```a``` b\n");
+         CHECK(inl.size() == 1 && inl[0].type == TokenType::Paragraph);
+     }
++    { // HTML comments are not shown: whole lines (also over several lines) and inside the text
++        auto t = parseMarkdown("text\n<!-- toc -->\n- [T](#t)\n<!-- tocstop -->\n\n<!--\nhidden\n\nstill hidden -->\nA <!-- x --> b <!-- open\n");
++        CHECK(t.size() == 3);
++        CHECK(plainText(as<ParagraphToken>(t[0]).content) == "text");
++        CHECK(t[1].type == TokenType::List && t[1].line == 3);
++        CHECK(plainText(as<ParagraphToken>(t[2]).content) == "A b <!-- open");
++    }
++    { // GitHub alerts: the kind, any case, and the lines after it; "[!NOTE] text" is a plain quote
++        auto t = parseMarkdown("> [!note]\n> one\n> two\n\n> [!WARNING]\n\n> [!NOTE] x\n");
++        CHECK(t.size() == 3);
++        CHECK(as<QuoteToken>(t[0]).alert == "NOTE" && plainText(as<QuoteToken>(t[0]).content) == "one two");
++        CHECK(as<QuoteToken>(t[1]).alert == "WARNING" && as<QuoteToken>(t[1]).content.empty());
++        CHECK(as<QuoteToken>(t[2]).alert.empty() && plainText(as<QuoteToken>(t[2]).content) == "[!NOTE] x");
++    }
+ 
+     if (failures == 0) std::cout << "parser_test: all checks passed\n";
+     return failures == 0 ? 0 : 1;
+-- 
+2.52.0
+
+
+From 8fd0daa20728bd2eb878f3470a49376db75c5d3a Mon Sep 17 00:00:00 2001
+From: sfslinux <sfslinux@gmail.com>
+Date: Thu, 26 Nov 2026 08:46:49 +0300
+Subject: [PATCH 37/38] Document comments, alerts and Cyrillic charsets:
+ README, README.ru.md, CHANGELOG.md, AGENTS.md
+
+---
+ AGENTS.md    | 5 +++--
+ CHANGELOG.md | 8 ++++++--
+ README.md    | 4 +++-
+ README.ru.md | 4 +++-
+ 4 files changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/AGENTS.md b/AGENTS.md
+index 7f2a706..eabe6b8 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -13,10 +13,10 @@ how something should look.
+ | `include/parser/MarkdownParser.h`, `src/parser/MarkdownParser.cpp` | Markdown -> `Token` list (blocks) with `InlineToken` content |
+ | `src/renderer/Renderer.cpp` | Tokens -> ANSI text on `std::cout`; table layout, code frames, word wrap, TOC, pager helpers |
+ | `src/watch/watch.cpp` | `--watch`: full-screen pager on a terminal (scroll, `t` contents, `1-9`, `/` search), plain re-render loop otherwise |
+-| `src/utils/` | file reading, hyperlink support detection, `--help` text (`cli_info.cpp`), `--guide` demo document |
++| `src/utils/` | file reading (`FileIO.cpp`: UTF-8, or a single-byte Cyrillic charset converted), hyperlink support detection, `--help` text (`cli_info.cpp`), `--guide` demo document |
+ | `include/utils/TermStyle.h` | ANSI styles, and `termstyle::theme`: leaf's default colors (OceanDark, base16-ocean.dark for code) as 24-bit escapes; use these, not raw escapes |
+ | `include/highlight/highlight.h`, `src/highlight/highlight.c` | syntax highlighter for code blocks, plain C99, reusable on its own |
+-| `tests/parser_test.cpp`, `tests/highlight_test.cpp` | checks for the parser and the highlighter (`CHECK` macro, works with `NDEBUG`) |
++| `tests/parser_test.cpp`, `tests/highlight_test.cpp`, `tests/encoding_test.cpp` | checks for the parser, the highlighter and `utils::toUtf8` (`CHECK` macro, works with `NDEBUG`) |
+ 
+ ## Build and test
+ 
+@@ -32,6 +32,7 @@ gcc -std=c99 -Wall -Wextra -pedantic -Iinclude -c src/highlight/highlight.c -o b
+ g++ -std=c++17 -O1 -Wall -Iinclude main.cpp $(find src -name '*.cpp') build/highlight.o -o build/termmark
+ g++ -std=c++17 -Wall -Iinclude tests/parser_test.cpp src/parser/MarkdownParser.cpp -o build/parser_test && build/parser_test
+ g++ -std=c++17 -Wall -Iinclude tests/highlight_test.cpp build/highlight.o -o build/highlight_test && build/highlight_test
++g++ -std=c++17 -Wall -Iinclude tests/encoding_test.cpp src/utils/FileIO.cpp -o build/encoding_test && build/encoding_test
+ ```
+ 
+ Build outputs and scratch files go in `build/`, which git ignores.
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 86e7f61..9b9ceb5 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -21,8 +21,12 @@ Rendering follows [leaf](https://github.com/RivoLink/leaf) (`leaf --inline`).
+ - `--no-reflow`: keep source line breaks inside paragraphs, like leaf.
+ - Markdown: nested lists, task lists, ordered lists starting at any number, setext headings,
+   `***` rules, multi-line quotes, strikethrough, nested emphasis, backslash escapes, code spans
+-  with backticks inside, images, autolinks, footnotes, YAML front matter (shown as a table).
+-- Tests for the parser and the highlighter (`ctest`).
++  with backticks inside, images, autolinks, footnotes, YAML front matter (shown as a table),
++  GitHub alerts (`> [!NOTE]` and the like, as leaf shows them).
++- HTML comments are not shown: lines of `<!-- ... -->` (such as `<!-- toc -->`) and comments
++  inside the text.
++- Files in CP1251, KOI8-R or CP866 are recognized and shown; UTF-8 as before.
++- Tests for the parser, the highlighter and file encodings (`ctest`).
+ - `examples/highlighting.md`, `README.ru.md`, `AGENTS.md`.
+ 
+ ### Changed
+diff --git a/README.md b/README.md
+index 1e813cb..21ffd8a 100644
+--- a/README.md
++++ b/README.md
+@@ -14,11 +14,13 @@ The layout and colors follow [leaf](https://github.com/RivoLink/leaf): when in d
+ - **Paragraphs** word-wrapped to the terminal; source lines joined (or kept with `--no-reflow`)
+ - **Bold**, _italic_, ~~strikethrough~~, nested emphasis, `inline code`, links with a `#` marker (clickable where the terminal supports it), images, autolinks, footnotes
+ - **Lists**: nested (`•`, `◦`, `▸`), ordered lists keep their start number, task lists (`☐`, `☑`)
+-- **Blockquotes** with a `▏` bar, multi-line
++- **Blockquotes** with a `▏` bar, multi-line; GitHub alerts (`> [!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, `[!CAUTION]`) with a title in their color, like leaf
++- **HTML comments** (`<!-- toc -->` and such) are not shown
+ - **Tables** with Unicode borders, column alignment, Unicode/CJK/emoji widths, fitted to the terminal width with word-wrapped cells
+ - **Code blocks** (```` ``` ```` or `~~~` fences, longer fences may hold ```` ``` ```` lines) in a frame with line numbers and **syntax highlighting** for sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI, Markdown, diff, Makefiles and shell sessions (`$ ` prompts)
+ - **YAML front matter** shown as a table, like leaf
+ - Colors of leaf's default theme (24-bit)
++- Files in UTF-8, or in a single-byte Cyrillic charset (CP1251, KOI8-R, CP866), which is recognized
+ 
+ **`--watch`: live viewer**
+ 
+diff --git a/README.ru.md b/README.ru.md
+index 3e84b29..d77ae1f 100644
+--- a/README.ru.md
++++ b/README.ru.md
+@@ -14,11 +14,13 @@
+ - **Абзацы** переносятся по словам по ширине терминала; строки исходника склеиваются (или сохраняются с `--no-reflow`)
+ - **Жирный**, _курсив_, ~~зачёркнутый~~, вложенное оформление, `код в строке`, ссылки со значком `#` (кликабельные, если терминал умеет), картинки, ссылки вида `<https://…>`, сноски
+ - **Списки**: вложенные (`•`, `◦`, `▸`), нумерация с любого числа, задачи (`☐`, `☑`)
+-- **Цитаты** с полосой `▏`, в несколько строк
++- **Цитаты** с полосой `▏`, в несколько строк; примечания GitHub (`> [!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, `[!CAUTION]`) с заголовком своего цвета, как в leaf
++- **HTML-комментарии** (`<!-- toc -->` и другие) не выводятся
+ - **Таблицы** с рамкой из линий, выравниванием столбцов, правильной шириной кириллицы, иероглифов и эмодзи; подгоняются под ширину терминала, текст в ячейках переносится
+ - **Блоки кода** (ограждения ```` ``` ```` или `~~~`, внутри более длинного ограждения можно писать ```` ``` ````) в рамке с номерами строк и **подсветкой синтаксиса** для sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML, INI, Markdown, diff, Makefile и сеансов оболочки (строки с `$ `)
+ - **YAML-заголовок** в начале файла выводится таблицей, как в leaf
+ - Цвета темы leaf по умолчанию (24-битные)
++- Файлы в UTF-8 или в однобайтовой кириллической кодировке (CP1251, KOI8-R, CP866), она определяется сама
+ 
+ **`--watch`: просмотр с обновлением**
+ 
+-- 
+2.52.0
+
+
+From 9d3c522a38ca49f20fa76875c49972b6d211670b Mon Sep 17 00:00:00 2001
+From: sfslinux <sfslinux@gmail.com>
+Date: Sat, 28 Nov 2026 07:32:30 +0300
+Subject: [PATCH 38/38] CHANGELOG.ru.md: the changelog in Russian; --watch
+ follows terminal resizes noted
+
+---
+ AGENTS.md       |  4 ++--
+ CHANGELOG.md    |  5 +++--
+ CHANGELOG.ru.md | 58 +++++++++++++++++++++++++++++++++++++++++++++++++
+ README.md       |  1 +
+ README.ru.md    |  7 +++---
+ 5 files changed, 68 insertions(+), 7 deletions(-)
+ create mode 100644 CHANGELOG.ru.md
+
+diff --git a/AGENTS.md b/AGENTS.md
+index eabe6b8..fef49a9 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -100,5 +100,5 @@ tmux -L t send-keys -t t t Down Enter; tmux -L t capture-pane -p -t t; tmux -L t
+ - Parser changes come with a check in `tests/parser_test.cpp`, highlighter changes with one
+   in `tests/highlight_test.cpp`.
+ - If command line options or `--watch` keys change, update `src/utils/cli_info.cpp`.
+-- User-visible changes go into `CHANGELOG.md` and into both `README.md` and `README.ru.md`
+-  (keep the two in step).
++- User-visible changes go into both `CHANGELOG.md` and `CHANGELOG.ru.md`, and into both
++  `README.md` and `README.ru.md` (keep each pair in step).
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 9b9ceb5..7f26ab6 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -2,6 +2,7 @@
+ 
+ Changes since the original [TermMark 1.0.0](https://github.com/ishanawal/TermMark/releases/tag/v1.0.0).
+ Rendering follows [leaf](https://github.com/RivoLink/leaf) (`leaf --inline`).
++Русская версия: [CHANGELOG.ru.md](CHANGELOG.ru.md).
+ 
+ ## Unreleased
+ 
+@@ -14,7 +15,7 @@ Rendering follows [leaf](https://github.com/RivoLink/leaf) (`leaf --inline`).
+   `src/highlight/highlight.c`) is a standalone C99 module that other programs can reuse.
+ - `--watch` is a full-screen viewer on a terminal: scrolling, table of contents (`t`), jumps to
+   sections (`1`–`9`), search (`/`, `Ctrl+F`, `n`/`N`), opening the file in an editor
+-  (`Ctrl+E`), status bar. Without a terminal it re-renders as before.
++  (`Ctrl+E`), status bar; it follows terminal resizes. Without a terminal it re-renders as before.
+ - `--editor CMD` (`-e`): editor for `Ctrl+E`. Default `$VISUAL` or `$EDITOR`, else the first
+   installed of nano, mcedit, vim, vi. Opens at the line on screen; `{$line}` and `{$path}` work
+   as in leaf.
+@@ -27,7 +28,7 @@ Rendering follows [leaf](https://github.com/RivoLink/leaf) (`leaf --inline`).
+   inside the text.
+ - Files in CP1251, KOI8-R or CP866 are recognized and shown; UTF-8 as before.
+ - Tests for the parser, the highlighter and file encodings (`ctest`).
+-- `examples/highlighting.md`, `README.ru.md`, `AGENTS.md`.
++- `examples/highlighting.md`, `README.ru.md`, `CHANGELOG.ru.md`, `AGENTS.md`.
+ 
+ ### Changed
+ 
+diff --git a/CHANGELOG.ru.md b/CHANGELOG.ru.md
+new file mode 100644
+index 0000000..7b0e00c
+--- /dev/null
++++ b/CHANGELOG.ru.md
+@@ -0,0 +1,58 @@
++# Изменения
++
++Изменения по сравнению с исходной [TermMark 1.0.0](https://github.com/ishanawal/TermMark/releases/tag/v1.0.0).
++Вывод повторяет [leaf](https://github.com/RivoLink/leaf) (`leaf --inline`).
++English version: [CHANGELOG.md](CHANGELOG.md).
++
++## Не выпущено
++
++### Добавлено
++
++- Подсветка синтаксиса в блоках кода для sh, C/C++, Python, JavaScript/TypeScript, JSON, YAML,
++  INI, Markdown, diff/patch, Makefile и сеансов оболочки (`console` или блок без языка,
++  который начинается с приглашения `$ `): ключевые слова, строки, комментарии, числа, имена
++  (ключи, переменные, секции) и команды/функции. Подсветка (`include/highlight/highlight.h`,
++  `src/highlight/highlight.c`) — самостоятельный модуль на C99, его можно брать в другие программы.
++- `--watch` в терминале — полноэкранный просмотр: прокрутка, оглавление (`t`), переход к
++  разделам (`1`–`9`), поиск (`/`, `Ctrl+F`, `n`/`N`), открытие файла в редакторе (`Ctrl+E`),
++  строка состояния; подстраивается под размер окна. Без терминала, как раньше, просто
++  перерисовывает документ.
++- `--editor КОМАНДА` (`-e`): редактор для `Ctrl+E`. По умолчанию `$VISUAL` или `$EDITOR`, иначе
++  первый установленный из nano, mcedit, vim, vi. Открывает на строке, которая на экране;
++  `{$line}` и `{$path}` работают как в leaf.
++- `--no-reflow`: сохранять переносы строк исходника внутри абзацев, как leaf.
++- Markdown: вложенные списки, списки задач, нумерация с любого числа, заголовки с подчёркиванием
++  `===` и `---`, линии `***`, цитаты в несколько строк, зачёркивание, вложенное оформление,
++  экранирование обратной косой чертой, код в строке с обратными кавычками внутри, картинки,
++  ссылки вида `<https://…>`, сноски, YAML-заголовок (выводится таблицей), примечания GitHub
++  (`> [!NOTE]` и другие, как в leaf).
++- HTML-комментарии не выводятся: строки `<!-- ... -->` (например, `<!-- toc -->`) и комментарии
++  внутри текста.
++- Файлы в CP1251, KOI8-R и CP866 распознаются и выводятся правильно; UTF-8 — как раньше.
++- Тесты разбора, подсветки и кодировок файлов (`ctest`).
++- `examples/highlighting.md`, `README.ru.md`, `CHANGELOG.ru.md`, `AGENTS.md`.
++
++### Изменено
++
++- Цвета темы leaf по умолчанию (24-битные) для текста, заголовков, списков, цитат, таблиц, кода
++  и просмотра.
++- Абзацы, пункты списков и цитаты переносятся по словам по ширине терминала; строки исходника
++  склеиваются (как в CommonMark), два пробела в конце строки сохраняют перенос.
++- Заголовки первого и второго уровня подчёркнуты (`═`, `─`), как в leaf.
++- Таблицы: рамка из линий, `╞═╪╡` под заголовком, линии между строками, выравнивание столбцов,
++  подгонка под ширину терминала с переносом текста в ячейках.
++- Блоки кода: закрытая рамка с номерами строк, длинные строки переносятся внутри рамки.
++- Код в строке выводится с отступами, у ссылок значок `#`, маркеры списков `•`, `◦`, `▸`.
++- Вывод не в терминал (через `|`) раскладывается на 80 столбцов.
++
++### Исправлено
++
++- Таблицы с двоеточиями выравнивания в строке-разделителе (`|:--|--:|`) не распознавались.
++- Ширина таблиц и кода считалась в байтах, поэтому кириллица, иероглифы и эмодзи ломали рамки.
++- Терялся последний столбец таблицы, если в строке заголовка не было `|` в конце.
++- Каждая строка исходника абзаца выводилась отдельным абзацем.
++- `2 * 3` и `snake_case_names` превращались в курсив.
++- Терялось содержимое кода в строке с обратными кавычками внутри и незакрытого блока кода.
++- Ограждения из четырёх и более обратных кавычек: лишние кавычки принимались за язык, а строка
++  ```` ``` ```` внутри закрывала блок. Теперь работают и ограждения `~~~`.
++- Горизонтальная линия при выводе через `|` читала неинициализированный размер терминала.
+diff --git a/README.md b/README.md
+index 21ffd8a..c87a766 100644
+--- a/README.md
++++ b/README.md
+@@ -146,6 +146,7 @@ TERMMARK/
+ ├── README.md              # Project documentation
+ ├── README.ru.md           # The same in Russian
+ ├── CHANGELOG.md           # Changes since 1.0.0
++├── CHANGELOG.ru.md        # The same in Russian
+ ├── AGENTS.md              # Notes for contributors and coding agents
+ ├── LICENSE                # License info
+ ```
+diff --git a/README.ru.md b/README.ru.md
+index d77ae1f..2da9baa 100644
+--- a/README.ru.md
++++ b/README.ru.md
+@@ -2,7 +2,7 @@
+ 
+ **TermMark** — лёгкая программа на C++ для просмотра Markdown в терминале. Она разбирает файлы `.md` (или строки с Markdown) и выводит их прямо в терминал с оформлением: заголовки, блоки кода, списки, цитаты, таблицы и прочее.
+ 
+-Вид и цвета повторяют [leaf](https://github.com/RivoLink/leaf): если есть сомнения, как что-то должно выглядеть, TermMark выводит документ так же, как `leaf --inline`. Что изменилось по сравнению с версией 1.0.0 — в [CHANGELOG.md](CHANGELOG.md) (на английском). English version: [README.md](README.md).
++Вид и цвета повторяют [leaf](https://github.com/RivoLink/leaf): если есть сомнения, как что-то должно выглядеть, TermMark выводит документ так же, как `leaf --inline`. Что изменилось по сравнению с версией 1.0.0 — в [CHANGELOG.ru.md](CHANGELOG.ru.md). English version: [README.md](README.md).
+ 
+ ---
+ 
+@@ -37,7 +37,7 @@
+ 
+ #### Через Homebrew
+ 
+-Homebrew ставит исходную версию 1.0.0, без изменений из [CHANGELOG.md](CHANGELOG.md).
++Homebrew ставит исходную версию 1.0.0, без изменений из [CHANGELOG.ru.md](CHANGELOG.ru.md).
+ 
+ ```sh
+ brew tap ishanawal/tap
+@@ -145,7 +145,8 @@ TERMMARK/
+ ├── CMakeLists.txt         # Настройки сборки
+ ├── README.md              # Описание на английском
+ ├── README.ru.md           # Это описание
+-├── CHANGELOG.md           # Изменения после 1.0.0
++├── CHANGELOG.md           # Изменения после 1.0.0, на английском
++├── CHANGELOG.ru.md        # Они же по-русски
+ ├── AGENTS.md              # Заметки для разработчиков и ИИ-агентов
+ ├── LICENSE                # Лицензия
+ ```
 -- 
 2.52.0
 
