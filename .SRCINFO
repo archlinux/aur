@@ -1,0 +1,18 @@
+pkgbase = supercov-bin
+	pkgdesc = Code coverage for AI coding agents
+	pkgver = 4.29.19
+	pkgrel = 1
+	url = https://github.com/supercorp-ai/supercov
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = supercov
+	conflicts = supercov
+	options = !debug
+	source_x86_64 = supercov-bin-4.29.19-x86_64.tgz::https://github.com/supercorp-ai/supercov/releases/download/v4.29.19/supercov-cli-linux-x64-gnu-4.29.19.tgz
+	sha256sums_x86_64 = 0c30b39e9e5623c6c68c6d2ab60be2d7230e7ead4e04be12a116bd93d1145d22
+	source_aarch64 = supercov-bin-4.29.19-aarch64.tgz::https://github.com/supercorp-ai/supercov/releases/download/v4.29.19/supercov-cli-linux-arm64-gnu-4.29.19.tgz
+	sha256sums_aarch64 = 6bd27b9bc92aaa58187bde872bafbca27000f4ff9a0557acd7cecdefaa5a0234
+
+pkgname = supercov-bin
