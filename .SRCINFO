@@ -1,0 +1,19 @@
+pkgbase = evofuzz-git
+	pkgdesc = LLM-steerable evolutionary fuzzing with reproducible counterexamples
+	pkgver = 0.2.0.r9.g0e4b8f5
+	pkgrel = 1
+	url = https://github.com/TheDarkLightX/EvoFuzz
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = evofuzz
+	conflicts = evofuzz
+	source = git+https://github.com/TheDarkLightX/EvoFuzz
+	sha256sums = SKIP
+
+pkgname = evofuzz-git
