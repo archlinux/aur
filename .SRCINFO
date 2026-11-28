@@ -1,0 +1,17 @@
+pkgbase = certs-maker-bin
+	pkgdesc = Generate self-signed TLS certificates or a local CA with signed certificates
+	pkgver = 3.8.3
+	pkgrel = 1
+	url = https://github.com/soulteary/certs-maker
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = certs-maker
+	conflicts = certs-maker
+	options = !debug
+	source_x86_64 = certs-maker-bin-3.8.3-x86_64.tar.gz::https://github.com/soulteary/certs-maker/releases/download/v3.8.3/certs-maker_3.8.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2f65a3b87f19709880cdd14d4e02981d2136b7705978ee911275c2b23fdbbc10
+	source_aarch64 = certs-maker-bin-3.8.3-aarch64.tar.gz::https://github.com/soulteary/certs-maker/releases/download/v3.8.3/certs-maker_3.8.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 169f5f144c78d2743b82fc812029921a5eea788ea74cc7d2bb412170504ee247
+
+pkgname = certs-maker-bin
