@@ -1,6 +1,6 @@
 # Maintainer: undefined-ux <undefined_1@outlook.com>
 pkgname=astragram-desktop
-pkgver=7.4.4
+pkgver=7.4.6.4
 pkgrel=1
 pkgdesc='Customizable Telegram desktop client based on AyuGram (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -53,8 +53,8 @@ sha256sums=(
   '98ce750f3bcf580df94d4e8509b6244f845532c23e7d7bd947da2c81d5000569'
   '30e52a0e4d8207c631458d98be89adcadf5b60e2608fe9c9a3eff1cde1877c8e'
 )
-sha256sums_x86_64=('937b66e80adfc3562409546e3bbc65e4edaceda0eb18a82453eed1941ae12860')
-sha256sums_aarch64=('9d5514458444302726609c28775e42fbdb3709040e26a663a344a9955096e135')
+sha256sums_x86_64=('adab1539220f63ac3e90271d6afbcec61f1738a09ad80ddc9ec3991e27775419')
+sha256sums_aarch64=('53e1b0c54768a50859e526eda72819e89288436c227b6a4bb4e616f4deafedbc')
 
 check() {
   desktop-file-validate "${_app_id}.desktop"
