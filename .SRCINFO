@@ -1,0 +1,23 @@
+pkgbase = dot-agent-deck-bin
+	pkgdesc = Collector for a terminal dashboard monitoring AI coding agent sessions
+	pkgver = 0.51.4
+	pkgrel = 1
+	url = https://github.com/vfarcic/dot-agent-deck
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = dot-agent-deck
+	conflicts = dot-agent-deck
+	options = !debug
+	source = dot-agent-deck-bin-0.51.4-LICENSE::https://raw.githubusercontent.com/vfarcic/dot-agent-deck/v0.51.4/LICENSE
+	sha256sums = 7b74d2ef93a75652bc4472402a7aaecb2325614228127ecab342c6fcd7d0699e
+	source_x86_64 = dot-agent-deck-bin-0.51.4-x86_64::https://github.com/vfarcic/dot-agent-deck/releases/download/v0.51.4/dot-agent-deck-collector-linux-amd64
+	sha256sums_x86_64 = 2e4add58d102916de3dfedc2d6571e3ccc14fee1e13daab0f0fe6cbce09de069
+	source_aarch64 = dot-agent-deck-bin-0.51.4-aarch64-dot-agent-deck-collector::https://github.com/vfarcic/dot-agent-deck/releases/download/v0.51.4/dot-agent-deck-collector-linux-arm64
+	source_aarch64 = dot-agent-deck-bin-0.51.4-aarch64-dot-agent-deck::https://github.com/vfarcic/dot-agent-deck/releases/download/v0.51.4/dot-agent-deck-linux-arm64
+	sha256sums_aarch64 = 5025262062952a816fb865d2a67b715639da302d610c22d6c147cf62698f9ae3
+	sha256sums_aarch64 = 6785106842226f2253db07a3d5eb21730438dc1c6d5d0a1f196872c4ae500e2a
+
+pkgname = dot-agent-deck-bin
