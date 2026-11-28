@@ -1,0 +1,17 @@
+pkgbase = srt2fcpxml-bin
+	pkgdesc = Convert SRT subtitles to Final Cut Pro FCPXML and back
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/GanymedeNil/srt2fcpxml
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = srt2fcpxml
+	conflicts = srt2fcpxml
+	options = !debug
+	source_x86_64 = srt2fcpxml-bin-3.1.0-x86_64.tar.gz::https://github.com/GanymedeNil/srt2fcpxml/releases/download/v3.1.0/srt2fcpxml_3.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 33a07471a33ccbf1764e95c065966cdbc55f598101cbf2821c0b6efc16301bde
+	source_aarch64 = srt2fcpxml-bin-3.1.0-aarch64.tar.gz::https://github.com/GanymedeNil/srt2fcpxml/releases/download/v3.1.0/srt2fcpxml_3.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8497e8de616e5b2740943c9cf66ac11c5ad0e21e34e0111fda818e0da5e8d79d
+
+pkgname = srt2fcpxml-bin
