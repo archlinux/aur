@@ -1,0 +1,18 @@
+pkgbase = oxide-bin
+	pkgdesc = Let PostgreSQL speak the MongoDB wire protocol
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/fcoury/oxide
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = oxide
+	conflicts = oxide
+	options = !debug
+	source = oxide-bin-0.2.0-LICENSE::https://raw.githubusercontent.com/fcoury/oxide/v0.2.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = oxide-bin-0.2.0-x86_64.tar.gz::https://github.com/fcoury/oxide/releases/download/v0.2.0/oxide_0.2.0_x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 83f5cc79be638ae8432ee3e1bdd356cf1822bd0ef51442c581d2311083314a05
+
+pkgname = oxide-bin
