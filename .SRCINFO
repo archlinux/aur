@@ -1,0 +1,19 @@
+pkgbase = raven-riscv-bin
+	pkgdesc = RISC-V simulator and IDE for learning assembly
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://github.com/Gaok1/Raven-RiscV
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = wayland
+	provides = raven-riscv
+	conflicts = raven-riscv
+	options = !debug
+	source = raven-riscv-bin-1.30.0-LICENSE::https://raw.githubusercontent.com/Gaok1/Raven-RiscV/v1.30.0/LICENSE-APACHE.txt
+	sha256sums = 62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a
+	source_x86_64 = raven-riscv-bin-1.30.0-x86_64.tar.gz::https://github.com/Gaok1/Raven-RiscV/releases/download/v1.30.0/raven-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e82d8a4d021daef2ba38e7f4cca081489669313a458a156ae359f0634e323b0b
+
+pkgname = raven-riscv-bin
