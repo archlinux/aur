@@ -1,0 +1,17 @@
+pkgbase = blackdagger-bin
+	pkgdesc = DAG-based automation for DevOps, DevSecOps and continuous red teaming
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/ErdemOzgen/blackdagger
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = blackdagger
+	conflicts = blackdagger
+	options = !debug
+	source_x86_64 = blackdagger-bin-2.0.1-x86_64.tar.gz::https://github.com/ErdemOzgen/blackdagger/releases/download/v2.0.1/blackdagger_2.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = d1bdd112ce9ca13162cd23dded737ec8981ef53553ee653eee94f702047ce743
+	source_aarch64 = blackdagger-bin-2.0.1-aarch64.tar.gz::https://github.com/ErdemOzgen/blackdagger/releases/download/v2.0.1/blackdagger_2.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = b4b25614183a115d029c95182bb801ce2e8b36da570a3c4e872667cd4fce8734
+
+pkgname = blackdagger-bin
