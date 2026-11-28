@@ -5,13 +5,13 @@
 #   上游 git rev-count 单调递增（1.0.0.r<N>.g<sha>）。
 #   sha256 锁构建时产物，source 走 gh-proxy 加速。
 pkgname=oplus-connect-private-bin
-pkgver=1.0.0.r25.ga461e98
-pkgrel=2
+pkgver=1.0.0.r30.gbf0e03e
+pkgrel=1
 pkgdesc='Linux client for OPPO and OnePlus device connectivity（自用维护，CI 自编译重打包版）'
 arch=('x86_64')
 url='https://github.com/YuKongA/oplus-connect'
 # GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
-_gh_mirror="${GH_MIRROR:-https://gh-proxy.com/}"
+_gh_mirror="${GH_MIRROR:-https://cdn.gh-proxy.org/}"
 _gh_mirror="${_gh_mirror%/}/"
 license=('MIT')
 depends=(
@@ -28,7 +28,7 @@ optdepends=(
 provides=("oplus-connect=$pkgver")
 conflicts=('oplus-connect' 'oplus-connect-git')
 source=("${pkgname}-${pkgver}.pkg.tar.zst::${_gh_mirror}https://github.com/Become-ILLUSORY/aur-auto-update/releases/download/oplus-connect-latest/oplus-connect-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('e3dfe649aace947475ef1e686fb62d244aabbe1564cff80a4d13c0226df6d229')
+sha256sums=('3b44aec48e5aa9d64c140b5dbebf6561c943c437719a4ceb740b27b1ca7ef848')
 
 package() {
   bsdtar -xf "$srcdir/${pkgname}-${pkgver}.pkg.tar.zst" \
