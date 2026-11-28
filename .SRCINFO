@@ -1,0 +1,21 @@
+pkgbase = opencode-rune-bin
+	pkgdesc = OpenCode (Rune) desktop client and embeddable Rune session crates
+	pkgver = 0.0.0_dev_503
+	pkgrel = 1
+	url = https://github.com/anomalyco/opencode-rune
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libstdc++.so
+	depends = opencode
+	provides = opencode-rune
+	conflicts = opencode-rune
+	source_aarch64 = https://github.com/anomalyco/opencode-rune/releases/download/v0.0.0-dev-503/OpenCode-Rune-0.0.0-dev-503-linux-arm64.AppImage
+	sha256sums_aarch64 = 46f9d8c86b47d39e2f2bea647837649703cf4323e03d65215e10c4398f5bcd94
+	source_x86_64 = https://github.com/anomalyco/opencode-rune/releases/download/v0.0.0-dev-503/OpenCode-Rune-0.0.0-dev-503-linux-x64.AppImage
+	sha256sums_x86_64 = cbede635e531ce2749193b0288dc90be2c86833d6afd6601985aadf7b4a13fb0
+
+pkgname = opencode-rune-bin
