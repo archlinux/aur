@@ -1,0 +1,17 @@
+pkgbase = khaos-bin
+	pkgdesc = Kafka data generator, load tester and chaos testing tool
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/aleksandarskrbic/khaos
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = khaos
+	conflicts = khaos
+	options = !debug
+	source_x86_64 = khaos-bin-0.10.0-x86_64.tar.gz::https://github.com/aleksandarskrbic/khaos/releases/download/v0.10.0/khaos_0.10.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1fd5126e9b6ef14de9c69cdbeb27ac1a7cdf2fc3e1396f38aa5ed1941d7e9212
+	source_aarch64 = khaos-bin-0.10.0-aarch64.tar.gz::https://github.com/aleksandarskrbic/khaos/releases/download/v0.10.0/khaos_0.10.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2f486907606fec4c8fb8c857d310fb7e50829602e5693dab155953db2ff6c34d
+
+pkgname = khaos-bin
