@@ -1,0 +1,16 @@
+pkgbase = metro2-bin
+	pkgdesc = Create and validate Metro 2 credit reporting files
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/moov-io/metro2
+	arch = x86_64
+	license = Apache-2.0
+	provides = metro2
+	conflicts = metro2
+	options = !debug
+	source = metro2-bin-0.10.1-LICENSE::https://raw.githubusercontent.com/moov-io/metro2/v0.10.1/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = metro2-bin-0.10.1-x86_64::https://github.com/moov-io/metro2/releases/download/v0.10.1/metro2-linux-amd64
+	sha256sums_x86_64 = 98bd4587e4149c9b2d9a7505fdd7a0180ca412ab5db97c955278f99a24f3c74a
+
+pkgname = metro2-bin
