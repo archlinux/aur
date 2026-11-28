@@ -1,0 +1,17 @@
+pkgbase = influxdb_exporter-bin
+	pkgdesc = Prometheus exporter for InfluxDB metrics received over HTTP
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/prometheus/influxdb_exporter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = influxdb_exporter
+	conflicts = influxdb_exporter
+	options = !debug
+	source_x86_64 = influxdb_exporter-bin-0.12.1-x86_64.tar.gz::https://github.com/prometheus/influxdb_exporter/releases/download/v0.12.1/influxdb_exporter-0.12.1.linux-amd64.tar.gz
+	sha256sums_x86_64 = e460d0159e43180dfcf6e6ca6b8857d9fb763e158b84226aa4cd3ae9c2db8fe7
+	source_aarch64 = influxdb_exporter-bin-0.12.1-aarch64.tar.gz::https://github.com/prometheus/influxdb_exporter/releases/download/v0.12.1/influxdb_exporter-0.12.1.linux-arm64.tar.gz
+	sha256sums_aarch64 = f8c7ffe9d6cf9f949439900f32932957ea395e9e79561598b9b93baace69371d
+
+pkgname = influxdb_exporter-bin
