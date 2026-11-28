@@ -2,10 +2,10 @@
 pkgname=quick-webapps
 _app_id=dev.heppen.webapps
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web App Manager for the COSMIC™ desktop written with love and libcosmic."
 arch=('x86_64' 'aarch64')
-url="https://github.com/cosmic-utils/web-apps"
+url="https://github.com/cosmic-ext-orbit/web-apps"
 license=('GPL-3.0-or-later')
 depends=(
   'alsa-lib'
@@ -39,19 +39,21 @@ checkdepends=(
   'desktop-file-utils'
 )
 conflicts=('cosmic-wam' 'cosmic-webapps')
-source=("git+https://github.com/cosmic-utils/web-apps.git#tag=$pkgver")
+source=("git+https://github.com/cosmic-ext-orbit/web-apps.git#tag=$pkgver")
 sha256sums=('2411f1f61518a0c9a9910f38873b1e9a37776b17928ac90236a7725eafda0007')
 
 prepare() {
   cd web-apps
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc --print host-tuple)"
+  cargo fetch --target host-tuple
 }
 
 build() {
   cd web-apps
   CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_PROFILE_RELEASE_LTO=true
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
   just build
 }
 

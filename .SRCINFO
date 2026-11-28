@@ -1,8 +1,8 @@
 pkgbase = quick-webapps
 	pkgdesc = Web App Manager for the COSMIC™ desktop written with love and libcosmic.
 	pkgver = 3.0.0
-	pkgrel = 1
-	url = https://github.com/cosmic-utils/web-apps
+	pkgrel = 2
+	url = https://github.com/cosmic-ext-orbit/web-apps
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -33,7 +33,7 @@ pkgbase = quick-webapps
 	depends = systemd-libs
 	conflicts = cosmic-wam
 	conflicts = cosmic-webapps
-	source = git+https://github.com/cosmic-utils/web-apps.git#tag=3.0.0
+	source = git+https://github.com/cosmic-ext-orbit/web-apps.git#tag=3.0.0
 	sha256sums = 2411f1f61518a0c9a9910f38873b1e9a37776b17928ac90236a7725eafda0007
 
 pkgname = quick-webapps
