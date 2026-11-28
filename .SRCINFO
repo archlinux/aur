@@ -1,0 +1,17 @@
+pkgbase = kubectl-view-serviceaccount-kubeconfig-plugin-bin
+	pkgdesc = kubectl plugin that shows a kubeconfig for a service account
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/superbrothers/kubectl-view-serviceaccount-kubeconfig-plugin
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kubectl-view-serviceaccount-kubeconfig-plugin
+	conflicts = kubectl-view-serviceaccount-kubeconfig-plugin
+	options = !debug
+	source_x86_64 = kubectl-view-serviceaccount-kubeconfig-plugin-bin-2.4.1-x86_64.zip::https://github.com/superbrothers/kubectl-view-serviceaccount-kubeconfig-plugin/releases/download/v2.4.1/kubectl-view_serviceaccount_kubeconfig-linux-amd64.zip
+	sha256sums_x86_64 = 18573354d63b718a03842ff0f9e7acde45d082806639109f05d58d332e320788
+	source_aarch64 = kubectl-view-serviceaccount-kubeconfig-plugin-bin-2.4.1-aarch64.zip::https://github.com/superbrothers/kubectl-view-serviceaccount-kubeconfig-plugin/releases/download/v2.4.1/kubectl-view_serviceaccount_kubeconfig-linux-arm64.zip
+	sha256sums_aarch64 = 195d82686a0af5646922a6e5bdbd9deacda6dedcb864246afb520b303634b0e9
+
+pkgname = kubectl-view-serviceaccount-kubeconfig-plugin-bin
