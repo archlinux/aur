@@ -1,0 +1,19 @@
+pkgbase = dtlspipe-bin
+	pkgdesc = Generic DTLS wrapper for UDP sessions
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/SenseUnit/dtlspipe
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = dtlspipe
+	conflicts = dtlspipe
+	options = !debug
+	source = dtlspipe-bin-1.9.1-LICENSE::https://raw.githubusercontent.com/SenseUnit/dtlspipe/v1.9.1/LICENSE
+	sha256sums = d0e15af2688f9ee3db8b4cf033b04fc1dcae804b671cbb8bd86a756dab2d6cb6
+	source_x86_64 = dtlspipe-bin-1.9.1-x86_64::https://github.com/SenseUnit/dtlspipe/releases/download/v1.9.1/dtlspipe.linux-amd64
+	sha256sums_x86_64 = b361e1c48369304fe1ea704fb88b48f47cd7a8edc37c285ab98f21fa63f8ce4f
+	source_aarch64 = dtlspipe-bin-1.9.1-aarch64::https://github.com/SenseUnit/dtlspipe/releases/download/v1.9.1/dtlspipe.linux-arm64
+	sha256sums_aarch64 = 96e958df6f16ea2ebc6fb3b1a3f342cb1ce4f3908f089da6d9e67a6c2772f352
+
+pkgname = dtlspipe-bin
