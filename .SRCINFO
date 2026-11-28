@@ -1,0 +1,30 @@
+pkgbase = clod-clash-bin
+	pkgdesc = Tauri desktop proxy client with the Mihomo core
+	pkgver = 0.1.15
+	pkgrel = 1
+	url = https://github.com/Mrvibecodic/clod-clash
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libgcc
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	optdepends = polkit: authorize TUN service management from the desktop
+	provides = clod-clash=0.1.15
+	conflicts = clod-clash
+	conflicts = clash-verge-bin
+	conflicts = clash-verge-rev
+	conflicts = clash-verge-rev-bin
+	conflicts = clash-verge-rev-autobuild-bin
+	noextract = clod-clash-0.1.15-amd64.deb
+	options = !strip
+	source = clod-clash-0.1.15-amd64.deb::https://github.com/Mrvibecodic/clod-clash/releases/download/clod-v0.1.15/Clod.Clash_amd64.deb
+	sha256sums = 7442d9b0b04be1526c3514dfadb72c90d5e4ad224545ee73391174d670f3072e
+
+pkgname = clod-clash-bin
