@@ -1,0 +1,17 @@
+pkgbase = a2a-cli-bin
+	pkgdesc = Command-line interface for Agent2Agent (A2A) compatible agents
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/a2aproject/a2a-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = a2a-cli
+	conflicts = a2a-cli
+	options = !debug
+	source_x86_64 = a2a-cli-bin-0.5.0-x86_64.tar.gz::https://github.com/a2aproject/a2a-cli/releases/download/v0.5.0/a2a_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2f2a3f93d477b2f84f72c6df798f8e226d360953fd28602426436e6acfc0cbfe
+	source_aarch64 = a2a-cli-bin-0.5.0-aarch64.tar.gz::https://github.com/a2aproject/a2a-cli/releases/download/v0.5.0/a2a_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 22a2aee1aa4712688772eb0f42bf48bf3dc3c17ccc71f34a1e89c6e3841ea5bb
+
+pkgname = a2a-cli-bin
