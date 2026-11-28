@@ -2,19 +2,20 @@
 # Creator:  prettyvanilla <prettyvanilla@posteo.at>
 
 pkgname=caudio-git
-pkgver=2.3.0.r261.8edfaec
+pkgver=2.3.0.r283.4f36d26
 pkgrel=1
 pkgdesc="Advanced C++ wrapper around OpenAL"
 arch=('i686' 'x86_64')
-url="https://github.com/R4stl1n/cAudio"
+url="https://git.socialnerds.org/gfxdev/caudio.git"
 license=('zlib')
-depends=('openal')
+depends=('openal' 'libogg' 'libvorbis')
 makedepends=('git' 'cmake')
 provides=('caudio')
 conflicts=('caudio')
 
-_gitname=cAudio
-source=("git+https://github.com/R4stl1n/${_gitname}.git")
+_gitname=caudio
+#source=("git+https://github.com/R4stl1n/${_gitname}.git")
+source=("git+https://git.socialnerds.org/gfxdev/caudio.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -28,11 +29,11 @@ build() {
 
   cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCAUDIO_BUILD_EAX_PLUGIN=ON \
+        -DCAUDIO_BUILD_EAX_PLUGIN=OFF \
         -DCAUDIO_BUILD_MP3DECODER_PLUGIN=ON \
         -DCAUDIO_BUILD_SAMPLES=OFF \
-        -DCAUDIO_DEPENDENCIES_DIR=Dependencies64
-
+        -DCAUDIO_SYSTEM_OGG=ON \
+        -DCAUDIO_DEPENDENCIES_DIR=""
   make
 }
 
