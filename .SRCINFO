@@ -1,7 +1,7 @@
 pkgbase = mintlocale
 	pkgdesc = Language and locale selection tool
 	pkgver = 1.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/mintlocale
 	arch = any
 	license = GPL-2.0-or-later

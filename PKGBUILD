@@ -3,7 +3,7 @@
 
 pkgname=mintlocale
 pkgver=1.6.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Language and locale selection tool"
 arch=('any')
 url='https://github.com/linuxmint/mintlocale'
