@@ -1,0 +1,20 @@
+pkgbase = screeps-launcher-bin
+	pkgdesc = Launcher for Screeps private servers
+	pkgver = 1.17.0
+	pkgrel = 1
+	url = https://github.com/screepers/screeps-launcher
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = screeps-launcher
+	conflicts = screeps-launcher
+	options = !debug
+	source = screeps-launcher-bin-1.17.0-LICENSE::https://raw.githubusercontent.com/screepers/screeps-launcher/v1.17.0/LICENSE
+	sha256sums = 699a6248bc7531798278ca3168f865df733a6be3ff3a49a903ddca883d92098e
+	source_x86_64 = screeps-launcher-bin-1.17.0-x86_64::https://github.com/screepers/screeps-launcher/releases/download/v1.17.0/screeps-launcher_linux_amd64
+	sha256sums_x86_64 = d665eadcafad02e8424062ee8cbc45f2e5180c845c526cf700c5f7075a01d5d9
+	source_aarch64 = screeps-launcher-bin-1.17.0-aarch64::https://github.com/screepers/screeps-launcher/releases/download/v1.17.0/screeps-launcher_linux_arm64
+	sha256sums_aarch64 = 2ef7b1c35f917dca615a6fdf8ac5fcd44e01f9e47b69d51f12c2eb57081296af
+
+pkgname = screeps-launcher-bin
