@@ -1,6 +1,6 @@
 # Maintainer: Kaarel <github.com/kaareloun>
 pkgname=lookout
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A fast, good-looking system monitor with Rosé Pine themes, an htop replacement with a GUI"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11' 'libxcursor' 'libxi' 'libxrandr')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('906cb132480cedbde9b23d971be9743a4d70d20a594f0a083d185f81325768e3')
+sha256sums=('73c13229b9fb87f0589bf94c06919860748028a43fb52b4ff22a9cd6b9e6c595')
 
 prepare() {
   cd "$pkgname-$pkgver"
