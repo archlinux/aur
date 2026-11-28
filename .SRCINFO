@@ -1,0 +1,19 @@
+pkgbase = ruxguitar-bin
+	pkgdesc = Guitar Pro tablature player
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/agourlay/ruxguitar
+	arch = x86_64
+	license = Apache-2.0
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	provides = ruxguitar
+	conflicts = ruxguitar
+	options = !debug
+	source = ruxguitar-bin-0.17.0-LICENSE::https://raw.githubusercontent.com/agourlay/ruxguitar/v0.17.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = ruxguitar-bin-0.17.0-x86_64.tar.gz::https://github.com/agourlay/ruxguitar/releases/download/v0.17.0/ruxguitar-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = fb234f2cda56cf2484dc339147f05f9ac5435f261865a3ce8fdb6f55574cd6ba
+
+pkgname = ruxguitar-bin
