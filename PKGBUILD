@@ -1,7 +1,7 @@
 # Maintainer: xmengnet <my@liyp.cc>
 
 pkgname=quiet-md
-pkgver=0.1.14
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='本地优先的富文本笔记，GPUI 绘制，兼容飞书 DocxXML，可直接编辑 Markdown 文件'
 arch=('x86_64')
@@ -29,12 +29,18 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/s1dashu/quiet-md/archive/v$
         com.s1dashu.quietmd-128.png
         com.s1dashu.quietmd-256.png
         com.s1dashu.quietmd-512.png)
-sha256sums=('b2f3ccd08aebf9284c314b888ade85a708ca726ade9402cd25f99b3f176238aa'
+sha256sums=('2583a4520152fb67634ea3ecf83319e615e45629fb97c0b3e4083335c55037cd'
             '63b00415e37f34af5aebdb7ae5a1b27b7f2e75989e81ea3f737f618f002beff2'
             'b3063a03af3a78d542a2b978ac022754e5975611168903a92800ab92bad12fcb'
             'e9df11d99c25190983f2985209512284a7f5d91b4e4d198da3b40faf1d685b08'
             'f882b2ccc378e3a3ac0a479d8e90b31210e6032654c3939308d6476413d31964'
             '0c93bdd0703f47be38f7c95d432198c198f08e207a1ea40af2b61ef75d8a5a37')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  # 上游 pin 了 rust-toolchain.toml，删掉改用系统 rust，避免构建时下载工具链
+  rm -f rust-toolchain.toml
+}
 
 build() {
   cd "$pkgname-$pkgver"
@@ -44,6 +50,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 target/dist/quiet_md "$pkgdir/usr/bin/quiet_md"
+  install -Dm755 target/dist/quiet "$pkgdir/usr/bin/quiet"
   install -Dm644 packaging/linux/com.s1dashu.quietmd.desktop \
     "$pkgdir/usr/share/applications/com.s1dashu.quietmd.desktop"
   for size in 48 64 128 256 512; do
