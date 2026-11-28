@@ -1,0 +1,17 @@
+pkgbase = aspect-cli-bin
+	pkgdesc = Correct, fast and usable Bazel wrapper CLI
+	pkgver = 2026.47.12
+	pkgrel = 1
+	url = https://github.com/aspect-build/aspect-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = aspect-cli
+	conflicts = aspect-cli
+	options = !debug
+	source_x86_64 = aspect-cli-bin-2026.47.12-x86_64.tar.gz::https://github.com/aspect-build/aspect-cli/releases/download/v2026.47.12/aspect-2026.47.12.x86_64_linux.bottle.tar.gz
+	sha256sums_x86_64 = 69dcc054a6c618d58d6772e2db4288da05d807f2d3cfb04556ca52ac8ff90b1e
+	source_aarch64 = aspect-cli-bin-2026.47.12-aarch64.tar.gz::https://github.com/aspect-build/aspect-cli/releases/download/v2026.47.12/aspect-2026.47.12.arm64_linux.bottle.tar.gz
+	sha256sums_aarch64 = 742e8d23995e840a931646afe72101c7cdc15876d129706062259ac9c8e35a02
+
+pkgname = aspect-cli-bin
