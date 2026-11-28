@@ -1,0 +1,21 @@
+pkgbase = riscvsim-bin
+	pkgdesc = RISC-V simulator for learning computer engineering
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/rawcache/riscvsim
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = riscvsim
+	conflicts = riscvsim
+	options = !debug
+	source = riscvsim-bin-0.2.0-LICENSE::https://raw.githubusercontent.com/rawcache/riscvsim/v0.2.0/LICENSE
+	sha256sums = 28d3d7d2b98a2510aa8c35b87b96f7c619d8cba58e9c2100a3476a256d6d63c8
+	source_x86_64 = riscvsim-bin-0.2.0-x86_64.tar.gz::https://github.com/rawcache/riscvsim/releases/download/v0.2.0/riscvsim-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c13ea3e74594baadc4980ada8a09e1345f3942617413405b5d4a36fc2ef51314
+	source_aarch64 = riscvsim-bin-0.2.0-aarch64.tar.gz::https://github.com/rawcache/riscvsim/releases/download/v0.2.0/riscvsim-linux-arm64.tar.gz
+	sha256sums_aarch64 = 1ed5ef875d69696f79e78a201c2417a6983241dd1cdb3ec8d252c3f3cd20fffd
+
+pkgname = riscvsim-bin
