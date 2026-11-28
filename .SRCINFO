@@ -1,6 +1,6 @@
 pkgbase = aitd-bin
 	pkgdesc = Ait headless daemon (prebuilt release)
-	pkgver = 0.2.29
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/ait-app/ait
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = aitd-bin
 	depends = bubblewrap>=0.8.0
 	optdepends = openssh: SSH Git remotes
 	optdepends = systemd: user service management
-	provides = aitd=0.2.29
+	provides = aitd=0.3.0
 	conflicts = aitd
 	options = !strip
 	options = !debug
-	source = https://github.com/ait-app/ait/releases/download/v0.2.29/Ait-0.2.29-daemon-linux-x64.tar.gz
+	source = https://github.com/ait-app/ait/releases/download/v0.3.0/Ait-0.3.0-daemon-linux-x64.tar.gz
 	source = aitd.service
-	sha256sums = 4c6d7bf6ef0551763bdcd93dcfaf76b259558ad87e43214b9fb62db2616cb7f1
+	sha256sums = 8931ef149407b5a803bbb245679a5aa6064d807d0877e07bee19474a3bca399c
 	sha256sums = 8d4f2659b311dab569bfcd10542ea74bdc2d482ef1b36dca143e5edc2b493699
 
 pkgname = aitd-bin

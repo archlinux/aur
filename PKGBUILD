@@ -1,7 +1,7 @@
 # Maintainer: Ait contributors <https://github.com/ait-app/ait>
 
 pkgname=aitd-bin
-pkgver=0.2.29
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Ait headless daemon (prebuilt release)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   'aitd.service'
 )
 sha256sums=(
-  '4c6d7bf6ef0551763bdcd93dcfaf76b259558ad87e43214b9fb62db2616cb7f1'
+  '8931ef149407b5a803bbb245679a5aa6064d807d0877e07bee19474a3bca399c'
   '8d4f2659b311dab569bfcd10542ea74bdc2d482ef1b36dca143e5edc2b493699'
 )
 
