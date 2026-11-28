@@ -1,0 +1,21 @@
+pkgbase = upgit-bin
+	pkgdesc = Upload files and clipboard content to various storage backends
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/pluveto/upgit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = upgit
+	conflicts = upgit
+	options = !debug
+	source = upgit-bin-0.3.0-LICENSE::https://raw.githubusercontent.com/pluveto/upgit/v0.3.0/LICENSE
+	sha256sums = f870859ec7f8614515937f37e827bec431d63a373eafe6eeeb9fec670a29d6d1
+	source_x86_64 = upgit-bin-0.3.0-x86_64.zip::https://github.com/pluveto/upgit/releases/download/v0.3.0/upgit_linux_amd64.zip
+	sha256sums_x86_64 = 2300e70565b0b8b889be84872f7a8d1eb8122fd7013b472d81041bbb0f5224d8
+	source_aarch64 = upgit-bin-0.3.0-aarch64.zip::https://github.com/pluveto/upgit/releases/download/v0.3.0/upgit_linux_arm64.zip
+	sha256sums_aarch64 = ba0d6643b2e5d4465ebdb8ee474a11d930bad86ef0fe2b735a2077b57b05e20d
+
+pkgname = upgit-bin
