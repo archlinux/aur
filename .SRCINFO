@@ -1,0 +1,19 @@
+pkgbase = janice-bin
+	pkgdesc = Desktop app for viewing large JSON files
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/ErikKalkoken/janice
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	provides = janice
+	conflicts = janice
+	options = !debug
+	source = janice-bin-0.10.0-LICENSE::https://raw.githubusercontent.com/ErikKalkoken/janice/v0.10.0/LICENSE
+	sha256sums = 81e164e17767009a6da7b0b0c3d465d2d2996bd2d92c0eb29e6b1648f05329f2
+	source_x86_64 = janice-bin-0.10.0-x86_64.tar.xz::https://github.com/ErikKalkoken/janice/releases/download/v0.10.0/janice-0.10.0-linux-amd64.tar.xz
+	sha256sums_x86_64 = 2f7bcb21e64fe375a40eb1f055aa2b139204347fef0bbeb6c2acc77c8a3941ef
+
+pkgname = janice-bin
