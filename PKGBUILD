@@ -20,7 +20,7 @@
 pkgname=qoderwake-bin
 _upstreamver=1.2.27
 pkgver=1.2.27
-pkgrel=1
+pkgrel=2
 pkgdesc="QoderWake local CLI and daemon (official prebuilt Linux runtime)"
 arch=('x86_64' 'aarch64')
 url='https://qoder.com/'
@@ -73,6 +73,10 @@ check() {
     echo "error: qoderwake region selector is not pinned to global: ${_sel:-<none>}" >&2
     return 1
   fi
+}
+
+prepare() {
+  check
 }
 
 package() {
