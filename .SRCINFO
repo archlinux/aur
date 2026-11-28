@@ -1,0 +1,21 @@
+pkgbase = lade-bin
+	pkgdesc = Temporary access to secrets and private networks for a single command
+	pkgver = 0.20.2
+	pkgrel = 1
+	url = https://github.com/zifeo/lade
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	depends = glibc
+	depends = libgcc
+	provides = lade
+	conflicts = lade
+	options = !debug
+	source = lade-bin-0.20.2-LICENSE::https://raw.githubusercontent.com/zifeo/lade/v0.20.2/LICENSE
+	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
+	source_x86_64 = lade-bin-0.20.2-x86_64.tar.gz::https://github.com/zifeo/lade/releases/download/v0.20.2/lade-v0.20.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b699a07a3a615290429c86b8bf72fade40a15ddc8aae90a6a2046d60209c730e
+	source_aarch64 = lade-bin-0.20.2-aarch64.tar.gz::https://github.com/zifeo/lade/releases/download/v0.20.2/lade-v0.20.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ca604e7759dcb4bdd09fe064b488b1b2e57a6d686bbd970ad29210a15c604c5d
+
+pkgname = lade-bin
