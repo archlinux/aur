@@ -1,0 +1,18 @@
+pkgbase = minedmap-bin
+	pkgdesc = Minecraft map renderer and viewer
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = https://github.com/neocturne/MinedMap
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = minedmap
+	conflicts = minedmap
+	options = !debug
+	source = minedmap-bin-2.9.0-LICENSE::https://raw.githubusercontent.com/neocturne/MinedMap/v2.9.0/LICENSE
+	sha256sums = 16a4eb91960d74778a28139ec7747b6de811a5fed0161950376917274e6a0b00
+	source_x86_64 = minedmap-bin-2.9.0-x86_64.zip::https://github.com/neocturne/MinedMap/releases/download/v2.9.0/MinedMap-2.9.0-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = db2f9978c4c1f1bcf74cbc6b4e37b01f70e9eec4fa261194d0bbc7dcfcfc2e98
+
+pkgname = minedmap-bin
