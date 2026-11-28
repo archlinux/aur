@@ -1,6 +1,6 @@
 pkgbase = stroke-bin
 	pkgdesc = Native database client for PostgreSQL, MySQL, SQLite, MongoDB, Redis and more, with an AI agent and an MCP server
-	pkgver = 3.7.5
+	pkgver = 3.9.2
 	pkgrel = 1
 	url = https://stroke.click
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = stroke-bin
 	conflicts = stroke
 	options = !strip
 	options = !debug
-	source = stroke-3.7.5.deb::https://github.com/stroke-app/stroke/releases/download/v3.7.5/stroke_3.7.5_amd64.deb
-	source = LICENSE-3.7.5::https://raw.githubusercontent.com/stroke-app/stroke/v3.7.5/LICENSE
-	sha256sums = 445cd6d11e37095f228efb59de8f4547d38422e35c20694774963cee5ad27e6d
+	source = stroke-3.9.2.deb::https://github.com/stroke-app/stroke/releases/download/v3.9.2/stroke_3.9.2_amd64.deb
+	source = LICENSE-3.9.2::https://raw.githubusercontent.com/stroke-app/stroke/v3.9.2/LICENSE
+	sha256sums = 1f1d2d42b750924f5bfd5b4e1a81a50ce2c002e1ccd6c933df84b5e21d20d2be
 	sha256sums = SKIP
 
 pkgname = stroke-bin
