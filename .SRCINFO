@@ -1,0 +1,20 @@
+pkgbase = wire-seek-bin
+	pkgdesc = Find the best MTU for a WireGuard tunnel
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/yeya/wire-seek
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = wire-seek
+	conflicts = wire-seek
+	options = !debug
+	source = wire-seek-bin-0.4.0-LICENSE::https://raw.githubusercontent.com/yeya/wire-seek/v0.4.0/LICENSE
+	sha256sums = 61e4e517cb4afe23178a2050e0c5b7471b5dd000c93d7afac9ffb9a49479adf6
+	source_x86_64 = wire-seek-bin-0.4.0-x86_64::https://github.com/yeya/wire-seek/releases/download/v0.4.0/wire-seek-linux-amd64
+	sha256sums_x86_64 = 92fe0fd295fe09f8f08be11a2cff604f812892de76b044e6f7d36cb95059de9d
+	source_aarch64 = wire-seek-bin-0.4.0-aarch64::https://github.com/yeya/wire-seek/releases/download/v0.4.0/wire-seek-linux-arm64
+	sha256sums_aarch64 = 4cd57b8305d6219fbeea01dfa32471c51fd68ce445fa54f2c16431dfa63f8bda
+
+pkgname = wire-seek-bin
