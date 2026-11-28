@@ -1,9 +1,9 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=opencode-rune-bin
-_pkgver=0.0.0-dev-503 # datasource=github-tags depName=anomalyco/opencode-rune
-pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgver=0.0.0-dev-503 # datasource=github-tags depName=anomalyco/opencode-rune
+pkgver=${pkgver//-/_}
+pkgrel=2
 pkgdesc='OpenCode (Rune) desktop client and embeddable Rune session crates'
 provides=('opencode-rune')
 conflicts=('opencode-rune')
@@ -12,6 +12,7 @@ arch=('aarch64' 'x86_64')
 url='https://github.com/anomalyco/opencode-rune'
 license=('MIT')
 
+_pkgver=${pkgver//_/-}
 source_aarch64=("${url}/releases/download/v${_pkgver}/OpenCode-Rune-${_pkgver}-linux-arm64.AppImage")
 source_x86_64=("${url}/releases/download/v${_pkgver}/OpenCode-Rune-${_pkgver}-linux-x64.AppImage")
 
@@ -23,8 +24,10 @@ package() {
 	chmod +x *.AppImage
 	./*.AppImage --appimage-extract
 
-	cd ./squashfs-root/
-	cp -r "./usr/share/" "$pkgdir/usr/share"
+	cd squashfs-root
+
+	mkdir -p "$pkgdir/usr/share"
+	cp -r ./usr/share/* "$pkgdir/usr/share"
 	install -Dm755 "usr/bin/opencode-rune" "$pkgdir/usr/bin/opencode-rune"
 
 	rm $pkgdir/usr/share/opencode-rune/{opencode-cli,opencode-cli.version}

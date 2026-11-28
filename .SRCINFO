@@ -1,7 +1,7 @@
 pkgbase = opencode-rune-bin
 	pkgdesc = OpenCode (Rune) desktop client and embeddable Rune session crates
 	pkgver = 0.0.0_dev_503
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anomalyco/opencode-rune
 	arch = aarch64
 	arch = x86_64
