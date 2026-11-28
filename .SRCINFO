@@ -1,0 +1,19 @@
+pkgbase = calabi-bin
+	pkgdesc = Self-hosted HTTPS tunnels and private end-to-end encrypted mesh
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = https://github.com/calabinet/calabi
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = calabi
+	conflicts = calabi
+	options = !debug
+	source = calabi-bin-2.10.0-LICENSE::https://raw.githubusercontent.com/calabinet/calabi/v2.10.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = calabi-bin-2.10.0-x86_64.tar.gz::https://github.com/calabinet/calabi/releases/download/v2.10.0/calabi-linux-amd64.tar.gz
+	sha256sums_x86_64 = 877685920dc7ac60f199f2e0c244fde1ebb0f4ab632962c004d39a49234b4dde
+	source_aarch64 = calabi-bin-2.10.0-aarch64.tar.gz::https://github.com/calabinet/calabi/releases/download/v2.10.0/calabi-linux-arm64.tar.gz
+	sha256sums_aarch64 = f9fd53057fcc38b0efc49143e65c405137817303d3fdb2e222c2c339de65660f
+
+pkgname = calabi-bin
