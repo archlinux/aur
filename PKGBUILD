@@ -1,6 +1,6 @@
 # Maintainer: sarp <sarp@vanlakemonstercorp.com>
 pkgname=authfy
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='PAM exec two-factor authenticator backed by ntfy push notifications'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -11,7 +11,7 @@ makedepends=('go>=1.27')
 optdepends=('fail2ban: ban IPs after repeated rejected 2FA attempts')
 backup=('etc/authfy/authfy_config.json')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7e67243964bcf60d76560a5011dd2d34f13139ce64e37fad93ed9d10ab94dbfe')
+sha256sums=('26afeb7eaa57f49756c492f7a84bef4497f29f93bb366d4b8bf01450f8cb905d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = authfy
 	pkgdesc = PAM exec two-factor authenticator backed by ntfy push notifications
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ssarpv/authfy
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = authfy
 	depends = pam
 	optdepends = fail2ban: ban IPs after repeated rejected 2FA attempts
 	backup = etc/authfy/authfy_config.json
-	source = authfy-0.1.0.tar.gz::https://github.com/ssarpv/authfy/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 7e67243964bcf60d76560a5011dd2d34f13139ce64e37fad93ed9d10ab94dbfe
+	source = authfy-0.2.0.tar.gz::https://github.com/ssarpv/authfy/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 26afeb7eaa57f49756c492f7a84bef4497f29f93bb366d4b8bf01450f8cb905d
 
 pkgname = authfy
