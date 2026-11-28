@@ -1,0 +1,18 @@
+pkgbase = herm-bin
+	pkgdesc = Terminal-native AI coding agent running in containers
+	pkgver = 0.8.7
+	pkgrel = 1
+	url = https://github.com/aduermael/herm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = herm
+	conflicts = herm
+	options = !debug
+	source_x86_64 = herm-bin-0.8.7-x86_64.tar.gz::https://github.com/aduermael/herm/releases/download/v0.8.7/herm_0.8.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = efd1d51ce0bda7f2f72a65b2e788a07271620b20d157a77ba81e99dbf901cc20
+	source_aarch64 = herm-bin-0.8.7-aarch64.tar.gz::https://github.com/aduermael/herm/releases/download/v0.8.7/herm_0.8.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = e14511141f96858e0614b10f6d6043f069b8088971ec2060a526be4ca7ea9aba
+
+pkgname = herm-bin
