@@ -1,0 +1,17 @@
+pkgbase = helm-chartsnap-bin
+	pkgdesc = Snapshot testing for Helm charts
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/jlandowner/helm-chartsnap
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = helm-chartsnap
+	conflicts = helm-chartsnap
+	options = !debug
+	source_x86_64 = helm-chartsnap-bin-0.6.0-x86_64.tar.gz::https://github.com/jlandowner/helm-chartsnap/releases/download/v0.6.0/chartsnap_v0.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = fdc950c8dd55db7429e85aa3114ddfc89ce3d6ee8817a233bac566d102af8774
+	source_aarch64 = helm-chartsnap-bin-0.6.0-aarch64.tar.gz::https://github.com/jlandowner/helm-chartsnap/releases/download/v0.6.0/chartsnap_v0.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 64836ac4229859c311a1289d23be1335a591e762a68331a8f6fe971221dd2cc7
+
+pkgname = helm-chartsnap-bin
