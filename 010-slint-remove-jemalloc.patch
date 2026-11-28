@@ -1,6 +1,6 @@
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -152,7 +152,6 @@ icu_normalizer = { version = "2", default-features = false, features = ["compile
+@@ -151,7 +151,6 @@ icu_normalizer = { version = "2", defaul
  icu_properties = { version = "2", features = ["compiled_data"] }
  
  glow = { version = "0.18" }

@@ -5,7 +5,7 @@ pkgname=(
     'python-slint'
     'slint-cpp'
     'slint-tools')
-pkgver=1.19.0
+pkgver=1.19.1
 pkgrel=1
 pkgdesc='Declarative GUI toolkit to build native user interfaces'
 license=('GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0')
@@ -26,13 +26,12 @@ makedepends=(
     'python-installer'
     'python-maturin'
     'python-setuptools'
-    'python-wheel'
-    'systemd-libs')
+    'python-wheel')
 source=("https://github.com/slint-ui/slint/archive/v${pkgver}/slint-${pkgver}.tar.gz"
         '010-slint-remove-jemalloc.patch'
         '020-slint-allow-python-maturin-0.14.1.patch')
-sha256sums=('9c15a9f6dfe94fbe96cb97dcb38207907403a67c9b23d8a93468ea1bb132246c'
-            '94717b59424c7062cf5cf0cc4a03487e6d98b04fa5b0fc439ea8b0926484fbf5'
+sha256sums=('9c921f375de12fcf8647ddf076cf13af579b5cff61db5800e378cbedea9bff19'
+            '11a783fb7bbc2e72ce47cde668528e4d3b1a84e012c2d9410522df2cd157f02e'
             '784edbc91e7f5c6e9fcc650a652d30f7f1027a115e657a96b719b0e46f78f988')
 
 prepare () {
@@ -98,12 +97,8 @@ package_python-slint() {
         'freetype2'
         'glibc'
         'libgcc'
-        'libinput'
         'libstdc++'
-        'libxkbcommon'
-        'mesa'
-        'python'
-        'systemd-libs')
+        'python')
    optdepends=(
         'libgl: for Skia OpenGL renderer backend'
         'vulkan-icd-loader: for Skia Vulkan renderer backend')
