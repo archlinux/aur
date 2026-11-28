@@ -1,0 +1,25 @@
+pkgbase = opensave-bin
+	pkgdesc = Peer-to-peer game save sync
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/Liquid-co/OpenSave
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = opensave
+	conflicts = opensave
+	options = !debug
+	source = opensave-bin-2.4.1-LICENSE::https://raw.githubusercontent.com/Liquid-co/OpenSave/v2.4.1/LICENSE
+	sha256sums = fb7fe6dc0a8ff110a5da8e8c06dab2faa4dea4a4d73f40bf85256bfc956066cc
+	source_x86_64 = opensave-bin-2.4.1-x86_64.tar.gz::https://github.com/Liquid-co/OpenSave/releases/download/v2.4.1/opensave-linux-amd64.tar.gz
+	sha256sums_x86_64 = 061f620863aa8db46f41c0ab89bf899fd29b163cb996b0080f3a067c675226b2
+	source_aarch64 = opensave-bin-2.4.1-aarch64.tar.gz::https://github.com/Liquid-co/OpenSave/releases/download/v2.4.1/opensave-linux-arm64.tar.gz
+	sha256sums_aarch64 = 06d9a22df02385640da5ceb3436446b76ae9fc02f87bea0a177e7c3c6e1adf5d
+
+pkgname = opensave-bin
