@@ -1,6 +1,6 @@
 pkgbase = cherry-studio-desktop-bin
 	pkgdesc = AI productivity studio with smart chat, autonomous agents, and 300+ assistants
-	pkgver = 2.2.3
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = https://cherryai.com
 	arch = x86_64
@@ -41,19 +41,19 @@ pkgbase = cherry-studio-desktop-bin
 	depends = xdg-utils
 	optdepends = libayatana-appindicator: system tray integration
 	optdepends = ollama: use local LLMs
-	provides = cherry-studio=2.2.3
+	provides = cherry-studio=2.2.5
 	conflicts = cherry-studio
 	conflicts = cherry-studio-bin
 	conflicts = cherry-studio-electron-bin
 	conflicts = cherry-studio-git
 	conflicts = cherry-studio-git-c
-	noextract = Cherry-Studio-2.2.3-linux-x64.deb
-	noextract = Cherry-Studio-2.2.3-linux-arm64.deb
+	noextract = Cherry-Studio-2.2.5-linux-x64.deb
+	noextract = Cherry-Studio-2.2.5-linux-arm64.deb
 	options = !debug
 	options = !strip
-	source_x86_64 = Cherry-Studio-2.2.3-linux-x64.deb::https://github.com/CherryHQ/cherry-studio/releases/download/v2.2.3/Cherry-Studio-2.2.3-linux-x64.deb
-	sha256sums_x86_64 = c3b23daed85b081361b04d4e7c3ccacaf0a8b5e87da5ed2b5979c019d09ddc31
-	source_aarch64 = Cherry-Studio-2.2.3-linux-arm64.deb::https://github.com/CherryHQ/cherry-studio/releases/download/v2.2.3/Cherry-Studio-2.2.3-linux-arm64.deb
-	sha256sums_aarch64 = 38c0e03457635b852f3aeef4b2ce4e559cd6f0d3536729fc6439584c29c1af83
+	source_x86_64 = Cherry-Studio-2.2.5-linux-x64.deb::https://github.com/CherryHQ/cherry-studio/releases/download/v2.2.5/Cherry-Studio-2.2.5-linux-x64.deb
+	sha256sums_x86_64 = 7feccc3c11dd7af338f34cb7e55595cd4ddc5f1e96551b773f7ac5a560f6e339
+	source_aarch64 = Cherry-Studio-2.2.5-linux-arm64.deb::https://github.com/CherryHQ/cherry-studio/releases/download/v2.2.5/Cherry-Studio-2.2.5-linux-arm64.deb
+	sha256sums_aarch64 = 9e9ec9f5ac344ed27b264d8b928060e87d0e3bfcd7b205f1dd37c6656864b17c
 
 pkgname = cherry-studio-desktop-bin
