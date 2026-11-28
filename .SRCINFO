@@ -1,0 +1,17 @@
+pkgbase = errata-bin
+	pkgdesc = Writing app
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://github.com/tealios/errata
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = glibc
+	provides = errata
+	conflicts = errata
+	options = !debug
+	source = errata-bin-1.12.0-LICENSE::https://raw.githubusercontent.com/tealios/errata/v1.12.0/LICENSE
+	sha256sums = 640d90f6ee401241ff62834d0d1b33f83049e99b8bfdfa04ed1b0a1635dde3e7
+	source_x86_64 = errata-bin-1.12.0-x86_64.zip::https://github.com/tealios/errata/releases/download/v1.12.0/errata-1.12.0-linux-x64.zip
+	sha256sums_x86_64 = 52cdc308c424f14d3abc4b45a04970a5f755517049907f5f02b12df48ee8905f
+
+pkgname = errata-bin
