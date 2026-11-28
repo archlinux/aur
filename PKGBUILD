@@ -4,7 +4,7 @@
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
 # Contributor: Eli Schwartz <eschwartz93@gmail.com>
 pkgname='python-dukpy'
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 name=dukpy
 pkgdesc="Simple JavaScript interpreter for Python"
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("dukpy-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${name}-${pkgver}.tar.gz")
-b2sums=('a5fd68cd00d3f0fd7df5acdcddc78633050203dc63239fc80f852986a0117de7f6471f8f34404552b63b73edc682122985b002635cf74548ade8e08868d1bb7e')
+b2sums=('3b2ebc7ff2b352295ef8e28f7e34e05274751ca8df5e0eb7e6eaa8740beb0b6c021fca41f356e9333e7dc1c2515a944195e3ac21d5e1d572f6feb6a527de6d4d')
 
 build() {
   cd dukpy-${pkgver}
