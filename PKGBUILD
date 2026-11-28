@@ -1,7 +1,7 @@
 # Maintainer: aetherherne <aetherherne@gmail.com>
 
 pkgname=modorganizer2-installer-bin
-pkgver=7.0.5
+pkgver=7.1.0+hf1
 pkgrel=1
 pkgdesc="An accessible installer for mod organizer 2, intended to make it easy to get modding"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/Furglitch/modorganizer2-linux-installer"
 license=('GPL-3.0')
 depends=('xdg-utils' 'procps-ng' 'cabextract' 'protontricks' 'winetricks')
 source=("mo2-lint-${pkgver}::https://github.com/Furglitch/modorganizer2-linux-installer/releases/download/${pkgver}/mo2-lint")
-b2sums=('9f63868510a33520efe3abf08c13ba088d3360ebe6b5cdb4cc107da086aeababf578b769af9ace3432afa2b529626271ac22223e53a53d8999d3b4383ffe365b')
+b2sums=('9738d384f0a2f07bc01610d90d9b05c58740475c41dce4a3508de4dc3974f1552d10e6fcd3b91670232715a8644f4eac2f306b6338495ab1245f414e3a923201')
 
 package() {
   ls -la
