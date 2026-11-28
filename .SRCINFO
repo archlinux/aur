@@ -1,0 +1,14 @@
+pkgbase = iron-sensor-bin
+	pkgdesc = eBPF-based behavioral monitor for AI coding agents
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ironsh/iron-sensor
+	arch = x86_64
+	license = Apache-2.0
+	provides = iron-sensor
+	conflicts = iron-sensor
+	options = !debug
+	source_x86_64 = iron-sensor-bin-0.1.1-x86_64.tar.gz::https://github.com/ironsh/iron-sensor/releases/download/v0.1.1/iron-sensor_0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 59b52c29f2a0e42caf6815ac35e7a84f8886be1a7c1656eb9de561cb115ac48c
+
+pkgname = iron-sensor-bin
