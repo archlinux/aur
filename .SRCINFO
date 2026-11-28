@@ -1,0 +1,21 @@
+pkgbase = reviewengine-bin
+	pkgdesc = Multi-expert, scored AI code review
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/Liewzheng/ReviewEngine
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = reviewengine
+	conflicts = reviewengine
+	options = !debug
+	source = reviewengine-bin-0.11.1-LICENSE::https://raw.githubusercontent.com/Liewzheng/ReviewEngine/v0.11.1/LICENSE
+	sha256sums = 9b1c44c16a2afd8806b9e28e45350edd5a8bbddc08c1ca7caacf8677b3f93c73
+	source_x86_64 = reviewengine-bin-0.11.1-x86_64.tar.gz::https://github.com/Liewzheng/ReviewEngine/releases/download/v0.11.1/review-engine-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = aaa8e11152263dc9345410c5e50cf4ac9d47b947e8683600770b8f78baf9a370
+	source_aarch64 = reviewengine-bin-0.11.1-aarch64.tar.gz::https://github.com/Liewzheng/ReviewEngine/releases/download/v0.11.1/review-engine-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 395bdbf501d0a5d500e59f757c9babb92c5d94a72cc28efe0d2748c41a994a67
+
+pkgname = reviewengine-bin
