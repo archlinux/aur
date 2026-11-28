@@ -1,0 +1,17 @@
+pkgbase = tftree-bin
+	pkgdesc = Display your Terraform module call stack
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/busser/tftree
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = tftree
+	conflicts = tftree
+	options = !debug
+	source_x86_64 = tftree-bin-0.2.0-x86_64.tar.gz::https://github.com/busser/tftree/releases/download/v0.2.0/tftree_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3fcc2ad1b87eb0d9616bc624da9d5889e3608c1603258d4ca0f06a6b80ed4499
+	source_aarch64 = tftree-bin-0.2.0-aarch64.tar.gz::https://github.com/busser/tftree/releases/download/v0.2.0/tftree_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3f24550596027b001bbec7ca3dd2608cc1e831be205470bfe8ed17cd0fc341e2
+
+pkgname = tftree-bin
