@@ -1,0 +1,19 @@
+pkgbase = econumo-bin
+	pkgdesc = Personal and family budgeting app with multi-currency support
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/econumo/econumo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = econumo
+	conflicts = econumo
+	options = !debug
+	source = econumo-bin-1.8.1-LICENSE::https://raw.githubusercontent.com/econumo/econumo/v1.8.1/LICENSE
+	sha256sums = 4b2b4190ca6c35ffeab5904b22dce04805237196e9d381a365bc3c510c01d402
+	source_x86_64 = econumo-bin-1.8.1-x86_64::https://github.com/econumo/econumo/releases/download/v1.8.1/econumo-linux-amd64
+	sha256sums_x86_64 = 42dea8793b6588225a02ebd52a7342571e4c38e9a7cb14a1ebef501616069f02
+	source_aarch64 = econumo-bin-1.8.1-aarch64::https://github.com/econumo/econumo/releases/download/v1.8.1/econumo-linux-arm64
+	sha256sums_aarch64 = a42e156e8094bc26e8db22a930d6d348508a08c4366738467714d42a431a8eb5
+
+pkgname = econumo-bin
