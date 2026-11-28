@@ -4,6 +4,7 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
+Type=exec
 ExecStart=/usr/bin/mediamtx /etc/mediamtx/mediamtx.yml
 
 [Install]
