@@ -1,6 +1,6 @@
 pkgbase = caudio-git
 	pkgdesc = Advanced C++ wrapper around OpenAL
-	pkgver = 2.3.0.r261.8edfaec
+	pkgver = 2.3.0.r283.4f36d26
 	pkgrel = 1
 	url = https://github.com/R4stl1n/cAudio
 	arch = i686
