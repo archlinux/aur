@@ -1,12 +1,12 @@
 pkgbase = tinox-ide
 	pkgdesc = Native KDE Plasma IDE for the Tinox language, written in Tinox (built from source)
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/subnix-work/tinox-ide
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
-	makedepends = tinox>=2.9.10
+	makedepends = tinox>=2.9.11
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = extra-cmake-modules
@@ -27,13 +27,13 @@ pkgbase = tinox-ide
 	depends = kwidgetsaddons
 	depends = knotifications
 	depends = gc
-	optdepends = tinox>=2.9.10: build and run Tinox programs from the IDE
+	optdepends = tinox>=2.9.11: build and run Tinox programs from the IDE
 	optdepends = clang: compile Tinox applications
 	optdepends = konsole: embedded interactive terminal
 	optdepends = breeze: KDE widget style
 	optdepends = ripgrep: project search
 	conflicts = tinox-ide-git
-	source = tinox-ide-0.1.6.tar.gz::https://github.com/subnix-work/tinox-ide/archive/refs/tags/v0.1.6.tar.gz
-	sha256sums = 13c0b2984b8aca0dedec9ee4ed602c8cc671138f1b33f1170e60faab401e3de8
+	source = tinox-ide-0.1.7.tar.gz::https://github.com/subnix-work/tinox-ide/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = 1aa440e7ffe94f31297a13d3e44b719c758e6e72655b32b19436c53dcde5f92a
 
 pkgname = tinox-ide
