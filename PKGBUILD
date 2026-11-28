@@ -72,7 +72,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/share/sleex"
+  cd "$srcdir/sleex/src/share/sleex"
   rm -rf build/
   cmake -B build -DCMAKE_BUILD_TYPE=Release
   cmake --build build -j$(nproc --ignore=2)
@@ -80,23 +80,23 @@ build() {
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
-  cp -r "$srcdir/bin/"* "$pkgdir/usr/bin/"
+  cp -r "$srcdir/sleex/src/bin/"* "$pkgdir/usr/bin/"
 
   mkdir -p "$pkgdir/etc"
-  cp -r "$srcdir/etc/"* "$pkgdir/etc/"
+  cp -r "$srcdir/sleex/src/etc/"* "$pkgdir/etc/"
 
   mkdir -p "$pkgdir/usr/share/sleex"
-  cd "$srcdir/share/sleex"
+  cd "$srcdir/sleex/src/share/sleex"
   cmake --install build --prefix "$pkgdir/"
   rm -rf build
-  rsync -av --exclude='.qmlls.ini' --exclude='.qt/' --exclude='.rcc/' --exclude='.vscode' --exclude='build/' --exclude='CMakeFiles/' --exclude='CMakeCache.txt' --exclude='cmake_install.cmake' --exclude='Makefile' --exclude='qml/' "$srcdir/share/sleex/" "$pkgdir/usr/share/sleex/"
+  rsync -av --exclude='.qmlls.ini' --exclude='.qt/' --exclude='.rcc/' --exclude='.vscode' --exclude='build/' --exclude='CMakeFiles/' --exclude='CMakeCache.txt' --exclude='cmake_install.cmake' --exclude='Makefile' --exclude='qml/' "$srcdir/sleex/src/share/sleex/" "$pkgdir/usr/share/sleex/"
 
   mkdir -p "$pkgdir/usr/share/wayland-sessions"
-  cp -r "$srcdir/share/wayland-sessions/"* "$pkgdir/usr/share/wayland-sessions/"
+  cp -r "$srcdir/sleex/src/share/wayland-sessions/"* "$pkgdir/usr/share/wayland-sessions/"
 
   mkdir -p "$pkgdir/usr/share/xdg-desktop-portal"
-  cp -r "$srcdir/share/xdg-desktop-portal/"* "$pkgdir/usr/share/xdg-desktop-portal/"
+  cp -r "$srcdir/sleex/src/share/xdg-desktop-portal/"* "$pkgdir/usr/share/xdg-desktop-portal/"
 
   mkdir -p "$pkgdir/usr/libalpm/hooks"
-  cp -r "$srcdir/share/libalpm/hooks/"* "$pkgdir/usr/libalpm/hooks/"
+  cp -r "$srcdir/sleex/src/share/libalpm/hooks/"* "$pkgdir/usr/libalpm/hooks/"
 }
