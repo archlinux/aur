@@ -1,0 +1,17 @@
+pkgbase = flutter-skill-bin
+	pkgdesc = AI-powered end-to-end testing across many platforms
+	pkgver = 0.9.37
+	pkgrel = 1
+	url = https://github.com/ai-dashboad/flutter-skill
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = flutter-skill
+	conflicts = flutter-skill
+	options = !debug
+	source = flutter-skill-bin-0.9.37-LICENSE::https://raw.githubusercontent.com/ai-dashboad/flutter-skill/v0.9.37/LICENSE
+	sha256sums = 01cca52a95edbf55834a7cbd5b2961dd2d1e58dc223945bc2b8cb063752c2fec
+	source_x86_64 = flutter-skill-bin-0.9.37-x86_64::https://github.com/ai-dashboad/flutter-skill/releases/download/v0.9.37/flutter-skill-linux-x64
+	sha256sums_x86_64 = 452b98986827e4c8e036991a724be32af5add2ad810a883c3b419f375ba8d177
+
+pkgname = flutter-skill-bin
