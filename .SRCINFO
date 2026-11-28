@@ -1,0 +1,22 @@
+pkgbase = logos-blockchain-bin
+	pkgdesc = Logos blockchain node
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/logos-blockchain/logos-blockchain
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = logos-blockchain
+	conflicts = logos-blockchain
+	options = !debug
+	source = logos-blockchain-bin-0.3.7-LICENSE::https://raw.githubusercontent.com/logos-blockchain/logos-blockchain/0.3.7/LICENSE-APACHE2.0
+	sha256sums = 8f3c95de851c0acc9d1cbaa95e500e4198408283b853ed3e355ce27112057b44
+	source_x86_64 = logos-blockchain-bin-0.3.7-x86_64.tar.gz::https://github.com/logos-blockchain/logos-blockchain/releases/download/0.3.7/logos-blockchain-node-linux-x86_64-0.3.7.tar.gz
+	sha256sums_x86_64 = 5e25d88aa230743f96c715bc94a4b8b8983f94181443ac80c9d7cf9c2cf9317e
+	source_aarch64 = logos-blockchain-bin-0.3.7-aarch64.tar.gz::https://github.com/logos-blockchain/logos-blockchain/releases/download/0.3.7/logos-blockchain-node-linux-aarch64-0.3.7.tar.gz
+	sha256sums_aarch64 = d7130028017769fbc175edba713c73554dd472e2a1c01257f6f547d59b5a2672
+
+pkgname = logos-blockchain-bin
