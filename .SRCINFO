@@ -1,6 +1,6 @@
 pkgbase = vedi-bin
 	pkgdesc = Pager for colored text; select with the keyboard and copy
-	pkgver = 2.11.1
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/dlh/vedi
 	license = GPL-3.0-only
@@ -9,10 +9,10 @@ pkgbase = vedi-bin
 	conflicts = vedi
 	provides = vedi
 	arch = aarch64
-	source_aarch64 = vedi-bin_2.11.1_aarch64.tar.gz::https://github.com/dlh/vedi/releases/download/v2.11.1/vedi_2.11.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 666d5c1575c909b01d05ddd773264c5f5710ebc2455192375a610ad56104cf8c
+	source_aarch64 = vedi-bin_2.12.0_aarch64.tar.gz::https://github.com/dlh/vedi/releases/download/v2.12.0/vedi_2.12.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a3267698233d984a5d47af1adc4a4d1e6667f163837ca51bd47324943e59eb37
 	arch = x86_64
-	source_x86_64 = vedi-bin_2.11.1_x86_64.tar.gz::https://github.com/dlh/vedi/releases/download/v2.11.1/vedi_2.11.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 90fa1f641222b2f99bdc8f53542644f2c1d614de92914c49a15d8c6475bddabe
+	source_x86_64 = vedi-bin_2.12.0_x86_64.tar.gz::https://github.com/dlh/vedi/releases/download/v2.12.0/vedi_2.12.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 94692f1de806e24b18fc62fbc3297e0645d09940608a6fa43739ece1ad2c7fa4
 	
 pkgname = vedi-bin
