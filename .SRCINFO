@@ -1,0 +1,19 @@
+pkgbase = cottenrouter-bin
+	pkgdesc = Route many DNS tunnels through one public port 53
+	pkgver = 1.2.26
+	pkgrel = 1
+	url = https://github.com/TaJirax/CottenRouter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cottenrouter
+	conflicts = cottenrouter
+	options = !debug
+	source = cottenrouter-bin-1.2.26-LICENSE::https://raw.githubusercontent.com/TaJirax/CottenRouter/v1.2.26/LICENSE
+	sha256sums = 763dd5b29cc5e9825f4cc0591ae4d2f2e989dbe9e62c7cac16beba8eb0ac1f51
+	source_x86_64 = cottenrouter-bin-1.2.26-x86_64::https://github.com/TaJirax/CottenRouter/releases/download/v1.2.26/cottenrouter-linux-amd64
+	sha256sums_x86_64 = b31eb7b44e04d753df5399aa6ed0db143b75089d75ba94ab03c075c055bd25cc
+	source_aarch64 = cottenrouter-bin-1.2.26-aarch64::https://github.com/TaJirax/CottenRouter/releases/download/v1.2.26/cottenrouter-linux-arm64
+	sha256sums_aarch64 = 7ed78ddaa428ed089e9e74dd5254fccdf1c0721d1326236a9be9f644c21f2d34
+
+pkgname = cottenrouter-bin
