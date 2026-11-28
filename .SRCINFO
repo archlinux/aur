@@ -1,0 +1,18 @@
+pkgbase = danube-bin
+	pkgdesc = Distributed messaging broker platform
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = https://github.com/danube-messaging/danube
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = danube
+	conflicts = danube
+	options = !debug
+	source = danube-bin-0.17.1-LICENSE::https://raw.githubusercontent.com/danube-messaging/danube/v0.17.1/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = danube-bin-0.17.1-x86_64.tar.gz::https://github.com/danube-messaging/danube/releases/download/v0.17.1/danube-v0.17.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = efb52e83752299171e2ce6e89e42f16c226ead6d4741c18cc471921e6fbe2adc
+
+pkgname = danube-bin
