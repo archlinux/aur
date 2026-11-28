@@ -1,0 +1,19 @@
+pkgbase = faramesh-core-bin
+	pkgdesc = Governance-as-code for AI agents
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/faramesh/faramesh-core
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = faramesh-core
+	conflicts = faramesh-core
+	options = !debug
+	source = faramesh-core-bin-0.2.0-LICENSE::https://raw.githubusercontent.com/faramesh/faramesh-core/v0.2.0/LICENSE
+	sha256sums = e45da05b6d8eb3cbde533048f793be752c9d2d596f9265cf43efb6d9ced342a8
+	source_x86_64 = faramesh-core-bin-0.2.0-x86_64::https://github.com/faramesh/faramesh-core/releases/download/v0.2.0/faramesh-linux-amd64
+	sha256sums_x86_64 = d95c739252957c1059e58a66d52b74262562ff7a8c43812e03e34755df650ed9
+	source_aarch64 = faramesh-core-bin-0.2.0-aarch64::https://github.com/faramesh/faramesh-core/releases/download/v0.2.0/faramesh-linux-arm64
+	sha256sums_aarch64 = 316f92764546763c56840287cb1f94393637b93726e3b57cd552c6f009f57222
+
+pkgname = faramesh-core-bin
