@@ -1,0 +1,19 @@
+pkgbase = githooks-bin
+	pkgdesc = Per-repository and shared Git hooks with version control and auto-update
+	pkgver = 3.0.6
+	pkgrel = 1
+	url = https://github.com/gabyx/Githooks
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = githooks
+	conflicts = githooks
+	options = !debug
+	source = githooks-bin-3.0.6-LICENSE::https://raw.githubusercontent.com/gabyx/Githooks/v3.0.6/LICENSE
+	sha256sums = 1686a302b69c88ebc53a9f0fbffe45e4de7604f91e01ada682777855aa67f25a
+	source_x86_64 = githooks-bin-3.0.6-x86_64.tar.gz::https://github.com/gabyx/Githooks/releases/download/v3.0.6/githooks-3.0.6-linux.amd64.tar.gz
+	sha256sums_x86_64 = d1be9c5703051f24e02422c23ac429396df89b6d41afd090622b39c333676e67
+	source_aarch64 = githooks-bin-3.0.6-aarch64.tar.gz::https://github.com/gabyx/Githooks/releases/download/v3.0.6/githooks-3.0.6-linux.arm64.tar.gz
+	sha256sums_aarch64 = 5907cb1caa1deee7c46ecfa4a097faa3b14be13e1100860c57c1493d615e8873
+
+pkgname = githooks-bin
