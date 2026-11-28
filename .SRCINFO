@@ -1,6 +1,6 @@
 pkgbase = allot
 	pkgdesc = Each project's share of your Claude plan, with a budget Claude Code respects
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/KazW/allot
 	install = allot.install
@@ -12,7 +12,7 @@ pkgbase = allot
 	depends = qt6-wayland
 	depends = libnotify
 	optdepends = claude-code: the sessions allot measures and budgets
-	source = allot-0.2.3.tar.gz::https://github.com/KazW/allot/archive/refs/tags/v0.2.3.tar.gz
-	sha256sums = 7570d78d6eb144f4af8054929a0c3d32defc8c38abcaf466b9221cfbd3870c85
+	source = allot-0.3.0.tar.gz::https://github.com/KazW/allot/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 5f1403b5dd2cbd0db4017e39db1b42ad498cf97843cdc3f2e692ec8ffecbf037
 
 pkgname = allot

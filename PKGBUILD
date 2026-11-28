@@ -3,7 +3,7 @@
 # Published to the AUR by .github/workflows/release.yml, which fills in pkgver
 # and the checksum from each release's tag.
 pkgname=allot
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Each project's share of your Claude plan, with a budget Claude Code respects"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('qt6-base' 'qt6-declarative' 'qt6-wayland' 'libnotify')
 optdepends=('claude-code: the sessions allot measures and budgets')
 install=allot.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7570d78d6eb144f4af8054929a0c3d32defc8c38abcaf466b9221cfbd3870c85')
+sha256sums=('5f1403b5dd2cbd0db4017e39db1b42ad498cf97843cdc3f2e692ec8ffecbf037')
 
 build() {
   cd "$pkgname-$pkgver"
