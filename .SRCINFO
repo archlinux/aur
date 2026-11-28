@@ -1,0 +1,18 @@
+pkgbase = perbase-bin
+	pkgdesc = Per-base, per-nucleotide depth analysis
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/sstadick/perbase
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = perbase
+	conflicts = perbase
+	options = !debug
+	source = perbase-bin-1.4.1-LICENSE::https://raw.githubusercontent.com/sstadick/perbase/v1.4.1/LICENSE
+	sha256sums = 3be10beeb845859731f10a3fa2fe2960839cf36e4e9e39ab9f533e3e3b61d2fb
+	source_x86_64 = perbase-bin-1.4.1-x86_64::https://github.com/sstadick/perbase/releases/download/v1.4.1/perbase-linux-amd64
+	sha256sums_x86_64 = a2914cfa6c5bda21a4cf6615d720e517a69f1ed713d5c3576cf875cd0afc9450
+
+pkgname = perbase-bin
