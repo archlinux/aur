@@ -1,0 +1,19 @@
+pkgbase = etcd-defrag-bin
+	pkgdesc = Smarter etcd defragmentation tool
+	pkgver = 0.48.0
+	pkgrel = 1
+	url = https://github.com/ahrtr/etcd-defrag
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = etcd-defrag
+	conflicts = etcd-defrag
+	options = !debug
+	source = etcd-defrag-bin-0.48.0-LICENSE::https://raw.githubusercontent.com/ahrtr/etcd-defrag/v0.48.0/LICENSE
+	sha256sums = 58cb51bbe8ddf9ad37ab00a5cbb7bbb3d06c7155cca0229056c673083b74f43e
+	source_x86_64 = etcd-defrag-bin-0.48.0-x86_64.tar.gz::https://github.com/ahrtr/etcd-defrag/releases/download/v0.48.0/etcd-defrag-v0.48.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 883d2406283754977e221008a440b72058ab3e38725fb09e627098a0cb1d6b67
+	source_aarch64 = etcd-defrag-bin-0.48.0-aarch64.tar.gz::https://github.com/ahrtr/etcd-defrag/releases/download/v0.48.0/etcd-defrag-v0.48.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 24100ad0fd111ed826407e6ae9999a9954ee3f5167c33f91a2861b8c4ef1e20b
+
+pkgname = etcd-defrag-bin
