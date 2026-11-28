@@ -1,0 +1,17 @@
+pkgbase = outflux-bin
+	pkgdesc = Export data from InfluxDB to TimescaleDB
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/timescale/outflux
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = outflux
+	conflicts = outflux
+	options = !debug
+	source_x86_64 = outflux-bin-0.3.0-x86_64.tar.gz::https://github.com/timescale/outflux/releases/download/v0.3.0/outflux_0.3.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = be4736b1d241080dd3dcd6effcdb0b37f464c25c38bedabda485e213c2484ef2
+	source_aarch64 = outflux-bin-0.3.0-aarch64.tar.gz::https://github.com/timescale/outflux/releases/download/v0.3.0/outflux_0.3.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = b49b68dc2fdbb1fdb45a493b9f32f9e2a151e31e839cd663184276b454605ce4
+
+pkgname = outflux-bin
