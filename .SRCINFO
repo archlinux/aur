@@ -1,0 +1,16 @@
+pkgbase = leproxy-bin
+	pkgdesc = HTTPS reverse proxy with automatic Let's Encrypt for multiple hosts
+	pkgver = 20191014
+	pkgrel = 1
+	url = https://github.com/artyom/leproxy
+	arch = x86_64
+	license = MIT
+	provides = leproxy
+	conflicts = leproxy
+	options = !debug
+	source = leproxy-bin-20191014-LICENSE::https://raw.githubusercontent.com/artyom/leproxy/20191014/LICENSE.txt
+	sha256sums = af0871713ddff2f50e6a231df44854e2166fc0e622aa09d0d7bd5acf94f752f9
+	source_x86_64 = leproxy-bin-20191014-x86_64.tar.gz::https://github.com/artyom/leproxy/releases/download/20191014/leproxy-linux-amd64.tar.gz
+	sha256sums_x86_64 = 21f04ed32f51b90854d899b653b52ee05cd1319310a9e8bc52c48e6e28859ef7
+
+pkgname = leproxy-bin
