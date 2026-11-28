@@ -1,0 +1,23 @@
+pkgbase = python-arro3-core
+	pkgdesc = A minimal Python library for Apache Arrow, binding to the Rust Arrow implementation
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/kylebarron/arro3/tree/main/arro3-core
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	checkdepends = python-geoarrow-types
+	checkdepends = python-pandas
+	checkdepends = python-pyarrow
+	checkdepends = python-pytest
+	makedepends = python-maturin
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = rust
+	depends = python
+	depends = libgcc
+	depends = glibc
+	source = arro3-0.9.1.tar.gz::https://github.com/kylebarron/arro3/archive/refs/tags/py-v0.9.1.tar.gz
+	sha256sums = ed1cd4f44e51f6d4c657f5b1723b422d0f69cd167100a71daa90847e1cc11746
+
+pkgname = python-arro3-core
