@@ -1,0 +1,24 @@
+post_install() {
+    echo ""
+    echo -e "\033[1;33m==> ==========================================================\033[0m"
+    echo -e "\033[1;33m==>           ATTENTION: NYXT LOCALE CONFIGURATION           \033[0m"
+    echo -e "\033[1;33m==> ==========================================================\033[0m"
+    echo -e "\033[1mBy default, this package only includes the 'en-US' locale\033[0m"
+    echo -e "\033[1mto save ~130MB of disk space.\033[0m"
+    echo ""
+    echo "If you need additional languages (e.g., 'fr', 'de', 'es'),"
+    echo -e "\033[1;31myou MUST edit the PKGBUILD before building!\033[0m"
+    echo ""
+    echo "Look for the \033[1;36m'_locales'\033[0m array near the top of the PKGBUILD:"
+    echo ""
+    echo -e "    \033[1;32m_locales=('en-US' 'fr' 'de')\033[0m"
+    echo ""
+    echo "After modifying the array, rebuild and reinstall using:"
+    echo -e "    \033[1;32mmakepkg -si\033[0m"
+    echo -e "\033[1;33m==> ==========================================================\033[0m"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
