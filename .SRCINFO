@@ -1,0 +1,18 @@
+pkgbase = algia-bin
+	pkgdesc = Command-line client for Nostr
+	pkgver = 0.0.141
+	pkgrel = 1
+	url = https://github.com/mattn/algia
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = algia
+	conflicts = algia
+	options = !debug
+	source_x86_64 = algia-bin-0.0.141-x86_64.tar.gz::https://github.com/mattn/algia/releases/download/v0.0.141/algia_v0.0.141_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1787330c50a7e20e407d26e1dfa7c863d189c594f7a4c6fa9b512cee3474659b
+	source_aarch64 = algia-bin-0.0.141-aarch64.tar.gz::https://github.com/mattn/algia/releases/download/v0.0.141/algia_v0.0.141_linux_arm64.tar.gz
+	sha256sums_aarch64 = c337f4d8e93e188d4dba009d3ad29aeb9677c05cafb8799b08a9977b137af2bb
+
+pkgname = algia-bin
