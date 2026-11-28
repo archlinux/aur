@@ -1,0 +1,17 @@
+pkgbase = jellysweep-bin
+	pkgdesc = Smart cleanup tool for Jellyfin media servers
+	pkgver = 0.16.2
+	pkgrel = 1
+	url = https://github.com/jon4hz/jellysweep
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = jellysweep
+	conflicts = jellysweep
+	options = !debug
+	source_x86_64 = jellysweep-bin-0.16.2-x86_64.tar.gz::https://github.com/jon4hz/jellysweep/releases/download/v0.16.2/jellysweep-v0.16.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = a21d1a5ccecfe978f7221d9649d87da742381dab6acde0c814ef5fa5a1ad48c2
+	source_aarch64 = jellysweep-bin-0.16.2-aarch64.tar.gz::https://github.com/jon4hz/jellysweep/releases/download/v0.16.2/jellysweep-v0.16.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4ef7b7dd900edb9beca60dd1f4d1b223e5352696c5170cee949861815cdbf35a
+
+pkgname = jellysweep-bin
