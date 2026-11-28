@@ -3,7 +3,7 @@
 pkgname=voxtype-git
 _srcname=voxtype
 pkgver=1.3.1.r6.g92ee126d
-pkgrel=1
+pkgrel=2
 pkgdesc="Push-to-talk voice-to-text for Linux (development branch)"
 arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
@@ -155,11 +155,13 @@ check() {
     export CMAKE_BUILD_PARALLEL_LEVEL="${CMAKE_BUILD_PARALLEL_LEVEL:-4}"
     export GIT_CEILING_DIRECTORIES="$srcdir"
     # The meeting assistant's jail test runs bwrap whenever it is installed,
-    # and gtk4 pulls bubblewrap in. bwrap needs unprivileged user
-    # namespaces, which containers, some chroots and hardened kernels do
-    # not allow; skip that one test there instead of failing the build.
+    # and gtk4 pulls bubblewrap in. The jail needs unprivileged user
+    # namespaces and a fresh /proc, which containers, some chroots and
+    # hardened kernels do not allow; skip that one test there instead of
+    # failing the build. Probe with the jail's own flags: a bare bwrap can
+    # run where mounting /proc is refused.
     local _skip=()
-    if ! bwrap --ro-bind / / true 2>/dev/null; then
+    if ! bwrap --unshare-all --share-net --ro-bind / / --proc /proc --dev /dev true 2>/dev/null; then
         _skip=(--skip meeting::assistant::tests::codex_runs_in_a_jail_that_hides_home)
     fi
     # Include both waveform implementations and the meetings window.

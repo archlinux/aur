@@ -99,16 +99,20 @@ post_install() {
     _detect_gpu
 
     echo ""
-    echo "    1. Add your user to the 'input' group:"
-    echo "       sudo usermod -aG input \$USER"
+    echo "    1. Bind a key in your compositor to 'voxtype record toggle', and set"
+    echo "       enabled = false under [hotkey]. Examples for Hyprland, Sway,"
+    echo "       River, niri and GNOME:"
+    echo "       https://github.com/peteonrails/voxtype/blob/main/docs/USER_MANUAL.md#compositor-keybindings"
     echo ""
-    echo "    2. Log out and back in for group changes to take effect"
-    echo ""
-    echo "    3. Choose a model and configure dictation:"
+    echo "    2. Choose a model and configure dictation:"
     echo "       voxtype configure"
     echo ""
-    echo "    4. Start voxtype:"
+    echo "    3. Start voxtype:"
     echo "       systemctl --user enable --now voxtype"
+    echo ""
+    echo "    Without compositor bindings, the built-in hotkey needs the 'input'"
+    echo "    group (sudo usermod -aG input \$USER, then log in again), which lets"
+    echo "    every program read every keystroke."
     echo ""
     _print_onnx_hint
     echo ""
@@ -150,6 +154,10 @@ post_upgrade() {
     _print_omarchy_hint
     echo "    Restart the daemon to apply updates:"
     echo "      systemctl --user restart voxtype"
+    if [ -d /usr/share/omarchy ]; then
+        echo "    On Omarchy, also restart the shell to load the updated panel:"
+        echo "      omarchy-restart-shell"
+    fi
     echo ""
     echo "    Changes on dev:"
     echo "      https://github.com/peteonrails/voxtype/commits/dev"
