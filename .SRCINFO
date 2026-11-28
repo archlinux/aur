@@ -1,0 +1,17 @@
+pkgbase = thunderdome-planning-poker-bin
+	pkgdesc = Agile planning poker, sprint retro and story mapping tool
+	pkgver = 5.19.0
+	pkgrel = 1
+	url = https://github.com/StevenWeathers/thunderdome-planning-poker
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = thunderdome-planning-poker
+	conflicts = thunderdome-planning-poker
+	options = !debug
+	source_x86_64 = thunderdome-planning-poker-bin-5.19.0-x86_64.tar.gz::https://github.com/StevenWeathers/thunderdome-planning-poker/releases/download/v5.19.0/thunderdome-planning-poker_5.19.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 90280534bc1a9c333be38e2ab52a5776cc1c60158257fa32a0d84b9977413f4b
+	source_aarch64 = thunderdome-planning-poker-bin-5.19.0-aarch64.tar.gz::https://github.com/StevenWeathers/thunderdome-planning-poker/releases/download/v5.19.0/thunderdome-planning-poker_5.19.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = e55549cf97d2ffa646bfe048f87342f4978975ef1bbd566b5b6098e4cf0841f2
+
+pkgname = thunderdome-planning-poker-bin
