@@ -1,0 +1,18 @@
+pkgbase = aitutor-bin
+	pkgdesc = Vimtutor-like interactive guide for AI tools
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/naorpeled/aitutor
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = aitutor
+	conflicts = aitutor
+	options = !debug
+	source_x86_64 = aitutor-bin-0.1.9-x86_64.tar.gz::https://github.com/naorpeled/aitutor/releases/download/v0.1.9/aitutor_linux_amd64.tar.gz
+	sha256sums_x86_64 = b9792bf591b6c4f5c4f7dac489c4d846b5b3ca778eeecfac637bb6aa2d5658bf
+	source_aarch64 = aitutor-bin-0.1.9-aarch64.tar.gz::https://github.com/naorpeled/aitutor/releases/download/v0.1.9/aitutor_linux_arm64.tar.gz
+	sha256sums_aarch64 = 29fba4cc4d928085ea93856b320c011d940a49c69ab5885c3eb7702ad7aa3f8f
+
+pkgname = aitutor-bin
