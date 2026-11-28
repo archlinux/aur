@@ -1,7 +1,7 @@
 _pkgname="DiagNG"
 pkgname="diagng"
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 pkgdesc="Client for mobile baseband Diag interfaces - Successor for QCSuper"
 arch=(
   'any'
@@ -48,7 +48,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('8d66f6bacff47c7b926e207f8d74a94ec7e071c2506b2569eb4300c22852f23e')
+sha256sums=('af4056566f03799d6024f594308de62d4d8fcfd5e661367737a3ee1f8e441f08')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
