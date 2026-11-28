@@ -1,0 +1,21 @@
+pkgbase = code-graph-mcp-bin
+	pkgdesc = AST knowledge graph MCP server for code search and impact analysis
+	pkgver = 0.205.0
+	pkgrel = 1
+	url = https://github.com/sdsrss/code-graph-mcp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = code-graph-mcp
+	conflicts = code-graph-mcp
+	options = !debug
+	source = code-graph-mcp-bin-0.205.0-LICENSE::https://raw.githubusercontent.com/sdsrss/code-graph-mcp/v0.205.0/LICENSE
+	sha256sums = 396eec88b000482bef3a475449fa6579dc76c87719265420c8e947954ad70e90
+	source_x86_64 = code-graph-mcp-bin-0.205.0-x86_64::https://github.com/sdsrss/code-graph-mcp/releases/download/v0.205.0/code-graph-mcp-linux-x64
+	sha256sums_x86_64 = d454de064b85368f060cbe2f5e8d98bdb09b6cb15324ad998b32433a77cc9285
+	source_aarch64 = code-graph-mcp-bin-0.205.0-aarch64::https://github.com/sdsrss/code-graph-mcp/releases/download/v0.205.0/code-graph-mcp-linux-arm64
+	sha256sums_aarch64 = 15a05dd263ec6a657bacc6c1c679adbf215c6d8b460f2b784413492f7f60f1a6
+
+pkgname = code-graph-mcp-bin
