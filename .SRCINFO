@@ -1,0 +1,17 @@
+pkgbase = gobuildcache-bin
+	pkgdesc = Remote build cache for Go
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/richardartoul/gobuildcache
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gobuildcache
+	conflicts = gobuildcache
+	options = !debug
+	source_x86_64 = gobuildcache-bin-1.9.0-x86_64.tar.gz::https://github.com/richardartoul/gobuildcache/releases/download/v1.9.0/gobuildcache_1.9.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0cca312c4d0ae45218f40523db180bb607f887d08e4c39849350e6447b63cd8d
+	source_aarch64 = gobuildcache-bin-1.9.0-aarch64.tar.gz::https://github.com/richardartoul/gobuildcache/releases/download/v1.9.0/gobuildcache_1.9.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 541ed39df20867d21740238e7962b2e4f366cee5b0b37d4e217eeb35050b66c9
+
+pkgname = gobuildcache-bin
