@@ -1,0 +1,19 @@
+pkgbase = pikpakcli-bin
+	pkgdesc = Command-line client for PikPak
+	pkgver = 0.23
+	pkgrel = 1
+	url = https://github.com/52funny/pikpakcli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pikpakcli
+	conflicts = pikpakcli
+	options = !debug
+	source = pikpakcli-bin-0.23-LICENSE::https://raw.githubusercontent.com/52funny/pikpakcli/v0.23/LICENSE
+	sha256sums = 586e3f43f12dfbb1cdedcaf157d0db2a6c0178b6d4f52ae8a2748992c7ace4c6
+	source_x86_64 = pikpakcli-bin-0.23-x86_64.tar.gz::https://github.com/52funny/pikpakcli/releases/download/v0.23/pikpakcli_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 91bb9407a239c587aeb7a52b2bbf0bfe1319e44d3c9e6a8b278b5f5423566073
+	source_aarch64 = pikpakcli-bin-0.23-aarch64.tar.gz::https://github.com/52funny/pikpakcli/releases/download/v0.23/pikpakcli_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 172bc7c962cfdb60e82dd81741236b6e32c5b2720c39ee3afadd5eaf2ab37c87
+
+pkgname = pikpakcli-bin
