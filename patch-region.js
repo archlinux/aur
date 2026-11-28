@@ -170,6 +170,10 @@ function main() {
     if (item.rel === 'dist/main/modules/tray/index.js') out = patchTray(item.rel, out);
     if (out !== source) {
       item.patched = Buffer.from(out, 'utf8');
+    } else if (mode === 'cn' && isEnv) {
+      // 内容不变，但标记后才能在下面的后置检查里复核区域，
+      // 防止上游把国内通道换成海外安装包而两版静默重合。
+      item.patched = Buffer.from(out, 'utf8');
     }
   }
 
@@ -189,6 +193,14 @@ function main() {
     if (!envItem || !envItem.patched) throw new Error('.env.local was not rewritten');
     if (!envItem.patched.toString('utf8').includes('https://agent.minimax.io')) {
       throw new Error('.env.local still points at the cn domain');
+    }
+  }
+
+  if (mode === 'cn') {
+    const envItem = packed.find((i) => i.rel === '.env.local');
+    if (!envItem || !envItem.patched) throw new Error('.env.local missing from the payload');
+    if (!envItem.patched.toString('utf8').includes('https://agent.minimax.cn')) {
+      throw new Error('.env.local is not the mainland build (upstream channel changed)');
     }
   }
 

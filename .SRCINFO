@@ -1,7 +1,7 @@
 pkgbase = minimax-code-cn-bin
 	pkgdesc = MiniMax Code 桌面应用（国内版），非官方 Linux 移植
 	pkgver = 3.1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.minimax.cn/
 	arch = x86_64
 	license = LicenseRef-proprietary
@@ -84,7 +84,7 @@ pkgbase = minimax-code-cn-bin
 	sha256sums = 45a2df04cccab5567483d557a14c655cb8c4e31305de6159bf05fd070ddcea00
 	sha256sums = 08e05d837c6b3faefdd3e77ac3155c2654392a62d241961bcccc221f3783170a
 	sha256sums = 7d8c1a7c78fdf013bddd4e9dd20578467d63f18c2f81ba1819b11c5ce4c06f6f
-	sha256sums = 3487740ff1226097caede97fe16c91976047969a081c856dff941bb6fd184b1b
+	sha256sums = dd61dd1df6e71abd7e35b0fb2b474ecf413407b7764d327320c40249ad98dfde
 	sha256sums = ef50b80ae1d55a5f48c94db21cf74c3543723af4e89f85eb9d80c0900b1efdf1
 	sha256sums = d825e277c4ae5591d66c59bd62159667de1a301f48c88de27423029aeb82d86a
 	sha256sums = 4316795aed0ca546c547698159d41234a6ed5f11570b1259e17858fb50d17fa6

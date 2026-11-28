@@ -2,7 +2,7 @@
 
 pkgname=minimax-code-cn-bin
 pkgver=3.1.19
-pkgrel=1
+pkgrel=2
 _electron=42.11.16
 pkgdesc='MiniMax Code 桌面应用（国内版），非官方 Linux 移植'
 arch=('x86_64')
@@ -59,7 +59,7 @@ sha256sums=(
   '45a2df04cccab5567483d557a14c655cb8c4e31305de6159bf05fd070ddcea00'
   '08e05d837c6b3faefdd3e77ac3155c2654392a62d241961bcccc221f3783170a'
   '7d8c1a7c78fdf013bddd4e9dd20578467d63f18c2f81ba1819b11c5ce4c06f6f'
-  '3487740ff1226097caede97fe16c91976047969a081c856dff941bb6fd184b1b'
+  'dd61dd1df6e71abd7e35b0fb2b474ecf413407b7764d327320c40249ad98dfde'
   'ef50b80ae1d55a5f48c94db21cf74c3543723af4e89f85eb9d80c0900b1efdf1'
   'd825e277c4ae5591d66c59bd62159667de1a301f48c88de27423029aeb82d86a'
   '4316795aed0ca546c547698159d41234a6ed5f11570b1259e17858fb50d17fa6'
@@ -102,6 +102,8 @@ prepare() {
   cd "$srcdir"
   # 重复构建时必须先清掉旧的解包结果，否则 patch-region 会作用在已打补丁的 asar 上。
   rm -rf "$srcdir/nsis" "$srcdir/payload"
+  # 7z 在部分环境不会自建 -o 指定的输出目录，先显式建好，否则解包以 errno=2 失败。
+  install -dm755 "$srcdir/nsis" "$srcdir/payload"
   7z x -y -o"$srcdir/nsis" "minimax-code-${pkgver}.exe" >/dev/null
   7z x -y -o"$srcdir/payload" "$srcdir/nsis/\$PLUGINSDIR/app-64.7z" >/dev/null
   node "$srcdir/patch-region.js" "$srcdir/payload/resources/app.asar" cn
