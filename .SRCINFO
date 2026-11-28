@@ -1,0 +1,19 @@
+pkgbase = savepoint-bin
+	pkgdesc = Command watcher that commits when you fix errors
+	pkgver = 0.3.12
+	pkgrel = 1
+	url = https://github.com/NamtaoProductions/savepoint
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = savepoint
+	conflicts = savepoint
+	options = !debug
+	source_x86_64 = savepoint-bin-0.3.12-x86_64.tar.gz::https://github.com/NamtaoProductions/savepoint/releases/download/v0.3.12/savepoint-0.3.12-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e427f18385adaaaa6cbd9fb7f6e7679d1b7c110561a985544856b1a947ce121b
+	source_aarch64 = savepoint-bin-0.3.12-aarch64.tar.gz::https://github.com/NamtaoProductions/savepoint/releases/download/v0.3.12/savepoint-0.3.12-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 37fea58ee745e0cc57921aceaad41cb418a37f13ea8c7c0e0df0a4ff531cbc06
+
+pkgname = savepoint-bin
