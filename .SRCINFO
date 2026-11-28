@@ -1,0 +1,17 @@
+pkgbase = wireblast-bin
+	pkgdesc = AF_XDP traffic generator
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/atoonk/wireblast
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = wireblast
+	conflicts = wireblast
+	options = !debug
+	source_x86_64 = wireblast-bin-0.6.1-x86_64.tar.gz::https://github.com/atoonk/wireblast/releases/download/v0.6.1/wireblast_linux_amd64.tar.gz
+	sha256sums_x86_64 = 70b69065ca6af7c8aee8dfd9eebbf2eb1580fffcdd060242b981c8d38825e221
+	source_aarch64 = wireblast-bin-0.6.1-aarch64.tar.gz::https://github.com/atoonk/wireblast/releases/download/v0.6.1/wireblast_linux_arm64.tar.gz
+	sha256sums_aarch64 = 287eaa9ea266f32f769817c9f65e755bb0dfe923938f2881dd8a4d3cac9a3c86
+
+pkgname = wireblast-bin
