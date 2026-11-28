@@ -1,0 +1,17 @@
+pkgbase = copywrite-bin
+	pkgdesc = Automate copyright headers and license files at scale
+	pkgver = 0.25.3
+	pkgrel = 1
+	url = https://github.com/hashicorp/copywrite
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	provides = copywrite
+	conflicts = copywrite
+	options = !debug
+	source_x86_64 = copywrite-bin-0.25.3-x86_64.tar.gz::https://github.com/hashicorp/copywrite/releases/download/v0.25.3/copywrite_0.25.3_linux_x86_64.tar.gz
+	sha256sums_x86_64 = e43f4b72fff3f219c5a5f883438d63edd5b68f5bea90a5d18abb3001c8c3aedc
+	source_aarch64 = copywrite-bin-0.25.3-aarch64.tar.gz::https://github.com/hashicorp/copywrite/releases/download/v0.25.3/copywrite_0.25.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = e1eb389e4afdb29693e0cf5984d07395a3940f55678bb705e5e1d34f699c158c
+
+pkgname = copywrite-bin
