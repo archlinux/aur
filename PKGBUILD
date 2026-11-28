@@ -2,7 +2,7 @@
 
 pkgbase=sdrmm
 pkgname=(sdrmm sdrmm-app)
-pkgver=2.4.4
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Modular, client-server software-defined radio receiver"
 arch=('x86_64' 'aarch64')
@@ -53,7 +53,7 @@ source=("$pkgbase-$pkgver-src.tar.gz::https://github.com/Newspicel/sdrmm/release
         "ffmpeg-$_ffmpegver.tar.xz::https://fossies.org/linux/misc/ffmpeg-$_ffmpegver.tar.xz"
         "fdk-aac-$_fdkver.tar.gz::https://github.com/mstorsjo/fdk-aac/archive/refs/tags/v$_fdkver.tar.gz"
         'sdrmm.service')
-sha256sums=('d90b9d5cb4a665cf9f0125071652368ceb0a57225b0fb784bb207cedb7628b30'
+sha256sums=('3ef1e14488d184e8341efc0cba28e723c661b4b49d89a93da964f51c0c1a9fd5'
             '8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e'
             'e25671cd96b10bad896aa42ab91a695a9e573395262baed4e4a2ff178d6a3a78'
             'e98577de4b5d4112fd2de527c73467efe6733b3dbca8f3195df239897b4070ae')
