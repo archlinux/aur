@@ -1,7 +1,7 @@
 pkgbase = lem-nightly
 	pkgdesc = Common Lisp editor/IDE with ncurses frontend (nightly build)
 	pkgver = nightly.latest.r0.g96b8faa57
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lem-project/lem
 	arch = x86_64
 	license = MIT
@@ -22,6 +22,8 @@ pkgbase = lem-nightly
 	conflicts = lem-webview
 	conflicts = lem-webview-nightly
 	conflicts = lem-ncurses
+	conflicts = lem-sdl2
+	conflicts = lem-sdl3-nightly
 	options = !strip
 	source = lem-nightly::git+https://github.com/lem-project/lem.git#tag=nightly-latest
 	sha256sums = SKIP

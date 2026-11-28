@@ -2,7 +2,7 @@
 
 pkgname=lem-nightly
 pkgver=nightly.latest.r0.g96b8faa57
-pkgrel=1
+pkgrel=2
 pkgdesc="Common Lisp editor/IDE with ncurses frontend (nightly build)"
 arch=('x86_64')
 url="https://github.com/lem-project/lem"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('sbcl' 'ncurses' 'enchant' 'tree-sitter')
 makedepends=('git' 'make' 'qlot' 'sbcl' 'ncurses' 'enchant' 'tree-sitter')
 optdepends=('libvterm: for integrated terminal' 'fd: for fuzzy file search')
-conflicts=('lem' 'lem-webview' 'lem-webview-nightly' 'lem-ncurses')
+conflicts=('lem' 'lem-webview' 'lem-webview-nightly' 'lem-ncurses' 'lem-sdl2' 'lem-sdl3-nightly')
 options=('!strip')
 source=("${pkgname}::git+https://github.com/lem-project/lem.git#tag=nightly-latest")
 sha256sums=('SKIP')
