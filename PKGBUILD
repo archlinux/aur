@@ -1,6 +1,6 @@
 # Maintainer: Henrik Bernhardt <57109108+Henriklmao@users.noreply.github.com>
 pkgname=headset-tui
-pkgver=0.2.0
+pkgver=0.2.0_2
 pkgrel=1
 pkgdesc='Waybar integration for HeadsetControl with an interactive TUI'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('headsetcontrol')
 makedepends=('git' 'rust')
 conflicts=('headset-tui-bin' 'headset-tui-git')
-source=("$pkgname::git+https://github.com/Henriklmao/headset-tui.git#tag=v0.2.0")
+source=("$pkgname::git+https://github.com/Henriklmao/headset-tui.git#tag=v0.2.0-2")
 sha256sums=('SKIP')
 
 build() {

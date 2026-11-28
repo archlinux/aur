@@ -1,6 +1,6 @@
 pkgbase = headset-tui
 	pkgdesc = Waybar integration for HeadsetControl with an interactive TUI
-	pkgver = 0.2.0
+	pkgver = 0.2.0_2
 	pkgrel = 1
 	url = https://github.com/Henriklmao/headset-tui
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = headset-tui
 	depends = headsetcontrol
 	conflicts = headset-tui-bin
 	conflicts = headset-tui-git
-	source = headset-tui::git+https://github.com/Henriklmao/headset-tui.git#tag=v0.2.0
+	source = headset-tui::git+https://github.com/Henriklmao/headset-tui.git#tag=v0.2.0-2
 	sha256sums = SKIP
 
 pkgname = headset-tui
