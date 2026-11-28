@@ -1,0 +1,21 @@
+pkgbase = rdmatop-bin
+	pkgdesc = htop-like TUI for real-time RDMA network monitoring
+	pkgver = 0.1.33
+	pkgrel = 1
+	url = https://github.com/uccl-project/rdmatop
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = rdmatop
+	conflicts = rdmatop
+	options = !debug
+	source = rdmatop-bin-0.1.33-LICENSE::https://raw.githubusercontent.com/uccl-project/rdmatop/v0.1.33/LICENSE
+	sha256sums = 71c45f296e293a540b97b151e1f17d1799e6637eb7c0a27eafb3fd03eb9934d3
+	source_x86_64 = rdmatop-bin-0.1.33-x86_64.tar.gz::https://github.com/uccl-project/rdmatop/releases/download/v0.1.33/rdmatop-v0.1.33-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0d44aa437d7ee0d8fa10ee1288b6d5bbd42970afdd2c37a53c5f6cb99f53a998
+	source_aarch64 = rdmatop-bin-0.1.33-aarch64.tar.gz::https://github.com/uccl-project/rdmatop/releases/download/v0.1.33/rdmatop-v0.1.33-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2d895b82bdd009aedab751c614b21f5500d842cbf280c526a9168cf6e2c0c8d7
+
+pkgname = rdmatop-bin
