@@ -1,7 +1,7 @@
 pkgbase = gambiarra-infinite-bin
 	pkgdesc = GambiarraInfinite V4 - AI coding desktop app (LarpCode/OpenCode rebrand)
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ArthurSimin/GambiarraInfinite
 	install = gambiarra-infinite.install
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = gambiarra-infinite-bin
 	source = warp-install.sh
 	sha256sums = SKIP
 	sha256sums = 4cfe65103f770fc3e0717ce2e611ee75feefb0e3c5b0a10985fe9a437003e91f
-	sha256sums = b28c4ca161224e5245ab8eeeaf66ae58552e7cd1d56138b1d82938f48f8fce1f
+	sha256sums = 32c676abf34dcad20f1e3d4d9a1fe964db26fbf5121b5225f6a1a84a26ebe679
 	sha256sums = bff20d5bda7f4d022aa4e1700115891932125fe66da40650f5964d71f286ffd5
 	sha256sums = e148e36d4c71598747c32bcb9b54fc7ae9e478fce1d6efba03ec9513bdaf42da
 
