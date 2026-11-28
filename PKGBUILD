@@ -1,7 +1,7 @@
 # Maintainer: Ardox <ardox@axos-project.com>
 pkgname=sleex-git
 _pkgname=sleex
-pkgver=1.36.r765.7c5957a
+pkgver=1.41.r850.21a657c
 pkgrel=1
 pkgdesc="Desktop environment focused on aesthetics and performance (git version)"
 arch=("x86_64")
@@ -20,11 +20,11 @@ depends=(
   # Cursor
   "bibata-cursor-theme-bin"
   # Fonts & Themes
-  'adw-gtk-theme' 'breeze-plus' 'eza' 'fish' 'fontconfig' 'kde-material-you-colors' 'matugen-bin' 'starship' 'ttf-gabarito-git' 'ttf-jetbrains-mono-nerd' 'ttf-material-design-icons-extended' 'ttf-material-symbols-variable' 'ttf-readex-pro' 'ttf-rubik-vf' 'ttf-twemoji'
+  'adw-gtk-theme' 'breeze-plus' 'eza' 'fish' 'fontconfig' 'matugen-bin' 'starship' 'ttf-gabarito-git' 'ttf-jetbrains-mono-nerd' 'ttf-material-design-icons-extended' 'ttf-material-symbols-variable' 'ttf-readex-pro' 'ttf-rubik-vf' 'ttf-twemoji'
   # Hyprland dependencies
   'hyprutils' 'hyprpicker' 'hyprlang' 'hyprland-qt-support' 'hyprland-guiutils' 'hyprcursor' 'hyprwayland-scanner' 'hyprland' 'xdg-desktop-portal-hyprland' 'wl-clipboard' 'hyprlock'
   # QT/KDE dependencies
-  'bluedevil' 'gnome-keyring' 'networkmanager' 'polkit-kde-agent' 'pcmanfm-qt' 'kwrite' "libnm" "gio-qt" "qt6-connectivity"
+  'bluedevil' 'gnome-keyring' 'networkmanager' 'polkit-kde-agent' 'voxel' 'kwrite' "libnm" "gio-qt" "qt6-connectivity"
   # Portal
   'xdg-desktop-portal'
   # Python deps
@@ -32,15 +32,15 @@ depends=(
   # Screencast/Screenrecord
   'hyprshot' 'ksnip' 'wf-recorder' 'slurp' 'grim' 'tesseract' 'tesseract-data-eng'
   # Tools
-  'kdialog' 'qt6-5compat' 'qt6-avif-image-plugin' 'qt6-base' 'qt6-declarative' 'qt6-imageformats' 'qt6-multimedia' 'qt6-positioning' 'qt6-quicktimeline' 'qt6-sensors' 'qt6-svg' 'qt6-tools' 'qt6-translations' 'qt6-virtualkeyboard' 'qt6-wayland' 'syntax-highlighting' 'upower' 'wtype' 'ydotool' 'fprintd' 'khal' 'vdirsyncer' 'python-aiohttp-oauthlib' 'swappy' 'hypnos' 'bluez-utils' 'howdy-git' 'gum'
+  'kdialog' 'qt6-5compat' 'qt6-avif-image-plugin' 'qt6-base' 'qt6-declarative' 'qt6-imageformats' 'qt6-multimedia' 'qt6-positioning' 'qt6-quicktimeline' 'qt6-sensors' 'qt6-svg' 'qt6-tools' 'qt6-translations' 'qt6-virtualkeyboard' 'qt6-wayland' 'syntax-highlighting' 'upower' 'wtype' 'ydotool' 'fprintd' 'khal' 'vdirsyncer' 'python-aiohttp-oauthlib' 'swappy' 'hypnos' 'bluez-utils' 'howdy-git' 'sdbus-cpp' 'papirus-folders'
   # Widgets
   'fuzzel' 'nm-connection-editor' 'quickshell' 'swww' 'translate-shell' 'wlogout'
   # User config
-  "sleex-user-config-git"
+  "sleex-user-config"
   # Artworks
-  "sleex-artworks-git"
+  "sleex-artworks"
   # Sleex packages
-  "sleex-ui-kit-git" "sleex-welcome-screen-git"
+  "sleex-ui-kit" "sleex-welcome-screen"
 )
 
 makedepends=('git' 'cmake')
@@ -68,36 +68,35 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "1.36.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.41.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_pkgname/src/share/sleex"
+  cd "$srcdir/share/sleex"
   rm -rf build/
   cmake -B build -DCMAKE_BUILD_TYPE=Release
-  cmake --build build -j$(nproc)
+  cmake --build build -j$(nproc --ignore=2)
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-
   mkdir -p "$pkgdir/usr/bin"
-  cp -r src/bin/* "$pkgdir/usr/bin/"
+  cp -r "$srcdir/bin/"* "$pkgdir/usr/bin/"
 
   mkdir -p "$pkgdir/etc"
-  cp -r src/etc/* "$pkgdir/etc/"
+  cp -r "$srcdir/etc/"* "$pkgdir/etc/"
 
   mkdir -p "$pkgdir/usr/share/sleex"
-  cd src/share/sleex
+  cd "$srcdir/share/sleex"
   cmake --install build --prefix "$pkgdir/"
-  
-  rsync -av --exclude='.qmlls.ini' --exclude='.qt/' --exclude='.rcc/' --exclude='.vscode' \
-        --exclude='build/' --exclude='CMakeFiles/' --exclude='CMakeCache.txt' \
-        --exclude='cmake_install.cmake' --exclude='Makefile' --exclude='qml/' \
-        "./" "$pkgdir/usr/share/sleex/"
+  rm -rf build
+  rsync -av --exclude='.qmlls.ini' --exclude='.qt/' --exclude='.rcc/' --exclude='.vscode' --exclude='build/' --exclude='CMakeFiles/' --exclude='CMakeCache.txt' --exclude='cmake_install.cmake' --exclude='Makefile' --exclude='qml/' "$srcdir/share/sleex/" "$pkgdir/usr/share/sleex/"
 
-  mkdir -p "$pkgdir/usr/share"
-  cd "$srcdir/$_pkgname"
-  cp -r "src/share/wayland-sessions/" "$pkgdir/usr/share/"
-  cp -r "src/share/libalpm/" "$pkgdir/usr/share/"
+  mkdir -p "$pkgdir/usr/share/wayland-sessions"
+  cp -r "$srcdir/share/wayland-sessions/"* "$pkgdir/usr/share/wayland-sessions/"
+
+  mkdir -p "$pkgdir/usr/share/xdg-desktop-portal"
+  cp -r "$srcdir/share/xdg-desktop-portal/"* "$pkgdir/usr/share/xdg-desktop-portal/"
+
+  mkdir -p "$pkgdir/usr/libalpm/hooks"
+  cp -r "$srcdir/share/libalpm/hooks/"* "$pkgdir/usr/libalpm/hooks/"
 }
