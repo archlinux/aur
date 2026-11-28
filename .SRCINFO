@@ -1,0 +1,17 @@
+pkgbase = cocoon-bin
+	pkgdesc = Lightweight microVM engine built on Cloud Hypervisor
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/cocoonstack/cocoon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cocoon
+	conflicts = cocoon
+	options = !debug
+	source_x86_64 = cocoon-bin-0.8.1-x86_64.tar.gz::https://github.com/cocoonstack/cocoon/releases/download/v0.8.1/cocoon_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 43a90a3c077b055846516d1ef192ceaa5115f79e976bccc7b947c9aa7a749eb3
+	source_aarch64 = cocoon-bin-0.8.1-aarch64.tar.gz::https://github.com/cocoonstack/cocoon/releases/download/v0.8.1/cocoon_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 0baf8cdba4c366394071d2869b5fbd65203e1fe53e9340b5ac92b9229c064616
+
+pkgname = cocoon-bin
