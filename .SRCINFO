@@ -1,0 +1,17 @@
+pkgbase = occamy-bin
+	pkgdesc = Remote desktop proxy
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/changkun/occamy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = occamy
+	conflicts = occamy
+	options = !debug
+	source_x86_64 = occamy-bin-0.6.0-x86_64.tar.gz::https://github.com/changkun/occamy/releases/download/v0.6.0/occamyd-v0.6.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 8977556727264f67063ad0ef216b8d07d5051928dff007325f857a5cf5e5e56a
+	source_aarch64 = occamy-bin-0.6.0-aarch64.tar.gz::https://github.com/changkun/occamy/releases/download/v0.6.0/occamyd-v0.6.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3652ee3df411ca15958a1ccd6feffe64755db71a351b84ca01b4db5e70e2e8f1
+
+pkgname = occamy-bin
