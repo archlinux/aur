@@ -1,0 +1,20 @@
+pkgbase = apple-health-ingester-bin
+	pkgdesc = HTTP server that ingests Apple Health data into files, InfluxDB and more
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/irvinlim/apple-health-ingester
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = apple-health-ingester
+	conflicts = apple-health-ingester
+	options = !debug
+	source = apple-health-ingester-bin-0.5.1-LICENSE::https://raw.githubusercontent.com/irvinlim/apple-health-ingester/v0.5.1/LICENSE
+	sha256sums = 88c0332487991ac9bac3392ba6778efb8cbd703f24cf73004c59206f13318e4e
+	source_x86_64 = apple-health-ingester-bin-0.5.1-x86_64::https://github.com/irvinlim/apple-health-ingester/releases/download/v0.5.1/apple-health-ingester-linux-amd64
+	sha256sums_x86_64 = ec148252f27af842764d4f07536c6e9058c103036d5970cd75e0d9cb8dc8e8ed
+	source_aarch64 = apple-health-ingester-bin-0.5.1-aarch64::https://github.com/irvinlim/apple-health-ingester/releases/download/v0.5.1/apple-health-ingester-linux-arm64
+	sha256sums_aarch64 = a31856ab40ba5be48b76261d4bb01045961684c430cc2be00278dcbcdf25ee60
+
+pkgname = apple-health-ingester-bin
