@@ -1,6 +1,6 @@
 pkgbase = remya-screen-capture-bin
 	pkgdesc = Screen capture, recording and editing for Hyprland
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/remyhuang03/remya-screen-capture
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = remya-screen-capture-bin
 	depends = xdg-utils
 	depends = glibc
 	depends = gcc-libs
-	provides = remya-screen-capture=0.4.1
+	provides = remya-screen-capture=0.4.2
 	conflicts = remya-screen-capture
 	conflicts = remya-screen-capture-git
 	options = !strip
-	source = remya_screen_capture-0.4.1-linux-x86_64.tar.zst::https://github.com/remyhuang03/remya-screen-capture/releases/download/v0.4.1/remya_screen_capture-0.4.1-linux-x86_64.tar.zst
-	sha256sums = 22bd86b7ce89402db94bfcbe50af8877e36f505dfb38841d6005b04901d38f15
+	source = remya_screen_capture-0.4.2-linux-x86_64.tar.zst::https://github.com/remyhuang03/remya-screen-capture/releases/download/v0.4.2/remya_screen_capture-0.4.2-linux-x86_64.tar.zst
+	sha256sums = fb975cab40cb59241bc47378b482de72b42f8df912c147fe75551b1b214193e6
 
 pkgname = remya-screen-capture-bin
