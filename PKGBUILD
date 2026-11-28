@@ -1,6 +1,6 @@
 # Maintainer: bnema <b at bnema dot dev>
 pkgname=dumber-browser-bin
-pkgver=0.35.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="A minimal keyboard-driven browser for tiling WMs"
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
 provides=('dumber-browser' 'dumber')
 conflicts=('dumber-browser' 'dumber-browser-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://git.bnema.dev/dumber/releases/download/v${pkgver}/dumber_linux_x86_64.tar.gz")
-sha256sums=('2b0538c9c31776150ef73bf400cb084d075747337707812e745a8b9080171d17')
+sha256sums=('bf5f7d28b3a3a5b56934e23aa52af06cb13aeeb5b0213c6c7354a13215d74d1f')
 
 package() {
     cd "${srcdir}/dumber_${pkgver}"
