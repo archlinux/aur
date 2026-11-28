@@ -1,0 +1,19 @@
+pkgbase = opentaint-bin
+	pkgdesc = Open-source taint analysis engine
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/seqra/opentaint
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = opentaint
+	conflicts = opentaint
+	options = !debug
+	source = opentaint-bin-0.4.6-LICENSE::https://raw.githubusercontent.com/seqra/opentaint/v0.4.6/LICENSE.md
+	sha256sums = d045cb0a85d7df41ebe5392abc603e1772465ccf9c55cc208e839d3db5767490
+	source_x86_64 = opentaint-bin-0.4.6-x86_64.tar.gz::https://github.com/seqra/opentaint/releases/download/v0.4.6/opentaint-cli_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7cfbaf8cec2a8e9136f2babfd7f2d466005e5d4a3ac2a5b540e14e0a0985bd69
+	source_aarch64 = opentaint-bin-0.4.6-aarch64.tar.gz::https://github.com/seqra/opentaint/releases/download/v0.4.6/opentaint-cli_linux_arm64.tar.gz
+	sha256sums_aarch64 = 591a0688ad08990900a6a8982c8bd9b17ba01481ab90d1d2b1903a6b901859e3
+
+pkgname = opentaint-bin
