@@ -6,7 +6,7 @@ pkgname=(
   'mullvad-vpn-daemon-beta'
 )
 pkgbase=mullvad-vpn-beta
-_pkgver=2026.5
+_pkgver=2026.6
 _channel=stable
 _rel=1
 # pkgver=${_pkgver}.${_channel}${_rel}  # beta
@@ -41,7 +41,7 @@ source=(
   'no-publish.diff'
   "${pkgbase%-beta}.sh"
 )
-sha256sums=('e80039fcdded9eb7a6adb6a8506cb6d2ef8eff8ff0d56a2fdbfdd40ec4b8b4a6'
+sha256sums=('90de21d28fad5a4420e5e4d7ed2a98c100f22afb3666f83d8a0fbecde125f451'
             'SKIP'
             'f3976a76352b09677487569a8538819fd393dbd6c8dbc6345f3022a08054faa9'
             '0cd7bccb05af010cc26cb0a0bb91cb68f279c4d64d7ace35e1902f020bf50311'
