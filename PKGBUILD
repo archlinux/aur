@@ -4,7 +4,7 @@
 
 _pkgname=nub
 pkgname="${_pkgname}-bin"
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc='The fast all-in-one Node.js toolkit'
 license=('MIT')
@@ -17,8 +17,8 @@ source=("LICENSE::https://raw.githubusercontent.com/nubjs/nub/refs/tags/v${pkgve
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.tar.xz::https://github.com/nubjs/nub/releases/download/v${pkgver}/nub-linux-x64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.tar.xz::https://github.com/nubjs/nub/releases/download/v${pkgver}/nub-linux-arm64.tar.gz")
 sha256sums=('950fffd5e5c4c4be9e44ccf80bcf5147b25afc19bfef2f53a1e87facb1144b66')
-sha256sums_x86_64=('d327582737d81e640ba49ed11b915b986bb96f9eef8cafd8c005177891163b2b')
-sha256sums_aarch64=('1d07e4dc60865ca6c9b3fcf09c96ffee01b405916aad76d245a3b9afea18a4dc')
+sha256sums_x86_64=('3430879ce61091d9a017df1f6e24596a7d3539756039e6b2154364380c526fb8')
+sha256sums_aarch64=('92b38a35840e24367ddd535ad880a50e9f080307173bc3692d44d97030ffd6fd')
 
 
 package() {
