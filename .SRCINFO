@@ -1,0 +1,20 @@
+pkgbase = alcless-bin
+	pkgdesc = Lightweight security sandbox for Homebrew, AI agents and more
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/AkihiroSuda/alcless
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = alcless
+	conflicts = alcless
+	options = !debug
+	source = alcless-bin-0.2.1-LICENSE::https://raw.githubusercontent.com/AkihiroSuda/alcless/v0.2.1/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = alcless-bin-0.2.1-x86_64.tar.gz::https://github.com/AkihiroSuda/alcless/releases/download/v0.2.1/alcless-0.2.1-Linux-x86_64.tar.gz
+	sha256sums_x86_64 = 7666c8fe59c2654b149508f22ffdb6331d77969e775c2bab269ae2a9e33ecd0f
+	source_aarch64 = alcless-bin-0.2.1-aarch64.tar.gz::https://github.com/AkihiroSuda/alcless/releases/download/v0.2.1/alcless-0.2.1-Linux-aarch64.tar.gz
+	sha256sums_aarch64 = 49ec252459d49b3bae5d1560076e0020f6e2b91bd6edcd61272836befbb82e19
+
+pkgname = alcless-bin
