@@ -1,0 +1,21 @@
+pkgbase = ibtop-bin
+	pkgdesc = Real-time terminal monitor for InfiniBand networks
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/JannikSt/ibtop
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = ibtop
+	conflicts = ibtop
+	options = !debug
+	source = ibtop-bin-1.0.2-LICENSE::https://raw.githubusercontent.com/JannikSt/ibtop/v1.0.2/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = ibtop-bin-1.0.2-x86_64::https://github.com/JannikSt/ibtop/releases/download/v1.0.2/ibtop-linux-amd64
+	sha256sums_x86_64 = 8bd22c26b9983782752d75bdfb3a16ee0eeef318f8b7e89a0221465358c6a7f9
+	source_aarch64 = ibtop-bin-1.0.2-aarch64::https://github.com/JannikSt/ibtop/releases/download/v1.0.2/ibtop-linux-arm64
+	sha256sums_aarch64 = ea3145702129a28f82dc0642e51675cfe77f2a13ed3f16d547d4bda0a518a1bb
+
+pkgname = ibtop-bin
