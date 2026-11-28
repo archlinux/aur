@@ -1,0 +1,19 @@
+pkgbase = logdeck-bin
+	pkgdesc = Container log viewer and management UI
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/AmoabaKelvin/logdeck
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = logdeck
+	conflicts = logdeck
+	options = !debug
+	source = logdeck-bin-0.12.0-LICENSE::https://raw.githubusercontent.com/AmoabaKelvin/logdeck/v0.12.0/LICENSE
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = logdeck-bin-0.12.0-x86_64.tar.gz::https://github.com/AmoabaKelvin/logdeck/releases/download/v0.12.0/logdeck_linux_amd64.tar.gz
+	sha256sums_x86_64 = e0c07272344a2be49ef9eadc89a1f4754b3cfa3681862c39ca5c1de20ca94edc
+	source_aarch64 = logdeck-bin-0.12.0-aarch64.tar.gz::https://github.com/AmoabaKelvin/logdeck/releases/download/v0.12.0/logdeck_linux_arm64.tar.gz
+	sha256sums_aarch64 = d8402d68829bccaa7b5cc1e4cadf46dea616f45a9bee1bfa8d6ff40644c8aa4e
+
+pkgname = logdeck-bin
