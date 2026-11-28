@@ -1,0 +1,4 @@
+post_install() {
+  echo "Open 'Theme Colors for libadwaita' (gtk2adw), or run 'gtk2adw-cli' as your user."
+  echo "Run it again after changing the GTK theme. 'gtk2adw-cli --off' removes ~/.config/gtk-4.0/gtk.css."
+}

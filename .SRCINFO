@@ -1,0 +1,24 @@
+pkgbase = libadwaita-theme-colors
+	pkgdesc = Give libadwaita apps the colors of the active GTK theme (Greybird, Arc, ...)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/libadwaita-theme-colors
+	install = libadwaita-theme-colors.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = vala
+	depends = glib2
+	depends = gtk3
+	depends = gtk4
+	depends = libadwaita>=1:1.7
+	optdepends = gsettings-desktop-schemas: switch the light/dark color scheme to match the theme
+	source = gtk2adw-cli.c
+	source = gtk2adw.vala
+	source = help.vala
+	source = io.github.Gtk2Adw.desktop
+	sha256sums = 83bb0eb576c3421d46f9d15a75e91572d58f51cc43dba4623a18bf4aaedc46b2
+	sha256sums = 8d4adcca30880b2b0dd4659c4779967fe2b31abae9096e5a55d8eedce23d01c4
+	sha256sums = f783c81a4e1d9134f0600a4f09bee65cf76a0e6fffc9de3343b9b1d85a017f5f
+	sha256sums = a95b0ee2d09a9e1c17166302f1c1b53970d3ffcaa3bb6995392b3bfd903b9252
+
+pkgname = libadwaita-theme-colors
