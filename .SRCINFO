@@ -1,0 +1,17 @@
+pkgbase = goaway-bin
+	pkgdesc = Lightweight DNS sinkhole with a web dashboard
+	pkgver = 0.63.17
+	pkgrel = 1
+	url = https://github.com/pommee/goaway
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = goaway
+	conflicts = goaway
+	options = !debug
+	source_x86_64 = goaway-bin-0.63.17-x86_64.tar.gz::https://github.com/pommee/goaway/releases/download/v0.63.17/goaway_0.63.17_linux_amd64.tar.gz
+	sha256sums_x86_64 = d0f9f912eed47d79d60dd9d9013bd43da4fece7cb9c5087571a7277c50ee2803
+	source_aarch64 = goaway-bin-0.63.17-aarch64.tar.gz::https://github.com/pommee/goaway/releases/download/v0.63.17/goaway_0.63.17_linux_arm64.tar.gz
+	sha256sums_aarch64 = c302d94ca57126bee8dfc57c3b442ce2668a87bdacf68c0f4b3620989a6e0f15
+
+pkgname = goaway-bin
