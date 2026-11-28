@@ -1,0 +1,21 @@
+pkgbase = claude-code-sync-bin
+	pkgdesc = Sync Claude Code conversation history across machines with git
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/perfectra1n/claude-code-sync
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = claude-code-sync
+	conflicts = claude-code-sync
+	options = !debug
+	source = claude-code-sync-bin-0.4.1-LICENSE::https://raw.githubusercontent.com/perfectra1n/claude-code-sync/v0.4.1/LICENSE
+	sha256sums = b0d407e006879e4f4cbd5b016df6df3eb1c1bbb7cbd1336b2d96174e77c7b0b7
+	source_x86_64 = claude-code-sync-bin-0.4.1-x86_64.tar.gz::https://github.com/perfectra1n/claude-code-sync/releases/download/v0.4.1/claude-code-sync-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 8a64b5ae9a5f934927de2cba7881eb3b5d8472ae2c7f0f554fafdeeb41fe8d3a
+	source_aarch64 = claude-code-sync-bin-0.4.1-aarch64.tar.gz::https://github.com/perfectra1n/claude-code-sync/releases/download/v0.4.1/claude-code-sync-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 01b2e3a15e9b3e410512213e8073901909718ae8f0f277d157160e3ddef6f0c6
+
+pkgname = claude-code-sync-bin
