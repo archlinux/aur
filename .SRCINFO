@@ -1,0 +1,22 @@
+pkgbase = openasr-bin
+	pkgdesc = Local-first speech-to-text with no cloud or telemetry
+	pkgver = 0.1.41
+	pkgrel = 1
+	url = https://github.com/QuintinShaw/openasr
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
+	provides = openasr
+	conflicts = openasr
+	options = !debug
+	source_x86_64 = openasr-bin-0.1.41-x86_64.tar.gz::https://github.com/QuintinShaw/openasr/releases/download/v0.1.41/openasr-0.1.41-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 6ba58937fc996444575148fa4c9eaa1bfd5674c662b0655c141334a696dea23b
+	source_aarch64 = openasr-bin-0.1.41-aarch64.tar.gz::https://github.com/QuintinShaw/openasr/releases/download/v0.1.41/openasr-0.1.41-linux-arm64.tar.gz
+	sha256sums_aarch64 = 77f5cd5d8d31dead76c5b0883bdfb98037c1a784d95449f442a5ea4fa82bbd84
+
+pkgname = openasr-bin
