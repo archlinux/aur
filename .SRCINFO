@@ -1,0 +1,17 @@
+pkgbase = fauxrpc-bin
+	pkgdesc = Fake gRPC, Connect and REST server from Protobuf and OpenAPI specs
+	pkgver = 0.30.0
+	pkgrel = 1
+	url = https://github.com/sudorandom/fauxrpc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = fauxrpc
+	conflicts = fauxrpc
+	options = !debug
+	source_x86_64 = fauxrpc-bin-0.30.0-x86_64.tar.gz::https://github.com/sudorandom/fauxrpc/releases/download/v0.30.0/fauxrpc_0.30.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 644cd27ce054d91d6d34b250db65a8f26c52af30d50e0f9ba456ea621393e405
+	source_aarch64 = fauxrpc-bin-0.30.0-aarch64.tar.gz::https://github.com/sudorandom/fauxrpc/releases/download/v0.30.0/fauxrpc_0.30.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = de86e07a82dfbb78fa25b161250bbf9fc10e0528c4eda5bb621170d75f7aba15
+
+pkgname = fauxrpc-bin
