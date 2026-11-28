@@ -4,8 +4,8 @@ _gitname="GoZen"
 _godot_version="4.7.2-stable"
 
 pkgname=gozen
-pkgver=0.19
-pkgrel=2 # Increment this if you change the PKGBUILD but not pkgver.
+pkgver=0.21
+pkgrel=1 # Increment this if you change the PKGBUILD but not pkgver.
 pkgdesc="A minimalistic video editor"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
