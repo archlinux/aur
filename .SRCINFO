@@ -1,0 +1,19 @@
+pkgbase = heplify-bin
+	pkgdesc = Lightweight HEP capture agent for HOMER
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/sipcapture/heplify
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = heplify
+	conflicts = heplify
+	options = !debug
+	source = heplify-bin-2.1.2-LICENSE::https://raw.githubusercontent.com/sipcapture/heplify/2.1.2/LICENSE
+	sha256sums = b8251a23760f2b3f71d854b77ff7918a071385aa8f489ace7412e00cbef3c523
+	source_x86_64 = heplify-bin-2.1.2-x86_64::https://github.com/sipcapture/heplify/releases/download/2.1.2/heplify_linux_amd64
+	sha256sums_x86_64 = bfb2898781d271b453a34560da0cd54305bf5fda6ee0d1da8e64df518b7be564
+	source_aarch64 = heplify-bin-2.1.2-aarch64::https://github.com/sipcapture/heplify/releases/download/2.1.2/heplify_linux_arm64
+	sha256sums_aarch64 = 8a75e4a68f517dde1d1689e75c411618af4279acf46a7e1eb6198d2ac729baee
+
+pkgname = heplify-bin
