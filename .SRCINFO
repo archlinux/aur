@@ -1,0 +1,19 @@
+pkgbase = openflare-bin
+	pkgdesc = Distributed reverse proxy and edge security gateway
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://github.com/Rain-kl/OpenFlare
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = openflare
+	conflicts = openflare
+	options = !debug
+	source = openflare-bin-4.2.0-LICENSE::https://raw.githubusercontent.com/Rain-kl/OpenFlare/v4.2.0/LICENSE
+	sha256sums = 24cc6d322ce012d98d2c791ab3dc988a866e2ad48f4adaaea9ecb20060cb8bca
+	source_x86_64 = openflare-bin-4.2.0-x86_64.tar.gz::https://github.com/Rain-kl/OpenFlare/releases/download/v4.2.0/openflare_cli_v4.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = aaee60f55d2f290d86ad569a89b4e98c430e0c407284f74d6509e00ec70a478d
+	source_aarch64 = openflare-bin-4.2.0-aarch64.tar.gz::https://github.com/Rain-kl/OpenFlare/releases/download/v4.2.0/openflare_cli_v4.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9353b5c3180ccf77be33a0d6462a479b450bf8d3485092e9effe3cb7fb5a5af1
+
+pkgname = openflare-bin
