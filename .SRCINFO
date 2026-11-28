@@ -1,0 +1,17 @@
+pkgbase = datatui-bin
+	pkgdesc = Terminal UI for exploring data
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/forensicmatt/datatui
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = datatui
+	conflicts = datatui
+	options = !debug
+	source_x86_64 = datatui-bin-0.3.0-x86_64.tar.gz::https://github.com/forensicmatt/datatui/releases/download/v0.3.0/datatui-v0.3.0-Linux-X64.tar.gz
+	sha256sums_x86_64 = 5de42998b2efd143b4cdcdbbfd26cf123a01bbddf28f993fb47a3a602d89f4bc
+
+pkgname = datatui-bin
