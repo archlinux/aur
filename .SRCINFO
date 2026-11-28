@@ -1,0 +1,19 @@
+pkgbase = ntoseye-bin
+	pkgdesc = WinDbg-like Windows kernel debugger for Linux
+	pkgver = 0.53.0
+	pkgrel = 1
+	url = https://github.com/dmaivel/ntoseye
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ntoseye
+	conflicts = ntoseye
+	options = !debug
+	source_x86_64 = ntoseye-bin-0.53.0-x86_64.tar.xz::https://github.com/dmaivel/ntoseye/releases/download/v0.53.0/ntoseye-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 9d157a0da8c8bdc9ed0d5e572de98bdab9c1d3839bd5bb950bd08e50d6f28aef
+	source_aarch64 = ntoseye-bin-0.53.0-aarch64.tar.xz::https://github.com/dmaivel/ntoseye/releases/download/v0.53.0/ntoseye-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 0424bf12d20d621b934454a7185f2412cfd0ec74b9909190089e21a57cf4821c
+
+pkgname = ntoseye-bin
