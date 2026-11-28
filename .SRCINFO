@@ -1,0 +1,19 @@
+pkgbase = resinator-bin
+	pkgdesc = Cross-platform Windows resource script compiler
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/squeek502/resinator
+	arch = x86_64
+	arch = aarch64
+	license = 0BSD
+	provides = resinator
+	conflicts = resinator
+	options = !debug
+	source = resinator-bin-0.2.0-LICENSE::https://raw.githubusercontent.com/squeek502/resinator/v0.2.0/LICENSE
+	sha256sums = e007ea8659151111d77bfa551efdeb22243f0814b7d029d34127705747c76208
+	source_x86_64 = resinator-bin-0.2.0-x86_64.tar.xz::https://github.com/squeek502/resinator/releases/download/v0.2.0/linux-x86_64-resinator.tar.xz
+	sha256sums_x86_64 = 6f78ce419218eef3b20765c1f1077d3d56cac19e2d48ad5b421a33851e02b4cc
+	source_aarch64 = resinator-bin-0.2.0-aarch64.tar.xz::https://github.com/squeek502/resinator/releases/download/v0.2.0/linux-aarch64-resinator.tar.xz
+	sha256sums_aarch64 = e4e4c168a035ba42a2bcf7b23afa0927e0bf8e242bf9cf7da31b31bf95e51bdf
+
+pkgname = resinator-bin
