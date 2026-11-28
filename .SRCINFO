@@ -1,0 +1,17 @@
+pkgbase = gohawk-bin
+	pkgdesc = Static analyzers for Go concurrency and resource-lifetime bugs
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/kojah/gohawk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gohawk
+	conflicts = gohawk
+	options = !debug
+	source_x86_64 = gohawk-bin-0.8.1-x86_64.tar.gz::https://github.com/kojah/gohawk/releases/download/v0.8.1/gohawk_0.8.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5fae67568188d0a9fe116452b8666715c6fb14e5db7d996f444ae3798c197587
+	source_aarch64 = gohawk-bin-0.8.1-aarch64.tar.gz::https://github.com/kojah/gohawk/releases/download/v0.8.1/gohawk_0.8.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 30dba94c3fcd8a23cd5e55023c1abb6704cf6e45c2ec49fe1b42427dac51e45b
+
+pkgname = gohawk-bin
