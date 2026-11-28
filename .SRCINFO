@@ -1,0 +1,17 @@
+pkgbase = openings-mcp-bin
+	pkgdesc = MCP server that searches job boards and career sites
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/amikai/openings-mcp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = openings-mcp
+	conflicts = openings-mcp
+	options = !debug
+	source_x86_64 = openings-mcp-bin-0.17.0-x86_64.tar.gz::https://github.com/amikai/openings-mcp/releases/download/v0.17.0/openings-mcp_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6cff8b1c62fcbf615c82426e119380da031f5da5a2fa40b5fdf7f05c03c4a5c8
+	source_aarch64 = openings-mcp-bin-0.17.0-aarch64.tar.gz::https://github.com/amikai/openings-mcp/releases/download/v0.17.0/openings-mcp_linux_arm64.tar.gz
+	sha256sums_aarch64 = 655af9bd731dd827fce8477935364a583f8c510379e6414610b896c4ee5cb291
+
+pkgname = openings-mcp-bin
