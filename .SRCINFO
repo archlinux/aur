@@ -1,0 +1,20 @@
+pkgbase = opcilloscope-bin
+	pkgdesc = Browse and monitor OPC UA servers from your terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/SquareWaveSystems/opcilloscope
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = opcilloscope
+	conflicts = opcilloscope
+	options = !debug
+	source_x86_64 = opcilloscope-bin-1.0.0-x86_64.tar.gz::https://github.com/SquareWaveSystems/opcilloscope/releases/download/v1.0.0/opcilloscope-linux-x64.tar.gz
+	sha256sums_x86_64 = 8d0e9a2c6247387a766b0c9c9ea8569db3c3fc7a5a4297e691f2999701fbbf1e
+	source_aarch64 = opcilloscope-bin-1.0.0-aarch64.tar.gz::https://github.com/SquareWaveSystems/opcilloscope/releases/download/v1.0.0/opcilloscope-linux-arm64.tar.gz
+	sha256sums_aarch64 = 2908dc864b2abd8825fce233fe6362c215016f2045821a4d4be6fe7cfb94c796
+
+pkgname = opcilloscope-bin
