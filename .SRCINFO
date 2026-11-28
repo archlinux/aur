@@ -1,0 +1,17 @@
+pkgbase = slo-exporter-bin
+	pkgdesc = Compute standardized SLI and SLO metrics from events
+	pkgver = 6.16.0
+	pkgrel = 1
+	url = https://github.com/seznam/slo-exporter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = slo-exporter
+	conflicts = slo-exporter
+	options = !debug
+	source_x86_64 = slo-exporter-bin-6.16.0-x86_64.tar.gz::https://github.com/seznam/slo-exporter/releases/download/v6.16.0/slo-exporter_6.16.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9300522b4ef5e7d24e782230c79f281bcc24e04746c0c420e91ec20da4434add
+	source_aarch64 = slo-exporter-bin-6.16.0-aarch64.tar.gz::https://github.com/seznam/slo-exporter/releases/download/v6.16.0/slo-exporter_6.16.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4febf172ad761503538ba0e8ec4bd381bb7b62738c0a783b6106c2f829216819
+
+pkgname = slo-exporter-bin
