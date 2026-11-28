@@ -1,0 +1,17 @@
+pkgbase = mcpd-bin
+	pkgdesc = Declaratively define and run MCP tools across environments
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/mozilla-ai/mcpd
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = mcpd
+	conflicts = mcpd
+	options = !debug
+	source_x86_64 = mcpd-bin-0.7.0-x86_64.tar.gz::https://github.com/mozilla-ai/mcpd/releases/download/v0.7.0/mcpd_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 963408c7c96222a20e4070be6760588fe216576603003fc6799cd602036ed8d3
+	source_aarch64 = mcpd-bin-0.7.0-aarch64.tar.gz::https://github.com/mozilla-ai/mcpd/releases/download/v0.7.0/mcpd_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 377e076c3b4af6e0af72748c8ac17068d6b5be5c49ba5158dcfb511d03dc7946
+
+pkgname = mcpd-bin
