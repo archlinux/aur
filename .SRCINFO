@@ -1,0 +1,18 @@
+pkgbase = snitch-input-display
+	pkgdesc = Displays your SNES input reading directly from the console data
+	pkgver = 1.1.0rc1
+	pkgrel = 1
+	url = https://github.com/ChTPwner/SnITCH
+	arch = x86_64
+	license = GPL3
+	depends = alsa-lib
+	depends = systemd-libs
+	provides = SnITCH
+	source = SnITCH-linux-x86_64::https://github.com/ChTPwner/SnITCH/releases/download/v1.1.0-rc1/SnITCH-linux-x86_64
+	source = SnITCH.desktop::https://raw.githubusercontent.com/ChTPwner/SnITCH/v1.1.0-rc1/dist/arch/SnITCH.desktop
+	source = SnITCH.png::https://raw.githubusercontent.com/ChTPwner/SnITCH/v1.1.0-rc1/images/icon.png
+	sha256sums = 7356b0aa2240d99873114e8cfc3e06a9f2d9888eb57fee986392f649ab367ade
+	sha256sums = 65aaac91dcab166fab0fc56d85083cbe0af83ecef4ef5d126562cd4c633a6869
+	sha256sums = 8a0981e8c4e1593aca244881f5c491da0dbe914e44550650afc25aa2e3a9f069
+
+pkgname = snitch-input-display

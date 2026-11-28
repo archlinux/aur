@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1
+Name=SnITCH
+Comment=Displays your SNES input reading directly from the console data
+Exec=/usr/bin/SnITCH
+Icon=SnITCH.png
+Terminal=false
+Categories=Network;Game;Utility;
