@@ -1,5 +1,9 @@
-*
-!/.gitignore
-!/.SRCINFO
-!/PKGBUILD
-!/wivrn-server-only.install
+# plain exclude list (no `*` + `!` negation): KSX github-actions-deploy-aur
+# rsync filter breaks on negated patterns
+/pkg/*
+/src/*
+/*.pkg.tar.*
+/*.part
+.BUILDINFO
+.MTREE
+.PKGINFO
