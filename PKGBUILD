@@ -1,7 +1,7 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 # shellcheck disable=SC2034,SC2154
 pkgname=firefox-tridactyl-native-bin
-pkgver=1.24.2
+pkgver=1.25.1
 _nativever=0.5.0
 pkgrel=1
 pkgdesc="Tridactyl native messaging host application for Firefox (native: $_nativever)"

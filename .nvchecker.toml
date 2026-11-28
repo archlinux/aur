@@ -1,0 +1,4 @@
+[firefox-tridactyl-native-bin]
+source = "github"
+github = "tridactyl/tridactyl"
+use_latest_tag = true
