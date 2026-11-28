@@ -8,7 +8,7 @@ pkgname=${_appname}-bin
 pkgdesc="Easy, fast and local-first microVM runtime"
 
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -51,10 +51,15 @@ build() {
 package() {
 	cd "${srcdir}/" || exit
 
-	install -dm755 "${pkgdir}"/usr/{bin,lib}
+	_install_dir="/opt/${_appname}"
 
-	install -Dm755 -t "${pkgdir}/usr/lib/${_appname}/" ${_execname} libkrunfw.so.*
-	ln -sf "../lib/${_appname}/${_execname}" "${pkgdir}/usr/bin/${_execname}"
+	install -Dm755 "${_execname}" -t "${pkgdir}/${_install_dir}/bin/"
+
+	install -Dm755 libkrunfw.so.* -t "${pkgdir}/${_install_dir}/lib/"
+	ldconfig -n "${pkgdir}/${_install_dir}/lib/"
+
+	install -dm755 "${pkgdir}/usr/bin"
+	ln -sf "${_install_dir}/bin/${_execname}" "${pkgdir}/usr/bin/${_execname}"
 
 	install -Dm644 "completions/${_execname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_execname}"
 	install -Dm644 "completions/${_execname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_execname}"
