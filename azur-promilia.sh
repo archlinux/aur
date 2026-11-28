@@ -202,6 +202,7 @@ install_launcher() {
     echo
     echo "官方启动器已安装：$launcher"
     echo "下一步：运行 azur-promilia，在启动器里把游戏安装位置设为 $WIN_INSTALL_DIR 并下载本体。"
+    guide_nofade
     notify "启动器安装完成" "运行 azur-promilia 下载本体，安装位置选 Y:\\AzurPromilia。"
 }
 
@@ -299,6 +300,7 @@ status_report() {
     else
         row "SDK 桥接" "缺失（$BRIDGE_DIR）"
     fi
+    row "反虚化补丁" "$(nofade_state_word)"
 
     if python3 -c 'import PyQt6.QtWidgets' >/dev/null 2>&1; then
         row "PyQt6" "就绪"
@@ -329,6 +331,7 @@ status_report() {
     out="$(python3 "$BRIDGE_DIR/run.py" --game "$GAME_DIR" --check 2>&1)" || rc=$?
     if [ "$rc" -eq 0 ]; then
         echo "检查通过：SDK 哈希与桥接匹配，可以启动。"
+        guide_nofade
         return 0
     fi
     echo "检查未通过：" >&2
@@ -506,6 +509,33 @@ EOF
             die "用法：azur-promilia --nofade [status|install --accept-risk|restore]"
             ;;
     esac
+}
+
+# 反虚化当前状态（供状态报告与安装指引复用）
+nofade_state_word() {
+    local tgt orig patched cur
+    [ -f "$NOFADE_DIR/patch.json" ] || { printf '%s' "未打包"; return; }
+    tgt="$(nofade_target)"
+    [ -f "$tgt" ] || { printf '%s' "未安装本体"; return; }
+    orig="$(nofade_meta original_md5)"
+    patched="$(nofade_meta patched_md5)"
+    cur="$(nofade_md5 "$tgt")"
+    if   [ "$cur" = "$patched" ]; then printf '%s' "已应用"
+    elif [ "$cur" = "$orig" ];    then printf '%s' "可用（未应用）"
+    else printf '%s' "版本不匹配（等上游更新）"; fi
+}
+
+# 安装/自检末尾统一提示反虚化选项
+guide_nofade() {
+    local st
+    st="$(nofade_state_word)"
+    [ "$st" = "未打包" ] && return 0
+    echo
+    echo "可选：反虚化补丁（仅国服）——当前状态：$st"
+    echo "  会替换客户端资源包，属修改客户端，违反用户协议，风险自负。"
+    echo "  azur-promilia --nofade status"
+    echo "  azur-promilia --nofade install --accept-risk"
+    echo "  azur-promilia --nofade restore"
 }
 
 MODE="${1:-}"
