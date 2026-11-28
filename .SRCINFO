@@ -1,0 +1,19 @@
+pkgbase = distill-bin
+	pkgdesc = Persistent memory and context layer for LLM agents
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/Siddhant-K-code/distill
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = distill
+	conflicts = distill
+	options = !debug
+	source = distill-bin-0.9.1-LICENSE::https://raw.githubusercontent.com/Siddhant-K-code/distill/v0.9.1/LICENSE
+	sha256sums = a669ee1a7ee2fd4e1a4024d6a2579da845ad577e14b7c177778270df210b02ca
+	source_x86_64 = distill-bin-0.9.1-x86_64.tar.gz::https://github.com/Siddhant-K-code/distill/releases/download/v0.9.1/distill_0.9.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = b23cd14b273452a0c179a218a2e768354b84016339bb103c2dd6de900646f54c
+	source_aarch64 = distill-bin-0.9.1-aarch64.tar.gz::https://github.com/Siddhant-K-code/distill/releases/download/v0.9.1/distill_0.9.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = f986d9bb04acfe7e18972bd6e52d55d89d3c9e8ea344fbd203d6dc59ce7c4eb9
+
+pkgname = distill-bin
