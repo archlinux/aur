@@ -1,0 +1,16 @@
+pkgbase = termviz-bin
+	pkgdesc = ROS visualization in the terminal
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/carzum/termviz
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = termviz
+	conflicts = termviz
+	options = !debug
+	source_x86_64 = termviz-bin-0.1.1-x86_64.tar.xz::https://github.com/carzum/termviz/releases/download/v0.1.1/termviz-v0.1.1-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 581adc39dec1a8a8c1f88efcfa05e0bc4c1597caabe0405a9f280ae1dfa959e9
+
+pkgname = termviz-bin
