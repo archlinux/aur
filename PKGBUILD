@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 # Contributor: Carmine Paolino <carmine@paolino.me>
 pkgname=voxtype
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
@@ -73,7 +73,7 @@ source=(
     "$pkgname-$pkgver.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-    'ce3f99db8b716e8eed27bccdafb6441f051dd1d49885019c21ab2a9f144b5d2c'
+    'c98cd433872e30de57c3b48756ec1177404f07ebd7f65a4bd9116d7310240841'
     'SKIP'
 )
 
@@ -162,11 +162,13 @@ check() {
     export CMAKE_BUILD_PARALLEL_LEVEL="${CMAKE_BUILD_PARALLEL_LEVEL:-4}"
     export GIT_CEILING_DIRECTORIES="$srcdir"
     # The meeting assistant's jail test runs bwrap whenever it is installed,
-    # and gtk4 pulls bubblewrap in. bwrap needs unprivileged user
-    # namespaces, which containers, some chroots and hardened kernels do
-    # not allow; skip that one test there instead of failing the build.
+    # and gtk4 pulls bubblewrap in. The jail needs unprivileged user
+    # namespaces and a fresh /proc, which containers, some chroots and
+    # hardened kernels do not allow; skip that one test there instead of
+    # failing the build. Probe with the jail's own flags: a bare bwrap can
+    # run where mounting /proc is refused.
     local _skip=()
-    if ! bwrap --ro-bind / / true 2>/dev/null; then
+    if ! bwrap --unshare-all --share-net --ro-bind / / --proc /proc --dev /dev true 2>/dev/null; then
         _skip=(--skip meeting::assistant::tests::codex_runs_in_a_jail_that_hides_home)
     fi
     # Include both waveform implementations and the meetings window.
