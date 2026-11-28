@@ -1,0 +1,14 @@
+pkgbase = awsping-bin
+	pkgdesc = Check latency to each Amazon EC2 region
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/ekalinin/awsping
+	arch = x86_64
+	license = MIT
+	provides = awsping
+	conflicts = awsping
+	options = !debug
+	source_x86_64 = awsping-bin-2.0.1-x86_64.tar.gz::https://github.com/ekalinin/awsping/releases/download/v2.0.1/awsping_2.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4ae946447652467538985686b4613aee9284aaee8c1445fce33aae5a3c6dc06f
+
+pkgname = awsping-bin
