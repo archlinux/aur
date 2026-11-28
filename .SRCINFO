@@ -1,0 +1,20 @@
+pkgbase = speakrs-bin
+	pkgdesc = Speaker diarization with pyannote-level accuracy
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/avencera/speakrs
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = speakrs
+	conflicts = speakrs
+	options = !debug
+	source = speakrs-bin-0.8.1-LICENSE::https://raw.githubusercontent.com/avencera/speakrs/v0.8.1/LICENSE
+	sha256sums = df9814e4ecbf8471030cfceb14c3d06ed001a88d079be2f161738606a2a5faa8
+	source_x86_64 = speakrs-bin-0.8.1-x86_64.tar.gz::https://github.com/avencera/speakrs/releases/download/v0.8.1/speakrs-v0.8.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a886863ea86512bc4a33b90a02916d1ea7cedd732c3d02929d6d0f9957f10b06
+	source_aarch64 = speakrs-bin-0.8.1-aarch64.tar.gz::https://github.com/avencera/speakrs/releases/download/v0.8.1/speakrs-v0.8.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9cced877c1ce7ebe4bfa52ad1a269c1f7fd8f38cc414473b632fb35b291a65f8
+
+pkgname = speakrs-bin
