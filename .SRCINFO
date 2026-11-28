@@ -1,0 +1,21 @@
+pkgbase = zedra-bin
+	pkgdesc = Remote control for AI coding agents
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/deltaqdev/zedra
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = zedra
+	conflicts = zedra
+	options = !debug
+	source = zedra-bin-0.4.4-LICENSE::https://raw.githubusercontent.com/deltaqdev/zedra/v0.4.4/LICENSE
+	sha256sums = 6af94aab0964ee8afe33ad803b43d265d3ca45d8b0fabee21c60fcb56a7fde8a
+	source_x86_64 = zedra-bin-0.4.4-x86_64.tar.gz::https://github.com/deltaqdev/zedra/releases/download/v0.4.4/zedra-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 271014d86221ca3e6fba009a3b00320cba5e909fe3fe5a1263a9d1eceb32a9f1
+	source_aarch64 = zedra-bin-0.4.4-aarch64.tar.gz::https://github.com/deltaqdev/zedra/releases/download/v0.4.4/zedra-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 730da312eb0c307e144b22e281d6b0a6b9b0653263776ff9eda2e71aecb7b0f6
+
+pkgname = zedra-bin
