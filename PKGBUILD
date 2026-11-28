@@ -1,6 +1,6 @@
 # Maintainer: Matthias Schabhüttl <matthias@matthiasschabhuettl.com>
 pkgname=bentwire
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Desktop characters (Microsoft Agent and Office Assistant formats) for Wayland'
 arch=(x86_64)
@@ -13,7 +13,7 @@ checkdepends=(dbus)
 # libdeflate-sys builds C code: GCC LTO objects cannot be linked by rustc's lld
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f13d1aeb538e302295c10f61146fb786c840bfc58839bb5ff31fedd2dba9d94a')
+sha256sums=('6f68b02b0ed9dde2da54c3e5e575d8b15348a425748c92191bedf32d7f28bc1f')
 
 prepare() {
   cd "$pkgname-$pkgver"
