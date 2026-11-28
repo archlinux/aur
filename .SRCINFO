@@ -1,0 +1,14 @@
+pkgbase = ghosttohugo-bin
+	pkgdesc = Convert Ghost blog exports to Hugo posts
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/jbarone/ghostToHugo
+	arch = x86_64
+	license = MIT
+	provides = ghosttohugo
+	conflicts = ghosttohugo
+	options = !debug
+	source_x86_64 = ghosttohugo-bin-0.5.3-x86_64.tar.gz::https://github.com/jbarone/ghostToHugo/releases/download/v0.5.3/ghostToHugo_0.5.3_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = eb29484c36c588fc9b7ec15e79a992678ed775b0c31e1695a30b84c80ff44808
+
+pkgname = ghosttohugo-bin
