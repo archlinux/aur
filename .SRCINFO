@@ -1,0 +1,19 @@
+pkgbase = ktor-cli-bin
+	pkgdesc = Create Ktor projects from the command line
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/ktorio/ktor-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = ktor-cli
+	conflicts = ktor-cli
+	options = !debug
+	source = ktor-cli-bin-0.5.3-LICENSE::https://raw.githubusercontent.com/ktorio/ktor-cli/0.5.3/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = ktor-cli-bin-0.5.3-x86_64::https://github.com/ktorio/ktor-cli/releases/download/0.5.3/ktor_linux_amd64
+	sha256sums_x86_64 = b519d9ca6f3d0f39ed3fcd9560cdf1074b34c7463b12ed9e7370ab7a8d127eb2
+	source_aarch64 = ktor-cli-bin-0.5.3-aarch64::https://github.com/ktorio/ktor-cli/releases/download/0.5.3/ktor_linux_arm64
+	sha256sums_aarch64 = e413a1a95fab84ab1313ca4d03dac49e6ebe0f8afc03a79e6fb11e74944b4ec3
+
+pkgname = ktor-cli-bin
