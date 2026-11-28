@@ -1,0 +1,17 @@
+pkgbase = flares-bin
+	pkgdesc = Cloudflare DNS backup tool
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/lfaoro/flares
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = flares
+	conflicts = flares
+	options = !debug
+	source_x86_64 = flares-bin-4.0.1-x86_64.tar.gz::https://github.com/lfaoro/flares/releases/download/v4.0.1/flares_4.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = fcc001ab0c82096bf2f852b9dd2c611ce521066b7a6cbfae9a19ffec5536ed54
+	source_aarch64 = flares-bin-4.0.1-aarch64.tar.gz::https://github.com/lfaoro/flares/releases/download/v4.0.1/flares_4.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4bd2f8f8d3f29c14bb027125985858e482a9b52787227f845dbe7c1f02fea497
+
+pkgname = flares-bin
