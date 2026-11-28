@@ -1,0 +1,5 @@
+[opengh-bin]
+source = "github"
+github = "leohenon/opengh"
+use_latest_release = true
+prefix = "v"
