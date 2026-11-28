@@ -1,0 +1,17 @@
+pkgbase = cyclonedx-gomod-bin
+	pkgdesc = Create CycloneDX SBOMs from Go modules
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://github.com/CycloneDX/cyclonedx-gomod
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = cyclonedx-gomod
+	conflicts = cyclonedx-gomod
+	options = !debug
+	source_x86_64 = cyclonedx-gomod-bin-1.12.0-x86_64.tar.gz::https://github.com/CycloneDX/cyclonedx-gomod/releases/download/v1.12.0/cyclonedx-gomod_1.12.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 004b9f5cc595b797fb5423e2ae4c97bcf0f18c712ed2faee1640b09e5efd6d15
+	source_aarch64 = cyclonedx-gomod-bin-1.12.0-aarch64.tar.gz::https://github.com/CycloneDX/cyclonedx-gomod/releases/download/v1.12.0/cyclonedx-gomod_1.12.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b6dd6424755e61c0f7fcd36074fbb78798a33c52f1bd35dd177ba62eccadf404
+
+pkgname = cyclonedx-gomod-bin
