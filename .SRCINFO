@@ -1,0 +1,22 @@
+pkgbase = luacad-bin
+	pkgdesc = Parametric CAD modeling with Lua
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/ad-si/LuaCAD
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = luacad
+	conflicts = luacad
+	options = !debug
+	source = luacad-bin-1.2.1-LICENSE::https://raw.githubusercontent.com/ad-si/LuaCAD/v1.2.1/LICENSE
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = luacad-bin-1.2.1-x86_64.tar.gz::https://github.com/ad-si/LuaCAD/releases/download/v1.2.1/luacad-1.2.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6264041dbfc2aabb0d59f90ecf8176dfbf020b7ca11baccfb073b8f97c516220
+	source_aarch64 = luacad-bin-1.2.1-aarch64.tar.gz::https://github.com/ad-si/LuaCAD/releases/download/v1.2.1/luacad-1.2.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 06ac6dc6fbcb5c9e751e181be4093c862b018b81c2067d12d43ac19adcf2d87a
+
+pkgname = luacad-bin
