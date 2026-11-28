@@ -5,7 +5,7 @@
 # printed by `fractal --version` as "(build N, <sha>)". The release workflow
 # rewrites pkgver and the checksums on every release
 pkgname=omnidotdev-fractal-cli-bin
-pkgver=0.1.0.14
+pkgver=0.1.0.16
 pkgrel=1
 pkgdesc="CLI for Fractal, the Omni deployment platform (pre-built)"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source=("${pkgname}-${pkgver}-LICENSE.md::https://raw.githubusercontent.com/omni
 source_x86_64=("${pkgname}-${pkgver}::${_release}/fractal-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}::${_release}/fractal-linux-arm64")
 sha256sums=('64d90764a9baac9d5f0797d6d9a7dfb26823396df09c872557e971cf76cc0a92')
-sha256sums_x86_64=('214858ad092fa00e6f4309dba0adee0aa81e4733eb80499fab72cdd7efee1142')
-sha256sums_aarch64=('4aaeac643cb2fd4da5b95e6de8ce41f23c366b29bcfc7889fa42849d9bcc361a')
+sha256sums_x86_64=('569a1757e38c6f53eab7762e267c72ed83fcbcc5ba5202ec87a8601d8c61f924')
+sha256sums_aarch64=('d829c6b75acd38be0f22e22cfae19a2e9cbcf339b348a04a61149fa36f77ce72')
 
 package() {
   install -Dm755 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/fractal"
