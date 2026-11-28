@@ -1,0 +1,16 @@
+pkgbase = oxbuild-bin
+	pkgdesc = Fast TypeScript and JavaScript compiler
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/DonIsaac/oxbuild
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = oxbuild
+	conflicts = oxbuild
+	options = !debug
+	source_x86_64 = oxbuild-bin-0.1.5-x86_64.tar.gz::https://github.com/DonIsaac/oxbuild/releases/download/v0.1.5/oxbuild-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a024692f4bb67c5c5663c5aee5f0e3e6b1e1cbd1eb44b429ddea0e1197e85a58
+
+pkgname = oxbuild-bin
