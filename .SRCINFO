@@ -1,0 +1,19 @@
+pkgbase = kind2-bin
+	pkgdesc = SMT-based model checker for Lustre programs
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/kind2-mc/kind2
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = kind2
+	conflicts = kind2
+	options = !debug
+	source = kind2-bin-3.0.0-LICENSE::https://raw.githubusercontent.com/kind2-mc/kind2/v3.0.0/LICENSE.rst
+	sha256sums = e352f632b47ae583ce2a1831b57a069462e4fafba2b2e613e6c7e1ffcfe5541f
+	source_x86_64 = kind2-bin-3.0.0-x86_64.tar.gz::https://github.com/kind2-mc/kind2/releases/download/v3.0.0/kind2-v3.0.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a8d08130a1ae8039ff42474fccee955880491061fc7b97d3954d3e66e6faa19d
+	source_aarch64 = kind2-bin-3.0.0-aarch64.tar.gz::https://github.com/kind2-mc/kind2/releases/download/v3.0.0/kind2-v3.0.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 914c912059195059e796f914e881adb283eb640e50222346ff87cb2ba8edda02
+
+pkgname = kind2-bin
