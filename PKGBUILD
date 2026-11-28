@@ -1,7 +1,7 @@
 # Maintainer: Andrea Girotto <andrea (dot) girotto (at) gmail (dot) com>
 
 pkgname=guile-dbd-postgresql
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='The dbd plugin connects to an actual PostgreSQL database server'
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ pkgdepend=guile-dbi
 depends=('guile' 'guile-dbi' 'postgresql-libs')
 makedepends=('libtool')
 source=("${url}/archive/${pkgdepend}-${pkgver}.tar.gz")
-sha256sums=('3e7729cf389878d069f7c5884dba95be0dc4a0e32116d830bdebdaf9ebbd7291')
+sha256sums=('af92ca21240eda178da8528ba8b77dd2245813d1bef524d6015b5f6519df800b')
 options=(!strip)
 
 build () {
