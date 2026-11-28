@@ -3,7 +3,7 @@
 
 _pkgname=kitty
 pkgname=${_pkgname}-nightly-bin
-pkgver=0.51.1.r202611262153.g1249898
+pkgver=0.51.1.r202611272132.g983bc20
 pkgrel=1
 pkgdesc='A modern, hackable, featureful, OpenGL-based terminal emulator (official nightly build)'
 arch=('x86_64' 'aarch64')
