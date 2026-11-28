@@ -3,7 +3,7 @@
 pkgname=voxtype-git
 _srcname=voxtype
 pkgver=1.3.1.r6.g92ee126d
-pkgrel=2
+pkgrel=3
 pkgdesc="Push-to-talk voice-to-text for Linux (development branch)"
 arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
@@ -149,6 +149,12 @@ build() {
 
 check() {
     cd "$_srcname"
+    # Tests write the daemon's runtime files (state, markers, sockets), so
+    # give them their own directory instead of the builder's
+    # $XDG_RUNTIME_DIR, where a running voxtype daemon keeps its state.
+    export XDG_RUNTIME_DIR="$srcdir/test-runtime"
+    rm -rf "$XDG_RUNTIME_DIR"
+    install -d -m 700 "$XDG_RUNTIME_DIR"
     export RUSTUP_TOOLCHAIN=stable
     export CC=clang
     export CXX=clang++
