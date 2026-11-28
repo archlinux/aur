@@ -1,0 +1,18 @@
+pkgbase = skvm-bin
+	pkgdesc = Language virtual machine for agent skills
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/SJTU-IPADS/SkVM
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = skvm
+	conflicts = skvm
+	options = !debug
+	source_x86_64 = skvm-bin-0.1.5-x86_64.tar.gz::https://github.com/SJTU-IPADS/SkVM/releases/download/v0.1.5/skvm-v0.1.5-linux-x64.tar.gz
+	sha256sums_x86_64 = ece00411e5196258794c36364bb4fe4c18b6e3cef00280a78034a5f03b665855
+	source_aarch64 = skvm-bin-0.1.5-aarch64.tar.gz::https://github.com/SJTU-IPADS/SkVM/releases/download/v0.1.5/skvm-v0.1.5-linux-arm64.tar.gz
+	sha256sums_aarch64 = b69dbf0082c527bd75e1672db18cfbbd97aba659c6aa4f17749f9ad303c067ee
+
+pkgname = skvm-bin
