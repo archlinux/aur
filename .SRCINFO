@@ -1,0 +1,19 @@
+pkgbase = bitloops-bin
+	pkgdesc = Context engine for AI coding agents
+	pkgver = 0.0.31
+	pkgrel = 1
+	url = https://github.com/bitloops/bitloops
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = bitloops
+	conflicts = bitloops
+	options = !debug
+	source = bitloops-bin-0.0.31-LICENSE::https://raw.githubusercontent.com/bitloops/bitloops/v0.0.31/LICENSE
+	sha256sums = b22a00de88ee37fdd20081ca52baeba41c63e1a9c8cc99774b168169ddf54595
+	source_x86_64 = bitloops-bin-0.0.31-x86_64.tar.gz::https://github.com/bitloops/bitloops/releases/download/v0.0.31/bitloops-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 219c3e5a215c8d9ef9ba78f786cfe37d1d39328bcf9a4df26c7e059ebebf40a8
+	source_aarch64 = bitloops-bin-0.0.31-aarch64.tar.gz::https://github.com/bitloops/bitloops/releases/download/v0.0.31/bitloops-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 0ed4a0ca0ce7591ec6a95c3399ca6eb2f585625f57ba6798800866d1ff4581d8
+
+pkgname = bitloops-bin
