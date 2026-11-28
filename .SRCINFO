@@ -1,0 +1,14 @@
+pkgbase = kubernikus-bin
+	pkgdesc = CLI for Kubernikus, Kubernetes as a service for OpenStack
+	pkgver = 1.0.0+ee124b37dc7435f2cd47e8795a776c45a9e3488f
+	pkgrel = 1
+	url = https://github.com/sapcc/kubernikus
+	arch = x86_64
+	license = Apache-2.0
+	provides = kubernikus
+	conflicts = kubernikus
+	options = !debug
+	source_x86_64 = kubernikus-bin-1.0.0+ee124b37dc7435f2cd47e8795a776c45a9e3488f-x86_64::https://github.com/sapcc/kubernikus/releases/download/v1.0.0+ee124b37dc7435f2cd47e8795a776c45a9e3488f/kubernikusctl_linux_amd64
+	sha256sums_x86_64 = c7d2920b8a48c145da35d90a61c7565f81310d606b3de8d1c6cc5df4a51e26a1
+
+pkgname = kubernikus-bin
