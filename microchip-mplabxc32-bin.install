@@ -1,13 +1,17 @@
 message_to_user(){
-   echo '
-This package provides a file: /etc/profile.d/microchip-mplabxc32-bin.sh
-It will add the toolchain binaries to the PATH variable for every user.
-It also defines XC32_TOOLCHAIN_ROOT pointing to the toolchain install dir.
-Log out and log back in to update your environment varibles.
-
+   echo <<EOF
 Before using MPLAB_XC32 you have to agree with the LICENSE at:
 /usr/share/licenses/microchip-mplabxc32-bin/LICENSE
-'
+
+MPLAB IDE should automatically detect new compiler versions.
+If it doesn't, you can add it manually by going to:
+Tools->Options->Embedded->Add
+
+and enter:
+/opt/microchip/xc32/latest/bin
+
+The xc32-* binaries are also symlinked to /usr/bin/xc32-* for use outside MPLAB X
+EOF
 }
 
 post_install() {

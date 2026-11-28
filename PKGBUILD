@@ -26,11 +26,15 @@ _instdir="opt/microchip/xc${_number_of_bits}/v${pkgver}"
 
 package() {
   mkdir -p "${pkgdir}/${_instdir}"
-  mv "xc${_number_of_bits}-v${pkgver}"/* "${pkgdir}/${_instdir}"
 
-  mkdir -p "${pkgdir}/etc/profile.d"
-  echo "export PATH=\"\$PATH\":'/${_instdir}/bin'" > "${pkgdir}/etc/profile.d/${pkgname}.sh"
-  echo "export XC${_number_of_bits}_TOOLCHAIN_ROOT='/${_instdir}'" >> "${pkgdir}/etc/profile.d/${pkgname}.sh"
+  mv "xc${_number_of_bits}-v${pkgver}"/* "${pkgdir}/${_instdir}"
+  ln -sf "v${pkgver}" "${pkgdir}/opt/microchip/xc${_number_of_bits}/latest"
+
+  mkdir -p "${pkgdir}/usr/bin"
+  for f in "${pkgdir}/${_instdir}/bin/xc${_number_of_bits}"-*; do
+    local bname=$(basename $f)
+    ln -sf "/${_instdir}/bin/${bname}" "${pkgdir}/usr/bin"
+  done
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "/${_instdir}/docs/$(basename "${pkgdir}/${_instdir}/docs"/*[Ll]icense.txt)" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
