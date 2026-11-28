@@ -1,0 +1,14 @@
+pkgbase = wwhrd-bin
+	pkgdesc = Check Go dependency licenses against allow and deny lists
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/frapposelli/wwhrd
+	arch = x86_64
+	license = MIT
+	provides = wwhrd
+	conflicts = wwhrd
+	options = !debug
+	source_x86_64 = wwhrd-bin-0.4.0-x86_64.tar.gz::https://github.com/frapposelli/wwhrd/releases/download/v0.4.0/wwhrd_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 59aa6f71c6d71f3780e76a8baaf8c1070dbd4c15b86cac6704e3e14da3d95af6
+
+pkgname = wwhrd-bin
