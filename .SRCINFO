@@ -1,0 +1,20 @@
+pkgbase = pensyve-bin
+	pkgdesc = Universal memory runtime for AI agents
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/major7apps/pensyve
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openssl-3
+	provides = pensyve
+	conflicts = pensyve
+	options = !debug
+	source = pensyve-bin-6.0.0-LICENSE::https://raw.githubusercontent.com/major7apps/pensyve/v6.0.0/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = pensyve-bin-6.0.0-x86_64.tar.gz::https://github.com/major7apps/pensyve/releases/download/v6.0.0/pensyve-cli-linux-amd64.tar.gz
+	sha256sums_x86_64 = e9c335625df15ccb34a0bad19ad2e71fa5600ae6f1fe92cfc2592853463a1b2f
+
+pkgname = pensyve-bin
