@@ -1,0 +1,17 @@
+pkgbase = duragraph-bin
+	pkgdesc = Self-hosted AI workflow orchestration with event sourcing
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/Duragraph/duragraph
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = duragraph
+	conflicts = duragraph
+	options = !debug
+	source_x86_64 = duragraph-bin-0.8.1-x86_64.tar.gz::https://github.com/Duragraph/duragraph/releases/download/v0.8.1/duragraph_0.8.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 9b8f9877919658bf7f8e40080ad5d75c4fa403331d3aa09a3cd96c51c891d973
+	source_aarch64 = duragraph-bin-0.8.1-aarch64.tar.gz::https://github.com/Duragraph/duragraph/releases/download/v0.8.1/duragraph_0.8.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 54ba403580fc4d2e8be38d79be97ad4850c938eef9eee1d1e6ad433fd7b3bed3
+
+pkgname = duragraph-bin
