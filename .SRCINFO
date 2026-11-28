@@ -1,0 +1,16 @@
+pkgbase = stratum-ping-bin
+	pkgdesc = Stratum mining pool latency tester
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/2miners/stratum-ping
+	arch = x86_64
+	license = MIT
+	provides = stratum-ping
+	conflicts = stratum-ping
+	options = !debug
+	source = stratum-ping-bin-1.1.0-LICENSE::https://raw.githubusercontent.com/2miners/stratum-ping/v1.1.0/LICENSE
+	sha256sums = a76282a8e6622341d371a369672a64e1224796f8029b351fa39f461563e549c1
+	source_x86_64 = stratum-ping-bin-1.1.0-x86_64.tar.gz::https://github.com/2miners/stratum-ping/releases/download/v1.1.0/stratum-ping-linux-x64.tar.gz
+	sha256sums_x86_64 = 11415fbe19ffac6781528e84a126a2ad091f1bcb583adb34931735d77ccfcddc
+
+pkgname = stratum-ping-bin
