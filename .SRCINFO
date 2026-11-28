@@ -1,0 +1,16 @@
+pkgbase = bpfsnoop-bin
+	pkgdesc = Trace kernel functions, tracepoints and BPF programs
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/bpfsnoop/bpfsnoop
+	arch = x86_64
+	license = Apache-2.0
+	provides = bpfsnoop
+	conflicts = bpfsnoop
+	options = !debug
+	source = bpfsnoop-bin-0.5.5-LICENSE::https://raw.githubusercontent.com/bpfsnoop/bpfsnoop/v0.5.5/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = bpfsnoop-bin-0.5.5-x86_64.tar.gz::https://github.com/bpfsnoop/bpfsnoop/releases/download/v0.5.5/bpfsnoop-v0.5.5-linux-amd64.tar.gz
+	sha256sums_x86_64 = 03ad516922d0d0e284c3ab1cd4334a8eac6d6004113f11adc54b41aa4c5ef4f5
+
+pkgname = bpfsnoop-bin
