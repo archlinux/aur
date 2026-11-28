@@ -1,6 +1,6 @@
 pkgbase = easyboard-app
 	pkgdesc = Cross-platform soundboard with a virtual microphone input (built from source)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/MrRedstonia/EasyBoard
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = easyboard-app
 	conflicts = easyboard
 	conflicts = easyboard-app-bin
 	options = !lto
-	source = easyboard-app-0.3.0.tar.gz::https://github.com/MrRedstonia/EasyBoard/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = bf923117648125fab8c2a6dcdf11f621908b847e03f2188f305784fe51c7451c
+	source = easyboard-app-0.3.1.tar.gz::https://github.com/MrRedstonia/EasyBoard/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 5e63903f905c20275eab6728d2daf70397e839b13b034130bc013cc1b8e06871
 
 pkgname = easyboard-app

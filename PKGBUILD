@@ -1,7 +1,7 @@
 # Maintainer: MrRedstonia <contact@mrredstonia.com>
 # Builds EasyBoard from source against the system Qt.
 pkgname=easyboard-app
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Cross-platform soundboard with a virtual microphone input (built from source)'
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ conflicts=('easyboard' 'easyboard-app-bin')
 # makepkg's LTO makes GCC objects that LLD (which cxx-qt links with) can't read
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bf923117648125fab8c2a6dcdf11f621908b847e03f2188f305784fe51c7451c')
+sha256sums=('5e63903f905c20275eab6728d2daf70397e839b13b034130bc013cc1b8e06871')
 
 prepare() {
   cd "EasyBoard-$pkgver"
