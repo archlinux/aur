@@ -1,0 +1,17 @@
+pkgbase = tfmv-bin
+	pkgdesc = Rename Terraform resources and generate moved blocks
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/suzuki-shunsuke/tfmv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tfmv
+	conflicts = tfmv
+	options = !debug
+	source_x86_64 = tfmv-bin-1.0.1-x86_64.tar.gz::https://github.com/suzuki-shunsuke/tfmv/releases/download/v1.0.1/tfmv_linux_amd64.tar.gz
+	sha256sums_x86_64 = 40be2d87c8fa034438f327ec92bec205df8fe1118640e0884895c77627b42306
+	source_aarch64 = tfmv-bin-1.0.1-aarch64.tar.gz::https://github.com/suzuki-shunsuke/tfmv/releases/download/v1.0.1/tfmv_linux_arm64.tar.gz
+	sha256sums_aarch64 = 74b041a0cc01b9c717e7dcc69c96905ae34398b5c7bdce49ce31ccdc4aad0cbc
+
+pkgname = tfmv-bin
