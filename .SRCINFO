@@ -1,0 +1,16 @@
+pkgbase = gogetcrawl-bin
+	pkgdesc = Extract web archive data from the Wayback Machine and Common Crawl
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/karust/gogetcrawl
+	arch = x86_64
+	license = MIT
+	provides = gogetcrawl
+	conflicts = gogetcrawl
+	options = !debug
+	source = gogetcrawl-bin-1.1.3-LICENSE::https://raw.githubusercontent.com/karust/gogetcrawl/v1.1.3/LICENSE
+	sha256sums = a3553ba80dda87948958650c6a92c9951839e1ec44f17ebde9e30bd2e52f328c
+	source_x86_64 = gogetcrawl-bin-1.1.3-x86_64.tgz::https://github.com/karust/gogetcrawl/releases/download/v1.1.3/gogetcrawl-linux-amd64-1.1.3.tgz
+	sha256sums_x86_64 = 2a63751652c3260bf0a533517110dd07ac44e28fa124a2ad5f2d6eb780745665
+
+pkgname = gogetcrawl-bin
