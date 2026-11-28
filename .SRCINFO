@@ -1,0 +1,18 @@
+pkgbase = txtx-bin
+	pkgdesc = Infrastructure-as-code runbooks for web3
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/solana-foundation/txtx
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = txtx
+	conflicts = txtx
+	options = !debug
+	source = txtx-bin-0.5.2-LICENSE::https://raw.githubusercontent.com/solana-foundation/txtx/v0.5.2/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = txtx-bin-0.5.2-x86_64.tar.gz::https://github.com/solana-foundation/txtx/releases/download/v0.5.2/txtx-linux-x64.tar.gz
+	sha256sums_x86_64 = a3b54564e7291e2398c8766d22d9c38768cdf2db508ad38d84f46bfe19490d28
+
+pkgname = txtx-bin
