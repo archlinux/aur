@@ -1,0 +1,21 @@
+pkgbase = fluentci-engine-bin
+	pkgdesc = Programmable container-free CI/CD engine built on Wasm and Nix
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/fluentci-io/fluentci-engine
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	depends = glibc
+	depends = libgcc
+	provides = fluentci-engine
+	conflicts = fluentci-engine
+	options = !debug
+	source = fluentci-engine-bin-0.6.4-LICENSE::https://raw.githubusercontent.com/fluentci-io/fluentci-engine/v0.6.4/LICENSE
+	sha256sums = dae9c2728399d54043ff4baf0783a6564df95484123d6432c050eb86eef6d21f
+	source_x86_64 = fluentci-engine-bin-0.6.4-x86_64.tar.gz::https://github.com/fluentci-io/fluentci-engine/releases/download/v0.6.4/fluentci-engine_v0.6.4_x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 74903908c6e9fc057a2ed0b23cf48ed7c391e57b9b41ea8b56971fcc4c98428c
+	source_aarch64 = fluentci-engine-bin-0.6.4-aarch64.tar.gz::https://github.com/fluentci-io/fluentci-engine/releases/download/v0.6.4/fluentci-engine_v0.6.4_aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 6374c7d95f7ff12a78ef34072001ade7c3fae0a748a0128d3b474eec5a103089
+
+pkgname = fluentci-engine-bin
