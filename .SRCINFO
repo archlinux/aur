@@ -1,0 +1,19 @@
+pkgbase = waggle-bin
+	pkgdesc = Compact artifact references for AI agent handoffs
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/modiqo/waggle
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = waggle
+	conflicts = waggle
+	options = !debug
+	source_x86_64 = waggle-bin-0.5.3-x86_64.tar.xz::https://github.com/modiqo/waggle/releases/download/v0.5.3/waggle-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = b8e2fc50c75d2c0dd93cf67da0cddf1b2cd79135d1cfa8107baf71071c729c08
+	source_aarch64 = waggle-bin-0.5.3-aarch64.tar.xz::https://github.com/modiqo/waggle/releases/download/v0.5.3/waggle-cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 8727fc371ec3d4f33e0c70ad6cf5f8a8ac4ecadc6d6b50edb0ff52c54ceee3f8
+
+pkgname = waggle-bin
