@@ -6,7 +6,7 @@ pkgname=(
 	lib32-wivrn-server
 	wivrn-dashboard
 )
-pkgver=26.9
+pkgver=26.11
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
@@ -86,7 +86,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('89f63bc6c89943f3571055381ee2f1aa744d3d11372c56188b21e39c8d8ef733')
+sha256sums=('8f600e7a54b9ffe3d9ff0e0800d69359bbbb80d577bf7ca2619e79df2c3083d6')
 
 build() {
 	cd "WiVRn-$pkgver"
@@ -154,6 +154,7 @@ package_wivrn-server() {
 		"xrizer: Another OpenVR to OpenXR translation layer"
 		"vapor-openvr: Yet another OpenVR to OpenXR translation layer"
 	)
+	install="wivrn-server.install"
 
 	cd "WiVRn-$pkgver"
 	DESTDIR="$pkgdir" cmake --install build-server

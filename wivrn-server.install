@@ -1,0 +1,3 @@
+post_install() {
+    echo "Please reboot before starting WiVRn to make it available to Steam games."
+}
