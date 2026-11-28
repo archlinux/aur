@@ -1,0 +1,20 @@
+pkgbase = encoderfile-bin
+	pkgdesc = Distribute and run transformer encoders as a single file
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/mozilla-ai/encoderfile
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = encoderfile
+	conflicts = encoderfile
+	options = !debug
+	source_x86_64 = encoderfile-bin-0.7.1-x86_64.tar.gz::https://github.com/mozilla-ai/encoderfile/releases/download/v0.7.1/encoderfile-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d2fe6032b3cbc468244b260dc6508be509f0b240ce8378284336fdc03edc7f19
+	source_aarch64 = encoderfile-bin-0.7.1-aarch64.tar.gz::https://github.com/mozilla-ai/encoderfile/releases/download/v0.7.1/encoderfile-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2388434bb4a66e7bca8bf88203f6b0d2b7a205b00fffad77f712a9fb35729e4e
+
+pkgname = encoderfile-bin
