@@ -1,13 +1,14 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=workbench
-pkgver=50.0
+pkgver=51.0
 pkgrel=1
 pkgdesc='Tool for learning and prototyping with GNOME technologies'
 arch=(x86_64)
 url='https://apps.gnome.org/Workbench/'
 license=(GPL-3.0-only)
 depends=(
+  bash
   biome
   blueprint-compiler
   dconf
@@ -15,6 +16,7 @@ depends=(
   gjs
   glib2
   glibc
+  glycin
   gom
   graphene
   gst-plugin-gtk4
@@ -26,6 +28,7 @@ depends=(
   gtksourceview5
   hicolor-icon-theme
   libadwaita
+  libgcc
   libgirepository
   libmanette
   libportal
@@ -59,7 +62,6 @@ makedepends=(
 source=(
   "git+https://github.com/workbenchdev/Workbench.git#tag=v$pkgver"
   git+https://github.com/sonnyp/troll.git
-  workbench-demos::git+https://github.com/workbenchdev/demos.git
   git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git
   workbench-no-flatpak.patch
   workbench-demo-compatibility.patch
@@ -71,17 +73,16 @@ source=(
   workbench-no-flatpak-info.patch
 )
 b2sums=(
-  41aae1cbe3e822f92de3a6fcb412a864a7695190809760b01a467989821e0335f6df188beb6b92d209310d08c54d0c353aee09a5d5d0e5633453ccece4b9f761
-  SKIP
+  d24db9b1b11091dd5666851d25f51599a6e3e439d736e1bdcbe5bd5d1055a83614c4c1614f2e544123b8091d6ee88c8bb93ad48a75af1196b5d8546516cd510b
   SKIP
   SKIP
   42096b884c16998f3f3908ac459c7cec87f8f0fa1249621a80742eb21e80cdf67f842826f756455b3f9a8a35ddbba1b87e0743e10ffbb10b4ca2917d219ca9aa
   82d1bc9f78177af90ab88f3b3a99e634d822c08bd322a93363ac97fad248046fe0f42946773aace6854315cc762e39571e73b71b2bf7b5fc2b5861b9c6af50df
   18c641662cbf47a66ee1a148378d87e8efde3d7241985a29e62ebf5e14fe1f60ef9797212d1c93688b68bac4639fb3e9ee777fab4321fadd4bd9701bebdc55d8
-  caf748805312f1684295a7b5d4e5569a05daea6a5018b51f825c382bdf09ddae41b6e4e1324559bca01d2ed71c01c0c9070ad49fc4f5d9ab6cd407bc038d7c40
+  b07169d582f08c91f9ff4f837b3b570f113aef20fac02f0849228b43a6c96aaf8b8cb5947d2f5124041d2d5027c253b760cb5420beafff6bd301d9b865f27f79
   7b5add3787140cb9c462da3fcd7b0a78548119c1c41c314a1f0bc8aaa7511df3da01f2dc325e0223217d9f1184db2f380ad0ff021c57de7cb62045901b0f009a
   5860d14ae40b742ab2b57912950353fd8c025c16466b743dd97ae4224b242585192fa7b9d12619ddcaf37a1f24b330c64555243bf745fb93982ad7bcc7fc6116
-  513989ad0dc7d161ab4af8896dd628b9f57d4297f14b72112e3155e161b2dcab2d0cdce9fbb98c6a057295850b73425a402004a1cb89d85fa4be0c45e157bfa6
+  a4c3c397fe7cfed9d373a9bf60c9b12c76fb9ae5a4aac2579110386ca4b3f57983ea953b69d397ab3fe35647d5584634f534fc3076a2e2e640816fe2f2ccb72d
   172ff6fc054990c96e34c3d61e0c4ca01722e2263d306e63fb0d8270c8bf5f3dfd2ae9b193965f9f5eb00f25d121b58052f3845e36192bcb914045df928a976d
 )
 
@@ -90,7 +91,6 @@ prepare() {
 
   git submodule init
   git submodule set-url troll "$srcdir/troll"
-  git submodule set-url demos "$srcdir/workbench-demos"
   git submodule set-url gi-types "$srcdir/gi-typescript-definitions"
   git -c protocol.file.allow=always submodule update
 

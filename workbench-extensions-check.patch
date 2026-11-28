@@ -63,10 +63,10 @@ index d459920..bd7c46d 100644
  }
  
 -// FIXME: read from manifest
--const llvm = "llvm21";
--const node = "node24";
+-const llvm = "llvm22";
+-const node = "node26";
 -const runtime = getFlatpakInfo().get_string("Application", "runtime");
--const freedesktop_version = runtime.endsWith("master") ? "25.08" : "25.08";
+-const freedesktop_version = runtime.endsWith("master") ? "26.08" : "26.08";
 -
  export function isTypeScriptEnabled() {
    return settings.get_boolean("typescript");
