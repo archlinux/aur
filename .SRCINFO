@@ -1,0 +1,17 @@
+pkgbase = gophenberg-bin
+	pkgdesc = Plugin-first CMS with a Gutenberg editor
+	pkgver = 0.20.1
+	pkgrel = 1
+	url = https://github.com/gopherium/gophenberg
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = gophenberg
+	conflicts = gophenberg
+	options = !debug
+	source_x86_64 = gophenberg-bin-0.20.1-x86_64.tar.gz::https://github.com/gopherium/gophenberg/releases/download/v0.20.1/gophenberg_0.20.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4f9a66caf398e1ede4630a23114176802e28d52a1479d2c32246dd75fbb16af6
+	source_aarch64 = gophenberg-bin-0.20.1-aarch64.tar.gz::https://github.com/gopherium/gophenberg/releases/download/v0.20.1/gophenberg_0.20.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = f7651efe87ebb6e567649ac3f24d9246f7700a502138c29eae286c9c58ed1540
+
+pkgname = gophenberg-bin
