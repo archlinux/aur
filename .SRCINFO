@@ -1,0 +1,20 @@
+pkgbase = pktz-bin
+	pkgdesc = eBPF-powered per-process network traffic monitor
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/immanuwell/pktz
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = pktz
+	conflicts = pktz
+	options = !debug
+	source = pktz-bin-0.3.0-LICENSE::https://raw.githubusercontent.com/immanuwell/pktz/0.3.0/LICENSE
+	sha256sums = 77b9b0694738e9355855bb7f021d0425ec22b7d58fa9d8b99b0e97067db54a29
+	source_x86_64 = pktz-bin-0.3.0-x86_64::https://github.com/immanuwell/pktz/releases/download/0.3.0/pktz-linux-amd64
+	sha256sums_x86_64 = 6160f7aea4931acabce1a578ac25f673dd91ca372899b55258f076b32d7e4195
+	source_aarch64 = pktz-bin-0.3.0-aarch64::https://github.com/immanuwell/pktz/releases/download/0.3.0/pktz-linux-arm64
+	sha256sums_aarch64 = fcccf3ff0899473710973b810dd33952c738401b66cdc40b578bf836a7bd267c
+
+pkgname = pktz-bin
