@@ -1,0 +1,19 @@
+pkgbase = goclone-bin
+	pkgdesc = Clone websites for offline viewing
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/shurco/goClone
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = goclone
+	conflicts = goclone
+	options = !debug
+	source = goclone-bin-1.0.5-LICENSE::https://raw.githubusercontent.com/shurco/goClone/v1.0.5/LICENSE
+	sha256sums = 069781c299f8a7c5d155b274c4dc2d47bee048334eaabd266ff33b31bc3ffe6d
+	source_x86_64 = goclone-bin-1.0.5-x86_64.tar.gz::https://github.com/shurco/goClone/releases/download/v1.0.5/goClone_1.0.5_linux-amd64.tar.gz
+	sha256sums_x86_64 = 2677ed075cbe2bf9fa0ae666973f4c5f423a326e32fbd033a1b0f332bd40fab2
+	source_aarch64 = goclone-bin-1.0.5-aarch64.tar.gz::https://github.com/shurco/goClone/releases/download/v1.0.5/goClone_1.0.5_linux-arm64.tar.gz
+	sha256sums_aarch64 = b6d0902c4ce11f35ab1bde63132a9f937ca48e45943ad92ceed6aaed9f0bc606
+
+pkgname = goclone-bin
