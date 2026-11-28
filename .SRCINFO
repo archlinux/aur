@@ -1,0 +1,19 @@
+pkgbase = rings-bin
+	pkgdesc = Browser-native peer-to-peer network over WebRTC with a Chord DHT
+	pkgver = 0.40.0
+	pkgrel = 1
+	url = https://github.com/RingsNetwork/rings
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = rings
+	conflicts = rings
+	options = !debug
+	source = rings-bin-0.40.0-LICENSE::https://raw.githubusercontent.com/RingsNetwork/rings/v0.40.0/LICENSE
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = rings-bin-0.40.0-x86_64.zip::https://github.com/RingsNetwork/rings/releases/download/v0.40.0/rings-v0.40.0-x86_64-unknown-linux-musl.zip
+	sha256sums_x86_64 = c3332b6977c2c0f751b645920de5b24e0f333c619199b0d5829978c242f0b159
+	source_aarch64 = rings-bin-0.40.0-aarch64.zip::https://github.com/RingsNetwork/rings/releases/download/v0.40.0/rings-v0.40.0-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 78f36cc3ce2a882bbb8794611b2f8cb6d03c249f2e65a8e09f1ef30507f10965
+
+pkgname = rings-bin
