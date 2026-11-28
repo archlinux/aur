@@ -1,0 +1,19 @@
+pkgbase = remoteaudio-bin
+	pkgdesc = Audio streaming for amateur radio
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/dh1tw/remoteAudio
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = remoteaudio
+	conflicts = remoteaudio
+	options = !debug
+	source = remoteaudio-bin-0.5.8-LICENSE::https://raw.githubusercontent.com/dh1tw/remoteAudio/v0.5.8/LICENSE
+	sha256sums = 378e70c9c3e9d0299329527448690299c1d71f5ab125a7d414888f6ec82f0bf8
+	source_x86_64 = remoteaudio-bin-0.5.8-x86_64.zip::https://github.com/dh1tw/remoteAudio/releases/download/v0.5.8/remoteAudio-v0.5.8-linux-amd64.zip
+	sha256sums_x86_64 = 9103cab12a3cbee0809060a5ea3913f76aa371cd086896f63ca9eb3c16a5c543
+	source_aarch64 = remoteaudio-bin-0.5.8-aarch64.zip::https://github.com/dh1tw/remoteAudio/releases/download/v0.5.8/remoteAudio-v0.5.8-linux-arm64.zip
+	sha256sums_aarch64 = 13cd865f5ca8f1be34370db1cc64ccdbe657f3e855c558254da425c9b7735cb9
+
+pkgname = remoteaudio-bin
