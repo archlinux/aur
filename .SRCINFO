@@ -1,0 +1,21 @@
+pkgbase = ggcat-bin
+	pkgdesc = Compacted and colored de Bruijn graph construction and querying
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/algbio/ggcat
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ggcat
+	conflicts = ggcat
+	options = !debug
+	source = ggcat-bin-2.2.0-LICENSE::https://raw.githubusercontent.com/algbio/ggcat/v2.2.0/LICENSE
+	sha256sums = 92666849ab08c0d99383a10b8a4117f8703e3b21d55db58835aba9f018c88f08
+	source_x86_64 = ggcat-bin-2.2.0-x86_64.tar.gz::https://github.com/algbio/ggcat/releases/download/v2.2.0/ggcat-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9d4bb36726bab2d267515cd1ccbc49754742c94bd9ad64c38827cba53ccfb834
+	source_aarch64 = ggcat-bin-2.2.0-aarch64.tar.gz::https://github.com/algbio/ggcat/releases/download/v2.2.0/ggcat-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b7e07f21c18e883dd828915d5bdf852f398b340cea9553d8c55ea2961afedaa0
+
+pkgname = ggcat-bin
