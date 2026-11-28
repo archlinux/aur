@@ -1,0 +1,17 @@
+pkgbase = tailsocks-bin
+	pkgdesc = Route traffic through Tailscale exit nodes using a local SOCKS5 proxy
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/ItalyPaleAle/tailsocks
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tailsocks
+	conflicts = tailsocks
+	options = !debug
+	source_x86_64 = tailsocks-bin-1.7.0-x86_64.tar.gz::https://github.com/ItalyPaleAle/tailsocks/releases/download/v1.7.0/tailsocks-1.7.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = f4fc03ffa01a44d5116c910a284ebad30e497bb086338e9ca730b7b2cf5a6594
+	source_aarch64 = tailsocks-bin-1.7.0-aarch64.tar.gz::https://github.com/ItalyPaleAle/tailsocks/releases/download/v1.7.0/tailsocks-1.7.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = b89225f96ccce4f6a32b5119bfc93375b6a47a3b96af280a2a8da3b2a36263cb
+
+pkgname = tailsocks-bin
