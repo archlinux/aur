@@ -1,0 +1,17 @@
+pkgbase = go-tpm-tools-bin
+	pkgdesc = Command-line tool for working with TPMs
+	pkgver = 0.4.11
+	pkgrel = 1
+	url = https://github.com/google/go-tpm-tools
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = go-tpm-tools
+	conflicts = go-tpm-tools
+	options = !debug
+	source_x86_64 = go-tpm-tools-bin-0.4.11-x86_64.tar.gz::https://github.com/google/go-tpm-tools/releases/download/v0.4.11/go-tpm-tools_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 050e189bd17b7198d68c3586670cb479aaa26181dd590786ba700ba3bdcb7d9e
+	source_aarch64 = go-tpm-tools-bin-0.4.11-aarch64.tar.gz::https://github.com/google/go-tpm-tools/releases/download/v0.4.11/go-tpm-tools_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 69df0f46a8abfa617491e4b4d2eb2a460548776e2aa5fb98bda2027daaba8861
+
+pkgname = go-tpm-tools-bin
