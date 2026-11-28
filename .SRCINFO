@@ -1,13 +1,17 @@
 pkgbase = libspeedhack-git
 	pkgdesc = A simple dynamic library to slowdown or speedup games on Linux
-	pkgver = r12.29e0bd6
+	pkgver = r19.c9ac145
 	pkgrel = 1
 	url = https://github.com/evg-zhabotinsky/libspeedhack
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = bash
+	options = !debug
 	source = libspeedhack-git::git+https://github.com/evg-zhabotinsky/libspeedhack.git
 	md5sums = SKIP
 
 pkgname = libspeedhack-git
-
