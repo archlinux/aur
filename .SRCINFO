@@ -1,0 +1,17 @@
+pkgbase = dopbase-bin
+	pkgdesc = Lightweight self-hosted secrets manager in a single file
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/dopbase/dopbase
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = dopbase
+	conflicts = dopbase
+	options = !debug
+	source_x86_64 = dopbase-bin-0.2.0-x86_64.tar.gz::https://github.com/dopbase/dopbase/releases/download/0.2.0/dopbase_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4251da90852185c3a2ff914c63a68ec241cb469367750d38655f7956bf3c7f72
+	source_aarch64 = dopbase-bin-0.2.0-aarch64.tar.gz::https://github.com/dopbase/dopbase/releases/download/0.2.0/dopbase_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 334696066dea1d49813900a9ded3589c6c76049ab3f56df8eff8fecd86a66777
+
+pkgname = dopbase-bin
