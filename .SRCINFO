@@ -1,0 +1,19 @@
+pkgbase = kexa-bin
+	pkgdesc = Rule-based cloud monitoring and alerting
+	pkgver = 2.11.1
+	pkgrel = 1
+	url = https://github.com/kexa-io/Kexa
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = kexa
+	conflicts = kexa
+	options = !debug
+	source = kexa-bin-2.11.1-LICENSE::https://raw.githubusercontent.com/kexa-io/Kexa/v2.11.1/LICENSE.txt
+	sha256sums = 0ce90447e845cf072f1a498b9762afb0988a1176a385b24056ad5eceaf9c7e93
+	source_x86_64 = kexa-bin-2.11.1-x86_64::https://github.com/kexa-io/Kexa/releases/download/v2.11.1/kexa-linux-x64
+	sha256sums_x86_64 = 895601c571251810b072b99e158e6a06ee0a3939af4f9381b937c93d1903c22a
+	source_aarch64 = kexa-bin-2.11.1-aarch64::https://github.com/kexa-io/Kexa/releases/download/v2.11.1/kexa-linux-arm64
+	sha256sums_aarch64 = 3c35645270ebd240ecce9c6777842b0ded31205f8a20b96f4d9f149df63a9fcb
+
+pkgname = kexa-bin
