@@ -1,0 +1,21 @@
+pkgbase = madmail-bin
+	pkgdesc = Lightweight PGP-only mail server for Delta Chat
+	pkgver = 2.42.0
+	pkgrel = 1
+	url = https://github.com/themadorg/madmail
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = madmail
+	conflicts = madmail
+	options = !debug
+	source = madmail-bin-2.42.0-LICENSE::https://raw.githubusercontent.com/themadorg/madmail/v2.42.0/LICENCE
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = madmail-bin-2.42.0-x86_64.tar.gz::https://github.com/themadorg/madmail/releases/download/v2.42.0/madmail-linux-amd64.tar.gz
+	sha256sums_x86_64 = 95e98538791abe9c7842cc385191f0b3364c08421d708ea05c5457c78de8d1ec
+	source_aarch64 = madmail-bin-2.42.0-aarch64.tar.gz::https://github.com/themadorg/madmail/releases/download/v2.42.0/madmail-linux-arm64.tar.gz
+	sha256sums_aarch64 = e20b9ad02cd4db43e3a5587cb11787199a693978186275ceb212774a890d59b5
+
+pkgname = madmail-bin
