@@ -1,0 +1,19 @@
+pkgbase = sshmon-bin
+	pkgdesc = Manage and monitor SSH connections
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/hpello/sshmon
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = sshmon
+	conflicts = sshmon
+	options = !debug
+	source = sshmon-bin-0.5.0-LICENSE::https://raw.githubusercontent.com/hpello/sshmon/v0.5.0/LICENSE
+	sha256sums = 7b2f82e21708611029c33d2e62c91b4ee677347973bb9a095fc72e8f081fc0fc
+	source_x86_64 = sshmon-bin-0.5.0-x86_64.tar.gz::https://github.com/hpello/sshmon/releases/download/v0.5.0/sshmon-linux-x64-0.5.0.tar.gz
+	sha256sums_x86_64 = 7256d8ef04cdb48a1f121821b9226368ea2a568c3c69efca2e2e2e2fbe57c8c4
+
+pkgname = sshmon-bin
