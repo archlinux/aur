@@ -1,0 +1,19 @@
+pkgbase = splitrail-bin
+	pkgdesc = Real-time token usage and cost tracker for AI coding agents
+	pkgver = 3.13.1
+	pkgrel = 1
+	url = https://github.com/Piebald-AI/splitrail
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = splitrail
+	conflicts = splitrail
+	options = !debug
+	source_x86_64 = splitrail-bin-3.13.1-x86_64.tar.gz::https://github.com/Piebald-AI/splitrail/releases/download/v3.13.1/splitrail-v3.13.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a212ca9b35f8a1ecc591d6c1f2d4c4bb6dd97cd6727b516249210586d948b99f
+	source_aarch64 = splitrail-bin-3.13.1-aarch64.tar.gz::https://github.com/Piebald-AI/splitrail/releases/download/v3.13.1/splitrail-v3.13.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 075249f25d3316a15688176a26af9cb5469dba5e116d0ec680fdf755a2c9700a
+
+pkgname = splitrail-bin
