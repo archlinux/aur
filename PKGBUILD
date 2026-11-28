@@ -8,14 +8,15 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v0.23.4
-_commit=8fc0374447313e276f6b9a2764bfc750190c966a
-# Arch's Electron runtime: the major upstream locks, or a newer one (README).
-# prepare() points the launcher and its test at it.
+_pkgver_tag=v0.23.5
+_commit=a428f5344f777ccafe389c79d5b09384abef1437
+# Arch's Electron runtime: the major upstream locks, or a newer one. prepare()
+# stops when upstream locks a newer major and points the launcher and its
+# test at this one.
 _electron=electron44
 # pm's pnpm pin (pm/lock.json); prepare() stops when it moves.
 _pnpmver=12.15.0
-pkgver=0.23.4
+pkgver=0.23.5
 pkgrel=1
 pkgdesc="Desktop UI for Hermes Agent (chat, voice, files, settings)"
 arch=('x86_64')
@@ -52,11 +53,11 @@ source=(
   'launcher.test.cjs'
 )
 # Run updpkgsums after editing a local file.
-sha256sums=('875e633ae5b3c6349c1bcffc18c0476518fbe5dead355e4aa09ad827ebffce0c'
+sha256sums=('4475ee948e831245b11a339fa08811ab471bd487ee503c7b31bc3200493820b8'
             '10568d3fd03b5511a8f2f2e9cbea6a3bd0239fe012814fe08d7c9095e6b71074'
             '412ad7b2b6bc5149a8d236ad2cb9be54d2ac0ab78dbd3c8e16deb4f4e683713f'
             'ac4077eb2846f90d36858c69d8fe99988606caa0059e85a9606273bb7bc29077'
-            'cb85a2dba205970130edf4a55c6a094c6e9f64f14f62c998258e2008a50a509f'
+            'eec8d504e034fc7dd06382184c6ebb313390b98c72ea1980a651a47d6d75d9d3'
             '01700c07523710df165b72bbc0c2931415d118576e78868b1b02eec6bffda034')
 # pnpm as upstream pins it (pm/lock.json): the native executable and the
 # launcher package, whose dist/ holds the node-gyp the executable runs, the
@@ -167,7 +168,7 @@ prepare() {
   locked_electron="$(node -p 'require(process.argv[1]).version' "${electron_dir}/package.json")"
   system_electron="$(< "/usr/lib/${_electron}/version")"
   if (( ${locked_electron%%.*} > ${system_electron%%.*} )); then
-    printf 'ERROR: upstream locks Electron %s, newer than the system runtime %s — move _electron to a newer electronNN (README)\n' \
+    printf 'ERROR: upstream locks Electron %s, newer than the system runtime %s — move _electron to a newer electronNN\n' \
       "${locked_electron}" "${system_electron}"
     return 1
   elif (( ${locked_electron%%.*} < ${system_electron%%.*} )); then
