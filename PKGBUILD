@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=syspass-cli-bin
-pkgver=0.11.1
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='CLI client for sysPass - bin version'
 arch=('x86_64')
@@ -20,9 +20,9 @@ source=(
   "README_$pkgver.md::$_rawurl/README.md"
 )
 
-sha256sums=('3532a7f31e7eaf77e5020ddd7229e6ffb5494709cfb896fd279a6bd325a01d77'
+sha256sums=('61a4440a91f4cd48d1fadfbf5a36355628f5ea4dea3e7b73d0b5b3eb66391364'
             'dbc14ece4c050f0ab5f59477f06cff8e2a80b00fe32697d0d35cb1fb6b7ff01c'
-            '7549dbf5ab1d5d62c20e7b17a30fd892dde46b169dab1f8c9aeb89293c2a10df')
+            '36b7803d93d2eace6662a811cc2e96b30632324f681f0030eccade4c8878945e')
 
 package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "${pkgname%-bin}"

@@ -1,6 +1,6 @@
 pkgbase = syspass-cli-bin
 	pkgdesc = CLI client for sysPass - bin version
-	pkgver = 0.11.1
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/ggnosh/syspass-cli
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = syspass-cli-bin
 	provides = syspass-cli
 	conflicts = syspass-cli
 	options = !lto
-	source = syspass-cli-bin-0.11.1-x86_64.tar.gz::https://github.com/ggnosh/syspass-cli/releases/download/v0.11.1/syspass-cli-v0.11.1-x86_64-unknown-linux-gnu.tar.gz
-	source = LICENSE_0.11.1::https://raw.githubusercontent.com/ggnosh/syspass-cli/refs/tags/v0.11.1/LICENSE
-	source = README_0.11.1.md::https://raw.githubusercontent.com/ggnosh/syspass-cli/refs/tags/v0.11.1/README.md
-	sha256sums = 3532a7f31e7eaf77e5020ddd7229e6ffb5494709cfb896fd279a6bd325a01d77
+	source = syspass-cli-bin-0.12.1-x86_64.tar.gz::https://github.com/ggnosh/syspass-cli/releases/download/v0.12.1/syspass-cli-v0.12.1-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE_0.12.1::https://raw.githubusercontent.com/ggnosh/syspass-cli/refs/tags/v0.12.1/LICENSE
+	source = README_0.12.1.md::https://raw.githubusercontent.com/ggnosh/syspass-cli/refs/tags/v0.12.1/README.md
+	sha256sums = 61a4440a91f4cd48d1fadfbf5a36355628f5ea4dea3e7b73d0b5b3eb66391364
 	sha256sums = dbc14ece4c050f0ab5f59477f06cff8e2a80b00fe32697d0d35cb1fb6b7ff01c
-	sha256sums = 7549dbf5ab1d5d62c20e7b17a30fd892dde46b169dab1f8c9aeb89293c2a10df
+	sha256sums = 36b7803d93d2eace6662a811cc2e96b30632324f681f0030eccade4c8878945e
 
 pkgname = syspass-cli-bin
