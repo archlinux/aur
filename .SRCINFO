@@ -1,0 +1,19 @@
+pkgbase = feint-bin
+	pkgdesc = Local emulator of the Scaleway, Outscale and Exoscale APIs
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/stephrobert/feint
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = feint
+	conflicts = feint
+	options = !debug
+	source = feint-bin-0.16.0-LICENSE::https://raw.githubusercontent.com/stephrobert/feint/v0.16.0/LICENSE
+	sha256sums = 50bd13042302173c9dc61dfcea5757e11caa76a0c1859a9be2fc59f148c42041
+	source_x86_64 = feint-bin-0.16.0-x86_64::https://github.com/stephrobert/feint/releases/download/v0.16.0/feint-linux-amd64
+	sha256sums_x86_64 = 19bb414bdb985d7e2c61ab59ac6226d7b7ba7fca9ad7cd9180fce9b7ff70b4ef
+	source_aarch64 = feint-bin-0.16.0-aarch64::https://github.com/stephrobert/feint/releases/download/v0.16.0/feint-linux-arm64
+	sha256sums_aarch64 = a08f5c183dbd3aeabc4cd60bed49feda8539dc38749e41bfff8e87823642fd61
+
+pkgname = feint-bin
