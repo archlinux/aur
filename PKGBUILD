@@ -5,7 +5,7 @@
 # systemd units and the service account. Built from release assets alone.
 # packaging/aur.sh sets pkgver and sha256sums for each release.
 pkgname=whatson-bin
-pkgver=2.0.57
+pkgver=2.0.65
 pkgrel=1
 pkgdesc='Television broadcast station emulator: channels from a local media library, with a program guide, a browser client and native clients'
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=("${_release}/${_server}"
         'whatson.sysusers'
         'whatson.tmpfiles')
 noextract=("${_server}" "${_linux}" "${_windows}")
-sha256sums=('0a5ca5db81b2591cd35e9da7428bc12e4def5a4dadbb9cd041884ee437995e44' 'a3eb56e7958d8f0809ebf9529b6fa9c15cb0f40a8a901ccdeb14393d853bc31c' 'dfe353227c9abc81c483d526e994b0f8d8b0faf842585c5c03d35a4f47308e0e' '8a4a4428b375d1117c78f5135fbeb7e6fc3a8a7c0e3eec4e0ca51b905a57291c' '2d546af65fde9161881d10e3cb2239b73e938a831af84d95c7574df8ffda8089')
+sha256sums=('c3e78ccc3fcc0329dff6faa94aeee5a00d914438ce915d3f380d0b512fab6f4d' '2106cc608a6b44e0d9813c9a23f9d4e7600c3a5e4229284078001f374b9dc1c4' '80edff40ce3a4ff46b27e38781406abcaabf072e960c54ec4971dd9b025d8bf4' '8a4a4428b375d1117c78f5135fbeb7e6fc3a8a7c0e3eec4e0ca51b905a57291c' '2d546af65fde9161881d10e3cb2239b73e938a831af84d95c7574df8ffda8089')
 
 prepare() {
     rm -rf "${srcdir}/server"
