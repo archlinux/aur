@@ -1,0 +1,27 @@
+pkgbase = slit-scan-bin
+	pkgdesc = Streaming tunnels of light from images, videos and a camera (binary release)
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/flajann2/slit-scan-cpp
+	arch = x86_64
+	license = MIT
+	depends = gtkmm-4.0
+	depends = opencv
+	depends = yaml-cpp
+	depends = libzip
+	depends = ffmpeg
+	depends = freetype2
+	depends = glibmm-2.68
+	depends = libsigc++-3.0
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = slit-scan=0.2.3
+	conflicts = slit-scan
+	conflicts = slit-scan-git
+	options = !strip
+	options = !debug
+	source = slit-scan-0.2.3-1-x86_64.tar.zst::https://github.com/flajann2/slit-scan-cpp/releases/download/v0.2.3/slit-scan-0.2.3-1-x86_64.tar.zst
+	sha256sums = 5c46245561d14e0d2bf5ef2165e383a2c2c1e4e44e7df462cac8ca34e4de3085
+
+pkgname = slit-scan-bin
