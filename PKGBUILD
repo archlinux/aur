@@ -6,7 +6,7 @@ _appname=${_gitname,}
 pkgname=${_appname}-bin
 pkgdesc="A fast customised text editor in rust"
 
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname%-editor}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname%-editor}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('6f83632a9df98c53f7194aaf80dbfbf8cc8c760f66520ef3b57d3d2cd44917e5')
-sha256sums_aarch64=('a3aa7a1c8222fa1319078f1b293edb98b0900ca0e899f37f4d91914d352672c0')
+sha256sums_x86_64=('56d52540f3d6848deb1b18de7d06e00b6a3729cd9fe7c53524ebcef35fa78534')
+sha256sums_aarch64=('5661a2af4ec9686011e3457063cca7e236f764e026e5fa5a0bccddb268cad89d')
 
 
 case ${CARCH} in
