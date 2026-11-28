@@ -1,0 +1,18 @@
+pkgbase = myshoes-bin
+	pkgdesc = Auto-scaling virtual machine runners for GitHub Actions
+	pkgver = 1.20.4
+	pkgrel = 1
+	url = https://github.com/whywaita/myshoes
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = myshoes
+	conflicts = myshoes
+	options = !debug
+	source_x86_64 = myshoes-bin-1.20.4-x86_64.tar.gz::https://github.com/whywaita/myshoes/releases/download/v1.20.4/myshoes_1.20.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = ed1f397fd3679f483ed2a479ee594ef71a3d71391e6bf7e7eb5111756d01e67b
+	source_aarch64 = myshoes-bin-1.20.4-aarch64.tar.gz::https://github.com/whywaita/myshoes/releases/download/v1.20.4/myshoes_1.20.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7b26e7377518494683a5e12312a55fb66cfa7ce9432df37dad3924b109b23a21
+
+pkgname = myshoes-bin
