@@ -1,0 +1,17 @@
+pkgbase = raftkeeper-bin
+	pkgdesc = High-performance distributed consensus service
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/JDRaftKeeper/RaftKeeper
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = raftkeeper
+	conflicts = raftkeeper
+	options = !debug
+	source = raftkeeper-bin-2.3.0-LICENSE::https://raw.githubusercontent.com/JDRaftKeeper/RaftKeeper/v2.3.0/LICENSE
+	sha256sums = db1e849c471b738d4ea01e8357e94fa162cc0377d8763bc28a0c3bc0c23cea45
+	source_x86_64 = raftkeeper-bin-2.3.0-x86_64.tar.gz::https://github.com/JDRaftKeeper/RaftKeeper/releases/download/v2.3.0/RaftKeeper-v2.3.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 4b59242248c97df00812edc1a2f90d04fa48d6e86022456a86f886f0b83ffe50
+
+pkgname = raftkeeper-bin
