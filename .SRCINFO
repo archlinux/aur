@@ -1,0 +1,17 @@
+pkgbase = dtctl-bin
+	pkgdesc = Manage Dynatrace platform resources from the command line
+	pkgver = 0.47.0
+	pkgrel = 1
+	url = https://github.com/Dynatrace/dtctl
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = dtctl
+	conflicts = dtctl
+	options = !debug
+	source_x86_64 = dtctl-bin-0.47.0-x86_64.tar.gz::https://github.com/Dynatrace/dtctl/releases/download/v0.47.0/dtctl_0.47.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d5df2d258c8a2d7717b40c558bda7a3f4a4c7147cc30c84745f79f9f06b8053e
+	source_aarch64 = dtctl-bin-0.47.0-aarch64.tar.gz::https://github.com/Dynatrace/dtctl/releases/download/v0.47.0/dtctl_0.47.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 63f681e70148f87f1dc590c562de83c26437c9ba1442809eb04a61dab8cf6c39
+
+pkgname = dtctl-bin
