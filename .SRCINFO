@@ -1,0 +1,17 @@
+pkgbase = skill-validator-bin
+	pkgdesc = Validate AI agent skills against the Agent Skill specification
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/agent-ecosystem/skill-validator
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = skill-validator
+	conflicts = skill-validator
+	options = !debug
+	source_x86_64 = skill-validator-bin-1.8.0-x86_64.tar.gz::https://github.com/agent-ecosystem/skill-validator/releases/download/v1.8.0/skill-validator_1.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = a9b4cb3436682ff8d55dd0d164376c8479d35cb58c0adc3e93170fbde8baa04f
+	source_aarch64 = skill-validator-bin-1.8.0-aarch64.tar.gz::https://github.com/agent-ecosystem/skill-validator/releases/download/v1.8.0/skill-validator_1.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 87dc2f61df60f6c737b29e479a541ad72ee0f9c11422cdd76e7036a7e22e9fbc
+
+pkgname = skill-validator-bin
