@@ -1,0 +1,17 @@
+pkgbase = falcoctl-bin
+	pkgdesc = Administrative tooling for Falco
+	pkgver = 0.14.3
+	pkgrel = 1
+	url = https://github.com/falcosecurity/falcoctl
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = falcoctl
+	conflicts = falcoctl
+	options = !debug
+	source_x86_64 = falcoctl-bin-0.14.3-x86_64.tar.gz::https://github.com/falcosecurity/falcoctl/releases/download/v0.14.3/falcoctl_0.14.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 263a6c773b4d24af1e6827ea2f63ac7c50678becf58e607390eb8976dee08af1
+	source_aarch64 = falcoctl-bin-0.14.3-aarch64.tar.gz::https://github.com/falcosecurity/falcoctl/releases/download/v0.14.3/falcoctl_0.14.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 527a81cba5e42b283466aa74942d0eb6ea044aa969f9cf86f3ef856cbe636b36
+
+pkgname = falcoctl-bin
