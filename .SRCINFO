@@ -1,0 +1,17 @@
+pkgbase = simple-proxy-bin
+	pkgdesc = Simple self-contained HTTP and HTTPS proxy
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/jthomperoo/simple-proxy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = simple-proxy
+	conflicts = simple-proxy
+	options = !debug
+	source_x86_64 = simple-proxy-bin-1.4.0-x86_64.zip::https://github.com/jthomperoo/simple-proxy/releases/download/v1.4.0/simple-proxy_linux_amd64.zip
+	sha256sums_x86_64 = f526e3285694e0285b8c1415b19009a6c907ef79be1bafc55b361993e3f77615
+	source_aarch64 = simple-proxy-bin-1.4.0-aarch64.zip::https://github.com/jthomperoo/simple-proxy/releases/download/v1.4.0/simple-proxy_linux_arm64.zip
+	sha256sums_aarch64 = 440eb6fd6b5d63796c296860b35584fce6f32a7f08349ef6f1d2b499760f38d1
+
+pkgname = simple-proxy-bin
