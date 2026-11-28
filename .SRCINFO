@@ -1,0 +1,21 @@
+pkgbase = viceroy-bin
+	pkgdesc = Local testing environment for Fastly Compute
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://github.com/fastly/Viceroy
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = viceroy
+	conflicts = viceroy
+	options = !debug
+	source = viceroy-bin-0.22.0-LICENSE::https://raw.githubusercontent.com/fastly/Viceroy/v0.22.0/LICENSE
+	sha256sums = 268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5
+	source_x86_64 = viceroy-bin-0.22.0-x86_64.tar.gz::https://github.com/fastly/Viceroy/releases/download/v0.22.0/viceroy_v0.22.0_linux-amd64.tar.gz
+	sha256sums_x86_64 = 03f66f27275e8adc0c1857c4f571bd6f5ae997e38cc43760b19c6840a92b298d
+	source_aarch64 = viceroy-bin-0.22.0-aarch64.tar.gz::https://github.com/fastly/Viceroy/releases/download/v0.22.0/viceroy_v0.22.0_linux-arm64.tar.gz
+	sha256sums_aarch64 = 414c438938984572a5911c7491471a1a8bff6808c9e371c84704f6d0df43ded3
+
+pkgname = viceroy-bin
