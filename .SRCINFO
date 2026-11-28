@@ -1,6 +1,6 @@
 pkgbase = flow-network-monitor-bin
 	pkgdesc = 🌊 See your network breathe
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/programmersd21/flow
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = flow-network-monitor-bin
 	provides = flow
 	conflicts = flow-network-monitor
 	options = !strip
-	source_x86_64 = flow-x86_64-0.3.5.tgz::https://github.com/programmersd21/flow/releases/download/v0.3.5/flow_0.3.5_linux_amd64.tar.gz
-	sha256sums_x86_64 = 07ba805e66dd9149f104de79fdb292a72115315b056bbf914594044cea627623
-	source_aarch64 = flow-aarch64-0.3.5.tgz::https://github.com/programmersd21/flow/releases/download/v0.3.5/flow_0.3.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = 081c10845b01852e4f3235142868226c0790474fc6f3997343832596251ab136
+	source_x86_64 = flow-x86_64-0.4.0.tgz::https://github.com/programmersd21/flow/releases/download/v0.4.0/flow_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 577a18b5902ee4a6be5bf7fb765f462b1d89b75662245dfcbcde96b4491c33d8
+	source_aarch64 = flow-aarch64-0.4.0.tgz::https://github.com/programmersd21/flow/releases/download/v0.4.0/flow_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 44e3a8c58d39e2a4a4d54c37911834c70f44a0e397c7cb8bfc21bcb2069a70c8
 
 pkgname = flow-network-monitor-bin
