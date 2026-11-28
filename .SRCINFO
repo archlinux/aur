@@ -1,0 +1,19 @@
+pkgbase = jegrep-bin
+	pkgdesc = Semantic code grep powered by Jev
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/can1357/jegrep
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = jegrep
+	conflicts = jegrep
+	options = !debug
+	source_x86_64 = jegrep-bin-0.1.3-x86_64.tar.gz::https://github.com/can1357/jegrep/releases/download/v0.1.3/jegrep-v0.1.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6170fd6ad2cfc967d58c890abd2d2021eec1bdaacf960ad63617509007c27acc
+	source_aarch64 = jegrep-bin-0.1.3-aarch64.tar.gz::https://github.com/can1357/jegrep/releases/download/v0.1.3/jegrep-v0.1.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 10aad0ae11c63ad9f445ac86581f0b6296f0b4a96baa220acdf0ded26b8d6882
+
+pkgname = jegrep-bin
