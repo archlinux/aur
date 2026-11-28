@@ -49,9 +49,10 @@ replaceOnce(
 //    manual/lastEffective 读进模块变量，KimiEnv 直接使用 lastEffective 选择
 //    域名，不经过上面的 getter；不覆盖这里，zh-CN 机器上的 intl 包仍会被
 //    locale 播撒成 china，en-US 机器上的 cn 包会被播撒成 overseas。
+//    3.2.29 起两个字段改走字符串表（15466="manual", 6565="lastEffective"）。
 replaceOnce(
-  /(_0x[0-9a-f]+) = _0x[0-9a-f]+\["manual"\], (_0x[0-9a-f]+) = _0x[0-9a-f]+\[_0x[0-9a-f]+\(\d+\)\];/g,
-  (match, manualVar, lastVar) => `${manualVar} = null, ${lastVar} = "${region}";`,
+  /(_0x[0-9a-f]+) = (_0x[0-9a-f]+)\[_0x[0-9a-f]+\(15466\)\], (_0x[0-9a-f]+) = \2\[_0x[0-9a-f]+\(6565\)\];/g,
+  (match, manualVar, storeVar, lastVar) => `${manualVar} = null, ${lastVar} = "${region}";`,
   '区域状态种子'
 );
 
@@ -73,9 +74,9 @@ replaceOnce(
 
 // 4. 资源路径：Electron 的 process.resourcesPath 指向系统 electron43，
 //    这里改为优先读取 KIMI_WORK_RESOURCES（由包装脚本指向独立的 /opt 前缀）。
-//    16924 是 3.2.28 混淆字符串表里 "resourcesPath" 的 id；主进程同时存在
+//    21706 是 3.2.29 混淆字符串表里 "resourcesPath" 的 id；主进程同时存在
 //    少量未混淆的 process["resourcesPath"] 字面量（installRoot 等），一并替换。
-const resourcesPathId = '16924';
+const resourcesPathId = '21706';
 const resourcesPathRe = new RegExp(
   `process\\[(_0x[0-9a-f]+)\\(${resourcesPathId}\\)\\]`,
   'g'
@@ -97,11 +98,11 @@ source = source.replace(
 // 5. 窗口类名：运行时用配置里的 appId 推导 desktop 文件名并调用
 //    app.setDesktopName()，这会覆盖 package.json 的 desktopName，
 //    两版沿用同一个 appId 时任务栏会把窗口合并到同一个应用。
-//    12033/11085 分别是 3.2.28 字符串表里 "appId" 与 ".desktop" 的 id。
+//    6775/7472 分别是 3.2.29 字符串表里 "appId" 与 ".desktop" 的 id。
 const desktopName =
   region === 'china' ? 'kimi-work-cn.desktop' : 'kimi-work-intl.desktop';
 replaceOnce(
-  /const (_0x[0-9a-f]+) = _0x[0-9a-f]+\[_0x[0-9a-f]+\(12033\)\] \+ _0x[0-9a-f]+\(11085\);/g,
+  /const (_0x[0-9a-f]+) = _0x[0-9a-f]+\[_0x[0-9a-f]+\(6775\)\] \+ _0x[0-9a-f]+\(7472\);/g,
   `const $1 = "${desktopName}";`,
   'desktopName 运行时'
 );

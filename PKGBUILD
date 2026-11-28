@@ -6,8 +6,8 @@
 # 通过系统 electron43 运行，与国内版、kimi-work-bin 可并存。
 
 pkgname=kimi-work-intl-bin
-pkgver=3.2.28
-pkgrel=2
+pkgver=3.2.29
+pkgrel=1
 _prefix='/opt/kimi-work-intl'
 pkgdesc='Kimi Work desktop client, international build pinned to the overseas region'
 arch=('x86_64')
@@ -44,7 +44,7 @@ noextract=("kimi_${pkgver}.exe")
 sha256sums=(
   '85e9c4268a8ee267755f0f3faa4b7cd957db27d57d0c22d53cb2c691d34f0ec2'
   '817e0d47bca30dfb87aa2e9df40fb94ba1d3704305d2b6b0f2b4359e4ab7e304'
-  '336c6e3841d890fcc1c073ac2b3f25db83fdaafa9475af425f070cc0894e6eaf'
+  '38a68601a2d405307d9450247dbf09e92547ecc35ad72dc8ffdd7cfb09a6aa05'
   'dc2c12c5fff0b616dd983b6fb07f426dcefa1167e0d05bbc807fc7346da0ef9b'
   '3f7d7bbc4b0f443344755ac0dee7d5752e3c51018134467f8748b0862b86f41a'
   'ab973d8d007cfed09bf051378baf4fd220f545a5533ab5e9269aad8674e7f468'
@@ -57,7 +57,7 @@ sha256sums=(
   '6eb3d22d134011b4abd6a1bca09ba4e1147a972873f457db3b8d96a262774e0e'
   '00e33811cde3a6c40c14ff8ab9d7a2ed94492608bd93ca5a026ed1c24735c300'
 )
-sha256sums_x86_64=('68d70c748f3b227c0ec6bf75fd77704c639680f29148bcf0bea224f1117ab300')
+sha256sums_x86_64=('2afd2550eec778c9bc0f01632ad3a2bdc6b344789b4a7ce847f6491640cd9bef')
 
 prepare() {
   local _res="${srcdir}/payload/resources/resources"
