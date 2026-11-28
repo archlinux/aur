@@ -1,0 +1,20 @@
+pkgbase = go-whisper-bin
+	pkgdesc = Speech-to-text server and CLI using whisper.cpp
+	pkgver = 0.0.45
+	pkgrel = 1
+	url = https://github.com/mutablelogic/go-whisper
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = go-whisper
+	conflicts = go-whisper
+	options = !debug
+	source = go-whisper-bin-0.0.45-LICENSE::https://raw.githubusercontent.com/mutablelogic/go-whisper/v0.0.45/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = go-whisper-bin-0.0.45-x86_64::https://github.com/mutablelogic/go-whisper/releases/download/v0.0.45/gowhisper-linux-amd64
+	sha256sums_x86_64 = ca557b73c571031d7f023c2359dccf3f23c3f4c073b2d10fd5d3b7b453b5297e
+	source_aarch64 = go-whisper-bin-0.0.45-aarch64::https://github.com/mutablelogic/go-whisper/releases/download/v0.0.45/gowhisper-linux-arm64
+	sha256sums_aarch64 = c87d2ca98c14d4e1c0a9521f8b90eb38193473d2378968d7fd2287f09653bc2f
+
+pkgname = go-whisper-bin
