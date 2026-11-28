@@ -1,0 +1,17 @@
+pkgbase = scrutineer-bin
+	pkgdesc = Security review tool for software projects
+	pkgver = 2026.11.21.1
+	pkgrel = 1
+	url = https://github.com/alpha-omega-security/scrutineer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = scrutineer
+	conflicts = scrutineer
+	options = !debug
+	source_x86_64 = scrutineer-bin-2026.11.21.1-x86_64.tar.gz::https://github.com/alpha-omega-security/scrutineer/releases/download/v2026.11.21.1/scrutineer-2026.11.21.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 5b6ea3b1c70e655ed04f18b4a3a37ae11d08ac25781ef30030c996d902652c1f
+	source_aarch64 = scrutineer-bin-2026.11.21.1-aarch64.tar.gz::https://github.com/alpha-omega-security/scrutineer/releases/download/v2026.11.21.1/scrutineer-2026.11.21.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 987d81b24847d640b7e6fb933e1db279055a6a066ee9d35cfec777422028c26d
+
+pkgname = scrutineer-bin
