@@ -1,0 +1,17 @@
+pkgbase = amazon-ec2-spot-interrupter-bin
+	pkgdesc = Trigger Amazon EC2 Spot interruption notifications and rebalance recommendations
+	pkgver = 0.0.16
+	pkgrel = 1
+	url = https://github.com/aws/amazon-ec2-spot-interrupter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = amazon-ec2-spot-interrupter
+	conflicts = amazon-ec2-spot-interrupter
+	options = !debug
+	source_x86_64 = amazon-ec2-spot-interrupter-bin-0.0.16-x86_64.tar.gz::https://github.com/aws/amazon-ec2-spot-interrupter/releases/download/v0.0.16/ec2-spot-interrupter_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7a504350e186d4803899c2dfd3cb0a25cd2bd2ec48cacfee3b6791c76bbc6e1d
+	source_aarch64 = amazon-ec2-spot-interrupter-bin-0.0.16-aarch64.tar.gz::https://github.com/aws/amazon-ec2-spot-interrupter/releases/download/v0.0.16/ec2-spot-interrupter_linux_arm64.tar.gz
+	sha256sums_aarch64 = 542fed49faf445bce7b5a40822f7ecdf6ee38faf8af9e37767b4831e124595d0
+
+pkgname = amazon-ec2-spot-interrupter-bin
