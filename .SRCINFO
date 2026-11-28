@@ -1,0 +1,17 @@
+pkgbase = event-generator-bin
+	pkgdesc = Generate suspicious actions detected by Falco rulesets
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/falcosecurity/event-generator
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = event-generator
+	conflicts = event-generator
+	options = !debug
+	source_x86_64 = event-generator-bin-0.13.0-x86_64.tar.gz::https://github.com/falcosecurity/event-generator/releases/download/v0.13.0/event-generator_0.13.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 80dcf3c6eac2ec84300872dafeb76c49d9a11cbb16a9ea3ba3f9bb7362a5cedf
+	source_aarch64 = event-generator-bin-0.13.0-aarch64.tar.gz::https://github.com/falcosecurity/event-generator/releases/download/v0.13.0/event-generator_0.13.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ab4f0dff588f9186ce4d092c787ab0a4cf79b7283368c1dffa096b58e584a54b
+
+pkgname = event-generator-bin
