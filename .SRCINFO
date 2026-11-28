@@ -1,0 +1,19 @@
+pkgbase = mico-bin
+	pkgdesc = Migrate Docker containers between servers
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/Ray-D-Song/mico
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mico
+	conflicts = mico
+	options = !debug
+	source = mico-bin-0.2.5-LICENSE::https://raw.githubusercontent.com/Ray-D-Song/mico/v0.2.5/LICENSE
+	sha256sums = a14f83d11d3185d2ef3bae490b23a078c68e904c5ec2e7c8911bfed8141cfa6a
+	source_x86_64 = mico-bin-0.2.5-x86_64::https://github.com/Ray-D-Song/mico/releases/download/v0.2.5/mico_linux_amd64
+	sha256sums_x86_64 = c9c9d2fea3ed6624fd6723ebfac9ae0372e51a65c531ba12776147e0ee3bf5a3
+	source_aarch64 = mico-bin-0.2.5-aarch64::https://github.com/Ray-D-Song/mico/releases/download/v0.2.5/mico_linux_arm64
+	sha256sums_aarch64 = f8837314b92dbaae95083002b0b6c2a0953ae203b53da218eb7c0a6403bd4a19
+
+pkgname = mico-bin
