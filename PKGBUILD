@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=pi-ext-goal
-pkgver=0.55.10
+pkgver=0.55.11
 pkgrel=1
 pkgdesc='Autonomous goal loop for the Pi coding agent: keeps working until the goal is verified complete'
 arch=('any')
@@ -16,7 +16,7 @@ _npmname=@narumitw/pi-goal
 _tarball=pi-goal
 
 source=("${_tarball}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_tarball}-${pkgver}.tgz")
-sha256sums=('b9c18c5fdf35dc32f8f6d37760181df414e48c99a090c34004ecf46e926a4b6a')
+sha256sums=('50df6baeec5f46155a281c0ccac00483e7bc7b89877d0fdff1709b3bc870e5b5')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${_npmname}/latest" | jq -r '.version'
