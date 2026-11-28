@@ -1,0 +1,20 @@
+pkgbase = prusa_exporter-bin
+	pkgdesc = Prometheus exporter for Prusa 3D printers
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/pubeldev/prusa_exporter
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	provides = prusa_exporter
+	conflicts = prusa_exporter
+	options = !debug
+	source = prusa_exporter-bin-2.0.0-LICENSE::https://raw.githubusercontent.com/pubeldev/prusa_exporter/2.0.0/LICENSE
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = prusa_exporter-bin-2.0.0-x86_64::https://github.com/pubeldev/prusa_exporter/releases/download/2.0.0/prusa_exporter-linux-amd64
+	sha256sums_x86_64 = 67b0a5704023905e73658b5c5f3fc3c10c302031d92a4301169bfa94839ec344
+	source_aarch64 = prusa_exporter-bin-2.0.0-aarch64::https://github.com/pubeldev/prusa_exporter/releases/download/2.0.0/prusa_exporter-linux-arm64
+	sha256sums_aarch64 = 5b0141b7cb55c51567e1c242e1768d5f124c983c88de05c7fe7108ed329e7719
+
+pkgname = prusa_exporter-bin
