@@ -1,32 +1,30 @@
-# Maintainer: Tomás Pinho <me(at)tomaspinho(dot)com>
+# Maintainer: JC Francois <jc+aur at noirextreme dot com>
 
 pkgname=rtl8821ce-dkms-git
 _pkgbase=rtl8821ce
-pkgver=1.0.5.r36.gca4abd8
+pkgver=r193.g884b755
 pkgrel=1
-pkgdesc="rtl8821CE driver with firmware"
+pkgdesc="rtl8821CE Wi-Fi driver"
 arch=('i686' 'x86_64')
-url="https://github.com/tomaspinho/rtl8821ce"
+url="https://github.com/sewaustav/rtl8821ce"
 license=('GPL2')
 depends=('dkms' 'bc')
 makedepends=('git' 'bc')
-conflicts=("${_pkgbase}")
-source=("git+https://github.com/tomaspinho/rtl8821ce.git")
-#        'dkms.conf')
+conflicts=("realtek-rtl8821ce-dkms-git")
+replaces=("realtek-rtl8821ce-dkms-git")
+source=("git+https://github.com/sewaustav/rtl8821ce")
 sha256sums=('SKIP')
-#            '3f401c2a8c862af919b1fdaaa4270ef18f674725035c9769590d529b9aa5c078')
-
+options=('!debug')
 
 pkgver() {
     cd ${srcdir}/rtl8821ce
-    printf '%s.r%s.g%s' '1.0.5' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
         cd ${srcdir}/rtl8821ce
         mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
         cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-        #cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
         # Set name and version
         sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
                         -e "s/@PKGVER@/${pkgver}/" \

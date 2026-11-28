@@ -1,20 +1,19 @@
 pkgbase = rtl8821ce-dkms-git
-	pkgdesc = rtl8821CE driver with firmware
-	pkgver = 1.0.5.r36.gca4abd8
+	pkgdesc = rtl8821CE Wi-Fi driver
+	pkgver = r193.g884b755
 	pkgrel = 1
-	url = https://github.com/tomaspinho/rtl8821ce
+	url = https://github.com/sewaustav/rtl8821ce
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = linux-headers
 	makedepends = bc
 	depends = dkms
-	depends = linux-headers
 	depends = bc
-	conflicts = rtl8821ce
-	source = git+https://github.com/tomaspinho/rtl8821ce.git
+	conflicts = realtek-rtl8821ce-dkms-git
+	replaces = realtek-rtl8821ce-dkms-git
+	options = !debug
+	source = git+https://github.com/sewaustav/rtl8821ce
 	sha256sums = SKIP
 
 pkgname = rtl8821ce-dkms-git
-
