@@ -1,7 +1,7 @@
 pkgbase = obs-audio-video-sync-dock
 	pkgdesc = Measuring latency between audio and video on OBS Studio
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/norihiro/obs-audio-video-sync-dock
 	arch = x86_64
 	arch = aarch64
