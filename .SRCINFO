@@ -1,0 +1,19 @@
+pkgbase = kornia-slam-bin
+	pkgdesc = Real-time visual-inertial SLAM built on kornia-rs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kornia/kornia-slam
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = kornia-slam
+	conflicts = kornia-slam
+	options = !debug
+	source_x86_64 = kornia-slam-bin-0.1.0-x86_64.tar.gz::https://github.com/kornia/kornia-slam/releases/download/v0.1.0/kornia-slam-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ebce2ded637cf603da7659758f5438553fd5e7f932cf1098f09cc18ab1dd8095
+	source_aarch64 = kornia-slam-bin-0.1.0-aarch64.tar.gz::https://github.com/kornia/kornia-slam/releases/download/v0.1.0/kornia-slam-v0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 44c884c07c52457956234c90de461636c77b2f23fb037f8115e1d9b224e9815a
+
+pkgname = kornia-slam-bin
