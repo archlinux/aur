@@ -1,0 +1,19 @@
+pkgbase = goiabada-bin
+	pkgdesc = OAuth2 and OpenID Connect server
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://github.com/leodip/goiabada
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = goiabada
+	conflicts = goiabada
+	options = !debug
+	source = goiabada-bin-1.12.0-LICENSE::https://raw.githubusercontent.com/leodip/goiabada/v1.12.0/LICENSE
+	sha256sums = d51f2335903ef820bcbbe3cb34f94cd53344eccb9328dd349e8f26fac804ae1d
+	source_x86_64 = goiabada-bin-1.12.0-x86_64.zip::https://github.com/leodip/goiabada/releases/download/v1.12.0/goiabada-1.12.0-linux-amd64.zip
+	sha256sums_x86_64 = 6b8e30a527a4ea921f3a243c45ebf87ebbdc76f24dc00bf093baa81bee3bbb03
+	source_aarch64 = goiabada-bin-1.12.0-aarch64.zip::https://github.com/leodip/goiabada/releases/download/v1.12.0/goiabada-1.12.0-linux-arm64.zip
+	sha256sums_aarch64 = eb4c78950f9a1098bd620fae67d23fa845432c6b876bf6cb56d4aad9ae505680
+
+pkgname = goiabada-bin
