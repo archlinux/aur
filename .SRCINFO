@@ -1,0 +1,22 @@
+pkgbase = patinae-bin
+	pkgdesc = Fast, programmable molecular viewer
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/zmactep/patinae
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	depends = fontconfig
+	depends = glibc
+	depends = libgcc
+	provides = patinae
+	conflicts = patinae
+	options = !debug
+	source = patinae-bin-0.5.4-LICENSE::https://raw.githubusercontent.com/zmactep/patinae/v0.5.4/LICENSE
+	sha256sums = d1c8735df7645749dc7a8d19dfc98b1c10406920aa09ba38a532b3971ae18906
+	source_x86_64 = patinae-bin-0.5.4-x86_64.tar.gz::https://github.com/zmactep/patinae/releases/download/v0.5.4/patinae-linux-x86_64.tar.gz
+	sha256sums_x86_64 = b986bdb3dfd5efbf240b5e4c6c8e260678a9c9594e574491cf87d7451b2b9aa1
+	source_aarch64 = patinae-bin-0.5.4-aarch64.tar.gz::https://github.com/zmactep/patinae/releases/download/v0.5.4/patinae-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4249db1899ea2fc3957d90500ff1b4ae708113962c1729985fa261bc19ef1962
+
+pkgname = patinae-bin
