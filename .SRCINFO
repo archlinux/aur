@@ -1,0 +1,17 @@
+pkgbase = linkpage-bin
+	pkgdesc = Self-hosted alternative to Linktree
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/rhnvrm/linkpage
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	provides = linkpage
+	conflicts = linkpage
+	options = !debug
+	source_x86_64 = linkpage-bin-0.5.0-x86_64.tar.gz::https://github.com/rhnvrm/linkpage/releases/download/v0.5.0/linkpage_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d395d89836c45373b34eca1a62d337dc06b17fe2f41068bf01e1d854bbb23dfb
+	source_aarch64 = linkpage-bin-0.5.0-aarch64.tar.gz::https://github.com/rhnvrm/linkpage/releases/download/v0.5.0/linkpage_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1a4bdcbb93d4aef4ae3690109a4659dda60c6bd6ad0353e9ed7771bbcabf68ec
+
+pkgname = linkpage-bin
