@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: 0BSD
 pkgname=sdat-bin
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Unofficial native GTK4 / Adwaita music streaming client for TIDAL'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=("sdat-desktop=$pkgver")
 conflicts=('sdat-desktop' 'tonearm')
 options=('!strip' '!debug')
 source=("$url/releases/download/desktop-v$pkgver/sdat-desktop-$pkgver-arch-x86_64.tar.zst")
-sha256sums=('f22fd096f9603e3004be49f74eb6f2aab4822f3f09746f746e6092e976088aa4')
+sha256sums=('eeafb1fadcef7f54022d19c4888b3c440df924cf4e758f6930c4698aa077a72b')
 
 package() {
     cp -a -- "$srcdir/usr" "$pkgdir/"
