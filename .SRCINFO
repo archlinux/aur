@@ -1,0 +1,18 @@
+pkgbase = jevlint-bin
+	pkgdesc = Linter that codifies code taste using Jev
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/codegirl-007/jevlint
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = jevlint
+	conflicts = jevlint
+	options = !debug
+	source_x86_64 = jevlint-bin-0.4.0-x86_64.tar.gz::https://github.com/codegirl-007/jevlint/releases/download/v0.4.0/jevlint_v0.4.0_linux-amd64.tar.gz
+	sha256sums_x86_64 = b3cb0e4cfc9df1cb90d81cd45d7b87052c38a1b13a85a199a80a446bdb97a5ab
+	source_aarch64 = jevlint-bin-0.4.0-aarch64.tar.gz::https://github.com/codegirl-007/jevlint/releases/download/v0.4.0/jevlint_v0.4.0_linux-arm64.tar.gz
+	sha256sums_aarch64 = c4fc49e5ae803407af378b0679f1e528e1f4899152ca6a5ef08c6b5025c071bd
+
+pkgname = jevlint-bin
