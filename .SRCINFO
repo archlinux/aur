@@ -1,0 +1,24 @@
+pkgbase = bubble-sandbox
+	pkgdesc = Python script execution with bubblewrap sandboxing
+	pkgver = 0.13
+	pkgrel = 1
+	url = https://pypi.org/project/bubble-sandbox/
+	arch = any
+	license = Unlincense
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv
+	makedepends = python-uv-build
+	depends = python
+	depends = python-pydantic
+	depends = python-pydantic-settings
+	depends = python-rich
+	depends = python-typer
+	depends = python-yaml
+	provides = bubble-sandbox
+	source = https://files.pythonhosted.org/packages/source/b/bubble_sandbox/bubble_sandbox-0.13.tar.gz
+	sha256sums = 45e6fbb6f23286c3ef8cdf95dc7c34f53169835d1ea7e58742f5ea84f2b3e27d
+
+pkgname = bubble-sandbox
