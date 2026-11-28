@@ -1,6 +1,6 @@
 pkgbase = proton-drive-for-linux-bin
 	pkgdesc = Unofficial Proton Drive client: FUSE files-on-demand mount, CLI, GTK4 app, tray (binaries)
-	pkgver = 3.10.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://proton-drive.narl.io
 	install = proton-drive.install
@@ -23,15 +23,15 @@ pkgbase = proton-drive-for-linux-bin
 	optdepends = xdg-utils: "Open folder" action in the tray menu
 	optdepends = fzf: search-as-you-type launcher (pdfs-prompt --fzf)
 	optdepends = foot: terminal that hosts pdfs-prompt --fzf when started from a keybinding
-	provides = proton-drive-for-linux=3.10.0
-	provides = proton-drive-linux=3.10.0
+	provides = proton-drive-for-linux=4.0.0
+	provides = proton-drive-linux=4.0.0
 	provides = pdfs
 	conflicts = proton-drive-linux
 	conflicts = proton-drive-for-linux
 	conflicts = proton-drive-for-linux-git
 	options = !strip
 	options = !debug
-	source = proton-drive-linux-3.10.0-x86_64.tar.gz::https://github.com/narrrl/proton-drive-linux/releases/download/v3.10.0/proton-drive-linux-3.10.0-x86_64.tar.gz
-	sha256sums = 464986f2516ecbe249f98570189bfd36c2f372205c4095eccd515325f113c651
+	source = proton-drive-linux-4.0.0-x86_64.tar.gz::https://github.com/narrrl/proton-drive-linux/releases/download/v4.0.0/proton-drive-linux-4.0.0-x86_64.tar.gz
+	sha256sums = e7f7f17f6c418ce26a8070abd0a10828112d25e77b70e6130d0e9bdabaafd2da
 
 pkgname = proton-drive-for-linux-bin

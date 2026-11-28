@@ -1,7 +1,7 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 
 pkgname=proton-drive-for-linux-bin
-pkgver=3.10.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Unofficial Proton Drive client: FUSE files-on-demand mount, CLI, GTK4 app, tray (binaries)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ _tag="v$pkgver"
 # (desktop files, icon, user service, translations, completions) in a /usr-like
 # tree under one directory.
 source=("proton-drive-linux-$pkgver-x86_64.tar.gz::$_repo/releases/download/$_tag/proton-drive-linux-$pkgver-x86_64.tar.gz")
-sha256sums=('464986f2516ecbe249f98570189bfd36c2f372205c4095eccd515325f113c651')
+sha256sums=('e7f7f17f6c418ce26a8070abd0a10828112d25e77b70e6130d0e9bdabaafd2da')
 
 package() {
   cd "$srcdir/proton-drive-linux-$pkgver-x86_64"
@@ -44,6 +44,8 @@ package() {
     "$pkgdir/etc/xdg/autostart/io.narl.proton-drive-linux-tray.desktop"
   install -Dm644 share/icons/hicolor/scalable/apps/io.narl.proton-drive-linux.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.narl.proton-drive-linux.svg"
+  install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/scalable/status" \
+    share/icons/hicolor/scalable/status/*.svg
 
   # systemd user unit for the auto-mount daemon; enabled per user, not by pacman.
   install -Dm644 lib/systemd/user/proton-drive.service \
