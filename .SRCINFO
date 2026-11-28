@@ -1,0 +1,17 @@
+pkgbase = govalid-bin
+	pkgdesc = Fast validation code generator for Go
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/sivchari/govalid
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = govalid
+	conflicts = govalid
+	options = !debug
+	source_x86_64 = govalid-bin-1.9.0-x86_64.tar.gz::https://github.com/sivchari/govalid/releases/download/v1.9.0/govalid_1.9.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 109652ca77fc46b9e9ed1e197f54d68da4fad1734bba913c91a72d1674f18768
+	source_aarch64 = govalid-bin-1.9.0-aarch64.tar.gz::https://github.com/sivchari/govalid/releases/download/v1.9.0/govalid_1.9.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 74416b5206d991672cc346ac77cbd5abc098fbd4bf7751b6f833aebc4718b356
+
+pkgname = govalid-bin
