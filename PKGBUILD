@@ -12,14 +12,14 @@ conflicts=('arf')
 options=('!debug')
 provides_x86_64=("arf=${pkgver}")
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/eitsupi/arf/releases/download/v${pkgver}/arf-console-x86_64-unknown-linux-gnu.tar.xz"
-                "https://raw.githubusercontent.com/eitsupi/arf/refs/tags/v${pkgver}/LICENSE.md")
+                "LICENSE-${pkgver}::https://raw.githubusercontent.com/eitsupi/arf/refs/tags/v${pkgver}/LICENSE.md")
 
 package() {
     cd "$srcdir"
 
     # Move the binary from the temporary install directory to the final location
     install -Dm755 "$srcdir/arf-console-x86_64-unknown-linux-gnu/arf" "$pkgdir/usr/bin/arf"
-    install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
 sha256sums_x86_64=('cb84a7c2725d39ec9a121bd4de43045e51ed2009d98a4d032234604dafcc5f90'
