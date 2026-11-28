@@ -1,6 +1,6 @@
 pkgbase = mantle-bin
 	pkgdesc = Wayland shell engine: bars, panels and lock screens written in Lua (release binaries)
-	pkgver = 0.16.1
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://github.com/anasgets111/mantle
 	arch = x86_64
@@ -26,14 +26,14 @@ pkgbase = mantle-bin
 	optdepends = fprintd: fingerprint unlock on the lock screen
 	optdepends = sound-theme-freedesktop: notification sounds
 	optdepends = lua-language-server: type-checking the config in an editor
-	provides = mantle=0.16.1
+	provides = mantle=0.16.2
 	conflicts = mantle
 	conflicts = mantle-git
 	options = !debug
 	options = !strip
 	backup = etc/pam.d/mantle
 	backup = etc/pam.d/mantle-fingerprint
-	source = https://github.com/anasgets111/mantle/releases/download/v0.16.1/mantle-0.16.1-x86_64-linux.tar.gz
-	sha256sums = b1f12bacfe5b9596959d1c99c113a87eab9e53d6a52e1a4cddbde5d293558e11
+	source = https://github.com/anasgets111/mantle/releases/download/v0.16.2/mantle-0.16.2-x86_64-linux.tar.gz
+	sha256sums = 6e350c65de2a026655ed31a1b08f76cd39b2cda9715c15b825ffc6658ea894e6
 
 pkgname = mantle-bin
