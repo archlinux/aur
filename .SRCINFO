@@ -1,0 +1,17 @@
+pkgbase = resgate-bin
+	pkgdesc = Realtime API gateway for NATS
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/resgateio/resgate
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = resgate
+	conflicts = resgate
+	options = !debug
+	source_x86_64 = resgate-bin-1.8.0-x86_64.zip::https://github.com/resgateio/resgate/releases/download/v1.8.0/resgate-v1.8.0-linux-amd64.zip
+	sha256sums_x86_64 = 3d403112ca7cd6d0fef43a8acf3e10cc4ff92e65cb2b873d313f45b5bd019bce
+	source_aarch64 = resgate-bin-1.8.0-aarch64.zip::https://github.com/resgateio/resgate/releases/download/v1.8.0/resgate-v1.8.0-linux-arm64.zip
+	sha256sums_aarch64 = d2e4c9e6bfb832957e88560202a00aded839148d838d9ad0a81feedfb6f02578
+
+pkgname = resgate-bin
