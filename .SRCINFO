@@ -1,0 +1,17 @@
+pkgbase = csv2xlsx-bin
+	pkgdesc = Convert CSV files to XLSX
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://github.com/mentax/csv2xlsx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = csv2xlsx
+	conflicts = csv2xlsx
+	options = !debug
+	source_x86_64 = csv2xlsx-bin-0.5.7-x86_64.tar.gz::https://github.com/mentax/csv2xlsx/releases/download/v0.5.7/csv2xlsx_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 3a99afe412e5d5e7c8a3fea70f3ca4a2d7f20aeb589fa992c5915539030f6a69
+	source_aarch64 = csv2xlsx-bin-0.5.7-aarch64.tar.gz::https://github.com/mentax/csv2xlsx/releases/download/v0.5.7/csv2xlsx_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 4a3c54d994ad15f3066e9e17aed526bc33909bcbfac423ea0a0bd0af426971ef
+
+pkgname = csv2xlsx-bin
