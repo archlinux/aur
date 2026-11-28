@@ -1,5 +1,5 @@
 pkgname=lfortran-git
-pkgver=r14109.8e4d53012
+pkgver=r32043.ab820ce2ef
 pkgrel=1
 pkgdesc="Modern interactive LLVM-based Fortran compiler"
 arch=('x86_64')
@@ -17,7 +17,6 @@ pkgver() {
 
 prepare () {
   cd lfortran
-  sed -i "/StaticZSTD/d" CMakeLists.txt
 }
 
 build() {
@@ -30,11 +29,11 @@ build() {
     -DWITH_LLVM=yes \
     -DWITH_RUNTIME_LIBRARY=yes \
     -DWITH_XEUS=yes \
-    -DWITH_ZLIB=yes \
     -DWITH_KOKKOS=yes \
-    -DWITH_FMT=yes \
+    -DWITH_ZLIB=yes \
+    -DWITH_ZSTD=yes \
+    -DUSE_DYNAMIC_ZSTD=yes \
     -DLFORTRAN_BUILD_ALL=ON
-
   cmake --build build --target all
 }
 
