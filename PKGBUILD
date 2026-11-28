@@ -5,12 +5,12 @@
 # systemd units and the service account. Built from release assets alone.
 # packaging/aur.sh sets pkgver and sha256sums for each release.
 pkgname=whatson-bin
-pkgver=2.0.54
+pkgver=2.0.57
 pkgrel=1
 pkgdesc='Television broadcast station emulator: channels from a local media library, with a program guide, a browser client and native clients'
 arch=('x86_64')
 url='https://github.com/Jbsco/whatsOn'
-license=('MIT' 'GPL-2.0-or-later' 'Apache-2.0')
+license=('AGPL-3.0-or-later' 'GPL-2.0-or-later' 'Apache-2.0')
 depends=('glibc' 'gcc-libs' 'ffmpeg' 'curl')
 optdepends=('libva-mesa-driver: VAAPI hardware transcoding on AMD'
             'intel-media-driver: VAAPI hardware transcoding on Intel')
@@ -27,7 +27,7 @@ source=("${_release}/${_server}"
         'whatson.sysusers'
         'whatson.tmpfiles')
 noextract=("${_server}" "${_linux}" "${_windows}")
-sha256sums=('bdc179a60a05b403d82259afaaf1b6b625d607ef5110f59050af68d80d6fbd63' 'eb3a403f1959efabf08fed11a90726241d75d2a3bb9577f0fb1b610c2cbd80e6' 'd9223b87523e80c64eec66857bbfccf4c356276629e2b91b15c2159bdf9d0db0' '8a4a4428b375d1117c78f5135fbeb7e6fc3a8a7c0e3eec4e0ca51b905a57291c' '2d546af65fde9161881d10e3cb2239b73e938a831af84d95c7574df8ffda8089')
+sha256sums=('0a5ca5db81b2591cd35e9da7428bc12e4def5a4dadbb9cd041884ee437995e44' 'a3eb56e7958d8f0809ebf9529b6fa9c15cb0f40a8a901ccdeb14393d853bc31c' 'dfe353227c9abc81c483d526e994b0f8d8b0faf842585c5c03d35a4f47308e0e' '8a4a4428b375d1117c78f5135fbeb7e6fc3a8a7c0e3eec4e0ca51b905a57291c' '2d546af65fde9161881d10e3cb2239b73e938a831af84d95c7574df8ffda8089')
 
 prepare() {
     rm -rf "${srcdir}/server"
