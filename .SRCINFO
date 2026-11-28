@@ -1,0 +1,16 @@
+pkgbase = mdmb-bin
+	pkgdesc = Simulate Apple devices talking to MDM servers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jessepeterson/mdmb
+	arch = x86_64
+	license = MIT
+	provides = mdmb
+	conflicts = mdmb
+	options = !debug
+	source = mdmb-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/jessepeterson/mdmb/v0.1.0/LICENSE
+	sha256sums = 1fc00965a64fd5ac6314f9d2b9df98a542234d410d628a886e4cd25d5d7eadb5
+	source_x86_64 = mdmb-bin-0.1.0-x86_64.zip::https://github.com/jessepeterson/mdmb/releases/download/v0.1.0/mdmb-linux-amd64-v0.1.0.zip
+	sha256sums_x86_64 = fd71851ebdd4baae9e7ab4b2493d3a495f4f12e43751beff85461ed5d4c16d81
+
+pkgname = mdmb-bin
