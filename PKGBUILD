@@ -5,7 +5,7 @@
 # Contributor: Philipp Überbacher <hollunder at gmx dot at>
 
 pkgname=qtractor-git
-pkgver=1.6.4.r6.gc152889a3
+pkgver=1.7.0.r13.g2ddec1d8b
 pkgrel=1
 pkgdesc="Audio/MIDI multitrack sequencer"
 arch=('x86_64')
