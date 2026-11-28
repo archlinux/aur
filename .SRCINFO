@@ -1,0 +1,19 @@
+pkgbase = bird-lg-go-bin
+	pkgdesc = BIRD looking glass
+	pkgver = 1.4.8
+	pkgrel = 1
+	url = https://github.com/xddxdd/bird-lg-go
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = bird-lg-go
+	conflicts = bird-lg-go
+	options = !debug
+	source = bird-lg-go-bin-1.4.8-LICENSE::https://raw.githubusercontent.com/xddxdd/bird-lg-go/v1.4.8/LICENSE
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = bird-lg-go-bin-1.4.8-x86_64.tar.gz::https://github.com/xddxdd/bird-lg-go/releases/download/v1.4.8/bird-lg-go-v1.4.8-linux-amd64.tar.gz
+	sha256sums_x86_64 = cba1622c9466c4a59c0a2ac2b8363aa74f6375c55dc78ac1a316989d88fc6356
+	source_aarch64 = bird-lg-go-bin-1.4.8-aarch64.tar.gz::https://github.com/xddxdd/bird-lg-go/releases/download/v1.4.8/bird-lg-go-v1.4.8-linux-arm64.tar.gz
+	sha256sums_aarch64 = 1d6dc7f7bc6e6f48066a59277a56ad4d48d0f5bcae84bdfcdc4fc19500addd5a
+
+pkgname = bird-lg-go-bin
