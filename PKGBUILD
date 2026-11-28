@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=protViz
-_pkgver=0.7.9
+_pkgver=0.7.14
 pkgname=r-${_pkgname,,}
-pkgver=0.7.9
+pkgver=0.7.14
 pkgrel=1
 pkgdesc='Visualizing and Analyzing Mass Spectrometry Related Data in Proteomics'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-xtable
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c7a9a1efead47140450c7cd72e1adaee1f432dee256c371dda766aa915c952f3')
+sha256sums=('4958c8a18a50b311293355a9f441c0e8b59c262afcd2e2bba651219c8064629b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
