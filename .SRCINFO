@@ -1,0 +1,17 @@
+pkgbase = gofer-bin
+	pkgdesc = Self-hosted multi-account email client with JMAP, IMAP, Gmail and Outlook support
+	pkgver = 0.26.0
+	pkgrel = 1
+	url = https://github.com/cristianadrielbraun/gofer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gofer
+	conflicts = gofer
+	options = !debug
+	source_x86_64 = gofer-bin-0.26.0-x86_64.tar.gz::https://github.com/cristianadrielbraun/gofer/releases/download/v0.26.0/gofer-v0.26.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 575f3ba44a981ed0215b0b6cdab0309ed6fcd80e45029512f85c9d67fd4ecc3c
+	source_aarch64 = gofer-bin-0.26.0-aarch64.tar.gz::https://github.com/cristianadrielbraun/gofer/releases/download/v0.26.0/gofer-v0.26.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 68d797998deed068c0fdae4aec25df8ee8c5513310c77fb182057a5b6d315c81
+
+pkgname = gofer-bin
