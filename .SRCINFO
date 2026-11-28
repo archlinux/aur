@@ -1,0 +1,22 @@
+pkgbase = gsc-tool-bin
+	pkgdesc = Compile and decompile IW engine game scripts
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/xensik/gsc-tool
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = gsc-tool
+	conflicts = gsc-tool
+	options = !debug
+	source = gsc-tool-bin-1.6.2-LICENSE::https://raw.githubusercontent.com/xensik/gsc-tool/1.6.2/LICENSE
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = gsc-tool-bin-1.6.2-x86_64.tar.gz::https://github.com/xensik/gsc-tool/releases/download/1.6.2/linux-amd64-release.tar.gz
+	sha256sums_x86_64 = ccd9f5062eccb26fe798f9a4d89bef71c019602aa2b90a4edd67011e2dcaf0b8
+	source_aarch64 = gsc-tool-bin-1.6.2-aarch64.tar.gz::https://github.com/xensik/gsc-tool/releases/download/1.6.2/linux-arm64-release.tar.gz
+	sha256sums_aarch64 = 6bcfc06679f635820f9963a36af88ad70600d900a969cb8b79cc6bf19a0db3bb
+
+pkgname = gsc-tool-bin
