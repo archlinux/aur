@@ -1,0 +1,19 @@
+pkgbase = skyinstaller-bin
+	pkgdesc = Installer for Trails in the Sky voice acting mods
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/chyyran/skyinstaller
+	arch = x86_64
+	license = MPL-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = skyinstaller
+	conflicts = skyinstaller
+	options = !debug
+	source = skyinstaller-bin-1.6.0-LICENSE::https://raw.githubusercontent.com/chyyran/skyinstaller/1.6.0/LICENSE.md
+	sha256sums = 86299535d4d06830eb8e53a37d074d7b51345eedfbe7edd89a1656bf35077662
+	source_x86_64 = skyinstaller-bin-1.6.0-x86_64::https://github.com/chyyran/skyinstaller/releases/download/1.6.0/skyinstaller-linux-x64
+	sha256sums_x86_64 = b65d1e8c3d3248805eca05fe1783796288a50a24e88ae45eb741f8a9e3ab6c31
+
+pkgname = skyinstaller-bin
