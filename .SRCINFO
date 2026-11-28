@@ -1,0 +1,16 @@
+pkgbase = dorea-bin
+	pkgdesc = Key-value data storage system
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/mrxiaozhuox/dorea
+	arch = x86_64
+	license = MIT
+	provides = dorea
+	conflicts = dorea
+	options = !debug
+	source = dorea-bin-0.4.0-LICENSE::https://raw.githubusercontent.com/mrxiaozhuox/dorea/v0.4.0/LICENSE
+	sha256sums = d708d35203304083137b3b5c28eaf65f802de62b0b52afe9736f8b804302cbad
+	source_x86_64 = dorea-bin-0.4.0-x86_64.tar.gz::https://github.com/mrxiaozhuox/dorea/releases/download/v0.4.0/dorea_v0.4.0_x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = af43b30dd81be2b3b5bb22e678ec72f2d09fbaa75419ab8278dc4fdb01900309
+
+pkgname = dorea-bin
