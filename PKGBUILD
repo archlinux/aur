@@ -1,7 +1,7 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 _pkgname=python-client
 pkgname="python-appium-$_pkgname"
-pkgver=6.5.0
+pkgver=6.5.2
 pkgrel=1
 pkgdesc="Python language bindings for Appium"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-selenium' 'python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-hatchling')
 # checkdepends=('python-pytest' 'python-httpretty' 'python-mock')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('afb83f8c57543ff1c790ef5cf4bcb2fe5ed57b202f9825aa5214690f340c0723')
+sha256sums=('facc2e9e0422dd1dd9a689964b519ead47509196d1fece45cf366f9f3888c1ee')
 
 build() {
   cd $_pkgname-$pkgver
