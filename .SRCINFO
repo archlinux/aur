@@ -1,0 +1,23 @@
+pkgbase = aino
+	pkgdesc = Offline all-in-one CLI converter for PDF, images, documents and OCR
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Raj-Jagadeesh-A-P/aino
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = poppler
+	depends = qpdf
+	depends = imagemagick
+	optdepends = img2pdf: lossless image to PDF
+	optdepends = ghostscript: PDF compression and PDF/A
+	optdepends = libreoffice-fresh: Office to/from PDF
+	optdepends = python-pdf2docx: higher fidelity PDF to DOCX (AUR)
+	optdepends = tesseract: OCR
+	optdepends = ocrmypdf: higher quality PDF OCR
+	optdepends = pandoc-cli: Markdown/HTML/text to PDF
+	optdepends = typst: default PDF engine for pandoc
+	source = https://github.com/Raj-Jagadeesh-A-P/aino/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = af2c410c23bc554de7ff82c1af3a8b9913d8ebf57d5e3ff40614f885f0ce3ec3
+
+pkgname = aino
