@@ -1,0 +1,22 @@
+pkgbase = crossdesk-server-bin
+	pkgdesc = Relay server for CrossDesk remote desktop
+	pkgver = 1.1.40
+	pkgrel = 1
+	url = https://github.com/kunkundi/crossdesk-server
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = crossdesk-server
+	conflicts = crossdesk-server
+	options = !debug
+	source = crossdesk-server-bin-1.1.40-LICENSE::https://raw.githubusercontent.com/kunkundi/crossdesk-server/v1.1.40/LICENSE
+	sha256sums = ea8af5e789cb2d4e9b10bce3874982ade163b749b6bfbdb32e2df21c4d106de1
+	source_x86_64 = crossdesk-server-bin-1.1.40-x86_64::https://github.com/kunkundi/crossdesk-server/releases/download/v1.1.40/crossdesk_server-linux-amd64
+	sha256sums_x86_64 = f6859687cb3e489b1f95cc93477010c0548a69427380937274fcd96a07926d4c
+	source_aarch64 = crossdesk-server-bin-1.1.40-aarch64::https://github.com/kunkundi/crossdesk-server/releases/download/v1.1.40/crossdesk_server-linux-arm64
+	sha256sums_aarch64 = 29d7e80d6167abb3ee2609e0793a25d7326c9c0c539a7c6c043523b26d5d7042
+
+pkgname = crossdesk-server-bin
