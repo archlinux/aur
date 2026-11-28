@@ -1,7 +1,7 @@
 pkgbase = mintstick
 	pkgdesc = A graphical tool that allows you to format USB sticks and create bootable USB sticks.
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/mintstick
 	arch = any
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = mintstick
 	depends = exfatprogs
 	depends = glib2
 	depends = gtk3
+	depends = mint-translations
 	depends = ntfsprogs
 	depends = parted
 	depends = polkit

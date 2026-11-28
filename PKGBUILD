@@ -2,7 +2,7 @@
 
 pkgname=mintstick
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical tool that allows you to format USB sticks and create bootable USB sticks."
 arch=('any')
 url="https://github.com/linuxmint/mintstick"
@@ -16,6 +16,7 @@ depends=(
     'exfatprogs'
     'glib2'
     'gtk3'
+    'mint-translations'
     'ntfsprogs'
     'parted'
     'polkit'
