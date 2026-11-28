@@ -1,0 +1,17 @@
+pkgbase = mcp-victorialogs-bin
+	pkgdesc = MCP server for VictoriaLogs
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/VictoriaMetrics/mcp-victorialogs
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = mcp-victorialogs
+	conflicts = mcp-victorialogs
+	options = !debug
+	source_x86_64 = mcp-victorialogs-bin-1.11.0-x86_64.tar.gz::https://github.com/VictoriaMetrics/mcp-victorialogs/releases/download/v1.11.0/mcp-victorialogs_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6aad84c707a395b7fcfa28dff6a436954344938d100d42e0eb3faddd3aa41151
+	source_aarch64 = mcp-victorialogs-bin-1.11.0-aarch64.tar.gz::https://github.com/VictoriaMetrics/mcp-victorialogs/releases/download/v1.11.0/mcp-victorialogs_Linux_arm64.tar.gz
+	sha256sums_aarch64 = bae8b6f7aec72a6e1c4fe6fc83552bbec35632fa82145dc83ea0fca05e55a792
+
+pkgname = mcp-victorialogs-bin
