@@ -1,0 +1,22 @@
+pkgbase = semtools-bin
+	pkgdesc = Semantic search and document parsing for the command line
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/run-llama/semtools
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = semtools
+	conflicts = semtools
+	options = !debug
+	source = semtools-bin-3.0.1-LICENSE::https://raw.githubusercontent.com/run-llama/semtools/v3.0.1/LICENSE
+	sha256sums = c37bf156c878f50518d00c7482e62e59108614236032601a8ce7adb3f145dada
+	source_x86_64 = semtools-bin-3.0.1-x86_64.tar.gz::https://github.com/run-llama/semtools/releases/download/v3.0.1/semtools-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f13d60ccbf64a9a7a9d8860d60f2b4fdf86a445d737220c5286b92e7eb87f54d
+	source_aarch64 = semtools-bin-3.0.1-aarch64.tar.gz::https://github.com/run-llama/semtools/releases/download/v3.0.1/semtools-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b7a4dccd10f3ad7b544e65943216304fa59195f486d06e25ace6e2ade38a4d2c
+
+pkgname = semtools-bin
