@@ -1,0 +1,20 @@
+pkgbase = gameap-bin
+	pkgdesc = Game server management panel
+	pkgver = 4.5.9
+	pkgrel = 1
+	url = https://github.com/gameap/gameap
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = gameap
+	conflicts = gameap
+	options = !debug
+	source = gameap-bin-4.5.9-LICENSE::https://raw.githubusercontent.com/gameap/gameap/v4.5.9/LICENSE
+	sha256sums = 97fabb1339d5d2ce08fe77cdc0bd86b606d831073a003aee8cfab0230a472927
+	source_x86_64 = gameap-bin-4.5.9-x86_64.tar.gz::https://github.com/gameap/gameap/releases/download/v4.5.9/gameap-v4.5.9-linux-amd64.tar.gz
+	sha256sums_x86_64 = 2eeed9d5437fcb27eaee24fc1f5d52b7e4de3d6bdf04bb155f4c1411255f7e6b
+	source_aarch64 = gameap-bin-4.5.9-aarch64.tar.gz::https://github.com/gameap/gameap/releases/download/v4.5.9/gameap-v4.5.9-linux-arm64.tar.gz
+	sha256sums_aarch64 = bc29bd62aef3fc7b1ffec99c1281a1c8ff42707a84d6e2a1085e59174506f1ab
+
+pkgname = gameap-bin
