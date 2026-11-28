@@ -1,6 +1,6 @@
 # Maintainer: paperbenni <paperbenni@gmail.com>
 pkgname=ins
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="A powerful command-line tool for managing dotfiles, system diagnostics, and instantOS configurations"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
     'ntfs-3g: for mounting Windows NTFS partitions (dual-boot)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/instantOS/instantCLI/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('65a41afc6def159301a3dad4f60b0091545ea330cf5abda91f7f20f1e261be88')
+sha256sums=('8c3afe4ed51f7eff3a29b367242f9af68a9009e6a85fdc821f7074e6a822e358')
 options=('!lto')  # Disable LTO as recommended for Rust packages
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = ins
 	pkgdesc = A powerful command-line tool for managing dotfiles, system diagnostics, and instantOS configurations
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://instantos.io
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = ins
 	replaces = instantupdate
 	replaces = instantwelcome
 	options = !lto
-	source = ins-0.17.0.tar.gz::https://github.com/instantOS/instantCLI/archive/refs/tags/v0.17.0.tar.gz
-	sha256sums = 65a41afc6def159301a3dad4f60b0091545ea330cf5abda91f7f20f1e261be88
+	source = ins-0.18.0.tar.gz::https://github.com/instantOS/instantCLI/archive/refs/tags/v0.18.0.tar.gz
+	sha256sums = 8c3afe4ed51f7eff3a29b367242f9af68a9009e6a85fdc821f7074e6a822e358
 
 pkgname = ins
