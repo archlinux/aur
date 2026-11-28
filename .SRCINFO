@@ -1,0 +1,17 @@
+pkgbase = kubectl-blame-bin
+	pkgdesc = kubectl plugin that shows who edited resource fields
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/knight42/kubectl-blame
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kubectl-blame
+	conflicts = kubectl-blame
+	options = !debug
+	source_x86_64 = kubectl-blame-bin-0.1.1-x86_64.tar.gz::https://github.com/knight42/kubectl-blame/releases/download/v0.1.1/kubectl-blame-v0.1.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = e20fad89ac3faa4e7032aead252dc0666bccdf2033fd6964eda4b6803ac5a2d0
+	source_aarch64 = kubectl-blame-bin-0.1.1-aarch64.tar.gz::https://github.com/knight42/kubectl-blame/releases/download/v0.1.1/kubectl-blame-v0.1.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 03f78d59ff898e2daace6ef1b232a3df77990cdacd440c11557a435257c5bf75
+
+pkgname = kubectl-blame-bin
