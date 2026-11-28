@@ -1,0 +1,16 @@
+pkgbase = jj_tui-bin
+	pkgdesc = Terminal UI for the Jujutsu version control system
+	pkgver = 0.22
+	pkgrel = 1
+	url = https://github.com/faldor20/jj_tui
+	arch = x86_64
+	license = MIT
+	provides = jj_tui
+	conflicts = jj_tui
+	options = !debug
+	source = jj_tui-bin-0.22-LICENSE::https://raw.githubusercontent.com/faldor20/jj_tui/v0.22/LICENSE
+	sha256sums = ee6c801f2f6f36d410a229e992791be72a3c57fe914e1cf6bdfeca57bf2fdf0e
+	source_x86_64 = jj_tui-bin-0.22-x86_64.tar.gz::https://github.com/faldor20/jj_tui/releases/download/v0.22/jj_tui-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e29e75a5f3a88e3eb098e0d2a0ea0572644e0923938402bb5e28b9cc1757c2b8
+
+pkgname = jj_tui-bin
