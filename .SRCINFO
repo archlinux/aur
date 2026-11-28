@@ -1,0 +1,19 @@
+pkgbase = goodls-bin
+	pkgdesc = Download shared files and folders from Google Drive
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/tanaikech/goodls
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = goodls
+	conflicts = goodls
+	options = !debug
+	source = goodls-bin-3.4.0-LICENSE::https://raw.githubusercontent.com/tanaikech/goodls/v3.4.0/LICENCE
+	sha256sums = 5d1734d93d4257cd1b4fcce1df05106048da5ef0929cebdeea8f7c65b98fe222
+	source_x86_64 = goodls-bin-3.4.0-x86_64::https://github.com/tanaikech/goodls/releases/download/v3.4.0/goodls_linux_amd64
+	sha256sums_x86_64 = c60fbefc793f8c8a4810c7ec6bc1afdcb0b19a20a8f23df0a82c0f4d1bc26b4f
+	source_aarch64 = goodls-bin-3.4.0-aarch64::https://github.com/tanaikech/goodls/releases/download/v3.4.0/goodls_linux_arm64
+	sha256sums_aarch64 = cdf49b42bc3a5b39313e36931fbf64f7959d07ff6289635600a49a2920e89169
+
+pkgname = goodls-bin
