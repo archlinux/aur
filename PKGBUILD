@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=resend-cli-bin
-pkgver=2.30.0
+pkgver=2.30.1
 pkgrel=1
 pkgdesc="Command-line interface for the Resend email API"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/resend/
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/resend-linux-x64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/resend-linux-arm64.tar.gz")
 sha256sums=('1959acb1978684aadd7cee9f1510fd9ea31bedac0bc4223de1fe5d2381f300c8')
-sha256sums_x86_64=('c18e28aeea30497c6e79feeb041199f88271abeb7149aae71a49ef7e661285a7')
-sha256sums_aarch64=('af96f74de741719e4ee00f7a9c3138697b305e0a4d61d642f512799b4f113476')
+sha256sums_x86_64=('19e0b998ea60aaf48de8f198dd4a0743ac6dbb18965e4d138c0183e7953fdf94')
+sha256sums_aarch64=('3e42ee1d78c94e81739f94054b5d82830015a263d467cfb0c920f241450dbfb3')
 
 package() {
   install -Dm755 "resend" "${pkgdir}/usr/bin/resend"
