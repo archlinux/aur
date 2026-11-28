@@ -1,0 +1,17 @@
+pkgbase = doc7-bin
+	pkgdesc = Turn documents into AI-ready Markdown with visual understanding
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/magicrew/doc7
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = doc7
+	conflicts = doc7
+	options = !debug
+	source_x86_64 = doc7-bin-0.1.2-x86_64.tar.gz::https://github.com/magicrew/doc7/releases/download/v0.1.2/doc7_v0.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2eb595ed2b085ab780888a5de2a2a038744d05a3e7cd53a4a4ccf490e0a97784
+	source_aarch64 = doc7-bin-0.1.2-aarch64.tar.gz::https://github.com/magicrew/doc7/releases/download/v0.1.2/doc7_v0.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = e53b580983c29a524b3682b7c06462d30534135a65cde0fd06a870a4cc11b7e5
+
+pkgname = doc7-bin
