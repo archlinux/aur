@@ -1,0 +1,22 @@
+pkgbase = pingclair-bin
+	pkgdesc = Web server and reverse proxy built on Cloudflare Pingora
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/dorianverlaine/pingclair
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = pingclair
+	conflicts = pingclair
+	options = !debug
+	source = pingclair-bin-0.2.3-LICENSE::https://raw.githubusercontent.com/dorianverlaine/pingclair/v0.2.3/LICENSE
+	sha256sums = 6c00b3d23697b9e7c39b962979bc769dd4b90a1bae52f0b67f487b2c561f1c13
+	source_x86_64 = pingclair-bin-0.2.3-x86_64.tar.gz::https://github.com/dorianverlaine/pingclair/releases/download/v0.2.3/pingclair-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 3f0d76ee9f1a2e34a6cd32c6e8220df5511c1915b1ec6b27d2af2b4097894c5e
+	source_aarch64 = pingclair-bin-0.2.3-aarch64.tar.gz::https://github.com/dorianverlaine/pingclair/releases/download/v0.2.3/pingclair-linux-aarch64.tar.gz
+	sha256sums_aarch64 = e1a57acc36e279e7af31f741e89533a12a193c7ba26dd5cd5dde1527fe56a34c
+
+pkgname = pingclair-bin
