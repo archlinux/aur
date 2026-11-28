@@ -1,0 +1,17 @@
+pkgbase = llmio-bin
+	pkgdesc = LLM gateway with weighted load balancing, observability and cost tracking
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = https://github.com/atopos31/llmio
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = llmio
+	conflicts = llmio
+	options = !debug
+	source_x86_64 = llmio-bin-0.10.4-x86_64.tar.gz::https://github.com/atopos31/llmio/releases/download/v0.10.4/llmio_0.10.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5192f95c54eb9aff6bf95dcad5fab2712a13f7b393eb83c1267032b2f37d3dde
+	source_aarch64 = llmio-bin-0.10.4-aarch64.tar.gz::https://github.com/atopos31/llmio/releases/download/v0.10.4/llmio_0.10.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 87850251391670268736c7a35473cdebca68842dc2f662c5d83a3728431b570d
+
+pkgname = llmio-bin
