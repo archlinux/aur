@@ -1,0 +1,19 @@
+pkgbase = outl-bin
+	pkgdesc = Local-first outliner
+	pkgver = 0.13.7
+	pkgrel = 1
+	url = https://github.com/outlmd/outl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = outl
+	conflicts = outl
+	options = !debug
+	source_x86_64 = outl-bin-0.13.7-x86_64.tar.gz::https://github.com/outlmd/outl/releases/download/v0.13.7/outl-linux-x64.tar.gz
+	sha256sums_x86_64 = 83716cdf66a206f7491016271b6ee9232c7baad80805f7fbab855b3b945c58f6
+	source_aarch64 = outl-bin-0.13.7-aarch64.tar.gz::https://github.com/outlmd/outl/releases/download/v0.13.7/outl-linux-arm64.tar.gz
+	sha256sums_aarch64 = ded2438d33a411bc9155792baa83812c13fa23998a0bfd86814be3b7f19c6e7a
+
+pkgname = outl-bin
