@@ -1,0 +1,19 @@
+pkgbase = defang-bin
+	pkgdesc = Develop once, deploy anywhere with Defang
+	pkgver = 3.16.1
+	pkgrel = 1
+	url = https://github.com/DefangLabs/defang
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = defang
+	conflicts = defang
+	options = !debug
+	source = defang-bin-3.16.1-LICENSE::https://raw.githubusercontent.com/DefangLabs/defang/v3.16.1/LICENSE
+	sha256sums = 247ea7420e81bed3bc84fe0aa8888b25fe7f117bae779c83c3e7756f57fcd391
+	source_x86_64 = defang-bin-3.16.1-x86_64.tar.gz::https://github.com/DefangLabs/defang/releases/download/v3.16.1/defang_3.16.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = c67e74ff53c28bf3319f603a63af770032e54e00cd8ee89bb3ddc31556cb2d62
+	source_aarch64 = defang-bin-3.16.1-aarch64.tar.gz::https://github.com/DefangLabs/defang/releases/download/v3.16.1/defang_3.16.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = af907c94bf9aa2466ebaa642c05a567683453d56eeee700dd77f9ef717a9a9d7
+
+pkgname = defang-bin
