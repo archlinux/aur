@@ -1,0 +1,19 @@
+pkgbase = herdr-mirror-bin
+	pkgdesc = Mirror remote herdr servers into your local sidebar over SSH
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/nikok6/herdr-mirror
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = herdr-mirror
+	conflicts = herdr-mirror
+	options = !debug
+	source = herdr-mirror-bin-0.4.3-LICENSE::https://raw.githubusercontent.com/nikok6/herdr-mirror/v0.4.3/LICENSE
+	sha256sums = 595b55294e43bcd8382cb690b501bae4368cafb2cde58164b694d2acfec3c950
+	source_x86_64 = herdr-mirror-bin-0.4.3-x86_64::https://github.com/nikok6/herdr-mirror/releases/download/v0.4.3/herdr-mirror-linux-x86_64
+	sha256sums_x86_64 = 15b64b4b93a58e94e70e69b462140699affbb28631737e539cca34bc09e9b628
+	source_aarch64 = herdr-mirror-bin-0.4.3-aarch64::https://github.com/nikok6/herdr-mirror/releases/download/v0.4.3/herdr-mirror-linux-aarch64
+	sha256sums_aarch64 = 798988320567dc0dd1fae8aa733ad6f857f1dc793cfbcf9fa81120af45a7897f
+
+pkgname = herdr-mirror-bin
