@@ -2,15 +2,18 @@
 
 pkgbase=purc-git
 pkgname=purc-git
-pkgver=0.9.19.r649.g77b2f5721
-pkgrel=3
+pkgver=1.0.0.r4.gff4cd4336
+pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=($CARCH)
 url="https://github.com/HVML/PurC"
 license=('LGPL-3.0-only')
-groups=(hvml-git
-    hybridos2-git)
-provides=(${pkgbase%-git}
+groups=(
+    hvml-git
+    hybridos2-git
+)
+provides=(
+    ${pkgbase%-git}
     csseng
     domruler
     purc-fetcher
@@ -20,22 +23,27 @@ provides=(${pkgbase%-git}
     libpurc-dvobj-MATH.so
     libpurc-fetcher.so
     libdomruler.so
-    libpurc.so)
+    libpurc.so
+)
 conflicts=(${pkgbase%-git})
-replaces=(domruler
-    purc-fetcher)
+replaces=(
+    domruler
+    purc-fetcher
+)
 depends=(
-    gcc-libs
     glib2
-    glibc
+    libgcc
     libgcrypt
+    libpng
     libsoup3
+    libstdc++
     libxml2
     ncurses
     sqlite
     openssl
     python
-    zlib)
+    zlib
+)
 makedepends=(
     #     avahi
     bison
@@ -64,13 +72,17 @@ makedepends=(
     systemd
     pkgconf
     xorgproto)
-checkdepends=(check
+checkdepends=(
+    check
     gtest
-    valgrind)
-optdepends=('python-numpy: Scientific tools for Python'
+    valgrind
+)
+optdepends=(
+    'python-numpy: Scientific tools for Python'
     'webkit2gtk-hvml: Web content engine for GTK (HVML)'
     'webkit2gtk: Web content engine for GTK'
-    'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
+    'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.'
+)
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 options=()
@@ -119,7 +131,7 @@ build() {
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_COMPILER=clang \
-        -Wno-dev \
+        -Wno-author \
         -B build \
         -G Ninja
 
