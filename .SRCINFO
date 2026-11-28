@@ -1,0 +1,17 @@
+pkgbase = openclaw-dashboard-bin
+	pkgdesc = Zero-dependency command center for OpenClaw AI agents
+	pkgver = 2026.9.7
+	pkgrel = 1
+	url = https://github.com/mudrii/openclaw-dashboard
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = openclaw-dashboard
+	conflicts = openclaw-dashboard
+	options = !debug
+	source_x86_64 = openclaw-dashboard-bin-2026.9.7-x86_64.tar.gz::https://github.com/mudrii/openclaw-dashboard/releases/download/v2026.9.7/openclaw-dashboard-linux-amd64.tar.gz
+	sha256sums_x86_64 = 5e92e2f8b99c51089843a18192727db9b6f105a8a4bca7a4d2a60132d6208339
+	source_aarch64 = openclaw-dashboard-bin-2026.9.7-aarch64.tar.gz::https://github.com/mudrii/openclaw-dashboard/releases/download/v2026.9.7/openclaw-dashboard-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8e5968414ee2ceb3d8b0fa7037dce0a38cd532d122d510f4360958a08c81ef62
+
+pkgname = openclaw-dashboard-bin
