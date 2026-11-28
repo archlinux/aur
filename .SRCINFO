@@ -1,0 +1,25 @@
+pkgbase = bootagent-bin
+	pkgdesc = Local management tool for AI agents
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/MaimoryLab/BootAgent
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = libsoup3
+	depends = libx11
+	depends = webkitgtk-6.0
+	provides = bootagent
+	conflicts = bootagent
+	options = !debug
+	source = bootagent-bin-0.9.0-LICENSE::https://raw.githubusercontent.com/MaimoryLab/BootAgent/v0.9.0/LICENSE
+	sha256sums = eafb109351230ca6a3950c68e5a1988c4e0f45adf8c0429ac05b477283ba4f0c
+	source_x86_64 = bootagent-bin-0.9.0-x86_64.zip::https://github.com/MaimoryLab/BootAgent/releases/download/v0.9.0/ota-BootAgent-linux-amd64.zip
+	sha256sums_x86_64 = bbef94e68c12541d9d80f78958f433c38b775fbea9395e6dd59bbbdbc5b24829
+	source_aarch64 = bootagent-bin-0.9.0-aarch64.zip::https://github.com/MaimoryLab/BootAgent/releases/download/v0.9.0/ota-BootAgent-linux-arm64.zip
+	sha256sums_aarch64 = a8e20289e0520e315f18abad9211cfd3f8b6fbf94a0285f8091ca2c2671cfa58
+
+pkgname = bootagent-bin
