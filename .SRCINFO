@@ -1,0 +1,15 @@
+pkgbase = droot-bin
+	pkgdesc = Simple chroot-based application container engine
+	pkgver = 0.7.7
+	pkgrel = 1
+	url = https://github.com/yuuki/droot
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = droot
+	conflicts = droot
+	options = !debug
+	source_x86_64 = droot-bin-0.7.7-x86_64.tar.gz::https://github.com/yuuki/droot/releases/download/v0.7.7/droot_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6490a2f9f74468463a41fbc045a4828ccb40841dc22f8df95c995084a8dbcacd
+
+pkgname = droot-bin
