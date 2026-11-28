@@ -1,0 +1,17 @@
+pkgbase = packetrusher-bin
+	pkgdesc = High-performance 5G UE/gNB simulator and load tester
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/HewlettPackard/PacketRusher
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = packetrusher
+	conflicts = packetrusher
+	options = !debug
+	source_x86_64 = packetrusher-bin-2.0.0-x86_64.tar.gz::https://github.com/HewlettPackard/PacketRusher/releases/download/v2.0.0/packetrusher-v2.0.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = b3e39af69ea9263298e24c6885b0aeb8ad9d0d2389ffc794d04b71a77d1a7ecb
+	source_aarch64 = packetrusher-bin-2.0.0-aarch64.tar.gz::https://github.com/HewlettPackard/PacketRusher/releases/download/v2.0.0/packetrusher-v2.0.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8527f163a0dc0c55d7ac9f846532157735ac78c3ec21775fa66edca855d788bd
+
+pkgname = packetrusher-bin
