@@ -1,6 +1,6 @@
 pkgbase = doubletake-git
 	pkgdesc = AirPlay mirroring sender for Linux (latest git commit)
-	pkgver = 0.6.0.r0.gbe27776
+	pkgver = 0.7.0.r0.g3c76832
 	pkgrel = 1
 	url = https://github.com/omarroth/doubletake
 	install = doubletake-git.install
@@ -19,6 +19,7 @@ pkgbase = doubletake-git
 	depends = gst-plugins-ugly
 	depends = gst-libav
 	depends = libpulse
+	optdepends = bash-completion: Bash command completion
 	optdepends = libfdk-aac: AAC-ELD audio support
 	optdepends = gst-plugin-pipewire: Wayland screen and audio capture
 	optdepends = gst-plugin-va: VA-API hardware encoding on AMD and Intel GPUs

@@ -1,6 +1,6 @@
 # Maintainer: Omar Roth <roth@omar.yt>
 pkgname=doubletake-git
-pkgver=0.6.0.r0.gbe27776
+pkgver=0.7.0.r0.g3c76832
 pkgrel=1
 pkgdesc='AirPlay mirroring sender for Linux (latest git commit)'
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=(
   'libpulse'
 )
 optdepends=(
+  'bash-completion: Bash command completion'
   'libfdk-aac: AAC-ELD audio support'
   'gst-plugin-pipewire: Wayland screen and audio capture'
   'gst-plugin-va: VA-API hardware encoding on AMD and Intel GPUs'
@@ -54,10 +55,5 @@ build() {
 package() {
   cd "${srcdir}/doubletake"
 
-  install -Dm755 bin/doubletake "${pkgdir}/usr/bin/doubletake"
-  install -Dm755 bin/doubletake-ctl "${pkgdir}/usr/bin/doubletake-ctl"
-  install -Dm644 man/man1/doubletake.1 "${pkgdir}/usr/share/man/man1/doubletake.1"
-  install -Dm644 man/man1/doubletake-ctl.1 "${pkgdir}/usr/share/man/man1/doubletake-ctl.1"
-  make DESTDIR="${pkgdir}" PREFIX=/usr SYSTEMDUSERDIR=/usr/lib/systemd/user install-systemd
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make DESTDIR="${pkgdir}" PREFIX=/usr LICENSEDIR="/usr/share/licenses/${pkgname}" install-prebuilt
 }
