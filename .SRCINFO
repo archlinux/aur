@@ -1,8 +1,9 @@
 pkgbase = diagmond
 	pkgdesc = D-Bus daemon for DiagNG privileged actions
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/P1sec/DiagNG
+	install = diagmond.install
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
@@ -14,7 +15,7 @@ pkgbase = diagmond
 	depends = polkit
 	depends = systemd-libs
 	options = !lto
-	source = DiagNG-0.1.7.tar.gz::https://github.com/P1sec/DiagNG/archive/0.1.7.tar.gz
-	sha256sums = 8d66f6bacff47c7b926e207f8d74a94ec7e071c2506b2569eb4300c22852f23e
+	source = DiagNG-0.1.8.tar.gz::https://github.com/P1sec/DiagNG/archive/0.1.8.tar.gz
+	sha256sums = af4056566f03799d6024f594308de62d4d8fcfd5e661367737a3ee1f8e441f08
 
 pkgname = diagmond
