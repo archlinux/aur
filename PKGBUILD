@@ -1,7 +1,7 @@
 # Maintainer: John Bergqvist <JohnLBergqvist at gmail dot com >
 
 pkgname=tbs-dvb-drivers-git-dkms
-pkgver=r11.8e731cd
+pkgver=r25.1f9e3f9
 pkgrel=1
 pkgdesc="DKMS package for TBS DVB drivers, tracking tbsdtv/linux_media upstream"
 arch=('x86_64')
@@ -36,6 +36,9 @@ package() {
 
     # Copy UPSTREAM_VERSION into destination directory
     install -Dm644 UPSTREAM_VERSION "${destdir}/UPSTREAM_VERSION"
+
+    # DKMS POST_INSTALL hook: puts back the kernel modules DKMS moves aside (must be executable)
+    install -Dm755 restore-original-modules.sh "${destdir}/restore-original-modules.sh"
 
     # Skip version check for modules — without this, DKMS refuses to install
     # if a same-named module is already shipped by linux/linux-lts. We want
