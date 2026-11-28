@@ -1,0 +1,19 @@
+pkgbase = talos-backup-bin
+	pkgdesc = Talos Linux aware etcd snapshotter
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/siderolabs/talos-backup
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	provides = talos-backup
+	conflicts = talos-backup
+	options = !debug
+	source = talos-backup-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/siderolabs/talos-backup/v0.1.0/LICENSE
+	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
+	source_x86_64 = talos-backup-bin-0.1.0-x86_64::https://github.com/siderolabs/talos-backup/releases/download/v0.1.0/talos-backup-linux-amd64
+	sha256sums_x86_64 = c96eb8c7c694c922f79fa230a4f3fb7bf05252a9675d86601bb8cb39575e03fd
+	source_aarch64 = talos-backup-bin-0.1.0-aarch64::https://github.com/siderolabs/talos-backup/releases/download/v0.1.0/talos-backup-linux-arm64
+	sha256sums_aarch64 = c916c0992a2576939b74f7112ac25d4a8d6bb3df37596cda2e8ce52e9fb3d04e
+
+pkgname = talos-backup-bin
