@@ -1,6 +1,6 @@
 pkgbase = alma-desktop
 	pkgdesc = Desktop AI agent harness and GUI client for herdr, repackaged from the official Linux release
-	pkgver = 0.4.1226
+	pkgver = 0.4.1246
 	pkgrel = 1
 	url = https://alma.now/
 	arch = x86_64
@@ -17,17 +17,17 @@ pkgbase = alma-desktop
 	optdepends = ffmpeg: H.264 video encoding for remote access
 	optdepends = gtk-layer-shell: Wayland layer shell windows
 	optdepends = libpulse: PulseAudio audio output
-	provides = alma-desktop-bin=0.4.1226
+	provides = alma-desktop-bin=0.4.1246
 	conflicts = alma-desktop-bin
 	conflicts = alma-appimage
-	noextract = alma-0.4.1226-linux-amd64.deb
-	noextract = alma-0.4.1226-linux-arm64.deb
+	noextract = alma-0.4.1246-linux-amd64.deb
+	noextract = alma-0.4.1246-linux-arm64.deb
 	options = !strip
 	options = !debug
 	options = !lto
-	source_x86_64 = alma-0.4.1226-linux-amd64.deb::https://github.com/yetone/alma-releases/releases/download/v0.4.1226/alma-0.4.1226-linux-amd64.deb
-	sha256sums_x86_64 = 7627f241be1eefb2459f43a093dc023fe4ab74207fb791997879202f47a76517
-	source_aarch64 = alma-0.4.1226-linux-arm64.deb::https://github.com/yetone/alma-releases/releases/download/v0.4.1226/alma-0.4.1226-linux-arm64.deb
-	sha256sums_aarch64 = 75124b028fcaf152fce16865add46ab0461ee3b3ea77adb4a5d8b755abf75c39
+	source_x86_64 = alma-0.4.1246-linux-amd64.deb::https://github.com/yetone/alma-releases/releases/download/v0.4.1246/alma-0.4.1246-linux-amd64.deb
+	sha256sums_x86_64 = 94846c82b29fc21d379fcafb9fdd87f929dafc34b4249036bfd27e8622a2f6a8
+	source_aarch64 = alma-0.4.1246-linux-arm64.deb::https://github.com/yetone/alma-releases/releases/download/v0.4.1246/alma-0.4.1246-linux-arm64.deb
+	sha256sums_aarch64 = f7186d8c653d23c2baeaedea14258d3f79fc7334a480d7760126c910eaaded44
 
 pkgname = alma-desktop

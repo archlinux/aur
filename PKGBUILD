@@ -2,7 +2,7 @@
 
 pkgname=alma-desktop
 _appname=alma
-pkgver=0.4.1226
+pkgver=0.4.1246
 pkgrel=1
 pkgdesc='Desktop AI agent harness and GUI client for herdr, repackaged from the official Linux release'
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ makedepends=('libarchive')
 provides=("alma-desktop-bin=${pkgver}")
 conflicts=('alma-desktop-bin' 'alma-appimage')
 options=('!strip' '!debug' '!lto')
-# upstream sha512 x86_64=lunTNJ3dKP6WTmQtfhfmw7SuAM2rbBd8Fv7xZPey03xCnuorl4zp69fcuIDCqClKYhuprerpQPDw0hUrXBCMYg==
-# upstream sha512 aarch64=6QJSffzRGMwVVbuYaAg6sUMCPD/5OPZ4/jLh5a/AX9dAaLxpztWDEkZ290AqLNDYucX7OTQyRNN59WWehZ5s5g==
+# upstream sha512 x86_64=Q9ekQKlhVYnH1IarFwjGc59Vdz64pFxxwL72hg+4uZoihVx7WdPGd1SSWCdHUZ7pPT8HvU5SRc6iv7GyF2MPbg==
+# upstream sha512 aarch64=dNgJTUthw1RySadK4pF6i4lPfLoscbulgI+C8U+qbmQj1IXLZK/rB/ISiMsgCRIM6WoEHXgzME/bmk1xV5/e3w==
 source_x86_64=(
   "${_appname}-${pkgver}-linux-amd64.deb::https://github.com/yetone/alma-releases/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-amd64.deb"
 )
@@ -38,8 +38,8 @@ noextract=(
   "${_appname}-${pkgver}-linux-amd64.deb"
   "${_appname}-${pkgver}-linux-arm64.deb"
 )
-sha256sums_x86_64=('7627f241be1eefb2459f43a093dc023fe4ab74207fb791997879202f47a76517')
-sha256sums_aarch64=('75124b028fcaf152fce16865add46ab0461ee3b3ea77adb4a5d8b755abf75c39')
+sha256sums_x86_64=('94846c82b29fc21d379fcafb9fdd87f929dafc34b4249036bfd27e8622a2f6a8')
+sha256sums_aarch64=('f7186d8c653d23c2baeaedea14258d3f79fc7334a480d7760126c910eaaded44')
 
 package() {
   local deb_arch extract_dir
