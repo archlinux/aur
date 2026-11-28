@@ -2,7 +2,7 @@
 
 pkgname=gtw-bin
 _pkgname=gtw
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Wikipedia in your terminal: cached reading, rich rendering, inline media, and offline lists (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("$_pkgname")
 options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/gtw-arch-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/gtw-arch-aarch64.tar.gz")
-sha256sums_x86_64=('c206189cd833aff3fa2967f96cc1e9cc8e4df71e34a99a47d304cc03a5920ae4')
-sha256sums_aarch64=('98e197655ca7284f5bd104e11d72321641281aff822d24bc07a27b0f4f972d01')
+sha256sums_x86_64=('83ae028704870aafb972e5e62a149869262cb9e3cff0d246bc38e67f354da317')
+sha256sums_aarch64=('f57447a92cb3d71b0e020ba7963954ca2b455b229a63f5fbf6852850582f6c46')
 
 package() {
   cd "$srcdir/gtw-arch-$CARCH"
