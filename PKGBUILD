@@ -2,9 +2,9 @@
 
 pkgname=aps-git
 _pkgname="${pkgname%-git}"
-pkgver=1.3.1.r36.7cf9f60
+pkgver=1.3.5.r78.0237d8a
 pkgrel=1
-pkgdesc="A fast and powerful patterns searcher for AUR package sources (git version)"
+pkgdesc="A fast and powerful patterns searcher for AUR packages sources (git version)"
 url="https://github.com/Antiz96/aps"
 arch=('x86_64' 'aarch64')
 license=('GPL-3.0-or-later')
