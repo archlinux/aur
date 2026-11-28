@@ -1,0 +1,20 @@
+pkgbase = amp-acp-bin
+	pkgdesc = ACP adapter for Amp Code
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/tao12345666333/amp-acp
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = amp-acp
+	conflicts = amp-acp
+	options = !debug
+	source = amp-acp-bin-0.13.0-LICENSE::https://raw.githubusercontent.com/tao12345666333/amp-acp/v0.13.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = amp-acp-bin-0.13.0-x86_64.tar.gz::https://github.com/tao12345666333/amp-acp/releases/download/v0.13.0/amp-acp-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 205c819383b6fd389b408120ebea9cdde5c2957530b5ce4ebc912998d4118f8b
+	source_aarch64 = amp-acp-bin-0.13.0-aarch64.tar.gz::https://github.com/tao12345666333/amp-acp/releases/download/v0.13.0/amp-acp-linux-aarch64.tar.gz
+	sha256sums_aarch64 = ad7e1c23ec29bf47f757d656fc4c9a957dd60533da034213a6bc7d33d1813d32
+
+pkgname = amp-acp-bin
