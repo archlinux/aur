@@ -2,8 +2,8 @@
 # Contributor: sem.z <sem.z at protonmail dot com>
 
 pkgname="orca-slicer-latest-bin"
-pkgver=2.5.2
-_pkgver=2.5.2
+pkgver=2.5.3
+_pkgver=2.5.3
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (all published versions - alpha/beta/release candidates and stable)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("orca-slicer")
 conflicts=("orca-slicer" "orca-slicer-unstable-bin")
 replaces=("orca-slicer-unstable-bin")
 source=("https://github.com/OrcaSlicer/OrcaSlicer/releases/download/v${_pkgver}/OrcaSlicer_Linux_AppImage_Ubuntu2404_V${_pkgver}.AppImage")
-sha512sums=('5de9ad329041cbac0cec65af181d11b4140542598011d84096e55b8fed88f826c0cd631bc5c3a618b608f56ea907fc6e6f92c009e18d6151998178991e597f50')
+sha512sums=('cac89c07085353d1c9e1212391365dc67ee97292afbdaf7bb276d91fe6f3babf4443172db89a6242448a69ec843b65f7dce212d168692a941076c5f61a1d5e7c')
 options=('!strip' '!debug')
 
 prepare() {
