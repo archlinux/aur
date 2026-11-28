@@ -1,0 +1,22 @@
+pkgbase = zakura-bin
+	pkgdesc = Zcash full node
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/zakura-core/zakura
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = zakura
+	conflicts = zakura
+	options = !debug
+	source = zakura-bin-1.9.0-LICENSE::https://raw.githubusercontent.com/zakura-core/zakura/v1.9.0/LICENSE-APACHE
+	sha256sums = f8f096ab5ee815515b5db3c5764754cb2efa38f19e9d93dfe509c09850b2ecc2
+	source_x86_64 = zakura-bin-1.9.0-x86_64.tar.gz::https://github.com/zakura-core/zakura/releases/download/v1.9.0/zakurad-v1.9.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 7436aae1d8d9ca7e2e76141a98673e371ce8b4502544eef9151efa247e878bf8
+	source_aarch64 = zakura-bin-1.9.0-aarch64.tar.gz::https://github.com/zakura-core/zakura/releases/download/v1.9.0/zakurad-v1.9.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = b77373aa3f81277ca3dcb327659dc04d9653c24031ea493bc56804357d605c1d
+
+pkgname = zakura-bin
