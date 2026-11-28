@@ -1,0 +1,21 @@
+pkgbase = baro-bin
+	pkgdesc = Turn a goal into a pull request with concurrent AI coding agents
+	pkgver = 0.136.0
+	pkgrel = 1
+	url = https://github.com/jigjoy-ai/baro
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = baro
+	conflicts = baro
+	options = !debug
+	source = baro-bin-0.136.0-LICENSE::https://raw.githubusercontent.com/jigjoy-ai/baro/v0.136.0/LICENSE
+	sha256sums = 765d4188eb0dc15763754c0d0357e1defdeba1417170309816c3390841e79a06
+	source_x86_64 = baro-bin-0.136.0-x86_64::https://github.com/jigjoy-ai/baro/releases/download/v0.136.0/baro-linux-x64
+	sha256sums_x86_64 = dc8c5ef86a2989b3d33644682cbb042bd4437ba49932bcc802af8428e1378374
+	source_aarch64 = baro-bin-0.136.0-aarch64::https://github.com/jigjoy-ai/baro/releases/download/v0.136.0/baro-linux-arm64
+	sha256sums_aarch64 = 2d87658ea07e6b273adc0fe254684a9af918b365cc43dc08cba43007a11d6c2d
+
+pkgname = baro-bin
