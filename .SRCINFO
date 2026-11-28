@@ -1,0 +1,17 @@
+pkgbase = mmar-bin
+	pkgdesc = Self-hostable HTTP tunnel that exposes localhost on a public URL
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/yusuf-musleh/mmar
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = mmar
+	conflicts = mmar
+	options = !debug
+	source_x86_64 = mmar-bin-0.4.3-x86_64.tar.gz::https://github.com/yusuf-musleh/mmar/releases/download/v0.4.3/mmar_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8f8450fc47d76ec3774cc8f5dec442fda32ec88c836e78c8e101a5c52eeb8e55
+	source_aarch64 = mmar-bin-0.4.3-aarch64.tar.gz::https://github.com/yusuf-musleh/mmar/releases/download/v0.4.3/mmar_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 6e1b68d2b478a355ac51408aaf6ca2a2f1350e7951d402e227d8e5b5a51ee535
+
+pkgname = mmar-bin
