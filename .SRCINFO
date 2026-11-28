@@ -1,0 +1,15 @@
+pkgbase = conntracct-bin
+	pkgdesc = Low-overhead real-time network traffic monitoring with eBPF and conntrack
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/ti-mo/conntracct
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = conntracct
+	conflicts = conntracct
+	options = !debug
+	source_x86_64 = conntracct-bin-0.2.7-x86_64.tar.gz::https://github.com/ti-mo/conntracct/releases/download/0.2.7/conntracct_0.2.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = 18e8b24343d7655083c3964bb349c7c62f13021b327583fd972c38566128a727
+
+pkgname = conntracct-bin
