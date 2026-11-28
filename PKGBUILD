@@ -20,7 +20,7 @@ depends=(
     'python-gobject'
     'xapp'
 )
-source=("${pkgname}-${pkgver}.tar.xz::http://packages.linuxmint.com/pool/main/m/${pkgname}_${pkgver}.tar.xz")
+source=("${pkgname}-${pkgver}.tar.xz::http://packages.linuxmint.com/pool/main/m/${pkgname}/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('2866fc34a8626cf9da591205f178fbac843e39075e821170ce5e48389b2259df')
 
 prepare() {
