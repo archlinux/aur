@@ -1,0 +1,18 @@
+pkgbase = urdf-viz-bin
+	pkgdesc = Visualize URDF and XACRO robot description files
+	pkgver = 0.46.1
+	pkgrel = 1
+	url = https://github.com/openrr/urdf-viz
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = urdf-viz
+	conflicts = urdf-viz
+	options = !debug
+	source = urdf-viz-bin-0.46.1-LICENSE::https://raw.githubusercontent.com/openrr/urdf-viz/v0.46.1/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = urdf-viz-bin-0.46.1-x86_64.tar.gz::https://github.com/openrr/urdf-viz/releases/download/v0.46.1/urdf-viz-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 64db78dfdad2b36ded29b92050c550b0864075ada64953b6d17decab742250d7
+
+pkgname = urdf-viz-bin
