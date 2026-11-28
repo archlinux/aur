@@ -1,19 +1,19 @@
 pkgbase = tidyrs-bin
 	pkgdesc = Fast, Prettier-style code formatter written in Rust
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/lukeed/tidy
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = tidyrs=2.1.0
+	provides = tidyrs=2.1.1
 	conflicts = tidyrs
 	options = !debug
-	source = LICENSE-2.1.0::https://raw.githubusercontent.com/lukeed/tidy/v2.1.0/license
+	source = LICENSE-2.1.1::https://raw.githubusercontent.com/lukeed/tidy/v2.1.1/license
 	sha256sums = ba573393f24555ac0528612ad39665fab5bdcc80330a61096024bbf5f736526d
-	source_x86_64 = tidy-2.1.0-x86_64.tar.gz::https://github.com/lukeed/tidy/releases/download/v2.1.0/tidy-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = cba1c797d840b5dd9488f038759fe973a6afbb671129e99914ce3636b3b7cd4a
-	source_aarch64 = tidy-2.1.0-aarch64.tar.gz::https://github.com/lukeed/tidy/releases/download/v2.1.0/tidy-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 2a4ec9db537b41422e6d74e74181a71916594f46c2bc1f66ad40681359971cbc
+	source_x86_64 = tidy-2.1.1-x86_64.tar.gz::https://github.com/lukeed/tidy/releases/download/v2.1.1/tidy-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 28e092f900747aad34a97c78873d9394b169ae4387f61bea66609752b63d23c7
+	source_aarch64 = tidy-2.1.1-aarch64.tar.gz::https://github.com/lukeed/tidy/releases/download/v2.1.1/tidy-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 29cf25e430be7c8707b8aa958690ccb47dba7513b55718e8d677def75e4ed18f
 
 pkgname = tidyrs-bin
