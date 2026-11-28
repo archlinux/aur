@@ -1,14 +1,14 @@
 # Maintainer: Zesko
 pkgname="limine-mkinitcpio-hook-git"
 _pkgname="limine-entry-tool"
-pkgver=r681.8ddce44
+pkgver=r682.5e6be0c
 pkgrel=1
 pkgdesc="Install kernels for the Limine bootloader."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Zesko/limine-entry-tool"
 source=("${_pkgname}::git+${url}.git")
-source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.5.5.0.3/graalvm-community-jdk-25i5-25.0.5.0.3_linux-x64_bin.tar.gz")
-source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.5.5.0.3/graalvm-community-jdk-25i5-25.0.5.0.3_linux-aarch64_bin.tar.gz")
+source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.6.5.1/graalvm-community-jdk-25i6-25.0.5.1_linux-x64_bin.tar.gz")
+source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.6.5.1/graalvm-community-jdk-25i6-25.0.5.1_linux-aarch64_bin.tar.gz")
 license=("GPL3")
 provides=('limine-entry-tool')
 options=(!debug !strip)
@@ -27,8 +27,8 @@ optdepends=(
 )
 makedepends=('git' 'gradle')
 sha256sums=('SKIP')
-sha256sums_x86_64=('c6438dee6c3ade2220d40b7ccdcad24b512d30e233e61bb4fc70519522de34ef')
-sha256sums_aarch64=('41741c0650ae7564a78335f9e4fc353a902e6ff1d4140f2e4fabd1c55d5cce66')
+sha256sums_x86_64=('d792848db26f1602f0a5cf2cd9279d9a652d32ab450d891ce616c9ca67e359d0')
+sha256sums_aarch64=('d8e6edf0009bb5d70c6a670eb030d36aa804795427306434c0f7f63c01435307')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-entry-tool')
 
