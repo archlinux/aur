@@ -1,7 +1,7 @@
 # Maintainer: Joël Müller <mail@joelmueller.ch>
 
 pkgname=dopeiptv-git
-pkgver=1.6.12.r0.gaba26fe
+pkgver=1.7.0.r0.g4fdd199
 pkgrel=1
 pkgdesc='Linux IPTV player with Xtream Codes, M3U, EPG, timeshift, recording and multiview (git version)'
 arch=('any')
