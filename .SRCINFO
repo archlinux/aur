@@ -1,0 +1,17 @@
+pkgbase = archivista-bin
+	pkgdesc = Graph and storage service for in-toto attestations
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/in-toto/archivista
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = archivista
+	conflicts = archivista
+	options = !debug
+	source_x86_64 = archivista-bin-0.11.1-x86_64.tar.gz::https://github.com/in-toto/archivista/releases/download/v0.11.1/archivista_0.11.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1ed2a61c2c8bd6d41243954209d66e5b2816898a568da87cb8534aab3b6032c8
+	source_aarch64 = archivista-bin-0.11.1-aarch64.tar.gz::https://github.com/in-toto/archivista/releases/download/v0.11.1/archivista_0.11.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = db225f64e97c8a5e8611c29b6d0fc9e813dcf4af24cfb4835a4ebec60806b29d
+
+pkgname = archivista-bin
