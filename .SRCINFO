@@ -1,0 +1,19 @@
+pkgbase = leetsolv-bin
+	pkgdesc = Spaced repetition CLI for data structures and algorithms practice
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/eannchen/leetsolv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = leetsolv
+	conflicts = leetsolv
+	options = !debug
+	source = leetsolv-bin-1.2.0-LICENSE::https://raw.githubusercontent.com/eannchen/leetsolv/v1.2.0/LICENSE
+	sha256sums = deefa239c1cdf6beb36d07d7e59a3d80c58bc44a111880c3fcaf090f0133c8d4
+	source_x86_64 = leetsolv-bin-1.2.0-x86_64::https://github.com/eannchen/leetsolv/releases/download/v1.2.0/leetsolv-linux-amd64
+	sha256sums_x86_64 = 5f8c9d188287042a5a3392cd6da45d4d5275708805f97d6ad1da788dabbf6df2
+	source_aarch64 = leetsolv-bin-1.2.0-aarch64::https://github.com/eannchen/leetsolv/releases/download/v1.2.0/leetsolv-linux-arm64
+	sha256sums_aarch64 = b000d59691a22da80821e087fa4cb2b76aaf3a967adac864fee21b2cfda0cbdb
+
+pkgname = leetsolv-bin
