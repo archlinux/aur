@@ -1,0 +1,19 @@
+pkgbase = purrcode-bin
+	pkgdesc = Judgment-first coding agent runtime
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Weilin0723/PurrCode
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = purrcode
+	conflicts = purrcode
+	options = !debug
+	source_x86_64 = purrcode-bin-1.0.0-x86_64.tar.gz::https://github.com/Weilin0723/PurrCode/releases/download/v1.0.0/purrcode-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9ab0df9661f97ab757a0a1bcbdaae42bd85f6f13536fd25169e2defa363eb470
+	source_aarch64 = purrcode-bin-1.0.0-aarch64.tar.gz::https://github.com/Weilin0723/PurrCode/releases/download/v1.0.0/purrcode-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 418b10348c5f1459840836ede60581d8411c411dd9019d54c3c7f6d77ddbc5be
+
+pkgname = purrcode-bin
