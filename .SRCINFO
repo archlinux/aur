@@ -1,0 +1,11 @@
+pkgbase = ttf-luciole-mono-git
+	pkgdesc = Monospace font derived from Luciole for terminals and code editors
+	pkgver = r21.512adfb
+	pkgrel = 1
+	url = https://scriptor-pro.github.io/luciole-mono/
+	arch = any
+	license = CC-BY-4.0
+	source = luciole-mono::git+https://github.com/scriptor-pro/luciole-mono.git
+	sha256sums = SKIP
+
+pkgname = ttf-luciole-mono-git
