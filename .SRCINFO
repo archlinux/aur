@@ -1,0 +1,17 @@
+pkgbase = druid-exporter-bin
+	pkgdesc = Prometheus exporter for Apache Druid
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://github.com/opstree/druid-exporter
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = druid-exporter
+	conflicts = druid-exporter
+	options = !debug
+	source = druid-exporter-bin-0.11-LICENSE::https://raw.githubusercontent.com/opstree/druid-exporter/v0.11/LICENSE
+	sha256sums = 7ad26e9c93aec78f23ed8006cf29e307d3003cbac42456054636e1827cdd5109
+	source_x86_64 = druid-exporter-bin-0.11-x86_64.tar.gz::https://github.com/opstree/druid-exporter/releases/download/v0.11/druid-exporter-v0.11-linux-amd64.tar.gz
+	sha256sums_x86_64 = c41589d0a7e17018f1fe85dfc2e7f296beeec4515e0a18f332543c043ece1146
+
+pkgname = druid-exporter-bin
