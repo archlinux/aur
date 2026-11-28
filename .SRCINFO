@@ -1,0 +1,19 @@
+pkgbase = live777-bin
+	pkgdesc = Low-latency WebRTC SFU with RTP/RTSP gateway
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/binbat/live777
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	depends = glibc
+	depends = libgcc
+	provides = live777
+	conflicts = live777
+	options = !debug
+	source_x86_64 = live777-bin-0.10.2-x86_64.tar.gz::https://github.com/binbat/live777/releases/download/v0.10.2/live777-v0.10.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 83b5780c0efeb0a06a6d568c9a176b45269492ad88418918655bbd011cb33d9a
+	source_aarch64 = live777-bin-0.10.2-aarch64.tar.gz::https://github.com/binbat/live777/releases/download/v0.10.2/live777-v0.10.2-aarch64-linux-android.tar.gz
+	sha256sums_aarch64 = b380b60e314dce6ed9458af1a0ea58bb1d96d433b85f26dd6f6e0f1da9a2ae07
+
+pkgname = live777-bin
