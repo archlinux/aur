@@ -1,0 +1,17 @@
+pkgbase = agentsecrets-bin
+	pkgdesc = Zero-knowledge credential infrastructure for AI agents
+	pkgver = 3.3.7
+	pkgrel = 1
+	url = https://github.com/The-17/agentsecrets
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = agentsecrets
+	conflicts = agentsecrets
+	options = !debug
+	source_x86_64 = agentsecrets-bin-3.3.7-x86_64.tar.gz::https://github.com/The-17/agentsecrets/releases/download/v3.3.7/agentsecrets_3.3.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = ea2b79d616792673b4dc79d00a3fe4897c998d60b9237ec2a5e2ff35e947bf32
+	source_aarch64 = agentsecrets-bin-3.3.7-aarch64.tar.gz::https://github.com/The-17/agentsecrets/releases/download/v3.3.7/agentsecrets_3.3.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0d985b1809b92e047a02596ebdc27c8098e080c28bddf79143de7e5155272d24
+
+pkgname = agentsecrets-bin
