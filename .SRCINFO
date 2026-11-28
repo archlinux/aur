@@ -1,0 +1,15 @@
+pkgbase = jargo-bin
+	pkgdesc = Real-time voice AI agents over WebRTC, phone and LiveKit
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/gojargo/jargo
+	arch = x86_64
+	license = BSD-2-Clause
+	depends = glibc
+	provides = jargo
+	conflicts = jargo
+	options = !debug
+	source_x86_64 = jargo-bin-1.0.0-x86_64.tar.gz::https://github.com/gojargo/jargo/releases/download/v1.0.0/jargo_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = de3a15faf3724bf3132cd41cf4bd80296d4b647cfba5486a218b3aa02b541712
+
+pkgname = jargo-bin
