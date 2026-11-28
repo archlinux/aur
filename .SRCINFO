@@ -1,0 +1,19 @@
+pkgbase = paxm-bin
+	pkgdesc = Persistent, provider-neutral memory for AI coding agents
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/pax-beehive/paxm
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = paxm
+	conflicts = paxm
+	options = !debug
+	source = paxm-bin-0.2.6-LICENSE::https://raw.githubusercontent.com/pax-beehive/paxm/v0.2.6/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = paxm-bin-0.2.6-x86_64.tar.gz::https://github.com/pax-beehive/paxm/releases/download/v0.2.6/paxm_v0.2.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = e3f23faf7c2bfbe6159a3880dcbedaaaf8e510cde84c288e4e141c78b99cc5f7
+	source_aarch64 = paxm-bin-0.2.6-aarch64.tar.gz::https://github.com/pax-beehive/paxm/releases/download/v0.2.6/paxm_v0.2.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 48f74f32daf6c95793f1c74ba4069782c92dc23e1c546cbfc5b31449fa4725db
+
+pkgname = paxm-bin
