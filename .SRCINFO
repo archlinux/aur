@@ -1,6 +1,6 @@
 pkgbase = super-paste-bin
 	pkgdesc = Native GPUI clipboard manager with OCR and settings synchronization (upstream binary)
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/Teddy-Zhu/super_paste_app
 	arch = x86_64
@@ -27,13 +27,13 @@ pkgbase = super-paste-bin
 	provides = super-paste
 	conflicts = super-paste
 	conflicts = super-paste-rs
-	noextract = super-paste_1.0.3_x86_64-unknown-linux-gnu.deb
+	noextract = super-paste_1.0.4_x86_64-unknown-linux-gnu.deb
 	options = !strip
 	options = !debug
 	options = !lto
-	source = super-paste_1.0.3_x86_64-unknown-linux-gnu.deb::https://github.com/Teddy-Zhu/super_paste_app/releases/download/v1.0.3/super-paste_1.0.3_x86_64-unknown-linux-gnu.deb
-	source = LICENSE::https://raw.githubusercontent.com/Teddy-Zhu/super_paste_app/v1.0.3/LICENSE
-	sha256sums = 0d5e7cc830cc89c7f41bc1494896308c8e10e2c5eb0bcfca8d3b5dd91942d56c
+	source = super-paste_1.0.4_x86_64-unknown-linux-gnu.deb::https://github.com/Teddy-Zhu/super_paste_app/releases/download/v1.0.4/super-paste_1.0.4_x86_64-unknown-linux-gnu.deb
+	source = LICENSE::https://raw.githubusercontent.com/Teddy-Zhu/super_paste_app/v1.0.4/LICENSE
+	sha256sums = e1f73fb9b3d1e716894fa7029304d7c75da7d6cf84d7e26fc862485087b86f59
 	sha256sums = a8f796fa5f04306af3584fd06051cc72673585b80ed604843df1fd385bc12971
 
 pkgname = super-paste-bin

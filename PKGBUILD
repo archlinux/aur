@@ -1,5 +1,5 @@
 pkgname=super-paste-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Native GPUI clipboard manager with OCR and settings synchronization (upstream binary)'
 arch=('x86_64')
@@ -12,12 +12,12 @@ optdepends=('kwin: KDE Plasma 6 Wayland integration'
 provides=('super-paste')
 conflicts=('super-paste' 'super-paste-rs')
 options=('!strip' '!debug' '!lto')
-_upstreamver='1.0.3'
+_upstreamver='1.0.4'
 _debfile="super-paste_${_upstreamver}_x86_64-unknown-linux-gnu.deb"
 source=("${_debfile}::${url}/releases/download/v${_upstreamver}/${_debfile}"
         "LICENSE::https://raw.githubusercontent.com/Teddy-Zhu/super_paste_app/v${_upstreamver}/LICENSE")
 noextract=("${_debfile}")
-sha256sums=('0d5e7cc830cc89c7f41bc1494896308c8e10e2c5eb0bcfca8d3b5dd91942d56c'
+sha256sums=('e1f73fb9b3d1e716894fa7029304d7c75da7d6cf84d7e26fc862485087b86f59'
             'a8f796fa5f04306af3584fd06051cc72673585b80ed604843df1fd385bc12971')
 
 package() {
