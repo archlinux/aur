@@ -1,0 +1,20 @@
+pkgbase = filebin2-bin
+	pkgdesc = Web application for convenient file sharing
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/espebra/filebin2
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	depends = glibc
+	provides = filebin2
+	conflicts = filebin2
+	options = !debug
+	source = filebin2-bin-1.5.1-LICENSE::https://raw.githubusercontent.com/espebra/filebin2/v1.5.1/LICENSE
+	sha256sums = 929813693817a606e9da16f2b7f62ae67e9f98687cbcf5f425143f29b004e9d4
+	source_x86_64 = filebin2-bin-1.5.1-x86_64::https://github.com/espebra/filebin2/releases/download/v1.5.1/filebin2-linux-amd64
+	sha256sums_x86_64 = b00ac827d2602e7e9fda702be7cbd1a12d2d09313929c0adf6278d7cb74c549e
+	source_aarch64 = filebin2-bin-1.5.1-aarch64::https://github.com/espebra/filebin2/releases/download/v1.5.1/filebin2-linux-arm64
+	sha256sums_aarch64 = 10d355b36cfa531e6a6c44bfc51c0b29b2c30ade6d996c9861f9d5c994f5443a
+
+pkgname = filebin2-bin
