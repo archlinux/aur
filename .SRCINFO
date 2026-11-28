@@ -1,0 +1,19 @@
+pkgbase = tfplan2md-bin
+	pkgdesc = Convert Terraform plans into readable Markdown
+	pkgver = 1.48.0
+	pkgrel = 1
+	url = https://github.com/oocx/tfplan2md
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tfplan2md
+	conflicts = tfplan2md
+	options = !debug
+	source = tfplan2md-bin-1.48.0-LICENSE::https://raw.githubusercontent.com/oocx/tfplan2md/v1.48.0/LICENSE
+	sha256sums = 9f167dc18993c8881ae6bbd9b9b231c9cc2f04a78f6969436a024109387b32c9
+	source_x86_64 = tfplan2md-bin-1.48.0-x86_64.tar.gz::https://github.com/oocx/tfplan2md/releases/download/v1.48.0/tfplan2md_1.48.0_linux-x64.tar.gz
+	sha256sums_x86_64 = 31e086e167dc5978fc1a40c752dfd7df1df5fdc8708fd9e2a4c56dd603660139
+	source_aarch64 = tfplan2md-bin-1.48.0-aarch64.tar.gz::https://github.com/oocx/tfplan2md/releases/download/v1.48.0/tfplan2md_1.48.0_linux-arm64.tar.gz
+	sha256sums_aarch64 = d5f5a481eeb49bff3255a0c1ec3fb512f40d999924702589b2003d5acca06d4b
+
+pkgname = tfplan2md-bin
