@@ -1,0 +1,17 @@
+post_install() {
+    echo "=== headset-tui installed ==="
+    echo ""
+    echo "Configuring Waybar..."
+    bash /usr/share/headset-tui/install-waybar-config.sh
+    echo ""
+    echo "✓ Installation complete!"
+    echo ""
+    echo "Default configuration created at ~/.config/headset-tui/config.toml"
+    echo "Press 'c' in the TUI to configure keybindings and default sidetone."
+    echo ""
+    echo "Usage: headset-tui"
+}
+
+post_upgrade() {
+    post_install
+}
