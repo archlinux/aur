@@ -1,0 +1,20 @@
+pkgbase = slothdb-bin
+	pkgdesc = Experimental embedded SQL engine
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/SouravRoy-ETL/slothdb
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
+	provides = slothdb
+	conflicts = slothdb
+	options = !debug
+	source = slothdb-bin-0.2.7-LICENSE::https://raw.githubusercontent.com/SouravRoy-ETL/slothdb/v0.2.7/LICENSE
+	sha256sums = 654091f14d955ea04fee3d78c7e0d6a2c7b55851df0ecd7c0f1be0d8a7f2799f
+	source_x86_64 = slothdb-bin-0.2.7-x86_64::https://github.com/SouravRoy-ETL/slothdb/releases/download/v0.2.7/slothdb-linux-x64
+	sha256sums_x86_64 = 6976509996e486aa3b2044dde222e759e02b7a2f13b1a068b6eefdf59bfbd3f0
+
+pkgname = slothdb-bin
