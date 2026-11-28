@@ -1,0 +1,21 @@
+pkgbase = circuit-bin
+	pkgdesc = Declarative, vendor-neutral network configuration
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://circuit.tako.id
+	arch = x86_64
+	arch = aarch64
+	license = BUSL-1.1
+	depends = glibc
+	provides = circuit
+	conflicts = circuit
+	options = !strip
+	options = !debug
+	source = circuit-LICENSE-1.4.0::https://raw.githubusercontent.com/takodotid/circuit/v1.4.0/LICENSE
+	sha256sums = afd812a79bb66d98a9710892edf51a1d69bc12b93c4b2a040d9d5be2ee1d546e
+	source_x86_64 = circuit-1.4.0-amd64::https://github.com/takodotid/circuit/releases/download/v1.4.0/circuit-linux-x64
+	sha256sums_x86_64 = 6341d3702c15365661eaa35b22b4eaf73139b0f3f084110985691895f1544b02
+	source_aarch64 = circuit-1.4.0-arm64::https://github.com/takodotid/circuit/releases/download/v1.4.0/circuit-linux-arm64
+	sha256sums_aarch64 = c22201871747a8799ef8a4c224938a469a2072d6998c234658d7df922176d4f8
+
+pkgname = circuit-bin
