@@ -1,0 +1,19 @@
+pkgbase = fastvep-bin
+	pkgdesc = High-performance variant effect predictor
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/Huang-lab/fastVEP
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = fastvep
+	conflicts = fastvep
+	options = !debug
+	source_x86_64 = fastvep-bin-0.6.2-x86_64.tar.gz::https://github.com/Huang-lab/fastVEP/releases/download/v0.6.2/fastVEP-v0.6.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e855f88d68653426f8ec528edbb98d389ef94ec68c011522e489c024a4cd7b4c
+	source_aarch64 = fastvep-bin-0.6.2-aarch64.tar.gz::https://github.com/Huang-lab/fastVEP/releases/download/v0.6.2/fastVEP-v0.6.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 91e6ec1d74043751ca43bcecb2cca6120fa609d3e684ca13a3ee07dd71467e53
+
+pkgname = fastvep-bin
