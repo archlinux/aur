@@ -1,0 +1,19 @@
+pkgbase = cuttlefish-bin
+	pkgdesc = Build compacted de Bruijn graphs from references or reads
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/COMBINE-lab/cuttlefish
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	depends = glibc
+	depends = libgcc
+	provides = cuttlefish
+	conflicts = cuttlefish
+	options = !debug
+	source_x86_64 = cuttlefish-bin-3.1.0-x86_64.tar.xz::https://github.com/COMBINE-lab/cuttlefish/releases/download/v3.1.0/cuttlefish-rs-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 9932306a51f3ef35f73a5e77169c69325502cf5274831ccd1fcdd89103fedd70
+	source_aarch64 = cuttlefish-bin-3.1.0-aarch64.tar.xz::https://github.com/COMBINE-lab/cuttlefish/releases/download/v3.1.0/cuttlefish-rs-cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 7cb9f4f7264366636d87004cdae412f88e4c8748b54d548b2423a1691dd0887d
+
+pkgname = cuttlefish-bin
