@@ -1,0 +1,17 @@
+pkgbase = outside-bin
+	pkgdesc = Multi-purpose terminal weather client
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/BaconIsAVeg/outside
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = outside
+	conflicts = outside
+	options = !debug
+	source_x86_64 = outside-bin-0.5.0-x86_64.tar.gz::https://github.com/BaconIsAVeg/outside/releases/download/v0.5.0/outside-0.5.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 28568c09a05ba9b254491d12531fee9237e7d8c081e01281cf0cfaec43c388ad
+	source_aarch64 = outside-bin-0.5.0-aarch64.tar.gz::https://github.com/BaconIsAVeg/outside/releases/download/v0.5.0/outside-0.5.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 60a8749558e1b466fdf96ddf89e4c8d51a43bdcc1a704a2e9c680b614a79e24a
+
+pkgname = outside-bin
