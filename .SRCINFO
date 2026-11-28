@@ -1,0 +1,19 @@
+pkgbase = node-cert-exporter-bin
+	pkgdesc = Prometheus exporter for SSL certificates
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://github.com/amimof/node-cert-exporter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = node-cert-exporter
+	conflicts = node-cert-exporter
+	options = !debug
+	source = node-cert-exporter-bin-1.1.8-LICENSE::https://raw.githubusercontent.com/amimof/node-cert-exporter/v1.1.8/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = node-cert-exporter-bin-1.1.8-x86_64::https://github.com/amimof/node-cert-exporter/releases/download/v1.1.8/node-cert-exporter-linux-amd64
+	sha256sums_x86_64 = e5878acbacdc72e16161bbed44e08b6f051a183e85c80f5e435947a8b99061e4
+	source_aarch64 = node-cert-exporter-bin-1.1.8-aarch64::https://github.com/amimof/node-cert-exporter/releases/download/v1.1.8/node-cert-exporter-linux-arm64
+	sha256sums_aarch64 = 53c34a888cb5ddee5d1d9c03b74fb077c208ebbeefca98e9b66e806239fbc5ce
+
+pkgname = node-cert-exporter-bin
