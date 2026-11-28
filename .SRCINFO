@@ -1,0 +1,17 @@
+pkgbase = heygen-cli-bin
+	pkgdesc = Create AI videos from the terminal with HeyGen
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/heygen-com/heygen-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = heygen-cli
+	conflicts = heygen-cli
+	options = !debug
+	source_x86_64 = heygen-cli-bin-0.13.0-x86_64.tar.gz::https://github.com/heygen-com/heygen-cli/releases/download/v0.13.0/heygen_v0.13.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 38b8e74f514dca2633f5c45cc180e42483a6105216d7abbe4cdf3e15a76b1016
+	source_aarch64 = heygen-cli-bin-0.13.0-aarch64.tar.gz::https://github.com/heygen-com/heygen-cli/releases/download/v0.13.0/heygen_v0.13.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9388d9ea28e1257935ae472a5914e16502145f84c1a70776b223af76bd5e5799
+
+pkgname = heygen-cli-bin
