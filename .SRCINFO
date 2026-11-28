@@ -1,0 +1,19 @@
+pkgbase = mwb-linux-bin
+	pkgdesc = Mouse Without Borders for Linux, sharing keyboard, mouse and clipboard with Windows
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/lucky-verma/mwb-linux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mwb-linux
+	conflicts = mwb-linux
+	options = !debug
+	source = mwb-linux-bin-0.6.4-LICENSE::https://raw.githubusercontent.com/lucky-verma/mwb-linux/v0.6.4/LICENSE
+	sha256sums = 1bcb1eafb6809c53bd056d59c8a42178191b19726253e687700ca1efb6676f85
+	source_x86_64 = mwb-linux-bin-0.6.4-x86_64::https://github.com/lucky-verma/mwb-linux/releases/download/v0.6.4/mwb-linux-amd64
+	sha256sums_x86_64 = af7bc442c269430525b3958b19ca2ca96ea581defdb8e3ffbcd3e421db85d496
+	source_aarch64 = mwb-linux-bin-0.6.4-aarch64::https://github.com/lucky-verma/mwb-linux/releases/download/v0.6.4/mwb-linux-arm64
+	sha256sums_aarch64 = 2ecf65ae3ff6e12623074e7de41df0dc3b47fb127f043c4782a8a1dda547965d
+
+pkgname = mwb-linux-bin
