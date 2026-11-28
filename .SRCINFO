@@ -1,0 +1,17 @@
+pkgbase = grpcbin-bin
+	pkgdesc = httpbin-like test server for gRPC
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/moul/grpcbin
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = grpcbin
+	conflicts = grpcbin
+	options = !debug
+	source_x86_64 = grpcbin-bin-1.0.8-x86_64.tar.gz::https://github.com/moul/grpcbin/releases/download/v1.0.8/grpcbin_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = f0bee2e90ff136863ab7ce28d2021cf9c6df9d81d6cd73492f6560ae7c6b70aa
+	source_aarch64 = grpcbin-bin-1.0.8-aarch64.tar.gz::https://github.com/moul/grpcbin/releases/download/v1.0.8/grpcbin_Linux_arm64.tar.gz
+	sha256sums_aarch64 = bb59e30804465768b7dcd07f972aedfbce5046f144a1502445c36eb2e147cf5e
+
+pkgname = grpcbin-bin
