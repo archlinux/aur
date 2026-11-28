@@ -1,0 +1,17 @@
+pkgbase = waf-detector-bin
+	pkgdesc = WAF and CDN detection tool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ammarion/waf-detector
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = waf-detector
+	conflicts = waf-detector
+	options = !debug
+	source_x86_64 = waf-detector-bin-0.1.0-x86_64.tar.gz::https://github.com/ammarion/waf-detector/releases/download/v0.1.0/waf-detect-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d7fdb5236838c3d24d8851ebf3a54c83e6529a3cdc266990fc159a752597e10d
+
+pkgname = waf-detector-bin
