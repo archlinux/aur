@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=rustinel-bin
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Endpoint detection with Sigma, YARA and IOC rules on native telemetry"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/Karib0u
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/rustinel-${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/rustinel-${pkgver}-aarch64-unknown-linux-musl.tar.gz")
 sha256sums=('58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd')
-sha256sums_x86_64=('230cebfbcfec58c42cccf7a52eb38128dc31b41274afd7a08e3222e7868af7f1')
-sha256sums_aarch64=('fd4688308fbae88847f5ac31aecf1a198c8b3b801ad143cde484992860d43747')
+sha256sums_x86_64=('8fcaac4ce27e49dbd1e585f387151586a109bc423396ad022f4e876616c7c364')
+sha256sums_aarch64=('36983b7028cd1faa465cb7e64b7dc20026dc4a7d040c9baf411edb9a72bfe450')
 
 package() {
   local _dir
