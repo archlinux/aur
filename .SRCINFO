@@ -1,0 +1,17 @@
+pkgbase = miabi-bin
+	pkgdesc = Self-hosted platform-as-a-service with GitOps, registry and monitoring
+	pkgver = 1.10.32
+	pkgrel = 1
+	url = https://github.com/miabi-io/miabi
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = miabi
+	conflicts = miabi
+	options = !debug
+	source_x86_64 = miabi-bin-1.10.32-x86_64.tar.gz::https://github.com/miabi-io/miabi/releases/download/v1.10.32/miabi_1.10.32_linux_amd64.tar.gz
+	sha256sums_x86_64 = 08df84ef6181118a503bd5911abbead9238f3dc85548efadcf29d6afa0af1ba0
+	source_aarch64 = miabi-bin-1.10.32-aarch64.tar.gz::https://github.com/miabi-io/miabi/releases/download/v1.10.32/miabi_1.10.32_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1d3bd99d3e4dd814f1da3abde68c16eab10eae3b61a4945878d20bf4c6fb5ec3
+
+pkgname = miabi-bin
