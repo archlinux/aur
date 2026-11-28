@@ -1,0 +1,16 @@
+pkgbase = sivtr-bin
+	pkgdesc = Shared memory workspace for humans and AI agents
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/Ariestar/sivtr
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = sivtr
+	conflicts = sivtr
+	options = !debug
+	source_x86_64 = sivtr-bin-0.10.0-x86_64.tar.gz::https://github.com/Ariestar/sivtr/releases/download/v0.10.0/sivtr-v0.10.0-linux-x64.tar.gz
+	sha256sums_x86_64 = 54128c4d03deb07e12cf89d672dcf08221f8ed69642aea5643c67b623ee4b395
+
+pkgname = sivtr-bin
