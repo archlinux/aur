@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults: Hornero Signal themes, compositor, terminal, GTK/Qt, fonts, XDG handlers"
 arch=('any')
@@ -26,9 +26,11 @@ depends=('bash' 'git' 'polkit-gnome' 'python' 'ttf-ibm-plex')
 makedepends=('librsvg')
 optdepends=(
   'hyprland: compositor defaults under /etc/xdg/hypr'
+  'xdg-desktop-portal-hyprland: portal backend for Hyprland sessions'
   'niri: compositor defaults in /etc/niri (fallback) and ~/.config/niri'
   'xdg-desktop-portal-gtk: default fallback portal and file chooser for Niri sessions'
   'xdg-desktop-portal-gnome: screencasting portal for Niri sessions'
+  'flatpak: sandboxed desktop applications and Flathub remote integration'
   'xwayland-satellite: XWayland bridge for Niri sessions'
   'kitty: terminal defaults under /etc/xdg/kitty'
   'alacritty: optional terminal with factory defaults under /etc/alacritty'
@@ -65,7 +67,7 @@ optdepends=(
 # AUR chroot builds identical to local packaging/ builds.
 install=hornero-config.install
 backup=('etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf')
-source=("config::git+https://github.com/HorneroOS/config.git#commit=ddd533567d7cb72331fb2eab5277b3bb964a11c9")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=22ec9499b25544795f164839f9ceba6781a577bd")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -149,8 +151,10 @@ package() {
       # User-unit masks are system-wide defaults, so install only those files
       # at systemd's real user-unit configuration path.
       if [[ -d "$entry/user" ]]; then
-        mkdir -p "$pkgdir/etc/systemd/user"
+        mkdir -p "$pkgdir/etc/systemd/user/default.target.wants"
         cp -a "$entry/user/." "$pkgdir/etc/systemd/user/"
+        ln -sfn ../hornero-flathub-setup.service \
+          "$pkgdir/etc/systemd/user/default.target.wants/hornero-flathub-setup.service"
       fi
       continue
     fi
@@ -267,6 +271,12 @@ package() {
   mkdir -p "$pkgdir/usr/share/hornero/lib"
   cp -a "$stage/.local/lib/hornero" "$pkgdir/usr/share/hornero/lib/hornero"
   cp -aL "$stage/.local/bin"/hornero-* "$pkgdir/usr/share/hornero/bin/"
+  # Hornero Apps trust policy read-only baseline + desktop launcher entries.
+  install -Dm644 "$repo_root/desktop/hornero-apps/policy.json" \
+    "$pkgdir/usr/share/hornero/apps/policy.json"
+  install -dm755 "$pkgdir/usr/share/applications"
+  install -m644 "$stage/.local/share/applications"/*.desktop \
+    "$pkgdir/usr/share/applications/"
   mkdir -p "$pkgdir/usr/share/hornero/themes"
   cp -a "$stage/.local/share/hornero/themes/." "$pkgdir/usr/share/hornero/themes/"
   # Hornero Chromatic: first-party app templates rendered by horneroctl
@@ -343,13 +353,13 @@ package() {
     "$pkgdir/etc/systemd/user" "$pkgdir/etc/wireplumber" \
     "$pkgdir/usr/lib/systemd/system-preset" \
     "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
-    "$pkgdir/usr/share/ghostty/themes" \
+    "$pkgdir/usr/share/ghostty/themes" "$pkgdir/usr/share/applications" \
     -type d -exec chmod 755 {} +
   find "$pkgdir/etc/xdg" "$pkgdir/etc/alacritty" "$pkgdir/etc/skel" \
     "$pkgdir/etc/systemd/user" "$pkgdir/etc/wireplumber" \
     "$pkgdir/usr/lib/systemd/system-preset" \
     "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
-    "$pkgdir/usr/share/ghostty/themes" \
+    "$pkgdir/usr/share/ghostty/themes" "$pkgdir/usr/share/applications" \
     -type f -exec chmod 644 {} +
   chmod 755 "$pkgdir"/usr/share/hornero/bin/hornero-*
 

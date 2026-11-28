@@ -1,6 +1,6 @@
 pkgbase = hornero-config
 	pkgdesc = HorneroOS curated desktop defaults: Hornero Signal themes, compositor, terminal, GTK/Qt, fonts, XDG handlers
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/HorneroOS/config
 	install = hornero-config.install
@@ -15,9 +15,11 @@ pkgbase = hornero-config
 	depends = python
 	depends = ttf-ibm-plex
 	optdepends = hyprland: compositor defaults under /etc/xdg/hypr
+	optdepends = xdg-desktop-portal-hyprland: portal backend for Hyprland sessions
 	optdepends = niri: compositor defaults in /etc/niri (fallback) and ~/.config/niri
 	optdepends = xdg-desktop-portal-gtk: default fallback portal and file chooser for Niri sessions
 	optdepends = xdg-desktop-portal-gnome: screencasting portal for Niri sessions
+	optdepends = flatpak: sandboxed desktop applications and Flathub remote integration
 	optdepends = xwayland-satellite: XWayland bridge for Niri sessions
 	optdepends = kitty: terminal defaults under /etc/xdg/kitty
 	optdepends = alacritty: optional terminal with factory defaults under /etc/alacritty
@@ -49,7 +51,7 @@ pkgbase = hornero-config
 	optdepends = thunar-volman: removable-media handling for Thunar
 	optdepends = nm-connection-editor: NetworkManager connection editor
 	backup = etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf
-	source = config::git+https://github.com/HorneroOS/config.git#commit=ddd533567d7cb72331fb2eab5277b3bb964a11c9
+	source = config::git+https://github.com/HorneroOS/config.git#commit=22ec9499b25544795f164839f9ceba6781a577bd
 	sha256sums = SKIP
 
 pkgname = hornero-config
