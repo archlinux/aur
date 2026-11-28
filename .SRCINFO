@@ -1,0 +1,17 @@
+pkgbase = ruseon-core-bin
+	pkgdesc = Edge video infrastructure for CCTV RTSP ingest, streaming and recording
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = https://github.com/RUSEGAL/ruseon-core
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ruseon-core
+	conflicts = ruseon-core
+	options = !debug
+	source_x86_64 = ruseon-core-bin-2.1.5-x86_64.tar.gz::https://github.com/RUSEGAL/ruseon-core/releases/download/v2.1.5/ruseon-core_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c9487440efa042d36e2cb44c98b5ecf6722ba2035cc8fd7b2185f90f579a39b7
+	source_aarch64 = ruseon-core-bin-2.1.5-aarch64.tar.gz::https://github.com/RUSEGAL/ruseon-core/releases/download/v2.1.5/ruseon-core_Linux_arm64.tar.gz
+	sha256sums_aarch64 = fb0af2ff6d45ab69766aab7464e3e97db2d69aca456c469f6a8a1f24104033a6
+
+pkgname = ruseon-core-bin
