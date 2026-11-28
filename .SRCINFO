@@ -1,0 +1,55 @@
+pkgbase = oh-my-ztty-git
+	pkgdesc = Rolling Project Z terminal workspace with zsh presets and AI tools
+	pkgver = 0.2.17.r2680
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/oh-my-ztty
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = python
+	makedepends = pkgconf
+	makedepends = openssl
+	depends = coreutils
+	depends = diffutils
+	depends = findutils
+	depends = grep
+	depends = util-linux
+	depends = zsh
+	depends = ztty
+	depends = git
+	depends = openssh
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	optdepends = python: completion management
+	optdepends = zrun: native default shell
+	optdepends = neovim: Ink editor profile
+	optdepends = ripgrep: editor file and text search
+	optdepends = fzf: fuzzy finder profile
+	optdepends = bat: source preview profile
+	optdepends = tmux: multiplexer profile
+	optdepends = nodejs: optional SSMCP tools
+	provides = oh-my-ztty
+	conflicts = oh-my-ztty
+	conflicts = oh-my-ztty-bin
+	options = !strip
+	options = !debug
+	source = oh-my-ztty::git+https://github.com/LIghtJUNction/oh-my-ztty.git#branch=main
+	source = ztty::git+https://github.com/LIghtJUNction/ztty.git#branch=main
+	source = ssmcp::git+https://github.com/LIghtJUNction/ssmcp.git#branch=main
+	source = zshard::git+https://github.com/LIghtJUNction/zshard.git#branch=main
+	source = zdot::git+https://github.com/LIghtJUNction/zdot.git#branch=main
+	source = zrc::git+https://github.com/LIghtJUNction/zrc.git#branch=main
+	source = zfetch::git+https://github.com/LIghtJUNction/zfetch.git#branch=main
+	source = zmem::git+https://github.com/LIghtJUNction/zmem.git#branch=main
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = oh-my-ztty-git
