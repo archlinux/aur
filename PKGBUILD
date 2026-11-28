@@ -1,8 +1,8 @@
 # Maintainer: Omar Roth <roth@omar.yt>
 pkgname=doubletake
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
-_commit=be27776beb05beaa149a7096e4722f5cba60eb37
+_commit=3c768321b21e56b6a2581a498f1be56a98670e4d
 pkgdesc='AirPlay mirroring sender for Linux'
 arch=('x86_64')
 url='https://github.com/omarroth/doubletake'
@@ -21,6 +21,7 @@ depends=(
   'libpulse'
 )
 optdepends=(
+  'bash-completion: Bash command completion'
   'libfdk-aac: AAC-ELD audio support'
   'gst-plugin-pipewire: Wayland screen and audio capture'
   'gst-plugin-va: VA-API hardware encoding on AMD and Intel GPUs'
@@ -30,7 +31,7 @@ install='doubletake.install'
 source=(
   "doubletake-${pkgver}.tar.gz::https://github.com/omarroth/doubletake/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('a1f878000075259ca467c7a49cad3968b31d99798ab6748164cc9beb3ed78928')
+sha256sums=('70d98c7ee0f5a57351dd2207fc76db27a89db159dbb34f5ab337b4788409382d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -40,7 +41,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOPATH="${srcdir}"
-  export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
+  export GOFLAGS='-buildmode=pie -buildvcs=false -trimpath -mod=readonly -modcacherw'
 
   make VERSION="v${pkgver}" COMMIT="${_commit}" all
 }
@@ -48,10 +49,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  install -Dm755 bin/doubletake "${pkgdir}/usr/bin/doubletake"
-  install -Dm755 bin/doubletake-ctl "${pkgdir}/usr/bin/doubletake-ctl"
-  install -Dm644 man/man1/doubletake.1 "${pkgdir}/usr/share/man/man1/doubletake.1"
-  install -Dm644 man/man1/doubletake-ctl.1 "${pkgdir}/usr/share/man/man1/doubletake-ctl.1"
-  make DESTDIR="${pkgdir}" PREFIX=/usr SYSTEMDUSERDIR=/usr/lib/systemd/user install-systemd
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make DESTDIR="${pkgdir}" PREFIX=/usr LICENSEDIR="/usr/share/licenses/${pkgname}" install-prebuilt
 }
