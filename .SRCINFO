@@ -1,0 +1,17 @@
+pkgbase = dnsping-bin
+	pkgdesc = Check DNS server packet loss and latency
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://github.com/fortio/dnsping
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = dnsping
+	conflicts = dnsping
+	options = !debug
+	source_x86_64 = dnsping-bin-1.12.0-x86_64.tar.gz::https://github.com/fortio/dnsping/releases/download/v1.12.0/dnsping_1.12.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 48ac073d4d7b73fa03c5d316599746a832b67d302f7c4392c9b53d58cec4a657
+	source_aarch64 = dnsping-bin-1.12.0-aarch64.tar.gz::https://github.com/fortio/dnsping/releases/download/v1.12.0/dnsping_1.12.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2e301da459b1a542a818bb1543d06497cad5d272085b0682c71b948522ba3202
+
+pkgname = dnsping-bin
