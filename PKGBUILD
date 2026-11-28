@@ -10,7 +10,7 @@ _cratename=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="A web-based process inspector for Linux"
 
-pkgver=0.1.20
+pkgver=0.2.1
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -30,7 +30,7 @@ conflicts=("${_pkgname}")
 install="${pkgname}.install"
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('30a9e630188f28d06832ef39397503587c91ac08125180fbc1183a043c132d55')
+sha256sums=('504d6b3b2eff9bd8842d2e4301810c7be4bdef9985c84ac8e44b288fd6676253')
 
 
 build() {
