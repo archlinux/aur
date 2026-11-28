@@ -1,0 +1,21 @@
+pkgbase = anvil-zksync-bin
+	pkgdesc = In-memory ZKsync node for integration testing and debugging
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/matter-labs/anvil-zksync
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = anvil-zksync
+	conflicts = anvil-zksync
+	options = !debug
+	source = anvil-zksync-bin-0.8.0-LICENSE::https://raw.githubusercontent.com/matter-labs/anvil-zksync/v0.8.0/LICENSE-APACHE
+	sha256sums = a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9
+	source_x86_64 = anvil-zksync-bin-0.8.0-x86_64.tar.gz::https://github.com/matter-labs/anvil-zksync/releases/download/v0.8.0/anvil-zksync-v0.8.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 5f8bb311d0a1da743ab5d9111a6230d5692e6f94f399c5c6fd918a42bb8b18ba
+	source_aarch64 = anvil-zksync-bin-0.8.0-aarch64.tar.gz::https://github.com/matter-labs/anvil-zksync/releases/download/v0.8.0/anvil-zksync-v0.8.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9b95eda4a7b8c87ed545746fd169328cd4791e070a10d076a93b394ed5b7324e
+
+pkgname = anvil-zksync-bin
