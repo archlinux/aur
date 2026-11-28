@@ -1,0 +1,21 @@
+pkgbase = fuelup-bin
+	pkgdesc = Fuel toolchain installer
+	pkgver = 0.28.1
+	pkgrel = 1
+	url = https://github.com/FuelLabs/fuelup
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = fuelup
+	conflicts = fuelup
+	options = !debug
+	source = fuelup-bin-0.28.1-LICENSE::https://raw.githubusercontent.com/FuelLabs/fuelup/v0.28.1/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = fuelup-bin-0.28.1-x86_64.tar.gz::https://github.com/FuelLabs/fuelup/releases/download/v0.28.1/fuelup-0.28.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 21963231109c9949fa26f7c9c47734d5ea1801f5388acd76cb188fbf2a8377dd
+	source_aarch64 = fuelup-bin-0.28.1-aarch64.tar.gz::https://github.com/FuelLabs/fuelup/releases/download/v0.28.1/fuelup-0.28.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4fcc7b93acbb4919581f5574f490c9d9ae46ad9067000bd35c4354d5ec0b40a2
+
+pkgname = fuelup-bin
