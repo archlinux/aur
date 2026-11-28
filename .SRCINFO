@@ -1,0 +1,21 @@
+pkgbase = ai-rules-bin
+	pkgdesc = Manage AI rules, commands and skills across coding agents from one place
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/block/ai-rules
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = ai-rules
+	conflicts = ai-rules
+	options = !debug
+	source = ai-rules-bin-1.7.0-LICENSE::https://raw.githubusercontent.com/block/ai-rules/v1.7.0/LICENSE
+	sha256sums = bd54eb880333876cf6ae350fd0837b2d1641ad57b531b73033743601c5771d9a
+	source_x86_64 = ai-rules-bin-1.7.0-x86_64.tar.gz::https://github.com/block/ai-rules/releases/download/v1.7.0/ai-rules-v1.7.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 75dc728a9073933a23391a94da2ac1a46852f8dcfe5fc4570c2905e0392175a0
+	source_aarch64 = ai-rules-bin-1.7.0-aarch64.tar.gz::https://github.com/block/ai-rules/releases/download/v1.7.0/ai-rules-v1.7.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7171cded0924d2885fcc3014a657485f1b4f82789db4f077281618bc778c63e3
+
+pkgname = ai-rules-bin
