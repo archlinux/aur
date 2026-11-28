@@ -1,0 +1,18 @@
+pkgbase = slater-bin
+	pkgdesc = Low-memory graph database with Bolt, encryption and vectors
+	pkgver = 0.26.0
+	pkgrel = 1
+	url = https://github.com/Hikari-Systems/slater
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = slater
+	conflicts = slater
+	options = !debug
+	source = slater-bin-0.26.0-LICENSE::https://raw.githubusercontent.com/Hikari-Systems/slater/v0.26.0/LICENSE
+	sha256sums = a4bfa88db8a3d1371ed0964ca11f0fe41edbfad0418e80dad3556864945c1eab
+	source_x86_64 = slater-bin-0.26.0-x86_64.tar.gz::https://github.com/Hikari-Systems/slater/releases/download/v0.26.0/slater-v0.26.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 5b1e59aedb803f68fff0143fad7584a3588e722b194dce09a7783e2c76b0ddf5
+
+pkgname = slater-bin
