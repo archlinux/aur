@@ -12,7 +12,7 @@ pkgname=agildodock
 _githubuser=juglesbass
 _repo=AgildoDockCpp_Wayland # pasta ao extrair: ${_repo}-${pkgver}
 
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 
 pkgdesc="Dock Liquid Glass e Barra Superior integrada para Wayland (KDE Plasma / Hyprland)"
@@ -54,7 +54,7 @@ validpgpkeys=()
 _source_file="${_repo}-${pkgver}.tar.gz"
 # ATENÇÃO: não envies SKIP ao servidor AUR com tarball estático — corre «updpkgsums» aqui primeiro.
 source=("${_source_file}::https://github.com/${_githubuser}/${_repo}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ee274ddbb1d08f6b1fe162f34a791e0f15169011b3223b2d663f3c514a252461')
+sha256sums=('e116548a563470b9d800ec5902035e0d0d43b63373b1b504de2d85f74544b937')
 
 build() {
   cd "${srcdir}/${_repo}-${pkgver}"
