@@ -1,0 +1,17 @@
+pkgbase = hijagger-bin
+	pkgdesc = Find npm and PyPI packages hijackable through expired maintainer domains
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/firefart/hijagger
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = hijagger
+	conflicts = hijagger
+	options = !debug
+	source_x86_64 = hijagger-bin-0.1-x86_64.tar.gz::https://github.com/firefart/hijagger/releases/download/v0.1/hijagger_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7902c26bd3a42130847e7095cec1ea2b3c4705c341857caa645544434015f6f1
+	source_aarch64 = hijagger-bin-0.1-aarch64.tar.gz::https://github.com/firefart/hijagger/releases/download/v0.1/hijagger_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c142632e3760fc349bb3352021150abeb5edc3bc22a6cc7a18655f0f55610dd6
+
+pkgname = hijagger-bin
