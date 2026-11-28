@@ -2,7 +2,7 @@
 
 pkgname=dbdeployer
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool that deploys MySQL database servers easily.'
 url='https://github.com/ProxySQL/dbdeployer'
 arch=('aarch64' 'x86_64')
@@ -27,7 +27,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   go build \
-    -ldflags="-s -w -linkmode=external -X github.com/ProxySQL/dbdeployer/common.VersionDef=$pkgver" \
+    -ldflags="-s -w -linkmode=external -X ${url#*//}/common.VersionDef=$pkgver" \
     -o "$pkgname"
 }
 

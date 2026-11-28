@@ -1,7 +1,7 @@
 pkgbase = dbdeployer
 	pkgdesc = A tool that deploys MySQL database servers easily.
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProxySQL/dbdeployer
 	arch = aarch64
 	arch = x86_64
