@@ -1,0 +1,19 @@
+pkgbase = deceptifeed-bin
+	pkgdesc = Honeypot servers with an integrated threat feed
+	pkgver = 0.69.0
+	pkgrel = 1
+	url = https://github.com/r-smith/deceptifeed
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = deceptifeed
+	conflicts = deceptifeed
+	options = !debug
+	source = deceptifeed-bin-0.69.0-LICENSE::https://raw.githubusercontent.com/r-smith/deceptifeed/v0.69.0/LICENSE
+	sha256sums = 56b0a39da2f45f9db6713737ed461a3b36225240ee51bac2bd9cb1d0fc510364
+	source_x86_64 = deceptifeed-bin-0.69.0-x86_64.tar.gz::https://github.com/r-smith/deceptifeed/releases/download/v0.69.0/deceptifeed_0.69.0_linux_x64.tar.gz
+	sha256sums_x86_64 = 0c0c4be9ca06a238601fad4b0efa77dc4a6c27f84a499fd23b6c6b637c3b3529
+	source_aarch64 = deceptifeed-bin-0.69.0-aarch64.tar.gz::https://github.com/r-smith/deceptifeed/releases/download/v0.69.0/deceptifeed_0.69.0_linux_ARM64.tar.gz
+	sha256sums_aarch64 = f0e506469ace19af18c4c3506236c94672d3daef482d616b31b0b5ac2f7e9db3
+
+pkgname = deceptifeed-bin
