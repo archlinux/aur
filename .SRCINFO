@@ -1,0 +1,17 @@
+pkgbase = github-comment-bin
+	pkgdesc = Create and hide GitHub comments from the command line
+	pkgver = 6.4.2
+	pkgrel = 1
+	url = https://github.com/suzuki-shunsuke/github-comment
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = github-comment
+	conflicts = github-comment
+	options = !debug
+	source_x86_64 = github-comment-bin-6.4.2-x86_64.tar.gz::https://github.com/suzuki-shunsuke/github-comment/releases/download/v6.4.2/github-comment_6.4.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = d355c2c3d94a3170f46b89b3512d9624446c3d2206398f6567d1c2965fdd9cd5
+	source_aarch64 = github-comment-bin-6.4.2-aarch64.tar.gz::https://github.com/suzuki-shunsuke/github-comment/releases/download/v6.4.2/github-comment_6.4.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5965906371b487ab144eb754512ab4bfd4366946b0f9bf2623b17d200305feb7
+
+pkgname = github-comment-bin
