@@ -2,7 +2,7 @@
 
 pkgname=minimax-code-intl-bin
 pkgver=3.1.19
-pkgrel=1
+pkgrel=2
 _electron=42.11.16
 pkgdesc='MiniMax Code 桌面应用（国际版），非官方 Linux 移植'
 arch=('x86_64')
@@ -109,6 +109,8 @@ prepare() {
   cd "$srcdir"
   # 重复构建时必须先清掉旧的解包结果，否则 patch-region 会作用在已打补丁的 asar 上。
   rm -rf "$srcdir/nsis" "$srcdir/payload"
+  # 7z 在部分环境不会自建 -o 指定的输出目录，先显式建好，否则解包以 errno=2 失败。
+  install -dm755 "$srcdir/nsis" "$srcdir/payload"
   7z x -y -o"$srcdir/nsis" "minimax-code-${pkgver}.exe" >/dev/null
   7z x -y -o"$srcdir/payload" "$srcdir/nsis/\$PLUGINSDIR/app-64.7z" >/dev/null
   node "$srcdir/patch-region.js" "$srcdir/payload/resources/app.asar" intl

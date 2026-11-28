@@ -1,7 +1,7 @@
 pkgbase = minimax-code-intl-bin
 	pkgdesc = MiniMax Code 桌面应用（国际版），非官方 Linux 移植
 	pkgver = 3.1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.minimax.io/
 	arch = x86_64
 	license = LicenseRef-proprietary
