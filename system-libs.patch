@@ -277,10 +277,10 @@ diff --git a/tensorstore/internal/aws/http_mocking.cc b/tensorstore/internal/aws
 diff --git a/third_party/grpc/workspace.bzl b/third_party/grpc/workspace.bzl
 --- a/third_party/grpc/workspace.bzl
 +++ b/third_party/grpc/workspace.bzl
-@@ -31,6 +31,7 @@
-         patches = [
+@@ -32,6 +32,7 @@
              # Fixes, including https://github.com/grpc/grpc/issues/34482
              Label("//third_party:grpc/patches/update_build_system.diff"),
+             Label("//third_party:grpc/patches/fix_msvc_filter_fusion.diff"),
 +            Label("//third_party:grpc/patches/openssl4.diff"),
          ],
          patch_args = ["-p1"],

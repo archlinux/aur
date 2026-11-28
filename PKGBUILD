@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-tensorstore
 _pkgname=${pkgname#python-}
-pkgver=0.1.86
+pkgver=0.1.87
 pkgrel=1
 pkgdesc='Library for reading and writing large multi-dimensional arrays.'
 arch=('x86_64')
@@ -61,7 +61,7 @@ source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'system-abseil.patch'
         'system-python-libs.patch'
         'grpc-openssl4.patch')
-sha256sums=('fbc535275a766a17f636952cb10a766ed125f21282d4fd2bfdf95923c1c2cbe9'
+sha256sums=('60c20d35bf04017d86ad039f5c5ba68914dd798676ca770d42bb55366921427e'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -70,7 +70,7 @@ sha256sums=('fbc535275a766a17f636952cb10a766ed125f21282d4fd2bfdf95923c1c2cbe9'
 prepare() {
     cd "$_pkgname-$pkgver"
 
-    # Upstrem gRPC already has the patch.
+    # TensorStore pins gRPC 1.81.1, which needs this patch for system OpenSSL 4.
     install -m644 "$srcdir/grpc-openssl4.patch" third_party/grpc/patches/openssl4.diff
 
     declare -a _patches=(
