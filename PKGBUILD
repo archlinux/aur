@@ -1,6 +1,6 @@
 # Maintainer: JageloR <jagelor@yandex.ru>
 pkgname=tray-idle-inhibitor
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Апплет трея: инхибитор idle для Wayland (labwc/LXQt) — wayland + logind"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ optdepends=('playerctl: автовключение инхибитора при �
 makedepends=('cargo')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e8753399dd63f45bf2c3eea909623ec5ad1550dbcf02a0de6c82357525e96be3')
+sha256sums=('3310f11607e0d511c3d419787d96efc1f1e053b18d80f82d592c18108e8bd8e0')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
