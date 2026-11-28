@@ -1,6 +1,6 @@
 pkgbase = bennu-bin
 	pkgdesc = Bennu — Linux desktop file manager written in Rust and Iced
-	pkgver = 0.4.8
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/nsjsv/Bennu
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = bennu-bin
 	optdepends = udisks2: storage device discovery and management
 	provides = file-manager
 	conflicts = file-manager
-	source_x86_64 = https://github.com/nsjsv/Bennu/releases/download/v0.4.8/bennu-0.4.8-x86_64.tar.xz
-	sha256sums_x86_64 = a657e20823a08b5e186d44a762031321536360cf977319df961049fee2bc3503
+	source_x86_64 = https://github.com/nsjsv/Bennu/releases/download/v0.5.0/bennu-0.5.0-x86_64.tar.xz
+	sha256sums_x86_64 = c71cdf0787714f4aec9fe825d66b7b1fcda70305757938252d64aea161f0d11e
 
 pkgname = bennu-bin
