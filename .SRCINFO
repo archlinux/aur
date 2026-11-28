@@ -1,0 +1,19 @@
+pkgbase = buildevents-bin
+	pkgdesc = Generate Honeycomb traces from CI builds
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = https://github.com/honeycombio/buildevents
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = buildevents
+	conflicts = buildevents
+	options = !debug
+	source = buildevents-bin-0.19.0-LICENSE::https://raw.githubusercontent.com/honeycombio/buildevents/v0.19.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = buildevents-bin-0.19.0-x86_64::https://github.com/honeycombio/buildevents/releases/download/v0.19.0/buildevents-linux-amd64
+	sha256sums_x86_64 = 223dc72d093b2be5e5149b7e620841358bba523031b51197704d799cc8de2211
+	source_aarch64 = buildevents-bin-0.19.0-aarch64::https://github.com/honeycombio/buildevents/releases/download/v0.19.0/buildevents-linux-arm64
+	sha256sums_aarch64 = 53453bedd714e6cdb3891c539aa52475c8de025f8b70dbc5a6cba12b0bc0d8e5
+
+pkgname = buildevents-bin
