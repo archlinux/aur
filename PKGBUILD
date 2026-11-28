@@ -1,6 +1,6 @@
-# Maintainer: Emanuele Calo <emanuele.lele.calo@gmail.com>
+# Maintainer: Emanuele Calo <me@lele.rip>
 pkgname=riso-bin
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Modular ricing framework: renders themes into the files a desktop reads (prebuilt binary)"
 arch=('x86_64')
@@ -10,6 +10,7 @@ license=('MIT')
 options=('!debug')
 # git and curl are called at run time to install themes and plugins.
 depends=('glibc' 'gcc-libs' 'git' 'curl')
+optdepends=('mpvpaper: video wallpapers outside Omarchy')
 provides=('riso')
 conflicts=('riso')
 source=("riso-v$pkgver-x86_64-linux.tar.gz::$url/releases/download/v$pkgver/riso-v$pkgver-x86_64-linux.tar.gz"
@@ -17,11 +18,11 @@ source=("riso-v$pkgver-x86_64-linux.tar.gz::$url/releases/download/v$pkgver/riso
         "LICENSE-$pkgver::https://raw.githubusercontent.com/eldios/riso/v$pkgver/LICENSE"
         "NOTICE-$pkgver::https://raw.githubusercontent.com/eldios/riso/v$pkgver/NOTICE"
         "README-$pkgver.md::https://raw.githubusercontent.com/eldios/riso/v$pkgver/README.md")
-sha256sums=('8757cb04d6e0c8a5c8993319d842b5f3b5821fb07cbc4406ed55edd0171df65e'
-            '34eea5e2f560e500fc52d184d8d617dc0041cee9dc6089e96ac6c4d8acf39bb4'
+sha256sums=('a33dea658bce7eec080370935434b52e94db896205ac634373a63dd1d9b8cc48'
+            '557913f85792361e85f0031dd5edf68e4a9954cf0bb0e5b2b03a112bf6a761f5'
             '331b3d7b3a298f2799578f09fafc3563a9d43d59b4771f4ed0cd7fba7a7534db'
             '74f2cb0bc2de3036dc9099d8f45ea855eae4173c311bdcbd0f6a2a162d6cab1c'
-            '75029b60d924ec05603d646301c5699d522f7aabd8f637e8c4ec823e8307040f')
+            'e2fd570b3838f22d30977339ebc4c8c297fe2aafa41dfb6faf56d959499a5a19')
 
 package() {
   install -Dm755 riso "$pkgdir/usr/bin/riso"
