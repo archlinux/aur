@@ -1,7 +1,7 @@
 pkgbase = ecubus-pro
 	pkgdesc = A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support
-	pkgver = 0.8.67
-	pkgrel = 1
+	pkgver = 0.8.69
+	pkgrel = 3
 	url = https://github.com/ecubus/EcuBus-Pro
 	arch = x86_64
 	license = Apache-2.0
@@ -12,15 +12,10 @@ pkgbase = ecubus-pro
 	makedepends = node-gyp
 	makedepends = nodejs-lts-jod
 	depends = sh
-	depends = electron
 	depends = libgcc_s.so
 	depends = libstdc++.so
 	depends = java-runtime
 	depends = python
-	depends = python-lxml
-	depends = python-openpyxl
-	depends = python-yaml
-	depends = python-canmatrix
 	depends = python-doipclient
 	depends = python-odxtools
 	depends = python-udsoncan
@@ -28,7 +23,7 @@ pkgbase = ecubus-pro
 	conflicts = ecubus-pro
 	options = !debug
 	options = !strip
-	source = ecubus-pro::git+https://github.com/ecubus/EcuBus-Pro.git#tag=v0.8.67
-	sha256sums = 52d0c6e569956f479ca05542c6cb8886fc60a2f5bbbbb921b30a6e2f70a91403
+	source = ecubus-pro::git+https://github.com/ecubus/EcuBus-Pro.git#tag=v0.8.69
+	sha256sums = 06400262425b936398c99d1748081554de11301755de146f0ce525044b376a0c
 
 pkgname = ecubus-pro
