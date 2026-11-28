@@ -1,0 +1,17 @@
+pkgbase = goca-bin
+	pkgdesc = Code generator for Clean Architecture Go projects
+	pkgver = 1.25.17
+	pkgrel = 1
+	url = https://github.com/sazardev/goca
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = goca
+	conflicts = goca
+	options = !debug
+	source = goca-bin-1.25.17-LICENSE::https://raw.githubusercontent.com/sazardev/goca/v1.25.17/LICENSE
+	sha256sums = 055822eecc0b77d0f5d7fcd582227a9b93d9126605951583de540343890e0b31
+	source_x86_64 = goca-bin-1.25.17-x86_64::https://github.com/sazardev/goca/releases/download/v1.25.17/goca-linux-amd64
+	sha256sums_x86_64 = c5cf515c1fa7ab8a1fa931224836feae8a48ab78d85c73076b0291616766e329
+
+pkgname = goca-bin
