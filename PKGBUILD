@@ -1,7 +1,7 @@
 # Maintainer: Ketchup901 <ketchup901@riseup.net>
 
 pkgname=postie-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="NZB uploader"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "postie.tmpfiles"
 )
 sha256sums=(
-    '65d39e54409ebd0dbbe442ce7041ed08fcc0d5fcd55c04107b24604d46c4c0cd'
+    'a5218a9c29376c979b7ee4632c105042c6d079cd05052fd4a495f94b87935c52'
     '18e2f19467d70b1305011e1afc0a569c959a75a0b610f9457f552fa410d6a3c7'
     'fbb08954f41bfb63bbb5f8aeeea593b77541e0c8b9e704843054ba83d2330718'
     '6e2c939ae4a5759117a42913e98783bd9189cf160ed299b02cb045fc3f838974'
