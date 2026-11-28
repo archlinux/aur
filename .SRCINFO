@@ -1,0 +1,17 @@
+pkgbase = octopool-bin
+	pkgdesc = Shared, org-authenticated GitHub read relay and cache
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/openclaw/octopool
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = octopool
+	conflicts = octopool
+	options = !debug
+	source_x86_64 = octopool-bin-0.10.0-x86_64.tar.gz::https://github.com/openclaw/octopool/releases/download/v0.10.0/octopool_0.10.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = caf4708e7b57e72bd2427dfc8e6f870f2cedb22024fe1a32e855b4167976e822
+	source_aarch64 = octopool-bin-0.10.0-aarch64.tar.gz::https://github.com/openclaw/octopool/releases/download/v0.10.0/octopool_0.10.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = fcdbcf1f94159878b427d5f65629a23030bf7b6f67a6df792013304bf7651a48
+
+pkgname = octopool-bin
