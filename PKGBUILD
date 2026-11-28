@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=thingspanel-backend-community-bin
-pkgver=1.4.0
+pkgver=1.4.0.1
 pkgrel=1
 pkgdesc="Backend server for the ThingsPanel IoT platform"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/ThingsP
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/thingspanel-backend-community-linux-amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/thingspanel-backend-community-linux-arm64.tar.gz")
 sha256sums=('4691ae29626cb29c623b497d2d7a727b4520d9a44c577053fec315e241ecfe04')
-sha256sums_x86_64=('54f8220c8e91662f2ccfe57fa638164e335bf11ffc79cb04cfbfdd8325300ed7')
-sha256sums_aarch64=('252bef474e5f2d462dcae7c6a43dd26f5299131fc4e1327d42804da41e40535f')
+sha256sums_x86_64=('c9556f77381e5cda6affb403ae57d11b7699e57774071368796a59e82a608d04')
+sha256sums_aarch64=('755a91c5857de4178e3c822607cd246b1fa83c8a959c3457ccb87cfbe59e8540')
 
 package() {
   local _dir
