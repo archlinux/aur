@@ -1,8 +1,8 @@
 # Maintainer: Remy Huang <me@remya.top>
 pkgname=remya-screen-capture
 _app_id=remya_screen_capture
-_upstream_ver=0.4.1
-pkgver=0.4.1
+_upstream_ver=0.4.2
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Screen capture, recording and editing for Hyprland"
 arch=('x86_64')
@@ -12,16 +12,16 @@ depends=('remya-core>=0.3.0' 'gtk3' 'gtk-layer-shell' 'wayland' 'hyprland' 'grim
          'wl-clipboard' 'fontconfig' 'inter-font' 'gpu-screen-recorder'
          'ffmpeg' 'mpv' 'libepoxy' 'xdg-utils' 'glibc' 'gcc-libs')
 options=('!strip')
-_core_ver=0.3.0
+_core_commit=988388e9d3144f7bc48e542eab5e4c0e6ddc12ec
 makedepends=('clang' 'cmake' 'fvm' 'ninja' 'rustup' 'wayland-protocols')
 conflicts=('remya-screen-capture-bin' 'remya-screen-capture-git')
 source=("remya-screen-capture-${_upstream_ver}.tar.gz::${url}/archive/refs/tags/v${_upstream_ver}.tar.gz"
-        "remya-core-${_core_ver}.tar.gz::https://github.com/remyhuang03/remya-core/archive/refs/tags/v${_core_ver}.tar.gz")
-sha256sums=('3a0a157058570c9c1eab5cfb1c4d691b57434e4ee69774ee62ea966a89cab521'
-            '7d6446827dde819e21c6029e5aa8af732dc12753c79b990d474b29bc5b7a22b7')
+        "remya-core-${_core_commit}.tar.gz::https://github.com/remyhuang03/remya-core/archive/${_core_commit}.tar.gz")
+sha256sums=('28f298eefa64cb89927dd7c3accf4a3f2d7d3af3087b1620dfa0d0b8391c8026'
+            '649c118804408ed3d95199e84cb4fd004f80d8791d893cbab1bb353795f6f203')
 
 prepare() {
-  ln -sfnT "remya-core-${_core_ver}" "${srcdir}/remya-core"
+  ln -sfnT "remya-core-${_core_commit}" "${srcdir}/remya-core"
 }
 
 build() {
