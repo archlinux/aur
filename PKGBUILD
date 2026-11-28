@@ -1,7 +1,7 @@
 # Maintainer: Goldbro233 <bowensun_06@outlook.com>
 
 pkgname=wlan-auto-login-bin
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='CLI and TUI for automatic Student_CX campus Wi-Fi login (prebuilt binary)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('wlanlogin')
 options=('!debug')
 install=wlan-auto-login-bin.install
 source=("$pkgname-$pkgver-$CARCH.tar.gz::$url/releases/download/v$pkgver/wlanlogin-linux-$CARCH.tar.gz")
-sha256sums=('46fccfdd7d40a33a4e80fba8d6a0916e2cc44a437a4d018c1a738fab3c109b59')
+sha256sums=('fef5015a239fdbf1fecc0e535872de465646f5e13b46feaf4335df6c2db497da')
 
 package() {
     install -Dm755 wlanlogin "$pkgdir/usr/bin/wlanlogin"
