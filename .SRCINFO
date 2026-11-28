@@ -1,0 +1,17 @@
+pkgbase = gotiler-bin
+	pkgdesc = Convert LAS, LAZ, E57 and PLY point clouds to OGC 3D Tiles
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/mfbonfigli/gotiler
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = gotiler
+	conflicts = gotiler
+	options = !debug
+	source_x86_64 = gotiler-bin-3.2.0-x86_64.tar.gz::https://github.com/mfbonfigli/gotiler/releases/download/v3.2.0/gotiler-linux-amd64-v3.2.0.tar.gz
+	sha256sums_x86_64 = 662fbe85811a3aa56580077c89ea597654e59f88ac07b149a65f346c4d97771f
+	source_aarch64 = gotiler-bin-3.2.0-aarch64.tar.gz::https://github.com/mfbonfigli/gotiler/releases/download/v3.2.0/gotiler-linux-arm64-v3.2.0.tar.gz
+	sha256sums_aarch64 = a83979c769d06b52754cdedbc53ae52319a54355e0f4f53dd09025e92f6eec9e
+
+pkgname = gotiler-bin
