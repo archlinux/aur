@@ -1,0 +1,19 @@
+pkgbase = nami-bin
+	pkgdesc = Decentralized package manager
+	pkgver = 20240902
+	pkgrel = 1
+	url = https://github.com/txthinking/nami
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = nami
+	conflicts = nami
+	options = !debug
+	source = nami-bin-20240902-LICENSE::https://raw.githubusercontent.com/txthinking/nami/v20240902/LICENSE
+	sha256sums = 589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2
+	source_x86_64 = nami-bin-20240902-x86_64::https://github.com/txthinking/nami/releases/download/v20240902/nami_linux_amd64
+	sha256sums_x86_64 = 8be104a97494cd3be23deead9bd63b9d5846b3d7c42579d985d7f0420ec4601e
+	source_aarch64 = nami-bin-20240902-aarch64::https://github.com/txthinking/nami/releases/download/v20240902/nami_linux_arm64
+	sha256sums_aarch64 = 7c3c55fad9c1abe8a8a4302f8de9089db6bd3bf26bb07059e5161f32f36e26e3
+
+pkgname = nami-bin
