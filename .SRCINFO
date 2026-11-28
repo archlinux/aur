@@ -1,0 +1,21 @@
+pkgbase = sayna-bin
+	pkgdesc = Unified voice layer for AI agents
+	pkgver = 0.1.16
+	pkgrel = 1
+	url = https://github.com/SaynaAI/sayna
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libx11
+	provides = sayna
+	conflicts = sayna
+	options = !debug
+	source_x86_64 = sayna-bin-0.1.16-x86_64.tar.gz::https://github.com/SaynaAI/sayna/releases/download/v0.1.16/sayna-0.1.16-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e959d8ef79d8f1e2018ad06d7637fc50b3480a6e951de80fc0851b72ad8de2e5
+	source_aarch64 = sayna-bin-0.1.16-aarch64.tar.gz::https://github.com/SaynaAI/sayna/releases/download/v0.1.16/sayna-0.1.16-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = aa9d3d276ed26976fae5e870918e5d04cbf91a964037c46c1f83e9b6902d7391
+
+pkgname = sayna-bin
