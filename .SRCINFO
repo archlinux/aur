@@ -1,0 +1,17 @@
+pkgbase = webhookx-bin
+	pkgdesc = Webhooks gateway
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/webhookx-io/webhookx
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = webhookx
+	conflicts = webhookx
+	options = !debug
+	source_x86_64 = webhookx-bin-1.2.0-x86_64.tar.gz::https://github.com/webhookx-io/webhookx/releases/download/v1.2.0/webhookx_1.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 877bd1770a239abafe645d801c604c6d1b1274c997586a80d089d188de8f476a
+	source_aarch64 = webhookx-bin-1.2.0-aarch64.tar.gz::https://github.com/webhookx-io/webhookx/releases/download/v1.2.0/webhookx_1.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2089ad012e127cd4ffee7562edd9fe30b5290ba912b4753b53b182dc91d05a58
+
+pkgname = webhookx-bin
