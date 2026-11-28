@@ -1,0 +1,17 @@
+pkgbase = forwarder-bin
+	pkgdesc = Fast MITM proxy with PAC support
+	pkgver = 1.6.5
+	pkgrel = 1
+	url = https://github.com/saucelabs/forwarder
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	provides = forwarder
+	conflicts = forwarder
+	options = !debug
+	source_x86_64 = forwarder-bin-1.6.5-x86_64.tar.gz::https://github.com/saucelabs/forwarder/releases/download/v1.6.5/forwarder-1.6.5_linux.x86_64.tar.gz
+	sha256sums_x86_64 = 9383802e464bb2c4e4f4a204a861a15d3b66f0301ae25b105606cbb03ebe5ba6
+	source_aarch64 = forwarder-bin-1.6.5-aarch64.tar.gz::https://github.com/saucelabs/forwarder/releases/download/v1.6.5/forwarder-1.6.5_linux.aarch64.tar.gz
+	sha256sums_aarch64 = cbd8b1331f71c26d8b8941419e262da1cb212a9ca76c3133fefdf94571af526d
+
+pkgname = forwarder-bin
