@@ -1,0 +1,14 @@
+pkgbase = gommit-bin
+	pkgdesc = Enforce consistent git commit messages
+	pkgver = 2.13.0
+	pkgrel = 1
+	url = https://github.com/antham/gommit
+	arch = x86_64
+	license = Apache-2.0
+	provides = gommit
+	conflicts = gommit
+	options = !debug
+	source_x86_64 = gommit-bin-2.13.0-x86_64.tar.gz::https://github.com/antham/gommit/releases/download/v2.13.0/gommit_2.13.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 931e9800f67c754e3fb645da94c28ad333b009f2fdcc51f65633e42b94e683c7
+
+pkgname = gommit-bin
