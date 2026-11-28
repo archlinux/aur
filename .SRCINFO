@@ -1,0 +1,17 @@
+pkgbase = cent-bin
+	pkgdesc = Collect community Nuclei templates in one place
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/xm1k3/cent
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = cent
+	conflicts = cent
+	options = !debug
+	source_x86_64 = cent-bin-2.2.0-x86_64.zip::https://github.com/xm1k3/cent/releases/download/v2.2.0/cent_2.2.0_linux_amd64.zip
+	sha256sums_x86_64 = e6b48946d578e54864a46ce3edf4a6f930d6349bbd3f8b3209d0ed2b1d7404a0
+	source_aarch64 = cent-bin-2.2.0-aarch64.zip::https://github.com/xm1k3/cent/releases/download/v2.2.0/cent_2.2.0_linux_arm64.zip
+	sha256sums_aarch64 = 4514b5b6282b3a50ffe686960d93b6f39a3edaf8598336a4ddfb6ee1b60a0ca3
+
+pkgname = cent-bin
