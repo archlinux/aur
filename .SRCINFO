@@ -1,6 +1,6 @@
 pkgbase = agentrq-bin
 	pkgdesc = Human-in-the-loop realtime task manager for AI agents
-	pkgver = 0.19.11
+	pkgver = 0.19.14
 	pkgrel = 1
 	url = https://github.com/agentrq/agentrq
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = agentrq-bin
 	provides = agentrq
 	conflicts = agentrq
 	options = !debug
-	source_x86_64 = agentrq-bin-0.19.11-x86_64.tar.gz::https://github.com/agentrq/agentrq/releases/download/v0.19.11/agentrq_0.19.11_linux_amd64.tar.gz
-	sha256sums_x86_64 = b3b968db38c6dc3361a70ba68ae867c683b58f9cbe21ffa116a84e82c8feb8b6
-	source_aarch64 = agentrq-bin-0.19.11-aarch64.tar.gz::https://github.com/agentrq/agentrq/releases/download/v0.19.11/agentrq_0.19.11_linux_arm64.tar.gz
-	sha256sums_aarch64 = d450e20e9fda3f3ea3439d92d16d3b7f9b757ad006a4e7aba9a6af9f2c108a48
+	source_x86_64 = agentrq-bin-0.19.14-x86_64.tar.gz::https://github.com/agentrq/agentrq/releases/download/v0.19.14/agentrq_0.19.14_linux_amd64.tar.gz
+	sha256sums_x86_64 = 12ce30c33967866d2287321b492f5cd4f43c5e0c8ad450c9f274764f92ac3d72
+	source_aarch64 = agentrq-bin-0.19.14-aarch64.tar.gz::https://github.com/agentrq/agentrq/releases/download/v0.19.14/agentrq_0.19.14_linux_arm64.tar.gz
+	sha256sums_aarch64 = f15b2ce574dfb0f9682a99d6e837034b25a39352d28607827dc1c43fcd94c833
 
 pkgname = agentrq-bin
