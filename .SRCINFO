@@ -1,0 +1,17 @@
+pkgbase = score-compose-bin
+	pkgdesc = Reference Score implementation for Docker Compose
+	pkgver = 0.50.0
+	pkgrel = 1
+	url = https://github.com/score-spec/score-compose
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = score-compose
+	conflicts = score-compose
+	options = !debug
+	source_x86_64 = score-compose-bin-0.50.0-x86_64.tar.gz::https://github.com/score-spec/score-compose/releases/download/0.50.0/score-compose_0.50.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7257a7eed0079f92382668ff3ea4abc3158d93bce4b5b2f40b1476d84d313564
+	source_aarch64 = score-compose-bin-0.50.0-aarch64.tar.gz::https://github.com/score-spec/score-compose/releases/download/0.50.0/score-compose_0.50.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5c999033dec805d53cd1179f5516499e1fd90af951096a17270d9d1edfec2fe0
+
+pkgname = score-compose-bin
