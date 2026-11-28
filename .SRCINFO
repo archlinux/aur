@@ -1,0 +1,19 @@
+pkgbase = amazon-ec2-metadata-mock-bin
+	pkgdesc = Simulate Amazon EC2 instance metadata
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/aws/amazon-ec2-metadata-mock
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = amazon-ec2-metadata-mock
+	conflicts = amazon-ec2-metadata-mock
+	options = !debug
+	source = amazon-ec2-metadata-mock-bin-1.13.0-LICENSE::https://raw.githubusercontent.com/aws/amazon-ec2-metadata-mock/v1.13.0/LICENSE
+	sha256sums = c8858a5a76440bbca484e134cf7df46385d090dd18b2c58e650f939258802e5b
+	source_x86_64 = amazon-ec2-metadata-mock-bin-1.13.0-x86_64.tar.gz::https://github.com/aws/amazon-ec2-metadata-mock/releases/download/v1.13.0/ec2-metadata-mock-linux-amd64.tar.gz
+	sha256sums_x86_64 = 0d315864868bd8b9a357184bc8b7991da133ed223c1fda88c4eadae2e559f4b9
+	source_aarch64 = amazon-ec2-metadata-mock-bin-1.13.0-aarch64.tar.gz::https://github.com/aws/amazon-ec2-metadata-mock/releases/download/v1.13.0/ec2-metadata-mock-linux-arm64.tar.gz
+	sha256sums_aarch64 = f53e402f27aae617ecc272d4304b14d1be9537d6c859e4a73156a66fc629c8c0
+
+pkgname = amazon-ec2-metadata-mock-bin
