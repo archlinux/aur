@@ -1,0 +1,22 @@
+pkgbase = open-java-format-bin
+	pkgdesc = A modern, lambda-friendly, 120 character Java formatter (native CLI)
+	pkgver = 21.1.1
+	pkgrel = 1
+	url = https://openjavaformat.dev
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = zlib
+	provides = open-java-format
+	conflicts = open-java-format
+	options = !strip
+	options = !debug
+	source = LICENSE-21.1.1::https://raw.githubusercontent.com/openjavaformat/open-java-format/21.1.1/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = open-java-format-21.1.1-x86_64::https://github.com/openjavaformat/open-java-format/releases/download/21.1.1/open-java-format-linux-glibc_x86-64
+	sha256sums_x86_64 = 4a98ed911f041e246bc2b7173a939bbe3e1ade4ec4ebc13494d29859e1384c44
+	source_aarch64 = open-java-format-21.1.1-aarch64::https://github.com/openjavaformat/open-java-format/releases/download/21.1.1/open-java-format-linux-glibc_aarch64
+	sha256sums_aarch64 = 7f7a65c26d0c82129812dea2eb052a24a0d8a17b10c25855d1cd6b9e390dc596
+
+pkgname = open-java-format-bin
