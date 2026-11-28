@@ -1,0 +1,16 @@
+pkgbase = gameboy_emulator-bin
+	pkgdesc = Game Boy emulator
+	pkgver = 0.2.8.8
+	pkgrel = 1
+	url = https://github.com/benkonz/gameboy_emulator
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = gameboy_emulator
+	conflicts = gameboy_emulator
+	options = !debug
+	source_x86_64 = gameboy_emulator-bin-0.2.8.8-x86_64.tar.gz::https://github.com/benkonz/gameboy_emulator/releases/download/0.2.8.8/gameboy_emulator-0.2.8.8-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4de1ff601d317ff754240c9f1bbfa9137321755f7c5e913233968f42551377f0
+
+pkgname = gameboy_emulator-bin
