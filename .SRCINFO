@@ -1,0 +1,17 @@
+pkgbase = wardgate-bin
+	pkgdesc = Security gateway for AI agents with credential isolation and policy-gated execution
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/wardgate/wardgate
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = wardgate
+	conflicts = wardgate
+	options = !debug
+	source_x86_64 = wardgate-bin-0.18.0-x86_64.tar.gz::https://github.com/wardgate/wardgate/releases/download/v0.18.0/wardgate_0.18.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 709e6e5e00d21dac4c62177553a28b9474697da53e9f7ebfd475503902de2273
+	source_aarch64 = wardgate-bin-0.18.0-aarch64.tar.gz::https://github.com/wardgate/wardgate/releases/download/v0.18.0/wardgate_0.18.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = e127471228c42545b4696e884b2267c8b466fdb3ff4562331dc0762545753dd8
+
+pkgname = wardgate-bin
