@@ -1,0 +1,17 @@
+pkgbase = actions-sync-bin
+	pkgdesc = Sync GitHub Actions to GitHub Enterprise Server instances
+	pkgver = 202610071604
+	pkgrel = 1
+	url = https://github.com/actions/actions-sync
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = actions-sync
+	conflicts = actions-sync
+	options = !debug
+	source_x86_64 = actions-sync-bin-202610071604-x86_64.tar.gz::https://github.com/actions/actions-sync/releases/download/v202610071604/actions.actions-sync_202610071604_linux_amd64.tar.gz
+	sha256sums_x86_64 = a038b7fb4f743255995a3a5709ffb97174ddf3bc4914d4f379b038eaf557b2ab
+	source_aarch64 = actions-sync-bin-202610071604-aarch64.tar.gz::https://github.com/actions/actions-sync/releases/download/v202610071604/actions.actions-sync_202610071604_linux_arm64.tar.gz
+	sha256sums_aarch64 = c9609040dc3731813a89dc39122bbfad079cfe87b52c5441e14d6bab77c525b2
+
+pkgname = actions-sync-bin
