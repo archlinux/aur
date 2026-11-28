@@ -2,7 +2,7 @@
 
 pkgname='pmwiki'
 pkgver='2.7.10'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Wiki software based on PHP'
 url='https://www.pmwiki.org'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('php')
 install='pmwiki.install'
 source=("https://www.pmwiki.org/pub/${pkgname}/${pkgname}-${pkgver}.tgz")
-sha256sums=('3ce3dcac9a147a30530885e26c0cde5351bf37033095c97a0c4327d292a44db0')
+sha256sums=('420eceeccf73aee2eaa70770f2f95ae300a7485696c47c0628dfb33054da003c')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
