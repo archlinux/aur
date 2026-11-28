@@ -1,0 +1,19 @@
+pkgbase = lane-bin
+	pkgdesc = Copy-on-write worktrees with persistent memory
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/lukeed/lane
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lane
+	conflicts = lane
+	options = !debug
+	source = lane-bin-0.2.0-LICENSE::https://raw.githubusercontent.com/lukeed/lane/v0.2.0/license
+	sha256sums = 9a9edad7baae52622bddf3c15b2ef8a33d2c89f2d25408ad13e8a7481c6b0c97
+	source_x86_64 = lane-bin-0.2.0-x86_64.tar.gz::https://github.com/lukeed/lane/releases/download/v0.2.0/lane-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = e76743055cf395a5e5b02d95d896a0504a27c69e0f703d922878860ec3de9cd4
+	source_aarch64 = lane-bin-0.2.0-aarch64.tar.gz::https://github.com/lukeed/lane/releases/download/v0.2.0/lane-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 8566ceef59495957eaa0129970b6aa6e1d88804f8044d54730a8a85ff5ea2658
+
+pkgname = lane-bin
