@@ -1,0 +1,17 @@
+pkgbase = maxclaw-bin
+	pkgdesc = Low-memory local-first AI agent
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Lichas/maxclaw
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = maxclaw
+	conflicts = maxclaw
+	options = !debug
+	source_x86_64 = maxclaw-bin-0.1.2-x86_64.tar.gz::https://github.com/Lichas/maxclaw/releases/download/v0.1.2/maxclaw_linux_amd64.tar.gz
+	sha256sums_x86_64 = f88d9a30283014f9c6b146730b25eb11710ecad49fa2b2bd04536ffc82ec742d
+	source_aarch64 = maxclaw-bin-0.1.2-aarch64.tar.gz::https://github.com/Lichas/maxclaw/releases/download/v0.1.2/maxclaw_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3793ebb5b7a99649ba6e1125311a60c6701724af8ae15f29af11a93ff0b3648c
+
+pkgname = maxclaw-bin
