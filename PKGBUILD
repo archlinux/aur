@@ -2,7 +2,7 @@
 # Stamped by tools/aur.sh at a release, which fills the placeholders.
 
 pkgname=d2launcher
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc='Median XL for Diablo II on Linux, with Wine, D2Stats and tweaks'
 # The Wine it downloads is x86_64.
@@ -23,7 +23,7 @@ optdepends=(
     'gamescope: gamescope in the launch options'
 )
 source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('58ea43ff19bd9efc56baf443aee4884eb87b8ae7f6db166308680401ac0cd5e9')
+sha256sums=('38c141423cb43de391530d270f081c960bf5e4c620c693a990ac23a50b6d09ba')
 
 # What ships answers with the version it was built for.
 check() {
