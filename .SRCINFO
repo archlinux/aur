@@ -1,0 +1,22 @@
+pkgbase = port_sentinel-bin
+	pkgdesc = Find port conflicts and manage processes using ports
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/Sanjeever/port_sentinel
+	arch = x86_64
+	license = MIT
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = port_sentinel
+	conflicts = port_sentinel
+	options = !debug
+	source = port_sentinel-bin-2.1.0-LICENSE::https://raw.githubusercontent.com/Sanjeever/port_sentinel/v2.1.0/LICENSE
+	sha256sums = 26e0d1929275b46d985c28ec5b4885f4e6fc207d0ad9277773d58c4c13df3bba
+	source_x86_64 = port_sentinel-bin-2.1.0-x86_64.tar.gz::https://github.com/Sanjeever/port_sentinel/releases/download/v2.1.0/port-sentinel_2.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d22065dc854138e346418bb5c9a25e1dfe83cd033ad915b59cf11752f82e578a
+
+pkgname = port_sentinel-bin
