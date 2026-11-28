@@ -1,0 +1,17 @@
+pkgbase = keycred-bin
+	pkgdesc = Generate and manage Active Directory KeyCredentialLinks
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/RedTeamPentesting/keycred
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = keycred
+	conflicts = keycred
+	options = !debug
+	source_x86_64 = keycred-bin-1.3.0-x86_64.tar.gz::https://github.com/RedTeamPentesting/keycred/releases/download/v1.3.0/keycred_v1.3.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1b71135dd703ed44d47b7077f8eb6adb7cf4b7c029164ed109fd1dbef53be676
+	source_aarch64 = keycred-bin-1.3.0-aarch64.tar.gz::https://github.com/RedTeamPentesting/keycred/releases/download/v1.3.0/keycred_v1.3.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9027551866282375bf91340d0dc00d03c78eef8a6b922633319ec257cc6da4bf
+
+pkgname = keycred-bin
