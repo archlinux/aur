@@ -1,0 +1,19 @@
+pkgbase = gossiphs-bin
+	pkgdesc = Zero-setup code file relationship analysis
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = https://github.com/williamfzc/gossiphs
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = zlib
+	provides = gossiphs
+	conflicts = gossiphs
+	options = !debug
+	source = gossiphs-bin-0.12.2-LICENSE::https://raw.githubusercontent.com/williamfzc/gossiphs/v0.12.2/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = gossiphs-bin-0.12.2-x86_64::https://github.com/williamfzc/gossiphs/releases/download/v0.12.2/gossiphs-linux-x86_64
+	sha256sums_x86_64 = 4d1a14c89edf18dd379e8d2d3750b93202c286fb2b97ab9acfcdea528fe28fa8
+
+pkgname = gossiphs-bin
