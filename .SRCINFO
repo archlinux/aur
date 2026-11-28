@@ -1,0 +1,17 @@
+pkgbase = appbuilder-bin
+	pkgdesc = Create friendly command-line wrappers over operations tools
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://github.com/choria-io/appbuilder
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = appbuilder
+	conflicts = appbuilder
+	options = !debug
+	source_x86_64 = appbuilder-bin-0.20.0-x86_64.tar.gz::https://github.com/choria-io/appbuilder/releases/download/v0.20.0/appbuilder-0.20.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 6585e8ba59e317e6497decacc7ab4dadeb34993adb9355e735b81331a0334ed3
+	source_aarch64 = appbuilder-bin-0.20.0-aarch64.tar.gz::https://github.com/choria-io/appbuilder/releases/download/v0.20.0/appbuilder-0.20.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4c9f0b0f9d97d648af326896ede5e4bf462f093eacd309ac0c3b4bed0d2e8112
+
+pkgname = appbuilder-bin
