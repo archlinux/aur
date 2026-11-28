@@ -1,6 +1,6 @@
 pkgbase = sacad
 	pkgdesc = Smart Automatic Cover Art Downloader
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://github.com/desbma/sacad
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sacad
 	makedepends = ffmpeg
 	depends = gcc-libs
 	options = !lto
-	source = sacad-3.0.4.tar.gz::https://github.com/desbma/sacad/archive/3.0.4.tar.gz
-	sha512sums = 1e3e5010da12818d702819738b0f432cd6f17f1adeb4c614b3d64570bddeab5d35064f333822a3ee9beaa82ffc3b047c93f698a899b77308e2470e19771799e5
+	source = sacad-3.0.5.tar.gz::https://github.com/desbma/sacad/archive/3.0.5.tar.gz
+	sha512sums = b4a0a634e4fd02abb9da6503e07034d2f1de96a6e34ebe52e818fd5f46a5b4b764df51d1da3a7701bd666d3fa07b45be6e2fcf943bd1077a33f5664f58bdc57d
 
 pkgname = sacad
