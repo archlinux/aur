@@ -1,6 +1,6 @@
 pkgbase = manis-bin
 	pkgdesc = GPUI desktop workbench for policy-based proxy routing
-	pkgver = 0.1.222
+	pkgver = 0.1.223
 	pkgrel = 1
 	url = https://github.com/kaigedong/Manis
 	install = manis.install
@@ -21,11 +21,11 @@ pkgbase = manis-bin
 	depends = polkit
 	depends = vulkan-icd-loader
 	depends = wayland
-	provides = manis=0.1.222
+	provides = manis=0.1.223
 	conflicts = manis
 	options = !debug
 	options = !strip
-	source_x86_64 = manis-0.1.222-1-x86_64.pkg.tar.zst::https://github.com/kaigedong/Manis/releases/download/build-0.1.222/manis-0.1.222-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = fb37eaa9172b0623b35c7be8c41c503ca85a699c64ce3e1153f03b773f337bd3
+	source_x86_64 = manis-0.1.223-1-x86_64.pkg.tar.zst::https://github.com/kaigedong/Manis/releases/download/build-0.1.223/manis-0.1.223-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 8eb996d2f910fbf0a4eca36d847741e4cfad5f47c0acb3e8d67def136cbe8dc1
 
 pkgname = manis-bin
