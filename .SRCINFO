@@ -1,0 +1,17 @@
+pkgbase = pgit-bin
+	pkgdesc = Git-like version control backed by PostgreSQL
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://github.com/ImGajeed76/pgit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pgit
+	conflicts = pgit
+	options = !debug
+	source_x86_64 = pgit-bin-4.2.0-x86_64.tar.gz::https://github.com/ImGajeed76/pgit/releases/download/v4.2.0/pgit_4.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = c8a59a7e15a75ad16008942920046055bc0e19b0c341b431db7e61f79cbbadea
+	source_aarch64 = pgit-bin-4.2.0-aarch64.tar.gz::https://github.com/ImGajeed76/pgit/releases/download/v4.2.0/pgit_4.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 059fcd2f2c617e03b9ebd355e05da98b55745e21dbd8d18e94e1921b5f256cc0
+
+pkgname = pgit-bin
