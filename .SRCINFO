@@ -1,0 +1,25 @@
+pkgbase = md-preview-bin
+	pkgdesc = Native, local-first Markdown preview and quick editor
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/vorojar/md-preview
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgcc
+	depends = libsoup3
+	depends = wayland
+	depends = webkit2gtk-4.1
+	provides = md-preview
+	conflicts = md-preview
+	options = !debug
+	source = md-preview-bin-1.4.2-LICENSE::https://raw.githubusercontent.com/vorojar/md-preview/v1.4.2/LICENSE
+	sha256sums = 4d7a24db1bcd870e55a5aab935bbe081864c994e2702036c90f5606c9d417979
+	source_x86_64 = md-preview-bin-1.4.2-x86_64.tar.gz::https://github.com/vorojar/md-preview/releases/download/v1.4.2/MD-Preview-linux-x64.tar.gz
+	sha256sums_x86_64 = 13b6cb222f122caf1619e615db49d41ee522677732965ad390ae8e260efc3a30
+
+pkgname = md-preview-bin
