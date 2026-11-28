@@ -1,0 +1,19 @@
+pkgbase = rodney-bin
+	pkgdesc = Command-line tool for interacting with the web
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/simonw/rodney
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = rodney
+	conflicts = rodney
+	options = !debug
+	source = rodney-bin-0.4.0-LICENSE::https://raw.githubusercontent.com/simonw/rodney/v0.4.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = rodney-bin-0.4.0-x86_64.tar.gz::https://github.com/simonw/rodney/releases/download/v0.4.0/rodney-linux-amd64.tar.gz
+	sha256sums_x86_64 = 294e260aa0a570f4a07bbeff18bcd5c3e56d21ad561fd124154a6c52b9199a75
+	source_aarch64 = rodney-bin-0.4.0-aarch64.tar.gz::https://github.com/simonw/rodney/releases/download/v0.4.0/rodney-linux-arm64.tar.gz
+	sha256sums_aarch64 = 69ca6f2f46b9cf677c89ec9617cc6e721711ca311acb78d9bfa26edb132838d2
+
+pkgname = rodney-bin
