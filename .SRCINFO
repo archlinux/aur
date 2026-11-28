@@ -1,0 +1,14 @@
+pkgbase = nextdhcp-bin
+	pkgdesc = DHCP server with chainable middlewares
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/nextdhcp/nextdhcp
+	arch = x86_64
+	license = MIT
+	provides = nextdhcp
+	conflicts = nextdhcp
+	options = !debug
+	source_x86_64 = nextdhcp-bin-0.6.0-x86_64.tar.gz::https://github.com/nextdhcp/nextdhcp/releases/download/v0.6.0/nextdhcp_0.6.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 704b52347a2b141d9402add308396fadb45367922fcb42c8959b97ea935951d3
+
+pkgname = nextdhcp-bin
