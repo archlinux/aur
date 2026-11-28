@@ -1,0 +1,19 @@
+pkgbase = showboat-bin
+	pkgdesc = Create executable documents that demonstrate an agent's work
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/simonw/showboat
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = showboat
+	conflicts = showboat
+	options = !debug
+	source = showboat-bin-0.6.1-LICENSE::https://raw.githubusercontent.com/simonw/showboat/v0.6.1/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = showboat-bin-0.6.1-x86_64.tar.gz::https://github.com/simonw/showboat/releases/download/v0.6.1/showboat-linux-amd64.tar.gz
+	sha256sums_x86_64 = 45092381d6507a5fb127b88dbc79e88970793364f95c6c981700526e477fb7a1
+	source_aarch64 = showboat-bin-0.6.1-aarch64.tar.gz::https://github.com/simonw/showboat/releases/download/v0.6.1/showboat-linux-arm64.tar.gz
+	sha256sums_aarch64 = ad275d855aea1530174c65720b504ff60965e07e37f81e092c551ba86c7af680
+
+pkgname = showboat-bin
