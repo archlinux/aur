@@ -1,6 +1,6 @@
 # Maintainer: dvjn <git@dvjn.dev>
 pkgname=ears-bin
-pkgver=0.4.0 # x-release-please-version
+pkgver=0.5.0 # x-release-please-version
 pkgrel=1
 pkgdesc="Voice dictation: press a hotkey, speak, and ears types what you said"
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=('!debug')
 install=ears-bin.install
 source=("ears_${pkgver}_amd64.deb::$url/releases/download/v$pkgver/ears_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/dvjn/ears/v$pkgver/LICENSE")
-sha256sums=('49b0780d8cb2de09e1f6fc2e58c4d9ba31b350e4f3b3e5e238141248c17885db'
+sha256sums=('0afc48dc869d303419d798f941d6b6c9d0870ff5a8f14386e22e95e3a373b9dc'
             '8130265ac5f616e5ea648f8f93e2f8c332f90fb95ab898fe9175367abac2daf7')
 
 package() {
