@@ -1,0 +1,21 @@
+pkgbase = watgbridge-bin
+	pkgdesc = Bridge WhatsApp chats to Telegram
+	pkgver = 1.13.16
+	pkgrel = 1
+	url = https://github.com/akshettrj/watgbridge
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libstdc++
+	provides = watgbridge
+	conflicts = watgbridge
+	options = !debug
+	source = watgbridge-bin-1.13.16-LICENSE::https://raw.githubusercontent.com/akshettrj/watgbridge/v1.13.16/LICENSE
+	sha256sums = ac40dfa2090a2a579faaaba3112fb51226c2170af2dd66db211f0358d3815591
+	source_x86_64 = watgbridge-bin-1.13.16-x86_64::https://github.com/akshettrj/watgbridge/releases/download/v1.13.16/watgbridge_linux_amd64
+	sha256sums_x86_64 = 99eff253cf4863ed3a13e498bc08b63ea366ed5d5b1da07aadb40df01f7afbdc
+	source_aarch64 = watgbridge-bin-1.13.16-aarch64::https://github.com/akshettrj/watgbridge/releases/download/v1.13.16/watgbridge_linux_aarch64
+	sha256sums_aarch64 = 3ad97349a4de75e6fe39423614288e84b01ddafc5da28670ddf129bd765fa6e6
+
+pkgname = watgbridge-bin
