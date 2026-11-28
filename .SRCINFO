@@ -1,0 +1,19 @@
+pkgbase = prometheus-rds-exporter-bin
+	pkgdesc = Prometheus exporter for AWS RDS
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = https://github.com/qonto/prometheus-rds-exporter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = prometheus-rds-exporter
+	conflicts = prometheus-rds-exporter
+	options = !debug
+	source = prometheus-rds-exporter-bin-0.19.0-LICENSE::https://raw.githubusercontent.com/qonto/prometheus-rds-exporter/0.19.0/LICENSE
+	sha256sums = 42fe9b0c6fa7d8bb819be8c609ca693ccdacce8006ba2710928af48e1caefb6e
+	source_x86_64 = prometheus-rds-exporter-bin-0.19.0-x86_64.tar.gz::https://github.com/qonto/prometheus-rds-exporter/releases/download/0.19.0/prometheus-rds-exporter_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = f5d424c5f03968cec3b4628ba21fcacffc194929a189edb61a772e62a58f20a0
+	source_aarch64 = prometheus-rds-exporter-bin-0.19.0-aarch64.tar.gz::https://github.com/qonto/prometheus-rds-exporter/releases/download/0.19.0/prometheus-rds-exporter_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9aedd778e563920eec8e68e42afd137ae70e45e5d1a3a67529be8a0584c605f4
+
+pkgname = prometheus-rds-exporter-bin
