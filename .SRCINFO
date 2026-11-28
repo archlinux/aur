@@ -1,0 +1,17 @@
+pkgbase = revmux-bin
+	pkgdesc = Supervised, auditable multi-agent code review
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/umputun/revmux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = revmux
+	conflicts = revmux
+	options = !debug
+	source_x86_64 = revmux-bin-0.3.0-x86_64.tar.gz::https://github.com/umputun/revmux/releases/download/v0.3.0/revmux_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = bf7774111e4190e979ae8e2f1463f9fe04d283ae76a441122e22a584056f8a6f
+	source_aarch64 = revmux-bin-0.3.0-aarch64.tar.gz::https://github.com/umputun/revmux/releases/download/v0.3.0/revmux_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = f591cbee7fa9b633a04abce897eabddd605eef880748f033885aef5d1a75bb5e
+
+pkgname = revmux-bin
