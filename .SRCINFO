@@ -1,0 +1,15 @@
+pkgbase = luxir-bin
+	pkgdesc = Fast search engine
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/luxir-search/luxir
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = luxir
+	conflicts = luxir
+	options = !debug
+	source_x86_64 = luxir-bin-0.1.0-x86_64.tar.gz::https://github.com/luxir-search/luxir/releases/download/v0.1.0/luxir-0.1.0-linux-x86_64-v2.tar.gz
+	sha256sums_x86_64 = 26d010e83489d4d735ad4a44c110bb86f560c9534e01bf2ba32f53b5e0fd6327
+
+pkgname = luxir-bin
