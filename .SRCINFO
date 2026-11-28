@@ -1,0 +1,21 @@
+pkgbase = kodama-bin
+	pkgdesc = Typst-friendly static Zettelkasten site generator
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/kodama-community/kodama
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = kodama
+	conflicts = kodama
+	options = !debug
+	source = kodama-bin-1.2.1-LICENSE::https://raw.githubusercontent.com/kodama-community/kodama/v1.2.1/LICENSE
+	sha256sums = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
+	source_x86_64 = kodama-bin-1.2.1-x86_64.tar.gz::https://github.com/kodama-community/kodama/releases/download/v1.2.1/kodama-v1.2.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b898fb7f0a094b96447c23c2d2e6d7d7061c13c4a93e020b2360298f7c094462
+	source_aarch64 = kodama-bin-1.2.1-aarch64.tar.gz::https://github.com/kodama-community/kodama/releases/download/v1.2.1/kodama-v1.2.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 623e9b72e7fb75d1fb8fe8f3335a439b0d5ba84ca52bb643989524e5abd671c2
+
+pkgname = kodama-bin
