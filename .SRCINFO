@@ -1,0 +1,17 @@
+pkgbase = ogcode-bin
+	pkgdesc = Local-first AI teammate and agent environment
+	pkgver = 0.60.0
+	pkgrel = 1
+	url = https://github.com/prasenjeet-symon/ogcode
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = ogcode
+	conflicts = ogcode
+	options = !debug
+	source_x86_64 = ogcode-bin-0.60.0-x86_64.tar.gz::https://github.com/prasenjeet-symon/ogcode/releases/download/v0.60.0/ogcode_0.60.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6aac25ffd489863e0545f6889c10c56b6d07d019af4333e29b36edb9f540ad41
+	source_aarch64 = ogcode-bin-0.60.0-aarch64.tar.gz::https://github.com/prasenjeet-symon/ogcode/releases/download/v0.60.0/ogcode_0.60.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9c3dfe95ab5ebb6dea4db2b4b2d7288570f3fb9d4ce8d9688995fa13f707417c
+
+pkgname = ogcode-bin
