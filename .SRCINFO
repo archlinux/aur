@@ -1,6 +1,6 @@
 pkgbase = polo
 	pkgdesc = Window manager, compositor, and session authority for the MATE Wayland desktop
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/KeremSoke/polo/
 	arch = x86_64
@@ -28,11 +28,9 @@ pkgbase = polo
 	depends = json-glib
 	depends = xdg-desktop-portal-gtk
 	optdepends = xdg-desktop-portal-wlr: screen sharing
-	optdepends = grim: screenshot keys
 	optdepends = xorg-xwayland: X11 applications
-	optdepends = wl-clipboard: screenshots to the clipboard
-	optdepends = slurp: area screenshots
-	source = polo-1.0.2.tar.xz::https://github.com/KeremSoke/polo//releases/download/v1.0.2/polo-1.0.2.tar.xz
-	sha256sums = 15b13c91b89d49894cf186edf124df7be945785427e3e04969a5e37f4551b47b
+	optdepends = mate-utils>=1.29.0: screenshots
+	source = polo-1.1.0.tar.xz::https://github.com/KeremSoke/polo//releases/download/v1.1.0/polo-1.1.0.tar.xz
+	sha256sums = f171060ead593215eaf32a7bb224fda3aab4c2a73c35d27c530749a7061ea10b
 
 pkgname = polo
