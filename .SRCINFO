@@ -30,7 +30,7 @@ pkgbase = pdfcraft-private-bin
 	conflicts = pdfcraft-bin
 	conflicts = pdfcraft-git
 	conflicts = ai.storyteller.pdfcraft
-	source = https://gh-proxy.com/https://github.com/storytold/pdfcraft/releases/download/v0.22.0/pdfcraft-0.22.0-linux-x86_64.pkg.tar.zst
+	source = https://cdn.gh-proxy.org/https://github.com/storytold/pdfcraft/releases/download/v0.22.0/pdfcraft-0.22.0-linux-x86_64.pkg.tar.zst
 	sha256sums = 865a70e73cbcc8d36b199ac466a625400ff58bba95e88879e3ed28f5e4e4c428
 
 pkgname = pdfcraft-private-bin
