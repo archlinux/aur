@@ -1,0 +1,16 @@
+pkgbase = textpod-bin
+	pkgdesc = Simple note-taking app inspired by One Big Text File
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/freetonik/textpod
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = textpod
+	conflicts = textpod
+	options = !debug
+	source = textpod-bin-0.1.8-LICENSE::https://raw.githubusercontent.com/freetonik/textpod/0.1.8/LICENSE
+	sha256sums = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
+	source_x86_64 = textpod-bin-0.1.8-x86_64.tar.gz::https://github.com/freetonik/textpod/releases/download/0.1.8/textpod-gnu-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 359d9a28854f53f75cfb0321e0ce854e0198a135b517e9792a7da5c8c8ad3183
+
+pkgname = textpod-bin
