@@ -1,0 +1,19 @@
+pkgbase = pantalk-bin
+	pkgdesc = Give your AI agent a voice on every chat platform
+	pkgver = 0.0.12
+	pkgrel = 1
+	url = https://github.com/pantalk/pantalk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pantalk
+	conflicts = pantalk
+	options = !debug
+	source = pantalk-bin-0.0.12-LICENSE::https://raw.githubusercontent.com/pantalk/pantalk/v0.0.12/LICENSE
+	sha256sums = 7941ef3ef35ed996097edc76dbe8fc716cfa6c0ea1b1f85227d201c3dcbb6213
+	source_x86_64 = pantalk-bin-0.0.12-x86_64.tar.gz::https://github.com/pantalk/pantalk/releases/download/v0.0.12/pantalk-linux-amd64.tar.gz
+	sha256sums_x86_64 = 9fb2c355a2955e67362a863c2bc1acaab71b9ec8f08296e5267d53802caf473a
+	source_aarch64 = pantalk-bin-0.0.12-aarch64.tar.gz::https://github.com/pantalk/pantalk/releases/download/v0.0.12/pantalk-linux-arm64.tar.gz
+	sha256sums_aarch64 = 2873a81b857baa7f99bc2df28a415929c8e451e64aa41675915772475ee2af5e
+
+pkgname = pantalk-bin
