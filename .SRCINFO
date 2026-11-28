@@ -1,0 +1,19 @@
+pkgbase = ai-observer-bin
+	pkgdesc = Unified local observability for AI agents
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/tobilg/ai-observer
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = ai-observer
+	conflicts = ai-observer
+	options = !debug
+	source = ai-observer-bin-0.8.0-LICENSE::https://raw.githubusercontent.com/tobilg/ai-observer/v0.8.0/LICENSE
+	sha256sums = 554fa0be07c308cba3cdb261365c63a68d82f2153e52d292923c7699f3c4cbdf
+	source_x86_64 = ai-observer-bin-0.8.0-x86_64.tar.gz::https://github.com/tobilg/ai-observer/releases/download/v0.8.0/ai-observer-linux-amd64-v0.8.0.tar.gz
+	sha256sums_x86_64 = bcb2aa8bf5d172cb8d67fa90075d40380be80ffe1185773012b89f72690e5fe3
+
+pkgname = ai-observer-bin
