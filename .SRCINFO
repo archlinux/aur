@@ -1,0 +1,19 @@
+pkgbase = nb-clean-bin
+	pkgdesc = Clean Jupyter notebooks for version control
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/srstevenson/nb-clean
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	depends = glibc
+	depends = libgcc
+	provides = nb-clean
+	conflicts = nb-clean
+	options = !debug
+	source_x86_64 = nb-clean-bin-6.0.0-x86_64.tar.gz::https://github.com/srstevenson/nb-clean/releases/download/v6.0.0/nb-clean-v6.0.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d038578e44576cc4e29b1dde68c8895a00efd9d77cd9bd51678057327f66e0ff
+	source_aarch64 = nb-clean-bin-6.0.0-aarch64.tar.gz::https://github.com/srstevenson/nb-clean/releases/download/v6.0.0/nb-clean-v6.0.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4b7d665e1f69b15a7ad1a31f58895ed28f2a88021238cceb7bd19e4013ee68dd
+
+pkgname = nb-clean-bin
