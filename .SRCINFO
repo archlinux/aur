@@ -1,0 +1,19 @@
+pkgbase = akena-watch-bin
+	pkgdesc = Uptime monitor in a single static binary without Docker
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/xic17/akena-watch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = akena-watch
+	conflicts = akena-watch
+	options = !debug
+	source = akena-watch-bin-1.3.0-LICENSE::https://raw.githubusercontent.com/xic17/akena-watch/v1.3.0/LICENSE
+	sha256sums = 940b6b2941857176e66d2bb8baac0fc9aa8a1f6c1c3c11232d1bc9f6ef6a183b
+	source_x86_64 = akena-watch-bin-1.3.0-x86_64::https://github.com/xic17/akena-watch/releases/download/v1.3.0/akena-watch-linux-amd64
+	sha256sums_x86_64 = 88066141d2ad57d7fe4a2b705fb68ca17a4856e0e6189876690922b09c86bcb5
+	source_aarch64 = akena-watch-bin-1.3.0-aarch64::https://github.com/xic17/akena-watch/releases/download/v1.3.0/akena-watch-linux-arm64
+	sha256sums_aarch64 = 6f763eba74c02417f7247cec29bc927805a0402e2326f27fb4ff88da72b0f78d
+
+pkgname = akena-watch-bin
