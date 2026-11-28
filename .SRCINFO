@@ -1,0 +1,18 @@
+pkgbase = sinowisp-bin
+	pkgdesc = Read and write flash on Sinowealth 8051-based HID devices
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/karstx/sinowisp
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = sinowisp
+	conflicts = sinowisp
+	options = !debug
+	source = sinowisp-bin-2.1.0-LICENSE::https://raw.githubusercontent.com/karstx/sinowisp/v2.1.0/LICENSE
+	sha256sums = a10143a4ad981253b0433d30681bda26662aad54c409584bb0d7d5eaf1696638
+	source_x86_64 = sinowisp-bin-2.1.0-x86_64.tar.gz::https://github.com/karstx/sinowisp/releases/download/v2.1.0/sinowisp-x86_64-unknown-linux-gnu-v2.1.0.tar.gz
+	sha256sums_x86_64 = 292e2cedf97f7fd382333919a3e589f63da65435b26c604ac0598ad9a5e61428
+
+pkgname = sinowisp-bin
