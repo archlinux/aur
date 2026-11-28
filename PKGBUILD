@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=scs
-_pkgver=3.3.1
+_pkgver=3.3.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('58594f5bbdc4ef5800b5975e3ca57a1f')
-b2sums=('b397b61f79ec05cdf28e2991ee7681351b5397e30148dd92ba4eaf3e2db6dddf6469317e63f771c55128828e24665ab0eb4180f146ce0553ba1730aacd90746c')
+md5sums=('1b8f2091f8a71c28d8506c9e546ed129')
+b2sums=('b2842497d639fa38e3724c2ac424dcfb828e3fa36e0c531f0663fb95cab43df9ff94364cd72e1b9566556cf2598fbb4f0672a474e4353d304f2b7462f1ae424f')
 
 build() {
   mkdir build
