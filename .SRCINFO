@@ -1,0 +1,17 @@
+pkgbase = monbooru-bin
+	pkgdesc = Self-hosted booru-style gallery for personal image collections
+	pkgver = 1.24.1
+	pkgrel = 1
+	url = https://github.com/monbooru/monbooru
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = monbooru
+	conflicts = monbooru
+	options = !debug
+	source_x86_64 = monbooru-bin-1.24.1-x86_64.tar.gz::https://github.com/monbooru/monbooru/releases/download/v1.24.1/monbooru_1.24.1_portable_lite_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3b02d9a7fdc48e9531de4854ba11b57ecb5a8aebd6ebfa39bccb4b283b5b7d72
+	source_aarch64 = monbooru-bin-1.24.1-aarch64.tar.gz::https://github.com/monbooru/monbooru/releases/download/v1.24.1/monbooru_1.24.1_portable_lite_linux_arm64.tar.gz
+	sha256sums_aarch64 = 65ff43d6dc10a54d8e563d5e9c631a2cf58742d4a5c47850d27b3cd5e2835dc0
+
+pkgname = monbooru-bin
