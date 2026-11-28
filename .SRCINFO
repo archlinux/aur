@@ -1,0 +1,15 @@
+pkgbase = egres-bin
+	pkgdesc = Postgres-compatible database for heavy multi-tenant workloads
+	pkgver = 0.2610.0
+	pkgrel = 1
+	url = https://github.com/manishrjain/egres
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = egres
+	conflicts = egres
+	options = !debug
+	source_x86_64 = egres-bin-0.2610.0-x86_64.tar.gz::https://github.com/manishrjain/egres/releases/download/v0.2610.0/egres-v0.2610.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 252d5deb1d07bd3bf1842785881ff297e248115aa54e950774866646cd1c05fa
+
+pkgname = egres-bin
