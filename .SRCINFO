@@ -1,0 +1,19 @@
+pkgbase = moling-bin
+	pkgdesc = Computer-use and browser-use MCP server
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/gojue/moling
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = moling
+	conflicts = moling
+	options = !debug
+	source = moling-bin-0.5.0-LICENSE::https://raw.githubusercontent.com/gojue/moling/v0.5.0/LICENSE
+	sha256sums = 33db2390e786fbb89efb85127c1f986c0bf1af6d03c57b1d3124ee3e5b107da4
+	source_x86_64 = moling-bin-0.5.0-x86_64.tar.gz::https://github.com/gojue/moling/releases/download/v0.5.0/moling-v0.5.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 9dad5db4eb882664eac23b46e27ddd48215a12cfa46247a0d6aa4155708cb99e
+	source_aarch64 = moling-bin-0.5.0-aarch64.tar.gz::https://github.com/gojue/moling/releases/download/v0.5.0/moling-v0.5.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = f296c22b0c28ce9de3c191ba580aa3d3cef13b73aaf892cb6b38f893b5c62ca6
+
+pkgname = moling-bin
