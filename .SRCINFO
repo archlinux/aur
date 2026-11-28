@@ -1,0 +1,17 @@
+pkgbase = cloudflare-utils-bin
+	pkgdesc = Helpful Cloudflare utilities
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/Cyb3r-Jak3/cloudflare-utils
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = cloudflare-utils
+	conflicts = cloudflare-utils
+	options = !debug
+	source_x86_64 = cloudflare-utils-bin-1.9.1-x86_64.tar.xz::https://github.com/Cyb3r-Jak3/cloudflare-utils/releases/download/v1.9.1/cloudflare-utils_linux_amd64.tar.xz
+	sha256sums_x86_64 = f3f1de3ea2aacd532c43bc7b2b8080fc531655cf917ce3b1015c0896b7703d3d
+	source_aarch64 = cloudflare-utils-bin-1.9.1-aarch64.tar.xz::https://github.com/Cyb3r-Jak3/cloudflare-utils/releases/download/v1.9.1/cloudflare-utils_linux_arm64.tar.xz
+	sha256sums_aarch64 = 1b2bddac1ac1ec8e06d08f6a5bf7d86b6b6a8cf4b7900928d70868de9760542e
+
+pkgname = cloudflare-utils-bin
