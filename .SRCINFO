@@ -1,0 +1,17 @@
+pkgbase = cirrus-cli-bin
+	pkgdesc = Run Cirrus CI tasks locally and in any CI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cirruslabs/cirrus-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cirrus-cli
+	conflicts = cirrus-cli
+	options = !debug
+	source_x86_64 = cirrus-cli-bin-1.0.0-x86_64.tar.gz::https://github.com/cirruslabs/cirrus-cli/releases/download/v1.0.0/cirrus-linux-amd64.tar.gz
+	sha256sums_x86_64 = a2aed881d8d0bfb17466a1bdfaaa553ca3ae64ea0bef57aa1a47107322941933
+	source_aarch64 = cirrus-cli-bin-1.0.0-aarch64.tar.gz::https://github.com/cirruslabs/cirrus-cli/releases/download/v1.0.0/cirrus-linux-arm64.tar.gz
+	sha256sums_aarch64 = 801aa5a6ee757a5872ef4aaea03ed87ace0910315bc5945405b9c4bedfa4f075
+
+pkgname = cirrus-cli-bin
