@@ -1,6 +1,5 @@
-# Maintainer: windy
+# Maintainer: Stephan Windmüller <arch at freewarepoint dot de>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Contributor: Stephan Windmüller <arch at freewarepoint dot de>
 # Contributor: Alessandro Bernardello <aleberna at erine dot eu>
 
 pkgname=ente-auth-bin
