@@ -1,0 +1,19 @@
+pkgbase = utpm-bin
+	pkgdesc = Package manager for local and remote Typst packages
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/typst-community/utpm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = utpm
+	conflicts = utpm
+	options = !debug
+	source_x86_64 = utpm-bin-0.4.1-x86_64.tar.gz::https://github.com/typst-community/utpm/releases/download/v0.4.1/utpm-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f51cbb7eebbc38b684a2ce1f505b44d0c4a0f95ecac81fc3c9c07602883d7f9a
+	source_aarch64 = utpm-bin-0.4.1-aarch64.tar.gz::https://github.com/typst-community/utpm/releases/download/v0.4.1/utpm-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0239b7e497cadc08bde282d5f00412e60a8773b8d8dfe04414c2d77cc7053680
+
+pkgname = utpm-bin
