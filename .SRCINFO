@@ -1,0 +1,16 @@
+pkgbase = markplane-bin
+	pkgdesc = Markdown-first project management for humans and AI agents
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/zerowand01/markplane
+	arch = x86_64
+	license = Apache-2.0
+	provides = markplane
+	conflicts = markplane
+	options = !debug
+	source = markplane-bin-0.1.8-LICENSE::https://raw.githubusercontent.com/zerowand01/markplane/v0.1.8/LICENSE
+	sha256sums = 64375e572190005a47ee817115788f42b2963d1a66f0c10bdf7ffbe581dd1c1c
+	source_x86_64 = markplane-bin-0.1.8-x86_64.tar.gz::https://github.com/zerowand01/markplane/releases/download/v0.1.8/markplane-v0.1.8-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 4975e5d6dbf79ab60d0205402ff980161f77ba510e8cdb4f021fbf71588c9432
+
+pkgname = markplane-bin
