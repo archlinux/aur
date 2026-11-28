@@ -1,0 +1,18 @@
+pkgbase = webreaper-bin
+	pkgdesc = AI-native web scraper
+	pkgver = 11.3.2
+	pkgrel = 1
+	url = https://github.com/alex-on-ai/WebReaper
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = webreaper
+	conflicts = webreaper
+	options = !debug
+	source_x86_64 = webreaper-bin-11.3.2-x86_64.tar.gz::https://github.com/alex-on-ai/WebReaper/releases/download/v11.3.2/webreaper-v11.3.2-linux-x64.tar.gz
+	sha256sums_x86_64 = a57877b5c315d76e3f3831614e5e682940a0fd47c12f734b5c2dbcb720d9ebb2
+	source_aarch64 = webreaper-bin-11.3.2-aarch64.tar.gz::https://github.com/alex-on-ai/WebReaper/releases/download/v11.3.2/webreaper-v11.3.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 351da1dab79b6c2a0e4b29fe33a5d53566496deb8ee0f892cad9362ddd0eb039
+
+pkgname = webreaper-bin
