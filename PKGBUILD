@@ -1,7 +1,7 @@
 # Maintainer: Federico Cerruti <cerruti.federico@gmail.com>
 
 pkgname=chelsea
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Discover and watch movies and series from your Stremio addons (libadwaita, built-in mpv player)'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   'org.freedesktop.secrets: keep Stremio sign-in between sessions'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('abc915af2e72360d14aba357644b7465cec7b3c3d23ce2e65418d3aa3b4190d8')
+sha256sums=('b122f9ce365b17a91ac3fbfd4f6133f399a923be8857805918be1e9cf227a895')
 
 prepare() {
   cd Chelsea-$pkgver

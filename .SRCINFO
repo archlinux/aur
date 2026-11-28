@@ -1,6 +1,6 @@
 pkgbase = chelsea
 	pkgdesc = Discover and watch movies and series from your Stremio addons (libadwaita, built-in mpv player)
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/riyaniii/Chelsea
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = chelsea
 	depends = python-httpx
 	depends = python-mpv
 	optdepends = org.freedesktop.secrets: keep Stremio sign-in between sessions
-	source = chelsea-0.1.2.tar.gz::https://github.com/riyaniii/Chelsea/archive/refs/tags/0.1.2.tar.gz
-	sha256sums = abc915af2e72360d14aba357644b7465cec7b3c3d23ce2e65418d3aa3b4190d8
+	source = chelsea-0.1.3.tar.gz::https://github.com/riyaniii/Chelsea/archive/refs/tags/0.1.3.tar.gz
+	sha256sums = b122f9ce365b17a91ac3fbfd4f6133f399a923be8857805918be1e9cf227a895
 
 pkgname = chelsea
