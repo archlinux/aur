@@ -1,0 +1,19 @@
+pkgbase = singleserver-bin
+	pkgdesc = Run all your projects on a single server
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/dvassallo/singleserver
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = singleserver
+	conflicts = singleserver
+	options = !debug
+	source = singleserver-bin-0.2.0-LICENSE::https://raw.githubusercontent.com/dvassallo/singleserver/v0.2.0/LICENSE
+	sha256sums = bf1b8265ffede879f90ce55440c13dac0810a3b155385decc868218e111b0f84
+	source_x86_64 = singleserver-bin-0.2.0-x86_64::https://github.com/dvassallo/singleserver/releases/download/v0.2.0/singleserver-linux-amd64
+	sha256sums_x86_64 = ec0bb5d67545b5f8c20997f64aeb4e8eaf45ab386976e03772e6f94c050ac4a7
+	source_aarch64 = singleserver-bin-0.2.0-aarch64::https://github.com/dvassallo/singleserver/releases/download/v0.2.0/singleserver-linux-arm64
+	sha256sums_aarch64 = 4eaa3c243b64b60c5ca49f2537ef750dae591f19920297e4fc294418674a0de5
+
+pkgname = singleserver-bin
