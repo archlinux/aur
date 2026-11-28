@@ -1,0 +1,20 @@
+pkgbase = chipnomad-tracker-bin
+	pkgdesc = Chiptune tracker for handheld consoles
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/Megus/chipnomad-tracker
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = sdl2-compat
+	provides = chipnomad-tracker
+	conflicts = chipnomad-tracker
+	options = !debug
+	source = chipnomad-tracker-bin-1.0.5-LICENSE::https://raw.githubusercontent.com/Megus/chipnomad-tracker/v1.0.5/LICENSE
+	sha256sums = 05c5a3b01343b6fc828033c2996ff987e4140ccc7a348fdb8ec3a758a88010ab
+	source_x86_64 = chipnomad-tracker-bin-1.0.5-x86_64.tar.gz::https://github.com/Megus/chipnomad-tracker/releases/download/v1.0.5/ChipNomad-2026-08-29-1.0.5-Linux-x86_64.tar.gz
+	sha256sums_x86_64 = a7f2d589f6af89327ff13999d426ca1e64ff3786d0275c1404163d3b5211fb35
+
+pkgname = chipnomad-tracker-bin
