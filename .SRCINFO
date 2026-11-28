@@ -1,6 +1,6 @@
 pkgbase = wowtype-core
 	pkgdesc = WeChat-style pinyin input method for fcitx5, with bundled dictionaries and language model
-	pkgver = 0.7.13
+	pkgver = 0.7.14
 	pkgrel = 4
 	url = https://github.com/Gloridust/WowType
 	install = wowtype-core.install
@@ -22,7 +22,7 @@ pkgbase = wowtype-core
 	optdepends = curl: translate mode
 	provides = wowtype
 	conflicts = wowtype
-	source = wowtype-0.7.13-1-x86_64.pkg.tar.zst::https://gh-proxy.com/https://github.com/Gloridust/WowType/releases/download/v0.7.13/wowtype-0.7.13-1-x86_64.pkg.tar.zst
-	sha256sums = 84c824d362810ecd839ced5bd07ee2fe80fa450409e250dfc82abb3647a59933
+	source = wowtype-0.7.14-1-x86_64.pkg.tar.zst::https://cdn.gh-proxy.org/https://github.com/Gloridust/WowType/releases/download/v0.7.14/wowtype-0.7.14-1-x86_64.pkg.tar.zst
+	sha256sums = d72e55b4c70d8db0d90bb67e33283b17f7237b6a759db9048c4e03f1095af853
 
 pkgname = wowtype-core

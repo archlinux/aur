@@ -4,7 +4,7 @@
 # 词库已内置）。
 
 pkgname=wowtype-core
-pkgver=0.7.13
+pkgver=0.7.14
 pkgrel=4
 pkgdesc='WeChat-style pinyin input method for fcitx5, with bundled dictionaries and language model'
 arch=('x86_64')
@@ -18,14 +18,14 @@ provides=('wowtype')
 install="$pkgname.install"
 
 # gh-proxy.com 前缀用于国内加速；换镜像只需 export GH_MIRROR=https://另一镜像/
-_gh_mirror="${GH_MIRROR:-https://gh-proxy.com/}"
+_gh_mirror="${GH_MIRROR:-https://cdn.gh-proxy.org/}"
 _gh_mirror="${_gh_mirror%/}/"
 _pkgfile="wowtype-$pkgver-1-x86_64.pkg.tar.zst"
 source=(
   "$_pkgfile::${_gh_mirror}https://github.com/Gloridust/WowType/releases/download/v$pkgver/$_pkgfile"
 )
 # checksum 由 aur-auto-update 定期跟随 releases/latest 更新
-sha256sums=('84c824d362810ecd839ced5bd07ee2fe80fa450409e250dfc82abb3647a59933')
+sha256sums=('d72e55b4c70d8db0d90bb67e33283b17f7237b6a759db9048c4e03f1095af853')
 
 package() {
   # 官方 .pkg.tar.zst 已被 makepkg 自动解压到 srcdir，只把 usr/ 树收进 pkgdir
