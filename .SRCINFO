@@ -1,0 +1,17 @@
+pkgbase = macondo-bin
+	pkgdesc = Crossword board game AI
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/domino14/macondo
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	provides = macondo
+	conflicts = macondo
+	options = !debug
+	source = macondo-bin-0.14.0-LICENSE::https://raw.githubusercontent.com/domino14/macondo/v0.14.0/LICENSE.md
+	sha256sums = e1c0ad728983d8a57335e52cf1064f1affd1d454173d8cebd3ed8b4a72b48704
+	source_x86_64 = macondo-bin-0.14.0-x86_64.zip::https://github.com/domino14/macondo/releases/download/v0.14.0/macondo-v0.14.0-linux-x86_64.zip
+	sha256sums_x86_64 = 23cfb67950cb3141de51982849708773c7779a9194f3510a6caa093ef2a8ae16
+
+pkgname = macondo-bin
