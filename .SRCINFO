@@ -1,0 +1,17 @@
+pkgbase = favirecon-bin
+	pkgdesc = Use favicons to improve target reconnaissance
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/edoardottt/favirecon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = favirecon
+	conflicts = favirecon
+	options = !debug
+	source_x86_64 = favirecon-bin-1.1.0-x86_64.zip::https://github.com/edoardottt/favirecon/releases/download/v1.1.0/favirecon_1.1.0_linux_amd64.zip
+	sha256sums_x86_64 = 4bab5105bdbc2f6132f0bb29f59949a60893c74142ed8c3b68c0614eb6f10d61
+	source_aarch64 = favirecon-bin-1.1.0-aarch64.zip::https://github.com/edoardottt/favirecon/releases/download/v1.1.0/favirecon_1.1.0_linux_arm64.zip
+	sha256sums_aarch64 = 1dc1ad01afc505881d071cd2806cf18312d37fef42242a5511b0f549047aafcf
+
+pkgname = favirecon-bin
