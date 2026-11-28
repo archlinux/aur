@@ -1,0 +1,22 @@
+pkgbase = murr-bin
+	pkgdesc = Sub-millisecond cache for ML and AI workloads
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/murrdb/murr
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = murr
+	conflicts = murr
+	options = !debug
+	source = murr-bin-0.3.1-LICENSE::https://raw.githubusercontent.com/murrdb/murr/v0.3.1/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = murr-bin-0.3.1-x86_64::https://github.com/murrdb/murr/releases/download/v0.3.1/murr-linux-x64
+	sha256sums_x86_64 = e05eba20dc9cd80f6a787da289c699d89e908eff251e0059bd2425095079e83e
+	source_aarch64 = murr-bin-0.3.1-aarch64::https://github.com/murrdb/murr/releases/download/v0.3.1/murr-linux-arm64
+	sha256sums_aarch64 = d7d0bf3a7bdbbb058bb2a945500067a639f7d9ce3db088ffa43a2eaa39c4ab30
+
+pkgname = murr-bin
