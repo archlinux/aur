@@ -10,6 +10,17 @@ MSG
 }
 post_upgrade() {
   udevadm control --reload || true
+  if (( $(vercmp "$2" 0.9.5) < 0 )); then
+    cat <<'MSG'
+==> OpenXLR: Windows plugins now run on OpenXLR's own Windows plugin host,
+==> which needs only Wine (pacman -S wine). Once the daemon restarts, every
+==> Windows plugin in your chains starts there with its settings, and
+==> yabridge is no longer needed:
+==>   systemctl --user restart openxlr-daemon
+==> Before you remove openxlr-yabridge, run "openxlr doctor". It prints the
+==> command that keeps Wine installed.
+MSG
+  fi
   if (( $(vercmp "$2" 0.9.0) < 0 )); then
     cat <<'MSG'
 ==> OpenXLR: this version also raises PipeWire's own open-file limit, with a

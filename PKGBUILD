@@ -1,16 +1,22 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="A Wave Link replacement for Linux: a PipeWire mixer with effects and an OpenDeck plugin for any microphone, plus full control of Elgato XLR interfaces and Wave microphones"
 arch=('x86_64')
 url="https://github.com/emaspa/openxlr"
 license=('GPL-3.0-only' 'BSD-3-Clause' 'MIT' 'Apache-2.0' 'CC0-1.0' 'OFL-1.1')
 depends=('aspnet-runtime>=10' 'pipewire' 'pipewire-pulse' 'wireplumber' 'libpulse' 'libusb' 'lilv'
-         'fontconfig' 'libx11' 'libice' 'libsm' 'glib2' 'libsndfile' 'alsa-lib')
-makedepends=('dotnet-sdk>=10' 'dotnet-targeting-pack>=10' 'lv2' 'pkgconf' 'python' 'cargo')
+         'fontconfig' 'libx11' 'libice' 'libsm' 'glib2' 'libsndfile' 'alsa-lib'
+         'dbus')
+# mingw-w64-gcc builds the Windows plugin host, openxlr-winhost.exe, and
+# the helper links libdbus (from dbus, above) to ask RTKit for its thread. Wine
+# runs it and is not needed to build it.
+makedepends=('dotnet-sdk>=10' 'dotnet-targeting-pack>=10' 'lv2' 'pkgconf' 'python' 'cargo'
+             'mingw-w64-gcc')
 optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'lsp-plugins-lv2: a starter set of LV2 plugins for the inserts'
+            "wine: Windows plugins on OpenXLR's own Windows plugin host"
             'opendeck: Stream Deck control through the bundled plugin'
             'gdk-pixbuf2: SVG application icons in the UI'
             'librsvg: SVG application icons in the UI'
@@ -28,13 +34,12 @@ options=('!strip' '!debug')
 _openxlr_omarchy=0
 if [[ -f /usr/share/omarchy/shell/Ui/PluginBarApi.qml ]]; then
     _openxlr_omarchy=1
-    depends+=(qt6-websockets)
 fi
 _dfver=0.5.6
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz"
         "DeepFilterNet3_onnx-$_dfver.tar.gz::https://raw.githubusercontent.com/Rikorose/DeepFilterNet/v$_dfver/models/DeepFilterNet3_onnx.tar.gz")
 noextract=("DeepFilterNet3_onnx-$_dfver.tar.gz")
-sha256sums=('fb3d84d8013ff67f0373a46d7766dd76e6bea8c2080a342bccda22bb4135d167'
+sha256sums=('15ed68f99d7b3213cfffc616934111dc73482c18ba6a870d0015373bc9bfdc4d'
             'c94d91f70911001c946e0fabb4aa9adc37045f45a03b56008cb0c8244cb63616')
 
 # DeepFilterNet's noise removal is a Rust library linked into the native
@@ -57,7 +62,9 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver/src"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1
-  export DEEPFILTER=1 RUSTUP_TOOLCHAIN=stable CARGO_NET_OFFLINE=true
+  # The native build fails rather than leave DeepFilterNet or the Windows
+  # plugin host out.
+  export DEEPFILTER=1 WINHOST=1 RUSTUP_TOOLCHAIN=stable CARGO_NET_OFFLINE=true
   export CARGO_BUILD_BUILD_DIR="$startdir/cargo-build"
   dotnet publish OpenXLR.Daemon -c Release -r linux-x64 --self-contained false \
     -p:EnableNativeLv2Host=true -o "$srcdir/out/daemon"
@@ -156,6 +163,8 @@ WRAP
   install -Dm644 native/signalsmith/signalsmith-linear/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/signalsmith/linear/LICENSE.txt"
   install -Dm644 native/clap/LICENSE "$pkgdir/usr/share/licenses/$pkgname/clap/LICENSE"
   install -Dm644 native/vst3/LICENSE "$pkgdir/usr/share/licenses/$pkgname/vst3/LICENSE"
+  # The MinGW-w64 runtime and winpthreads, linked statically into the Windows plugin host.
+  install -Dm644 native/winhost/NOTICE "$pkgdir/usr/share/licenses/$pkgname/winhost/NOTICE"
   install -Dm644 packaging/starter-sounds/CREDITS "$pkgdir/usr/share/licenses/$pkgname/starter-sounds/CREDITS"
   install -Dm644 src/OpenXLR.UI/Assets/Fonts/OFL.txt "$pkgdir/usr/share/licenses/$pkgname/fira-sans/OFL.txt"
   install -Dm644 src/OpenXLR.UI/Assets/Fonts/DSEG-OFL.txt "$pkgdir/usr/share/licenses/$pkgname/dseg/OFL.txt"
