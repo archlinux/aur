@@ -1,7 +1,7 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="oshot-git"
 _pkgname="oshot"
-pkgver=0.5.0.rc1.r0.037f4ef
+pkgver=0.5.0.rc3.r8.1b2666e
 pkgrel=1
 pkgdesc="A fast and lightweight screenshot tool for extracting text on the fly (git)"
 arch=('x86_64' 'aarch64')
@@ -9,11 +9,10 @@ url="https://github.com/Toni500github/oshot"
 license=('BSD-3-Clause')
 depends=(
   'libx11'
-  'libxcb'
+  'libxrandr'
   'libpng'
-  'glfw'
+  'sdl3'
   'tesseract'
-  'tesseract-data-eng'
   'zbar'
   'libappindicator-gtk3'
 )
@@ -36,7 +35,7 @@ build() {
     cmake -B build -S . \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
-      -DDISABLE_PLUGINS=1
+      -DDISABLE_PLUGINS=OFF
 
     cmake --build build
 }
