@@ -10,13 +10,14 @@ pkgname='kea_config'
 pkgdesc='Manage kea dhcp4 configs from single source config'
 _gitname='kea_config'
 
-pkgver="6.9.0"
+pkgver="6.10.0"
 pkgrel=1
 url="https://github.com/gene-git/kea_config"
 
 arch=(any)
 license=(GPL-2.0-or-later)
 depends=(
+    kea
     'python>=3.14' 
     python-dnspython
     python-ruamel-yaml
@@ -49,8 +50,14 @@ _mkpkg_depends=(
 validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C
 
 #source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
-source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
-sha512sums=('SKIP')
+source=(
+    "git+https://github.com/gene-git/${_gitname}#tag=${pkgver}"
+    kea-config.tmpfiles
+)
+sha256sums=(
+    'SKIP'
+    '5fcf2cc753e61145f4eb7f42c75265bc5ca378cc1ab29aa965e4adc26d3a4e35'
+)
 
 build() {
     cd "${_gitname}"

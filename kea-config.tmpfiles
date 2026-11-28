@@ -1,0 +1,10 @@
+#
+# Owners/modes for config files in /etc/kea/
+#
+z /etc/kea/*.conf              0640 root kea -
+z /etc/kea/*.pw                0640 root kea -
+z /etc/kea/*.user              0640 root kea -
+z /etc/kea/*/*.conf            0640 root kea -
+z /etc/kea/*/*.pw              0640 root kea -
+z /etc/kea/*/*.user            0640 root kea -
+

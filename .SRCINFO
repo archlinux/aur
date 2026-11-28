@@ -1,6 +1,6 @@
 pkgbase = kea_config
 	pkgdesc = Manage kea dhcp4 configs from single source config
-	pkgver = 6.9.0
+	pkgver = 6.10.0
 	pkgrel = 1
 	url = https://github.com/gene-git/kea_config
 	arch = any
@@ -10,11 +10,14 @@ pkgbase = kea_config
 	makedepends = meson
 	makedepends = meson-python
 	makedepends = rsync
+	depends = kea
 	depends = python>=3.14
 	depends = python-dnspython
 	depends = python-ruamel-yaml
-	source = git+https://github.com/gene-git/kea_config#tag=6.9.0
+	source = git+https://github.com/gene-git/kea_config#tag=6.10.0
+	source = kea-config.tmpfiles
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
-	sha512sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 5fcf2cc753e61145f4eb7f42c75265bc5ca378cc1ab29aa965e4adc26d3a4e35
 
 pkgname = kea_config
