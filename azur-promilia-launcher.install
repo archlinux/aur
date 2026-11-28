@@ -1,12 +1,33 @@
 post_install() {
-    echo "── 蓝色星原：旅谣 启动器 ──────────────────────────"
-    echo "  首次使用（登录失效时）：azur-promilia --bridge"
-    echo "  日常启动：            azur-promilia"
-    echo "  异常后还原 SDK：      azur-promilia --restore"
-    echo "  游戏目录默认：        ~/Games/AzurPromilia"
-    echo "────────────────────────────────────────────────"
+    cat <<'EOF'
+── 蓝色星原：旅谣 启动器 ──────────────────────────
+首次使用三步：
+
+  1) 装官方启动器
+     azur-promilia --install <下载好的安装包.exe>
+     安装位置填 Y:\AzurPromilia
+
+  2) 下载游戏本体
+     azur-promilia
+     启动器里把「安装位置」设为 Y:\AzurPromilia
+
+  3) 确认状态
+     azur-promilia --status
+
+之后常用：
+  日常启动   azur-promilia
+  桥接登录   azur-promilia --bridge
+  还原 SDK   azur-promilia --restore
+  秒退修复   azur-promilia --fix-x
+
+游戏目录默认 ~/Games/AzurPromilia，可用 AZUR_GAME_ROOT 覆盖。
+从桌面图标启动失败时会弹通知；收不到通知就在终端里运行看报错。
+────────────────────────────────────────────────
+EOF
 }
 
 post_upgrade() {
+    echo "本次更新：新增 --install 引导安装与 --status 状态自检；"
+    echo "未安装游戏本体时，点图标不再静默退出。"
     post_install
 }

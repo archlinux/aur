@@ -20,27 +20,45 @@
 ## 使用
 
 ```bash
-azur-promilia --check     # 检查游戏目录 / SDK 哈希 / 桥接 / PyQt6
-azur-promilia --bridge    # 桥接登录模式（登录失效时用）
-azur-promilia             # 日常启动（登录态有效时）
-azur-promilia --restore   # 桥接异常退出后，还原游戏目录里的官方 SDK
+azur-promilia --install [包]  # 首次：装官方启动器（不带路径时自动在下载目录里找）
+azur-promilia                 # 启动：进入官方启动器，下载/更新本体
+azur-promilia --status        # 状态自检：目录、启动器、本体、SDK 哈希、桥接
+azur-promilia --bridge        # 桥接登录模式（登录失效时用）
+azur-promilia --restore       # 桥接异常退出后，还原游戏目录里的官方 SDK
+azur-promilia --fix-x         # 启动「秒退」时清理 Xwayland 泄漏的 X11 连接
 ```
 
 游戏根目录默认 `~/Games/AzurPromilia`，可用 `AZUR_GAME_ROOT` 覆盖。
 
+目录布局是固定的，`--install` / `--status` 都按它检查：
+
+```
+~/Games/AzurPromilia/
+├── drive/                          → Wine 里的 Y: 盘
+│   └── AzurPromilia/
+│       ├── 1.0.2.2/launcher.exe   官方启动器（版本子目录，会随更新变化）
+│       └── AzurPromilia_Game/     游戏本体
+└── prefix/                         Proton 前缀（含 y: 映射）
+```
+
+`--install` 会自动建目录、写 `Y:` 映射，并在安装结束后重新查找 `launcher.exe`；
+安装器里请把安装位置改成 `Y:\AzurPromilia`，装到别处脚本就找不到。
+
 ## 典型首次流程
 
-1. `azur-promilia --bridge`
-2. 登录器里点「开始游戏」，等它下载并合并资源（约 15G）
-3. SDK 登录面板会出现在标题为「蓝色星原 · 官方 SDK」的原生窗口里
+1. `azur-promilia --install`（或 `--install <安装包路径>`），安装位置填 `Y:\AzurPromilia`
+2. `azur-promilia`，在启动器里把游戏安装位置设为 `Y:\AzurPromilia`，等它下载并合并资源
+3. `azur-promilia --status`，确认本体、官方 SDK、桥接都「就绪」
+4. 需要登录时用 `azur-promilia --bridge`；登录器里点「开始游戏」进入游戏
+5. SDK 登录面板会出现在标题为「蓝色星原 · 官方 SDK」的原生窗口里
    —— 滑块验证若太小，按住 **Ctrl 滚轮**放大，**Ctrl+0** 复位
-4. 登录成功后**退出整套流程**（关掉游戏和登录器）
-5. 之后用 `azur-promilia` 正常启动即可，登录态由登录器保持
+6. 登录成功后**退出整套流程**（关掉游戏和登录器）
+7. 之后用 `azur-promilia` 正常启动即可，登录态由登录器保持
 
 ## 打进包里的东西
 
 ```
-/usr/bin/azur-promilia                    启动脚本（两种模式 + 自检 + 还原）
+/usr/bin/azur-promilia                    启动脚本（安装引导 + 两种模式 + 状态自检 + 还原）
 /usr/share/azur-promilia/run.py           桥接包装器（上游）
 /usr/share/azur-promilia/login_window.py  原生 Qt 窗口（上游）
 /usr/share/azur-promilia/build/selected/  两个 PE 文件（本包用 mingw-w64 现场编译）
@@ -54,18 +72,15 @@ azur-promilia --restore   # 桥接异常退出后，还原游戏目录里的官�
 - `dwproton-bin` + `dwproton-azur-patch`：Proton 兼容层与窗口管理补丁
 - `python` + `python-pyqt6`：原生登录窗口
 - 构建期需要 `mingw-w64-gcc`
+- 可选：`libnotify`（桌面通知）、`xdg-utils`（`--install` 打开官网）、`lsof`（X11 预检）
 
-## 发布到 AUR
+## 维护与发布
 
 ```bash
-cd azur-promilia-launcher
-makepkg --printsrcinfo > .SRCINFO
-git init && git add PKGBUILD .SRCINFO azur-promilia.sh \
-    azur-promilia.desktop azur-promilia-login.desktop \
-    azur-promilia-launcher.install
-git commit -m "initial"
-git remote add aur ssh://aur@aur.archlinux.org/azur-promilia-launcher.git
-git push aur master
+makepkg --printsrcinfo > .SRCINFO       # 改了 PKGBUILD 后必须重新生成
+makepkg -f                              # 本地构建验证
+git add -A && git commit -m "1.0.0-8: …"
+git push aur master                     # remote: ssh://aur@aur.archlinux.org/azur-promilia-launcher.git
 ```
 
 ## 已知限制
@@ -73,6 +88,26 @@ git push aur master
 - 登录态由登录器持有，**换了 prefix 或清理了 `Y:\AzurPromilia\AppData` 就要重新桥接登录一次**
 - 桥接期间强杀进程会让官方 `union_pcsdk.dll` 留在被替换状态，用 `--restore` 修
 - 内存占用较高（游戏常驻约 5G+），小内存机器建议关掉浏览器
+
+## 故障排查：点桌面图标没反应
+
+桌面项的 `Terminal=false`，脚本的报错不会出现在终端里，所以看起来像没反应。
+先跑状态自检：
+
+```bash
+azur-promilia --status
+```
+
+常见情况：
+
+| 状态 | 处理 |
+|---|---|
+| 官方启动器「未安装」 | `azur-promilia --install`，安装位置填 `Y:\AzurPromilia` |
+| 启动器已装、本体「未安装」 | `azur-promilia`，在启动器里选 `Y:\AzurPromilia` 下载本体 |
+| X11 连接数告警 | `azur-promilia --fix-x` |
+
+脚本启动失败时会发桌面通知（优先 `notify-send`，没有则用 `kdialog` / `zenity`），
+不再静默退出。
 
 ## 故障排查：启动器「秒退」
 

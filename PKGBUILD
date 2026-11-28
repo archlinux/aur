@@ -1,12 +1,15 @@
 # Maintainer: eon <eon@localhost>
 pkgname=azur-promilia-launcher
 pkgver=1.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="蓝色星原：旅谣 Linux 启动器（dwproton + azur 补丁 + SDK 桥接登录）"
 arch=('x86_64')
 url="https://github.com/puji4810/azur-sdk-qt"
 license=('GPL-3.0-or-later')
 depends=('python' 'python-pyqt6' 'dwproton-bin' 'dwproton-azur-patch')
+optdepends=('libnotify: 桌面通知（从图标启动失败时提示原因）'
+            'xdg-utils: --install 时打开官方下载页'
+            'lsof: X11 连接数预检')
 makedepends=('git' 'mingw-w64-gcc')
 options=('!strip')
 install=azur-promilia-launcher.install
