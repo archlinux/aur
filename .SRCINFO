@@ -1,0 +1,19 @@
+pkgbase = groksearch-rs-bin
+	pkgdesc = MCP server for Grok web search and Tavily source retrieval
+	pkgver = 0.1.26
+	pkgrel = 1
+	url = https://github.com/Episkey-G/GrokSearch-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = groksearch-rs
+	conflicts = groksearch-rs
+	options = !debug
+	source = groksearch-rs-bin-0.1.26-LICENSE::https://raw.githubusercontent.com/Episkey-G/GrokSearch-rs/v0.1.26/LICENSE
+	sha256sums = 03cdda9c6cc97a8267e756df11ecb35ec6f1b5c658b9b9e87bf02f3f1865d2de
+	source_x86_64 = groksearch-rs-bin-0.1.26-x86_64.tar.gz::https://github.com/Episkey-G/GrokSearch-rs/releases/download/v0.1.26/grok-search-rs_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = e8ced45392738bac691e41de9793c7941ed7f56c7e53697f8084b2e9ef4acf86
+	source_aarch64 = groksearch-rs-bin-0.1.26-aarch64.tar.gz::https://github.com/Episkey-G/GrokSearch-rs/releases/download/v0.1.26/grok-search-rs_Linux_aarch64.tar.gz
+	sha256sums_aarch64 = 9e04d09b4104dd95854d446c15a0c923cd8a376855a2fa4f1c5dc1c93546958d
+
+pkgname = groksearch-rs-bin
