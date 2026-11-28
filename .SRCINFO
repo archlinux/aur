@@ -1,0 +1,17 @@
+pkgbase = dmut-bin
+	pkgdesc = Permutation, mutation and alteration of subdomains
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/bp0lr/dmut
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = dmut
+	conflicts = dmut
+	options = !debug
+	source_x86_64 = dmut-bin-1.0.0-x86_64.tar.gz::https://github.com/bp0lr/dmut/releases/download/v1.0.0/dmut_v1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3308d8dee5d89192d4b077f607e64e64fb3614c75232b56f50433ad08bcca8bf
+	source_aarch64 = dmut-bin-1.0.0-aarch64.tar.gz::https://github.com/bp0lr/dmut/releases/download/v1.0.0/dmut_v1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d61c450a271d088a73275f6f171eff8d2108c660b8cbce609a55b967876fba32
+
+pkgname = dmut-bin
