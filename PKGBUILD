@@ -3,14 +3,15 @@
 
 pkgname=layrics-git
 _pkgname=layrics
-pkgver=r125.8aa2171
+pkgver=r126.304b1d3
 pkgrel=1
-pkgdesc="Desktop lyrics overlay for Wayland — auto-synced with MPRIS players, rendered via libass on wlr-layer-shell"
+pkgdesc="Desktop lyrics overlay for Wayland — auto-synced with MPRIS players, with ASS and shader karaoke via asslayer"
 arch=('x86_64')
 url="https://github.com/sitiyou/layrics"
 license=('GPL-3.0-only')
 depends=(
-  'python-asslayer'
+  'python-asslayer>=0.2.0'
+  'python-asslayer<0.3.0'
   'python-httpx'
   'python-brotli'
   'python-h2'
@@ -20,7 +21,8 @@ depends=(
   'python-diskcache'
   'python-pyaes'
   'python-appdirs'
-  'python-kara-templater>=1.1.1'
+  'python-kara-templater>=1.2.2'
+  'python-kara-templater<2'
 )
 makedepends=(
   'git'
