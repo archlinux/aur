@@ -1,0 +1,19 @@
+pkgbase = tact-bin
+	pkgdesc = Terminal interface for Nanocodex
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/clabby/tact
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = tact
+	conflicts = tact
+	options = !debug
+	source_x86_64 = tact-bin-0.8.3-x86_64.tar.gz::https://github.com/clabby/tact/releases/download/v0.8.3/tact-x86_64-unknown-linux-gnu-v0.8.3.tar.gz
+	sha256sums_x86_64 = 19982356f084cc4c6a52c71161c61859b71d0500ce297c215e88c58eb3653fc6
+	source_aarch64 = tact-bin-0.8.3-aarch64.tar.gz::https://github.com/clabby/tact/releases/download/v0.8.3/tact-aarch64-unknown-linux-gnu-v0.8.3.tar.gz
+	sha256sums_aarch64 = ad377e8d5e594fd7cc02f71108b5fd30604aac05a1744e4388c1794c8fa63c52
+
+pkgname = tact-bin
