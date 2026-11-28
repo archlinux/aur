@@ -1,0 +1,20 @@
+pkgbase = ast-metrics-bin
+	pkgdesc = Analyze code structure and complexity metrics
+	pkgver = 0.44.0
+	pkgrel = 1
+	url = https://github.com/ast-metrics/ast-metrics
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = ast-metrics
+	conflicts = ast-metrics
+	options = !debug
+	source = ast-metrics-bin-0.44.0-LICENSE::https://raw.githubusercontent.com/ast-metrics/ast-metrics/v0.44.0/LICENSE
+	sha256sums = bff92c9773fb68f2b21f538ea9a2c7dd5bc3865b06577a141bc94f8b117fdcc1
+	source_x86_64 = ast-metrics-bin-0.44.0-x86_64::https://github.com/ast-metrics/ast-metrics/releases/download/v0.44.0/ast-metrics_Linux_x86_64
+	sha256sums_x86_64 = b1f412033425385fd4496910882d51de4192686840bda379b63be95180e2e401
+	source_aarch64 = ast-metrics-bin-0.44.0-aarch64::https://github.com/ast-metrics/ast-metrics/releases/download/v0.44.0/ast-metrics_Linux_arm64
+	sha256sums_aarch64 = e90b26be012daa743956e47094a87b2145e23a3004c1737f8d71d317c8e2e6d1
+
+pkgname = ast-metrics-bin
