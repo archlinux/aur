@@ -1,7 +1,7 @@
 pkgbase = tray-idle-inhibitor
 	pkgdesc = Апплет трея: инхибитор idle для Wayland (labwc/LXQt) — wayland + logind
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.1.3
+	pkgrel = 1
 	url = https://github.com/JageloR/tray-idle-inhibitor
 	install = tray-idle-inhibitor.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tray-idle-inhibitor
 	makedepends = cargo
 	depends = gcc-libs
 	optdepends = playerctl: автовключение инхибитора при воспроизведении медиа (--auto)
-	source = tray-idle-inhibitor-0.1.2.tar.gz::https://github.com/JageloR/tray-idle-inhibitor/archive/refs/tags/0.1.2.tar.gz
-	sha256sums = 1b28f0f2f2e0c675574721e8fe04ac2787b374623ef197657069a4ca903788b1
+	source = tray-idle-inhibitor-0.1.3.tar.gz::https://github.com/JageloR/tray-idle-inhibitor/archive/refs/tags/0.1.3.tar.gz
+	sha256sums = e8753399dd63f45bf2c3eea909623ec5ad1550dbcf02a0de6c82357525e96be3
 
 pkgname = tray-idle-inhibitor

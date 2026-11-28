@@ -1,7 +1,7 @@
 # Maintainer: JageloR <jagelor@yandex.ru>
 pkgname=tray-idle-inhibitor
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="Апплет трея: инхибитор idle для Wayland (labwc/LXQt) — wayland + logind"
 arch=('x86_64' 'aarch64')
 url="https://github.com/JageloR/tray-idle-inhibitor"
@@ -11,7 +11,7 @@ optdepends=('playerctl: автовключение инхибитора при �
 makedepends=('cargo')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('1b28f0f2f2e0c675574721e8fe04ac2787b374623ef197657069a4ca903788b1')
+sha256sums=('e8753399dd63f45bf2c3eea909623ec5ad1550dbcf02a0de6c82357525e96be3')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -37,5 +37,8 @@ package() {
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/etc/xdg/autostart/${pkgname}.desktop"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 README.ru.md "${pkgdir}/usr/share/doc/${pkgname}/README.ru.md"
   install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+  install -Dm644 CHANGELOG.ru.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.ru.md"
+  install -Dm644 docs/DESIGN.md "${pkgdir}/usr/share/doc/${pkgname}/DESIGN.md"
 }
