@@ -1,0 +1,21 @@
+pkgbase = deduplicator-bin
+	pkgdesc = Find, sort and delete duplicate files recursively
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/sreedevk/deduplicator
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = deduplicator
+	conflicts = deduplicator
+	options = !debug
+	source = deduplicator-bin-0.3.1-LICENSE::https://raw.githubusercontent.com/sreedevk/deduplicator/v0.3.1/LICENSE
+	sha256sums = 12a28441a7ca8c30d26aadb5a07021f99ad3a120769785ebdc49e2e862ea64b7
+	source_x86_64 = deduplicator-bin-0.3.1-x86_64.tar.gz::https://github.com/sreedevk/deduplicator/releases/download/v0.3.1/linux-amd64.tar.gz
+	sha256sums_x86_64 = f4c1f43a2d452fa523ff4d43dca27ba3d2ac914cc56c1bb0bff1f1e776f33af7
+	source_aarch64 = deduplicator-bin-0.3.1-aarch64.tar.gz::https://github.com/sreedevk/deduplicator/releases/download/v0.3.1/linux-aarch64.tar.gz
+	sha256sums_aarch64 = fa9aa98437ea31929ad3e15eb46037c424eb9cf6791b62b985be1a190f0729f4
+
+pkgname = deduplicator-bin
