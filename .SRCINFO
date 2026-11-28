@@ -1,0 +1,21 @@
+pkgbase = dgxtop-bin
+	pkgdesc = Terminal monitor for NVIDIA GPUs and DGX Spark systems
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/DennySORA/dgxtop
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = dgxtop
+	conflicts = dgxtop
+	options = !debug
+	source = dgxtop-bin-2.7.0-LICENSE::https://raw.githubusercontent.com/DennySORA/dgxtop/v2.7.0/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = dgxtop-bin-2.7.0-x86_64.tar.gz::https://github.com/DennySORA/dgxtop/releases/download/v2.7.0/dgxtop-v2.7.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = bbc0e4bc702f97b9b92aec32f6f3fc02e0b96c7525cfec5a1bab83f094cfe32c
+	source_aarch64 = dgxtop-bin-2.7.0-aarch64.tar.gz::https://github.com/DennySORA/dgxtop/releases/download/v2.7.0/dgxtop-v2.7.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = db09c3b56946391e27049577e429a1d825ee950bb6acf336a2ab6a93f839ec6a
+
+pkgname = dgxtop-bin
