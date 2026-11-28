@@ -1,0 +1,19 @@
+pkgbase = crproxy-bin
+	pkgdesc = Generic container registry proxy
+	pkgver = 0.12.6
+	pkgrel = 1
+	url = https://github.com/DaoCloud/crproxy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = crproxy
+	conflicts = crproxy
+	options = !debug
+	source = crproxy-bin-0.12.6-LICENSE::https://raw.githubusercontent.com/DaoCloud/crproxy/v0.12.6/LICENSE
+	sha256sums = a9aa16248ab452deff543ae82005a871ce93fcd4129f516915c7bbc7ddc78ec6
+	source_x86_64 = crproxy-bin-0.12.6-x86_64::https://github.com/DaoCloud/crproxy/releases/download/v0.12.6/crproxy_linux_amd64
+	sha256sums_x86_64 = 51c52e5d531d8e28fb2899c32e29ff8db0459eb154fd034c74e55711417b7829
+	source_aarch64 = crproxy-bin-0.12.6-aarch64::https://github.com/DaoCloud/crproxy/releases/download/v0.12.6/crproxy_linux_arm64
+	sha256sums_aarch64 = 3fc4cba73ec3a6a087107b7d6648eec7dfc1b58596eff437781d7a07431b0c7f
+
+pkgname = crproxy-bin
