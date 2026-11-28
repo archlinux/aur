@@ -12,11 +12,13 @@ pkgbase = nyan-doom
 	depends = sdl2-compat
 	depends = sdl2_mixer
 	depends = libzip
+	depends = libsndfile
 	optdepends = fluidsynth
 	optdepends = libmad
-	optdepends = limxmp
+	optdepends = libxmp
 	optdepends = dumb
 	optdepends = portmidi
+	optdepends = discord-rpc
 	source = https://github.com/andrikpowell/nyan-doom/archive/refs/tags/v1.6.2.tar.gz
 	sha256sums = 5ae37cfa9386154895aac53e08e7586c3f0317cd2c7729c5e499c560914bd8f2
 
