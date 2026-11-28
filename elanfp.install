@@ -7,7 +7,7 @@ _reload() {
 post_install() {
   _reload
   echo ">>> Enroll a finger in GNOME Settings > Users > Fingerprint Login, or with fprintd-enroll."
-  echo ">>> For sudo and graphical password prompts, see /usr/share/doc/elanfp-git/README.md"
+  echo ">>> For sudo and graphical password prompts, install elanfp-pam-git."
 }
 
 post_upgrade() { _reload; }
