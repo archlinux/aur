@@ -1,0 +1,19 @@
+pkgbase = ublockdnsclient-bin
+	pkgdesc = System DNS client for uBlockDNS ad and tracker blocking
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ugzv/ublockdnsclient
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ublockdnsclient
+	conflicts = ublockdnsclient
+	options = !debug
+	source = ublockdnsclient-bin-0.4.0-LICENSE::https://raw.githubusercontent.com/ugzv/ublockdnsclient/v0.4.0/LICENSE
+	sha256sums = c348407bc76673adc18861ea3bb8119f280c1cd183bd22c399052eafca8405a6
+	source_x86_64 = ublockdnsclient-bin-0.4.0-x86_64::https://github.com/ugzv/ublockdnsclient/releases/download/v0.4.0/ublockdns-linux-amd64
+	sha256sums_x86_64 = b4ca4e888854e1b7792bb82fb5a9b93aaab6668a378dca6840e0bfcfc84aa5b6
+	source_aarch64 = ublockdnsclient-bin-0.4.0-aarch64::https://github.com/ugzv/ublockdnsclient/releases/download/v0.4.0/ublockdns-linux-arm64
+	sha256sums_aarch64 = b2baecfde25d13ace9cf4cb0ba0af385c41b08e3b69b9bfcc9209b9503b46f15
+
+pkgname = ublockdnsclient-bin
