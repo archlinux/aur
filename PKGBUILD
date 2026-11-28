@@ -6,7 +6,7 @@
 
 _name=click-extra
 pkgname=python-${_name}
-pkgver=10.3.1
+pkgver=10.4.0
 pkgrel=1
 pkgdesc='Drop-in replacement for Click to make user-friendly and colorful CLI.'
 
@@ -27,7 +27,7 @@ optdepends=('python-hjson: HJSON configuration files and table format'
             'python-pymdown-extensions: ANSI color rendering in MkDocs code blocks')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('9718abbd337fb6bc5ac1ccd95bb01813caeb93ee42f7bed9e6cd256581f850886bd5a13f862299247445530bffc1239b36abf02973654fe908b5edb475958512')
+sha512sums=('407c05b08e18cdab71020ded93e9e579aec8fb56156963c46dc29c22737adfc61877770d0d980e509c9dd5219d80360dfdae77f1a3f9794d5634d128928c4dc3')
 
 
 build() {
