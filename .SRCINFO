@@ -1,0 +1,16 @@
+pkgbase = ironclad-bin
+	pkgdesc = Command-line password manager
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/dmulholl/ironclad
+	arch = x86_64
+	license = 0BSD
+	provides = ironclad
+	conflicts = ironclad
+	options = !debug
+	source = ironclad-bin-2.7.0-LICENSE::https://raw.githubusercontent.com/dmulholl/ironclad/v2.7.0/license.txt
+	sha256sums = 938fdf60f8bb2ccb7bf77de3a207080591c0122a6dabf1249c55f5516d4104a9
+	source_x86_64 = ironclad-bin-2.7.0-x86_64.zip::https://github.com/dmulholl/ironclad/releases/download/v2.7.0/ironclad-linux-amd64.zip
+	sha256sums_x86_64 = 08cbf486427577c55af3a5aa75d7f29a1202eba61de48dee72c3c20e17208fd1
+
+pkgname = ironclad-bin
