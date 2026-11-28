@@ -1,6 +1,6 @@
-# Maintainer: Emanuele Calo <emanuele.lele.calo@gmail.com>
+# Maintainer: Emanuele Calo <me@lele.rip>
 pkgname=riso
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Modular ricing framework: renders themes into the files a desktop reads"
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ license=('MIT')
 options=('!debug')
 # git and curl are called at run time to install themes and plugins.
 depends=('git' 'curl')
+optdepends=('mpvpaper: video wallpapers outside Omarchy')
 makedepends=('cargo')
 # The release tag is PGP-signed; makepkg verifies it before building.
 validpgpkeys=('AA6BC7743F8F9AD84BBA15C72CCBF4B71EFFDD46')
