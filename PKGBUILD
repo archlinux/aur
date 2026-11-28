@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=pi-ext-claude-bridge
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='Claude Pro/Max subscription provider for the Pi coding agent, routed through the official Claude Code CLI'
 arch=('any')
@@ -19,7 +19,7 @@ _piname=pi-claude-bridge
 _npmname=pi-claude-bridge
 
 source=("${_npmname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-sha256sums=('540250139e6632bde81d24556f126456f924bc5b350c58643e0ffc9850733149')
+sha256sums=('0a21774b362435773095cfd85615820be08726ccbacff66855482b5a037ad405')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${_npmname}/latest" | jq -r '.version'
