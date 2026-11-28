@@ -1,0 +1,18 @@
+pkgbase = substreams-bin
+	pkgdesc = Blockchain streaming data engine based on Firehose
+	pkgver = 1.27.0
+	pkgrel = 1
+	url = https://github.com/streamingfast/substreams
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = substreams
+	conflicts = substreams
+	options = !debug
+	source_x86_64 = substreams-bin-1.27.0-x86_64.tar.gz::https://github.com/streamingfast/substreams/releases/download/v1.27.0/substreams_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 4377aea685925d6b2e384fb920bbe98014916b05ad50d1bd386b05a1f462977d
+	source_aarch64 = substreams-bin-1.27.0-aarch64.tar.gz::https://github.com/streamingfast/substreams/releases/download/v1.27.0/substreams_linux_arm64.tar.gz
+	sha256sums_aarch64 = c11cf7e5f222a3716747d91306afec5df9504e9ef9feebfd18f0fff1e65aa298
+
+pkgname = substreams-bin
