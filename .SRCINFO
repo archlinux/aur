@@ -1,0 +1,22 @@
+pkgbase = openzeppelin-monitor-bin
+	pkgdesc = Blockchain monitoring service with configurable notifications
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/OpenZeppelin/openzeppelin-monitor
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = openzeppelin-monitor
+	conflicts = openzeppelin-monitor
+	options = !debug
+	source = openzeppelin-monitor-bin-1.7.0-LICENSE::https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-monitor/v1.7.0/LICENSE
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	source_x86_64 = openzeppelin-monitor-bin-1.7.0-x86_64.tar.gz::https://github.com/OpenZeppelin/openzeppelin-monitor/releases/download/v1.7.0/openzeppelin-monitor-v1.7.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4b907cedfca06eb724afd854bbdadf960e1bc3aeb61b856b18bb1b1f19ab7ee7
+	source_aarch64 = openzeppelin-monitor-bin-1.7.0-aarch64.tar.gz::https://github.com/OpenZeppelin/openzeppelin-monitor/releases/download/v1.7.0/openzeppelin-monitor-v1.7.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = cdad7e4401ab0bdfb78671ada5be82900fe0d8a98d179a84d4c0e7568d34283d
+
+pkgname = openzeppelin-monitor-bin
