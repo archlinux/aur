@@ -123,3 +123,34 @@ azur-promilia --fix-x     # 重启 Xwayland，清空连接（会断开本会话�
 
 > 为什么启动器不自动重启 Xwayland：重启会**连带杀掉会话里所有 X11 客户端**
 > （其它 Wine 程序、X11 应用），副作用不该由一个游戏启动器替用户决定。
+
+## 可选：反虚化补丁（仅国服）
+
+移除角色在大世界中的虚化效果。补丁来自
+[azurpromilia-switcher](https://github.com/username-1234567/azurpromilia-switcher)（MIT），
+替换 `.res/default_package/BundleFiles/rjmh704fkrsjimysndpsg.r`，只改相机预制体的 51 个组件，
+文件大小不变、CRC 已配平。
+
+> ⚠️ **风险**：替换客户端资源包属于修改客户端文件，违反游戏用户协议，**可能导致封号**。
+> 这是可选功能，默认不启用，是否使用由你自行决定。
+
+### 构建时启用
+
+补丁**默认不打包**，需要显式开启：
+
+```bash
+NOFADE=1 makepkg -si
+```
+
+不开启时，`azur-promilia --nofade` 会提示未启用，包内也不含任何补丁文件。
+
+### 使用
+
+```bash
+azur-promilia --nofade status            # 当前是原始/已应用/版本不匹配
+azur-promilia --nofade install --accept-risk
+azur-promilia --nofade restore           # 从备份还原
+```
+
+安装前会校验当前资源的 md5 与补丁期望值是否一致——**游戏更新后补丁会自动拒绝安装**，
+不会把不匹配的资源硬塞进去。原文件备份在 `AzurPromilia_Game/.nofade-backup/`。

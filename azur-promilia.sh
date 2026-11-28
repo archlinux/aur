@@ -399,6 +399,8 @@ usage() {
   --bridge        桥接登录：登录面板显示在 Linux 原生窗口（登录失效时用）
   --restore       把游戏目录里的官方 SDK 还原（桥接异常退出后使用）
   --fix-x         重启 Xwayland，清理泄漏的 X11 连接（启动「秒退」时用）
+  --nofade        反虚化补丁：status | install --accept-risk | restore
+                  （仅国服；需要构建时用 NOFADE=1，默认不含补丁）
 
 首次使用顺序：
   azur-promilia --install      # 装官方启动器
@@ -418,6 +420,92 @@ usage() {
   AZUR_X11_MAX_CLIENTS   预检阈值（默认 240）
   AZUR_X11_PREFLIGHT     warn（默认，只警告）或 strict（直接拒绝启动）
 EOF
+}
+
+
+# ── 可选：反虚化补丁（仅国服；构建时 NOFADE=1 才会装进包里）────────────
+NOFADE_DIR="${AZUR_NOFADE_DIR:-/usr/share/azur-promilia/nofade}"
+NOFADE_REL=".res/default_package/BundleFiles/rjmh704fkrsjimysndpsg.r"
+
+nofade_target() { printf '%s\n' "$GAME_DIR/AzurPromilia_Data/$NOFADE_REL"; }
+nofade_backup() { printf '%s\n' "$GAME_DIR/.nofade-backup/rjmh704fkrsjimysndpsg.r"; }
+nofade_md5()    { md5sum "$1" 2>/dev/null | awk '{print $1}'; }
+
+nofade_meta() {
+    [ -f "$NOFADE_DIR/patch.json" ] || return 1
+    python3 - "$NOFADE_DIR/patch.json" "$1" <<'PYEOF'
+import json, sys
+print(json.load(open(sys.argv[1])).get(sys.argv[2], ''))
+PYEOF
+}
+
+nofade_cmd() {
+    local sub="${1:-status}" tgt orig patched cur bk
+    if [ ! -f "$NOFADE_DIR/patch.json" ]; then
+        cat >&2 <<'EOF'
+此包构建时没有启用反虚化补丁。
+需要的话，重新构建时加环境变量：NOFADE=1 makepkg -si
+EOF
+        return 1
+    fi
+    tgt="$(nofade_target)"
+    orig="$(nofade_meta original_md5)"
+    patched="$(nofade_meta patched_md5)"
+
+    case "$sub" in
+        status)
+            [ -f "$tgt" ] || die "找不到游戏资源文件：$tgt"
+            cur="$(nofade_md5 "$tgt")"
+            if   [ "$cur" = "$patched" ]; then echo "状态：已应用反虚化"
+            elif [ "$cur" = "$orig" ];    then echo "状态：原始资源（未应用）"
+            else
+                echo "状态：无法识别的资源版本"
+                echo "  当前 md5：$cur"
+                echo "  补丁期望：$orig"
+                echo "  游戏更新后补丁多半已失效，请等上游发布新版本。"
+            fi
+            ;;
+        install)
+            if [ "${2:-}" != "--accept-risk" ] && [ "${AZUR_NOFADE_ACCEPT:-0}" != "1" ]; then
+                cat >&2 <<'EOF'
+反虚化会替换客户端资源包，属于修改客户端文件，违反游戏用户协议，可能导致封号。
+确认自行承担风险后，重新执行：
+
+    azur-promilia --nofade install --accept-risk
+
+EOF
+                return 2
+            fi
+            [ -f "$tgt" ] || die "找不到游戏资源文件：$tgt"
+            cur="$(nofade_md5 "$tgt")"
+            [ "$cur" = "$patched" ] && { echo "已经是反虚化状态，无需重复安装"; return 0; }
+            if [ "$cur" != "$orig" ]; then
+                die "拒绝安装：当前资源 md5 与补丁期望不符（游戏可能已更新）
+  当前：$cur
+  期望：$orig"
+            fi
+            bk="$(nofade_backup)"
+            mkdir -p "$(dirname "$bk")"
+            [ -f "$bk" ] || cp -p -- "$tgt" "$bk"
+            cp -f -- "$NOFADE_DIR/rjmh704fkrsjimysndpsg.r" "$tgt"
+            if [ "$(nofade_md5 "$tgt")" = "$patched" ]; then
+                echo "已应用反虚化；原文件备份在 $(dirname "$bk")"
+            else
+                cp -f -- "$bk" "$tgt"
+                die "应用后校验失败，已自动还原"
+            fi
+            ;;
+        restore)
+            bk="$(nofade_backup)"
+            [ -f "$bk" ] || die "没有找到备份：$bk"
+            cp -f -- "$bk" "$tgt"
+            [ "$(nofade_md5 "$tgt")" = "$orig" ] && echo "已还原为原始资源" \
+                || die "还原后校验失败，请用官方启动器修复客户端"
+            ;;
+        *)
+            die "用法：azur-promilia --nofade [status|install --accept-risk|restore]"
+            ;;
+    esac
 }
 
 MODE="${1:-}"
@@ -440,6 +528,10 @@ case "$MODE" in
         ;;
     --fix-x|--fix-xwayland)
         fix_xwayland
+        ;;
+    --nofade)
+        shift
+        nofade_cmd "$@"
         ;;
     -h|--help|help)
         usage
