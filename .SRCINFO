@@ -1,0 +1,20 @@
+pkgbase = memmesh-bin
+	pkgdesc = Persistent, self-improving memory for AI agents
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/ThinkfleetAI/memmesh
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openssl-3
+	provides = memmesh
+	conflicts = memmesh
+	options = !debug
+	source = memmesh-bin-0.1.2-LICENSE::https://raw.githubusercontent.com/ThinkfleetAI/memmesh/v0.1.2/LICENSE
+	sha256sums = a4eff55dff4afaa18c172525c339ae67aff2b38fc9ee16c0a5308245d684da70
+	source_x86_64 = memmesh-bin-0.1.2-x86_64.tar.gz::https://github.com/ThinkfleetAI/memmesh/releases/download/v0.1.2/memmesh-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c7d830e58e73bdfa8008d078b787e5162a713fca169dda2e31331fb257539a48
+
+pkgname = memmesh-bin
