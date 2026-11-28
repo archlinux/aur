@@ -1,0 +1,20 @@
+pkgbase = zerobox-bin
+	pkgdesc = Lightweight process sandboxing based on the Codex runtime
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/afshinm/zerobox
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = zerobox
+	conflicts = zerobox
+	options = !debug
+	source = zerobox-bin-0.3.3-LICENSE::https://raw.githubusercontent.com/afshinm/zerobox/v0.3.3/LICENSE
+	sha256sums = 4cd77b406f2605fc01886c5e232a2c25fdf70fc2dcb6d441140a3dc9b94f754c
+	source_x86_64 = zerobox-bin-0.3.3-x86_64.tar.gz::https://github.com/afshinm/zerobox/releases/download/v0.3.3/zerobox-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a00528269321d30e011f4b61c9b9b210f01b70033102bd24892b194eab47f286
+	source_aarch64 = zerobox-bin-0.3.3-aarch64.tar.gz::https://github.com/afshinm/zerobox/releases/download/v0.3.3/zerobox-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7b840b4d562f51386368b4cdcaed34731012677872fa698dfbe5ea529ba683db
+
+pkgname = zerobox-bin
