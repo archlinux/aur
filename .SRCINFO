@@ -1,0 +1,22 @@
+pkgbase = fuel-core-bin
+	pkgdesc = Full node for the Fuel v2 blockchain protocol
+	pkgver = 0.48.4
+	pkgrel = 1
+	url = https://github.com/FuelLabs/fuel-core
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = fuel-core
+	conflicts = fuel-core
+	options = !debug
+	source = fuel-core-bin-0.48.4-LICENSE::https://raw.githubusercontent.com/FuelLabs/fuel-core/v0.48.4/LICENSE
+	sha256sums = 817437b82cb87cb9e947dd8874df2c174878185901ef83617385b0f0824d16e2
+	source_x86_64 = fuel-core-bin-0.48.4-x86_64.tar.gz::https://github.com/FuelLabs/fuel-core/releases/download/v0.48.4/fuel-core-0.48.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 8ef210c3bced9ad41a34f96ed74b2f73e7e0fbc82bc2a04a159b3edf271b810d
+	source_aarch64 = fuel-core-bin-0.48.4-aarch64.tar.gz::https://github.com/FuelLabs/fuel-core/releases/download/v0.48.4/fuel-core-0.48.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0b146220f988945940a90c43475fdf72d63916defad547dfaa6574db5dc607aa
+
+pkgname = fuel-core-bin
