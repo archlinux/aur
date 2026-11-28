@@ -1,0 +1,18 @@
+pkgbase = cxx2flow-bin
+	pkgdesc = Turn C/C++ code into flowcharts
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/Enter-tainer/cxx2flow
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = cxx2flow
+	conflicts = cxx2flow
+	options = !debug
+	source = cxx2flow-bin-0.6.3-LICENSE::https://raw.githubusercontent.com/Enter-tainer/cxx2flow/v0.6.3/LICENSE
+	sha256sums = 6154befc1b3f139d5f4858b1ea08f5ec5d040791c70fcb3ad9d9f2d5e85bd767
+	source_x86_64 = cxx2flow-bin-0.6.3-x86_64::https://github.com/Enter-tainer/cxx2flow/releases/download/v0.6.3/cxx2flow-linux-amd64
+	sha256sums_x86_64 = 215bf5e565d181e97c1280f1583519947a5be80bb37aacec5f14359b44a25dd8
+
+pkgname = cxx2flow-bin
