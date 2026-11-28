@@ -1,19 +1,21 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
 # Maintainer: taotieren <admin@taotieren.com>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
-_name=deepmerge
 pkgname=python-deepmerge
-pkgver=4.0.0
-pkgrel=1
+_name=${pkgname#python-}
+pkgver=4.0.1
+pkgrel=3
 pkgdesc="A deep merging tool for Python core data structures"
 arch=(any)
 url="https://github.com/toumorokoshi/deepmerge"
 license=(MIT)
 depends=(
   python
+  python-pytest
   python-typing_extensions
 )
 makedepends=(
+  git
   python-build
   python-installer
   python-setuptools
@@ -21,24 +23,27 @@ makedepends=(
   python-toml
   python-wheel
 )
-checkdepends=(python-pytest)
+checkdepends=()
 options=('!strip' '!debug')
-source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('fb3a4955f4d9f44935b1f1efc932521345f01c667705d8062a1c35e466812e8971fe51771742c29c32f413e075690bbbc7c87a2c6fb86e5c96ebbadc8d1fa872')
-b2sums=('10654d859948f01f2408b3d9d364f94047ccd868dfed144acc1764052bb95d3f2f60e6e5e47f7c7a31578db1dccb94b54f0e6c1ce9644c768c53f23d7764cad4')
+source=($_name::git+$url.git#tag=v$pkgver)
+sha512sums=('a04b7be16bf418f955c4684a38568fdfdcbf376f42a3b1b028ad97f106b2e16f66902b47598326639f613b1c50d59d8b840b96d3589f3975e2f873a4d8efc159')
+
+prepare() {
+    git -C "${srcdir}/${_name}" clean -dfx
+}
 
 build() {
-  cd $_name-$pkgver
+  cd "${srcdir}/${_name}"
   SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd $_name-$pkgver
+  cd "${srcdir}/${_name}"
   pytest -v
 }
 
 package() {
-  cd $_name-$pkgver
+  cd "${srcdir}/${_name}"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
