@@ -1,0 +1,17 @@
+pkgbase = voiceblender-bin
+	pkgdesc = Programmable voice AI platform with SIP and WebRTC call control
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/VoiceBlender/voiceblender
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = voiceblender
+	conflicts = voiceblender
+	options = !debug
+	source_x86_64 = voiceblender-bin-1.0.1-x86_64.tar.gz::https://github.com/VoiceBlender/voiceblender/releases/download/v1.0.1/voiceblender_v1.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6acba8c75957185f92a7e12a9eca3ba5d4cbc9599b026b25b97c21c723c764bc
+	source_aarch64 = voiceblender-bin-1.0.1-aarch64.tar.gz::https://github.com/VoiceBlender/voiceblender/releases/download/v1.0.1/voiceblender_v1.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = f5ac66001a6de83060fbcbda1e6c824f240ba0add45b0440c5b80215b5ff9d37
+
+pkgname = voiceblender-bin
