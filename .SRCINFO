@@ -1,0 +1,19 @@
+pkgbase = greeg-bin
+	pkgdesc = Indexed, ripgrep-compatible code search for AI agents
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/thiagodmont/greeg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = greeg
+	conflicts = greeg
+	options = !debug
+	source_x86_64 = greeg-bin-0.14.1-x86_64.tar.gz::https://github.com/thiagodmont/greeg/releases/download/v0.14.1/greeg-0.14.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b748aed53acd07e03e2f6b29c7eb9bdd9dabc386391d27a5caf96e9a63152c42
+	source_aarch64 = greeg-bin-0.14.1-aarch64.tar.gz::https://github.com/thiagodmont/greeg/releases/download/v0.14.1/greeg-0.14.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = be77f6d7c4a4c9d8aef3c7676ab85c05176b612227a25e5cd1e9587e5cea55ab
+
+pkgname = greeg-bin
