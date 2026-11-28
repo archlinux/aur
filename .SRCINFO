@@ -1,0 +1,18 @@
+pkgbase = recipya-bin
+	pkgdesc = Self-hosted recipe manager
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/reaper47/recipya
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	provides = recipya
+	conflicts = recipya
+	options = !debug
+	source_x86_64 = recipya-bin-1.2.2-x86_64.zip::https://github.com/reaper47/recipya/releases/download/v1.2.2/recipya-linux-amd64.zip
+	sha256sums_x86_64 = 705cd044de296a2bd49ea00850e94a562d156f06c00be4624a298ec2ca871fcc
+	source_aarch64 = recipya-bin-1.2.2-aarch64.zip::https://github.com/reaper47/recipya/releases/download/v1.2.2/recipya-linux-arm64.zip
+	sha256sums_aarch64 = 46310e483cc57ce19dd418c4301d5e1451652084b33c5a92d042135f205b2d7f
+
+pkgname = recipya-bin
