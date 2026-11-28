@@ -1,0 +1,17 @@
+pkgbase = clusteradm-bin
+	pkgdesc = Bootstrap and manage the Open Cluster Management control plane
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/open-cluster-management-io/clusteradm
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = clusteradm
+	conflicts = clusteradm
+	options = !debug
+	source_x86_64 = clusteradm-bin-1.4.0-x86_64.tar.gz::https://github.com/open-cluster-management-io/clusteradm/releases/download/v1.4.0/clusteradm_linux_amd64.tar.gz
+	sha256sums_x86_64 = aa94241caf353a515a0778e0ce608b4c68ced9b3e7f6fb5fe23f48393926153b
+	source_aarch64 = clusteradm-bin-1.4.0-aarch64.tar.gz::https://github.com/open-cluster-management-io/clusteradm/releases/download/v1.4.0/clusteradm_linux_arm64.tar.gz
+	sha256sums_aarch64 = 37fa11ea802f526ed3226af892b4066f9e8224ac9d620849f6cdc1ecd074560b
+
+pkgname = clusteradm-bin
