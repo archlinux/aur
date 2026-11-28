@@ -1,0 +1,19 @@
+pkgbase = sonoscli-bin
+	pkgdesc = Control Sonos speakers from your terminal
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/steipete/sonoscli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sonoscli
+	conflicts = sonoscli
+	options = !debug
+	source = sonoscli-bin-0.3.6-LICENSE::https://raw.githubusercontent.com/steipete/sonoscli/v0.3.6/LICENSE
+	sha256sums = 14293556b79940745123d0160c71d27ed0e9fe9b8a848093f3ed78f4853caafe
+	source_x86_64 = sonoscli-bin-0.3.6-x86_64.tar.gz::https://github.com/steipete/sonoscli/releases/download/v0.3.6/sonoscli_0.3.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8af3567397b37822cf3260cd4d79cfa9fdffad5cdcf4a963c7506a2f5a4910db
+	source_aarch64 = sonoscli-bin-0.3.6-aarch64.tar.gz::https://github.com/steipete/sonoscli/releases/download/v0.3.6/sonoscli_0.3.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2b419de3e7cacbf61576242464ab7ca2d594f5b7f2278f9c4d26a96a2f9b72ea
+
+pkgname = sonoscli-bin
