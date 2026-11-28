@@ -1,0 +1,17 @@
+pkgbase = gomockhandler-bin
+	pkgdesc = Manage and check gomock mocks
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/sanposhiho/gomockhandler
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gomockhandler
+	conflicts = gomockhandler
+	options = !debug
+	source_x86_64 = gomockhandler-bin-1.7.0-x86_64.tar.gz::https://github.com/sanposhiho/gomockhandler/releases/download/v1.7.0/gomockhandler_1.7.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = ce15f233fe75531e0c8bca24d2619e18f979837b84eeb8f353beb497f2fc2f86
+	source_aarch64 = gomockhandler-bin-1.7.0-aarch64.tar.gz::https://github.com/sanposhiho/gomockhandler/releases/download/v1.7.0/gomockhandler_1.7.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = aa98523c3a9436b7b3009088215f8894ca9231715642a3c8012dbce8dfe21a60
+
+pkgname = gomockhandler-bin
