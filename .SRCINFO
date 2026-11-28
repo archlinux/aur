@@ -1,6 +1,6 @@
 pkgbase = bbscord
 	pkgdesc = Retro BBS-styled Rust Discord TUI with DAVE E2EE voice, WebRTC video, and GIFs
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Bit-Loop/bbscord
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = bbscord
 	optdepends = xclip: X11 clipboard copy and Ctrl+V image paste
 	optdepends = xdg-desktop-portal: Wayland/X11 portal monitor and window picker for Go Live
 	options = !lto
-	source = bbscord-1.0.1.tar.gz::https://github.com/Bit-Loop/bbscord/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 1518b297008c43bc8711c59eccf41fea17c9f067f0bef0dcc43a8effd753a902
+	source = bbscord-1.0.2.tar.gz::https://github.com/Bit-Loop/bbscord/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = bd155c68ad4914088dae9cc27c96499b15ffaae32edeeb87d88fbe26a492e668
 
 pkgname = bbscord
