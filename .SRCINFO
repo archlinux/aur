@@ -1,0 +1,19 @@
+pkgbase = wesl-rs-bin
+	pkgdesc = Compiler for WESL (WGSL Extended) shaders
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/webgpu-tools/wesl-rs
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = wesl-rs
+	conflicts = wesl-rs
+	options = !debug
+	source_x86_64 = wesl-rs-bin-0.6.0-x86_64.tar.gz::https://github.com/webgpu-tools/wesl-rs/releases/download/v0.6.0/wesl-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 007f2a2b121e6a2805e30c3890d41b0aa5187d168c695dabc97751b91d55526a
+	source_aarch64 = wesl-rs-bin-0.6.0-aarch64.tar.gz::https://github.com/webgpu-tools/wesl-rs/releases/download/v0.6.0/wesl-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = fb13870ae8d1626925e7ae5f82676cb174f774a2cd5f68d0b98441413f75e8e1
+
+pkgname = wesl-rs-bin
