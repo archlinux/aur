@@ -1,6 +1,6 @@
 pkgbase = kb-indicator-rs
 	pkgdesc = Индикатор раскладки клавиатуры в системном трее Wayland (LXQt/labwc)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/JageloR/kb-indicator-rs
 	install = kb-indicator-rs.install
@@ -12,7 +12,7 @@ pkgbase = kb-indicator-rs
 	depends = libxkbcommon
 	optdepends = ttf-dejavu: шрифт по умолчанию для иконки раскладки
 	optdepends = fontconfig: поиск шрифта по font.family через fc-match
-	source = kb-indicator-rs-0.1.1.tar.gz::https://github.com/JageloR/kb-indicator-rs/archive/refs/tags/0.1.1.tar.gz
-	sha256sums = 5a7f9861cfac8362b122e34bff31084e3c0b858bd0c0d278e48077b1c3b8bc9b
+	source = kb-indicator-rs-0.1.2.tar.gz::https://github.com/JageloR/kb-indicator-rs/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = 9e4ec52778e5ca8a691bc02b0a946976801cc88a871cebe07331b1e6521b0be2
 
 pkgname = kb-indicator-rs
