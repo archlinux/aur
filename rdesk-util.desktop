@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=RDESK Util
+Comment=Remote desktop administration over the LAN.
+Exec=rdesk-util
+Icon=rdesk-util
+Terminal=false
+Type=Application
+Categories=Utility;Network;

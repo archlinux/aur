@@ -1,0 +1,21 @@
+pkgbase = rdesk-util-bin
+	pkgdesc = A simple and modern GUI for remote desktop administration over the LAN.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/mijocecr/rdesk-util
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = wayland
+	depends = xdg-desktop-portal
+	depends = pipewire
+	depends = libei
+	optdepends = xdg-desktop-portal-kde: portal de escritorio en KDE
+	optdepends = xdg-desktop-portal-gtk: portal de escritorio en GTK
+	options = !debug
+	options = !strip
+	source = https://github.com/mijocecr/rdesk-util/releases/download/rdesk-util_v1/RDESK-Util.tar.gz
+	sha256sums = 1913e285667f0c35dec0179e6344852eeaac4c549330d6318399bba375a631ec
+
+pkgname = rdesk-util-bin
