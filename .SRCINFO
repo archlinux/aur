@@ -1,0 +1,21 @@
+pkgbase = arbor-bin
+	pkgdesc = Graph-native code intelligence for deterministic program understanding
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/Anandb71/arbor
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = arbor
+	conflicts = arbor
+	options = !debug
+	source = arbor-bin-3.1.1-LICENSE::https://raw.githubusercontent.com/Anandb71/arbor/v3.1.1/LICENSE
+	sha256sums = d51baea86e079c590455b4b94d9365b7c0953d954bcc388ce8b17f8d6a485143
+	source_x86_64 = arbor-bin-3.1.1-x86_64.tar.gz::https://github.com/Anandb71/arbor/releases/download/v3.1.1/arbor-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e276b078e8adb7e29c5c84234771d0e7dda2169b74aa76c23089f4ffd7718691
+	source_aarch64 = arbor-bin-3.1.1-aarch64.tar.gz::https://github.com/Anandb71/arbor/releases/download/v3.1.1/arbor-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 4ee667adfb4e80628f1c35ebacad2ef2522c07dd00796ce56acffc7c59e19311
+
+pkgname = arbor-bin
