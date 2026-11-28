@@ -1,0 +1,22 @@
+pkgbase = project-avalanche-bin
+	pkgdesc = Native Linux port of SSX (2012)
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/MnkyArts/ProjectAvalanche
+	arch = x86_64
+	license = MIT
+	depends = glibc>=2.39
+	depends = alsa-lib
+	depends = vulkan-driver
+	depends = wayland
+	depends = libx11
+	depends = libxkbcommon
+	depends = xdg-desktop-portal
+	optdepends = pipewire: audio via PipeWire
+	optdepends = pulseaudio: audio via PulseAudio
+	provides = project-avalanche
+	conflicts = project-avalanche
+	source = project-avalanche-0.4.2.tar.gz::https://github.com/MnkyArts/ProjectAvalanche/releases/download/v0.4.2/ProjectAvalanche-linux-x64.tar.gz
+	sha256sums = cb8dcb860b3b32b691dec080771c3d335b7c2b6494a132be6c79c97a3c7b97dc
+
+pkgname = project-avalanche-bin
