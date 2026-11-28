@@ -6,7 +6,7 @@ _appname=mdd
 pkgname=${_gitname}-bin
 pkgdesc="Real Markdown, right in your terminal"
 
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('b15ddd96556c96772b6689cac4c2c53f6424420f2d5264a61e087031a893ed99'
+sha256sums=('44426acb6d43e88f280cd500223ff98f9aeb84ee633c0edb067dca753ae1ce58'
             '30c5c6791b321d00ab79f1acc16cf45e970f19ca47df93e90ac83dd09b5052bd')
-sha256sums_x86_64=('a05abd288d6a2c818f15d0f750136997ee34cd79e85ebbc69712cab602a54a73')
-sha256sums_aarch64=('e9052549476a14d470a6bfcd293c6bc08e42538a3f34cd4069c23cd81b2fecda')
+sha256sums_x86_64=('f99354bbb117bb93c28bdb305aa80c4e47fc3a4c3f1abc66d033bbc801b4e628')
+sha256sums_aarch64=('cd6770bd59153b12e2da0c3d0f2fae64877b59f1f1099842c05cc06433ecf5de')
 
 
 package() {
