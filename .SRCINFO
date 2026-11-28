@@ -1,6 +1,6 @@
 pkgbase = dotr-bin
 	pkgdesc = A dotfiles manager that is as dear as a daughter
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/uroybd/DotR
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = dotr-bin
 	depends = gcc-libs
 	provides = DotR
 	conflicts = DotR
-	source = LICENSE-2.5.0::https://raw.githubusercontent.com/uroybd/DotR/v2.5.0/LICENSE
-	source = README-2.5.0.md::https://raw.githubusercontent.com/uroybd/DotR/v2.5.0/README.md
+	source = LICENSE-2.5.1::https://raw.githubusercontent.com/uroybd/DotR/v2.5.1/LICENSE
+	source = README-2.5.1.md::https://raw.githubusercontent.com/uroybd/DotR/v2.5.1/README.md
 	sha256sums = 8cd2c6449c4828698f46c481acab9f8e90e182c7a019946bf4e817e140b19799
 	sha256sums = a02608ea9f37ef7c8ace0e6fd3637dbb911ef484d4f73d588683b073a14e3dfe
-	source_x86_64 = dotr-x86_64-2.5.0.tgz::https://github.com/uroybd/DotR/releases/download/v2.5.0/dotr-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 79d32edffaee1eb2ff057ee479523c5384a563fad2cd3413a863bd59c9b13291
-	source_aarch64 = dotr-aarch64-2.5.0.tgz::https://github.com/uroybd/DotR/releases/download/v2.5.0/dotr-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 55f35742785f22153d0b76fc990dda1f787a60dbda45df06f16015a8eff267cc
+	source_x86_64 = dotr-x86_64-2.5.1.tgz::https://github.com/uroybd/DotR/releases/download/v2.5.1/dotr-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 76b57f93f92ede837f58fa0bc3bcf56d6315955c663ea27bd9f2da43410fd10f
+	source_aarch64 = dotr-aarch64-2.5.1.tgz::https://github.com/uroybd/DotR/releases/download/v2.5.1/dotr-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 75be22d5226bf22329c6de09b353b9b0df64ba6a13b801339b03306e4e5d80e0
 
 pkgname = dotr-bin
