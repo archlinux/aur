@@ -1,0 +1,17 @@
+pkgbase = paygate-bin
+	pkgdesc = RESTful API for submitting and receiving ACH payments
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = https://github.com/moov-io/paygate
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = paygate
+	conflicts = paygate
+	options = !debug
+	source = paygate-bin-0.10.4-LICENSE::https://raw.githubusercontent.com/moov-io/paygate/v0.10.4/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = paygate-bin-0.10.4-x86_64::https://github.com/moov-io/paygate/releases/download/v0.10.4/paygate-linux-amd64
+	sha256sums_x86_64 = 7fadbed033bc46eb660c5fa107930742111c44f51657cbf72e95748641e31b12
+
+pkgname = paygate-bin
