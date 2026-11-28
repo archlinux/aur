@@ -1,0 +1,17 @@
+pkgbase = flate-bin
+	pkgdesc = Inflate, validate and diff Flux resources
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/home-operations/flate
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = flate
+	conflicts = flate
+	options = !debug
+	source_x86_64 = flate-bin-0.8.0-x86_64.tar.gz::https://github.com/home-operations/flate/releases/download/v0.8.0/flate_0.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 76940fb6ff060e09a40e1a835fc9c5cd24e18fdd29e4e79382852821e0ac01c2
+	source_aarch64 = flate-bin-0.8.0-aarch64.tar.gz::https://github.com/home-operations/flate/releases/download/v0.8.0/flate_0.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4ae502e56054ee9c5019995554856c1f6f8f44b3f6fef087704b2d31c27ab9c6
+
+pkgname = flate-bin
