@@ -1,0 +1,17 @@
+pkgbase = notcrawl-bin
+	pkgdesc = Local-first Notion crawler into SQLite and Markdown
+	pkgver = 0.6.13
+	pkgrel = 1
+	url = https://github.com/openclaw/notcrawl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = notcrawl
+	conflicts = notcrawl
+	options = !debug
+	source_x86_64 = notcrawl-bin-0.6.13-x86_64.tar.gz::https://github.com/openclaw/notcrawl/releases/download/v0.6.13/notcrawl_0.6.13_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1933d3f8887065b60772cb6525d1c2437db47b78063285aed52f060755ed1b86
+	source_aarch64 = notcrawl-bin-0.6.13-aarch64.tar.gz::https://github.com/openclaw/notcrawl/releases/download/v0.6.13/notcrawl_0.6.13_linux_arm64.tar.gz
+	sha256sums_aarch64 = 085e560cb49b8f4896ee290de44dda7f5edc763f8f911ea5f3007af5afdb83fc
+
+pkgname = notcrawl-bin
