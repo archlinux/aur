@@ -1,0 +1,17 @@
+pkgbase = agentic-orchestrator-bin
+	pkgdesc = Turn a goal into a supervised AI agent run
+	pkgver = 0.162.0
+	pkgrel = 1
+	url = https://github.com/doordash-oss/agentic-orchestrator
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = agentic-orchestrator
+	conflicts = agentic-orchestrator
+	options = !debug
+	source_x86_64 = agentic-orchestrator-bin-0.162.0-x86_64.tar.gz::https://github.com/doordash-oss/agentic-orchestrator/releases/download/v0.162.0/agentic-orchestrator_0.162.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = ac6cf983d3471d6478154058e8cd15eca829e3468214aa24d363a142d9b6478c
+	source_aarch64 = agentic-orchestrator-bin-0.162.0-aarch64.tar.gz::https://github.com/doordash-oss/agentic-orchestrator/releases/download/v0.162.0/agentic-orchestrator_0.162.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5364c1a51e7c35ac2d7094b1de7fa7737406acc48012eee08cf7850b29836364
+
+pkgname = agentic-orchestrator-bin
