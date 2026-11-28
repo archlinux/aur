@@ -1,0 +1,17 @@
+pkgbase = sortie-bin
+	pkgdesc = Turn tracker tickets into autonomous agent sessions
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://github.com/sortie-ai/sortie
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = sortie
+	conflicts = sortie
+	options = !debug
+	source_x86_64 = sortie-bin-1.32.0-x86_64.tar.gz::https://github.com/sortie-ai/sortie/releases/download/v1.32.0/sortie_1.32.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4cf8bef41caa9ed5391abdefad1720457666ffdc43fc6321b8771066561ad820
+	source_aarch64 = sortie-bin-1.32.0-aarch64.tar.gz::https://github.com/sortie-ai/sortie/releases/download/v1.32.0/sortie_1.32.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = de5d8d727cf48cb306d73dd812dd0b46e244271196611371e7061d38af8040cd
+
+pkgname = sortie-bin
