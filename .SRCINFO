@@ -1,0 +1,17 @@
+pkgbase = second-order-bin
+	pkgdesc = Second-order subdomain takeover scanner
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/mhmdiaa/second-order
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = second-order
+	conflicts = second-order
+	options = !debug
+	source = second-order-bin-3.2-LICENSE::https://raw.githubusercontent.com/mhmdiaa/second-order/v3.2/LICENSE
+	sha256sums = c2a50488a0f728983131d0f42e365dd18948b091399aa0afeb6be29802eaf988
+	source_x86_64 = second-order-bin-3.2-x86_64.tar.gz::https://github.com/mhmdiaa/second-order/releases/download/v3.2/second-order-v3.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = bb7c5211f0c45ef6778daeec062218e8bf2a3838da08f8997fe4d536a8710057
+
+pkgname = second-order-bin
