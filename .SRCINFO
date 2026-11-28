@@ -1,6 +1,6 @@
 pkgbase = git-stats
 	pkgdesc = A tool for getting aggregated commit stats
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/lukehsiao/git-stats
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = git-stats
 	depends = libgcc
 	conflicts = git-stats-bin
 	options = !debug
-	source = git-stats-0.3.2.tar.gz::https://github.com/lukehsiao/git-stats/archive/v0.3.2.tar.gz
-	sha256sums = eb40d09a3c5c6583b043edf0b9643b54bb1b8f22247446116b3bfd8327e2a937
+	source = git-stats-0.3.3.tar.gz::https://github.com/lukehsiao/git-stats/archive/v0.3.3.tar.gz
+	sha256sums = 1086b44acdb09b02e227969a8b13bc7310d11e762945e79b731c6cca2be84209
 
 pkgname = git-stats
