@@ -1,0 +1,20 @@
+pkgbase = lific-bin
+	pkgdesc = Local-first, lightweight issue tracker
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/VoidNullable/lific
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = lific
+	conflicts = lific
+	options = !debug
+	source = lific-bin-3.0.0-LICENSE::https://raw.githubusercontent.com/VoidNullable/lific/v3.0.0/LICENSE
+	sha256sums = eea6648f7d5c389db3a7ed39a7d450a7b0a34749aeae9afab8e3471dcf8fde96
+	source_x86_64 = lific-bin-3.0.0-x86_64::https://github.com/VoidNullable/lific/releases/download/v3.0.0/lific-linux-x86_64
+	sha256sums_x86_64 = 05a20d7b594f340093330b46de348e12ed25da71bf8211ac5aa3f0665248619b
+	source_aarch64 = lific-bin-3.0.0-aarch64::https://github.com/VoidNullable/lific/releases/download/v3.0.0/lific-linux-aarch64
+	sha256sums_aarch64 = 5d08c05762cb74ec84d584d92637c35ac5c7f2a4fe081b413d94dc19c01eb5ec
+
+pkgname = lific-bin
