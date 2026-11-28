@@ -1,6 +1,6 @@
 pkgbase = tokenrouter-bin
 	pkgdesc = tokenrouter is the next generation llm gateway
-	pkgver = 0.7.6
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/TokenFlux/TokenRouter
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = tokenrouter-bin
 	provides = tokenrouter
 	conflicts = tokenrouter
 	options = !debug
-	source_x86_64 = tokenrouter-bin-0.7.6-x86_64.tar.gz::https://github.com/TokenFlux/TokenRouter/releases/download/v0.7.6/tokenrouter_0.7.6_linux_amd64.tar.gz
-	sha256sums_x86_64 = f47875f8be5a62e37fd7ec1d4b208c2d298617ae719d813f9e95e6374c6aede5
-	source_aarch64 = tokenrouter-bin-0.7.6-aarch64.tar.gz::https://github.com/TokenFlux/TokenRouter/releases/download/v0.7.6/tokenrouter_0.7.6_linux_arm64.tar.gz
-	sha256sums_aarch64 = 3af4e0dc739c2cecb4fe15ba0b2846007160c6ce569faabf2f4b8bab223a584a
+	source_x86_64 = tokenrouter-bin-0.8.0-x86_64.tar.gz::https://github.com/TokenFlux/TokenRouter/releases/download/v0.8.0/tokenrouter_0.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 10545f8487c47d635731a89caecb64c3059c72a910ca19c9930aabbdd3e796b7
+	source_aarch64 = tokenrouter-bin-0.8.0-aarch64.tar.gz::https://github.com/TokenFlux/TokenRouter/releases/download/v0.8.0/tokenrouter_0.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = c400c77cc44f5e21edff93a47d20041cabb0dcb69f0940e7d1c357aa9b8bfb3e
 
 pkgname = tokenrouter-bin
