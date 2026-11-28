@@ -1,6 +1,6 @@
 pkgbase = bentwire-git
 	pkgdesc = Desktop characters (Microsoft Agent and Office Assistant formats) for Wayland (development version)
-	pkgver = 0.6.0.r0.g478540c
+	pkgver = 0.7.0.r0.g85cb2c0
 	pkgrel = 1
 	url = https://github.com/mschabhuettl/bentwire
 	arch = x86_64
