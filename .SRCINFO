@@ -1,0 +1,20 @@
+pkgbase = wanaku-bin
+	pkgdesc = Governed action proxy for AI agents
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/wanaku-ai/wanaku
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = wanaku
+	conflicts = wanaku
+	options = !debug
+	source_x86_64 = wanaku-bin-0.3.1-x86_64.tar.gz::https://github.com/wanaku-ai/wanaku/releases/download/v0.3.1/wanaku-server-0.3.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 65f0bb4b3050393de7c1cfdf22b568401fcaee1d624a77217b1321b5a574cf04
+	source_aarch64 = wanaku-bin-0.3.1-aarch64.tar.gz::https://github.com/wanaku-ai/wanaku/releases/download/v0.3.1/wanaku-server-0.3.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 13cc46e5c0e31ff66e2942c1c47b39c45535c3d9ddcc1471a8e2b4312facfc60
+
+pkgname = wanaku-bin
