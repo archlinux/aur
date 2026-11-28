@@ -1,6 +1,6 @@
 pkgbase = gossamer-bin
 	pkgdesc = The Gossamer programming language and tooling
-	pkgver = 0.85.0
+	pkgver = 0.86.0
 	pkgrel = 1
 	url = https://github.com/gossamer-lang/gossamer
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = gossamer-bin
 	conflicts = gossamer
 	options = !strip
 	options = staticlibs
-	source_x86_64 = gos-x86_64-0.85.0.tgz::https://github.com/gossamer-lang/gossamer/releases/download/v0.85.0/gos-0.85.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = ac791d8165b49d789353a4310ab3edb236c5fb8cc94178dfa3d459fa8a7a73eb
-	source_aarch64 = gos-aarch64-0.85.0.tgz::https://github.com/gossamer-lang/gossamer/releases/download/v0.85.0/gos-0.85.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 39482c882fe7bc4f941db6f5bbbc2652c4d7cd4f90dd5f41ee56251c5f03aee1
+	source_x86_64 = gos-x86_64-0.86.0.tgz::https://github.com/gossamer-lang/gossamer/releases/download/v0.86.0/gos-0.86.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 558ed8ade5288167bac238382307d837946db79480b8adc250b90af829fa11b4
+	source_aarch64 = gos-aarch64-0.86.0.tgz::https://github.com/gossamer-lang/gossamer/releases/download/v0.86.0/gos-0.86.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 967364a2c2efab1919903f0c92d060a6f271c8dd6bb151d17f3f2b17809016ca
 
 pkgname = gossamer-bin
