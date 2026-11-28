@@ -1,0 +1,16 @@
+pkgbase = celer-bin
+	pkgdesc = Lightweight C/C++ package manager driven by TOML
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/celer-pkg/celer
+	arch = x86_64
+	license = MIT
+	provides = celer
+	conflicts = celer
+	options = !debug
+	source = celer-bin-0.6.0-LICENSE::https://raw.githubusercontent.com/celer-pkg/celer/v0.6.0/LICENSE
+	sha256sums = 6747fad57bddc611e5e281021bc547a6bdd53872491da12691793eab83fe3076
+	source_x86_64 = celer-bin-0.6.0-x86_64.tar.gz::https://github.com/celer-pkg/celer/releases/download/v0.6.0/celer-amd64-linux.tar.gz
+	sha256sums_x86_64 = 3dad098fcbd7546cd85e50c4e1891f00002f2b65731df8b698169343b3bfa93e
+
+pkgname = celer-bin
