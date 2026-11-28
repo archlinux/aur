@@ -1,7 +1,7 @@
 pkgbase = lem-webview-nightly
 	pkgdesc = Common Lisp editor/IDE with Webview GUI frontend (nightly build)
 	pkgver = nightly.latest.r0.g96b8faa57
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lem-project/lem
 	arch = x86_64
 	license = MIT
@@ -21,6 +21,8 @@ pkgbase = lem-webview-nightly
 	optdepends = libvterm: for integrated terminal
 	optdepends = fd: for fuzzy file search
 	provides = lem-webview
+	conflicts = lem
+	conflicts = lem-nightly
 	conflicts = lem-webview
 	conflicts = lem-ncurses
 	options = !strip

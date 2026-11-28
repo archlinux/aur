@@ -2,7 +2,7 @@
 
 pkgname=lem-webview-nightly
 pkgver=nightly.latest.r0.g96b8faa57
-pkgrel=2
+pkgrel=3
 pkgdesc="Common Lisp editor/IDE with Webview GUI frontend (nightly build)"
 arch=('x86_64')
 url="https://github.com/lem-project/lem"
@@ -11,7 +11,7 @@ depends=('sbcl' 'webkitgtk-6.0' 'gtk4' 'enchant' 'tree-sitter')
 makedepends=('git' 'make' 'qlot' 'sbcl' 'webkitgtk-6.0' 'gtk4' 'enchant' 'tree-sitter')
 optdepends=('libvterm: for integrated terminal' 'fd: for fuzzy file search')
 provides=('lem-webview')
-conflicts=('lem-webview' 'lem-ncurses')
+conflicts=('lem' 'lem-nightly' 'lem-webview' 'lem-ncurses')
 options=('!strip')
 source=("${pkgname}::git+https://github.com/lem-project/lem.git#tag=nightly-latest")
 sha256sums=('SKIP')
