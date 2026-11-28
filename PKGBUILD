@@ -3,7 +3,7 @@
 # Published to the AUR by .github/workflows/release.yml, which fills in pkgver
 # and the checksum from each release's tag.
 pkgname=allot
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Each project's share of your Claude plan, with a budget Claude Code respects"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('qt6-base' 'qt6-declarative' 'qt6-wayland' 'libnotify')
 optdepends=('claude-code: the sessions allot measures and budgets')
 install=allot.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4a906cf626b1cf688bfa978b6675f371f483d4a0d333459a70c6f38bee19d267')
+sha256sums=('f8a12d9f3f61ac3e3c4f5f94508b928027009c312df8f170a12510103e1bee19')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -23,7 +23,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 build/allot "$pkgdir/usr/bin/allot"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 pkgbuild/allot.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/allot.svg"
   install -Dm644 pkgbuild/allot.desktop "$pkgdir/usr/share/applications/allot.desktop"
   install -Dm644 pkgbuild/allot.service "$pkgdir/usr/lib/systemd/user/allot.service"
