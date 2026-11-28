@@ -1,0 +1,17 @@
+pkgbase = caddyui-bin
+	pkgdesc = Self-hosted web UI for managing Caddy proxy hosts, redirects and certificates
+	pkgver = 2.68.22
+	pkgrel = 1
+	url = https://github.com/X4Applegate/caddyui
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = caddyui
+	conflicts = caddyui
+	options = !debug
+	source_x86_64 = caddyui-bin-2.68.22-x86_64.tar.gz::https://github.com/X4Applegate/caddyui/releases/download/v2.68.22/caddyui_v2.68.22_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6b8801e76ce55478398b5b37536b181c67b8eaa34f0081ab17aaa1f0c05eed7e
+	source_aarch64 = caddyui-bin-2.68.22-aarch64.tar.gz::https://github.com/X4Applegate/caddyui/releases/download/v2.68.22/caddyui_v2.68.22_linux_arm64.tar.gz
+	sha256sums_aarch64 = 10911b5000fcef9bcd8c2d8fd4eb3fc4b5f28581f9368139bb9414738f0aee43
+
+pkgname = caddyui-bin
