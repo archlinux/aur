@@ -1,0 +1,17 @@
+pkgbase = gh-grep-bin
+	pkgdesc = Search repositories for a pattern using the GitHub API
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://github.com/k1LoW/gh-grep
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gh-grep
+	conflicts = gh-grep
+	options = !debug
+	source_x86_64 = gh-grep-bin-1.2.6-x86_64.tar.gz::https://github.com/k1LoW/gh-grep/releases/download/v1.2.6/gh-grep_v1.2.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 637414bf865ff59a7fcd41737781dab8f787bd9d7dccb2763e5987edeb2b5485
+	source_aarch64 = gh-grep-bin-1.2.6-aarch64.tar.gz::https://github.com/k1LoW/gh-grep/releases/download/v1.2.6/gh-grep_v1.2.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9b2668865ea42fc144edd6195ecb257468efa88a6f0b4dc48e47a165cabda89e
+
+pkgname = gh-grep-bin
