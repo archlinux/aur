@@ -1,10 +1,10 @@
 pkgbase = python-bundlewrap
 	pkgdesc = Config management with Python
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bundlewrap.org
 	arch = any
-	license = GPL3
+	license = GPL-3.0.only
 	makedepends = python-setuptools
 	depends = python
 	depends = python-bcrypt

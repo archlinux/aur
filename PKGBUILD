@@ -6,11 +6,11 @@
 pkgname=python-bundlewrap
 _pkgname=bundlewrap
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Config management with Python"
 arch=('any')
 url='https://bundlewrap.org'
-license=('GPL3')
+license=('GPL-3.0.only')
 depends=(
   'python'
   'python-bcrypt'
