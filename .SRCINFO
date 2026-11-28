@@ -1,0 +1,17 @@
+pkgbase = eonza-bin
+	pkgdesc = Script and automation tool with a web interface
+	pkgver = 1.29.0
+	pkgrel = 1
+	url = https://github.com/gentee/eonza
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = eonza
+	conflicts = eonza
+	options = !debug
+	source = eonza-bin-1.29.0-LICENSE::https://raw.githubusercontent.com/gentee/eonza/v1.29.0/LICENSE
+	sha256sums = e2718feee1c4eeeaeefb741366e7c0d8b9325d5d49573a1a13b6991554461d65
+	source_x86_64 = eonza-bin-1.29.0-x86_64.tar.gz::https://github.com/gentee/eonza/releases/download/v1.29.0/eonza-1.29.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = b5572ecfecc5226a0c3d31e2b00f6e63ea257e4ac0f5b468a6ee7946457da579
+
+pkgname = eonza-bin
