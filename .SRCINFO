@@ -1,0 +1,19 @@
+pkgbase = consult-llm-bin
+	pkgdesc = Get a second opinion from another AI model
+	pkgver = 3.0.40
+	pkgrel = 1
+	url = https://github.com/raine/consult-llm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = consult-llm
+	conflicts = consult-llm
+	options = !debug
+	source = consult-llm-bin-3.0.40-LICENSE::https://raw.githubusercontent.com/raine/consult-llm/v3.0.40/LICENSE
+	sha256sums = dfc0be306ac621b63914bf0f4854538a2e0a8d09ad24f20e7edd9a80ece241b2
+	source_x86_64 = consult-llm-bin-3.0.40-x86_64.tar.gz::https://github.com/raine/consult-llm/releases/download/v3.0.40/consult-llm-linux-x64.tar.gz
+	sha256sums_x86_64 = 4aa328fc403efdff3cd81957dc2ff575744e9e571dad1371fa8f3e006d178765
+	source_aarch64 = consult-llm-bin-3.0.40-aarch64.tar.gz::https://github.com/raine/consult-llm/releases/download/v3.0.40/consult-llm-linux-arm64.tar.gz
+	sha256sums_aarch64 = add30879608423d27123a02f31b5c4b1f1761058ba87b6b3e3b884f50baf33f7
+
+pkgname = consult-llm-bin
