@@ -1,0 +1,21 @@
+pkgbase = tuisage-bin
+	pkgdesc = Terminal UI for running mise tasks and usage-spec commands
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/mgood/tuisage
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = tuisage
+	conflicts = tuisage
+	options = !debug
+	source = tuisage-bin-0.2.2-LICENSE::https://raw.githubusercontent.com/mgood/tuisage/v0.2.2/LICENSE.md
+	sha256sums = ae1096d4b220e26991f82c6d6bdb033d8bcf9976bb389a3f9ebc4cd652237dfd
+	source_x86_64 = tuisage-bin-0.2.2-x86_64.tar.gz::https://github.com/mgood/tuisage/releases/download/v0.2.2/tuisage-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2efbcc266b7fe9e3c36627a552303e1ebceddf6f872f2351aea0d50eedcbbc71
+	source_aarch64 = tuisage-bin-0.2.2-aarch64.tar.gz::https://github.com/mgood/tuisage/releases/download/v0.2.2/tuisage-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 6c3ccb078570ecccfd504b1ca1c82b75dec4d7207e4d6c82e07fe55ded43377b
+
+pkgname = tuisage-bin
