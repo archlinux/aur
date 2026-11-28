@@ -7,9 +7,9 @@
 
 pkgname='ngs-lang-git'
 _pkgname="${pkgname/-git}"
-pkgdesc='NGS: Next Generation Shell (built from latest git commit)'
+pkgdesc='NGS: Next Generation Shell (development version)'
 pkgver=0.3.0.r0.g98aee950
-pkgrel=1
+pkgrel=2
 epoch=1
 url='https://github.com/ngs-lang/ngs'
 changelog="$_pkgname.changelog"
@@ -52,7 +52,7 @@ prepare() {
 }
 
 build() {
-  make -C 'ngs/build'
+  make PREFIX=/usr -C 'ngs/build'
 }
 
 check() {
@@ -73,7 +73,10 @@ package() {
 
   rm -rf usr/share/doc/NGS
 
-  cd "$pkgdir/usr/share/doc" && ln -sr "$pkgname" "$_pkgname"
+  cd "$pkgdir/usr/share/doc" && {
+    ln -sr "$pkgname"  ngs
+    ln -sr "$pkgname" "$_pkgname"
+  }
 }
 
 # vim: ts=2 sw=2 et:
