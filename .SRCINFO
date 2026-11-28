@@ -1,7 +1,7 @@
 pkgbase = kimi-work-bin
 	pkgdesc = Kimi Work desktop client, repackaged for the system Electron runtime
 	pkgver = 3.2.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kimi.com/products/kimi-work
 	arch = x86_64
 	license = LicenseRef-proprietary

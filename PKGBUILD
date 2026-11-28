@@ -15,7 +15,7 @@
 
 pkgname=kimi-work-bin
 pkgver=3.2.29
-pkgrel=1
+pkgrel=2
 pkgdesc='Kimi Work desktop client, repackaged for the system Electron runtime'
 arch=('x86_64')
 url='https://www.kimi.com/products/kimi-work'
@@ -89,9 +89,17 @@ prepare() {
   \) -delete
 
   # daimon's bundled package.json lists build-time devDependencies.
+  if [ ! -f "${_daimon}/app/daimon/package.json" ]; then
+    echo "error: daimon package.json missing (upstream layout changed)" >&2
+    return 1
+  fi
   sed -i \
     '/^  "devDependencies": {$/,/^  },$/d' \
     "${_daimon}/app/daimon/package.json"
+  if grep -q '"devDependencies"' "${_daimon}/app/daimon/package.json"; then
+    echo "error: daimon package.json still lists devDependencies (format changed)" >&2
+    return 1
+  fi
 
   # Offline replacements for the Windows-only launchers: the upstream
   # kimi-daimon wrapper would download Node v24.15.0 at runtime, and the
