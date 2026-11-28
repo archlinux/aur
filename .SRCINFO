@@ -1,0 +1,21 @@
+pkgbase = tuiui-bin
+	pkgdesc = Terminal window manager and desktop with floating windows, dock and launcher
+	pkgver = 0.2.14
+	pkgrel = 1
+	url = https://github.com/jaylfc/tuiui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = tuiui
+	conflicts = tuiui
+	options = !debug
+	source = tuiui-bin-0.2.14-LICENSE::https://raw.githubusercontent.com/jaylfc/tuiui/v0.2.14/LICENSE
+	sha256sums = cc280429fa624fcef1426c9f778c9ab2a87e5c7494a55371d687de3c66262e9f
+	source_x86_64 = tuiui-bin-0.2.14-x86_64.tar.gz::https://github.com/jaylfc/tuiui/releases/download/v0.2.14/tuiui-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3f09374f8be1185349b68ac02e175027b12c70311cc91936f74deb27d0f897dd
+	source_aarch64 = tuiui-bin-0.2.14-aarch64.tar.gz::https://github.com/jaylfc/tuiui/releases/download/v0.2.14/tuiui-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 36fb2095141c343fdfd832b0e711dfb02683d0d6bc62ffc3152993449a9b3bde
+
+pkgname = tuiui-bin
