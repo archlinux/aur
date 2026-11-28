@@ -1,6 +1,6 @@
 pkgbase = rigtop-bin
 	pkgdesc = System monitor for workstations, laptops and NAS with storage health, per-process GPU memory
-	pkgver = 0.36.2
+	pkgver = 0.37.0
 	pkgrel = 1
 	url = https://github.com/akivajp/rigtop
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = rigtop-bin
 	provides = rigtop
 	conflicts = rigtop
 	options = !debug
-	source_x86_64 = rigtop-bin-0.36.2-x86_64.tar.gz::https://github.com/akivajp/rigtop/releases/download/v0.36.2/rigtop-v0.36.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = c4849d2d00757167d8b50c196be15fbdbd252c8a7fefa229fdbadf61d751016e
-	source_aarch64 = rigtop-bin-0.36.2-aarch64.tar.gz::https://github.com/akivajp/rigtop/releases/download/v0.36.2/rigtop-v0.36.2-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = df99440ac3c1e47f049b95af0c1dd6e7f54f7f04356d70c299a8ed7e328847d9
+	source_x86_64 = rigtop-bin-0.37.0-x86_64.tar.gz::https://github.com/akivajp/rigtop/releases/download/v0.37.0/rigtop-v0.37.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = bb992a7dbfd17f16b2edacef4391cca0037de8f73bd435aa69ff19696673382d
+	source_aarch64 = rigtop-bin-0.37.0-aarch64.tar.gz::https://github.com/akivajp/rigtop/releases/download/v0.37.0/rigtop-v0.37.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7e9675ea47e4362dab4d14f8a78c99fa327db939eda7c49c91348d88a41735bd
 
 pkgname = rigtop-bin
