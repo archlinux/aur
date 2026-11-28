@@ -1,0 +1,14 @@
+pkgbase = muxie-bin
+	pkgdesc = TUI for tmux session management
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/phanorcoll/muxie
+	arch = x86_64
+	license = MIT
+	provides = muxie
+	conflicts = muxie
+	options = !debug
+	source_x86_64 = muxie-bin-1.3.0-x86_64.tar.gz::https://github.com/phanorcoll/muxie/releases/download/v1.3.0/muxie_1.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = c50c00cf0f3d951ca6c351d08aab1702fe40f0ae1abe0499a25c54ff73a48f4a
+
+pkgname = muxie-bin
