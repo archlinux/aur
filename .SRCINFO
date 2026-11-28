@@ -1,0 +1,19 @@
+pkgbase = ic-wasm-bin
+	pkgdesc = Transform Wasm canisters for the Internet Computer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dfinity/ic-wasm
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = ic-wasm
+	conflicts = ic-wasm
+	options = !debug
+	source_x86_64 = ic-wasm-bin-1.0.0-x86_64.tar.xz::https://github.com/dfinity/ic-wasm/releases/download/1.0.0/ic-wasm-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = f6d40d67596fbe91a5f2c2cdbac2ace162305246dd35bcd30e34230e7f91dff8
+	source_aarch64 = ic-wasm-bin-1.0.0-aarch64.tar.xz::https://github.com/dfinity/ic-wasm/releases/download/1.0.0/ic-wasm-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 5a9bc9d475ab3eb8ebdac10ac2a6564e37292e0a47253646fe50bf9907dee2a8
+
+pkgname = ic-wasm-bin
