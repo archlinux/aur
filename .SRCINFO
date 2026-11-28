@@ -1,0 +1,18 @@
+pkgbase = boxen-bin
+	pkgdesc = Package network operating systems into containers
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/carlmontanari/boxen
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = boxen
+	conflicts = boxen
+	options = !debug
+	source_x86_64 = boxen-bin-0.5.0-x86_64.tar.gz::https://github.com/carlmontanari/boxen/releases/download/v0.5.0/boxen_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3abe708b6acb0c5dd49f68b223a24fbaddb6efbeb2693f8ea40f84266f74b4c9
+	source_aarch64 = boxen-bin-0.5.0-aarch64.tar.gz::https://github.com/carlmontanari/boxen/releases/download/v0.5.0/boxen_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7f846907c06ae5592b56c3d6f84142ae1f2038315291277ffaa387d223cff942
+
+pkgname = boxen-bin
