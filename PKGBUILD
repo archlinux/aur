@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=pi-ext-lens
-pkgver=4.5.2
+pkgver=4.5.3
 pkgrel=1
 pkgdesc='Real-time code feedback for the Pi coding agent: language servers, linters, formatters'
 arch=('x86_64')
@@ -21,7 +21,7 @@ _piname=pi-lens
 _npmname=pi-lens
 
 source=("${_npmname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-sha256sums=('8b4f00181c3b9b2920953e164ba7afab702596aa85136e300bcc3c1243835b92')
+sha256sums=('54891b2b387bceeaaa4a751d6ecab51c9742fd9f311053ec8f7f835329bcabbd')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${_npmname}/latest" | jq -r '.version'
