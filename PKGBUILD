@@ -14,7 +14,7 @@
 # kimi-work-intl-bin conflicts with it because both install /usr/bin/kimi-work.
 
 pkgname=kimi-work-bin
-pkgver=3.2.28
+pkgver=3.2.29
 pkgrel=1
 pkgdesc='Kimi Work desktop client, repackaged for the system Electron runtime'
 arch=('x86_64')
@@ -45,7 +45,7 @@ sha256sums=(
   '85e9c4268a8ee267755f0f3faa4b7cd957db27d57d0c22d53cb2c691d34f0ec2'
   '817e0d47bca30dfb87aa2e9df40fb94ba1d3704305d2b6b0f2b4359e4ab7e304'
 )
-sha256sums_x86_64=('68d70c748f3b227c0ec6bf75fd77704c639680f29148bcf0bea224f1117ab300')
+sha256sums_x86_64=('2afd2550eec778c9bc0f01632ad3a2bdc6b344789b4a7ce847f6491640cd9bef')
 
 prepare() {
   local _res="${srcdir}/payload/resources/resources"
