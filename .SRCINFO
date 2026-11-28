@@ -1,0 +1,21 @@
+pkgbase = bose-connect-gui
+	pkgdesc = Control Bose Bluetooth headphones and speakers (GTK 4 window)
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/airvzxf/bose-connect-app-linux
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	depends = bluez
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gtk4>=1:4.22
+	depends = libadwaita>=1:1.9
+	optdepends = libpulse: restart the audio stream after a party-mode change (pactl)
+	optdepends = wireplumber: 44.1 kHz for Bluetooth speakers in party mode
+	source = bose-connect-gui-0.8.0.tar.gz::https://github.com/airvzxf/bose-connect-app-linux/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 115c6625bfd74c48cf889b30fd268a6fffc511a2eb09ccce7c45cc7d5da0e430
+
+pkgname = bose-connect-gui
