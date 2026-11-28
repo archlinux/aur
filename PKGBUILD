@@ -1,6 +1,6 @@
 # Maintainer: ethermawe
 pkgname=ymusic-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Нативный клиент Яндекс Музыки на Rust и Qt Quick"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('ymusic')
 conflicts=('ymusic' 'ymusic-git')
 options=('!strip' '!debug')
 source=("ymusic-${pkgver}-1-x86_64.pkg.tar.zst::https://github.com/ethermawe/ymusic/releases/download/v${pkgver}/ymusic-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('f1c95281bd55ab7b5e172c113b7340fe09fa75413c9780f0d47265e535089bde')
+sha256sums=('c436e4408287e6085da8072ea287e9736aafc16051b1e529c26236d6773b5e4a')
 
 package() {
     cp -a "$srcdir/usr" "$pkgdir/"
