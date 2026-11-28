@@ -1,0 +1,17 @@
+pkgbase = podwise-cli-bin
+	pkgdesc = Command-line client for podwise.ai podcast insights
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/hardhackerlabs/podwise-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = podwise-cli
+	conflicts = podwise-cli
+	options = !debug
+	source_x86_64 = podwise-cli-bin-0.4.2-x86_64.tar.gz::https://github.com/hardhackerlabs/podwise-cli/releases/download/v0.4.2/podwise_linux_amd64.tar.gz
+	sha256sums_x86_64 = 10620defed8a183145d40321522277b39823e23ac38c591ac2e33f52f23f76d4
+	source_aarch64 = podwise-cli-bin-0.4.2-aarch64.tar.gz::https://github.com/hardhackerlabs/podwise-cli/releases/download/v0.4.2/podwise_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0220ef696bf4ee2fc708c18bfa3d760ac26328234cd3e51e9ecf28c7f3ca37ee
+
+pkgname = podwise-cli-bin
