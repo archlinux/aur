@@ -1,0 +1,17 @@
+pkgbase = rss-funnel-bin
+	pkgdesc = Self-hosted RSS multi-tool
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/shouya/rss-funnel
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = rss-funnel
+	conflicts = rss-funnel
+	options = !debug
+	source_x86_64 = rss-funnel-bin-0.1.4-x86_64.tar.xz::https://github.com/shouya/rss-funnel/releases/download/0.1.4/rss-funnel-0.1.4-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 1a64752716b144cc10d2cc589dec4d04ad0f5280b9d1867c0fa27d465f098898
+	source_aarch64 = rss-funnel-bin-0.1.4-aarch64.tar.xz::https://github.com/shouya/rss-funnel/releases/download/0.1.4/rss-funnel-0.1.4-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = c29eae534e2acf6a422f19a5d1b53ba35330071ae92420f4052b03a428364586
+
+pkgname = rss-funnel-bin
