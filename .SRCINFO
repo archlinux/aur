@@ -1,0 +1,17 @@
+pkgbase = seq-db-bin
+	pkgdesc = Scalable, high-performance log storage and query database
+	pkgver = 0.83.0
+	pkgrel = 1
+	url = https://github.com/ozontech/seq-db
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = seq-db
+	conflicts = seq-db
+	options = !debug
+	source_x86_64 = seq-db-bin-0.83.0-x86_64.tar.gz::https://github.com/ozontech/seq-db/releases/download/v0.83.0/seq-db_0.83.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = ee8c08e093676f96b04e10e301ec81e40c612c7e8f2fc2180dd10a84c5332a9e
+	source_aarch64 = seq-db-bin-0.83.0-aarch64.tar.gz::https://github.com/ozontech/seq-db/releases/download/v0.83.0/seq-db_0.83.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2e760eb1a8c6a46d2ce9ccc98f1e667df74b733fd93607ac73c82a76aa144c93
+
+pkgname = seq-db-bin
