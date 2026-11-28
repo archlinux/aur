@@ -1,0 +1,17 @@
+pkgbase = avalanche-bin
+	pkgdesc = Prometheus and OpenMetrics series generator for load testing
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/prometheus-community/avalanche
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = avalanche
+	conflicts = avalanche
+	options = !debug
+	source_x86_64 = avalanche-bin-0.7.0-x86_64.tar.gz::https://github.com/prometheus-community/avalanche/releases/download/v0.7.0/avalanche-0.7.0.linux-amd64.tar.gz
+	sha256sums_x86_64 = b7979c28fe07540e21403c025a242abd62993dba7a754ec7d7f4fe2360cd0aaf
+	source_aarch64 = avalanche-bin-0.7.0-aarch64.tar.gz::https://github.com/prometheus-community/avalanche/releases/download/v0.7.0/avalanche-0.7.0.linux-arm64.tar.gz
+	sha256sums_aarch64 = eccb429fcaf1453ae26ccf41bad371b9a293e7f91a8a40cb73e203a210f70eee
+
+pkgname = avalanche-bin
