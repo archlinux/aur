@@ -1,0 +1,20 @@
+pkgbase = splay-bin
+	pkgdesc = Fan out AI agents across tasks
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/splay-sh/splay
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = libgcc
+	depends = pango
+	provides = splay
+	conflicts = splay
+	options = !debug
+	source_x86_64 = splay-bin-0.2.0-x86_64.tar.xz::https://github.com/splay-sh/splay/releases/download/v0.2.0/splay-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 9f4ae210695a25f350e73feec0c8b94194d7cb7576a8c67cdc20ed3064867a71
+
+pkgname = splay-bin
