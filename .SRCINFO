@@ -1,6 +1,6 @@
 pkgbase = zigzag-bin
 	pkgdesc = Embroidery editor: turn SVG artwork into machine embroidery files (PES, DST, JEF, VP3 and more), adjust the stitches visually, and drive a Brother Skitch over Bluetooth
-	pkgver = 0.1.12
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/simpsoka/zigzag
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = zigzag-bin
 	conflicts = zigzag-git
 	options = !strip
 	options = !debug
-	source = zigzag.svg::https://raw.githubusercontent.com/simpsoka/zigzag/v0.1.12/packaging/macos/AppIcon.svg
+	source = zigzag.svg::https://raw.githubusercontent.com/simpsoka/zigzag/v0.1.14/packaging/macos/AppIcon.svg
 	sha256sums = d1f149d732148e59075e27e1ba292bb28226d5814233d44fc6363df753481982
-	source_x86_64 = ZigZag-0.1.12-x86_64-linux.tar.gz::https://github.com/simpsoka/zigzag/releases/download/v0.1.12/ZigZag-0.1.12-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 70541cd070077ee77d0493dcca96210f0896e66087fc72c55adaa288addae5d6
+	source_x86_64 = ZigZag-0.1.14-x86_64-linux.tar.gz::https://github.com/simpsoka/zigzag/releases/download/v0.1.14/ZigZag-0.1.14-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 466497db873b05c9b01760d30b131ff356c154944aed95d02b5ae13a9bafdee4
 
 pkgname = zigzag-bin
