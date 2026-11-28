@@ -8,14 +8,14 @@
 # same files as in hermes-agent-bin, whose CI builds this PKGBUILD under that
 # name (https://github.com/jabla/hermes-agent-bin).
 pkgname=hermes-agent
-_pkgver_tag=v0.23.4
-_commit=8fc0374447313e276f6b9a2764bfc750190c966a
+_pkgver_tag=v0.23.5
+_commit=a428f5344f777ccafe389c79d5b09384abef1437
 _tagver=${_pkgver_tag#v}           # tag without the leading v — GitHub strips it from the archive dir
 _optname=hermes-agent              # fixed install dir (pkgname-independent, matches source pkg)
 _pyver=3.14                        # Arch's python minor; keep depends=() in step
 _uvmin=0.13.5                      # pm's uv pin (pm/lock.json); check() stops when it moves
 _pnpmver=12.15.0                   # pm's pnpm pin (pm/lock.json); prepare() stops when it moves
-pkgver=0.23.4
+pkgver=0.23.5
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
@@ -46,7 +46,7 @@ source=(
   'system-tools.py'
   'hermes_agent_env.py'
 )
-sha256sums=('875e633ae5b3c6349c1bcffc18c0476518fbe5dead355e4aa09ad827ebffce0c'
+sha256sums=('4475ee948e831245b11a339fa08811ab471bd487ee503c7b31bc3200493820b8'
             'f6824d0250926db151b0a06043a8385a642d83048e2b73967625362076b7d818'
             '0d7ba134037ee7565f40091262eee82b18d089a63238a6bdca7c88d7f5eb324d'
             '196ba6f200257073a5f02bab284a11594e67bfe1e10470a83ab0fc9437ef777b'
@@ -321,9 +321,20 @@ PY
     echo 'if [[ ${1-} == --print-runtime-command ]]; then'
     echo "  exec /opt/${_optname}/venv/bin/python -I -B -m hermes_cli._launchers" '"$@"'
     echo 'fi'
-    # No browser export: browser_exec reads only browser.executable_path
-    # (then pm's Chromium). The config migration to v52 would write an
-    # exported AGENT_BROWSER_EXECUTABLE_PATH into the user's config.yaml.
+    # Upstream's launchers run another module with --run-module <module>
+    # (the desktop app's default-plugins preflight). -P as there: no cwd on
+    # sys.path.
+    echo 'if [[ ${1-} == --run-module ]]; then'
+    echo '  [[ ${2-} =~ ^[A-Za-z_][A-Za-z0-9_.]*$ ]] || { echo "hermes: --run-module needs a module" >&2; exit 2; }'
+    echo '  module=$2'
+    echo '  shift 2'
+    echo "  exec /opt/${_optname}/venv/bin/python -P -m" '"$module" "$@"'
+    echo 'fi'
+    # No browser export: browser_exec takes browser.executable_path, then
+    # pm's Chromium, then a system Chrome, Chromium or Brave
+    # (system-browser-fallback.patch). The config migration to v52 would
+    # write an exported AGENT_BROWSER_EXECUTABLE_PATH into the user's
+    # config.yaml.
     echo "exec /opt/${_optname}/venv/bin/python -m hermes_cli.main" '"$@"'
   } > "$pkgdir/usr/bin/hermes"
 
