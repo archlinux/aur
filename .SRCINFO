@@ -1,0 +1,17 @@
+pkgbase = go-smtp-mock-bin
+	pkgdesc = SMTP mock server for testing
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://github.com/mocktools/go-smtp-mock
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = go-smtp-mock
+	conflicts = go-smtp-mock
+	options = !debug
+	source_x86_64 = go-smtp-mock-bin-2.5.4-x86_64.tar.gz::https://github.com/mocktools/go-smtp-mock/releases/download/v2.5.4/smtpmock_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c4fd29278589b3a42660644778436e5151baf3c796ff6b19c94c51a458cfc86e
+	source_aarch64 = go-smtp-mock-bin-2.5.4-aarch64.tar.gz::https://github.com/mocktools/go-smtp-mock/releases/download/v2.5.4/smtpmock_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 4c4304b582c3749ab25baae684d253e4bf72e917dce1f041853bdf5ab0db4e96
+
+pkgname = go-smtp-mock-bin
