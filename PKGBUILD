@@ -11,6 +11,7 @@ depends=('nythera-lib-git>=0.1.0' 'nythera-lib-git<0.2.0' libnythera_lib.so
          desktop-file-utils gdk-pixbuf2 glib2 glibc jemalloc 'libarchive>=3.4.0' libgcc libstdc++
          libxkbcommon polkit shared-mime-info tomlplusplus wayland xz zlib)
 optdepends=(
+  '7zip: create and extract password-protected 7z archives'
   'gvfs: Wastebin (trash://), removable media mounting, and remote filesystem support'
   'gvfs-afc: Apple mobile device browsing'
   'gvfs-dnssd: DNS-SD network service discovery'

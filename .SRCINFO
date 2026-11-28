@@ -27,6 +27,7 @@ pkgbase = nythera-files-git
 	depends = wayland
 	depends = xz
 	depends = zlib
+	optdepends = 7zip: create and extract password-protected 7z archives
 	optdepends = gvfs: Wastebin (trash://), removable media mounting, and remote filesystem support
 	optdepends = gvfs-afc: Apple mobile device browsing
 	optdepends = gvfs-dnssd: DNS-SD network service discovery
