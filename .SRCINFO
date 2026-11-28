@@ -1,0 +1,17 @@
+pkgbase = xsubfind3r-bin
+	pkgdesc = Discover subdomains for a given domain
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/hueristiq/xsubfind3r
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = xsubfind3r
+	conflicts = xsubfind3r
+	options = !debug
+	source_x86_64 = xsubfind3r-bin-1.1.2-x86_64.tar.gz::https://github.com/hueristiq/xsubfind3r/releases/download/1.1.2/xsubfind3r_1.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 181a27e5eb318cb969b1c65635e8727fabab73b5a0b2399c54438713bb373387
+	source_aarch64 = xsubfind3r-bin-1.1.2-aarch64.tar.gz::https://github.com/hueristiq/xsubfind3r/releases/download/1.1.2/xsubfind3r_1.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = b967c02107031e77767b47ed0d0af565229032b0001d20ee7e84b52bbb8fbfec
+
+pkgname = xsubfind3r-bin
