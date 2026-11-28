@@ -1,0 +1,20 @@
+pkgbase = satnogs-monitor-bin
+	pkgdesc = Terminal UI monitor for SatNOGS ground stations
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/wose/satnogs-monitor
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glib2
+	depends = glibc
+	depends = libgcc
+	provides = satnogs-monitor
+	conflicts = satnogs-monitor
+	options = !debug
+	source_x86_64 = satnogs-monitor-bin-0.4.3-x86_64.tar.xz::https://github.com/wose/satnogs-monitor/releases/download/0.4.3/satnogs-monitor-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 2c06829bf76b3712571740c4b41f97844e6a2de365cc3c0079e995633747a27a
+	source_aarch64 = satnogs-monitor-bin-0.4.3-aarch64.tar.xz::https://github.com/wose/satnogs-monitor/releases/download/0.4.3/satnogs-monitor-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = e678424d2c7053a1b77248fca2a580de67bf9a806a00559554acb105fdef99fa
+
+pkgname = satnogs-monitor-bin
