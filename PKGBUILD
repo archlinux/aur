@@ -1,8 +1,8 @@
 # Maintainer: PASRC <pasrc at proton dot me>
 
 pkgname=chimera-tas
-_tag=nightly-2026-11-23
-pkgver=20261123
+_tag=nightly-2026-11-27
+pkgver=20261127
 pkgrel=1
 pkgdesc="Modular frontend for creating tool-assisted speedruns (TAS)"
 arch=('x86_64' 'aarch64')

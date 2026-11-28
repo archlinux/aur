@@ -1,6 +1,6 @@
 pkgbase = chimera-tas
 	pkgdesc = Modular frontend for creating tool-assisted speedruns (TAS)
-	pkgver = 20261123
+	pkgver = 20261127
 	pkgrel = 1
 	url = https://github.com/ToolAssisted-run/chimera
 	install = chimera-tas.install
@@ -35,7 +35,7 @@ pkgbase = chimera-tas
 	optdepends = pipewire: audio output through PipeWire
 	optdepends = libpulse: audio output through PulseAudio
 	optdepends = libusb: more gamepads, such as the GameCube adapter
-	source = chimera::git+https://github.com/ToolAssisted-run/chimera.git#tag=nightly-2026-11-23
+	source = chimera::git+https://github.com/ToolAssisted-run/chimera.git#tag=nightly-2026-11-27
 	source = chimera-minibox::git+https://github.com/ToolAssisted-run/chimera-common-minibox.git
 	source = SDL::git+https://github.com/libsdl-org/SDL.git
 	source = libusb::git+https://github.com/libusb/libusb.git
