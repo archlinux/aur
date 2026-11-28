@@ -1,0 +1,17 @@
+pkgbase = govctl-bin
+	pkgdesc = Governance harness for AI coding
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://github.com/govctl-org/govctl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = govctl
+	conflicts = govctl
+	options = !debug
+	source_x86_64 = govctl-bin-0.22.0-x86_64.tar.gz::https://github.com/govctl-org/govctl/releases/download/v0.22.0/govctl-v0.22.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 106689d246ee1acf24127d424de0f83d91509ee888d1d2f80c24fe8e7ab9338b
+	source_aarch64 = govctl-bin-0.22.0-aarch64.tar.gz::https://github.com/govctl-org/govctl/releases/download/v0.22.0/govctl-v0.22.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ddd15d80e033d7f82fce28d63268da3037096c2e04eaca0fe1fcab14ee230c19
+
+pkgname = govctl-bin
