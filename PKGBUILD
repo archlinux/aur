@@ -3,17 +3,18 @@
 pkgname='piped-backend-git'
 _componentname="${pkgname%'-git'}"
 _componentnameshort="${_componentname#'piped-'}"
-pkgver=r1322.6d0ad06
-pkgrel=3
+pkgver=r1327.1d620f3
+pkgrel=1
 pkgdesc='An alternative privacy-friendly YouTube frontend which is efficient by design. Backend/API component, for fetching Metadata'
 arch=('x86_64')
 url='https://github.com/TeamPiped/Piped-Backend'
+_forkurl='https://github.com/Spendable1569/Piped-Backend#branch=update-newpipeextractor'
 license=('AGPL-3.0')
 groups=('piped-git')
 depends=('java-runtime>=21' 'postgresql')
 makedepends=('git' 'java-environment=21')
 backup=("etc/webapps/piped/${_componentnameshort}.properties")
-source=("git+${url}"
+source=("git+${_forkurl}"
 		'piped-backend.sh'
 		'nginx.conf'
 		'sysusers.conf'
@@ -43,9 +44,9 @@ prepare() {
 	cd Piped-Backend
 	sed -i 's|hibernate.connection.url:jdbc:postgresql://postgres:5432/piped|hibernate.connection.url:jdbc:postgresql:piped?socketFactory=org.newsclub.net.unix.AFUNIXSocketFactory$FactoryArg\&socketFactoryArg=/var/run/postgresql/.s.PGSQL.5432|' config.properties
 	sed -i 's|config.properties|/etc/webapps/piped/backend.properties|' src/main/java/me/kavin/piped/consts/Constants.java
-	sed -i "s|dependencies {|dependencies {\n    implementation 'com.kohlschutter.junixsocket:junixsocket-core:2.10.0'|" build.gradle
-	sed -i "s|implementation 'com.github.FireMasterK:NewPipeExtractor:c83884eb5d2e9f077348acec3a2d9e9dc920ae91'|implementation 'com.github.TeamNewPipe:NewPipeExtractor:v0.26.4'|" build.gradle
-	sed -i "s|implementation 'com.github.FireMasterK:nanojson:a507525e549a836c3a8b6ab7090dca38e92942ef'|implementation 'com.github.TeamNewPipe:nanojson:c7a6c1c08d16b6d5ecded34758e6415e07be2166'|" build.gradle
+	sed -i "s|dependencies {|dependencies {\n    implementation 'com.kohlschutter.junixsocket:junixsocket-core:2.11.1'|" build.gradle
+	#sed -i "s|implementation 'com.github.FireMasterK:NewPipeExtractor:c83884eb5d2e9f077348acec3a2d9e9dc920ae91'|implementation 'com.github.TeamNewPipe:NewPipeExtractor:v0.27.1'|" build.gradle
+	#sed -i "s|implementation 'com.github.FireMasterK:nanojson:a507525e549a836c3a8b6ab7090dca38e92942ef'|implementation 'com.github.TeamNewPipe:nanojson:c7a6c1c08d16b6d5ecded34758e6415e07be2166'|" build.gradle
 }
 
 build() {
