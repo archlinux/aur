@@ -1,6 +1,6 @@
 pkgbase = beluga-git
 	pkgdesc = File manager written with plain GTK 4, a rewrite of KDE Dolphin without Qt or KDE Frameworks (git version)
-	pkgver = 1.3.0_r1_gb9893fb
+	pkgver = 1.3.1_r1_g00f3882
 	pkgrel = 1
 	url = https://github.com/TheElevatedOne/beluga
 	arch = x86_64
