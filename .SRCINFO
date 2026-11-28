@@ -1,0 +1,17 @@
+pkgbase = playconsole-cli-bin
+	pkgdesc = Scriptable command-line client for Google Play Console
+	pkgver = 0.5.17
+	pkgrel = 1
+	url = https://github.com/AndroidPoet/playconsole-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = playconsole-cli
+	conflicts = playconsole-cli
+	options = !debug
+	source_x86_64 = playconsole-cli-bin-0.5.17-x86_64.tar.gz::https://github.com/AndroidPoet/playconsole-cli/releases/download/v0.5.17/playconsole-cli_0.5.17_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4e514d021ab1b219c696c0d48e711d2f9a2419c8bfa3d75d2df3b8424c9ae716
+	source_aarch64 = playconsole-cli-bin-0.5.17-aarch64.tar.gz::https://github.com/AndroidPoet/playconsole-cli/releases/download/v0.5.17/playconsole-cli_0.5.17_linux_arm64.tar.gz
+	sha256sums_aarch64 = cb9f4f376ba1a2d1f1e3aa99af95db886c97cdc18321016533425e6ad40e7d91
+
+pkgname = playconsole-cli-bin
