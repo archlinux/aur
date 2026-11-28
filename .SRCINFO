@@ -1,0 +1,19 @@
+pkgbase = leantoken-bin
+	pkgdesc = Code intelligence for AI agents that keeps context lean
+	pkgver = 0.1.28
+	pkgrel = 1
+	url = https://github.com/morluto/leantoken
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = leantoken
+	conflicts = leantoken
+	options = !debug
+	source_x86_64 = leantoken-bin-0.1.28-x86_64.tar.xz::https://github.com/morluto/leantoken/releases/download/v0.1.28/leantoken-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 4cb2eb821407e5adb0eab67ba5b7450bb854e1df09e54cd105f53ad6bc8c3a55
+	source_aarch64 = leantoken-bin-0.1.28-aarch64.tar.xz::https://github.com/morluto/leantoken/releases/download/v0.1.28/leantoken-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = d016cca7a671f7b779fed7ea736bca7bde4235223828e4690593966ce9c5127a
+
+pkgname = leantoken-bin
