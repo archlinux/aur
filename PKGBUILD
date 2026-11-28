@@ -1,6 +1,6 @@
 # Maintainer: Joidy App <https://github.com/Axel-DaMage/joidy>
 pkgname=joidy
-pkgver=1.1.0_beta.8
+pkgver=1.1.0_beta.9
 _tag=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Personal knowledge management with gamification"
