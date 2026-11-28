@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=imza-bin
-pkgver=0.7.6
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Model-agnostic terminal coding agent"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_dl}/imza-${pkgver}-linux-x64
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_dl}/imza-${pkgver}-linux-arm64.deb")
 noextract=("${pkgname}-${pkgver}-x86_64.deb" "${pkgname}-${pkgver}-aarch64.deb")
 sha256sums=('35805e210349253055aa9d46b5d4534c5b00b0388a7061c75fc649c79156bcbc')
-sha256sums_x86_64=('c639f59799417a22d9adddf6d2c907fb34ae931c8342e22aa3246cf5667b1a9f')
-sha256sums_aarch64=('b69ea954c6f013303f821c5cdda2198eb6206636e2e26796ac5c7293f85e4b76')
+sha256sums_x86_64=('b143f6195d524611e3a6dad6794ade341d5725c9030373ea0ec1e65fd0f6f5a5')
+sha256sums_aarch64=('d50422b7d01f350d014228fcd19be2a63624fecbca752e5d83a5065f5c897479')
 
 prepare() {
   mkdir -p deb
