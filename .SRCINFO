@@ -1,0 +1,24 @@
+pkgbase = iroh-lan-bin
+	pkgdesc = Peer-to-peer virtual LAN over iroh, like Hamachi without accounts
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/rustonbsd/iroh-lan
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgcc
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = iroh-lan
+	conflicts = iroh-lan
+	options = !debug
+	source = iroh-lan-bin-0.1.2-LICENSE::https://raw.githubusercontent.com/rustonbsd/iroh-lan/v0.1.2/LICENSE
+	sha256sums = 37f019361d6b5ae3e8bc5ea39a123ba54c6ea9f2b71fee75cba42500a6f850a5
+	source_x86_64 = iroh-lan-bin-0.1.2-x86_64::https://github.com/rustonbsd/iroh-lan/releases/download/v0.1.2/iroh-lan-ui-linux-x86_64
+	sha256sums_x86_64 = 8bc03f21dfdf1a8dce77e9ea377b23833288e7af747d9ed2bbd0d0a5fb976070
+
+pkgname = iroh-lan-bin
