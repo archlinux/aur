@@ -1,0 +1,21 @@
+pkgbase = herlang-bin
+	pkgdesc = Her programming language
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/justjavac/herlang
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = herlang
+	conflicts = herlang
+	options = !debug
+	source = herlang-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/justjavac/herlang/v0.1.0/LICENSE
+	sha256sums = 98078c5579ec87d9660f5404b53916a329dee0a90d62234a4d3159c73897edcb
+	source_x86_64 = herlang-bin-0.1.0-x86_64.zip::https://github.com/justjavac/herlang/releases/download/v0.1.0/herlang-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 9bb996110502092aa76372c648ab837c434dfa4eb9829aff24cfc90844151033
+	source_aarch64 = herlang-bin-0.1.0-aarch64.zip::https://github.com/justjavac/herlang/releases/download/v0.1.0/herlang-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 2830b9fc39d76e6c79b027f3416efab4f76ef98ac1f783c828416228ba054ed3
+
+pkgname = herlang-bin
