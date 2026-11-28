@@ -1,0 +1,19 @@
+pkgbase = fogg-bin
+	pkgdesc = Manage infrastructure as code with less pain
+	pkgver = 0.92.56
+	pkgrel = 1
+	url = https://github.com/chanzuckerberg/fogg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = fogg
+	conflicts = fogg
+	options = !debug
+	source = fogg-bin-0.92.56-LICENSE::https://raw.githubusercontent.com/chanzuckerberg/fogg/v0.92.56/LICENSE
+	sha256sums = ff51f32157d9a53b482bddb1552ea7bb7d8152a8e9e6e72d1a535b37e3276c09
+	source_x86_64 = fogg-bin-0.92.56-x86_64.tar.gz::https://github.com/chanzuckerberg/fogg/releases/download/v0.92.56/fogg_0.92.56_linux_amd64.tar.gz
+	sha256sums_x86_64 = b97053c38ebbeffcb6567e88dc6ca17f67c3953cfe81f8a7825027332e0b4857
+	source_aarch64 = fogg-bin-0.92.56-aarch64.tar.gz::https://github.com/chanzuckerberg/fogg/releases/download/v0.92.56/fogg_0.92.56_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7a351ee1dc27197f99e2125824c0e0393cf16eef7a449b94b88ae897a4444539
+
+pkgname = fogg-bin
