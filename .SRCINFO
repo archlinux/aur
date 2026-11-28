@@ -1,6 +1,6 @@
 pkgbase = lianwall-gui-bin
 	pkgdesc = LianWall GUI - Qt Quick wallpaper player and library manager
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/Yueosa/lianwall-gui
 	arch = x86_64
@@ -12,15 +12,15 @@ pkgbase = lianwall-gui-bin
 	depends = qt6-declarative<6.13
 	depends = ffmpeg
 	optdepends = lianwall-bin: CLI client for lianwalld
-	provides = lianwall-gui=2.0.2
+	provides = lianwall-gui=2.0.3
 	conflicts = lianwall-gui
 	options = !strip
 	options = !debug
-	source = lianwall-gui-2.0.2::https://github.com/Yueosa/lianwall-gui/releases/download/v2.0.2/lianwall-gui_2.0.2_linux_x86_64
-	source = lianwall.png-2.0.2::https://raw.githubusercontent.com/Yueosa/lianwall-gui/v2.0.2/resources/icons/lianwall.png
-	source = lianwall-gui.desktop-2.0.2::https://raw.githubusercontent.com/Yueosa/lianwall-gui/v2.0.2/packaging/lianwall-gui.desktop
-	source = LICENSE-2.0.2::https://raw.githubusercontent.com/Yueosa/lianwall-gui/v2.0.2/LICENSE
-	sha256sums = 8bb2b89336a9d26e6de2336a36b637a386ca14ce13e8421eed76875822c86b79
+	source = lianwall-gui-2.0.3::https://github.com/Yueosa/lianwall-gui/releases/download/v2.0.3/lianwall-gui_2.0.3_linux_x86_64
+	source = lianwall.png-2.0.3::https://raw.githubusercontent.com/Yueosa/lianwall-gui/v2.0.3/resources/icons/lianwall.png
+	source = lianwall-gui.desktop-2.0.3::https://raw.githubusercontent.com/Yueosa/lianwall-gui/v2.0.3/packaging/lianwall-gui.desktop
+	source = LICENSE-2.0.3::https://raw.githubusercontent.com/Yueosa/lianwall-gui/v2.0.3/LICENSE
+	sha256sums = b69d8df567a6017b2f7b9d51c28ea3b3974a6452a13081acb6986840bb8d5989
 	sha256sums = fde2d2388bc059c25d5b8dc68bed3183475f4d8bfdd8227bb1b2c8c6904c028e
 	sha256sums = a6f5b58d83aeb98bb9c1a9622290e2b0d04424f90cf0706c03671587bbfa692e
 	sha256sums = 051973239643c829b13ced4aea4820f2dc90fb1eaa202976d90946b08ea3487d
