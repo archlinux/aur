@@ -1,0 +1,18 @@
+pkgbase = issue-finder-bin
+	pkgdesc = Local-first handoff preparation for coding agents
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/lifuyue/issue-finder
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = issue-finder
+	conflicts = issue-finder
+	options = !debug
+	source = issue-finder-bin-0.3.0-LICENSE::https://raw.githubusercontent.com/lifuyue/issue-finder/v0.3.0/LICENSE
+	sha256sums = 8d524a098f8d4eb1f38b81b93c778f898b7967716f427ade7741c8dd7364bd08
+	source_x86_64 = issue-finder-bin-0.3.0-x86_64.tar.gz::https://github.com/lifuyue/issue-finder/releases/download/v0.3.0/issue-finder-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = fa827e72a09aa8d1ebc7e770ba920c38671cd9443729013fa7c546f957cab131
+
+pkgname = issue-finder-bin
