@@ -1,0 +1,16 @@
+pkgbase = mdsf-bin
+	pkgdesc = Format Markdown code blocks using your favorite tools
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/hougesen/mdsf
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = mdsf
+	conflicts = mdsf
+	options = !debug
+	source_x86_64 = mdsf-bin-0.12.1-x86_64.tar.gz::https://github.com/hougesen/mdsf/releases/download/v0.12.1/mdsf-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = adba0ac7765458ac76901fbc9952c7006842ac233ee5565702cfa0aea39cace5
+
+pkgname = mdsf-bin
