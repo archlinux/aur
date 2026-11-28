@@ -1,0 +1,14 @@
+pkgbase = gokvm-bin
+	pkgdesc = Tiny KVM-based x86 hypervisor that boots Linux
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/bobuhiro11/gokvm
+	arch = x86_64
+	license = MIT
+	provides = gokvm
+	conflicts = gokvm
+	options = !debug
+	source_x86_64 = gokvm-bin-0.0.7-x86_64.tar.gz::https://github.com/bobuhiro11/gokvm/releases/download/v0.0.7/gokvm_0.0.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = 346f5de8344907088987808c46672b05487816e35ab581b3a15928453475a461
+
+pkgname = gokvm-bin
