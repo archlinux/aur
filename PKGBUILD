@@ -9,7 +9,7 @@ pkgdesc="AI-Powered Semantic Photo Search for the Command Line"
 _pypi_package=${pkgname}
 _pypi_version=${pkgver}
 
-license=('Unlincense')
+license=('MIT')
 arch=('any')
 
 _url_pypi="https://pypi.org/project/${pkgname}/"
@@ -45,4 +45,6 @@ package() {
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
