@@ -1,42 +1,21 @@
 # Maintainer: krant <aleksey.vasilenko@gmail.com>
-
 pkgname=fluidx3d
-pkgver=3.8
+pkgver=3.9
 pkgrel=1
 pkgdesc="The fastest and most memory efficient lattice Boltzmann CFD software, using OpenCL"
 arch=(x86_64 aarch64)
 url=https://github.com/ProjectPhysX/FluidX3D
-license=('custom' 'CCPL:by-nc')
+license=('LicenseRef-FluidX3D' 'CC0-1.0' 'CC-BY-4.0' 'CC-BY-NC-4.0' 'CC-BY-NC-ND-4.0')
 depends=(ocl-icd libxrandr)
 makedepends=(opencl-clhpp ninja)
-
-_cdn=https://cdn.thingiverse.com/assets
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz"
-    "$_cdn/92/f0/54/ba/e0/concord_cut_large.stl"
-    "$_cdn/0b/5c/e5/f3/f0/techtris_airplane.stl"
-    "$_cdn/49/65/42/33/0f/X-Wing.stl"
-    "$_cdn/f0/3c/64/c7/f5/DWG_Tie_Fighter_Assembled_02.STL"
-    "$_cdn/1d/89/dd/cb/fd/FAN_Solid_Bottom.stl"
-    "$_cdn/e6/85/cf/21/70/edf_v391.stl"
-    "$_cdn/51/31/ed/84/b0/edf_v39.stl"
-    "$_cdn/90/2a/a5/12/ce/Cow_t.stl"
-    "$_cdn/6d/23/28/24/ea/Full_Shuttle.stl"
-    "$_cdn/b8/99/d7/5d/2c/StarShipV2.stl"
+    "https://github.com/krant/fluidx3d-stl/releases/download/1.0/fluidx3d-stl.tar.zst"
 )
 
 sha256sums=(
-    'e78b13921f0b03ebca988b2e22bfe1e0a3ca0d80c7c0b7ba33a6dea76637c8b9'
-    'db5605f435973c556302124e98ce45dc411ca6a3f71131df37f44ee61f28c9bb'
-    'e8fe5827330bc2adfd5161e42c9d5fd6850d909f7581e0d252e30e3dd623f93d'
-    '47c1c261e0db21faa300574247b646e1886ad4b69932b6e066cd7bf9911da33a'
-    '037a6f8826d6c7c3e96b040bce16485096143ef68c4c25b883ea693c6fdfbb18'
-    '6a7ee3e07ce12bad3d94ab8e109ac95d18026f2259131ed5647da7bd563cd344'
-    'b1e8368224cbb3a92c641b0c19274b152346d8323bbd2ea6f9fe7091bc6e91d0'
-    '348438cf93e06ab539a829584d50e29886f2b430c139c751b9297a0cf684f5fa'
-    '1bd05d2986eb96e2080672a241949a35a6e04bfffcbf4cec18bcad74bb695522'
-    '7503e0ceb5f6d8436b8c3f10e7104ad0433f84a7402e75ff66409eec790d86fd'
-    '00372e3473616e747fe7980170776477ff0eaa265aa1b859c0afe66e85ad43d4'
+    '2697dce876e089169c1109d02665b3c6d2ed7181853967f886aabfee3d9b68b0'
+    '3695e17d203debf0603f50c7456394d1be9eb8c7ae67f3095222e7ade41ddae7'
 )
 
 add_bin() {
@@ -76,7 +55,6 @@ prepare() {
     for stl in concord_cut_large techtris_airplane X-Wing DWG_Tie_Fighter_Assembled_02 FAN_Solid_Bottom edf_v391 edf_v39 Cow_t Full_Shuttle StarShipV2; do
       sed -i "s|get_exe_path()+\"../stl/$stl.stl|\"/usr/share/fluidx3d/$stl.stl|" src/setup.cpp
     done
-    mv ../DWG_Tie_Fighter_Assembled_02.{STL,stl}
     # Generate build.ninja
     cat > bins.ninja <<EOF
 rule patch
@@ -136,5 +114,6 @@ package() {
     cd FluidX3D-$pkgver
     install -vDm644 -t "$pkgdir/usr/share/$pkgname" skybox/skybox8k.png ../*.stl
     install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
+    install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname/stl" ../LICENSE.md
     install -vDm755 -t "$pkgdir/usr/bin" out/FluidX3D*
 }
