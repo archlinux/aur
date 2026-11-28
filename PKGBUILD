@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction <https://github.com/LIghtJUNction>
 pkgname=oh-my-ztty-git
-pkgver=0.2.17.r2681
+pkgver=0.2.17.r2682
 pkgrel=1
 pkgdesc='Rolling Project Z terminal workspace with zsh presets and AI tools'
 arch=('x86_64' 'aarch64')
@@ -40,8 +40,13 @@ build() {
     python scripts/rolling_sources.py --prepared-sources "$srcdir" --output "$srcdir/bundle"
 }
 
-check() {
+check() (
     cd "$srcdir/oh-my-ztty"
+    # Test fixtures load the real zshard scripts from the suite's components directory.
+    local shell_source="$PWD/components/zshard"
+    rmdir -- "$shell_source"
+    ln -s -- "$srcdir/zshard" "$shell_source"
+    trap 'rm -- "$shell_source"; mkdir -- "$shell_source"' EXIT
     make check
     cd "$srcdir/bundle"
     local archive="oh-my-ztty-$(cat "$srcdir/oh-my-ztty/VERSION")-linux-$CARCH.tar.gz"
@@ -49,7 +54,7 @@ check() {
     tar -xzf "$archive"
     cd oh-my-ztty
     sha256sum --quiet -c MANIFEST.sha256
-}
+)
 
 package() {
     cd "$srcdir/bundle"
