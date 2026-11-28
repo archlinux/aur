@@ -1,4 +1,4 @@
-# Maintainer: kbtz <contact@kbtz.dev>
+# Maintainer: cvsguimaraes <carlos@kbtz.dev>
 # Contributor: eNV25 <env252525@gmail.com>
 
 pkgref=keyd
