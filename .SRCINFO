@@ -1,0 +1,19 @@
+pkgbase = apprise-go-bin
+	pkgdesc = Go port of the Apprise notification library and CLI
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/unraid/apprise-go
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	provides = apprise-go
+	conflicts = apprise-go
+	options = !debug
+	source = apprise-go-bin-0.4.1-LICENSE::https://raw.githubusercontent.com/unraid/apprise-go/v0.4.1/LICENSE
+	sha256sums = 04c2c31515d8e9388275e9a37e0c7a2c6323dc28fb6a0d02bfecde9a4aa9fb12
+	source_x86_64 = apprise-go-bin-0.4.1-x86_64::https://github.com/unraid/apprise-go/releases/download/v0.4.1/apprise-go-linux-amd64
+	sha256sums_x86_64 = 48b22ad5d2c25c14fb18ab2ea695028561132af6e4097aa470e440a9b8a033b1
+	source_aarch64 = apprise-go-bin-0.4.1-aarch64::https://github.com/unraid/apprise-go/releases/download/v0.4.1/apprise-go-linux-arm64
+	sha256sums_aarch64 = 0e6656ae27992a95a6460500bec8acf05e5858773cb4a372273add832c2557d5
+
+pkgname = apprise-go-bin
