@@ -1,0 +1,17 @@
+pkgbase = zanadir-bin
+	pkgdesc = CI/CD security tool that finds missing pipeline security checks
+	pkgver = 0.32.0
+	pkgrel = 1
+	url = https://github.com/MustacheCase/zanadir
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = zanadir
+	conflicts = zanadir
+	options = !debug
+	source_x86_64 = zanadir-bin-0.32.0-x86_64.tar.gz::https://github.com/MustacheCase/zanadir/releases/download/0.32.0/zanadir_0.32.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8629871893917f4b44d1dd56f47b5ab51c2edf73c916b5ef9fb2edc1aef670e8
+	source_aarch64 = zanadir-bin-0.32.0-aarch64.tar.gz::https://github.com/MustacheCase/zanadir/releases/download/0.32.0/zanadir_0.32.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 38a1eea55bd9782792fda808bf6b01b8a3dcc79a91d7967f16301800b57fe369
+
+pkgname = zanadir-bin
