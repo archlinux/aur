@@ -1,0 +1,17 @@
+pkgbase = prometheus-mcp-bin
+	pkgdesc = MCP server for interacting with Prometheus
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/prometheus/prometheus-mcp
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = prometheus-mcp
+	conflicts = prometheus-mcp
+	options = !debug
+	source_x86_64 = prometheus-mcp-bin-0.18.0-x86_64.tar.gz::https://github.com/prometheus/prometheus-mcp/releases/download/v0.18.0/prometheus-mcp-server_0.18.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 50030346594a4b8d89294f3a2cb9e253caa0bd75e69fefbd9add289cafd6c27c
+	source_aarch64 = prometheus-mcp-bin-0.18.0-aarch64.tar.gz::https://github.com/prometheus/prometheus-mcp/releases/download/v0.18.0/prometheus-mcp-server_0.18.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = e4027f7a47178a3d69ac0974b5cbef5312a855d43b60a4a2686a3db83ed8461e
+
+pkgname = prometheus-mcp-bin
