@@ -1,0 +1,14 @@
+pkgbase = philosopher-bin
+	pkgdesc = Proteomics data processing and FDR filtering toolkit
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://github.com/Nesvilab/philosopher
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = philosopher
+	conflicts = philosopher
+	options = !debug
+	source_x86_64 = philosopher-bin-5.1.0-x86_64.zip::https://github.com/Nesvilab/philosopher/releases/download/v5.1.0/philosopher_v5.1.0_linux_amd64.zip
+	sha256sums_x86_64 = cf15a2d6321ecb530170b2410f5873f89e283b52d5f1ab0f27eebc124f4f4a1a
+
+pkgname = philosopher-bin
