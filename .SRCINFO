@@ -1,0 +1,19 @@
+pkgbase = truehdd-bin
+	pkgdesc = Inspect and decode Dolby TrueHD bitstreams
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/truehdd/truehdd
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = truehdd
+	conflicts = truehdd
+	options = !debug
+	source_x86_64 = truehdd-bin-0.6.3-x86_64.tar.gz::https://github.com/truehdd/truehdd/releases/download/0.6.3/truehdd-0.6.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 284fb06bc74edf5211559873056f298b5e9b53851615fc3400f82107ae08870d
+	source_aarch64 = truehdd-bin-0.6.3-aarch64.tar.gz::https://github.com/truehdd/truehdd/releases/download/0.6.3/truehdd-0.6.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9f0cab2b2d8c580f3458e49f9744bb829250128f57d185da748e8ff187fd79b5
+
+pkgname = truehdd-bin
