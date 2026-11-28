@@ -1,7 +1,7 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 
 pkgname=uu-remote-linux
-pkgver=0.2.67
+pkgver=0.2.68
 pkgrel=1
 pkgdesc='Unofficial Linux host for NetEase UU Remote (remote desktop)'
 arch=('x86_64')
@@ -43,7 +43,7 @@ optdepends=(
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'uuremote-native.service'
         '60-uu-remote-linux-uinput.rules')
-sha256sums=('6ac06ddff8fc4efd0311676de9f8794b79b0c2030024506e25a8034b4837261a'
+sha256sums=('0b4b2756dfeb3c0f420d0e5365a2910d069980cfd127ed0f2893742bd644debb'
             '3cff7ebb654c1f9a2434bc80ce4442d5fd0b0e6ff79462f7e3a20271d05d3c98'
             '2752412c9c2ddbffa4d5882be06a2f10d7ee590c3d1f3b16bf37ea5c1b8d1f34')
 options=('!lto')
