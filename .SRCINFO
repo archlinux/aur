@@ -1,0 +1,17 @@
+pkgbase = slo-generator-bin
+	pkgdesc = Set up service level objectives with Prometheus
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/globocom/slo-generator
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = slo-generator
+	conflicts = slo-generator
+	options = !debug
+	source_x86_64 = slo-generator-bin-0.3.0-x86_64.tar.gz::https://github.com/globocom/slo-generator/releases/download/v0.3.0/slo-generator_0.3.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5d45beb7bb7ca883859aa0407f9af19702da3f466dcdc3ff85373bc2032eec42
+	source_aarch64 = slo-generator-bin-0.3.0-aarch64.tar.gz::https://github.com/globocom/slo-generator/releases/download/v0.3.0/slo-generator_0.3.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 0ea5663820c7a7e17c2b4ee93e824d9b5621b3cad09e7a6dd10f3e9dc1f67607
+
+pkgname = slo-generator-bin
