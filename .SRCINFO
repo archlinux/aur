@@ -1,0 +1,17 @@
+pkgbase = dir2opds-bin
+	pkgdesc = Self-hosted OPDS ebook server for any folder
+	pkgver = 1.12.2
+	pkgrel = 1
+	url = https://github.com/dubyte/dir2opds
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = dir2opds
+	conflicts = dir2opds
+	options = !debug
+	source_x86_64 = dir2opds-bin-1.12.2-x86_64.tar.gz::https://github.com/dubyte/dir2opds/releases/download/v1.12.2/dir2opds_1.12.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 09ee7870c8a2fe5e80d7dc62e101d3b75ae13bb39ab8abed4e30fed867d04872
+	source_aarch64 = dir2opds-bin-1.12.2-aarch64.tar.gz::https://github.com/dubyte/dir2opds/releases/download/v1.12.2/dir2opds_1.12.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 80b692e9fadc87a702533974682f918847c82f15d4ed5fa5f9fc0d7602a43ee0
+
+pkgname = dir2opds-bin
