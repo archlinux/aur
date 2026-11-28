@@ -1,7 +1,7 @@
 # Maintainer: amitpadhan525 <amitpadhan525@gmail.com>
 
 pkgname=quickshare-cli
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Cross-platform Quick Share CLI compatible with Android, Windows 11, and Linux"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4f134789deced23013a4d7d7c14db7295dc4ba3d439a3e0457bab3a512c3e432')
+sha256sums=('e31a8e3dfd09be70b5cef58ff8af71db5512bc922b6097424bfe49f45001ae04')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -24,7 +24,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build/quickshare ./cmd/quickshare
+  go build -ldflags="-X main.version=${pkgver}" -o build/quickshare ./cmd/quickshare
 }
 
 check() {
