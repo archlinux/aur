@@ -1,0 +1,17 @@
+pkgbase = faucet-bin
+	pkgdesc = Turn any SQL database into a governed REST API with MCP support
+	pkgver = 0.1.15
+	pkgrel = 1
+	url = https://github.com/faucetdb/faucet
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = faucet
+	conflicts = faucet
+	options = !debug
+	source_x86_64 = faucet-bin-0.1.15-x86_64.tar.gz::https://github.com/faucetdb/faucet/releases/download/v0.1.15/faucet_0.1.15_linux_amd64.tar.gz
+	sha256sums_x86_64 = bb59d96ae3bbd9d8684a84c54fdd5cb4732a1efc905d92f756a3747449d89065
+	source_aarch64 = faucet-bin-0.1.15-aarch64.tar.gz::https://github.com/faucetdb/faucet/releases/download/v0.1.15/faucet_0.1.15_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8a4e76af796f63f030399847fa52e21c7af1c6775cb68f233bc2d22408a7f93e
+
+pkgname = faucet-bin
