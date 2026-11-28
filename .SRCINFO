@@ -1,0 +1,19 @@
+pkgbase = shoelaces-bin
+	pkgdesc = Painless server bootstrapping over iPXE
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/thousandeyes/shoelaces
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = shoelaces
+	conflicts = shoelaces
+	options = !debug
+	source = shoelaces-bin-1.4.0-LICENSE::https://raw.githubusercontent.com/thousandeyes/shoelaces/v1.4.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = shoelaces-bin-1.4.0-x86_64::https://github.com/thousandeyes/shoelaces/releases/download/v1.4.0/shoelaces-linux-amd64
+	sha256sums_x86_64 = 7f55569722baed4fed21420d477be2a29fcd9fa91b3b26d820e316b7bb608036
+	source_aarch64 = shoelaces-bin-1.4.0-aarch64::https://github.com/thousandeyes/shoelaces/releases/download/v1.4.0/shoelaces-linux-arm64
+	sha256sums_aarch64 = 2d1089c1b3f42407e0e34e59e5c14e1deb8fc310d1bb71bb40ebdf948a861ced
+
+pkgname = shoelaces-bin
