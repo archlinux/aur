@@ -1,0 +1,22 @@
+pkgbase = rheo-bin
+	pkgdesc = Typesetting and static site engine based on Typst
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/freecomputinglab/rheo
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = rheo
+	conflicts = rheo
+	options = !debug
+	source = rheo-bin-0.6.4-LICENSE::https://raw.githubusercontent.com/freecomputinglab/rheo/v0.6.4/LICENSE-APACHE
+	sha256sums = b3699bdf3129bcb12f559d6dcfa597cfae1e3d2b793e90de297f90c4d25cdea0
+	source_x86_64 = rheo-bin-0.6.4-x86_64.zip::https://github.com/freecomputinglab/rheo/releases/download/v0.6.4/rheo-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = ed4f45a47a449aacad7755a93ad391ce4e29886d6c179c1318d468a3057e4e20
+	source_aarch64 = rheo-bin-0.6.4-aarch64.zip::https://github.com/freecomputinglab/rheo/releases/download/v0.6.4/rheo-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 000403ca68439b1aa8351a9a06ed95d9e43f4572071020712b45dc97ea1bf723
+
+pkgname = rheo-bin
