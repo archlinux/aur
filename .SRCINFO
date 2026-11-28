@@ -1,0 +1,17 @@
+pkgbase = comanda-bin
+	pkgdesc = CLI-native orchestrator for AI agent workflows
+	pkgver = 0.0.259
+	pkgrel = 1
+	url = https://github.com/kris-hansen/comanda
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = comanda
+	conflicts = comanda
+	options = !debug
+	source_x86_64 = comanda-bin-0.0.259-x86_64.zip::https://github.com/kris-hansen/comanda/releases/download/v0.0.259/comanda-linux-amd64.zip
+	sha256sums_x86_64 = 0e4f33e2376112eb86d6f62b152e58d48e3ddc226039c6735c3ff7f48513a6e3
+	source_aarch64 = comanda-bin-0.0.259-aarch64.zip::https://github.com/kris-hansen/comanda/releases/download/v0.0.259/comanda-linux-arm64.zip
+	sha256sums_aarch64 = 03e8fa53b686a10c79c8bb6efc0dd1cf1b3b3a409a26dbe2dfa9394150b81c6c
+
+pkgname = comanda-bin
