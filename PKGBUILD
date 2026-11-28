@@ -4,9 +4,9 @@
 # before verification, build and publication. Historical bootstrap placeholders
 # must never reach the AUR.
 pkgname=sway-session
-pkgver=0.11.1
-pkgrel=2
-_commit=399e618d1b0a86375f9eb9a777ecf2dc57a55ba6
+pkgver=0.11.2
+pkgrel=1
+_commit=450a42777ebe46ee8f8e2cda44fcd884a5258a93
 pkgdesc="Persistent work sessions for Sway"
 arch=('x86_64' 'aarch64')
 url="https://entire.com/et/marang/sway-session"
@@ -14,8 +14,8 @@ license=('MIT')
 depends=('sway')
 makedepends=('go>=1.26.10')
 options=('!debug')
-source=("sway-session-$pkgver.tar.gz::https://get.izoone.com/sway-session/v$pkgver/sway-session-399e618d1b0a86375f9eb9a777ecf2dc57a55ba6.tar.gz")
-sha256sums=('cf6cd82ddde4dcfca656d3a25d5ce5ce537270f72cd75662f92524d1052e6411')
+source=("sway-session-$pkgver.tar.gz::https://get.izoone.com/sway-session/v$pkgver/sway-session-450a42777ebe46ee8f8e2cda44fcd884a5258a93.tar.gz")
+sha256sums=('cbee23f569852fd10b6f52370a5bfe3bbf11c16319817adc105bfece97303a83')
 
 _go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw)
 # This historical source uses the old module; release preparation rebinds the
@@ -23,7 +23,7 @@ _go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcach
 _go_ldflags=(-s -w -buildid= -X "main.version=$pkgver" -X "main.commit=$_commit" -X "main.modified=false" -X "go.izoone.com/sway-session/internal/buildmetadata.Stamp=sway-session-build-v1|$pkgver|$_commit|false|end-sway-session-build-v1")
 
 build() {
-  cd "sway-session-399e618d1b0a86375f9eb9a777ecf2dc57a55ba6"
+  cd "sway-session-450a42777ebe46ee8f8e2cda44fcd884a5258a93"
   export GOCACHE="$srcdir/go-build"
   export GOMODCACHE="$srcdir/go-mod"
   export GOTOOLCHAIN=local
@@ -32,7 +32,7 @@ build() {
 }
 
 check() {
-  cd "sway-session-399e618d1b0a86375f9eb9a777ecf2dc57a55ba6"
+  cd "sway-session-450a42777ebe46ee8f8e2cda44fcd884a5258a93"
   export GOCACHE="$srcdir/go-build"
   export GOMODCACHE="$srcdir/go-mod"
   export GOTOOLCHAIN=local
@@ -41,7 +41,7 @@ check() {
 }
 
 package() {
-  cd "sway-session-399e618d1b0a86375f9eb9a777ecf2dc57a55ba6"
+  cd "sway-session-450a42777ebe46ee8f8e2cda44fcd884a5258a93"
   install -Dm755 sway-session "$pkgdir/usr/bin/sway-session"
   install -Dm644 contrib/completions/bash/sway-session "$pkgdir/usr/share/bash-completion/completions/sway-session"
   install -Dm644 contrib/completions/zsh/_sway-session "$pkgdir/usr/share/zsh/site-functions/_sway-session"
