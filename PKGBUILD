@@ -3,7 +3,7 @@
 pkgname=clod-clash-bin
 pkgver=0.1.15
 pkgrel=1
-pkgdesc='Tauri desktop proxy client with the Mihomo core'
+pkgdesc='A cross-platform GUI proxy client powered by Mihomo, built with Tauri.'
 arch=('x86_64')
 url='https://github.com/Mrvibecodic/clod-clash'
 license=('GPL-3.0-only')
