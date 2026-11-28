@@ -1,0 +1,17 @@
+pkgbase = vaku-bin
+	pkgdesc = Extend the Vault API and CLI
+	pkgver = 2.12.1
+	pkgrel = 1
+	url = https://github.com/lingrino/vaku
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = vaku
+	conflicts = vaku
+	options = !debug
+	source_x86_64 = vaku-bin-2.12.1-x86_64.zip::https://github.com/lingrino/vaku/releases/download/v2.12.1/vaku_2.12.1_linux_amd64.zip
+	sha256sums_x86_64 = 1b1c76a4b1189bfe9030e875598cf1d9d6e6af4ce1efef1138dd332a4b996cf8
+	source_aarch64 = vaku-bin-2.12.1-aarch64.zip::https://github.com/lingrino/vaku/releases/download/v2.12.1/vaku_2.12.1_linux_arm64.zip
+	sha256sums_aarch64 = 7927a8437e3b206fb059c777bcb108f765cbcfc54cb689358398cba46eff99c2
+
+pkgname = vaku-bin
