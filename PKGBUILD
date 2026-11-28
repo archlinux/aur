@@ -1,17 +1,18 @@
 # Maintainer: Vladimir Alyamkin <ufna@ufna.dev>
 pkgname=pinch
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Small, fast screenshot tool: select an area, annotate it, copy or save (X11 and Wayland)'
 arch=('x86_64')
 url='https://github.com/ufna/pinch'
 license=('MIT')
-depends=('qt6-base' 'qt6-wayland' 'wayland' 'noto-fonts' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'glibc')
+depends=('qt6-base' 'qt6-wayland' 'wayland' 'kstatusnotifieritem' 'noto-fonts' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'glibc')
 makedepends=('cmake' 'qt6-tools')
 checkdepends=('dbus')
+options=('!debug')
 conflicts=('pinch-bin' 'pinch-git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('66669e2ffd72c58c3181af00a162704b480e8f4d6f07af38f307b52a887aaeaf')
+source=("$url/releases/download/v$pkgver/pinch-$pkgver.tar.gz")
+sha256sums=('d17b3a502150639af5298fc24863ecbb8513792a7ec3e667480f654aa5778f98')
 
 build() {
   cmake -S "$pkgname-$pkgver" -B build \
