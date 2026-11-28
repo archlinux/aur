@@ -1,0 +1,18 @@
+pkgbase = arch-pkg-installer
+	pkgdesc = 图形化Arch本地包安装器，类似gdebi，基于paru自动解决依赖
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/maoyaotang12/arch-pkg-installer
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = base-devel
+	depends = qt6-base
+	depends = paru
+	depends = polkit
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	source = git+https://github.com/maoyaotang12/arch-pkg-installer.git
+	sha256sums = SKIP
+
+pkgname = arch-pkg-installer
