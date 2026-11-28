@@ -1,0 +1,17 @@
+pkgbase = alita_robot-bin
+	pkgdesc = Telegram group management bot
+	pkgver = 2.32.0
+	pkgrel = 1
+	url = https://github.com/Divkix/Alita_Robot
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = alita_robot
+	conflicts = alita_robot
+	options = !debug
+	source_x86_64 = alita_robot-bin-2.32.0-x86_64.tar.gz::https://github.com/Divkix/Alita_Robot/releases/download/v2.32.0/alita_robot_2.32.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5ea361b6bb8326e57a774b4e2679792acd2d56e0640ef23e28d4bb50c93130e8
+	source_aarch64 = alita_robot-bin-2.32.0-aarch64.tar.gz::https://github.com/Divkix/Alita_Robot/releases/download/v2.32.0/alita_robot_2.32.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = fd250644cd5a637fd097d35ea7607563af4561dc09e17a872e4c52bd63bcf486
+
+pkgname = alita_robot-bin
