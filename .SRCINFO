@@ -1,0 +1,17 @@
+pkgbase = vip-manager-bin
+	pkgdesc = Manage a virtual IP based on state in etcd or Consul
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/cybertec-postgresql/vip-manager
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	provides = vip-manager
+	conflicts = vip-manager
+	options = !debug
+	source_x86_64 = vip-manager-bin-5.0.0-x86_64.tar.gz::https://github.com/cybertec-postgresql/vip-manager/releases/download/v5.0.0/vip-manager_5.0.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0f9d118d2c1e6a7e561406749be008a9a8fca40a59dfdc53897685b8da06d2ef
+	source_aarch64 = vip-manager-bin-5.0.0-aarch64.tar.gz::https://github.com/cybertec-postgresql/vip-manager/releases/download/v5.0.0/vip-manager_5.0.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 396165193e3278d53e43be75f70474500d5c2a1c954ac1b316bd8c137272b68b
+
+pkgname = vip-manager-bin
