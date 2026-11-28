@@ -1,0 +1,19 @@
+pkgbase = ccrider-bin
+	pkgdesc = Search, browse and resume Claude Code sessions
+	pkgver = 1.19.3
+	pkgrel = 1
+	url = https://github.com/neilberkman/ccrider
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ccrider
+	conflicts = ccrider
+	options = !debug
+	source = ccrider-bin-1.19.3-LICENSE::https://raw.githubusercontent.com/neilberkman/ccrider/v1.19.3/LICENSE
+	sha256sums = 8723ca4104cab48f19e73ca06f2b9a452921d75459215b66b15d1e765b0fcd00
+	source_x86_64 = ccrider-bin-1.19.3-x86_64.tar.gz::https://github.com/neilberkman/ccrider/releases/download/v1.19.3/ccrider_1.19.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 37450ec2ebb1fe28d637807fe106500e1e847d9f693611b6c0c7e918b6f14755
+	source_aarch64 = ccrider-bin-1.19.3-aarch64.tar.gz::https://github.com/neilberkman/ccrider/releases/download/v1.19.3/ccrider_1.19.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9414b72beec92dae3d7e9872bd332d6c49b96469500c628d00b6c716285fa70f
+
+pkgname = ccrider-bin
