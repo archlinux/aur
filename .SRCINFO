@@ -1,0 +1,17 @@
+pkgbase = atlas_exporter-bin
+	pkgdesc = Prometheus exporter for RIPE Atlas measurement results
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/czerwonk/atlas_exporter
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	provides = atlas_exporter
+	conflicts = atlas_exporter
+	options = !debug
+	source_x86_64 = atlas_exporter-bin-1.1.1-x86_64.tar.gz::https://github.com/czerwonk/atlas_exporter/releases/download/v1.1.1/atlas_exporter_1.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5007f14e41eddd5c8ba74a91fd194ddd9c966016dadee1645e9a6495e2c7dd30
+	source_aarch64 = atlas_exporter-bin-1.1.1-aarch64.tar.gz::https://github.com/czerwonk/atlas_exporter/releases/download/v1.1.1/atlas_exporter_1.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = d4b4d2aa5e510c585796b9f18a0a12bc622ab61fc48e9cd3636a4791ef4daebb
+
+pkgname = atlas_exporter-bin
