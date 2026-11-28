@@ -1,6 +1,6 @@
 pkgbase = zensmu-bin
 	pkgdesc = Safety-first Rust CLI, live TUI, and unprivileged GUI for AMD Ryzen SMU control and telemetry (prebuilt binary)
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/brauliobo/zensmu
 	install = zensmu.install
@@ -20,7 +20,7 @@ pkgbase = zensmu-bin
 	conflicts = zensmu-git
 	options = !strip
 	options = !debug
-	source = zensmu-bin-0.3.1-x86_64.tar.gz::https://github.com/brauliobo/zensmu/releases/download/v0.3.1/zensmu-v0.3.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 4c902c8e3fdc75a0d2c822b149b5ed093794bb39d915d5da75198a3a08127721
+	source = zensmu-bin-0.3.2-x86_64.tar.gz::https://github.com/brauliobo/zensmu/releases/download/v0.3.2/zensmu-v0.3.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 7c6c2d77dfe37225cb2dcf422402609aa69e3877e39ba5bb4e07a629b2076478
 
 pkgname = zensmu-bin
