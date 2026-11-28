@@ -1,10 +1,10 @@
 # Maintainer: Wavecode <dev at wavecode dot hr>
-# Generated for CoderView 1.1.0 by scripts/arch-pkgbuild.ts in the desktop repository.
+# Generated for CoderView 1.2.0 by scripts/arch-pkgbuild.ts in the desktop repository.
 # Build and install: makepkg -si -p <this file>
 pkgname=coderview-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-_tag=v1.1.0
+_tag=v1.2.0
 pkgdesc='Desktop coding assistant with private screen capture and bring-your-own-key AI'
 arch=('x86_64')
 url='https://coderview.app'
@@ -24,7 +24,7 @@ provides=('coderview')
 conflicts=('coderview')
 options=('!strip' '!debug')
 source=("CoderView-${pkgver}-linux-x64.deb::https://coderview.app/download/${_tag}/linux-x64-deb")
-sha256sums=('320a7679176dc5084cd1b7d36d5f60477ac5349f8869b74956c0c887a63a50a3')
+sha256sums=('604ed05eb05c72b6ff9e18af9456bbb5b8cf686a6af9ee0543ed323f50039bf6')
 
 package() {
   bsdtar -xpf data.tar.* -C "$pkgdir" --exclude ./usr/share/doc
