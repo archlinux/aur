@@ -12,29 +12,40 @@ pkgname=agildodock
 _githubuser=juglesbass
 _repo=AgildoDockCpp_Wayland # pasta ao extrair: ${_repo}-${pkgver}
 
-pkgver=1.6.4
+pkgver=2.0.0
 pkgrel=1
 
-pkgdesc="Dock de aplicativos para KDE Plasma com Layer Shell, Kirigami e efeito de onda"
+pkgdesc="Dock Liquid Glass e Barra Superior integrada para Wayland (KDE Plasma / Hyprland)"
 arch=("x86_64")
 url="https://github.com/${_githubuser}/${_repo}"
-license=("GPL-3.0-or-later") # ajustar à licença real / adicionar ficheiro custom em package()
+license=("GPL-3.0-or-later")
 
 depends=(
   "gcc-libs"
   "glibc"
   "kglobalaccel"
   "kirigami"
+  "kpipewire"
   "kwindowsystem"
   "layer-shell-qt"
   "qt6-base"
   "qt6-declarative"
   "qt6-shadertools"
   "qt6-wayland"
+  "wayland"
 )
-makedepends=("cmake" "ninja" "extra-cmake-modules")
-
-optdepends=("kdotool: focar, minimizar e fechar janelas em sessão Plasma Wayland")
+makedepends=(
+  "cmake"
+  "extra-cmake-modules"
+  "ninja"
+  "plasma-wayland-protocols"
+  "qt6-tools"
+)
+optdepends=(
+  "networkmanager: controles rápidos de Wi-Fi e VPN no Centro de Controle"
+  "bluez: controles rápidos de Bluetooth no Centro de Controle"
+  "power-profiles-daemon: seletor de perfis de energia no Centro de Controle"
+)
 
 install="${pkgname}.install"
 
@@ -43,7 +54,7 @@ validpgpkeys=()
 _source_file="${_repo}-${pkgver}.tar.gz"
 # ATENÇÃO: não envies SKIP ao servidor AUR com tarball estático — corre «updpkgsums» aqui primeiro.
 source=("${_source_file}::https://github.com/${_githubuser}/${_repo}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('623a8b1bafc4933d43091b6b307360c29f7db5240e59afa6fa3087816b0af50f')
+sha256sums=('ee274ddbb1d08f6b1fe162f34a791e0f15169011b3223b2d663f3c514a252461')
 
 build() {
   cd "${srcdir}/${_repo}-${pkgver}"
