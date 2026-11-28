@@ -1,0 +1,19 @@
+pkgbase = go-crond-bin
+	pkgdesc = Cron daemon for containers
+	pkgver = 26.10.0
+	pkgrel = 1
+	url = https://github.com/webdevops/go-crond
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	provides = go-crond
+	conflicts = go-crond
+	options = !debug
+	source = go-crond-bin-26.10.0-LICENSE::https://raw.githubusercontent.com/webdevops/go-crond/26.10.0/LICENSE
+	sha256sums = c03cea027b4b40e4402fabd08557736727ec3d5bc54ad64ab6472de432198cad
+	source_x86_64 = go-crond-bin-26.10.0-x86_64::https://github.com/webdevops/go-crond/releases/download/26.10.0/go-crond.linux.amd64
+	sha256sums_x86_64 = deb5f21917ff988570741e929d3e10c0476fe68142637b332e4312a98a37ef1a
+	source_aarch64 = go-crond-bin-26.10.0-aarch64::https://github.com/webdevops/go-crond/releases/download/26.10.0/go-crond.linux.arm64
+	sha256sums_aarch64 = 4a1c107d3d36858e86b9ac861a10e5397e1da345d79b216237bcf2f17a583c44
+
+pkgname = go-crond-bin
