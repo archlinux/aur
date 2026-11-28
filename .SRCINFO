@@ -1,0 +1,18 @@
+pkgbase = freedit-bin
+	pkgdesc = Lightweight, safe forum software
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = https://github.com/freedit-org/freedit
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = freedit
+	conflicts = freedit
+	options = !debug
+	source = freedit-bin-0.9.9-LICENSE::https://raw.githubusercontent.com/freedit-org/freedit/v0.9.9/LICENSE
+	sha256sums = 53a3e4a4763dda1af6daf85968a8c1e7e2d1e5e5ae4104e3dcc895b3a088673a
+	source_x86_64 = freedit-bin-0.9.9-x86_64.zip::https://github.com/freedit-org/freedit/releases/download/v0.9.9/freedit-v0.9.9-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 35c6405f188167261fd727ceefb6d5472ff2c9527cd952b31edfa72251748148
+
+pkgname = freedit-bin
