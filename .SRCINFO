@@ -1,7 +1,7 @@
 pkgbase = anirust-bin
 	pkgdesc = Desktop client for Anixart with an mpv player (prebuilt)
-	pkgver = 1.1.5
-	pkgrel = 2
+	pkgver = 1.1.6
+	pkgrel = 1
 	url = https://github.com/mrFrok/AniRust
 	arch = x86_64
 	arch = aarch64
@@ -20,17 +20,17 @@ pkgbase = anirust-bin
 	optdepends = xdg-desktop-portal: desktop file chooser
 	optdepends = gnome-keyring: store the Anixart session token
 	optdepends = vapoursynth: frame generation on x86_64
-	provides = anirust=1.1.5
+	provides = anirust=1.1.6
 	conflicts = anirust
 	options = !strip
 	options = !debug
-	source = anirust-bin-1.1.5.desktop::https://raw.githubusercontent.com/mrFrok/AniRust/v1.1.5/packaging/linux/io.github.mrfrok.AniRust.desktop
-	source = anirust-bin-1.1.5.metainfo.xml::https://raw.githubusercontent.com/mrFrok/AniRust/v1.1.5/packaging/linux/io.github.mrfrok.AniRust.metainfo.xml
+	source = anirust-bin-1.1.6.desktop::https://raw.githubusercontent.com/mrFrok/AniRust/v1.1.6/packaging/linux/io.github.mrfrok.AniRust.desktop
+	source = anirust-bin-1.1.6.metainfo.xml::https://raw.githubusercontent.com/mrFrok/AniRust/v1.1.6/packaging/linux/io.github.mrfrok.AniRust.metainfo.xml
 	sha256sums = 5ec162600363123a4fa2b624308b4ef6baa7e6e5457671daa7d844c6360d1f1c
-	sha256sums = 55c8db40d393611078a3fe27ad1654c0430d8bddc44760eb3334ccb4537f3c38
-	source_x86_64 = https://github.com/mrFrok/AniRust/releases/download/v1.1.5/anirust-1.1.5-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a4dc00956e90bc023051097ecc58b0c572cfefc4420774ee7e5f7376a4945efd
-	source_aarch64 = https://github.com/mrFrok/AniRust/releases/download/v1.1.5/anirust-1.1.5-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 12bfd56e097d13eb6d016b9da896bfb4b48731c7b794b65e0b3afb0bb1bf76aa
+	sha256sums = defe64517d5f67d2649d1cd2432d014fc49ffa67329af0fc868d4a3d255f19b3
+	source_x86_64 = https://github.com/mrFrok/AniRust/releases/download/v1.1.6/anirust-1.1.6-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 81b8be2dd3435126e1e9a7c96fb0e1ba181f5ba43b7461061b3dd8f0752eadf5
+	source_aarch64 = https://github.com/mrFrok/AniRust/releases/download/v1.1.6/anirust-1.1.6-linux-aarch64.tar.gz
+	sha256sums_aarch64 = f13d15836d16d1b73a23dad278a1435f2d5e3e12ba77bc4591d126cc3aa8c023
 
 pkgname = anirust-bin
