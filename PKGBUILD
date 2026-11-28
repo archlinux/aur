@@ -22,7 +22,7 @@
 pkgname=qoderwake-cn-bin
 _upstreamver=1.2.27-cn
 pkgver=1.2.27_cn
-pkgrel=1
+pkgrel=2
 pkgdesc="QoderWake 国内版 local CLI and daemon (official prebuilt Linux runtime)"
 arch=('x86_64' 'aarch64')
 url='https://qoder.cn/'
@@ -77,6 +77,10 @@ check() {
     echo "error: qoderwake-cn region selector is not pinned to cn: ${_sel:-<none>}" >&2
     return 1
   fi
+}
+
+prepare() {
+  check
 }
 
 package() {
