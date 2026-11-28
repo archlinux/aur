@@ -1,0 +1,18 @@
+pkgbase = clickhouse-flamegraph-bin
+	pkgdesc = Build flamegraphs from ClickHouse system.trace_log
+	pkgver = 2025.0.1
+	pkgrel = 1
+	url = https://github.com/Slach/clickhouse-flamegraph
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = clickhouse-flamegraph
+	conflicts = clickhouse-flamegraph
+	options = !debug
+	source_x86_64 = clickhouse-flamegraph-bin-2025.0.1-x86_64.tar.gz::https://github.com/Slach/clickhouse-flamegraph/releases/download/v2025.0.1/clickhouse-flamegraph_2025.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = fa8be0155f4db5cea5db162f8a1cc3011ae6ea3646e217609a14cf0201ceea14
+	source_aarch64 = clickhouse-flamegraph-bin-2025.0.1-aarch64.tar.gz::https://github.com/Slach/clickhouse-flamegraph/releases/download/v2025.0.1/clickhouse-flamegraph_2025.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 251aff0243115e01064722f6a6e01a79dbc9c546cfa3a1959f71153c307f3881
+
+pkgname = clickhouse-flamegraph-bin
