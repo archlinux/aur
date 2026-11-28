@@ -1,0 +1,19 @@
+pkgbase = zoro-bin
+	pkgdesc = Expose a local server to the internet
+	pkgver = 20240828
+	pkgrel = 1
+	url = https://github.com/txthinking/zoro
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = zoro
+	conflicts = zoro
+	options = !debug
+	source = zoro-bin-20240828-LICENSE::https://raw.githubusercontent.com/txthinking/zoro/v20240828/LICENSE
+	sha256sums = 589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2
+	source_x86_64 = zoro-bin-20240828-x86_64::https://github.com/txthinking/zoro/releases/download/v20240828/zoro_linux_amd64
+	sha256sums_x86_64 = 3f50ac644088c429368ff3556c148845c7e72382ce578a34fb4ee388985996dd
+	source_aarch64 = zoro-bin-20240828-aarch64::https://github.com/txthinking/zoro/releases/download/v20240828/zoro_linux_arm64
+	sha256sums_aarch64 = 214c41bb0f2adfbbfdbb8a25497f0f4dc99010686901f5bb01c0f27b499f356c
+
+pkgname = zoro-bin
