@@ -1,0 +1,19 @@
+pkgbase = soba-bin
+	pkgdesc = Automated, encrypted backups of Git repositories from many hosting services
+	pkgver = 1.5.7
+	pkgrel = 1
+	url = https://github.com/jonhadfield/soba
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = soba
+	conflicts = soba
+	options = !debug
+	source = soba-bin-1.5.7-LICENSE::https://raw.githubusercontent.com/jonhadfield/soba/1.5.7/LICENSE
+	sha256sums = 159e63eece009f4c313d97d76813cb9eb0f33fb04002e5612f4e7ac1a3c43dc6
+	source_x86_64 = soba-bin-1.5.7-x86_64.tar.gz::https://github.com/jonhadfield/soba/releases/download/1.5.7/soba_linux_amd64.tar.gz
+	sha256sums_x86_64 = a8921553d89fbfbbd454b0d9417e92d2d1a85a1abe150217cda7e6448304354b
+	source_aarch64 = soba-bin-1.5.7-aarch64.tar.gz::https://github.com/jonhadfield/soba/releases/download/1.5.7/soba_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6ffa3280f2f0f2cf5239cce2b5c9d46c02d61701e03f03654b33390a77366a54
+
+pkgname = soba-bin
