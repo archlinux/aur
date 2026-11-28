@@ -1,0 +1,5 @@
+[cyberdog-bin]
+source = "github"
+github = "pickywawa/cyberdog"
+use_latest_release = true
+prefix = "v"
