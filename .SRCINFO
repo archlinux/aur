@@ -1,0 +1,17 @@
+pkgbase = go-swagger3-bin
+	pkgdesc = Generate OpenAPI 3 specs from Go annotations
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/parvez3019/go-swagger3
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = go-swagger3
+	conflicts = go-swagger3
+	options = !debug
+	source_x86_64 = go-swagger3-bin-1.2.3-x86_64.tar.gz::https://github.com/parvez3019/go-swagger3/releases/download/v1.2.3/go-swagger3_1.2.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = f40fc058c52dcb2049a430fdd8b7a6fcef9728c4c78d4918219fa1521ec965b7
+	source_aarch64 = go-swagger3-bin-1.2.3-aarch64.tar.gz::https://github.com/parvez3019/go-swagger3/releases/download/v1.2.3/go-swagger3_1.2.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0170c572cf2a70ae988b0f6e1cad2d9550b021745eab13da5e55a0fd9b28e1a3
+
+pkgname = go-swagger3-bin
