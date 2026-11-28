@@ -2,7 +2,7 @@
 # Maintainer: Daniel Lee Harple <git@dlh.dev>
 
 pkgname='vedi'
-pkgver=2.11.1
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='Pager for colored text; select with the keyboard and copy'
 url='https://github.com/dlh/vedi'
@@ -13,7 +13,7 @@ conflicts=('vedi')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/dlh/vedi/releases/download/v${pkgver}/vedi-${pkgver}.tar.gz")
-sha256sums=('2315883a780b5bd2477ef3ae8daee4a8593aefd12b9c1a9bcec889d981aaaab7')
+sha256sums=('6b9aa8eca030ce96f2c5f75f08f8fea079e9c7dbe1aee2931869bcce0e9b3eb1')
 prepare() {
   cd "${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
