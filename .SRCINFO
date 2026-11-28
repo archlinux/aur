@@ -1,0 +1,18 @@
+pkgbase = go-fast-cdn-bin
+	pkgdesc = Simple self-hosted CDN
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/kevinanielsen/go-fast-cdn
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = go-fast-cdn
+	conflicts = go-fast-cdn
+	options = !debug
+	source_x86_64 = go-fast-cdn-bin-0.2.0-x86_64.zip::https://github.com/kevinanielsen/go-fast-cdn/releases/download/0.2.0/go-fast-cdn_0.2.0_linux_amd64.zip
+	sha256sums_x86_64 = 93686f315b4ac18b7c35ede1e1f58fb56ec78d02f10fe1160b6af78c48f3e2b4
+	source_aarch64 = go-fast-cdn-bin-0.2.0-aarch64.zip::https://github.com/kevinanielsen/go-fast-cdn/releases/download/0.2.0/go-fast-cdn_0.2.0_linux_arm64.zip
+	sha256sums_aarch64 = f918fa911d14ab0d9dd6fc3f2ca6bec8e8888e62927b71541d5511343c981c97
+
+pkgname = go-fast-cdn-bin
