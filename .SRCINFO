@@ -1,0 +1,21 @@
+pkgbase = dns-proxy-server-bin
+	pkgdesc = Resolve DNS from Docker containers, local config, then the internet
+	pkgver = 5.9.0
+	pkgrel = 1
+	url = https://github.com/mageddo/dns-proxy-server
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = zlib
+	provides = dns-proxy-server
+	conflicts = dns-proxy-server
+	options = !debug
+	source = dns-proxy-server-bin-5.9.0-LICENSE::https://raw.githubusercontent.com/mageddo/dns-proxy-server/5.9.0/LICENSE
+	sha256sums = b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1
+	source_x86_64 = dns-proxy-server-bin-5.9.0-x86_64.tgz::https://github.com/mageddo/dns-proxy-server/releases/download/5.9.0/dns-proxy-server-linux-amd64-5.9.0.tgz
+	sha256sums_x86_64 = c73616c14532b8e61603dbce6b314e50a5ecfd9463cf81ea4ef454a42c7976b1
+	source_aarch64 = dns-proxy-server-bin-5.9.0-aarch64.tgz::https://github.com/mageddo/dns-proxy-server/releases/download/5.9.0/dns-proxy-server-linux-aarch64-5.9.0.tgz
+	sha256sums_aarch64 = ef292ebecbb5d9dd976a70ca1f61bfbfa09519c1f7fceafb759c1e20cf9f062a
+
+pkgname = dns-proxy-server-bin
