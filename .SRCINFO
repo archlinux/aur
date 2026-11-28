@@ -1,0 +1,19 @@
+pkgbase = wxdown-bin
+	pkgdesc = Download WeChat articles as HTML or PDF
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/systemmin/wxdown
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = wxdown
+	conflicts = wxdown
+	options = !debug
+	source = wxdown-bin-1.1.3-LICENSE::https://raw.githubusercontent.com/systemmin/wxdown/v1.1.3/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = wxdown-bin-1.1.3-x86_64.tar.gz::https://github.com/systemmin/wxdown/releases/download/v1.1.3/wxdown_1.1.3_Linux_x64.tar.gz
+	sha256sums_x86_64 = a68e8bfcdc4d9fb92fde9e7299deca9f3d25523e5121c931120cf4f24ae89eff
+	source_aarch64 = wxdown-bin-1.1.3-aarch64.tar.gz::https://github.com/systemmin/wxdown/releases/download/v1.1.3/wxdown_1.1.3_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 53a59409fb7316265c4a42f1626a88215b3ffacd8dbf8aa1524c9d0d9b98e910
+
+pkgname = wxdown-bin
