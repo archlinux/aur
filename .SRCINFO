@@ -1,0 +1,19 @@
+pkgbase = channelterm-bin
+	pkgdesc = Shared terminal sessions for humans and AI agents, starting with serial debugging
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/akira-init1/ChannelTerm
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = channelterm
+	conflicts = channelterm
+	options = !debug
+	source = channelterm-bin-0.4.2-LICENSE::https://raw.githubusercontent.com/akira-init1/ChannelTerm/v0.4.2/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = channelterm-bin-0.4.2-x86_64.tar.gz::https://github.com/akira-init1/ChannelTerm/releases/download/v0.4.2/channelterm_0.4.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 023b9e71fca030c6a80d2f60adb18e086e91d71f9b2b11da0aca11eeb7e92572
+	source_aarch64 = channelterm-bin-0.4.2-aarch64.tar.gz::https://github.com/akira-init1/ChannelTerm/releases/download/v0.4.2/channelterm_0.4.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2b65f906abfd6116952cbf93fc7e5a846241afa21b268daeebbeceb70d4a98f3
+
+pkgname = channelterm-bin
