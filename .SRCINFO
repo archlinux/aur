@@ -1,0 +1,20 @@
+pkgbase = log4j-sniffer-bin
+	pkgdesc = Scan archives for vulnerable log4j versions
+	pkgver = 1.21.0
+	pkgrel = 1
+	url = https://github.com/palantir/log4j-sniffer
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = log4j-sniffer
+	conflicts = log4j-sniffer
+	options = !debug
+	source = log4j-sniffer-bin-1.21.0-LICENSE::https://raw.githubusercontent.com/palantir/log4j-sniffer/v1.21.0/LICENSE
+	sha256sums = 8e6a8acf6633d0d7b746d458b5fa94df14c71906abfdfd9485c606483946a636
+	source_x86_64 = log4j-sniffer-bin-1.21.0-x86_64.tgz::https://github.com/palantir/log4j-sniffer/releases/download/v1.21.0/log4j-sniffer-1.21.0-linux-amd64.tgz
+	sha256sums_x86_64 = db5b82310cb9a3d2ea44034050df944ba1a054b1b481b8575368eaf13dc7b454
+	source_aarch64 = log4j-sniffer-bin-1.21.0-aarch64.tgz::https://github.com/palantir/log4j-sniffer/releases/download/v1.21.0/log4j-sniffer-1.21.0-linux-arm64.tgz
+	sha256sums_aarch64 = c23a8cb4485ebe7e07e82a9fed7db9b906244d7c907fbfc9e20296098915f0cb
+
+pkgname = log4j-sniffer-bin
