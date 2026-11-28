@@ -1,0 +1,17 @@
+pkgbase = gtm-mcp-server-bin
+	pkgdesc = MCP server for Google Tag Manager
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://github.com/paolobietolini/gtm-mcp-server
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	provides = gtm-mcp-server
+	conflicts = gtm-mcp-server
+	options = !debug
+	source_x86_64 = gtm-mcp-server-bin-1.15.0-x86_64.tar.gz::https://github.com/paolobietolini/gtm-mcp-server/releases/download/v1.15.0/gtm-mcp-server_1.15.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e855b8db3771a948e68592a5a7b0c980505b512853d602c84ff0907a6cb02a9a
+	source_aarch64 = gtm-mcp-server-bin-1.15.0-aarch64.tar.gz::https://github.com/paolobietolini/gtm-mcp-server/releases/download/v1.15.0/gtm-mcp-server_1.15.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 09441ca1f1910b901d894416701a18047fbad7a6662972ba72f51aa31199e5ac
+
+pkgname = gtm-mcp-server-bin
