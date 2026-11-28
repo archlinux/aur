@@ -1,0 +1,17 @@
+pkgbase = tutor-mcp-bin
+	pkgdesc = MCP server that turns any LLM into an intelligent tutoring system
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://github.com/ArnaudGuiovanna/tutor-mcp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tutor-mcp
+	conflicts = tutor-mcp
+	options = !debug
+	source_x86_64 = tutor-mcp-bin-0.7.6-x86_64.tar.gz::https://github.com/ArnaudGuiovanna/tutor-mcp/releases/download/v0.7.6/tutor-mcp_linux_amd64.tar.gz
+	sha256sums_x86_64 = c5f583b37d9508f049e2599354912b687bbde3849caf24dddafb535a507646f9
+	source_aarch64 = tutor-mcp-bin-0.7.6-aarch64.tar.gz::https://github.com/ArnaudGuiovanna/tutor-mcp/releases/download/v0.7.6/tutor-mcp_linux_arm64.tar.gz
+	sha256sums_aarch64 = e9d3bf94dd38c5cd76eb0068314e5e5c064f4bf21fba0d5623ca3d51a4798866
+
+pkgname = tutor-mcp-bin
