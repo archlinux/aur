@@ -1,0 +1,17 @@
+pkgbase = fortigate_exporter-bin
+	pkgdesc = Prometheus exporter for FortiGate firewalls
+	pkgver = 1.25.0
+	pkgrel = 1
+	url = https://github.com/prometheus-community/fortigate_exporter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = fortigate_exporter
+	conflicts = fortigate_exporter
+	options = !debug
+	source_x86_64 = fortigate_exporter-bin-1.25.0-x86_64.tar.gz::https://github.com/prometheus-community/fortigate_exporter/releases/download/v1.25.0/fortigate_exporter-1.25.0.linux-amd64.tar.gz
+	sha256sums_x86_64 = db0c160425e022622c5828391d7df68f3876785b3003d748f382960ba1cbb1e5
+	source_aarch64 = fortigate_exporter-bin-1.25.0-aarch64.tar.gz::https://github.com/prometheus-community/fortigate_exporter/releases/download/v1.25.0/fortigate_exporter-1.25.0.linux-arm64.tar.gz
+	sha256sums_aarch64 = cd80e77ad499818913b1180115c62d688b8f6269e4f6de7a660895c9fe929054
+
+pkgname = fortigate_exporter-bin
