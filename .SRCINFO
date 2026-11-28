@@ -1,0 +1,23 @@
+pkgbase = gridbash-bin
+	pkgdesc = Terminal grid for running Codex, Claude, Gemini and other CLI agents side by side
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/jasonsuhari/gridbash
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = gridbash
+	conflicts = gridbash
+	options = !debug
+	source = gridbash-bin-0.2.0-LICENSE::https://raw.githubusercontent.com/jasonsuhari/gridbash/v0.2.0/LICENSE
+	sha256sums = a58839186da4e4f05a375bff769e52e5fec022f8fc28cc80deb2d056ed428b71
+	source_x86_64 = gridbash-bin-0.2.0-x86_64.tgz::https://github.com/jasonsuhari/gridbash/releases/download/v0.2.0/gridbash-linux-x64-0.2.0.tgz
+	sha256sums_x86_64 = 363a87f8f8e3b13e9f74f3e4b2eb4b9ad427c640ec1c1dda2309cbb132f88cd0
+	source_aarch64 = gridbash-bin-0.2.0-aarch64.tgz::https://github.com/jasonsuhari/gridbash/releases/download/v0.2.0/gridbash-linux-arm64-0.2.0.tgz
+	sha256sums_aarch64 = 9eeb61eb79824c859663f8119850e6d93ce9600c2d23f5cfbc1315866e27738c
+
+pkgname = gridbash-bin
