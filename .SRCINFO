@@ -1,0 +1,21 @@
+pkgbase = tenuo-bin
+	pkgdesc = Task-scoped authorization for AI agents
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://github.com/tenuo-ai/tenuo
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = tenuo
+	conflicts = tenuo
+	options = !debug
+	source = tenuo-bin-0.3.9-LICENSE::https://raw.githubusercontent.com/tenuo-ai/tenuo/v0.3.9/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = tenuo-bin-0.3.9-x86_64.tar.gz::https://github.com/tenuo-ai/tenuo/releases/download/v0.3.9/tenuo-authorizer-v0.3.9-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1ef0b0059066d410f58a0e85313b2c915b00c6e3353099626fa3e7433a5470c8
+	source_aarch64 = tenuo-bin-0.3.9-aarch64.tar.gz::https://github.com/tenuo-ai/tenuo/releases/download/v0.3.9/tenuo-authorizer-v0.3.9-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5f8cfc890ecf91ea6f287b3875dad05de33b71d7cddf74161eb12a0c54869c48
+
+pkgname = tenuo-bin
