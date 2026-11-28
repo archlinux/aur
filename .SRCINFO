@@ -1,0 +1,19 @@
+pkgbase = casvisor-bin
+	pkgdesc = Bastion host for SSH, RDP, VNC and Telnet with web access and session recording
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/casvisor/casvisor
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = casvisor
+	conflicts = casvisor
+	options = !debug
+	source = casvisor-bin-2.1.0-LICENSE::https://raw.githubusercontent.com/casvisor/casvisor/v2.1.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = casvisor-bin-2.1.0-x86_64.tar.gz::https://github.com/casvisor/casvisor/releases/download/v2.1.0/casvisor_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 520d1074d9c2e36382d4b7791594bdec7aad70d7cc2507bff43bbecd51055a9e
+	source_aarch64 = casvisor-bin-2.1.0-aarch64.tar.gz::https://github.com/casvisor/casvisor/releases/download/v2.1.0/casvisor_Linux_arm64.tar.gz
+	sha256sums_aarch64 = b7537103d93bd97fd99852af0fac79713c39ae5e35c9a84489ba9c4f8a308d6d
+
+pkgname = casvisor-bin
