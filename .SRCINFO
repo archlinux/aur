@@ -1,0 +1,17 @@
+pkgbase = openkanban-bin
+	pkgdesc = TUI kanban board for orchestrating AI coding agents
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/TechDufus/openkanban
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = openkanban
+	conflicts = openkanban
+	options = !debug
+	source_x86_64 = openkanban-bin-0.1.1-x86_64.tar.gz::https://github.com/TechDufus/openkanban/releases/download/v0.1.1/openkanban_0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = fd7c1d1a46ea1d5b1db890e18b38b747d3ec1e3bae3f50b62b15eefbc2e0aacb
+	source_aarch64 = openkanban-bin-0.1.1-aarch64.tar.gz::https://github.com/TechDufus/openkanban/releases/download/v0.1.1/openkanban_0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9ae883c65b07c06166ebeb25d940f7847c6b142de1016d9f7fd75e33f6a3d338
+
+pkgname = openkanban-bin
