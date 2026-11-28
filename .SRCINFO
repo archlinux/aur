@@ -1,0 +1,21 @@
+pkgbase = datadog-static-analyzer-bin
+	pkgdesc = Datadog static code analyzer
+	pkgver = 0.9.13
+	pkgrel = 1
+	url = https://github.com/DataDog/datadog-static-analyzer
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = datadog-static-analyzer
+	conflicts = datadog-static-analyzer
+	options = !debug
+	source = datadog-static-analyzer-bin-0.9.13-LICENSE::https://raw.githubusercontent.com/DataDog/datadog-static-analyzer/0.9.13/LICENSE
+	sha256sums = 4cccf8f8cb415ba8dff8ffc250c921e38664bfec01e156105da8b513fa469357
+	source_x86_64 = datadog-static-analyzer-bin-0.9.13-x86_64.zip::https://github.com/DataDog/datadog-static-analyzer/releases/download/0.9.13/datadog-static-analyzer-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = a159a40227623cf0ad8ab69b0e21eeb1239d4cd47984ab0555becb58eeb0cdc5
+	source_aarch64 = datadog-static-analyzer-bin-0.9.13-aarch64.zip::https://github.com/DataDog/datadog-static-analyzer/releases/download/0.9.13/datadog-static-analyzer-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 318dbf2ebf4a0fbae6392658ef9f5d4cb2381751212a64e086915ba1d204bd65
+
+pkgname = datadog-static-analyzer-bin
