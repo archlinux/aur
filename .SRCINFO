@@ -1,0 +1,17 @@
+pkgbase = chissl-bin
+	pkgdesc = Create HTTPS reverse tunnels
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://github.com/unblocked/chissl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = chissl
+	conflicts = chissl
+	options = !debug
+	source_x86_64 = chissl-bin-2.4-x86_64.zip::https://github.com/unblocked/chissl/releases/download/v2.4/chissl_Linux_x86_64.zip
+	sha256sums_x86_64 = ebc6f3e97b4b99fd13db8d0e2876efe9791f8f50189407e16f18288bbf465c52
+	source_aarch64 = chissl-bin-2.4-aarch64.zip::https://github.com/unblocked/chissl/releases/download/v2.4/chissl_Linux_arm64.zip
+	sha256sums_aarch64 = 66c02603b9934aff28138efc32f5fadcd32dca554a0bdfc6b3d22d8e2712c697
+
+pkgname = chissl-bin
