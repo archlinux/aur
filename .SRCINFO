@@ -1,0 +1,18 @@
+pkgbase = ccboard-bin
+	pkgdesc = TUI and web dashboard for Claude Code sessions, costs and configuration
+	pkgver = 0.25.0
+	pkgrel = 1
+	url = https://github.com/FlorianBruniaux/ccboard
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ccboard
+	conflicts = ccboard
+	options = !debug
+	source = ccboard-bin-0.25.0-LICENSE::https://raw.githubusercontent.com/FlorianBruniaux/ccboard/v0.25.0/LICENSE
+	sha256sums = 6e5ead8f5014484b9523932463bb5c8e05db904c71321b2967423c7a27f3f805
+	source_x86_64 = ccboard-bin-0.25.0-x86_64.tar.gz::https://github.com/FlorianBruniaux/ccboard/releases/download/v0.25.0/ccboard-linux-x86_64.tar.gz
+	sha256sums_x86_64 = edb5d5c4ae8880ef29a8f9b691f219b5e5f2380985f4849520a0bea580b01daa
+
+pkgname = ccboard-bin
