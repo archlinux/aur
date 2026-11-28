@@ -1,6 +1,6 @@
 # aur-atmosphera-git
 
-AUR for [Atmosphera](https://github.com/alexindigo/atmosphera) (git version).
+AUR for [Atmosphera](https://github.com/atmosphera-dev/atmosphera) (git version).
 
 ## Install
 
