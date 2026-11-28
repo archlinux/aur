@@ -1,0 +1,19 @@
+pkgbase = pai-sho-bin
+	pkgdesc = Peer-to-peer port forwarding between your machines over iroh
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/cablehead/pai-sho
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pai-sho
+	conflicts = pai-sho
+	options = !debug
+	source = pai-sho-bin-0.5.6-LICENSE::https://raw.githubusercontent.com/cablehead/pai-sho/v0.5.6/LICENSE
+	sha256sums = 8e5f4487c4a2cff438e193004db9884fb1b48846912bd9a0e10b6c8f90e13452
+	source_x86_64 = pai-sho-bin-0.5.6-x86_64.tar.gz::https://github.com/cablehead/pai-sho/releases/download/v0.5.6/pai-sho-v0.5.6-linux-amd64.tar.gz
+	sha256sums_x86_64 = 7d6015cc02043d08a6117c04ac859a6ff5e615c91528fd387b90bea3aa260405
+	source_aarch64 = pai-sho-bin-0.5.6-aarch64.tar.gz::https://github.com/cablehead/pai-sho/releases/download/v0.5.6/pai-sho-v0.5.6-linux-arm64.tar.gz
+	sha256sums_aarch64 = b6cb23deb541ffaed797efdc1038c199d309cfada2325b696d0f27f87d42dce4
+
+pkgname = pai-sho-bin
