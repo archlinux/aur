@@ -3,7 +3,7 @@
 
 _pkgname=iwe
 pkgname="${_pkgname}-bin"
-pkgver=0.35.1
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="Markdown knowledge graph – CLI, LSP and MCP servers for notes"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source=("LICENSE-APACHE::https://raw.githubusercontent.com/iwe-org/${_pkgname}/i
 source_x86_64=("https://github.com/iwe-org/${_pkgname}/releases/download/${_pkgname}-v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/iwe-org/${_pkgname}/releases/download/${_pkgname}-v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('cbf05ab61c79f63823ae7ce980ed10d70408a754f2a02982f615f09b3d5e3ebd')
-sha256sums_x86_64=('b5543984a2d546b855a71303ea896685c9d4b2f1a2b9a972ac4653efbb96142f')
-sha256sums_aarch64=('05deecd3d5c5f73bd71641bc718fe806b0d1cadaefbbba935a14b1946ece9c3c')
+sha256sums_x86_64=('be837182d77e832c65708032400e0f5f84ab166a2eaead26e0829ed375cb2520')
+sha256sums_aarch64=('9ab8e256a2f4c582145f5a3e68ea7267f014797f4cf1b3c413219b583cccacd8')
 
 package() {
   install -Dm755 "${srcdir}/iwe" -t "${pkgdir}/usr/bin/"
