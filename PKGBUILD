@@ -1,7 +1,7 @@
 # Maintainer: ParticleG <particle_g@outlook.com>
 
 pkgname=akagims-bin
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Mahjong Soul AI assistant with an integrated game window (binary release)'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
   'akagims.desktop'
 )
 sha256sums=(
-  'eb1274327265390662c1ab0efdcdcca5ced537b847d3ede231fcfe9fa799ce06'
+  '6f52d017c07645b2a4758f1310a41bb585ad3e05a7effb047c7d4db6ef1663db'
   '0c183b906f86fec4aec3b9c48ca2455455678e42cd9dd9f15101f770f3154ea6'
   'b12cf0b0bdebecb6d3df948b4f44348a0c42467868dd262a8ad78102c60ee8f8'
   '07defc1c36025ff197a16725a7cf0e9b0edfdce206d24adbaae7e29210db8a0b'
