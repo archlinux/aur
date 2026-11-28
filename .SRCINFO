@@ -1,0 +1,20 @@
+pkgbase = alphallama-cuda-bin
+	pkgdesc = Fast local MoE LLM inference engine with OpenAI-compatible API (prebuilt NVIDIA CUDA 12.8)
+	pkgver = 2.0.12
+	pkgrel = 1
+	url = https://github.com/AlphaChat-dotcom/alphallama
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	license = LicenseRef-NVIDIA-CUDA-EULA
+	depends = gcc-libs
+	depends = glibc
+	optdepends = nvidia-utils: NVIDIA GPU driver (525+, or 570+ for RTX 20/50 series) required for CUDA inference
+	provides = alphallama
+	conflicts = alphallama
+	options = !strip
+	options = !debug
+	source = alphallama-cuda-bin-2.0.12-x86_64.tar.zst::https://github.com/AlphaChat-dotcom/alphallama/releases/download/v2.0.12/alphallama-v2-linux-x64-cuda12.tar.zst
+	sha256sums = 8230f3daa7a3afb4696280302b01091fc26e903bbb6d82edc7dedb4a749f37dd
+
+pkgname = alphallama-cuda-bin
