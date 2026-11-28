@@ -1,5 +1,5 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
-_pkgver=0.5.0-rc1
+_pkgver=0.5.0-rc3
 pkgname="oshot-bin"
 _pkgname="oshot"
 pkgver=${_pkgver//-/.}
@@ -24,20 +24,17 @@ optdepends=(
 )
 conflicts=('oshot' 'oshot-git')
 source=(
-	"${url}/releases/download/v${_pkgver}/${_pkgname}-linux-v${_pkgver}.zip"
-	"${url}/raw/refs/tags/v${_pkgver}/LICENSE"
-	"${url}/raw/refs/tags/v${_pkgver}/oshot.desktop"
+	"${url}/releases/download/v${_pkgver}/${_pkgname}-linux-x86_64-plugins-v${_pkgver}.zip"
 )
-sha256sums=(
-	"32bf8f27f34f4d3abc17b53a29c94103158787441d7c1c577c9e8997013e3c89"
-	"4a509aaabf33b5edb9cc7eea738c3d732b99a78f48c6ae81bd8eeb487edbb8e6"
-	"8857babab6f47f246abe66b025b84ce9224d777f7fa6e72b48a0b2eec4da275b"
-)
+sha256sums=('cc6e76a7863a16c7fd392b6ad65a6d84cec978c5dbd0295b1c70f389c227cb9a')
+
+# Don't run refresh_caches() or else it's going to conflict with the system's cache
+prepare() {
+    cd "${srcdir}/${_pkgname}/"
+    sed -i -E 's/^([[:space:]]*)refresh_caches([[:space:]].*)?$/\1:/' install.sh
+}
 
 package() {
     cd "${srcdir}/${_pkgname}/"
-    mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/share/licenses/${_pkgname}" "${pkgdir}/usr/share/applications/"
-    mv "./bin/oshot" "${pkgdir}/usr/bin/"
-    mv "./share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-    mv "./share/licenses/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/"
+    PREFIX=${pkgdir}/usr ./install.sh
 }
