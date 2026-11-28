@@ -2,8 +2,8 @@
 
 pkgbase=x3d-toggle
 pkgname=('x3d-toggle' 'x3d-toggle-gui')
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/X3D-Toggle/x3d-toggle-main"
 license=('GPL-3.0-or-later')
@@ -22,7 +22,7 @@ makedepends=(
 options=('!strip' '!lto')
 
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('89b3223d5091d7d981960247872a7931bad860825bf29559e55c99117d6498fe')
+sha256sums=('a7a3424b3a6c2519b1c3dca7e2ada88e25b598f54b2aaccce5d01144e4513e90')
 
 build() {
     cd "${srcdir}/x3d-toggle-main-${pkgver}"
