@@ -2,7 +2,7 @@
 
 pkgname=slit-scan-bin
 _pkgname=slit-scan
-pkgver=0.2.3
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Streaming tunnels of light from images, videos and a camera (binary release)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git")
 options=('!strip' '!debug')
 source=("$_pkgname-$pkgver-$pkgrel-$CARCH.tar.zst::$url/releases/download/v$pkgver/$_pkgname-$pkgver-$pkgrel-$CARCH.tar.zst")
-sha256sums=('5c46245561d14e0d2bf5ef2165e383a2c2c1e4e44e7df462cac8ca34e4de3085')
+sha256sums=('b4e21021544cc211e443459e762fd4e1cc09ff7d4785e129f2c8eec4a96c14f2')
 
 package() {
   cp -a usr "$pkgdir/usr"
