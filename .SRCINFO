@@ -1,0 +1,22 @@
+pkgbase = world-chain-bin
+	pkgdesc = World Chain node
+	pkgver = 2.8.3
+	pkgrel = 1
+	url = https://github.com/worldcoin/world-chain
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = world-chain
+	conflicts = world-chain
+	options = !debug
+	source = world-chain-bin-2.8.3-LICENSE::https://raw.githubusercontent.com/worldcoin/world-chain/v2.8.3/LICENSE
+	sha256sums = fbf3577ff7d1afe1553ef48fe3714bdc17dcae9433cf2bda20242453ba6dd688
+	source_x86_64 = world-chain-bin-2.8.3-x86_64.tar.gz::https://github.com/worldcoin/world-chain/releases/download/v2.8.3/world-chain-v2.8.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 531212593f386e64d5414c9768dd1821174695ba35a9fb2bc543a280c323ff3c
+	source_aarch64 = world-chain-bin-2.8.3-aarch64.tar.gz::https://github.com/worldcoin/world-chain/releases/download/v2.8.3/world-chain-v2.8.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 067aaec1a16b73e9be2bae718c37f87b2a672d97bef3b27f9eb28fdd37a0916e
+
+pkgname = world-chain-bin
