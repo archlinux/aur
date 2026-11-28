@@ -4,9 +4,9 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-x11
-pkgver=6.7.5
+pkgver=6.7.6
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=5
+pkgrel=1
 pkgdesc='An easy to use, but flexible, X Window Manager'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -74,7 +74,7 @@ makedepends=(extra-cmake-modules
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig}
         kwin-x11-plasma6.8-globalshortcuts.patch)
-sha256sums=('995236b90e3e92626a4991dcea47c9fcfa9bf163fdf01f2abe00e467fc9f2291'
+sha256sums=('d1ed8a46bc50e1c96b4bda0996b226cad882430470b15a39f4da860491a4f85a'
             'SKIP'
             'df8c8f57ba8489f4a08079c0b20bc184b4718229a4b352dd6d904c8be9a1db0e')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
