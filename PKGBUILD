@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TeachingDemos
-_pkgver=2.13
+_pkgver=2.14
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Demonstrations for Teaching and Learning"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,13 +18,14 @@ optdepends=(
   r-png
   r-rgl
   r-sf
+  r-shiny
   r-spdata
   r-tcltk2
   r-tkrplot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('68f2977331442468df3080d365ce886a')
-b2sums=('a6f005d891fdabb12d167efdbb22df2ddc41523db922ac380eb11f3c6cb2f336e0d35c0fa77dc198c197a4c1671b931e0b24241f4306124a447a27e8c6644770')
+md5sums=('5c9cfddd9fda8a1d36196920e35ec63f')
+b2sums=('daad85e7fcfce43d558dbab09d3ed985cd13c753688fe11de57cf832dbae8503fb4e1cba58d800b9fa2aac9b61a793a57607ce232d470f28d7d8ded647b830ab')
 
 build() {
   mkdir build
