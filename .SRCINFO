@@ -1,0 +1,18 @@
+pkgbase = openrisk-bin
+	pkgdesc = Generate a risk score from Nuclei scan results
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/openrisk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = openrisk
+	conflicts = openrisk
+	options = !debug
+	source_x86_64 = openrisk-bin-0.0.1-x86_64.zip::https://github.com/projectdiscovery/openrisk/releases/download/v0.0.1/openrisk_0.0.1_linux_amd64.zip
+	sha256sums_x86_64 = 4acef7d8d366b4631fe60e161f7eb42c31e43da528e7bf741acb5de799f3f810
+	source_aarch64 = openrisk-bin-0.0.1-aarch64.zip::https://github.com/projectdiscovery/openrisk/releases/download/v0.0.1/openrisk_0.0.1_linux_arm64.zip
+	sha256sums_aarch64 = 16e6027d68707c961fe17855ead4fc35bdf159156314493c3f12d88c35a16f1f
+
+pkgname = openrisk-bin
