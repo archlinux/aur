@@ -1,0 +1,17 @@
+pkgbase = vide_cli-bin
+	pkgdesc = Agentic terminal UI for Claude for Flutter developers
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/Norbert515/vide_cli
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = vide_cli
+	conflicts = vide_cli
+	options = !debug
+	source = vide_cli-bin-0.7.1-LICENSE::https://raw.githubusercontent.com/Norbert515/vide_cli/v0.7.1/LICENSE
+	sha256sums = 5435a7a08c02dca0459e11eb4c4e47d165577b179b1e6dac09e03fec0cdfb014
+	source_x86_64 = vide_cli-bin-0.7.1-x86_64::https://github.com/Norbert515/vide_cli/releases/download/v0.7.1/vide-linux-x64
+	sha256sums_x86_64 = a8dfea349f1f0f286cfdcf553c05afb76ca9886cba1ce7cfd3298d11f5158b94
+
+pkgname = vide_cli-bin
