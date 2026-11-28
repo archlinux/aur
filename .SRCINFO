@@ -1,0 +1,14 @@
+pkgbase = dbdeployer
+	pkgdesc = A tool that deploys MySQL database servers easily.
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/ProxySQL/dbdeployer
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = dbdeployer-2.5.0.tar.gz::https://github.com/ProxySQL/dbdeployer/archive/v2.5.0.tar.gz
+	sha256sums = a5028ede0b4fe2d20e49d32d4407927cef52ed652fff3a8796e8cc5bb736e977
+
+pkgname = dbdeployer
