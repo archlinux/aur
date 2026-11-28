@@ -1,0 +1,20 @@
+pkgbase = labean-bin
+	pkgdesc = HTTP/HTTPS port knocker
+	pkgver = 260531
+	pkgrel = 1
+	url = https://github.com/noiseonwires/labean
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	depends = glibc
+	provides = labean
+	conflicts = labean
+	options = !debug
+	source = labean-bin-260531-LICENSE::https://raw.githubusercontent.com/noiseonwires/labean/v260531/LICENSE
+	sha256sums = d82630bd62934c16703bc81b93d3c3b5a61d03fc437529c4eef0336c940ff360
+	source_x86_64 = labean-bin-260531-x86_64::https://github.com/noiseonwires/labean/releases/download/v260531/labean-linux-amd64
+	sha256sums_x86_64 = ec42c38bf594b78d22b82577d21c62a37f53f9e3f23fddbef3afbac7ec9eb416
+	source_aarch64 = labean-bin-260531-aarch64::https://github.com/noiseonwires/labean/releases/download/v260531/labean-linux-arm64
+	sha256sums_aarch64 = 184ea2796a1bf10272a27cbdd8519801dfd5764028ef412638edd25961bb01d0
+
+pkgname = labean-bin
