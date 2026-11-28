@@ -1,0 +1,20 @@
+pkgbase = calypdf-bin
+	pkgdesc = Fast cross-platform PDF reader
+	pkgver = 0.5.1.0
+	pkgrel = 1
+	url = https://github.com/CalyPdf/CalyPdf
+	arch = x86_64
+	license = MIT
+	depends = fontconfig
+	depends = freetype2
+	depends = glibc
+	depends = libstdc++
+	provides = calypdf
+	conflicts = calypdf
+	options = !debug
+	source = calypdf-bin-0.5.1.0-LICENSE::https://raw.githubusercontent.com/CalyPdf/CalyPdf/0.5.1.0/LICENSE
+	sha256sums = ba74bd130cd45f34b660754e7601e2708b94a53dfacbea6055badda5bb39520f
+	source_x86_64 = calypdf-bin-0.5.1.0-x86_64.zip::https://github.com/CalyPdf/CalyPdf/releases/download/0.5.1.0/caly.linux.x64.0.5.1.0.zip
+	sha256sums_x86_64 = 7d1ce90aa1949de8b7e11dcb5863d246919aa0cf35539b2e9c0afb897568a5d6
+
+pkgname = calypdf-bin
