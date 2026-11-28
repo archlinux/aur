@@ -1,0 +1,27 @@
+pkgbase = sugt-bin
+	pkgdesc = Local AI gateway and skills console
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/lsuen/sugt
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgcc
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = sugt
+	conflicts = sugt
+	options = !debug
+	source = sugt-bin-1.2.4-LICENSE::https://raw.githubusercontent.com/lsuen/sugt/v1.2.4/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = sugt-bin-1.2.4-x86_64.tar.gz::https://github.com/lsuen/sugt/releases/download/v1.2.4/SUTAI-linux-x64.tar.gz
+	sha256sums_x86_64 = c927e644c302f936e61309de81524b5cafe428fe7ebd8e5c7444c01d1e8cbd60
+	source_aarch64 = sugt-bin-1.2.4-aarch64.tar.gz::https://github.com/lsuen/sugt/releases/download/v1.2.4/SUTAI-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4693e06569d8c8a6f94d3d502fa07468d48dc5cdcb19adb9b4778774f8dea7bb
+
+pkgname = sugt-bin
