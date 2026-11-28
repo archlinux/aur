@@ -1,0 +1,19 @@
+pkgbase = chrome-agent-bin
+	pkgdesc = Compile web tasks into repeatable browser automation
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/sderosiaux/chrome-agent
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = chrome-agent
+	conflicts = chrome-agent
+	options = !debug
+	source = chrome-agent-bin-0.16.0-LICENSE::https://raw.githubusercontent.com/sderosiaux/chrome-agent/v0.16.0/LICENSE
+	sha256sums = 5baddb7cc3c01d44d8d712fbad6ced20905bc23b777ea52949a832cbb27678d5
+	source_x86_64 = chrome-agent-bin-0.16.0-x86_64::https://github.com/sderosiaux/chrome-agent/releases/download/v0.16.0/chrome-agent-linux-x64
+	sha256sums_x86_64 = ba8a32fd550d2af36ede3bd80f2012559a363264d817c7dc3df53a94ecbb63b6
+	source_aarch64 = chrome-agent-bin-0.16.0-aarch64::https://github.com/sderosiaux/chrome-agent/releases/download/v0.16.0/chrome-agent-linux-arm64
+	sha256sums_aarch64 = 0f9d3cb7145b0d2db2c76f8d727dcd7cd1bf13030670dbc0ceb6b367416867bd
+
+pkgname = chrome-agent-bin
