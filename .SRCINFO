@@ -1,0 +1,17 @@
+pkgbase = imagemage-bin
+	pkgdesc = Tiny CLI for OpenAI Images and Gemini image generation
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/quinnypig/imagemage
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = imagemage
+	conflicts = imagemage
+	options = !debug
+	source_x86_64 = imagemage-bin-0.3.0-x86_64.tar.gz::https://github.com/quinnypig/imagemage/releases/download/v0.3.0/imagemage_0.3.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6ed4300f932099d3adebb3f30c2226666c0648838ddffbc88fcd3609745a985e
+	source_aarch64 = imagemage-bin-0.3.0-aarch64.tar.gz::https://github.com/quinnypig/imagemage/releases/download/v0.3.0/imagemage_0.3.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = f42086aad2fe80b36e98a1a570518db4a32af0c09c9dcdfb065a235d53acd6c3
+
+pkgname = imagemage-bin
