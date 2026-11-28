@@ -1,0 +1,19 @@
+pkgbase = cc-relay-bin
+	pkgdesc = Fast LLM API gateway
+	pkgver = 0.0.21
+	pkgrel = 1
+	url = https://github.com/omarluq/cc-relay
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = cc-relay
+	conflicts = cc-relay
+	options = !debug
+	source = cc-relay-bin-0.0.21-LICENSE::https://raw.githubusercontent.com/omarluq/cc-relay/v0.0.21/LICENSE
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = cc-relay-bin-0.0.21-x86_64.tar.gz::https://github.com/omarluq/cc-relay/releases/download/v0.0.21/cc-relay_0.0.21_linux_x86_64.tar.gz
+	sha256sums_x86_64 = fb625b218e3c61f575e2f24060352f6c8304b4adcc82ea08a909f3c3b1954f97
+	source_aarch64 = cc-relay-bin-0.0.21-aarch64.tar.gz::https://github.com/omarluq/cc-relay/releases/download/v0.0.21/cc-relay_0.0.21_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7a59c1f78e00b56ad9947c01c2648a2b1e4f30fea206614c4cd5eaac5ab4675e
+
+pkgname = cc-relay-bin
