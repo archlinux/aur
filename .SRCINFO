@@ -1,0 +1,17 @@
+pkgbase = promruval-bin
+	pkgdesc = Validate Prometheus, Thanos, Mimir and Loki rules
+	pkgver = 3.13.0
+	pkgrel = 1
+	url = https://github.com/FUSAKLA/promruval
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = promruval
+	conflicts = promruval
+	options = !debug
+	source_x86_64 = promruval-bin-3.13.0-x86_64.tar.gz::https://github.com/FUSAKLA/promruval/releases/download/v3.13.0/promruval_3.13.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 34a0adabc5f40c4db7a14c300f8fea670ec77abc7e294eaed91f69ebf51ce203
+	source_aarch64 = promruval-bin-3.13.0-aarch64.tar.gz::https://github.com/FUSAKLA/promruval/releases/download/v3.13.0/promruval_3.13.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4de627005ca0be734093f9d0b33ca4a95c9952f8af5f387c0bce699c82dcfc25
+
+pkgname = promruval-bin
