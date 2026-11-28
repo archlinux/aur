@@ -1,0 +1,16 @@
+pkgbase = pasfmt-bin
+	pkgdesc = Delphi code formatter
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/integrated-application-development/pasfmt
+	arch = x86_64
+	license = LGPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = pasfmt
+	conflicts = pasfmt
+	options = !debug
+	source_x86_64 = pasfmt-bin-0.7.0-x86_64.tar.gz::https://github.com/integrated-application-development/pasfmt/releases/download/v0.7.0/pasfmt-0.7.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c1f02bfee6c7c2868774a27f7907c41b1ea96518f08268c8648fdd00ff5bda2e
+
+pkgname = pasfmt-bin
