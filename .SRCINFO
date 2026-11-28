@@ -1,0 +1,17 @@
+pkgbase = pg_exporter-bin
+	pkgdesc = PostgreSQL and PgBouncer metrics exporter for Prometheus
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/pgsty/pg_exporter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = pg_exporter
+	conflicts = pg_exporter
+	options = !debug
+	source_x86_64 = pg_exporter-bin-1.6.1-x86_64.tar.gz::https://github.com/pgsty/pg_exporter/releases/download/v1.6.1/pg_exporter-1.6.1.linux-amd64.tar.gz
+	sha256sums_x86_64 = e8fdf64c352081720a53420a2c7ea095654078d5fab5f6213786bb6476791fdf
+	source_aarch64 = pg_exporter-bin-1.6.1-aarch64.tar.gz::https://github.com/pgsty/pg_exporter/releases/download/v1.6.1/pg_exporter-1.6.1.linux-arm64.tar.gz
+	sha256sums_aarch64 = 91da5400ae31d42925af721c7d5f8eb0befcbb104d8a14ae5f08707abb5e333b
+
+pkgname = pg_exporter-bin
