@@ -1,0 +1,16 @@
+pkgbase = fievel-bin
+	pkgdesc = Replace mouse movements with the keyboard
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/MontyTheSoftwareEngineer/fievel
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = fievel
+	conflicts = fievel
+	options = !debug
+	source_x86_64 = fievel-bin-2.1.1-x86_64.tar.gz::https://github.com/MontyTheSoftwareEngineer/fievel/releases/download/2.1.1/fievel-2.1.1-linux-x64.tar.gz
+	sha256sums_x86_64 = 83143b344cd214c6b42bcbc2e95ccdbf44c1f85962f463c3178a86f76d135163
+
+pkgname = fievel-bin
