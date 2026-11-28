@@ -1,0 +1,17 @@
+pkgbase = nuru-bin
+	pkgdesc = Swahili programming language
+	pkgver = 0.5.18
+	pkgrel = 1
+	url = https://github.com/NuruProgramming/Nuru
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	provides = nuru
+	conflicts = nuru
+	options = !debug
+	source_x86_64 = nuru-bin-0.5.18-x86_64.tar.gz::https://github.com/NuruProgramming/Nuru/releases/download/v0.5.18/nuru_Linux_amd64.tar.gz
+	sha256sums_x86_64 = 3f728553aa857825b83d144680544ad5a80d7cf883431519d3e32c62ce64362d
+	source_aarch64 = nuru-bin-0.5.18-aarch64.tar.gz::https://github.com/NuruProgramming/Nuru/releases/download/v0.5.18/nuru_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c4ceda33fb94bd286af286a522fea31cbde1b3163ab9cddfd1af628a07271c35
+
+pkgname = nuru-bin
