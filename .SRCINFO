@@ -1,0 +1,17 @@
+pkgbase = doc-scraper-bin
+	pkgdesc = Scrape documentation sites into clean Markdown for LLM ingestion
+	pkgver = 2.29.0
+	pkgrel = 1
+	url = https://github.com/Sriram-PR/doc-scraper
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = doc-scraper
+	conflicts = doc-scraper
+	options = !debug
+	source_x86_64 = doc-scraper-bin-2.29.0-x86_64.tar.gz::https://github.com/Sriram-PR/doc-scraper/releases/download/v2.29.0/doc-scraper_2.29.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 75a2785c5d3d28de11e9ad6c6ad027c422545d1ad8957c432ea012dd3ae67f41
+	source_aarch64 = doc-scraper-bin-2.29.0-aarch64.tar.gz::https://github.com/Sriram-PR/doc-scraper/releases/download/v2.29.0/doc-scraper_2.29.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 77df94417bdc7af27cafa3b4eb77394f89f87ccfc112515dd72adcb7d7fef943
+
+pkgname = doc-scraper-bin
