@@ -1,7 +1,7 @@
 # Maintainer: bit-loop <isaiah.fpga@gmail.com>
 
 pkgname=bbscord
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Retro BBS-styled Rust Discord TUI with DAVE E2EE voice, WebRTC video, and GIFs'
 arch=('x86_64' 'aarch64')
@@ -43,7 +43,7 @@ optdepends=(
 )
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bbb5054f19038ee655b4f650c8cb557d1b657211c94545315e9f2075c79e4f15')
+sha256sums=('1518b297008c43bc8711c59eccf41fea17c9f067f0bef0dcc43a8effd753a902')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
