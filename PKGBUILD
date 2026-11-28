@@ -1,8 +1,8 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=influxdb3
-pkgver=3.12.1
-_commit=3c2314a424a1a72d74c37ebaceb52b5fda36fe75
+pkgver=3.12.3
+_commit=51f4ac865b8670e0d3555ae992639ec05ecc334e
 pkgrel=1
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     'influxdb3.tmpfiles'
 )
 b2sums=(
-    '1bdd441e118d05afeaf9786e4d8d4393bbe277fbb8b14193dee8808915d12d4d1743f6a0f52efde93f3c4264f801536e4e8839c091b03fa2b492d398924a298f'
+    'ecae0ad2cb80b5873bc94a34904b24c0b1cc0d68a90cf624f2a2c1d19a760e10dadc6337054750f3d1c5cd705f12f3a4fe2d276843e537dc74f901f10eaa13a1'
     '1f119aaed81914fcb75098dde95f894c52b11d825eb5a9bca21848a88c1e85d1dc5e6044aeb14465d9e0cec294ac9b15b505cdf275a31e439ac53044e0f651aa'
     'c00c44696c9ff81d2c9b840d434c3bdbdd5c8265ec75b2697e6414c648c075e61708cbab7ce988421b6eacbf6f6bcb5496713b952121aa22c691a48874e03dd2'
 )
