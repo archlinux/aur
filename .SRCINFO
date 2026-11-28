@@ -1,6 +1,6 @@
 pkgbase = pi-bolt-bin
 	pkgdesc = Pi coding agent compiled ahead of time to native code (prebuilt binary, x86-64 baseline and ARM64)
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/opensec-git/Pi-Bolt
 	install = pi-bolt-bin.install
@@ -15,9 +15,9 @@ pkgbase = pi-bolt-bin
 	conflicts = pi-bolt-avx2-bin-release-git
 	options = !strip
 	options = !debug
-	source_x86_64 = pi-bolt-linux-x64-baseline-1.3.1.tar.xz::https://github.com/opensec-git/Pi-Bolt/releases/download/bolt-v1.3.1/pi-bolt-linux-x64-baseline.tar.xz
-	sha256sums_x86_64 = a94d397e1ed4754fbf43c6867131c0d12411c2744633c3dfe1117c7f0a43f75d
-	source_aarch64 = pi-bolt-linux-arm64-1.3.1.tar.xz::https://github.com/opensec-git/Pi-Bolt/releases/download/bolt-v1.3.1/pi-bolt-linux-arm64.tar.xz
-	sha256sums_aarch64 = ddbf1d8c237cbb5d74f2f860dbbdf1ecba7878ed153070fe12f364e48f684660
+	source_x86_64 = pi-bolt-linux-x64-baseline-1.3.2.tar.xz::https://github.com/opensec-git/Pi-Bolt/releases/download/bolt-v1.3.2/pi-bolt-linux-x64-baseline.tar.xz
+	sha256sums_x86_64 = 50afd562539d03fb30d6fec5da40f8ab17260512029242ca42d58271e194f085
+	source_aarch64 = pi-bolt-linux-arm64-1.3.2.tar.xz::https://github.com/opensec-git/Pi-Bolt/releases/download/bolt-v1.3.2/pi-bolt-linux-arm64.tar.xz
+	sha256sums_aarch64 = f9e17ece5af7c181aa7a1a10d32bc5841490763c4557fc8a9337e8a09ede1894
 
 pkgname = pi-bolt-bin
