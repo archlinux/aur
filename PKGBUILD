@@ -1,6 +1,6 @@
 # Maintainer: Víctor Pont <victor at pont dot cat>
 pkgname=flacora-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Download tracks in true FLAC from Tidal, Qobuz, Amazon Music & Deezer — no account required"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('flacora' 'spotiflac-bin')
 replaces=('spotiflac-bin')
 options=('!strip')
 source=("$pkgname-$pkgver.AppImage::$url/releases/download/v$pkgver/Flacora-$pkgver-linux-x64.AppImage")
-sha256sums=('1765a3d71c5e5a44e09de5ffdd07b5dc62fc2bc4d96829aaa20dbf05c1e294ec')
+sha256sums=('0ded9e4569c5527a9402ac1c3801500218d5efabb37ba582baa7fb7909b3b88a')
 
 prepare() {
     chmod +x "$pkgname-$pkgver.AppImage"
