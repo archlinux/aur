@@ -1,8 +1,8 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from {actual_model_used_for_push}.
+# Created with assistance from Hy4 flash Free.
 
 pkgname=zxc-full-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Asymmetric lossless compression library for ultra-fast decode (development: CLI + C library + headers + CMake — prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -10,11 +10,12 @@ url="https://github.com/hellobertrand/zxc"
 license=('BSD-3-Clause')
 provides=('zxc-full')
 conflicts=('zxc-full')
+depends=('glibc' 'bash')
 options=('!debug' '!strip')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v${pkgver}/zxc-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v${pkgver}/zxc-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('c46239c933dab799e649527ed23f05a7acc4103d9e261e627d46ba9bb4f7227e')
-sha256sums_aarch64=('f02f776482179c6464ba4fd4605d48efce5a8e541be367559a5c0f4253421bf9')
+sha256sums_x86_64=('728d16fe7b028ef46afc845f1ab564889dff79495cf71ec20a225c712e1b98f8')
+sha256sums_aarch64=('53a4e5441155083186f8a4bd92f4232fcf13993cb13a4519b89dc69916d63f02')
 
 package() {
   local _arch="${CARCH}"

@@ -1,18 +1,20 @@
 pkgbase = zxc-full-bin
 	pkgdesc = Asymmetric lossless compression library for ultra-fast decode (development: CLI + C library + headers + CMake — prebuilt)
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/hellobertrand/zxc
 	arch = x86_64
 	arch = aarch64
 	license = BSD-3-Clause
+	depends = glibc
+	depends = bash
 	provides = zxc-full
 	conflicts = zxc-full
 	options = !debug
 	options = !strip
-	source_x86_64 = zxc-full-bin-1.0.2-x86_64.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v1.0.2/zxc-1.0.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = c46239c933dab799e649527ed23f05a7acc4103d9e261e627d46ba9bb4f7227e
-	source_aarch64 = zxc-full-bin-1.0.2-aarch64.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v1.0.2/zxc-1.0.2-linux-arm64.tar.gz
-	sha256sums_aarch64 = f02f776482179c6464ba4fd4605d48efce5a8e541be367559a5c0f4253421bf9
+	source_x86_64 = zxc-full-bin-1.0.3-x86_64.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v1.0.3/zxc-1.0.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 728d16fe7b028ef46afc845f1ab564889dff79495cf71ec20a225c712e1b98f8
+	source_aarch64 = zxc-full-bin-1.0.3-aarch64.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v1.0.3/zxc-1.0.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = 53a4e5441155083186f8a4bd92f4232fcf13993cb13a4519b89dc69916d63f02
 
 pkgname = zxc-full-bin
