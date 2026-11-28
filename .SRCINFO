@@ -1,0 +1,17 @@
+pkgbase = ledgerforge-bin
+	pkgdesc = Ledger for AI-native money movement
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/devaccuracy/ledgerforge
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = ledgerforge
+	conflicts = ledgerforge
+	options = !debug
+	source_x86_64 = ledgerforge-bin-1.0.0-x86_64.tar.gz::https://github.com/devaccuracy/ledgerforge/releases/download/v1.0.0/ledgerforge_v1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = f5eac2fab3abe71dcc909dfdb9759cddf6dc610e5d69c55e4e00c94f3cff3cbc
+	source_aarch64 = ledgerforge-bin-1.0.0-aarch64.tar.gz::https://github.com/devaccuracy/ledgerforge/releases/download/v1.0.0/ledgerforge_v1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = eaeac51d24b95ec9850affae50b181d5e99865fb94456d02cc14df9c8c8127cd
+
+pkgname = ledgerforge-bin
