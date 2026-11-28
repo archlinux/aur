@@ -1,0 +1,17 @@
+pkgbase = pocketdev-bin
+	pkgdesc = Run your AI coding CLI on a Tailscale-only server and code from your phone
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/0xMassi/pocketdev
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = pocketdev
+	conflicts = pocketdev
+	options = !debug
+	source_x86_64 = pocketdev-bin-0.1.0-x86_64.tar.gz::https://github.com/0xMassi/pocketdev/releases/download/v0.1.0/pocketdev_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b256d16d8f162679f2b4a33ccc5860a3f221de9bed01f0fa8894ce3bcd9f5af0
+	source_aarch64 = pocketdev-bin-0.1.0-aarch64.tar.gz::https://github.com/0xMassi/pocketdev/releases/download/v0.1.0/pocketdev_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = c554c5cfeef85d2f977ae1bb3fb196dcf988d959a232e1a1ef580fd56dde4959
+
+pkgname = pocketdev-bin
