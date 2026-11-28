@@ -1,6 +1,6 @@
 pkgbase = lexington
 	pkgdesc = Screenplay converter: Fountain, Final Draft, PDF, HTML, LaTeX, DOCX/ODT and more
-	pkgver = 1.26.2
+	pkgver = 1.67.3
 	pkgrel = 1
 	url = https://github.com/LaPingvino/lexington
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lexington
 	optdepends = texlive-latex: LaTeX-to-PDF conversion (-to latexpdf)
 	optdepends = calibre: e-book formats through ebook-convert
 	optdepends = tesseract: reading scanned PDFs with OCR
-	source = lexington-1.26.2.tar.gz::https://github.com/LaPingvino/lexington/archive/refs/tags/v1.26.2.tar.gz
-	sha256sums = 4c5975c14a95741057d31cdc6f0a1d133c5b02b872f30567f874a8845fe2c4b9
+	source = lexington-1.67.3.tar.gz::https://github.com/LaPingvino/lexington/archive/refs/tags/v1.67.3.tar.gz
+	sha256sums = 8e91d15f0c5bde77aacc82c4b533c3e57b31fb6a74830552b54ab3410abb0ae7
 
 pkgname = lexington
