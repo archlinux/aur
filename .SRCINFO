@@ -1,0 +1,19 @@
+pkgbase = pikoci-bin
+	pkgdesc = Lightweight CI/CD server
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/PikoCI/pikoci
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = pikoci
+	conflicts = pikoci
+	options = !debug
+	source = pikoci-bin-0.8.0-LICENSE::https://raw.githubusercontent.com/PikoCI/pikoci/v0.8.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = pikoci-bin-0.8.0-x86_64::https://github.com/PikoCI/pikoci/releases/download/v0.8.0/pikoci-linux-amd64
+	sha256sums_x86_64 = 2acaadad9c05190e5b741a6d47967933c11dc11a4bbb7fb2b7dc3f006fb6d31a
+	source_aarch64 = pikoci-bin-0.8.0-aarch64::https://github.com/PikoCI/pikoci/releases/download/v0.8.0/pikoci-linux-arm64
+	sha256sums_aarch64 = 3a9b8034cee8b5b9797f1f37f5038941a620c87f615336a8134a21e7e9d87109
+
+pkgname = pikoci-bin
