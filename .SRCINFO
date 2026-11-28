@@ -1,0 +1,17 @@
+pkgbase = chrome-protocol-proxy-bin
+	pkgdesc = Chrome DevTools Protocol proxy for debugging
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/wendigo/chrome-protocol-proxy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = chrome-protocol-proxy
+	conflicts = chrome-protocol-proxy
+	options = !debug
+	source_x86_64 = chrome-protocol-proxy-bin-0.7.2-x86_64.tar.gz::https://github.com/wendigo/chrome-protocol-proxy/releases/download/v0.7.2/chrome-protocol-proxy_0.7.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2d205235db948f01d52eb5058c232b0a41d9bf4a3f624a9889bd69d94b3b0747
+	source_aarch64 = chrome-protocol-proxy-bin-0.7.2-aarch64.tar.gz::https://github.com/wendigo/chrome-protocol-proxy/releases/download/v0.7.2/chrome-protocol-proxy_0.7.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = f3b1ee421ba3867e7fa74ba63f6a9db80302fcb636868d3a5dfb92931750a45a
+
+pkgname = chrome-protocol-proxy-bin
