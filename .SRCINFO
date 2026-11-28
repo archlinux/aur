@@ -1,0 +1,19 @@
+pkgbase = cf-scanner-bin
+	pkgdesc = Cloudflare IP scanner
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://github.com/radioactiveAHM/cf-scanner
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cf-scanner
+	conflicts = cf-scanner
+	options = !debug
+	source = cf-scanner-bin-1.10.1-LICENSE::https://raw.githubusercontent.com/radioactiveAHM/cf-scanner/v1.10.1/LICENSE
+	sha256sums = e94e3918b02ba37c39ff3cfee0f1807883b930206406ec4a1bf3591542b1e26b
+	source_x86_64 = cf-scanner-bin-1.10.1-x86_64.tar.gz::https://github.com/radioactiveAHM/cf-scanner/releases/download/v1.10.1/cf-scanner_Linux_x86_64v1.tar.gz
+	sha256sums_x86_64 = 1aeff747cd6f101fe8c832349a6715464f476d4f80f9a2fbac072fb58bd8326a
+	source_aarch64 = cf-scanner-bin-1.10.1-aarch64.tar.gz::https://github.com/radioactiveAHM/cf-scanner/releases/download/v1.10.1/cf-scanner_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 83f0e30acc64358bdc285405543361a05e01400ea8a7f7e5702b0d849f9a363d
+
+pkgname = cf-scanner-bin
