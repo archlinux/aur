@@ -1,0 +1,22 @@
+pkgbase = ordewell-bin
+	pkgdesc = Turn one goal into a plan graph run by parallel coding agents
+	pkgver = 0.14.16
+	pkgrel = 1
+	url = https://github.com/ordewell/ordewell
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = ordewell
+	conflicts = ordewell
+	options = !debug
+	source = ordewell-bin-0.14.16-LICENSE::https://raw.githubusercontent.com/ordewell/ordewell/v0.14.16/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = ordewell-bin-0.14.16-x86_64.tar.gz::https://github.com/ordewell/ordewell/releases/download/v0.14.16/ordewell-linux-x64.tar.gz
+	sha256sums_x86_64 = febcf74fa154f7b1007cd1534b861bbcc2ed9bec1f452fb21b4c780ed2542318
+	source_aarch64 = ordewell-bin-0.14.16-aarch64.tar.gz::https://github.com/ordewell/ordewell/releases/download/v0.14.16/ordewell-linux-arm64.tar.gz
+	sha256sums_aarch64 = 568a0b22477f637eef755e1338c4fc1d7c13ac184d84876c7157644ed0aa0539
+
+pkgname = ordewell-bin
