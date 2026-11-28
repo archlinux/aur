@@ -1,0 +1,19 @@
+pkgbase = reward-bin
+	pkgdesc = Orchestrate Docker-based development environments
+	pkgver = 0.7.15
+	pkgrel = 1
+	url = https://github.com/rewardenv/reward
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = reward
+	conflicts = reward
+	options = !debug
+	source = reward-bin-0.7.15-LICENSE::https://raw.githubusercontent.com/rewardenv/reward/v0.7.15/LICENSE
+	sha256sums = 0d47a7d46f2a59d7eab31cee6da6917d2683eb38eb7f5ceef2d4b8d50ddc2451
+	source_x86_64 = reward-bin-0.7.15-x86_64.tar.gz::https://github.com/rewardenv/reward/releases/download/v0.7.15/reward_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7663dcf3d5ce90fa0328b7ee4b4e9900f468d54c054890f3c63d14d26936374c
+	source_aarch64 = reward-bin-0.7.15-aarch64.tar.gz::https://github.com/rewardenv/reward/releases/download/v0.7.15/reward_Linux_aarch64.tar.gz
+	sha256sums_aarch64 = e903cbc0efe98ddd15bf1826f960c707c895a166f525edcb98569b8109289ed2
+
+pkgname = reward-bin
