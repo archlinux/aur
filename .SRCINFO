@@ -1,0 +1,21 @@
+pkgbase = kakehashi-bin
+	pkgdesc = Language server that bridges languages, editors and tooling
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/atusy/kakehashi
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = kakehashi
+	conflicts = kakehashi
+	options = !debug
+	source = kakehashi-bin-1.0.0-LICENSE::https://raw.githubusercontent.com/atusy/kakehashi/v1.0.0/LICENSE.md
+	sha256sums = 6c7f8ff2cecd75e6163a58553386de1bf14ae1f8c3d5420eef024b1e6711d603
+	source_x86_64 = kakehashi-bin-1.0.0-x86_64.tar.gz::https://github.com/atusy/kakehashi/releases/download/v1.0.0/kakehashi-v1.0.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 47d40b166f3987442a9c624ffa3d50537b7b7b94a23a67cd663857f32da63ed0
+	source_aarch64 = kakehashi-bin-1.0.0-aarch64.tar.gz::https://github.com/atusy/kakehashi/releases/download/v1.0.0/kakehashi-v1.0.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = c6850eb295438380386f711ca851ed9a747310e3e6773d3c60b35c794e9baf34
+
+pkgname = kakehashi-bin
