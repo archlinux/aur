@@ -1,0 +1,14 @@
+pkgbase = blockcell-bin
+	pkgdesc = Self-evolving AI agent
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/blockcell-labs/blockcell
+	arch = x86_64
+	license = MIT
+	provides = blockcell
+	conflicts = blockcell
+	options = !debug
+	source_x86_64 = blockcell-bin-0.1.7-x86_64.tar.gz::https://github.com/blockcell-labs/blockcell/releases/download/v0.1.7/blockcell-v0.1.7-linux-amd64.tar.gz
+	sha256sums_x86_64 = 8a00098f3ca54f329de652e5015663221aec5f5e35d1f8b13ca6509511c7f48b
+
+pkgname = blockcell-bin
