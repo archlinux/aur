@@ -1,0 +1,19 @@
+pkgbase = save-to-spotify-bin
+	pkgdesc = Save your personal media to Spotify from the command line
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/spotify/save-to-spotify
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = save-to-spotify
+	conflicts = save-to-spotify
+	options = !debug
+	source = save-to-spotify-bin-0.2.1-LICENSE::https://raw.githubusercontent.com/spotify/save-to-spotify/v0.2.1/LICENSE
+	sha256sums = 7a34fc99de28aa6cee98e56b545f656df0576b7fbb9664864f6137f930ebbb39
+	source_x86_64 = save-to-spotify-bin-0.2.1-x86_64.zip::https://github.com/spotify/save-to-spotify/releases/download/v0.2.1/save-to-spotify-linux-amd64-v0.2.1.zip
+	sha256sums_x86_64 = 4bd0ebd6a3fa17d6bced32879727f3d67b27de1be6e3a5614384b1537980eb25
+	source_aarch64 = save-to-spotify-bin-0.2.1-aarch64.zip::https://github.com/spotify/save-to-spotify/releases/download/v0.2.1/save-to-spotify-linux-arm64-v0.2.1.zip
+	sha256sums_aarch64 = 71977b3a53f04a1e99d11a1b0aabf36a4daad06895daa4df917cddf9dede7aa1
+
+pkgname = save-to-spotify-bin
