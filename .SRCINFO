@@ -1,0 +1,17 @@
+pkgbase = tellstone-bin
+	pkgdesc = In-memory Redis-compatible database
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/Saxy/Tellstone
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = tellstone
+	conflicts = tellstone
+	options = !debug
+	source_x86_64 = tellstone-bin-1.3.0-x86_64.tar.gz::https://github.com/Saxy/Tellstone/releases/download/v1.3.0/tellstone_1.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7426b6cb3d9ff84af5b3999e6e31915474e159c676fd8bc5ebee1f34e3def550
+	source_aarch64 = tellstone-bin-1.3.0-aarch64.tar.gz::https://github.com/Saxy/Tellstone/releases/download/v1.3.0/tellstone_1.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 06f83d498fc9f5b605ec1b7e59d918a2b74f1978ba31c9955a0f4f4faff1752f
+
+pkgname = tellstone-bin
