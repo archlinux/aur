@@ -1,0 +1,17 @@
+pkgbase = llm-gateway-bin
+	pkgdesc = Zero-trust LLM gateway
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/openziti/llm-gateway
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = llm-gateway
+	conflicts = llm-gateway
+	options = !debug
+	source_x86_64 = llm-gateway-bin-0.1.8-x86_64.tar.gz::https://github.com/openziti/llm-gateway/releases/download/v0.1.8/llm-gateway_0.1.8_linux_amd64.tar.gz
+	sha256sums_x86_64 = 436fe38205ac5c8027b939abe6458db93e21a7dcd29038ecf2d14a1ca3489ca8
+	source_aarch64 = llm-gateway-bin-0.1.8-aarch64.tar.gz::https://github.com/openziti/llm-gateway/releases/download/v0.1.8/llm-gateway_0.1.8_linux_arm64.tar.gz
+	sha256sums_aarch64 = f0af901b7a3328c07de5858bfa570faffd27d77b09cc27308979f42c158668bd
+
+pkgname = llm-gateway-bin
