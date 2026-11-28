@@ -1,0 +1,17 @@
+pkgbase = openfirma-bin
+	pkgdesc = Policy enforcement sidecar for AI agent outbound calls
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/Firma-AI/openfirma
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = openfirma
+	conflicts = openfirma
+	options = !debug
+	source_x86_64 = openfirma-bin-0.1.6-x86_64.tar.gz::https://github.com/Firma-AI/openfirma/releases/download/v0.1.6/firma-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 0c14ed8cf485cc3ba0aada80d53191eb3c17a9bb35d5469b567f975cdada5849
+	source_aarch64 = openfirma-bin-0.1.6-aarch64.tar.gz::https://github.com/Firma-AI/openfirma/releases/download/v0.1.6/firma-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 0a1597915e8f3b432c83f6123dac5fa0d549967ad4814520c97ee0ff924f8ea8
+
+pkgname = openfirma-bin
