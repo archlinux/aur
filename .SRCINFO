@@ -1,0 +1,21 @@
+pkgbase = ncro-bin
+	pkgdesc = HTTP proxy that optimizes Nix binary cache routes
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/manic-systems/ncro
+	arch = x86_64
+	arch = aarch64
+	license = EUPL-1.2
+	depends = glibc
+	depends = libgcc
+	provides = ncro
+	conflicts = ncro
+	options = !debug
+	source = ncro-bin-2.4.0-LICENSE::https://raw.githubusercontent.com/manic-systems/ncro/v2.4.0/LICENSE
+	sha256sums = 02895406463d282c1d57a018fc726727ec4e86c2c112b2a512f492fd03ca7f61
+	source_x86_64 = ncro-bin-2.4.0-x86_64::https://github.com/manic-systems/ncro/releases/download/v2.4.0/ncro-linux-amd64
+	sha256sums_x86_64 = c12d04106e95d7489c139cf32753fa978ff40b902ed498414f8f6185f440797a
+	source_aarch64 = ncro-bin-2.4.0-aarch64::https://github.com/manic-systems/ncro/releases/download/v2.4.0/ncro-linux-arm64
+	sha256sums_aarch64 = 97d477373d1fc57a77e8d9b81c9dcb7c726447fe147f04bc65e9d10f8d1dde01
+
+pkgname = ncro-bin
