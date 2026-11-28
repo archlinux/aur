@@ -1,0 +1,17 @@
+pkgbase = trajan-bin
+	pkgdesc = CI/CD pipeline vulnerability detection and attack automation tool
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/praetorian-inc/trajan
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = trajan
+	conflicts = trajan
+	options = !debug
+	source_x86_64 = trajan-bin-1.0.2-x86_64.zip::https://github.com/praetorian-inc/trajan/releases/download/v1.0.2/trajan_1.0.2_linux_amd64.zip
+	sha256sums_x86_64 = 809c22f6ee43152e88c13bdb81b6082c15c68fc38ab318b2bfc7d9b5944176f6
+	source_aarch64 = trajan-bin-1.0.2-aarch64.zip::https://github.com/praetorian-inc/trajan/releases/download/v1.0.2/trajan_1.0.2_linux_arm64.zip
+	sha256sums_aarch64 = e47a6576af5ae80688d1fc956be6f23bd79fe5f3d3f1c8d2db4a79eed798dd6e
+
+pkgname = trajan-bin
