@@ -1,0 +1,17 @@
+pkgbase = immich-stack-bin
+	pkgdesc = Group similar Immich photos into stacks
+	pkgver = 0.2.44
+	pkgrel = 1
+	url = https://github.com/Majorfi/immich-stack
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = immich-stack
+	conflicts = immich-stack
+	options = !debug
+	source_x86_64 = immich-stack-bin-0.2.44-x86_64.tar.gz::https://github.com/Majorfi/immich-stack/releases/download/v0.2.44/immich-stack_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 4016fcd5f147b96a62c91aa94ef4a1daad95f838c59fd58c6c04fa4ff716f43b
+	source_aarch64 = immich-stack-bin-0.2.44-aarch64.tar.gz::https://github.com/Majorfi/immich-stack/releases/download/v0.2.44/immich-stack_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c33afda26a3b640eb31b17a94d0df1741b55277e0b1ec390e27cd3f5470d859f
+
+pkgname = immich-stack-bin
