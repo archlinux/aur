@@ -1,0 +1,14 @@
+pkgbase = rainbow-roads-bin
+	pkgdesc = Animate your exercise maps
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/NathanBaulch/rainbow-roads
+	arch = x86_64
+	license = MIT
+	provides = rainbow-roads
+	conflicts = rainbow-roads
+	options = !debug
+	source_x86_64 = rainbow-roads-bin-0.4.0-x86_64.tar.gz::https://github.com/NathanBaulch/rainbow-roads/releases/download/v0.4.0/rainbow-roads-v0.4.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 79207b681a52dcd184f24f890c4315e1b4941419d5c745ce2f5a75fee6c65bb9
+
+pkgname = rainbow-roads-bin
