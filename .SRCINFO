@@ -1,0 +1,14 @@
+pkgbase = quickpassthrough-bin
+	pkgdesc = Simplify GPU passthrough setup for QEMU
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = https://github.com/HikariKnight/quickpassthrough
+	arch = x86_64
+	license = MIT
+	provides = quickpassthrough
+	conflicts = quickpassthrough
+	options = !debug
+	source_x86_64 = quickpassthrough-bin-2.1.5-x86_64.tar.gz::https://github.com/HikariKnight/quickpassthrough/releases/download/2.1.5/quickpassthrough_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 67c803b484d9ff46cd5fc8008adcb574a814ef58bec3402f0b74fa0dd02ee327
+
+pkgname = quickpassthrough-bin
