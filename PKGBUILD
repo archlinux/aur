@@ -2,7 +2,7 @@
 
 pkgname=obs-async-audio-filter
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='This filter aims to fix audio glitches caused by asynchronous audio of the source'
 arch=(x86_64 aarch64)
 url="https://github.com/norihiro/$pkgname"
@@ -15,16 +15,12 @@ depends=(glibc # libc.so libm.so
 makedepends=(cmake
              git
              simde)
-source=("git+$url.git#tag=$pkgver"
-        "git+https://github.com/libsndfile/libsamplerate.git#tag=0.2.2")
-sha256sums=('fd1b91e730267cd07bfab74561d1b35f3306a0d4f2c0cb3b8c0c56942a880585'
-            'f2d8de20d607298f16cceb8ec38a87b07fb1dad344aef9957777f999e3466f43')
+source=("git+$url.git#tag=$pkgver")
+sha256sums=('fd1b91e730267cd07bfab74561d1b35f3306a0d4f2c0cb3b8c0c56942a880585')
 
 prepare() {
 	cd "$pkgname"
-	git submodule init
-	git config submodule."deps/libsamplerate".url "${srcdir}/libsamplerate"
-	git -c protocol.file.allow=always submodule update
+	sed -i -e '/set.PLUGIN/s#obs-modules/plugins#obs-plugins#' cmake/ObsPluginHelpers.cmake
 }
 
 build() {
@@ -32,6 +28,8 @@ build() {
 		CMAKE_BUILD_TYPE=None
 		CMAKE_INSTALL_PREFIX=/usr
 		LINUX_PORTABLE=OFF
+		USE_ERIKD_LIBSAMPLERATE_DEPS=OFF
+		USE_ERIKD_LIBSAMPLERATE_SYSTEM=ON
 	)
 	cmake -B build -S $pkgname -Wno-author "${cmake_options[@]/#/-D }"
 	cmake --build build
