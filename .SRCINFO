@@ -1,6 +1,6 @@
 pkgbase = lookout
 	pkgdesc = A fast, good-looking system monitor with Rosé Pine themes, an htop replacement with a GUI
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/kaareloun/lookout
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = lookout
 	depends = libxcursor
 	depends = libxi
 	depends = libxrandr
-	source = lookout-0.2.0.tar.gz::https://github.com/kaareloun/lookout/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 73c13229b9fb87f0589bf94c06919860748028a43fb52b4ff22a9cd6b9e6c595
+	source = lookout-0.2.1.tar.gz::https://github.com/kaareloun/lookout/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 372a440a0e2dab8087fe49012ce22005705336ebfda492376d5056f04f5d9276
 
 pkgname = lookout
