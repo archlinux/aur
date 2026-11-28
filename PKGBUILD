@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=mothx
-pkgver=1.3.107
+pkgver=1.3.108
 pkgrel=1
 pkgdesc="🚀 One Binary to Rule Them All — Your AI Coding Assistant in the Terminal"
 arch=($CARCH)
@@ -25,7 +25,7 @@ backup=()
 options=('!debug')
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('1bee9bb035f13e0fc0ad6a1e1be1b813cdbf66490b78e6d17abcbb9cc175fc77')
+sha256sums=('4a25f9f69570cd6943d59d40cd39e7dc577851d78e7a1944d7bc5a9df55220e2')
 
 prepare() {
 	git -C "${srcdir}/${pkgname}" clean -dfx
