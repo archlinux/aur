@@ -1,0 +1,19 @@
+pkgbase = khelm-bin
+	pkgdesc = Helm chart templating CLI and kustomize plugin
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/mgoltzsche/khelm
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = khelm
+	conflicts = khelm
+	options = !debug
+	source = khelm-bin-3.0.1-LICENSE::https://raw.githubusercontent.com/mgoltzsche/khelm/v3.0.1/LICENSE
+	sha256sums = 61ea4135304c0ff3a57a7286844a15a85065e52d4a933b9f836c46d5cd40c8e1
+	source_x86_64 = khelm-bin-3.0.1-x86_64::https://github.com/mgoltzsche/khelm/releases/download/v3.0.1/khelm-linux-amd64
+	sha256sums_x86_64 = 70f6047de5985f319dbe0935ecf2c393890afccc2e78f2034111b28c1211c610
+	source_aarch64 = khelm-bin-3.0.1-aarch64::https://github.com/mgoltzsche/khelm/releases/download/v3.0.1/khelm-linux-arm64
+	sha256sums_aarch64 = da0d49a64c5addecce81d2f25c67f9e32a0ae54237a88ea1278687c109ed8d02
+
+pkgname = khelm-bin
