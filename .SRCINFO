@@ -1,6 +1,6 @@
 pkgbase = vesktop
 	pkgdesc = A standalone Electron-based Discord app with Vencord & improved Linux support
-	pkgver = 1.7.0
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/Vencord/Vesktop
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = vesktop
 	depends = nss
 	optdepends = libnotify: Notifications
 	optdepends = xdg-utils: Open links, files, etc
-	source = Vesktop-1.7.0.tar.gz::https://github.com/Vencord/Vesktop/archive/v1.7.0.tar.gz
+	source = Vesktop-1.7.2.tar.gz::https://github.com/Vencord/Vesktop/archive/v1.7.2.tar.gz
 	source = vesktop.desktop
 	source = vesktop.sh
-	sha256sums = f3feadb58133a6e4555eee878f7e1ce3128abc93ba5203ace18ceafd1856e4a4
+	sha256sums = 48f38100d7135626d880be366c126f26f9cfa81d3c266209c87d7f4de791ba66
 	sha256sums = 98fa8f661b065c2d825e24f0055a40ae01d58d23628ad7ebf6914296209dd43c
 	sha256sums = 506c246328af639d6f6a3e52215c7b34af2a6df11d195de6f57a8bbee750cce9
 
