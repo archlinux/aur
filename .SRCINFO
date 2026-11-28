@@ -1,0 +1,18 @@
+pkgbase = tcpproxy-bin
+	pkgdesc = Cross-platform TCP proxy
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/mqudsi/tcpproxy
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = tcpproxy
+	conflicts = tcpproxy
+	options = !debug
+	source = tcpproxy-bin-0.4.1-LICENSE::https://raw.githubusercontent.com/mqudsi/tcpproxy/0.4.1/LICENSE
+	sha256sums = 0314e6d3981b21959b188b5cbbc77c6404c6dfc281451fe3dd7cc2dfa216350c
+	source_x86_64 = tcpproxy-bin-0.4.1-x86_64.tar.gz::https://github.com/mqudsi/tcpproxy/releases/download/0.4.1/tcpproxy-0.4.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 28346be070a7f622cb0e17533b4944d92c7dfe8189f03117c7bbbe943482bec3
+
+pkgname = tcpproxy-bin
