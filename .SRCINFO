@@ -1,0 +1,17 @@
+pkgbase = ecsk-bin
+	pkgdesc = Interactively run tasks, exec commands, copy files and view logs on Amazon ECS
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/yukiarrr/ecsk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ecsk
+	conflicts = ecsk
+	options = !debug
+	source_x86_64 = ecsk-bin-0.9.5-x86_64.tar.gz::https://github.com/yukiarrr/ecsk/releases/download/v0.9.5/ecsk_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = caa9de1640d7741c27681a2098b9fe192d362b2170de477428ba3a36b2cf15d0
+	source_aarch64 = ecsk-bin-0.9.5-aarch64.tar.gz::https://github.com/yukiarrr/ecsk/releases/download/v0.9.5/ecsk_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c046a336eda308077b4667c49abc8a8dd7c5ec9a3edad0f3514f8993b509c937
+
+pkgname = ecsk-bin
