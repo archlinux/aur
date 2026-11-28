@@ -1,0 +1,17 @@
+pkgbase = nats-kafka-bin
+	pkgdesc = Bridge between NATS and Kafka
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/nats-io/nats-kafka
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = nats-kafka
+	conflicts = nats-kafka
+	options = !debug
+	source_x86_64 = nats-kafka-bin-1.4.2-x86_64.zip::https://github.com/nats-io/nats-kafka/releases/download/v1.4.2/nats-kafka-v1.4.2-linux-amd64.zip
+	sha256sums_x86_64 = dc984963983e4d4b0a7f3e0d7b9a5de3c508c7e45033790b94712ac2e2f28d5f
+	source_aarch64 = nats-kafka-bin-1.4.2-aarch64.zip::https://github.com/nats-io/nats-kafka/releases/download/v1.4.2/nats-kafka-v1.4.2-linux-arm64.zip
+	sha256sums_aarch64 = 0ab48d4b3a18cd53299eccc6838c33e376653e373740e2cb1ba34ef1508d0e83
+
+pkgname = nats-kafka-bin
