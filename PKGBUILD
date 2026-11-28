@@ -1,6 +1,6 @@
 # Maintainer: hina <192247746+Hinikaa@users.noreply.github.com>
 pkgname=wisp-shell
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='Small Linux shell written in C++17 with Lua 5.4 embedded for config and structured pipelines'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ checkdepends=('python')
 optdepends=('luarocks: package management via the pkg builtin')
 install=wisp-shell.install
 source=("wisp-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c5aa43ef87603b1517519dcf3e050c2b95e7d736d0f076034a9346e47cc86387')
+sha256sums=('1de3f78b955f29a0d0e01fd57b747737f41e0dd0b28b1a0db9f66081b9d04570')
 
 build() {
     cd "wisp-${pkgver}"
