@@ -1,0 +1,19 @@
+pkgbase = exiflite-git
+	pkgdesc = Fast read-only C99 metadata reader that reports a small set of tags exactly as exiftool does
+	pkgver = 0.0.0.r2.ga412fa6
+	pkgrel = 1
+	url = https://github.com/blitzview-org/exiflite
+	arch = x86_64
+	arch = aarch64
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	provides = exiflite
+	provides = libexiflite.so
+	conflicts = exiflite
+	source = exiflite-git::git+https://github.com/blitzview-org/exiflite.git
+	sha256sums = SKIP
+
+pkgname = exiflite-git
