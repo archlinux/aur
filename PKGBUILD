@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=FCPS
-_pkgver=1.4.3
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,10 @@ optdepends=(
   r-apcluster
   r-aricode
   r-cclust
+  r-cec
   r-clue
   r-clusterability
+  r-clustercrit
   r-clusterr
   r-clustersim
   r-clustmixtype
@@ -38,6 +40,7 @@ optdepends=(
   r-flexclust
   r-generalizedumatrix
   r-genie
+  r-gmeans
   r-hdclassif
   r-igraph
   r-kernlab
@@ -51,6 +54,7 @@ optdepends=(
   r-mstknnclust
   r-networktoolbox
   r-orclus
+  r-otrimle
   r-paralleldist
   r-partitioncomparison
   r-pdfcluster
@@ -59,6 +63,7 @@ optdepends=(
   r-ppci
   r-prabclus
   r-pracma
+  r-proc
   r-projectionbasedclustering
   r-protoclust
   r-r.utils
@@ -69,13 +74,15 @@ optdepends=(
   r-smacof
   r-sparcl
   r-spectrum
+  r-t4cluster
   r-tclust
+  r-teigen
   r-varsellcm
   r-yardstick
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9cf952f99f61d55f7649ce64779f6a80')
-b2sums=('17812c34c25919ef080446836689c31df44b84a421bb438932bfe3398e29feb937fb4ce4f2341b3fb2e9c8d83cabc31edc9d205796f599236c4984fe652c63f0')
+md5sums=('c0bbbbfe326b1aeef15146ed701b133b')
+b2sums=('a338412eebe1503021c54976ea939fa05ee27800080c4eb265e12c50c055b59b36aa64b7716ed5ee2d0c8230768595e4b73d439a673a99d1ff433bb7b12b3c57')
 
 build() {
   mkdir build
