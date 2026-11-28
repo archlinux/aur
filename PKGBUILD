@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=agentfield-bin
-pkgver=0.1.146
+pkgver=0.1.147
 pkgrel=1
 pkgdesc="Build, run and scale AI agents like API and microservices"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/Agent-F
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${_dl}/agentfield-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${_dl}/agentfield-linux-arm64")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('c810bcf623a62e1c3c9ca4c833ad543e866989e0822457024eee460c0feef0c1')
-sha256sums_aarch64=('772f3a638aa5f8c77eefb5abbb8d3f890ea0f3daed7b56b79ff149f138276b24')
+sha256sums_x86_64=('7ae0613ec6ce30ee7b350952863da3d78c544e0db9157cff3d8cd764b7b4583f')
+sha256sums_aarch64=('f99bc2a01ba3b08f9af0b3c38918b8208257f11874ee129b61a1d4f223e3199d')
 
 package() {
   install -Dm755 "${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/agentfield"
