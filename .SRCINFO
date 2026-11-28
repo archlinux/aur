@@ -1,0 +1,17 @@
+pkgbase = noctx-bin
+	pkgdesc = Find Go function calls made without context.Context
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/sonatard/noctx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = noctx
+	conflicts = noctx
+	options = !debug
+	source_x86_64 = noctx-bin-0.5.1-x86_64.tar.gz::https://github.com/sonatard/noctx/releases/download/v0.5.1/noctx_v0.5.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = d531dbbda3b8864517d423f92b6bc0167a6efb4165036ba92ff24cc55de381d3
+	source_aarch64 = noctx-bin-0.5.1-aarch64.tar.gz::https://github.com/sonatard/noctx/releases/download/v0.5.1/noctx_v0.5.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 863ddc3bb88abaa84e895a30bb6f030dfac75fc0cdc7c0e837ca6d5c12649983
+
+pkgname = noctx-bin
