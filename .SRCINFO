@@ -1,0 +1,19 @@
+pkgbase = squealer-bin
+	pkgdesc = Scan git repositories for leaked secrets
+	pkgver = 1.2.12
+	pkgrel = 1
+	url = https://github.com/owenrumney/squealer
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = squealer
+	conflicts = squealer
+	options = !debug
+	source = squealer-bin-1.2.12-LICENSE::https://raw.githubusercontent.com/owenrumney/squealer/v1.2.12/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = squealer-bin-1.2.12-x86_64::https://github.com/owenrumney/squealer/releases/download/v1.2.12/squealer.linux.amd64
+	sha256sums_x86_64 = 3dbf2e0ad2e3d6a68f24d09e513692d1280affdae7115a80d6dad4a6fd7462aa
+	source_aarch64 = squealer-bin-1.2.12-aarch64::https://github.com/owenrumney/squealer/releases/download/v1.2.12/squealer.linux.arm64
+	sha256sums_aarch64 = 04beb6051c670c3e634c7d52243425b0929a2e1a0e31b26c0920d7b3a9745d8a
+
+pkgname = squealer-bin
