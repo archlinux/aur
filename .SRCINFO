@@ -1,0 +1,18 @@
+pkgbase = unspeech-bin
+	pkgdesc = Unified proxy for text-to-speech services
+	pkgver = 0.1.20
+	pkgrel = 1
+	url = https://github.com/moeru-ai/unspeech
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	provides = unspeech
+	conflicts = unspeech
+	options = !debug
+	source_x86_64 = unspeech-bin-0.1.20-x86_64.tar.gz::https://github.com/moeru-ai/unspeech/releases/download/v0.1.20/unspeech_0.1.20_linux_amd64.tar.gz
+	sha256sums_x86_64 = ac0d66ff3edc6729d79ebae6469a065516be50407ca9a3d7bc1be8c8673b4884
+	source_aarch64 = unspeech-bin-0.1.20-aarch64.tar.gz::https://github.com/moeru-ai/unspeech/releases/download/v0.1.20/unspeech_0.1.20_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1e127cdbe18a9267ad55adbd4ecf3f358a48058a3fa2ce5fc87dc248f19151ad
+
+pkgname = unspeech-bin
