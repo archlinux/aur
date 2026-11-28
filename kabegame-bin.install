@@ -1,0 +1,9 @@
+post_remove() {
+  cat <<'EOF'
+==> Note: If you enabled Kabegame's KDE Plasma 6 or GNOME Shell wallpaper plugin mode,
+    switch your desktop wallpaper back to a built-in plugin and remove the user-level
+    plugin directory if still present:
+      ~/.local/share/plasma/wallpapers/org.kabegame.wallpaper
+      ~/.local/share/gnome-shell/extensions/kabegame@kabegame.app
+EOF
+}
