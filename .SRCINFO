@@ -1,0 +1,17 @@
+pkgbase = yatas-bin
+	pkgdesc = Audit AWS and GCP infrastructure for misconfigurations and security issues
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/padok-team/yatas
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = yatas
+	conflicts = yatas
+	options = !debug
+	source_x86_64 = yatas-bin-1.6.1-x86_64.tar.gz::https://github.com/padok-team/yatas/releases/download/v1.6.1/yatas_1.6.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = fb752b659d5c351a24e1e02b2c744143357eaf5fb1569958e933fe2e37aa71fd
+	source_aarch64 = yatas-bin-1.6.1-aarch64.tar.gz::https://github.com/padok-team/yatas/releases/download/v1.6.1/yatas_1.6.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 6df3aaf257cc0787ca7989370cca0d3c8e5959e8bf3c038ed85a2ab846f6c7d8
+
+pkgname = yatas-bin
