@@ -1,0 +1,17 @@
+pkgbase = greywall-bin
+	pkgdesc = Container-free, deny-by-default sandbox for AI coding agents
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/GreyhavenHQ/greywall
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = greywall
+	conflicts = greywall
+	options = !debug
+	source_x86_64 = greywall-bin-0.3.7-x86_64.tar.gz::https://github.com/GreyhavenHQ/greywall/releases/download/v0.3.7/greywall_0.3.7_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1a340a9027a8ac71a33907f84cb8c39bbaa4a313ef7669ef2bc6f3aaafc5c7ff
+	source_aarch64 = greywall-bin-0.3.7-aarch64.tar.gz::https://github.com/GreyhavenHQ/greywall/releases/download/v0.3.7/greywall_0.3.7_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 82bf6a5cf498431a9e14cdb6428a5cfc963c786ac6f84dd5f979c149d6b35c2a
+
+pkgname = greywall-bin
