@@ -1,0 +1,17 @@
+pkgbase = tsflow-bin
+	pkgdesc = Network flow visualizer for Tailscale
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/rajsinghtech/tsflow
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tsflow
+	conflicts = tsflow
+	options = !debug
+	source_x86_64 = tsflow-bin-1.7.1-x86_64.tar.gz::https://github.com/rajsinghtech/tsflow/releases/download/v1.7.1/tsflow-v1.7.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = b9fd618d65b8ed630cf87d96db3304b50ee559127f7c51267f207f7a83653ec9
+	source_aarch64 = tsflow-bin-1.7.1-aarch64.tar.gz::https://github.com/rajsinghtech/tsflow/releases/download/v1.7.1/tsflow-v1.7.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 2ae9fdb9e861cebe0fb08c6b0bf68e393aad3090c811e5eb62f3ed8b70806488
+
+pkgname = tsflow-bin
