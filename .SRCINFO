@@ -1,0 +1,17 @@
+pkgbase = cftunnel-bin
+	pkgdesc = Expose local services through Cloudflare Tunnel and TCP/UDP relays
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/qingchencloud/cftunnel
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cftunnel
+	conflicts = cftunnel
+	options = !debug
+	source_x86_64 = cftunnel-bin-0.4.4-x86_64.tar.gz::https://github.com/qingchencloud/cftunnel/releases/download/v0.4.4/cftunnel_linux_amd64.tar.gz
+	sha256sums_x86_64 = fd5fb74b5403ddd27a9c52ae1cddec135cdfc1f38f20e612b13163e89b318335
+	source_aarch64 = cftunnel-bin-0.4.4-aarch64.tar.gz::https://github.com/qingchencloud/cftunnel/releases/download/v0.4.4/cftunnel_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2cecc60293d02a9008abb3006be305511afadf3ae2666ea4ed207da51936fc5c
+
+pkgname = cftunnel-bin
