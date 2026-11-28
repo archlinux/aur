@@ -46,20 +46,26 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/twilightmc-oss"
-  # Gắn sẵn remote dự phòng Tangled và đồng bộ nếu cần
+  # Chuyển source vào thư mục Linux gốc /tmp để tránh lỗi UNC path của WSL/Windows
+  rm -rf /tmp/twilight-build
+  cp -r "${srcdir}/twilightmc-oss" /tmp/twilight-build
+  
+  cd "/tmp/twilight-build"
   git remote add tangled "https://tangled.org/quanvm0501.tngl.sh/twilightmc-oss.git" 2>/dev/null || true
   git fetch tangled main --quiet || true
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  
+  # Chạy npm trên thư mục gốc Linux thuần túy
   npm --prefix crates/twilight-ui/ui ci
 }
 
 build() {
-  cd "${srcdir}/twilightmc-oss"
+  cd "/tmp/twilight-build"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR="${srcdir}/target"
+  
   npm --prefix crates/twilight-ui/ui run build
   cargo build --frozen --release -p twilight-cli -p twilight-ui
 }
