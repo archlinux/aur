@@ -1,0 +1,17 @@
+pkgbase = tweety-bin
+	pkgdesc = Integrated terminal for your browser
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/pomdtr/tweety
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tweety
+	conflicts = tweety
+	options = !debug
+	source_x86_64 = tweety-bin-2.3.0-x86_64.tar.gz::https://github.com/pomdtr/tweety/releases/download/v2.3.0/tweety-2.3.0-linux_amd64.tar.gz
+	sha256sums_x86_64 = 1527e0d601bee85fd90fa637c044e8266eefadf628af87d511abe38eb2b7550c
+	source_aarch64 = tweety-bin-2.3.0-aarch64.tar.gz::https://github.com/pomdtr/tweety/releases/download/v2.3.0/tweety-2.3.0-linux_arm64.tar.gz
+	sha256sums_aarch64 = 66fba9d1082cf7d2546f62d6aebc1283f2f3b506ee94b3e735c3d543a9257f34
+
+pkgname = tweety-bin
