@@ -22,6 +22,6 @@ pkgbase = dj-usb-tkit-bin
 	options = !strip
 	options = !debug
 	source = dj-usb-tkit-0.7.1.deb::https://github.com/haivala/dj-usb-tkit/releases/download/v0.7.1/DJ_USB_Tkit_0.7.1_amd64.deb
-	sha256sums = 2ce1ce548302cf1307b7945376fc2d16fb4d8271c1cc7b6480ff0e28594996da
+	sha256sums = 1b69776135e4a89695be61e5acefc36ad6a345cd30448bb53dd9895382399dc5
 
 pkgname = dj-usb-tkit-bin

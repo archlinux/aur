@@ -1,7 +1,7 @@
 # Maintainer: Harri Häivälä
 #
 # Template for the AUR package dj-usb-tkit-bin. scripts/aur-release.sh fills
-# in 0.7.1, 1 and 2ce1ce548302cf1307b7945376fc2d16fb4d8271c1cc7b6480ff0e28594996da and writes the result to the AUR clone;
+# in 0.7.1, 1 and 1b69776135e4a89695be61e5acefc36ad6a345cd30448bb53dd9895382399dc5 and writes the result to the AUR clone;
 # edit this file, not the PKGBUILD there.
 #
 # Repackages the release .deb. The binary links these libraries directly
@@ -33,7 +33,7 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 options=('!strip' '!debug')
 source=("${_appname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/DJ_USB_Tkit_${pkgver}_amd64.deb")
-sha256sums=('2ce1ce548302cf1307b7945376fc2d16fb4d8271c1cc7b6480ff0e28594996da')
+sha256sums=('1b69776135e4a89695be61e5acefc36ad6a345cd30448bb53dd9895382399dc5')
 
 package() {
   # makepkg has already unpacked the .deb into control/data tarballs.
