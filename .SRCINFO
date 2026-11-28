@@ -1,0 +1,17 @@
+pkgbase = p2ptunnel-bin
+	pkgdesc = P2P TCP and UDP tunneling tool for reaching hosts behind NAT
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/chenjia404/p2ptunnel
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = p2ptunnel
+	conflicts = p2ptunnel
+	options = !debug
+	source_x86_64 = p2ptunnel-bin-0.1.3-x86_64.tar.gz::https://github.com/chenjia404/p2ptunnel/releases/download/v0.1.3/p2ptunnel_0.1.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 396b1e98e777eca9cff40ad4fab67258bbc02e4b9f8c0ab77bcb9bb73e8ca6b1
+	source_aarch64 = p2ptunnel-bin-0.1.3-aarch64.tar.gz::https://github.com/chenjia404/p2ptunnel/releases/download/v0.1.3/p2ptunnel_0.1.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5e502e518f9892633d7b30ec9ece00c261820e2e65362581475cb9b932d8a222
+
+pkgname = p2ptunnel-bin
