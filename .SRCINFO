@@ -1,0 +1,17 @@
+pkgbase = mosdns-x-bin
+	pkgdesc = DNS forwarder with a customizable pipeline
+	pkgver = 26.05.25
+	pkgrel = 1
+	url = https://github.com/pmkol/mosdns-x
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = mosdns-x
+	conflicts = mosdns-x
+	options = !debug
+	source_x86_64 = mosdns-x-bin-26.05.25-x86_64.zip::https://github.com/pmkol/mosdns-x/releases/download/v26.05.25/mosdns-linux-amd64.zip
+	sha256sums_x86_64 = 1e5673d22b753f87e890b59390b053ecfc301942ddec0755c93b2b907cfb7256
+	source_aarch64 = mosdns-x-bin-26.05.25-aarch64.zip::https://github.com/pmkol/mosdns-x/releases/download/v26.05.25/mosdns-linux-arm64.zip
+	sha256sums_aarch64 = 322209b72b8f5d0f5b425e331bc6e5330e443f3c449971546505e24fa7dbde33
+
+pkgname = mosdns-x-bin
