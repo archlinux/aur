@@ -1,7 +1,7 @@
 # DO NOT EDIT DIRECTLY: Managed by scripts/sync_metadata.go from app.config.json
 # Maintainer: Alexander Mot <alexander@amot.dev>
 pkgname=planisphere-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Elite Dangerous Expedition Planner and Astrometric Telemetry Terminal"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'webkit2gtk-4.1')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("$url/releases/download/v$pkgver/planisphere-v$pkgver-linux-amd64.tar.gz")
-sha256sums=('c065d3fba071dadef57f4381c6f05e53f532e0dcb131e8031909d1cea8dd4244')
+sha256sums=('70f9e7f19a7433b660e906c3966fd469212310e5c5030d78f5df4e54006bac16')
 
 package() {
   cd "$srcdir"
