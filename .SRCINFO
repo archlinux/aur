@@ -1,0 +1,17 @@
+pkgbase = orloj-bin
+	pkgdesc = Orchestration runtime for multi-agent AI systems
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = https://github.com/OrlojHQ/orloj
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = orloj
+	conflicts = orloj
+	options = !debug
+	source_x86_64 = orloj-bin-0.19.0-x86_64.tar.gz::https://github.com/OrlojHQ/orloj/releases/download/v0.19.0/orlojd_v0.19.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9a169731aab73a1d064bf7b2cde5ac947ef643f67a1876bf016c982d34297c67
+	source_aarch64 = orloj-bin-0.19.0-aarch64.tar.gz::https://github.com/OrlojHQ/orloj/releases/download/v0.19.0/orlojd_v0.19.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 94964fceafd7cd2955c86ba9c69858061cffde0946a44086cf152f07b8e34862
+
+pkgname = orloj-bin
