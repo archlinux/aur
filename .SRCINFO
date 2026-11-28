@@ -1,0 +1,17 @@
+pkgbase = dexdec-bin
+	pkgdesc = Android decompiler for humans and AI agents
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/asLody/dexdec
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = zlib
+	provides = dexdec
+	conflicts = dexdec
+	options = !debug
+	source_x86_64 = dexdec-bin-1.0.2-x86_64.tar.gz::https://github.com/asLody/dexdec/releases/download/v1.0.2/DexDec-1.0.2-cli-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 112d52b93920fc1b2c32070ef934b7731b9138a154710fe9b1b4e2fb6f2ca2a6
+
+pkgname = dexdec-bin
