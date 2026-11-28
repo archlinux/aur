@@ -1,0 +1,19 @@
+pkgbase = kc-ssh-pam-bin
+	pkgdesc = SSH authentication against Keycloak OIDC via PAM
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/kha7iq/kc-ssh-pam
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kc-ssh-pam
+	conflicts = kc-ssh-pam
+	options = !debug
+	source = kc-ssh-pam-bin-0.1.4-LICENSE::https://raw.githubusercontent.com/kha7iq/kc-ssh-pam/v0.1.4/LICENSE
+	sha256sums = 6b0e1c02e95350225aebbb228d7e1a147fef3b86ee061dd49cffaebb50179a58
+	source_x86_64 = kc-ssh-pam-bin-0.1.4-x86_64.tar.gz::https://github.com/kha7iq/kc-ssh-pam/releases/download/v0.1.4/kc-ssh-pam_linux_amd64.tar.gz
+	sha256sums_x86_64 = 965076fcc588f4f1dfb274b56b25b596e974d171bc7dead41ff587d66b07e938
+	source_aarch64 = kc-ssh-pam-bin-0.1.4-aarch64.tar.gz::https://github.com/kha7iq/kc-ssh-pam/releases/download/v0.1.4/kc-ssh-pam_linux_arm64.tar.gz
+	sha256sums_aarch64 = 68074ee156aac91844b89b35da1b913a887d5037e34bc709655dad9f3e42ee59
+
+pkgname = kc-ssh-pam-bin
