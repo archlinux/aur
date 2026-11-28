@@ -1,0 +1,22 @@
+pkgbase = witnet-rust-bin
+	pkgdesc = Witnet decentralized oracle node and wallet backend
+	pkgver = 2.0.27
+	pkgrel = 1
+	url = https://github.com/witnet/witnet-rust
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = witnet-rust
+	conflicts = witnet-rust
+	options = !debug
+	source = witnet-rust-bin-2.0.27-LICENSE::https://raw.githubusercontent.com/witnet/witnet-rust/2.0.27/LICENSE
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+	source_x86_64 = witnet-rust-bin-2.0.27-x86_64.tar.gz::https://github.com/witnet/witnet-rust/releases/download/2.0.27/witnet-2.0.27-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9a79406e5c8bf637a20e92cdbd668f848434b074aac101ca079ada0db67860fd
+	source_aarch64 = witnet-rust-bin-2.0.27-aarch64.tar.gz::https://github.com/witnet/witnet-rust/releases/download/2.0.27/witnet-2.0.27-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f0ab3d6df795bc0ba3b4b910935ff5477daac928a3cfe6556a18ca9825ef9bee
+
+pkgname = witnet-rust-bin
