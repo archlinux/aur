@@ -1,0 +1,19 @@
+pkgbase = dictu-bin
+	pkgdesc = High-level, dynamically typed, multi-paradigm programming language
+	pkgver = 0.31.0
+	pkgrel = 1
+	url = https://github.com/dictu-lang/Dictu
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = glibc
+	depends = util-linux-libs
+	provides = dictu
+	conflicts = dictu
+	options = !debug
+	source = dictu-bin-0.31.0-LICENSE::https://raw.githubusercontent.com/dictu-lang/Dictu/v0.31.0/LICENSE
+	sha256sums = 1e11be27805574d5c12c4a730c6fe2228e46e556f4f00f6a63dd4ede33e226a9
+	source_x86_64 = dictu-bin-0.31.0-x86_64::https://github.com/dictu-lang/Dictu/releases/download/v0.31.0/dictu-linux-x86_64
+	sha256sums_x86_64 = f0d91732b24e445395bf2acf43fda6d8021e9af6154fa77ab4ac1c9e7b43bd8b
+
+pkgname = dictu-bin
