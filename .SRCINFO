@@ -1,0 +1,17 @@
+pkgbase = igor-php-bin
+	pkgdesc = Static analysis for FrankenPHP worker mode state bugs
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/igor-php/igor-php
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = igor-php
+	conflicts = igor-php
+	options = !debug
+	source_x86_64 = igor-php-bin-0.11.0-x86_64.tar.gz::https://github.com/igor-php/igor-php/releases/download/v0.11.0/igor-php_0.11.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = c799c02830eeb3e91cb9fcfeb6a2ec8da34ebcade27d6d55496f93253cc866c5
+	source_aarch64 = igor-php-bin-0.11.0-aarch64.tar.gz::https://github.com/igor-php/igor-php/releases/download/v0.11.0/igor-php_0.11.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ccc6347a05ec5430a97d98c728550517bbe5ce128f7b952a12df9775e91cd8b6
+
+pkgname = igor-php-bin
