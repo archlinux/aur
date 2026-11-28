@@ -1,0 +1,17 @@
+pkgbase = pphack-bin
+	pkgdesc = Client-side prototype pollution scanner
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/edoardottt/pphack
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pphack
+	conflicts = pphack
+	options = !debug
+	source_x86_64 = pphack-bin-0.1.6-x86_64.zip::https://github.com/edoardottt/pphack/releases/download/v0.1.6/pphack_0.1.6_linux_amd64.zip
+	sha256sums_x86_64 = 365cf51f09efd3daff51a7671b30bdd328e7ac462ccb975c83815b564f453b7b
+	source_aarch64 = pphack-bin-0.1.6-aarch64.zip::https://github.com/edoardottt/pphack/releases/download/v0.1.6/pphack_0.1.6_linux_arm64.zip
+	sha256sums_aarch64 = c17d20b0ba57cd235888efab6a00c54f36a92993504db0b4042da1b3d342f63c
+
+pkgname = pphack-bin
