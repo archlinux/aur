@@ -1,0 +1,17 @@
+pkgbase = mongodb-query-exporter-bin
+	pkgdesc = Prometheus exporter for MongoDB aggregation queries
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://github.com/raffis/mongodb-query-exporter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mongodb-query-exporter
+	conflicts = mongodb-query-exporter
+	options = !debug
+	source_x86_64 = mongodb-query-exporter-bin-5.1.0-x86_64.tar.gz::https://github.com/raffis/mongodb-query-exporter/releases/download/v5.1.0/mongodb-query-exporter_5.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = bf4358d38e67e51e7130da0180cfe72ca55aee74b721b650b93152f39edef962
+	source_aarch64 = mongodb-query-exporter-bin-5.1.0-aarch64.tar.gz::https://github.com/raffis/mongodb-query-exporter/releases/download/v5.1.0/mongodb-query-exporter_5.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a408f8a1706c1ab286eb7197399336dd55fb6bcfb2827d71180b931f8a922228
+
+pkgname = mongodb-query-exporter-bin
