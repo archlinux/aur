@@ -1,6 +1,6 @@
 pkgbase = scidcommunity
 	pkgdesc = Enhanced fork of Scid chess database with Chess.com/Lichess integration, tablebase lookup, improved search, and additional training features
-	pkgver = 5.1.4.78
+	pkgver = 5.1.4.79
 	pkgrel = 1
 	url = https://github.com/whelanh/scidCommunity
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = scidcommunity
 	makedepends = git
 	depends = tcl
 	depends = tk
-	source = scidcommunity-5.1.4.78.tar.gz::https://github.com/whelanh/scidCommunity/archive/a76dfdac527f5c699da19e4d58c8c0790592a920.tar.gz
+	source = scidcommunity-5.1.4.79.tar.gz::https://github.com/whelanh/scidCommunity/archive/0ad2d5575d52a43df21366542297653adac1bc7b.tar.gz
 	sha256sums = SKIP
 
 pkgname = scidcommunity
