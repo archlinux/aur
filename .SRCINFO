@@ -1,0 +1,17 @@
+pkgbase = templier-bin
+	pkgdesc = Templ development environment with automatic rebuild and reload
+	pkgver = 0.13.6
+	pkgrel = 1
+	url = https://github.com/romshark/templier
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = templier
+	conflicts = templier
+	options = !debug
+	source_x86_64 = templier-bin-0.13.6-x86_64.tar.gz::https://github.com/romshark/templier/releases/download/v0.13.6/templier_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = e36bed95e76aac1a42d8d2d195ade063d2a154b87b212d5c28680e82fe9f15ab
+	source_aarch64 = templier-bin-0.13.6-aarch64.tar.gz::https://github.com/romshark/templier/releases/download/v0.13.6/templier_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 478ec91d09996251feceddf54f6629c8049e4fc82fde3df4822216750149a262
+
+pkgname = templier-bin
