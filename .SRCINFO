@@ -1,0 +1,17 @@
+pkgbase = gphotosdl-bin
+	pkgdesc = Original-resolution Google Photos downloader for use with rclone
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/rclone/gphotosdl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gphotosdl
+	conflicts = gphotosdl
+	options = !debug
+	source_x86_64 = gphotosdl-bin-0.0.2-x86_64.zip::https://github.com/rclone/gphotosdl/releases/download/v0.0.2/gphotosdl_Linux_x86_64.zip
+	sha256sums_x86_64 = 8db4a005ff83d90d7e755a4dcb243556edc02470b9cb6ed2cafe6d4bd0b36d7f
+	source_aarch64 = gphotosdl-bin-0.0.2-aarch64.zip::https://github.com/rclone/gphotosdl/releases/download/v0.0.2/gphotosdl_Linux_arm64.zip
+	sha256sums_aarch64 = 9d745127b9f584aa8f99f6854aec53de47ee42b1457f70250fbcdd6d71f7233c
+
+pkgname = gphotosdl-bin
