@@ -1,0 +1,15 @@
+pkgbase = vespasian-bin
+	pkgdesc = Map API attack surfaces from captured traffic
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/praetorian-inc/vespasian
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = vespasian
+	conflicts = vespasian
+	options = !debug
+	source_x86_64 = vespasian-bin-1.0.0-x86_64.tar.gz::https://github.com/praetorian-inc/vespasian/releases/download/v1.0.0/vespasian_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 887ea6b328f1a33bc02cadb9aa3e1e4526d5e0df2cf057029b335957dddb8248
+
+pkgname = vespasian-bin
