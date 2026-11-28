@@ -1,0 +1,19 @@
+pkgbase = calepin-bin
+	pkgdesc = Computational notebooks in Typst
+	pkgver = 0.0.63
+	pkgrel = 1
+	url = https://github.com/vincentarelbundock/calepin
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = calepin
+	conflicts = calepin
+	options = !debug
+	source_x86_64 = calepin-bin-0.0.63-x86_64.tar.xz::https://github.com/vincentarelbundock/calepin/releases/download/v0.0.63/calepin-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 17011bef797d844790bc910cfabc013bab344a2a45f9bd12b2a56ebc23f57a35
+	source_aarch64 = calepin-bin-0.0.63-aarch64.tar.xz::https://github.com/vincentarelbundock/calepin/releases/download/v0.0.63/calepin-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = c49a7b7343bed8cf94f8acdab983c8392ef815f111a4382971b4aa7b7afb2b34
+
+pkgname = calepin-bin
