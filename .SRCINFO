@@ -1,0 +1,17 @@
+pkgbase = opensoho-bin
+	pkgdesc = Manage a small number of OpenWrt devices
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/rubenbe/opensoho
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = opensoho
+	conflicts = opensoho
+	options = !debug
+	source_x86_64 = opensoho-bin-0.16.0-x86_64.zip::https://github.com/rubenbe/opensoho/releases/download/v0.16.0/opensoho_0.16.0_linux_amd64.zip
+	sha256sums_x86_64 = 85c5b9b15fd55857b8e8f3cce237a43047e3fa953cd59bb8a487e210d651d4d2
+	source_aarch64 = opensoho-bin-0.16.0-aarch64.zip::https://github.com/rubenbe/opensoho/releases/download/v0.16.0/opensoho_0.16.0_linux_arm64.zip
+	sha256sums_aarch64 = c446c9bc378593ce5196cf3eeb2a9aa0dba7f05880ac747295e91fa526265f68
+
+pkgname = opensoho-bin
