@@ -1,0 +1,19 @@
+pkgbase = cpos-bin
+	pkgdesc = Fetch Codeforces and CSES problems, run tests and submit from the terminal
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Soham109/cpos
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = cpos
+	conflicts = cpos
+	options = !debug
+	source = cpos-bin-0.3.0-LICENSE::https://raw.githubusercontent.com/Soham109/cpos/v0.3.0/LICENSE
+	sha256sums = 8217f722ca8d2c53c3c21ca8dda88d3bc408d1f603a7aab0f0c5c930fd9676b0
+	source_x86_64 = cpos-bin-0.3.0-x86_64.tar.gz::https://github.com/Soham109/cpos/releases/download/v0.3.0/cpos-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 49b33d373dbe28aab227a296db20622a0acccb2a33e8af22b04d1da9e7e96dc2
+
+pkgname = cpos-bin
