@@ -1,7 +1,7 @@
 # Maintainer: Kaarel <github.com/kaareloun>
 # Installs the prebuilt binary from the GitHub release. Updated by .github/workflows/release.yml.
 pkgname=lookout-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A fast, good-looking system monitor with Rosé Pine themes, an htop replacement with a GUI (prebuilt binary)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('lookout')
 conflicts=('lookout')
 options=('!debug')
 source_x86_64=("lookout-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/lookout-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('502f88e09d819fd17ca75cf74e5e120aa596bf0f42f57b347d3bec8f31615895')
+sha256sums_x86_64=('8b7c3ef87191cfa0fa54710e7c103603b5ac6c9b7e7fe666886f606c43a56c47')
 
 package() {
   cd "lookout-v$pkgver-x86_64-unknown-linux-gnu"
