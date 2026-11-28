@@ -29,7 +29,7 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S "$_pkgname" -G Ninja \
+  cmake --fresh -B build -S "$_pkgname" -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_PLAYGROUND=OFF \
