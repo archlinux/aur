@@ -1,0 +1,20 @@
+pkgbase = getnote-cli-bin
+	pkgdesc = Command-line client for the Get Notes app, for humans and AI agents
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/iswalle/getnote-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = getnote-cli
+	conflicts = getnote-cli
+	options = !debug
+	source = getnote-cli-bin-1.11.0-LICENSE::https://raw.githubusercontent.com/iswalle/getnote-cli/v1.11.0/LICENSE
+	sha256sums = e4f2c00f20e17094a2de1e4a770cdd97068eb6d815abd3b98b376c383c75638d
+	source_x86_64 = getnote-cli-bin-1.11.0-x86_64.tar.gz::https://github.com/iswalle/getnote-cli/releases/download/v1.11.0/getnote-cli_1.11.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e9996a635fcb6750457985bd7440643cf812550e6799891463ae48cd1307ee29
+	source_aarch64 = getnote-cli-bin-1.11.0-aarch64.tar.gz::https://github.com/iswalle/getnote-cli/releases/download/v1.11.0/getnote-cli_1.11.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8edf9fa49f340c58d3c54face78816132327983603ab1779f765d84f760b88a3
+
+pkgname = getnote-cli-bin
