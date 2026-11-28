@@ -1,0 +1,23 @@
+pkgbase = duckdb-otlp-bin
+	pkgdesc = Stream, store and query OpenTelemetry data in DuckDB
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/smithclay/duckdb-otlp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = zlib
+	provides = duckdb-otlp
+	conflicts = duckdb-otlp
+	options = !debug
+	source = duckdb-otlp-bin-0.10.0-LICENSE::https://raw.githubusercontent.com/smithclay/duckdb-otlp/v0.10.0/LICENSE
+	sha256sums = a457b2e4e0dafab867e52b8deeaac344681706c5020b91556f69d90dbc973894
+	source_x86_64 = duckdb-otlp-bin-0.10.0-x86_64.tar.gz::https://github.com/smithclay/duckdb-otlp/releases/download/v0.10.0/duckdb-otlp-v0.10.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = df84e08a9774dd106da5c11847544090babff6e992bc961f90b002ebb06c6ef2
+	source_aarch64 = duckdb-otlp-bin-0.10.0-aarch64.tar.gz::https://github.com/smithclay/duckdb-otlp/releases/download/v0.10.0/duckdb-otlp-v0.10.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 6dc84681d69fb534351966e2bc1d24ee13b545fbb302cd7c3aa3f11d44dd2906
+
+pkgname = duckdb-otlp-bin
