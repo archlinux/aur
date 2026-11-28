@@ -1,0 +1,22 @@
+pkgbase = opencrust-bin
+	pkgdesc = Personal multi-agent AI assistant platform with RAG and MCP
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/opencrust-org/opencrust
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = opencrust
+	conflicts = opencrust
+	options = !debug
+	source = opencrust-bin-0.2.9-LICENSE::https://raw.githubusercontent.com/opencrust-org/opencrust/v0.2.9/LICENSE
+	sha256sums = 2043a0b69605bddbaf74be895da38236362e08172cde654119f0dd5d9ef0d602
+	source_x86_64 = opencrust-bin-0.2.9-x86_64::https://github.com/opencrust-org/opencrust/releases/download/v0.2.9/opencrust-linux-x86_64
+	sha256sums_x86_64 = a34aec4da31a98c8b9c94d7e5e2b9712d4f26f04dab24d198ffe8610bfbf8968
+	source_aarch64 = opencrust-bin-0.2.9-aarch64::https://github.com/opencrust-org/opencrust/releases/download/v0.2.9/opencrust-linux-aarch64
+	sha256sums_aarch64 = 4330be4e3b17d4ed403df466d1dd7fad374ca7bb3e9bdcb141be288aaea0e235
+
+pkgname = opencrust-bin
