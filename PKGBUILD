@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=psicode
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Portable terminal coding agent written in C89 and Lua'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('lua' 'cjson' 'curl' 'zlib' 'libedit' 'argtable3')
 makedepends=('pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/siraben/psi/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d7d16374e08f54555a274d59d6678072afdaf83e5a5309f1132de79996d13e4e')
+sha256sums=('b56ab25b485d3d4f436b5c2225728d9b7138ce9c8368d0f4a8d43beddbb0323d')
 
 latestver() {
   gh api repos/siraben/psi/releases/latest --jq '.tag_name' | sed 's/^v//'
