@@ -1,0 +1,17 @@
+pkgbase = cronn-bin
+	pkgdesc = Cron service with extras
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://github.com/umputun/cronn
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cronn
+	conflicts = cronn
+	options = !debug
+	source_x86_64 = cronn-bin-1.18.0-x86_64.tar.gz::https://github.com/umputun/cronn/releases/download/v1.18.0/cronn_v1.18.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0d9dbf20db32feec7ef79ba6db0b6d9fa16953ea301637c179d19529a25fd4e5
+	source_aarch64 = cronn-bin-1.18.0-aarch64.tar.gz::https://github.com/umputun/cronn/releases/download/v1.18.0/cronn_v1.18.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ecbf0741e4a4e9047236ad4f00d6d976b935733ec3c997441dae2e9e43d2156d
+
+pkgname = cronn-bin
