@@ -1,0 +1,18 @@
+pkgbase = email-mcp-bin
+	pkgdesc = Email MCP server with full IMAP and SMTP support
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/codefuturist/email-mcp
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	depends = glibc
+	provides = email-mcp
+	conflicts = email-mcp
+	options = !debug
+	source_x86_64 = email-mcp-bin-0.6.0-x86_64.tar.gz::https://github.com/codefuturist/email-mcp/releases/download/v0.6.0/email-mcp_0.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = bb444c2bf71c0d3fb3f763e076322afeff30a79ae2ddad0377231ca59be08dfe
+	source_aarch64 = email-mcp-bin-0.6.0-aarch64.tar.gz::https://github.com/codefuturist/email-mcp/releases/download/v0.6.0/email-mcp_0.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 04e8b118f452c1193d5afa7a3784ddec8d8500513a6d02843ffd5bc8392afc87
+
+pkgname = email-mcp-bin
