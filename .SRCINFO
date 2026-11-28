@@ -1,0 +1,17 @@
+pkgbase = unicli-bin
+	pkgdesc = Control the Unity Editor from the terminal
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/yucchiy/UniCli
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = unicli
+	conflicts = unicli
+	options = !debug
+	source = unicli-bin-1.7.0-LICENSE::https://raw.githubusercontent.com/yucchiy/UniCli/v1.7.0/LICENSE
+	sha256sums = 49d87ace012a451c510a331ef4fb5647a0cc870a178a1f616e5ecd709d10faab
+	source_x86_64 = unicli-bin-1.7.0-x86_64.tar.gz::https://github.com/yucchiy/UniCli/releases/download/v1.7.0/unicli-linux-x64.tar.gz
+	sha256sums_x86_64 = fb5db8fa3859ad6832a68d3b587a9f7d3c1def211fa0d257aaf566bff6a611ce
+
+pkgname = unicli-bin
