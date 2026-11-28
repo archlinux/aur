@@ -1,0 +1,17 @@
+pkgbase = moley-bin
+	pkgdesc = Share a local app on your own domain with one command
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = https://github.com/stupside/moley
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = moley
+	conflicts = moley
+	options = !debug
+	source_x86_64 = moley-bin-2.9.0-x86_64.tar.gz::https://github.com/stupside/moley/releases/download/v2.9.0/moley_2.9.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 522b05dd82b601b009c5016e4d48c17813e201a363b8ef8b1f1d1bdb7222240d
+	source_aarch64 = moley-bin-2.9.0-aarch64.tar.gz::https://github.com/stupside/moley/releases/download/v2.9.0/moley_2.9.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4edebb997abf173d88f0f0a93722445d2594502d5b0b3375a210994bea8fe54b
+
+pkgname = moley-bin
