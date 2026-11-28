@@ -1,0 +1,12 @@
+pkgbase = stalescan
+	pkgdesc = Check whether a drive reads old data much more slowly than fresh data
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/acrion/stalescan
+	arch = any
+	license = MIT
+	depends = python
+	source = stalescan-0.1.0.tar.gz::https://github.com/acrion/stalescan/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 4aad33def1ce0844a2cd885822ab9e857c9fd5cd28cf6349160e785e85f9accc
+
+pkgname = stalescan
