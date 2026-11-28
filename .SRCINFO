@@ -1,0 +1,19 @@
+pkgbase = seasonpackarr-bin
+	pkgdesc = autobrr companion that hardlinks existing episodes into season pack folders
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nuxencs/seasonpackarr
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	provides = seasonpackarr
+	conflicts = seasonpackarr
+	options = !debug
+	source = seasonpackarr-bin-1.0.0-LICENSE::https://raw.githubusercontent.com/nuxencs/seasonpackarr/v1.0.0/LICENSE
+	sha256sums = f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505
+	source_x86_64 = seasonpackarr-bin-1.0.0-x86_64.tar.gz::https://github.com/nuxencs/seasonpackarr/releases/download/v1.0.0/seasonpackarr_1.0.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = dfd3aa35ac287e34b1cbf1e9360ec0c761ab27739384684b44bfc86763c19f1b
+	source_aarch64 = seasonpackarr-bin-1.0.0-aarch64.tar.gz::https://github.com/nuxencs/seasonpackarr/releases/download/v1.0.0/seasonpackarr_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a90117b854dff8fe55fa5b34e12a5d5eeeef27f4e619595b7d0893ff2af532df
+
+pkgname = seasonpackarr-bin
