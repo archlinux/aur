@@ -1,6 +1,6 @@
 pkgbase = ibus-areca-bin
 	pkgdesc = Areca Vietnamese input method for IBus using the Bamboo engine
-	pkgver = 0.1.19
+	pkgver = 0.1.21
 	pkgrel = 1
 	url = https://github.com/xhkzeroone/ibus-areca
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = ibus-areca-bin
 	provides = ibus-areca
 	conflicts = ibus-areca
 	conflicts = ibus-areca-git
-	noextract = ibus-areca-0.1.19-1-x86_64.pkg.tar.zst
+	noextract = ibus-areca-0.1.21-1-x86_64.pkg.tar.zst
 	options = !debug
 	options = !strip
-	source = https://github.com/xhkzeroone/ibus-areca/releases/download/v0.1.19/ibus-areca-0.1.19-1-x86_64.pkg.tar.zst
-	sha256sums = f36ac72bf8348f1486e9d79814610a922f2a36887d4671c509027460eee0bda6
+	source = https://github.com/xhkzeroone/ibus-areca/releases/download/v0.1.21/ibus-areca-0.1.21-1-x86_64.pkg.tar.zst
+	sha256sums = 4e260d547a2ddd5f833548cc05a9caac22e051c57b38838f8c6e4f99e0309f31
 
 pkgname = ibus-areca-bin
