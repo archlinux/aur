@@ -1,0 +1,18 @@
+pkgbase = strait-bin
+	pkgdesc = A virtual service between Kubernetes clusters at different sites
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://strait.tako.id
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = strait
+	conflicts = strait
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/takodotid/strait/releases/download/v1.6.0/strait_v1.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b31e8f170947272808c11f29cd9c138b2d431659b9aa3bf75d34f2f363454981
+	source_aarch64 = https://github.com/takodotid/strait/releases/download/v1.6.0/strait_v1.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b31b94eeb1aced90b4a2232cd6f8e1708a7db4c79e989ff5c3bc0daeb17e7d00
+
+pkgname = strait-bin
