@@ -1,6 +1,6 @@
 pkgbase = r-qs2
 	pkgdesc = Efficient Serialization of R Objects
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=qs2
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-qs2
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-stringi
-	source = https://cran.r-project.org/src/contrib/qs2_0.4.0.tar.gz
-	sha256sums = 9ab39bcaca5bfc2b56420ca155d48a05a06a273fbcf77290b65799d8e8dee351
+	source = https://cran.r-project.org/src/contrib/qs2_0.5.0.tar.gz
+	sha256sums = c67a7b872d25a84a9149f4f5cea39ef494479ab68fed98d0ce69c6a9674abbf6
 
 pkgname = r-qs2
