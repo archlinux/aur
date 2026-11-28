@@ -1,0 +1,17 @@
+pkgbase = kubebuddy-bin
+	pkgdesc = Kubernetes cluster health, security and configuration scanner
+	pkgver = 0.0.39
+	pkgrel = 1
+	url = https://github.com/KubeDeckio/KubeBuddy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kubebuddy
+	conflicts = kubebuddy
+	options = !debug
+	source_x86_64 = kubebuddy-bin-0.0.39-x86_64.tar.gz::https://github.com/KubeDeckio/KubeBuddy/releases/download/v0.0.39/kubebuddy_0.0.39_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5a8ef3f4ad72aa1653374eff5bf57ce02b5909d9cf66a4898f12acdcb601a800
+	source_aarch64 = kubebuddy-bin-0.0.39-aarch64.tar.gz::https://github.com/KubeDeckio/KubeBuddy/releases/download/v0.0.39/kubebuddy_0.0.39_linux_arm64.tar.gz
+	sha256sums_aarch64 = 91479ff6528461dbe683e36523cf6a952a71dd69bbf0954c949caee90ab0678d
+
+pkgname = kubebuddy-bin
