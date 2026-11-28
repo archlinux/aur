@@ -2,7 +2,7 @@
 
 _pkgname=obs-studio-themed
 pkgname=${_pkgname}-git
-pkgver=r8.abd7026
+pkgver=r9.c57e73f
 pkgrel=1
 pkgdesc='A themed look for OBS Studio'
 arch=("x86_64")
@@ -22,9 +22,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   g++ -shared -fPIC -o libQtForceStyle.so ./QtForceStyle.cpp $(pkg-config \
-    --cflags --libs Qt6Widgets) -DQ_OBJECT_INSTALL_EVENT_FILTER_NAME=$(nm -D \
-    "$(pkg-config --variable=libdir Qt6Core)/libQt6Core.so" | grep -o \
-    '[^ ]*installEventFilter[^ @]*')
+    --cflags --libs Qt6Widgets)
 }
 
 package() {
