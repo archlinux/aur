@@ -1,0 +1,19 @@
+pkgbase = go-test-coverage-bin
+	pkgdesc = Report when Go test coverage falls below a threshold
+	pkgver = 2.23.0
+	pkgrel = 1
+	url = https://github.com/vladopajic/go-test-coverage
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = go-test-coverage
+	conflicts = go-test-coverage
+	options = !debug
+	source = go-test-coverage-bin-2.23.0-LICENSE::https://raw.githubusercontent.com/vladopajic/go-test-coverage/v2.23.0/LICENSE
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = go-test-coverage-bin-2.23.0-x86_64.tar.gz::https://github.com/vladopajic/go-test-coverage/releases/download/v2.23.0/go-test-coverage_v2.23.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5a19fb5858e73888e287bf09930b72f91c44f846826665fc06f17a6bd7cac948
+	source_aarch64 = go-test-coverage-bin-2.23.0-aarch64.tar.gz::https://github.com/vladopajic/go-test-coverage/releases/download/v2.23.0/go-test-coverage_v2.23.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = db5f159b42397b903206860e252bdca928aff4471684277b1384e23156bc2072
+
+pkgname = go-test-coverage-bin
