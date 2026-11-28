@@ -1,0 +1,19 @@
+pkgbase = talisman-bin
+	pkgdesc = Pre-commit hook that blocks commits containing secrets
+	pkgver = 1.37.0
+	pkgrel = 1
+	url = https://github.com/thoughtworks/talisman
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = talisman
+	conflicts = talisman
+	options = !debug
+	source = talisman-bin-1.37.0-LICENSE::https://raw.githubusercontent.com/thoughtworks/talisman/v1.37.0/LICENSE
+	sha256sums = 05a62ecce937ab4cd4b761c4fb20a3311b01f7368d32211356ec572746bc38e3
+	source_x86_64 = talisman-bin-1.37.0-x86_64::https://github.com/thoughtworks/talisman/releases/download/v1.37.0/talisman_linux_amd64
+	sha256sums_x86_64 = 8e0ae8bb7b160bf10c4fa1448beb04a32a35e63505b3dddff74a092bccaaa7e4
+	source_aarch64 = talisman-bin-1.37.0-aarch64::https://github.com/thoughtworks/talisman/releases/download/v1.37.0/talisman_linux_arm64
+	sha256sums_aarch64 = ca706f428a45d7a4ed3cc5c3cf7b3e5b0dfce6f2f584000a117d0d602a0342b7
+
+pkgname = talisman-bin
