@@ -1,0 +1,15 @@
+pkgbase = blogwatcher-bin
+	pkgdesc = Track new posts on your favorite blogs
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/Hyaxia/blogwatcher
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = blogwatcher
+	conflicts = blogwatcher
+	options = !debug
+	source_x86_64 = blogwatcher-bin-0.0.4-x86_64.tar.gz::https://github.com/Hyaxia/blogwatcher/releases/download/v0.0.4/blogwatcher_0.0.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 468b33612ef75f5672aa2f5c4d7c42db4c1cd4870c26027a1ec0018a91d41df5
+
+pkgname = blogwatcher-bin
