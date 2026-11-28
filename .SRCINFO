@@ -1,0 +1,17 @@
+pkgbase = commitsar-bin
+	pkgdesc = Check that commits follow the Conventional Commits standard
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/aevea/commitsar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = commitsar
+	conflicts = commitsar
+	options = !debug
+	source_x86_64 = commitsar-bin-1.0.3-x86_64.tar.gz::https://github.com/aevea/commitsar/releases/download/v1.0.3/commitsar_1.0.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 975a2920e7eaf63db3d99c43a72cdf50a05760cc66d4f6a28d69289d4982f793
+	source_aarch64 = commitsar-bin-1.0.3-aarch64.tar.gz::https://github.com/aevea/commitsar/releases/download/v1.0.3/commitsar_1.0.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2fafcf5f2309644f687de9bd7ab23a21bc2c471ae724f720bbc9fff1cab5cfaf
+
+pkgname = commitsar-bin
