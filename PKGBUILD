@@ -1,6 +1,6 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 pkgname=shisa
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='App lock for KDE Plasma 6 on Wayland: hides private windows and gates launches via fanotify'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
 )
 install=shisa.install
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d63a6495694a74b6c487a4c2f7109e43bb5f03b4105cffba21bf25ed256aa35b')
+sha256sums=('b16555ef3fb6cb72a48779455935e416b7d3166d23a5a34b03b9eb56c55868af')
 
 prepare() {
     cd "$pkgname-$pkgver"
