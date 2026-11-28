@@ -1,0 +1,17 @@
+pkgbase = noah-mqtt-bin
+	pkgdesc = Integrate Growatt Noah 2000 batteries with Home Assistant via MQTT
+	pkgver = 0.0.29
+	pkgrel = 1
+	url = https://github.com/mtrossbach/noah-mqtt
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = noah-mqtt
+	conflicts = noah-mqtt
+	options = !debug
+	source_x86_64 = noah-mqtt-bin-0.0.29-x86_64.tar.gz::https://github.com/mtrossbach/noah-mqtt/releases/download/v0.0.29/noah-mqtt_0.0.29_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6664ec998600ddd708524377e16336587625f9ec0f7a44f721ef0da542797287
+	source_aarch64 = noah-mqtt-bin-0.0.29-aarch64.tar.gz::https://github.com/mtrossbach/noah-mqtt/releases/download/v0.0.29/noah-mqtt_0.0.29_linux_arm64.tar.gz
+	sha256sums_aarch64 = b9b45948dc9d63711c3a3b32a38b12643e5b077dd935c72d62657ed4939ff30c
+
+pkgname = noah-mqtt-bin
