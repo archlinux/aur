@@ -1,0 +1,19 @@
+pkgbase = gogallery-bin
+	pkgdesc = Static site generator for image galleries
+	pkgver = 7.1.0
+	pkgrel = 1
+	url = https://github.com/robrotheram/gogallery
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libglvnd
+	depends = wayland
+	provides = gogallery
+	conflicts = gogallery
+	options = !debug
+	source = gogallery-bin-7.1.0-LICENSE::https://raw.githubusercontent.com/robrotheram/gogallery/v7.1.0/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = gogallery-bin-7.1.0-x86_64.tar.xz::https://github.com/robrotheram/gogallery/releases/download/v7.1.0/gogallery-linux-amd64.tar.xz
+	sha256sums_x86_64 = 4e101a47a741a3d4bdca4fb0cce0fb5c0009b773270939adaa65f7798f69f84d
+
+pkgname = gogallery-bin
