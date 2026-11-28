@@ -1,0 +1,17 @@
+pkgbase = diffyml-bin
+	pkgdesc = Fast structural YAML diff tool
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://github.com/szhekpisov/diffyml
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = diffyml
+	conflicts = diffyml
+	options = !debug
+	source_x86_64 = diffyml-bin-1.8.3-x86_64.tar.gz::https://github.com/szhekpisov/diffyml/releases/download/v1.8.3/diffyml_1.8.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4283dd3842d87ff9def4a2649ae2627ce90dce2602e2b23fe0a54d1e829f1c42
+	source_aarch64 = diffyml-bin-1.8.3-aarch64.tar.gz::https://github.com/szhekpisov/diffyml/releases/download/v1.8.3/diffyml_1.8.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9e7e3055e7f91e7dcbac65bca7bc7e403f5f32c98bf7730a1d70dc4da4680d9e
+
+pkgname = diffyml-bin
