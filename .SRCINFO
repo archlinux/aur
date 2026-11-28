@@ -1,0 +1,17 @@
+pkgbase = xcrawl3r-bin
+	pkgdesc = Recursively spider webpages for URLs
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/hueristiq/xcrawl3r
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = xcrawl3r
+	conflicts = xcrawl3r
+	options = !debug
+	source_x86_64 = xcrawl3r-bin-1.2.0-x86_64.tar.gz::https://github.com/hueristiq/xcrawl3r/releases/download/1.2.0/xcrawl3r_1.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b587f7704bba46f34d21958efa61d6c409603f40a70f095f090643df96e2723e
+	source_aarch64 = xcrawl3r-bin-1.2.0-aarch64.tar.gz::https://github.com/hueristiq/xcrawl3r/releases/download/1.2.0/xcrawl3r_1.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = e58377055fb1937374ed9549f4942897fb491f269e1175232d95f3307639e38f
+
+pkgname = xcrawl3r-bin
