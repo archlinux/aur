@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=arcmd-bin
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Native Markdown editor with a rich-text canvas"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/arcmd-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/arcmd-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('7ec772be0973115840b8641283d92503b94651cba914d0638605209e30f5d573')
-sha256sums_aarch64=('0cbad646662137ea5846715dbe7ed75d4d2048618656827eb3173f763dae883f')
+sha256sums_x86_64=('f36092f934182649b333ca75b54bf0a3eee1fc6a7b32217e828d980ce5529fa4')
+sha256sums_aarch64=('3171316432a60235c5bc2c66989d0fe0eb3039c4e06de5c5193e4cf6f6668349')
 
 package() {
   install -Dm755 "arcmd" "${pkgdir}/usr/bin/arcmd"

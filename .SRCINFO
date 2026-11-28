@@ -1,6 +1,6 @@
 pkgbase = arcmd-bin
 	pkgdesc = Native Markdown editor with a rich-text canvas
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/Ciao1019/ArcMD
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = arcmd-bin
 	provides = arcmd
 	conflicts = arcmd
 	options = !debug
-	source_x86_64 = arcmd-bin-0.5.0-x86_64.tar.gz::https://github.com/Ciao1019/ArcMD/releases/download/v0.5.0/arcmd-0.5.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 7ec772be0973115840b8641283d92503b94651cba914d0638605209e30f5d573
-	source_aarch64 = arcmd-bin-0.5.0-aarch64.tar.gz::https://github.com/Ciao1019/ArcMD/releases/download/v0.5.0/arcmd-0.5.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 0cbad646662137ea5846715dbe7ed75d4d2048618656827eb3173f763dae883f
+	source_x86_64 = arcmd-bin-0.5.2-x86_64.tar.gz::https://github.com/Ciao1019/ArcMD/releases/download/v0.5.2/arcmd-0.5.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = f36092f934182649b333ca75b54bf0a3eee1fc6a7b32217e828d980ce5529fa4
+	source_aarch64 = arcmd-bin-0.5.2-aarch64.tar.gz::https://github.com/Ciao1019/ArcMD/releases/download/v0.5.2/arcmd-0.5.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3171316432a60235c5bc2c66989d0fe0eb3039c4e06de5c5193e4cf6f6668349
 
 pkgname = arcmd-bin
