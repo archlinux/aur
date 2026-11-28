@@ -1,0 +1,17 @@
+pkgbase = ggufy-bin
+	pkgdesc = Convert safetensors and GGUF models
+	pkgver = 0.8.11
+	pkgrel = 1
+	url = https://github.com/qskousen/ggufy
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = ggufy
+	conflicts = ggufy
+	options = !debug
+	source = ggufy-bin-0.8.11-LICENSE::https://raw.githubusercontent.com/qskousen/ggufy/v0.8.11/LICENSE
+	sha256sums = 71ce060b750115e6a4d3246f8dcb03c45677f5354135c3f9f994be979a16ce9d
+	source_x86_64 = ggufy-bin-0.8.11-x86_64.zip::https://github.com/qskousen/ggufy/releases/download/v0.8.11/ggufy-linux-x86_64.zip
+	sha256sums_x86_64 = d6124b2114e2568703bfea39855af742b73ede419f62af4b99351517afa3f5dc
+
+pkgname = ggufy-bin
