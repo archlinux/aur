@@ -1,0 +1,4 @@
+#!/bin/execlineb -P
+envfile -I /etc/s6/config/keyd.conf
+importas -sCuD "" OPTS OPTS
+exec /usr/bin/keyd ${OPTS}
