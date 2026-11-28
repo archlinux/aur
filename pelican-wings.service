@@ -1,0 +1,22 @@
+# https://pelican.dev/docs/wings/install#daemonizing-using-systemd
+
+[Unit]
+Description=Pelican Wings Daemon
+After=docker.service
+Requires=docker.service
+PartOf=docker.service
+StartLimitBurst=30
+StartLimitIntervalSec=180
+
+[Service]
+User=root
+WorkingDirectory=/etc/pelican
+LimitNOFILE=4096
+RuntimeDirectory=wings
+PIDFile=/var/run/wings/daemon.pid
+ExecStart=/usr/bin/wings
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

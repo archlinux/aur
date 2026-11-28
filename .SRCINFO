@@ -1,0 +1,18 @@
+pkgbase = pelican-wings
+	pkgdesc = Pelican's server control daemon
+	pkgver = 1.0.0_rc.3
+	pkgrel = 1
+	url = https://github.com/pelican/wings
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = docker
+	conflicts = pterodactyl-wings
+	conflicts = pterodactyl-wings-bin
+	source = pelican-wings-1.0.0_rc.3.tar.gz::https://github.com/pelican/wings/archive/refs/tags/v1.0.0-rc.3.tar.gz
+	source = pelican-wings.service
+	sha256sums = f527acbae9d650a959ef8ef831f9d99de19725199836a258a45e22a40ed45c49
+	sha256sums = f1755e5ae48f8275ff3ff50bcae363f22a4010fa408d69f43625e3cc261a894b
+
+pkgname = pelican-wings
