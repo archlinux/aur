@@ -1,11 +1,14 @@
 -------------------------------------------------------
  Changelog    : kea_config
- Tags         : 6.6.2 ➙ 6.10.0
-              : 2026-09-09 ➙ 2026-11-27
+ Tags         : 6.6.3 ➙ 6.10.1
+              : 2026-10-08 ➙ 2026-11-28
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-11-27   : 6.10.0
+ 2026-11-28   : 6.10.1
+              - 6.10.1 : Update readme for recent changes.
+
+ 2026-11-27   : 6.10.0, origin/master
               - **6.10.0**
                 - New: kea-config.tmpfiles
                   sets permission on /etc/kea/*.{pw,user}
@@ -16,7 +19,7 @@
             
                     ExecStart=/usr/bin/kea-dhcp4 -c /etc/kea/<domain>/kea-dhcp4-primary.conf
 
- 2026-11-27   : 6.9.0, origin/master
+ 2026-11-27   : 6.9.0
               - **6.9.0**
                 - kea-ctrl has been dropped in kea upstream (functionality is incorporated in kea-dhcp4).
                 - Config: Now uses files for passwords - be sure to copy all the password files
@@ -35,7 +38,3 @@
 
  2026-10-08   : 6.6.3
               - 6.6.3 Documentation on `readthedocs <https://kea-config.readthedocs.io>`
-
- 2026-09-09   : 6.6.2
-              - **6.6.2**
-                * Remove unneeded sphinx tmp file from html docs
