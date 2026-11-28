@@ -1,0 +1,22 @@
+pkgbase = kw1281test-bin
+	pkgdesc = Test tool for the VW KW1281 diagnostic protocol
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://github.com/gmenounos/kw1281test
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = kw1281test
+	conflicts = kw1281test
+	options = !debug
+	source = kw1281test-bin-1.0.10-LICENSE::https://raw.githubusercontent.com/gmenounos/kw1281test/v1.0.10/LICENSE.txt
+	sha256sums = 6643da0f8a3756988ad9505e8ad972376bc4a86acc570bdee6eb9cd0ad6a90cf
+	source_x86_64 = kw1281test-bin-1.0.10-x86_64.zip::https://github.com/gmenounos/kw1281test/releases/download/v1.0.10/kw1281test_1.0.10_Linux-x64.zip
+	sha256sums_x86_64 = ec44cb01244ee585d7dd822d6c47d442f8bd1796df4b37c7a3878c7041705e0b
+	source_aarch64 = kw1281test-bin-1.0.10-aarch64.zip::https://github.com/gmenounos/kw1281test/releases/download/v1.0.10/kw1281test_1.0.10_Linux-Arm64.zip
+	sha256sums_aarch64 = c8262a930efd1db4deca3c11741cdd0f635a53a3778fcad184917d1fbb339464
+
+pkgname = kw1281test-bin
