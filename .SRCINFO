@@ -1,6 +1,6 @@
 pkgbase = git-stats-bin
 	pkgdesc = A tool for getting aggregated commit stats (prebuilt binary)
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/lukehsiao/git-stats
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = git-stats-bin
 	license = BlueOak-1.0.0
 	depends = glibc
 	depends = libgcc
-	provides = git-stats=0.3.2
+	provides = git-stats=0.3.3
 	conflicts = git-stats
-	source_x86_64 = git-stats-0.3.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/lukehsiao/git-stats/releases/download/v0.3.2/git-stats-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = c77ce6a7e87ac9e40fa5c1566771e6f655e6705ba399a5096e0c1ed1d2c4c930
-	source_aarch64 = git-stats-0.3.2-aarch64-unknown-linux-gnu.tar.gz::https://github.com/lukehsiao/git-stats/releases/download/v0.3.2/git-stats-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 3f5483c8ad1ec49d8ac8ff7510e92902d504860125b38f34f41719110af604a5
-	source_armv7h = git-stats-0.3.2-armv7-unknown-linux-gnueabihf.tar.gz::https://github.com/lukehsiao/git-stats/releases/download/v0.3.2/git-stats-armv7-unknown-linux-gnueabihf.tar.gz
-	sha256sums_armv7h = bb67b92b5ecc212df9bded7bbf4568bee44cd3eccd8cd6968106b36d8f58ed6e
+	source_x86_64 = git-stats-0.3.3-x86_64-unknown-linux-gnu.tar.gz::https://github.com/lukehsiao/git-stats/releases/download/v0.3.3/git-stats-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 856f2915b3d7834ef31833a0b847ede5425f976b3217f1cff50bcb86342d614b
+	source_aarch64 = git-stats-0.3.3-aarch64-unknown-linux-gnu.tar.gz::https://github.com/lukehsiao/git-stats/releases/download/v0.3.3/git-stats-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = fbdf9cef4ab41c9135f73a2dfd582519616d51c076f62a66309c8c5d2e472260
+	source_armv7h = git-stats-0.3.3-armv7-unknown-linux-gnueabihf.tar.gz::https://github.com/lukehsiao/git-stats/releases/download/v0.3.3/git-stats-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = 7627248bdaf93102cafcee2ccc0c152602fb09a9a4e9f73945d18af679072841
 
 pkgname = git-stats-bin
