@@ -1,0 +1,17 @@
+pkgbase = poodle-bin
+	pkgdesc = Build and run API requests from the command line
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://github.com/Clivern/Poodle
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = poodle
+	conflicts = poodle
+	options = !debug
+	source_x86_64 = poodle-bin-2.2.3-x86_64.tar.gz::https://github.com/Clivern/Poodle/releases/download/2.2.3/poodle_2.2.3_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 92c5d55d886e66c892fb281e3aae5b72d2275cd663d4556ff5edbe6d29e1065f
+	source_aarch64 = poodle-bin-2.2.3-aarch64.tar.gz::https://github.com/Clivern/Poodle/releases/download/2.2.3/poodle_2.2.3_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 0fe47c7af9552f7683cd1399f38c5e4fdf813812b217b55440bfb7106cfb959a
+
+pkgname = poodle-bin
