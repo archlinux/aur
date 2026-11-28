@@ -1,0 +1,17 @@
+pkgbase = milvus-backup-bin
+	pkgdesc = Backup and restore tool for Milvus
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/zilliztech/milvus-backup
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = milvus-backup
+	conflicts = milvus-backup
+	options = !debug
+	source_x86_64 = milvus-backup-bin-0.6.2-x86_64.tar.gz::https://github.com/zilliztech/milvus-backup/releases/download/v0.6.2/milvus-backup_0.6.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = b8d46d25020370c34ee7091f9747adf929bfdb19dfeffc0097c96a1f3e76dd1a
+	source_aarch64 = milvus-backup-bin-0.6.2-aarch64.tar.gz::https://github.com/zilliztech/milvus-backup/releases/download/v0.6.2/milvus-backup_0.6.2_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d8a071bcaa01d722b0a32958aaa2c588c3ad45cf45531c55546ecf8d3eb32324
+
+pkgname = milvus-backup-bin
