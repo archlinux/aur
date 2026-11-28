@@ -1,0 +1,19 @@
+pkgbase = go-camo-bin
+	pkgdesc = Secure image proxy server
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://github.com/cactus/go-camo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = go-camo
+	conflicts = go-camo
+	options = !debug
+	source = go-camo-bin-3.1-LICENSE::https://raw.githubusercontent.com/cactus/go-camo/v3.1/LICENSE.md
+	sha256sums = 4d6ddf005ea9b925c44a1725a89e6b8510e98179f1aee6f1081d1315bfe3cba7
+	source_x86_64 = go-camo-bin-3.1-x86_64.tar.gz::https://github.com/cactus/go-camo/releases/download/v3.1/go-camo-3.1.go1273.linux-amd64.tar.gz
+	sha256sums_x86_64 = 021c8edcf884dc0f618b8f3ed6de0ce7bf8976697940523e9ca7e263bd769505
+	source_aarch64 = go-camo-bin-3.1-aarch64.tar.gz::https://github.com/cactus/go-camo/releases/download/v3.1/go-camo-3.1.go1273.linux-arm64.tar.gz
+	sha256sums_aarch64 = e29660f499a071aac7c140f1ea0c7578b138510e805b0d641669c9daacf6a2f6
+
+pkgname = go-camo-bin
