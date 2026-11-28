@@ -1,0 +1,20 @@
+pkgbase = traffic-guard-bin
+	pkgdesc = Traffic blocker and firewall management tool
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/dotX12/traffic-guard
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = traffic-guard
+	conflicts = traffic-guard
+	options = !debug
+	source = traffic-guard-bin-0.0.5-LICENSE::https://raw.githubusercontent.com/dotX12/traffic-guard/0.0.5/LICENSE
+	sha256sums = 64857d0f06df728bdd4455dd6bfda224f30c5aefca3938727f12e5cb9ed8c30c
+	source_x86_64 = traffic-guard-bin-0.0.5-x86_64::https://github.com/dotX12/traffic-guard/releases/download/0.0.5/traffic-guard-linux-amd64
+	sha256sums_x86_64 = 1bd3ab5dd07bba19301e7b2c88630da3ddc7ce6e66deb24c4f1f11d756eb152e
+	source_aarch64 = traffic-guard-bin-0.0.5-aarch64::https://github.com/dotX12/traffic-guard/releases/download/0.0.5/traffic-guard-linux-arm64
+	sha256sums_aarch64 = 6eb16250a3fe354ec222107fb17d14ac98c9c5199649c13f67953971995b270e
+
+pkgname = traffic-guard-bin
