@@ -1,6 +1,6 @@
 # Maintainer: leychan
 pkgname=easy-music-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Music player for local files and HTTPS audio streams'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('easy-music')
 options=('!strip' '!debug')
 source=("${url}/releases/download/v${pkgver}/easy-music-${pkgver}-linux-${arch[0]}.tar.gz"
         'dev.easymusic.easy_music.desktop')
-sha256sums=('a980621dc54a443283489eed4cb226235ee4e54e45b99446c3e51b0a4f52e3fd'
+sha256sums=('51f2b306f9e56baff51e96ab40966d39f59ab4a8f16dc5b93a9b52f95e8f10ef'
             '4faf800cca809517eea9f854359d6969809f079ded92f889526b3e47a329e4ae')
 
 package() {
