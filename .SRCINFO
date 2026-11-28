@@ -1,6 +1,6 @@
 pkgbase = quickshare-cli
 	pkgdesc = Cross-platform Quick Share CLI compatible with Android, Windows 11, and Linux
-	pkgver = 0.2.0.beta.3
+	pkgver = 0.2.0.beta.4
 	pkgrel = 1
 	url = https://github.com/amitpadhan525/quickshare-cli
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = quickshare-cli
 	depends = glibc
 	provides = quickshare
 	conflicts = quickshare
-	source = quickshare-cli-0.2.0-beta.3.tar.gz::https://github.com/amitpadhan525/quickshare-cli/archive/refs/tags/v0.2.0-beta.3.tar.gz
-	sha256sums = 191dd25d43e73bb9fd56a9793ae0970710ca282c77ae3c90d5238b25075a6d97
+	source = quickshare-cli-0.2.0-beta.4.tar.gz::https://github.com/amitpadhan525/quickshare-cli/archive/refs/tags/v0.2.0-beta.4.tar.gz
+	sha256sums = acc7c3e53351802819317e73fcfd86a9d84c6a6a387cc545a7ede893b74cdc1d
 
 pkgname = quickshare-cli
