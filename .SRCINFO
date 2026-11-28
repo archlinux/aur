@@ -1,0 +1,17 @@
+pkgbase = regolith-bin
+	pkgdesc = Minecraft Bedrock add-on compiler pipeline
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/Bedrock-OSS/regolith
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = regolith
+	conflicts = regolith
+	options = !debug
+	source_x86_64 = regolith-bin-1.8.0-x86_64.tar.gz::https://github.com/Bedrock-OSS/regolith/releases/download/1.8.0/regolith_1.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 22d293c896e9b857e5e95f536cb32257e2056fc0b7863b1c3ebfd5612a91eb67
+	source_aarch64 = regolith-bin-1.8.0-aarch64.tar.gz::https://github.com/Bedrock-OSS/regolith/releases/download/1.8.0/regolith_1.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = e70c83f056b71c82d0889ac87ad6b2c8a287792c1a8444dc662e6a039ba2533d
+
+pkgname = regolith-bin
