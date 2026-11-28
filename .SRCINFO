@@ -1,0 +1,17 @@
+pkgbase = traefik-forward-auth-bin
+	pkgdesc = Forward authentication service with Google and OpenID login for Traefik
+	pkgver = 4.16.0
+	pkgrel = 1
+	url = https://github.com/ItalyPaleAle/traefik-forward-auth
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = traefik-forward-auth
+	conflicts = traefik-forward-auth
+	options = !debug
+	source_x86_64 = traefik-forward-auth-bin-4.16.0-x86_64.tar.gz::https://github.com/ItalyPaleAle/traefik-forward-auth/releases/download/v4.16.0/traefik-forward-auth-4.16.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = d3aa54451ffe38391ee24583c06660a7c3ecd3e79ed3a7ad48c847e50cd5a348
+	source_aarch64 = traefik-forward-auth-bin-4.16.0-aarch64.tar.gz::https://github.com/ItalyPaleAle/traefik-forward-auth/releases/download/v4.16.0/traefik-forward-auth-4.16.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 03e4677323f93b74862abcfb35c0bfd9787a59a4fa5cc67960d0dff260c5d659
+
+pkgname = traefik-forward-auth-bin
