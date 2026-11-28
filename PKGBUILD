@@ -2,12 +2,12 @@
 # SPDX-License-Identifier: CC0-1.0
 
 pkgname=kwiklook
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Quick previews of files from Dolphin'
 arch=('x86_64')
 url='https://github.com/strandzen/KwikLook'
-license=('GPL-3.0-or-later')
+license=('GPL-2.0-or-later' 'GPL-3.0-or-later')  # the Dolphin integration: GPL-3.0-or-later
 depends=(
   'dolphin'
   'gcc-libs'
@@ -28,6 +28,7 @@ depends=(
   'qt6-declarative'
   'qt6-multimedia'
   'qt6-multimedia-ffmpeg'  # its playback backend
+  'qt6-svg'  # SVG pictures
   'qt6-webengine'  # QtQuick.Pdf
   'qqc2-desktop-style'  # the KDE look for its controls
   'syntax-highlighting'
@@ -42,7 +43,7 @@ optdepends=(
 makedepends=('cmake' 'extra-cmake-modules' 'kcontacts' 'kcalendarcore')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # After pushing a new tag: updpkgsums, then makepkg --printsrcinfo > .SRCINFO
-sha256sums=('76225dc171f04bfef59c9538d10748e35fc4dd62693c44591ee0618b4f2e8f74')
+sha256sums=('3d71efeb3498f3417594a2d08b06acc3a8976d5b6939416e42a10c297011ebbc')
 
 build() {
   cmake -B build -S "KwikLook-$pkgver" \
