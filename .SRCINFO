@@ -1,0 +1,18 @@
+pkgbase = open-plan-annotator-bin
+	pkgdesc = Local-first annotator for AI agent plans
+	pkgver = 1.0.17
+	pkgrel = 1
+	url = https://github.com/ndom91/open-plan-annotator
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = open-plan-annotator
+	conflicts = open-plan-annotator
+	options = !debug
+	source_x86_64 = open-plan-annotator-bin-1.0.17-x86_64.tar.gz::https://github.com/ndom91/open-plan-annotator/releases/download/v1.0.17/open-plan-annotator-linux-x64.tar.gz
+	sha256sums_x86_64 = a7813e5d980e6ff1ac91cfe7697cc4bd917632bab5ba86acc781080cd4664380
+	source_aarch64 = open-plan-annotator-bin-1.0.17-aarch64.tar.gz::https://github.com/ndom91/open-plan-annotator/releases/download/v1.0.17/open-plan-annotator-linux-arm64.tar.gz
+	sha256sums_aarch64 = a2c6c603174a5f2d98d4ccefcdaeecedfe413169edca128c1ddc4a67e2e71256
+
+pkgname = open-plan-annotator-bin
