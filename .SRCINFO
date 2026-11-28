@@ -1,0 +1,19 @@
+pkgbase = turnable-bin
+	pkgdesc = VPN core for tunneling through TURN or SFU servers
+	pkgver = 0.8.7
+	pkgrel = 1
+	url = https://github.com/TheAirBlow/Turnable
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	provides = turnable
+	conflicts = turnable
+	options = !debug
+	source = turnable-bin-0.8.7-LICENSE::https://raw.githubusercontent.com/TheAirBlow/Turnable/v0.8.7/LICENSE
+	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
+	source_x86_64 = turnable-bin-0.8.7-x86_64::https://github.com/TheAirBlow/Turnable/releases/download/v0.8.7/turnable-linux-amd64
+	sha256sums_x86_64 = 31df53cdfbd00b58f12619ea42b372009d4a55b464556eb24a5393ee606d7d91
+	source_aarch64 = turnable-bin-0.8.7-aarch64::https://github.com/TheAirBlow/Turnable/releases/download/v0.8.7/turnable-linux-arm64
+	sha256sums_aarch64 = e81f88b7f31660bb907c5e5d5c3d388870b6c0b5767a6ab1271b5a61dadb950f
+
+pkgname = turnable-bin
