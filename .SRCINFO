@@ -1,6 +1,6 @@
 pkgbase = podctl-git
 	pkgdesc = Linux control suite for AirPods — daemon, CLI, tray icon and case-open popup (git HEAD)
-	pkgver = 0.5.0.r160.g7e4f9eb
+	pkgver = 0.5.1.r163.g8fcb791
 	pkgrel = 1
 	url = https://github.com/Rockykln/podctl
 	arch = x86_64

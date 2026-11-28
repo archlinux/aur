@@ -1,7 +1,7 @@
 # Maintainer: Rockykln <contact@rockykln.com>
 pkgname=podctl-git
 _pkgname=podctl
-pkgver=0.5.0.r160.g7e4f9eb
+pkgver=0.5.1.r163.g8fcb791
 pkgrel=1
 pkgdesc="Linux control suite for AirPods — daemon, CLI, tray icon and case-open popup (git HEAD)"
 arch=('x86_64' 'aarch64')
@@ -78,6 +78,11 @@ package() {
     "${pkgdir}/usr/share/gnome-shell/extensions/${ext}/metadata.json"
   install -Dm644 "contrib/gnome-shell-extension/${ext}/extension.js" \
     "${pkgdir}/usr/share/gnome-shell/extensions/${ext}/extension.js"
+
+  # The status-bar modules `podctl bar` is written for.
+  for f in contrib/bar/*; do
+    install -Dm644 "${f}" "${pkgdir}/usr/share/doc/${pkgname}/bar/${f##*/}"
+  done
 
   install -Dm644 LICENSE-MIT     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
