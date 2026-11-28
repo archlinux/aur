@@ -1,0 +1,17 @@
+pkgbase = kuvasz-streamer-bin
+	pkgdesc = Postgres-to-Postgres data consolidation and change data capture
+	pkgver = 1.21.3
+	pkgrel = 1
+	url = https://github.com/kuvasz-io/kuvasz-streamer
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = kuvasz-streamer
+	conflicts = kuvasz-streamer
+	options = !debug
+	source_x86_64 = kuvasz-streamer-bin-1.21.3-x86_64.tar.gz::https://github.com/kuvasz-io/kuvasz-streamer/releases/download/v1.21.3/kuvasz-streamer_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = aac4e56e47ee7241f387607e82b7286155e5e5b32e460356ec3f85945c3c9367
+	source_aarch64 = kuvasz-streamer-bin-1.21.3-aarch64.tar.gz::https://github.com/kuvasz-io/kuvasz-streamer/releases/download/v1.21.3/kuvasz-streamer_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ed60e751b7bd4b8ab7bb0eeae4332ed1dda7ab8a39978f55ae3f567bdd07424d
+
+pkgname = kuvasz-streamer-bin
