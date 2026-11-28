@@ -1,0 +1,21 @@
+pkgbase = clausura-bin
+	pkgdesc = CI-native agent CLI for deterministic pipeline gating
+	pkgver = 1.11.1
+	pkgrel = 1
+	url = https://github.com/liuyanghejerry/Clausura
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = clausura
+	conflicts = clausura
+	options = !debug
+	source = clausura-bin-1.11.1-LICENSE::https://raw.githubusercontent.com/liuyanghejerry/Clausura/v1.11.1/LICENSE
+	sha256sums = 2e26b89e002af54f06397f66e2a4aa3baa72225fbc16e099a69a87439fd6b06e
+	source_x86_64 = clausura-bin-1.11.1-x86_64.tar.gz::https://github.com/liuyanghejerry/Clausura/releases/download/v1.11.1/clausura-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b65d055031126c3c3be845a1ad2dac10ab3b012af20257728db7470fd630e136
+	source_aarch64 = clausura-bin-1.11.1-aarch64.tar.gz::https://github.com/liuyanghejerry/Clausura/releases/download/v1.11.1/clausura-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 358593abaad2337ea345e1e295b84fea31d4a2bc757082cd0377560d5be7765b
+
+pkgname = clausura-bin
