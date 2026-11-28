@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction <https://github.com/LIghtJUNction>
 pkgname=oh-my-ztty-git
-pkgver=0.2.17.r2680
+pkgver=0.2.17.r2681
 pkgrel=1
 pkgdesc='Rolling Project Z terminal workspace with zsh presets and AI tools'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,8 @@ optdepends=('python: completion management' 'zrun: native default shell'
             'tmux: multiplexer profile' 'nodejs: optional SSMCP tools')
 provides=('oh-my-ztty')
 conflicts=('oh-my-ztty' 'oh-my-ztty-bin')
-options=('!strip' '!debug')
+# Cargo controls Rust LTO. GCC LTO objects from ring cannot link through clang.
+options=('!strip' '!debug' '!lto')
 source=("oh-my-ztty::git+$url.git#branch=main"
         'ztty::git+https://github.com/LIghtJUNction/ztty.git#branch=main'
         'ssmcp::git+https://github.com/LIghtJUNction/ssmcp.git#branch=main'

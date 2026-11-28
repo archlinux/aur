@@ -1,6 +1,6 @@
 pkgbase = oh-my-ztty-git
 	pkgdesc = Rolling Project Z terminal workspace with zsh presets and AI tools
-	pkgver = 0.2.17.r2680
+	pkgver = 0.2.17.r2681
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/oh-my-ztty
 	arch = x86_64
@@ -35,6 +35,7 @@ pkgbase = oh-my-ztty-git
 	conflicts = oh-my-ztty-bin
 	options = !strip
 	options = !debug
+	options = !lto
 	source = oh-my-ztty::git+https://github.com/LIghtJUNction/oh-my-ztty.git#branch=main
 	source = ztty::git+https://github.com/LIghtJUNction/ztty.git#branch=main
 	source = ssmcp::git+https://github.com/LIghtJUNction/ssmcp.git#branch=main
