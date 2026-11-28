@@ -1,0 +1,16 @@
+pkgbase = wavedrom-rs-bin
+	pkgdesc = Render digital timing diagrams
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/coastalwhite/wavedrom-rs
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = wavedrom-rs
+	conflicts = wavedrom-rs
+	options = !debug
+	source_x86_64 = wavedrom-rs-bin-0.1.0-x86_64.tar.xz::https://github.com/coastalwhite/wavedrom-rs/releases/download/v0.1.0/wavedrom-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 596958d70660be1bebde0da93f7a7f599a6a0f24d7184b63a35b067201ddab97
+
+pkgname = wavedrom-rs-bin
