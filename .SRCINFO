@@ -1,0 +1,17 @@
+pkgbase = mobius-bin
+	pkgdesc = Hotline server
+	pkgver = 0.24
+	pkgrel = 1
+	url = https://github.com/jhalter/mobius
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mobius
+	conflicts = mobius
+	options = !debug
+	source_x86_64 = mobius-bin-0.24-x86_64.tar.gz::https://github.com/jhalter/mobius/releases/download/v0.24/mobius_server_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 873ca1203a318e416c1bfc9dfb13f0ff1af1359eaeb30fe60b4f9a84b46517a7
+	source_aarch64 = mobius-bin-0.24-aarch64.tar.gz::https://github.com/jhalter/mobius/releases/download/v0.24/mobius_server_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 403665dd2cec195c91e434c73b654fe1ba773f59e98b7a78455979c38d6456e5
+
+pkgname = mobius-bin
