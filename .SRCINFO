@@ -1,0 +1,16 @@
+pkgbase = kube-job-bin
+	pkgdesc = Run one-off jobs on Kubernetes from the command line
+	pkgver = 0.37.0
+	pkgrel = 1
+	url = https://github.com/h3poteto/kube-job
+	arch = x86_64
+	license = MIT
+	provides = kube-job
+	conflicts = kube-job
+	options = !debug
+	source = kube-job-bin-0.37.0-LICENSE::https://raw.githubusercontent.com/h3poteto/kube-job/v0.37.0/LICENSE.txt
+	sha256sums = 368aebddf2607d66db6b8a53d29303ffe2fc8311485e1d69ab80061477308a45
+	source_x86_64 = kube-job-bin-0.37.0-x86_64.zip::https://github.com/h3poteto/kube-job/releases/download/v0.37.0/kube-job_v0.37.0_linux_amd64.zip
+	sha256sums_x86_64 = 907b698ff7f8d26af93b36f57b14cc2519eaa043b8b78a83a6f03346caacf537
+
+pkgname = kube-job-bin
