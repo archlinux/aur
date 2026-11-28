@@ -1,0 +1,19 @@
+pkgbase = gpt-image-2-skill-bin
+	pkgdesc = CLI, web and desktop client for GPT Image 2
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/Wangnov/gpt-image-2-skill
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = gpt-image-2-skill
+	conflicts = gpt-image-2-skill
+	options = !debug
+	source_x86_64 = gpt-image-2-skill-bin-0.8.0-x86_64.tar.xz::https://github.com/Wangnov/gpt-image-2-skill/releases/download/v0.8.0/gpt-image-2-skill-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 8e72ae202b1d22b78804be26172fb9b012858c511ed9278f16783a14ee482e8a
+	source_aarch64 = gpt-image-2-skill-bin-0.8.0-aarch64.tar.xz::https://github.com/Wangnov/gpt-image-2-skill/releases/download/v0.8.0/gpt-image-2-skill-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = b9f140be93c526b081c8cbd5d7694c1da14247925979011df33920c6264f7221
+
+pkgname = gpt-image-2-skill-bin
