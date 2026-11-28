@@ -1,0 +1,21 @@
+pkgbase = asport-bin
+	pkgdesc = Fast, secure QUIC reverse tunnel, an alternative to frp and ngrok
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/AkinoKaede/asport
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = asport
+	conflicts = asport
+	options = !debug
+	source = asport-bin-0.4.0-LICENSE::https://raw.githubusercontent.com/AkinoKaede/asport/v0.4.0/LICENSE
+	sha256sums = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
+	source_x86_64 = asport-bin-0.4.0-x86_64.tar.xz::https://github.com/AkinoKaede/asport/releases/download/v0.4.0/asport-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 1a8f227adf8ab621b228edf8b4094f5b2e53e4be730c8a332de9e86b74cb6e0c
+	source_aarch64 = asport-bin-0.4.0-aarch64.tar.xz::https://github.com/AkinoKaede/asport/releases/download/v0.4.0/asport-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 582d6557e6524637c5f45a147b5adb847721eb41ab181a5cd0d35a118e05c875
+
+pkgname = asport-bin
