@@ -1,0 +1,17 @@
+pkgbase = clickhouse-bulk-bin
+	pkgdesc = Collect many small ClickHouse inserts and send them in big batches
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/nikepan/clickhouse-bulk
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = clickhouse-bulk
+	conflicts = clickhouse-bulk
+	options = !debug
+	source_x86_64 = clickhouse-bulk-bin-1.4.2-x86_64.tar.gz::https://github.com/nikepan/clickhouse-bulk/releases/download/v1.4.2/clickhouse-bulk_1.4.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0c55d78cedf96dfb77ab6fe9ebd34d0ed969c36b93994d115644b7e59de6d4d6
+	source_aarch64 = clickhouse-bulk-bin-1.4.2-aarch64.tar.gz::https://github.com/nikepan/clickhouse-bulk/releases/download/v1.4.2/clickhouse-bulk_1.4.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 696f8de6a16378c1a9d596fc1a14398524c4808b1e990adb75b9d10915ab1ad3
+
+pkgname = clickhouse-bulk-bin
