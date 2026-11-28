@@ -1,0 +1,18 @@
+pkgbase = yolorouter-bin
+	pkgdesc = Self-hosted OpenAI-compatible LLM gateway with multi-provider failover
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/yolorouter/yolorouter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = yolorouter
+	conflicts = yolorouter
+	options = !debug
+	source_x86_64 = yolorouter-bin-0.2.9-x86_64.tar.gz::https://github.com/yolorouter/yolorouter/releases/download/v0.2.9/yolorouter_v0.2.9_linux_amd64.tar.gz
+	sha256sums_x86_64 = b2db07d7c9cc9e83cedab01cf30766a4911e4f116209a221340ba15105a198e9
+	source_aarch64 = yolorouter-bin-0.2.9-aarch64.tar.gz::https://github.com/yolorouter/yolorouter/releases/download/v0.2.9/yolorouter_v0.2.9_linux_arm64.tar.gz
+	sha256sums_aarch64 = 89ff9024a1daefe99de345783249b70df16e497870ce492091cd8a29ee0096f1
+
+pkgname = yolorouter-bin
