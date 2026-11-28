@@ -1,0 +1,17 @@
+pkgbase = nyan-bin
+	pkgdesc = Colorizing cat command
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://github.com/toshimaru/nyan
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = nyan
+	conflicts = nyan
+	options = !debug
+	source_x86_64 = nyan-bin-1.2.6-x86_64.tar.gz::https://github.com/toshimaru/nyan/releases/download/v1.2.6/nyan_Linux_amd64.tar.gz
+	sha256sums_x86_64 = 28b981cb882f82a1218ddeacc8c7c1aca326d51c3bed9846caca0a7eaf379d3e
+	source_aarch64 = nyan-bin-1.2.6-aarch64.tar.gz::https://github.com/toshimaru/nyan/releases/download/v1.2.6/nyan_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 99d7a8074a768ea3dc5eed258cbe7715ec1d921eef3e278e2d3cef5fbc7cbf76
+
+pkgname = nyan-bin
