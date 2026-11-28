@@ -1,0 +1,17 @@
+pkgbase = mc-monitor-bin
+	pkgdesc = Monitor Minecraft server status with Prometheus and InfluxDB output
+	pkgver = 1.21.1
+	pkgrel = 1
+	url = https://github.com/itzg/mc-monitor
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mc-monitor
+	conflicts = mc-monitor
+	options = !debug
+	source_x86_64 = mc-monitor-bin-1.21.1-x86_64.tar.gz::https://github.com/itzg/mc-monitor/releases/download/1.21.1/mc-monitor_1.21.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = c91093330daa4312443255976b5e913e9706d1bfde95d8f209cfa34a89a9f0e9
+	source_aarch64 = mc-monitor-bin-1.21.1-aarch64.tar.gz::https://github.com/itzg/mc-monitor/releases/download/1.21.1/mc-monitor_1.21.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6c3185be1ccd2c0750d85aff716725946c0c13512e1895eca5d066d4921b9649
+
+pkgname = mc-monitor-bin
