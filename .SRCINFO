@@ -1,0 +1,17 @@
+pkgbase = roofer-bin
+	pkgdesc = Large-scale automatic LoD2.2 building reconstruction
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/3DBAG/roofer
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = roofer
+	conflicts = roofer
+	options = !debug
+	source_x86_64 = roofer-bin-1.0.0-x86_64.tar.gz::https://github.com/3DBAG/roofer/releases/download/v1.0.0/roofer-linux-x86_64-v1.0.0.tar.gz
+	sha256sums_x86_64 = 85834b289467b0e583e2b9c59a725c97ef39dc03c0c0a12417a8a0666e1aa0a1
+
+pkgname = roofer-bin
