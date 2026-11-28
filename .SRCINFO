@@ -1,6 +1,6 @@
 pkgbase = bk-bin
 	pkgdesc = Double-entry accounting on the command line — SQLCipher-encrypted, multi-tenant
-	pkgver = 0.40.0
+	pkgver = 0.41.0
 	pkgrel = 1
 	url = https://github.com/Govcraft/beankeeper
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = bk-bin
 	license = Apache-2.0
 	provides = bk
 	conflicts = bk
-	source_x86_64 = https://github.com/Govcraft/beankeeper/releases/download/beankeeper-cli-v0.40.0/bk-0.40.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 6f776cb881ff329953990dd81a71d6f63836c77e56711e0de2afa13cd9572ab7
-	source_aarch64 = https://github.com/Govcraft/beankeeper/releases/download/beankeeper-cli-v0.40.0/bk-0.40.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 9e9013e8c93fa477eb25935751ef03156a6c53f6363a2c227b9a8dd1a1f48ec8
+	source_x86_64 = https://github.com/Govcraft/beankeeper/releases/download/beankeeper-cli-v0.41.0/bk-0.41.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e63cb8d8d8135d9a76d5e1a9d5a94fd11ea47425cfc046830928554bf0072a6a
+	source_aarch64 = https://github.com/Govcraft/beankeeper/releases/download/beankeeper-cli-v0.41.0/bk-0.41.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = dabf9eb72e0c630f3ccd35153b23260403a79dfda5896bb41f81eba2d0a093a3
 
 pkgname = bk-bin
