@@ -1,0 +1,17 @@
+pkgbase = cisshgo-bin
+	pkgdesc = Concurrent SSH server that poses as Cisco IOS for testing
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tbotnz/cisshgo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cisshgo
+	conflicts = cisshgo
+	options = !debug
+	source_x86_64 = cisshgo-bin-1.0.0-x86_64.tar.gz::https://github.com/tbotnz/cisshgo/releases/download/v1.0.0/cisshgo_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = ab155a1e9bd0635e054cb2972f1cdc6f21fb405e6f53d6f68aceb2e0121480c2
+	source_aarch64 = cisshgo-bin-1.0.0-aarch64.tar.gz::https://github.com/tbotnz/cisshgo/releases/download/v1.0.0/cisshgo_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9d02db037a721d08c42a7c86f2cc2b7e36a94c4664656006a39aeb28759d24ec
+
+pkgname = cisshgo-bin
