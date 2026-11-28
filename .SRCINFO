@@ -1,0 +1,17 @@
+pkgbase = minectl-bin
+	pkgdesc = Create Minecraft servers on different cloud providers
+	pkgver = 0.61.0
+	pkgrel = 1
+	url = https://github.com/dirien/minectl
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = minectl
+	conflicts = minectl
+	options = !debug
+	source_x86_64 = minectl-bin-0.61.0-x86_64.tar.gz::https://github.com/dirien/minectl/releases/download/v0.61.0/minectl_0.61.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 56022dda6c979dc8649bdfde5df20cbbbff630980b65563938b8d35ce9e5ca84
+	source_aarch64 = minectl-bin-0.61.0-aarch64.tar.gz::https://github.com/dirien/minectl/releases/download/v0.61.0/minectl_0.61.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = af1cfb6497d2b478efc885b46e2937f0fb59dc51b273ec631d8ba7c553ebe66e
+
+pkgname = minectl-bin
