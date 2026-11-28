@@ -1,0 +1,18 @@
+pkgbase = blogsync-bin
+	pkgdesc = Push and pull blog entries between a blog and the local filesystem
+	pkgver = 0.21.1
+	pkgrel = 1
+	url = https://github.com/x-motemen/blogsync
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = blogsync
+	conflicts = blogsync
+	options = !debug
+	source_x86_64 = blogsync-bin-0.21.1-x86_64.tar.gz::https://github.com/x-motemen/blogsync/releases/download/v0.21.1/blogsync_v0.21.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 01f0ef3786007004edf1f7a611181ea2db08541b927907aae27bff827b212975
+	source_aarch64 = blogsync-bin-0.21.1-aarch64.tar.gz::https://github.com/x-motemen/blogsync/releases/download/v0.21.1/blogsync_v0.21.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = fa5aab973226a40e1361af8e53d8ca7e3bf9bb616be1642b81bd9ceb9ca97659
+
+pkgname = blogsync-bin
