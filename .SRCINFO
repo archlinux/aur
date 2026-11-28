@@ -1,0 +1,17 @@
+pkgbase = sietch-bin
+	pkgdesc = Decentralized, resilient storage for digital nomads
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/S4tvara/Sietch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sietch
+	conflicts = sietch
+	options = !debug
+	source_x86_64 = sietch-bin-0.0.1-x86_64.tar.gz::https://github.com/S4tvara/Sietch/releases/download/v0.0.1/sietch_0.0.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 4d8c0c33ed0d3fc6715a11384a6f8859b513573350b4216a5ff783206d04add5
+	source_aarch64 = sietch-bin-0.0.1-aarch64.tar.gz::https://github.com/S4tvara/Sietch/releases/download/v0.0.1/sietch_0.0.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 4de96f9dd25d7e47fe9f8669d7fa79d1445e1741133c5c9701233380df7a4d0f
+
+pkgname = sietch-bin
