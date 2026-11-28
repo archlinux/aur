@@ -1,0 +1,19 @@
+pkgbase = morloc-bin
+	pkgdesc = Strongly typed polyglot compiler
+	pkgver = 0.114.0
+	pkgrel = 1
+	url = https://github.com/morloc-project/morloc
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = gmp
+	depends = zlib
+	provides = morloc
+	conflicts = morloc
+	options = !debug
+	source = morloc-bin-0.114.0-LICENSE::https://raw.githubusercontent.com/morloc-project/morloc/v0.114.0/LICENSE
+	sha256sums = b47d430d8678ad98f625a9a6bb846f9953ff2efcebf8342865438bea3f841670
+	source_x86_64 = morloc-bin-0.114.0-x86_64::https://github.com/morloc-project/morloc/releases/download/v0.114.0/morloc-linux-x86_64
+	sha256sums_x86_64 = 965b1db578e811474207bbf22a396215778fddcb634fcb174c35a5f6ceb046c8
+
+pkgname = morloc-bin
