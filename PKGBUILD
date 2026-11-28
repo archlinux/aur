@@ -1,18 +1,18 @@
 # Maintainer: mcp-cpp-sdk maintainers <releases@users.noreply.github.com>
 pkgbase=mcp-cpp-sdk
 pkgname=('mcp-cpp-sdk' 'mcp-cpp-sdk-static')
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Model Context Protocol C++ SDK'
 arch=('x86_64')
 url='https://github.com/yurirocha15/mcp-cpp-sdk'
-license=('Apache-2.0' 'BSL-1.0')
+license=('Apache-2.0')
 options=('!debug' 'staticlibs')
 depends=('boost>=1.74' 'nlohmann-json>=3.10.5' 'openssl>=3.0')
 makedepends=('cmake>=3.20' 'gtest' 'ninja' 'python')
-source=("mcp-cpp-sdk-${pkgver}.tar.gz::https://github.com/yurirocha15/mcp-cpp-sdk/releases/download/v0.3.0/mcp-cpp-sdk-0.3.0.tar.gz"
-        "mcp-cpp-sdk-${pkgver}.tar.gz.asc::https://github.com/yurirocha15/mcp-cpp-sdk/releases/download/v0.3.0/mcp-cpp-sdk-0.3.0.tar.gz.asc")
-sha256sums=('31ad6f5f63eb1b9101f0ecaac54db10021ecfec0b2fe85740a8172e0cc62dd20' 'SKIP')
+source=("mcp-cpp-sdk-${pkgver}.tar.gz::https://github.com/yurirocha15/mcp-cpp-sdk/releases/download/v0.4.0/mcp-cpp-sdk-0.4.0.tar.gz"
+        "mcp-cpp-sdk-${pkgver}.tar.gz.asc::https://github.com/yurirocha15/mcp-cpp-sdk/releases/download/v0.4.0/mcp-cpp-sdk-0.4.0.tar.gz.asc")
+sha256sums=('c5f231d7b96b393d6fef82316ecb4199487b6065ec648e4e3844ba0d71cdab77' 'SKIP')
 validpgpkeys=('32F4760A898CAA62344F81B078DDAF6A80105366')
 
 prepare() {
@@ -22,6 +22,9 @@ prepare() {
   local gnupg_home="${srcdir}/gnupg"
   install -dm700 "${gnupg_home}"
   GNUPGHOME="${gnupg_home}" gpg --batch --no-auto-key-retrieve --no-auto-check-trustdb --import "${key_file}"
+  # Trust the pinned key in this keyring, or gpg warns that it is not certified; the status
+  # check below still requires a signature by the pinned keys.
+  printf '%s:6:\n' '32F4760A898CAA62344F81B078DDAF6A80105366' | GNUPGHOME="${gnupg_home}" gpg --batch --quiet --import-ownertrust
   GNUPGHOME="${gnupg_home}" gpg --batch --no-auto-key-retrieve --status-fd 1 \
     --verify "${srcdir}/mcp-cpp-sdk-${pkgver}.tar.gz.asc" "${srcdir}/mcp-cpp-sdk-${pkgver}.tar.gz" >"${status_file}"
   python -I -S "${source_dir}/release/verify_gnupg_status.py" \
