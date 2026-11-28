@@ -1,0 +1,17 @@
+pkgbase = geoip2-csv-converter-bin
+	pkgdesc = Convert GeoIP2 CSV files to other formats
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/maxmind/geoip2-csv-converter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = geoip2-csv-converter
+	conflicts = geoip2-csv-converter
+	options = !debug
+	source_x86_64 = geoip2-csv-converter-bin-1.5.0-x86_64.tar.gz::https://github.com/maxmind/geoip2-csv-converter/releases/download/v1.5.0/geoip2-csv-converter_1.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = f91b6608199c2228f1420e7136a4b36d4d5314cff848f2d2d12109af8148f08b
+	source_aarch64 = geoip2-csv-converter-bin-1.5.0-aarch64.tar.gz::https://github.com/maxmind/geoip2-csv-converter/releases/download/v1.5.0/geoip2-csv-converter_1.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a31f7e9ee5755264c9c330c88a7c0f21c722d34310d39c9fd542f67565145724
+
+pkgname = geoip2-csv-converter-bin
