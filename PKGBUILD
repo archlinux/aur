@@ -1,6 +1,6 @@
 # Maintainer: Student Wei <studentweis@gmail.com>
 pkgname=ropy-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='A clipboard manager built with Rust and GPUI (prebuilt binary)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("ropy-$pkgver.png::$url/raw/refs/tags/$pkgver/assets/logo.png"
 source_x86_64=("ropy-$pkgver-x86_64.tar.xz::$url/releases/download/$pkgver/ropy-x86_64-unknown-linux-gnu.tar.xz")
 sha256sums=('b168d3d148545cecfcee795741048d2296f066ea48a03f064d6e0a6e159ab06f'
             '4246519d23a0b2b6399674d56690ed6b703f5f03671b31463441ebe63caa27ec')
-sha256sums_x86_64=('e9b2b7b9db24e8d5ab5706c38fdefcdbc4b17ec79e73cc8591e9d47b8fcae721')
+sha256sums_x86_64=('ed8779c7ddef8ecc638ff0025af9a37c0925ea40a585114aed9f8de7d72c0c5e')
 
 package() {
     local release_dir="$srcdir/ropy-$CARCH-unknown-linux-gnu"
