@@ -1,0 +1,19 @@
+pkgbase = minigraf-bin
+	pkgdesc = Embedded graph memory for AI agents
+	pkgver = 2.0.12
+	pkgrel = 1
+	url = https://github.com/project-minigraf/minigraf
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = minigraf
+	conflicts = minigraf
+	options = !debug
+	source_x86_64 = minigraf-bin-2.0.12-x86_64.tar.xz::https://github.com/project-minigraf/minigraf/releases/download/v2.0.12/minigraf-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 8e783a6f025c2e0ca36a025b4e5a167b3f6c5e77c5217fa6c63f1c280a28b38a
+	source_aarch64 = minigraf-bin-2.0.12-aarch64.tar.xz::https://github.com/project-minigraf/minigraf/releases/download/v2.0.12/minigraf-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 8034cffda927bb3afc510ee1dd979b83d916a3a7611ec03099266d4ca1dd3655
+
+pkgname = minigraf-bin
