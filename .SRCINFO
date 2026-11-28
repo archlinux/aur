@@ -1,0 +1,17 @@
+pkgbase = gentee-bin
+	pkgdesc = Script programming language for automation
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://github.com/gentee/gentee
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = gentee
+	conflicts = gentee
+	options = !debug
+	source = gentee-bin-1.22.0-LICENSE::https://raw.githubusercontent.com/gentee/gentee/v1.22.0/LICENSE
+	sha256sums = 471c5834b663821395caeffe71e3b3ec92e8644fbf580497ce2b89493ce54cdb
+	source_x86_64 = gentee-bin-1.22.0-x86_64.zip::https://github.com/gentee/gentee/releases/download/v1.22.0/gentee-1.22.0-linux-amd64.zip
+	sha256sums_x86_64 = abb32a9c1fd094f9b7ec18257beea0eeec55377116a04b5b78551a937b356682
+
+pkgname = gentee-bin
