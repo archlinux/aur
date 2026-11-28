@@ -1,0 +1,17 @@
+pkgbase = nzbfast-bin
+	pkgdesc = Fast Usenet downloader
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/nzbfast/nzbfast
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = nzbfast
+	conflicts = nzbfast
+	options = !debug
+	source_x86_64 = nzbfast-bin-1.10.0-x86_64.tar.gz::https://github.com/nzbfast/nzbfast/releases/download/v1.10.0/nzbfast-1.10.0-linux-x64.tar.gz
+	sha256sums_x86_64 = 315963fa5a11fefbeef3d7a78a6ce86df7597ef7bfd1959139a84678b86f8592
+	source_aarch64 = nzbfast-bin-1.10.0-aarch64.tar.gz::https://github.com/nzbfast/nzbfast/releases/download/v1.10.0/nzbfast-1.10.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = bc5775f146a435cec79c67b3de2551579012dbdd4f56b36a5c30a6e41bc44f2c
+
+pkgname = nzbfast-bin
