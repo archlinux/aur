@@ -1,14 +1,15 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-git
-pkgver=r944.efa2f3c
-pkgrel=2
+pkgver=r1014.337c475
+pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
 license=('BSD-2-Clause')
 makedepends=(clang cmake git jq libc++ rust)
 depends=(
+	bubblewrap
 	gcc-libs
 	glibc
 	libevdev
@@ -54,6 +55,7 @@ package() {
 		"$pkgdir/usr/share/licenses/$pkgname/ferriscope-swapchain-v1.xml"
 	install -Dm644 dist/moonshine@.service "$pkgdir/usr/lib/systemd/system/moonshine@.service"
 	install -Dm644 dist/60-moonshine.rules "$pkgdir/usr/lib/udev/rules.d/60-moonshine.rules"
+	install -Dm644 dist/72-moonshine-isolation.rules "$pkgdir/usr/lib/udev/rules.d/72-moonshine-isolation.rules"
 	install -Dm644 dist/moonshine-modules.conf "$pkgdir/usr/lib/modules-load.d/moonshine.conf"
 	install -Dm644 dist/50-moonshine-inhibit-sleep.rules "$pkgdir/usr/share/polkit-1/rules.d/50-moonshine-inhibit-sleep.rules"
 	install -Dm644 dist/moonshine-sysusers.conf "$pkgdir/usr/lib/sysusers.d/moonshine.conf"
