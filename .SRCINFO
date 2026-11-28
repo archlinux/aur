@@ -1,0 +1,17 @@
+pkgbase = mwa_hyperdrive-bin
+	pkgdesc = Calibration software for the Murchison Widefield Array radio telescope
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/MWATelescope/mwa_hyperdrive
+	arch = x86_64
+	license = MPL-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = mwa_hyperdrive
+	conflicts = mwa_hyperdrive
+	options = !debug
+	source_x86_64 = mwa_hyperdrive-bin-0.10.0-x86_64.tar.gz::https://github.com/MWATelescope/mwa_hyperdrive/releases/download/v0.10.0/mwa_hyperdrive-v0.10.0-Linux-x86-64-v2.tar.gz
+	sha256sums_x86_64 = 9cc5c7b6a552e8d7ff90bec1eb9a128d2d378c94f2039408c2f756c101657c01
+
+pkgname = mwa_hyperdrive-bin
