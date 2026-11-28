@@ -1,0 +1,17 @@
+pkgbase = stencil-bin
+	pkgdesc = Schema registry with dynamic schema management and validation
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/raystack/stencil
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = stencil
+	conflicts = stencil
+	options = !debug
+	source_x86_64 = stencil-bin-0.5.1-x86_64.tar.gz::https://github.com/raystack/stencil/releases/download/v0.5.1/stencil_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 2f1e0c2a36abbce68012e0c0a88674ff7c99f6aaed1b2b8175046a7270611f8b
+	source_aarch64 = stencil-bin-0.5.1-aarch64.tar.gz::https://github.com/raystack/stencil/releases/download/v0.5.1/stencil_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 04926367822637d5a3d1939cbe0e737906d8d30637e8508252c09baa63bfea91
+
+pkgname = stencil-bin
