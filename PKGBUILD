@@ -1,6 +1,6 @@
 # Maintainer: adelmonte
 pkgname=file-browser-tui
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A Dolphin-like file manager for kitty"
 arch=('x86_64')
@@ -10,8 +10,7 @@ depends=('kitty' 'gcc-libs' 'glibc' 'libarchive' 'librsvg' 'shared-mime-info' 'h
 makedepends=('cargo')
 optdepends=(
     'ttf-nerd-fonts-symbols: menu and toolbar glyphs'
-    'wl-clipboard: clipboard on Wayland'
-    'xclip: clipboard on X11'
+    'wl-clipboard: the clipboard'
     'fd: searching by file name'
     'ripgrep: searching inside files'
     'ffmpeg: video thumbnails and audio cover art'
@@ -26,7 +25,7 @@ optdepends=(
 )
 install=file-browser-tui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7269944e122f62cb5247673f27bd61d8f421da3be57776a6bf3d05dc1511fab5')
+sha256sums=('c3351eefe2e7f9cd588deafb31bcca64889d25b30ef677d7f2b7b3a2c38949f3')
 
 prepare() {
     cd "$pkgname-$pkgver"
