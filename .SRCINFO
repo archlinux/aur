@@ -1,0 +1,22 @@
+pkgbase = c9watch-bin
+	pkgdesc = Monitor Claude Code, Codex, Cursor Agent and Pi sessions on your machine
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/minchenlee/c9watch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = c9watch
+	conflicts = c9watch
+	options = !debug
+	source = c9watch-bin-0.12.0-LICENSE::https://raw.githubusercontent.com/minchenlee/c9watch/v0.12.0/LICENSE
+	sha256sums = 59fb4077012e9ff40d6d25396a3c028895472aa630cbbdafb7bdc053a67d7da0
+	source_x86_64 = c9watch-bin-0.12.0-x86_64.tar.gz::https://github.com/minchenlee/c9watch/releases/download/v0.12.0/c9watch-cli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1c37dd1ea8cf2808c55598880c4fef70d9419f77213fc0679a6b7c17c749d2f7
+	source_aarch64 = c9watch-bin-0.12.0-aarch64.tar.gz::https://github.com/minchenlee/c9watch/releases/download/v0.12.0/c9watch-cli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = bdcdfba85a4f73491cf509218eba4b574dc213617e4f8e4bef7a9ce09e4912cb
+
+pkgname = c9watch-bin
