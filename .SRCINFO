@@ -1,0 +1,21 @@
+pkgbase = nforwardauth-bin
+	pkgdesc = Minimal forward authentication service for reverse proxies
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/nosduco/nforwardauth
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = nforwardauth
+	conflicts = nforwardauth
+	options = !debug
+	source = nforwardauth-bin-1.5.1-LICENSE::https://raw.githubusercontent.com/nosduco/nforwardauth/v1.5.1/LICENSE
+	sha256sums = 1689b3079e298a55b3fd4c10e35b617325624016e14c3a417497777301e1a89f
+	source_x86_64 = nforwardauth-bin-1.5.1-x86_64.tar.gz::https://github.com/nosduco/nforwardauth/releases/download/v1.5.1/nforwardauth-x86_64-unknown-linux-gnu-v1.5.1.tar.gz
+	sha256sums_x86_64 = 484eca702c58b203211a7e25adf8a9aaf8402ffd5a6966dd86485cda87642fbf
+	source_aarch64 = nforwardauth-bin-1.5.1-aarch64.tar.gz::https://github.com/nosduco/nforwardauth/releases/download/v1.5.1/nforwardauth-aarch64-unknown-linux-gnu-v1.5.1.tar.gz
+	sha256sums_aarch64 = 57e7b3e2fc2bdaab80222c8df61c593c7599679da9c6b46b02b31f77021f00d1
+
+pkgname = nforwardauth-bin
