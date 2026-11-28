@@ -1,0 +1,19 @@
+pkgbase = spotinfo-bin
+	pkgdesc = Explore spot instance pricing across AWS, GCP and Azure
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/alexei-led/spotinfo
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = spotinfo
+	conflicts = spotinfo
+	options = !debug
+	source = spotinfo-bin-3.0.0-LICENSE::https://raw.githubusercontent.com/alexei-led/spotinfo/v3.0.0/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = spotinfo-bin-3.0.0-x86_64::https://github.com/alexei-led/spotinfo/releases/download/v3.0.0/spotinfo_linux_amd64
+	sha256sums_x86_64 = 27cf1348fac8528c36794c68c70cf130b1039c96bff76b9074e394ef61969b21
+	source_aarch64 = spotinfo-bin-3.0.0-aarch64::https://github.com/alexei-led/spotinfo/releases/download/v3.0.0/spotinfo_linux_arm64
+	sha256sums_aarch64 = 302b936a320340864c8b885f17f025a086ad45e9bbcd930472df71e015dba6c6
+
+pkgname = spotinfo-bin
