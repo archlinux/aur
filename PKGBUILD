@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="SQLite-compatible SQL, accelerated by columnar storage and a JIT compiler"
 
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('9dc4a4a7e9abf699e36feb202aa4cca78eb7a2ffb5e0e047e6d7b4605e0c49f3')
-sha256sums_aarch64=('7d5fb991279797e83328847ab863614ef37c53289129365826f4947a75efc45a')
+sha256sums_x86_64=('c1d4db9d173cfa17a4bcef27a88e4b1008c739625114338b0e8741bfa98e29bb')
+sha256sums_aarch64=('82ba534b088cdc90fef99d132a01890b01d786f4144148765b6158bff9a5065d')
 
 
 case ${CARCH} in
