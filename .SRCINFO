@@ -1,0 +1,17 @@
+pkgbase = flitter-bin
+	pkgdesc = LiveSplit-inspired speedrun split timer for the terminal
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/alexozer/flitter
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libx11
+	provides = flitter
+	conflicts = flitter
+	options = !debug
+	source_x86_64 = flitter-bin-1.1.5-x86_64.tar.xz::https://github.com/alexozer/flitter/releases/download/1.1.5/flitter-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 61e039d69181b7138df57dc11348686aff9c2bd7267f3a43191baaec08a2f39d
+
+pkgname = flitter-bin
