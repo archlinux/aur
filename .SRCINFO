@@ -1,0 +1,17 @@
+pkgbase = az-pim-cli-bin
+	pkgdesc = List and activate Azure Entra ID PIM roles from the command line
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://github.com/netr0m/az-pim-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = az-pim-cli
+	conflicts = az-pim-cli
+	options = !debug
+	source_x86_64 = az-pim-cli-bin-1.18.0-x86_64.tar.gz::https://github.com/netr0m/az-pim-cli/releases/download/v1.18.0/az-pim-cli-1.18.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5240095723cc3ccc27d300dc691863f1232990c094b76772f1eb51b139030912
+	source_aarch64 = az-pim-cli-bin-1.18.0-aarch64.tar.gz::https://github.com/netr0m/az-pim-cli/releases/download/v1.18.0/az-pim-cli-1.18.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = baf108036dfa213e43b10a87abc27c9e4b95caa612402b50b1640b408fb7c5f5
+
+pkgname = az-pim-cli-bin
