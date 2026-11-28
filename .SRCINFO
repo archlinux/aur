@@ -1,6 +1,6 @@
 pkgbase = exdesktop-git
 	pkgdesc = Unofficial Telegram Desktop fork with exteraGram features, channel feed and Python plugins (git version)
-	pkgver = 7.4.4.1.r4.g4f1631e
+	pkgver = 7.4.4.3.r1.gbd07c1d
 	pkgrel = 1
 	url = https://github.com/metawka/exDesktop
 	arch = x86_64
@@ -71,7 +71,7 @@ pkgbase = exdesktop-git
 	optdepends = webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1 (gtk3)
 	optdepends = webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (gtk4)
 	optdepends = xdg-desktop-portal: desktop integration
-	provides = exdesktop=7.4.4.1
+	provides = exdesktop=7.4.4.3
 	conflicts = exdesktop
 	conflicts = exdesktop-bin
 	conflicts = telegram-desktop
