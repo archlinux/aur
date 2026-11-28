@@ -1,0 +1,21 @@
+pkgbase = jbundle-bin
+	pkgdesc = Package JVM applications into self-contained binaries
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/avelino/jbundle
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = jbundle
+	conflicts = jbundle
+	options = !debug
+	source = jbundle-bin-0.2.0-LICENSE::https://raw.githubusercontent.com/avelino/jbundle/v0.2.0/LICENSE
+	sha256sums = da9ad3d79150d7b5392fd79d9185014d8250020a00e9ebb913ae380bbdfa1457
+	source_x86_64 = jbundle-bin-0.2.0-x86_64.tar.gz::https://github.com/avelino/jbundle/releases/download/v0.2.0/jbundle-linux-x86_64-v0.2.0.tar.gz
+	sha256sums_x86_64 = 83a51b8e7ca6b3c9e68f994f0b6087e4213b2d2b1f32aa3f174f2ed41f40afdf
+	source_aarch64 = jbundle-bin-0.2.0-aarch64.tar.gz::https://github.com/avelino/jbundle/releases/download/v0.2.0/jbundle-linux-aarch64-v0.2.0.tar.gz
+	sha256sums_aarch64 = 8bc89ad75e4c7517561369b1e8c7279ef14c02fb1c475d5d18b40c80ffa168fd
+
+pkgname = jbundle-bin
