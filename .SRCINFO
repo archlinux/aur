@@ -1,0 +1,17 @@
+pkgbase = go-coverage-report-bin
+	pkgdesc = Post Go code coverage reports as pull request comments
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/fgrosse/go-coverage-report
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	provides = go-coverage-report
+	conflicts = go-coverage-report
+	options = !debug
+	source_x86_64 = go-coverage-report-bin-1.5.0-x86_64.tar.gz::https://github.com/fgrosse/go-coverage-report/releases/download/v1.5.0/go-coverage-report-v1.5.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 117aca67bf67e40d890f33ab5959630695955ad9474abb1ecf69a972be6609af
+	source_aarch64 = go-coverage-report-bin-1.5.0-aarch64.tar.gz::https://github.com/fgrosse/go-coverage-report/releases/download/v1.5.0/go-coverage-report-v1.5.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 6d875f73261758991671b516303f38f731ccac38ebd9c383507606d74221e391
+
+pkgname = go-coverage-report-bin
