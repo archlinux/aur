@@ -1,5 +1,5 @@
 pkgname=zam-web
-pkgver=1.67.17
+pkgver=1.67.19
 pkgrel=1
 pkgdesc="Zam Matrix Client for Web."
 arch=(any)
@@ -7,7 +7,7 @@ url=https://matrix.crafty.moe/
 license=(GPL-3.0-only)
 makedepends=(npm)
 source=("Zam-$pkgver.tar.gz::https://github.com/az4521/Zam/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2760dd3841cb640b208388d1d6b4cd9f97005f28cff62511fbee547303203ea6')
+sha256sums=('27fa6c32f1de99fbc8e12a394be0181203cbc54220d77bdefda6ba42bfc54404')
 
 prepare() {
     cd "Zam-$pkgver"
