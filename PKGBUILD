@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=bowel-bin
-pkgver=0.4.9
+pkgver=0.4.10
 pkgrel=1
 pkgdesc="Desktop client for the mihomo proxy core, for non-commercial use"
 arch=('x86_64' 'aarch64')
@@ -35,10 +35,10 @@ source_x86_64=("${_deb_x86_64}::https://github.com/21stware/bowel/releases/downl
 source_aarch64=("${_deb_aarch64}::https://github.com/21stware/bowel/releases/download/v${pkgver}/${_deb_aarch64}")
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
 sha256sums=('29674d8efb4bb229267c3036e3c11aa17857f167a34b8723450bb767c7284c3e'
-            'fc7ec6ad2de383c8971a064c6dfeb3a3d9da351b19a304ec9bd36f3956cdd050'
+            'fdd6b28f92ddd5735bd495bfa45629aa8e34692ca0ec7e8d0764998ae49d3494'
             'e7c596b37ff27ec487d19b1920f73e0c97a78067ea35766530ee9659ade72711')
-sha256sums_x86_64=('742196c8e7d57f5e7ae6353f47e35b1a0a55e50c6a349cc745c38d2e0983eb11')
-sha256sums_aarch64=('eed723083dd4f3703c7342dbe8808f1d4328e2b1a4eaae70bb6694fbcb18de55')
+sha256sums_x86_64=('6077772e94cf043fa87f582be23421038618408786937ef3c48cb6bd953088b6')
+sha256sums_aarch64=('bdf9a6ea6b6cf2c7db6846d1da67280a902fcfff2c306425c324ba1f71593a51')
 
 package() {
   local deb_var="_deb_${CARCH}"
