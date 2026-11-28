@@ -1,6 +1,6 @@
 pkgbase = vgshell-git
 	pkgdesc = Desktop shell for Hyprland, built on Quickshell (development version)
-	pkgver = 0.1.4.r752.ge64939b
+	pkgver = 0.1.4.r778.g5074f7b
 	pkgrel = 1
 	url = https://github.com/vanillagreencom/vgshell
 	install = vgshell-git.install
@@ -62,6 +62,7 @@ pkgbase = vgshell-git
 	depends = xdg-desktop-portal-hyprland
 	depends = xdg-terminal-exec
 	depends = xdg-utils
+	optdepends = pacman: read Arch restart rules
 	optdepends = hyprpm: turn layer glass on or off in the Windows plugin
 	optdepends = cpio: install layer glass in the Windows plugin
 	optdepends = cmake: install layer glass in the Windows plugin

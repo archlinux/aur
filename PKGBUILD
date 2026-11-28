@@ -5,7 +5,7 @@
 # this file and on ../vgshell/PKGBUILD. makepkg rewrites pkgver from pkgver().
 
 pkgname=vgshell-git
-pkgver=0.1.4.r752.ge64939b
+pkgver=0.1.4.r778.g5074f7b
 pkgrel=1
 pkgdesc='Desktop shell for Hyprland, built on Quickshell (development version)'
 arch=('any')
@@ -68,6 +68,7 @@ depends=(
   'xdg-utils'
 )
 optdepends=(
+  'pacman: read Arch restart rules'
   'hyprpm: turn layer glass on or off in the Windows plugin'
   'cpio: install layer glass in the Windows plugin'
   'cmake: install layer glass in the Windows plugin'
