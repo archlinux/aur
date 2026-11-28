@@ -1,7 +1,14 @@
-# Blacklist:
-*
-
-# Whitelist:
-!.SRCINFO
-!.gitignore
-!PKGBUILD
+.jj
+ngs
+pkg
+src
+*~
+*.bin
+*.md
+*.old
+*.pkg.tar.zst
+*.sh
+*.template
+LICENSE-*
+checksums.txt
+namcap.txt

@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 #  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
@@ -6,12 +7,13 @@
 
 pkgname='ngs-lang-git'
 _pkgname="${pkgname/-git}"
-pkgver=0.2.17.r0.g10a4a0da
-pkgrel=2
-epoch=1
 pkgdesc='NGS: Next Generation Shell (built from latest git commit)'
-arch=('x86_64')
+pkgver=0.3.0.r0.g98aee950
+pkgrel=1
+epoch=1
 url='https://github.com/ngs-lang/ngs'
+changelog="$_pkgname.changelog"
+arch=('aarch64' 'x86_64')
 license=('GPL-3.0-or-later')
 makedepends=(
   'cmake'
@@ -22,16 +24,14 @@ makedepends=(
 )
 depends=(
   'gc'
-  'gcc-libs'
   'glibc'
   'json-c'
   'libffi'
-  'pcre'
+  'pcre2'
 )
 provides=('ngs' "$_pkgname")
 conflicts=("${provides[@]}")
 source=('git+https://github.com/ngs-lang/ngs.git')
-options=('lto')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -43,7 +43,6 @@ pkgver() {
 prepare() {
   cd 'ngs'
 
-  sed -i 's@VERSION 3\.0@VERSION 3.5@'                   CMakeLists.txt
   sed -i 's@^link_directories@#link_directories@g'       CMakeLists.txt
   sed -i 's@/usr/local/include /opt/homebrew/include@@g' CMakeLists.txt
 
@@ -53,20 +52,7 @@ prepare() {
 }
 
 build() {
-  cd 'ngs/build'
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
-
-  make
+  make -C 'ngs/build'
 }
 
 check() {
@@ -80,12 +66,14 @@ package() {
 
   make install
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     ../{CHANGELOG,readme}.md ../one-liners.txt
 
   cd "$pkgdir"
 
-  rm -vrf usr/share/doc/NGS
+  rm -rf usr/share/doc/NGS
+
+  cd "$pkgdir/usr/share/doc" && ln -sr "$pkgname" "$_pkgname"
 }
 
 # vim: ts=2 sw=2 et:
