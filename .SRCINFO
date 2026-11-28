@@ -1,0 +1,19 @@
+pkgbase = binance_l3_est-bin
+	pkgdesc = Estimate Binance L3 order book microstructure from L2 data
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/OctopusTakopi/binance_l3_est
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = binance_l3_est
+	conflicts = binance_l3_est
+	options = !debug
+	source = binance_l3_est-bin-0.5.0-LICENSE::https://raw.githubusercontent.com/OctopusTakopi/binance_l3_est/v0.5.0/LICENSE
+	sha256sums = 013a2b45b668f91564a46fece170907cafd4c1e86a1396531acea481eaf9d22b
+	source_x86_64 = binance_l3_est-bin-0.5.0-x86_64::https://github.com/OctopusTakopi/binance_l3_est/releases/download/v0.5.0/binance_l3_est-Linux-X64
+	sha256sums_x86_64 = e08d704822eec71e6e36fcf9cf55ebc1a84f8a83cbb3b196abbe2a6ece1022c0
+
+pkgname = binance_l3_est-bin
