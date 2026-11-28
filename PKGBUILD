@@ -3,37 +3,32 @@
 
 _pkgname=beaver-notes
 pkgname=$_pkgname-bin
-pkgver=4.4.0
+pkgver=5.0.0
 pkgrel=1
-pkgdesc="Your Personal Note-Taking Haven for Privacy and Efficiency (binary release)"
-url="https://github.com/Daniele-rolli/Beaver-Notes"
+#pkgdesc="Your Personal Note-Taking Haven for Privacy and Efficiency (binary release)"
+pkgdesc="Open-source, local-first workspace for notes, projects, and meetings"
+#url="https://github.com/Daniele-rolli/Beaver-Notes"
+url="https://github.com/Beaver-Notes/Beaver-Notes"
 license=('MIT')
 arch=('x86_64' 'aarch64')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$url/raw/$pkgver/LICENSE")
-source_aarch64=("$url/releases/download/$pkgver/Beaver-notes-$pkgver.aarch64.rpm")
-source_x86_64=("$url/releases/download/$pkgver/Beaver-notes-$pkgver.x86_64.rpm")
+source=("$url/raw/v$pkgver/LICENSE")
+source_aarch64=("$url/releases/download/v$pkgver/Beaver-notes-$pkgver-aarch64.tar.gz")
+source_x86_64=("$url/releases/download/v$pkgver/Beaver-notes-$pkgver-x86_64.tar.gz")
 sha256sums=('593ed481f41652b46705e544226e0b58ffc046138f6a34777a0092e8d1f54b1d')
-sha256sums_x86_64=('510369954df2d5905f1ab6dd5c6f24f824615144ec16ae6d7aab526785fdfd2b')
-sha256sums_aarch64=('d5dc75125cdf36fe91a76b46f7b8c408415571aa16a99914d71c0a1fbb88cfeb')
+sha256sums_x86_64=('4ad18e487d3a87a93a04ee9627bb8aac21733a12d96ca7230f888032a077501b')
+sha256sums_aarch64=('0d728a083c44dabb86ed9c53f783a63ee25f90abdf0461457987a129f15605ac')
+noextract=("Beaver-notes-$pkgver-aarch64.tar.gz" "Beaver-notes-$pkgver-x86_64.tar.gz")
 
 prepare() {
-# Edit the shortcut
-  mv "usr/share/applications/$_pkgname.desktop" "$srcdir"
-  sed -i -E "s|Name=Beaver-notes|Name=Beaver Notes|g" $_pkgname.desktop
-  sed -i -E "s|StartupWMClass=Beaver-notes|StartupWMClass=Beaver Notes|g" $_pkgname.desktop
+  :
 }
 
 package() {
-# Create a directory
-  mkdir -p "$pkgdir/usr/bin"
-# Install
-  mv opt "$pkgdir"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
-  for i in 16 32 48 64 128 256 512; do
-    install -Dm644 "usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
-  done
-  install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
-  ln -s "/opt/Beaver notes/$_pkgname" "$pkgdir/usr/bin"
+  cd "$pkgdir"
+  install -d usr
+  tar -C usr -axf "$srcdir/Beaver-notes-$pkgver-$CARCH.tar.gz"
+  sed -i -E "s|StartupWMClass=beaver-notes|StartupWMClass=Beaver Notes|g" "usr/share/applications/$_pkgname.desktop"
+  install -Dm644 "$srcdir"/LICENSE -t "usr/share/licenses/$_pkgname/"
 }
