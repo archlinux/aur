@@ -1,0 +1,21 @@
+pkgbase = bulloak-bin
+	pkgdesc = Generate tests based on the Branching Tree Technique
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/alexfertel/bulloak
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = bulloak
+	conflicts = bulloak
+	options = !debug
+	source = bulloak-bin-0.8.1-LICENSE::https://raw.githubusercontent.com/alexfertel/bulloak/v0.8.1/LICENSE-APACHE
+	sha256sums = a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2
+	source_x86_64 = bulloak-bin-0.8.1-x86_64.tar.gz::https://github.com/alexfertel/bulloak/releases/download/v0.8.1/bulloak-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1db5c21847d22c243956de05069951a53de2561861f950b65f3be20617dd6c74
+	source_aarch64 = bulloak-bin-0.8.1-aarch64.tar.gz::https://github.com/alexfertel/bulloak/releases/download/v0.8.1/bulloak-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = feed14fc87d7fa12863ef768379d7c1c854836ee1363d53ea5f7c934e4132bba
+
+pkgname = bulloak-bin
