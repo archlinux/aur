@@ -2,7 +2,7 @@
 
 pkgname=nuvio-engine-bin
 _pkgname=nuvio-engine
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='Cross-platform torrent streaming engine built on libtorrent (prebuilt)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!debug')
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64-$pkgver.tar.gz")
-sha256sums_x86_64=('d5c9a4a94f676403da3422ea80a3faceeb57c99c14f98155a7b702416874a1dd')
+sha256sums_x86_64=('836944200f723d23e6ba2a54d5597b050e6b393267addfa4749241dc49a7309a')
 
 package() {
   cd $_pkgname-linux-$CARCH
