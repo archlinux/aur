@@ -1,0 +1,17 @@
+pkgbase = ghalint-bin
+	pkgdesc = GitHub Actions linter
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/suzuki-shunsuke/ghalint
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ghalint
+	conflicts = ghalint
+	options = !debug
+	source_x86_64 = ghalint-bin-1.6.0-x86_64.tar.gz::https://github.com/suzuki-shunsuke/ghalint/releases/download/v1.6.0/ghalint_1.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = eda1af79c1a4a31c2de5831cd1333ad582fa6fa72015f8e9c1c4525d550c1d35
+	source_aarch64 = ghalint-bin-1.6.0-aarch64.tar.gz::https://github.com/suzuki-shunsuke/ghalint/releases/download/v1.6.0/ghalint_1.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = f9d8e20a75c934d21ee6ab1967eb79fa125237ef5633c6bfd03b27999c6a6cda
+
+pkgname = ghalint-bin
