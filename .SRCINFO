@@ -1,6 +1,6 @@
 pkgbase = pi-bolt-avx2-bin
 	pkgdesc = Pi coding agent compiled ahead of time to native code (prebuilt binary, x86-64 with AVX2)
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/opensec-git/Pi-Bolt
 	install = pi-bolt-avx2-bin.install
@@ -14,7 +14,7 @@ pkgbase = pi-bolt-avx2-bin
 	conflicts = pi-bolt-avx2-bin-release-git
 	options = !strip
 	options = !debug
-	source_x86_64 = pi-bolt-linux-x64-1.3.1.tar.xz::https://github.com/opensec-git/Pi-Bolt/releases/download/bolt-v1.3.1/pi-bolt-linux-x64.tar.xz
-	sha256sums_x86_64 = 9bdc07ae7121110f429418c6667d39282484b880d53d126a063cac68025014fc
+	source_x86_64 = pi-bolt-linux-x64-1.3.2.tar.xz::https://github.com/opensec-git/Pi-Bolt/releases/download/bolt-v1.3.2/pi-bolt-linux-x64.tar.xz
+	sha256sums_x86_64 = 204dbf7653fe347ebbbefde7158346490376b1584cade59a26bf17341f1e5e21
 
 pkgname = pi-bolt-avx2-bin
