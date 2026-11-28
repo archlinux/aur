@@ -1,0 +1,15 @@
+pkgbase = rayforce-bin
+	pkgdesc = SIMD-accelerated columnar analytics database
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/RayforceDB/rayforce
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = rayforce
+	conflicts = rayforce
+	options = !debug
+	source_x86_64 = rayforce-bin-3.0.2-x86_64.tar.gz::https://github.com/RayforceDB/rayforce/releases/download/v3.0.2/rayforce-3.0.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = ea20fd48a223ffb3ed3e37a5edcb8a7caf5c5199d4cc8ba4e072d0c21e4a57b7
+
+pkgname = rayforce-bin
