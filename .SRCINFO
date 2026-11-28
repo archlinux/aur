@@ -1,0 +1,17 @@
+pkgbase = termsvg-bin
+	pkgdesc = Record, share and export your terminal as an animated SVG
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/MrMarble/termsvg
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = termsvg
+	conflicts = termsvg
+	options = !debug
+	source_x86_64 = termsvg-bin-0.13.0-x86_64.tar.gz::https://github.com/MrMarble/termsvg/releases/download/v0.13.0/termsvg-0.13.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 712e0736c3fb495e7c363af799b2e3f9c65c84c8bbf265b7cf80817176f74464
+	source_aarch64 = termsvg-bin-0.13.0-aarch64.tar.gz::https://github.com/MrMarble/termsvg/releases/download/v0.13.0/termsvg-0.13.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 5a39a0bafb540f092185b7fb256dcddaef6e296eed1fb022f6aa56191a6f4b54
+
+pkgname = termsvg-bin
