@@ -1,0 +1,21 @@
+pkgbase = rustqc-bin
+	pkgdesc = Fast quality control tools for genomic sequencing data
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/seqeralabs/RustQC
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = freetype2
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = rustqc
+	conflicts = rustqc
+	options = !debug
+	source_x86_64 = rustqc-bin-0.2.1-x86_64.tar.gz::https://github.com/seqeralabs/RustQC/releases/download/v0.2.1/rustqc-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 2fa72e96a4dbeae06eaf53f3f75850ba4f8b82b086d09e736c4e214078bf804a
+	source_aarch64 = rustqc-bin-0.2.1-aarch64.tar.gz::https://github.com/seqeralabs/RustQC/releases/download/v0.2.1/rustqc-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 036cc392672d6aa31e42fc1eaf37c5b8a591bcfc91505e1405666f424f3b0769
+
+pkgname = rustqc-bin
