@@ -1,0 +1,19 @@
+pkgbase = exportarr-bin
+	pkgdesc = Prometheus exporter for Sonarr, Radarr, Lidarr, Prowlarr, Bazarr and SABnzbd
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/onedr0p/exportarr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = exportarr
+	conflicts = exportarr
+	options = !debug
+	source = exportarr-bin-2.3.0-LICENSE::https://raw.githubusercontent.com/onedr0p/exportarr/v2.3.0/LICENSE
+	sha256sums = 46189f98e672ef4fbec0166e9c12132b41f21dab829e89b42f2907407d279ba7
+	source_x86_64 = exportarr-bin-2.3.0-x86_64.tar.gz::https://github.com/onedr0p/exportarr/releases/download/v2.3.0/exportarr_2.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 57dfe9c346247fdf0a5a69453818d11564122f7e7677216ea8d0f98fb9b45edc
+	source_aarch64 = exportarr-bin-2.3.0-aarch64.tar.gz::https://github.com/onedr0p/exportarr/releases/download/v2.3.0/exportarr_2.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1767242e035038e9b8e06f4d572ba8de390e84a7b3bb9c54cc547e8b38e6df99
+
+pkgname = exportarr-bin
