@@ -2,7 +2,7 @@
 # Contributor: Carmine Paolino <carmine@paolino.me>
 pkgname=voxtype
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
@@ -156,6 +156,12 @@ build() {
 
 check() {
     cd "$pkgname-$pkgver"
+    # Tests write the daemon's runtime files (state, markers, sockets), so
+    # give them their own directory instead of the builder's
+    # $XDG_RUNTIME_DIR, where a running voxtype daemon keeps its state.
+    export XDG_RUNTIME_DIR="$srcdir/test-runtime"
+    rm -rf "$XDG_RUNTIME_DIR"
+    install -d -m 700 "$XDG_RUNTIME_DIR"
     export RUSTUP_TOOLCHAIN=stable
     export CC=clang
     export CXX=clang++
