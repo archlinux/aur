@@ -1,6 +1,6 @@
 pkgbase = pinch-bin
 	pkgdesc = Small, fast screenshot tool with annotations (prebuilt)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ufna/pinch
 	arch = x86_64
@@ -8,18 +8,19 @@ pkgbase = pinch-bin
 	depends = qt6-base
 	depends = qt6-wayland
 	depends = wayland
+	depends = kstatusnotifieritem
 	depends = noto-fonts
 	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = libstdc++
 	depends = glibc
-	provides = pinch=0.1.0
+	provides = pinch=0.2.0
 	conflicts = pinch
 	conflicts = pinch-git
-	noextract = pinch-0.1.0-1-x86_64.pkg.tar.zst
+	noextract = pinch-0.2.0-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = https://github.com/ufna/pinch/releases/download/v0.1.0/pinch-0.1.0-1-x86_64.pkg.tar.zst
-	sha256sums = ad97c2cf1cc1dc1d7a07c92e7b91900d076986f0e1927d808f9cbbe5a77010fe
+	source = https://github.com/ufna/pinch/releases/download/v0.2.0/pinch-0.2.0-1-x86_64.pkg.tar.zst
+	sha256sums = b3223134dee88bcbf68fb880dab8a10847a0b8de4fbb11ed1035fecc288b7087
 
 pkgname = pinch-bin
