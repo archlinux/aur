@@ -1,0 +1,17 @@
+pkgbase = pipewright-bin
+	pkgdesc = Self-hosted CI/CD, deployment and ops platform in one binary
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/huangchengsir/pipewright
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pipewright
+	conflicts = pipewright
+	options = !debug
+	source_x86_64 = pipewright-bin-2.5.0-x86_64.tar.gz::https://github.com/huangchengsir/pipewright/releases/download/v2.5.0/pipewright_2.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7c415b9a2b620d0f0bc53571f28e81195cc4d9c4d67433dde7fbec9b40055079
+	source_aarch64 = pipewright-bin-2.5.0-aarch64.tar.gz::https://github.com/huangchengsir/pipewright/releases/download/v2.5.0/pipewright_2.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 14517b64a857319ba7e78a0ce7205801364ba216a71ad553136d680ad87d1f2a
+
+pkgname = pipewright-bin
