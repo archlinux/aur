@@ -4,7 +4,7 @@
 
 pkgauthor=fabiocaccamo
 pkgname=python-fsutil
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="High-level file-system operations for lazy devs"
 
@@ -19,7 +19,7 @@ depends=('python' 'python-requests')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('d084f0e3106d7d24dcf4b26f269835472bde65a61b35105b79a92dbbfb231439')
+sha256sums=('c9594b02c0d7e6655b0b05a3e800036faac07ad50ab7e4ee1cad798922e4e99b')
 
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = python-fsutil
 	pkgdesc = High-level file-system operations for lazy devs
-	pkgver = 0.18.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/fabiocaccamo/python-fsutil
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-fsutil
 	makedepends = python-installer
 	depends = python
 	depends = python-requests
-	source = python-fsutil-0.18.0.tgz::https://github.com/fabiocaccamo/python-fsutil/archive/0.18.0.tar.gz
-	sha256sums = d084f0e3106d7d24dcf4b26f269835472bde65a61b35105b79a92dbbfb231439
+	source = python-fsutil-0.19.0.tgz::https://github.com/fabiocaccamo/python-fsutil/archive/0.19.0.tar.gz
+	sha256sums = c9594b02c0d7e6655b0b05a3e800036faac07ad50ab7e4ee1cad798922e4e99b
 
 pkgname = python-fsutil
