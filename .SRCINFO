@@ -1,0 +1,21 @@
+pkgbase = geni-bin
+	pkgdesc = Database migration tool for Postgres, MariaDB, MySQL, SQLite and LibSQL
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://github.com/emilpriver/geni
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = geni
+	conflicts = geni
+	options = !debug
+	source = geni-bin-1.3.3-LICENSE::https://raw.githubusercontent.com/emilpriver/geni/v1.3.3/LICENSE
+	sha256sums = 04f8bf2c9be9d5ad0a982b4212faff8bad14a55ae48faa7d2c98c15ef1a77a9b
+	source_x86_64 = geni-bin-1.3.3-x86_64::https://github.com/emilpriver/geni/releases/download/v1.3.3/geni-linux-amd64
+	sha256sums_x86_64 = ce1f4e56279ca239fe8e89aa743cbed9e21da790a2511b28fa91802b730e0ee0
+	source_aarch64 = geni-bin-1.3.3-aarch64::https://github.com/emilpriver/geni/releases/download/v1.3.3/geni-linux-arm64
+	sha256sums_aarch64 = a0de57b39bdfe7c61ebff53eda2aadb74e8c59f5995054ecbcf980c6abb3a1c5
+
+pkgname = geni-bin
