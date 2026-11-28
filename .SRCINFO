@@ -1,6 +1,6 @@
 pkgbase = pinch-git
 	pkgdesc = Small, fast screenshot tool with annotations (development build)
-	pkgver = 0.1.0.r59.g7c0cdfe
+	pkgver = 0.2.0.r64.geca5cfa
 	pkgrel = 1
 	url = https://github.com/ufna/pinch
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = pinch-git
 	depends = libgcc
 	depends = libstdc++
 	depends = glibc
-	provides = pinch=0.1.0.r59.g7c0cdfe
+	provides = pinch=0.2.0.r64.geca5cfa
 	conflicts = pinch
 	conflicts = pinch-bin
 	source = pinch::git+https://github.com/ufna/pinch.git#branch=main

@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Alyamkin <ufna@ufna.dev>
 pkgname=pinch-git
-pkgver=0.1.0.r59.g7c0cdfe
+pkgver=0.2.0.r64.geca5cfa
 pkgrel=1
 pkgdesc='Small, fast screenshot tool with annotations (development build)'
 arch=('x86_64')
