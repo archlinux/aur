@@ -2,7 +2,7 @@
 
 pkgbase=rivermonad
 pkgname=('rivermonad' 'rivermonad-dotfiles')
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='xmonad-style tiling window manager for the river Wayland compositor'
 url='https://github.com/prietus/rivermonad'
@@ -10,14 +10,14 @@ arch=('x86_64' 'aarch64')
 license=('BSD-3-Clause')
 # ghc: ~/.config/rivermonad/rivermonad.hs is compiled at run time, against
 # the library this package also installs (like xmonad).
-depends=('river>=0.4' 'ghc' 'ghc-libs' 'haskell-network' 'libxkbcommon')
+depends=('river>=0.4' 'ghc' 'ghc-libs' 'haskell-network' 'libxkbcommon' 'pango' 'cairo')
 optdepends=('foot: the default terminal'
             'fuzzel: the default launcher (mod-p)'
             'kanshi: monitor resolution and scale, started by the session'
             'river-fx: river with rounded corners, translucency, blur, shadows and fades (replaces river)'
             'libnotify: notifications when the configuration fails to compile')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c994ef7546713d8aae4d6954443fe0fbf432fde0128472cea09bdb5155edc9c8')
+sha256sums=('0249ed75a33b748074e080809b8b84dab31028cd3f95cdc80aa15bed2358aee5')
 
 build() {
   cd $pkgbase-$pkgver
