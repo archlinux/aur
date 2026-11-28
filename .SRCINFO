@@ -1,0 +1,17 @@
+pkgbase = nowen-video-bin
+	pkgdesc = Self-hosted media server with TMDb metadata and HLS streaming
+	pkgver = 1.3.7
+	pkgrel = 1
+	url = https://github.com/cropflre/nowen-video
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = nowen-video
+	conflicts = nowen-video
+	options = !debug
+	source_x86_64 = nowen-video-bin-1.3.7-x86_64.tar.gz::https://github.com/cropflre/nowen-video/releases/download/v1.3.7/nowen-video-1.3.7-linux-amd64.tar.gz
+	sha256sums_x86_64 = 4f4fdd78d8922a35add69e07c8c3333688dcc66a2264c9cdc154925c2923f0d7
+	source_aarch64 = nowen-video-bin-1.3.7-aarch64.tar.gz::https://github.com/cropflre/nowen-video/releases/download/v1.3.7/nowen-video-1.3.7-linux-arm64.tar.gz
+	sha256sums_aarch64 = 82235d24078c48dd37b881a17f1a11b1fe02c29b0761515fb3bc0975160cab8b
+
+pkgname = nowen-video-bin
