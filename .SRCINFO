@@ -1,0 +1,16 @@
+pkgbase = 3d-new-era-ai-bin
+	pkgdesc = Home design and floor plan editor with a built-in MCP server for AI agents
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://github.com/leandrodaf/3d-new-era-ai
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = 3d-new-era-ai
+	conflicts = 3d-new-era-ai
+	options = !debug
+	source_x86_64 = 3d-new-era-ai-bin-3.4.1-x86_64.tar.gz::https://github.com/leandrodaf/3d-new-era-ai/releases/download/v3.4.1/newera-linux-x64.tar.gz
+	sha256sums_x86_64 = cb6a42bf66ec381b7c4610c2e279654abd2b18c00931799059c87a5a26f05c48
+
+pkgname = 3d-new-era-ai-bin
