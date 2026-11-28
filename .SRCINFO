@@ -1,0 +1,22 @@
+pkgbase = valin-bin
+	pkgdesc = Cross-platform code editor built with Freya
+	pkgver = 0.25.0
+	pkgrel = 1
+	url = https://github.com/marc2332/valin
+	arch = x86_64
+	license = MIT
+	depends = fontconfig
+	depends = freetype2
+	depends = glibc
+	depends = libgcc
+	depends = libglvnd
+	depends = libstdc++
+	provides = valin
+	conflicts = valin
+	options = !debug
+	source = valin-bin-0.25.0-LICENSE::https://raw.githubusercontent.com/marc2332/valin/v0.25.0/LICENSE.md
+	sha256sums = 7537ed22b2bb1bb6843631e2787b8516b7817440318ef400fd4d832c68371963
+	source_x86_64 = valin-bin-0.25.0-x86_64.tar.gz::https://github.com/marc2332/valin/releases/download/v0.25.0/valin-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6a8c6289908602dc532c5e655de49d9657b7cfba4e7a64f8eb05a9285524d9ef
+
+pkgname = valin-bin
