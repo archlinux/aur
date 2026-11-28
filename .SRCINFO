@@ -1,0 +1,17 @@
+pkgbase = graph-go-bin
+	pkgdesc = Simple node and graph visualization tool
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/guilherme-grimm/graph-go
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = graph-go
+	conflicts = graph-go
+	options = !debug
+	source_x86_64 = graph-go-bin-0.4.0-x86_64.tar.gz::https://github.com/guilherme-grimm/graph-go/releases/download/v0.4.0/graph-go_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7c1a3c1370f86c0094230e53ed950a488ddaf477e0e314aecb96e12a34af7dab
+	source_aarch64 = graph-go-bin-0.4.0-aarch64.tar.gz::https://github.com/guilherme-grimm/graph-go/releases/download/v0.4.0/graph-go_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3cba7a85246d864df38d8ab89ba4fbdaf510ee4e070dd6a846cf1cf967538140
+
+pkgname = graph-go-bin
