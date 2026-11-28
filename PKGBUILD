@@ -2,7 +2,7 @@
 
 pkgname=gufo
 pkgver=0.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast inference engine for AMD Strix Halo (gfx1151)"
 arch=(x86_64)
 url='https://github.com/gufo-org/gufo'
@@ -31,6 +31,7 @@ makedepends=(
   rocm-llvm
   rocprim
   rocwmma
+  xrt
 )
 # GCC host objects and ROCm Clang HIP objects use different LTO formats.
 options=(!lto !debug)
