@@ -1,0 +1,17 @@
+pkgbase = stitch-fuzz
+	pkgdesc = Automatic, expressive, and scalable API fuzzing with typed stubs and a Docker-based CLI
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/hgarrereyn/STITCHplusplus
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = docker
+	depends = docker-buildx
+	source = stitch-fuzz-0.2.0.tar.gz::https://github.com/hgarrereyn/STITCHplusplus/releases/download/v0.2.0/stitch_fuzz-0.2.0.tar.gz
+	sha256sums = 3c2ecc6c45888907750f50fe601ca95b292ff77253e7fc46f62f8a517e3b0595
+
+pkgname = stitch-fuzz
