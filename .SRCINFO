@@ -1,0 +1,19 @@
+pkgbase = herdr-auto-title-bin
+	pkgdesc = Automatically name herdr tabs and panes from your current work
+	pkgver = 0.25.1
+	pkgrel = 1
+	url = https://github.com/kryptamine/herdr-auto-title
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = herdr-auto-title
+	conflicts = herdr-auto-title
+	options = !debug
+	source = herdr-auto-title-bin-0.25.1-LICENSE::https://raw.githubusercontent.com/kryptamine/herdr-auto-title/v0.25.1/LICENSE
+	sha256sums = 6db43ac2a348403a4b2fdb31cb1ee4155f8d70aa08c5b34cc6c07b93d7d3f62b
+	source_x86_64 = herdr-auto-title-bin-0.25.1-x86_64::https://github.com/kryptamine/herdr-auto-title/releases/download/v0.25.1/herdr-auto-title-linux-amd64
+	sha256sums_x86_64 = 14ae40fdf0e7c8e27ada73da8af6e5d4d5308d95b8df3758987ab315b9f50cf2
+	source_aarch64 = herdr-auto-title-bin-0.25.1-aarch64::https://github.com/kryptamine/herdr-auto-title/releases/download/v0.25.1/herdr-auto-title-linux-arm64
+	sha256sums_aarch64 = 9bfad7fcb79bbf7092828467f09fec0fb92abc66aa7d77be487908262c608a09
+
+pkgname = herdr-auto-title-bin
