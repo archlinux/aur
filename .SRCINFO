@@ -1,0 +1,21 @@
+pkgbase = componentize-py-bin
+	pkgdesc = Build WebAssembly components from Python
+	pkgver = 0.25.1
+	pkgrel = 1
+	url = https://github.com/bytecodealliance/componentize-py
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = componentize-py
+	conflicts = componentize-py
+	options = !debug
+	source = componentize-py-bin-0.25.1-LICENSE::https://raw.githubusercontent.com/bytecodealliance/componentize-py/v0.25.1/LICENSE
+	sha256sums = 53b9cd9e8a1b8c1db8ef188751263b20ca20ac8e4bef558a7fb6167afaa53a08
+	source_x86_64 = componentize-py-bin-0.25.1-x86_64.tar.gz::https://github.com/bytecodealliance/componentize-py/releases/download/v0.25.1/componentize-py-v0.25.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 4c799e8f53101c58c57f696039d52e454ba95cd68e7f5eb4a746dca9017fb15b
+	source_aarch64 = componentize-py-bin-0.25.1-aarch64.tar.gz::https://github.com/bytecodealliance/componentize-py/releases/download/v0.25.1/componentize-py-v0.25.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = f6feee59d4cf4dd46ad019ad95226200882ee0689774a52eaf0df8783695141b
+
+pkgname = componentize-py-bin
