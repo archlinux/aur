@@ -1,6 +1,6 @@
 pkgbase = concurtui-bin
 	pkgdesc = Run several commands in parallel and switch between their output in a TUI
-	pkgver = 0.1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/protibimbok/concurtui
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = concurtui-bin
 	license = MIT
 	provides = concurtui
 	conflicts = concurtui
-	source_x86_64 = concurtui_linux_amd64-0.1.0.tar.gz::https://github.com/protibimbok/concurtui/releases/download/v0.1.0/concurtui_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2becf04d0bd92b6d777ec4dbcd816303651a4efd5fef4fa2608d4e7c8cb5fa57
-	source_aarch64 = concurtui_linux_arm64-0.1.0.tar.gz::https://github.com/protibimbok/concurtui/releases/download/v0.1.0/concurtui_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0043a1f35dc394fc337e1c7288cd82e4284a4b0be293c870d0c571ca3de18b0c
+	source_x86_64 = concurtui_linux_amd64-1.0.0.tar.gz::https://github.com/protibimbok/concurtui/releases/download/v1.0.0/concurtui_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1bac2fec7811f7cc133e15dc1185dcc683e581821618eda573085b9c95ba0b88
+	source_aarch64 = concurtui_linux_arm64-1.0.0.tar.gz::https://github.com/protibimbok/concurtui/releases/download/v1.0.0/concurtui_linux_arm64.tar.gz
+	sha256sums_aarch64 = 420023c0f681e158638f4e413f55904594c7cf0ca6e9c5a1f8d300a79a2d2f48
 
 pkgname = concurtui-bin
