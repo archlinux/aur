@@ -1,6 +1,6 @@
 pkgbase = python-asslayer
-	pkgdesc = ASS subtitle desktop overlay for Wayland, rendered with libass and Vulkan
-	pkgver = 0.1.0
+	pkgdesc = Wayland desktop overlay for ASS subtitles and libplacebo shader Hooks
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/sitiyou/asslayer
 	arch = x86_64
@@ -20,9 +20,10 @@ pkgbase = python-asslayer
 	depends = wayland
 	depends = vulkan-driver
 	depends = vulkan-icd-loader
+	depends = libplacebo>=6.338
 	depends = libass
 	depends = fontconfig
-	source = https://files.pythonhosted.org/packages/source/a/asslayer/asslayer-0.1.0.tar.gz
-	sha256sums = c5cf1d72df9cc962fa78a7d3d25c3600be27175e78a537819fc58716330bc299
+	source = https://files.pythonhosted.org/packages/source/a/asslayer/asslayer-0.2.0.tar.gz
+	sha256sums = de2c428c074ac0c33757175823637f0fbc7aa3bd964b8b121b7092f7ffec1e7c
 
 pkgname = python-asslayer
