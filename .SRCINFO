@@ -1,0 +1,19 @@
+pkgbase = zbpack-bin
+	pkgdesc = Build projects into static assets, serverless functions or container images
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/zeabur/zbpack
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	provides = zbpack
+	conflicts = zbpack
+	options = !debug
+	source = zbpack-bin-1.0.2-LICENSE::https://raw.githubusercontent.com/zeabur/zbpack/v1.0.2/LICENSE
+	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
+	source_x86_64 = zbpack-bin-1.0.2-x86_64.tar.gz::https://github.com/zeabur/zbpack/releases/download/v1.0.2/zbpack-linux-amd64.tar.gz
+	sha256sums_x86_64 = 6141198f26084f76eef2579db88faaeae38e1c6748c688ba8ea3ddd6fad4bc01
+	source_aarch64 = zbpack-bin-1.0.2-aarch64.tar.gz::https://github.com/zeabur/zbpack/releases/download/v1.0.2/zbpack-linux-arm64.tar.gz
+	sha256sums_aarch64 = c20ce52399d50c40b83513e6643708ef0382bcdc86fd5c372ed3793ccadcdc6b
+
+pkgname = zbpack-bin
