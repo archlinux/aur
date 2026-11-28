@@ -1,0 +1,17 @@
+pkgbase = cloudemu-bin
+	pkgdesc = Local cloud provider simulator
+	pkgver = 2.15.0
+	pkgrel = 1
+	url = https://github.com/stackshy/cloudemu
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cloudemu
+	conflicts = cloudemu
+	options = !debug
+	source_x86_64 = cloudemu-bin-2.15.0-x86_64.tar.gz::https://github.com/stackshy/cloudemu/releases/download/v2.15.0/cloudemu_2.15.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e88da42ebef2dba7474868205b8380e7206ac7f4a1e770d6ebb57b9503967cec
+	source_aarch64 = cloudemu-bin-2.15.0-aarch64.tar.gz::https://github.com/stackshy/cloudemu/releases/download/v2.15.0/cloudemu_2.15.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2992d8c7c59f5565a719379ce345c9d765640442a036fac1fc475da0078136e0
+
+pkgname = cloudemu-bin
