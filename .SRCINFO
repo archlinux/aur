@@ -1,0 +1,17 @@
+pkgbase = qrterminal-bin
+	pkgdesc = Show QR codes in your terminal
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/mdp/qrterminal
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = qrterminal
+	conflicts = qrterminal
+	options = !debug
+	source_x86_64 = qrterminal-bin-4.0.0-x86_64.tar.gz::https://github.com/mdp/qrterminal/releases/download/v4.0.0/qrterminal_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a182c40251fc9db9de276583011b0f0c48e88f1e533424d0ac56b39cfbdf9c00
+	source_aarch64 = qrterminal-bin-4.0.0-aarch64.tar.gz::https://github.com/mdp/qrterminal/releases/download/v4.0.0/qrterminal_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 3bcaea6fc0bf5ad8e52beb6c56323f3b3990d813ff72f0f87ba19977caaaa82f
+
+pkgname = qrterminal-bin
