@@ -1,0 +1,21 @@
+pkgbase = ayaflow-bin
+	pkgdesc = eBPF-based network traffic analyzer
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/DavidHavoc/ayaFlow
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = ayaflow
+	conflicts = ayaflow
+	options = !debug
+	source = ayaflow-bin-0.1.2-LICENSE::https://raw.githubusercontent.com/DavidHavoc/ayaFlow/v0.1.2/LICENSE-APACHE
+	sha256sums = ca6ca28f9d66737005a1bc0b1b830dc791bece3903b34fd8a4914c8aed3e72eb
+	source_x86_64 = ayaflow-bin-0.1.2-x86_64::https://github.com/DavidHavoc/ayaFlow/releases/download/v0.1.2/ayaflow-linux-amd64
+	sha256sums_x86_64 = 019ec34199cf6e0d5c214f96b1781204748fb09a7a9ef5bde65b1436ef759b2d
+	source_aarch64 = ayaflow-bin-0.1.2-aarch64::https://github.com/DavidHavoc/ayaFlow/releases/download/v0.1.2/ayaflow-linux-arm64
+	sha256sums_aarch64 = e8d1035a9bf712a27179ff4958b219336b08fea07a96cf506d38b06f71e7cafd
+
+pkgname = ayaflow-bin
