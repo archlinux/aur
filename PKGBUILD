@@ -1,6 +1,6 @@
 # Maintainer: adelmonte
 pkgname=image-view
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Minimal keyboard-driven image viewer (egui port of qView)"
 arch=('x86_64' 'aarch64')
@@ -9,13 +9,10 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'lcms2' 'libglvnd' 'libxkbcommon' 'wayland' 'hicolor-icon-theme')
 makedepends=('cargo')
 optdepends=('xdg-desktop-portal: open and save file dialogs'
-            'xdg-utils: open containing folder and the settings file'
-            'libx11: X11 support'
-            'libxcursor: X11 support'
-            'libxi: X11 support')
+            'xdg-utils: open containing folder and the settings file')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3741e9bd52fb8f2a8300298bae18a4fd0573a44854014134546c6fb95994b237')
+sha256sums=('1a44af33bcbef15f34ebca721d386324d5742d1c2e826d9b36ffa993e3a910a6')
 
 _host() {
   rustc -vV | sed -n 's/^host: //p'

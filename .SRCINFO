@@ -1,6 +1,6 @@
 pkgbase = image-view
 	pkgdesc = Minimal keyboard-driven image viewer (egui port of qView)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/adelmonte/image-view
 	arch = x86_64
@@ -16,12 +16,9 @@ pkgbase = image-view
 	depends = hicolor-icon-theme
 	optdepends = xdg-desktop-portal: open and save file dialogs
 	optdepends = xdg-utils: open containing folder and the settings file
-	optdepends = libx11: X11 support
-	optdepends = libxcursor: X11 support
-	optdepends = libxi: X11 support
 	options = !lto
 	options = !debug
-	source = image-view-0.2.0.tar.gz::https://github.com/adelmonte/image-view/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 3741e9bd52fb8f2a8300298bae18a4fd0573a44854014134546c6fb95994b237
+	source = image-view-0.2.1.tar.gz::https://github.com/adelmonte/image-view/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 1a44af33bcbef15f34ebca721d386324d5742d1c2e826d9b36ffa993e3a910a6
 
 pkgname = image-view
