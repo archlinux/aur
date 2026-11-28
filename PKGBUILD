@@ -1,8 +1,8 @@
 # Maintainer: Coobyk <mail@coobyk.com>
-# CI substitutes 0.1.0.r136.g0799cc8 and 30e4d6836eed1548928b4443a0c75a87ca2a9f997e778d82319b4e72f57df2aa for each published nightly build.
+# CI substitutes 0.1.0.r137.g0f8d5d7 and 4d038801d1282f2edbae7ea4017bbcd1328cb178342892730b1299f13183006b for each published nightly build.
 pkgname=mca-selector-rs-bin
 _pkgname=mca-selector
-pkgver=0.1.0.r136.g0799cc8
+pkgver=0.1.0.r137.g0f8d5d7
 pkgrel=1
 pkgdesc="A faithful Rust + GPUI port of MCA Selector (prebuilt binary)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("$_pkgname" 'mca-selector-rs-git')
 source=("${_pkgname}-${pkgver}.bin::https://github.com/Coobyk/mca-selector-rs/releases/download/nightly/mca-selector-linux-x86_64"
         "$_pkgname.desktop::https://raw.githubusercontent.com/Coobyk/mca-selector-rs/nightly/packaging/mca-selector.desktop"
         "$_pkgname.png::https://raw.githubusercontent.com/Coobyk/mca-selector-rs/nightly/packaging/mca-selector.png")
-sha256sums=('30e4d6836eed1548928b4443a0c75a87ca2a9f997e778d82319b4e72f57df2aa' 'SKIP' 'SKIP')
+sha256sums=('4d038801d1282f2edbae7ea4017bbcd1328cb178342892730b1299f13183006b' 'SKIP' 'SKIP')
 
 package() {
   install -Dm755 "${_pkgname}-${pkgver}.bin" "$pkgdir/usr/bin/$_pkgname"
