@@ -1,0 +1,19 @@
+pkgbase = endstate-bin
+	pkgdesc = Reinstall apps and restore settings on a fresh machine from one file
+	pkgver = 2.32.1
+	pkgrel = 1
+	url = https://github.com/Artexis10/endstate
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = endstate
+	conflicts = endstate
+	options = !debug
+	source = endstate-bin-2.32.1-LICENSE::https://raw.githubusercontent.com/Artexis10/endstate/v2.32.1/LICENSE
+	sha256sums = 58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd
+	source_x86_64 = endstate-bin-2.32.1-x86_64::https://github.com/Artexis10/endstate/releases/download/v2.32.1/endstate-linux-amd64
+	sha256sums_x86_64 = b8c90fae7fa8b2447874be77634eafb5a9894d05d37fd039f087691ee9d722c6
+	source_aarch64 = endstate-bin-2.32.1-aarch64::https://github.com/Artexis10/endstate/releases/download/v2.32.1/endstate-linux-arm64
+	sha256sums_aarch64 = 56556ac20327d1cfbfc714289a6c8d12e8cb9d452455a2685c8c32047b83b9f1
+
+pkgname = endstate-bin
