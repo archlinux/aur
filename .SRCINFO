@@ -1,0 +1,24 @@
+pkgbase = cydonia-bin
+	pkgdesc = Control panel for Claude Code, Codex, OpenCode and other AI agents
+	pkgver = 0.2.14
+	pkgrel = 1
+	url = https://github.com/crabtalk/cydonia
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	provides = cydonia
+	conflicts = cydonia
+	options = !debug
+	source = cydonia-bin-0.2.14-LICENSE::https://raw.githubusercontent.com/crabtalk/cydonia/v0.2.14/LICENSE
+	sha256sums = d7e627b4c0f82a7b4f23992446abbd7b84347b9d7abec321e01e26715d41ebf1
+	source_x86_64 = cydonia-bin-0.2.14-x86_64.tar.xz::https://github.com/crabtalk/cydonia/releases/download/v0.2.14/cydonia-linux-x86_64.tar.xz
+	sha256sums_x86_64 = 7df780e3fad51df6e88d88f0bfda9b863e3b419a89acf065958027bc88efc84c
+	source_aarch64 = cydonia-bin-0.2.14-aarch64.tar.xz::https://github.com/crabtalk/cydonia/releases/download/v0.2.14/cydonia-linux-aarch64.tar.xz
+	sha256sums_aarch64 = 645a353e72ab4c700039d294ef759bbe5198a40cc184fa9582bfbd7f9523f9ae
+
+pkgname = cydonia-bin
