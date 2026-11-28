@@ -1,0 +1,17 @@
+pkgbase = honeydet-bin
+	pkgdesc = Signature-based honeypot detector
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/referefref/honeydet
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = honeydet
+	conflicts = honeydet
+	options = !debug
+	source_x86_64 = honeydet-bin-1.6.1-x86_64.tar.gz::https://github.com/referefref/honeydet/releases/download/1.6.1/honeydet_1.6.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 45fdb4872a911bff02e66691cb6045dcbfb238a379e1d28ec2ed7b1f99f64b80
+	source_aarch64 = honeydet-bin-1.6.1-aarch64.tar.gz::https://github.com/referefref/honeydet/releases/download/1.6.1/honeydet_1.6.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = f1d6eb310eaa1b01b8e20af31de61d1ad4445f8378e3893b81871f11f3b7e7c9
+
+pkgname = honeydet-bin
