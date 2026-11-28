@@ -1,0 +1,26 @@
+pkgbase = slidown-git
+	pkgdesc = Native GTK4 live Markdown presentation viewer powered by Pandoc and Reveal.js
+	pkgver = 2.0.0.r0
+	pkgrel = 1
+	url = https://github.com/riccardomarotti/slidown
+	arch = x86_64
+	license = GPL-3.0-only
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = desktop-file-utils
+	depends = gtk4>=4.10
+	depends = webkitgtk-6.0
+	depends = pandoc-cli
+	depends = glibc
+	depends = gcc-libs
+	optdepends = chromium: export slides to PDF
+	provides = slidown
+	conflicts = slidown
+	source = slidown::git+https://github.com/riccardomarotti/slidown.git#branch=master
+	source = reveal.js::git+https://github.com/hakimel/reveal.js.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = slidown-git
