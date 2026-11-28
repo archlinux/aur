@@ -1,7 +1,7 @@
 pkgbase = workbuddy-intl-agent
 	pkgdesc = AI Agent for everyday office work - WorkBuddy international edition (unofficial Linux port)
 	pkgver = 5.11.7.44923190_525fde10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.workbuddy.ai
 	arch = x86_64
 	arch = aarch64
@@ -41,7 +41,7 @@ pkgbase = workbuddy-intl-agent
 	source = DISCLAIMER
 	sha256sums = 109ee2757da34616207fc0e898a5f719b4290715eddf37f751d57e724b108fec
 	sha256sums = 8bd1111e94ec072bf7e751ba715e96abb4313cac6f7f86768d3eee9b7016c8c2
-	sha256sums = e51c1f55b94e22ff64a5423c2172bc5ee73385592f972942c2403102966c0c42
+	sha256sums = 0f7f858220c52425d9b9ea25f1e0b61a5b21245b209bd4188d0f6cbc7e7a6c35
 	sha256sums = 41c68cc72516123b85d7476c86dbd3ff8d7baecd0c1235be6be06549fa2efbac
 	sha256sums = 1aa43daf2f30f51bfdc46cc467c8d2145d9a59347b4f9caf4b42957a85c98bdf
 	sha256sums = 5350281f314d0eb5e6666238d76eefd622a6e7cc51e9c6d3904083f7d892c23a

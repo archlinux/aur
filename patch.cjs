@@ -25,7 +25,13 @@ let source = fs.readFileSync(file, 'utf8');
 const anchor =
   /(function createDesktopImChannelsBackend\([^)]*\)\{)if\(([^;]+?isOversea===!0)\)return (create(?:Headless|Unavailable)ImChannelsBackend)\(\);/;
 
-if (source.includes('process.platform===`linux`||')) {
+// A previously patched build is recognized by the Linux branch inside the
+// backend factory itself. Checking the whole file for the condition string
+// would also match unrelated code in a future upstream build.
+const patched =
+  /function createDesktopImChannelsBackend\([^)]*\)\{if\(process\.platform===`linux`\|\|/;
+
+if (patched.test(source)) {
   console.log('patch: already applied');
   process.exit(0);
 }
