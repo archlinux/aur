@@ -1,0 +1,19 @@
+pkgbase = hongdown-bin
+	pkgdesc = Markdown formatter enforcing Hong Minhee's style conventions
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/dahlia/hongdown
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = hongdown
+	conflicts = hongdown
+	options = !debug
+	source_x86_64 = hongdown-bin-0.5.3-x86_64.tar.bz2::https://github.com/dahlia/hongdown/releases/download/0.5.3/hongdown-0.5.3-x86_64-unknown-linux-gnu.tar.bz2
+	sha256sums_x86_64 = d67c2c7c92096bba82eef4b40205f74d3abd34f84787639bf9d3ee7b3f0895e4
+	source_aarch64 = hongdown-bin-0.5.3-aarch64.tar.bz2::https://github.com/dahlia/hongdown/releases/download/0.5.3/hongdown-0.5.3-aarch64-unknown-linux-gnu.tar.bz2
+	sha256sums_aarch64 = 9e7380a302bdf9d0f49fd43c27495ee1c1fb181eb5e7fd675bbe23ff5c8bb785
+
+pkgname = hongdown-bin
