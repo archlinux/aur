@@ -1,0 +1,19 @@
+pkgbase = penny-bin
+	pkgdesc = Serverless platform for your own servers
+	pkgver = 0.0.19
+	pkgrel = 1
+	url = https://github.com/frectonz/penny
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = penny
+	conflicts = penny
+	options = !debug
+	source_x86_64 = penny-bin-0.0.19-x86_64.tar.xz::https://github.com/frectonz/penny/releases/download/0.0.19/penny-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 6ec81ad5cf8341eb0f1b16d3b1f9c577c88ab0a78d8afc301658d1961b62129e
+	source_aarch64 = penny-bin-0.0.19-aarch64.tar.xz::https://github.com/frectonz/penny/releases/download/0.0.19/penny-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 54c8e00d1bddc364d7a31e8aeb580890a961b35682888abb343c67a9c4522850
+
+pkgname = penny-bin
