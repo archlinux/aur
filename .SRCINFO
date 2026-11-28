@@ -1,0 +1,20 @@
+pkgbase = nautilus-checksums-rust
+	pkgdesc = Fast SIMD/ASM-accelerated Nautilus 4 extension for computing file checksums
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SlobCoder/nautilus-checksums-rust
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glib2
+	depends = glibc
+	depends = libgcc
+	depends = libnautilus-extension
+	depends = openssl
+	provides = nautilus-checksums
+	conflicts = nautilus-checksums
+	source = nautilus-checksums-rust-0.1.0.tar.gz::https://github.com/SlobCoder/nautilus-checksums-rust/archive/refs/tags/v0.1.0.tar.gz
+	b2sums = 5ca20aa500317d3d39c2ea422ff785b5d056fbe0569fa9a3f8263cd7c6a7a339c0bf3d75cd8213902fba2ea04e33c192a1f208db3e3cf824d6869f5a4c0f7af3
+
+pkgname = nautilus-checksums-rust
