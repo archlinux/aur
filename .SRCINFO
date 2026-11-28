@@ -1,6 +1,6 @@
 pkgbase = d2launcher
 	pkgdesc = Median XL for Diablo II on Linux, with Wine, D2Stats and tweaks
-	pkgver = 5.1.1
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://github.com/murkl/d2launcher
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = d2launcher
 	optdepends = xdg-utils: opens the reference from the help button
 	optdepends = gamemode: gamemoderun in the launch options
 	optdepends = gamescope: gamescope in the launch options
-	source = https://github.com/murkl/d2launcher/releases/download/5.1.1/d2launcher-5.1.1.tar.gz
-	sha256sums = 38c141423cb43de391530d270f081c960bf5e4c620c693a990ac23a50b6d09ba
+	source = https://github.com/murkl/d2launcher/releases/download/5.2.0/d2launcher-5.2.0.tar.gz
+	sha256sums = 10933eb63ac8d1db43b100ab4ba1c24d559e58929a80e8b92e49ef001f2d985b
 
 pkgname = d2launcher
