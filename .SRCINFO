@@ -1,0 +1,19 @@
+pkgbase = triviumdb-bin
+	pkgdesc = Embedded database combining vector search, graph and document metadata
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/Astrmira/TriviumDB
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = triviumdb
+	conflicts = triviumdb
+	options = !debug
+	source_x86_64 = triviumdb-bin-0.9.3-x86_64.tar.gz::https://github.com/Astrmira/TriviumDB/releases/download/v0.9.3/triviumdb-server-v0.9.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1e7b322ffed6c074720a8436358b02bfac1910d2c0d8a9ba6b451965ef1ba87a
+	source_aarch64 = triviumdb-bin-0.9.3-aarch64.tar.gz::https://github.com/Astrmira/TriviumDB/releases/download/v0.9.3/triviumdb-server-v0.9.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 279e167d672010c92503c24f6507aa69329a3d7e147258e9cf242696fe384a8c
+
+pkgname = triviumdb-bin
