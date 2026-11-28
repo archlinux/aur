@@ -1,0 +1,19 @@
+pkgbase = aufs-ng-dkms-git
+	pkgdesc = aufs-ng union filesystem kernel module (DKMS) - standalone drop-in aufs replacement
+	pkgver = r75.8633115
+	pkgrel = 1
+	url = https://github.com/fulalas/aufs-ng
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = dkms
+	provides = aufs-ng-dkms
+	provides = aufs
+	conflicts = aufs-ng-dkms
+	conflicts = aufs-dkms
+	source = git+https://github.com/fulalas/aufs-ng.git
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = d221f26b89a72cef50d80c603ccc2b658f7f94d8ff2d2bc653f814eef1afd6d7
+
+pkgname = aufs-ng-dkms-git
