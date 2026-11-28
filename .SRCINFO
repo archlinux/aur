@@ -1,6 +1,6 @@
 pkgbase = screenix-bin
 	pkgdesc = Professional screen recorder with smooth zoom effects
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/mathisdev7/screenix
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = screenix-bin
 	conflicts = screenix
 	options = !strip
 	options = !debug
-	source = https://github.com/mathisdev7/screenix-releases/releases/download/v2.1.1/Screenix_2.1.1_amd64.deb
-	sha256sums = 3fce2872612a998fe1d0bbb90a237e41060a50563a8a10dae52314615b5512d7
+	source = https://github.com/mathisdev7/screenix-releases/releases/download/v2.1.2/Screenix_2.1.2_amd64.deb
+	sha256sums = 51d5a58775ac573361c30f7b1aef6ec878537abff820fe649858e586d467a389
 
 pkgname = screenix-bin
