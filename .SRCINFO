@@ -1,0 +1,21 @@
+pkgbase = lifecycled-bin
+	pkgdesc = Daemon for responding to AWS Auto Scaling lifecycle hooks
+	pkgver = 3.7.1
+	pkgrel = 1
+	url = https://github.com/buildkite/lifecycled
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lifecycled
+	conflicts = lifecycled
+	options = !debug
+	source = lifecycled-bin-3.7.1-LICENSE::https://raw.githubusercontent.com/buildkite/lifecycled/v3.7.1/LICENSE
+	sha256sums = a76c796fe0ae5f05b43294595dab26e35c29df6740d6673ea11516efbdfd5473
+	source_x86_64 = lifecycled-bin-3.7.1-x86_64::https://github.com/buildkite/lifecycled/releases/download/v3.7.1/lifecycled-linux-amd64
+	sha256sums_x86_64 = 225c7e8ba5cb3ec0ff8502d28099fb79b3e8dd6ead92ca2f60f605917b68d3fc
+	source_aarch64 = lifecycled-bin-3.7.1-aarch64-lifecycled::https://github.com/buildkite/lifecycled/releases/download/v3.7.1/lifecycled-linux-aarch64
+	source_aarch64 = lifecycled-bin-3.7.1-aarch64-lifecycled::https://github.com/buildkite/lifecycled/releases/download/v3.7.1/lifecycled-linux-arm64
+	sha256sums_aarch64 = 496cd0a8fa1096a3b0a52ab5511cde655163f913a5b32df14b4ee42f9094624c
+	sha256sums_aarch64 = 496cd0a8fa1096a3b0a52ab5511cde655163f913a5b32df14b4ee42f9094624c
+
+pkgname = lifecycled-bin
