@@ -1,0 +1,16 @@
+pkgbase = whalewall-bin
+	pkgdesc = Automatically manage firewall rules for Docker containers
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/capnspacehook/whalewall
+	arch = x86_64
+	license = BSD-3-Clause
+	provides = whalewall
+	conflicts = whalewall
+	options = !debug
+	source = whalewall-bin-0.2.3-LICENSE::https://raw.githubusercontent.com/capnspacehook/whalewall/v0.2.3/LICENSE
+	sha256sums = c3397ed0db90e11f2d4f111fce2197217e555c1cd87fe35b87de10ea45734636
+	source_x86_64 = whalewall-bin-0.2.3-x86_64.tar.gz::https://github.com/capnspacehook/whalewall/releases/download/v0.2.3/whalewall_0.2.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 18fcb31b72f68482510a5a9274c3c0a00d04593faa0cb02a6c79a276e6841273
+
+pkgname = whalewall-bin
