@@ -1,0 +1,19 @@
+pkgbase = gohangout-bin
+	pkgdesc = Logstash-like pipeline from Kafka to Elasticsearch and ClickHouse
+	pkgver = 1.12.3
+	pkgrel = 1
+	url = https://github.com/childe/gohangout
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gohangout
+	conflicts = gohangout
+	options = !debug
+	source = gohangout-bin-1.12.3-LICENSE::https://raw.githubusercontent.com/childe/gohangout/v1.12.3/LICENSE
+	sha256sums = 406bdf33d56739976f182cc27db27be57c8f1d635603f3f7aac9cd5a769189a6
+	source_x86_64 = gohangout-bin-1.12.3-x86_64::https://github.com/childe/gohangout/releases/download/v1.12.3/gohangout-linux-x64
+	sha256sums_x86_64 = 17c7cf734deb0dd42d02b6012e76719752b461f7b7c0f63802a144e5d2e757cf
+	source_aarch64 = gohangout-bin-1.12.3-aarch64::https://github.com/childe/gohangout/releases/download/v1.12.3/gohangout-linux-arm64
+	sha256sums_aarch64 = 61fee4e51e0caa5ec94992f375737e84dfd60696c02a2b4bdcaf9e3ea8437932
+
+pkgname = gohangout-bin
