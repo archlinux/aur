@@ -1,7 +1,7 @@
 # Maintainer: Rockykln <contact@rockykln.com>
 pkgname=podctl-bin
 _pkgname=podctl
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Linux control suite for AirPods — daemon, CLI, tray icon and case-open popup"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ provides=('podctl')
 conflicts=('podctl' 'podctl-git')
 source_x86_64=("${_pkgname}-${pkgver}-x86_64-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/podctl-${pkgver}-x86_64-linux-musl.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/podctl-${pkgver}-aarch64-linux-musl.tar.gz")
-sha256sums_x86_64=('5af6d3a722c63a8942f844e4b8bcf847b829a6b69cb061082e70f460150d05a1')
-sha256sums_aarch64=('fc496b057424408373ccaa86311a23e75666932c5c1541e748a3e4e0bf30a9b0')
+sha256sums_x86_64=('269ab70d6e51f5dfca41d63bf9b2a5172ea8793e55996a449fe8f54b572b7866')
+sha256sums_aarch64=('fbc8fd9ea0449175b0619a150859fc144c7c37e10652c023a7e957bcdba0a775')
 options=('!strip')   # musl-static binary, already stripped by release workflow
 
 package() {
@@ -54,6 +54,11 @@ package() {
     "${pkgdir}/usr/share/gnome-shell/extensions/${ext}/metadata.json"
   install -Dm644 "gnome-shell-extension/${ext}/extension.js" \
     "${pkgdir}/usr/share/gnome-shell/extensions/${ext}/extension.js"
+
+  # The status-bar modules `podctl bar` is written for.
+  for f in bar/*; do
+    install -Dm644 "${f}" "${pkgdir}/usr/share/doc/${pkgname}/${f}"
+  done
 
   install -Dm644 LICENSE-MIT     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"

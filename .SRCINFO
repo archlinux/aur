@@ -1,6 +1,6 @@
 pkgbase = podctl-bin
 	pkgdesc = Linux control suite for AirPods — daemon, CLI, tray icon and case-open popup
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/Rockykln/podctl
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = podctl-bin
 	conflicts = podctl
 	conflicts = podctl-git
 	options = !strip
-	source_x86_64 = podctl-0.5.0-x86_64-linux-musl.tar.gz::https://github.com/Rockykln/podctl/releases/download/v0.5.0/podctl-0.5.0-x86_64-linux-musl.tar.gz
-	sha256sums_x86_64 = 5af6d3a722c63a8942f844e4b8bcf847b829a6b69cb061082e70f460150d05a1
-	source_aarch64 = podctl-0.5.0-aarch64-linux-musl.tar.gz::https://github.com/Rockykln/podctl/releases/download/v0.5.0/podctl-0.5.0-aarch64-linux-musl.tar.gz
-	sha256sums_aarch64 = fc496b057424408373ccaa86311a23e75666932c5c1541e748a3e4e0bf30a9b0
+	source_x86_64 = podctl-0.5.1-x86_64-linux-musl.tar.gz::https://github.com/Rockykln/podctl/releases/download/v0.5.1/podctl-0.5.1-x86_64-linux-musl.tar.gz
+	sha256sums_x86_64 = 269ab70d6e51f5dfca41d63bf9b2a5172ea8793e55996a449fe8f54b572b7866
+	source_aarch64 = podctl-0.5.1-aarch64-linux-musl.tar.gz::https://github.com/Rockykln/podctl/releases/download/v0.5.1/podctl-0.5.1-aarch64-linux-musl.tar.gz
+	sha256sums_aarch64 = fbc8fd9ea0449175b0619a150859fc144c7c37e10652c023a7e957bcdba0a775
 
 pkgname = podctl-bin
