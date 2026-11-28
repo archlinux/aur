@@ -1,6 +1,6 @@
 pkgbase = connected-rails-nightly-bin
 	pkgdesc = Train simulator with editors for lines, vehicles and signal kits (nightly builds of main, untested)
-	pkgver = 0.1.0nightly202611270707
+	pkgver = 0.1.0nightly202611280530
 	pkgrel = 1
 	url = https://connected-rails.org
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = connected-rails-nightly-bin
 	conflicts = connected-rails
 	options = !strip
 	options = !debug
-	source = train-sim-nightly-20261127-539b8d6-x86_64-unknown-linux-gnu.tar.gz::https://cdn.connected-rails.org/releases/nightly-20261127-539b8d6/train-sim-nightly-20261127-539b8d6-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 6313bcec4efb62f23830acff7388ed9a068f9f0f558062061af7f437931d3d01
+	source = train-sim-nightly-20261128-f252195-x86_64-unknown-linux-gnu.tar.gz::https://cdn.connected-rails.org/releases/nightly-20261128-f252195/train-sim-nightly-20261128-f252195-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 887b974b3ec467e5ac4f17734282b56e940d7b60125e8c9ae2a79555cb1c4ce5
 
 pkgname = connected-rails-nightly-bin
