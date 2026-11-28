@@ -1,0 +1,19 @@
+pkgbase = zwasm-bin
+	pkgdesc = Fast, spec-compliant WebAssembly runtime
+	pkgver = 2.12.1
+	pkgrel = 1
+	url = https://github.com/zwasm/zwasm
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = zwasm
+	conflicts = zwasm
+	options = !debug
+	source = zwasm-bin-2.12.1-LICENSE::https://raw.githubusercontent.com/zwasm/zwasm/v2.12.1/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = zwasm-bin-2.12.1-x86_64.tar.gz::https://github.com/zwasm/zwasm/releases/download/v2.12.1/zwasm-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a7bcc320fe4080975bf060302841544d865a4c02ac1dc6b0913fa635c70e86bd
+	source_aarch64 = zwasm-bin-2.12.1-aarch64.tar.gz::https://github.com/zwasm/zwasm/releases/download/v2.12.1/zwasm-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 6b36cd6212dd4ce8f823dc6805ecbee92622e383ba4a194118a0daa8c8592609
+
+pkgname = zwasm-bin
