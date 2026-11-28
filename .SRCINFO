@@ -1,0 +1,18 @@
+pkgbase = ultrafocus-bin
+	pkgdesc = Block distracting websites to boost productivity
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/plutov/ultrafocus
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = ultrafocus
+	conflicts = ultrafocus
+	options = !debug
+	source_x86_64 = ultrafocus-bin-0.3.3-x86_64.tar.gz::https://github.com/plutov/ultrafocus/releases/download/v0.3.3/ultrafocus-v0.3.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = a336fe61aeaf2d56cc30a949b73443bc00468db47d326821988ccb6f109fd973
+	source_aarch64 = ultrafocus-bin-0.3.3-aarch64.tar.gz::https://github.com/plutov/ultrafocus/releases/download/v0.3.3/ultrafocus-v0.3.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = 72ffff1c2b5d82f2fd778475eb670818fb8a1a85ed065987ea734e03a35ce7d7
+
+pkgname = ultrafocus-bin
