@@ -1,0 +1,21 @@
+pkgbase = bartholomew-bin
+	pkgdesc = Micro-CMS for WebAssembly and Spin
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/fermyon/bartholomew
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = bartholomew
+	conflicts = bartholomew
+	options = !debug
+	source = bartholomew-bin-0.10.0-LICENSE::https://raw.githubusercontent.com/fermyon/bartholomew/v0.10.0/LICENSE.txt
+	sha256sums = 8c6db340475136df3c1201d458fa5755698eace76e510471ecc9d857d6083dac
+	source_x86_64 = bartholomew-bin-0.10.0-x86_64.tar.gz::https://github.com/fermyon/bartholomew/releases/download/v0.10.0/bart-v0.10.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 68d74e3382e23b25f83ab900c96b7ec3f2a43d7bff8c1756bf0bb99ea8b1acc6
+	source_aarch64 = bartholomew-bin-0.10.0-aarch64.tar.gz::https://github.com/fermyon/bartholomew/releases/download/v0.10.0/bart-v0.10.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = d9370646c5b8922f53cae1dfa4c840e71c4eb36451627f3735b3e10c6ca6375a
+
+pkgname = bartholomew-bin
