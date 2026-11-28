@@ -1,0 +1,18 @@
+pkgbase = compose-generator-bin
+	pkgdesc = Generate Docker Compose configurations
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/compose-generator/compose-generator
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = compose-generator
+	conflicts = compose-generator
+	options = !debug
+	source_x86_64 = compose-generator-bin-1.9.0-x86_64.tar.gz::https://github.com/compose-generator/compose-generator/releases/download/1.9.0/compose-generator_linux_amd64.tar.gz
+	sha256sums_x86_64 = e2302f607136c68e4f36a433f489df7a1bb6935009be268c6085defaad4de4b3
+	source_aarch64 = compose-generator-bin-1.9.0-aarch64.tar.gz::https://github.com/compose-generator/compose-generator/releases/download/1.9.0/compose-generator_linux_arm64.tar.gz
+	sha256sums_aarch64 = 43eb083090526d78d424b3f60affe825b2235dd020450b9d571b4d6f4862c11d
+
+pkgname = compose-generator-bin
