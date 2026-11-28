@@ -2,11 +2,11 @@
 
 pkgname=atmosphera
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 _gitname="$pkgname-$pkgver"
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell"
 arch=('any')
-url="https://github.com/alexindigo/atmosphera"
+url="https://github.com/atmosphera-dev/atmosphera"
 license=('GPL-3.0-or-later')
 makedepends=()
 depends=(
