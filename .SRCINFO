@@ -1,0 +1,19 @@
+pkgbase = cheek-bin
+	pkgdesc = Tiny declarative job scheduler
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = https://github.com/bart6114/cheek
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cheek
+	conflicts = cheek
+	options = !debug
+	source = cheek-bin-1.1.7-LICENSE::https://raw.githubusercontent.com/bart6114/cheek/v1.1.7/LICENSE
+	sha256sums = 2ec3f8871ef5df5e222dee18c4161a2165e6563f230714887ba8902e6b2a0ac5
+	source_x86_64 = cheek-bin-1.1.7-x86_64::https://github.com/bart6114/cheek/releases/download/v1.1.7/cheek-linux-amd64
+	sha256sums_x86_64 = 55c448daccbc076575658d7583505f0674c9f3f48dbdfd8e6c6b871aed94938d
+	source_aarch64 = cheek-bin-1.1.7-aarch64::https://github.com/bart6114/cheek/releases/download/v1.1.7/cheek-linux-arm64
+	sha256sums_aarch64 = 4724e11d3e380784b59b1c93bad0a552b4822bc0b9cb48cbd6a5a4a0f66f9e1d
+
+pkgname = cheek-bin
