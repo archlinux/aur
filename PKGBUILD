@@ -2,8 +2,8 @@
 
 pkgbase=purc
 pkgname=purc
-pkgver=0.9.26
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=($CARCH)
 url="https://github.com/HVML/PurC"
@@ -32,8 +32,11 @@ replaces=(
 )
 depends=(
     glib2
+    libgcc
     libgcrypt
+    libpng
     libsoup3
+    libstdc++
     libxml2
     ncurses
     sqlite
@@ -81,9 +84,15 @@ optdepends=('python-numpy: Scientific tools for Python'
     'webkit2gtk-hvml: Web content engine for GTK (HVML)'
     'webkit2gtk: Web content engine for GTK'
     'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz")
-sha256sums=('88b0d6c831645a73adcd476be4343ae326174729f50ff58c3ec4a8e687ac6365')
+source=("${pkgname}::git+${url}.git#tag=ver-${pkgver}")
+sha256sums=('9c4e55aee1fc04e11b49cda40cd5a49ccc139907d06fac577c4b6fcd4d20a3f9')
 options=()
+
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}"
+    git cherry-pick -n fa68f301c10651b9032e6b51b809680af6e8e32d
+}
 
 build() {
     export LDFLAGS="-L/lib64"
@@ -92,7 +101,7 @@ build() {
     else
         export LD_LIBRARY_PATH=/lib64
     fi
-    cd "${srcdir}/PurC-ver-${pkgver}/"
+    cd "${srcdir}/${pkgname}/"
 
     #     sed -i  's|0 9 13|0 9 14|g' CMakeLists.txt
 
@@ -125,5 +134,5 @@ build() {
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/PurC-ver-${pkgver}/build install
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
 }
