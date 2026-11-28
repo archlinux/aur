@@ -1,0 +1,18 @@
+pkgbase = proxyt-bin
+	pkgdesc = Simple proxy for the Tailscale control plane
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/jaxxstorm/proxyt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = proxyt
+	conflicts = proxyt
+	options = !debug
+	source_x86_64 = proxyt-bin-0.1.2-x86_64.tar.gz::https://github.com/jaxxstorm/proxyt/releases/download/v0.1.2/proxyt_0.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 940c234ec6fccd2c2843a4c8ef823b6cdc535e76c7f4e275b9dbd9dc5c974764
+	source_aarch64 = proxyt-bin-0.1.2-aarch64.tar.gz::https://github.com/jaxxstorm/proxyt/releases/download/v0.1.2/proxyt_0.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2bb459eae8b9788e4b9490ba8afd8558de21363c17bd6e85fa6bd622a035812c
+
+pkgname = proxyt-bin
