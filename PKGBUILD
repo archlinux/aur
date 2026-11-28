@@ -2,8 +2,8 @@
 
 pkgname=acheron-git
 _pkgname=acheron
-pkgver=r275.5064bbf
-pkgrel=1
+pkgver=r314.45ac3d5
+pkgrel=2
 pkgdesc='Alternative Discord client made in C++ with Qt 6'
 arch=('x86_64')
 url='https://github.com/ouwou/acheron'
@@ -51,6 +51,9 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
+
+  # Workaround until mlspp stops using deprecated OpenSSL functions
+  CXXFLAGS+=' -DOPENSSL_SUPPRESS_DEPRECATED'
 
   cmake -B build -S . -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \

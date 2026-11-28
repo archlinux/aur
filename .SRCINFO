@@ -1,7 +1,7 @@
 pkgbase = acheron-git
 	pkgdesc = Alternative Discord client made in C++ with Qt 6
-	pkgver = r275.5064bbf
-	pkgrel = 1
+	pkgver = r314.45ac3d5
+	pkgrel = 2
 	url = https://github.com/ouwou/acheron
 	arch = x86_64
 	license = GPL-3.0-or-later
