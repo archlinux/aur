@@ -1,0 +1,18 @@
+pkgbase = spring-initializr-tui-bin
+	pkgdesc = Terminal UI for Spring Initializr
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/danvega/spring-initializr-tui
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = zlib
+	provides = spring-initializr-tui
+	conflicts = spring-initializr-tui
+	options = !debug
+	source = spring-initializr-tui-bin-0.3.1-LICENSE::https://raw.githubusercontent.com/danvega/spring-initializr-tui/v0.3.1/LICENSE
+	sha256sums = f2f86727875a6cf923f35d71c32ae004981ace138730ab150f49d866deadbf2e
+	source_x86_64 = spring-initializr-tui-bin-0.3.1-x86_64::https://github.com/danvega/spring-initializr-tui/releases/download/v0.3.1/spring-initializr-tui-linux-x86_64
+	sha256sums_x86_64 = ffa7eee54f889290ffd9a7f6575a83b72021d61933f4e694c77724f3205fcd76
+
+pkgname = spring-initializr-tui-bin
