@@ -1,0 +1,17 @@
+pkgbase = tfedit-bin
+	pkgdesc = Refactoring tool for Terraform
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/minamijoyo/tfedit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tfedit
+	conflicts = tfedit
+	options = !debug
+	source_x86_64 = tfedit-bin-0.2.3-x86_64.tar.gz::https://github.com/minamijoyo/tfedit/releases/download/v0.2.3/tfedit_0.2.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7434e55f2cc51dab1f1d4d82797c8c2fe2ee35d9a8d0dba831ec0c604d8baf68
+	source_aarch64 = tfedit-bin-0.2.3-aarch64.tar.gz::https://github.com/minamijoyo/tfedit/releases/download/v0.2.3/tfedit_0.2.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 16ff1e2f49796d8659641536f909edbfb78146fa864744a4111cec7980b941d5
+
+pkgname = tfedit-bin
