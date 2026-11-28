@@ -1,0 +1,17 @@
+pkgbase = rose-bin
+	pkgdesc = Input method user dictionary converter
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/nopdan/rose
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	provides = rose
+	conflicts = rose
+	options = !debug
+	source = rose-bin-2.1.2-LICENSE::https://raw.githubusercontent.com/nopdan/rose/v2.1.2/LICENSE
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = rose-bin-2.1.2-x86_64.tar.gz::https://github.com/nopdan/rose/releases/download/v2.1.2/rose_linux-x64.tar.gz
+	sha256sums_x86_64 = 4596c91cb80da032e532fccedcdec2ebf18eaf44435874234e872e56129cf5b9
+
+pkgname = rose-bin
