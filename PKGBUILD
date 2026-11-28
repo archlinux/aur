@@ -7,7 +7,7 @@
 
 pkgname=kimi-work-cn-bin
 pkgver=3.2.29
-pkgrel=1
+pkgrel=2
 _prefix='/opt/kimi-work-cn'
 pkgdesc='Kimi Work desktop client, mainland China build pinned to the China region'
 arch=('x86_64')
@@ -43,7 +43,7 @@ noextract=("kimi_${pkgver}.exe")
 sha256sums=(
   '85e9c4268a8ee267755f0f3faa4b7cd957db27d57d0c22d53cb2c691d34f0ec2'
   '817e0d47bca30dfb87aa2e9df40fb94ba1d3704305d2b6b0f2b4359e4ab7e304'
-  '38a68601a2d405307d9450247dbf09e92547ecc35ad72dc8ffdd7cfb09a6aa05'
+  '7d8d45288ddc4cf56ad07b3eaa9ab2c72b39afd441479c9dabb1dcde52c824c4'
   '51c1c2a95bc83082315531565fdb240af49967614c6eb098e339ae8594782e6f'
   '45c7624addd5a291ee020b20f7f890608c9291306a9d65905371583636648e41'
   'ab973d8d007cfed09bf051378baf4fd220f545a5533ab5e9269aad8674e7f468'
@@ -114,6 +114,8 @@ prepare() {
 
   node "${srcdir}/patch-region.js" "${srcdir}/app" china kimi-desktop-cn
   grep -qF 'return "china";' "${srcdir}/app/out/main/index.js"
+  # 上游自带 1 处 return "china" 字面量；区域判定与设备区域两个 getter 各 1 处。
+  [ "$(grep -cF 'return "china";' "${srcdir}/app/out/main/index.js")" -ge 3 ]
   grep -qE '_0x[0-9a-f]+ = null, _0x[0-9a-f]+ = "china";' \
     "${srcdir}/app/out/main/index.js"
   grep -qF '(process.env["KIMI_WORK_RESOURCES"] || process[' \
