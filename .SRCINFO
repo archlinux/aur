@@ -1,0 +1,21 @@
+pkgbase = dupehound-bin
+	pkgdesc = Find duplicated code
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Rafaelpta/dupehound
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = dupehound
+	conflicts = dupehound
+	options = !debug
+	source = dupehound-bin-0.1.2-LICENSE::https://raw.githubusercontent.com/Rafaelpta/dupehound/v0.1.2/LICENSE
+	sha256sums = 28ede1e7bf2097f76b17f52e306f13730da02b3ba529cf7711b3bd026a1a29d7
+	source_x86_64 = dupehound-bin-0.1.2-x86_64.tar.gz::https://github.com/Rafaelpta/dupehound/releases/download/v0.1.2/dupehound-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 05c86a8a88733eb31d74739a9ac432701ca30559b92375373f8ee400d2d0b9d4
+	source_aarch64 = dupehound-bin-0.1.2-aarch64.tar.gz::https://github.com/Rafaelpta/dupehound/releases/download/v0.1.2/dupehound-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 19f4a28d3344b8d334dc67a34b1b262c6187905b112c1f443ad835b087016cab
+
+pkgname = dupehound-bin
