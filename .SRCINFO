@@ -1,0 +1,17 @@
+pkgbase = pgbackrest_exporter-bin
+	pkgdesc = Prometheus exporter for pgBackRest
+	pkgver = 0.25.0
+	pkgrel = 1
+	url = https://github.com/woblerr/pgbackrest_exporter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pgbackrest_exporter
+	conflicts = pgbackrest_exporter
+	options = !debug
+	source_x86_64 = pgbackrest_exporter-bin-0.25.0-x86_64.tar.gz::https://github.com/woblerr/pgbackrest_exporter/releases/download/v0.25.0/pgbackrest_exporter-0.25.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = d0372c14757fb8590e7275401c6aeb36909bebf6135c1d72039547a8d3321054
+	source_aarch64 = pgbackrest_exporter-bin-0.25.0-aarch64.tar.gz::https://github.com/woblerr/pgbackrest_exporter/releases/download/v0.25.0/pgbackrest_exporter-0.25.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4d18143573f181981b7cc886b5bd5c91c4079167acba7660c5e1fb585db10876
+
+pkgname = pgbackrest_exporter-bin
