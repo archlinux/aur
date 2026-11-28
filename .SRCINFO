@@ -1,6 +1,6 @@
 pkgbase = agildodock
-	pkgdesc = Dock Liquid Glass e Barra Superior integrada para Wayland (KDE Plasma / Hyprland)
-	pkgver = 2.1.0
+	pkgdesc = Liquid Glass dock and integrated macOS-style top bar for Wayland (KDE Plasma / Hyprland)
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/juglesbass/AgildoDockCpp_Wayland
 	install = agildodock.install
@@ -24,10 +24,11 @@ pkgbase = agildodock
 	depends = qt6-shadertools
 	depends = qt6-wayland
 	depends = wayland
-	optdepends = networkmanager: controles rápidos de Wi-Fi e VPN no Centro de Controle
-	optdepends = bluez: controles rápidos de Bluetooth no Centro de Controle
-	optdepends = power-profiles-daemon: seletor de perfis de energia no Centro de Controle
-	source = AgildoDockCpp_Wayland-2.1.0.tar.gz::https://github.com/juglesbass/AgildoDockCpp_Wayland/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = 11d9eb3a188f4358b4ac844fe8913c6d76ee4ceda73c8036467df3549496f673
+	optdepends = networkmanager: Wi-Fi and VPN quick toggles in Control Center
+	optdepends = bluez: Bluetooth quick controls in Control Center
+	optdepends = power-profiles-daemon: power profile switcher in Control Center
+	optdepends = agildomonitor: quick-launch full system monitor from the top bar hardware popup
+	source = AgildoDockCpp_Wayland-2.1.1.tar.gz::https://github.com/juglesbass/AgildoDockCpp_Wayland/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = 6409f2c54729779db7454babacbf4d47df22561e19555a1140231a81839a2452
 
 pkgname = agildodock

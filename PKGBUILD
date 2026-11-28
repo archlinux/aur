@@ -12,10 +12,10 @@ pkgname=agildodock
 _githubuser=juglesbass
 _repo=AgildoDockCpp_Wayland # pasta ao extrair: ${_repo}-${pkgver}
 
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 
-pkgdesc="Dock Liquid Glass e Barra Superior integrada para Wayland (KDE Plasma / Hyprland)"
+pkgdesc="Liquid Glass dock and integrated macOS-style top bar for Wayland (KDE Plasma / Hyprland)"
 arch=("x86_64")
 url="https://github.com/${_githubuser}/${_repo}"
 license=("GPL-3.0-or-later")
@@ -43,9 +43,10 @@ makedepends=(
   "qt6-tools"
 )
 optdepends=(
-  "networkmanager: controles rápidos de Wi-Fi e VPN no Centro de Controle"
-  "bluez: controles rápidos de Bluetooth no Centro de Controle"
-  "power-profiles-daemon: seletor de perfis de energia no Centro de Controle"
+  "networkmanager: Wi-Fi and VPN quick toggles in Control Center"
+  "bluez: Bluetooth quick controls in Control Center"
+  "power-profiles-daemon: power profile switcher in Control Center"
+  "agildomonitor: quick-launch full system monitor from the top bar hardware popup"
 )
 
 install="${pkgname}.install"
@@ -55,7 +56,7 @@ validpgpkeys=()
 _source_file="${_repo}-${pkgver}.tar.gz"
 # ATENÇÃO: não envies SKIP ao servidor AUR com tarball estático — corre «updpkgsums» aqui primeiro.
 source=("${_source_file}::https://github.com/${_githubuser}/${_repo}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('11d9eb3a188f4358b4ac844fe8913c6d76ee4ceda73c8036467df3549496f673')
+sha256sums=('6409f2c54729779db7454babacbf4d47df22561e19555a1140231a81839a2452')
 
 build() {
   cd "${srcdir}/${_repo}-${pkgver}"
