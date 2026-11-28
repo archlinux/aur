@@ -5,7 +5,7 @@ pkgver=0.1.6.r1.gdf6b672
 pkgrel=1
 pkgdesc='Fast native 3D printing slicer front-end for OrcaSlicer and Bambu Studio engines (git)'
 arch=('x86_64')
-url='https://github.com/arximus88/slicenv'
+url='https://slicenv.borys.app'
 license=('AGPL-3.0-or-later')
 depends=('libgcc' 'libstdc++' 'glibc' 'libxkbcommon' 'libxkbcommon-x11' 'libxcb' 'wayland'
          'vulkan-icd-loader' 'hicolor-icon-theme' 'python' 'curl' 'tar' 'xdg-utils')
@@ -62,7 +62,8 @@ package() {
   install -Dm644 "$a/slicenv.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$id.svg"
   for s in 16 24 32 48 64 128 256 512; do
     install -d "$pkgdir/usr/share/icons/hicolor/${s}x$s/apps"
-    rsvg-convert -w "$s" -h "$s" "$a/slicenv.svg" -o "$pkgdir/usr/share/icons/hicolor/${s}x$s/apps/$id.png"
+    svg="$a/slicenv.svg"; ((s <= 32)) && svg="$a/slicenv-small.svg"
+    rsvg-convert -w "$s" -h "$s" "$svg" -o "$pkgdir/usr/share/icons/hicolor/${s}x$s/apps/$id.png"
   done
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 THIRD-PARTY-NOTICES.md packaging/THIRD-PARTY-RUST-CRATES.md -t "$pkgdir/usr/share/licenses/$pkgname/"
