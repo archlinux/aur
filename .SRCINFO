@@ -1,0 +1,14 @@
+pkgbase = indexer-bin
+	pkgdesc = Algorand blockchain indexer
+	pkgver = 3.11.1
+	pkgrel = 1
+	url = https://github.com/algorand/indexer
+	arch = x86_64
+	license = MIT
+	provides = indexer
+	conflicts = indexer
+	options = !debug
+	source_x86_64 = indexer-bin-3.11.1-x86_64.tar.gz::https://github.com/algorand/indexer/releases/download/v3.11.1/indexer_Linux_x86_64_3.11.1.tar.gz
+	sha256sums_x86_64 = b90a6118645dc74c97978f729bf89d11a1baac7f9f52428c7c14004b1e3e3a00
+
+pkgname = indexer-bin
