@@ -1,0 +1,19 @@
+pkgbase = eightctl-bin
+	pkgdesc = Fetch data from and control Eight Sleep pods
+	pkgver = 0.2.12
+	pkgrel = 1
+	url = https://github.com/steipete/eightctl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = eightctl
+	conflicts = eightctl
+	options = !debug
+	source = eightctl-bin-0.2.12-LICENSE::https://raw.githubusercontent.com/steipete/eightctl/v0.2.12/LICENSE
+	sha256sums = 62316704df7426e5a79d2827ff8aca36e9abb3a73b8e68557030749ebefec667
+	source_x86_64 = eightctl-bin-0.2.12-x86_64.tar.gz::https://github.com/steipete/eightctl/releases/download/v0.2.12/eightctl_0.2.12_linux_amd64.tar.gz
+	sha256sums_x86_64 = ac3be8ace339bf4069f8fe44d9592d4790fdc347dfe0f2d64e39e6a3f89bd54f
+	source_aarch64 = eightctl-bin-0.2.12-aarch64.tar.gz::https://github.com/steipete/eightctl/releases/download/v0.2.12/eightctl_0.2.12_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9bfa2992bfce19896bd79ee777dcc108a731c326f1eba60aabe37a5baf514d87
+
+pkgname = eightctl-bin
