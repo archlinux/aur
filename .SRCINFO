@@ -1,0 +1,16 @@
+pkgbase = mail-mcp-bin
+	pkgdesc = Secure MCP server for IMAP, SMTP, EWS and Microsoft Graph mail
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/tecnologicachile/mail-mcp
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = mail-mcp
+	conflicts = mail-mcp
+	options = !debug
+	source_x86_64 = mail-mcp-bin-0.7.2-x86_64.tar.xz::https://github.com/tecnologicachile/mail-mcp/releases/download/v0.7.2/mail-mcp-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = d3e56a36a7f4bc842afa87f4c44910fdc6ce1fa766bc7d5db3f264818380e577
+
+pkgname = mail-mcp-bin
