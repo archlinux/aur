@@ -8,7 +8,7 @@
 
 pkgname=minimax-code-bin
 _pkgname='@minimax-ai/code'
-pkgver=0.7.10
+pkgver=0.8.0
 pkgrel=1
 # upstream optionalDependencies pin
 _better_sqlite3_ver=12.11.1
@@ -47,7 +47,7 @@ source_x86_64=(
   "better-sqlite3-node-${_better_sqlite3_ver}-linux-x64.tar.gz::https://github.com/WiseLibs/better-sqlite3/releases/download/v${_better_sqlite3_ver}/better-sqlite3-v${_better_sqlite3_ver}-node-v147-linux-x64.tar.gz"
 )
 sha256sums_x86_64=(
-  '40e783dd6ede61f03f1f7dd8c26cc8547b372ae7d8fa2592d685b10e7e72f7fe'
+  'fbc48d5e138ce8f43f11627b7378a209772a522c1125da7b9dbf2157ae8e9365'
   '6d12c8978be61caa15721b226583b52d1a0397a3a1745296f7c7cfa387249069'
   '8cc06e25e29f9c258ee9a09eecd7707c1ea2e99d9e76151e53dbe39f8d6b4a09'
   '25986ebeecaffadf3d1dd5f9199869057e4b64c37d7069c7f31c231dd86b5639'
