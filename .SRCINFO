@@ -1,0 +1,17 @@
+pkgbase = mempool-cli-bin
+	pkgdesc = mempool.space for the terminal
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/mempool/mempool-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mempool-cli
+	conflicts = mempool-cli
+	options = !debug
+	source_x86_64 = mempool-cli-bin-2.0.4-x86_64.tar.gz::https://github.com/mempool/mempool-cli/releases/download/v2.0.4/mempool-cli_2.0.4_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8eacd2eb74cb8a9633485781e4603223f968571fb1eebaf09895d907117706f2
+	source_aarch64 = mempool-cli-bin-2.0.4-aarch64.tar.gz::https://github.com/mempool/mempool-cli/releases/download/v2.0.4/mempool-cli_2.0.4_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c312ad7d371cf1f394f498a572da279b0a2d05bf7d7eb0a87721abdd65c57bc4
+
+pkgname = mempool-cli-bin
