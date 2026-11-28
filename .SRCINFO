@@ -1,0 +1,18 @@
+pkgbase = fennara-godot-ai-bin
+	pkgdesc = AI chat and agent tooling for the Godot engine with MCP support
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/fennaraOfficial/fennara-godot-ai
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = fennara-godot-ai
+	conflicts = fennara-godot-ai
+	options = !debug
+	source = fennara-godot-ai-bin-0.4.3-LICENSE::https://raw.githubusercontent.com/fennaraOfficial/fennara-godot-ai/v0.4.3/LICENSE.md
+	sha256sums = 6b6469d626826ccf127349d9e5d83ff74d319b2a37881f7f60151e8beb95a7f4
+	source_x86_64 = fennara-godot-ai-bin-0.4.3-x86_64.zip::https://github.com/fennaraOfficial/fennara-godot-ai/releases/download/v0.4.3/fennara-cli-linux-x86_64-v0.4.3.zip
+	sha256sums_x86_64 = 9a17e2299cdadd299e7d915cf0154e64a1a5b47d293f924b1ae532e564ba1aab
+
+pkgname = fennara-godot-ai-bin
