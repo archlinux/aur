@@ -26,11 +26,11 @@ pkgbase = twilightmc-bin
 	conflicts = twilightmc-snapshot-bin
 	options = !strip
 	options = !emptydirs
-	source = twilightmc-bin-v0.8.0b1-icon.png::https://raw.githubusercontent.com/BlackCatOfficialytb/TwilightMC-OSS/v0.8.0b1/crates/twilight-ui/ui/public/logo.png
-	sha256sums = 4be2d2796ba5d85713db617bd22a9330ad76b0ee40a66bb06395c4615a3fdc5a
-	source_x86_64 = twilight-v0.8.0b1-linux-gcc-x86_64.tar.zst::https://github.com/BlackCatOfficialytb/TwilightMC-OSS/releases/download/v0.8.0b1/twilight-v0.8.0b1-linux-gcc-x86_64.tar.zst
-	sha256sums_x86_64 = 8036117fef4a416dc7c88e5bcf7ed48cd0d052b9a986ec951fb811a3424c9379
-	source_aarch64 = twilight-v0.8.0b1-linux-aarch64.tar.zst::https://github.com/BlackCatOfficialytb/TwilightMC-OSS/releases/download/v0.8.0b1/twilight-v0.8.0b1-linux-aarch64.tar.zst
-	sha256sums_aarch64 = ef6e1903f72bf2ce36aef12df8feba2483c984682037d80ab6bee3f55d6f2245
+	source = twilightmc-bin-v0.8.0~b1-icon.png::https://raw.githubusercontent.com/BlackCatOfficialytb/TwilightMC-OSS/v0.8.0~b1/crates/twilight-ui/ui/public/logo.png
+	sha256sums = SKIP
+	source_x86_64 = twilight-v0.8.0~b1-linux-gcc-x86_64.tar.zst::https://github.com/BlackCatOfficialytb/TwilightMC-OSS/releases/download/v0.8.0~b1/twilight-v0.8.0~b1-linux-gcc-x86_64.tar.zst
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = twilight-v0.8.0~b1-linux-aarch64.tar.zst::https://github.com/BlackCatOfficialytb/TwilightMC-OSS/releases/download/v0.8.0~b1/twilight-v0.8.0~b1-linux-aarch64.tar.zst
+	sha256sums_aarch64 = SKIP
 
 pkgname = twilightmc-bin
