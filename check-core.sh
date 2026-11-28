@@ -15,6 +15,9 @@ from pathlib import Path
 import kara_templater
 
 assert Path(kara_templater.__file__).resolve().is_relative_to(sys.prefix)
+catalog = kara_templater.component_catalog()
+card = catalog["cards"][catalog["preferred_cards"]["entry-fade"]]
+assert all(kara_templater.component_preview_resource(card[k]).read_bytes() for k in ("poster", "video"))
 PYTHON
   "$python_bin" -I -m pytest -q -p no:cacheprovider
 )

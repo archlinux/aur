@@ -1,7 +1,7 @@
 # Maintainer: sitiyou <sitiyou7@gmail.com>
 
 pkgname=python-kara-templater
-pkgver=1.1.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Python karaoke effects engine for standard ASS subtitles and libplacebo shaders'
 arch=('x86_64')
@@ -23,27 +23,26 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools>=77'
-  'nasm'
-  'libpng'
+  'cargo'
 )
-checkdepends=('python-pytest' 'ttf-dejavu')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+checkdepends=('python-pytest' 'ttf-dejavu' 'noto-fonts-cjk')
+source=("https://files.pythonhosted.org/packages/source/k/kara-templater/kara_templater-$pkgver.tar.gz"
         "check-core.sh")
-sha256sums=('ea7b3a8315948ca65022d7f54b571145a5db32edebdebf161cc4469b69be5acd'
-            'c774ecc49cccd39a9772d27e697a21eba4ae71742021cc435301cb9ae5ed2177')
+sha256sums=('a658a2fe38056eb255a27b933d93b116280557730dfb82a221250aa11a578992'
+            '2c298a5d69011fab59a7233e695427b907f2d4cc1414038ad7ceb050e8b2693c')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "kara_templater-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 check() {
   cd "$(mktemp -d "$srcdir/check.XXXXXXXX")"
-  timeout --signal=KILL 30s bash "$srcdir/check-core.sh" "$srcdir/$pkgname-$pkgver"
+  bash "$srcdir/check-core.sh" "$srcdir/kara_templater-$pkgver"
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "kara_templater-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
