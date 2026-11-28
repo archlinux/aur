@@ -1,0 +1,21 @@
+pkgbase = zentinel-bin
+	pkgdesc = Security-first reverse proxy
+	pkgver = 26.11_11
+	pkgrel = 1
+	url = https://github.com/zentinelproxy/zentinel
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = zentinel
+	conflicts = zentinel
+	options = !debug
+	source = zentinel-bin-26.11_11-LICENSE::https://raw.githubusercontent.com/zentinelproxy/zentinel/26.11_11/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = zentinel-bin-26.11_11-x86_64.tar.gz::https://github.com/zentinelproxy/zentinel/releases/download/26.11_11/zentinel-26.11_11-linux-amd64.tar.gz
+	sha256sums_x86_64 = 63a18e1a0fd1530cbf99bd22468d963c0e8e078423b7c98d5e85bbb2a32074b4
+	source_aarch64 = zentinel-bin-26.11_11-aarch64.tar.gz::https://github.com/zentinelproxy/zentinel/releases/download/26.11_11/zentinel-26.11_11-linux-arm64.tar.gz
+	sha256sums_aarch64 = 121ebf8f0241724aaa867988b6425d5c3eb33f602e96c9199c8b1e3c8df7c2cd
+
+pkgname = zentinel-bin
