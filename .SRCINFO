@@ -1,0 +1,19 @@
+pkgbase = openneato-bin
+	pkgdesc = Flasher for OpenNeato, a replacement for Neato's discontinued cloud and app
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://github.com/renjfk/OpenNeato
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = openneato
+	conflicts = openneato
+	options = !debug
+	source = openneato-bin-0.15-LICENSE::https://raw.githubusercontent.com/renjfk/OpenNeato/v0.15/LICENSE
+	sha256sums = 67f5dcaa9c3af2d4024b351b848ff6bd8ad7e44ae41e4704bf383905ba0adb4b
+	source_x86_64 = openneato-bin-0.15-x86_64::https://github.com/renjfk/OpenNeato/releases/download/v0.15/openneato-flash_Linux_x86_64
+	sha256sums_x86_64 = 830037b722705c75b49597c42060754ed7f0f9f46f5acbd41f5e1b163d78608d
+	source_aarch64 = openneato-bin-0.15-aarch64::https://github.com/renjfk/OpenNeato/releases/download/v0.15/openneato-flash_Linux_arm64
+	sha256sums_aarch64 = dd86b92c76b725a361d6d558c800c87869b740e63306312e83e0d720e201d49a
+
+pkgname = openneato-bin
