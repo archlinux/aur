@@ -1,0 +1,19 @@
+pkgbase = incert-bin
+	pkgdesc = Add CA certificates into container images
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/chainguard-dev/incert
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = incert
+	conflicts = incert
+	options = !debug
+	source = incert-bin-0.6.0-LICENSE::https://raw.githubusercontent.com/chainguard-dev/incert/v0.6.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = incert-bin-0.6.0-x86_64::https://github.com/chainguard-dev/incert/releases/download/v0.6.0/incert-linux-amd64
+	sha256sums_x86_64 = 3823dd3e8a2c462fa7dcf96928d3da3973d9a051b8db4daf15d673c22fe43ddc
+	source_aarch64 = incert-bin-0.6.0-aarch64::https://github.com/chainguard-dev/incert/releases/download/v0.6.0/incert-linux-arm64
+	sha256sums_aarch64 = 9fb88d103ac9b011117134106e5035e9f30648d4d88bf3fab57204f3f3d552f3
+
+pkgname = incert-bin
