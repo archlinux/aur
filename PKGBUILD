@@ -1,6 +1,6 @@
 # Maintainer: JageloR <jagelor@yandex.ru>
 pkgname=kb-indicator-rs
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Индикатор раскладки клавиатуры в системном трее Wayland (LXQt/labwc)"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ optdepends=('ttf-dejavu: шрифт по умолчанию для иконки 
 makedepends=('cargo')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9e4ec52778e5ca8a691bc02b0a946976801cc88a871cebe07331b1e6521b0be2')
+sha256sums=('7e4346a740094b4c327f5af2e0f26d7bb07f71f55161b73af0fd27728109f096')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
