@@ -2,7 +2,7 @@
 
 _pkgname=gufo
 pkgname=${_pkgname}-git
-pkgver=0.37.0.r8.gcead7b617
+pkgver=0.37.0.r38.gb2533447
 pkgrel=1
 pkgdesc="The Open Source Strix Halo AI engine (git version)."
 arch=(x86_64)
@@ -64,6 +64,8 @@ build() {
   # HIP's __noinline__ macro conflicts with GCC 16's <format> attributes.
   # Load the standard header before HIP headers in host C++ translation units.
   CXXFLAGS+=' -include format'
+
+  HIPFLAGS="${HIPFLAGS:+$HIPFLAGS }-isystem /opt/rocm/include/hipccl"
 
   local _prefix_map="-ffile-prefix-map=${srcdir}=/usr/src/debug/${pkgname}"
   local _cmake_options=(
