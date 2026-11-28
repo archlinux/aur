@@ -1,0 +1,17 @@
+pkgbase = portkey-bin
+	pkgdesc = Simple web start page with a collection of links
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/kodehat/portkey
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = portkey
+	conflicts = portkey
+	options = !debug
+	source_x86_64 = portkey-bin-4.0.1-x86_64.tar.gz::https://github.com/kodehat/portkey/releases/download/v4.0.1/portkey-linux-amd64.tar.gz
+	sha256sums_x86_64 = fff6b6cbf21f60cab54a9cc4d644318695c001375900690835dc5479b6ba3b86
+	source_aarch64 = portkey-bin-4.0.1-aarch64.tar.gz::https://github.com/kodehat/portkey/releases/download/v4.0.1/portkey-linux-arm64.tar.gz
+	sha256sums_aarch64 = 27a3bc814b7fc98e63c00736e4df1dcc79a023833af2316660c2cf5ef253d4d7
+
+pkgname = portkey-bin
