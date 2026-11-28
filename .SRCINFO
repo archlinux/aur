@@ -1,0 +1,17 @@
+pkgbase = github_exporter-bin
+	pkgdesc = Prometheus exporter for GitHub
+	pkgver = 21.3.0
+	pkgrel = 1
+	url = https://github.com/promhippie/github_exporter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = github_exporter
+	conflicts = github_exporter
+	options = !debug
+	source_x86_64 = github_exporter-bin-21.3.0-x86_64.tar.gz::https://github.com/promhippie/github_exporter/releases/download/v21.3.0/github-exporter-21.3.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 83a1a1c9a2a210ef723ce502d90d557016c87e81d06fae8ee1e4b49293bbd314
+	source_aarch64 = github_exporter-bin-21.3.0-aarch64.tar.gz::https://github.com/promhippie/github_exporter/releases/download/v21.3.0/github-exporter-21.3.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 402fc188e144f83cdd27d88672bcf64109a175317a6d940d95d1938e9b1cf4ab
+
+pkgname = github_exporter-bin
