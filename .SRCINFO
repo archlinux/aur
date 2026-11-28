@@ -1,0 +1,21 @@
+pkgbase = busbar-bin
+	pkgdesc = Execution control plane for AI agents
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = https://github.com/GetBusbar/busbar
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = busbar
+	conflicts = busbar
+	options = !debug
+	source = busbar-bin-1.5.5-LICENSE::https://raw.githubusercontent.com/GetBusbar/busbar/v1.5.5/LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = busbar-bin-1.5.5-x86_64.tar.gz::https://github.com/GetBusbar/busbar/releases/download/v1.5.5/busbar-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 64f0eda182c803ebff691d91e71a2dae468d759d73d646b13a0b1b1df06ddd9d
+	source_aarch64 = busbar-bin-1.5.5-aarch64.tar.gz::https://github.com/GetBusbar/busbar/releases/download/v1.5.5/busbar-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 6f8ab606b81ea8326813a991729fefe237d607c89bbcc433c1d5000a8257c8ac
+
+pkgname = busbar-bin
