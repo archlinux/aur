@@ -1,0 +1,21 @@
+pkgbase = beava-bin
+	pkgdesc = Real-time decision features without streaming infrastructure
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/beava-dev/beava
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = beava
+	conflicts = beava
+	options = !debug
+	source = beava-bin-0.0.6-LICENSE::https://raw.githubusercontent.com/beava-dev/beava/v0.0.6/LICENSE
+	sha256sums = d52174abcfe6e57b81accfa094cc2e02b59b9888d09a51f8a04a17237eb2e39c
+	source_x86_64 = beava-bin-0.0.6-x86_64.tar.gz::https://github.com/beava-dev/beava/releases/download/v0.0.6/beava-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 043ab762dd2b38b4218021b456d87425b0a21fdb3c82a4706015e35f5a78ba52
+	source_aarch64 = beava-bin-0.0.6-aarch64.tar.gz::https://github.com/beava-dev/beava/releases/download/v0.0.6/beava-linux-arm64.tar.gz
+	sha256sums_aarch64 = 51f88df09a098357fb86cb676d5b0bb33800b11caf53d1197ee77e30e80e29f2
+
+pkgname = beava-bin
