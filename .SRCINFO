@@ -1,0 +1,16 @@
+pkgbase = btab-bin
+	pkgdesc = Blue team security analysis toolbox
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Martin2877/btab
+	arch = x86_64
+	license = Apache-2.0
+	provides = btab
+	conflicts = btab
+	options = !debug
+	source = btab-bin-1.1.0-LICENSE::https://raw.githubusercontent.com/Martin2877/btab/v1.1.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = btab-bin-1.1.0-x86_64.tar.gz::https://github.com/Martin2877/btab/releases/download/v1.1.0/btab_v1.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = a9ebc943b98672058d91405eacda69c064d98a0667ece741579dd7561145304b
+
+pkgname = btab-bin
