@@ -1,0 +1,19 @@
+pkgbase = leankg-bin
+	pkgdesc = Lean code knowledge graph for AI agents that saves tokens
+	pkgver = 0.38.0
+	pkgrel = 1
+	url = https://github.com/FreePeak/LeanKG
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = leankg
+	conflicts = leankg
+	options = !debug
+	source = leankg-bin-0.38.0-LICENSE::https://raw.githubusercontent.com/FreePeak/LeanKG/v0.38.0/LICENSE
+	sha256sums = 431e055b00bd929b2f5ea93082396d76fce779a2bb1173b8fc738dc82683463d
+	source_x86_64 = leankg-bin-0.38.0-x86_64.tgz::https://github.com/FreePeak/LeanKG/releases/download/v0.38.0/leankg-linux-amd64.tgz
+	sha256sums_x86_64 = 9847053143e1c079de67ef3be4f9b1a9dcf08871909aa7103071b18acd788b9e
+	source_aarch64 = leankg-bin-0.38.0-aarch64.tgz::https://github.com/FreePeak/LeanKG/releases/download/v0.38.0/leankg-linux-arm64.tgz
+	sha256sums_aarch64 = e7deaf0bd8ad829b4da73354b0dce20dd61a79b32b713b8f3eaaf09a4edc4447
+
+pkgname = leankg-bin
