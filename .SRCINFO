@@ -1,0 +1,16 @@
+pkgbase = ntlmrain-bin
+	pkgdesc = Recover NT hashes from NetNTLMv1 responses using WebGPU and table lookups
+	pkgver = 0.1.19
+	pkgrel = 1
+	url = https://github.com/outflanknl/ntlmrain
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = ntlmrain
+	conflicts = ntlmrain
+	options = !debug
+	source_x86_64 = ntlmrain-bin-0.1.19-x86_64.zip::https://github.com/outflanknl/ntlmrain/releases/download/v0.1.19/ntlmrain-linux-x86_64.zip
+	sha256sums_x86_64 = 3ca94846a9931e6c95eb87cd7ad8614c584ef753c2ea5a0d4f7443486903b9a3
+
+pkgname = ntlmrain-bin
