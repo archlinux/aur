@@ -1,0 +1,19 @@
+pkgbase = git-surgeon-bin
+	pkgdesc = Git primitives for autonomous coding agents
+	pkgver = 0.1.17
+	pkgrel = 1
+	url = https://github.com/raine/git-surgeon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = git-surgeon
+	conflicts = git-surgeon
+	options = !debug
+	source = git-surgeon-bin-0.1.17-LICENSE::https://raw.githubusercontent.com/raine/git-surgeon/v0.1.17/LICENSE
+	sha256sums = dfc0be306ac621b63914bf0f4854538a2e0a8d09ad24f20e7edd9a80ece241b2
+	source_x86_64 = git-surgeon-bin-0.1.17-x86_64.tar.gz::https://github.com/raine/git-surgeon/releases/download/v0.1.17/git-surgeon-linux-amd64.tar.gz
+	sha256sums_x86_64 = 7bd03670ec02fd6e9e8c62e4cb69d9f85e3cb2d92976d8bc3077547bdf307db6
+	source_aarch64 = git-surgeon-bin-0.1.17-aarch64.tar.gz::https://github.com/raine/git-surgeon/releases/download/v0.1.17/git-surgeon-linux-arm64.tar.gz
+	sha256sums_aarch64 = c0f902befcdd05b140fcd05360daeaa5fde3aed7d492ef4131676676fe7ca908
+
+pkgname = git-surgeon-bin
