@@ -1,6 +1,6 @@
 pkgbase = rustgrid-bin
 	pkgdesc = Native database GUI for SQL and Redis, built in Rust without WebView
-	pkgver = 0.1.18
+	pkgver = 0.1.19
 	pkgrel = 1
 	url = https://github.com/yisier/rustgrid
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = rustgrid-bin
 	options = !debug
 	source = rustgrid-icon.png::https://raw.githubusercontent.com/yisier/rustgrid/v0.1.6/crates/rustgrid-app/assets/logo.png
 	sha256sums = e8c73449133ba38031be6d0b6c56b18f7333293794f9853000fba295eda67d34
-	source_x86_64 = RustGrid-0.1.18-linux-x64.tar.gz::https://github.com/yisier/rustgrid/releases/download/v0.1.18/RustGrid-0.1.18-linux-x64.tar.gz
-	sha256sums_x86_64 = 1d4db82338641f10c07bd108e7583109f42d6dba829e329efa35625ed4387682
-	source_aarch64 = RustGrid-0.1.18-linux-arm64.tar.gz::https://github.com/yisier/rustgrid/releases/download/v0.1.18/RustGrid-0.1.18-linux-arm64.tar.gz
-	sha256sums_aarch64 = a615e3bf6201cd5a8605e4582a592309c88414d16ae01c3cecdc2723cc00bc97
+	source_x86_64 = RustGrid-0.1.19-linux-x64.tar.gz::https://github.com/yisier/rustgrid/releases/download/v0.1.19/RustGrid-0.1.19-linux-x64.tar.gz
+	sha256sums_x86_64 = c9f1da79839c9d9c6815965d9825ff330c95f5efbc8e5fec06009bbdb4d047df
+	source_aarch64 = RustGrid-0.1.19-linux-arm64.tar.gz::https://github.com/yisier/rustgrid/releases/download/v0.1.19/RustGrid-0.1.19-linux-arm64.tar.gz
+	sha256sums_aarch64 = d68ce64e12c9c9f551f6a1c86640c2f451c17e14cfba5150e57671e7a6247af1
 
 pkgname = rustgrid-bin
