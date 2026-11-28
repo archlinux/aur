@@ -1,0 +1,19 @@
+pkgbase = sqlfuzz-bin
+	pkgdesc = Simple SQL table fuzzing
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/PumpkinSeed/sqlfuzz
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = sqlfuzz
+	conflicts = sqlfuzz
+	options = !debug
+	source = sqlfuzz-bin-0.5.0-LICENSE::https://raw.githubusercontent.com/PumpkinSeed/sqlfuzz/v0.5.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = sqlfuzz-bin-0.5.0-x86_64::https://github.com/PumpkinSeed/sqlfuzz/releases/download/v0.5.0/sqlfuzz_linux_amd64
+	sha256sums_x86_64 = 83ae4a264a21e1f7cfff5f79a9a8ceed58fdd67743ac3c921632e00b84641aa8
+	source_aarch64 = sqlfuzz-bin-0.5.0-aarch64::https://github.com/PumpkinSeed/sqlfuzz/releases/download/v0.5.0/sqlfuzz_linux_arm64
+	sha256sums_aarch64 = 6121c5cde214a60216c86a6b74cc946824b4a2130b291b32041108e168b56cd4
+
+pkgname = sqlfuzz-bin
