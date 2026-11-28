@@ -1,0 +1,21 @@
+pkgbase = hprof-slurp-bin
+	pkgdesc = JVM heap dump analyzer
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/agourlay/hprof-slurp
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = hprof-slurp
+	conflicts = hprof-slurp
+	options = !debug
+	source = hprof-slurp-bin-0.11.0-LICENSE::https://raw.githubusercontent.com/agourlay/hprof-slurp/v0.11.0/LICENSE
+	sha256sums = ec353b1e4091b8f201f26de51685a0dcaff4a7270716234dca05d3d0d26207c1
+	source_x86_64 = hprof-slurp-bin-0.11.0-x86_64.tar.gz::https://github.com/agourlay/hprof-slurp/releases/download/v0.11.0/hprof-slurp-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 54de12cc4d7a22581753145b018167e7df32e16bca87b0e61a0bcfcf95700c90
+	source_aarch64 = hprof-slurp-bin-0.11.0-aarch64.tar.gz::https://github.com/agourlay/hprof-slurp/releases/download/v0.11.0/hprof-slurp-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a5b42768071261fa61f55286c47a94f65bcd5065b1a6cddc8a72d73010356954
+
+pkgname = hprof-slurp-bin
