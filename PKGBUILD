@@ -1,6 +1,6 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=dreamcoder
-pkgver=1.0.17
+pkgver=1.0.18
 pkgrel=1
 pkgdesc='AI-powered coding assistant with semantic code search'
 url='https://www.dreamcoder.ai'
@@ -26,7 +26,7 @@ source=(
 noextract=(
     "$pkgname-$pkgver-amd64.deb"
 )
-sha256sums=('6225b3d8994b3afd1f7e7a5398b9a66eb7d02cacc7c1768dade0b3b62ad0b2bd')
+sha256sums=('cb389dadfcc13584d56ab97665b1a2c51c0d583e8add563a9753feca48852e7a')
 
 package() {
     local _deb="$srcdir/$pkgname-$pkgver-amd64.deb"

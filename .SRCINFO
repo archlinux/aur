@@ -1,6 +1,6 @@
 pkgbase = dreamcoder
 	pkgdesc = AI-powered coding assistant with semantic code search
-	pkgver = 1.0.17
+	pkgver = 1.0.18
 	pkgrel = 1
 	url = https://www.dreamcoder.ai
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = dreamcoder
 	depends = libgomp
 	depends = libstdc++
 	depends = zlib
-	noextract = dreamcoder-1.0.17-amd64.deb
+	noextract = dreamcoder-1.0.18-amd64.deb
 	options = !strip
 	options = !debug
-	source = dreamcoder-1.0.17-amd64.deb::https://www.dreamcoder.ai/downloads/files/public/1.0.17/linux-deb/debian/dreamcoder-dreamcoder_1.0.17_amd64.deb
-	sha256sums = 6225b3d8994b3afd1f7e7a5398b9a66eb7d02cacc7c1768dade0b3b62ad0b2bd
+	source = dreamcoder-1.0.18-amd64.deb::https://www.dreamcoder.ai/downloads/files/public/1.0.18/linux-deb/debian/dreamcoder-dreamcoder_1.0.18_amd64.deb
+	sha256sums = cb389dadfcc13584d56ab97665b1a2c51c0d583e8add563a9753feca48852e7a
 
 pkgname = dreamcoder
