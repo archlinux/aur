@@ -1,0 +1,17 @@
+pkgbase = gremlins-bin
+	pkgdesc = Mutation testing for Go
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/go-gremlins/gremlins
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = gremlins
+	conflicts = gremlins
+	options = !debug
+	source_x86_64 = gremlins-bin-0.6.0-x86_64.tar.gz::https://github.com/go-gremlins/gremlins/releases/download/v0.6.0/gremlins_0.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b02a42e47935f891c9a411d68c07e211c7082609e79c2435b67c85ee9658c538
+	source_aarch64 = gremlins-bin-0.6.0-aarch64.tar.gz::https://github.com/go-gremlins/gremlins/releases/download/v0.6.0/gremlins_0.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 686542674e54559afb7e86d6994d342c19a856cfd970c315748989537936664c
+
+pkgname = gremlins-bin
