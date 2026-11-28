@@ -1,0 +1,22 @@
+pkgbase = earl-bin
+	pkgdesc = Secure CLI proxy for AI agents with keychain secrets and MCP integration
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/mathematic-inc/earl
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = earl
+	conflicts = earl
+	options = !debug
+	source = earl-bin-0.6.4-LICENSE::https://raw.githubusercontent.com/mathematic-inc/earl/v0.6.4/LICENSE
+	sha256sums = ce046aa6b5f18e080296b519eb5b9e6183a31d56e12c6f8ea52e929e2ecb0b31
+	source_x86_64 = earl-bin-0.6.4-x86_64.tar.gz::https://github.com/mathematic-inc/earl/releases/download/v0.6.4/earl-0.6.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a42adfb2e2b7190f7c7ca621b6068b4be63a5f537b973af538b59a3511fc66ae
+	source_aarch64 = earl-bin-0.6.4-aarch64.tar.gz::https://github.com/mathematic-inc/earl/releases/download/v0.6.4/earl-0.6.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a5be99a5dfaaef8621b85b19882674cb63307b7b35deb4f8f19c621e1439b43f
+
+pkgname = earl-bin
