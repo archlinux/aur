@@ -1,0 +1,15 @@
+pkgbase = plasma6-applets-market-tiles
+	pkgdesc = KDE Plasma 6 widget: crypto, stock and currency tiles with sparklines, alerts and holdings (Yahoo Finance)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/winiciuscota/plasma-market-tiles
+	arch = any
+	license = GPL-3.0-or-later
+	depends = plasma-workspace
+	depends = python
+	depends = curl
+	optdepends = libnotify: price alert notifications
+	source = plasma-market-tiles-1.0.0.tar.gz::https://github.com/winiciuscota/plasma-market-tiles/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 72ce4d56bc91c1b650144c4b7720f16ef62004b6ff61ade8e6ab957fa61999cf
+
+pkgname = plasma6-applets-market-tiles
