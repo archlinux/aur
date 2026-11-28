@@ -1,0 +1,20 @@
+pkgbase = magec-bin
+	pkgdesc = Multi-agent AI platform with voice and text control
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/achetronic/magec
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = magec
+	conflicts = magec
+	options = !debug
+	source = magec-bin-2.6.0-LICENSE::https://raw.githubusercontent.com/achetronic/magec/v2.6.0/LICENSE
+	sha256sums = 81857fb8ba669ec3ff4a889c8afd40e213f8464891f6f092918ef3f873297eba
+	source_x86_64 = magec-bin-2.6.0-x86_64.tar.gz::https://github.com/achetronic/magec/releases/download/v2.6.0/magec-linux-amd64.tar.gz
+	sha256sums_x86_64 = b672ec6666c04d8ec3f99c1773d045fd64f63ea058b7c84412c6aa8638e977ec
+	source_aarch64 = magec-bin-2.6.0-aarch64.tar.gz::https://github.com/achetronic/magec/releases/download/v2.6.0/magec-linux-arm64.tar.gz
+	sha256sums_aarch64 = cd8ca737a48769b5093c2feb3808c040584ffe2f0afc26b47b173f6c4604cad3
+
+pkgname = magec-bin
