@@ -1,0 +1,17 @@
+pkgbase = ascii-gif-bin
+	pkgdesc = Turn a terminal session into an animated GIF with a polished default look
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tamnd/ascii-gif
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ascii-gif
+	conflicts = ascii-gif
+	options = !debug
+	source_x86_64 = ascii-gif-bin-0.1.0-x86_64.tar.gz::https://github.com/tamnd/ascii-gif/releases/download/v0.1.0/ascii-gif_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2f4315b920e70bee2460bc70f831f1f857b611e395112a3ac8fd541c00810a93
+	source_aarch64 = ascii-gif-bin-0.1.0-aarch64.tar.gz::https://github.com/tamnd/ascii-gif/releases/download/v0.1.0/ascii-gif_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 567ba73adbed770af350b397345233184fad7a830efa12baea618d05048de4b1
+
+pkgname = ascii-gif-bin
