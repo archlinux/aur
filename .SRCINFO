@@ -1,0 +1,17 @@
+pkgbase = arkeep-bin
+	pkgdesc = Agent for Arkeep, self-hosted backup management for multiple servers
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/arkeep-io/arkeep
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = arkeep
+	conflicts = arkeep
+	options = !debug
+	source_x86_64 = arkeep-bin-0.13.0-x86_64.tar.gz::https://github.com/arkeep-io/arkeep/releases/download/v0.13.0/arkeep-agent_linux_amd64.tar.gz
+	sha256sums_x86_64 = 784496788c7083edb8b9ac19118d78287282fc7643d05f56fcce2b22500439ba
+	source_aarch64 = arkeep-bin-0.13.0-aarch64.tar.gz::https://github.com/arkeep-io/arkeep/releases/download/v0.13.0/arkeep-agent_linux_arm64.tar.gz
+	sha256sums_aarch64 = e03916ca8b35d4d9b5367b27a80f8a724e9c5b54e03f42f98df449b1249e670e
+
+pkgname = arkeep-bin
