@@ -3,7 +3,7 @@
 # Contributor: David Moore <davidm@sjsoft.com>
 
 pkgname=slib
-pkgver=3c2
+pkgver=3c3
 pkgrel=1
 pkgdesc='Library of functions for Scheme implementations'
 arch=(any)
@@ -12,7 +12,7 @@ license=(custom)
 depends=(guile)
 options=(emptydirs)
 source=("https://groups.csail.mit.edu/mac/ftpdir/scm/$pkgname-$pkgver.zip")
-b2sums=('ceb0a8a9d94a78128fd9903396a60f26843cac27dd5b8a60116ff0ac910ed2636674f9ed8a0f6aeb681f95be154a0404e76c70230104e985305a76439645afe1')
+b2sums=('01468abe6f06d8d3ade11e2a37f0048b63cfb63fa83684e836aa49858003e9fb7d03d27df27d88fbcba8468e96d4b47a8b7aa3e78a73acec14febb3c378fecb4')
 
 prepare() {
   cd $pkgname
