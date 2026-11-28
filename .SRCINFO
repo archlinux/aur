@@ -1,0 +1,16 @@
+pkgbase = ttrpg-convert-cli-bin
+	pkgdesc = Convert 5etools and pf2etools JSON data you own into Obsidian Markdown
+	pkgver = 3.3.9
+	pkgrel = 1
+	url = https://github.com/ebullient/ttrpg-convert-cli
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = zlib
+	provides = ttrpg-convert-cli
+	conflicts = ttrpg-convert-cli
+	options = !debug
+	source_x86_64 = ttrpg-convert-cli-bin-3.3.9-x86_64.zip::https://github.com/ebullient/ttrpg-convert-cli/releases/download/3.3.9/ttrpg-convert-cli-3.3.9-linux-x86_64.zip
+	sha256sums_x86_64 = 91299041f41c8f987bd0b771883f58fe54131dec770bf5d0c73f33ea7c907529
+
+pkgname = ttrpg-convert-cli-bin
