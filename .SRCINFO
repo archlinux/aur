@@ -1,0 +1,17 @@
+pkgbase = term-llm-bin
+	pkgdesc = Multipurpose LLM tool for the terminal
+	pkgver = 0.9.130
+	pkgrel = 1
+	url = https://github.com/term-llm/term-llm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = term-llm
+	conflicts = term-llm
+	options = !debug
+	source_x86_64 = term-llm-bin-0.9.130-x86_64.tar.gz::https://github.com/term-llm/term-llm/releases/download/v0.9.130/term-llm_0.9.130_linux_amd64.tar.gz
+	sha256sums_x86_64 = e0bc7afea26abca71bb541ae3bc31f5c0ae343c1beb2fb2fc55366d626145835
+	source_aarch64 = term-llm-bin-0.9.130-aarch64.tar.gz::https://github.com/term-llm/term-llm/releases/download/v0.9.130/term-llm_0.9.130_linux_arm64.tar.gz
+	sha256sums_aarch64 = 36cf4554b1edc581cc0681ff9a7df4f736a803f7def5e582d67ffdf13d76fe17
+
+pkgname = term-llm-bin
