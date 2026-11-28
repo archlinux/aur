@@ -1,0 +1,17 @@
+pkgbase = pg_hardstorage-bin
+	pkgdesc = PostgreSQL backup with continuous WAL streaming and base backups
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/cybertec-postgresql/pg_hardstorage
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = pg_hardstorage
+	conflicts = pg_hardstorage
+	options = !debug
+	source_x86_64 = pg_hardstorage-bin-1.7.0-x86_64.tar.gz::https://github.com/cybertec-postgresql/pg_hardstorage/releases/download/v1.7.0/pg_hardstorage_1.7.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 81999bae901ed432bb53cfb520b6daadd025af12c1a897f2a811516c1798525b
+	source_aarch64 = pg_hardstorage-bin-1.7.0-aarch64.tar.gz::https://github.com/cybertec-postgresql/pg_hardstorage/releases/download/v1.7.0/pg_hardstorage_1.7.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2d53b1fee58627cc82432f186bd2a5d818edf443ff7f8f5c760f439633983703
+
+pkgname = pg_hardstorage-bin
