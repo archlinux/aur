@@ -1,6 +1,6 @@
 # Maintainer: acidicX
 pkgname=kodi-addon-inputstream-adaptive-any
-pkgver=21.5.18
+pkgver=21.5.26
 pkgrel=1
 pkgdesc="Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture"
 _koditarget=Omega
@@ -17,7 +17,7 @@ depends=('kodi')
 source=("https://github.com/xbmc/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('a62ef86fc616c37ff7fa53ff7dfe2a73ee21f48af306a9f82c5bb5fe05245dad'
+sha256sums=('c6fca33834d6bbba70766a0a1795cf75a6e6e3a1836e67a0bbae721df3de617e'
             'a60afcb556e4a00cb19fc35b7e77758107c9a8096c6ce9b66af5f92396be31aa')
 
 prepare() {
