@@ -1,0 +1,14 @@
+_reload() {
+  systemctl daemon-reload
+  # The next request starts the service again, with the new command.
+  systemctl stop fprintd.service 2>/dev/null || true
+}
+
+post_install() {
+  _reload
+  echo ">>> Enroll a finger in GNOME Settings > Users > Fingerprint Login, or with fprintd-enroll."
+  echo ">>> For sudo and graphical password prompts, see /usr/share/doc/elanfp-git/README.md"
+}
+
+post_upgrade() { _reload; }
+post_remove() { _reload; }

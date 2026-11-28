@@ -1,0 +1,21 @@
+pkgbase = elanfp-git
+	pkgdesc = Fingerprint login for the ELAN 04f3:0903 reader (ASUS ZenBook UM431/UX431), served through fprintd
+	pkgver = r1.d6517ee
+	pkgrel = 1
+	url = https://gitlab.com/juxuanu/elanfp
+	install = elanfp.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = fprintd
+	depends = libusb
+	depends = python
+	depends = python-gobject
+	depends = python-numpy
+	depends = python-opencv
+	provides = elanfp
+	conflicts = elanfp
+	source = elanfp::git+https://gitlab.com/juxuanu/elanfp.git
+	sha256sums = SKIP
+
+pkgname = elanfp-git
