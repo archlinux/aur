@@ -4,7 +4,7 @@ _pkgname=browser-stable
 pkgname=yandex-browser
 pkgver=26.10.0.1890
 _pkgver=26.10.0.1890-1
-pkgrel=1
+pkgrel=2
 #epoch=1
 
 pkgdesc="The web browser from Yandex.
@@ -15,6 +15,7 @@ license=("custom:yandex-browser")
 categories=("network")
 provides=(yandex-browser)
 conflicts=("yandex-browser" "yandex-browser-stable" "yandex-browser-corporate")
+options=(!debug)
 
 depends=("binutils" "ttf-liberation" "jq" "alsa-lib" "at-spi2-atk" "curl" "dbus" "expat" "libcups" "mesa" "gtk4" "nss" "squashfs-tools" "wget" "xdg-utils"
 "vulkan-icd-loader" "libxcomposite")
