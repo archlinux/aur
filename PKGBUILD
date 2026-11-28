@@ -1,7 +1,7 @@
 # Maintainer: Vade <72322348+MetanoicArmor@users.noreply.github.com>
 # Builds MetanoicArmor/I2PChat from git (not the Qt5 AUR package i2pchat-git).
 pkgname=i2pchat-ng-git
-pkgver=1.7.0.r0.g0000000
+pkgver=1.7.1.r0.g0000000
 pkgrel=1
 pkgdesc="P2P (peer-to-peer) chat client over I2P network (GUI version)"
 arch=('any')
