@@ -2,7 +2,7 @@
 # Maintainer: Parham Alvani <parham.alvani at gmail dot com>
 
 pkgname='pasadizo-bin'
-pkgver=1.15.0_alpha.14_pasadizo.8
+pkgver=1.15.0_alpha.14_pasadizo.9
 pkgrel=1
 pkgdesc='Proxy platform derived from sing-box, for a home gateway on a lossy, filtered line'
 url='https://github.com/pasadizo-net/pasadizo'
@@ -12,14 +12,14 @@ provides=('pasadizo')
 conflicts=('pasadizo')
 backup=('etc/pasadizo/config.json')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/pasadizo-net/pasadizo/releases/download/v1.15.0-alpha.14-pasadizo.8/pasadizo-1.15.0-alpha.14-pasadizo.8-linux-arm64.tar.gz")
-sha256sums_aarch64=('1f8e259fb0b94e83b4db70a20197b30042033f1589476cb3f51afb3f9a2a5dee')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/pasadizo-net/pasadizo/releases/download/v1.15.0-alpha.14-pasadizo.9/pasadizo-1.15.0-alpha.14-pasadizo.9-linux-arm64.tar.gz")
+sha256sums_aarch64=('17d93650334b1b83b46ffe0b827c3ad6c9a106ec46621ebb6c6fa5dfa1954d7e')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/pasadizo-net/pasadizo/releases/download/v1.15.0-alpha.14-pasadizo.8/pasadizo-1.15.0-alpha.14-pasadizo.8-linux-armv7.tar.gz")
-sha256sums_armv7h=('dcbea8066b1ad31389fe64854e7187d7ada29203270005f4976afe73eec17d93')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/pasadizo-net/pasadizo/releases/download/v1.15.0-alpha.14-pasadizo.9/pasadizo-1.15.0-alpha.14-pasadizo.9-linux-armv7.tar.gz")
+sha256sums_armv7h=('444e16d4f408d0ffec211db851d64b8ef5ea822cd8fba0d50e3c9d51d2cabea2')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/pasadizo-net/pasadizo/releases/download/v1.15.0-alpha.14-pasadizo.8/pasadizo-1.15.0-alpha.14-pasadizo.8-linux-amd64.tar.gz")
-sha256sums_x86_64=('fa04174bae7afae1cc35dbe45ae22de94c315c5c1ca85fb7b6525f869a97418d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/pasadizo-net/pasadizo/releases/download/v1.15.0-alpha.14-pasadizo.9/pasadizo-1.15.0-alpha.14-pasadizo.9-linux-amd64.tar.gz")
+sha256sums_x86_64=('c35a5cef6659487841b2fd7f3f26210db82661303c1741ae51d5a594bb2d2e52')
 
 package() {
   install -Dm755 "./pasadizo" "${pkgdir}/usr/bin/pasadizo"
