@@ -1,0 +1,17 @@
+pkgbase = netsgo-bin
+	pkgdesc = Self-hosted tunneling and node management platform
+	pkgver = 0.1.19
+	pkgrel = 1
+	url = https://github.com/zsio/netsgo
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = netsgo
+	conflicts = netsgo
+	options = !debug
+	source_x86_64 = netsgo-bin-0.1.19-x86_64.tar.gz::https://github.com/zsio/netsgo/releases/download/v0.1.19/netsgo_0.1.19_linux_amd64.tar.gz
+	sha256sums_x86_64 = f2c958531c8cb3a1820fc1cf5747df596283b42c3cf4a7a8c4fbb7002f93e36c
+	source_aarch64 = netsgo-bin-0.1.19-aarch64.tar.gz::https://github.com/zsio/netsgo/releases/download/v0.1.19/netsgo_0.1.19_linux_arm64.tar.gz
+	sha256sums_aarch64 = e1dbb43f0f9f6d35bdc157fe7ba317f7f44e57088669b2828440aff874ed640f
+
+pkgname = netsgo-bin
