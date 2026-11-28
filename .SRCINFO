@@ -1,0 +1,17 @@
+pkgbase = arch-go-bin
+	pkgdesc = Architecture checks for Go projects
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/arch-go/arch-go
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = arch-go
+	conflicts = arch-go
+	options = !debug
+	source_x86_64 = arch-go-bin-2.1.2-x86_64.tar.gz::https://github.com/arch-go/arch-go/releases/download/v2.1.2/arch-go_v2.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = edcb2f5e12976a4aab01d5bc3de8bc7314cde824dd04f4860ce44f4380b90d96
+	source_aarch64 = arch-go-bin-2.1.2-aarch64.tar.gz::https://github.com/arch-go/arch-go/releases/download/v2.1.2/arch-go_v2.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = aa3bfee33ad5ceb50d2bccb3057825c7079799d8711cf0c9ef785ad143c77ace
+
+pkgname = arch-go-bin
