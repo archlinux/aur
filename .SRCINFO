@@ -1,0 +1,17 @@
+pkgbase = mockd-bin
+	pkgdesc = High-performance, multi-protocol mock server
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/getmockd/mockd
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = mockd
+	conflicts = mockd
+	options = !debug
+	source_x86_64 = mockd-bin-0.7.1-x86_64.tar.gz::https://github.com/getmockd/mockd/releases/download/v0.7.1/mockd_0.7.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = fc4cd16bed6c4dc20d3f0a49d02badce78ed8018733567de75c5ef3cd92b57b7
+	source_aarch64 = mockd-bin-0.7.1-aarch64.tar.gz::https://github.com/getmockd/mockd/releases/download/v0.7.1/mockd_0.7.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 471e55391afa9e788e0ab4ca078563ac23168c836e4d0b76cc10e868e84d339c
+
+pkgname = mockd-bin
