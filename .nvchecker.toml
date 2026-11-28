@@ -1,0 +1,5 @@
+[dbdeployer]
+source = "github"
+github = "ProxySQL/dbdeployer"
+prefix = "v"
+use_latest_release = true
