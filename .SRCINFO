@@ -1,0 +1,17 @@
+pkgbase = framed-bin
+	pkgdesc = Manage project file and directory structure
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/mactat/framed
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = framed
+	conflicts = framed
+	options = !debug
+	source_x86_64 = framed-bin-0.0.9-x86_64.tar.gz::https://github.com/mactat/framed/releases/download/v0.0.9/framed_0.0.9_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1139b193ac48dc340bfb4707b231207ec5c72be53c171b1d9579ce8838af9245
+	source_aarch64 = framed-bin-0.0.9-aarch64.tar.gz::https://github.com/mactat/framed/releases/download/v0.0.9/framed_0.0.9_linux_arm64.tar.gz
+	sha256sums_aarch64 = 04ade00870e8688f7769b7fea3d4a04cfff753f60ebad19985df34941a78fb48
+
+pkgname = framed-bin
