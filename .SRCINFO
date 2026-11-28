@@ -1,0 +1,23 @@
+pkgbase = meron-bin
+	pkgdesc = Email client with chat and kanban views
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/nonbili/meron
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libsoup3
+	depends = libx11
+	depends = webkit2gtk-4.1
+	provides = meron
+	conflicts = meron
+	options = !debug
+	source = meron-bin-0.6.1-LICENSE::https://raw.githubusercontent.com/nonbili/meron/v0.6.1/LICENSE
+	sha256sums = 2a090ec3daca676845095889878e14700186d7ed3c5930d6812e8a8bdfedcb98
+	source_x86_64 = meron-bin-0.6.1-x86_64.tar.gz::https://github.com/nonbili/meron/releases/download/v0.6.1/meron-linux-amd64.tar.gz
+	sha256sums_x86_64 = 9406d1a6b39e6ab7954aff1206dace26f95413adea3ae67605e04910db93c3db
+
+pkgname = meron-bin
