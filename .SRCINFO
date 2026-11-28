@@ -1,0 +1,14 @@
+pkgbase = s3deploy-bin
+	pkgdesc = Deploy static websites to Amazon S3 and CloudFront
+	pkgver = 2.16.0
+	pkgrel = 1
+	url = https://github.com/bep/s3deploy
+	arch = x86_64
+	license = MIT
+	provides = s3deploy
+	conflicts = s3deploy
+	options = !debug
+	source_x86_64 = s3deploy-bin-2.16.0-x86_64.tar.gz::https://github.com/bep/s3deploy/releases/download/v2.16.0/s3deploy_2.16.0_linux-amd64.tar.gz
+	sha256sums_x86_64 = 66ea2e9fe04b28784899c9d76c3813ffcd39ae602cc3933b205daa23a553f6dc
+
+pkgname = s3deploy-bin
