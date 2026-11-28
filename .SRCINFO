@@ -1,0 +1,21 @@
+pkgbase = coasts-bin
+	pkgdesc = Localhost service isolation and orchestration for git worktrees
+	pkgver = 0.1.53
+	pkgrel = 1
+	url = https://github.com/coast-guard/coasts
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = coasts
+	conflicts = coasts
+	options = !debug
+	source = coasts-bin-0.1.53-LICENSE::https://raw.githubusercontent.com/coast-guard/coasts/v0.1.53/LICENSE
+	sha256sums = 247b4986e8ac8722fd89fbfa3e104d3014e7e8d809746a222d4bd30ad5001763
+	source_x86_64 = coasts-bin-0.1.53-x86_64.tar.gz::https://github.com/coast-guard/coasts/releases/download/v0.1.53/coast-v0.1.53-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1700ffa4fbd9a59b97f71b2ba2039ed50f50510f0824e988890a6ead7d95ad77
+	source_aarch64 = coasts-bin-0.1.53-aarch64.tar.gz::https://github.com/coast-guard/coasts/releases/download/v0.1.53/coast-v0.1.53-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8b2c1aaae5d2748cd9908ed16f8f422fe18a8d7f9521c23394cbbc2c68d741db
+
+pkgname = coasts-bin
