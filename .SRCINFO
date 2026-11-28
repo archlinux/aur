@@ -1,0 +1,19 @@
+pkgbase = agent-lsp-bin
+	pkgdesc = MCP server that orchestrates language servers for AI agents
+	pkgver = 0.24.6
+	pkgrel = 1
+	url = https://github.com/blackwell-systems/agent-lsp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = agent-lsp
+	conflicts = agent-lsp
+	options = !debug
+	source = agent-lsp-bin-0.24.6-LICENSE::https://raw.githubusercontent.com/blackwell-systems/agent-lsp/v0.24.6/LICENSE
+	sha256sums = a0a5e156f85c30d7b1dbf2427dc376b2bc84052d5aa3e95e6d6b0e7f42cf379a
+	source_x86_64 = agent-lsp-bin-0.24.6-x86_64.tar.gz::https://github.com/blackwell-systems/agent-lsp/releases/download/v0.24.6/agent-lsp_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9e967d73c49f85edaeb6daccf31741b08cf95c0a6522d2914255eb56a8741103
+	source_aarch64 = agent-lsp-bin-0.24.6-aarch64.tar.gz::https://github.com/blackwell-systems/agent-lsp/releases/download/v0.24.6/agent-lsp_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7dc155b90237acb2a7457feb5aec90af8338085442e3d5a9ebc5d4becc0ba970
+
+pkgname = agent-lsp-bin
