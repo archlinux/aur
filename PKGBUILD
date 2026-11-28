@@ -2,7 +2,7 @@
 
 _pkgname=libxfce4util
 pkgname=${_pkgname}-devel
-pkgver=4.21.0
+pkgver=4.21.1
 pkgrel=1
 pkgdesc="Basic utility non-GUI functions for Xfce (development release)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('gtk-doc' 'gobject-introspection' 'vala')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('205677cb96b778e5079eeac80f3a636d2a909b08fcf2aa05bfe4513c69c27f29')
+sha256sums=('509e0ead3bc98c4f04b79069be7521b7cc35b63702262e148c5364b5a08e2e9a')
 
 build() {
   local meson_options=(

@@ -1,6 +1,6 @@
 pkgbase = libxfce4util-devel
 	pkgdesc = Basic utility non-GUI functions for Xfce (development release)
-	pkgver = 4.21.0
+	pkgver = 4.21.1
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/libxfce4util/start
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = libxfce4util-devel
 	makedepends = gobject-introspection
 	makedepends = vala
 	depends = glib2
-	provides = libxfce4util=4.21.0
+	provides = libxfce4util=4.21.1
 	conflicts = libxfce4util
-	source = https://archive.xfce.org/src/xfce/libxfce4util/4.21/libxfce4util-4.21.0.tar.xz
-	sha256sums = 205677cb96b778e5079eeac80f3a636d2a909b08fcf2aa05bfe4513c69c27f29
+	source = https://archive.xfce.org/src/xfce/libxfce4util/4.21/libxfce4util-4.21.1.tar.xz
+	sha256sums = 509e0ead3bc98c4f04b79069be7521b7cc35b63702262e148c5364b5a08e2e9a
 
 pkgname = libxfce4util-devel
