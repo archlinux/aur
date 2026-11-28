@@ -1,6 +1,6 @@
 pkgbase = kwiklook
 	pkgdesc = Quick previews of files from Dolphin
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/strandzen/KwikLook
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = kwiklook
 	optdepends = kimageformats: camera RAW photos, AVIF, HEIC, JPEG XL and more
 	optdepends = kcontacts: contacts (.vcf) shown as cards
 	optdepends = kcalendarcore: calendar files (.ics) shown as cards
-	source = kwiklook-0.8.1.tar.gz::https://github.com/strandzen/KwikLook/archive/refs/tags/v0.8.1.tar.gz
-	sha256sums = 982974a770c351c3027739307281bcb14f1efe0eb370a9293a470f2957462aed
+	source = kwiklook-0.8.2.tar.gz::https://github.com/strandzen/KwikLook/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = 76225dc171f04bfef59c9538d10748e35fc4dd62693c44591ee0618b4f2e8f74
 
 pkgname = kwiklook
