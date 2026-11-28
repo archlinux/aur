@@ -1,0 +1,14 @@
+pkgbase = fogping-bin
+	pkgdesc = Lightweight SmokePing-like network latency monitor with a web UI
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/githubflyideas/fogping
+	arch = x86_64
+	license = Apache-2.0
+	provides = fogping
+	conflicts = fogping
+	options = !debug
+	source_x86_64 = fogping-bin-1.5.1-x86_64.tar.gz::https://github.com/githubflyideas/fogping/releases/download/v1.5.1/fogping-v1.5.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 03bfb9131ad4d6f47366be780c88fa02d23284aedec3eb4640c1869578af7e08
+
+pkgname = fogping-bin
