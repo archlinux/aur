@@ -1,0 +1,19 @@
+pkgbase = cc-downloader-bin
+	pkgdesc = Polite downloader for Common Crawl data
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/commoncrawl/cc-downloader
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = cc-downloader
+	conflicts = cc-downloader
+	options = !debug
+	source_x86_64 = cc-downloader-bin-1.1.1-x86_64.tar.gz::https://github.com/commoncrawl/cc-downloader/releases/download/v1.1.1/cc-downloader-v1.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 296f441c55243ebc229e62bf98a3418b8ca55b02d4e1e4d80509fb36b9f9ccf2
+	source_aarch64 = cc-downloader-bin-1.1.1-aarch64.tar.gz::https://github.com/commoncrawl/cc-downloader/releases/download/v1.1.1/cc-downloader-v1.1.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 272bed999e2cfbe2a8cb3581f6e8cce54a43634ee26cad00884825c6935432d0
+
+pkgname = cc-downloader-bin
