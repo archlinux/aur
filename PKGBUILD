@@ -1,7 +1,7 @@
 # Maintainer: Vaishnav Sabari Girish <vaishnav.sabari.girish@gmail.com>
 
 pkgname=gtw
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Wikipedia in your terminal: cached reading, rich rendering, inline media, and offline lists'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'clang' 'cmake' 'git')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Run `updpkgsums` to fill this in before building/publishing.
-sha256sums=('b43cad430d218da18564fde26bc7eef4a6056fa78cf22b9863c5c8c61185d974')
+sha256sums=('e6c1a93d837b8dad09d02458e10a5f5954873591323fb89015b817afa660ccc1')
 
 prepare() {
   cd "$pkgname-$pkgver"
