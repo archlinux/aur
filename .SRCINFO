@@ -1,0 +1,17 @@
+pkgbase = kubectl-rexec-bin
+	pkgdesc = Audited kubectl exec
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://github.com/Adyen/kubectl-rexec
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kubectl-rexec
+	conflicts = kubectl-rexec
+	options = !debug
+	source_x86_64 = kubectl-rexec-bin-0.3.8-x86_64.tar.gz::https://github.com/Adyen/kubectl-rexec/releases/download/v0.3.8/kubectl-rexec_0.3.8_linux_amd64.tar.gz
+	sha256sums_x86_64 = 34e6e18b7aa94444eff7da4843378e483cd93e6246ecaa7eb0e298184e17b568
+	source_aarch64 = kubectl-rexec-bin-0.3.8-aarch64.tar.gz::https://github.com/Adyen/kubectl-rexec/releases/download/v0.3.8/kubectl-rexec_0.3.8_linux_arm64.tar.gz
+	sha256sums_aarch64 = 497648748fd1ee997c3e253d52e3b28eb6d797a17aacbdf4bf7d2a338ddf8f9c
+
+pkgname = kubectl-rexec-bin
