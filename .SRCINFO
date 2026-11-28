@@ -1,0 +1,18 @@
+pkgbase = 3code-bin
+	pkgdesc = Economical coding agent
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/capocasa/3code
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = 3code
+	conflicts = 3code
+	options = !debug
+	source_x86_64 = 3code-bin-0.8.4-x86_64.tar.gz::https://github.com/capocasa/3code/releases/download/0.8.4/3code-linux-amd64.tar.gz
+	sha256sums_x86_64 = a55656ad9f684b569ddd855ec4b000d5185f080c67aaf45e2b6f3242bedaa237
+	source_aarch64 = 3code-bin-0.8.4-aarch64.tar.gz::https://github.com/capocasa/3code/releases/download/0.8.4/3code-linux-arm64.tar.gz
+	sha256sums_aarch64 = a5cbd39bc01aaef3614b2702c3f1b0e5c50151ce889dc928f0d01d928fda978a
+
+pkgname = 3code-bin
