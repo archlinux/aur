@@ -1,0 +1,14 @@
+pkgbase = dzgui-bin
+	pkgdesc = DayZ server browser and mod manager
+	pkgver = 7.0.0b31
+	pkgrel = 1
+	url = https://github.com/aclist/dzgui
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = dzgui
+	conflicts = dzgui
+	options = !debug
+	source_x86_64 = dzgui-bin-7.0.0b31-x86_64.tar.gz::https://github.com/aclist/dzgui/releases/download/7.0.0b31/dzgui-7.0.0b31-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 259e290deccbb3d94da05528bdedaa0c5a9e60d6163484d6d481e5511f7f40fa
+
+pkgname = dzgui-bin
