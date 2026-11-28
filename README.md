@@ -10,13 +10,18 @@ This repository contains the build files for the [sidra-bin](https://aur.archlin
 
 ## 🚀 Features
 
-- **Automated Upstream Tracking**: A custom GitHub Action monitors the [wimpysworld/sidra](https://github.com/wimpysworld/sidra) repository for new releases everyday at 06:00 AM.
+- **Automated Upstream Tracking**: A custom GitHub Action monitors the [wimpysworld/sidra](https://github.com/wimpysworld/sidra) repository for new releases every day at 06:00 UTC. Only stable releases are picked up, and the version only ever moves forward.
 - **Self-Updating PKGBUILD**: When a new version is detected, the workflow automatically:
   - Updates `pkgver` and resets `pkgrel`.
-  - Downloads the new AppImage to calculate fresh `sha256sums`.
+  - Downloads the new AppImage to calculate fresh `sha256sums`, and stops if the hash differs from the SHA-256 digest GitHub recorded for the release asset.
   - Regenerates `.SRCINFO`.
   - Commits changes back to this repository.
-- **Seamless AUR Synchronization**: Automatically mirrors all changes from the `main` branch of this repo to the AUR `master` branch, ensuring the package is always up-to-date for Arch users.
+
+  If any step fails, `update.sh` restores `PKGBUILD` and `.SRCINFO`, so the two never disagree.
+- **Seamless AUR Synchronization**: Automatically mirrors all changes from the `main` branch of this repo to the AUR `master` branch, ensuring the package is always up-to-date for Arch users. The workflow refuses to publish a `.SRCINFO` that does not match the `PKGBUILD`, connects to the AUR only with its pinned SSH host keys, and never runs two syncs at once.
+
+> [!NOTE]
+> After editing `PKGBUILD` by hand, run `makepkg --printsrcinfo > .SRCINFO` before pushing to `main`, or the sync stops.
 
 ## 🛠 Installation
 

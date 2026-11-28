@@ -2,48 +2,63 @@
 
 pkgname=sidra-bin
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An elegant Apple Music desktop client for Linux. No frippery, just quality."
 arch=('x86_64')
 url="https://github.com/wimpysworld/sidra"
 license=('BlueOak-1.0.0')
+# Matches upstream's own pacman target (build.pacman.depends in package.json)
 depends=(
     'alsa-lib'
     'at-spi2-core'
+    'cairo'
     'dbus'
+    'expat'
     'glib2'
+    'glibc'
     'gtk3'
     'hicolor-icon-theme'
-    'libdrm'
+    'libcups'
+    'libgcc'
     'libnotify'
+    'libpulse'
     'libsecret'
     'libx11'
+    'libxcb'
     'libxcomposite'
     'libxdamage'
     'libxext'
     'libxfixes'
+    'libxkbcommon'
     'libxrandr'
-    'libxtst'
     'mesa'
     'nspr'
     'nss'
+    'pango'
+    'systemd-libs'
+    'util-linux'
+    'xdg-utils'
 )
 optdepends=(
-    'libappindicator-gtk3: system tray / indicator icon support'
+    'gnome-shell-extension-appindicator: system tray icon on GNOME'
     'playerctl: CLI media control via MPRIS'
-    'pipewire: PipeWire audio backend'
+    'pipewire-pulse: PipeWire audio backend'
     'pulseaudio: PulseAudio backend'
-    'xdg-utils: open links in the default browser'
 )
 provides=('sidra')
 conflicts=('sidra')
 options=('!strip')
 
 # AppImage artifact name has no version (see appImage.artifactName in package.json)
+# The AppImage ships no copy of Sidra's own license, so fetch it from the tag
+source=(
+    "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/wimpysworld/sidra/${pkgver}/LICENSE"
+)
 source_x86_64=(
     "${pkgname}-${pkgver}.AppImage::https://github.com/wimpysworld/sidra/releases/download/${pkgver}/Sidra-linux-x86_64.AppImage"
 )
 
+sha256sums=('8a1af140fdfbf5afd3df27f7e662f989c5b963a300020dfafce42033cae9e004')
 sha256sums_x86_64=('15616d82676f9b32a887ccd790cbd24c577e0627fd3b82cc2fca7addcc09ba73')
 
 prepare() {
@@ -68,6 +83,9 @@ package() {
     rm -f "${pkgdir}/opt/sidra/AppRun"
     rm -f "${pkgdir}/opt/sidra/.DirIcon"
     rm -f "${pkgdir}/opt/sidra/sidra.desktop"
+    rm -f "${pkgdir}/opt/sidra/sidra.png"
+    # Libraries bundled for AppRun's LD_LIBRARY_PATH; unused since we exec the binary directly
+    rm -rf "${pkgdir}/opt/sidra/usr"
 
     # ── Wrapper script ─────────────────────────────────────────────────────────
     install -dm755 "${pkgdir}/usr/bin"
@@ -80,61 +98,23 @@ WRAPPER
 
     # ── Desktop entry ──────────────────────────────────────────────────────────
     _desktop="${pkgdir}/usr/share/applications/sidra.desktop"
-    if [[ -f "squashfs-root/usr/share/applications/sidra.desktop" ]]; then
-        install -Dm644 squashfs-root/usr/share/applications/sidra.desktop \
-            "${_desktop}"
-    else
-        # Fallback if electron-builder placed it at the AppImage root
-        install -Dm644 squashfs-root/sidra.desktop "${_desktop}" 2>/dev/null || \
-        cat > "${_desktop}" << 'DESKTOP'
-[Desktop Entry]
-Name=Sidra
-Comment=An elegant Apple Music desktop client
-Exec=/usr/bin/sidra %U
-Icon=sidra
-Terminal=false
-Type=Application
-Categories=AudioVideo;Audio;Music;Player;
-MimeType=x-scheme-handler/itms;
-StartupWMClass=Sidra
-DESKTOP
-    fi
+    install -Dm644 squashfs-root/sidra.desktop "${_desktop}"
 
-    # Rewrite Exec so it always points to the wrapper
-    sed -i "s|^Exec=.*|Exec=/usr/bin/sidra %U|" "${_desktop}"
+    # Point the main entry at the wrapper; the Desktop Action entries keep their dbus-send Exec
+    sed -i "/^\[Desktop Entry\]/,/^\[/ s|^Exec=.*|Exec=/usr/bin/sidra %U|" "${_desktop}"
     # Ensure Icon is the bare name, not an absolute path
     sed -i "s|^Icon=.*|Icon=sidra|" "${_desktop}"
 
     # ── Icons ──────────────────────────────────────────────────────────────────
     # electron-builder populates usr/share/icons/hicolor inside the AppImage
-    if [[ -d "squashfs-root/usr/share/icons" ]]; then
-        cp -a squashfs-root/usr/share/icons "${pkgdir}/usr/share/"
-        # Fix directory permissions for icons (ensure they are world-readable)
-        chmod -R u=rwX,go=rX "${pkgdir}/usr/share/icons"
-    fi
-
-    # Also install any PNG at the AppImage root as a fallback
-    for _size in 16 32 48 64 128 256 512; do
-        if [[ -f "squashfs-root/${_size}x${_size}.png" ]]; then
-            install -Dm644 "squashfs-root/${_size}x${_size}.png" \
-                "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/sidra.png"
-        fi
-    done
-    if [[ -f "squashfs-root/sidra.png" ]]; then
-        install -Dm644 squashfs-root/sidra.png \
-            "${pkgdir}/usr/share/icons/hicolor/256x256/apps/sidra.png"
-    fi
+    cp -a squashfs-root/usr/share/icons "${pkgdir}/usr/share/"
+    # Fix directory permissions for icons (ensure they are world-readable)
+    chmod -R u=rwX,go=rX "${pkgdir}/usr/share/icons"
 
     # ── License ────────────────────────────────────────────────────────────────
-    # Install custom license (BlueOak-1.0.0)
-    # Check common locations/names for the license file
-    for _license in LICENSE LICENSE.md LICENSE.txt; do
-        if [[ -f "squashfs-root/${_license}" ]]; then
-            install -Dm644 "squashfs-root/${_license}" \
-                "${pkgdir}/usr/share/licenses/${pkgname}/${_license}"
-            break
-        fi
-    done
+    # BlueOak-1.0.0 is not in Arch's common licenses, so the package must ship it
+    install -Dm644 "${pkgname}-${pkgver}-LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # ── Fix permissions ────────────────────────────────────────────────────────
     chmod -R u=rwX,go=rX "${pkgdir}/opt/sidra/"
