@@ -1,6 +1,6 @@
 pkgbase = celoom
 	pkgdesc = Celoom (细胞绽放) — Linux-native local AI agent with embedded web interface
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/Friendships6666/Celoom
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = celoom
 	conflicts = justaiagent
 	replaces = justaiagent
 	options = !lto
-	source = celoom-0.1.4.tar.gz::https://github.com/Friendships6666/Celoom/archive/refs/tags/v0.1.4.tar.gz
-	sha256sums = 82386c28009993dc95c1191c6c7fcef48b66036c33ced08995c54ee3b3b131e6
+	source = celoom-0.1.5.tar.gz::https://github.com/Friendships6666/Celoom/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 6555ce072e5612430340f274d40517014d51a5139983f4fa84de83423e4d5155
 
 pkgname = celoom

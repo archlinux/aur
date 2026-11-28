@@ -1,6 +1,6 @@
 # Maintainer: Friendships666 <tianfs6x6@gmail.com>
 pkgname=celoom
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Celoom (细胞绽放) — Linux-native local AI agent with embedded web interface"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ conflicts=('justaiagent')
 replaces=('justaiagent')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('82386c28009993dc95c1191c6c7fcef48b66036c33ced08995c54ee3b3b131e6')
+sha256sums=('6555ce072e5612430340f274d40517014d51a5139983f4fa84de83423e4d5155')
 
 prepare() {
   cd "${srcdir}/Celoom-${pkgver}"
