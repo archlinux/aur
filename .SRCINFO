@@ -1,0 +1,16 @@
+pkgbase = nixvis-bin
+	pkgdesc = Nginx website log analysis tool
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/BeyondXinXin/nixvis
+	arch = x86_64
+	license = MIT
+	provides = nixvis
+	conflicts = nixvis
+	options = !debug
+	source = nixvis-bin-1.0.1-LICENSE::https://raw.githubusercontent.com/BeyondXinXin/nixvis/v1.0.1/LICENSE
+	sha256sums = 3a00d808dc379c46447a073869f7fb8629cd814f9f09157fb7bcd0078a09c9d5
+	source_x86_64 = nixvis-bin-1.0.1-x86_64::https://github.com/BeyondXinXin/nixvis/releases/download/v1.0.1/nixvis-linux-amd64
+	sha256sums_x86_64 = 1042a75db2106334a584e1fa2770ff6d16d144b0bfb3c07e13082ee9ca29e023
+
+pkgname = nixvis-bin
