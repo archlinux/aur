@@ -1,0 +1,17 @@
+pkgbase = openase-bin
+	pkgdesc = Ticket-driven automated software engineering
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/PacificStudio/openase
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = openase
+	conflicts = openase
+	options = !debug
+	source_x86_64 = openase-bin-0.8.0-x86_64.tar.gz::https://github.com/PacificStudio/openase/releases/download/v0.8.0/openase_v0.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 57db5cc4a02169cb30589b08234129242fd126b9c3c27152f59440f6a7323ee2
+	source_aarch64 = openase-bin-0.8.0-aarch64.tar.gz::https://github.com/PacificStudio/openase/releases/download/v0.8.0/openase_v0.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1e745e988c65188e3bbe0e4466b85f37cf174912338b52be5094efec7c58ca63
+
+pkgname = openase-bin
