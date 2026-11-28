@@ -19,6 +19,7 @@ pkgbase = idplugclassic-ro-cei-bin
 	depends = libtiff
 	depends = libx11
 	depends = libxkbcommon
+	optdepends = ro-cei-cert
 	provides = idplugclassic
 	source = idplugclassic-ro-cei-bin-4.5.0.deb::https://hub.mai.gov.ro/cei/info/descarca-middleware?versiune=450linux
 	sha256sums = 4d084400dcd80535fcbf5e2b3194e996039ec96199241573b1d63af7bfeb0484
