@@ -1,0 +1,17 @@
+pkgbase = access-log-exporter-bin
+	pkgdesc = Prometheus exporter that turns nginx syslog access logs into metrics
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/jkroepke/access-log-exporter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = access-log-exporter
+	conflicts = access-log-exporter
+	options = !debug
+	source_x86_64 = access-log-exporter-bin-0.5.2-x86_64.tar.xz::https://github.com/jkroepke/access-log-exporter/releases/download/v0.5.2/access-log-exporter_0.5.2_linux_amd64.tar.xz
+	sha256sums_x86_64 = ca9855cb442aefea3eaa2fc31c7c46949525d94e62d31d6df524bf44878ea434
+	source_aarch64 = access-log-exporter-bin-0.5.2-aarch64.tar.xz::https://github.com/jkroepke/access-log-exporter/releases/download/v0.5.2/access-log-exporter_0.5.2_linux_arm64.tar.xz
+	sha256sums_aarch64 = 6e393d69623768e70046ffa677206b40e96fd50f72ec4b51d2b6d9d6954fcf12
+
+pkgname = access-log-exporter-bin
