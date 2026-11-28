@@ -1,0 +1,19 @@
+pkgbase = utreexod-bin
+	pkgdesc = Fully validating Bitcoin node with Utreexo support
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/utreexo/utreexod
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	provides = utreexod
+	conflicts = utreexod
+	options = !debug
+	source = utreexod-bin-0.6.0-LICENSE::https://raw.githubusercontent.com/utreexo/utreexod/v0.6.0/LICENSE
+	sha256sums = 46021938caf87eeb92c841fd48777a3a7bf218341386611c4d080aa45812d1d2
+	source_x86_64 = utreexod-bin-0.6.0-x86_64.tar.gz::https://github.com/utreexo/utreexod/releases/download/v0.6.0/utreexod-linux-amd64-20260623-01.tar.gz
+	sha256sums_x86_64 = 815a66bf8ff53aaa9cdd1d6ed39bf6a305ff644a784f56fe88dc3d599e292383
+	source_aarch64 = utreexod-bin-0.6.0-aarch64.tar.gz::https://github.com/utreexo/utreexod/releases/download/v0.6.0/utreexod-linux-arm64-20260623-01.tar.gz
+	sha256sums_aarch64 = 193861b6ed55e91dd51745ad72f041a804b00d74b35d499004f16fd7c7980fe7
+
+pkgname = utreexod-bin
