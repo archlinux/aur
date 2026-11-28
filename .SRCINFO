@@ -1,0 +1,17 @@
+pkgbase = slack-bot-bin
+	pkgdesc = Slack bot for developers that runs Jenkins jobs and watches Jira and pull requests
+	pkgver = 2.3.19
+	pkgrel = 1
+	url = https://github.com/innogames/slack-bot
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = slack-bot
+	conflicts = slack-bot
+	options = !debug
+	source = slack-bot-bin-2.3.19-LICENSE::https://raw.githubusercontent.com/innogames/slack-bot/v2.3.19/LICENSE
+	sha256sums = 8653104120ff8df5d25107b7de729ec64877691c43bfc788dcae1066742b4a11
+	source_x86_64 = slack-bot-bin-2.3.19-x86_64.tar.gz::https://github.com/innogames/slack-bot/releases/download/v2.3.19/slack-bot-v2.3.19-linux-amd64.tar.gz
+	sha256sums_x86_64 = aabadcb37f7bf992f69e8d1b2d0574cebd2ae86715fed4162b73b1b3ccc3f624
+
+pkgname = slack-bot-bin
