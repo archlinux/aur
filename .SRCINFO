@@ -1,0 +1,17 @@
+pkgbase = breakpoint-bin
+	pkgdesc = Pause CI workflows and debug them over SSH
+	pkgver = 0.0.26
+	pkgrel = 1
+	url = https://github.com/namespacelabs/breakpoint
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = breakpoint
+	conflicts = breakpoint
+	options = !debug
+	source_x86_64 = breakpoint-bin-0.0.26-x86_64.tar.gz::https://github.com/namespacelabs/breakpoint/releases/download/v0.0.26/breakpoint_linux_amd64.tar.gz
+	sha256sums_x86_64 = ba24728a0b8ad9128d8c3cb68942728ab6ba1bcb788b11b53a5bc61243ead1a7
+	source_aarch64 = breakpoint-bin-0.0.26-aarch64.tar.gz::https://github.com/namespacelabs/breakpoint/releases/download/v0.0.26/breakpoint_linux_arm64.tar.gz
+	sha256sums_aarch64 = b28b80469abf277563ea60f09d668e7ad6144f10ccb6802e13cef6c2bf0cd582
+
+pkgname = breakpoint-bin
