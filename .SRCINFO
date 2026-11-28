@@ -1,6 +1,6 @@
 pkgbase = wowtype
 	pkgdesc = WeType 风格的拼音输入法：fcitx5 插件 + Rust 引擎（长句、半成品输入、纠错、学习）
-	pkgver = 0.7.4
+	pkgver = 0.7.14
 	pkgrel = 1
 	url = https://github.com/Gloridust/WowType
 	install = wowtype.install
@@ -29,12 +29,12 @@ pkgbase = wowtype
 	optdepends = gtk4: 设置界面
 	optdepends = libadwaita: 设置界面
 	optdepends = noto-fonts-emoji: 候选里的彩色 emoji
-	optdepends = curl: 互译模式与首次使用离线语音时下载模型
+	optdepends = curl: 互译模式、跨设备复制粘贴的自建中转，以及首次使用离线语音时下载模型
 	optdepends = unzip: 解压离线语音模型
 	noextract = wowtype-data-rime-ice-2026.11.11.8.tar.gz
 	options = !lto
-	source = wowtype::git+https://github.com/Gloridust/WowType.git#tag=v0.7.4
-	source = wowtype-data-rime-ice-2026.11.11.8.tar.gz::https://github.com/Gloridust/WowType/releases/download/v0.7.4/wowtype-data-rime-ice-2026.11.11.8.tar.gz
+	source = wowtype::git+https://github.com/Gloridust/WowType.git#tag=v0.7.14
+	source = wowtype-data-rime-ice-2026.11.11.8.tar.gz::https://github.com/Gloridust/WowType/releases/download/v0.7.14/wowtype-data-rime-ice-2026.11.11.8.tar.gz
 	source = wowtype-config-pacman.patch
 	source = CC-BY-SA-4.0.txt::https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt
 	source = Unicode-3.0.txt::https://www.unicode.org/license.txt

@@ -1,7 +1,7 @@
 # Maintainer: lubuoren <luboren123@outlook.com>
 
 pkgname=wowtype
-pkgver=0.7.4
+pkgver=0.7.14
 pkgrel=1
 _dataver=2026.11.11.8
 _datafile="wowtype-data-rime-ice-$_dataver.tar.gz"
@@ -19,7 +19,7 @@ optdepends=(
   'gtk4: 设置界面'
   'libadwaita: 设置界面'
   'noto-fonts-emoji: 候选里的彩色 emoji'
-  'curl: 互译模式与首次使用离线语音时下载模型'
+  'curl: 互译模式、跨设备复制粘贴的自建中转，以及首次使用离线语音时下载模型'
   'unzip: 解压离线语音模型'
 )
 # Mixed Rust/C++ linking: do not pass GCC LTO objects to the Rust toolchain.
@@ -63,8 +63,10 @@ build() {
   cd "$srcdir/$pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR="$srcdir/$pkgname/target"
+  # wowtype-sync is the pairing CLI for the cross-device clipboard; the fcitx5 plugin and
+  # the settings app both shell out to it, so the source package has to ship it.
   cargo build --frozen --release -p wowtype-core \
-    --lib --bin wowtype-check --bin wowtype-show
+    --lib --bin wowtype-check --bin wowtype-show --bin wowtype-sync
 
   cmake -S fcitx5-addon -B build \
     -DCMAKE_BUILD_TYPE=None \
@@ -84,6 +86,9 @@ check() {
     cargo test --frozen --release -p wowtype-core --lib \
       --test combinations --test session --test session_keys
   cargo test --frozen --release -p wowtype-voice --lib --test pipeline
+  # Cross-device clipboard core: the relay tests skip themselves when node/curl or the
+  # Cloudflare Worker sources are missing, which is not a failure.
+  cargo test --frozen --release -p wowtype-sync --lib
 }
 
 package() {
@@ -95,6 +100,7 @@ package() {
 
   install -Dm755 target/release/wowtype-check "$pkgdir/usr/bin/wowtype-check"
   install -Dm755 target/release/wowtype-show "$pkgdir/usr/bin/wowtype-show"
+  install -Dm755 target/release/wowtype-sync "$pkgdir/usr/bin/wowtype-sync"
 
   local data="$srcdir/data"
   install -Dm644 -t "$pkgdir/usr/share/wowtype" \
