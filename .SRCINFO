@@ -1,0 +1,19 @@
+pkgbase = rust-mcp-filesystem-bin
+	pkgdesc = Fast asynchronous MCP server for filesystem operations
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/rust-mcp-stack/rust-mcp-filesystem
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = rust-mcp-filesystem
+	conflicts = rust-mcp-filesystem
+	options = !debug
+	source_x86_64 = rust-mcp-filesystem-bin-0.4.5-x86_64.tar.gz::https://github.com/rust-mcp-stack/rust-mcp-filesystem/releases/download/v0.4.5/rust-mcp-filesystem-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4c6a7fd06f1e55bd2928610b0b6ecb6e8589ca816fb7ea17b6a2b2f36a30e00c
+	source_aarch64 = rust-mcp-filesystem-bin-0.4.5-aarch64.tar.gz::https://github.com/rust-mcp-stack/rust-mcp-filesystem/releases/download/v0.4.5/rust-mcp-filesystem-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 79f0022e86532b74a6ef02e3b5745d90bc50852dd6d1c47414e0a6a292f6a310
+
+pkgname = rust-mcp-filesystem-bin
