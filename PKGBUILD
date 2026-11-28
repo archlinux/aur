@@ -1,20 +1,26 @@
 # Maintainer: Umar Alfarouk <medrivia@gmail.com>
 pkgname=mdrv-db
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="Fjall durability envelope around a SQL data port and content-addressed blob store (fleet CLI)"
 arch=('x86_64' 'aarch64')
 url="https://crates.io/crates/mdrv-db"
 license=('MIT')
 depends=('libgcc')
-makedepends=('cargo')
+# rustup instead of the distro rust: turso_core 0.8.x does not compile on
+# rustc >= 1.100 (E0308 in index_method/fts/directory.rs), and Arch ships the
+# latest stable. 1.99.1 is substituted from rust-toolchain.toml by CI.
+makedepends=('rustup')
 source=("mdrv-db-$pkgver.crate::https://static.crates.io/crates/mdrv-db/mdrv-db-$pkgver.crate")
-sha256sums=('bd8661eec178ae80b14d7e40c9e88137341b63623927af449d24ce063a1edd00')
+sha256sums=('ae4a0b57708db974ba8e9b097a4f53795966f4d900d24d036780df858291ed40')
 options=('!debug' '!lto')
 
 build() {
   cd "mdrv-db-$pkgver"
-  cargo build --release --locked
+  export RUSTUP_TOOLCHAIN=1.99.1
+  # the CLI bin requires the `turso` feature; without it only the lib is built
+  # and package() below finds no binary
+  cargo build --release --locked --features turso
 }
 
 package() {
