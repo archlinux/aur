@@ -1,0 +1,19 @@
+pkgbase = clip-mash-bin
+	pkgdesc = Semi-automatically generate compilation videos
+	pkgver = 0.23.1
+	pkgrel = 1
+	url = https://github.com/soundchaser128/clip-mash
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = clip-mash
+	conflicts = clip-mash
+	options = !debug
+	source = clip-mash-bin-0.23.1-LICENSE::https://raw.githubusercontent.com/soundchaser128/clip-mash/v0.23.1/LICENSE
+	sha256sums = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
+	source_x86_64 = clip-mash-bin-0.23.1-x86_64.tar.gz::https://github.com/soundchaser128/clip-mash/releases/download/v0.23.1/clip-mash-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 663ce2b85e56e26aa168e80554d5afe6e67b061e126a05b02c1490f0ec896f71
+
+pkgname = clip-mash-bin
