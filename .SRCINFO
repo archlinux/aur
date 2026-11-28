@@ -1,0 +1,21 @@
+pkgbase = boon-bin
+	pkgdesc = JSON Schema validator supporting drafts 4 through 2020-12
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/santhosh-tekuri/boon
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = boon
+	conflicts = boon
+	options = !debug
+	source = boon-bin-0.6.1-LICENSE::https://raw.githubusercontent.com/santhosh-tekuri/boon/v0.6.1/LICENSE-APACHE
+	sha256sums = 0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594
+	source_x86_64 = boon-bin-0.6.1-x86_64.tar.gz::https://github.com/santhosh-tekuri/boon/releases/download/v0.6.1/boon-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 18418f8cab8c7089d96568be79e1c0553494881e1a4620f4929f2eb55eec9f56
+	source_aarch64 = boon-bin-0.6.1-aarch64.tar.gz::https://github.com/santhosh-tekuri/boon/releases/download/v0.6.1/boon-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4f54fb7e7eeedb03b12cfd1ad9bbba1f95581365060681166c029709368debaa
+
+pkgname = boon-bin
