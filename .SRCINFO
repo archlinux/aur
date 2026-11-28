@@ -1,6 +1,6 @@
 pkgbase = polo-git
 	pkgdesc = Window manager, compositor, and session authority for the MATE Wayland desktop
-	pkgver = 1.0.1.r44.gfc2e022
+	pkgver = 1.1.0.r0.g0d3a3d8
 	pkgrel = 1
 	url = https://github.com/KeremSoke/polo
 	arch = x86_64
@@ -27,11 +27,9 @@ pkgbase = polo-git
 	depends = json-glib
 	depends = xdg-desktop-portal-gtk
 	optdepends = xdg-desktop-portal-wlr: screen sharing
-	optdepends = grim: screenshot keys
+	optdepends = mate-utils>=1.29.0: screenshot keys
 	optdepends = xorg-xwayland: X11 applications
-	optdepends = wl-clipboard: screenshots to the clipboard
-	optdepends = slurp: area screenshots
-	provides = polo=1.0.1
+	provides = polo=1.1.0
 	conflicts = polo
 	source = polo::git+https://github.com/KeremSoke/polo.git
 	sha256sums = SKIP

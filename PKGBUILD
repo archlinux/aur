@@ -2,7 +2,7 @@
 
 _pkgname=polo
 pkgname=${_pkgname}-git
-pkgver=1.0.1.r44.gfc2e022
+pkgver=1.1.0.r0.g0d3a3d8
 pkgrel=1
 pkgdesc="Window manager, compositor, and session authority for the MATE Wayland desktop"
 arch=('x86_64')
@@ -15,10 +15,8 @@ makedepends=('git' 'vala' 'meson' 'wayland-protocols')
 # The only python files are tests; I think we can skip these
 # makedepends+=('python-xlib' 'python-pyyaml')
 optdepends=('xdg-desktop-portal-wlr: screen sharing'
-            'grim: screenshot keys'
-            'xorg-xwayland: X11 applications'
-            'wl-clipboard: screenshots to the clipboard'
-            'slurp: area screenshots')
+            'mate-utils>=1.29.0: screenshot keys'
+            'xorg-xwayland: X11 applications')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}.git")
