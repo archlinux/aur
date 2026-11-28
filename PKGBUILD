@@ -1,7 +1,7 @@
 # Maintainer: Ilyas Turki <turki.ilyass@gmail.com>
 pkgbase=universe
 pkgname=(universe universe-desktop)
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=1
 pkgdesc='Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope'
 arch=('x86_64')
@@ -23,7 +23,7 @@ checkdepends=('tzdata' 'xorg-server-xvfb' 'pipewire' 'wireplumber')
 # makepkg's -flto C objects (aws-lc's) are GCC bitcode that rust-lld cannot link; Cargo.toml strips, so a debug package would be empty
 options=('!lto' '!debug')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('703a3359207d0898742293b8800e7604685c20fb99e63a0883b2619233607c92')
+sha256sums=('434219440d49fba7cd0368bcf2d3f0678b750b0934a5dec03398cc24d374aaea')
 
 prepare() {
   cd "$pkgbase-$pkgver"

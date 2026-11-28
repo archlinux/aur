@@ -1,6 +1,6 @@
 pkgbase = universe
 	pkgdesc = Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope
-	pkgver = 0.0.17
+	pkgver = 0.0.18
 	pkgrel = 1
 	url = https://github.com/ilyasturki/universe
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = universe
 	makedepends = scdoc
 	options = !lto
 	options = !debug
-	source = universe-0.0.17.tar.gz::https://github.com/ilyasturki/universe/archive/v0.0.17.tar.gz
-	sha256sums = 703a3359207d0898742293b8800e7604685c20fb99e63a0883b2619233607c92
+	source = universe-0.0.18.tar.gz::https://github.com/ilyasturki/universe/archive/v0.0.18.tar.gz
+	sha256sums = 434219440d49fba7cd0368bcf2d3f0678b750b0934a5dec03398cc24d374aaea
 
 pkgname = universe
 	depends = libgcc
@@ -66,6 +66,6 @@ pkgname = universe-desktop
 	depends = gtk4>=1:4.22
 	depends = hicolor-icon-theme
 	depends = libadwaita>=1:1.9
-	depends = universe=0.0.17
+	depends = universe=0.0.18
 	optdepends = gst-libav: recordings played in the app (H.264, HEVC)
 	optdepends = gst-plugins-bad: recordings played in the app (AV1, VA-API)
