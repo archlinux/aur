@@ -1,6 +1,6 @@
 pkgbase = qoder-cn
 	pkgdesc = Qoder CN desktop app, an agentic coding workbench from Alibaba
-	pkgver = 0.5.20
+	pkgver = 0.5.21
 	pkgrel = 1
 	url = https://qoder.cn/
 	arch = x86_64
@@ -19,12 +19,12 @@ pkgbase = qoder-cn
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: system tray icon support
 	conflicts = qoder-cn-bin
-	noextract = Qoder-CN-linux-0.5.20-amd64.deb
-	noextract = Qoder-CN-linux-0.5.20-arm64.deb
+	noextract = Qoder-CN-linux-0.5.21-amd64.deb
+	noextract = Qoder-CN-linux-0.5.21-arm64.deb
 	options = !strip
-	source_x86_64 = Qoder-CN-linux-0.5.20-amd64.deb::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/0.5.20/Qoder-CN-linux-amd64.deb
-	sha256sums_x86_64 = ac5e3db8b5ad8c3ae0ef8449f1f030d3660b5abef7497d7166aa01188b825a0f
-	source_aarch64 = Qoder-CN-linux-0.5.20-arm64.deb::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/0.5.20/Qoder-CN-linux-arm64.deb
-	sha256sums_aarch64 = 826a63c9b8a840cbebd04a0a12fa5fac1b603466293b98495995c37168088536
+	source_x86_64 = Qoder-CN-linux-0.5.21-amd64.deb::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/0.5.21/Qoder-CN-linux-amd64.deb
+	sha256sums_x86_64 = 12a67e10694e91c88a71b5061aeb7936eab7b804efad374ffcbaaa3a939e5ea2
+	source_aarch64 = Qoder-CN-linux-0.5.21-arm64.deb::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/0.5.21/Qoder-CN-linux-arm64.deb
+	sha256sums_aarch64 = 1be187bb210c000474c31a88eb2dbf554b7e73127d2091190f060b98dbf85859
 
 pkgname = qoder-cn
