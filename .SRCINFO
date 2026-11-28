@@ -1,0 +1,20 @@
+pkgbase = samyama-graph-bin
+	pkgdesc = Graph and vector database with OpenCypher and vector search
+	pkgver = 1.17.0
+	pkgrel = 1
+	url = https://github.com/samyama-ai/samyama-graph
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = samyama-graph
+	conflicts = samyama-graph
+	options = !debug
+	source_x86_64 = samyama-graph-bin-1.17.0-x86_64.tar.gz::https://github.com/samyama-ai/samyama-graph/releases/download/v1.17.0/samyama-v1.17.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6dec8f9f705cfb47098101bb81e7ea0d2a6ec3945a96e203983422e0601b9ac1
+	source_aarch64 = samyama-graph-bin-1.17.0-aarch64.tar.gz::https://github.com/samyama-ai/samyama-graph/releases/download/v1.17.0/samyama-v1.17.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 90ac723ac7040b2469806bfaf00725997da22f0faab47c60f4db248048a153a7
+
+pkgname = samyama-graph-bin
