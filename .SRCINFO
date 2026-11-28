@@ -1,0 +1,19 @@
+pkgbase = psfuzz-bin
+	pkgdesc = Directory and path web fuzzing scanner
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Proviesec/PSFuzz
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = psfuzz
+	conflicts = psfuzz
+	options = !debug
+	source = psfuzz-bin-1.0.0-LICENSE::https://raw.githubusercontent.com/Proviesec/PSFuzz/v1.0.0/LICENSE
+	sha256sums = 7651ea66581a296a61c4477a811932fdcf6ec660be85e0f413f1630d3045a9a0
+	source_x86_64 = psfuzz-bin-1.0.0-x86_64::https://github.com/Proviesec/PSFuzz/releases/download/v1.0.0/psfuzz-linux-amd64
+	sha256sums_x86_64 = 0c9ebfd6912775fb63c76f8044a561b7bf766295496a225131560e7d9ff1c44b
+	source_aarch64 = psfuzz-bin-1.0.0-aarch64::https://github.com/Proviesec/PSFuzz/releases/download/v1.0.0/psfuzz-linux-arm64
+	sha256sums_aarch64 = 75c56f37f8b650f771bbe80423247bd719a76a300e695b4240096ecff0aac609
+
+pkgname = psfuzz-bin
