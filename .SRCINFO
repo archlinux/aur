@@ -1,69 +1,72 @@
 pkgbase = python-lancedb
 	pkgdesc = Serverless, low-latency vector database for AI applications
 	pkgver = 0.41.0
-	pkgrel = 1
-	url = https://github.com/lancedb/lancedb
+	pkgrel = 2
+	url = https://github.com/lancedb/lancedb/tree/main/python
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
+	checkdepends = python-aiohttp
 	checkdepends = python-boto3
 	checkdepends = python-pandas
-	checkdepends = python-polars
-	checkdepends = python-pylance>=14.0.2
 	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
 	checkdepends = python-pytest-asyncio
-	checkdepends = python-pytest-socket
-	makedepends = lz4
+	checkdepends = python-duckdb
+	checkdepends = python-pytz
+	checkdepends = python-polars
+	checkdepends = python-pylance
+	checkdepends = python-requests
+	checkdepends = python-datafusion
+	checkdepends = python-opentelemetry-sdk
+	checkdepends = python-opentelemetry-api
+	checkdepends = python-pillow
+	makedepends = python-maturin
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-maturin
 	makedepends = rust
-	makedepends = cmake
 	makedepends = protobuf
-	makedepends = pkgconf
-	depends = glibc
-	depends = libgcc
 	depends = python
-	depends = python-deprecation>=2.1.0
-	depends = python-numpy>=1.24.0
-	depends = python-packaging>=23.0
-	depends = python-pyarrow>=16
-	depends = python-pydantic>=2.7.4
-	depends = python-pydantic<3
-	depends = python-tqdm>=4.27.0
-	depends = python-typing_extensions>=4.0.0
-	depends = python-lance-namespace>=0.13
-	depends = python-lance-namespace<0.14
-	depends = python-lance-namespace-urllib3-client>=0.13
-	depends = python-lance-namespace-urllib3-client<0.14
+	depends = python-deprecation
+	depends = python-numpy
+	depends = python-packaging
+	depends = python-pyarrow
+	depends = python-pydantic
+	depends = python-tqdm
+	depends = python-lance-namespace
 	depends = zstd
-	optdepends = python-pylance>=14.0.2: expose tables as Lance datasets and DataFusion providers
-	optdepends = python-datasets: Hugging Face Dataset and DatasetDict input
-	optdepends = python-pandas>=1.4: pandas DataFrame input and output
-	optdepends = python-polars>=0.19: Polars DataFrame input and output
-	optdepends = python-duckdb>=0.9.0: DuckDB interoperability
-	optdepends = python-pytorch>=2: tensor conversion and model-backed embeddings
-	optdepends = python-pillow>=12.1.1: image embeddings
-	optdepends = python-openai>=1.6.1: OpenAI embeddings and reranking
-	optdepends = python-sentence-transformers>=2.2.0: Sentence Transformers embeddings and reranking
-	optdepends = python-transformers>=4.41.0: Transformers, SigLIP, and ColPali embeddings
-	optdepends = python-sentencepiece>=0.1.99: tokenizer support for selected embedding models
-	optdepends = python-open-clip-torch>=2.20.0: OpenCLIP embeddings
-	optdepends = python-cohere>=4: Cohere embeddings and reranking
-	optdepends = python-huggingface-hub>=0.19.0: Hugging Face model downloads
-	optdepends = python-google-genai>=1.0.0: Gemini embeddings
-	optdepends = python-boto3>=1.28.57: Amazon Bedrock embeddings
-	optdepends = aws-cli: AWS authentication helpers for Bedrock
-	optdepends = python-ollama>=0.3.0: Ollama embeddings
-	optdepends = python-requests>=2.31.0: HTTP-backed embedding integrations
+	depends = libgcc
+	depends = glibc
+	optdepends = python-pylance: pylance
+	optdepends = python-opentelemetry-api: otel
+	optdepends = python-pytorch: clip
+	optdepends = python-pillow: clip
+	optdepends = python-open-clip-torch: clip
+	optdepends = python-pytorch: siglip
+	optdepends = python-pillow: siglip
+	optdepends = python-transformers: siglip
+	optdepends = python-sentencepiece: siglip
+	optdepends = python-requests: embeddings
+	optdepends = python-openai: embeddings
+	optdepends = python-sentence-transformers: embeddings
+	optdepends = python-pytorch: embeddings
+	optdepends = python-pillow: embeddings
+	optdepends = python-open-clip-torch: embeddings
+	optdepends = python-cohere: embeddings
+	optdepends = python-colpali-engine: embeddings
+	optdepends = python-huggingface-hub: embeddings
+	optdepends = python-instructorembedding: embeddings
+	optdepends = python-google-genai: embeddings
+	optdepends = python-boto3: embeddings
+	optdepends = aws-cli: embeddings
+	optdepends = python-botocore: embeddings
+	optdepends = python-ibm-watsonx-ai: embeddings
+	optdepends = python-ollama: embeddings
+	optdepends = python-sentencepiece: embeddings
+	optdepends = python-adlfs: azure
 	options = !debug
 	options = !lto
-	options = !strip
-	source = python-lancedb-0.41.0.tar.gz::https://github.com/lancedb/lancedb/archive/refs/tags/v0.41.0.tar.gz
-	source = system-dependencies.patch
-	source = lance-namespace-0.13.patch
+	source = lancedb-0.41.0.tar.gz::https://github.com/lancedb/lancedb/archive/refs/tags/v0.41.0.tar.gz
 	sha256sums = 5e2820bedee7556af2a1194488784a517622cb7c4ead366704e95ea874739358
-	sha256sums = 7c1f3ab58374a036b54bb95ce036f119e48896d2fa4ecad41623dfdb4eef98ef
-	sha256sums = 8fa5b5e8e8aa0294c11be2d9168ef5883c594542b76e7190c682afb54692a959
 
 pkgname = python-lancedb
