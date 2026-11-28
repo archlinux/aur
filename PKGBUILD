@@ -1,7 +1,7 @@
 # Maintainer: 9M2PJU <9m2pju@hamradio.my>
 pkgname=aprsc-9m2pju-git
 pkgver=3.0.2.r0.gd16d35c
-pkgrel=1
+pkgrel=2
 pkgdesc="APRS-IS core server in C with chroot sandboxing, SCTP support, and web UI. Git version."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/9M2PJU/9M2PJU-APRSC-Installer"
@@ -15,6 +15,16 @@ install=${pkgname}.install
 provides=('aprsc')
 conflicts=('aprsc' 'aprsc-9m2pju-bin')
 
+# Build IS2, upstream's inter-server protocol?
+#   0 = off (default). Matches the 9M2PJU container images and the .deb/.rpm
+#       release artifacts. IS2 is inert without another IS2 server to peer
+#       with, and it grows every packet buffer by ~200 bytes.
+#   1 = on. Only worth it when this host peers with other IS2 servers, or when
+#       you need reception metadata (RSSI/SNR/modem/frequency) from igates.
+# Note that protobuf-c is required either way: configure and the Makefile
+# compile and link the IS2 objects even when the flag is off.
+_with_is2=${_with_is2:-0}
+
 pkgver() {
   cd "$srcdir/$pkgname"
   if git describe --long --tags --abbrev=7 >/dev/null 2>&1; then
@@ -26,11 +36,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname/src"
-  # IS2 is upstream's inter-server protocol. It is disabled here to match the
-  # upstream images and packages: it needs a second aprsc to peer with and only
-  # adds CPU. protobuf-c is still a hard build dependency, because configure
-  # and the Makefile compile and link the IS2 objects unconditionally.
-  ./configure --disable-is2 \
+  local _is2flag=--disable-is2
+  [ "$_with_is2" = "1" ] && _is2flag=--enable-is2
+  ./configure "$_is2flag" \
     --sbindir=/opt/aprsc/sbin --sysconfdir=/opt/aprsc/etc \
     --localstatedir=/opt/aprsc --mandir=/usr/share/man
   make
