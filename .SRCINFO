@@ -1,0 +1,17 @@
+pkgbase = boot-to-talos-bin
+	pkgdesc = Convert any OS to Talos Linux
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/cozystack/boot-to-talos
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = boot-to-talos
+	conflicts = boot-to-talos
+	options = !debug
+	source_x86_64 = boot-to-talos-bin-0.7.1-x86_64.tar.gz::https://github.com/cozystack/boot-to-talos/releases/download/v0.7.1/boot-to-talos-linux-amd64.tar.gz
+	sha256sums_x86_64 = 46946b1c0862f2f1de0e01cb5be16002734a090f831b7a2d7b6efba7a895738b
+	source_aarch64 = boot-to-talos-bin-0.7.1-aarch64.tar.gz::https://github.com/cozystack/boot-to-talos/releases/download/v0.7.1/boot-to-talos-linux-arm64.tar.gz
+	sha256sums_aarch64 = 79f518550e996130cf0d042b3f7397d9ce8e3671611a67f621aa5a4b018e506b
+
+pkgname = boot-to-talos-bin
