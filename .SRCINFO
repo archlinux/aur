@@ -1,7 +1,7 @@
 pkgbase = spflashtool5-bin
 	pkgdesc = SP Flash Tool is an application to flash your MediaTek (MTK) SmartPhone. Version 5 variant.
 	pkgver = 5.2228
-	pkgrel = 1
+	pkgrel = 2
 	url = http://spflashtools.com/category/linux
 	arch = x86_64
 	license = unknown
@@ -16,6 +16,6 @@ pkgbase = spflashtool5-bin
 	source = 60-spflashtool5.rules
 	sha256sums = 18b11eed341fd57feb7fbc58a7b8eb93429bacc7d25a993878af8a0b6e98df10
 	sha256sums = fe0b9c1de77c687623bfc07733041d1387f755493cdf904e6afcb47f784d34c7
-	sha256sums = a0e20dea13cfc63a92444e3763c764701162cfb5a8d04092dc69169f4214fb8d
+	sha256sums = a552d9854f16a36b484f60f5bb3bb1ee8a526cb92a22a1f5602fa823402441b7
 
 pkgname = spflashtool5-bin
