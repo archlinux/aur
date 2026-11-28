@@ -1,8 +1,8 @@
 # Maintainer: MrRedstonia <contact@mrredstonia.com>
 # Installs the ready-made Linux build from the GitHub release (it carries its own Qt).
 pkgname=easyboard-app-bin
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc='Cross-platform soundboard with a virtual microphone input (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/MrRedstonia/EasyBoard'
@@ -14,7 +14,7 @@ provides=('easyboard-app')
 conflicts=('easyboard' 'easyboard-app')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/EasyBoard-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('9d5a4d87f2053fff5cf7f5d71dba4a5f522f8a564fc12cc9a7cb866e194355b6')
+sha256sums=('39994349b47c2217b3cdaa46e3b6f55d895a6a95f57c0d24139a970d78fd100c')
 
 package() {
   install -d "$pkgdir/opt/easyboard-app" "$pkgdir/usr/bin"
