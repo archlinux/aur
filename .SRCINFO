@@ -1,0 +1,17 @@
+pkgbase = maxim-bin
+	pkgdesc = Simple CLI for interacting with local databases
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/ASHUTOSH-SWAIN-GIT/maxim
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = maxim
+	conflicts = maxim
+	options = !debug
+	source_x86_64 = maxim-bin-1.0.3-x86_64.tar.gz::https://github.com/ASHUTOSH-SWAIN-GIT/maxim/releases/download/v1.0.3/maxim_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ab1ee91afabbd22798b230450801388a5c40157727af2fcab71af1eb4d53a883
+	source_aarch64 = maxim-bin-1.0.3-aarch64.tar.gz::https://github.com/ASHUTOSH-SWAIN-GIT/maxim/releases/download/v1.0.3/maxim_Linux_arm64.tar.gz
+	sha256sums_aarch64 = bdfc336540d62f2ddf8d2094d7aebdd10a1358b292caff808fd42aefd359dfaa
+
+pkgname = maxim-bin
