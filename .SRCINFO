@@ -1,0 +1,17 @@
+pkgbase = gograph-bin
+	pkgdesc = Go static analysis and call-graph CLI with an MCP server
+	pkgver = 1.7.26
+	pkgrel = 1
+	url = https://github.com/ozgurcd/gograph
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gograph
+	conflicts = gograph
+	options = !debug
+	source_x86_64 = gograph-bin-1.7.26-x86_64.tar.gz::https://github.com/ozgurcd/gograph/releases/download/v1.7.26/gograph_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a5503302bd8b5713b665b091a11fc9c926af2555457bf292fbbfa4bc316a57f5
+	source_aarch64 = gograph-bin-1.7.26-aarch64.tar.gz::https://github.com/ozgurcd/gograph/releases/download/v1.7.26/gograph_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 72b7ce1b6d579f2276fed3be954ce0fd72ea1276e34f4804cd8a82822281cfd1
+
+pkgname = gograph-bin
