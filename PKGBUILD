@@ -4,7 +4,7 @@
 # 应用整体安装在独立 /opt 前缀，命令名 kimi-code，与国内版可并存。
 
 pkgname=kimi-code-intl-bin
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 _appname='Kimi Code'
 _prefix='/opt/kimi-code-intl'
@@ -44,7 +44,7 @@ source=(
 )
 noextract=("KimiCode-${pkgver}-linux-amd64.deb")
 sha256sums=(
-  '730bd61582bb95c622bc96bb5194c98e617d5778b33f93cb8cf4a034cd12d0ca'
+  'c9032d57c92f2fe2bc61252ca73fb62727b7d3d8a5a6aa13c534aa784e2cc1ac'
   '0ae14e3358d32ed99d1651a0455f0c449f05de2a77f62ada6f3156886900d1e3'
   'c33b7ade90a82ea460cecc733cbdfedd8fd59e5ddc8cb01474a4c69f2a99d2c2'
   'c2ce2c7e3267701aa192cae428bf9aebb356402c5bb04131c1d89a361d5f1457'
