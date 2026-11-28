@@ -1,0 +1,19 @@
+pkgbase = ladon-bin
+	pkgdesc = Reactive anti-DPI engine
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/belotserkovtsev/Ladon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ladon
+	conflicts = ladon
+	options = !debug
+	source = ladon-bin-3.2.0-LICENSE::https://raw.githubusercontent.com/belotserkovtsev/Ladon/v3.2.0/LICENSE
+	sha256sums = 5686c9791c96023a109a1a5fb2f1e06c3bec04a8aae7f273f7c650447f1d0bb4
+	source_x86_64 = ladon-bin-3.2.0-x86_64.tar.gz::https://github.com/belotserkovtsev/Ladon/releases/download/v3.2.0/ladon-linux-amd64.tar.gz
+	sha256sums_x86_64 = d9b6cebba3de7fe7e2fd6461e927422a25c4af712f810a4a3d5cca58ed7fc72e
+	source_aarch64 = ladon-bin-3.2.0-aarch64.tar.gz::https://github.com/belotserkovtsev/Ladon/releases/download/v3.2.0/ladon-linux-arm64.tar.gz
+	sha256sums_aarch64 = c4ce0c5fb08e7b7247f6dcab396b18f58aae8aeead8039f7e18a2d6b6ab0962f
+
+pkgname = ladon-bin
