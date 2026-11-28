@@ -1,0 +1,20 @@
+pkgbase = sshub-bin
+	pkgdesc = Terminal UI for SSH with host database, SFTP browser, tunnels and key management
+	pkgver = 0.22.3
+	pkgrel = 1
+	url = https://github.com/Petyok/SSHub
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = dbus
+	depends = glibc
+	depends = libgcc
+	depends = zlib
+	provides = sshub
+	conflicts = sshub
+	options = !debug
+	source = sshub-bin-0.22.3-LICENSE::https://raw.githubusercontent.com/Petyok/SSHub/v0.22.3/LICENSE
+	sha256sums = d8a6cc31abc16b6748c7a21f21611f5a1ec33f67d22ca23d7da1c19b95496bee
+	source_x86_64 = sshub-bin-0.22.3-x86_64.tar.gz::https://github.com/Petyok/SSHub/releases/download/v0.22.3/sshub-v0.22.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0a82dc22a84f772cff00fdb8575bff4fdad32626ebba4694c5266eba47ebef49
+
+pkgname = sshub-bin
