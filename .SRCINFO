@@ -1,0 +1,20 @@
+pkgbase = exitbox-bin
+	pkgdesc = Run AI agents in complete isolation
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/Cloud-Exit/ExitBox
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	provides = exitbox
+	conflicts = exitbox
+	options = !debug
+	source = exitbox-bin-0.2.9-LICENSE::https://raw.githubusercontent.com/Cloud-Exit/ExitBox/v0.2.9/LICENSE
+	sha256sums = e9df4c4e4e64b8168a71c3c67668dcffabbe8fca11d4ac4a7d5482562cd1679c
+	source_x86_64 = exitbox-bin-0.2.9-x86_64::https://github.com/Cloud-Exit/ExitBox/releases/download/v0.2.9/exitbox-linux-amd64
+	sha256sums_x86_64 = e791d5b4f87228dedd5d557b7c20a267ffca0967c6b2d19c55e9022ba91555d5
+	source_aarch64 = exitbox-bin-0.2.9-aarch64::https://github.com/Cloud-Exit/ExitBox/releases/download/v0.2.9/exitbox-linux-arm64
+	sha256sums_aarch64 = b7d0ad531578bbe9a6b24b1634a0b6f823b6a81ed0e49c88565d2c74266a843b
+
+pkgname = exitbox-bin
